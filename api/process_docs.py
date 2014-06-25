@@ -1,5 +1,5 @@
 # This file will be used to process raw and preprocessed-JSON documents from the scrapers
-
+import os
 
 def process_raw(doc, source, id, filetype):
     """
@@ -7,10 +7,12 @@ def process_raw(doc, source, id, filetype):
         with the specified name and the designated filetype in the
         specified source directory
     """
-    filepath = 'raw' + '/' + str(source) + str(id) + '.' + str(filetype)
-    with open(filepath, 'w') as f:
-        f.write(doc)
-
+    filepath = '/home/faye/cos/scrapi/api/raw/' + str(source) +'/'+ str(id) + '.' + str(filetype)
+    f = open(filepath,'w')
+    f.write(doc)
+    f.close()
+    #with open(filepath, 'w+') as f:
+    #    f.write(doc)
 
 def process(doc):
     """
