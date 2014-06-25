@@ -2,9 +2,43 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="989b49d3-f355-48a9-8a0c-86206cb7999b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/process_docs.py" afterPath="$PROJECT_DIR$/api/process_docs.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scrapers/basic_scraper/scraper.py" afterPath="$PROJECT_DIR$/scrapers/basic_scraper/scraper.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/CTgov_study_NCT00001372.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_changes/NCT00000122/NCT00000122_20050630.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_changes/NCT00000122/NCT00000122_20051208.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_changes/NCT00000122/NCT00000122_20060601.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_changes/NCT00000122/NCT00000122_20090916.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_changes/NCT00000122/NCT00000122_20140314.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT00000160/NCT00000160.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT00000162/NCT00000162.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT00000193/NCT00000193.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT00000201/NCT00000201.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT00077454/NCT00077454.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT00181896/NCT00181896.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT00310375/NCT00310375.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT00375167/NCT00375167.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT00503399/NCT00503399.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT00629694/NCT00629694.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT00645515/NCT00645515.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT00740233/NCT00740233.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT00826579/NCT00826579.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT01111552/NCT01111552.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT01169415/NCT01169415.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT01365832/NCT01365832.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT01597011/NCT01597011.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT01636609/NCT01636609.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT01753830/NCT01753830.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT01809002/NCT01809002.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT01940094/NCT01940094.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT02032589/NCT02032589.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT02075515/NCT02075515.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT02145806/NCT02145806.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT02147249/NCT02147249.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT02147561/NCT02147561.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT02152930/NCT02152930.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT02155712/NCT02155712.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/ct_dates/NCT02155933/NCT02155933.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/new_ids.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/pygment-pass.py" afterPath="" />
     </list>
     <ignored path="scrapi.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -16,7 +50,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/scrapi$scraper_history.coverage" NAME="scraper_history Coverage Results" MODIFIED="1403729795573" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive" />
+    <SUITE FILE_PATH="coverage/scrapi$scraper_history.coverage" NAME="scraper_history Coverage Results" MODIFIED="1403729987166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scrapers/clinical_trials/ct_archive" />
     <SUITE FILE_PATH="coverage/scrapi$scraper.coverage" NAME="scraper Coverage Results" MODIFIED="1403726453076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scrapers/basic_scraper" />
     <SUITE FILE_PATH="coverage/scrapi$process_docs.coverage" NAME="process_docs Coverage Results" MODIFIED="1403722640331" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api" />
   </component>
@@ -32,10 +66,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="scraper.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="scraper.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scrapers/basic_scraper/scraper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="0" selection-start="376" selection-end="376" vertical-scroll-proportion="0.6735967" vertical-offset="0" max-vertical-offset="648">
+            <state line="18" column="0" selection-start="376" selection-end="376" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="648">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="scraper_history.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/scraper_history.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="31" selection-start="198" selection-end="198" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1332">
+              <folding>
+                <element signature="e#21#46#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="scraper_date.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/scraper_date.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="576">
               <folding />
             </state>
           </provider>
@@ -533,15 +587,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/scraper_history.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="31" selection-start="198" selection-end="198" vertical-scroll-proportion="0.3991131" vertical-offset="0" max-vertical-offset="1332">
-          <folding>
-            <element signature="e#21#46#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/archive_html_to_xml.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="56" column="34" selection-start="2035" selection-end="2035" vertical-scroll-proportion="0.9230769" vertical-offset="522" max-vertical-offset="1944">
@@ -551,7 +596,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scrapers/basic_scraper/scraper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="376" selection-end="376" vertical-scroll-proportion="0.6735967" vertical-offset="0" max-vertical-offset="648">
+        <state line="18" column="0" selection-start="376" selection-end="376" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="648">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/scraper_history.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="31" selection-start="198" selection-end="198" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1332">
+          <folding>
+            <element signature="e#21#46#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/partial_ids.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scrapers/clinical_trials/ct_archive/scraper_date.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="576">
           <folding />
         </state>
       </provider>
