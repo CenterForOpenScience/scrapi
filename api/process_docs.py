@@ -7,7 +7,10 @@ def process_raw(doc, source, id, filetype):
         with the specified name and the designated filetype in the
         specified source directory
     """
-    filepath = '/home/faye/cos/scrapi/api/raw/' + str(source) +'/'+ str(id) + '.' + str(filetype)
+    directory = '/home/faye/cos/scrapi/api/raw/' + str(source) +'/'
+    filepath = directory + str(id) + '.' + str(filetype)
+    if not os.path.exists(directory):
+        os.makedirs(directory)
     f = open(filepath,'w')
     f.write(doc)
     f.close()
