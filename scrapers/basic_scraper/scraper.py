@@ -2,7 +2,7 @@ import sys
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
-sys.path.insert(1, '/home/fabian/cos/scrapi/')
+sys.path.insert(1, '/home/faye/cos/scrapi/')
 
 import xmltodict
 
@@ -24,6 +24,7 @@ def parse(text):
         'description': doc['doc']['arr'][1]['str'],
         'contributors': doc['doc']['arr'][0]['str'],
         'id': doc['doc']['str'][0]['#text'],
+        'source':'basic_scraper'
     }
 
     process_docs.process(formatted_doc)
