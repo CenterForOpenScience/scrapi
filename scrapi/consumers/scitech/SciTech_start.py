@@ -1,7 +1,3 @@
-# -*- coding: utf-8 -*-
-# <nbformat>3.0</nbformat>
-
-# <rawcell>
 
 # SciTech Connect is a portal to free, publicly-available DOE-sponsored R&D results including 
 # technical reports, bibliographic citations, journal articles, conference papers, books, multimedia 
@@ -17,68 +13,67 @@
 # 
 # Here's a python script to gather some data using their API
 
-# <codecell>
+# goal of our wrapper...
+
+# date range
+# return full text
+
+# SciTech.daterange()
+
+# SciTech.id()
 
 import requests
 from lxml import etree
 import datetime
 
-# <codecell>
+class ScitechData(object):
 
-base_url = 'http://www.osti.gov/scitech/scitechxml?'
+    def __init__(self):
+        self.base_url = 'http://www.osti.gov/scitech/scitechxml?'
 
-# <markdowncell>
+    def date(self, startdate):
+        ''' Gets articles in a given date '''
 
-# To get data about the entire dataset...
+        startdate = 'EntryDateFrom=' + startdate
 
-# <codecell>
+        result = requests.get(self.base_url + startdate)
 
-request_type = 'page='
-page_number = 1
+        root = etree.fromstring(result.content)
 
-# <codecell>
+        num_results = root[0].get("count")
 
-request = requests.get(base_url + request_type + str(page_number))
+        print num_results
 
-# <codecell>
 
-root = etree.fromstring(request.content)
+thang = ScitechData()
 
-# <markdowncell>
+thang.date("12/13/13")
 
-# To see the number of results in the entire data set...
 
-# <codecell>
 
-num_results = root[0].get("count")
-num_results
+# request_type = 'page='
+# page_number = 1
+# request = requests.get(base_url + request_type + str(page_number))
 
-# <markdowncell>
+# root = etree.fromstring(request.content)
 
-# To check if there are pages beyond the one you're viewing...
+# num_results = root[0].get("count")
+# num_results
 
-# <codecell>
+# root[0].get("morepages")
 
-root[0].get("morepages")
+# todays_date = datetime.date.today().strftime('%m/%d/%Y')
+# todays_date
 
-# <markdowncell>
+# # <codecell>
 
-# To check to see what items have been updated since yesterday...
+# request_type = 'EntryDateFrom='
+# recent_updated_url = base_url + request_type + todays_date
 
-# <codecell>
+# # <codecell>
 
-todays_date = datetime.date.today().strftime('%m/%d/%Y')
-todays_date
+# recent_updated_url
 
-# <codecell>
-
-request_type = 'EntryDateFrom='
-recent_updated_url = base_url + request_type + todays_date
-
-# <codecell>
-
-recent_updated_url
-
-# <codecell>
+# # <codecell>
 
 
