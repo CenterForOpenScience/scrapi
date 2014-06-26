@@ -24,6 +24,7 @@ def parse(text):
         'description': doc['doc']['arr'][1]['str'],
         'contributors': doc['doc']['arr'][0]['str'],
         'id': doc['doc']['str'][0]['#text'],
+        'source':'basic_scraper'
     }
 
     process_docs.process(formatted_doc)

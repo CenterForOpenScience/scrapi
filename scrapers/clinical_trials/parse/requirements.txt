@@ -1,0 +1,7 @@
+BeautifulSoup==3.2.1
+argparse==1.2.1
+beautifulsoup4==4.3.2
+lxml==3.3.5
+requests==2.3.0
+wsgiref==0.1.2
+xmltodict==0.9.0

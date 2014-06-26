@@ -1,5 +1,6 @@
 # This file will be used to process raw and preprocessed-JSON documents from the scrapers
 import os
+import json
 
 def process_raw(doc, source, id, filetype):
     """
@@ -11,11 +12,9 @@ def process_raw(doc, source, id, filetype):
     filepath = directory + str(id) + '.' + str(filetype)
     if not os.path.exists(directory):
         os.makedirs(directory)
-    f = open(filepath,'w')
-    f.write(doc)
-    f.close()
-    #with open(filepath, 'w+') as f:
-    #    f.write(doc)
+
+    with open(filepath, 'w') as f:
+        f.write(doc)
 
 def process(doc):
     """
@@ -23,4 +22,10 @@ def process(doc):
         to make an OSF project, then creates that OSF project through
         the API (does not exist yet)
     """
-    raise NotImplementedError
+
+    directory = '/home/faye/cos/scrapi/api/json/' + doc['source'] +'/'
+    filepath = directory + doc['id'].replace('/','%2F') + '.json'
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    with open(filepath, 'w') as f:
+        f.write(json.dumps(doc,sort_keys=True, indent=4))

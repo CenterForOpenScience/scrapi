@@ -1,0 +1,772 @@
+<clinical_study>
+<study_id>
+<org_name>
+  UPenn
+</org_name>
+<org_full_name>
+  University of Pennsylvania
+</org_full_name>
+<org_study_id>
+  VCRC5526A
+</org_study_id>
+<secondary_id>
+<id>
+  R01HL115041
+</id>
+<id_type>
+  US NIH Grant Number
+</id_type>
+</secondary_id>
+<nct_id>
+  NCT01940094
+</nct_id>
+</study_id>
+<is_fda_regulated>
+  Yes
+</is_fda_regulated>
+<is_section_801>
+  Yes
+</is_section_801>
+<delayed_posting>
+  No
+</delayed_posting>
+<brief_title>
+<textblock>
+  The Assessment of Prednisone In Remission Trial - Centers of Excellence Approach
+</textblock>
+</brief_title>
+<acronym>
+  TAPIR
+</acronym>
+<official_title>
+<textblock>
+  The Assessment of Prednisone In Remission Trial (TAPIR) - Centers of Excellence Approach
+</textblock>
+</official_title>
+<study_sponsor>
+<lead_sponsor>
+<agency>
+  University of Pennsylvania
+</agency>
+</lead_sponsor>
+<sponsor>
+<agency>
+  National Heart, Lung, and Blood Institute (NHLBI)
+</agency>
+</sponsor>
+<sponsor>
+<agency>
+  National Institute of Arthritis and Musculoskeletal and Skin Diseases (NIAMS)
+</agency>
+</sponsor>
+<sponsor>
+<agency>
+  Office of Rare Diseases (ORD)
+</agency>
+</sponsor>
+<sponsor>
+<agency>
+  National Center for Advancing Translational Science (NCATS)
+</agency>
+</sponsor>
+<sponsor>
+<agency>
+  Rare Diseases Clinical Research Network
+</agency>
+</sponsor>
+</study_sponsor>
+<resp_party>
+<resp_party_type>
+  Principal Investigator
+</resp_party_type>
+<investigator_full_name>
+  Peter Merkel
+</investigator_full_name>
+<investigator_title>
+  Chief, Division of Rheumatology, Professor of Medicine and Epidemiology
+</investigator_title>
+<investigator_affiliation>
+  University of Pennsylvania
+</investigator_affiliation>
+</resp_party>
+<oversight_info>
+<regulatory_authority>
+  United States: Data and Safety Monitoring Board
+</regulatory_authority>
+<regulatory_authority>
+  United States: Institutional Review Board
+</regulatory_authority>
+<has_dmc>
+  Yes
+</has_dmc>
+</oversight_info>
+<brief_summary>
+<textblock>
+  This study is a multi-center randomized controlled trial to evaluate the effects of using low-dose prednisone as compared to stopping prednisone treatment entirely. Participants will be randomized 1:1 to taper their prednisone dose down to 5 mg/day or to 0 mg/day for the duration of the study (approximately six months) or until a study endpoint.
+</textblock>
+</brief_summary>
+<detailed_descr>
+<textblock>
+  Patients with granulomatosis with polyangiitis (GPA, Wegener&apos;s) will be recruited at one of the Vasculitis Centers of Excellence. Participants will be randomized 1:1 either to taper their prednisone dose down to 5 mg/day according to a standardized schedule and stay at 5 mg/day of prednisone for the duration of the study or until a study endpoint, or taper their prednisone dose down to 0 mg/day using a standard schedule and stay at 0 mg/day for the duration of the study or until a study endpoint. All study participants will be followed for 6 months (from reaching a prednisone dose of 5 mg/day) or until an increase of prednisone dose (after randomization) occurs, whichever comes first.
+ 
+  Participants will have up to four study visits, a screening visit (visit 1), a baseline (visit 2), a month 3 visit (visit 3) and a month 6 or flare visit (visit 3) and up to two follow-up phone calls from the study coordinator at randomization and at month 1 (randomization and 1 month phone call may be combined if randomization occurs at month 1).
+ 
+  This study is a project of the Vasculitis Clinical Research Consortium (VCRC)
+  funded through the National Institutes of Health Rare Diseases Clinical Research
+  Network (RDCRN) with the purpose of promoting vasculitis research. The VCRC is the major clinical research infrastructure in North America for the study of vasculitis, and eight VCRC Centers of Excellence will be recruiting for this
+  study.
+</textblock>
+</detailed_descr>
+<status_block>
+<status>
+  Recruiting
+</status>
+<date>
+2014-03 
+</date>
+</status_block>
+<start_date>
+<date>
+  2014-02
+</date>
+</start_date>
+<primary_compl_date
+ type="Anticipated"
+>
+<date>
+  2015-09
+</date>
+</primary_compl_date>
+<phase_block>
+<phase>
+  Phase 3
+</phase>
+</phase_block>
+<study_type>
+  Interventional
+</study_type>
+<design>
+  Treatment
+</design>
+<design>
+  Randomized
+</design>
+<design>
+  Open Label
+</design>
+<design>
+  Parallel Assignment
+</design>
+<number_of_arms>
+  2
+</number_of_arms>
+<primary_outcome>
+<measure>
+  Physician decision to increase glucocorticoids for disease relapse.
+</measure>
+<time_frame>
+  Six months
+</time_frame>
+<safety_issue>
+  No
+</safety_issue>
+</primary_outcome>
+<secondary_outcome>
+<measure>
+  Time to disease flare.
+</measure>
+<time_frame>
+  6 months
+</time_frame>
+<safety_issue>
+  No
+</safety_issue>
+</secondary_outcome>
+<secondary_outcome>
+<measure>
+  Safety outcomes.
+</measure>
+<time_frame>
+  6 months
+</time_frame>
+<description>
+<textblock>
+  Rate and type of serious adverse events and infections.
+</textblock>
+</description>
+<safety_issue>
+  Yes
+</safety_issue>
+</secondary_outcome>
+<secondary_outcome>
+<measure>
+  Protocol performance at VCRC Centers of Excellence.
+</measure>
+<time_frame>
+  6 months
+</time_frame>
+<description>
+<textblock>
+  Evaluation of patient characteristics, protocol compliance, participant retention, data completeness, timeliness of data entry, and data accuracy.
+</textblock>
+</description>
+<safety_issue>
+  No
+</safety_issue>
+</secondary_outcome>
+<secondary_outcome>
+<measure>
+  Health-related quality of life survey
+</measure>
+<time_frame>
+  Measured at baseline and end of the study
+</time_frame>
+<description>
+<textblock>
+  Patient Reported Outcomes Measurement Information System (PROMIS) Assessment
+</textblock>
+</description>
+<safety_issue>
+  No
+</safety_issue>
+</secondary_outcome>
+<secondary_outcome>
+<measure>
+  Health-related quality of life surveys
+</measure>
+<time_frame>
+  Measured at baseline and the end of the study
+</time_frame>
+<description>
+<textblock>
+  Measured by Short Form-36
+</textblock>
+</description>
+<safety_issue>
+  No
+</safety_issue>
+</secondary_outcome>
+<secondary_outcome>
+<measure>
+  Health-related quality of life surveys
+</measure>
+<time_frame>
+  Measured at baseline, month 3, and end of the study
+</time_frame>
+<description>
+<textblock>
+  Measured by a Patient Global Assessment.
+</textblock>
+</description>
+<safety_issue>
+  No
+</safety_issue>
+</secondary_outcome>
+<enrollment
+ type="Anticipated"
+>
+  60
+</enrollment>
+<condition>
+  Granulomatosis With Polyangiitis
+</condition>
+<arm_group>
+<arm_group_label>
+  5 mg Prednisone
+</arm_group_label>
+<arm_type>
+  Experimental
+</arm_type>
+<description>
+<textblock>
+  Subjects will be randomized to a prednisone dose of 5 mg per day for a 6 month period.
+</textblock>
+</description>
+</arm_group>
+<arm_group>
+<arm_group_label>
+  0 mg Prednisone
+</arm_group_label>
+<arm_type>
+  Experimental
+</arm_type>
+<description>
+<textblock>
+  Subjects will be randomized to taper their prednisone dose from 5 mg per day to 0 mg per day for a 6 month period.
+</textblock>
+</description>
+</arm_group>
+<intervention>
+<intervent_type>
+  Drug
+</intervent_type>
+<primary_name>
+  Prednisone 5 mg/day
+</primary_name>
+<description>
+<textblock>
+  Subjects will remain on daily prednisone dose of 5 mg
+</textblock>
+</description>
+<arm_group_label>
+  5 mg Prednisone
+</arm_group_label>
+<other_name>
+  &#8226;5 mg/day glucocorticoids
+</other_name>
+<other_name>
+  &#8226;5 mg/day prednisone
+</other_name>
+<other_name>
+  &#8226;5 mg/day steroids
+</other_name>
+</intervention>
+<intervention>
+<intervent_type>
+  Drug
+</intervent_type>
+<primary_name>
+  Prednisone 0 mg/day
+</primary_name>
+<description>
+<textblock>
+  Subjects will taper their prednisone dose from 5 mg per day to 0 mg per day
+</textblock>
+</description>
+<arm_group_label>
+  0 mg Prednisone
+</arm_group_label>
+</intervention>
+<eligibility>
+<criteria>
+<textblock>
+  Inclusion Criteria:
+  1. Established diagnosis of granulomatosis with polyangiitis (GPA) where patients will need to meet at least 2 of the 5 for the classification of GPA, at least one of which must be criterion d or e:
+ 
+  The modified American College of Rheumatology (ACR) criteria are:
+    A. Nasal or oral inflammation, defined as the development of painful or   painless oral ulcers or purulent or bloody nasal discharge.
+    B. Abnormal chest radiograph, defined as the presence of nodules, fixed infiltrates, or cavities.
+    C. Active urinary sediment, defined as microscopic hematuria (&gt;5 red blood cells per high power field) or red blood cell casts.
+    D. Granulomatosis inflammation on biopsy, defined as histologic changes showing granulomatous inflammation within the wall of an artery or in the perivascular or extravascular area. Note: Pauci-immune glomerulonephritis seen on kidney biopsy will suffice for this criterion.
+    E. Positive anti-neutrophil cytoplasmic antibody (ANCA) test specific for proteinase-3 measures by enzyme-linked immunoassay.
+  Patients who are myeloperoxidase (MPO) positive or ANCA negative are still eligible for this study if they meet the criteria above and are felt to have GPA.
+  2. Active disease within the prior 12 months (initial presentation or relapse) that at time of active disease required treatment with prednisone &gt;20 mg/day. 
+  3. Disease remission at time of enrollment.
+  4. Prednisone dose at time of enrollment of &#8805; 6mg/day and &#8804; 10 mg/day.
+  5. Participant age of 18 years or greater.
+  6. If the patient is taking an immunosuppressive medication agent other than prednisone (maintenance agent) then the maintenance agent must be at a stable dose for one month prior to enrollment with no plans by the treating physician to change the dose (other than for safety purposes/toxicity) for the duration of the study (through the month 6 visit or early termination). Acceptable maintenance agents include azathioprine, leflunomide, 6-mercaptopurine, methotrexate, mycophenolate mofetil, or mycophenolate sodium. Patients may be on trimethoprim/sulfamethoxazole (TMP/SMX) for use as either a maintenance agent or for prophylaxis for infection. TMP/SMX may be used in combination with other drugs.
+      6.1 Rituximab is an acceptable maintenance agent if the last dose was given at least one month prior to enrollment and no additional doses are planned) for the duration of the study (through the month 6 visit or early termination). If a patient received rituximab and was then prescribed another maintenance agent, the patient is eligible if there are no plans by the treating physician to change the dose of the maintenance (other than for safety purposes/toxicity) for the duration of the study (through the month 6 visit or early termination).
+      6.2 If the patient is regularly taking trimethoprim/sulfamethoxazole at any dose then the patient is eligible if there no plans by the treating physician to change the dose after enrollment (other than for dose reduction or discontinuation for safety purposes/toxicity) for the duration of the study.
+ 
+  Exclusion Criteria:
+  1. Comorbid condition that has moderate likelihood of requiring a course of prednisone within one year of enrollment (e.g. chronic obstructive pulmonary disease (COPD), asthma, adrenal insufficiency).
+</textblock>
+</criteria>
+<healthy_volunteers>
+  No
+</healthy_volunteers>
+<gender>
+  Both
+</gender>
+<minimum_age>
+  18 Years
+</minimum_age>
+<maximum_age>
+</maximum_age>
+</eligibility>
+<investigator>
+<role>
+  Principal Investigator
+</role>
+<name>
+  Peter A Merkel, MD, MPH
+</name>
+<affiliation>
+<agency>
+  University of Pennsylvania
+</agency>
+</affiliation>
+</investigator>
+<investigator>
+<role>
+  Principal Investigator
+</role>
+<name>
+  Jeffery P Krischer, PhD
+</name>
+<affiliation>
+<agency>
+  University of South Florida
+</agency>
+</affiliation>
+</investigator>
+<contact>
+<name>
+  Carol McAlear, MA
+</name>
+<phone>
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+  cmcalear@upenn.edu
+</email>
+</contact>
+<location>
+<facility>
+<name>
+  Mayo Clinic
+</name>
+<address>
+<city>
+  Rochester
+</city>
+<state>
+  Minnesota
+</state>
+<zip>
+  55905
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+ Recruiting 
+</status>
+<contact>
+<name>
+  Sara Biorn
+</name>
+<phone>
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+  biorn.sara@mayo.edu
+</email>
+</contact>
+<contact>
+<role>
+  Principal Investigator
+</role>
+<name>
+  Ulrich Specks, MD
+</name>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  Cleveland Clinic
+</name>
+<address>
+<city>
+  Cleveland
+</city>
+<state>
+  Ohio
+</state>
+<zip>
+  44195
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+<contact>
+<name>
+  Katie Gartner
+</name>
+<phone>
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+  gartnek@ccf.org
+</email>
+</contact>
+<contact>
+<role>
+  Principal Investigator
+</role>
+<name>
+  Carol A Langford, MD, MHS
+</name>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  University of Pennsylvania
+</name>
+<address>
+<city>
+  Philadelphia
+</city>
+<state>
+  Pennsylvania
+</state>
+<zip>
+  19104
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+<contact>
+<name>
+  Brian Rice
+</name>
+<phone>
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+  Brian.Rice@uphs.upenn.edu
+</email>
+</contact>
+<contact>
+<role>
+  Principal Investigator
+</role>
+<name>
+  Peter A Merkel, MD, MPH
+</name>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  University of Pittsburgh
+</name>
+<address>
+<city>
+  Pittsburgh
+</city>
+<state>
+  Pennsylvania
+</state>
+<zip>
+  15261
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+<contact>
+<name>
+  Dawn McBride, RN
+</name>
+<phone>
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+  dlmc@pitt.edu
+</email>
+</contact>
+<contact>
+<role>
+  Principal Investigator
+</role>
+<name>
+  Larry Moreland, MD
+</name>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  University of Utah
+</name>
+<address>
+<city>
+  Salt Lake City
+</city>
+<state>
+  Utah
+</state>
+<zip>
+  84112
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+ Recruiting 
+</status>
+<contact>
+<name>
+  Julieanne Nielsen
+</name>
+<phone>
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+  Julieanne.Nielsen@hsc.utah.edu
+</email>
+</contact>
+<contact>
+<role>
+  Principal Investigator
+</role>
+<name>
+  Curry Koening, MD, MS
+</name>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  Mount Sinai Hospital
+</name>
+<address>
+<city>
+  Toronto
+</city>
+<state>
+  Ontario
+</state>
+<zip>
+  M5T 3L9
+</zip>
+<country>
+  Canada
+</country>
+</address>
+</facility>
+<status>
+ Recruiting 
+</status>
+<contact>
+<name>
+  Sam Jagadeesh
+</name>
+<phone>
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+  sjagadeesh@mtsinai.on.ca
+</email>
+</contact>
+<contact>
+<role>
+  Principal Investigator
+</role>
+<name>
+  Simon Carette, MD
+</name>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  St. Joseph&apos;s Healthcare
+</name>
+<address>
+<city>
+  Hamilton
+</city>
+<state>
+  Ontario
+</state>
+<zip>
+</zip>
+<country>
+  Canada
+</country>
+</address>
+</facility>
+<status>
+ Recruiting 
+</status>
+<contact>
+<name>
+  Sandra Messier
+</name>
+<phone>
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+  smessier@stjosham.on.ca
+</email>
+</contact>
+<contact>
+<role>
+  Principal Investigator
+</role>
+<name>
+  Nader Khalidi, MD
+</name>
+</contact>
+</location>
+<see_also>
+<annotation>
+<textblock>
+  Vasculitis Clinical Research Consortium
+</textblock>
+</annotation>
+<url>
+  http://rarediseasesnetwork.org/vcrc/
+</url>
+</see_also>
+<keyword>
+  Granulomatosis with polyangiitis
+</keyword>
+<keyword>
+  Wegener&apos;s granulomatosis
+</keyword>
+<keyword>
+  WG
+</keyword>
+<keyword>
+ GPA 
+</keyword>
+<keyword>
+  ANCA-Associated Vasculitis
+</keyword>
+<keyword>
+  AAV
+</keyword>
+<keyword>
+  Vasculitis
+</keyword>
+<keyword>
+  Prednisone
+</keyword>
+<keyword>
+  Glucocorticoid
+</keyword>
+<keyword>
+  Taper
+</keyword>
+<initial_release_date>
+  2013-09-06
+</initial_release_date>
+<last_release_date>
+2014-03-21 
+</last_release_date>
+<init_disposition_release_date>
+</init_disposition_release_date>
+<init_results_release_date>
+</init_results_release_date>
+</clinical_study>

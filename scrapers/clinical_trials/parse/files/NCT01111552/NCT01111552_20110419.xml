@@ -1,0 +1,899 @@
+<clinical_study>
+<study_id>
+<org_name>
+  Otsuka
+</org_name>
+<org_full_name>
+  Otsuka Pharmaceutical Development &amp; Commercialization, Inc.
+</org_full_name>
+<org_study_id>
+  31-08-256
+</org_study_id>
+<nct_id>
+  NCT01111552
+</nct_id>
+</study_id>
+<is_fda_regulated>
+  Yes
+</is_fda_regulated>
+<is_section_801>
+  No
+</is_section_801>
+<brief_title>
+<textblock>
+  Study to Evaluate the Efficacy, Safety and Tolerability of an Oral Aripiprazole/Escitalopram Combination Therapy in Patients With Major Depressive Disorder (MDD)
+</textblock>
+</brief_title>
+<acronym>
+  ACES 256
+</acronym>
+<official_title>
+<textblock>
+  A Multicenter, Randomized, Double-blind Study to Evaluate the Efficacy, Safety and Tolerability of an Oral Aripiprazole/Escitalopram Combination Therapy in Patients With Major Depressive Disorder
+</textblock>
+</official_title>
+<study_sponsor>
+<lead_sponsor>
+<agency>
+  Otsuka Pharmaceutical Development &amp; Commercialization, Inc.
+</agency>
+</lead_sponsor>
+<sponsor>
+<agency>
+  Covance
+</agency>
+</sponsor>
+</study_sponsor>
+<resp_party>
+<name_title>
+  Frances Wulf, Manager, Global Clinical Development
+</name_title>
+<organization>
+  Otsuka Pharmaceutical Development &amp; Commercialization, Inc.
+</organization>
+</resp_party>
+<oversight_info>
+<regulatory_authority>
+  United States: Food and Drug Administration
+</regulatory_authority>
+<has_dmc>
+  Yes
+</has_dmc>
+</oversight_info>
+<brief_summary>
+<textblock>
+  This will be a multicenter, randomized, double-blind study designed to assess the efficacy, safety and tolerability of an oral Aripiprazole/Escitalopram combination therapy in subjects with MDD who have demonstrated an incomplete response to a prospective trial of Escitalopram, and report a treatment history for the current MDD episode of an inadequate response to at least one and no more than three adequate trials of an approved antidepressant other than Escitalopram. An inadequate response is defined as less than a 50% reduction in depressive symptom severity as assessed by the subject&apos;s self-report on the Massachusetts General Hospital Antidepressant Treatment Response Questionnaire (ATRQ) and evaluated by the investigator as part of the subject&apos;s medical and psychiatric history. An adequate trial is defined as an antidepressant treatment for at least 6 weeks duration (or at least 3 weeks for combination treatments) at an approved dose as specified in the ATRQ.
+</textblock>
+</brief_summary>
+<detailed_descr>
+<textblock>
+  The study will be organized as follows:
+  &#8226;	Phase A (Screening Phase) 
+  &#8226;	Phase B (Single-blind Prospective Treatment Phase) 
+  &#8226;	Phase B+ (Single-blind Phase B Responder) 
+  &#8226;	Phase C (Double-blind Randomization Phase) 
+  &#8226;	Follow-up 
+ 
+  Assigned Interventions:
+  &#8226;	Phase B and Phase B+: Escitalopram monotherapy (10 mg or 20 mg) 
+  &#8226;	Phase C: Aripiprazole/Escitalopram combination therapy (3 mg/10 mg, 3 mg/20 mg, 6 mg/10 mg, 6 mg/20 mg, 12 mg/10 mg or 12 mg/20 mg); Aripiprazole monotherapy (3 mg, 6 mg or 12 mg); or Escitalopram monotherapy (10 mg or 20 mg)
+</textblock>
+</detailed_descr>
+<status_block>
+<status>
+  Recruiting
+</status>
+<date>
+2011-04 
+</date>
+</status_block>
+<start_date>
+<date>
+  2010-07
+</date>
+</start_date>
+<last_follow_up_date
+ type="Anticipated"
+>
+<date>
+  2013-11
+</date>
+</last_follow_up_date>
+<primary_compl_date
+ type="Anticipated"
+>
+<date>
+  2013-11
+</date>
+</primary_compl_date>
+<phase_block>
+<phase>
+  Phase 3
+</phase>
+</phase_block>
+<study_type>
+  Interventional
+</study_type>
+<design>
+  Treatment
+</design>
+<design>
+  Randomized
+</design>
+<design>
+  Double Blind (Subject, Investigator)
+</design>
+<design>
+  Single Group Assignment
+</design>
+<design>
+  Safety/Efficacy Study
+</design>
+<number_of_arms>
+  2
+</number_of_arms>
+<primary_outcome>
+<measure>
+  Mean change in the Montgomery-Asberg Depression Rating Scale (MADRS) Total Score from the end of Phase B to the end of Phase C
+</measure>
+<time_frame>
+  End of Phase B (week 8 visit) to end of Phase C (week 14 visit)
+</time_frame>
+<description>
+<textblock>
+  The primary efficacy endpoint is the mean change from the end of Phase B (Week 8 Visit) to the end of Phase C (Week 14 Visit) in the Montgomery-Asberg Depression Rating Scale (MADRS) Total Score using the Last-Observation-Carried-Forward (LOCF) data set. Additionally, a Mixed-Effect Repeated Measures (MMRM) model will be used as a sensitivity analysis for the change from the end of Phase B (Week 8 Visit) to the end of Phase C (Week 14 Visit) on the MADRS Total Score.
+</textblock>
+</description>
+<safety_issue>
+  No
+</safety_issue>
+</primary_outcome>
+<enrollment
+ type="Anticipated"
+>
+  1200
+</enrollment>
+<condition>
+  Major Depressive Disorder (MDD)
+</condition>
+<arm_group>
+<arm_group_label>
+  Phase B and Phase B+
+</arm_group_label>
+<arm_type>
+  Active Comparator
+</arm_type>
+<description>
+<textblock>
+  Escitalopram monotherapy
+</textblock>
+</description>
+</arm_group>
+<arm_group>
+<arm_group_label>
+  Phase C
+</arm_group_label>
+<arm_type>
+  Active Comparator
+</arm_type>
+<description>
+<textblock>
+  Aripiprazole/Escitalopram combination therapy, Aripiprazole monotherapy, or Escitalopram monotherapy
+</textblock>
+</description>
+</arm_group>
+<intervention>
+<intervent_type>
+  Drug
+</intervent_type>
+<primary_name>
+  Escitalopram
+</primary_name>
+<description>
+<textblock>
+  Escitalopram monotherapy
+</textblock>
+</description>
+<arm_group_label>
+  Phase B and Phase B+
+</arm_group_label>
+<arm_group_label>
+  Phase C
+</arm_group_label>
+</intervention>
+<intervention>
+<intervent_type>
+  Drug
+</intervent_type>
+<primary_name>
+  Aripiprazole
+</primary_name>
+<description>
+<textblock>
+  Aripiprazole monotherapy
+</textblock>
+</description>
+<arm_group_label>
+  Phase C
+</arm_group_label>
+</intervention>
+<eligibility>
+<criteria>
+<textblock>
+  Inclusion Criteria:
+  &#8226;	Subjects with a current diagnosis of a major depressive episode. The current depressive episode must be &#8805; 8 weeks in duration 
+  &#8226;	Subjects willing to discontinue all prohibited psychotropic medication starting from the time of signing the informed consent and during the study period 
+  &#8226;	Subjects with a HAM-D17 Total Score &#8805; 18 at the Baseline Visit for the Prospective Treatment Phase 
+ 
+ 
+ 
+  Exclusion Criteria:
+  &#8226;	Lack of prior treatment with an antidepressant during the current depressive episode
+  &#8226;	Subjects who report treatment with adjunctive or monotherapy antipsychotic treatment during the current depressive episode. 
+  &#8226;	Subjects experiencing hallucinations, delusions or any psychotic symptomatology in the current depressive episode
+  &#8226;	Subjects with epilepsy or significant history of seizure disorders
+  &#8226;	Subjects with a clinically significant current diagnosis of borderline, antisocial, paranoid, schizoid, schizotypal or histrionic personality disorder
+  &#8226;	Subjects who have received electroconvulsive therapy (ECT) in the last 10 years
+</textblock>
+</criteria>
+<healthy_volunteers>
+  No
+</healthy_volunteers>
+<gender>
+  Both
+</gender>
+<minimum_age>
+  18 Years
+</minimum_age>
+<maximum_age>
+  65 Years
+</maximum_age>
+</eligibility>
+<contact>
+<name>
+  Study Information
+</name>
+<phone>
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+  acesmddstudyinfo@mmgct.com
+</email>
+</contact>
+<location>
+<facility>
+<name>
+</name>
+<address>
+<city>
+  Birmingham
+</city>
+<state>
+  Alabama
+</state>
+<zip>
+  35216
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+</location>
+<location>
+<facility>
+<name>
+</name>
+<address>
+<city>
+  Little Rock
+</city>
+<state>
+  Arkansas
+</state>
+<zip>
+  72223
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+</location>
+<location>
+<facility>
+<name>
+</name>
+<address>
+<city>
+  Redlands
+</city>
+<state>
+  California
+</state>
+<zip>
+  92374
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+</location>
+<location>
+<facility>
+<name>
+</name>
+<address>
+<city>
+  San Diego
+</city>
+<state>
+  California
+</state>
+<zip>
+  92128
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+</location>
+<location>
+<facility>
+<name>
+</name>
+<address>
+<city>
+  Mission Viejo
+</city>
+<state>
+  California
+</state>
+<zip>
+  92691
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+</location>
+<location>
+<facility>
+<name>
+</name>
+<address>
+<city>
+  Garden Grove
+</city>
+<state>
+  California
+</state>
+<zip>
+  95231
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+</location>
+<location>
+<facility>
+<name>
+</name>
+<address>
+<city>
+  Imperial
+</city>
+<state>
+  California
+</state>
+<zip>
+  92251
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+</location>
+<location>
+<facility>
+<name>
+</name>
+<address>
+<city>
+  Carson
+</city>
+<state>
+  California
+</state>
+<zip>
+  90746
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+</location>
+<location>
+<facility>
+<name>
+</name>
+<address>
+<city>
+  Atlanta
+</city>
+<state>
+  Georgia
+</state>
+<zip>
+  30308
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+</location>
+<location>
+<facility>
+<name>
+</name>
+<address>
+<city>
+  Atlanta
+</city>
+<state>
+  Georgia
+</state>
+<zip>
+  30328
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+</location>
+<location>
+<facility>
+<name>
+</name>
+<address>
+<city>
+  Hoffman Estates
+</city>
+<state>
+  Illinois
+</state>
+<zip>
+  60169
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+</location>
+<location>
+<facility>
+<name>
+</name>
+<address>
+<city>
+  Terre Haute
+</city>
+<state>
+  Indiana
+</state>
+<zip>
+  47802
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+</location>
+<location>
+<facility>
+<name>
+</name>
+<address>
+<city>
+  Prairie Village
+</city>
+<state>
+  Kansas
+</state>
+<zip>
+  66206
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+</location>
+<location>
+<facility>
+<name>
+</name>
+<address>
+<city>
+  Overland Park
+</city>
+<state>
+  Kansas
+</state>
+<zip>
+  66211
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+</location>
+<location>
+<facility>
+<name>
+</name>
+<address>
+<city>
+  Wichita
+</city>
+<state>
+  Kansas
+</state>
+<zip>
+  67207
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+</location>
+<location>
+<facility>
+<name>
+</name>
+<address>
+<city>
+  Baltimore
+</city>
+<state>
+  Maryland
+</state>
+<zip>
+  21204
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+</location>
+<location>
+<facility>
+<name>
+</name>
+<address>
+<city>
+  New York
+</city>
+<state>
+  New York
+</state>
+<zip>
+  10021
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+</location>
+<location>
+<facility>
+<name>
+</name>
+<address>
+<city>
+  Toledo
+</city>
+<state>
+  Ohio
+</state>
+<zip>
+  43623
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+</location>
+<location>
+<facility>
+<name>
+</name>
+<address>
+<city>
+  Bartlet
+</city>
+<state>
+  Tennessee
+</state>
+<zip>
+  38134
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+</location>
+<location>
+<facility>
+<name>
+</name>
+<address>
+<city>
+  Wichita Falls
+</city>
+<state>
+  Texas
+</state>
+<zip>
+  76309
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+</location>
+<location>
+<facility>
+<name>
+</name>
+<address>
+<city>
+  Everton Park
+</city>
+<state>
+  Queensland
+</state>
+<zip>
+  4053
+</zip>
+<country>
+  Australia
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+</location>
+<location>
+<facility>
+<name>
+</name>
+<address>
+<city>
+  Malvern
+</city>
+<state>
+  Victoria
+</state>
+<zip>
+  3144
+</zip>
+<country>
+  Australia
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+</location>
+<location>
+<facility>
+<name>
+</name>
+<address>
+<city>
+  Tzerova Koria
+</city>
+<state>
+</state>
+<zip>
+  5047
+</zip>
+<country>
+  Bulgaria
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+</location>
+<location>
+<facility>
+<name>
+</name>
+<address>
+<city>
+  Bucuresti
+</city>
+<state>
+</state>
+<zip>
+  041914
+</zip>
+<country>
+  Romania
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+</location>
+<location>
+<facility>
+<name>
+</name>
+<address>
+<city>
+  Bucuresti
+</city>
+<state>
+</state>
+<zip>
+  010825
+</zip>
+<country>
+  Romania
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+</location>
+<location>
+<facility>
+<name>
+</name>
+<address>
+<city>
+  Craiova
+</city>
+<state>
+</state>
+<zip>
+  200620
+</zip>
+<country>
+  Romania
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+</location>
+<location>
+<facility>
+<name>
+</name>
+<address>
+<city>
+  Svidnik
+</city>
+<state>
+</state>
+<zip>
+  8901
+</zip>
+<country>
+  Slovakia
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+</location>
+<keyword>
+  Major Depressive Disorder
+</keyword>
+<keyword>
+  MDD
+</keyword>
+<keyword>
+  Depression
+</keyword>
+<initial_release_date>
+  2010-04-22
+</initial_release_date>
+<last_release_date>
+2011-04-19 
+</last_release_date>
+<init_disposition_release_date>
+</init_disposition_release_date>
+<init_results_release_date>
+</init_results_release_date>
+</clinical_study>

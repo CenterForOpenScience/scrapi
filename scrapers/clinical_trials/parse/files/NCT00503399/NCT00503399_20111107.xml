@@ -1,0 +1,6550 @@
+<clinical_study>
+<study_id>
+<org_name>
+  Lilly
+</org_name>
+<org_full_name>
+  Eli Lilly and Company
+</org_full_name>
+<org_study_id>
+  11716
+</org_study_id>
+<secondary_id>
+<id>
+  B3D-EW-GHDH
+</id>
+<id_type>
+  Other Identifier
+</id_type>
+<id_domain>
+  Eli Lilly and Company
+</id_domain>
+</secondary_id>
+<nct_id>
+  NCT00503399
+</nct_id>
+</study_id>
+<is_fda_regulated>
+  Yes
+</is_fda_regulated>
+<is_section_801>
+  Yes
+</is_section_801>
+<delayed_posting>
+  No
+</delayed_posting>
+<brief_title>
+<textblock>
+  Comparison of the Effects of 2 Drugs on Lumbar Spine Volumetric BMD in Men With Glucocorticoid-Induced Osteoporosis
+</textblock>
+</brief_title>
+<acronym>
+  EuroGIOPS
+</acronym>
+<official_title>
+<textblock>
+  Comparison of the Effects of Teriparatide With Those of Risedronate on Lumbar Spine vBMD in Glucocorticoid-Induced Osteoporosis in Men
+</textblock>
+</official_title>
+<study_sponsor>
+<lead_sponsor>
+<agency>
+  Eli Lilly and Company
+</agency>
+</lead_sponsor>
+</study_sponsor>
+<resp_party>
+<resp_party_type>
+  Sponsor
+</resp_party_type>
+</resp_party>
+<oversight_info>
+<regulatory_authority>
+  Germany: Federal Institute for Drugs and Medical Devices
+</regulatory_authority>
+<regulatory_authority>
+  Greece: National Organization of Medicines
+</regulatory_authority>
+<regulatory_authority>
+  Italy: Ethics Committee
+</regulatory_authority>
+<regulatory_authority>
+  Spain: Spanish Agency of Medicines
+</regulatory_authority>
+<has_dmc>
+  No
+</has_dmc>
+</oversight_info>
+<brief_summary>
+<textblock>
+The  objective  of  this  study  is  to  test  the  hypothesis  that  teriparatide  is  superior  to  the  active  comparator  in  the  change  from  baseline  to  18  months  of  lumbar  spine  volumetric  trabecular  bone  mineral  density  (BMD) in  males  with  glucocorticoid-induced  osteoporosis.  
+</textblock>
+</brief_summary>
+<detailed_descr>
+<textblock>
+  This study is a multinational, European, multicenter, randomized, open-label, active comparator controlled study with 2 study periods: a screening phase of up to 6 weeks, and an open-label treatment phase of 18 months. Approximately 100 adult men with osteoporosis associated with sustained glucocorticoid therapy will be enrolled into the study. Approximately one-half of the participants (at all investigational sites) will be randomized to teriparatide 20 micrograms/day (ug/day given as a subcutaneous (sc) injection), and the other half randomized to risedronate 35 milligrams (mg) once weekly (QW) oral (po) tablet.  All participants will receive approximately 1000 mg/day elemental calcium and 800 to 1200 international units per day (IU/day) of vitamin D.
+</textblock>
+</detailed_descr>
+<status_block>
+<status>
+  Completed
+</status>
+<date>
+2011-10 
+</date>
+</status_block>
+<start_date>
+<date>
+  2007-07
+</date>
+</start_date>
+<last_follow_up_date
+ type="Actual"
+>
+<date>
+  2010-10
+</date>
+</last_follow_up_date>
+<primary_compl_date
+ type="Actual"
+>
+<date>
+  2010-10
+</date>
+</primary_compl_date>
+<phase_block>
+<phase>
+  Phase 3
+</phase>
+</phase_block>
+<study_type>
+  Interventional
+</study_type>
+<design>
+  Treatment
+</design>
+<design>
+  Randomized
+</design>
+<design>
+  Open Label
+</design>
+<design>
+  Parallel Assignment
+</design>
+<design>
+  Efficacy Study
+</design>
+<number_of_arms>
+  2
+</number_of_arms>
+<primary_outcome>
+<measure>
+Change From Baseline in Lumbar  Spine Volumetric Trabecular Bone Mineral Density (BMD)  by  Quantitative Computerized Tomography (QCT)  at 18 Months 
+</measure>
+<time_frame>
+ Baseline, 18  months  
+</time_frame>
+<description>
+<textblock>
+  Least Squares (LS) Means were adjusted for age, baseline serum aminoterminal propeptide of Type I procollagen (P1NP), fracture less than 12 months before study start, duration of prior bisphosphonate use, screening glucocorticoid dose, and cumulative glucocorticoid dose before and during the trial.
+</textblock>
+</description>
+<safety_issue>
+  No
+</safety_issue>
+</primary_outcome>
+<secondary_outcome>
+<measure>
+Change From Baseline in Lumbar      Spine Volumetric Trabecular Bone Mineral Density (BMD) by   Quantitative Computerized Technology (QCT) at 6 Months 
+</measure>
+<time_frame>
+Baseline, 6  months  
+</time_frame>
+<description>
+<textblock>
+  Least Squares (LS) Means were adjusted for age, baseline propeptide of Type I procollagen (P1NP), fracture less than 12 months before study start, duration of prior bisphosphonate use, screening glucocorticoid dose, and cumulative glucocorticoid dose before and during the trial.
+</textblock>
+</description>
+<safety_issue>
+  No
+</safety_issue>
+</secondary_outcome>
+<secondary_outcome>
+<measure>
+ Change From Baseline in High Resolution Quantitative Computerized Technology (HR-QCT) of Integral and Trabecular Bone Mineral Density (BMD) of the  12th  Thoracic Vertebra (T12)  at 6 Months and 18 Months 
+</measure>
+<time_frame>
+ Baseline, 6  months, 18  months  
+</time_frame>
+<description>
+<textblock>
+  Three-dimensional (3-D) microstructure variables of T12 were assessed by HR-QCT. In contrast with regular QCT that assessed 3 millimeter (mm) slide thickness, HR-QCT used segmentation of 1 single vertebra with approximately 100 consecutive slides reconstructed at 300-400 micrometer (&#181;m) slice increments covering the complete vertebral body. Least Squares (LS) Means were adjusted for age, baseline P1NP, fracture less than 12 months before study start, duration of prior bisphosphonate use, screening glucocorticoid dose, and cumulative glucocorticoid dose before and during the trial.
+</textblock>
+</description>
+<safety_issue>
+  No
+</safety_issue>
+</secondary_outcome>
+<secondary_outcome>
+<measure>
+ Change From Baseline in Anterior Bending and Axial Torsion by  Finite Element Analysis in  the     12th Thoracic Vertebra (T12) at 6 Months and 18 Months: Stiffness and Strength 
+</measure>
+<time_frame>
+Baseline, 6 months, 18  months  
+</time_frame>
+<description>
+<textblock>
+  Anterior bending and axial torsion were measured using HR-QCT-based finite element analysis to determine stiffness and strength of T12. Stiffness evaluated strength of the vertebral body, defined as the slope of the initial step of the force-displacement curve. Strength of the vertebral body was evaluated under compressive loading conditions using computer simulation. LS Means were adjusted for age, baseline P1NP, fracture less than 12 months before study start, duration of prior bisphosphonate use, screening glucocorticoid dose, and cumulative glucocorticoid dose before and during the trial.
+</textblock>
+</description>
+<safety_issue>
+  No
+</safety_issue>
+</secondary_outcome>
+<secondary_outcome>
+<measure>
+ Change From Baseline in Axial Compression by Finite Element Analysis in the 12th Thoracic Vertebra (T12) at      6 Months and    18 Months: Stiffness and Strength 
+</measure>
+<time_frame>
+Baseline, 6 months, 18  months  
+</time_frame>
+<description>
+<textblock>
+  Axial compression was measured using HR-QCT-based finite element analysis to determine stiffness and strength of T12. Stiffness evaluated the strength of the vertebral body, defined as the slope of the initial step of the force-displacement curve. Strength of the vertebral body was evaluated under compressive loading conditions using computer simulation. LS Means were adjusted for age, baseline P1NP, fracture less than 12 months before study start, duration of prior bisphosphonate use, screening glucocorticoid dose, and cumulative glucocorticoid dose before and during the trial.
+</textblock>
+</description>
+<safety_issue>
+  No
+</safety_issue>
+</secondary_outcome>
+<secondary_outcome>
+<measure>
+Change From Baseline in Areal Bone Mineral Density (BMD) at Lumbar        Spine, Femoral Neck, and Total Hip at 18 Months 
+</measure>
+<time_frame>
+ Baseline, 18  months  
+</time_frame>
+<description>
+<textblock>
+  Dual x-ray absorptiometry (DXA) techniques  validated this measurement at skeletal sites that are at risk of osteoporotic fracture, such as lumbar spine, femoral neck, and hip.
+</textblock>
+</description>
+<safety_issue>
+  No
+</safety_issue>
+</secondary_outcome>
+<secondary_outcome>
+<measure>
+Change From Baseline in Serum  Aminoterminal Propeptide of  Type I    Procollagen (P1NP) at 3 Months, 6 Months, and 18 Months 
+</measure>
+<time_frame>
+ Baseline, 3 months, 6 months, 18  months  
+</time_frame>
+<description>
+<textblock>
+  P1NP was used as a serum biochemical marker of collagen synthesis, reflecting the formation of new osteoid.
+</textblock>
+</description>
+<safety_issue>
+  No
+</safety_issue>
+</secondary_outcome>
+<secondary_outcome>
+<measure>
+Change From Baseline in Serum  Type I     Collagen Degradation Fragments (&#946;-CTx) at 3 Months, 6 Months, and 18 Months 
+</measure>
+<time_frame>
+  3, 6, 18 months
+</time_frame>
+<description>
+<textblock>
+  &#946;-CTx was used as a biochemical marker of bone turnover/resorption, reflecting collagen breakdown of the bone matrix.
+</textblock>
+</description>
+<safety_issue>
+  No
+</safety_issue>
+</secondary_outcome>
+<secondary_outcome>
+<measure>
+ Number of Participants With Adverse Events (AEs) 
+</measure>
+<time_frame>
+ Baseline up to 18 months 
+</time_frame>
+<description>
+<textblock>
+  Summary tables of serious AEs (SAEs) and all other non-serious AEs are located in the Reported Adverse Event Module. Fractures that occurred during the study were collected separately as an additional safety variable. The number of participants experiencing hypercalcemia was summarized for each treatment arm. Hypercalcemia was defined as a serum calcium level corrected for albumin of &gt;2.7 millimole per liter (mmol/L) (10.8 milligram per deciliter [mg/dL]).
+</textblock>
+</description>
+<safety_issue>
+  Yes
+</safety_issue>
+</secondary_outcome>
+<enrollment
+ type="Actual"
+>
+  92
+</enrollment>
+<condition>
+  Osteoporosis
+</condition>
+<arm_group>
+<arm_group_label>
+Teriparatide 
+</arm_group_label>
+<arm_type>
+  Experimental
+</arm_type>
+<description>
+<textblock>
+  Teriparatide 20 microgram (&#181;g) subcutaneous (sc) injection once daily (QD).
+</textblock>
+</description>
+</arm_group>
+<arm_group>
+<arm_group_label>
+Risedronate 
+</arm_group_label>
+<arm_type>
+  Active Comparator
+</arm_type>
+<description>
+<textblock>
+  Risedronate 35 milligrams (mg) oral (po) tablet once weekly (QW)
+</textblock>
+</description>
+</arm_group>
+<intervention>
+<intervent_type>
+  Drug
+</intervent_type>
+<primary_name>
+  Teriparatide
+</primary_name>
+<description>
+<textblock>
+ 20   &#181;g/day sc for 18  months  
+</textblock>
+</description>
+<arm_group_label>
+Teriparatide 
+</arm_group_label>
+<other_name>
+  LY333334
+</other_name>
+<other_name>
+  Forteo
+</other_name>
+<other_name>
+  Forsteo
+</other_name>
+</intervention>
+<intervention>
+<intervent_type>
+  Drug
+</intervent_type>
+<primary_name>
+  Risedronate
+</primary_name>
+<description>
+<textblock>
+ 35   mg/week po for 18  months  
+</textblock>
+</description>
+<arm_group_label>
+Risedronate 
+</arm_group_label>
+<other_name>
+  Actonel
+</other_name>
+</intervention>
+<eligibility>
+<criteria>
+<textblock>
+  Inclusion Criteria:
+ 
+-  Ambulatory  men  25  years  of  age  and  older  presenting  to  Visit  1  with  a   bone mineral density (BMD) of  at  least  1.5   standard deviation (SD) below  the  corresponding  normal  young  adult  men  average  BMD  (T  score  of  -1.5  or  lower),  as  determined  from  the  manufacturer&apos;s  database  at  any  of  the  following  regions  of  interest:  total  hip,  femoral  neck,  or  lumbar  spine  
+ 
+-  Have  received  glucocorticoid  therapy  at  an  average  dose  of  at  least  5.0   milligrams (mg) per day of  prednisone  or  its  equivalent  for  a  minimum  of  3  consecutive  months  immediately  preceding  screening  (Visit  1),  as  determined  by  medical  history.  
+ 
+-  A  minimum  of  2  lumbar  vertebrae  (L) in  the  L-1  through  L-3  region  must  be  evaluable  by  quantitative  computerized  tomography.  
+ 
+-  Normal  or  clinically  insignificant  abnormal  laboratory  values  (as  determined  by  the  investigator)  including  serum  calcium,   parathyroid hormone (PTH) (1 84),  and  25  hydroxyvitamin  D  concentrations,  and  alkaline  phosphatase  activity.  
+ 
+ 
+  Exclusion Criteria:
+ 
+-  Presence  of  a  mild,  moderate, or  severe  spinal  fracture  in  both   the twelfth thoracic vertebra (T-12) and   first lumbar vertebra (L-1), as  determined  by  the  central  reading  facility  using  the  semiquantitative  technique.  
+ 
+  - Abnormal albumin-corrected serum calcium levels
+ 
+  - History of unresolved skeletal diseases that affect bone metabolism other than glucocorticoid-induced osteoporosis
+ 
+  - History of malignant neoplasms in the 5 years prior to Visit 2, with the exception of superficial basal cell or squamous cell carcinomas of the skin that have been definitively treated. Increased baseline risk of osteosarcoma; this includes patients with Paget&apos;s disease of the bone, previous primary skeletal malignancy, or skeletal exposure to therapeutic irradiation.
+ 
+  - Abnormal thyroid function not corrected by therapy
+ 
+  - Past and/or current treatment with certain medications.
+</textblock>
+</criteria>
+<healthy_volunteers>
+  No
+</healthy_volunteers>
+<gender>
+  Male
+</gender>
+<minimum_age>
+  25 Years
+</minimum_age>
+<maximum_age>
+</maximum_age>
+</eligibility>
+<investigator>
+<role>
+  Study Director
+</role>
+<name>
+  Call 1-877-CTLILLY (1-877-285-4559) or 1-317-615-4559 Mon - Fri 9 AM - 5 PM Eastern time (UTC/GMT - 5 hours, EST)
+</name>
+<affiliation>
+<agency>
+  Eli Lilly
+</agency>
+</affiliation>
+</investigator>
+<contact>
+<name>
+  There may be multiple sites in this clinical trial. 1-877-CTLILLY (1-877-285-4559) or
+</name>
+<phone>
+  1-317-615-4559
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+</email>
+</contact>
+<location>
+<facility>
+<name>
+  For additional information regarding investigative sites for this trial, contact 1-877-CTLILLY (1-877-285-4559, 1-317-615-4559) Mon - Fri from 9 AM to 5 PM Eastern Time (UTC/GMT - 5 hours, EST), or speak with your personal physician.
+</name>
+<address>
+<city>
+  Bad Nauheim
+</city>
+<state>
+</state>
+<zip>
+  61231
+</zip>
+<country>
+  Germany
+</country>
+</address>
+</facility>
+<status>
+  Active, not recruiting
+</status>
+<contact>
+<name>
+  Eli Lilly
+</name>
+<phone>
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  For additional information regarding investigative sites for this trial, contact 1-877-CTLILLY (1-877-285-4559, 1-317-615-4559) Mon - Fri from 9 AM to 5 PM Eastern Time (UTC/GMT - 5 hours, EST), or speak with your personal physician.
+</name>
+<address>
+<city>
+  Frankfurt
+</city>
+<state>
+</state>
+<zip>
+  60528
+</zip>
+<country>
+  Germany
+</country>
+</address>
+</facility>
+<status>
+  Active, not recruiting
+</status>
+<contact>
+<name>
+  Eli Lilly
+</name>
+<phone>
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  For additional information regarding investigative sites for this trial, contact 1-877-CTLILLY (1-877-285-4559, 1-317-615-4559) Mon - Fri from 9 AM to 5 PM Eastern Time (UTC/GMT - 5 hours, EST), or speak with your personal physician.
+</name>
+<address>
+<city>
+  Hamburg
+</city>
+<state>
+</state>
+<zip>
+  22415
+</zip>
+<country>
+  Germany
+</country>
+</address>
+</facility>
+<status>
+  Active, not recruiting
+</status>
+<contact>
+<name>
+  Eli Lilly
+</name>
+<phone>
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  For additional information regarding investigative sites for this trial, contact 1-877-CTLILLY (1-877-285-4559, 1-317-615-4559) Mon - Fri from 9 AM to 5 PM Eastern Time (UTC/GMT - 5 hours, EST), or speak with your personal physician.
+</name>
+<address>
+<city>
+  Heinsberg
+</city>
+<state>
+</state>
+<zip>
+  52525
+</zip>
+<country>
+  Germany
+</country>
+</address>
+</facility>
+<status>
+  Active, not recruiting
+</status>
+<contact>
+<name>
+  Eli Lilly
+</name>
+<phone>
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  For additional information regarding investigative sites for this trial, contact 1-877-CTLILLY (1-877-285-4559, 1-317-615-4559) Mon - Fri from 9 AM to 5 PM Eastern Time (UTC/GMT - 5 hours, EST), or speak with your personal physician.
+</name>
+<address>
+<city>
+  Leverkusen
+</city>
+<state>
+</state>
+<zip>
+  51375
+</zip>
+<country>
+  Germany
+</country>
+</address>
+</facility>
+<status>
+  Active, not recruiting
+</status>
+<contact>
+<name>
+  Eli Lilly
+</name>
+<phone>
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  For additional information regarding investigative sites for this trial, contact 1-877-CTLILLY (1-877-285-4559, 1-317-615-4559) Mon - Fri from 9 AM to 5 PM Eastern Time (UTC/GMT - 5 hours, EST), or speak with your personal physician.
+</name>
+<address>
+<city>
+  Magdeburg
+</city>
+<state>
+</state>
+<zip>
+  39110
+</zip>
+<country>
+  Germany
+</country>
+</address>
+</facility>
+<status>
+  Active, not recruiting
+</status>
+<contact>
+<name>
+  Eli Lilly
+</name>
+<phone>
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  For additional information regarding investigative sites for this trial, contact 1-877-CTLILLY (1-877-285-4559, 1-317-615-4559) Mon - Fri from 9 AM to 5 PM Eastern Time (UTC/GMT - 5 hours, EST), or speak with your personal physician.
+</name>
+<address>
+<city>
+  Potsdam
+</city>
+<state>
+</state>
+<zip>
+  14469
+</zip>
+<country>
+  Germany
+</country>
+</address>
+</facility>
+<status>
+  Active, not recruiting
+</status>
+<contact>
+<name>
+  Eli Lilly
+</name>
+<phone>
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  For additional information regarding investigative sites for this trial, contact 1-877-CTLILLY (1-877-285-4559, 1-317-615-4559) Mon - Fri from 9 AM to 5 PM Eastern Time (UTC/GMT - 5 hours, EST), or speak with your personal physician.
+</name>
+<address>
+<city>
+  Kifissia
+</city>
+<state>
+</state>
+<zip>
+  14561
+</zip>
+<country>
+  Greece
+</country>
+</address>
+</facility>
+<status>
+  Active, not recruiting
+</status>
+<contact>
+<name>
+  Eli Lilly
+</name>
+<phone>
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  For additional information regarding investigative sites for this trial, contact 1-877-CTLILLY (1-877-285-4559, 1-317-615-4559) Mon - Fri from 9 AM to 5 PM Eastern Time (UTC/GMT - 5 hours, EST), or speak with your personal physician.
+</name>
+<address>
+<city>
+  Thessaloniki
+</city>
+<state>
+</state>
+<zip>
+  56429
+</zip>
+<country>
+  Greece
+</country>
+</address>
+</facility>
+<status>
+  Active, not recruiting
+</status>
+<contact>
+<name>
+  Eli Lilly
+</name>
+<phone>
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  For additional information regarding investigative sites for this trial, contact 1-877-CTLILLY (1-877-285-4559, 1-317-615-4559) Mon - Fri from 9 AM to 5 PM Eastern Time (UTC/GMT - 5 hours, EST), or speak with your personal physician.
+</name>
+<address>
+<city>
+  Rome
+</city>
+<state>
+</state>
+<zip>
+  00161
+</zip>
+<country>
+  Italy
+</country>
+</address>
+</facility>
+<status>
+  Active, not recruiting
+</status>
+<contact>
+<name>
+  Eli Lilly
+</name>
+<phone>
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  For additional information regarding investigative sites for this trial, contact 1-877-CTLILLY (1-877-285-4559, 1-317-615-4559) Mon - Fri from 9 AM to 5 PM Eastern Time (UTC/GMT - 5 hours, EST), or speak with your personal physician.
+</name>
+<address>
+<city>
+  Siena
+</city>
+<state>
+</state>
+<zip>
+  53100
+</zip>
+<country>
+  Italy
+</country>
+</address>
+</facility>
+<status>
+  Active, not recruiting
+</status>
+<contact>
+<name>
+  Eli Lilly
+</name>
+<phone>
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  For additional information regarding investigative sites for this trial, contact 1-877-CTLILLY (1-877-285-4559, 1-317-615-4559) Mon - Fri from 9 AM to 5 PM Eastern Time (UTC/GMT - 5 hours, EST), or speak with your personal physician.
+</name>
+<address>
+<city>
+  Barcelona
+</city>
+<state>
+</state>
+<zip>
+  08907
+</zip>
+<country>
+  Spain
+</country>
+</address>
+</facility>
+<status>
+  Active, not recruiting
+</status>
+<contact>
+<name>
+  Eli Lilly
+</name>
+<phone>
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  For additional information regarding investigative sites for this trial, contact 1-877-CTLILLY (1-877-285-4559, 1-317-615-4559) Mon - Fri from 9 AM to 5 PM Eastern Time (UTC/GMT - 5 hours, EST), or speak with your personal physician.
+</name>
+<address>
+<city>
+  Madrid
+</city>
+<state>
+</state>
+<zip>
+  28046
+</zip>
+<country>
+  Spain
+</country>
+</address>
+</facility>
+<status>
+  Active, not recruiting
+</status>
+<contact>
+<name>
+  Eli Lilly
+</name>
+<phone>
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+</email>
+</contact>
+</location>
+<see_also>
+<annotation>
+<textblock>
+  Lilly Clinical Trial Registry
+</textblock>
+</annotation>
+<url>
+  http://www.lillytrials.com
+</url>
+</see_also>
+<keyword>
+  Glucocorticoid Induced
+</keyword>
+<initial_release_date>
+  2007-07-16
+</initial_release_date>
+<last_release_date>
+2011-10-04 
+</last_release_date>
+<init_disposition_release_date>
+</init_disposition_release_date>
+<init_results_release_date>
+  2011-10-04
+</init_results_release_date>
+<clinical_result>
+<baseline>
+<baselinemeasures>
+<baselinemeasure>
+<dispersiontype>
+  Standard Deviation
+</dispersiontype>
+<measurecategories>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-TotalBaselineRptGroup
+</reportinggroupid>
+<dispersionspread>
+  14.24
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  56.3
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-BaselineRptGroup.1
+</reportinggroupid>
+<dispersionspread>
+  12.80
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  57.5
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-BaselineRptGroup.2
+</reportinggroupid>
+<dispersionspread>
+  15.54
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  55.1
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+</title>
+</measurecategory>
+</measurecategories>
+<parametertype>
+  Mean
+</parametertype>
+<title>
+  Age Continuous
+</title>
+<unitofmeasure>
+  years
+</unitofmeasure>
+</baselinemeasure>
+<baselinemeasure>
+<dispersiontype>
+  Not Applicable
+</dispersiontype>
+<measurecategories>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-TotalBaselineRptGroup
+</reportinggroupid>
+<parametervalue>
+  0
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-BaselineRptGroup.1
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  0
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-BaselineRptGroup.2
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  0
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Female
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-TotalBaselineRptGroup
+</reportinggroupid>
+<parametervalue>
+  92
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-BaselineRptGroup.1
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  45
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-BaselineRptGroup.2
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  47
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Male
+</title>
+</measurecategory>
+</measurecategories>
+<parametertype>
+  Number
+</parametertype>
+<title>
+  Gender, Male/Female
+</title>
+<unitofmeasure>
+  participants
+</unitofmeasure>
+</baselinemeasure>
+<baselinemeasure>
+<dispersiontype>
+  Not Applicable
+</dispersiontype>
+<measurecategories>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-TotalBaselineRptGroup
+</reportinggroupid>
+<parametervalue>
+  90
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-BaselineRptGroup.1
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  44
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-BaselineRptGroup.2
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  46
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Caucasian
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-TotalBaselineRptGroup
+</reportinggroupid>
+<parametervalue>
+  1
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-BaselineRptGroup.1
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  0
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-BaselineRptGroup.2
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  1
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Hispanic
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-TotalBaselineRptGroup
+</reportinggroupid>
+<parametervalue>
+  1
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-BaselineRptGroup.1
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  1
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-BaselineRptGroup.2
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  0
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  East Asian
+</title>
+</measurecategory>
+</measurecategories>
+<measuredescription>
+</measuredescription>
+<parametertype>
+  Number
+</parametertype>
+<title>
+  Race/Ethnicity, Customized
+</title>
+<unitofmeasure>
+  participants
+</unitofmeasure>
+<othertitle>
+</othertitle>
+</baselinemeasure>
+<baselinemeasure>
+<dispersiontype>
+  Not Applicable
+</dispersiontype>
+<measurecategories>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-TotalBaselineRptGroup
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  40
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-BaselineRptGroup.1
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  19
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-BaselineRptGroup.2
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  21
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Germany
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-TotalBaselineRptGroup
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  12
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-BaselineRptGroup.1
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  6
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-BaselineRptGroup.2
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  6
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Greece
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-TotalBaselineRptGroup
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  13
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-BaselineRptGroup.1
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  5
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-BaselineRptGroup.2
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  8
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Italy
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-TotalBaselineRptGroup
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  27
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-BaselineRptGroup.1
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  15
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-BaselineRptGroup.2
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  12
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Spain
+</title>
+</measurecategory>
+</measurecategories>
+<parametertype>
+  Number
+</parametertype>
+<title>
+  Region of Enrollment
+</title>
+<unitofmeasure>
+  participants
+</unitofmeasure>
+</baselinemeasure>
+<baselinemeasure>
+<dispersiontype>
+  Not Applicable
+</dispersiontype>
+<measurecategories>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-TotalBaselineRptGroup
+</reportinggroupid>
+<parametervalue>
+  36
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-BaselineRptGroup.1
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  19
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-BaselineRptGroup.2
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  17
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  With fractures
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-TotalBaselineRptGroup
+</reportinggroupid>
+<parametervalue>
+  56
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-BaselineRptGroup.1
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  26
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  Baseline-BaselineRptGroup.2
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  30
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Without fractures
+</title>
+</measurecategory>
+</measurecategories>
+<measuredescription>
+</measuredescription>
+<parametertype>
+  Number
+</parametertype>
+<title>
+  Study Specific Characteristic
+</title>
+<unitofmeasure>
+  participants
+</unitofmeasure>
+<othertitle>
+  Number of participants with fractures before study
+</othertitle>
+</baselinemeasure>
+</baselinemeasures>
+<baselinereportinggroups>
+<baselinereportinggroup
+ id="Baseline-BaselineRptGroup.1"
+>
+<description>
+<textblock>
+  Teriparatide 20 microgram (&#181;g) subcutaneous (sc) injection once daily (QD)
+</textblock>
+</description>
+<subjectsanalyzed>
+  45
+</subjectsanalyzed>
+<title>
+  Teriparatide
+</title>
+</baselinereportinggroup>
+<baselinereportinggroup
+ id="Baseline-BaselineRptGroup.2"
+>
+<description>
+<textblock>
+  Risedronate 35 milligrams (mg) oral (po) tablet once weekly (QW)
+</textblock>
+</description>
+<subjectsanalyzed>
+  47
+</subjectsanalyzed>
+<title>
+  Risedronate
+</title>
+</baselinereportinggroup>
+</baselinereportinggroups>
+<totalbaselinereportinggroup
+ id="Baseline-TotalBaselineRptGroup"
+>
+<subjectsanalyzed>
+  92
+</subjectsanalyzed>
+<title>
+  Total
+</title>
+</totalbaselinereportinggroup>
+</baseline>
+<certainagreement>
+<otherdetails>
+</otherdetails>
+<pisponsoremployee>
+  No
+</pisponsoremployee>
+<restrictiontype>
+  GT60
+</restrictiontype>
+<restrictiveagreement>
+  Yes
+</restrictiveagreement>
+</certainagreement>
+<lastupdatetimestamp>
+  2011-10-04T13:45:13-04:00
+</lastupdatetimestamp>
+<outcomemeasures>
+<outcomemeasure>
+<dispersiontype>
+  Standard Error
+</dispersiontype>
+<measurecategories>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.1-OutcomeRptGroup.1
+</reportinggroupid>
+<dispersionspread>
+  3.16
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  12.28
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.1-OutcomeRptGroup.2
+</reportinggroupid>
+<dispersionspread>
+  3.14
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  2.94
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+</title>
+</measurecategory>
+</measurecategories>
+<measuredescription>
+<textblock>
+  Least Squares (LS) Means were adjusted for age, baseline serum aminoterminal propeptide of Type I procollagen (P1NP), fracture less than 12 months before study start, duration of prior bisphosphonate use, screening glucocorticoid dose, and cumulative glucocorticoid dose before and during the trial.
+</textblock>
+</measuredescription>
+<parametertype>
+  Least Squares Mean
+</parametertype>
+<timeframe>
+  Baseline, 18 months
+</timeframe>
+<title>
+  Change From Baseline in Lumbar Spine Volumetric Trabecular Bone Mineral Density (BMD) by Quantitative Computerized Tomography (QCT) at 18 Months
+</title>
+<unitofmeasure>
+  milligram per cubic centimeter (mg/cm^3)
+</unitofmeasure>
+<anticipatedresultpostingdate>
+<month>
+</month>
+<year>
+</year>
+</anticipatedresultpostingdate>
+<measuretype>
+  Primary
+</measuretype>
+<outcomemeasureanalyses>
+</outcomemeasureanalyses>
+<outcomereportinggroups>
+<outcomereportinggroup
+ id="OutcomeMeasure.1-OutcomeRptGroup.1"
+>
+<description>
+<textblock>
+  Teriparatide 20 microgram (&#181;g) subcutaneous (sc) injection once daily (QD)
+</textblock>
+</description>
+<subjectsanalyzed>
+  39
+</subjectsanalyzed>
+<title>
+  Teriparatide
+</title>
+<numunitsanalyzed>
+</numunitsanalyzed>
+</outcomereportinggroup>
+<outcomereportinggroup
+ id="OutcomeMeasure.1-OutcomeRptGroup.2"
+>
+<description>
+<textblock>
+  Risedronate 35 milligrams (mg) oral (po) tablet once weekly (QW)
+</textblock>
+</description>
+<subjectsanalyzed>
+  40
+</subjectsanalyzed>
+<title>
+  Risedronate
+</title>
+<numunitsanalyzed>
+</numunitsanalyzed>
+</outcomereportinggroup>
+</outcomereportinggroups>
+<populationanalysisdescription>
+<textblock>
+  The analysis population was the primary efficacy population, which included all randomized participants who received at least 1 dose of study medication (full analysis set) and had a lumbar spine volumetric trabecular BMD measurement at baseline and at &#8805;1 post-baseline visit.
+</textblock>
+</populationanalysisdescription>
+<reportingstatus>
+  Posted
+</reportingstatus>
+<safetyissue>
+  No
+</safetyissue>
+<typeunitsanalyzed>
+</typeunitsanalyzed>
+</outcomemeasure>
+<outcomemeasure>
+<dispersiontype>
+  Standard Error
+</dispersiontype>
+<measurecategories>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.2-OutcomeRptGroup.1
+</reportinggroupid>
+<dispersionspread>
+  3.15
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  4.31
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.2-OutcomeRptGroup.2
+</reportinggroupid>
+<dispersionspread>
+  3.16
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  2.52
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+</title>
+</measurecategory>
+</measurecategories>
+<measuredescription>
+<textblock>
+  Least Squares (LS) Means were adjusted for age, baseline propeptide of Type I procollagen (P1NP), fracture less than 12 months before study start, duration of prior bisphosphonate use, screening glucocorticoid dose, and cumulative glucocorticoid dose before and during the trial.
+</textblock>
+</measuredescription>
+<parametertype>
+  Least Squares Mean
+</parametertype>
+<timeframe>
+  Baseline, 6 months
+</timeframe>
+<title>
+  Change From Baseline in Lumbar Spine Volumetric Trabecular Bone Mineral Density (BMD) by Quantitative Computerized Technology (QCT) at 6 Months
+</title>
+<unitofmeasure>
+  milligram per cubic centimeter (mg/cm^3)
+</unitofmeasure>
+<anticipatedresultpostingdate>
+<month>
+</month>
+<year>
+</year>
+</anticipatedresultpostingdate>
+<measuretype>
+  Secondary
+</measuretype>
+<outcomemeasureanalyses>
+</outcomemeasureanalyses>
+<outcomereportinggroups>
+<outcomereportinggroup
+ id="OutcomeMeasure.2-OutcomeRptGroup.1"
+>
+<description>
+<textblock>
+  Teriparatide 20 microgram (&#181;g) subcutaneous (sc) injection once daily (QD)
+</textblock>
+</description>
+<subjectsanalyzed>
+  39
+</subjectsanalyzed>
+<title>
+  Teriparatide
+</title>
+<numunitsanalyzed>
+</numunitsanalyzed>
+</outcomereportinggroup>
+<outcomereportinggroup
+ id="OutcomeMeasure.2-OutcomeRptGroup.2"
+>
+<description>
+<textblock>
+  Risedronate 35 milligrams (mg) oral (po) tablet once weekly (QW)
+</textblock>
+</description>
+<subjectsanalyzed>
+  40
+</subjectsanalyzed>
+<title>
+  Risedronate
+</title>
+<numunitsanalyzed>
+</numunitsanalyzed>
+</outcomereportinggroup>
+</outcomereportinggroups>
+<populationanalysisdescription>
+<textblock>
+  The analysis population was the primary efficacy population, which included all randomized participants who received at least 1 dose of study medication (full analysis set) and had a lumbar spine volumetric trabecular BMD measurement at baseline and at &#8805;1 post-baseline visit.
+</textblock>
+</populationanalysisdescription>
+<reportingstatus>
+  Posted
+</reportingstatus>
+<safetyissue>
+  No
+</safetyissue>
+<typeunitsanalyzed>
+</typeunitsanalyzed>
+</outcomemeasure>
+<outcomemeasure>
+<dispersiontype>
+  Standard Error
+</dispersiontype>
+<measurecategories>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.3-OutcomeRptGroup.1
+</reportinggroupid>
+<dispersionspread>
+  6.42
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  -0.42
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.3-OutcomeRptGroup.2
+</reportinggroupid>
+<dispersionspread>
+  7.11
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  -1.91
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Integral BMD at 6 months
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.3-OutcomeRptGroup.1
+</reportinggroupid>
+<dispersionspread>
+  6.22
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  10.72
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.3-OutcomeRptGroup.2
+</reportinggroupid>
+<dispersionspread>
+  7.08
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  0.68
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Integral BMD at 18 months
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.3-OutcomeRptGroup.1
+</reportinggroupid>
+<dispersionspread>
+  5.26
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  -0.70
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.3-OutcomeRptGroup.2
+</reportinggroupid>
+<dispersionspread>
+  5.85
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  -0.87
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Trabecular BMD at 6 months
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.3-OutcomeRptGroup.1
+</reportinggroupid>
+<dispersionspread>
+  5.09
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  9.53
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.3-OutcomeRptGroup.2
+</reportinggroupid>
+<dispersionspread>
+  5.82
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  0.22
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Trabecular BMD at 18 months
+</title>
+</measurecategory>
+</measurecategories>
+<measuredescription>
+<textblock>
+  Three-dimensional (3-D) microstructure variables of T12 were assessed by HR-QCT. In contrast with regular QCT that assessed 3 millimeter (mm) slide thickness, HR-QCT used segmentation of 1 single vertebra with approximately 100 consecutive slides reconstructed at 300-400 micrometer (&#181;m) slice increments covering the complete vertebral body. Least Squares (LS) Means were adjusted for age, baseline P1NP, fracture less than 12 months before study start, duration of prior bisphosphonate use, screening glucocorticoid dose, and cumulative glucocorticoid dose before and during the trial.
+</textblock>
+</measuredescription>
+<parametertype>
+  Least Squares Mean
+</parametertype>
+<timeframe>
+  Baseline, 6  months, 18 months
+</timeframe>
+<title>
+  Change From Baseline in High Resolution Quantitative Computerized Technology (HR-QCT) of Integral and Trabecular Bone Mineral Density (BMD) of the 12th Thoracic Vertebra (T12) at 6 Months and 18 Months
+</title>
+<unitofmeasure>
+  milligram per cubic centimeter (mg/cm^3)
+</unitofmeasure>
+<anticipatedresultpostingdate>
+<month>
+</month>
+<year>
+</year>
+</anticipatedresultpostingdate>
+<measuretype>
+  Secondary
+</measuretype>
+<outcomemeasureanalyses>
+</outcomemeasureanalyses>
+<outcomereportinggroups>
+<outcomereportinggroup
+ id="OutcomeMeasure.3-OutcomeRptGroup.1"
+>
+<description>
+<textblock>
+  Teriparatide 20 microgram (&#181;g) subcutaneous (sc) injection once daily (QD)
+</textblock>
+</description>
+<subjectsanalyzed>
+  39
+</subjectsanalyzed>
+<title>
+  Teriparatide
+</title>
+<numunitsanalyzed>
+</numunitsanalyzed>
+</outcomereportinggroup>
+<outcomereportinggroup
+ id="OutcomeMeasure.3-OutcomeRptGroup.2"
+>
+<description>
+<textblock>
+  Risedronate 35 milligrams (mg) oral (po) tablet once weekly (QW)
+</textblock>
+</description>
+<subjectsanalyzed>
+  40
+</subjectsanalyzed>
+<title>
+  Risedronate
+</title>
+<numunitsanalyzed>
+</numunitsanalyzed>
+</outcomereportinggroup>
+</outcomereportinggroups>
+<populationanalysisdescription>
+<textblock>
+  The analysis population was the full analysis set (FAS), which included all randomized participants who received at least 1 dose of study medication.
+</textblock>
+</populationanalysisdescription>
+<reportingstatus>
+  Posted
+</reportingstatus>
+<safetyissue>
+  No
+</safetyissue>
+<typeunitsanalyzed>
+</typeunitsanalyzed>
+</outcomemeasure>
+<outcomemeasure>
+<dispersiontype>
+  Standard Error
+</dispersiontype>
+<measurecategories>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.4-OutcomeRptGroup.1
+</reportinggroupid>
+<dispersionspread>
+  317684.0
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  664969.0
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.4-OutcomeRptGroup.2
+</reportinggroupid>
+<dispersionspread>
+  323135.0
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  415705.0
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Anterior bending stiffness at 6 months
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.4-OutcomeRptGroup.1
+</reportinggroupid>
+<dispersionspread>
+  300977.0
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  1209225.0
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.4-OutcomeRptGroup.2
+</reportinggroupid>
+<dispersionspread>
+  322829.0
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  233283.0
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Anterior bending stiffness at 18 months
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.4-OutcomeRptGroup.1
+</reportinggroupid>
+<dispersionspread>
+  71714.2
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  142902.9
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.4-OutcomeRptGroup.2
+</reportinggroupid>
+<dispersionspread>
+  72947.9
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  77830.7
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Axial torsion stiffness at 6 months
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.4-OutcomeRptGroup.1
+</reportinggroupid>
+<dispersionspread>
+  68284.5
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  279392.8
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.4-OutcomeRptGroup.2
+</reportinggroupid>
+<dispersionspread>
+  72946.9
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  56639.3
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Axial torsion stiffness at 18 months
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.4-OutcomeRptGroup.1
+</reportinggroupid>
+<dispersionspread>
+  8405.0
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  12490.9
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.4-OutcomeRptGroup.2
+</reportinggroupid>
+<dispersionspread>
+  8741.0
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  8827.2
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Anterior bending strength at 6 months
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.4-OutcomeRptGroup.1
+</reportinggroupid>
+<dispersionspread>
+  8304.1
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  26046.4
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.4-OutcomeRptGroup.2
+</reportinggroupid>
+<dispersionspread>
+  8686.6
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  4822.0
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Anterior bending strength at 18 months
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.4-OutcomeRptGroup.1
+</reportinggroupid>
+<dispersionspread>
+  4132.3
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  6127.7
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.4-OutcomeRptGroup.2
+</reportinggroupid>
+<dispersionspread>
+  4233.5
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  3664.0
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Axial torsion strength at 6 months
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.4-OutcomeRptGroup.1
+</reportinggroupid>
+<dispersionspread>
+  3954.4
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  14181.3
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.4-OutcomeRptGroup.2
+</reportinggroupid>
+<dispersionspread>
+  4228.7
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  2545.8
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Axial torsion strength at 18 months
+</title>
+</measurecategory>
+</measurecategories>
+<measuredescription>
+<textblock>
+  Anterior bending and axial torsion were measured using HR-QCT-based finite element analysis to determine stiffness and strength of T12. Stiffness evaluated strength of the vertebral body, defined as the slope of the initial step of the force-displacement curve. Strength of the vertebral body was evaluated under compressive loading conditions using computer simulation. LS Means were adjusted for age, baseline P1NP, fracture less than 12 months before study start, duration of prior bisphosphonate use, screening glucocorticoid dose, and cumulative glucocorticoid dose before and during the trial.
+</textblock>
+</measuredescription>
+<parametertype>
+  Least Squares Mean
+</parametertype>
+<timeframe>
+  Baseline, 6 months, 18 months
+</timeframe>
+<title>
+  Change From Baseline in Anterior Bending and Axial Torsion by Finite Element Analysis in the 12th Thoracic Vertebra (T12) at 6 Months and 18 Months: Stiffness and Strength
+</title>
+<unitofmeasure>
+  Newton per millimeter per rad (N/mm/rad)
+</unitofmeasure>
+<anticipatedresultpostingdate>
+<month>
+</month>
+<year>
+</year>
+</anticipatedresultpostingdate>
+<measuretype>
+  Secondary
+</measuretype>
+<outcomemeasureanalyses>
+</outcomemeasureanalyses>
+<outcomereportinggroups>
+<outcomereportinggroup
+ id="OutcomeMeasure.4-OutcomeRptGroup.1"
+>
+<description>
+<textblock>
+  Teriparatide 20 microgram (&#181;g) subcutaneous (sc) injection once daily (QD)
+</textblock>
+</description>
+<subjectsanalyzed>
+  39
+</subjectsanalyzed>
+<title>
+  Teriparatide
+</title>
+<numunitsanalyzed>
+</numunitsanalyzed>
+</outcomereportinggroup>
+<outcomereportinggroup
+ id="OutcomeMeasure.4-OutcomeRptGroup.2"
+>
+<description>
+<textblock>
+  Risedronate 35 milligrams (mg) oral (po) tablet once weekly (QW)
+</textblock>
+</description>
+<subjectsanalyzed>
+  40
+</subjectsanalyzed>
+<title>
+  Risedronate
+</title>
+<numunitsanalyzed>
+</numunitsanalyzed>
+</outcomereportinggroup>
+</outcomereportinggroups>
+<populationanalysisdescription>
+<textblock>
+  The analysis population was the full analysis set (FAS), which included all randomized participants who received at least 1 dose of study medication.
+</textblock>
+</populationanalysisdescription>
+<reportingstatus>
+  Posted
+</reportingstatus>
+<safetyissue>
+  No
+</safetyissue>
+<typeunitsanalyzed>
+</typeunitsanalyzed>
+</outcomemeasure>
+<outcomemeasure>
+<dispersiontype>
+  Standard Error
+</dispersiontype>
+<measurecategories>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.6-OutcomeRptGroup.1
+</reportinggroupid>
+<dispersionspread>
+  596.6
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  890.7
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.6-OutcomeRptGroup.2
+</reportinggroupid>
+<dispersionspread>
+  607.6
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  407.6
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Axial compression stiffness at 6 months
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.6-OutcomeRptGroup.1
+</reportinggroupid>
+<dispersionspread>
+  569.0
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  1973.9
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.6-OutcomeRptGroup.2
+</reportinggroupid>
+<dispersionspread>
+  605.9
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  363.7
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Axial compression stiffness at 18 months
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.6-OutcomeRptGroup.1
+</reportinggroupid>
+<dispersionspread>
+  444.6
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  580.7
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.6-OutcomeRptGroup.2
+</reportinggroupid>
+<dispersionspread>
+  457.0
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  313.6
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Axial compression strength at 6 months
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.6-OutcomeRptGroup.1
+</reportinggroupid>
+<dispersionspread>
+  424.0
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  1287.5
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.6-OutcomeRptGroup.2
+</reportinggroupid>
+<dispersionspread>
+  455.5
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  209.4
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Axial compression strength at 18 months
+</title>
+</measurecategory>
+</measurecategories>
+<measuredescription>
+<textblock>
+  Axial compression was measured using HR-QCT-based finite element analysis to determine stiffness and strength of T12. Stiffness evaluated the strength of the vertebral body, defined as the slope of the initial step of the force-displacement curve. Strength of the vertebral body was evaluated under compressive loading conditions using computer simulation. LS Means were adjusted for age, baseline P1NP, fracture less than 12 months before study start, duration of prior bisphosphonate use, screening glucocorticoid dose, and cumulative glucocorticoid dose before and during the trial.
+</textblock>
+</measuredescription>
+<parametertype>
+  Least Squares Mean
+</parametertype>
+<timeframe>
+  Baseline, 6 months, 18 months
+</timeframe>
+<title>
+  Change From Baseline in Axial Compression by Finite Element Analysis in the 12th Thoracic Vertebra (T12) at 6 Months and 18 Months: Stiffness and Strength
+</title>
+<unitofmeasure>
+  Newton per millimeter (N/mm)
+</unitofmeasure>
+<anticipatedresultpostingdate>
+<month>
+</month>
+<year>
+</year>
+</anticipatedresultpostingdate>
+<measuretype>
+  Secondary
+</measuretype>
+<outcomemeasureanalyses>
+</outcomemeasureanalyses>
+<outcomereportinggroups>
+<outcomereportinggroup
+ id="OutcomeMeasure.6-OutcomeRptGroup.1"
+>
+<description>
+<textblock>
+  Teriparatide 20 microgram (&#181;g) subcutaneous (sc) injection once daily (QD)
+</textblock>
+</description>
+<subjectsanalyzed>
+  39
+</subjectsanalyzed>
+<title>
+  Teriparatide
+</title>
+<numunitsanalyzed>
+</numunitsanalyzed>
+</outcomereportinggroup>
+<outcomereportinggroup
+ id="OutcomeMeasure.6-OutcomeRptGroup.2"
+>
+<description>
+<textblock>
+  Risedronate 35 milligrams (mg) oral (po) tablet once weekly (QW)
+</textblock>
+</description>
+<subjectsanalyzed>
+  40
+</subjectsanalyzed>
+<title>
+  Risedronate
+</title>
+<numunitsanalyzed>
+</numunitsanalyzed>
+</outcomereportinggroup>
+</outcomereportinggroups>
+<populationanalysisdescription>
+<textblock>
+  The analysis population was the full analysis set (FAS), which included all randomized participants who received at least 1 dose of study medication.
+</textblock>
+</populationanalysisdescription>
+<reportingstatus>
+  Posted
+</reportingstatus>
+<safetyissue>
+  No
+</safetyissue>
+<typeunitsanalyzed>
+</typeunitsanalyzed>
+</outcomemeasure>
+<outcomemeasure>
+<dispersiontype>
+  Standard Deviation
+</dispersiontype>
+<measurecategories>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.8-OutcomeRptGroup.1
+</reportinggroupid>
+<dispersionspread>
+  0.0685
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  0.068
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.8-OutcomeRptGroup.2
+</reportinggroupid>
+<dispersionspread>
+  0.0493
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  0.037
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Lumbar spine (n=38; n=39)
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.8-OutcomeRptGroup.1
+</reportinggroupid>
+<dispersionspread>
+  0.0319
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  0.014
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.8-OutcomeRptGroup.2
+</reportinggroupid>
+<dispersionspread>
+  0.0320
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  0.007
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Hip (n=38; n=37)
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.8-OutcomeRptGroup.1
+</reportinggroupid>
+<dispersionspread>
+  0.0446
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  0.014
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.8-OutcomeRptGroup.2
+</reportinggroupid>
+<dispersionspread>
+  0.0333
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  -0.007
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Femoral neck (n=38; n=37)
+</title>
+</measurecategory>
+</measurecategories>
+<measuredescription>
+<textblock>
+  Dual x-ray absorptiometry (DXA) techniques  validated this measurement at skeletal sites that are at risk of osteoporotic fracture, such as lumbar spine, femoral neck, and hip.
+</textblock>
+</measuredescription>
+<parametertype>
+  Mean
+</parametertype>
+<timeframe>
+  Baseline, 18 months
+</timeframe>
+<title>
+  Change From Baseline in Areal Bone Mineral Density (BMD) at Lumbar Spine, Femoral Neck, and Total Hip at 18 Months
+</title>
+<unitofmeasure>
+  grams per square centimeter (g/cm^2)
+</unitofmeasure>
+<anticipatedresultpostingdate>
+<month>
+</month>
+<year>
+</year>
+</anticipatedresultpostingdate>
+<measuretype>
+  Secondary
+</measuretype>
+<outcomemeasureanalyses>
+</outcomemeasureanalyses>
+<outcomereportinggroups>
+<outcomereportinggroup
+ id="OutcomeMeasure.8-OutcomeRptGroup.1"
+>
+<description>
+<textblock>
+  Teriparatide 20 microgram (&#181;g) subcutaneous (sc) injection once daily (QD)
+</textblock>
+</description>
+<subjectsanalyzed>
+  45
+</subjectsanalyzed>
+<title>
+  Teriparatide
+</title>
+<numunitsanalyzed>
+</numunitsanalyzed>
+</outcomereportinggroup>
+<outcomereportinggroup
+ id="OutcomeMeasure.8-OutcomeRptGroup.2"
+>
+<description>
+<textblock>
+  Risedronate 35 milligrams (mg) oral (po) tablet once weekly (QW)
+</textblock>
+</description>
+<subjectsanalyzed>
+  47
+</subjectsanalyzed>
+<title>
+  Risedronate
+</title>
+<numunitsanalyzed>
+</numunitsanalyzed>
+</outcomereportinggroup>
+</outcomereportinggroups>
+<populationanalysisdescription>
+<textblock>
+  The analysis population was the full analysis set (FAS), which included all randomized participants who received at least 1 dose of study medication.
+</textblock>
+</populationanalysisdescription>
+<reportingstatus>
+  Posted
+</reportingstatus>
+<safetyissue>
+  No
+</safetyissue>
+<typeunitsanalyzed>
+</typeunitsanalyzed>
+</outcomemeasure>
+<outcomemeasure>
+<dispersiontype>
+  Standard Error
+</dispersiontype>
+<measurecategories>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.9-OutcomeRptGroup.1
+</reportinggroupid>
+<dispersionspread>
+  8.32
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  27.33
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.9-OutcomeRptGroup.2
+</reportinggroupid>
+<dispersionspread>
+  7.82
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  -16.09
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  P1NP at 3 months
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.9-OutcomeRptGroup.1
+</reportinggroupid>
+<dispersionspread>
+  8.27
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  52.55
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.9-OutcomeRptGroup.2
+</reportinggroupid>
+<dispersionspread>
+  7.95
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  -16.50
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  P1NP at 6 months
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.9-OutcomeRptGroup.1
+</reportinggroupid>
+<dispersionspread>
+  8.74
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  28.48
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.9-OutcomeRptGroup.2
+</reportinggroupid>
+<dispersionspread>
+  8.58
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  -15.58
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  P1NP at 18 months
+</title>
+</measurecategory>
+</measurecategories>
+<measuredescription>
+<textblock>
+  P1NP was used as a serum biochemical marker of collagen synthesis, reflecting the formation of new osteoid.
+</textblock>
+</measuredescription>
+<parametertype>
+  Least Squares Mean
+</parametertype>
+<timeframe>
+  Baseline, 3 months, 6 months, 18 months
+</timeframe>
+<title>
+  Change From Baseline in Serum Aminoterminal Propeptide of Type I Procollagen (P1NP) at 3 Months, 6 Months, and 18 Months
+</title>
+<unitofmeasure>
+  micrograms per deciliter (&#956;g/dL)
+</unitofmeasure>
+<anticipatedresultpostingdate>
+<month>
+</month>
+<year>
+</year>
+</anticipatedresultpostingdate>
+<measuretype>
+  Secondary
+</measuretype>
+<outcomemeasureanalyses>
+</outcomemeasureanalyses>
+<outcomereportinggroups>
+<outcomereportinggroup
+ id="OutcomeMeasure.9-OutcomeRptGroup.1"
+>
+<description>
+<textblock>
+  Teriparatide 20 microgram (&#181;g) subcutaneous (sc) injection once daily (QD)
+</textblock>
+</description>
+<subjectsanalyzed>
+  45
+</subjectsanalyzed>
+<title>
+  Teriparatide
+</title>
+<numunitsanalyzed>
+</numunitsanalyzed>
+</outcomereportinggroup>
+<outcomereportinggroup
+ id="OutcomeMeasure.9-OutcomeRptGroup.2"
+>
+<description>
+<textblock>
+  Risedronate 35 milligrams (mg) oral (po) tablet once weekly (QW)
+</textblock>
+</description>
+<subjectsanalyzed>
+  47
+</subjectsanalyzed>
+<title>
+  Risedronate
+</title>
+<numunitsanalyzed>
+</numunitsanalyzed>
+</outcomereportinggroup>
+</outcomereportinggroups>
+<populationanalysisdescription>
+<textblock>
+  The analysis population was the full analysis set (FAS), which included all randomized participants who received at least 1 dose of study medication.
+</textblock>
+</populationanalysisdescription>
+<reportingstatus>
+  Posted
+</reportingstatus>
+<safetyissue>
+  No
+</safetyissue>
+<typeunitsanalyzed>
+</typeunitsanalyzed>
+</outcomemeasure>
+<outcomemeasure>
+<dispersiontype>
+  Standard Error
+</dispersiontype>
+<measurecategories>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.10-OutcomeRptGroup.1
+</reportinggroupid>
+<dispersionspread>
+  0.07
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  0.12
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.10-OutcomeRptGroup.2
+</reportinggroupid>
+<dispersionspread>
+  0.07
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  -0.15
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  &#946;-CTx at 3 months
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.10-OutcomeRptGroup.1
+</reportinggroupid>
+<dispersionspread>
+  0.07
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  0.25
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.10-OutcomeRptGroup.2
+</reportinggroupid>
+<dispersionspread>
+  0.07
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  -0.14
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  &#946;-CTx at 6 months
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.10-OutcomeRptGroup.1
+</reportinggroupid>
+<dispersionspread>
+  0.08
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  0.03
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.10-OutcomeRptGroup.2
+</reportinggroupid>
+<dispersionspread>
+  0.07
+</dispersionspread>
+<nacomment>
+</nacomment>
+<parametervalue>
+  -0.11
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  &#946;-CTx at 18 months
+</title>
+</measurecategory>
+</measurecategories>
+<measuredescription>
+<textblock>
+  &#946;-CTx was used as a biochemical marker of bone turnover/resorption, reflecting collagen breakdown of the bone matrix.
+</textblock>
+</measuredescription>
+<parametertype>
+  Least Squares Mean
+</parametertype>
+<timeframe>
+  3, 6, 18 months
+</timeframe>
+<title>
+  Change From Baseline in Serum Type I Collagen Degradation Fragments (&#946;-CTx) at 3 Months, 6 Months, and 18 Months
+</title>
+<unitofmeasure>
+  nanograms per deciliter (ng/dL)
+</unitofmeasure>
+<anticipatedresultpostingdate>
+<month>
+</month>
+<year>
+</year>
+</anticipatedresultpostingdate>
+<measuretype>
+  Secondary
+</measuretype>
+<outcomemeasureanalyses>
+</outcomemeasureanalyses>
+<outcomereportinggroups>
+<outcomereportinggroup
+ id="OutcomeMeasure.10-OutcomeRptGroup.1"
+>
+<description>
+<textblock>
+  Teriparatide 20 microgram (&#181;g) subcutaneous (sc) injection once daily (QD)
+</textblock>
+</description>
+<subjectsanalyzed>
+  45
+</subjectsanalyzed>
+<title>
+  Teriparatide
+</title>
+<numunitsanalyzed>
+</numunitsanalyzed>
+</outcomereportinggroup>
+<outcomereportinggroup
+ id="OutcomeMeasure.10-OutcomeRptGroup.2"
+>
+<description>
+<textblock>
+  Risedronate 35 milligrams (mg) oral (po) tablet once weekly (QW)
+</textblock>
+</description>
+<subjectsanalyzed>
+  47
+</subjectsanalyzed>
+<title>
+  Risedronate
+</title>
+<numunitsanalyzed>
+</numunitsanalyzed>
+</outcomereportinggroup>
+</outcomereportinggroups>
+<populationanalysisdescription>
+<textblock>
+  The analysis population was the full analysis set (FAS), which included all randomized participants who received at least 1 dose of study medication.
+</textblock>
+</populationanalysisdescription>
+<reportingstatus>
+  Posted
+</reportingstatus>
+<safetyissue>
+  No
+</safetyissue>
+<typeunitsanalyzed>
+</typeunitsanalyzed>
+</outcomemeasure>
+<outcomemeasure>
+<dispersiontype>
+  Not Applicable
+</dispersiontype>
+<measurecategories>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.11-OutcomeRptGroup.1
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  13
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.11-OutcomeRptGroup.2
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  22
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Serious Adverse Events (SAEs)
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.11-OutcomeRptGroup.1
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  22
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.11-OutcomeRptGroup.2
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  30
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Other Non-serious AEs
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.11-OutcomeRptGroup.1
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  0
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.11-OutcomeRptGroup.2
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  5
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Fractures
+</title>
+</measurecategory>
+<measurecategory>
+<reportedvalues>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.11-OutcomeRptGroup.1
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  0
+</parametervalue>
+</reportedvalue>
+<reportedvalue>
+<reportinggroupid>
+  OutcomeMeasure.11-OutcomeRptGroup.2
+</reportinggroupid>
+<nacomment>
+</nacomment>
+<parametervalue>
+  0
+</parametervalue>
+</reportedvalue>
+</reportedvalues>
+<title>
+  Hypercalcemia
+</title>
+</measurecategory>
+</measurecategories>
+<measuredescription>
+<textblock>
+  Summary tables of serious AEs (SAEs) and all other non-serious AEs are located in the Reported Adverse Event Module. Fractures that occurred during the study were collected separately as an additional safety variable. The number of participants experiencing hypercalcemia was summarized for each treatment arm. Hypercalcemia was defined as a serum calcium level corrected for albumin of &gt;2.7 millimole per liter (mmol/L) (10.8 milligram per deciliter [mg/dL]).
+</textblock>
+</measuredescription>
+<parametertype>
+  Number
+</parametertype>
+<timeframe>
+  Baseline up to 18 months
+</timeframe>
+<title>
+  Number of Participants With Adverse Events (AEs)
+</title>
+<unitofmeasure>
+  participants
+</unitofmeasure>
+<anticipatedresultpostingdate>
+<month>
+</month>
+<year>
+</year>
+</anticipatedresultpostingdate>
+<measuretype>
+  Secondary
+</measuretype>
+<outcomemeasureanalyses>
+</outcomemeasureanalyses>
+<outcomereportinggroups>
+<outcomereportinggroup
+ id="OutcomeMeasure.11-OutcomeRptGroup.1"
+>
+<description>
+<textblock>
+  Teriparatide 20 microgram (&#181;g) subcutaneous (sc) injection once daily (QD)
+</textblock>
+</description>
+<subjectsanalyzed>
+  45
+</subjectsanalyzed>
+<title>
+  Teriparatide
+</title>
+<numunitsanalyzed>
+</numunitsanalyzed>
+</outcomereportinggroup>
+<outcomereportinggroup
+ id="OutcomeMeasure.11-OutcomeRptGroup.2"
+>
+<description>
+<textblock>
+  Risedronate 35 milligrams (mg) oral (po) tablet once weekly (QW)
+</textblock>
+</description>
+<subjectsanalyzed>
+  47
+</subjectsanalyzed>
+<title>
+  Risedronate
+</title>
+<numunitsanalyzed>
+</numunitsanalyzed>
+</outcomereportinggroup>
+</outcomereportinggroups>
+<populationanalysisdescription>
+<textblock>
+  The safety analysis set included all participants who received study treatment.
+</textblock>
+</populationanalysisdescription>
+<reportingstatus>
+  Posted
+</reportingstatus>
+<safetyissue>
+  Yes
+</safetyissue>
+<typeunitsanalyzed>
+</typeunitsanalyzed>
+</outcomemeasure>
+</outcomemeasures>
+<participantflow>
+<participantflowgroups>
+<flowgroup
+ id="ParticipantFlow-ParticipantFlowGroup.1"
+>
+<description>
+<textblock>
+  Teriparatide 20 microgram (&#181;g) subcutaneous (sc) injection once daily (QD)
+</textblock>
+</description>
+<title>
+  Teriparatide
+</title>
+</flowgroup>
+<flowgroup
+ id="ParticipantFlow-ParticipantFlowGroup.2"
+>
+<description>
+<textblock>
+  Risedronate 35 milligrams (mg) oral (po) tablet once weekly (QW)
+</textblock>
+</description>
+<title>
+  Risedronate
+</title>
+</flowgroup>
+</participantflowgroups>
+<periods>
+<period>
+<completedmilestone>
+<milestoneachievements>
+<milestoneachievement>
+<reportinggroupid>
+  ParticipantFlow-ParticipantFlowGroup.1
+</reportinggroupid>
+<comment>
+</comment>
+<subjectsachieve>
+  38
+</subjectsachieve>
+</milestoneachievement>
+<milestoneachievement>
+<reportinggroupid>
+  ParticipantFlow-ParticipantFlowGroup.2
+</reportinggroupid>
+<comment>
+</comment>
+<subjectsachieve>
+  39
+</subjectsachieve>
+</milestoneachievement>
+</milestoneachievements>
+</completedmilestone>
+<dropwithdrawreasons>
+<dropwithdrawreason>
+<dropwithdrawreasondetails>
+<reasondetail>
+<reportinggroupid>
+  ParticipantFlow-ParticipantFlowGroup.1
+</reportinggroupid>
+<subjectsaffected>
+  2
+</subjectsaffected>
+</reasondetail>
+<reasondetail>
+<reportinggroupid>
+  ParticipantFlow-ParticipantFlowGroup.2
+</reportinggroupid>
+<subjectsaffected>
+  1
+</subjectsaffected>
+</reasondetail>
+</dropwithdrawreasondetails>
+<otherreasonname>
+</otherreasonname>
+<reasontype>
+  Death
+</reasontype>
+</dropwithdrawreason>
+<dropwithdrawreason>
+<dropwithdrawreasondetails>
+<reasondetail>
+<reportinggroupid>
+  ParticipantFlow-ParticipantFlowGroup.1
+</reportinggroupid>
+<subjectsaffected>
+  1
+</subjectsaffected>
+</reasondetail>
+<reasondetail>
+<reportinggroupid>
+  ParticipantFlow-ParticipantFlowGroup.2
+</reportinggroupid>
+<subjectsaffected>
+  0
+</subjectsaffected>
+</reasondetail>
+</dropwithdrawreasondetails>
+<otherreasonname>
+</otherreasonname>
+<reasontype>
+  Protocol Violation
+</reasontype>
+</dropwithdrawreason>
+<dropwithdrawreason>
+<dropwithdrawreasondetails>
+<reasondetail>
+<reportinggroupid>
+  ParticipantFlow-ParticipantFlowGroup.1
+</reportinggroupid>
+<subjectsaffected>
+  4
+</subjectsaffected>
+</reasondetail>
+<reasondetail>
+<reportinggroupid>
+  ParticipantFlow-ParticipantFlowGroup.2
+</reportinggroupid>
+<subjectsaffected>
+  2
+</subjectsaffected>
+</reasondetail>
+</dropwithdrawreasondetails>
+<otherreasonname>
+</otherreasonname>
+<reasontype>
+  Withdrawal by Subject
+</reasontype>
+</dropwithdrawreason>
+<dropwithdrawreason>
+<dropwithdrawreasondetails>
+<reasondetail>
+<reportinggroupid>
+  ParticipantFlow-ParticipantFlowGroup.1
+</reportinggroupid>
+<subjectsaffected>
+  0
+</subjectsaffected>
+</reasondetail>
+<reasondetail>
+<reportinggroupid>
+  ParticipantFlow-ParticipantFlowGroup.2
+</reportinggroupid>
+<subjectsaffected>
+  3
+</subjectsaffected>
+</reasondetail>
+</dropwithdrawreasondetails>
+<otherreasonname>
+</otherreasonname>
+<reasontype>
+  Adverse Event
+</reasontype>
+</dropwithdrawreason>
+<dropwithdrawreason>
+<dropwithdrawreasondetails>
+<reasondetail>
+<reportinggroupid>
+  ParticipantFlow-ParticipantFlowGroup.1
+</reportinggroupid>
+<subjectsaffected>
+  0
+</subjectsaffected>
+</reasondetail>
+<reasondetail>
+<reportinggroupid>
+  ParticipantFlow-ParticipantFlowGroup.2
+</reportinggroupid>
+<subjectsaffected>
+  2
+</subjectsaffected>
+</reasondetail>
+</dropwithdrawreasondetails>
+<otherreasonname>
+</otherreasonname>
+<reasontype>
+  Lost to Follow-up
+</reasontype>
+</dropwithdrawreason>
+</dropwithdrawreasons>
+<milestones>
+</milestones>
+<otherparticipantflowdetails>
+<otherdetail>
+<numbernotcompleted>
+  7
+</numbernotcompleted>
+<reportinggroupid>
+  ParticipantFlow-ParticipantFlowGroup.1
+</reportinggroupid>
+</otherdetail>
+<otherdetail>
+<numbernotcompleted>
+  8
+</numbernotcompleted>
+<reportinggroupid>
+  ParticipantFlow-ParticipantFlowGroup.2
+</reportinggroupid>
+</otherdetail>
+</otherparticipantflowdetails>
+<startedmilestone>
+<milestoneachievements>
+<milestoneachievement>
+<reportinggroupid>
+  ParticipantFlow-ParticipantFlowGroup.1
+</reportinggroupid>
+<comment>
+</comment>
+<subjectsachieve>
+  45
+</subjectsachieve>
+</milestoneachievement>
+<milestoneachievement>
+<reportinggroupid>
+  ParticipantFlow-ParticipantFlowGroup.2
+</reportinggroupid>
+<comment>
+</comment>
+<subjectsachieve>
+  47
+</subjectsachieve>
+</milestoneachievement>
+</milestoneachievements>
+</startedmilestone>
+<title>
+  Overall Study
+</title>
+</period>
+</periods>
+<preassignmentdescription>
+<textblock>
+  Of the 174 participants who were enrolled into the study, 92 were eligible and randomly assigned to the treatment arms.
+</textblock>
+</preassignmentdescription>
+<recruitmentdetails>
+</recruitmentdetails>
+</participantflow>
+<pointofcontact>
+<email>
+</email>
+<organizationname>
+  Eli Lilly and Company
+</organizationname>
+<phoneextension>
+</phoneextension>
+<phonenumber>
+  800-545-5979
+</phonenumber>
+<title>
+  Chief Medical Officer
+</title>
+</pointofcontact>
+<recordstatus>
+  RELEASED
+</recordstatus>
+<reportedevents>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<frequencyreportingthreshold>
+  4
+</frequencyreportingthreshold>
+<frequentadverseevents>
+<frequentevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  2
+</numevents>
+<numsubjectsaffected>
+  2
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Gastrointestinal disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Abdominal pain upper
+</term>
+</frequentevent>
+<frequentevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  2
+</numevents>
+<numsubjectsaffected>
+  2
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Gastrointestinal disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Constipation
+</term>
+</frequentevent>
+<frequentevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  3
+</numevents>
+<numsubjectsaffected>
+  3
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Gastrointestinal disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Nausea
+</term>
+</frequentevent>
+<frequentevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  2
+</numevents>
+<numsubjectsaffected>
+  2
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Gastrointestinal disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Reflux oesophagitis
+</term>
+</frequentevent>
+<frequentevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  4
+</numevents>
+<numsubjectsaffected>
+  3
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  2
+</numevents>
+<numsubjectsaffected>
+  2
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  General disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Oedema peripheral
+</term>
+</frequentevent>
+<frequentevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  2
+</numevents>
+<numsubjectsaffected>
+  2
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Hepatobiliary disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Cholelithiasis
+</term>
+</frequentevent>
+<frequentevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  4
+</numevents>
+<numsubjectsaffected>
+  4
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  4
+</numevents>
+<numsubjectsaffected>
+  3
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Infections and infestations
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Influenza
+</term>
+</frequentevent>
+<frequentevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  2
+</numevents>
+<numsubjectsaffected>
+  2
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Infections and infestations
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Lung infection
+</term>
+</frequentevent>
+<frequentevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  2
+</numevents>
+<numsubjectsaffected>
+  2
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  2
+</numevents>
+<numsubjectsaffected>
+  2
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Infections and infestations
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Nasopharyngitis
+</term>
+</frequentevent>
+<frequentevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  4
+</numevents>
+<numsubjectsaffected>
+  2
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Injury, poisoning and procedural complications
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Rib fracture
+</term>
+</frequentevent>
+<frequentevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  2
+</numevents>
+<numsubjectsaffected>
+  2
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Investigations
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Blood cholesterol increased
+</term>
+</frequentevent>
+<frequentevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  2
+</numevents>
+<numsubjectsaffected>
+  2
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Investigations
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Weight decreased
+</term>
+</frequentevent>
+<frequentevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  3
+</numevents>
+<numsubjectsaffected>
+  3
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Investigations
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Weight increased
+</term>
+</frequentevent>
+<frequentevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  2
+</numevents>
+<numsubjectsaffected>
+  2
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Metabolism and nutrition disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Obesity
+</term>
+</frequentevent>
+<frequentevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  4
+</numevents>
+<numsubjectsaffected>
+  4
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  4
+</numevents>
+<numsubjectsaffected>
+  3
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Musculoskeletal and connective tissue disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Arthralgia
+</term>
+</frequentevent>
+<frequentevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  3
+</numevents>
+<numsubjectsaffected>
+  3
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Musculoskeletal and connective tissue disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Back pain
+</term>
+</frequentevent>
+<frequentevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  2
+</numevents>
+<numsubjectsaffected>
+  2
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Musculoskeletal and connective tissue disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Pain in extremity
+</term>
+</frequentevent>
+<frequentevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  3
+</numevents>
+<numsubjectsaffected>
+  2
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Nervous system disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Headache
+</term>
+</frequentevent>
+<frequentevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  2
+</numevents>
+<numsubjectsaffected>
+  2
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Nervous system disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Paraesthesia
+</term>
+</frequentevent>
+<frequentevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  2
+</numevents>
+<numsubjectsaffected>
+  2
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Psychiatric disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Insomnia
+</term>
+</frequentevent>
+<frequentevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  3
+</numevents>
+<numsubjectsaffected>
+  3
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Respiratory, thoracic and mediastinal disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Dyspnoea
+</term>
+</frequentevent>
+<frequentevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  2
+</numevents>
+<numsubjectsaffected>
+  2
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Skin and subcutaneous tissue disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Erythema
+</term>
+</frequentevent>
+<frequentevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  2
+</numevents>
+<numsubjectsaffected>
+  2
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Skin and subcutaneous tissue disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Urticaria
+</term>
+</frequentevent>
+<frequentevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  2
+</numevents>
+<numsubjectsaffected>
+  2
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  2
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Surgical and medical procedures
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Cataract operation
+</term>
+</frequentevent>
+<frequentevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  2
+</numevents>
+<numsubjectsaffected>
+  2
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Vascular disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Haematoma
+</term>
+</frequentevent>
+</frequentadverseevents>
+<interventiongroups>
+<interventiongroup
+ id="ReportedEvents-InterventionGroup.1"
+>
+<description>
+<textblock>
+  Teriparatide 20 microgram (&#181;g) subcutaneous (sc) injection once daily (QD)
+</textblock>
+</description>
+<numsubjectsfrequentevents>
+  22
+</numsubjectsfrequentevents>
+<numsubjectsseriousevents>
+  13
+</numsubjectsseriousevents>
+<partatriskfrequentevents>
+  45
+</partatriskfrequentevents>
+<partatriskseriousevents>
+  45
+</partatriskseriousevents>
+<title>
+  Teriparatide
+</title>
+</interventiongroup>
+<interventiongroup
+ id="ReportedEvents-InterventionGroup.2"
+>
+<description>
+<textblock>
+  Risedronate 35 milligrams (mg) oral (po) tablet once weekly (QW)
+</textblock>
+</description>
+<numsubjectsfrequentevents>
+  30
+</numsubjectsfrequentevents>
+<numsubjectsseriousevents>
+  22
+</numsubjectsseriousevents>
+<partatriskfrequentevents>
+  47
+</partatriskfrequentevents>
+<partatriskseriousevents>
+  47
+</partatriskseriousevents>
+<title>
+  Risedronate
+</title>
+</interventiongroup>
+</interventiongroups>
+<seriousadverseevents>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Blood and lymphatic system disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Anaemia
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Cardiac disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Angina pectoris
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Cardiac disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Aortic valve incompetence
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Cardiac disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Atrial fibrillation
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Cardiac disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Cardiac failure
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Ear and labyrinth disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Sudden hearing loss
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Eye disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Cataract
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  2
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Gastrointestinal disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Anal fistula
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  2
+</numevents>
+<numsubjectsaffected>
+  2
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Gastrointestinal disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Crohn&apos;s disease
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Gastrointestinal disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Gastrointestinal haemorrhage
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Gastrointestinal disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Pancreatitis acute
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  General disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Chest pain
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  General disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Sudden death
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Hepatobiliary disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Cholecystitis
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Infections and infestations
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Anal abscess
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Infections and infestations
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Cytomegalovirus infection
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Infections and infestations
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Intervertebral discitis
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Infections and infestations
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Postoperative abscess
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Injury, poisoning and procedural complications
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Ankle fracture
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  2
+</numevents>
+<numsubjectsaffected>
+  2
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Injury, poisoning and procedural complications
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Fall
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Injury, poisoning and procedural complications
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Femoral neck fracture
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Injury, poisoning and procedural complications
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Head injury
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Injury, poisoning and procedural complications
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Procedural pain
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Injury, poisoning and procedural complications
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Radius fracture
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  4
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Injury, poisoning and procedural complications
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Rib fracture
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  3
+</numevents>
+<numsubjectsaffected>
+  3
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Musculoskeletal and connective tissue disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Intervertebral disc protrusion
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Musculoskeletal and connective tissue disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Osteoarthritis
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Musculoskeletal and connective tissue disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Rheumatoid arthritis
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Neoplasms benign, malignant and unspecified (incl cysts and polyps)
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Intestinal adenocarcinoma
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Neoplasms benign, malignant and unspecified (incl cysts and polyps)
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Prostatic adenoma
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Neoplasms benign, malignant and unspecified (incl cysts and polyps)
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Seminoma
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Nervous system disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Cognitive disorder
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Renal and urinary disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Nephrolithiasis
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Respiratory, thoracic and mediastinal disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Acute respiratory failure
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Respiratory, thoracic and mediastinal disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Asthma
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  2
+</numevents>
+<numsubjectsaffected>
+  2
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  3
+</numevents>
+<numsubjectsaffected>
+  3
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Respiratory, thoracic and mediastinal disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Chronic obstructive pulmonary disease
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Respiratory, thoracic and mediastinal disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Dyspnoea
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Respiratory, thoracic and mediastinal disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Epistaxis
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Skin and subcutaneous tissue disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Leukoplakia
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Skin and subcutaneous tissue disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Scar
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Skin and subcutaneous tissue disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Skin ulcer
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  1
+</numevents>
+<numsubjectsaffected>
+  1
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Vascular disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Femoral artery occlusion
+</term>
+</seriousevent>
+<seriousevent>
+<adverseeventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.1
+</reportinggroupid>
+<numevents>
+  0
+</numevents>
+<numsubjectsaffected>
+  0
+</numsubjectsaffected>
+<numsubjects>
+  45
+</numsubjects>
+</eventstats>
+<eventstats>
+<reportinggroupid>
+  ReportedEvents-InterventionGroup.2
+</reportinggroupid>
+<numevents>
+  3
+</numevents>
+<numsubjectsaffected>
+  2
+</numsubjectsaffected>
+<numsubjects>
+  47
+</numsubjects>
+</eventstats>
+</adverseeventstats>
+<assessmenttype>
+  Systematic Assessment
+</assessmenttype>
+<organsystemname>
+  Vascular disorders
+</organsystemname>
+<sourcevocabulary>
+  MEDDRA (12.0)
+</sourcevocabulary>
+<term>
+  Hypertensive crisis
+</term>
+</seriousevent>
+</seriousadverseevents>
+</reportedevents>
+</clinical_result>
+</clinical_study>

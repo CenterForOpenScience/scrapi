@@ -1,0 +1,1212 @@
+<clinical_study>
+<study_id>
+<org_name>
+  NCI
+</org_name>
+<org_full_name>
+  National Cancer Institute (NCI)
+</org_full_name>
+<org_study_id>
+  CDR0000350336
+</org_study_id>
+<secondary_id>
+  COG-ADVL0214
+</secondary_id>
+<secondary_id>
+  NCI-04-C-0256
+</secondary_id>
+<secondary_id>
+  NCT00077454
+</secondary_id>
+<nct_id>
+  NCT00077454
+</nct_id>
+</study_id>
+<brief_title>
+<textblock>
+  Erlotinib and Temozolomide in Treating Young Patients With Recurrent or Refractory Solid Tumors
+</textblock>
+</brief_title>
+<official_title>
+<textblock>
+  Phase I Study of Erlotinib and Temozolomide in Children With Recurrent or Refractory Solid Tumors
+</textblock>
+</official_title>
+<study_sponsor>
+<lead_sponsor>
+<agency>
+  Children&apos;s Oncology Group
+</agency>
+</lead_sponsor>
+<sponsor>
+<agency>
+  National Cancer Institute (NCI)
+</agency>
+</sponsor>
+</study_sponsor>
+<oversight_info>
+<regulatory_authority>
+  United States: Federal Government
+</regulatory_authority>
+</oversight_info>
+<brief_summary>
+<textblock>
+  RATIONALE: Erlotinib may stop the growth of tumor cells by blocking the enzymes necessary for their growth. Drugs used in chemotherapy, such as temozolomide, work in different ways to stop tumor cells from dividing so they stop growing or die. Giving erlotinib with temozolomide may kill more tumor cells.
+ 
+  PURPOSE: This phase I trial is studying the side effects and best dose of erlotinib when given with temozolomide in treating young patients with recurrent or refractory solid tumors.
+</textblock>
+</brief_summary>
+<detailed_descr>
+<textblock>
+  OBJECTIVES: 
+  Primary
+    - Determine the maximum tolerated dose of erlotinib in children with recurrent or refractory solid tumors.
+    - Determine the dose-limiting toxic effects of this drug alone and with temozolomide in these patients.
+    - Determine the tolerability of this regimen in these patients.
+    - Determine the pharmacokinetics of this regimen in these patients.
+ 
+  Secondary
+    - Determine, preliminarily, the antitumor activity of this regimen in these patients.
+ 
+  OUTLINE: This is a multicenter, dose-escalation study of erlotinib. Patients are stratified according to pretreatment (heavily pretreated [received more than 2 prior multiagent myelosuppressive chemotherapy regimens OR received prior craniospinal or pelvic radiotherapy or bone marrow transplantation OR has bone marrow involvement] vs less heavily pretreated).
+ 
+  Patients receive oral erlotinib once daily on days 1-28. Beginning with course 2, patients also receive oral temozolomide once daily on days 1-5. Courses repeat every 28 days in the absence of disease progression or unacceptable toxicity.
+ 
+  Cohorts of 3-6 patients receive escalating doses of erlotinib during course 1 only until the maximum tolerated dose (MTD) is determined. The MTD is defined as the dose preceding that at which 2 of 3 or 2 of 6 patients experience dose-limiting toxicity.
+ 
+ 
+  PROJECTED ACCRUAL: A total of 9-24 patients will be accrued for this study.
+</textblock>
+</detailed_descr>
+<status_block>
+<status>
+  Recruiting
+</status>
+<date>
+  2004-08
+</date>
+</status_block>
+<start_date>
+<date>
+</date>
+</start_date>
+<end_date>
+<date>
+</date>
+</end_date>
+<last_follow_up_date>
+<date>
+</date>
+</last_follow_up_date>
+<last_data_entry_date>
+<date>
+</date>
+</last_data_entry_date>
+<phase_block>
+<phase>
+  Phase 1
+</phase>
+</phase_block>
+<study_type>
+  Interventional
+</study_type>
+<design>
+  Treatment
+</design>
+<condition>
+  childhood brain tumor
+</condition>
+<condition>
+  childhood extracranial germ cell tumor
+</condition>
+<condition>
+  childhood rhabdomyosarcoma
+</condition>
+<condition>
+  childhood soft tissue sarcoma
+</condition>
+<condition>
+  Neuroblastoma
+</condition>
+<condition>
+  Osteosarcoma
+</condition>
+<intervention>
+<intervent_type>
+  Drug
+</intervent_type>
+<primary_name>
+  erlotinib
+</primary_name>
+</intervention>
+<intervention>
+<intervent_type>
+  Drug
+</intervent_type>
+<primary_name>
+  temozolomide
+</primary_name>
+</intervention>
+<intervention>
+<intervent_type>
+  Procedure
+</intervent_type>
+<primary_name>
+  chemotherapy
+</primary_name>
+</intervention>
+<intervention>
+<intervent_type>
+  Procedure
+</intervent_type>
+<primary_name>
+  enzyme inhibitor therapy
+</primary_name>
+</intervention>
+<intervention>
+<intervent_type>
+  Procedure
+</intervent_type>
+<primary_name>
+  protein tyrosine kinase inhibitor therapy
+</primary_name>
+</intervention>
+<eligibility>
+<criteria>
+<textblock>
+  DISEASE CHARACTERISTICS: 
+    - One of the following histologically confirmed solid tumors:
+ 
+        - Brain tumors
+        - Osteogenic sarcoma
+        - Rhabdomyosarcoma
+        - Soft tissue sarcoma (excluding Ewing&#8217;s sarcoma)
+        - Neuroblastoma
+        - Germ cell tumors
+    - Recurrent or refractory disease
+    - No known curative therapy exists
+ 
+  PATIENT CHARACTERISTICS: 
+  Age
+    - Under 22
+ 
+  Performance status
+    - Karnofsky 50-100% (for patients age 11 to 21)
+      OR
+ 
+    - Lansky 50-100% (for patients age 10 and under)
+ 
+  Life expectancy
+    - At least 8 weeks
+ 
+  Hematopoietic
+    - Absolute neutrophil count &gt; 1,000/mm^3
+    - Platelet count &gt; 100,000/mm^3 (transfusion independent*)
+    - Hemoglobin &gt; 8.0 g/dL (transfusion allowed)
+  NOTE: *More than 7 days since prior platelet transfusion
+ 
+ 
+  Hepatic
+    - Bilirubin &lt; 1.5 times upper limit of normal (ULN)
+    - ALT &lt; 2.5 times ULN
+    - Albumin &#8805; 2 g/dL
+ 
+  Renal
+    - Creatinine clearance or radioisotope glomerular filtration rate at least 70 mL/min
+      OR
+ 
+    - Creatinine based on age as follows:
+ 
+        - &#8804; 0.8 mg/dL for patients age 5 and under
+        - &#8804; 1.0 mg/dL for patients 6 to 10
+        - &#8804; 1.2 mg/dL for patients 11 to 15
+        - &#8804; 1.5 mg/dL for patients age 15 to 21
+ 
+  Other
+    - Not pregnant or nursing
+    - Negative pregnancy test
+    - Fertile patients must use effective contraception
+    - No uncontrolled infection
+ 
+  PRIOR CONCURRENT THERAPY: 
+  Biologic therapy
+    - Recovered from all prior immunotherapy
+    - At least 7 days since prior biologic therapy
+    - At least 3 months since prior stem cell transplantation and no evidence of active graft-versus-host disease
+    - More than 1 week since prior growth factors
+    - No concurrent prophylactic growth factor therapy
+    - No concurrent immunotherapy
+    - No concurrent biologic therapy
+ 
+  Chemotherapy
+    - More than 2 weeks since prior myelosuppressive chemotherapy (4 weeks for nitrosoureas) and recovered
+    - No other concurrent chemotherapy
+ 
+  Endocrine therapy
+    - No concurrent systemic corticosteroids except for treatment of increased intracranial pressure or symptomatic tumor edema in patients with CNS tumors
+ 
+        - No concurrent steroids as an antiemetic
+    - Concurrent dexamethasone for patients with CNS tumors allowed provided patient has been on a stable or decreasing dose for at least 1 week before study entry
+ 
+  Radiotherapy
+    - Recovered from all prior radiotherapy
+    - At least 2 weeks since prior local palliative radiotherapy (small port)
+    - At least 6 weeks since prior substantial bone marrow irradiation
+    - At least 6 months since prior craniospinal radiotherapy
+    - At least 6 months since prior radiotherapy to 50% or more of the pelvis
+    - At least 8 weeks since prior standard-fraction radiotherapy for patients with recurrent brain tumors unless there is biopsy proof of recurrent tumor
+    - Prior radiosurgery within the past 9 months allowed provided there is documentation of progressive disease by biopsy, positron-emission tomography (PET) scan, or MR spectroscopy
+    - No concurrent radiotherapy
+ 
+  Surgery
+    - Not specified
+ 
+  Other
+    - More than 1 week since prior CYP3A4 inhibitors
+    - More than 4 weeks since prior CYP3A4 inducers
+    - More than 5 days since prior proton-pump inhibitors
+    - More than 2 days since prior H_2 blockers
+    - No prior erlotinib
+    - No concurrent enzyme-inducing anticonvulsants
+    - No concurrent proton-pump inhibitors
+    - No concurrent H2 blockers
+    - No other concurrent investigational agents
+    - Concurrent antacids allowed provided the antacid is not administered 2 hours before, during, and 2 hours after erlotinib administration
+</textblock>
+</criteria>
+<healthy_volunteers>
+  No
+</healthy_volunteers>
+<patients>
+</patients>
+<expected_enrollment>
+</expected_enrollment>
+<gender>
+  Both
+</gender>
+<minimum_age>
+  N/A
+</minimum_age>
+<maximum_age>
+  21 Years
+</maximum_age>
+</eligibility>
+<investigator>
+<role>
+  Study Chair
+</role>
+<name>
+  Regina Jakacki, MD
+</name>
+<affiliation>
+<agency>
+  Children&apos;s Hospital of Pittsburgh
+</agency>
+</affiliation>
+</investigator>
+<investigator>
+<role>
+</role>
+<name>
+  Jean M. Tersak, MD
+</name>
+<affiliation>
+<agency>
+  Children&apos;s Hospital of Pittsburgh
+</agency>
+</affiliation>
+</investigator>
+<location>
+<facility>
+<name>
+  Children&apos;s Hospital Los Angeles
+</name>
+<address>
+<city>
+  Los Angeles
+</city>
+<state>
+  California
+</state>
+<zip>
+  90027-0700
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+<contact>
+<name>
+  Paul S. Gaynon, MD
+</name>
+<phone>
+  323-669-2163
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+  pgaynon@chla.usc.edu
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  Lucile Packard Children&apos;s Hospital at Stanford University Medical Center
+</name>
+<address>
+<city>
+  Palo Alto
+</city>
+<state>
+  California
+</state>
+<zip>
+  94304
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+<contact>
+<name>
+  Gary V.H. Dahl, MD
+</name>
+<phone>
+  650-497-8238
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  Children&apos;s National Medical Center
+</name>
+<address>
+<city>
+  Washington
+</city>
+<state>
+  District of Columbia
+</state>
+<zip>
+  20010-2916
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+<contact>
+<name>
+  Anne Angiolillo, MD
+</name>
+<phone>
+  202-884-2800
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  MBCCOP-Medical College of Georgia Cancer Center
+</name>
+<address>
+<city>
+  Augusta
+</city>
+<state>
+  Georgia
+</state>
+<zip>
+  30912-4000
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+<contact>
+<name>
+  Roger A. Vega, MD
+</name>
+<phone>
+  706-721-3626
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  Riley Children Cancer Center at Riley Hospital for Children
+</name>
+<address>
+<city>
+  Indianapolis
+</city>
+<state>
+  Indiana
+</state>
+<zip>
+  46202-5225
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+<contact>
+<name>
+  James Croop, MD, PhD
+</name>
+<phone>
+  317-274-8784
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+  jcroop@iupui.edu
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  Warren Grant Magnuson Clinical Center - NCI Clinical Studies Support
+</name>
+<address>
+<city>
+  Bethesda
+</city>
+<state>
+  Maryland
+</state>
+<zip>
+  20892-1182
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+<contact>
+<name>
+  NCI Clinical Studies Support
+</name>
+<phone>
+  888-NCI-1937
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  Dana-Farber/Harvard Cancer Center at Dana Farber Cancer Institute
+</name>
+<address>
+<city>
+  Boston
+</city>
+<state>
+  Massachusetts
+</state>
+<zip>
+  02115
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+<contact>
+<name>
+  Holcombe E. Grier, MD
+</name>
+<phone>
+  617-632-3971
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+  holcombe-grier@dfci.harvard.edu
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  Mayo Clinic Cancer Center
+</name>
+<address>
+<city>
+  Rochester
+</city>
+<state>
+  Minnesota
+</state>
+<zip>
+  55905
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+<contact>
+<name>
+  Carola A.S. Arndt, MD
+</name>
+<phone>
+  507-284-2695
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+  carndt@mayo.edu
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  University of Minnesota  Cancer Center
+</name>
+<address>
+<city>
+  Minneapolis
+</city>
+<state>
+  Minnesota
+</state>
+<zip>
+  55455
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+<contact>
+<name>
+  Brenda Weigel, MD
+</name>
+<phone>
+  612-624-8484
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  University of Mississippi Medical Center
+</name>
+<address>
+<city>
+  Jackson
+</city>
+<state>
+  Mississippi
+</state>
+<zip>
+  39216-4505
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+<contact>
+<name>
+  Dale J. Pullen, MD
+</name>
+<phone>
+  601-984-5220
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  Herbert Irving Comprehensive Cancer Center at Columbia University
+</name>
+<address>
+<city>
+  New York
+</city>
+<state>
+  New York
+</state>
+<zip>
+  10032
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+<contact>
+<name>
+  Mitchell S. Cairo, MD
+</name>
+<phone>
+  212-305-8316
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+  mc1310@columbia.edu
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  SUNY Upstate Medical University Hospital
+</name>
+<address>
+<city>
+  Syracuse
+</city>
+<state>
+  New York
+</state>
+<zip>
+  13210
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+<contact>
+<name>
+  Ronald L. Dubowy, MD
+</name>
+<phone>
+  315-464-5294
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+  dubowyr@upstate.edu
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  Cincinnati Children&apos;s Hospital Medical Center
+</name>
+<address>
+<city>
+  Cincinnati
+</city>
+<state>
+  Ohio
+</state>
+<zip>
+  45229-2899
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+<contact>
+<name>
+  Robert J. Wells, MD
+</name>
+<phone>
+  513-636-4200
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+  robert.wells@chmcc.org
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  Doernbecher Children&apos;s Hospital at Oregon Health &amp; Science University
+</name>
+<address>
+<city>
+  Portland
+</city>
+<state>
+  Oregon
+</state>
+<zip>
+  97239-3098
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+<contact>
+<name>
+  H. S. Nicholson, MD, MPH
+</name>
+<phone>
+  503-494-1543
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  Children&apos;s Hospital of Philadelphia
+</name>
+<address>
+<city>
+  Philadelphia
+</city>
+<state>
+  Pennsylvania
+</state>
+<zip>
+  19104-4318
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+<contact>
+<name>
+  Peter C. Adamson, MD
+</name>
+<phone>
+  215-590-5448
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+  adamsonp@mail.med.upenn.edu
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  Children&apos;s Hospital of Pittsburgh
+</name>
+<address>
+<city>
+  Pittsburgh
+</city>
+<state>
+  Pennsylvania
+</state>
+<zip>
+  15213
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+<contact>
+<name>
+  Regina Jakacki, MD
+</name>
+<phone>
+  412-692-5055
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+  regina.jakacki@chp.edu
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  St. Jude Children&apos;s Research Hospital
+</name>
+<address>
+<city>
+  Memphis
+</city>
+<state>
+  Tennessee
+</state>
+<zip>
+  38105
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+<contact>
+<name>
+  Wayne Lee Furman, MD
+</name>
+<phone>
+  901-495-3300
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  MBCCOP - South Texas Pediatrics
+</name>
+<address>
+<city>
+  San Antonio
+</city>
+<state>
+  Texas
+</state>
+<zip>
+  78229-3900
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+<contact>
+<name>
+  Anne-Marie Langevin, MD
+</name>
+<phone>
+  210-704-3405
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+  langevin@uthscsa.edu
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+Simmons  Cancer  Center  at  University  of  Texas  Southwestern  Medical  Center  at Dallas  
+</name>
+<address>
+<city>
+  Dallas
+</city>
+<state>
+  Texas
+</state>
+<zip>
+  75390-9063
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+<contact>
+<name>
+  Naomi J. Winick, MD
+</name>
+<phone>
+  214-648-3074
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+  naomi.winick@utsouthwestern.edu
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  Texas Children&apos;s Cancer Center and Hematology Service at Texas Children&apos;s Hospital
+</name>
+<address>
+<city>
+  Houston
+</city>
+<state>
+  Texas
+</state>
+<zip>
+  77030-2399
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+<contact>
+<name>
+  Susan M. Blaney, MD
+</name>
+<phone>
+  832-822-1482
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+  sblaney@txccc.org
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  Children&apos;s Hospital and Regional Medical Center - Seattle
+</name>
+<address>
+<city>
+  Seattle
+</city>
+<state>
+  Washington
+</state>
+<zip>
+  98105
+</zip>
+<country>
+  United States
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+<contact>
+<name>
+  John S. Holcenberg, MD
+</name>
+<phone>
+  206-987-2106
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+  john.holcenberg@seattlechildrens.org
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  Hospital for Sick Children
+</name>
+<address>
+<city>
+  Toronto
+</city>
+<state>
+  Ontario
+</state>
+<zip>
+  M5G 1X8
+</zip>
+<country>
+  Canada
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+<contact>
+<name>
+  Sylvain Baruchel, MD
+</name>
+<phone>
+  416-813-7795
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+</email>
+</contact>
+</location>
+<location>
+<facility>
+<name>
+  Hopital Sainte Justine
+</name>
+<address>
+<city>
+  Montreal
+</city>
+<state>
+  Quebec
+</state>
+<zip>
+  H3T 1C5
+</zip>
+<country>
+  Canada
+</country>
+</address>
+</facility>
+<status>
+  Recruiting
+</status>
+<contact>
+<name>
+  Mark L. Bernstein, MD, FRCPC
+</name>
+<phone>
+  514-345-4969
+</phone>
+<phone_ext>
+</phone_ext>
+<email>
+</email>
+</contact>
+</location>
+<see_also>
+<annotation>
+<textblock>
+  Clinical trial summary from the National Cancer Institute&apos;s PDQ&#174; database
+</textblock>
+</annotation>
+<url>
+  http://cancer.gov/clinicaltrials/COG-ADVL0214
+</url>
+</see_also>
+<keyword>
+  recurrent childhood malignant germ cell tumor
+</keyword>
+<keyword>
+  recurrent neuroblastoma
+</keyword>
+<keyword>
+  recurrent childhood cerebellar astrocytoma
+</keyword>
+<keyword>
+  recurrent childhood cerebral astrocytoma
+</keyword>
+<keyword>
+  recurrent childhood ependymoma
+</keyword>
+<keyword>
+  previously treated childhood rhabdomyosarcoma
+</keyword>
+<keyword>
+  recurrent childhood rhabdomyosarcoma
+</keyword>
+<keyword>
+  recurrent childhood soft tissue sarcoma
+</keyword>
+<keyword>
+  recurrent osteosarcoma
+</keyword>
+<keyword>
+  recurrent childhood supratentorial primitive neuroectodermal tumors
+</keyword>
+<keyword>
+  recurrent childhood medulloblastoma
+</keyword>
+<keyword>
+  recurrent childhood brain tumor
+</keyword>
+<initial_release_date>
+  2004-02-10
+</initial_release_date>
+<last_release_date>
+2005-08-02 
+</last_release_date>
+</clinical_study>
