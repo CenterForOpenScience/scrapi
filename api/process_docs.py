@@ -9,7 +9,7 @@ def process_raw(doc, source, id, filetype):
         with the specified name and the designated filetype in the
         specified source directory
     """
-    directory = '/home/fabian/cos/scrapi/api/raw/' + str(source) + '/'
+    directory = '/home/faye/cos/scrapi/api/raw/' + str(source) + '/'
     filepath = directory + str(id) + '.' + str(filetype)
     if not os.path.exists(directory):
         os.makedirs(directory)
@@ -36,7 +36,7 @@ def process(doc):
         }
     """
 
-    directory = '/home/fabian/cos/scrapi/api/json/' + doc['source'] + '/'
+    directory = '/home/faye/cos/scrapi/api/json/' + doc['source'] + '/'
     filepath = directory + doc['id'].replace('/', '%2F') + '.json'
     if not os.path.exists(directory):
         os.makedirs(directory)
