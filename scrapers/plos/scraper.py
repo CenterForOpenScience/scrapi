@@ -43,11 +43,14 @@ def retrieve():
 
     start = 0
     rows = 999
+    raw = ""
 
     while rows < num_article + 999:
         payload = {"api_key": settings.API_KEY, "rows": rows, "start": start}
         results = requests.get(url, params=payload)
         tick = time.time()
+
+        raw += "\n" + results.text
 
         formatted_results = parse_response(xmltodict.parse(results.text))
         for result in formatted_results:
@@ -58,6 +61,8 @@ def retrieve():
 
         if time.time()-tick < 5:
             time.sleep(5-(time.time()-tick))
+
+    process_docs.process_raw(raw, "PLoS", str(yesterday) + "_TO_" + str(today), "xml")
 
     print "Done!"
 
