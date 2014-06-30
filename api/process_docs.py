@@ -1,21 +1,30 @@
 # This file will be used to process raw and preprocessed-JSON documents from the scrapers
 import os
 import json
+import datetime
 
+BASE_DIR = '/home/faye/cos/scrapi/'
 
-def process_raw(doc, source, id, filetype):
+def process_raw(doc, source, doc_id, filetype):
     """
         Takes a document (in the form of text, and saves it to disk
         with the specified name and the designated filetype in the
         specified source directory
     """
-    directory = '/home/faye/cos/scrapi/api/raw/' + str(source) + '/'
-    filepath = directory + str(id) + '.' + str(filetype)
-    if not os.path.exists(directory):
-        os.makedirs(directory)
+    timestamp = datetime.datetime.now()
+    directory = 'archive/' + str(source).replace('/', '') + '/' + str(doc_id).replace('/', '') + '/' + str(timestamp) + '/'
+    filepath = BASE_DIR + directory + "raw" + '.' + str(filetype)
+
+    dir_path = BASE_DIR
+    for dir in directory.split("/"):
+        dir_path += dir + "/"
+        if not os.path.exists(dir_path):
+            os.makedirs(dir_path)
 
     with open(filepath, 'w') as f:
         f.write(doc)
+
+    return "Success"
 
 
 def process(doc):
@@ -36,10 +45,16 @@ def process(doc):
         }
     """
 
-    directory = '/home/faye/cos/scrapi/api/json/' + doc['source'] + '/'
-    filepath = directory + doc['id'].replace('/', '%2F') + '.json'
-    if not os.path.exists(directory):
-        os.makedirs(directory)
+    timestamp = datetime.datetime.now()
+    directory = 'archive/' + doc['source'].replace('/', '') + '/' + doc['id'].replace('/', '') + '/' + str(timestamp) + '/'
+    filepath = BASE_DIR + directory + "parsed.json"
+
+    dir_path = BASE_DIR
+    for dir in directory.split("/"):
+        dir_path += dir + "/"
+        if not os.path.exists(dir_path):
+            os.makedirs(dir_path)
+
     with open(filepath, 'w') as f:
         f.write(json.dumps(doc, sort_keys=True, indent=4))
     node = {}
@@ -51,4 +66,4 @@ def process(doc):
         if property in ['description', 'tags', 'system_tags', 'wiki_pages_current']:
             node[property] = properties[property]
 
-    print(json.dumps(node, sort_keys=True, indent=4))
+    return json.dumps(node, sort_keys=True, indent=4)
