@@ -3,7 +3,7 @@ import time
 import sys
 import os
 sys.path.insert(1, '/home/fabian/cos/scrapi/')
-from scrapers.plos import consume, parse
+import requests
 
 
 def main():
@@ -13,7 +13,7 @@ def main():
     }
     sched = Scheduler(config)
 
-    sched.add_cron_job(consume.consume, day_of_week='mon-fri', hour=23, minute=59)
+    sched.add_cron_job(plos, day_of_week='mon-fri', hour=23, minute=59)
     sched.start()
 
     print('Press Ctrl+{0} to exit'.format('C'))
@@ -26,20 +26,16 @@ def main():
         sched.shutdown()  # Not strictly necessary if daemonic mode is enabled but should be done if possibleisched.start()
 
 
-def walk():
+def plos():
+    r = requests.post("http://localhost:1338/consume")
+    print r
     for dirname, dirnames, filenames in os.walk('../archive/PLoS/'):
         # print path to all filenames.
         for filename in filenames:
             if 'raw' in filename:
                 with open(os.path.join(dirname, filename), 'r') as f:
-                    parse.parse(f.read(), dirname)
-
-        # Advanced usage:
-        # editing the 'dirnames' list will stop os.walk() from recursing into there.
-        if '.git' in dirnames:
-            # don't go into any .git directories.
-            dirnames.remove('.git')
+                    payload = {'doc': f.read()}
+                    requests.post('http://localhost:1338/process', params=payload)  # TODO
 
 if __name__ == '__main__':
-    consume.consume()
-    walk()
+    plos()
