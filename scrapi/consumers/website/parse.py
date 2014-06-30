@@ -6,8 +6,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-def parse(result, dirname):
-    timestamp = dirname.split('/')[-1]
+def parse(result, timestamp):
 
     result = json.loads(result)
     payload = {

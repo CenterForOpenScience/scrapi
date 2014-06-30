@@ -8,7 +8,7 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 sys.path.insert(1, '/home/fabian/cos/scrapi/')
-import scrapers.plos.settings as settings
+import settings
 
 
 def consume():
