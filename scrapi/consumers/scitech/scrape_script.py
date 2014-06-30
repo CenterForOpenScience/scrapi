@@ -1,12 +1,19 @@
-from scitech_scraper import SciTechScraper
+import scitech_scraper as SciTechScraper
 from lxml import etree
+import datetime
+
+param_date_stamp = datetime.date.today().strftime('%m/%d/%Y')
+
+print SciTechScraper.consume()
+print SciTechScraper.parse()
+SciTechScraper.xml_to_text()
 
 
-TestScrape = SciTechScraper()
-TestScrape.xml_to_text()
 
-print TestScrape.parse()[5]
-print TestScrape.url
+
+
+
+
 
 
 
