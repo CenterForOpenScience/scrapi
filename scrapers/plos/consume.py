@@ -2,15 +2,16 @@ __author__ = 'faye'
 import requests
 import xmltodict
 import time
-import settings
 import json
 from datetime import date, timedelta
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
+sys.path.insert(1, '/home/fabian/cos/scrapi/')
+import scrapers.plos.settings as settings
 
 
-def retrieve():
+def consume():
     today = str(date.today()) + "T00:00:00Z"
     yesterday = str(date.today() - timedelta(4)) + "T00:00:00Z"
     payload = {"api_key": settings.API_KEY, "rows": "0"}
@@ -37,7 +38,7 @@ def retrieve():
                 if result["arr"][1]["@name"] == "abstract":
                     payload = {
                         'doc': json.dumps(result, indent=4, sort_keys=True),
-                        'source': result["str"][1]["#text"],
+                        'source': 'PLoS',
                         'doc_id': result["str"][0]["#text"],
                         'filetype': 'json'
                     }

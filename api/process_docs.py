@@ -28,7 +28,7 @@ def process_raw(doc, source, doc_id, filetype):
     return "Success"
 
 
-def process(doc):
+def process(doc, timestamp):
     """
         Takes a JSON document and extracts the information necessary
         to make an OSF project, then creates that OSF project through
@@ -45,8 +45,7 @@ def process(doc):
             'source': {SOURCE OF SCRAPE}
         }
     """
-
-    timestamp = datetime.datetime.now()
+    print(timestamp)
     directory = 'archive/' + doc['source'].replace('/', '') + '/' + doc['id'].replace('/', '') + '/' + str(timestamp) + '/'
     filepath = BASE_DIR + directory + "parsed.json"
 
