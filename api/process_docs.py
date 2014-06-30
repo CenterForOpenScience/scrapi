@@ -3,7 +3,8 @@ import os
 import json
 import datetime
 
-BASE_DIR = '/home/faye/cos/scrapi/'
+BASE_DIR = '/home/fabian/cos/scrapi/'
+
 
 def process_raw(doc, source, doc_id, filetype):
     """

@@ -9,20 +9,21 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+
 def retrieve():
-    today = str(date.today())+"T00:00:00Z"
-    yesterday = str(date.today() - timedelta(4))+"T00:00:00Z"
+    today = str(date.today()) + "T00:00:00Z"
+    yesterday = str(date.today() - timedelta(4)) + "T00:00:00Z"
     payload = {"api_key": settings.API_KEY, "rows": "0"}
     url = 'http://api.plos.org/search?q=publication_date:[{}%20TO%20{}]'.format(yesterday, today)
     plos_request = requests.get(url, params=payload)
     response = xmltodict.parse(plos_request.text)
-    num_article = int(response["response"]["result"]["@numFound"])
+    num_articles = int(response["response"]["result"]["@numFound"])
 
     start = 0
-    rows = 5
+    rows = 999
     raw = ""
 
-    while rows < 10:
+    while rows < num_articles + 999:
         payload = {"api_key": settings.API_KEY, "rows": rows, "start": start}
         results = requests.get(url, params=payload)
         tick = time.time()
@@ -49,7 +50,7 @@ def retrieve():
         start += rows
         rows += rows
 
-        if time.time()-tick < 5:
-            time.sleep(5-(time.time()-tick))
+        if time.time() - tick < 5:
+            time.sleep(5 - (time.time() - tick))
 
     print "Done!"
