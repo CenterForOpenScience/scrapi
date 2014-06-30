@@ -54,4 +54,4 @@ def consume():
         if time.time() - tick < 5:
             time.sleep(5 - (time.time() - tick))
 
-    print "Done!"
+    return 0

@@ -8,7 +8,6 @@ sys.setdefaultencoding('utf-8')
 
 def parse(result, timestamp):
 
-    result = json.loads(result)
     payload = {
         "doc":
             json.dumps({
@@ -23,4 +22,4 @@ def parse(result, timestamp):
             }),
         'timestamp': timestamp
     }
-    requests.get('http://0.0.0.0:1337/process', params=payload)
+    return requests.get('http://0.0.0.0:1337/process', params=payload)
