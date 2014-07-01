@@ -10,7 +10,7 @@ def load_config(config_file):
     return info
 
 def main():
-    info = load_config('../manifest.yaml')
+    info = load_config('manifests/plos-manifest.yml')
 
     day_of_week = info['days']
     hour = info['hour']
@@ -35,8 +35,8 @@ def main():
     except (KeyboardInterrupt, SystemExit):
         sched.shutdown()  # Not strictly necessary if daemonic mode is enabled but should be done if possibleisched.start()
 
-def add_scraper():
-    info = load_config('../manifest.yaml')
+def run_scraper():
+    info = load_config('manifests/plos-manifest.yml')
     # does this need to be added to the yaml file? 
     r = requests.post("http://localhost:1338/consume")
     print r
@@ -49,7 +49,7 @@ def add_scraper():
                     requests.post('http://localhost:1338/process', params=payload)  # TODO
 
 if __name__ == '__main__':
-    add_scraper()
+    run_scraper()
 
 
 # programatically add a new scraper - generalizing the plos function
