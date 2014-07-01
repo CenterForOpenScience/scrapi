@@ -37,5 +37,17 @@ def plos():
                     payload = {'doc': f.read()}
                     requests.post('http://localhost:1338/process', params=payload)  # TODO
 
+def add_scraper():
+    pass
+
 if __name__ == '__main__':
     plos()
+
+
+# programatically add a new scraper - generalizing the plos function
+# manifest file loading System
+# how to store and load various scrapers
+# on some schedule, send requests to scrapers to consume info and parse it
+# when you add a scraper, the manifest.json file defines where you live and where you want us to run
+# create a cron job based on that info in the manifest.json file
+
