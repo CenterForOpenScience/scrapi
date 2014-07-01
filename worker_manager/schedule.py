@@ -4,16 +4,28 @@ import sys
 import os
 sys.path.insert(1, '/home/fabian/cos/scrapi/')
 import requests
+import yaml
 
+def load_config(config_file):
+    config_file = file(config_file, 'r')
+    info = yaml.load(config_file)
+    return info
 
 def main():
+    info = load_config('../manifest.yaml')
+
+    day_of_week = info['days']
+    hour = info['hour']
+    minute = info['minute']
+
     config = {
-        'apscheduler.jobstores.file.class': 'apscheduler.jobstores.shelve_store:ShelveJobStore',
-        'apscheduler.jobstores.file.path': '/tmp/dbfile'
+        'apscheduler.jobstores.file.class': info['scheduler-config']['class'],
+        'apscheduler.jobstores.file.path': info['scheduler-config']['path']
     }
     sched = Scheduler(config)
 
-    sched.add_cron_job(plos, day_of_week='mon-fri', hour=23, minute=59)
+    sched.add_cron_job(plos, day_of_week=day_of_week, hour=hour, minute=minute)
+
     sched.start()
 
     print('Press Ctrl+{0} to exit'.format('C'))
@@ -25,11 +37,12 @@ def main():
     except (KeyboardInterrupt, SystemExit):
         sched.shutdown()  # Not strictly necessary if daemonic mode is enabled but should be done if possibleisched.start()
 
-
-def plos():
+def add_scraper():
+    info = load_config('../manifest.yaml')
+    # does this need to be added to the yaml file? 
     r = requests.post("http://localhost:1338/consume")
     print r
-    for dirname, dirnames, filenames in os.walk('../archive/PLoS/'):
+    for dirname, dirnames, filenames in os.walk('../archive/'+ str(info['directory']) + '/'):
         # print path to all filenames.
         for filename in filenames:
             if 'raw' in filename:
@@ -37,11 +50,8 @@ def plos():
                     payload = {'doc': f.read()}
                     requests.post('http://localhost:1338/process', params=payload)  # TODO
 
-def add_scraper():
-    pass
-
 if __name__ == '__main__':
-    plos()
+    add_scraper()
 
 
 # programatically add a new scraper - generalizing the plos function

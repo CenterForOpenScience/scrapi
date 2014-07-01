@@ -1,0 +1,16 @@
+## config for yaml
+
+---
+
+scheduler-config:
+    class: 'apscheduler.jobstores.shelve_store:ShelveJobStore'
+    path: '/tmp/dbfile'
+
+days: 'mon-fri'
+hour: 23
+minute: 59
+
+
+directory: 'PLoS'
+
+...
