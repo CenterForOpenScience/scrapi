@@ -4,7 +4,7 @@ import json
 import datetime
 
 BASE_DIR = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)),'/',
+    os.path.dirname(os.path.abspath(__file__)),
     os.pardir,
 )
 
@@ -16,7 +16,7 @@ def process_raw(doc, source, doc_id, filetype):
         specified source directory
     """
     timestamp = datetime.datetime.now()
-    directory = 'archive/' + str(source).replace('/', '') + '/' + str(doc_id).replace('/', '') + '/' + str(timestamp) + '/'
+    directory = '/archive/' + str(source).replace('/', '') + '/' + str(doc_id).replace('/', '') + '/' + str(timestamp) + '/'
     filepath = BASE_DIR + directory + "raw" + '.' + str(filetype)
 
     dir_path = BASE_DIR
@@ -49,7 +49,7 @@ def process(doc, timestamp):
         }
     """
     print(timestamp)
-    directory = 'archive/' + doc['source'].replace('/', '') + '/' + doc['id'].replace('/', '') + '/' + str(timestamp) + '/'
+    directory = '/archive/' + doc['source'].replace('/', '') + '/' + doc['id'].replace('/', '') + '/' + str(timestamp) + '/'
     filepath = BASE_DIR + directory + "parsed.json"
 
     dir_path = BASE_DIR
