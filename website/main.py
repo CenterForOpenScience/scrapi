@@ -3,7 +3,7 @@ import json
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
-sys.path.insert(1, '/home/fabian/cos/scrapi/')
+sys.path.insert(1, '/home/faye/cos/scrapi/')
 from api import process_docs
 
 app = Flask(__name__)
