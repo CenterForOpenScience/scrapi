@@ -1,9 +1,12 @@
 from flask import Flask, request
 import json
 import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
-sys.path.insert(1, '/home/faye/cos/scrapi/')
+import os
+sys.path.insert(1, os.path.join(
+    os.path.dirname(os.path.abspath(__file__)),
+    os.pardir,
+))
+print"\n".join(sys.path)
 from api import process_docs
 
 app = Flask(__name__)

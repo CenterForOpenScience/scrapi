@@ -1,8 +1,6 @@
 from apscheduler.scheduler import Scheduler
 import time
-import sys
 import os
-sys.path.insert(1, '/home/faye/cos/scrapi/')
 import requests
 
 
