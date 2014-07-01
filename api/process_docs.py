@@ -3,7 +3,10 @@ import os
 import json
 import datetime
 
-BASE_DIR = '/home/fabian/cos/scrapi/'
+BASE_DIR = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)),
+    os.pardir,
+)
 
 
 def process_raw(doc, source, doc_id, filetype):
