@@ -8,10 +8,10 @@ import parse
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
-sys.path.insert(1, '/home/faye/cos/scrapi/')
 
 app = Flask(__name__)
 app.debug = True
+
 
 @app.route('/consume', methods=['GET', 'POST'])
 def consume_day():
