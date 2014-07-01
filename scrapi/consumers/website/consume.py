@@ -7,7 +7,6 @@ from datetime import date, timedelta
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
-sys.path.insert(1, '/home/faye/cos/scrapi/')
 import settings
 
 
