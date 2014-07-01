@@ -1,8 +1,6 @@
 from apscheduler.scheduler import Scheduler
 import time
-import sys
 import os
-sys.path.insert(1, '/home/fabian/cos/scrapi/')
 import requests
 import yaml
 
