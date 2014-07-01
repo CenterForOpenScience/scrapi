@@ -35,10 +35,10 @@ def main():
     except (KeyboardInterrupt, SystemExit):
         sched.shutdown()  # Not strictly necessary if daemonic mode is enabled but should be done if possibleisched.start()
 
-def run_scraper():
-    info = load_config('manifests/plos-manifest.yml')
+def run_scraper(config_file):
+    info = load_config(config_file)
     # does this need to be added to the yaml file? 
-    r = requests.post("http://localhost:1338/consume")
+    r = requests.post(info['url'] + 'consume')
     print r
     for dirname, dirnames, filenames in os.walk('../archive/'+ str(info['directory']) + '/'):
         # print path to all filenames.
@@ -46,10 +46,10 @@ def run_scraper():
             if 'raw' in filename:
                 with open(os.path.join(dirname, filename), 'r') as f:
                     payload = {'doc': f.read()}
-                    requests.post('http://localhost:1338/process', params=payload)  # TODO
+                    requests.post(info['url'] + 'process', params=payload)  # TODO
 
 if __name__ == '__main__':
-    run_scraper()
+    run_scraper('manifests/plos-manifest.yml')
 
 
 # programatically add a new scraper - generalizing the plos function

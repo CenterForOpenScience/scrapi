@@ -10,7 +10,8 @@ days: 'mon-fri'
 hour: 23
 minute: 59
 
-
 directory: 'PLoS'
+
+url: 'http://localhost:1338/'
 
 ...
