@@ -2,11 +2,15 @@
 import os
 import json
 import datetime
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
-BASE_DIR = os.path.join(
+
+BASE_DIR = os.path.abspath(os.path.join(
     os.path.dirname(os.path.abspath(__file__)),
     os.pardir,
-)
+))
 
 
 def process_raw(doc, source, doc_id, filetype):
@@ -18,6 +22,7 @@ def process_raw(doc, source, doc_id, filetype):
     timestamp = datetime.datetime.now()
     directory = 'archive/' + str(source).replace('/', '') + '/' + str(doc_id).replace('/', '') + '/' + str(timestamp) + '/'
     filepath = BASE_DIR + directory + "raw" + '.' + str(filetype)
+    print filepath
 
     dir_path = BASE_DIR
     for dir in directory.split("/"):
@@ -26,7 +31,7 @@ def process_raw(doc, source, doc_id, filetype):
             os.makedirs(dir_path)
 
     with open(filepath, 'w') as f:
-        f.write(doc)
+        f.write(str(doc))
 
     return "Success"
 
