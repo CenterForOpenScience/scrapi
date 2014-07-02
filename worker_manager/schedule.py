@@ -5,7 +5,7 @@ import requests
 import yaml
 
 def load_config(config_file):
-    with open(config_file) as f:
+    with open(config_file) as f: 
         info = yaml.load(f)
     return info
 
@@ -23,6 +23,7 @@ def main(config_file):
     sched = Scheduler(config)
 
     sched.add_cron_job(run_scraper, day_of_week=day_of_week, hour=hour, minute=minute)
+    sched.add_cron_job(check_archive, day='first')
 
     sched.start()
 
@@ -39,15 +40,31 @@ def run_scraper(config_file):
     info = load_config(config_file)
     # does this need to be added to the yaml file? 
     r = requests.post(info['url'] + 'consume')
-    # print r
     for dirname, dirnames, filenames in os.walk('../archive/'+ str(info['directory']) + '/'):
         # print path to all filenames.
         for filename in filenames:
             if 'raw' in filename:
                 with open(os.path.join(dirname, filename), 'r') as f:
                     payload = {'doc': f.read(), 'timestamp': dirname.split('/')[-1]}
-                    requests.post(info['url'] + 'process', params=payload)  # TODO
+                    requests.get(info['url'] + 'process', params=payload)  # TODO
+
+def check_archive():
+
+    all_yamls = {}
+    for filename in os.listdir( 'manifests/' ):
+        yaml_dict = load_config( 'manifests/' + filename )
+        all_yamls[ yaml_dict['directory'] ] = yaml_dict[ 'url' ]
+
+    for dirname, dirnames, filenames in os.walk( '../archive/' ):
+        if os.path.isfile( dirname + '/raw.json' ) and not os.path.isfile( dirname + '/parsed.json' ):
+            for filename in filenames:
+                if 'raw' in filename:
+                    with open(os.path.join(dirname, filename), 'r') as f:
+                        payload = {'doc': f.read(), 'timestamp': dirname.split('/')[-1]}
+                        requests.post(all_yamls[ dirname.split('/')[2] ] + 'process', params=payload)  # TODO
+
 
 if __name__ == '__main__':
+    # check_archive()
     run_scraper('manifests/plos-manifest.yml')
     # run_scraper('manifests/scitech-manifest.yml')
