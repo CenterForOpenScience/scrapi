@@ -6,8 +6,9 @@ sys.path.insert(1, os.path.join(
     os.path.dirname(os.path.abspath(__file__)),
     os.pardir,
 ))
-print"\n".join(sys.path)
+
 from api import process_docs
+import search
 
 app = Flask(__name__)
 
@@ -26,8 +27,17 @@ def process_raw():
 def process():
     doc = json.loads(request.form.get('doc'))
     timestamp = request.form.get('timestamp')
-    return process_docs.process(doc, timestamp)
+    doc = process_docs.process(doc, timestamp)
+    search.update('scrapi', doc, 'article')
+    return doc
 
+
+@app.route('/search', methods=['GET'])
+def search_search():
+    query = request.args.get('doc')
+    start = request.args.get('from')
+    to = request.args.get('to')
+    return json.dumps(search.search(query, start, to))
 
 if __name__ == '__main__':
     app.run(
