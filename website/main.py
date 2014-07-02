@@ -8,7 +8,7 @@ sys.path.insert(1, os.path.join(
 ))
 
 from api import process_docs
-#import search
+import search
 
 app = Flask(__name__)
 
@@ -37,10 +37,9 @@ def process():
     else:
         doc = json.loads(request.args.get('doc'))
         timestamp = request.args.get('timestamp')
-    doc = process_docs.process(doc, timestamp)
-    #search.update('scrapi', doc, 'article')
-    return Response(doc)
-
+    processed_doc = process_docs.process(doc, timestamp)
+    search.update('scrapi', doc, 'article', doc['id'])
+    return processed_doc
 
 #@app.route('/search', methods=['GET'])
 #def search_search():

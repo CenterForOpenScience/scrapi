@@ -38,8 +38,8 @@ def search(query, start=0, end=10):
     return results
 
 
-def update(index, document, category):
-    elastic.update(index, category, doc=document, upsert=document, refresh=True)
+def update(index, document, category, id):
+    elastic.update(index, category, id, doc=document, upsert=document, refresh=True)
 
 
 def delete_all(index):
