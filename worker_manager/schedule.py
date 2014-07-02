@@ -40,14 +40,14 @@ def run_scraper(config_file):
     info = load_config(config_file)
     # does this need to be added to the yaml file? 
     r = requests.post(info['url'] + 'consume')
-    # print r
+    print r
     for dirname, dirnames, filenames in os.walk('../archive/'+ str(info['directory']) + '/'):
         # print path to all filenames.
         for filename in filenames:
             if 'raw' in filename:
                 with open(os.path.join(dirname, filename), 'r') as f:
                     payload = {'doc': f.read(), 'timestamp': dirname.split('/')[-1]}
-                    requests.post(info['url'] + 'process', params=payload)  # TODO
+                    requests.get(info['url'] + 'process', params=payload)  # TODO
 
 if __name__ == '__main__':
     run_scraper('manifests/plos-manifest.yml')
