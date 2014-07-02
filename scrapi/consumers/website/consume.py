@@ -10,7 +10,6 @@ sys.setdefaultencoding('utf-8')
 sys.path.insert(1, '/home/faye/cos/scrapi/')
 import settings
 
-
 def consume():
     today = str(date.today()) + "T00:00:00Z"
     yesterday = str(date.today() - timedelta(1)) + "T00:00:00Z"
@@ -49,7 +48,7 @@ def consume():
                     }
 
                     #print payload
-                    requests.post('http://0.0.0.0:1337/process_raw', params=payload)
+                    requests.get('http://0.0.0.0:1337/process_raw', params=payload)
 
             except KeyError:
                 pass
