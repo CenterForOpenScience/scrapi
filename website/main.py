@@ -6,7 +6,7 @@ sys.path.insert(1, os.path.join(
     os.path.dirname(os.path.abspath(__file__)),
     os.pardir,
 ))
-print"\n".join(sys.path)
+# print"\n".join(sys.path)
 from api import process_docs
 
 app = Flask(__name__)
@@ -26,6 +26,9 @@ def process_raw():
 def process():
     doc = json.loads(request.args.get('doc'))
     timestamp = request.args.get('timestamp')
+
+    print 'The timestamp in scrapi main is: ' + str(timestamp)
+
     return process_docs.process(doc, timestamp)
 
 
