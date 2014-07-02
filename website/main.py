@@ -27,9 +27,9 @@ def process_raw():
 def process():
     doc = json.loads(request.args.get('doc'))
     timestamp = request.args.get('timestamp')
-    doc = process_docs.process(doc, timestamp)
-    search.update('scrapi', doc, 'article')
-    return doc
+    processed_doc = process_docs.process(doc, timestamp)
+    search.update('scrapi', doc, 'article', doc['id'])
+    return processed_doc
 
 
 @app.route('/search', methods=['GET'])
