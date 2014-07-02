@@ -41,12 +41,13 @@ def process():
     search.update('scrapi', doc, 'article', doc['id'])
     return processed_doc
 
-#@app.route('/search', methods=['GET'])
-#def search_search():
-#    query = request.args.get('doc')
-#    start = request.args.get('from')
-#    to = request.args.get('to')
-#    return json.dumps(search.search(query, start, to))
+
+@app.route('/search', methods=['GET'])
+def search_search():
+    query = request.args.get('doc')
+    start = request.args.get('from')
+    to = request.args.get('to')
+    return json.dumps(search.search(query, start, to))
 
 if __name__ == '__main__':
     app.run(
