@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, Response
 import json
 import sys
 import os
@@ -31,20 +31,23 @@ def process_raw():
 
 @app.route('/process', methods=['GET', 'POST'])
 def process():
-    doc = json.loads(request.args.get('doc'))
-    timestamp = request.args.get('timestamp')
-    doc = process_docs.process(doc, timestamp)
-    search.update('scrapi', doc, 'article')
-    return doc
+    if request.method == 'POST':
+        doc = json.loads(request.form.get('doc'))
+        timestamp = request.form.get('timestamp')
+    else:
+        doc = json.loads(request.args.get('doc'))
+        timestamp = request.args.get('timestamp')
+    processed_doc = process_docs.process(doc, timestamp)
+    search.update('scrapi', doc, 'article', doc['id'])
+    return processed_doc
 
 
 @app.route('/search', methods=['GET'])
 def search_search():
-    query = request.args.get('doc')
+    query = request.args.get('q')
     start = request.args.get('from')
     to = request.args.get('to')
     return json.dumps(search.search(query, start, to))
-
 
 if __name__ == '__main__':
     app.run(
