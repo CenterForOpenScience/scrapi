@@ -6,7 +6,7 @@ sys.path.insert(1, os.path.join(
     os.path.dirname(os.path.abspath(__file__)),
     os.pardir,
 ))
-print(sys.path)
+
 from api import process_docs
 import search
 
