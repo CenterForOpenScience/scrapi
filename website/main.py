@@ -44,7 +44,7 @@ def process():
 
 @app.route('/search', methods=['GET'])
 def search_search():
-    query = request.args.get('doc')
+    query = request.args.get('q')
     start = request.args.get('from')
     to = request.args.get('to')
     return json.dumps(search.search(query, start, to))
