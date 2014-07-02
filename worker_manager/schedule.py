@@ -3,11 +3,10 @@ import time
 import os
 import requests
 import yaml
-import re
 
 def load_config(config_file):
-    config_file = file(config_file, 'r')
-    info = yaml.load(config_file)
+    with open(config_file) as f:
+        info = yaml.load(f)
     return info
 
 def main(config_file):
@@ -52,4 +51,3 @@ def run_scraper(config_file):
 if __name__ == '__main__':
     run_scraper('manifests/plos-manifest.yml')
     # run_scraper('manifests/scitech-manifest.yml')
-
