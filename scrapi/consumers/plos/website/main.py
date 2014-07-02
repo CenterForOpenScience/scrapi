@@ -20,7 +20,7 @@ def consume_day():
 
 @app.route('/process', methods=['GET', 'POST'])
 def parse_all():
-    result = json.loads(request.args.get('doc'))
+    result = request.args.get('doc')
     timestamp = request.args.get('timestamp')
     return Response(parse.parse(result, timestamp))
 
