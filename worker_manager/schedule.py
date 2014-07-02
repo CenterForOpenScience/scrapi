@@ -9,8 +9,9 @@ def load_config(config_file):
     info = yaml.load(config_file)
     return info
 
-def main():
-    info = load_config('manifests/plos-manifest.yml')
+def main(config_file):
+    # how do I make the config file a parameter of main?
+    info = load_config(config_file)
 
     day_of_week = info['days']
     hour = info['hour']
@@ -22,7 +23,7 @@ def main():
     }
     sched = Scheduler(config)
 
-    sched.add_cron_job(plos, day_of_week=day_of_week, hour=hour, minute=minute)
+    sched.add_cron_job(run_scraper, day_of_week=day_of_week, hour=hour, minute=minute)
 
     sched.start()
 
@@ -50,3 +51,5 @@ def run_scraper(config_file):
 
 if __name__ == '__main__':
     run_scraper('manifests/plos-manifest.yml')
+    run_scraper('manifests/scitech-manifest.yml')
+

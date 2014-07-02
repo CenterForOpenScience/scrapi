@@ -8,7 +8,7 @@ days: 'mon-fri'
 hour: 23
 minute: 59
 
-directory: 'PLoS'
+directory: 'scitech'
 
 url: 'http://localhost:1338/'
 
