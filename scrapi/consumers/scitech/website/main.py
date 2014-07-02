@@ -12,22 +12,22 @@ app.debug = True
 
 @app.route('/consume', methods=['GET', 'POST'])
 def consume_day():
-	return Response(consume.consume())
+    return Response(consume.consume())
 
 @app.route('/process', methods=['GET', 'POST'])
 def parse_all():
-	result = request.args.get('doc')
-	print result
-	print request.args
-	timestamp = request.args.get('timestamp')
-	return Response(parse.parse(result, timestamp))
+    result = request.args.get('doc')
+    print result
+    print request.args
+    timestamp = request.args.get('timestamp')
+    return Response(parse.parse(result, timestamp))
 
 if __name__ == '__main__':
-	app.run(
-		host="0.0.0.0",
-		port=1338,
-		debug=True
-	)
+    app.run(
+        host="0.0.0.0",
+        port=1339,
+        debug=True
+    )
 
 
 
@@ -41,7 +41,7 @@ if __name__ == '__main__':
 
 #root = etree.fromstring(TestScrape.xml.encode('utf-8'))
 #for x in root.find('records'):
-#	for y in x:
-#		print y
+#   for y in x:
+#       print y
 
 
