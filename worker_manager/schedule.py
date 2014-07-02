@@ -3,6 +3,10 @@ import time
 import os
 import requests
 import yaml
+import logging 
+
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 def load_config(config_file):
     with open(config_file) as f: 
@@ -40,13 +44,8 @@ def run_scraper(config_file):
     info = load_config(config_file)
     # does this need to be added to the yaml file? 
     r = requests.post(info['url'] + 'consume')
-    for dirname, dirnames, filenames in os.walk('../archive/'+ str(info['directory']) + '/'):
-        # print path to all filenames.
-        for filename in filenames:
-            if 'raw' in filename:
-                with open(os.path.join(dirname, filename), 'r') as f:
-                    payload = {'doc': f.read(), 'timestamp': dirname.split('/')[-1]}
-                    requests.get(info['url'] + 'process', params=payload)  # TODO
+
+    
 
 def check_archive():
 
@@ -63,6 +62,19 @@ def check_archive():
                         payload = {'doc': f.read(), 'timestamp': dirname.split('/')[-1]}
                         requests.post(all_yamls[ dirname.split('/')[2] ] + 'process', params=payload)  # TODO
 
+def request_parse(directory):
+    all_yamls = {}
+    for filename in os.listdir( 'worker_manager/manifests/' ):
+        yaml_dict = load_config( 'worker_manager/manifests/' + filename )
+        all_yamls[ yaml_dict['directory'] ] = yaml_dict[ 'url' ]
+
+    logger.warn( 'SCHEDULE!!!' + directory)
+
+    url = all_yamls[directory.split('/')[1]]
+
+    with open(os.path.abspath(directory), 'r') as f:
+        payload = {'doc': f.read(), 'timestamp': directory.split('/')[-2]}
+        requests.get(url + 'process', params=payload)  # TODO
 
 if __name__ == '__main__':
     # check_archive()

@@ -9,6 +9,11 @@ sys.path.insert(1, os.path.join(
 
 from api import process_docs
 import search
+import worker_manager.schedule as schedule
+import logging 
+
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
@@ -25,8 +30,12 @@ def process_raw():
         source = request.args.get('source')
         doc_id = request.args.get('doc_id')
         filetype = request.args.get('filetype')
+    timestamp = process_docs.process_raw(doc, source, doc_id, filetype)
+    directory = '/'.join(['archive', str(source), str(doc_id).replace('/',''), str(timestamp)]) + '/raw.' + str(filetype)
 
-    return Response(process_docs.process_raw(doc, source, doc_id, filetype))
+    logger.warn(directory) 
+    schedule.request_parse(directory)
+    return Response(directory)
 
 
 @app.route('/process', methods=['GET', 'POST'])

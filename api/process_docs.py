@@ -33,7 +33,7 @@ def process_raw(doc, source, doc_id, filetype):
     with open(filepath, 'w') as f:
         f.write(str(doc))
 
-    return "Success"
+    return timestamp
 
 
 def process(doc, timestamp):
