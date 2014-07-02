@@ -48,7 +48,6 @@ def process(doc, timestamp):
             'source': {SOURCE OF SCRAPE}
         }
     """
-    print 'The timestamp being passed to process is (in process_docs): ' + str(timestamp)
     directory = '/archive/' + doc['source'].replace('/', '') + '/' + doc['id'].replace('/', '') + '/' + str(timestamp) + '/'
     filepath = BASE_DIR + directory + "parsed.json"
 

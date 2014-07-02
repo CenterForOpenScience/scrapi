@@ -27,8 +27,6 @@ def process():
     doc = json.loads(request.args.get('doc'))
     timestamp = request.args.get('timestamp')
 
-    print 'The timestamp in scrapi main is: ' + str(timestamp)
-
     return process_docs.process(doc, timestamp)
 
 
