@@ -9,10 +9,9 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 import settings
 
-
 def consume():
     today = str(date.today()) + "T00:00:00Z"
-    yesterday = str(date.today() - timedelta(4)) + "T00:00:00Z"
+    yesterday = str(date.today() - timedelta(1)) + "T00:00:00Z"
     payload = {"api_key": settings.API_KEY, "rows": "0"}
     url = 'http://api.plos.org/search?q=publication_date:[{}%20TO%20{}]'.format(yesterday, today)
     plos_request = requests.get(url, params=payload)
@@ -32,16 +31,22 @@ def consume():
 
         doc = xmltodict.parse(results.text)
 
+        #TODO Incooporate "Correction" article type
         for result in doc["response"]["result"]["doc"]:
             try:
-                if result["arr"][1]["@name"] == "abstract":
+                if result["arr"][1]["@name"] == "abstract" and result["str"][3]["#text"] == "Research Article":
+                    full_url = 'http://www.plosone.org/article/info%3Adoi%2F'+result["str"][0]["#text"]
+                    full_plos_request = requests.get(full_url)
+                    #print full_soup
+
                     payload = {
-                        'doc': json.dumps(result, indent=4, sort_keys=True),
+                        'doc': full_plos_request.text,
                         'source': 'PLoS',
                         'doc_id': result["str"][0]["#text"],
-                        'filetype': 'json'
+                        'filetype': 'html'
                     }
 
+                    #print payload
                     requests.get('http://0.0.0.0:1337/process_raw', params=payload)
 
             except KeyError:
@@ -53,4 +58,5 @@ def consume():
         if time.time() - tick < 5:
             time.sleep(5 - (time.time() - tick))
 
-    return 0
+    return json.dumps({})
+#consume()
