@@ -13,7 +13,7 @@ param_date_stamp = datetime.date.today().strftime('%m/%d/%Y')
 parse_date_stamp = datetime.date.today().strftime('%Y-%m-%d')
 
 
-def consume(start_date='07/01/2014', **kwargs):
+def consume(start_date=param_date_stamp, **kwargs):
     """A function for querying the SciTech Connect database for raw XML. The XML is chunked into smaller pieces, each representing data
     about an article/report. If there are multiple pages of results, this function iterates through all the pages."""
     base_url = 'http://www.osti.gov/scitech/scitechxml'
