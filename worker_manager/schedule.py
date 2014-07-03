@@ -46,7 +46,6 @@ def run_scraper(config_file):
     r = requests.post(info['url'] + 'consume')
 
     
-
 def check_archive():
 
     all_yamls = {}
@@ -68,12 +67,15 @@ def request_parse(directory):
         yaml_dict = load_config( 'worker_manager/manifests/' + filename )
         all_yamls[ yaml_dict['directory'] ] = yaml_dict[ 'url' ]
 
-    logger.warn( 'SCHEDULE!!!' + directory)
 
     url = all_yamls[directory.split('/')[1]]
 
+    # logger.warn( 'SCHEDULE!!! ' + url)
+
     with open(os.path.abspath(directory), 'r') as f:
+        logger.warn('path is: ' + os.path.abspath(directory))
         payload = {'doc': f.read(), 'timestamp': directory.split('/')[-2]}
+        logger.warn('pAYLOAD!!!!' + str(payload))
         requests.get(url + 'process', params=payload)  # TODO
 
 if __name__ == '__main__':
