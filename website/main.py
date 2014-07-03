@@ -47,7 +47,7 @@ def search_search():
     query = request.args.get('q')
     start = request.args.get('from')
     to = request.args.get('to')
-    return json.dumps(search.search(query, start, to))
+    return Response(json.dumps(search.search(query, start, to), indent=4, sort_keys=True), mimetype='application/json')
 
 if __name__ == '__main__':
     app.run(
