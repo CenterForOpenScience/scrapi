@@ -1,0 +1,2 @@
+ELASTIC_URI = 'http://localhost:9200'
+ELASTIC_TIMEOUT = 60
