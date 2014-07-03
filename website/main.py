@@ -46,8 +46,8 @@ def process():
 def search_search():
     query = request.args.get('q')
     start = request.args.get('from')
-    to = request.args.get('to')
-    return Response(json.dumps(search.search(query, start, to), indent=4, sort_keys=True), mimetype='application/json')
+    size = request.args.get('size')
+    return Response(json.dumps(search.search(query, start, size), indent=4, sort_keys=True), mimetype='application/json')
 
 if __name__ == '__main__':
     app.run(

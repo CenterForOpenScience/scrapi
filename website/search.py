@@ -27,12 +27,14 @@ except pyelasticsearch.exceptions.ConnectionError as e:
     elastic = None
 
 
-def search(query, start=0, end=10):
+def search(query, start=0, size=10):
     if not query:
         query = {
             'query': {
                 'match_all': {}
-            }
+            },
+            'from': start,
+            'size': size
         }
     else:
         query = {
@@ -40,7 +42,9 @@ def search(query, start=0, end=10):
                 'match': {
                     '_all': query
                 }
-            }
+            },
+            'from': start,
+            'size': size
         }
     raw_results = elastic.search(query, index='scrapi')
     results = [hit['_source'] for hit in raw_results['hits']['hits']]
