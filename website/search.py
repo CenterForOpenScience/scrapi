@@ -2,7 +2,7 @@
 
 import logging
 import pyelasticsearch
-import settings
+import search_settings
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -13,8 +13,8 @@ TYPES = ['article', 'citation']
 
 try:
     elastic = pyelasticsearch.ElasticSearch(
-        settings.ELASTIC_URI,
-        timeout=settings.ELASTIC_TIMEOUT
+        search_settings.ELASTIC_URI,
+        timeout=search_settings.ELASTIC_TIMEOUT
     )
     logging.getLogger('pyelasticsearch').setLevel(logging.DEBUG)
     logging.getLogger('requests').setLevel(logging.DEBUG)
