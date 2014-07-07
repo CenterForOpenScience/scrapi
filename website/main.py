@@ -9,11 +9,6 @@ sys.path.insert(1, os.path.join(
 
 from api import process_docs
 import search
-import worker_manager.schedule as schedule
-import logging 
-
-logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
@@ -21,21 +16,31 @@ app = Flask(__name__)
 @app.route('/process_raw', methods=['GET', 'POST'])
 def process_raw():
     if request.method == 'POST':
-        doc = request.form.get('doc')
-        source = request.form.get('source')
-        doc_id = request.form.get('doc_id')
-        filetype = request.form.get('filetype')
-    else:
-        doc = request.args.get('doc')
-        source = request.args.get('source')
-        doc_id = request.args.get('doc_id')
-        filetype = request.args.get('filetype')
-    timestamp = process_docs.process_raw(doc, source, doc_id, filetype)
-    directory = '/'.join(['archive', str(source), str(doc_id).replace('/',''), str(timestamp)]) + '/raw.' + str(filetype)
+        docs = request.form['doc']
+        doc_list_item = docs.split("ASDFJKL")
+        doc_ids = request.form['doc_id']
+        doc_ids_item = doc_ids.split("ASDFJKL")
+        for x in range(0,len(doc_list_item)):
+            doc = doc_list_item[x]
+            source = request.form.get('source')
+            doc_id = doc_ids_item[x]
+            filetype = request.form.get('filetype')
 
-    logger.warn(directory) 
-    schedule.request_parse(directory)
-    return Response(directory)
+            Response(process_docs.process_raw(doc, source, doc_id, filetype))
+
+    else:
+        docs = request.args['doc']
+        doc_list_item = docs.split("ASDFJKL")
+        doc_ids = request.args['doc_id']
+        doc_ids_item = doc_ids.split("ASDFJKL")
+        for x in range(0,len(doc_list_item)):
+            doc = doc_list_item[x]
+            source = request.args.get('source')
+            doc_id = doc_ids_item[x]
+            filetype = request.args.get('filetype')
+
+            Response(process_docs.process_raw(doc, source, doc_id, filetype))
+    return "Processed!"
 
 
 @app.route('/process', methods=['GET', 'POST'])
