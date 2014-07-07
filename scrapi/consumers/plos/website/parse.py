@@ -15,6 +15,9 @@ def get_authors(soup):
         if "|mail|" or "|mail" in author:
             author = str(author).replace('|mail|','')
             author = str(author).replace('|mail','')
+        elif "|equal contributor|" or "|equal contributor" in author:
+            author = str(author).replace('|equal contributor|','')
+            author = str(author).replace('|equal contributor','')
         authors.append(author)
     return authors
 
