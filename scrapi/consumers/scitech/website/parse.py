@@ -26,7 +26,11 @@ def parse(xml, timestamp, date_stamp=parse_date_stamp):
             'article_type': record.find(str(etree.QName(elements_url,'type'))).text,
             'url': record.find(str(etree.QName(terms_url,'identifier-purl'))).text,
             'date_entered': record.find(str(etree.QName(elements_url,'dateEntry'))).text,
-            'date_retrieved': date_stamp
+            'research_org': record.find(str(etree.QName(terms_url,'publisherResearch'))).text,
+            'research_sponsor': record.find(str(etree.QName(terms_url, 'publisherSponsor'))).text,
+            'tags': record.find(str(etree.QName(elements_url, 'subject'))).text,
+            'date_retrieved': date_stamp,
+            'date_published': record.find(str(etree.QName(elements_url, 'date'))).text
         },
         'meta':{},
         'id': record.find(str(etree.QName(elements_url, 'ostiId'))).text,
