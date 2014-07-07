@@ -9,6 +9,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 import settings
 
+
 def consume():
     today = str(date.today()) + "T00:00:00Z"
     yesterday = str(date.today() - timedelta(4)) + "T00:00:00Z"
@@ -32,31 +33,35 @@ def consume():
         doc = xmltodict.parse(results.text)
 
         #TODO Incooporate "Correction" article type
-        for result in doc["response"]["result"]["doc"]:
-            try:
-                if result["arr"][1]["@name"] == "abstract" and result["str"][3]["#text"] == "Research Article":
-                    full_url = 'http://www.plosone.org/article/info%3Adoi%2F'+result["str"][0]["#text"]
-                    full_plos_request = requests.get(full_url)
-                    #print full_soup
+        try:
+            for result in doc["response"]["result"]["doc"]:
+                try:
+                    if result["arr"][1]["@name"] == "abstract" and result["str"][3]["#text"] == "Research Article":
+                        full_url = 'http://www.plosone.org/article/info%3Adoi%2F'+result["str"][0]["#text"]
+                        full_plos_request = requests.get(full_url)
+                        #print full_soup
 
-                    payload = {
-                        'doc': full_plos_request.text,
-                        'source': 'PLoS',
-                        'doc_id': result["str"][0]["#text"],
-                        'filetype': 'html'
-                    }
+                        payload = {
+                            'doc': full_plos_request.text,
+                            'source': 'PLoS',
+                            'doc_id': result["str"][0]["#text"],
+                            'filetype': 'html'
+                        }
 
-                    #print payload
-                    requests.get('http://0.0.0.0:1337/process_raw', params=payload)
+                        #print payload
+                        requests.get('http://0.0.0.0:1337/process_raw', params=payload)
 
-            except KeyError:
-                pass
+                except KeyError:
+                    pass
 
-        start += rows
-        rows += rows
+            start += rows
+            rows += rows
 
-        if time.time() - tick < 5:
-            time.sleep(5 - (time.time() - tick))
+            if time.time() - tick < 5:
+                time.sleep(5 - (time.time() - tick))
+        except KeyError:
+            print "No new files/updates!"
+            break
 
     return json.dumps({})
 #consume()
