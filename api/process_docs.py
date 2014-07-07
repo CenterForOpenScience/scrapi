@@ -5,7 +5,10 @@ import datetime
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
+import logging
 
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 BASE_DIR = os.path.abspath(os.path.join(
     os.path.dirname(os.path.abspath(__file__)),
@@ -22,7 +25,6 @@ def process_raw(doc, source, doc_id, filetype):
     timestamp = datetime.datetime.now()
     directory = '/archive/' + str(source).replace('/', '') + '/' + str(doc_id).replace('/', '') + '/' + str(timestamp) + '/'
     filepath = BASE_DIR + directory + "raw" + '.' + str(filetype)
-    print filepath
 
     dir_path = BASE_DIR
     for dir in directory.split("/"):
@@ -31,7 +33,11 @@ def process_raw(doc, source, doc_id, filetype):
             os.makedirs(dir_path)
 
     with open(filepath, 'w') as f:
-        f.write(str(doc))
+        try:
+            f.write(str(doc))
+        except IOError as e:
+            logger.log(e)
+            return None
 
     return "Success"
 
@@ -53,6 +59,10 @@ def process(doc, timestamp):
             'source': {SOURCE OF SCRAPE}
         }
     """
+    if None in [doc.get('title'), doc.get('contributors'), doc.get('id'), doc.get('source')]:
+        logger.error(str(__name__) + ": Document sent for processing did not match schema")
+        return None
+
     directory = '/archive/' + doc['source'].replace('/', '') + '/' + str(doc['id']).replace('/', '') + '/' + str(timestamp) + '/'
     filepath = BASE_DIR + directory + "parsed.json"
 
@@ -63,14 +73,17 @@ def process(doc, timestamp):
             os.makedirs(dir_path)
 
     with open(filepath, 'w') as f:
-        f.write(json.dumps(doc, sort_keys=True, indent=4))
+        try:
+            f.write(json.dumps(doc, sort_keys=True, indent=4))
+        except IOError as e:
+            logger.error(e)
+            return None
     node = {}
     node['title'] = doc['title']
     node['contributors'] = doc['contributors']
 
     properties = doc['properties']
     for property in properties.keys():
-        if property in ['description', 'tags', 'system_tags', 'wiki_pages_current']:
-            node[property] = properties[property]
+        node[property] = properties[property]
 
     return json.dumps(node, sort_keys=True, indent=4)
