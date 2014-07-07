@@ -67,7 +67,7 @@ def get_figures(soup):
 
 
 def get_abstract(soup):
-    abstract = soup.find(class_="abstract").getText()
+    abstract = soup.find(class_="abstract").find("p").getText()
     abstract = " ".join(abstract.split())
     return abstract
 

@@ -19,10 +19,10 @@ def consume():
     num_articles = int(response["response"]["result"]["@numFound"])
 
     start = 0
-    rows = 5
+    rows = 10
     raw = ""
 
-    while rows < 10:
+    while rows < 50:
         payload = {"api_key": settings.API_KEY, "rows": rows, "start": start}
         results = requests.get(url, params=payload)
         tick = time.time()
