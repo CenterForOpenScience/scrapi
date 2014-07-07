@@ -27,7 +27,7 @@ except pyelasticsearch.exceptions.ConnectionError as e:
     elastic = None
 
 
-def search(query, start=0, size=10):
+def search(index, query, start=0, size=10):
     if not query:
         query = {
             'query': {
@@ -46,7 +46,7 @@ def search(query, start=0, size=10):
             'from': start,
             'size': size
         }
-    raw_results = elastic.search(query, index='scrapi')
+    raw_results = elastic.search(query, index=index)
     results = [hit['_source'] for hit in raw_results['hits']['hits']]
     return results
 
