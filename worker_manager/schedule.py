@@ -9,7 +9,7 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 def load_config(config_file):
-    with open(config_file) as f: 
+    with open(config_file) as f:
         info = yaml.load(f)
     return info
 
@@ -47,20 +47,20 @@ def run_scraper(config_file):
     logger.debug('!! Request to run scraper: ' + url)
     r = requests.post(url)
 
-    
 def check_archive():
-    all_yamls = {}
-    for filename in os.listdir( 'manifests/' ):
-        yaml_dict = load_config( 'manifests/' + filename )
-        all_yamls[ yaml_dict['directory'] ] = yaml_dict[ 'url' ]
 
-    for dirname, dirnames, filenames in os.walk( '../archive/' ):
-        if os.path.isfile( dirname + '/raw.json' ) and not os.path.isfile( dirname + '/parsed.json' ):
+    all_yamls = {}
+    for filename in os.listdir('manifests/'):
+        yaml_dict = load_config('manifests/' + filename)
+        all_yamls[yaml_dict['directory']] = yaml_dict['url']
+
+    for dirname, dirnames, filenames in os.walk('../archive/'):
+        if os.path.isfile(dirname + '/raw.json') and not os.path.isfile(dirname + '/parsed.json'):
             for filename in filenames:
                 if 'raw' in filename:
                     with open(os.path.join(dirname, filename), 'r') as f:
                         payload = {'doc': f.read(), 'timestamp': dirname.split('/')[-1]}
-                        requests.post(all_yamls[ dirname.split('/')[2] ] + 'process', params=payload)  # TODO
+                        requests.post(all_yamls[dirname.split('/')[2]] + 'process', params=payload)  # TODO
 
 def request_parse(directory):
     all_yamls = {}

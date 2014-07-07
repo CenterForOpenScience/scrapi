@@ -56,7 +56,7 @@ def search_search():
     query = request.args.get('q')
     start = request.args.get('from')
     size = request.args.get('size')
-    return Response(json.dumps(search.search(query, start, size), indent=4, sort_keys=True), mimetype='application/json')
+    return Response(json.dumps(search.search('scrapi', query, start, size), indent=4, sort_keys=True), mimetype='application/json')
 
 if __name__ == '__main__':
     app.run(
