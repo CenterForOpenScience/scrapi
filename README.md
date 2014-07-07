@@ -20,6 +20,13 @@ Now, just run
 ```bash
 $ elasticsearch
 ```
+
+or 
+
+```bash
+$ invoke elasticsearch
+```
+
 and you should be good to go.
 
 #### Ubuntu 
@@ -33,6 +40,13 @@ Now, just run
 ```bash
 $ sudo service elasticsearch start
 ```
+
+or 
+
+```bash
+$ invoke elasticsearch
+```
+
 and you should be good to go.
 
 ### Requirements
