@@ -38,21 +38,6 @@ def main(config_file):
     except (KeyboardInterrupt, SystemExit):
         sched.shutdown()  # Not strictly necessary if daemonic mode is enabled but should be done if possibleisched.start()
 
-
-def run_scraper(config_file):
-    info = load_config(config_file)
-    # does this need to be added to the yaml file?
-    r = requests.post(info['url'] + 'consume')
-    print r
-    for dirname, dirnames, filenames in os.walk('../archive/' + str(info['directory']) + '/'):
-        # print path to all filenames.
-        for filename in filenames:
-            if 'raw' in filename:
-                with open(os.path.join(dirname, filename), 'r') as f:
-                    payload = {'doc': f.read(), 'timestamp': dirname.split('/')[-1]}
-                    requests.get(info['url'] + 'process', params=payload)  # TODO
-
-
 def check_archive():
 
     all_yamls = {}
@@ -68,8 +53,22 @@ def check_archive():
                         payload = {'doc': f.read(), 'timestamp': dirname.split('/')[-1]}
                         requests.post(all_yamls[dirname.split('/')[2]] + 'process', params=payload)  # TODO
 
+def request_parses(config_file):
+    os.remove('../recent_files.txt')
+    config = load_config(config_file)
+    requests.post(config['url'] + 'consume')
+
+    with open( '../recent_files.txt', 'r' ) as recent_files:
+        for line in recent_files:
+            info = line.split(',')
+            source = info[0].replace( ' ', '' )
+            doc_id = info[1].replace( ' ', '' )
+            timestamp = info[2].replace( ' ', '', 1 ).replace( '\n', '' )
+            directory = '../archive/' + source + '/' + doc_id + '/' + timestamp + '/raw.html' 
+            with open( directory, 'r' ) as f:
+                payload = {'doc': f.read(), 'timestamp': timestamp}
+                requests.get(config['url'] + 'process', params=payload)  
 
 if __name__ == '__main__':
-    # check_archive()
-    run_scraper('manifests/plos-manifest.yml')
-    # run_scraper('manifests/scitech-manifest.yml')
+    request_parses('manifests/plos-manifest.yml')
+

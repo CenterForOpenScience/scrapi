@@ -18,12 +18,12 @@ def process_raw():
     if request.method == 'POST':
         doc = request.form.get('doc')
         source = request.form.get('source')
-        doc_id = request.form.get('doc_id')
+        doc_id = request.form.get('doc_id').replace( '/', '' )
         filetype = request.form.get('filetype')
     else:
         doc = request.args.get('doc')
         source = request.args.get('source')
-        doc_id = request.args.get('doc_id')
+        doc_id = request.args.get('doc_id').replace( '/', '' )
         filetype = request.args.get('filetype')
     timestamp = process_docs.process_raw(doc, source, doc_id, filetype)
 
