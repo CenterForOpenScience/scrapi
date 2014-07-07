@@ -43,11 +43,12 @@ def main(config_file):
 def run_scraper(config_file):
     info = load_config(config_file)
     # does this need to be added to the yaml file? 
-    r = requests.post(info['url'] + 'consume')
+    url = info['url'] + 'consume'
+    logger.debug('!! Request to run scraper: ' + url)
+    r = requests.post(url)
 
     
 def check_archive():
-
     all_yamls = {}
     for filename in os.listdir( 'manifests/' ):
         yaml_dict = load_config( 'manifests/' + filename )
@@ -70,7 +71,7 @@ def request_parse(directory):
 
     url = all_yamls[directory.split('/')[1]]
 
-    # logger.warn( 'SCHEDULE!!! ' + url)
+    logger.warn( 'SCHEDULE!!! ' + url)
 
     with open(os.path.abspath(directory), 'r') as f:
         logger.warn('path is: ' + os.path.abspath(directory))
