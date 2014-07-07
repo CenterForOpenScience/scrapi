@@ -12,7 +12,7 @@ import settings
 
 def consume():
     today = str(date.today()) + "T00:00:00Z"
-    yesterday = str(date.today() - timedelta(1)) + "T00:00:00Z"
+    yesterday = str(date.today() - timedelta(4)) + "T00:00:00Z"
     payload = {"api_key": settings.API_KEY, "rows": "0"}
     url = 'http://api.plos.org/search?q=publication_date:[{}%20TO%20{}]'.format(yesterday, today)
     plos_request = requests.get(url, params=payload)
