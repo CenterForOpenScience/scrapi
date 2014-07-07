@@ -54,3 +54,13 @@ $ invoke server
 ```
 
 and the server should be up and running!
+
+### Testing
+
+- To run the tests for the project, just type
+
+```bash 
+$ invoke test
+```
+
+and all of the tests in the 'tests/' directory will be run. 
