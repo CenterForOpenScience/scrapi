@@ -40,7 +40,7 @@ and you should be good to go.
 - Now that you have Elasticsearch installed, create and enter virtual environment for scrapi, and go to the top level project directory. From there, run 
 
 ```bash
-$ pip install -r requirements.txt
+$ invoke requirements
 ```
 
 and the python requirements for the project will download and install. 
