@@ -6,6 +6,11 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 import logging
+sys.path.insert(1, os.path.join(
+    os.path.dirname(os.path.abspath(__file__)),
+    os.pardir,
+))
+from api.collision_detection import collision_detector
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -60,8 +65,13 @@ def process(doc, timestamp):
         }
     """
     if None in [doc.get('title'), doc.get('contributors'), doc.get('id'), doc.get('source')]:
-        logger.error(str(__name__) + ": Document sent for processing did not match schema")
+        logger.error(": Document sent for processing did not match schema")
         return None
+
+    # Collision detection
+    conflict = collision_detector.detect(doc)
+    if conflict:
+        logger.warn("Document with id {0} and timestamp {1} from source {2} already found in database".format(doc['id'], timestamp, doc['source']))
 
     directory = '/archive/' + doc['source'].replace('/', '') + '/' + str(doc['id']).replace('/', '') + '/' + str(timestamp) + '/'
     filepath = BASE_DIR + directory + "parsed.json"

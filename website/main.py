@@ -37,6 +37,7 @@ def process():
     else:
         doc = json.loads(request.args.get('doc'))
         timestamp = request.args.get('timestamp')
+    doc['timestamp'] = timestamp
     processed_doc = process_docs.process(doc, timestamp)
     search.update('scrapi', doc, 'article', doc['id'])
     return processed_doc
