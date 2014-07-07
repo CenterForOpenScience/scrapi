@@ -25,8 +25,13 @@ def process_raw():
         source = request.args.get('source')
         doc_id = request.args.get('doc_id')
         filetype = request.args.get('filetype')
+    timestamp = process_docs.process_raw(doc, source, doc_id, filetype)
 
-    return Response(process_docs.process_raw(doc, source, doc_id, filetype))
+
+    with open( 'recent_files.txt', 'a') as f:
+        f.write( source + ", " + doc_id + ", " + str(timestamp) + "\n" )
+
+    return Response()
 
 
 @app.route('/process', methods=['GET', 'POST'])
@@ -55,3 +60,9 @@ if __name__ == '__main__':
         port=1337,
         debug=True
     )
+
+# find the source, docID ans timestamp that 's being used
+# write those to a file with all the master documents (will be rewritten)
+# in schedule.py define a task to run periodically:
+# - read in the file, find all the raw files in there, 
+# - request a parse for each of those files
