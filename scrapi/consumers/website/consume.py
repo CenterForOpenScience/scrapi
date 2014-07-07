@@ -11,7 +11,7 @@ import settings
 
 def consume():
     today = str(date.today()) + "T00:00:00Z"
-    yesterday = str(date.today() - timedelta(1)) + "T00:00:00Z"
+    yesterday = str(date.today() - timedelta(4)) + "T00:00:00Z"
     payload = {"api_key": settings.API_KEY, "rows": "0"}
     url = 'http://api.plos.org/search?q=publication_date:[{}%20TO%20{}]'.format(yesterday, today)
     plos_request = requests.get(url, params=payload)
@@ -19,10 +19,10 @@ def consume():
     num_articles = int(response["response"]["result"]["@numFound"])
 
     start = 0
-    rows = 5
+    rows = 10
     raw = ""
 
-    while rows < 10:
+    while rows < 50:
         payload = {"api_key": settings.API_KEY, "rows": rows, "start": start}
         results = requests.get(url, params=payload)
         tick = time.time()
