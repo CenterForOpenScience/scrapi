@@ -9,6 +9,6 @@ from website import search
 
 
 def detect(doc):
-    results = search.search(doc['id'])
+    results = search.search('scrapi', doc['id'])
     if len(results) != 0:
         return True
