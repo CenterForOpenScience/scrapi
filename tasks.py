@@ -50,3 +50,8 @@ def test():
 @task
 def requirements():
     run('pip install -r requirements.txt')
+
+
+@task
+def migrate_search():
+    run('python website/migrate_search.py')
