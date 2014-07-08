@@ -56,3 +56,5 @@ docs/_build/
 archive/*
 
 .DS_Store
+
+worker_manager/recent_files.txt

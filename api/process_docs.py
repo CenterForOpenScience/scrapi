@@ -44,7 +44,7 @@ def process_raw(doc, source, doc_id, filetype):
             logger.log(e)
             return None
 
-    return "Success"
+    return timestamp
 
 
 def process(doc, timestamp):

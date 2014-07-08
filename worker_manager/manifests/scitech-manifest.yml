@@ -12,4 +12,6 @@ directory: 'scitech'
 
 url: 'http://localhost:1338/'
 
+file-format: '.xml'
+
 ...
