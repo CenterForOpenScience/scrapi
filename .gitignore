@@ -56,3 +56,5 @@ docs/_build/
 archive/*
 
 .DS_Store
+
+recent_files.txt
