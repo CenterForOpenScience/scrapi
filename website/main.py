@@ -26,7 +26,10 @@ def process_raw():
             doc_id = doc_ids_item[x]
             filetype = request.form.get('filetype')
 
-            Response(process_docs.process_raw(doc, source, doc_id, filetype))
+            timestamp = process_docs.process_raw(doc, source, doc_id, filetype)
+
+            with open( 'recent_files.txt', 'a') as f:
+                f.write( source + ", " + doc_id + ", " + str(timestamp) + "\n" )
 
     else:
         docs = request.args['doc']
@@ -39,10 +42,10 @@ def process_raw():
             doc_id = doc_ids_item[x]
             filetype = request.args.get('filetype')
 
-    timestamp = process_docs.process_raw(doc, source, doc_id, filetype)
+            timestamp = process_docs.process_raw(doc, source, doc_id, filetype)
 
-    with open( 'recent_files.txt', 'a') as f:
-        f.write( source + ", " + doc_id + ", " + str(timestamp) + "\n" )
+            with open( 'worker_manager/recent_files.txt', 'a') as f:
+                f.write( source + ", " + doc_id + ", " + str(timestamp) + "\n" )
 
     return Response()
 

@@ -64,11 +64,14 @@ def check_archive():
                         requests.post(all_yamls[dirname.split('/')[2]] + 'process', params=payload)  # TODO
 
 def request_parses(config_file):
-    os.remove('../recent_files.txt')
+    try:
+        os.remove('recent_files.txt')
+    except:
+        pass
     config = load_config(config_file)
     requests.post(config['url'] + 'consume')
 
-    with open( '../recent_files.txt', 'r' ) as recent_files:
+    with open( 'recent_files.txt', 'r' ) as recent_files:
         for line in recent_files:
             info = line.split(',')
             source = info[0].replace( ' ', '' )
