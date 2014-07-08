@@ -3,10 +3,11 @@ import time
 import os
 import requests
 import yaml
-import logging 
+import logging
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
+
 
 def load_config(config_file):
     with open(config_file) as f:
@@ -41,21 +42,23 @@ def main(config_file):
     except (KeyboardInterrupt, SystemExit):
         sched.shutdown()  # Not strictly necessary if daemonic mode is enabled but should be done if possibleisched.start()
 
+
 def run_scraper(config_file):
     info = load_config(config_file)
-    # does this need to be added to the yaml file? 
+    # does this need to be added to the yaml file?
     url = info['url'] + 'consume'
     logger.debug('!! Request to run scraper: ' + url)
-    r = requests.post(url)
+    requests.post(url)
+
 
 def check_archive():
 
     all_yamls = {}
-    for filename in os.listdir('manifests/'):
-        yaml_dict = load_config('manifests/' + filename)
+    for filename in os.listdir('worker_manager/manifests/'):
+        yaml_dict = load_config('worker_manager/manifests/' + filename)
         all_yamls[yaml_dict['directory']] = yaml_dict['url']
 
-    for dirname, dirnames, filenames in os.walk('../archive/'):
+    for dirname, dirnames, filenames in os.walk('archive/'):
         if os.path.isfile(dirname + '/raw.json') and not os.path.isfile(dirname + '/parsed.json'):
             for filename in filenames:
                 if 'raw' in filename:
@@ -63,25 +66,24 @@ def check_archive():
                         payload = {'doc': f.read(), 'timestamp': dirname.split('/')[-1]}
                         requests.post(all_yamls[dirname.split('/')[2]] + 'process', params=payload)  # TODO
 
-def request_parses(config_file):
-    try:
-        os.remove('recent_files.txt')
-    except:
-        pass
-    config = load_config(config_file)
-    requests.post(config['url'] + 'consume')
 
-    with open( 'recent_files.txt', 'r' ) as recent_files:
+def request_parses(config_file):
+    config = load_config(config_file)
+
+    with open('worker_manager/recent_files.txt', 'r') as recent_files:
         for line in recent_files:
             info = line.split(',')
-            source = info[0].replace( ' ', '' )
-            doc_id = info[1].replace( ' ', '' ).replace('/','')
-            timestamp = info[2].replace( ' ', '', 1 ).replace( '\n', '' )
-            directory = '../archive/' + source + '/' + doc_id + '/' + timestamp + '/raw.html' 
-            with open( directory, 'r' ) as f:
+            source = info[0].replace(' ', '')
+            doc_id = info[1].replace(' ', '').replace('/', '')
+            timestamp = info[2].replace(' ', '', 1).replace('\n', '')
+            directory = 'archive/' + source + '/' + doc_id + '/' + timestamp + '/raw.html'
+            with open(directory, 'r') as f:
                 payload = {'doc': f.read(), 'timestamp': timestamp}
-                requests.get(config['url'] + 'process', params=payload)  
+                requests.get(config['url'] + 'process', params=payload)
+
+    os.remove('worker_manager/recent_files.txt')
 
 if __name__ == '__main__':
-    request_parses('manifests/plos-manifest.yml')
-
+    config = 'worker_manager/manifests/plos-manifest.yml'
+    run_scraper(config)
+    request_parses(config)
