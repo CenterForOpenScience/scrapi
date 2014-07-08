@@ -39,8 +39,12 @@ def process_raw():
             doc_id = doc_ids_item[x]
             filetype = request.args.get('filetype')
 
-            Response(process_docs.process_raw(doc, source, doc_id, filetype))
-    return "Processed!"
+    timestamp = process_docs.process_raw(doc, source, doc_id, filetype)
+
+    with open( 'recent_files.txt', 'a') as f:
+        f.write( source + ", " + doc_id + ", " + str(timestamp) + "\n" )
+
+    return Response()
 
 
 @app.route('/process', methods=['GET', 'POST'])

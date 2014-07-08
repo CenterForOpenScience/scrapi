@@ -13,6 +13,7 @@ def load_config(config_file):
         info = yaml.load(f)
     return info
 
+
 def main(config_file):
     info = load_config(config_file)
 
@@ -62,24 +63,22 @@ def check_archive():
                         payload = {'doc': f.read(), 'timestamp': dirname.split('/')[-1]}
                         requests.post(all_yamls[dirname.split('/')[2]] + 'process', params=payload)  # TODO
 
-def request_parse(directory):
-    all_yamls = {}
-    for filename in os.listdir( 'worker_manager/manifests/' ):
-        yaml_dict = load_config( 'worker_manager/manifests/' + filename )
-        all_yamls[ yaml_dict['directory'] ] = yaml_dict[ 'url' ]
+def request_parses(config_file):
+    os.remove('../recent_files.txt')
+    config = load_config(config_file)
+    requests.post(config['url'] + 'consume')
 
-
-    url = all_yamls[directory.split('/')[1]]
-
-    logger.warn( 'SCHEDULE!!! ' + url)
-
-    with open(os.path.abspath(directory), 'r') as f:
-        logger.warn('path is: ' + os.path.abspath(directory))
-        payload = {'doc': f.read(), 'timestamp': directory.split('/')[-2]}
-        logger.warn('pAYLOAD!!!!' + str(payload))
-        requests.get(url + 'process', params=payload)  # TODO
+    with open( '../recent_files.txt', 'r' ) as recent_files:
+        for line in recent_files:
+            info = line.split(',')
+            source = info[0].replace( ' ', '' )
+            doc_id = info[1].replace( ' ', '' )
+            timestamp = info[2].replace( ' ', '', 1 ).replace( '\n', '' )
+            directory = '../archive/' + source + '/' + doc_id + '/' + timestamp + '/raw.html' 
+            with open( directory, 'r' ) as f:
+                payload = {'doc': f.read(), 'timestamp': timestamp}
+                requests.get(config['url'] + 'process', params=payload)  
 
 if __name__ == '__main__':
-    # check_archive()
-    run_scraper('manifests/plos-manifest.yml')
-    # run_scraper('manifests/scitech-manifest.yml')
+    request_parses('manifests/plos-manifest.yml')
+
