@@ -72,7 +72,7 @@ def request_parses(config_file):
         for line in recent_files:
             info = line.split(',')
             source = info[0].replace( ' ', '' )
-            doc_id = info[1].replace( ' ', '' )
+            doc_id = info[1].replace( ' ', '' ).replace('/','')
             timestamp = info[2].replace( ' ', '', 1 ).replace( '\n', '' )
             directory = '../archive/' + source + '/' + doc_id + '/' + timestamp + '/raw.html' 
             with open( directory, 'r' ) as f:
