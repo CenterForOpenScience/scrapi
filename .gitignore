@@ -57,4 +57,4 @@ archive/*
 
 .DS_Store
 
-recent_files.txt
+worker_manager/recent_files.txt

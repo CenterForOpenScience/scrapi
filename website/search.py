@@ -27,6 +27,14 @@ except pyelasticsearch.exceptions.ConnectionError as e:
     elastic = None
 
 
+def requires_search(func):
+    def wrapped(*args, **kwargs):
+        if elastic is not None:
+            return func(*args, **kwargs)
+    return wrapped
+
+
+@requires_search
 def search(index, query, start=0, size=10):
     if not query:
         query = {
@@ -51,10 +59,12 @@ def search(index, query, start=0, size=10):
     return results
 
 
+@requires_search
 def update(index, document, category, id):
     elastic.update(index, category, id, doc=document, upsert=document, refresh=True)
 
 
+@requires_search
 def delete_all(index):
     try:
         elastic.delete_index(index)
@@ -63,6 +73,7 @@ def delete_all(index):
         logger.error("The index '{}' was not deleted from elasticsearch".format(index))
 
 
+@requires_search
 def delete_doc(index, category, doc_id):
     try:
         elastic.delete(index, category, doc_id, refresh=True)
