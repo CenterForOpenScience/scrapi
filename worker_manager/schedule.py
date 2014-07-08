@@ -52,14 +52,13 @@ def run_scraper(config_file):
 
 
 def check_archive():
-
     all_yamls = {}
     for filename in os.listdir('worker_manager/manifests/'):
         yaml_dict = load_config('worker_manager/manifests/' + filename)
         all_yamls[yaml_dict['directory']] = yaml_dict['url']
 
     for dirname, dirnames, filenames in os.walk('archive/'):
-        if os.path.isfile(dirname + '/raw.json') and not os.path.isfile(dirname + '/parsed.json'):
+        if os.path.isfile(dirname + '/raw' + yaml_dict['file-format']) and not os.path.isfile(dirname + '/parsed.json'):
             for filename in filenames:
                 if 'raw' in filename:
                     with open(os.path.join(dirname, filename), 'r') as f:
@@ -76,7 +75,7 @@ def request_parses(config_file):
             source = info[0].replace(' ', '')
             doc_id = info[1].replace(' ', '').replace('/', '')
             timestamp = info[2].replace(' ', '', 1).replace('\n', '')
-            directory = 'archive/' + source + '/' + doc_id + '/' + timestamp + '/raw.html'
+            directory = 'archive/' + source + '/' + doc_id + '/' + timestamp + '/raw' + config['file-format']
             with open(directory, 'r') as f:
                 payload = {'doc': f.read(), 'timestamp': timestamp}
                 requests.get(config['url'] + 'process', params=payload)

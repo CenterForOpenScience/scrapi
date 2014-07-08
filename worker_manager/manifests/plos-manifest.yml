@@ -12,4 +12,6 @@ directory: 'PLoS'
 
 url: 'http://localhost:1338/'
 
+file-format: '.html'
+
 ...
