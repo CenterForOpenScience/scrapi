@@ -3,6 +3,15 @@ import requests
 import json
 import datetime
 import sys
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
+fh = logging.FileHandler('scrAPI.log')
+fh.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+fh.setFormatter(formatter)
+logger.addHandler(fh)
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -19,12 +28,16 @@ def parse(xml, timestamp, date_stamp=parse_date_stamp):
     record = etree.XML(xml)
 
     contributor_list = record.find(str(etree.QName(elements_url,'creator'))).text.split(';')
-
     # for now, scitech does not grab emails, but it could soon...
     contributors = []
     for name in contributor_list:
+        name = name.strip()
+        if name[0] in ['/', ',', 'et. al']:
+            continue
+        if '[' in name:
+            name = name[:name.index('[')].strip()
         contributor = {}
-        contributor['name'] = name
+        contributor['full_name'] = name
         contributor['email'] = None
         contributors.append(contributor)
 
