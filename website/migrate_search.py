@@ -25,7 +25,7 @@ def migrate():
             with open(dirname + '/parsed.json') as f:
                 doc = json.load(f)
                 try:
-                    search.update('scrapi', doc, 'article', dirname.split('/')[2])
+                    search.update('scrapi', doc, dirname.split('/')[1], dirname.split('/')[2])
                 except ElasticHttpError:
                     pass
 

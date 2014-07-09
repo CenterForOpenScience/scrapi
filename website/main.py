@@ -57,7 +57,7 @@ def process():
         timestamp = request.args.get('timestamp')
     doc['timestamp'] = timestamp
     processed_doc = process_docs.process(doc, timestamp)
-    search.update('scrapi', doc, 'article', doc['id'])
+    search.update('scrapi', doc, doc['source'], doc['id'])
     return processed_doc
 
 
