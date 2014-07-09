@@ -17,9 +17,20 @@ def parse(xml, timestamp, date_stamp=parse_date_stamp):
     terms_url = 'http://purl.org/dc/terms/'
     elements_url = 'http://purl.org/dc/elements/1.1/'
     record = etree.XML(xml)
+
+    contributor_list = record.find(str(etree.QName(elements_url,'creator'))).text.split(';')
+
+    # for now, scitech does not grab emails, but it could soon...
+    contributors = []
+    for name in contributor_list:
+        contributor = {}
+        contributor['name'] = name
+        contributor['email'] = None
+        contributors.append(contributor)
+
     json_scrapi = {
         'title': record.find(str(etree.QName(elements_url, 'title'))).text,
-        'contributors': record.find(str(etree.QName(elements_url,'creator'))).text,
+        'contributors': contributors,
         'properties': {
             'doi': record.find(str(etree.QName(elements_url,'doi'))).text,
             'description': record.find(str(etree.QName(elements_url,'description'))).text,

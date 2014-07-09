@@ -1,7 +1,6 @@
 import consume
 import parse
 from flask import Flask, request, Response
-import json
 import sys
 
 reload(sys)
@@ -25,23 +24,6 @@ def parse_all():
 if __name__ == '__main__':
     app.run(
         host="0.0.0.0",
-        port=1339,
+        port=1338,
         debug=True
     )
-
-
-
-
-
-
-
-
-
-
-
-#root = etree.fromstring(TestScrape.xml.encode('utf-8'))
-#for x in root.find('records'):
-#   for y in x:
-#       print y
-
-
