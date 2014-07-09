@@ -7,6 +7,11 @@ import logging
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
+fh = logging.FileHandler('scrAPI.log')
+fh.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+fh.setFormatter(formatter)
+logger.addHandler(fh)
 
 
 def load_config(config_file):
@@ -83,6 +88,8 @@ def request_parses(config_file):
     os.remove('worker_manager/recent_files.txt')
 
 if __name__ == '__main__':
-    config = 'worker_manager/manifests/plos-manifest.yml'
-    run_scraper(config)
-    request_parses(config)
+    plos_config = 'worker_manager/manifests/plos-manifest.yml'
+    scitech_config = 'worker_manager/manifests/scitech-manifest.yml'
+
+    run_scraper(scitech_config)
+    request_parses(scitech_config)
