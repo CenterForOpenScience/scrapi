@@ -43,7 +43,7 @@ def parse(xml, timestamp, date_stamp=parse_date_stamp):
         contributors.append(contributor)
 
         tags = record.find(str(etree.QName(elements_url, 'subject'))).text
-        tags = re.split(',|;', tags)
+        tags = re.split(',(?!\s\&)|;', tags)
         tags = [tag.strip() for tag in tags]
 
     json_scrapi = {
