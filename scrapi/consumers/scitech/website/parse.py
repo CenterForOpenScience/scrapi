@@ -3,6 +3,7 @@ import requests
 import json
 import datetime
 import sys
+import re
 import logging
 
 logging.basicConfig(level=logging.DEBUG)
@@ -28,7 +29,7 @@ def parse(xml, timestamp, date_stamp=parse_date_stamp):
     record = etree.XML(xml)
 
     contributor_list = record.find(str(etree.QName(elements_url,'creator'))).text.split(';')
-    # for now, scitech does not grab emails, but it could soon...
+    # for now, scitech does not grab emails, but it could soon?
     contributors = []
     for name in contributor_list:
         name = name.strip()
@@ -41,6 +42,10 @@ def parse(xml, timestamp, date_stamp=parse_date_stamp):
         contributor['email'] = None
         contributors.append(contributor)
 
+        tags = record.find(str(etree.QName(elements_url, 'subject'))).text
+        tags = re.split(',|;', tags)
+        tags = [tag.strip() for tag in tags]
+
     json_scrapi = {
         'title': record.find(str(etree.QName(elements_url, 'title'))).text,
         'contributors': contributors,
@@ -52,7 +57,7 @@ def parse(xml, timestamp, date_stamp=parse_date_stamp):
             'date_entered': record.find(str(etree.QName(elements_url,'dateEntry'))).text,
             'research_org': record.find(str(etree.QName(terms_url,'publisherResearch'))).text,
             'research_sponsor': record.find(str(etree.QName(terms_url, 'publisherSponsor'))).text,
-            'tags': record.find(str(etree.QName(elements_url, 'subject'))).text,
+            'tags': tags,
             'date_retrieved': date_stamp,
             'date_published': record.find(str(etree.QName(elements_url, 'date'))).text
         },
