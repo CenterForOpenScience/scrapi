@@ -6,6 +6,12 @@ import requests
 import logging
 import importlib
 sys.path.insert(1, os.path.abspath('consumers'))
+sys.path.insert(1, os.path.join(
+    os.path.dirname(os.path.abspath(__file__)),
+    os.pardir,
+))
+
+from api import process_docs
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -31,11 +37,14 @@ def run_scraper(manifest_file):
     logger.info('run_scraper executing for service {}'.format(manifest['directory']))
     if manifest.get('url'):
         url = manifest['url'] + 'consume'
-        result = requests.post(url)
+        ret = requests.post(url)
     else:
         i = importlib.import_module('consumers.{0}.website.consume'.format(manifest['directory']))  # TODO '.website.' not necessary
-        result = i.consume()
-    return result
+        results = i.consume()
+        ret = []
+        for result in results:
+            ret.append(process_docs.process_raw(result[0], result[1], result[2], result[3], result[4]))
+    return ret
 
 
 @app.task

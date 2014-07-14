@@ -13,21 +13,8 @@ CELERY_ENABLE_UTC = True
 CELERY_TIMEZONE = 'UTC'
 
 CELERY_IMPORTS = ('celerytasks',)
-# CELERY_RESULT_BACKEND = 'db+sqlite:///test.db'
 
-# CELERYBEAT_SCHEDULE = {
-#     'run all scrapers': {
-#         'task': 'celerytasks.run_scrapers',
-#         'schedule': crontab(minute='*/2'),
-#         'args': (),
-#     },
-#     'add-every-30-seconds': {
-#         'task': 'celerytasks.add',
-#         'schedule': timedelta(seconds=30),
-#         'args': (16, 16)
-#     }
-# }
-
+# Programmatically generate celery beat schedule
 SCHED = {}
 for manifest in os.listdir('manifests/'):
     filepath = 'manifests/' + manifest
@@ -35,7 +22,7 @@ for manifest in os.listdir('manifests/'):
         info = yaml.load(f)
     SCHED['run ' + manifest] = {
         'task': 'celerytasks.run_scraper',
-        'schedule': crontab(day_of_week='mon-fri', minute=info['minute']),
+        'schedule': crontab(day_of_week='mon-fri', hour=info['hour'], minute=info['minute']),
         'args': [filepath],
     }
 

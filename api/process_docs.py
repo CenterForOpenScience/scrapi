@@ -21,11 +21,13 @@ BASE_DIR = os.path.abspath(os.path.join(
 ))
 
 
-def process_raw(doc, source, doc_id, filetype):
+def process_raw(doc, source, doc_id, filetype, consumer_version):
     """
         Takes a document (in the form of text, and saves it to disk
         with the specified name and the designated filetype in the
-        specified source directory
+        specified source directory. It also saves a manifest file
+        in the directory, containing the git hash for the version
+        of the consumer it was produced with.
     """
     timestamp = datetime.datetime.now()
     directory = '/archive/' + str(source).replace('/', '') + '/' + str(doc_id).replace('/', '') + '/' + str(timestamp) + '/'
@@ -43,6 +45,10 @@ def process_raw(doc, source, doc_id, filetype):
         except IOError as e:
             logger.log(e)
             return None
+    with open(dir_path + 'manifest.json', 'w') as f:
+        info = {}
+        info['version'] = consumer_version.strip()
+        f.write(json.dumps(info))
 
     return timestamp
 
