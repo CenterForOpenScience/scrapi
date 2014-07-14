@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import xmltodict
 import time
-import json
+import os
 from datetime import date, timedelta
 import sys
 reload(sys)
@@ -36,12 +36,12 @@ def consume():
 
         full_response = doc["response"]["result"]["doc"]
 
-        #TODO Incooporate "Correction" article type
+        # TODO Incooporate "Correction" article type
         try:
             for result in full_response:
                 try:
                     if result["arr"][1]["@name"] == "abstract" and result["str"][3]["#text"] == "Research Article":
-                        full_url = 'http://www.plosone.org/article/info%3Adoi%2F'+result["str"][0]["#text"]
+                        full_url = 'http://www.plosone.org/article/info%3Adoi%2F' + result["str"][0]["#text"]
                         full_plos_request = requests.get(full_url)
                         doc_list.append(full_plos_request.text)
                 except KeyError:
@@ -56,18 +56,22 @@ def consume():
             print "No new files/updates!"
             break
 
-    full_id = []
-    for x in range(0,len(doc_list)):
+    with open(os.path.abspath(os.path.join(os.path.abspath(__file__), os.path.join(os.pardir, os.pardir))) + '/version', 'r') as f:
+        version = f.readline()
+
+    return_list = []
+    for x in range(0, len(doc_list)):
         doc_soup = BeautifulSoup(doc_list[x])
-        full_id.append(doc_soup.find("meta", {"name":"citation_doi"})['content'])
+        doc_id = doc_soup.find("meta", {"name": "citation_doi"})['content']
+        return_list.append((doc_list[x], 'PLoS', doc_id, 'html', version))
 
-    payload = {
-        'doc': 'ASDFJKL'.join(doc_list),
-        'source': 'PLoS',
-        'doc_id': 'ASDFJKL'.join(full_id),
-        'filetype': 'html'
-    }
+#    payload = {
+#        'doc': 'ASDFJKL'.join(doc_list),
+#        'source': 'PLoS',
+#        'doc_id': 'ASDFJKL'.join(full_id),
+#        'filetype': 'html',
+#        'version': version,
+#    }
 
-    requests.post('http://0.0.0.0:1337/process_raw', data=payload)
-    return json.dumps({})
-#consume()
+    # requests.post('http://0.0.0.0:1337/process_raw', data=payload)
+    return return_list
