@@ -1,4 +1,6 @@
 from invoke import run, task
+import os
+import yaml
 
 
 @task
@@ -55,3 +57,12 @@ def requirements():
 @task
 def migrate_search():
     run('python website/migrate_search.py')
+
+
+@task
+def install_consumers():
+    for filename in os.listdir('worker_manager/manifests/'):
+        with open('worker_manager/manifests/' + filename) as f:
+            info = yaml.load(f)
+        run('git clone -b master {0} worker_manager/consumers/{1}'.format(info['git-url'], info['directory']))
+        run('pip install -r worker_manager/consumers/{0}/requirements.txt'.format(info['directory']))

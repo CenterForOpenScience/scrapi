@@ -6,12 +6,12 @@ scheduler-config:
 
 days: 'mon-fri'
 hour: 23
-minute: 59
+minute: '59'
 
 directory: 'PLoS'
 
-url: 'http://localhost:1338/'
-
+git-url: 'https://github.com/fabianvf/PLoS-API-consumer.git'
+    
 file-format: '.html'
 
 ...

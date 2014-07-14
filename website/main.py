@@ -17,7 +17,7 @@ app = Flask(__name__)
 def process_raw():
     if request.method == 'POST':
         docs = request.form['doc']
-        doc_list_item = docs.split("ASDFJKL")
+        doc_list_item = docs.split("ASDFJKL")  # TODO Fix this
         doc_ids = request.form['doc_id']
         doc_ids_item = doc_ids.split("ASDFJKL")
         for x in range(0, len(doc_list_item)):

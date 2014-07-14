@@ -6,11 +6,13 @@ scheduler-config:
 
 days: 'mon-fri'
 hour: 23
-minute: 59
+minute: '*/5'
 
 directory: 'scitech'
 
 url: 'http://localhost:1338/'
+
+git-url: 'https://github.com/erinspace/pyscitech.git'
 
 file-format: '.xml'
 
