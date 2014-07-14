@@ -6,6 +6,7 @@ scrapi
 - You will need to:
     - Install requirements.
     - Install Elasticsearch
+    - Install rabbitmq
 
 ### Requirements
 
@@ -42,7 +43,7 @@ and you should be good to go.
 
 #### Ubuntu 
 
-````bash
+```bash
 $ wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.2.1.deb 
 $ sudo dpkg -i elasticsearch-1.2.1.deb
 ```
@@ -69,6 +70,38 @@ $ invoke server
 ```
 
 and the server should be up and running!
+
+### Rabbitmq
+
+#### Mac OSX
+
+```bash
+$ brew install rabbitmq
+```
+
+#### Ubuntu
+
+```bash
+$ sudo apt-get install rabbitmq
+```
+
+
+### Running the scheduler
+
+- Go to the 'worker_manager' directory, and from there run:
+
+```bash
+$ celery -A celerytasks beat
+```
+
+to start the scheduler, and 
+
+```bash
+$ celery -A celerytasks worker
+```
+
+to start the worker.
+
 
 ### Testing
 
