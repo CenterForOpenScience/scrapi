@@ -91,13 +91,13 @@ $ sudo apt-get install rabbitmq
 - Go to the 'worker_manager' directory, and from there run:
 
 ```bash
-$ celery -A celerytasks beat
+$ celery -A celerytasks beat --loglevel info
 ```
 
 to start the scheduler, and 
 
 ```bash
-$ celery -A celerytasks worker
+$ celery -A celerytasks worker --loglevel info
 ```
 
 to start the worker.
