@@ -6,6 +6,7 @@ scrapi
 - You will need to:
     - Install requirements.
     - Install Elasticsearch
+    - Install consumers
     - Install rabbitmq
 
 ### Requirements
@@ -70,6 +71,17 @@ $ invoke server
 ```
 
 and the server should be up and running!
+
+
+### Consumers
+
+- Just run
+
+```bash
+$ invoke install_consumers
+```
+
+and the consumers specified in the manifest files of the worker_manager, and their requirements, will be installed.
 
 ### Rabbitmq
 
