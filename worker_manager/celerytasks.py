@@ -7,6 +7,7 @@ import logging
 import importlib
 sys.path.insert(1, os.path.abspath('worker_manager/consumers'))  # TODO may be unnecessary
 from api import process_docs
+from website import search
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -70,10 +71,12 @@ def request_parses():
             i = importlib.import_module('worker_manager.consumers.{0}.website.parse'.format(manifest['directory']))
             parsed = i.parse(doc, timestamp)['doc']
             logger.info('Document {0} parsed successfully'.format(doc_id))
-            process_docs.process(parsed, timestamp)
-            logger.info('Document {0} processed successfully'.format(doc_id))
+            result = process_docs.process(parsed, timestamp)
+            if result is not None:
+                logger.info('Document {0} processed successfully'.format(doc_id))
+                search.update('scrapi', result, 'article', doc_id)
     try:
-        pass  # os.remove('worker_manager/recent_files.txt')
+        os.remove('worker_manager/recent_files.txt')
     except IOError:
         pass  # Doesn't matter
 

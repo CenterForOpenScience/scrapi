@@ -96,12 +96,4 @@ def process(doc, timestamp):
         except IOError as e:
             logger.error(e)
             return None
-    node = {}
-    node['title'] = doc['title']
-    node['contributors'] = doc['contributors']
-
-    properties = doc['properties']
-    for property in properties.keys():
-        node[property] = properties[property]
-
-    return json.dumps(node, sort_keys=True, indent=4)
+    return doc
