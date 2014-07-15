@@ -66,3 +66,13 @@ def install_consumers():
             info = yaml.load(f)
         run('git clone -b master {0} worker_manager/consumers/{1}'.format(info['git-url'], info['directory']))
         run('pip install -r worker_manager/consumers/{0}/requirements.txt'.format(info['directory']))
+
+
+@task
+def celery_beat():
+    run('celery -A worker_manager.celerytasks beat --loglevel info')
+
+
+@task
+def celery_worker():
+    run('celery -A worker_manager.celerytasks worker --loglevel info')

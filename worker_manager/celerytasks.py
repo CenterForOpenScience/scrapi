@@ -5,28 +5,28 @@ import sys
 import requests
 import logging
 import importlib
-sys.path.insert(1, os.path.abspath('consumers'))
-sys.path.insert(1, os.path.join(
-    os.path.dirname(os.path.abspath(__file__)),
-    os.pardir,
-))
+sys.path.insert(1, os.path.abspath('worker_manager/consumers'))
+# sys.path.insert(1, os.path.join(
+#     os.path.dirname(os.path.abspath(__file__)),
+#     os.pardir,
+# ))
 
 from api import process_docs
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-app = Celery('celerytasks')
-app.config_from_object('celeryconfig')
+app = Celery('worker_manager/celerytasks')
+app.config_from_object('worker_manager.celeryconfig')
 
 
 @app.task
 def run_scrapers():
     logger.info("Celery worker executing task run_scrapers")
     responses = []
-    for manifest in os.listdir('manifests/'):
+    for manifest in os.listdir('worker_manager/manifests/'):
         logger.info(manifest)
-        responses.append(run_scraper('manifests/' + manifest))
+        responses.append(run_scraper('worker_manager/manifests/' + manifest))
     logger.info('run_scraper got response: {}'.format(responses))
     return responses
 
@@ -39,7 +39,8 @@ def run_scraper(manifest_file):
         url = manifest['url'] + 'consume'
         ret = requests.post(url)
     else:
-        i = importlib.import_module('consumers.{0}.website.consume'.format(manifest['directory']))  # TODO '.website.' not necessary
+        logger.info('worker_manager.consumers.{0}.website.consume'.format(manifest['directory']))
+        i = importlib.import_module('worker_manager.consumers.{0}.website.consume'.format(manifest['directory']))  # TODO '.website.' not necessary
         results = i.consume()
         ret = []
         for result in results:
@@ -59,5 +60,5 @@ def _load_config(config_file):
         info = yaml.load(f)
     return info
 
-if __name__ == '__main__':
-    run_scraper('manifests/plos-manifest.yml')
+# if __name__ == '__main__':
+#     run_scraper('worker_manager/manifests/plos-manifest.yml')

@@ -12,22 +12,22 @@ CELERY_ACCEPT_CONTENT = ['pickle']
 CELERY_ENABLE_UTC = True
 CELERY_TIMEZONE = 'UTC'
 
-CELERY_IMPORTS = ('celerytasks',)
+CELERY_IMPORTS = ('worker_manager.celerytasks',)
 
 # Programmatically generate celery beat schedule
 SCHED = {}
-for manifest in os.listdir('manifests/'):
-    filepath = 'manifests/' + manifest
+for manifest in os.listdir('worker_manager/manifests/'):
+    filepath = 'worker_manager/manifests/' + manifest
     with open(filepath) as f:
         info = yaml.load(f)
     SCHED['run ' + manifest] = {
-        'task': 'celerytasks.run_scraper',
+        'task': 'worker_manager.celerytasks.run_scraper',
         'schedule': crontab(day_of_week='mon-fri', hour=info['hour'], minute=info['minute']),
         'args': [filepath],
     }
 
 SCHED['add'] = {
-    'task': 'celerytasks.add',
+    'task': 'worker_manager.celerytasks.add',
     'schedule': timedelta(seconds=30),
     'args': (16, 16)
 }
