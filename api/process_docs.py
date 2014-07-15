@@ -48,6 +48,8 @@ def process_raw(doc, source, doc_id, filetype, consumer_version):
     with open(dir_path + 'manifest.json', 'w') as f:
         info = {}
         info['version'] = consumer_version.strip()
+        info['source'] = source.strip()
+        info['timestamp'] = str(timestamp)
         f.write(json.dumps(info))
 
     return timestamp

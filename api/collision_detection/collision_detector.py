@@ -6,9 +6,16 @@ sys.path.insert(1, os.path.join(
     os.pardir,
 ))
 from website import search
+from pyelasticsearch.exceptions import ElasticHttpNotFoundError
 
 
 def detect(doc):
-    results = search.search('scrapi', doc['id'])
+    try:
+        results = search.search('scrapi', doc['id'])
+    except ElasticHttpNotFoundError:
+        return False
+
     if len(results) != 0:
         return True
+    else:
+        return False
