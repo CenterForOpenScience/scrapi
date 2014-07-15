@@ -5,12 +5,7 @@ import sys
 import requests
 import logging
 import importlib
-sys.path.insert(1, os.path.abspath('worker_manager/consumers'))
-# sys.path.insert(1, os.path.join(
-#     os.path.dirname(os.path.abspath(__file__)),
-#     os.pardir,
-# ))
-
+sys.path.insert(1, os.path.abspath('worker_manager/consumers'))  # TODO may be unnecessary
 from api import process_docs
 
 logging.basicConfig(level=logging.INFO)
@@ -43,9 +38,44 @@ def run_scraper(manifest_file):
         i = importlib.import_module('worker_manager.consumers.{0}.website.consume'.format(manifest['directory']))  # TODO '.website.' not necessary
         results = i.consume()
         ret = []
-        for result in results:
-            ret.append(process_docs.process_raw(result[0], result[1], result[2], result[3], result[4]))
+        with open('worker_manager/recent_files.txt', 'a+') as f:
+            for result in results:
+                doc, source, doc_id, filetype, consumer_version = result
+                timestamp = process_docs.process_raw(doc, source, doc_id, filetype, consumer_version)
+                ret.append(doc_id)
+                f.write(', '.join([source, doc_id, str(timestamp)]))
+                f.write('\n')
     return ret
+
+
+@app.task
+def request_parses():
+    if not os.path.isfile('worker_manager/recent_files.txt'):
+        return
+    with open('worker_manager/recent_files.txt', 'r') as recent_files:
+        for line in recent_files:
+            info = line.split(',')
+            source = info[0].replace(' ', '')
+            manifest = _load_config('worker_manager/manifests/{}.yml'.format(source))
+            doc_id = info[1].replace(' ', '').replace('/', '')
+            timestamp = info[2].replace(' ', '', 1).replace('\n', '')
+
+            filepath = 'archive/' + source + '/' + doc_id + '/' + timestamp + '/raw' + manifest['file-format']
+            try:
+                with open(filepath, 'r') as f:
+                    doc = f.read()
+            except IOError as e:
+                logger.error(e)
+                continue
+            i = importlib.import_module('worker_manager.consumers.{0}.website.parse'.format(manifest['directory']))
+            parsed = i.parse(doc, timestamp)['doc']
+            logger.info('Document {0} parsed successfully'.format(doc_id))
+            process_docs.process(parsed, timestamp)
+            logger.info('Document {0} processed successfully'.format(doc_id))
+    try:
+        pass  # os.remove('worker_manager/recent_files.txt')
+    except IOError:
+        pass  # Doesn't matter
 
 
 @app.task
@@ -59,6 +89,3 @@ def _load_config(config_file):
     with open(config_file) as f:
         info = yaml.load(f)
     return info
-
-# if __name__ == '__main__':
-#     run_scraper('worker_manager/manifests/plos-manifest.yml')

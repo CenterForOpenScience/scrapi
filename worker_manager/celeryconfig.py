@@ -26,6 +26,11 @@ for manifest in os.listdir('worker_manager/manifests/'):
         'args': [filepath],
     }
 
+SCHED['request parses of recent documents'] = {
+    'task': 'worker_manager.celerytasks.request_parses',
+    'schedule': crontab(minute='*/1')
+}
+
 SCHED['add'] = {
     'task': 'worker_manager.celerytasks.add',
     'schedule': timedelta(seconds=30),
