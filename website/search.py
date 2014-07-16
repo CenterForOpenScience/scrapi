@@ -16,8 +16,8 @@ try:
         search_settings.ELASTIC_URI,
         timeout=search_settings.ELASTIC_TIMEOUT
     )
-    logging.getLogger('pyelasticsearch').setLevel(logging.DEBUG)
-    logging.getLogger('requests').setLevel(logging.DEBUG)
+    logging.getLogger('pyelasticsearch').setLevel(logging.WARN)
+    logging.getLogger('requests').setLevel(logging.WARN)
     elastic.health()
 except pyelasticsearch.exceptions.ConnectionError as e:
     logger.error(e)
