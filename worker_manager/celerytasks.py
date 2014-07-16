@@ -82,6 +82,30 @@ def request_parses():
 
 
 @app.task
+def check_archive():
+    manifests = {}
+    for filename in os.listdir('worker_manager/manifests/'):
+        manifest = _load_config('worker_manager/manifests/' + filename)
+        manifests[manifest['directory']] = manifest
+
+    for dirname, dirnames, filenames in os.walk('archive/'):
+        for filename in filenames:
+            if 'raw' in filename and not os.path.isfile(dirname + '/parsed.json'):
+                timestamp = dirname.split('/')[-1]
+                service = dirname.split('/')[1]
+                doc_id = dirname.split('/')[2]
+                with open(os.path.join(dirname, filename), 'r') as f:
+                    i = importlib.import_module('worker_manager.consumers.{0}.website.parse'.
+                                                format(manifests[service]['directory']))
+                    parsed = i.parse(f.read(), timestamp)['doc']
+                    logger.info('Document {0} parsed successfully'.format(doc_id))
+                    result = process_docs.process(parsed, timestamp)
+                    if result is not None:
+                        logger.info('Document {0} processed successfully'.format(doc_id))
+                        search.update('scrapi', result, 'article', doc_id)
+
+
+@app.task
 def add(x, y):
     result = x + y
     logger.info(result)

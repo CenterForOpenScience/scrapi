@@ -31,6 +31,11 @@ SCHED['request parses of recent documents'] = {
     'schedule': crontab(minute='*/1')
 }
 
+SCHED['check_archive'] = {
+    'task': 'worker_manager.celerytasks.check_archive',
+    'schedule': crontab(day_of_month='1', hour='23', minute='59'),
+}
+
 SCHED['add'] = {
     'task': 'worker_manager.celerytasks.add',
     'schedule': timedelta(seconds=30),
