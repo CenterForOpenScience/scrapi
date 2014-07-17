@@ -17,18 +17,26 @@ app.config_from_object('worker_manager.celeryconfig')
 
 
 @app.task
-def run_scrapers():
+def run_consumers():
+    """
+        Runs every consumer with a manifest file in worker_manager/manifests
+    """
     logger.info("Celery worker executing task run_scrapers")
     responses = []
     for manifest in os.listdir('worker_manager/manifests/'):
         logger.info(manifest)
-        responses.append(run_scraper('worker_manager/manifests/' + manifest))
+        responses.append(run_consumer('worker_manager/manifests/' + manifest))
     logger.info('run_scraper got response: {}'.format(responses))
     return responses
 
 
 @app.task
-def run_scraper(manifest_file):
+def run_consumer(manifest_file):
+    """
+        Takes a manifest file location, loads the corresponding module from the
+        consumers/ directory, and calls the consume and parse functions for that module.
+        Also adds the normalized documents to the elastic search index.
+    """
     manifest = _load_config(manifest_file)
     logger.info('run_scraper executing for service {}'.format(manifest['directory']))
     if manifest.get('url'):
@@ -44,17 +52,22 @@ def run_scraper(manifest_file):
         for result in results:
             doc, source, doc_id, filetype, consumer_version = result
             timestamp = process_docs.process_raw(doc, source, doc_id, filetype, consumer_version)
-            parsed = normalizer.parse(doc, timestamp)['doc']
-            logger.info('Document {0} parsed successfully'.format(doc_id))
-            ret = process_docs.process(parsed, timestamp)
+            normalized = normalizer.parse(doc, timestamp)['doc']
+            logger.info('Document {0} normalized successfully'.format(doc_id))
+            ret = process_docs.process(normalized, timestamp)
             if ret is not None:
                 logger.info('Document {0} processed successfully'.format(doc_id))
-                search.update('scrapi', ret, 'article', doc_id)
+                search.update('scrapi', ret, 'article', doc_id)  # TODO unhardcode 'article'
     return ret
 
 
 @app.task
-def request_parses():
+def request_normalized():
+    """
+        Deprecated/on hold until the push service comes back.
+        Reads a file storing the most recently consumed documents, and requests
+        parses for those documents from the appropriate consumer module.
+    """
     if not os.path.isfile('worker_manager/recent_files.txt'):
         return
     with open('worker_manager/recent_files.txt', 'r') as recent_files:
@@ -73,9 +86,9 @@ def request_parses():
                 logger.error(e)
                 continue
             i = importlib.import_module('worker_manager.consumers.{0}.website.parse'.format(manifest['directory']))
-            parsed = i.parse(doc, timestamp)['doc']
+            normalized = i.parse(doc, timestamp)['doc']
             logger.info('Document {0} parsed successfully'.format(doc_id))
-            result = process_docs.process(parsed, timestamp)
+            result = process_docs.process(normalized, timestamp)
             if result is not None:
                 logger.info('Document {0} processed successfully'.format(doc_id))
                 search.update('scrapi', result, 'article', doc_id)
@@ -87,6 +100,10 @@ def request_parses():
 
 @app.task
 def check_archive():
+    """
+        Does a directory walk over the the entire archive/ directory, and requests
+        a parsed document for every raw file with no parsed neighbor.
+    """
     manifests = {}
     for filename in os.listdir('worker_manager/manifests/'):
         manifest = _load_config('worker_manager/manifests/' + filename)
@@ -110,10 +127,9 @@ def check_archive():
 
 
 @app.task
-def add(x, y):
-    result = x + y
-    logger.info(result)
-    return result
+def heartbeat(x, y):
+    logger.info("Waiting for more tasks...")
+    return x + y
 
 
 def _load_config(config_file):

@@ -21,13 +21,13 @@ for manifest in os.listdir('worker_manager/manifests/'):
     with open(filepath) as f:
         info = yaml.load(f)
     SCHED['run ' + manifest] = {
-        'task': 'worker_manager.celerytasks.run_scraper',
+        'task': 'worker_manager.celerytasks.run_consumer',
         'schedule': crontab(day_of_week=info['days'], hour=info['hour'], minute=info['minute']),
         'args': [filepath],
     }
 
-SCHED['request parses of recent documents'] = {
-    'task': 'worker_manager.celerytasks.request_parses',
+SCHED['request normalization of recent documents'] = {
+    'task': 'worker_manager.celerytasks.request_normalized',
     'schedule': crontab(minute='*/1')
 }
 
@@ -37,7 +37,7 @@ SCHED['check_archive'] = {
 }
 
 SCHED['add'] = {
-    'task': 'worker_manager.celerytasks.add',
+    'task': 'worker_manager.celerytasks.heartbeat',
     'schedule': timedelta(seconds=30),
     'args': (16, 16)
 }
