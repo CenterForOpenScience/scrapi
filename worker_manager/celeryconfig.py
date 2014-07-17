@@ -22,7 +22,7 @@ for manifest in os.listdir('worker_manager/manifests/'):
         info = yaml.load(f)
     SCHED['run ' + manifest] = {
         'task': 'worker_manager.celerytasks.run_scraper',
-        'schedule': crontab(day_of_week='mon-fri', hour=info['hour'], minute=info['minute']),
+        'schedule': crontab(day_of_week=info['days'], hour=info['hour'], minute=info['minute']),
         'args': [filepath],
     }
 

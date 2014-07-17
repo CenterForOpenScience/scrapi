@@ -36,16 +36,20 @@ def run_scraper(manifest_file):
         ret = requests.post(url)
     else:
         logger.info('worker_manager.consumers.{0}.website.consume'.format(manifest['directory']))
-        i = importlib.import_module('worker_manager.consumers.{0}.website.consume'.format(manifest['directory']))  # TODO '.website.' not necessary
-        results = i.consume()
+        consumer = importlib.import_module('worker_manager.consumers.{0}.website.consume'.format(manifest['directory']))  # TODO '.website.' not necessary
+        normalizer = importlib.import_module('worker_manager.consumers.{0}.website.parse'.format(manifest['directory']))
+        results = consumer.consume()
+
         ret = []
-        with open('worker_manager/recent_files.txt', 'a+') as f:
-            for result in results:
-                doc, source, doc_id, filetype, consumer_version = result
-                timestamp = process_docs.process_raw(doc, source, doc_id, filetype, consumer_version)
-                ret.append(doc_id)
-                f.write(', '.join([source, doc_id, str(timestamp)]))
-                f.write('\n')
+        for result in results:
+            doc, source, doc_id, filetype, consumer_version = result
+            timestamp = process_docs.process_raw(doc, source, doc_id, filetype, consumer_version)
+            parsed = normalizer.parse(doc, timestamp)['doc']
+            logger.info('Document {0} parsed successfully'.format(doc_id))
+            ret = process_docs.process(parsed, timestamp)
+            if ret is not None:
+                logger.info('Document {0} processed successfully'.format(doc_id))
+                search.update('scrapi', ret, 'article', doc_id)
     return ret
 
 
