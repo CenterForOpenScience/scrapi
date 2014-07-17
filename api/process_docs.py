@@ -23,11 +23,9 @@ BASE_DIR = os.path.abspath(os.path.join(
 
 def process_raw(doc, source, doc_id, filetype, consumer_version):
     """
-        Takes a document (in the form of text, and saves it to disk
-        with the specified name and the designated filetype in the
-        specified source directory. It also saves a manifest file
-        in the directory, containing the git hash for the version
-        of the consumer it was produced with.
+        Takes a text document and saves it to disk with the specified name and the designated filetype
+        in the specified source directory. It also saves a manifest file in the directory, containing
+        the git hash for the version of the consumer it was produced with.
     """
     timestamp = datetime.datetime.now()
     directory = '/archive/' + str(source).replace('/', '') + '/' + str(doc_id).replace('/', '') + '/' + str(timestamp) + '/'
@@ -89,6 +87,8 @@ def process(doc, timestamp):
         dir_path += dir + "/"
         if not os.path.exists(dir_path):
             os.makedirs(dir_path)
+
+    doc['timestamp'] = str(timestamp)
 
     with open(filepath, 'w') as f:
         try:
