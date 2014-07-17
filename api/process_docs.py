@@ -1,4 +1,9 @@
-# This file will be used to process raw and preprocessed-JSON documents from the scrapers
+"""
+    This file is used to process raw and normalized documents retrieved by consumers.
+
+    Raw files are written to disk, and normalized documents are analyzed for collisions
+    and then also written to disk.
+"""
 import os
 import json
 import datetime

@@ -1,3 +1,10 @@
+"""
+    Contains all of the scheduled tasks for scrAPI.
+
+    These tasks are run by the celery worker, and scheduled by
+    the celery beat, as described in  worker_manager/celeryconfig.py
+"""
+
 from celery import Celery
 import yaml
 import os

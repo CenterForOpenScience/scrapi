@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-
+"""
+    Search module for the scrAPI website.
+"""
 import logging
 import pyelasticsearch
 import search_settings

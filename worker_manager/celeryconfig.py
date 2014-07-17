@@ -1,3 +1,12 @@
+"""
+    Configuration file for celerybeat/worker.
+
+    Dynamically adds consumers from all manifest files in worker_manager/manifests/
+    to the celerybeat schedule. Also adds a heartbeat function to the schedule,
+    which adds every 30 seconds, and a monthly task to normalize all non-normalized
+    documents.
+"""
+
 from celery.schedules import crontab
 from datetime import timedelta
 import os
@@ -26,6 +35,7 @@ for manifest in os.listdir('worker_manager/manifests/'):
         'args': [filepath],
     }
 
+# Deprecated
 SCHED['request normalization of recent documents'] = {
     'task': 'worker_manager.celerytasks.request_normalized',
     'schedule': crontab(minute='*/1')
