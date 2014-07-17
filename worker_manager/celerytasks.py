@@ -19,7 +19,7 @@ app.config_from_object('worker_manager.celeryconfig')
 @app.task
 def run_consumers():
     """
-        Runs every consumer with a manifest file in worker_manager/manifests
+        Run every consumer with a manifest file in worker_manager/manifests
     """
     logger.info("Celery worker executing task run_scrapers")
     responses = []
@@ -33,9 +33,12 @@ def run_consumers():
 @app.task
 def run_consumer(manifest_file):
     """
-        Takes a manifest file location, loads the corresponding module from the
-        consumers/ directory, and calls the consume and parse functions for that module.
-        Also adds the normalized documents to the elastic search index.
+        Run the consume and parse functions of the module specified in the manifest
+
+        Take a manifest file location, load the corresponding module from the
+        consumers/ directory, call the consume and parse functions for that module,
+        and add the normalized documents to the elastic search index.
+        Return the list of normalized documents
     """
     manifest = _load_config(manifest_file)
     logger.info('run_scraper executing for service {}'.format(manifest['directory']))
@@ -54,10 +57,11 @@ def run_consumer(manifest_file):
             timestamp = process_docs.process_raw(doc, source, doc_id, filetype, consumer_version)
             normalized = normalizer.parse(doc, timestamp)['doc']
             logger.info('Document {0} normalized successfully'.format(doc_id))
-            ret = process_docs.process(normalized, timestamp)
-            if ret is not None:
+            doc = process_docs.process(normalized, timestamp)
+            if doc is not None:
                 logger.info('Document {0} processed successfully'.format(doc_id))
                 search.update('scrapi', ret, 'article', doc_id)  # TODO unhardcode 'article'
+                ret.append(doc)
     return ret
 
 
@@ -65,7 +69,8 @@ def run_consumer(manifest_file):
 def request_normalized():
     """
         Deprecated/on hold until the push service comes back.
-        Reads a file storing the most recently consumed documents, and requests
+
+        Read a file storing the most recently consumed documents, and request
         parses for those documents from the appropriate consumer module.
     """
     if not os.path.isfile('worker_manager/recent_files.txt'):
@@ -101,6 +106,8 @@ def request_normalized():
 @app.task
 def check_archive():
     """
+        Normalize every non-normalized document in the archive.
+
         Does a directory walk over the the entire archive/ directory, and requests
         a parsed document for every raw file with no parsed neighbor.
     """
@@ -128,11 +135,17 @@ def check_archive():
 
 @app.task
 def heartbeat(x, y):
+    """
+        Heartbeat for the celery worker
+    """
     logger.info("Waiting for more tasks...")
     return x + y
 
 
 def _load_config(config_file):
+    """
+        Load a specified yaml file into a dictionary
+    """
     with open(config_file) as f:
         info = yaml.load(f)
     return info
