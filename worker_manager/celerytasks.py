@@ -29,21 +29,19 @@ def run_consumers():
         Run every consumer with a manifest file in worker_manager/manifests
     """
     logger.info("Celery worker executing task run_scrapers")
-    responses = []
     for manifest in os.listdir('worker_manager/manifests/'):
         logger.info(manifest)
-        responses.append(run_consumer('worker_manager/manifests/' + manifest))
-    logger.info('run_scraper got response: {}'.format(responses))
-    return responses
+        run_consumer('worker_manager/manifests/' + manifest)
+    logger.info('run_consumers finished')
 
 
 @app.task
 def run_consumer(manifest_file):
     """
-        Run the consume and parse functions of the module specified in the manifest
+        Run the consume and normalize functions of the module specified in the manifest
 
         Take a manifest file location, load the corresponding module from the
-        consumers/ directory, call the consume and parse functions for that module,
+        consumers/ directory, call the consume and normalize functions for that module,
         and add the normalized documents to the elastic search index.
         Return the list of normalized documents
     """
@@ -53,21 +51,21 @@ def run_consumer(manifest_file):
         url = manifest['url'] + 'consume'
         ret = requests.post(url)
     else:
-        logger.info('worker_manager.consumers.{0}.website.consume'.format(manifest['directory']))
-        consumer = importlib.import_module('worker_manager.consumers.{0}.website.consume'.format(manifest['directory']))  # TODO '.website.' not necessary
-        normalizer = importlib.import_module('worker_manager.consumers.{0}.website.parse'.format(manifest['directory']))
+        logger.info('worker_manager.consumers.{0}.consume'.format(manifest['directory']))
+        consumer = importlib.import_module('worker_manager.consumers.{0}.consume'.format(manifest['directory']))
+        normalizer = importlib.import_module('worker_manager.consumers.{0}.normalize'.format(manifest['directory']))
         results = consumer.consume()
 
         ret = []
         for result in results:
             doc, source, doc_id, filetype, consumer_version = result
             timestamp = process_docs.process_raw(doc, source, doc_id, filetype, consumer_version)
-            normalized = normalizer.parse(doc, timestamp)['doc']
+            normalized = normalizer.normalize(doc, timestamp)['doc']
             logger.info('Document {0} normalized successfully'.format(doc_id))
             doc = process_docs.process(normalized, timestamp)
             if doc is not None:
                 logger.info('Document {0} processed successfully'.format(doc_id))
-                search.update('scrapi', ret, 'article', doc_id)  # TODO unhardcode 'article'
+                search.update('scrapi', doc, 'article', doc_id)  # TODO unhardcode 'article'
                 ret.append(doc)
     return ret
 
@@ -78,7 +76,7 @@ def request_normalized():
         Deprecated/on hold until the push service comes back.
 
         Read a file storing the most recently consumed documents, and request
-        parses for those documents from the appropriate consumer module.
+        normalization for those documents from the appropriate consumer module.
     """
     if not os.path.isfile('worker_manager/recent_files.txt'):
         return
@@ -97,9 +95,9 @@ def request_normalized():
             except IOError as e:
                 logger.error(e)
                 continue
-            i = importlib.import_module('worker_manager.consumers.{0}.website.parse'.format(manifest['directory']))
-            normalized = i.parse(doc, timestamp)['doc']
-            logger.info('Document {0} parsed successfully'.format(doc_id))
+            i = importlib.import_module('worker_manager.consumers.{0}.normalize'.format(manifest['directory']))
+            normalized = i.normalize(doc, timestamp)['doc']
+            logger.info('Document {0} normalized successfully'.format(doc_id))
             result = process_docs.process(normalized, timestamp)
             if result is not None:
                 logger.info('Document {0} processed successfully'.format(doc_id))
@@ -116,7 +114,7 @@ def check_archive():
         Normalize every non-normalized document in the archive.
 
         Does a directory walk over the the entire archive/ directory, and requests
-        a parsed document for every raw file with no parsed neighbor.
+        a normalized document for every raw file with no normalized neighbor.
     """
     manifests = {}
     for filename in os.listdir('worker_manager/manifests/'):
@@ -125,16 +123,16 @@ def check_archive():
 
     for dirname, dirnames, filenames in os.walk('archive/'):
         for filename in filenames:
-            if 'raw' in filename and not os.path.isfile(dirname + '/parsed.json'):
+            if 'raw' in filename and not os.path.isfile(dirname + '/normalized.json'):
                 timestamp = dirname.split('/')[-1]
                 service = dirname.split('/')[1]
                 doc_id = dirname.split('/')[2]
                 with open(os.path.join(dirname, filename), 'r') as f:
-                    i = importlib.import_module('worker_manager.consumers.{0}.website.parse'.
+                    i = importlib.import_module('worker_manager.consumers.{0}.normalize'.
                                                 format(manifests[service]['directory']))
-                    parsed = i.parse(f.read(), timestamp)['doc']
-                    logger.info('Document {0} parsed successfully'.format(doc_id))
-                    result = process_docs.process(parsed, timestamp)
+                    normalized = i.normalize(f.read(), timestamp)['doc']
+                    logger.info('Document {0} normalized successfully'.format(doc_id))
+                    result = process_docs.process(normalized, timestamp)
                     if result is not None:
                         logger.info('Document {0} processed successfully'.format(doc_id))
                         search.update('scrapi', result, 'article', doc_id)
