@@ -1,6 +1,4 @@
 __author__ = 'faye'
-import requests
-import json
 import sys
 from bs4 import BeautifulSoup
 reload(sys)
@@ -79,20 +77,19 @@ def normalize(result, timestamp):
     result_soup = BeautifulSoup(result)
 
     payload = {
-        "doc":
-            json.dumps({
-                'title': result_soup.title.string,
-                'contributors': get_authors_json(result_soup, get_authors(result_soup), get_email(result_soup)),
-                'properties': {
-                    'abstract': get_abstract(result_soup),
-                    'tags': get_keywords(result_soup),
-                    'figures': get_figures(result_soup),
-                    'PDF': result_soup.find("meta", {"name": "citation_pdf_url"})['content']
-                },
-                'meta': {},
-                'id': result_soup.find("meta", {"name": "citation_doi"})['content'],
-                'source': "PLoS"
-            }),
-        'timestamp': timestamp
+        "doc": {
+            'title': result_soup.title.string,
+            'contributors': get_authors_json(result_soup, get_authors(result_soup), get_email(result_soup)),
+            'properties': {
+                'abstract': get_abstract(result_soup),
+                'tags': get_keywords(result_soup),
+                'figures': get_figures(result_soup),
+                'PDF': result_soup.find("meta", {"name": "citation_pdf_url"})['content']
+            },
+            'meta': {},
+            'id': result_soup.find("meta", {"name": "citation_doi"})['content'],
+            'source': "PLoS",
+            'timestamp': str(timestamp)
+        }
     }
-    return requests.get('http://0.0.0.0:1337/process', params=payload)
+    return payload
