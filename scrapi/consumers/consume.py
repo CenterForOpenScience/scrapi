@@ -56,7 +56,7 @@ def consume():
             print "No new files/updates!"
             break
 
-    with open(os.path.abspath(os.path.join(os.path.abspath(__file__), os.path.join(os.pardir, os.pardir))) + '/version', 'r') as f:
+    with open(os.path.abspath(os.path.join(os.path.abspath(__file__), os.pardir)) + '/version', 'r') as f:
         version = f.readline()
 
     return_list = []
