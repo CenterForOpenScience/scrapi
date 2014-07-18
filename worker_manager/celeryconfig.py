@@ -13,7 +13,7 @@ import os
 import yaml
 
 BROKER_URL = 'amqp://guest@localhost'
-CELERY_RESULT_BACKEND = 'amqp://guest@localhost'
+# CELERY_RESULT_BACKEND = 'amqp://guest@localhost'
 
 CELERY_TASK_SERIALIZER = 'pickle'
 CELERY_RESULT_SERIALIZER = 'pickle'
@@ -46,7 +46,7 @@ SCHED['check_archive'] = {
     'schedule': crontab(day_of_month='1', hour='23', minute='59'),
 }
 
-SCHED['add'] = {
+SCHED['heartbeat'] = {
     'task': 'worker_manager.celerytasks.heartbeat',
     'schedule': timedelta(seconds=30),
     'args': (16, 16)
