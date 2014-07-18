@@ -1,4 +1,4 @@
-from flask import Flask, request, Response
+from flask import Flask, request, Response, render_template
 import json
 import sys
 import os
@@ -11,6 +11,12 @@ from api import process_docs
 import search
 
 app = Flask(__name__)
+
+
+@app.route('/', methods=['GET'])
+def home():
+    with open('website/static/html/index.html', 'r') as f:
+        return f.read()
 
 
 @app.route('/process_raw', methods=['GET', 'POST'])
@@ -66,7 +72,7 @@ def search_search():
     query = request.args.get('q')
     start = request.args.get('from')
     size = request.args.get('size')
-    return Response(json.dumps(search.search('scrapi', query, start, size), indent=4, sort_keys=True), mimetype='application/json')
+    return render_template('search.html.jinja2', results=search.search('scrapi', query, start, size))
 
 if __name__ == '__main__':
     app.run(
