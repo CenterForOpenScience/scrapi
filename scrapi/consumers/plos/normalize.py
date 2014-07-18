@@ -11,13 +11,13 @@ def get_authors(soup):
     authors = []
     for author in soup.find_all("span", class_="person"):
         author = author.getText("|", strip=True)
-        author = str(author).replace(',','')
+        author = str(author).replace(',', '')
         if "|mail|" or "|mail" in author:
-            author = str(author).replace('|mail|','')
-            author = str(author).replace('|mail','')
+            author = str(author).replace('|mail|', '')
+            author = str(author).replace('|mail', '')
         elif "|equal contributor|" or "|equal contributor" in author:
-            author = str(author).replace('|equal contributor|','')
-            author = str(author).replace('|equal contributor','')
+            author = str(author).replace('|equal contributor|', '')
+            author = str(author).replace('|equal contributor', '')
         authors.append(author)
     return authors
 
@@ -75,7 +75,7 @@ def get_abstract(soup):
     return abstract
 
 
-def parse(result, timestamp):
+def normalize(result, timestamp):
     result_soup = BeautifulSoup(result)
 
     payload = {
@@ -87,10 +87,10 @@ def parse(result, timestamp):
                     'abstract': get_abstract(result_soup),
                     'tags': get_keywords(result_soup),
                     'figures': get_figures(result_soup),
-                    'PDF': result_soup.find("meta", {"name":"citation_pdf_url"})['content']
+                    'PDF': result_soup.find("meta", {"name": "citation_pdf_url"})['content']
                 },
                 'meta': {},
-                'id': result_soup.find("meta", {"name":"citation_doi"})['content'],
+                'id': result_soup.find("meta", {"name": "citation_doi"})['content'],
                 'source': "PLoS"
             }),
         'timestamp': timestamp
