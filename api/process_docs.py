@@ -85,7 +85,7 @@ def process(doc, timestamp):
         logger.warn("Document with id {0} and timestamp {1} from source {2} already found in database".format(doc['id'], timestamp, doc['source']))
 
     directory = '/archive/' + doc['source'].replace('/', '') + '/' + str(doc['id']).replace('/', '') + '/' + str(timestamp) + '/'
-    filepath = BASE_DIR + directory + "parsed.json"
+    filepath = BASE_DIR + directory + "normalized.json"
 
     dir_path = BASE_DIR
     for dir in directory.split("/"):
