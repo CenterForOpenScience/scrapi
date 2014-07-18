@@ -79,7 +79,8 @@ def request_normalized():
         normalization for those documents from the appropriate consumer module.
     """
     if not os.path.isfile('worker_manager/recent_files.txt'):
-        return
+        return "No documents waiting for normalization"
+
     with open('worker_manager/recent_files.txt', 'r') as recent_files:
         for line in recent_files:
             info = line.split(',')
@@ -106,6 +107,8 @@ def request_normalized():
         os.remove('worker_manager/recent_files.txt')
     except IOError:
         pass  # Doesn't matter
+
+    return "Scanning complete"
 
 
 @app.task
@@ -139,12 +142,11 @@ def check_archive():
 
 
 @app.task
-def heartbeat(x, y):
+def heartbeat(message):
     """
         Heartbeat for the celery worker
     """
-    logger.info("Waiting for more tasks...")
-    return x + y
+    return message
 
 
 def _load_config(config_file):

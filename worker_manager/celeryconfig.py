@@ -49,7 +49,7 @@ SCHED['check_archive'] = {
 SCHED['heartbeat'] = {
     'task': 'worker_manager.celerytasks.heartbeat',
     'schedule': timedelta(seconds=30),
-    'args': (16, 16)
+    'args': ['Waiting for more tasks...']
 }
 
 CELERYBEAT_SCHEDULE = SCHED
