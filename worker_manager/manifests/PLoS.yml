@@ -5,10 +5,12 @@ scheduler-config:
     path: '/tmp/dbfile'
 
 days: 'mon-fri'
-hour: 23
-minute: '59'
+hour: 14
+minute: 53
 
 directory: 'PLoS'
+
+name: 'Public Library of Science'
 
 git-url: 'https://github.com/fabianvf/PLoS-API-consumer.git'
     
