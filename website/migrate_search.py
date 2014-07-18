@@ -15,8 +15,8 @@ def migrate():
     except ElasticHttpNotFoundError:
         pass
     for dirname, dirnames, filenames in os.walk('archive/'):
-        if os.path.isfile(dirname + '/parsed.json'):
-            with open(dirname + '/parsed.json') as f:
+        if os.path.isfile(dirname + '/normalized.json'):
+            with open(dirname + '/normalized.json') as f:
                 doc = json.load(f)
                 try:
                     search.update('scrapi', doc, dirname.split('/')[1], dirname.split('/')[2])

@@ -64,6 +64,7 @@ def run_consumer(manifest_file):
             logger.info('Document {0} normalized successfully'.format(doc_id))
             doc = process_docs.process(normalized, timestamp)
             if doc is not None:
+                doc['source'] = manifest['name']
                 logger.info('Document {0} processed successfully'.format(doc_id))
                 search.update('scrapi', doc, 'article', doc_id)  # TODO unhardcode 'article'
                 ret.append(doc)
@@ -99,10 +100,11 @@ def request_normalized():
             i = importlib.import_module('worker_manager.consumers.{0}.normalize'.format(manifest['directory']))
             normalized = i.normalize(doc, timestamp)['doc']
             logger.info('Document {0} normalized successfully'.format(doc_id))
-            result = process_docs.process(normalized, timestamp)
-            if result is not None:
+            doc = process_docs.process(normalized, timestamp)
+            if doc is not None:
+                doc['source'] = manifest['name']
                 logger.info('Document {0} processed successfully'.format(doc_id))
-                search.update('scrapi', result, 'article', doc_id)
+                search.update('scrapi', doc, 'article', doc_id)
     try:
         os.remove('worker_manager/recent_files.txt')
     except IOError:
