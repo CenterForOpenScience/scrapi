@@ -2,7 +2,7 @@ from lxml import etree
 import requests
 import datetime
 import sys
-
+import os
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -24,16 +24,20 @@ def consume(start_date=param_date_stamp, end_date=None, **kwargs):
     morepages = 'true'
     xml_list = []
     elements_url = 'http://purl.org/dc/elements/1.1/'
+    with open(os.path.abspath(os.path.join(os.path.abspath(__file__), os.pardir)) + '/version', 'r') as f:
+        version = f.readline()
+
     while morepages == 'true':
         xml = requests.get(base_url, params=parameters).text
         xml_root = etree.XML(xml.encode('utf-8'))
         for record in xml_root.find('records'):
-            payload = {
-                'doc': etree.tostring(record, encoding='ASCII'),
-                'source': 'SciTech',
-                'doc_id': record.find(str(etree.QName(elements_url, 'ostiId'))).text,
-                'filetype': 'xml'
-            }
+            payload = [
+                etree.tostring(record, encoding='ASCII'),
+                'SciTech',
+                record.find(str(etree.QName(elements_url, 'ostiId'))).text,
+                'xml',
+                version
+            ]
             xml_list.append(payload['doc'])
         parameters['page'] += 1
         morepages = xml_root.find('records').attrib['morepages']
