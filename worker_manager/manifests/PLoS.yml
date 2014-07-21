@@ -1,9 +1,5 @@
 ---
 
-scheduler-config:
-    class: 'apscheduler.jobstores.shelve_store:ShelveJobStore'
-    path: '/tmp/dbfile'
-
 days: 'mon-fri'
 hour: 14
 minute: 53
