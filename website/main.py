@@ -13,9 +13,11 @@ import search
 app = Flask(__name__)
 
 
+
+
 @app.route('/', methods=['GET'])
 def home():
-    with open('website/static/html/index.html', 'r') as f:
+    with open('static/html/index.html', 'r') as f:
         return f.read()
 
 
@@ -67,12 +69,13 @@ def process():
     return processed_doc
 
 
-@app.route('/search', methods=['GET'])
+@app.route('/api/search', methods=['GET'])
 def search_search():
     query = request.args.get('q')
     start = request.args.get('from')
     size = request.args.get('size')
-    return render_template('search.html.jinja2', results=search.search('scrapi', query, start, size))
+    #return render_template('search.html.jinja2', results=search.search('scrapi', query, start, size))
+    return json.dumps(search.search('scrapi', query, start, size))
 
 if __name__ == '__main__':
     app.run(

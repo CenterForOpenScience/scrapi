@@ -5,16 +5,31 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>SHARE Notification Service</title>
-        <link type="text/css" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+        <link type="text/css" rel="stylesheet" href="static/css/style.css"/>
+        <script type='text/javascript' src='static/js/jquery.js'></script>
+        <script type='text/javascript' src='static/js/knockout-3.1.0.js'></script>
 
     </head>
     <body>
-        <h1>Welcome to SHARE</h1>
-        <form class="form-search" action="http://localhost:1337/search" method="get" role="search">
-            <div class="input-append">
-                <input type="text" class="span2 search-query" name="q">
-                <button type="submit" class="btn">Search</button>
+        <div id="wrapper">
+            <div id="title-box">
+                <h1>Welcome to SHARE</h1>
             </div>
-        </form>
+
+            <div id="form-box">
+                <!--<form class="form-search" action="http://localhost:1337/api/search" method="get" role="search">-->
+                <form class="form-search" data-bind= "submit: populate_results" role="search">
+                    <div class="input-append">
+                        <input type="text" data-bind= "value: keyword" class="search-query" name="q">
+                        <button type="submit" class="btn">Search</button>
+                    </div>
+                </form>
+            </div>
+            <div class="search-results" data-bind="html: response"></div>
+        </div>
+        <script type='text/javascript' src='static/js/populate.js'></script>
     </body>
+    <footer>
+        Warning! This is the pre-alpha version!
+    </footer>
 </html>
