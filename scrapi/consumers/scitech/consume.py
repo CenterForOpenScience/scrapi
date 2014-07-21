@@ -38,7 +38,7 @@ def consume(start_date=param_date_stamp, end_date=None, **kwargs):
                 'xml',
                 version
             ]
-            xml_list.append(payload['doc'])
+            xml_list.append(payload)
         parameters['page'] += 1
         morepages = xml_root.find('records').attrib['morepages']
     return xml_list
