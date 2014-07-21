@@ -1,0 +1,19 @@
+---
+
+scheduler-config:
+    class: 'apscheduler.jobstores.shelve_store:ShelveJobStore'
+    path: '/tmp/dbfile'
+
+days: 'mon-fri'
+hour: 14
+minute: 53
+
+directory: 'ct'
+
+name: 'Clinical Trials Registry'
+
+git-url: 'https://github.com/erinspace/ClinicalTrials-consumer.git'
+    
+file-format: '.html'
+
+...
