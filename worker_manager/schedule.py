@@ -1,3 +1,4 @@
+# TODO Delete this file, replaced by celery + celerytasks.py
 from apscheduler.scheduler import Scheduler
 import time
 import os

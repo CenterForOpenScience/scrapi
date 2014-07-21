@@ -1,4 +1,4 @@
-from flask import Flask, request, Response
+from flask import Flask, request, Response, render_template
 import json
 import sys
 import os
@@ -13,11 +13,17 @@ import search
 app = Flask(__name__)
 
 
+@app.route('/', methods=['GET'])
+def home():
+    with open('website/static/html/index.html', 'r') as f:
+        return f.read()
+
+
 @app.route('/process_raw', methods=['GET', 'POST'])
 def process_raw():
     if request.method == 'POST':
         docs = request.form['doc']
-        doc_list_item = docs.split("ASDFJKL")
+        doc_list_item = docs.split("ASDFJKL")  # TODO Fix this
         doc_ids = request.form['doc_id']
         doc_ids_item = doc_ids.split("ASDFJKL")
         for x in range(0, len(doc_list_item)):
@@ -57,7 +63,7 @@ def process():
         timestamp = request.args.get('timestamp')
     doc['timestamp'] = timestamp
     processed_doc = process_docs.process(doc, timestamp)
-    search.update('scrapi', doc, 'article', doc['id'])
+    search.update('scrapi', doc, doc['source'], doc['id'])
     return processed_doc
 
 
@@ -66,7 +72,7 @@ def search_search():
     query = request.args.get('q')
     start = request.args.get('from')
     size = request.args.get('size')
-    return Response(json.dumps(search.search('scrapi', query, start, size), indent=4, sort_keys=True), mimetype='application/json')
+    return render_template('search.html.jinja2', results=search.search('scrapi', query, start, size))
 
 if __name__ == '__main__':
     app.run(

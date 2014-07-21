@@ -26,7 +26,7 @@ class TestAPI(unittest.TestCase):
         doc_id = 37
         filetype = "json"
 
-        assert process_docs.process_raw(doc, source, doc_id, filetype)
+        assert process_docs.process_raw(doc, source, doc_id, filetype, 'test-version')
 
         found = False
         for dirname, dirnames, filenames in os.walk('archive/TEST/{0}'.format(doc_id)):
@@ -49,7 +49,7 @@ class TestAPI(unittest.TestCase):
             'id': doc_id,
             'source': source
         }
-        process_docs.process_raw(json.dumps(doc), source, doc_id, filetype)
+        process_docs.process_raw(json.dumps(doc), source, doc_id, filetype, 'test-version')
         timestamp = None
         for dirname, dirnames, filenames in os.walk('archive/TEST/{0}'.format(doc_id)):
             if os.path.isfile(dirname + '/raw.json'):
@@ -78,7 +78,7 @@ class TestAPI(unittest.TestCase):
             'id': doc_id,
         }
 
-        process_docs.process_raw(json.dumps(doc), source, doc_id, filetype)
+        process_docs.process_raw(json.dumps(doc), source, doc_id, filetype, 'test-version')
         timestamp = None
         for dirname, dirnames, filenames in os.walk('archive/TEST/{0}'.format(doc_id)):
             if os.path.isfile(dirname + '/raw.json'):

@@ -1,4 +1,9 @@
-# This file will be used to process raw and preprocessed-JSON documents from the scrapers
+"""
+    This file is used to process raw and normalized documents retrieved by consumers.
+
+    Raw files are written to disk, and normalized documents are analyzed for collisions
+    and then also written to disk.
+"""
 import os
 import json
 import datetime
@@ -21,11 +26,11 @@ BASE_DIR = os.path.abspath(os.path.join(
 ))
 
 
-def process_raw(doc, source, doc_id, filetype):
+def process_raw(doc, source, doc_id, filetype, consumer_version):
     """
-        Takes a document (in the form of text, and saves it to disk
-        with the specified name and the designated filetype in the
-        specified source directory
+        Takes a text document and saves it to disk with the specified name and the designated filetype
+        in the specified source directory. It also saves a manifest file in the directory, containing
+        the git hash for the version of the consumer it was produced with.
     """
     timestamp = datetime.datetime.now()
     directory = '/archive/' + str(source).replace('/', '') + '/' + str(doc_id).replace('/', '') + '/' + str(timestamp) + '/'
@@ -43,6 +48,12 @@ def process_raw(doc, source, doc_id, filetype):
         except IOError as e:
             logger.log(e)
             return None
+    with open(dir_path + 'manifest.json', 'w') as f:
+        info = {}
+        info['consumer_version'] = consumer_version.strip()
+        info['source'] = source.strip()
+        info['timestamp'] = str(timestamp)
+        f.write(json.dumps(info))
 
     return timestamp
 
@@ -74,7 +85,7 @@ def process(doc, timestamp):
         logger.warn("Document with id {0} and timestamp {1} from source {2} already found in database".format(doc['id'], timestamp, doc['source']))
 
     directory = '/archive/' + doc['source'].replace('/', '') + '/' + str(doc['id']).replace('/', '') + '/' + str(timestamp) + '/'
-    filepath = BASE_DIR + directory + "parsed.json"
+    filepath = BASE_DIR + directory + "normalized.json"
 
     dir_path = BASE_DIR
     for dir in directory.split("/"):
@@ -82,18 +93,12 @@ def process(doc, timestamp):
         if not os.path.exists(dir_path):
             os.makedirs(dir_path)
 
+    doc['timestamp'] = str(timestamp)
+
     with open(filepath, 'w') as f:
         try:
             f.write(json.dumps(doc, sort_keys=True, indent=4))
         except IOError as e:
             logger.error(e)
             return None
-    node = {}
-    node['title'] = doc['title']
-    node['contributors'] = doc['contributors']
-
-    properties = doc['properties']
-    for property in properties.keys():
-        node[property] = properties[property]
-
-    return json.dumps(node, sort_keys=True, indent=4)
+    return doc
