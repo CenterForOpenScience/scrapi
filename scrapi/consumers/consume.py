@@ -41,9 +41,7 @@ def consume():
             for result in full_response:
                 try:
                     if result["arr"][1]["@name"] == "abstract" and result["str"][3]["#text"] == "Research Article":
-                        full_url = 'http://www.plosone.org/article/info%3Adoi%2F' + result["str"][0]["#text"]
-                        full_plos_request = requests.get(full_url)
-                        doc_list.append(full_plos_request.text)
+                        doc_list.append(result)
                 except KeyError:
                     pass
 
@@ -61,9 +59,9 @@ def consume():
 
     return_list = []
     for x in range(0, len(doc_list)):
-        doc_soup = BeautifulSoup(doc_list[x])
-        doc_id = doc_soup.find("meta", {"name": "citation_doi"})['content']
-        return_list.append((doc_list[x], 'PLoS', doc_id, 'html', version))
+        doc_xml = xmltodict.parse(doc_list[x])
+        doc_id = doc_xml["str"][0]["#text"]
+        return_list.append((doc_list[x], 'PLoS', doc_id, 'xml', version))
 
 #    payload = {
 #        'doc': 'ASDFJKL'.join(doc_list),
