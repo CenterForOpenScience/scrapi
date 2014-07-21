@@ -8,7 +8,7 @@ var AppViewModel = new function()
 
     self.populate_results = function()
     {
-    	$.get("http://localhost:1337/api/search?q="+self.keyword(), function(data){
+    	$.get("http://173.255.232.219/api/search?q="+self.keyword(), function(data){
     		var item = ""
     		var returnToJson = $.parseJSON(data);
     		console.log(returnToJson);

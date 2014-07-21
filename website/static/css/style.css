@@ -17,6 +17,14 @@ h1{
 	font-size: 72px;
 }
 
+.attribution{
+	color: white;
+}
+
+.attribution a{
+	color: white;
+}
+
 #wrapper{
 	width: 100%;
 	text-align: center;
