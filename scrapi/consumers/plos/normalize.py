@@ -13,7 +13,7 @@ def normalize(result, timestamp):
             'title': result["str"][4]["#text"],
             'contributors': result["arr"][0]["str"],
             'properties': {
-		'abstract': result["arr"][1]["str"]
+                'abstract': result["arr"][1]["str"]
             },
             'meta': {},
             'id': result["str"][0]["#text"],

@@ -2,13 +2,14 @@ __author__ = 'faye'
 import requests
 from bs4 import BeautifulSoup
 import xmltodict
+import dicttoxml
 import time
 import os
 from datetime import date, timedelta
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
-import settings
+from website import settings
 
 
 def consume():
@@ -59,9 +60,9 @@ def consume():
 
     return_list = []
     for x in range(0, len(doc_list)):
-        doc_xml = xmltodict.parse(doc_list[x])
+        doc_xml = doc_list[x]
         doc_id = doc_xml["str"][0]["#text"]
-        return_list.append((doc_list[x], 'PLoS', doc_id, 'xml', version))
+        return_list.append((dicttoxml.dicttoxml(doc_list[x]), 'PLoS', doc_id, 'xml', version))
 
 #    payload = {
 #        'doc': 'ASDFJKL'.join(doc_list),
@@ -73,3 +74,5 @@ def consume():
 
     # requests.post('http://0.0.0.0:1337/process_raw', data=payload)
     return return_list
+
+print consume()
