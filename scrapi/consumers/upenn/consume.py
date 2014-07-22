@@ -1,4 +1,6 @@
 from datetime import date, timedelta
+import xmltodict
+import requests
 
 
 def consume():
@@ -14,13 +16,29 @@ def consume():
     y_day = yesterday.strftime('%d')
     y_year = yesterday.strftime('%Y')
 
-    base_url = 'http://clinicaltrials.gov/ct2/results/download?down_stds=all&' 
-    url_middle = 'down_typ=results&down_flds=shown&down_fmt=plain&lup_s=' 
+    base_url = 'http://clinicaltrials.gov/ct2/results?lup_s=' 
+    url_end = '{}%2F{}%2F{}%2F&lup_e={}%2F{}%2F{}&displayxml=true'.\
+                format(y_month, y_day, y_year, month, day, year)
+    url = base_url + url_end
 
-    url_end = '{}%2F{}%2F{}%2F&lup_e={}%2F{}%2F{}&show_down=Y'.format(y_month, y_day, y_year, month, day, year)
+    response = get_results_as_dict(url)
+    count = response['search_results']['@count']
 
-    url = base_url + url_middle + url_end
+    url = url + '&count=' + count
+    response = get_results_as_dict(url)
 
-    print url
+    nct_ids = []
+
+    for study in response['search_results']['clinical_study']:
+        nct_ids.append(study['nct_id'])
+
+    print nct_ids
+
+
+def get_results_as_dict(url):
+    results = requests.get(url)
+    response = xmltodict.parse(results.text)
+    return response
+
 
 consume()
