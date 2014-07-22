@@ -1,9 +1,16 @@
 from datetime import date, timedelta
+import time
 import xmltodict
 import requests
+import os
+import dicttoxml
 
 
 def consume():
+
+    """ First, get a list of all recently updated NCTIDs,
+    then get the xml one by one and save it into a list 
+    of docs including other information """
 
     today = date.today()
     yesterday = today - timedelta(4)
@@ -27,12 +34,25 @@ def consume():
     url = url + '&count=' + count
     response = get_results_as_dict(url)
 
-    nct_ids = []
-
+    study_urls = []
     for study in response['search_results']['clinical_study']:
-        nct_ids.append(study['nct_id'])
+        study_urls.append(study['url'] + '?displayxml=true')
 
-    print nct_ids
+    doc_list = []
+    for study_url in study_urls:
+        content = get_results_as_dict(study_url)
+        doc_list.append(content)
+        time.sleep(1)
+
+    with open(os.path.abspath(os.path.join(os.path.abspath(__file__), os.pardir)) + '/version', 'r') as f:
+        version = f.readline()
+
+    return_list = []
+    for doc in doc_list:
+        doc_id = doc['clinical_study']['id_info']['nct_id']
+        return_list.append((dicttoxml.dicttoxml(doc), 'ClinicalTrials.gov', doc_id, 'xml', version))
+
+    return return_list
 
 
 def get_results_as_dict(url):
