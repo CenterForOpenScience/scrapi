@@ -1,5 +1,6 @@
 from datetime import date, timedelta
 import time
+import os
 import xmltodict
 import requests
 import dicttoxml
@@ -12,7 +13,7 @@ def consume():
     of docs including other information """
 
     today = date.today()
-    yesterday = today - timedelta(4)
+    yesterday = today - timedelta(1)
 
     month = today.strftime('%m')
     day = today.strftime('%d')
@@ -29,6 +30,7 @@ def consume():
 
     response = get_results_as_dict(url)
     count = response['search_results']['@count']
+    print count
 
     url = url + '&count=' + count
     response = get_results_as_dict(url)
@@ -38,24 +40,24 @@ def consume():
         study_urls.append(study['url'] + '?displayxml=true')
 
     doc_list = []
-    for study_url in study_urls[0:1]:
+    for study_url in study_urls[0:3]:
         content = get_results_as_dict(study_url)
         doc_list.append(content)
         # time.sleep(1)
 
-    # print doc_list[0]['clinical_study'].keys()
-    print doc_list[0]['clinical_study']['sponsors']
+    with open(os.path.abspath(os.path.join(os.path.abspath(__file__), os.pardir)) + '/version', 'r') as f:
+        version = f.readline()
+
+    return_list = []
+    for doc in doc_list:
+        doc_id = doc['clinical_study']['id_info']['nct_id']
+        return_list.append((dicttoxml.dicttoxml(doc), 'ClinicalTrials.gov', doc_id, 'xml', version))
 
 
-    # with open(os.path.abspath(os.path.join(os.path.abspath(__file__), os.pardir)) + '/version', 'r') as f:
-    #     version = f.readline()
+    with open('output.txt', 'w') as f:
+        f.write(return_list[2][0])
 
-    # return_list = []
-    # for doc in doc_list:
-    #     doc_id = doc['clinical_study']['id_info']['nct_id']
-    #     return_list.append((dicttoxml.dicttoxml(doc), 'ClinicalTrials.gov', doc_id, 'xml', version))
-
-    # return return_list
+    return return_list
 
 
 def get_results_as_dict(url):
