@@ -1,6 +1,5 @@
 __author__ = 'faye'
 import requests
-from bs4 import BeautifulSoup
 import xmltodict
 import dicttoxml
 import time
@@ -9,7 +8,9 @@ from datetime import date, timedelta
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
-from website import settings
+import settings
+
+MAX_ROWS_PER_REQUEST = 999
 
 
 def consume():
@@ -23,10 +24,10 @@ def consume():
     num_articles = int(response["response"]["result"]["@numFound"])
 
     start = 0
-    rows = 10
+    rows = MAX_ROWS_PER_REQUEST
     raw = ""
 
-    while rows < 50:
+    while rows < num_articles + MAX_ROWS_PER_REQUEST:
         payload = {"api_key": settings.API_KEY, "rows": rows, "start": start}
         results = requests.get(url, params=payload)
         tick = time.time()
@@ -46,8 +47,8 @@ def consume():
                 except KeyError:
                     pass
 
-            start += rows
-            rows += rows
+            start += MAX_ROWS_PER_REQUEST
+            rows += MAX_ROWS_PER_REQUEST
 
             if time.time() - tick < 5:
                 time.sleep(5 - (time.time() - tick))
@@ -63,16 +64,4 @@ def consume():
         doc_xml = doc_list[x]
         doc_id = doc_xml["str"][0]["#text"]
         return_list.append((dicttoxml.dicttoxml(doc_list[x]), 'PLoS', doc_id, 'xml', version))
-
-#    payload = {
-#        'doc': 'ASDFJKL'.join(doc_list),
-#        'source': 'PLoS',
-#        'doc_id': 'ASDFJKL'.join(full_id),
-#        'filetype': 'html',
-#        'version': version,
-#    }
-
-    # requests.post('http://0.0.0.0:1337/process_raw', data=payload)
     return return_list
-
-print consume()
