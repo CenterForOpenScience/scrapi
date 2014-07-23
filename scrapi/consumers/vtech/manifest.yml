@@ -1,0 +1,15 @@
+---
+
+days: 'mon-fri'
+hour: 23
+minute: 59
+
+directory: 'vt'
+
+name: 'VTechWorks'
+
+git-url: 'https://github.com/webkunoichi/VT-consumer.git'
+
+file-format: '.xml'
+
+...
