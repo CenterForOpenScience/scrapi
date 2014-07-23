@@ -27,31 +27,47 @@ var AppViewModel = new function()
     {
         console.log('populating: ' + self.keyword());
         //TODO universal url for live and testing
-    	$.get("http://173.255.232.219/api/search?q="+self.keyword(), function(data){
+    	$.get("http://173.255.232.219/api/search?q="+self.keyword()+"&from="+count, function(data){
         
         //$.get("http://localhost/api/search?q="+self.keyword()+"&from="+count, function(data){
             if(data != "[]"){
 
-                var item = "";
-                var returnToJson = $.parseJSON(data);
+                var contributors_list = "";
+                var properties_list = "";
 
+                var returnToJson = $.parseJSON(data);
+                console.log(returnToJson);
+                
                 article_count = returnToJson.length;
                 
                 for(var i = 0; i < returnToJson.length; i++){
                     for (var j = 0; j < returnToJson[i]["contributors"].length-1; j++){
-                        item += returnToJson[i]["contributors"][j]["full_name"]+", ";
+                        contributors_list += returnToJson[i]["contributors"][j]["full_name"]+"; ";
                     }
-                    item += returnToJson[i]["contributors"][returnToJson[i]["contributors"].length-1]["full_name"];
+                    contributors_list += returnToJson[i]["contributors"][returnToJson[i]["contributors"].length-1]["full_name"];
+
+                    for (property in returnToJson[i]["properties"]){
+                        if(returnToJson[i]["properties"][property] == null || returnToJson[i]["properties"][property] == ""){
+                            continue;
+                        }
+                        else{
+                            properties_list += "<p><strong>" + property + ": </strong>" + returnToJson[i]["properties"][property]+"</p>";
+                        }
+                    }
+
+                    //console.log(properties_list);
 
                     self.Article.push(
                         {
                             title: returnToJson[i]["title"],
-                            contributors: item,
+                            contributors: contributors_list,
                             article_id:returnToJson[i]["id"],
-                            source:returnToJson[i]["source"]
+                            source:returnToJson[i]["source"],
+                            properties:properties_list
                         }
                     );
-                    item = "";
+                    contributors_list = "";
+                    properties_list = "";
                 }
             }
     	});
@@ -65,6 +81,12 @@ var AppViewModel = new function()
             $('.btn').click();
         }
     })
+
+    $(".search-results").on("click", ".jsonObject", function(e){
+        $(e.target).closest('.jsonObject').toggleClass('collapsed');
+        //var file_name = $(e.target).text();
+        //console.log(file_name);
+    });
 };
 // Activates knockout.js
 ko.applyBindings(AppViewModel);

@@ -17,6 +17,10 @@ h1{
 	font-size: 72px;
 }
 
+strong, h2{
+	color:#34ad7e;
+}
+
 .attribution{
 	color: white;
 }
@@ -112,6 +116,22 @@ button[type="submit"]{
 
 .jsonObject:hover {
 	opacity: 1;
+}
+
+.additional-content{
+  height:auto;
+  min-height:100px;
+  overflow:hidden;
+  /*transition:all 0.3s linear;
+  -webkit-transition:all 0.3s linear;
+  -moz-transition:all 0.3s linear;
+  -ms-transition:all 0.3s linear;
+  -o-transition:all 0.3s linear;*/
+}
+
+.collapsed .additional-content{
+  min-height:0px;
+  height:0px;
 }
 
 footer, .push {
