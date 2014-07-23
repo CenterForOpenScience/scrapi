@@ -1,48 +1,39 @@
-import sys
 import xmltodict
-from bs4 import BeautifulSoup
-reload(sys)
-sys.setdefaultencoding('utf-8')
+from lxml import etree
 
 
-def normalize(result, timestamp):
-    result = xmltodict.parse(result)
-    payload = {
-        "doc": {
-            'title': result["str"][4]["#text"],
-            'contributors': result["arr"][0]["str"],
-            'properties': {
-        'abstract': result["arr"][1]["str"]
-            },
-            'meta': {},
-            'id': result["str"][0]["#text"],
-            'source': "ClinicalTrials.gov",
-            'timestamp': str(timestamp)
-        }
-    }
-    return payload
+def parse(result, timestamp):
+    """Used to extract information from an XML document from clinicaltrials.gov 
+    and to return Json for scrAPI """
 
+    payload = {}
+    root = etree.parse(result).getroot()
+    doc = {}
 
+    if root.find('official_title') == None:
+        doc['title'] = root.find('brief_title').text
+    else:
+        doc['title'] = root.find('official_title').text
 
-def normalize(result, timestamp):
-    """Takes a clinicaltrials.gov nct_id and returns json in a format containing info about the trial in a format
-    that can be imported by scrAPI."""
-  
-    result = xmltodict.parse(result)
+    doc['contributors'] = []
+    for entry in root.findall('overall_official'):
+        official_dict = {}
+        official_dict['full_name'] = entry.find('last_name').text
+        official_dict['email'] = None
+        doc['contributors'].append(official_dict)
 
-    payload = {
-        "doc": {
-            'title': result["title"],
-            'contributors': result["contributors"],
-            'properties': {
-                'abstract': result["description"]
-            },
-            'meta': {},
-            'id': result["id"],
-            'source': "ClinicalTrials.gov",
-            'timestamp': str(timestamp)
-        }
-    }
+    properties = {}
+    properties['abstract'] = root.find('brief_summary')[0].text
+    doc['properties'] = properties
 
-        
+    doc['meta'] = {}
+
+    doc['id'] = root.find('id_info').find('nct_id').text
+
+    doc['timestamp'] = str(timestamp)
+
+    doc['source'] = 'ClinicalTrials.gov'
+
+    payload['doc'] = doc
+
     return payload
