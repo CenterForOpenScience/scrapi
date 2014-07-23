@@ -1,4 +1,3 @@
-import xmltodict
 from lxml import etree
 
 
@@ -27,13 +26,10 @@ def parse(result, timestamp):
     doc['properties'] = properties
 
     doc['meta'] = {}
-
     doc['id'] = root.find('id_info').find('nct_id').text
-
     doc['timestamp'] = str(timestamp)
-
     doc['source'] = 'ClinicalTrials.gov'
-
+    
     payload['doc'] = doc
 
     return payload
