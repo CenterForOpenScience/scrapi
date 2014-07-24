@@ -21,6 +21,12 @@ strong, h2{
 	color:#34ad7e;
 }
 
+#no-results{
+	background-color:#353535;
+	padding: 10px;
+	margin: 10px;
+}
+
 .attribution{
 	color: white;
 }
@@ -90,17 +96,6 @@ button[type="submit"]{
 	margin-right: auto;
 	margin-left: auto;
 	padding: 10px;
-}
-
-#no-result{
-	width: 75%;
-	margin-right: auto;
-	margin-left: auto;
-	padding: 10px;
-	background-color:#353535;
-	text-align: left;
-	padding: 10px;
-	margin: 10px;
 }
 
 .jsonObject{

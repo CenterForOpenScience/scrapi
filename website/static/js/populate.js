@@ -1,4 +1,6 @@
 // This is a simple *viewmodel* - JavaScript that defines the data and behavior of your UI
+$(".loader").hide();
+$("#no-results").hide();
 
 var AppViewModel = new function()
 {
@@ -10,10 +12,8 @@ var AppViewModel = new function()
 	self.keyword = ko.observable("");
 
     self.keyword.subscribe(function(newValue) {
-        console.log('onSubscribedActionThingy');
-        console.log(newValue);
-        console.log(self.Article().length);
         if (0 < self.Article().length){
+            $(".loader").show();
             self.Article([]);
             count = 0;
             article_count = 0;
@@ -25,10 +25,8 @@ var AppViewModel = new function()
 
     self.populate_results = function()
     {
-        console.log('populating: ' + self.keyword());
         //TODO universal url for live and testing
     	$.get("http://173.255.232.219/api/search?q="+self.keyword()+"&from="+count, function(data){
-        
         //$.get("http://localhost/api/search?q="+self.keyword()+"&from="+count, function(data){
             if(data != "[]"){
 
@@ -57,6 +55,8 @@ var AppViewModel = new function()
 
                     //console.log(properties_list);
 
+                    $(".loader").hide();
+
                     self.Article.push(
                         {
                             title: returnToJson[i]["title"],
@@ -66,18 +66,22 @@ var AppViewModel = new function()
                             properties:properties_list
                         }
                     );
+
                     contributors_list = "";
                     properties_list = "";
                 }
+            }else{
+                $(".loader").hide();
+                $("#no-results").show();
             }
     	});
     }
 
     $(window).scroll(function(){ 
         if ($(window).scrollTop() == ($(document).height() - $(window).height())){
-            console.log(article_count);
-            count += 10;
-            //count += Math.min(10, article_count);
+            $(".loader").show();
+            //count += 10;
+            count += Math.min(10, article_count);
             $('.btn').click();
         }
     })
