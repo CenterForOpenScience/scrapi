@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>scrAPI</title>
         <link type="text/css" rel="stylesheet" href="static/css/style.css"/>
+        <link type="text/css" rel="stylesheet" href="static/css/loader.css"/>
         <script type='text/javascript' src='static/js/jquery.js'></script>
         <script type='text/javascript' src='static/js/knockout-3.1.0.js'></script>
 
@@ -25,6 +26,7 @@
                     </div>
                 </form>
             </div>
+
             <div class="search-results" data-bind="foreach: Article">
                 <!--<div class="jsonObject" id="no-result"><h2>No results found.</h2></div>-->
                 <div class="jsonObject collapsed">
@@ -35,7 +37,14 @@
 
                     <div class="additional-content"><span data-bind="html:properties"></span></div>
                 </div>
-                
+            </div>
+            <div class="search-results">
+                <div id="no-results"><h2>End of results</h2></div>
+            </div>
+            <div class="loader">
+                <div class="circle teal"></div>
+                <div class="circle white"></div>
+                <div class="circle small"></div>
             </div>
             
             <div class="attribution"><a href="http://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/A_tower_of_used_books_-_8446.jpg/800px-A_tower_of_used_books_-_8446.jpg">Image: A tower of used books </a> © <a href="http://www.royan.com.ar"> Jorge Royan </a><a href="http://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA-3.0</a></div>
