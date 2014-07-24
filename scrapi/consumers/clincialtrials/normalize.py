@@ -1,5 +1,3 @@
-# from lxml import etree
-from datetime import datetime
 import xmltodict
 import sys
 reload(sys)
@@ -26,21 +24,17 @@ def normalize(result, timestamp):
 
     return payload
 
+## Tests! ## 
+# def test_dict():
+#     with open('output.txt', 'r') as f:
+#         result = f.read()
 
-def test_dict():
-    with open('output.txt', 'r') as f:
-        result = f.read()
+#     normed_file = normalize(result, datetime.now())
+#     assert isinstance(normed_file, dict)
 
-    normed_file = normalize(result, datetime.now())
+# def test_contributors():
+#     with open('output.txt', 'r') as f:
+#         result = f.read()
 
-    assert isinstance(normed_file, dict)
-
-def test_contributors():
-    with open('output.txt', 'r') as f:
-        result = f.read()
-
-    normed_file = normalize(result, datetime.now())
-
-    print normed_file['doc']['contributors']
-
-    assert normed_file['doc']['contributors']
+#     normed_file = normalize(result, datetime.now())
+#     assert normed_file['doc']['contributors']

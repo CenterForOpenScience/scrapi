@@ -40,10 +40,10 @@ def consume():
         study_urls.append(study['url'] + '?displayxml=true')
 
     doc_list = []
-    for study_url in study_urls[0:3]:
+    for study_url in study_urls:
         content = get_results_as_dict(study_url)
         doc_list.append(content)
-        # time.sleep(1)
+        time.sleep(1)
 
     with open(os.path.abspath(os.path.join(os.path.abspath(__file__), os.pardir)) + '/version', 'r') as f:
         version = f.readline()
@@ -53,9 +53,9 @@ def consume():
         doc_id = doc['clinical_study']['id_info']['nct_id']
         return_list.append((dicttoxml.dicttoxml(doc), 'ClinicalTrials.gov', doc_id, 'xml', version))
 
-
-    with open('output.txt', 'w') as f:
-        f.write(return_list[2][0])
+    ## For testing
+    # with open('output.txt', 'w') as f:
+    #     f.write(return_list[2][0])
 
     return return_list
 
@@ -64,6 +64,3 @@ def get_results_as_dict(url):
     results = requests.get(url)
     response = xmltodict.parse(results.text)
     return response
-
-
-consume()
