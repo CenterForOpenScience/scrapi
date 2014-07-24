@@ -30,7 +30,6 @@ def consume():
 
     response = get_results_as_dict(url)
     count = response['search_results']['@count']
-    print count
 
     url = url + '&count=' + count
     response = get_results_as_dict(url)
