@@ -1,0 +1,11 @@
+BeautifulSoup==3.2.1
+argparse==1.2.1
+beautifulsoup4==4.3.2
+dicttoxml==1.5.5
+lxml==3.3.5
+py==1.4.22
+pytest==2.6.0
+requests==2.3.0
+scrapi-tools==0.1.0
+wsgiref==0.1.2
+xmltodict==0.9.0
