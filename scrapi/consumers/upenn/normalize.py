@@ -10,13 +10,13 @@ def normalize(result, timestamp):
 
     payload = {
         "doc": {
-            'title': result['root']['clinical_study']['brief_title'],
-            'contributors': result['root']['clinical_study']['overall_official']['last_name']['#text'],
+            'title': result['clinical_study']['brief_title'],
+            'contributors': result['clinical_study']['overall_official']['last_name'],
             'properties': {
-                'abstract': result['root']['clinical_study']['brief_summary']
+                'abstract': result['clinical_study']['brief_summary']['textblock']
             },
             'meta': {},
-            'id': result['root']['clinical_study']['id_info']['nct_id']['#text'],
+            'id': result['clinical_study']['id_info']['nct_id'],
             'source': "ClinicalTrials.gov",
             'timestamp': str(timestamp)
         }
@@ -24,17 +24,5 @@ def normalize(result, timestamp):
 
     return payload
 
-## Tests! ## 
-# def test_dict():
-#     with open('output.txt', 'r') as f:
-#         result = f.read()
 
-#     normed_file = normalize(result, datetime.now())
-#     assert isinstance(normed_file, dict)
-
-# def test_contributors():
-#     with open('output.txt', 'r') as f:
-#         result = f.read()
-
-#     normed_file = normalize(result, datetime.now())
-#     assert normed_file['doc']['contributors']
+## TODO: fix contributors to be a list of dicts, maybe? To match others... 
