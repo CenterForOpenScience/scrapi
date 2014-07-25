@@ -66,4 +66,4 @@ def get_results_as_dict(url):
     response = xmltodict.parse(results.text)
     return response
 
-consume()
+# consume()
