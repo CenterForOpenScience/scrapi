@@ -6,7 +6,7 @@ minute: 53
 
 directory: 'ct'
 
-name: 'Clinical Trials Registry'
+name: 'ClinicalTrials'
 
 git-url: 'https://github.com/erinspace/ClinicalTrials-consumer.git'
     
