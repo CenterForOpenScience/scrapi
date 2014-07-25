@@ -1,24 +1,28 @@
-@import url("http://fonts.googleapis.com/css?family=Alegreya+Sans+SC:100,200,400");
+@import url("http://fonts.googleapis.com/css?family=Raleway:100,200,400,600");
 * {
 margin: 0;
 padding: 0;
 }
 
 html, body{
-	font-family: 'Alegreya Sans SC', sans-serif;
+	font-family: 'Raleway', sans-serif;
 	color: white;
 	background-color: #353535;
 	background: url('../images/books_bg.jpg');
+	background-attachment: fixed;
 	height: 100%;
 }
 
 h1{
 	font-weight: 200;
 	font-size: 72px;
+	margin-top: 100px;
+	margin-bottom: 75px;
 }
 
 strong, h2{
-	color:#34ad7e;
+	color:#39d395;
+	margin-bottom: 15px;
 }
 
 #no-results{
@@ -55,6 +59,7 @@ form {
 	width:75%;
 	margin:25px auto;
 }
+
 .search-query {
     padding:8px;
     width: 500px;
@@ -62,32 +67,37 @@ form {
     border:0px solid #fff;
 }
 input[type="text"]{
-	font-family: 'Alegreya Sans SC', sans-serif;
-	font-weight: 200;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
 	font-size: 40px;
 }
 
 button[type="submit"]{
-	font-family: 'Alegreya Sans SC', sans-serif;
-	font-weight: 400;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 600;
 	font-size: 20px;
 }
+
+
 .btn {
 	vertical-align: top;
     padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
     border:2px solid #fff;
-    background-color:#34ad7e;
+    background-color:#39d395;
     color:#fafafa;
     height: 66px;
     opacity: 0.90;
-    transition: opacity .25s ease-in-out, background .25s ease-in-out;
-    -moz-transition: opacity .25s ease-in-out, background .25s ease-in-out;
-    -webkit-transition: opacity .25s ease-in-out, background .25s ease-in-out;
+    transition: opacity .1s ease-in-out, background .1s ease-in-out;
+    -moz-transition: opacity .1s ease-in-out, background .1s ease-in-out;
+    -webkit-transition: opacity .1s ease-in-out, background .1s ease-in-out;
 }
+
 .btn:hover  {
-	border:2px solid #34ad7e;
+	border:2px solid #39d395;
     background-color:#fafafa;
-    color:#34ad7e;
+    color:#39d395;
     opacity: 1;
 }
 
@@ -98,12 +108,18 @@ button[type="submit"]{
 	padding: 10px;
 }
 
+.borderObject{
+	background-color: red;
+}
+
 .jsonObject{
+	border-style: solid;
+	border-width: 1px;
 	background-color:#353535;
 	opacity: 0.80;
 	text-align: left;
-	padding: 10px;
-	margin: 10px;
+	padding: 20px;
+	margin: 10px 10px 40px;
 	transition: opacity .10s ease-in-out;
     -moz-transition: opacity .10s ease-in-out;
     -webkit-transition: opacity .10s ease-in-out;
@@ -113,20 +129,41 @@ button[type="submit"]{
 	opacity: 1;
 }
 
+.expand{
+	margin-top:10px;
+	color:#636363;
+	text-align: center;
+	t-o-transition:.1s;
+  	-ms-transition:.1s;
+  	-moz-transition:.1s;
+  	-webkit-transition:.1s;
+  	transition:.1s;
+}
+
+.expand p{
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.expand:hover{
+    color: #39d395;
+    cursor: pointer; 
+    cursor: hand;
+}
+
 .additional-content{
   height:auto;
   min-height:100px;
   overflow:hidden;
-  /*transition:all 0.3s linear;
-  -webkit-transition:all 0.3s linear;
-  -moz-transition:all 0.3s linear;
-  -ms-transition:all 0.3s linear;
-  -o-transition:all 0.3s linear;*/
 }
 
 .collapsed .additional-content{
   min-height:0px;
   height:0px;
+}
+
+.buffer{
+	height: 400px;
 }
 
 footer, .push {

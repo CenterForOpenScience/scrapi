@@ -1,0 +1,72 @@
+.loader{
+  margin-right: auto;
+  margin-left: auto;
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.teal {
+  background: #39d395;
+}
+.white {
+  background: white;
+}
+
+.teal{
+  margin: auto;
+  top: 0; left: 0; bottom: 0; right: 0;
+  position:absolute;
+  width: 51px;
+  height: 51px;
+  border-radius: 100%;
+  box-shadow: 0;
+}
+
+.white{
+  margin: auto;
+  top: 0; left: 0; bottom: 0; right: 0;
+  position:absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  box-shadow: 0;
+  animation:fade-color-inner 1s;
+  -moz-animation:fade-color-inner 1s infinite;   
+  -webkit-animation:fade-color-inner 1s infinite;
+}
+
+.small{
+  margin: auto;
+  top: 0; left: 0; bottom: 0; right: 0;
+  position:absolute;
+  width: 1px;
+  height: 1px;
+  border-radius: 100%;
+  box-shadow: 0;
+  animation-delay:0.5s;
+  animation:fade-color-outer 1s;
+  -webkit-animation-delay:0.5s;
+  -moz-animation:fade-color-outer 1s infinite;   
+  -webkit-animation:fade-color-outer 1s infinite;
+}
+
+@-moz-keyframes fade-color-inner {
+    0%  {background:white;}
+    100%   {background:#39d395; width: 50px; height: 50px;}
+}
+ 
+@-webkit-keyframes fade-color-inner {
+    0%  {background:white;}
+    100%   {background:#39d395; width: 50px; height: 50px;}
+}
+
+@-moz-keyframes fade-color-outer {
+    0%  {background:#39d395;}
+    100%   {background:#39d395; width: 50px; height: 50px;}
+}
+ 
+@-webkit-keyframes fade-color-outer {
+    0%  {background:#39d395;}
+    100%   {background:#39d395; width: 50px; height: 50px;}
+}
