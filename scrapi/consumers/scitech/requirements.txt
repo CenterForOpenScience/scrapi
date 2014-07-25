@@ -1,5 +1,5 @@
 argparse==1.2.1
 lxml==3.3.5
 requests==2.3.0
-scrapi-tools==0.1.0
+git+https://www.github.com/fabianvf/scrapi-tools@master
 wsgiref==0.1.2
