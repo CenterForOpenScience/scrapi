@@ -87,6 +87,7 @@ class SciTechConsumer(BaseConsumer):
             'timestamp': str(timestamp)
         })
 
+
 if __name__ == '__main__':
     consumer = SciTechConsumer()
     print(consumer.lint())
