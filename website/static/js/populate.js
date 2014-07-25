@@ -1,6 +1,7 @@
 // This is a simple *viewmodel* - JavaScript that defines the data and behavior of your UI
 $(".loader").hide();
 $("#no-results").hide();
+$(".buffer").hide();
 
 var AppViewModel = new function()
 {
@@ -26,15 +27,14 @@ var AppViewModel = new function()
     self.populate_results = function()
     {
         //TODO universal url for live and testing
-    	$.get("http://173.255.232.219/api/search?q="+self.keyword()+"&from="+count, function(data){
-        //$.get("http://localhost/api/search?q="+self.keyword()+"&from="+count, function(data){
+    	$.get("http://173.255.232.219/api/search?q="+self.keyword()+"&from="+count+"&size=5", function(data){
+        //$.get("http://localhost/api/search?q="+self.keyword()+"&from="+count+"&size=5", function(data){
             if(data != "[]"){
 
                 var contributors_list = "";
                 var properties_list = "";
 
                 var returnToJson = $.parseJSON(data);
-                console.log(returnToJson);
                 
                 article_count = returnToJson.length;
                 
@@ -53,9 +53,8 @@ var AppViewModel = new function()
                         }
                     }
 
-                    //console.log(properties_list);
-
                     $(".loader").hide();
+                    $(".buffer").show();
 
                     self.Article.push(
                         {
@@ -67,10 +66,13 @@ var AppViewModel = new function()
                         }
                     );
 
+                    $('.jsonObject').addClass('animated fadeIn').css('border-color', '#39d395');
+
                     contributors_list = "";
                     properties_list = "";
                 }
             }else{
+                $(".buffer").hide();
                 $(".loader").hide();
                 $("#no-results").show();
             }
@@ -81,15 +83,21 @@ var AppViewModel = new function()
         if ($(window).scrollTop() == ($(document).height() - $(window).height())){
             $(".loader").show();
             //count += 10;
-            count += Math.min(10, article_count);
+            count += 5;
             $('.btn').click();
         }
     })
 
     $(".search-results").on("click", ".jsonObject", function(e){
-        $(e.target).closest('.jsonObject').toggleClass('collapsed');
-        //var file_name = $(e.target).text();
-        //console.log(file_name);
+
+        if ($(this).hasClass("collapsed")){
+            $(this).removeClass("collapsed")
+            $(this).find('.expand').text('---------- Less ----------');
+        }
+        else{
+            $(this).addClass("collapsed")
+            $(this).find('.expand').text('---------- More ----------');
+        }
     });
 };
 // Activates knockout.js
