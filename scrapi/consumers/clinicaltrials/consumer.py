@@ -4,7 +4,7 @@ import time
 import xmltodict
 import requests
 
-from scrapi_tools.consumers import BaseConsumer, RawFile, NormalizedFile
+from scrapi_tools.consumer import BaseConsumer, RawFile, NormalizedFile
 
 
 class ClinicalTrialsConsumer(BaseConsumer):
@@ -21,7 +21,7 @@ class ClinicalTrialsConsumer(BaseConsumer):
         of docs including other information """
 
         today = date.today()
-        yesterday = today - timedelta(1)
+        yesterday = today - timedelta(2)
 
         month = today.strftime('%m')
         day = today.strftime('%d')
@@ -39,32 +39,23 @@ class ClinicalTrialsConsumer(BaseConsumer):
 
         # grab the total number of studies
         initial_request = requests.get(url)
-        initial_request = xmltodict.parse(initial_request.text)
-        count = initial_request['search_results']['@count']
-
-        results = []
-
-        try:
-            # get a new url with all results in it
-            url = url + '&count=' + count
-            total_requests = requests.get(url)
-            response = xmltodict.parse(total_requests.text)
-
-            # make a list of urls from that full list of studies
-            study_urls = []
-            for study in response['search_results']['clinical_study']:
-                study_urls.append(study['url'] + '?displayxml=true')
-
-            # grab each of those urls for full content
-            for study_url in study_urls:
+        initial_request = xmltodict.parse(initial_request.text) 
                 content = requests.get(study_url)
                 results.append(content.text)
                 time.sleep(1)
 
         except KeyError: 
             print "No new files/updates!"
+        
+        # xml_doc = xmltodict.parse(doc)
+        # doc_id = xml_doc['clinical_study']['id_info']['nct_id']
 
-        return [RawFile(result) for result in results]
+        return [RawFile({
+            'doc': result,
+            'doc_id': ,
+            'source': "ClinicalTrials.gov",
+            'filetype': 'xml', 
+            }) for result in results]
 
 
     def normalize(self, raw_doc, timestamp):
