@@ -29,6 +29,7 @@ strong, h2{
 	background-color:#353535;
 	padding: 10px;
 	margin: 10px;
+	display: none;
 }
 
 .attribution{
