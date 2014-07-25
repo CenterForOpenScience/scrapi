@@ -9,6 +9,7 @@ html, body{
 	color: white;
 	background-color: #353535;
 	background: url('../images/books_bg.jpg');
+	background-attachment: fixed;
 	height: 100%;
 }
 
