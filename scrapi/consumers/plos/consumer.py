@@ -67,21 +67,17 @@ class PLoSConsumer(BaseConsumer):
 
     def normalize(self, raw_doc, timestamp):
         raw_doc = raw_doc.get('doc')
-        terms_url = 'http://www.plosone.org/static/terms'
         record = json.loads(raw_doc)
 
         return NormalizedFile({
-            "doc":
-                json.dumps({
-                    'title': record["str"][4]["#text"],
-                    'contributors': record["arr"][0]["str"],
-                    'properties': {
-                        'description': record["arr"][1]["str"],
-                    },
-                    'meta': {},
-                    'id': record["str"][0]["#text"],
-                    'source': "PLoS"
-                }),
+            'title': record["str"][4]["#text"],
+            'contributors': record["arr"][0]["str"],
+            'properties': {
+                'description': record["arr"][1]["str"],
+                },
+            'meta': {},
+            'id': record["str"][0]["#text"],
+            'source': "PLoS",
             'timestamp': timestamp
         })
 if __name__ == '__main__':
