@@ -84,8 +84,6 @@ def request_parses(config_file):
     os.remove('worker_manager/recent_files.txt')
 
 if __name__ == '__main__':
-    plos_config = 'worker_manager/manifests/plos-manifest.yml'
-    scitech_config = 'worker_manager/manifests/scitech-manifest.yml'
-
-    run_scraper(scitech_config)
-    request_parses(scitech_config)
+    config = 'worker_manager/manifests/plos-manifest.yml'
+    run_scraper(config)
+    request_parses(config)
