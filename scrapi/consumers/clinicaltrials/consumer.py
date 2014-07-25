@@ -55,7 +55,7 @@ class ClinicalTrialsConsumer(BaseConsumer):
                 study_urls.append(study['url'] + '?displayxml=true')
 
             # grab each of those urls for full content
-            for study_url in study_urls[0:6]:
+            for study_url in study_urls:
                 content = requests.get(study_url)
                 xml_doc = xmltodict.parse(content.text)
                 doc_id = xml_doc['clinical_study']['id_info']['nct_id']
