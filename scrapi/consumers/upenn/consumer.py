@@ -3,7 +3,6 @@ from datetime import date, timedelta
 import time
 import xmltodict
 import requests
-
 from scrapi_tools.consumer import BaseConsumer, RawFile, NormalizedFile
 
 TODAY = date.today()
