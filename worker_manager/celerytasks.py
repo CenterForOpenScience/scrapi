@@ -12,6 +12,7 @@ import sys
 import requests
 import logging
 import importlib
+import subprocess
 sys.path.insert(1, os.path.abspath('worker_manager/consumers'))  # TODO may be unnecessary
 from api import process_docs
 from website import search
@@ -52,21 +53,22 @@ def run_consumer(manifest_file):
         ret = requests.post(url)
     else:
         logger.info('worker_manager.consumers.{0}.consume'.format(manifest['directory']))
-        consumer = importlib.import_module('worker_manager.consumers.{0}.consume'.format(manifest['directory']))
-        normalizer = importlib.import_module('worker_manager.consumers.{0}.normalize'.format(manifest['directory']))
+        consumer_module = importlib.import_module('worker_manager.consumers.{0}.consumer'.format(manifest['directory']))
+        consumer = consumer_module.get_consumer()
+        consumer_version = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd='worker_manager/consumers/{0}'
+                                                   .format(manifest['directory']))
         results = consumer.consume()
 
         ret = []
         for result in results:
-            doc, source, doc_id, filetype, consumer_version = result
-            timestamp = process_docs.process_raw(doc, source, doc_id, filetype, consumer_version)
-            normalized = normalizer.normalize(doc, timestamp)
-            logger.info('Document {0} normalized successfully'.format(doc_id))
+            timestamp = process_docs.process_raw(result, consumer_version)
+            normalized = consumer.normalize(result, timestamp)
+            logger.info('Document {0} normalized successfully'.format(result.get("doc_id")))
             doc = process_docs.process(normalized, timestamp)
             if doc is not None:
-                doc['source'] = manifest['name']
-                logger.info('Document {0} processed successfully'.format(doc_id))
-                search.update('scrapi', doc, 'article', doc_id)  # TODO unhardcode 'article'
+                doc.attributes['source'] = manifest['name']
+                logger.info('Document {0} processed successfully'.format(result.get("doc_id")))
+                search.update('scrapi', doc.attributes, 'article', result.get("doc_id"))  # TODO unhardcode 'article'
                 ret.append(doc)
     return ret
 

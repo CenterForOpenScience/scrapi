@@ -26,15 +26,18 @@ BASE_DIR = os.path.abspath(os.path.join(
 ))
 
 
-def process_raw(doc, source, doc_id, filetype, consumer_version):
+def process_raw(attributes, consumer_version):
     """
-        Takes a text document and saves it to disk with the specified name and the designated filetype
+        Takes a RawFile object and saves it to disk with the specified name and the designated filetype
         in the specified source directory. It also saves a manifest file in the directory, containing
         the git hash for the version of the consumer it was produced with.
     """
     timestamp = datetime.datetime.now()
-    directory = '/archive/' + str(source).replace('/', '') + '/' + str(doc_id).replace('/', '') + '/' + str(timestamp) + '/'
-    filepath = BASE_DIR + directory + "raw" + '.' + str(filetype)
+    directory = '/archive/' + str(attributes.get('source')).replace('/', '') \
+        + '/' + str(attributes.get("doc_id")).replace('/', '') \
+        + '/' + str(timestamp) + '/'
+
+    filepath = BASE_DIR + directory + "raw" + '.' + str(attributes.get('filetype'))
 
     dir_path = BASE_DIR
     for dir in directory.split("/"):
@@ -44,26 +47,25 @@ def process_raw(doc, source, doc_id, filetype, consumer_version):
 
     with open(filepath, 'w') as f:
         try:
-            f.write(str(doc))
+            f.write(str(attributes.get("doc")))
         except IOError as e:
             logger.log(e)
             return None
     with open(dir_path + 'manifest.json', 'w') as f:
         info = {}
         info['consumer_version'] = consumer_version.strip()
-        info['source'] = source.strip()
+        info['source'] = attributes.get("source").strip()
         info['timestamp'] = str(timestamp)
         f.write(json.dumps(info))
 
     return timestamp
 
 
-def process(doc, timestamp):
+def process(attributes, timestamp):
     """
-        Takes a JSON document and extracts the information necessary
-        to make an OSF project, then creates that OSF project through
-        the API (does not exist yet)
-        Format specification:
+        Takes a NormalizedFile object and extracts the information necessary
+        to add the document to the search engine. The attributes field of the
+        NormalizedFile object has the following structure:
         {
             'title': {PROJECT_TITLE},
             'contributors: [{PROJECT_CONTRIBUTORS}],
@@ -75,16 +77,17 @@ def process(doc, timestamp):
             'source': {SOURCE OF SCRAPE}
         }
     """
-    if None in [doc.get('title'), doc.get('contributors'), doc.get('id'), doc.get('source')]:
+    if None in [attributes.get('title'), attributes.get('contributors'), attributes.get('id'), attributes.get('source')]:
         logger.error(": Document sent for processing did not match schema")
         return None
 
     # Collision detection
-    conflict = collision_detector.detect(doc)
+    conflict = collision_detector.detect(attributes.attributes)
     if conflict:
-        logger.warn("Document with id {0} and timestamp {1} from source {2} already found in database".format(doc['id'], timestamp, doc['source']))
+        logger.warn("Document with id {0} and timestamp {1} from source {2} already found in database"
+                    .format(attributes.get('id'), timestamp, attributes.get('source')))
 
-    directory = '/archive/' + doc['source'].replace('/', '') + '/' + str(doc['id']).replace('/', '') + '/' + str(timestamp) + '/'
+    directory = '/archive/' + attributes.get('source').replace('/', '') + '/' + str(attributes.get('id')).replace('/', '') + '/' + str(timestamp) + '/'
     filepath = BASE_DIR + directory + "normalized.json"
 
     dir_path = BASE_DIR
@@ -93,12 +96,10 @@ def process(doc, timestamp):
         if not os.path.exists(dir_path):
             os.makedirs(dir_path)
 
-    doc['timestamp'] = str(timestamp)
-
     with open(filepath, 'w') as f:
         try:
-            f.write(json.dumps(doc, sort_keys=True, indent=4))
+            f.write(json.dumps(attributes.attributes, sort_keys=True, indent=4))
         except IOError as e:
             logger.error(e)
             return None
-    return doc
+    return attributes
