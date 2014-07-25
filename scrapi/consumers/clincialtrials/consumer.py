@@ -20,7 +20,7 @@ class ClinicalTrialsConsumer(BaseConsumer):
         of docs including other information """
 
         month = TODAY.strftime('%m')
-        day = TODAY.strftime('%d')
+        day = TODAY.strftime('%d') 
         year = TODAY.strftime('%Y')
 
         y_month = YESTERDAY.strftime('%m')
@@ -42,7 +42,7 @@ class ClinicalTrialsConsumer(BaseConsumer):
 
         xml_list = []
 
-        if count > 0:
+        if int(count) > 0:
             # get a new url with all results in it
             url = url + '&count=' + count
             total_requests = requests.get(url)
