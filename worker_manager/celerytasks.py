@@ -52,8 +52,8 @@ def run_consumer(manifest_file):
         url = manifest['url'] + 'consume'
         ret = requests.post(url)
     else:
-        logger.info('worker_manager.consumers.{0}.consume'.format(manifest['directory']))
-        consumer_module = importlib.import_module('worker_manager.consumers.{0}.consumer'.format(manifest['directory']))
+        logger.info('worker_manager.consumers.{0}'.format(manifest['directory']))
+        consumer_module = importlib.import_module('worker_manager.consumers.{0}'.format(manifest['directory']))
         consumer = consumer_module.get_consumer()
         consumer_version = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd='worker_manager/consumers/{0}'
                                                    .format(manifest['directory']))
