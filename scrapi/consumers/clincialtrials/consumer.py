@@ -33,6 +33,8 @@ class ClinicalTrialsConsumer(BaseConsumer):
 
         url = base_url + url_end
 
+        print url
+
         # grab the total number of studies
         initial_request = requests.get(url)
         initial_request = xmltodict.parse(initial_request.text) 
@@ -48,6 +50,8 @@ class ClinicalTrialsConsumer(BaseConsumer):
             total_requests = requests.get(url)
             response = xmltodict.parse(total_requests.text)
 
+            print url
+
             # make a list of urls from that full list of studies
             study_urls = []
             for study in response['search_results']['clinical_study']:
@@ -60,12 +64,12 @@ class ClinicalTrialsConsumer(BaseConsumer):
                 doc_id = xml_doc['clinical_study']['id_info']['nct_id']
                 xml_list.append(RawFile({
                         'doc': content.text,
-                        'source': 'ClinicalTrials.giv',
+                        'source': 'ClinicalTrials',
                         'doc_id': doc_id,
                         'filetype': 'xml',
                     }))
                 time.sleep(1)
-            if count == 0:
+            if int(count) == 0:
                 print "No new or updated studies!"
             else: 
                 pass
@@ -77,10 +81,13 @@ class ClinicalTrialsConsumer(BaseConsumer):
         raw_doc = raw_doc.get('doc')
         result = xmltodict.parse(raw_doc)
 
-        contributor_list = result['clinical_study']['overall_official']
+        contributor_list = result['clinical_study'].get('overall_official')
 
         if not isinstance(contributor_list, list):
             contributor_list = [contributor_list]
+
+        if contributor_list == None:
+            contributor_list = []
 
         contributors = []
         for entry in contributor_list:
@@ -98,7 +105,7 @@ class ClinicalTrialsConsumer(BaseConsumer):
                 },
                 'meta': {},
                 'id': result['clinical_study']['id_info']['nct_id'],
-                'source': "ClinicalTrials.gov",
+                'source': "ClinicalTrials",
                 'timestamp': str(timestamp)
         }
 
