@@ -4,17 +4,54 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>SHARE Notification Service</title>
-        <link type="text/css" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+        <title>scrAPI</title>
+        <link type="text/css" rel="stylesheet" href="static/css/style.css"/>
+        <link type="text/css" rel="stylesheet" href="static/css/loader.css"/>
+        <script type='text/javascript' src='static/js/jquery.js'></script>
+        <script type='text/javascript' src='static/js/knockout-3.1.0.js'></script>
 
     </head>
     <body>
-        <h1>Welcome to SHARE</h1>
-        <form class="form-search" action="http://localhost:1337/search" method="get" role="search">
-            <div class="input-append">
-                <input type="text" class="span2 search-query" name="q">
-                <button type="submit" class="btn">Search</button>
+        <div id="wrapper">
+            <div id="title-box">
+                <h1>Welcome to scrAPI</h1>
             </div>
-        </form>
+
+            <div id="form-box">
+                <!--<form class="form-search" action="http://localhost:80/api/search" method="get" role="search">-->
+                <form class="form-search" data-bind= "submit: populate_results" role="search">
+                    <div class="input-append">
+                        <input type="text" data-bind= "value: keyword" class="search-query" name="q">
+                        <button type="submit" class="btn">Search</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="search-results" data-bind="foreach: Article">
+                <!--<div class="jsonObject" id="no-result"><h2>No results found.</h2></div>-->
+                <div class="jsonObject collapsed">
+                    <h2 class="header"><span data-bind="text:title"></span></h2>
+                    <p class="header"><span data-bind="text:contributors"></span></p>
+                    <p class="header"><strong>ID:</strong><span data-bind="text:article_id"></span></p>
+                    <p class="header"><strong>Source:</strong><span data-bind="text:source"></span></p>
+
+                    <div class="additional-content"><span data-bind="html:properties"></span></div>
+                </div>
+            </div>
+            <div class="search-results">
+                <div id="no-results"><h2>End of results</h2></div>
+            </div>
+            <div class="loader">
+                <div class="circle teal"></div>
+                <div class="circle white"></div>
+                <div class="circle small"></div>
+            </div>
+            
+            <div class="attribution"><a href="http://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/A_tower_of_used_books_-_8446.jpg/800px-A_tower_of_used_books_-_8446.jpg">Image: A tower of used books </a> © <a href="http://www.royan.com.ar"> Jorge Royan </a><a href="http://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA-3.0</a></div>
+        </div>
+        <script type='text/javascript' src='static/js/populate.js'></script>
     </body>
+    <footer>
+        Warning! This is the pre-alpha version!
+    </footer>
 </html>

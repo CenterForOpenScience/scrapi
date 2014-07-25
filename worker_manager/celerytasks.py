@@ -60,7 +60,7 @@ def run_consumer(manifest_file):
         for result in results:
             doc, source, doc_id, filetype, consumer_version = result
             timestamp = process_docs.process_raw(doc, source, doc_id, filetype, consumer_version)
-            normalized = normalizer.normalize(doc, timestamp)['doc']
+            normalized = normalizer.normalize(doc, timestamp)
             logger.info('Document {0} normalized successfully'.format(doc_id))
             doc = process_docs.process(normalized, timestamp)
             if doc is not None:
@@ -76,8 +76,8 @@ def request_normalized():
     """
         Deprecated/on hold until the push service comes back.
 
-        Read a file storing the most recently consumed documents, and request
-        normalization for those documents from the appropriate consumer module.
+        Read a file storing a list of the most recently consumed documents, and
+        request normalization for those documents from the appropriate consumer module.
     """
     if not os.path.isfile('worker_manager/recent_files.txt'):
         return "No documents waiting for normalization"

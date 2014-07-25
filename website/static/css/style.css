@@ -1,0 +1,137 @@
+@import url("http://fonts.googleapis.com/css?family=Alegreya+Sans+SC:100,200,400");
+* {
+margin: 0;
+padding: 0;
+}
+
+html, body{
+	font-family: 'Alegreya Sans SC', sans-serif;
+	color: white;
+	background-color: #353535;
+	background: url('../images/books_bg.jpg');
+	height: 100%;
+}
+
+h1{
+	font-weight: 200;
+	font-size: 72px;
+}
+
+strong, h2{
+	color:#34ad7e;
+}
+
+#no-results{
+	background-color:#353535;
+	padding: 10px;
+	margin: 10px;
+}
+
+.attribution{
+	color: white;
+}
+
+.attribution a{
+	color: white;
+}
+
+#wrapper{
+	width: 100%;
+	text-align: center;
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -40px; /* the bottom margin is the negative value of the footer's height */
+}
+
+#title-box{
+	margin-right: auto;
+	margin-left: auto;
+	padding-top:10px;
+	width:70%;
+}
+
+form {
+	width:75%;
+	margin:25px auto;
+}
+.search-query {
+    padding:8px;
+    width: 500px;
+    height: 50px;
+    border:0px solid #fff;
+}
+input[type="text"]{
+	font-family: 'Alegreya Sans SC', sans-serif;
+	font-weight: 200;
+	font-size: 40px;
+}
+
+button[type="submit"]{
+	font-family: 'Alegreya Sans SC', sans-serif;
+	font-weight: 400;
+	font-size: 20px;
+}
+.btn {
+	vertical-align: top;
+    padding: 5px;
+    border:2px solid #fff;
+    background-color:#34ad7e;
+    color:#fafafa;
+    height: 66px;
+    opacity: 0.90;
+    transition: opacity .25s ease-in-out, background .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out, background .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out, background .25s ease-in-out;
+}
+.btn:hover  {
+	border:2px solid #34ad7e;
+    background-color:#fafafa;
+    color:#34ad7e;
+    opacity: 1;
+}
+
+.search-results{
+	width: 75%;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 10px;
+}
+
+.jsonObject{
+	background-color:#353535;
+	opacity: 0.80;
+	text-align: left;
+	padding: 10px;
+	margin: 10px;
+	transition: opacity .10s ease-in-out;
+    -moz-transition: opacity .10s ease-in-out;
+    -webkit-transition: opacity .10s ease-in-out;
+}
+
+.jsonObject:hover {
+	opacity: 1;
+}
+
+.additional-content{
+  height:auto;
+  min-height:100px;
+  overflow:hidden;
+  /*transition:all 0.3s linear;
+  -webkit-transition:all 0.3s linear;
+  -moz-transition:all 0.3s linear;
+  -ms-transition:all 0.3s linear;
+  -o-transition:all 0.3s linear;*/
+}
+
+.collapsed .additional-content{
+  min-height:0px;
+  height:0px;
+}
+
+footer, .push {
+	height: 40px;
+	font-size: 20px;
+	width: auto;
+	background-color: red;
+}

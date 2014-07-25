@@ -94,7 +94,7 @@ $ brew install rabbitmq
 #### Ubuntu
 
 ```bash
-$ sudo apt-get install rabbitmq
+$ sudo apt-get install rabbitmq-server
 ```
 
 
