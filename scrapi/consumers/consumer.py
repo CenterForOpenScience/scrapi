@@ -9,10 +9,12 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 import settings
-
+import logging
 TODAY = str(date.today()) + "T00:00:00Z"
 YESTERDAY = str(date.today() - timedelta(4)) + "T00:00:00Z"
 MAX_ROWS_PER_REQUEST = 999
+
+logger = logging.getLogger(__name__)
 
 
 class PLoSConsumer(BaseConsumer):
@@ -68,8 +70,17 @@ class PLoSConsumer(BaseConsumer):
 
     def normalize(self, raw_doc, timestamp):
         raw_doc = raw_doc.get('doc')
-        record = json.loads(raw_doc)
-
+        try:
+            record = json.loads(raw_doc)
+        except ValueError as e:
+            logger.exception(e)
+            return NormalizedFile({
+                'title': None,
+                'contributors': None,
+				'id': None,
+				'source': None,
+				'timestamp': None,
+            })
         return NormalizedFile({
             'title': record["str"][4]["#text"],
             'contributors': {'email': None, 'full_name': record["arr"][0]["str"]},
