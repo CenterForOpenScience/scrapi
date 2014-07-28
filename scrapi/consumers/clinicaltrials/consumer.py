@@ -91,20 +91,20 @@ class ClinicalTrialsConsumer(BaseConsumer):
 
         contributors = []
         for entry in contributor_list:
-            name = entry['last_name']
+            name = entry.get('last_name')
             contributor = {}
             contributor['full_name'] = name
             contributor['email'] = None
             contributors.append(contributor)
 
         normalized_dict = {
-                'title': result['clinical_study']['brief_title'],
+                'title': result['clinical_study'].get('brief_title'),
                 'contributors': contributors,
                 'properties': {
-                    'abstract': result['clinical_study']['brief_summary']['textblock']
+                    'abstract': result['clinical_study']['brief_summary'].get('textblock')
                 },
                 'meta': {},
-                'id': result['clinical_study']['id_info']['nct_id'],
+                'id': result['clinical_study']['id_info'].get('nct_id'),
                 'source': "ClinicalTrials",
                 'timestamp': str(timestamp)
         }
