@@ -34,14 +34,14 @@ class ClinicalTrialsConsumer(BaseConsumer):
 
         url = base_url + url_end
 
-        print url
+        # print url
 
         # grab the total number of studies
         initial_request = requests.get(url)
         initial_request = xmltodict.parse(initial_request.text) 
         count = initial_request['search_results']['@count']
 
-        print 'number of studies this query: ' + str(count)
+        # print 'number of studies this query: ' + str(count)
 
         xml_list = []
 
@@ -51,7 +51,7 @@ class ClinicalTrialsConsumer(BaseConsumer):
             total_requests = requests.get(url)
             response = xmltodict.parse(total_requests.text)
 
-            print url
+            # print url
 
             # make a list of urls from that full list of studies
             study_urls = []
@@ -78,7 +78,7 @@ class ClinicalTrialsConsumer(BaseConsumer):
                     }))
                 time.sleep(1)
                 studies_processed += 1
-                print 'studies processed: ' + str(studies_processed)
+                # print 'studies processed: ' + str(studies_processed)
 
             if int(count) == 0:
                 print "No new or updated studies!"
