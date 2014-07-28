@@ -7,6 +7,8 @@ sys.path.insert(1, os.path.abspath(os.path.join(
 )))
 from website import search
 from pyelasticsearch.exceptions import ElasticHttpNotFoundError, ElasticHttpError
+import logging
+logger = logging.getLogger(__name__)
 
 
 def migrate():
@@ -17,7 +19,12 @@ def migrate():
     for dirname, dirnames, filenames in os.walk('archive/'):
         if os.path.isfile(dirname + '/normalized.json'):
             with open(dirname + '/normalized.json') as f:
-                doc = json.load(f)
+		try:
+                    doc = json.load(f)
+                except ValueError as e:
+                    logger.exception(e)
+                    continue
+
                 try:
                     search.update('scrapi', doc, dirname.split('/')[1], dirname.split('/')[2])
                 except ElasticHttpError:

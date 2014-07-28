@@ -98,6 +98,7 @@ def process(attributes, timestamp):
 
     with open(filepath, 'w') as f:
         try:
+            attributes.attributes['timestamp'] = str(timestamp)
             f.write(json.dumps(attributes.attributes, sort_keys=True, indent=4))
         except IOError as e:
             logger.error(e)
