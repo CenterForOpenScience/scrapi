@@ -3,10 +3,11 @@ from datetime import date, timedelta
 import time
 import xmltodict
 import requests
+from xml.parsers import expat
 from scrapi_tools.consumer import BaseConsumer, RawFile, NormalizedFile
 
 TODAY = date.today()
-YESTERDAY = TODAY - timedelta(1)
+YESTERDAY = TODAY - timedelta(4)
 
 class ClinicalTrialsConsumer(BaseConsumer):
 
@@ -57,10 +58,17 @@ class ClinicalTrialsConsumer(BaseConsumer):
             for study in response['search_results']['clinical_study']:
                 study_urls.append(study['url'] + '?displayxml=true')
 
+
+
+            studies_processed = 0
             # grab each of those urls for full content
             for study_url in study_urls:
                 content = requests.get(study_url)
-                xml_doc = xmltodict.parse(content.text)
+                try:
+                    xml_doc = xmltodict.parse(content.text)
+                except expat.ExpatError:
+                    print 'xml reading error for ' + study_url
+                    pass
                 doc_id = xml_doc['clinical_study']['id_info']['nct_id']
                 xml_list.append(RawFile({
                         'doc': content.text,
@@ -69,6 +77,9 @@ class ClinicalTrialsConsumer(BaseConsumer):
                         'filetype': 'xml',
                     }))
                 time.sleep(1)
+                studies_processed += 1
+                print 'studies processed: ' + str(studies_processed)
+
             if int(count) == 0:
                 print "No new or updated studies!"
             else: 
@@ -79,7 +90,11 @@ class ClinicalTrialsConsumer(BaseConsumer):
 
     def normalize(self, raw_doc, timestamp):
         raw_doc = raw_doc.get('doc')
-        result = xmltodict.parse(raw_doc)
+        try:
+            result = xmltodict.parse(raw_doc)
+        except expat.ExpatError:
+            print 'xml reading error...'
+            pass
 
         contributor_list = result['clinical_study'].get('overall_official')
 
@@ -87,15 +102,17 @@ class ClinicalTrialsConsumer(BaseConsumer):
             contributor_list = [contributor_list]
 
         if contributor_list == None:
-            contributor_list = []
+            contributors = [{'full_name': 'No Contributors', 'email': None}]
 
-        contributors = []
-        for entry in contributor_list:
-            name = entry.get('last_name')
-            contributor = {}
-            contributor['full_name'] = name
-            contributor['email'] = None
-            contributors.append(contributor)
+        else: 
+            contributors = []
+            for entry in contributor_list:
+                if entry != None:
+                    name = entry.get('last_name')
+                    contributor = {}
+                    contributor['full_name'] = name
+                    contributor['email'] = None
+                    contributors.append(contributor)
 
         normalized_dict = {
                 'title': result['clinical_study'].get('brief_title'),
