@@ -7,7 +7,7 @@ from xml.parsers import expat
 from scrapi_tools.consumer import BaseConsumer, RawFile, NormalizedFile
 
 TODAY = date.today()
-YESTERDAY = TODAY - timedelta(4)
+YESTERDAY = TODAY - timedelta(3)
 
 class ClinicalTrialsConsumer(BaseConsumer):
 
@@ -33,7 +33,6 @@ class ClinicalTrialsConsumer(BaseConsumer):
                     format(y_month, y_day, y_year, month, day, year)
 
         url = base_url + url_end
-
         # print url
 
         # grab the total number of studies
@@ -44,23 +43,18 @@ class ClinicalTrialsConsumer(BaseConsumer):
         # print 'number of studies this query: ' + str(count)
 
         xml_list = []
-
         if int(count) > 0:
             # get a new url with all results in it
             url = url + '&count=' + count
             total_requests = requests.get(url)
             response = xmltodict.parse(total_requests.text)
 
-            # print url
-
             # make a list of urls from that full list of studies
             study_urls = []
             for study in response['search_results']['clinical_study']:
                 study_urls.append(study['url'] + '?displayxml=true')
 
-
-
-            studies_processed = 0
+            # studies_processed = 0
             # grab each of those urls for full content
             for study_url in study_urls:
                 content = requests.get(study_url)
@@ -77,7 +71,7 @@ class ClinicalTrialsConsumer(BaseConsumer):
                         'filetype': 'xml',
                     }))
                 time.sleep(1)
-                studies_processed += 1
+                # studies_processed += 1
                 # print 'studies processed: ' + str(studies_processed)
 
             if int(count) == 0:
@@ -95,6 +89,15 @@ class ClinicalTrialsConsumer(BaseConsumer):
         except expat.ExpatError:
             print 'xml reading error...'
             pass
+
+        try: 
+            title = result['clinical_study']['official_title']
+        except KeyError:
+            try:
+                title = result['clinical_study']['brief_title']
+            except KeyError:
+                title = 'No title available'
+                pass
 
         contributor_list = result['clinical_study'].get('overall_official')
 
@@ -114,14 +117,27 @@ class ClinicalTrialsConsumer(BaseConsumer):
                     contributor['email'] = None
                     contributors.append(contributor)
 
+        try:
+            abstract = result['clinical_study']['brief_summary'].get('textblock')
+        except KeyError:
+            try:
+                abstract = result['clinical_study']['detailed_description'].get('textblock')
+            except KeyError:
+                abstract = 'No abstract available'
+
+        try: 
+            nct_id = result['clinical_study']['id_info']['nct_id']
+        except KeyError:
+            nct_id = 'Secondary ID: ' + result['clinical_study']['id_info']['secondary_id']
+
         normalized_dict = {
-                'title': result['clinical_study'].get('brief_title'),
+                'title': title,
                 'contributors': contributors,
                 'properties': {
-                    'abstract': result['clinical_study']['brief_summary'].get('textblock')
+                    'abstract': abstract
                 },
                 'meta': {},
-                'id': result['clinical_study']['id_info'].get('nct_id'),
+                'id': nct_id,
                 'source': "ClinicalTrials",
                 'timestamp': str(timestamp)
         }
