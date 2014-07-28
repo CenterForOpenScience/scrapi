@@ -67,10 +67,10 @@ and you should be good to go.
 - Just run 
 
 ```bash
-$ invoke server
+$ python main.py
 ```
 
-and the server should be up and running!
+from the scrapi/website/ directory, and the server should be up and running!
 
 
 ### Consumers
