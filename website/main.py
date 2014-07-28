@@ -1,4 +1,4 @@
-from flask import Flask, request, Response, render_template
+from flask import Flask, request, Response, render_template, send_file, abort
 import json
 import sys
 import os
@@ -11,8 +11,6 @@ from api import process_docs
 import search
 
 app = Flask(__name__)
-
-
 
 
 @app.route('/', methods=['GET'])
@@ -74,12 +72,31 @@ def search_search():
     query = request.args.get('q')
     start = request.args.get('from')
     size = request.args.get('size')
-    #return render_template('search.html.jinja2', results=search.search('scrapi', query, start, size))
+    # return render_template('search.html.jinja2', results=search.search('scrapi', query, start, size))
     return json.dumps(search.search('scrapi', query, start, size))
+
+
+@app.route('/archive/', defaults={'req_path': ''})
+@app.route('/archive/<path:req_path>')
+def archive_exploration(req_path):
+    BASE_DIR = '../archive'
+    abs_path = os.path.join(BASE_DIR, req_path)
+
+    if not os.path.exists(abs_path):
+        return abort(404)
+
+    if os.path.isfile(abs_path):
+        return send_file(abs_path)
+
+    files = os.listdir(abs_path)
+    BASE_URL = '/archive' if not req_path else '/archive/' + req_path
+
+    return render_template('files.html', files=files, url=BASE_URL)
+
 
 if __name__ == '__main__':
     app.run(
         host="0.0.0.0",
-        port=80,
+        port=1337,
         debug=True
     )
