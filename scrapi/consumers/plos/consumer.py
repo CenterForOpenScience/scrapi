@@ -14,11 +14,12 @@ TODAY = str(date.today()) + "T00:00:00Z"
 YESTERDAY = str(date.today() - timedelta(4)) + "T00:00:00Z"
 MAX_ROWS_PER_REQUEST = 999
 
+
 class PLoSConsumer(BaseConsumer):
+
     def __init__(self):
         # Nothing to see here
         pass
-
 
     def consume(self):
         payload = {"api_key": settings.API_KEY, "rows": "0"}
@@ -50,7 +51,7 @@ class PLoSConsumer(BaseConsumer):
                                 'source': 'PLoS',
                                 'doc_id': result["str"][0]["#text"],
                                 'filetype': 'json',
-                                }))
+                            }))
                     except KeyError:
                         pass
 
@@ -71,10 +72,10 @@ class PLoSConsumer(BaseConsumer):
 
         return NormalizedFile({
             'title': record["str"][4]["#text"],
-            'contributors': record["arr"][0]["str"],
+            'contributors': {'email': None, 'full_name': record["arr"][0]["str"]},
             'properties': {
                 'description': record["arr"][1]["str"],
-                },
+            },
             'meta': {},
             'id': record["str"][0]["#text"],
             'source': "PLoS",
