@@ -14,7 +14,7 @@ var AppViewModel = new function()
 
     self.keyword.subscribe(function(newValue) {
         if (0 < self.Article().length){
-            $(".loader").show();
+            //$(".loader").show();
             self.Article([]);
             count = 0;
             article_count = 0;
@@ -30,6 +30,7 @@ var AppViewModel = new function()
     	$.get("http://173.255.232.219/api/search?q="+self.keyword()+"&from="+count+"&size=5", function(data){
         //$.get("http://localhost/api/search?q="+self.keyword()+"&from="+count+"&size=5", function(data){
             if(data != "[]"){
+                $("#no-results").hide();
 
                 var contributors_list = "";
                 var properties_list = "";
@@ -81,7 +82,7 @@ var AppViewModel = new function()
 
     $(window).scroll(function(){ 
         if ($(window).scrollTop() == ($(document).height() - $(window).height())){
-            $(".loader").show();
+            //$(".loader").show();
             //count += 10;
             count += 5;
             $('.btn').click();

@@ -16,6 +16,8 @@ import subprocess
 sys.path.insert(1, os.path.abspath('worker_manager/consumers'))  # TODO may be unnecessary
 from api import process_docs
 from website import search
+from scrapi_tools.consumer import RawFile
+from scrapi_tools.exceptions import MissingAttributeError
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -68,7 +70,7 @@ def run_consumer(manifest_file):
             if doc is not None:
                 doc.attributes['source'] = manifest['name']
                 logger.info('Document {0} processed successfully'.format(result.get("doc_id")))
-                search.update('scrapi', doc.attributes, 'article', result.get("doc_id"))  # TODO unhardcode 'article'
+                search.update('scrapi', doc.attributes, manifest['directory'], result.get("doc_id"))  # TODO unhardcode 'article'
                 ret.append(doc)
     return ret
 
@@ -135,14 +137,24 @@ def check_archive():
                 service = dirname.split('/')[1]
                 doc_id = dirname.split('/')[2]
                 with open(os.path.join(dirname, filename), 'r') as f:
-                    i = importlib.import_module('worker_manager.consumers.{0}.normalize'.
-                                                format(manifests[service]['directory']))
-                    normalized = i.normalize(f.read(), timestamp)['doc']
+                    consumer_module = importlib.import_module('worker_manager.consumers.{0}'.format(manifests[service]['directory']))
+                    consumer = consumer_module.get_consumer()
+                    raw_file = RawFile({
+                        'doc': f.read(),
+                        'doc_id': doc_id,
+                        'source': service,
+                        'filetype': manifests[service]['file-format'],
+                    })
+                    try:
+                        normalized = consumer.normalize(raw_file, timestamp)
+                    except MissingAttributeError as e:
+                        logger.exception(e)
+                        continue
                     logger.info('Document {0} normalized successfully'.format(doc_id))
                     result = process_docs.process(normalized, timestamp)
                     if result is not None:
                         logger.info('Document {0} processed successfully'.format(doc_id))
-                        search.update('scrapi', result, 'article', doc_id)
+                        search.update('scrapi', result.attributes, manifests[service]['directory'], doc_id)
 
 
 @app.task

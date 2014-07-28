@@ -77,3 +77,15 @@ def celery_beat():
 @task
 def celery_worker():
     run('celery -A worker_manager.celerytasks worker --loglevel info')
+
+
+@task
+def run_consumers():
+    from worker_manager.celerytasks import run_consumers
+    run_consumers()
+
+
+@task
+def check_archive():
+    from worker_manager.celerytasks import check_archive
+    check_archive()
