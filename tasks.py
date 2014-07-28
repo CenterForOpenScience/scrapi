@@ -86,6 +86,6 @@ def run_consumers():
 
 
 @task
-def check_archive():
+def check_archive(directory='', reprocess=False):
     from worker_manager.celerytasks import check_archive
-    check_archive()
+    check_archive(directory, reprocess)

@@ -118,7 +118,7 @@ def request_normalized():
 
 
 @app.task
-def check_archive():
+def check_archive(directory='', reprocess=False):
     """
         Normalize every non-normalized document in the archive.
 
@@ -130,13 +130,14 @@ def check_archive():
         manifest = _load_config('worker_manager/manifests/' + filename)
         manifests[manifest['directory']] = manifest
 
-    for dirname, dirnames, filenames in os.walk('archive/'):
+    for dirname, dirnames, filenames in os.walk('archive/' + directory):
         for filename in filenames:
-            if 'raw' in filename and not os.path.isfile(dirname + '/normalized.json'):
+            if 'raw' in filename and (not (os.path.isfile(dirname + '/normalized.json')) or reprocess):
                 timestamp = dirname.split('/')[-1]
                 service = dirname.split('/')[1]
                 doc_id = dirname.split('/')[2]
                 with open(os.path.join(dirname, filename), 'r') as f:
+                    logger.info("worker_manager.consumers.{0}".format(manifests[service]['directory']))
                     consumer_module = importlib.import_module('worker_manager.consumers.{0}'.format(manifests[service]['directory']))
                     consumer = consumer_module.get_consumer()
                     raw_file = RawFile({
