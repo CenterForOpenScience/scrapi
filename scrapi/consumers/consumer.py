@@ -72,7 +72,10 @@ class PLoSConsumer(BaseConsumer):
 
         return NormalizedFile({
             'title': record["str"][4]["#text"],
-            'contributors': {'email': None, 'full_name': record["arr"][0]["str"]},
+            'contributors': [{
+                'email': None,
+                'full_name': name,
+            } for name in record['arr'][0]['str']],
             'properties': {
                 'description': record["arr"][1]["str"],
             },
