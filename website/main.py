@@ -97,6 +97,6 @@ def archive_exploration(req_path):
 if __name__ == '__main__':
     app.run(
         host="0.0.0.0",
-        port=1337,
-        debug=True
+        port=80,
+        debug=False
     )

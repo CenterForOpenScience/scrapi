@@ -1,10 +1,10 @@
 ---
 
 days: 'mon-fri'
-hour: 14
-minute: 53
+hour: 13
+minute: 45
 
-directory: 'ct'
+directory: 'ClinicalTrials'
 
 name: 'Clinical Trials Registry'
 
