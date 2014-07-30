@@ -7,6 +7,7 @@ import re
 
 TODAY = datetime.date.today()
 YESTERDAY = TODAY - datetime.timedelta(1)
+NAME = 'SciTech'
 
 
 def consume(start_date=YESTERDAY.strftime('%m/%d/%Y'), end_date=None, **kwargs):
@@ -28,7 +29,7 @@ def consume(start_date=YESTERDAY.strftime('%m/%d/%Y'), end_date=None, **kwargs):
         for record in xml_root.find('records'):
             xml_list.append(RawDocument({
                 'doc': etree.tostring(record, encoding='ASCII'),
-                'source': 'SciTech',
+                'source': NAME,
                 'doc_id': record.find(str(etree.QName(elements_url, 'ostiId'))).text,
                 'filetype': 'xml',
             }))
@@ -79,11 +80,11 @@ def normalize(raw_doc, timestamp):
         },
         'meta': {},
         'id': record.find(str(etree.QName(elements_url, 'ostiId'))).text,
-        'source': 'SciTech',
+        'source': NAME,
         'timestamp': str(timestamp)
     })
 
-registry.register('example', consume, normalize)
+registry.register(NAME, consume, normalize)
 
 if __name__ == '__main__':
     print(lint(consume, normalize))
