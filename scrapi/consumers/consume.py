@@ -9,7 +9,7 @@ from datetime import date, timedelta
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
-from website import settings
+# from website import settings
 
 
 def consume():
@@ -55,14 +55,17 @@ def consume():
             print "No new files/updates!"
             break
 
-    with open(os.path.abspath(os.path.join(os.path.abspath(__file__), os.pardir)) + '/version', 'r') as f:
-        version = f.readline()
+    # with open(os.path.abspath(os.path.join(os.path.abspath(__file__), os.pardir)) + '/version', 'r') as f:
+    #     version = f.readline()
 
-    return_list = []
-    for x in range(0, len(doc_list)):
-        doc_xml = doc_list[x]
-        doc_id = doc_xml["str"][0]["#text"]
-        return_list.append((dicttoxml.dicttoxml(doc_list[x]), 'PLoS', doc_id, 'xml', version))
+    print doc_list[0]
+
+    # return_list = []
+    # for x in range(0, len(doc_list)):
+    #     doc_xml = doc_list[x]
+    #     doc_id = doc_xml["str"][0]["#text"]
+    #     return_list.append((dicttoxml.dicttoxml(doc_list[x]), 'PLoS', doc_id, 'xml', version))
+
 
 #    payload = {
 #        'doc': 'ASDFJKL'.join(doc_list),
