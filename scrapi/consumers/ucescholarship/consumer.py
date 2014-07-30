@@ -13,7 +13,7 @@ from scrapi_tools.document import RawDocument, NormalizedDocument
 
 TODAY = date.today()
 YESTERDAY = TODAY - timedelta(1)
-
+NAME = "eScholarship"
 
 def consume():
     base_url = 'http://www.escholarship.org/uc/oai?verb=ListRecords&metadataPrefix=oai_dc&from='
@@ -35,7 +35,7 @@ def consume():
         record = '<?xml version="1.0" encoding="UTF-8"?>\n' + record
         xml_list.append(RawDocument({
                     'doc': record,
-                    'source': 'eScholarship',
+                    'source': NAME,
                     'doc_id': doc_id,
                     'filetype': 'xml'
                 }))
@@ -74,7 +74,7 @@ def normalize(raw_doc, timestamp):
             },
             'meta': {},
             'id': doc_id,
-            'source': "eScholarship",
+            'source': NAME,
             'timestamp': str(timestamp)
     }
 
@@ -82,4 +82,4 @@ def normalize(raw_doc, timestamp):
         
 
 if __name__ == '__main__':
-    lint(consume, normalize) 
+    print(lint(consume, normalize))
