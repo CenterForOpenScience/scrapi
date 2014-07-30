@@ -4,12 +4,12 @@ import time
 import xmltodict
 import requests
 from xml.parsers import expat
-from scrapi_tools.manager import registry, lint
-from scrapi_tool.document import RawDocument, NormalizedDocument
+from scrapi_tools import lint
+from scrapi_tools.document import RawDocument, NormalizedDocument
 
 TODAY = date.today()
-YESTERDAY = TODAY - timedelta(3)
-
+YESTERDAY = TODAY - timedelta(1)
+NAME = "ClinicalTrials"
 
 
 def consume():
@@ -63,7 +63,7 @@ def consume():
             doc_id = xml_doc['clinical_study']['id_info']['nct_id']
             xml_list.append(RawDocument({
                     'doc': content.text,
-                    'source': 'ClinicalTrials',
+                    'source': NAME,
                     'doc_id': doc_id,
                     'filetype': 'xml',
                 }))
@@ -135,15 +135,13 @@ def normalize(raw_doc, timestamp):
             },
             'meta': {},
             'id': nct_id,
-            'source': "ClinicalTrials",
+            'source': NAME,
             'timestamp': str(timestamp)
     }
 
     return NormalizedDocument(normalized_dict)
 
 
-registry.register('ClinicalTrials', consume, normalize)
-
 
 if __name__ == '__main__':
-    lint(consume, normalize)  
+    print(lint(consume, normalize))
