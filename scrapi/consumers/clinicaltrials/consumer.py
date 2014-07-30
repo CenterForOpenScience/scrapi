@@ -142,7 +142,7 @@ def normalize(raw_doc, timestamp):
     return NormalizedDocument(normalized_dict)
 
 
-registry.register('example', consume, normalize)
+registry.register('ClinicalTrials', consume, normalize)
 
 
 if __name__ == '__main__':
