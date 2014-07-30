@@ -1,0 +1,15 @@
+---
+
+days: 'mon-fri'
+hour: 13
+minute: 45
+
+directory: 'eScholarship'
+
+name: 'eScholarship - University of California'
+
+git-url: 'https://github.com/erinspace/ClinicalTrials-consumer.git'
+    
+file-format: '.xml'
+
+...
