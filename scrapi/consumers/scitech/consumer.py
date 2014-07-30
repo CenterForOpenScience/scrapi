@@ -1,4 +1,4 @@
-from scrapi_tools import registry, lint
+from scrapi_tools import lint
 from scrapi_tools.document import RawDocument, NormalizedDocument
 from lxml import etree
 import requests
@@ -84,7 +84,6 @@ def normalize(raw_doc, timestamp):
         'timestamp': str(timestamp)
     })
 
-registry.register(NAME, consume, normalize)
 
 if __name__ == '__main__':
     print(lint(consume, normalize))

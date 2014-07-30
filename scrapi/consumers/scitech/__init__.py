@@ -1,5 +1,4 @@
-from consumer import SciTechConsumer
+from scrapi_tools import registry
+from consumer import NAME, consume, normalize
 
-
-def get_consumer():
-    return SciTechConsumer()
+registry.register(NAME, consume, normalize)
