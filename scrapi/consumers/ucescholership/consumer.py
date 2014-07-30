@@ -1,20 +1,21 @@
-## Consumer and Normalizer for the eScholarship Repo 
-## at the University of California
+#!/usr/bin/env python
 
-# import requests
+''' Consumer and Normalizer for the eScholarship Repo 
+at the University of California
+'''
+
 from lxml import etree
 from xml.etree import ElementTree
 from datetime import date, timedelta
 import requests
-from scrapi_tools.manager import registry, lint
-from scrapi_tool.document import RawDocument, NormalizedDocument
+from scrapi_tools import lint
+from scrapi_tools.document import RawDocument, NormalizedDocument
 
 TODAY = date.today()
 YESTERDAY = TODAY - timedelta(1)
 
 
 def consume():
-
     base_url = 'http://www.escholarship.org/uc/oai?verb=ListRecords&metadataPrefix=oai_dc&from='
     url = base_url + str(YESTERDAY)
     data = requests.get(url)
@@ -45,36 +46,40 @@ def consume():
 
 def normalize(raw_doc, timestamp):
     raw_doc = raw_doc.get('doc')
-    doc = etree.XML(raw_doc.content)
+    doc = etree.XML(raw_doc)
 
     namespaces = {'dc': 'http://purl.org/dc/elements/1.1/', 
                 'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
-                'ns0': 'http://www.openarchives.org/OAI/2.0/'}
+                'ns0': 'http://www.openarchives.org/OAI/2.0/', 
+                'oai_dc2': 'http://www.openarchives.org/OAI/2.0/oai_dc/'}
 
-    contributors = doc.findall('//creator', namespaces=namespaces)
+    contributors = doc.findall('ns0:metadata/oai_dc2:dc/dc:creator', namespaces=namespaces)
+    contributor_list = []
+    for contributor in contributors:
+        contributor_list.append(contributor.text)
+    title = doc.findall('ns0:metadata/oai_dc2:dc/dc:title', namespaces=namespaces)
+
     doc_id = doc.xpath('ns0:header/ns0:identifier', 
                                 namespaces=namespaces)[0].text
 
     ## Using this for the abstract for now...
-    source = doc.findall('//source', namespaces=namespaces)
+    ## TODO: make this an actual absttract maybe by going to the source...
+    source = doc.xpath('ns0:metadata/oai_dc2:dc/dc:source', namespaces=namespaces)
 
     normalized_dict = {
-            'title': doc.xpath('//title', namespaces=namespaces),
-            'contributors': contributors,
+            'title': title[0].text,
+            'contributors': contributor_list,
             'properties': {
-                'abstract': source
+                'abstract': source[0].text
             },
             'meta': {},
             'id': doc_id,
-            'source': "ClinicalTrials",
+            'source': "eScholarship",
             'timestamp': str(timestamp)
     }
 
     return NormalizedDocument(normalized_dict)
         
-
-registry.register('example', consume, normalize)
-
 
 if __name__ == '__main__':
     lint(consume, normalize) 
