@@ -1,4 +1,4 @@
 from scrapi_tools import registry
-from consumer import consume, normalize
+from consumer import NAME, consume, normalize
 
-registry.register('example', consume, normalize)
+registry.register(NAME, consume, normalize)
