@@ -9,15 +9,14 @@ from celery import Celery
 import yaml
 import os
 import sys
-import requests
 import logging
 import importlib
 import subprocess
 sys.path.insert(1, os.path.abspath('worker_manager/consumers'))  # TODO may be unnecessary
 from api import process_docs
 from website import search
-from scrapi_tools.consumer import RawFile
 from scrapi_tools.exceptions import MissingAttributeError
+from scrapi_tools.document import RawDocument
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -50,29 +49,36 @@ def run_consumer(manifest_file):
     """
     manifest = _load_config(manifest_file)
     logger.info('run_scraper executing for service {}'.format(manifest['directory']))
-    if manifest.get('url'):
-        url = manifest['url'] + 'consume'
-        ret = requests.post(url)
-    else:
-        logger.info('worker_manager.consumers.{0}'.format(manifest['directory']))
-        consumer_module = importlib.import_module('worker_manager.consumers.{0}'.format(manifest['directory']))
-        consumer = consumer_module.get_consumer()
-        consumer_version = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd='worker_manager/consumers/{0}'
-                                                   .format(manifest['directory']))
-        results = consumer.consume()
+    logger.info('worker_manager.consumers.{0}'.format(manifest['directory']))
 
-        ret = []
-        for result in results:
-            timestamp = process_docs.process_raw(result, consumer_version)
-            normalized = consumer.normalize(result, timestamp)
-            logger.info('Document {0} normalized successfully'.format(result.get("doc_id")))
-            doc = process_docs.process(normalized, timestamp)
-            if doc is not None:
-                doc.attributes['source'] = manifest['name']
-                logger.info('Document {0} processed successfully'.format(result.get("doc_id")))
-                search.update('scrapi', doc.attributes, manifest['directory'], result.get("doc_id"))  # TODO unhardcode 'article'
-                ret.append(doc)
+    results, registry, consumer_version = _consume(manifest['directory'])
+
+    ret = []
+    for result in results:
+        timestamp = process_docs.process_raw(result, consumer_version)
+        ret.append(_normalize(result, timestamp, registry, manifest))
     return ret
+
+
+def _consume(directory):
+    consumer_module = importlib.import_module('worker_manager.consumers.{0}'.format(directory))
+    registry = consumer_module.registry
+    consumer_version = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd='worker_manager/consumers/{0}'
+                                               .format(directory))
+    results = registry[directory]['consume']()
+
+    return results, registry, consumer_version
+
+
+def _normalize(result, timestamp, registry, manifest):
+    normalized = registry[manifest['directory']]['normalize'](result, timestamp)
+    logger.info('Document {0} normalized successfully'.format(result.get("doc_id")))
+    doc = process_docs.process(normalized, timestamp)
+    if doc is not None:
+        doc.attributes['source'] = manifest['name']
+        logger.info('Document {0} processed successfully'.format(result.get("doc_id")))
+        search.update('scrapi', doc.attributes, manifest['directory'], result.get("doc_id"))
+    return doc
 
 
 @app.task
@@ -101,14 +107,11 @@ def request_normalized():
             except IOError as e:
                 logger.error(e)
                 continue
-            i = importlib.import_module('worker_manager.consumers.{0}.normalize'.format(manifest['directory']))
-            normalized = i.normalize(doc, timestamp)['doc']
-            logger.info('Document {0} normalized successfully'.format(doc_id))
-            doc = process_docs.process(normalized, timestamp)
-            if doc is not None:
-                doc['source'] = manifest['name']
-                logger.info('Document {0} processed successfully'.format(doc_id))
-                search.update('scrapi', doc, 'article', doc_id)
+
+            consumer_module = importlib.import_module('worker_manager.consumers.{0}'.format(manifest['directory']))
+            registry = consumer_module.registry
+
+            _normalize(doc, timestamp, registry, manifest)
     try:
         os.remove('worker_manager/recent_files.txt')
     except IOError:
@@ -139,15 +142,15 @@ def check_archive(directory='', reprocess=False):
                 with open(os.path.join(dirname, filename), 'r') as f:
                     logger.info("worker_manager.consumers.{0}".format(manifests[service]['directory']))
                     consumer_module = importlib.import_module('worker_manager.consumers.{0}'.format(manifests[service]['directory']))
-                    consumer = consumer_module.get_consumer()
-                    raw_file = RawFile({
+                    registry = consumer_module.registry
+                    raw_file = RawDocument({
                         'doc': f.read(),
                         'doc_id': doc_id,
                         'source': service,
                         'filetype': manifests[service]['file-format'],
                     })
                     try:
-                        normalized = consumer.normalize(raw_file, timestamp)
+                        normalized = registry[manifests[service]['directory']]['normalize'](raw_file, timestamp)
                     except MissingAttributeError as e:
                         logger.exception(e)
                         continue

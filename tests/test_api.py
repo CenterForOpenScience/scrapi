@@ -7,7 +7,7 @@ sys.path.insert(1, os.path.join(
     os.path.dirname(os.path.abspath(__file__)),
     os.pardir,
 ))
-from scrapi_tools.consumer import RawFile, NormalizedFile
+from scrapi_tools.document import RawDocument, NormalizedDocument
 from scrapi_tools.exceptions import MissingAttributeError
 from api import process_docs
 import logging
@@ -27,7 +27,7 @@ class TestAPI(unittest.TestCase):
                 raise e
 
     def test_process_raw(self):
-        raw_file = RawFile({
+        raw_file = RawDocument({
             'doc': json.dumps({'Hello':  'world'}),
             'source': "TEST",
             'doc_id': 37,
@@ -43,7 +43,7 @@ class TestAPI(unittest.TestCase):
         assert found
 
     def test_process_legal(self):
-        raw_doc = RawFile({
+        raw_doc = RawDocument({
             'doc': json.dumps({'Hello': 'world'}),
             'source': 'TEST',
             'doc_id': 37,
@@ -56,7 +56,7 @@ class TestAPI(unittest.TestCase):
                 timestamp = dirname.split('/')[-1]
         assert timestamp == ts
 
-        doc = NormalizedFile({
+        doc = NormalizedDocument({
             'title': "TEST PROJECT",
             'contributors': ['Me, Myself', 'And I'],
             'properties': {
@@ -79,7 +79,7 @@ class TestAPI(unittest.TestCase):
 
     def test_process_illegal(self):
         with self.assertRaises(MissingAttributeError):
-            RawFile({
+            RawDocument({
                 'doc': json.dumps({'Hello': 'world'}),
                 'source': 'TEST',
                 'filetype': 'json'

@@ -80,9 +80,12 @@ def celery_worker():
 
 
 @task
-def run_consumers():
-    from worker_manager.celerytasks import run_consumers
-    run_consumers()
+def run_consumers(manifest=None):
+    from worker_manager.celerytasks import run_consumers, run_consumer
+    if manifest:
+        run_consumer('worker_manager/manifests/{}.yml'.format(manifest))
+    else:
+        run_consumers()
 
 
 @task
