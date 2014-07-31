@@ -1,0 +1,9 @@
+---
+
+directory: '.test'
+
+name: 'test'
+
+file-format: '.json'
+
+...
