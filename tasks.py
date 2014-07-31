@@ -71,13 +71,15 @@ def install_consumers(virtualenv=''):
 
 
 @task
-def celery_beat():
-    run('celery -A worker_manager.celerytasks beat --loglevel info')
+def celery_beat(virtualenv=''):
+    virtualenv = virtualenv + 'bin/' if virtualenv else ''
+    run('{0}celery -A worker_manager.celerytasks beat --loglevel info'.format(virtualenv))
 
 
 @task
-def celery_worker():
-    run('celery -A worker_manager.celerytasks worker --loglevel info')
+def celery_worker(virtualenv=''):
+    virtualenv = virtualenv + 'bin/' if virtualenv else ''
+    run('{0}celery -A worker_manager.celerytasks worker --loglevel info'.format(virtualenv))
 
 
 @task
