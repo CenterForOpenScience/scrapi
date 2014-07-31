@@ -49,22 +49,21 @@ def normalize(raw_doc, timestamp):
     doc = etree.XML(raw_doc)
 
     namespaces = {'dc': 'http://purl.org/dc/elements/1.1/', 
-                'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
-                'ns0': 'http://www.openarchives.org/OAI/2.0/', 
-                'oai_dc2': 'http://www.openarchives.org/OAI/2.0/oai_dc/'}
+                'oai_dc': 'http://www.openarchives.org/OAI/2.0/oai_dc/',
+                'ns0': 'http://www.openarchives.org/OAI/2.0/'}
 
-    contributors = doc.findall('ns0:metadata/oai_dc2:dc/dc:creator', namespaces=namespaces)
+    contributors = doc.findall('ns0:metadata/oai_dc:dc/dc:creator', namespaces=namespaces)
     contributor_list = []
     for contributor in contributors:
         contributor_list.append(contributor.text)
-    title = doc.findall('ns0:metadata/oai_dc2:dc/dc:title', namespaces=namespaces)
+    title = doc.findall('ns0:metadata/oai_dc:dc/dc:title', namespaces=namespaces)
 
     doc_id = doc.xpath('ns0:header/ns0:identifier', 
                                 namespaces=namespaces)[0].text
 
     ## Using this for the abstract for now...
     ## TODO: make this an actual absttract maybe by going to the source...
-    source = doc.xpath('ns0:metadata/oai_dc2:dc/dc:source', namespaces=namespaces)
+    source = doc.xpath('ns0:metadata/oai_dc:dc/dc:source', namespaces=namespaces)
 
     normalized_dict = {
             'title': title[0].text,
