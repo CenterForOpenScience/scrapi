@@ -60,13 +60,14 @@ def migrate_search():
 
 
 @task
-def install_consumers():
+def install_consumers(virtualenv=''):
+    virtualenv = virtualenv + 'bin/' if virtualenv else ''
     for filename in os.listdir('worker_manager/manifests/'):
         with open('worker_manager/manifests/' + filename) as f:
             info = yaml.load(f)
         if not os.path.isdir('worker_manager/consumers/{0}'.format(info['directory'])):
             run('git clone -b master {0} worker_manager/consumers/{1}'.format(info['git-url'], info['directory']))
-            run('pip install -r worker_manager/consumers/{0}/requirements.txt'.format(info['directory']))
+            run('{1}pip install -r worker_manager/consumers/{0}/requirements.txt'.format(info['directory'], virtualenv))
 
 
 @task
