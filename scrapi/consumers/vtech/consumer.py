@@ -82,7 +82,6 @@ def normalize(raw_doc, timestamp):
         'timestamp': str(timestamp)
     }
 
-    print payload
     return NormalizedDocument(payload)
 
 

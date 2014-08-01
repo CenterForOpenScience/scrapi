@@ -1,9 +1,7 @@
-Flask==0.10.1
-Jinja2==2.7.3
-MarkupSafe==0.23
-Werkzeug==0.9.6
-argparse==1.2.1
-itsdangerous==0.24
+Sickle==0.3
+dicttoxml==1.5.5
+lxml==3.3.5
 requests==2.3.0
+git+http://github.com/fabianvf/scrapi-tools.git
 wsgiref==0.1.2
 xmltodict==0.9.0
