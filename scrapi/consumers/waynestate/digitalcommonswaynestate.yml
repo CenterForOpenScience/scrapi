@@ -1,0 +1,15 @@
+---
+
+days: 'mon-fri'
+hour: 18
+minute: 00
+
+directory: 'DigitalCommonsWayneState'
+
+name: 'Digital Commons at Wayne State'
+
+git-url: 'https://github.com/erinspace/DigitalCommonsWayneState.git'
+
+file-format: '.xml'
+
+...
