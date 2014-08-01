@@ -4,9 +4,9 @@ days: 'mon-fri'
 hour: 23
 minute: 59
 
-directory: 'vt'
+directory: 'vtechworks'
 
-name: 'VTechWorks'
+name: 'Virginia Tech VTechWorks'
 
 git-url: 'https://github.com/webkunoichi/VT-consumer.git'
 

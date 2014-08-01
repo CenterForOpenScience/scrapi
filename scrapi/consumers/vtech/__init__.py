@@ -1,5 +1,4 @@
-import os
-import subprocess
+from scrapi_tools import registry
+from consumer import NAME, consume, normalize
 
-with open(os.path.abspath(os.path.join(os.path.abspath(__file__), os.pardir)) + '/version', 'w') as f:
-    f.write(subprocess.check_output(['git', 'rev-parse', 'HEAD']))
+registry.register(NAME, consume, normalize)
