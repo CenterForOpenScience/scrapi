@@ -11,7 +11,11 @@ import shutil
 import logging
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
+from scrapi_tools.document import RawDocument, NormalizedDocument
+from scrapi_tools.manager import _Registry
 
+MANIFEST = 'tests/test.yml'
+DIRECTORY = 'TEST'
 
 class TestCelerytasks(unittest.TestCase):
 
@@ -23,25 +27,33 @@ class TestCelerytasks(unittest.TestCase):
             if not e.errno == 2:
                 raise e
 
-    def test_consume(self):
+    def test_consume_RawDoc(self):
+        result_list = celerytasks._consume(DIRECTORY)
+        for result in result_list[0]:
+            assert isinstance(result, RawDocument)
+
+    # TODO: test consume returning a registry object (_Registry)
+    def test_consume_Registry(self):
+        pass
+
+    # TODO test 3rd part of the tuple
+    def test_consume_consumer_version(self):
         pass
 
     def test_normalize(self):
         pass
 
+    def test_run_consumer_list(self):
+        consumer_list = celerytasks.run_consumer(MANIFEST)
+        assert isinstance(consumer_list, list)
+
 
 ## tests! 
 
-## TODO: make a test consumer file that returns dummy data
-# name it consumer.py in a .test directory in consumers
-
 # run_consumer.py
-    # _consume
-    # _normalize
+    # _consume.py
+    # _normalize.py
 
 # check_archive
 
 # request_normalized
-
-# maybe use mock
-# make it look like things have run or that urls have been accessed 

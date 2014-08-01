@@ -3,7 +3,7 @@
 from scrapi_tools import lint
 from scrapi_tools.document import RawDocument, NormalizedDocument
 
-NAME = "test"
+NAME = "TEST"
 
 def consume():
     ''' return a list of info including a 'raw' file 
