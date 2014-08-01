@@ -8,7 +8,7 @@ from scrapi_tools import lint
 from scrapi_tools.document import RawDocument, NormalizedDocument
 
 TODAY = date.today()
-YESTERDAY = TODAY - timedelta(10)
+YESTERDAY = TODAY - timedelta(3)
 NAME = "DigitalCommonsWayneState"
 
 def consume():
@@ -16,8 +16,6 @@ def consume():
     url = base_url + str(YESTERDAY) + 'T00:00:00Z'
     data = requests.get(url)
     doc =  etree.XML(data.content)
-
-    print url
 
     namespaces = {'dc': 'http://purl.org/dc/elements/1.1/', 
                 'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
@@ -58,7 +56,6 @@ def normalize(raw_doc, timestamp):
     doc_id = doc.xpath('ns0:header/ns0:identifier', 
                                 namespaces=namespaces)[0].text
 
-    ## Using this for the abstract for now...
     ## TODO: make this an actual absttract maybe by going to the source...
     try: 
         description = doc.xpath('ns0:metadata/oai_dc:dc/dc:description', namespaces=namespaces)[0].text
