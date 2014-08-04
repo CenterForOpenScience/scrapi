@@ -46,6 +46,11 @@ SCHED['check_archive'] = {
     'schedule': crontab(day_of_month='1', hour='23', minute='59'),
 }
 
+SCHED['tar archive'] = {
+    'task': 'worker_manager.celerytasks.tar_archive',
+    'schedule': crontab(hour="3", minute="00")
+}
+
 SCHED['heartbeat'] = {
     'task': 'worker_manager.celerytasks.heartbeat',
     'schedule': timedelta(seconds=30),
