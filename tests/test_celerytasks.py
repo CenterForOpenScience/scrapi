@@ -53,7 +53,7 @@ class TestCelerytasks(unittest.TestCase):
             manifest = yaml.load(f)
         for result in results:
             test_doc = celerytasks._normalize(result, TIMESTAMP, registry, manifest)
-            assert isinstance(test_doc, NormalizedDocument)
+            assert isinstance(test_doc, dict)
 
     def test_run_consumer_list(self):
         consumer_list = celerytasks.run_consumer(MANIFEST)
