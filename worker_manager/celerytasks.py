@@ -162,6 +162,11 @@ def check_archive(directory='', reprocess=False):
 
 
 @app.task
+def tar_archive():
+    os.system('tar -czvf website/static/archive.tar.gz archive/')
+
+
+@app.task
 def heartbeat(message):
     """
         Heartbeat for the celery worker

@@ -1,6 +1,7 @@
 from invoke import run, task
 import os
 import yaml
+import subprocess
 
 
 @task
@@ -60,23 +61,30 @@ def migrate_search():
 
 
 @task
-def install_consumers():
+def install_consumers(virtualenv='', update=False):
+    virtualenv = virtualenv + 'bin/' if virtualenv else ''
     for filename in os.listdir('worker_manager/manifests/'):
         with open('worker_manager/manifests/' + filename) as f:
             info = yaml.load(f)
         if not os.path.isdir('worker_manager/consumers/{0}'.format(info['directory'])):
             run('git clone -b master {0} worker_manager/consumers/{1}'.format(info['git-url'], info['directory']))
-            run('pip install -r worker_manager/consumers/{0}/requirements.txt'.format(info['directory']))
+        elif update:
+            print(subprocess.check_output(['git', 'pull', 'origin', 'master'], cwd='{1}/worker_manager/consumers/{0}'.format(info['directory'], os.getcwd())))
+
+        if os.path.isfile('worker_manager/consumers/{0}/requirements.txt'.format(info['directory'])):
+            run('{1}pip install -r worker_manager/consumers/{0}/requirements.txt'.format(info['directory'], virtualenv))
 
 
 @task
-def celery_beat():
-    run('celery -A worker_manager.celerytasks beat --loglevel info')
+def celery_beat(virtualenv=''):
+    virtualenv = virtualenv + 'bin/' if virtualenv else ''
+    run('{0}celery -A worker_manager.celerytasks beat --loglevel info'.format(virtualenv))
 
 
 @task
-def celery_worker():
-    run('celery -A worker_manager.celerytasks worker --loglevel info')
+def celery_worker(virtualenv=''):
+    virtualenv = virtualenv + 'bin/' if virtualenv else ''
+    run('{0}celery -A worker_manager.celerytasks worker --loglevel info'.format(virtualenv))
 
 
 @task
