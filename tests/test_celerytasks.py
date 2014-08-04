@@ -13,12 +13,12 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 from scrapi_tools.document import RawDocument, NormalizedDocument
 from scrapi_tools.manager import _Registry
-from datetime import datetime
+from datetime import date
 import yaml
 
 MANIFEST = 'tests/test.yml'
 DIRECTORY = 'TEST'
-TIMESTAMP = datetime.now()
+TIMESTAMP = date.today()
 
 class TestCelerytasks(unittest.TestCase):
 
@@ -35,12 +35,40 @@ class TestCelerytasks(unittest.TestCase):
         for result in result_list[0]:
             assert isinstance(result, RawDocument)
 
-    # TODO: test consume returning a registry object (_Registry)
+    # Test consume returning a registry object (_Registry)
     def test_consume_Registry(self):
         results = celerytasks._consume(DIRECTORY)
         assert isinstance(results[1], _Registry)
 
-    # TODO test 3rd part of the tuple
+    # make sure registry is a dict 
+    def test_consume_registry_consumers_isdict(self):
+        results = celerytasks._consume(DIRECTORY)
+        registry = results[1]
+        registry_dicts =  registry.consumers[DIRECTORY]
+        assert isinstance(registry_dicts, dict)
+
+    # Make sure registry dict has 2 correct modules
+    def test_consume_registry_consumers_haskeys(self):
+        results = celerytasks._consume(DIRECTORY)
+        registry = results[1]
+        registry_dicts =  registry.consumers[DIRECTORY]
+        assert registry_dicts.keys() == ['normalize', 'consume']
+
+    # Make sure registry dict has a callable normalize function
+    def test_consume_registry_hasnormalizefunc(self):
+        results = celerytasks._consume(DIRECTORY)
+        registry = results[1]
+        registry_dicts =  registry.consumers[DIRECTORY]
+        assert callable(registry_dicts['normalize'])
+
+    # Make sure registry dict has a callable normalize function
+    def test_consume_registry_hasconsumefunc(self):
+        results = celerytasks._consume(DIRECTORY)
+        registry = results[1]
+        registry_dicts =  registry.consumers[DIRECTORY]
+        assert callable(registry_dicts['consume'])
+
+    # test 3rd part of the tuple (returns a str)
     def test_consume_consumer_version(self):
         results = celerytasks._consume(DIRECTORY)
         assert isinstance(results[2], str)
@@ -53,7 +81,7 @@ class TestCelerytasks(unittest.TestCase):
             manifest = yaml.load(f)
         for result in results:
             test_doc = celerytasks._normalize(result, TIMESTAMP, registry, manifest)
-            assert isinstance(test_doc, dict)
+            assert isinstance(test_doc, NormalizedDocument)
 
     def test_run_consumer_list(self):
         consumer_list = celerytasks.run_consumer(MANIFEST)
@@ -61,10 +89,6 @@ class TestCelerytasks(unittest.TestCase):
 
 
 ## tests! 
-
-# run_consumer.py
-    # _consume.py
-    # _normalize.py
 
 # check_archive
 
