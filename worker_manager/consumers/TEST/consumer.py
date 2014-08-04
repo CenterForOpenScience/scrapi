@@ -9,9 +9,9 @@ def consume():
     ''' return a list of info including a 'raw' file 
     '''
     records = [
-    {'author': 'Darth Maul', 'title': 'Facepaint Tips Vol 2', 'id': 1, 'abstract':'This is the chilling tail of how the leopard truly got his stripes.'}, 
+    {'author': 'Darth Maul', 'title': 'Facepaint Tips Vol 2', 'id': 1, 'abstract':'A useful guide to facepaint.'}, 
     {'author': 'Cody Rhodes', 'title': 'Stardust: The Backstory', 'id': 2, 'abstract': 'Look up to the cosmos! It is the neverending void!'},
-    {'author': 'The Heartbreak Kid', 'title': 'How to Shoot Ducks', 'id': 3, 'abstract':'Learn how I went from a sexy boy to a duck hunting god'}]
+    {'author': 'Shawn Michaels', 'title': 'Ducks', 'id': 3, 'abstract':'All about ducks.'}]
 
     json_list = []
     for record in records:

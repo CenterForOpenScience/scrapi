@@ -13,9 +13,12 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 from scrapi_tools.document import RawDocument, NormalizedDocument
 from scrapi_tools.manager import _Registry
+from datetime import datetime
+import yaml
 
 MANIFEST = 'tests/test.yml'
 DIRECTORY = 'TEST'
+TIMESTAMP = datetime.now()
 
 class TestCelerytasks(unittest.TestCase):
 
@@ -34,14 +37,23 @@ class TestCelerytasks(unittest.TestCase):
 
     # TODO: test consume returning a registry object (_Registry)
     def test_consume_Registry(self):
-        pass
+        results = celerytasks._consume(DIRECTORY)
+        assert isinstance(results[1], _Registry)
 
     # TODO test 3rd part of the tuple
     def test_consume_consumer_version(self):
-        pass
+        results = celerytasks._consume(DIRECTORY)
+        assert isinstance(results[2], str)
 
-    def test_normalize(self):
-        pass
+    def test_normalize_NormalizedDocument(self):
+        output = celerytasks._consume(DIRECTORY)
+        results = output[0]
+        registry = output[1]
+        with open(MANIFEST) as f:
+            manifest = yaml.load(f)
+        for result in results:
+            test_doc = celerytasks._normalize(result, TIMESTAMP, registry, manifest)
+            assert isinstance(test_doc, NormalizedDocument)
 
     def test_run_consumer_list(self):
         consumer_list = celerytasks.run_consumer(MANIFEST)
