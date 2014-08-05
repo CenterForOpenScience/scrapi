@@ -10,7 +10,7 @@ from datetime import date, timedelta
 from scrapi_tools import lint
 from scrapi_tools.document import RawDocument, NormalizedDocument
 
-NAME = 'VTechWorks'
+NAME = 'vtechworks'
 
 def consume(days_back=2):
     doc_list = []
