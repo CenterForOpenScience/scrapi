@@ -12,12 +12,12 @@ from scrapi_tools import lint
 from scrapi_tools.document import RawDocument, NormalizedDocument
 
 TODAY = date.today()
-YESTERDAY = TODAY - timedelta(1)
 NAME = "eScholarship"
 
-def consume():
+def consume(days_back=1):
+    start_date = TODAY - timedelta(days_back)
     base_url = 'http://www.escholarship.org/uc/oai?verb=ListRecords&metadataPrefix=oai_dc&from='
-    url = base_url + str(YESTERDAY)
+    url = base_url + str(start_date)
     data = requests.get(url)
     doc =  etree.XML(data.content)
 
@@ -55,7 +55,7 @@ def normalize(raw_doc, timestamp):
     contributors = doc.findall('ns0:metadata/oai_dc:dc/dc:creator', namespaces=namespaces)
     contributor_list = []
     for contributor in contributors:
-        contributor_list.append(contributor.text)
+        contributor_list.append({'full_name': contributor.text, 'email': ''})
     title = doc.findall('ns0:metadata/oai_dc:dc/dc:title', namespaces=namespaces)
 
     doc_id = doc.xpath('ns0:header/ns0:identifier', 
