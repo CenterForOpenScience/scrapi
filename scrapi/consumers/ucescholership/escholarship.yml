@@ -8,8 +8,8 @@ directory: 'eScholarship'
 
 name: 'eScholarship - University of California'
 
-git-url: 'https://github.com/erinspace/ClinicalTrials-consumer.git'
-    
+git-url: 'https://github.com/erinspace/eScholarship.git'
+
 file-format: '.xml'
 
 ...
