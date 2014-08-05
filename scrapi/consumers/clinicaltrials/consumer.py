@@ -8,22 +8,22 @@ from scrapi_tools import lint
 from scrapi_tools.document import RawDocument, NormalizedDocument
 
 TODAY = date.today()
-YESTERDAY = TODAY - timedelta(1)
 NAME = "ClinicalTrials"
 
-
-def consume():
+def consume(days_back=1):
     """ First, get a list of all recently updated study urls,
     then get the xml one by one and save it into a list 
     of docs including other information """
+
+    start_date = TODAY - timedelta(days_back)
 
     month = TODAY.strftime('%m')
     day = TODAY.strftime('%d') 
     year = TODAY.strftime('%Y')
 
-    y_month = YESTERDAY.strftime('%m')
-    y_day = YESTERDAY.strftime('%d')
-    y_year = YESTERDAY.strftime('%Y')
+    y_month = start_date.strftime('%m')
+    y_day = start_date.strftime('%d')
+    y_year = start_date.strftime('%Y')
 
     base_url = 'http://clinicaltrials.gov/ct2/results?lup_s=' 
     url_end = '{}%2F{}%2F{}%2F&lup_e={}%2F{}%2F{}&displayxml=true'.\
@@ -102,7 +102,7 @@ def normalize(raw_doc, timestamp):
         contributor_list = [contributor_list]
 
     if contributor_list == None:
-        contributors = [{'full_name': 'No Contributors', 'email': None}]
+        contributors = [{'full_name': 'No Contributors', 'email': ''}]
 
     else: 
         contributors = []
@@ -111,7 +111,7 @@ def normalize(raw_doc, timestamp):
                 name = entry.get('last_name')
                 contributor = {}
                 contributor['full_name'] = name
-                contributor['email'] = None
+                contributor['email'] = ''
                 contributors.append(contributor)
 
     try:
