@@ -48,7 +48,7 @@ def consume():
                             'source': NAME,
                             'doc_id': result["str"][0]["#text"],
                             'filetype': 'json',
-                            }))
+                        }))
                 except KeyError:
                     pass
 
@@ -63,16 +63,20 @@ def consume():
 
     return doc_list
 
+
 def normalize(raw_doc, timestamp):
     raw_doc = raw_doc.get('doc')
     record = json.loads(raw_doc)
 
     return NormalizedDocument({
         'title': record["str"][4]["#text"],
-        'contributors': record["arr"][0]["str"],
+        'contributors': [{
+            'email': '',
+            'full_name': name,
+        } for name in record["arr"][0]["str"]],
         'properties': {
             'description': record["arr"][1]["str"],
-            },
+        },
         'meta': {},
         'id': record["str"][0]["#text"],
         'source': NAME,
