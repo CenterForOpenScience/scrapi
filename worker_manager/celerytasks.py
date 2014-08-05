@@ -17,6 +17,9 @@ from api import process_docs
 from website import search
 from scrapi_tools.exceptions import MissingAttributeError
 from scrapi_tools.document import RawDocument
+import PyRSS2Gen as pyrss
+import datetime
+from website import local as settings
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -32,8 +35,9 @@ def run_consumers():
     """
     logger.info("Celery worker executing task run_scrapers")
     for manifest in os.listdir('worker_manager/manifests/'):
-        logger.info(manifest)
-        run_consumer('worker_manager/manifests/' + manifest)
+        if manifest != 'test.yml':
+            logger.info(manifest)
+            run_consumer('worker_manager/manifests/' + manifest)
     logger.info('run_consumers finished')
 
 
@@ -53,11 +57,11 @@ def run_consumer(manifest_file):
 
     results, registry, consumer_version = _consume(manifest['directory'])
 
-    ret = []
+    docs = []
     for result in results:
         timestamp = process_docs.process_raw(result, consumer_version)
-        ret.append(_normalize(result, timestamp, registry, manifest))
-    return ret
+        docs.append(_normalize(result, timestamp, registry, manifest))
+    return _add_to_rss(docs, manifest['directory'])
 
 
 def _consume(directory):
@@ -79,6 +83,33 @@ def _normalize(result, timestamp, registry, manifest):
         logger.info('Document {0} processed successfully'.format(result.get("doc_id")))
         search.update('scrapi', doc.attributes, manifest['directory'], result.get("doc_id"))
     return doc
+
+
+def _add_to_rss(docs, source_dir):
+
+    items = [
+        pyrss.RSSItem(
+            title=doc.get('title'),
+            link='http://{base_url}/archive/{source}/{doc_id}/{timestamp}/normalized.json'
+                 .format(base_url=settings.URL, source=source_dir, doc_id=doc.get('id').replace('/', ''), timestamp=doc.get('timestamp')),
+            description=doc.get('properties').get('description') if doc.get('properties') is not None else '',
+            guid=doc.get('id'),
+            pubDate=doc.get('timestamp')
+        ) for doc in docs]
+
+    rss = pyrss.RSS2(
+        title='RSS feed for documents retrieved from {source}'.format(source=docs[0].get('source')),
+        link='{base_url}/archive/{source}'.format(base_url=settings.URL, source=source_dir),
+        items=items,
+        description='Exactly what it sounds like',
+        lastBuildDate=datetime.datetime.now(),
+    )
+    if not os.path.isdir('website/rss/'):
+        os.makedirs('website/rss/')
+
+    with open('website/rss/{source}.xml'.format(source=source_dir), 'w') as rss_feed:
+        rss.write_xml(rss_feed)
+    return rss
 
 
 @app.task
