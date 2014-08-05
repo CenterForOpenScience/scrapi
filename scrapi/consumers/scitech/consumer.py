@@ -10,10 +10,11 @@ YESTERDAY = TODAY - datetime.timedelta(1)
 NAME = 'SciTech'
 
 
-def consume(start_date=YESTERDAY.strftime('%m/%d/%Y'), end_date=None, **kwargs):
+def consume(days_back=1, end_date=None, **kwargs):
     """A function for querying the SciTech Connect database for raw XML. The XML is chunked into smaller pieces, each representing data
     about an article/report. If there are multiple pages of results, this function iterates through all the pages."""
 
+    start_date = (TODAY - datetime.timedelta(days_back)).strftime('%m/%d/%Y')
     base_url = 'http://www.osti.gov/scitech/scitechxml'
     parameters = kwargs
     parameters['EntryDateFrom'] = start_date
@@ -57,7 +58,7 @@ def normalize(raw_doc, timestamp):
             name = name[:name.index('[')].strip()
         contributor = {}
         contributor['full_name'] = name
-        contributor['email'] = None
+        contributor['email'] = ''
         contributors.append(contributor)
 
         tags = record.find(str(etree.QName(elements_url, 'subject'))).text
