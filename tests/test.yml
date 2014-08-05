@@ -1,0 +1,13 @@
+---
+
+days: 'mon-fri'
+hour: 13
+minute: 45
+
+directory: 'TEST'
+
+name: 'test'
+
+file-format: '.json'
+
+...
