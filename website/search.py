@@ -63,7 +63,10 @@ def search(index, query, start=0, size=10):
 
 @requires_search
 def update(index, document, category, id):
-    elastic.update(index, category, id, doc=document, upsert=document, refresh=True)
+    try:
+        elastic.update(index, category, id, doc=document, upsert=document, refresh=True)
+    except pyelasticsearch.exceptions.ElasticHttpError as e:
+        logger.exception(e)
 
 
 @requires_search
