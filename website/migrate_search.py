@@ -19,7 +19,7 @@ def migrate():
     for dirname, dirnames, filenames in os.walk('archive/'):
         if os.path.isfile(dirname + '/normalized.json'):
             with open(dirname + '/normalized.json') as f:
-		try:
+                try:
                     doc = json.load(f)
                 except ValueError as e:
                     logger.exception(e)
@@ -27,8 +27,9 @@ def migrate():
 
                 try:
                     search.update('scrapi', doc, dirname.split('/')[1], dirname.split('/')[2])
-                except ElasticHttpError:
-                    pass
+                except ElasticHttpError as e:
+                    logger.exception(e)
+                    continue
 
 if __name__ == '__main__':
     migrate()
