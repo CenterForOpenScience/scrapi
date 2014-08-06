@@ -12,7 +12,7 @@ from scrapi_tools.document import RawDocument, NormalizedDocument
 
 NAME = 'vtechworks'
 
-def consume(days_back=2):
+def consume(days_back=3):
     doc_list = []
     start_date = str(date.today() - timedelta(days_back))
     sickle = Sickle('http://vtechworks.lib.vt.edu/oai/request')
@@ -52,7 +52,6 @@ def consume(days_back=2):
 
 #    with open('output.xml','w') as f:
 #        f.write(test_list[1])
-
     return return_list
 
 
@@ -63,6 +62,14 @@ def getcontributors(result):
     except KeyError:
         thelistcomprehended = ['no contributors']
     return thelistcomprehended
+
+def gettags(result):
+    try:
+        tag_list = result['root']['metadata']['oai_dc:dc']['dc:subject']['item']
+        tag_text = [tag['#text'] for tag in tag_list]
+    except KeyError:
+        tag_text = []
+    return tag_text
 
 def getabstract(result):
     abstract = result['root']['metadata']['oai_dc:dc']['key'][7]['#text']
@@ -75,6 +82,7 @@ def getid(result):
 def normalize(raw_doc, timestamp):
     result = raw_doc.get('doc')
     result = xmltodict.parse(result)
+    date_created = result['root']['metadata']['oai_dc:dc']['dc:date']['item'][2]['#text']
     contributors = [result['root']['metadata']['oai_dc:dc']['key'][6]['#text']] + getcontributors(result)
     contributor_list = []
     for contributor in contributors:
@@ -82,12 +90,13 @@ def normalize(raw_doc, timestamp):
     payload = {
         'title': result['root']['metadata']['oai_dc:dc']['key'][5]['#text'],
         'contributors': contributor_list,
-        'properties': {
-            'abstract': getabstract(result)
-        },
+        'properties': {},
+        'description': getabstract(result),
+        'tags': gettags(result),
         'meta': {},
         'id': getid(result),
         'source': NAME,
+        'date_created': date_created,
         'timestamp': str(timestamp)
     }
 
