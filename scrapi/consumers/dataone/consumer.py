@@ -15,8 +15,6 @@ def consume(days_back=1):
     doc = get_response(rows)
 
     records = doc.xpath('//doc')
-
-    print len(records)
     
     xml_list = []
     for record in records:
