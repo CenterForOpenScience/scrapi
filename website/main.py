@@ -9,7 +9,11 @@ sys.path.insert(1, os.path.join(
 
 from api import process_docs
 import search
+import logging
+import rss_feed
 
+
+logger = logging.getLogger(__name__)
 app = Flask(__name__)
 
 
@@ -97,19 +101,8 @@ def archive_exploration(req_path):
 @app.route('/rss/', defaults={'req_path': ''})
 @app.route('/rss/<path:req_path>')
 def rss(req_path):
-    BASE_DIR = 'rss'
-    abs_path = os.path.join(BASE_DIR, req_path)
+    return rss_feed.gen_rss_feed(request.args.get("q"))
 
-    if not os.path.exists(abs_path):
-        return abort(404)
-
-    if os.path.isfile(abs_path):
-        return send_file(abs_path)
-
-    files = os.listdir(abs_path)
-    BASE_URL = '/rss' if not req_path else '/rss/' + req_path
-
-    return render_template('files.html', files=files, url=BASE_URL)
 
 if __name__ == '__main__':
     app.run(

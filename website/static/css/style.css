@@ -173,3 +173,7 @@ footer, .push {
 	width: auto;
 	background-color: red;
 }
+
+a {
+    color: white;
+}

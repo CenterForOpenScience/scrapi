@@ -37,28 +37,59 @@ def requires_search(func):
 
 
 @requires_search
-def search(index, query, start=0, size=10):
-    if not query:
-        query = {
-            'query': {
-                'match_all': {}
-            },
-            'from': start,
-            'size': size
-        }
-    else:
-        query = {
-            'query': {
-                'match': {
-                    '_all': query
-                }
-            },
-            'from': start,
-            'size': size
-        }
+def search(index, raw_query, start=0, size=10):
+    query = _build_query(raw_query, start, size)
     raw_results = elastic.search(query, index=index)
     results = [hit['_source'] for hit in raw_results['hits']['hits']]
     return results
+
+
+def _build_query(raw_query, start, size):
+    items = raw_query.split(';')
+    inner_query = {}
+    if ':' not in raw_query:
+        inner_query = {'match_all': {}} if not raw_query else {'match': {'_all': raw_query}}
+    else:
+        filters = []
+        for item in items:
+            item = item.split(':')
+            if len(item) == 1:
+                item = ['_all', item[0]]
+
+            # TODO Should have a better way to query contributors
+            if item[0] == 'contributors':
+                filters.append({
+                    'query': {
+                        'match': {
+                            '_all': item[1]
+                        }
+                    }
+                })
+                continue
+            filters.append({
+                "query": {
+                    'match': {
+                        item[0]: {
+                            'query': item[1],
+                            'operator': 'and',
+                        }
+                    }
+                }
+            })
+
+        inner_query = {
+            'filtered': {
+                'filter': {
+                    'and': filters
+                },
+            },
+        }
+
+    return {
+        'query': inner_query,
+        'from': start,
+        'size': size
+    }
 
 
 @requires_search
