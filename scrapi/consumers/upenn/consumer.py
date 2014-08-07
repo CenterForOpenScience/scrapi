@@ -36,6 +36,7 @@ def consume(days_back=1):
     initial_request = requests.get(url)
     initial_request = xmltodict.parse(initial_request.text) 
     count = initial_request['search_results']['@count']
+    print count
 
     # print 'number of studies this query: ' + str(count)
 
@@ -53,7 +54,7 @@ def consume(days_back=1):
 
         # studies_processed = 0
         # grab each of those urls for full content
-        for study_url in study_urls:
+        for study_url in study_urls[0:3]:
             content = requests.get(study_url)
             try:
                 xml_doc = xmltodict.parse(content.text)
@@ -125,20 +126,23 @@ def normalize(raw_doc, timestamp):
     try: 
         nct_id = result['clinical_study']['id_info']['nct_id']
     except KeyError:
-        nct_id = 'Secondary ID: ' + result['clinical_study']['id_info']['secondary_id']
+        nct_id = 'Secondary ID: ' + result['clinical_study']['id_info'].get('secondary_id')
+
+    date_created = result['clinical_study'].get('firstreceived_date')
 
     normalized_dict = {
             'title': title,
             'contributors': contributors,
-            'properties': {
-                'abstract': abstract
-            },
+            'properties': {},
+            'description': abstract,
             'meta': {},
             'id': nct_id,
             'source': NAME,
+            'date_created': date_created,
             'timestamp': str(timestamp)
     }
 
+    print normalized_dict
     return NormalizedDocument(normalized_dict)
 
 
