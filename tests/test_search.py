@@ -8,6 +8,7 @@ sys.path.insert(1, os.path.join(
 
 from website import search
 import logging
+import datetime
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
@@ -15,6 +16,7 @@ logger = logging.getLogger(__name__)
 class TestSearch(unittest.TestCase):
 
     def setUp(self):
+        search.delete_all('test')
         source = "test"
         doc_id = 38
         doc = {
@@ -26,7 +28,8 @@ class TestSearch(unittest.TestCase):
             },
             'meta': {},
             'id': doc_id,
-            'source': source
+            'source': source,
+            'iso_timestamp': datetime.datetime.now().isoformat()
         }
 
         search.update(source, doc, 'article', doc_id)
@@ -35,10 +38,12 @@ class TestSearch(unittest.TestCase):
         search.delete_all('test')
 
     def test_search(self):
-        results = search.search('test', 'test')
+        results, count = search.search('test', 'test')
+        assert len(results) == count
         assert len(results) == 1
 
     def test_delete_doc(self):
-        search.delete_doc('test', 'article', 38)
-        results = search.search('test', 'test')
+        search.delete_doc('test', 'article', '38')
+        results, count = search.search('test', 'test')
+        assert len(results) == count
         assert len(results) == 0

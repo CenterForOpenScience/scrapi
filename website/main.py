@@ -9,7 +9,11 @@ sys.path.insert(1, os.path.join(
 
 from api import process_docs
 import search
+import logging
+import rss_feed
 
+
+logger = logging.getLogger(__name__)
 app = Flask(__name__)
 
 
@@ -73,7 +77,8 @@ def search_search():
     start = request.args.get('from')
     size = request.args.get('size')
     # return render_template('search.html.jinja2', results=search.search('scrapi', query, start, size))
-    return json.dumps(search.search('scrapi', query, start, size))
+    results, count = search.search('scrapi', query, start, size)
+    return json.dumps(results)
 
 
 @app.route('/archive/', defaults={'req_path': ''})
@@ -94,9 +99,15 @@ def archive_exploration(req_path):
     return render_template('files.html', files=files, url=BASE_URL)
 
 
+@app.route('/rss/', defaults={'req_path': ''})
+@app.route('/rss/<path:req_path>')
+def rss(req_path):
+    return rss_feed.gen_rss_feed(request.args.get("q"))
+
+
 if __name__ == '__main__':
     app.run(
         host="0.0.0.0",
-        port=80,
+        port=1337,
         debug=False
     )

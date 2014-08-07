@@ -7,7 +7,7 @@ sys.path.insert(1, os.path.join(
 ))
 
 from worker_manager import celerytasks
-import shutil 
+import shutil
 import logging
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -20,11 +20,12 @@ MANIFEST = 'tests/test.yml'
 DIRECTORY = 'TEST'
 TIMESTAMP = date.today()
 
+
 class TestCelerytasks(unittest.TestCase):
 
     def tearDown(self):
         try:
-            shutil.rmtree('archive/.test')
+            shutil.rmtree('archive/TEST')
         except OSError as e:
             # Who cares
             if not e.errno == 2:
@@ -40,32 +41,32 @@ class TestCelerytasks(unittest.TestCase):
         results = celerytasks._consume(DIRECTORY)
         assert isinstance(results[1], _Registry)
 
-    # make sure registry is a dict 
+    # make sure registry is a dict
     def test_consume_registry_consumers_isdict(self):
         results = celerytasks._consume(DIRECTORY)
         registry = results[1]
-        registry_dicts =  registry.consumers[DIRECTORY]
+        registry_dicts = registry.consumers[DIRECTORY]
         assert isinstance(registry_dicts, dict)
 
     # Make sure registry dict has 2 correct modules
     def test_consume_registry_consumers_haskeys(self):
         results = celerytasks._consume(DIRECTORY)
         registry = results[1]
-        registry_dicts =  registry.consumers[DIRECTORY]
+        registry_dicts = registry.consumers[DIRECTORY]
         assert registry_dicts.keys() == ['normalize', 'consume']
 
     # Make sure registry dict has a callable normalize function
     def test_consume_registry_hasnormalizefunc(self):
         results = celerytasks._consume(DIRECTORY)
         registry = results[1]
-        registry_dicts =  registry.consumers[DIRECTORY]
+        registry_dicts = registry.consumers[DIRECTORY]
         assert callable(registry_dicts['normalize'])
 
     # Make sure registry dict has a callable normalize function
     def test_consume_registry_hasconsumefunc(self):
         results = celerytasks._consume(DIRECTORY)
         registry = results[1]
-        registry_dicts =  registry.consumers[DIRECTORY]
+        registry_dicts = registry.consumers[DIRECTORY]
         assert callable(registry_dicts['consume'])
 
     # test 3rd part of the tuple (returns a str)
@@ -88,7 +89,7 @@ class TestCelerytasks(unittest.TestCase):
         assert isinstance(consumer_list, list)
 
 
-## tests! -- for later
+# tests! -- for later
 
 # check_archive
 

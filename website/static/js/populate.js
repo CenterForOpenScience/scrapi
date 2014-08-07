@@ -53,6 +53,7 @@ var AppViewModel = new function()
                             properties_list += "<p><strong>" + property + ": </strong>" + returnToJson[i]["properties"][property]+"</p>";
                         }
                     }
+                    properties_list += "<p><strong>location: </strong><a href= " + encodeURIComponent(returnToJson[i]['location']) + ">" + returnToJson[i]['location'] + "</p>";
 
                     $(".loader").hide();
                     $(".buffer").show();
@@ -63,7 +64,7 @@ var AppViewModel = new function()
                             contributors: contributors_list,
                             article_id:returnToJson[i]["id"],
                             source:returnToJson[i]["source"],
-                            properties:properties_list
+                            properties:properties_list,
                         }
                     );
 
