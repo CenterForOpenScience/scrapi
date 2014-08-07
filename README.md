@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/fabianvf/scrapi.svg?branch=develop)](https://travis-ci.org/fabianvf/scrapi)
+
 scrapi
 ======
 
