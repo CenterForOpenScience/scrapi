@@ -3,6 +3,7 @@ from datetime import date, timedelta
 import time
 import xmltodict
 import requests
+from lxml import etree
 from xml.parsers import expat
 from scrapi_tools import lint
 from scrapi_tools.document import RawDocument, NormalizedDocument
@@ -55,22 +56,22 @@ def consume(days_back=1):
         # studies_processed = 0
         # grab each of those urls for full content
         for study_url in study_urls[0:3]:
+            print study_url
             content = requests.get(study_url)
             try:
                 xml_doc = xmltodict.parse(content.text)
             except expat.ExpatError:
                 print 'xml reading error for ' + study_url
                 pass
+            # print content.text
             doc_id = xml_doc['clinical_study']['id_info']['nct_id']
             xml_list.append(RawDocument({
-                    'doc': content.text,
+                    'doc': content.content,
                     'source': NAME,
                     'doc_id': doc_id,
                     'filetype': 'xml',
                 }))
             time.sleep(1)
-            # studies_processed += 1
-            # print 'studies processed: ' + str(studies_processed)
 
         if int(count) == 0:
             print "No new or updated studies!"
@@ -87,6 +88,8 @@ def normalize(raw_doc, timestamp):
     except expat.ExpatError:
         print 'xml reading error...'
         pass
+
+    xml_doc = etree.XML(raw_doc)
 
     try: 
         title = result['clinical_study']['official_title']
@@ -130,6 +133,8 @@ def normalize(raw_doc, timestamp):
 
     date_created = result['clinical_study'].get('firstreceived_date')
 
+    keywords = xml_doc.xpath('//keyword/node()')
+
     normalized_dict = {
             'title': title,
             'contributors': contributors,
@@ -138,6 +143,7 @@ def normalize(raw_doc, timestamp):
             'meta': {},
             'id': nct_id,
             'source': NAME,
+            'tags': keywords,
             'date_created': date_created,
             'timestamp': str(timestamp)
     }
