@@ -8,11 +8,10 @@
 from celery import Celery
 import yaml
 import os
-import sys
 import logging
 import importlib
 import subprocess
-sys.path.insert(1, os.path.abspath('worker_manager/consumers'))  # TODO may be unnecessary
+import datetime
 from api import process_docs
 from website import search
 from scrapi_tools.exceptions import MissingAttributeError
@@ -32,8 +31,9 @@ def run_consumers():
     """
     logger.info("Celery worker executing task run_scrapers")
     for manifest in os.listdir('worker_manager/manifests/'):
-        logger.info(manifest)
-        run_consumer('worker_manager/manifests/' + manifest)
+        if manifest != 'test.yml':
+            logger.info(manifest)
+            run_consumer('worker_manager/manifests/' + manifest)
     logger.info('run_consumers finished')
 
 
@@ -53,11 +53,11 @@ def run_consumer(manifest_file):
 
     results, registry, consumer_version = _consume(manifest['directory'])
 
-    ret = []
+    docs = []
     for result in results:
         timestamp = process_docs.process_raw(result, consumer_version)
-        ret.append(_normalize(result, timestamp, registry, manifest))
-    return ret
+        docs.append(_normalize(result, timestamp, registry, manifest))
+    return docs
 
 
 def _consume(directory):
@@ -71,11 +71,15 @@ def _consume(directory):
 
 
 def _normalize(result, timestamp, registry, manifest):
+    iso_timestamp = timestamp.isoformat()
     normalized = registry[manifest['directory']]['normalize'](result, timestamp)
     logger.info('Document {0} normalized successfully'.format(result.get("doc_id")))
     doc = process_docs.process(normalized, timestamp)
     if doc is not None:
         doc.attributes['source'] = manifest['name']
+        doc.attributes['location'] = "archive/{source}/{doc_id}/{timestamp}/normalized.json"\
+            .format(source=manifest['directory'], doc_id=doc.get('id').replace('/', ''), timestamp=doc.get('timestamp')),
+        doc.attributes['iso_timestamp'] = str(iso_timestamp)
         logger.info('Document {0} processed successfully'.format(result.get("doc_id")))
         search.update('scrapi', doc.attributes, manifest['directory'], result.get("doc_id"))
     return doc
@@ -136,7 +140,7 @@ def check_archive(directory='', reprocess=False):
     for dirname, dirnames, filenames in os.walk('archive/' + directory):
         for filename in filenames:
             if 'raw' in filename and (not (os.path.isfile(dirname + '/normalized.json')) or reprocess):
-                timestamp = dirname.split('/')[-1]
+                timestamp = datetime.datetime.strptime(dirname.split('/')[-1], '%Y-%m-%d %H:%M:%S.%f')
                 service = dirname.split('/')[1]
                 doc_id = dirname.split('/')[2]
                 with open(os.path.join(dirname, filename), 'r') as f:
@@ -150,15 +154,9 @@ def check_archive(directory='', reprocess=False):
                         'filetype': manifests[service]['file-format'],
                     })
                     try:
-                        normalized = registry[manifests[service]['directory']]['normalize'](raw_file, timestamp)
+                        _normalize(raw_file, timestamp, registry, manifests[service])
                     except MissingAttributeError as e:
                         logger.exception(e)
-                        continue
-                    logger.info('Document {0} normalized successfully'.format(doc_id))
-                    result = process_docs.process(normalized, timestamp)
-                    if result is not None:
-                        logger.info('Document {0} processed successfully'.format(doc_id))
-                        search.update('scrapi', result.attributes, manifests[service]['directory'], doc_id)
 
 
 @app.task
