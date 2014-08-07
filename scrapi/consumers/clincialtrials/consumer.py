@@ -31,15 +31,11 @@ def consume(days_back=1):
                 format(y_month, y_day, y_year, month, day, year)
 
     url = base_url + url_end
-    # print url
 
     # grab the total number of studies
     initial_request = requests.get(url)
     initial_request = xmltodict.parse(initial_request.text) 
     count = initial_request['search_results']['@count']
-    print count
-
-    # print 'number of studies this query: ' + str(count)
 
     xml_list = []
     if int(count) > 0:
@@ -55,15 +51,13 @@ def consume(days_back=1):
 
         # studies_processed = 0
         # grab each of those urls for full content
-        for study_url in study_urls[0:3]:
-            print study_url
+        for study_url in study_urls:
             content = requests.get(study_url)
             try:
                 xml_doc = xmltodict.parse(content.text)
             except expat.ExpatError:
                 print 'xml reading error for ' + study_url
                 pass
-            # print content.text
             doc_id = xml_doc['clinical_study']['id_info']['nct_id']
             xml_list.append(RawDocument({
                     'doc': content.content,
@@ -148,7 +142,6 @@ def normalize(raw_doc, timestamp):
             'timestamp': str(timestamp)
     }
 
-    print normalized_dict
     return NormalizedDocument(normalized_dict)
 
 
