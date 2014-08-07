@@ -65,15 +65,20 @@ def normalize(raw_doc, timestamp):
     ## TODO: make this an actual absttract maybe by going to the source...
     source = doc.xpath('ns0:metadata/oai_dc:dc/dc:source', namespaces=namespaces)
 
+    date_created = doc.xpath('//dc:date', namespaces=namespaces)[0].text
+
+    tags = doc.xpath('//dc:subject/node()', namespaces=namespaces)
+
     normalized_dict = {
             'title': title[0].text,
             'contributors': contributor_list,
-            'properties': {
-                'abstract': source[0].text
-            },
+            'properties': {},
+            'description': source[0].text,
             'meta': {},
             'id': doc_id,
             'source': NAME,
+            'tags': tags,
+            'date_created': date_created,
             'timestamp': str(timestamp)
     }
 
