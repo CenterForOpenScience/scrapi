@@ -42,8 +42,8 @@ def get_response(rows):
 def normalize(raw_doc, timestamp):
     raw_doc = raw_doc.get('doc')
     doc = etree.XML(raw_doc)
-
     contributors = doc.xpath("str[@name='author']")
+    tags = doc.xpath("//arr[@name='keywords']/str/node()")
     contributor_list = []
     for contributor in contributors:
         contributor_list.append({'full_name': contributor.text, 'email':''})
@@ -66,11 +66,11 @@ def normalize(raw_doc, timestamp):
     normalized_dict = {
             'title': title,
             'contributors': contributor_list,
-            'properties': {
-                'abstract': description
-            },
+            'properties': {},
+            'description': description,
             'meta': {},
             'id': doc_id,
+            'tags': tags,
             'source': NAME,
             'date_created': date_created,
             'timestamp': str(timestamp)
