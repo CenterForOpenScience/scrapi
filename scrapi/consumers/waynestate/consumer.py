@@ -62,15 +62,20 @@ def normalize(raw_doc, timestamp):
     except IndexError:
         description = "No abstract available"
 
+    date_created = doc.xpath('ns0:metadata/oai_dc:dc/dc:date', namespaces=namespaces)[0].text
+
+    tags = doc.xpath('//dc:subject/node()', namespaces=namespaces)
+
     normalized_dict = {
             'title': title[0].text,
             'contributors': contributor_list,
-            'properties': {
-                'abstract': description
-            },
+            'properties': {},
+            'description': description,
             'meta': {},
             'id': doc_id,
+            'tags': tags,
             'source': NAME,
+            'date_created': date_created,
             'timestamp': str(timestamp)
     }
 
