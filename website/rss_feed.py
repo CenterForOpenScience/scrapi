@@ -9,12 +9,13 @@ logger = logging.getLogger(__name__)
 
 @search.requires_search
 def gen_rss_feed(raw_query):
-    results = search.search('scrapi', raw_query, start=0, size=100)
-    xml = dict_to_rss(results, raw_query)
+    results, count = search.search('scrapi', raw_query, start=0, size=100)
+    logger.info('{n} results returned from search'.format(n=len(results)))
+    xml = dict_to_rss(results, count, raw_query)
     return xml
 
 
-def dict_to_rss(results, query):
+def dict_to_rss(results, count, query):
     if not query:
         query = "everything"
     docs = results
@@ -23,18 +24,17 @@ def dict_to_rss(results, query):
         pyrss.RSSItem(
             title=str(doc.get('title')),
             link='http://' + settings.URL + '/' + doc.get('location')[0],
-            description=str(_get_description(doc)),
+            description=format_description(doc),
             guid=str(doc.get('id')),
             pubDate=str(doc.get('timestamp'))
         ) for doc in docs if doc.get('location') is not None
     ]
     logger.info("{n} documents added to RSS feed".format(n=len(items)))
-
     rss = pyrss.RSS2(
-        title='RSS feed for documents retrieved from query: "{query}"'.format(query=query),
+        title='scrAPI: RSS feed for documents retrieved from query: "{query}"'.format(query=query),
         link='{base_url}/rss?q={query}'.format(base_url=settings.URL, query=query),
         items=items,
-        description='Exactly what it sounds like',
+        description='{n} results, {m} most recent displayed in feed'.format(n=count, m=len(items)),
         lastBuildDate=str(datetime.datetime.now()),
     )
 
@@ -42,6 +42,13 @@ def dict_to_rss(results, query):
     rss.write_xml(f)
 
     return f.getvalue()
+
+
+def format_description(doc):
+    contributors = doc.get('contributors')
+    contributors = '; '.join([contributor['full_name'] for contributor in doc.get('contributors')])
+    timestamp = 'Retrieved from {source} at {timestamp}<br/>'.format(source=doc.get('source'), timestamp=doc.get('timestamp'))
+    return '<br/>'.join([str(contributors), timestamp, str(_get_description(doc))])
 
 
 def _get_description(doc):

@@ -77,7 +77,8 @@ def search_search():
     start = request.args.get('from')
     size = request.args.get('size')
     # return render_template('search.html.jinja2', results=search.search('scrapi', query, start, size))
-    return json.dumps(search.search('scrapi', query, start, size))
+    results, count = search.search('scrapi', query, start, size)
+    return json.dumps(results)
 
 
 @app.route('/archive/', defaults={'req_path': ''})
