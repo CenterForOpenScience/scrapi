@@ -1,5 +1,5 @@
 lxml==3.3.5
 requests==2.3.0
-scrapi-tools==0.3.5
+git+http://github.com/fabianvf/scrapi-tools.git
 wsgiref==0.1.2
 xmltodict==0.9.0
