@@ -12,7 +12,7 @@ sys.setdefaultencoding('utf-8')
 import settings
 
 TODAY = str(date.today()) + "T00:00:00Z"
-YESTERDAY = str(date.today() - timedelta(4)) + "T00:00:00Z"
+YESTERDAY = str(date.today() - timedelta(1)) + "T00:00:00Z"
 MAX_ROWS_PER_REQUEST = 999
 
 NAME = 'PLoS'
@@ -21,6 +21,7 @@ NAME = 'PLoS'
 def consume():
     payload = {"api_key": settings.API_KEY, "rows": "0"}
     base_url = 'http://api.plos.org/search?q=publication_date:[{}%20TO%20{}]'.format(YESTERDAY, TODAY)
+    print base_url
     plos_request = requests.get(base_url, params=payload)
     response = xmltodict.parse(plos_request.text)
     num_articles = int(response["response"]["result"]["@numFound"])
@@ -37,6 +38,8 @@ def consume():
         doc = xmltodict.parse(results.text)
 
         full_response = doc["response"]["result"]["doc"]
+
+        # import pdb; pdb.set_trace()
 
         # TODO Incooporate "Correction" article type
         try:
