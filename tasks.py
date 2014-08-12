@@ -2,6 +2,9 @@ from invoke import run, task
 import os
 import yaml
 import subprocess
+import platform
+from worker_manager.celerytasks import run_consumers, run_consumer
+from worker_manager.celerytasks import check_archive as check__archive
 
 
 @task
@@ -17,7 +20,6 @@ def schedule():
 @task
 def reset_search():
     run("curl -XPOST 'http://localhost:9200/_shutdown'")
-    import platform
     if platform.linux_distribution()[0] == 'Ubuntu':
         run("sudo service elasticsearch restart")
     elif platform.system() == 'Darwin':  # Mac OSX
@@ -30,7 +32,6 @@ def elasticsearch():
 
     NOTE: Requires that elasticsearch is installed. See README for instructions
     '''
-    import platform
     if platform.linux_distribution()[0] == 'Ubuntu':
         run("sudo service elasticsearch restart")
     elif platform.system() == 'Darwin':  # Mac OSX
@@ -88,8 +89,7 @@ def celery_worker(virtualenv=''):
 
 
 @task
-def run_consumers(manifest=None):
-    from worker_manager.celerytasks import run_consumers, run_consumer
+def consumers(manifest=None):
     if manifest:
         run_consumer('worker_manager/manifests/{}.yml'.format(manifest))
     else:
@@ -98,5 +98,4 @@ def run_consumers(manifest=None):
 
 @task
 def check_archive(directory='', reprocess=False):
-    from worker_manager.celerytasks import check_archive
-    check_archive(directory, reprocess)
+    check__archive(directory, reprocess)
