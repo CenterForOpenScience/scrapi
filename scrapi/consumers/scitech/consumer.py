@@ -61,28 +61,31 @@ def normalize(raw_doc, timestamp):
         contributor['email'] = ''
         contributors.append(contributor)
 
-        tags = record.find(str(etree.QName(elements_url, 'subject'))).text
-        tags = re.split(',(?!\s\&)|;', tags) if tags is not None else []
-        tags = [tag.strip() for tag in tags]
+    tags = record.find(str(etree.QName(elements_url, 'subject'))).text
+    tags = re.split(',(?!\s\&)|;', tags) if tags is not None else []
+    tags = [tag.strip() for tag in tags]
 
     return NormalizedDocument({
         'title': record.find(str(etree.QName(elements_url, 'title'))).text,
         'contributors': contributors,
         'properties': {
-            'doi': record.find(str(etree.QName(elements_url, 'doi'))).text,
-            'description': record.find(str(etree.QName(elements_url, 'description'))).text,
-            'article_type': record.find(str(etree.QName(elements_url, 'type'))).text,
-            'url': record.find(str(etree.QName(terms_url, 'identifier-purl'))).text,
-            'date_entered': record.find(str(etree.QName(elements_url, 'dateEntry'))).text,
-            'research_org': record.find(str(etree.QName(terms_url, 'publisherResearch'))).text,
-            'research_sponsor': record.find(str(etree.QName(terms_url, 'publisherSponsor'))).text,
-            'tags': tags,
-            'date_published': record.find(str(etree.QName(elements_url, 'date'))).text
+            'doi': record.find(str(etree.QName(elements_url, 'doi'))).text or 'Not provided',
+            'article_type': record.find(str(etree.QName(elements_url, 'type'))).text or 'Not provided',
+            'date_entered': record.find(str(etree.QName(elements_url, 'dateEntry'))).text or 'Not provided',
+            'research_org': record.find(str(etree.QName(terms_url, 'publisherResearch'))).text or 'Not provided',
+            'research_sponsor': record.find(str(etree.QName(terms_url, 'publisherSponsor'))).text or 'Not provided',
         },
         'meta': {},
-        'id': record.find(str(etree.QName(elements_url, 'ostiId'))).text,
+        'id': {
+            'service_id': record.find(str(etree.QName(elements_url, 'ostiId'))).text,
+            'doi': 'Not provided',
+            'url': record.find(str(etree.QName(terms_url, 'identifier-purl'))).text or "Not provided",
+        },
         'source': NAME,
-        'timestamp': str(timestamp)
+        'timestamp': str(timestamp),
+        'date_created': record.find(str(etree.QName(elements_url, 'date'))).text,
+        'description': record.find(str(etree.QName(elements_url, 'description'))).text or 'No description provided',
+        'tags': tags or [],
     })
 
 
