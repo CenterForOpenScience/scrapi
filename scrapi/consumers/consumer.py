@@ -12,16 +12,15 @@ sys.setdefaultencoding('utf-8')
 import settings
 
 TODAY = str(date.today()) + "T00:00:00Z"
-YESTERDAY = str(date.today() - timedelta(1)) + "T00:00:00Z"
 MAX_ROWS_PER_REQUEST = 999
 
 NAME = 'PLoS'
 
 
-def consume():
+def consume(days_back=1):
     payload = {"api_key": settings.API_KEY, "rows": "0"}
-    base_url = 'http://api.plos.org/search?q=publication_date:[{}%20TO%20{}]'.format(YESTERDAY, TODAY)
-    print base_url
+    START_DATE = str(date.today() - timedelta(days_back)) + "T00:00:00Z"
+    base_url = 'http://api.plos.org/search?q=publication_date:[{}%20TO%20{}]'.format(START_DATE, TODAY)
     plos_request = requests.get(base_url, params=payload)
     response = xmltodict.parse(plos_request.text)
     num_articles = int(response["response"]["result"]["@numFound"])
@@ -38,8 +37,6 @@ def consume():
         doc = xmltodict.parse(results.text)
 
         full_response = doc["response"]["result"]["doc"]
-
-        # import pdb; pdb.set_trace()
 
         # TODO Incooporate "Correction" article type
         try:
@@ -70,7 +67,6 @@ def consume():
 def normalize(raw_doc, timestamp):
     raw_doc = raw_doc.get('doc')
     record = json.loads(raw_doc)
-
     return NormalizedDocument({
         'title': record["str"][4]["#text"],
         'contributors': [{
@@ -78,12 +74,21 @@ def normalize(raw_doc, timestamp):
             'full_name': name,
         } for name in record["arr"][0]["str"]],
         'properties': {
-            'description': record["arr"][1]["str"],
+            'journal': record['str'][1]['#text'],
+            'eissn': record['str'][2]['#text'],
+            'article_type': record['str'][3]['#text'],
         },
         'meta': {},
-        'id': record["str"][0]["#text"],
+        'id': {
+            'doi': record["str"][0]["#text"],
+            'service_id': record['str'][0]['#text'],
+            'url': 'http://dx.doi.org/{}'.format(record['str'][0]['#text'])
+        },
         'source': NAME,
-        'timestamp': timestamp
+        'timestamp': timestamp,
+        'description': record["arr"][1]["str"],
+        'date_created': record['date']['#text'],
+        'tags': [],
     })
 
 if __name__ == '__main__':
