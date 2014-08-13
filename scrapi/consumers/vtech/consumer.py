@@ -1,12 +1,8 @@
 # Refactored consumer for VTechWorks
 
-from sickle import Sickle 
-from sickle.oaiexceptions import NoRecordsMatch
-# from sickle.models import Record
-import xmltodict
-import dicttoxml
-from datetime import date, timedelta
 
+from datetime import date, timedelta
+from lxml import etree 
 from scrapi_tools import lint
 from scrapi_tools.document import RawDocument, NormalizedDocument
 
@@ -47,11 +43,6 @@ def consume(days_back=3):
             'doc_id': doc_id, 
             'filetype': 'xml'}))
 
-# UNCOMMENT TO RUN TESTS IN NORMALIZE.PY
-#        test_list.append(dicttoxml.dicttoxml(doc_list[x]))
-
-#    with open('output.xml','w') as f:
-#        f.write(test_list[1])
     return return_list
 
 
@@ -75,9 +66,10 @@ def getabstract(result):
     abstract = result['root']['metadata']['oai_dc:dc']['key'][7]['#text']
     return abstract
 
-def getid(result):
-    theid = result['root']['header']['identifier']['#text']
-    return theid
+def getids(result):
+    service_id = result['root']['header']['identifier']['#text']
+
+    return {'service_id': service_id, 'url': 'url', 'doi':''}
 
 def normalize(raw_doc, timestamp):
     result = raw_doc.get('doc')
@@ -94,7 +86,7 @@ def normalize(raw_doc, timestamp):
         'description': getabstract(result),
         'tags': gettags(result),
         'meta': {},
-        'id': getid(result),
+        'id': getids(result),
         'source': NAME,
         'date_created': date_created,
         'timestamp': str(timestamp)
