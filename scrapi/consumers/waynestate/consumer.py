@@ -14,12 +14,14 @@ def consume(days_back=1):
     start_date = TODAY - timedelta(days_back)
     base_url = 'http://digitalcommons.wayne.edu/do/oai/?verb=ListRecords&metadataPrefix=oai_dc&from='
     url = base_url + str(start_date) + 'T00:00:00Z'
+    print url
     data = requests.get(url)
     doc =  etree.XML(data.content)
 
     namespaces = {'dc': 'http://purl.org/dc/elements/1.1/', 
                 'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
                 'ns0': 'http://www.openarchives.org/OAI/2.0/'}
+
 
     records = doc.xpath('//oai_dc:record', namespaces=namespaces)
 
@@ -51,14 +53,20 @@ def normalize(raw_doc, timestamp):
     contributor_list = []
     for contributor in contributors:
         contributor_list.append({'full_name': contributor.text, 'email':''})
-    title = doc.findall('ns0:metadata/oai_dc:dc/dc:title', namespaces=namespaces)
+    title = doc.xpath('//dc:title/node()', namespaces=namespaces)
 
-    doc_id = doc.xpath('ns0:header/ns0:identifier', 
-                                namespaces=namespaces)[0].text
+    service_id = doc.xpath('ns0:header/ns0:identifier', namespaces=namespaces)[0].text
+
+    all_urls = doc.xpath('//dc:identifier/node()', namespaces=namespaces)
+    for identifier in all_urls:
+        if 'cgi' not in identifier and 'http://digitalcommons.wayne.edu' in identifier:
+            url = identifier
+
+    ids = {'url': url, 'service_id': service_id, 'doi': ''}
 
     ## TODO: make this an actual absttract maybe by going to the source...
     try: 
-        description = doc.xpath('ns0:metadata/oai_dc:dc/dc:description', namespaces=namespaces)[0].text
+        description = doc.xpath('ns0:metadata/oai_dc:dc/dc:description/node()', namespaces=namespaces)[0]
     except IndexError:
         description = "No abstract available"
 
@@ -67,12 +75,12 @@ def normalize(raw_doc, timestamp):
     tags = doc.xpath('//dc:subject/node()', namespaces=namespaces)
 
     normalized_dict = {
-            'title': title[0].text,
+            'title': title[0],
             'contributors': contributor_list,
             'properties': {},
             'description': description,
             'meta': {},
-            'id': doc_id,
+            'id': ids,
             'tags': tags,
             'source': NAME,
             'date_created': date_created,
