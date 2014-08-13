@@ -47,11 +47,6 @@ def consume(days_back=3):
             'doc_id': doc_id, 
             'filetype': 'xml'}))
 
-# UNCOMMENT TO RUN TESTS IN NORMALIZE.PY
-#        test_list.append(dicttoxml.dicttoxml(doc_list[x]))
-
-#    with open('output.xml','w') as f:
-#        f.write(test_list[1])
     return return_list
 
 
@@ -75,9 +70,16 @@ def getabstract(result):
     abstract = result['root']['metadata']['oai_dc:dc']['key'][7]['#text']
     return abstract
 
-def getid(result):
-    theid = result['root']['header']['identifier']['#text']
-    return theid
+def getids(result):
+    service_id = result['root']['header']['identifier']['#text']
+    identifiers = result['root']['metadata']['oai_dc:dc']['dc:identifier']['item']
+    for item in identifiers:
+        if 'http://' in item['#text']:
+            url = item['#text']
+
+    url = url or ''
+
+    return {'service_id': service_id, 'doi': '', 'url': url}
 
 def normalize(raw_doc, timestamp):
     result = raw_doc.get('doc')
@@ -87,6 +89,7 @@ def normalize(raw_doc, timestamp):
     contributor_list = []
     for contributor in contributors:
         contributor_list.append({'full_name': contributor, 'email': ''})
+    
     payload = {
         'title': result['root']['metadata']['oai_dc:dc']['key'][5]['#text'],
         'contributors': contributor_list,
@@ -94,7 +97,7 @@ def normalize(raw_doc, timestamp):
         'description': getabstract(result),
         'tags': gettags(result),
         'meta': {},
-        'id': getid(result),
+        'id': getids(result),
         'source': NAME,
         'date_created': date_created,
         'timestamp': str(timestamp)
