@@ -58,12 +58,18 @@ def normalize(raw_doc, timestamp):
         contributor_list.append({'full_name': contributor.text, 'email': ''})
     title = doc.findall('ns0:metadata/oai_dc:dc/dc:title', namespaces=namespaces)
 
-    doc_id = doc.xpath('ns0:header/ns0:identifier', 
-                                namespaces=namespaces)[0].text
+    service_id = doc.xpath('ns0:header/ns0:identifier/node()', 
+                                    namespaces=namespaces)[0]
+    identifiers = doc.xpath('//dc:identifier/node()', namespaces=namespaces)
+    for item in identifiers:
+        if 'escholarship.org' in item:
+            url = item
+
+    ids = {'url': url, 'service_id': service_id, 'doi': 'doi'}
 
     ## Using this for the abstract for now...
     ## TODO: make this an actual absttract maybe by going to the source...
-    source = doc.xpath('ns0:metadata/oai_dc:dc/dc:source', namespaces=namespaces)
+    description = doc.xpath('ns0:metadata/oai_dc:dc/dc:description/node()', namespaces=namespaces) or ['']
 
     date_created = doc.xpath('//dc:date', namespaces=namespaces)[0].text
 
@@ -73,9 +79,9 @@ def normalize(raw_doc, timestamp):
             'title': title[0].text,
             'contributors': contributor_list,
             'properties': {},
-            'description': source[0].text,
+            'description': description[0],
             'meta': {},
-            'id': doc_id,
+            'id': ids,
             'source': NAME,
             'tags': tags,
             'date_created': date_created,
