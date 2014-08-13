@@ -58,15 +58,29 @@ class TestAPI(unittest.TestCase):
 
         doc = NormalizedDocument({
             'title': "TEST PROJECT",
-            'contributors': ['Me, Myself', 'And I'],
+            'contributors': [
+                {
+                    'full_name': 'Me, Myself',
+                    'email': 'Myself@me.org'
+                },
+                {
+                    'full_name': 'And I',
+                    'email': 'i@me.org'
+                }
+            ],
             'properties': {
-                'description': 'science stuff',
-                'email': 'email stuff'
             },
             'meta': {},
-            'id': raw_doc.get('doc_id'),
+            'id': {
+                'service_id': raw_doc.get('doc_id'),
+                'doi': 'Not available',
+                'url': 'fake.stuff.org/{}'.format(raw_doc.get('doc_id')),
+            },
             'source': raw_doc.get('source'),
-            'timestamp': str(timestamp)
+            'timestamp': str(timestamp),
+            'tags': ['1', '2', '3'],
+            'date_created': str(timestamp),
+            'description': 'science stuff',
         })
 
         assert process_docs.process(doc, timestamp)
