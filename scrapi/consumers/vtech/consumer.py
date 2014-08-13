@@ -11,27 +11,10 @@ NAME = 'vtechworks'
 def consume(days_back=3):
     doc_list = []
     start_date = str(date.today() - timedelta(days_back))
-    sickle = Sickle('http://vtechworks.lib.vt.edu/oai/request')
-    try:
-        records = sickle.ListRecords(
-            **{ 'metadataPrefix': 'oai_dc',
-            'from': start_date,
-            'ignore_deleted': 'True'})
-    except NoRecordsMatch:
-        records = []
-        print "No new files or updates!"
+    base_url = 'http://vtechworks.lib.vt.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from='
+    
 
-    # TODO: This assumes that an empty records collection throws a `KeyError`. This should be verified.
-    try:
-        for record in records:
-            doc = xmltodict.parse(record.raw)
 
-            try:
-                doc_list.append(doc['record']) # should grab the header AND metadata, skip XML version
-            except KeyError:
-                pass
-    except KeyError:
-            print "No new files/updates!"
 
     return_list = []
     for x in range(0, len(doc_list)):
@@ -45,7 +28,7 @@ def consume(days_back=3):
 
     return return_list
 
-
+YYYY-MM-DD hh:mm:ss
 def getcontributors(result):
     try:
         thelist = result['root']['metadata']['oai_dc:dc']['dc:contributor']['item']
@@ -79,6 +62,7 @@ def normalize(raw_doc, timestamp):
     contributor_list = []
     for contributor in contributors:
         contributor_list.append({'full_name': contributor, 'email': ''})
+    
     payload = {
         'title': result['root']['metadata']['oai_dc:dc']['key'][5]['#text'],
         'contributors': contributor_list,
