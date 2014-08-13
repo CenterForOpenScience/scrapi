@@ -78,7 +78,7 @@ def _normalize(result, timestamp, registry, manifest):
     if doc is not None:
         doc.attributes['source'] = manifest['name']
         doc.attributes['location'] = "archive/{source}/{doc_id}/{timestamp}/normalized.json"\
-            .format(source=manifest['directory'], doc_id=doc.get('id').replace('/', ''), timestamp=doc.get('timestamp')),
+            .format(source=manifest['directory'], doc_id=doc.get('id').get('service_id'), timestamp=doc.get('timestamp')),
         doc.attributes['iso_timestamp'] = str(iso_timestamp)
         logger.info('Document {0} processed successfully'.format(result.get("doc_id")))
         search.update('scrapi', doc.attributes, manifest['directory'], result.get("doc_id"))

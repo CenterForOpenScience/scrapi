@@ -11,7 +11,7 @@ from pyelasticsearch.exceptions import ElasticHttpNotFoundError
 
 def detect(doc):
     try:
-        results = search.search('scrapi', doc['id'])
+        results = search.search('scrapi', doc.get('id').get('service_id'))
     except ElasticHttpNotFoundError:
         return False
 
