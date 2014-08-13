@@ -65,11 +65,10 @@ def normalize(raw_doc, timestamp):
     tags = re.split(',(?!\s\&)|;', tags) if tags is not None else []
     tags = [tag.strip() for tag in tags]
 
-    return NormalizedDocument({
+    normalized_dict = {
         'title': record.find(str(etree.QName(elements_url, 'title'))).text,
         'contributors': contributors,
         'properties': {
-            'doi': record.find(str(etree.QName(elements_url, 'doi'))).text or 'Not provided',
             'article_type': record.find(str(etree.QName(elements_url, 'type'))).text or 'Not provided',
             'date_entered': record.find(str(etree.QName(elements_url, 'dateEntry'))).text or 'Not provided',
             'research_org': record.find(str(etree.QName(terms_url, 'publisherResearch'))).text or 'Not provided',
@@ -78,7 +77,7 @@ def normalize(raw_doc, timestamp):
         'meta': {},
         'id': {
             'service_id': record.find(str(etree.QName(elements_url, 'ostiId'))).text,
-            'doi': 'Not provided',
+            'doi': record.find(str(etree.QName(elements_url, 'doi'))).text or 'Not provided',
             'url': record.find(str(etree.QName(terms_url, 'identifier-purl'))).text or "Not provided",
         },
         'source': NAME,
@@ -86,7 +85,9 @@ def normalize(raw_doc, timestamp):
         'date_created': record.find(str(etree.QName(elements_url, 'date'))).text,
         'description': record.find(str(etree.QName(elements_url, 'description'))).text or 'No description provided',
         'tags': tags or [],
-    })
+    }
+
+    return NormalizedDocument(normalized_dict)
 
 
 if __name__ == '__main__':
