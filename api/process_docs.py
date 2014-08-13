@@ -65,16 +65,27 @@ def process(attributes, timestamp):
     """
         Takes a NormalizedFile object and extracts the information necessary
         to add the document to the search engine. The attributes field of the
-        NormalizedFile object has the following structure:
+        NormalizedFile object has the following structure (read :: as 'is of type'):
         {
-            'title': {PROJECT_TITLE},
-            'contributors: [{PROJECT_CONTRIBUTORS}],
+            'title': {PROJECT_TITLE} :: string,
+            'contributors: [{
+                'email': {EMAIL},
+                'full_name': {FULL NAME},
+            }] :: list(dict),
             'properties': {
-                {VALID_NODE_PROPERTY}: {NODE_PROPERTY_VALUE},
-            },
-            'meta': {META_DATA FOR PROJECT | EMPTY},
-            'id': {DOI OR UNIQUE ID OF PROJECT},
-            'source': {SOURCE OF SCRAPE}
+                {PROPERTY}: {PROPERTY_VALUE},
+            } :: dict,
+            'meta': {META_DATA FOR PROJECT | EMPTY} # Ignore for now,
+            'id': {
+                'url': {URL FOR RESOURCE} :: string,
+                'doi': {DOI (IF ONE EXISTS)} :: string,
+                'service_id': {SERVICE SPECIFIC IDENTIFIER} :: string
+            } :: dict,
+            'source': {SOURCE OF SCRAPE} :: string,
+            'description': {DESCRIPTION OF DOCUMENT} :: string,
+            'tags': {TAGS FOR DOCUMENT} :: list(string),
+            'timestamp': {TIME ADDED TO scrAPI} :: string,
+            'date_created': {DATE DOCUMENT CREATED} :: string,
         }
     """
     if None in [attributes.get('title'), attributes.get('contributors'), attributes.get('id'), attributes.get('source')]:
@@ -85,9 +96,9 @@ def process(attributes, timestamp):
     conflict = collision_detector.detect(attributes.attributes)
     if conflict:
         logger.warn("Document with id {0} and timestamp {1} from source {2} already found in database"
-                    .format(attributes.get('id'), timestamp, attributes.get('source')))
+                    .format(attributes.get('id').get('service_id'), timestamp, attributes.get('source')))
 
-    directory = '/archive/' + attributes.get('source').replace('/', '') + '/' + str(attributes.get('id')).replace('/', '') + '/' + str(timestamp) + '/'
+    directory = '/archive/' + attributes.get('source').replace('/', '') + '/' + str(attributes.get('id').get('service_id')).replace('/', '') + '/' + str(timestamp) + '/'
     filepath = BASE_DIR + directory + "normalized.json"
 
     dir_path = BASE_DIR
@@ -103,4 +114,5 @@ def process(attributes, timestamp):
         except IOError as e:
             logger.error(e)
             return None
+
     return attributes

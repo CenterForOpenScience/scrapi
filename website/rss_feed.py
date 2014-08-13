@@ -17,7 +17,7 @@ def gen_rss_feed(raw_query):
 
 def dict_to_rss(results, count, query):
     if not query:
-        query = "everything"
+        query = '*'
     docs = results
 
     items = [
@@ -53,8 +53,8 @@ def format_description(doc):
 
 def _get_description(doc):
     properties = doc.get('properties') if isinstance(doc, dict) else None
-    result = None
-    if properties:
+    result = doc.get('description')
+    if properties and not result:
         abstract = properties.get('abstract')
         description = properties.get('description')
         result = abstract if abstract else description
