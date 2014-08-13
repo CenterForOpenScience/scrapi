@@ -94,23 +94,8 @@ def normalize(raw_doc, timestamp):
             title = 'No title available'
             pass
 
-    contributor_list = result['clinical_study'].get('overall_official')
-
-    if not isinstance(contributor_list, list):
-        contributor_list = [contributor_list]
-
-    if contributor_list == None:
-        contributors = [{'full_name': 'No Contributors', 'email': ''}]
-
-    else: 
-        contributors = []
-        for entry in contributor_list:
-            if entry != None:
-                name = entry.get('last_name')
-                contributor = {}
-                contributor['full_name'] = name
-                contributor['email'] = ''
-                contributors.append(contributor)
+    contributor_list = xml_doc.xpath('//overall_official/last_name/node()') or xml_doc.xpath('//lead_sponsor/agency/node()') or ['No contributors']
+    contributors = [{'full_name': contributor_list[0], 'email': ''}]
 
     try:
         abstract = result['clinical_study']['brief_summary'].get('textblock')
@@ -125,6 +110,10 @@ def normalize(raw_doc, timestamp):
     except KeyError:
         nct_id = 'Secondary ID: ' + result['clinical_study']['id_info'].get('secondary_id')
 
+    url = result['clinical_study']['required_header'].get('url')
+
+    ids = {'service_id': nct_id, 'doi': '', 'url': url}
+
     date_created = result['clinical_study'].get('firstreceived_date')
 
     keywords = xml_doc.xpath('//keyword/node()')
@@ -135,7 +124,7 @@ def normalize(raw_doc, timestamp):
             'properties': {},
             'description': abstract,
             'meta': {},
-            'id': nct_id,
+            'id': ids,
             'source': NAME,
             'tags': keywords,
             'date_created': date_created,
