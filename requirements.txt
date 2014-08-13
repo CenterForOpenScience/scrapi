@@ -21,3 +21,4 @@ git+http://github.com/fabianvf/scrapi-tools.git
 simplejson==3.6.0
 six==1.7.3
 wsgiref==0.1.2
+invoke==0.8.2
