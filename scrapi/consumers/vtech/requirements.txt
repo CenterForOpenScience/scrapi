@@ -1,7 +1,4 @@
-Sickle==0.3
-dicttoxml==1.5.5
 lxml==3.3.5
 requests==2.3.0
-git+http://github.com/fabianvf/scrapi-tools.git
+scrapi-tools==0.4.1
 wsgiref==0.1.2
-xmltodict==0.9.0
