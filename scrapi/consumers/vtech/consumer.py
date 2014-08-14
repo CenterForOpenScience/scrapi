@@ -67,7 +67,10 @@ def gettags(result):
     return tag_text
 
 def getabstract(result):
-    abstract = result['root']['metadata']['oai_dc:dc']['key'][7]['#text']
+    try:
+        abstract = result['root']['metadata']['oai_dc:dc']['key'][7]['#text']
+    except KeyError:
+        abstract = 'No description available.'
     return abstract
 
 def getids(result):
@@ -103,6 +106,7 @@ def normalize(raw_doc, timestamp):
         'timestamp': str(timestamp)
     }
 
+    print payload
     return NormalizedDocument(payload)
 
 
