@@ -11,9 +11,7 @@ NAME = "dataone"
 def consume(days_back=1):
     doc =  get_response(1)
     rows = doc.xpath("//result/@numFound")[0]
-
     doc = get_response(rows)
-
     records = doc.xpath('//doc')
     
     xml_list = []
@@ -42,19 +40,32 @@ def get_response(rows):
 def normalize(raw_doc, timestamp):
     raw_doc = raw_doc.get('doc')
     doc = etree.XML(raw_doc)
-    contributors = doc.xpath("str[@name='author']")
-    tags = doc.xpath("//arr[@name='keywords']/str/node()")
+    contributors = doc.xpath("arr[@name='origin']/str/node()") or  doc.xpath("str[@name='author']/node()") or ['No contributors.']
+    submitters = doc.xpath("str[@name='submitter']/node()")
+    email = ''
+    for submitter in submitters:
+        if '@' in submitter:
+            email = submitter
     contributor_list = []
     for contributor in contributors:
-        contributor_list.append({'full_name': contributor.text, 'email':''})
+        contributor_list.append({'full_name': contributor, 'email': email})
     #TODO: sometimes email info is in submitter or rights holder fields...
     
     try:
         title = doc.xpath("str[@name='title']")[0].text
     except IndexError:
         title = "No title available"
+    
+    tags = doc.xpath("//arr[@name='keywords']/str/node()")
 
-    doc_id = doc.xpath("str[@name='id']")[0].text
+    doi = ''
+    service_id = doc.xpath("str[@name='id']/node()")[0]
+    if 'doi' in service_id:
+        doi = service_id
+
+    url = doc.xpath('//str[@name="dataUrl"]/node()') or ['']
+
+    ids = {'service_id':service_id, 'doi': doi, 'url':url[0]}
 
     try: 
         description = doc.xpath("str[@name='abstract']")[0].text
@@ -69,7 +80,7 @@ def normalize(raw_doc, timestamp):
             'properties': {},
             'description': description,
             'meta': {},
-            'id': doc_id,
+            'id': ids,
             'tags': tags,
             'source': NAME,
             'date_created': date_created,
