@@ -52,7 +52,7 @@ def normalize(raw_doc, timestamp):
     #TODO: sometimes email info is in submitter or rights holder fields...
     
     try:
-        title = doc.xpath("str[@name='title']")[0].text
+        title = doc.xpath("str[@name='title']/node()")[0]
     except IndexError:
         title = "No title available"
     
@@ -68,11 +68,11 @@ def normalize(raw_doc, timestamp):
     ids = {'service_id':service_id, 'doi': doi, 'url':url[0]}
 
     try: 
-        description = doc.xpath("str[@name='abstract']")[0].text
+        description = doc.xpath("str[@name='abstract']/node()")[0]
     except IndexError:
         description = "No abstract available"
 
-    date_created = doc.xpath("date[@name='dateUploaded']")[0].text
+    date_created = doc.xpath("date[@name='dateUploaded']/node()")[0]
 
     normalized_dict = {
             'title': title,
