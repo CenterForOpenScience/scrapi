@@ -22,16 +22,12 @@ def consume(days_back=3):
     url = base_url + str(start_date) + ' 00:00:00'
     data = requests.get(url)
     doc =  etree.XML(data.content)
-    
-    namespaces = {'dc': 'http://purl.org/dc/elements/1.1/', 
-                'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
-                'ns0': 'http://www.openarchives.org/OAI/2.0/'}
 
-    records = doc.xpath('//oai_dc:record', namespaces=namespaces)
+    records = doc.xpath('//oai_dc:record', namespaces=NAMESPACES)
 
     xml_list = []
     for record in records:
-        doc_id = record.xpath('ns0:header/ns0:identifier', namespaces=namespaces)[0].text
+        doc_id = record.xpath('ns0:header/ns0:identifier', namespaces=NAMESPACES)[0].text
         record = etree.tostring(record)
         record = '<?xml version="1.0" encoding="UTF-8"?>\n' + record
         xml_list.append(RawDocument({
