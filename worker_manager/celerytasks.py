@@ -5,17 +5,22 @@
     the celery beat, as described in  worker_manager/celeryconfig.py
 """
 
-from celery import Celery
-import yaml
 import os
+import json
 import logging
+import requests
+import datetime
 import importlib
 import subprocess
-import datetime
-from api import process_docs
-from website import search
-from scrapi_tools.exceptions import MissingAttributeError
+
+import yaml
+from celery import Celery
 from scrapi_tools.document import RawDocument
+from scrapi_tools.exceptions import MissingAttributeError
+
+from website import search
+from api import process_docs
+from worker_manager import settings
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -30,11 +35,19 @@ def run_consumers():
         Run every consumer with a manifest file in worker_manager/manifests
     """
     logger.info("Celery worker executing task run_scrapers")
+    failures = []
     for manifest in os.listdir('worker_manager/manifests/'):
         if manifest != 'test.yml':
             logger.info(manifest)
-            run_consumer('worker_manager/manifests/' + manifest)
+            try:
+                run_consumer('worker_manager/manifests/' + manifest)
+            except Exception as e:
+                failures.append((manifest, e))
     logger.info('run_consumers finished')
+    logger.info('Failures: ')
+    for failure in failures:
+        logger.info(failure[0])
+        logger.exception(failure[1])
 
 
 @app.task
@@ -82,7 +95,24 @@ def _normalize(result, timestamp, registry, manifest):
         doc.attributes['iso_timestamp'] = str(iso_timestamp)
         logger.info('Document {0} processed successfully'.format(result.get("doc_id")))
         search.update('scrapi', doc.attributes, manifest['directory'], result.get("doc_id"))
+        _send_to_osf(doc.attributes)
     return doc
+
+
+def _send_to_osf(doc):
+    if not settings.OSF_ENABLED:
+        logger.warn("scrAPI is not configured to interact with the Open Science Framework")
+        return
+
+    data = json.dumps({'title': doc.get('title'), 'description': doc.get('description')})
+    headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+    project_id = requests.post(settings.NEW_PROJECT_URL, data=data, headers=headers).json()['id']
+
+    url = settings.METADATA_URL.format(guid=project_id)
+
+    data = json.dumps(doc)
+
+    requests.post(url, data=data, headers=headers)
 
 
 @app.task
