@@ -1,0 +1,8 @@
+OSF_PREFIX = 'http://localhost:5000'
+OSF_ENABLED = False
+API_KEY = ''
+APP_ID = ''
+
+NEW_PROJECT_URL = '{prefix}/api/v1/project/new/?api_key={api_key}'.format(prefix=OSF_PREFIX, api_key=API_KEY)
+
+METADATA_URL = '{prefix}/api/v1/{app_id}/{{guid}}/?api_key={api_key}'.format(prefix=OSF_PREFIX, api_key=API_KEY, app_id=APP_ID)
