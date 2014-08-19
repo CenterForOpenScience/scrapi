@@ -3,6 +3,6 @@ OSF_ENABLED = False
 API_KEY = ''
 APP_ID = ''
 
-NEW_PROJECT_URL = '{OSF_PREFIX}/api/v1/{APP_ID}project/?api_key={API_KEY}'.format(**locals())
+NEW_PROJECT_URL = '{OSF_PREFIX}/api/v1/{APP_ID}/project/?api_key={API_KEY}'.format(**locals())
 
 METADATA_URL = '{OSF_PREFIX}/api/v1/{APP_ID}/{{guid}}/?api_key={API_KEY}'.format(**locals())
