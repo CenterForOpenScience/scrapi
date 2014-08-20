@@ -37,7 +37,6 @@ def consume(days_back=3):
                     'filetype': 'xml'
                 }))
 
-    print record
     return xml_list
 
 def normalize(raw_doc, timestamp):
@@ -80,7 +79,6 @@ def normalize(raw_doc, timestamp):
 
     return NormalizedDocument(normalized_dict)
 
-consume()        
 
-# if __name__ == '__main__':
-#     print(lint(consume, normalize))
+if __name__ == '__main__':
+    print(lint(consume, normalize))
