@@ -1,8 +1,10 @@
 # start to a consumer for Columbia's academic commons for the SHARE project
 
+import time
 import requests
-from datetime import date, timedelta
 from lxml import etree 
+from datetime import date, timedelta
+
 from scrapi_tools import lint
 from scrapi_tools.document import RawDocument, NormalizedDocument
 
@@ -12,17 +14,13 @@ NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/',
             'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
             'ns0': 'http://www.openarchives.org/OAI/2.0/'}
 
+
 def consume(days_back=3):
     base_url = 'http://academiccommons.columbia.edu/catalog/oai?verb=ListRecords&from='
     start_date = str(date.today() - timedelta(days_back)) + 'T00:00:00Z'
-    # YYYY-MM-DDThh:mm:ssZ
-    print start_date
     url = base_url + str(start_date) + '&metadataPrefix=oai_dc'
-    data = requests.get(url)
-    doc =  etree.XML(data.content)
-    #
 
-    records = doc.xpath('//oai_dc:record', namespaces=NAMESPACES)
+    records = get_records(url)
 
     xml_list = []
     for record in records:
@@ -38,6 +36,20 @@ def consume(days_back=3):
                 }))
 
     return xml_list
+
+def get_records(url):
+    data = requests.get(url)
+    doc = etree.XML(data.content)
+    records = doc.xpath('//ns0:record', namespaces=NAMESPACES)
+    token = doc.xpath('//ns0:resumptionToken/node()', namespaces=NAMESPACES)
+    print 'getting a record!!'
+    if len(token) == 1:
+        time.sleep(0.5)
+        base_url = 'http://academiccommons.columbia.edu/catalog/oai?verb=ListRecords&resumptionToken=' 
+        url = base_url + token[0]
+        records += get_records(url)
+
+    return records
 
 def normalize(raw_doc, timestamp):
     raw_doc = raw_doc.get('doc')
