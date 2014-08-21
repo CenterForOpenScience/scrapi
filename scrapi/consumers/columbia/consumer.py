@@ -42,7 +42,6 @@ def get_records(url):
     doc = etree.XML(data.content)
     records = doc.xpath('//ns0:record', namespaces=NAMESPACES)
     token = doc.xpath('//ns0:resumptionToken/node()', namespaces=NAMESPACES)
-    print 'getting a record!!'
     if len(token) == 1:
         time.sleep(0.5)
         base_url = 'http://academiccommons.columbia.edu/catalog/oai?verb=ListRecords&resumptionToken=' 
@@ -55,29 +54,29 @@ def normalize(raw_doc, timestamp):
     raw_doc = raw_doc.get('doc')
     doc = etree.XML(raw_doc)
 
-    contributors = doc.findall('ns0:metadata/oai_dc:dc/dc:creator', namespaces=NAMESPACES)
+    contributors = doc.xpath('//dc:creator', namespaces=NAMESPACES)
     contributor_list = []
     for contributor in contributors:
         contributor_list.append({'full_name': contributor.text, 'email': ''})
-    title = doc.findall('ns0:metadata/oai_dc:dc/dc:title', namespaces=NAMESPACES)
+
+    contributor_list = contributor_list or [{'full_name': 'No contributors', 'email': ''}]
+
+    title = doc.xpath('//dc:title/node()', namespaces=NAMESPACES) or ['No title']
 
     service_id = doc.xpath('ns0:header/ns0:identifier/node()', 
-                                    namespaces=namespaces)[0]
-    identifiers = doc.xpath('//dc:identifier/node()', namespaces=NAMESPACES)
-    for item in identifiers:
-        if 'escholarship.org' in item:
-            url = item
+                                    namespaces=NAMESPACES)[0]
+    identifier = doc.xpath('//dc:identifier/node()', namespaces=NAMESPACES) or ['no url']
 
-    ids = {'url': url, 'service_id': service_id, 'doi': 'doi'}
+    ids = {'url': identifier[0], 'service_id': service_id, 'doi': 'doi'}
 
-    description = doc.xpath('ns0:metadata/oai_dc:dc/dc:description/node()', namespaces=NAMESPACES) or ['']
+    description = doc.xpath('//dc:description/node()', namespaces=NAMESPACES) or ['']
 
     date_created = doc.xpath('//dc:date', namespaces=NAMESPACES)[0].text
 
     tags = doc.xpath('//dc:subject/node()', namespaces=NAMESPACES)
 
     normalized_dict = {
-            'title': title[0].text,
+            'title': title[0],
             'contributors': contributor_list,
             'properties': {},
             'description': description[0],
