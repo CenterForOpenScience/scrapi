@@ -6,9 +6,7 @@
 """
 
 import os
-import json
 import logging
-import requests
 import datetime
 import importlib
 import subprocess
@@ -20,7 +18,6 @@ from scrapi_tools.exceptions import MissingAttributeError
 
 from website import search
 from api import process_docs
-from worker_manager import settings
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -95,24 +92,7 @@ def _normalize(result, timestamp, registry, manifest):
         doc.attributes['iso_timestamp'] = str(iso_timestamp)
         logger.info('Document {0} processed successfully'.format(result.get("doc_id")))
         search.update('scrapi', doc.attributes, manifest['directory'], result.get("doc_id"))
-        _send_to_osf(doc.attributes)
     return doc
-
-
-def _send_to_osf(doc):
-    if not settings.OSF_ENABLED:
-        logger.warn("scrAPI is not configured to interact with the Open Science Framework")
-        return
-
-    data = json.dumps({'title': doc.get('title'), 'description': doc.get('description')})
-    headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
-    project_id = requests.post(settings.NEW_PROJECT_URL, data=data, headers=headers).json()['id']
-
-    url = settings.METADATA_URL.format(guid=project_id)
-
-    data = json.dumps(doc)
-
-    requests.post(url, data=data, headers=headers)
 
 
 @app.task
