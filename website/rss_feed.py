@@ -1,9 +1,13 @@
-import search
-import PyRSS2Gen as pyrss
-import local as settings
-import datetime
+import json
 import logging
+import datetime
 from cStringIO import StringIO
+
+import PyRSS2Gen as pyrss
+
+import search
+import local as settings
+
 logger = logging.getLogger(__name__)
 
 
@@ -23,9 +27,9 @@ def dict_to_rss(results, count, query):
     items = [
         pyrss.RSSItem(
             title=str(doc.get('title')),
-            link='http://' + settings.URL + '/' + doc.get('location')[0],
-            description=format_description(doc),
-            guid=str(doc.get('id')),
+            link=doc['id'].get('url'),
+            description=json.dumps(doc, indent=4, sort_keys=True),
+            guid='http://' + settings.URL + '/' + doc.get('location')[0],
             pubDate=str(doc.get('timestamp'))
         ) for doc in docs if doc.get('location') is not None
     ]
@@ -42,20 +46,3 @@ def dict_to_rss(results, count, query):
     rss.write_xml(f)
 
     return f.getvalue()
-
-
-def format_description(doc):
-    contributors = doc.get('contributors')
-    contributors = '; '.join([contributor['full_name'] for contributor in doc.get('contributors')])
-    timestamp = 'Retrieved from {source} at {timestamp}<br/>'.format(source=doc.get('source'), timestamp=doc.get('timestamp'))
-    return '<br/>'.join([str(contributors), timestamp, str(_get_description(doc))])
-
-
-def _get_description(doc):
-    properties = doc.get('properties') if isinstance(doc, dict) else None
-    result = doc.get('description')
-    if properties and not result:
-        abstract = properties.get('abstract')
-        description = properties.get('description')
-        result = abstract if abstract else description
-    return result if result else "Description not provided"
