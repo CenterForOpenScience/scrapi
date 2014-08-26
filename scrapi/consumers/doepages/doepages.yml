@@ -1,0 +1,15 @@
+---
+
+days: 'mon-fri'
+hour: 23
+minute: 59
+
+directory: 'doepages'
+
+name: 'Department of Energy Pages'
+
+git-url: 'https://github.com/erinspace/DOEPages.git'
+
+file-format: '.xml'
+
+...
