@@ -48,10 +48,31 @@ def consume(days_back=30):
 
 
 def normalize(raw_doc, timestamp):
-    pass
+    raw_doc = raw_doc.get('doc')
+    doc = etree.XML(raw_doc)
+
+    ## contributors ##
+    contributor_list = []
+    full_contributors = doc.xpath('//dc:creator/node()', namespaces=NAMESPACES)[0].split(';')
+    for contributor in full_contributors:
+        contributor_list.append({'full_name': contributor, 'email': ''})
+
+    normalized_dict = {
+        'title': 'title',
+        'contributors': contributor_list,
+        'properties': {},
+        'description': 'description',
+        'meta': {},
+        'id': {'url': 'url', 'service_id': 'service_id', 'doi': 'doi'},
+        'source': NAME,
+        'tags': ['tags'],
+        'date_created': 'date_created',
+        'timestamp': str(timestamp)
+    }
+
+    print normalized_dict
+    return NormalizedDocument(normalized_dict)
 
 
-consume()
-
-# if __name__ == '__main__':
-#     print(lint(consume, normalize))
+if __name__ == '__main__':
+    print(lint(consume, normalize))
