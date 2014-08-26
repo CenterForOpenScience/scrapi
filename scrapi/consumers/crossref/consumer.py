@@ -1,7 +1,6 @@
 ## Consumer for the CrossRef metadata service
 
 import requests
-from lxml import etree
 from datetime import date, timedelta
 
 from scrapi_tools import lint
@@ -15,13 +14,10 @@ def consume(days_back=0):
     base_url = 'http://api.crossref.org/works?filter=from-pub-date:'
     start_date = TODAY - timedelta(days_back)
     url = base_url + str(start_date) + ',until-pub-date:' + str(TODAY) + '&rows=1000'
-    print url
     data = requests.get(url)
     doc = data.json()
 
     records = doc['message']['items']
-
-    # import pdb; pdb.set_trace()
 
     doc_list = []
     for record in records:
@@ -46,22 +42,23 @@ def normalize(raw_doc, timestamp):
     except KeyError:
         contributors = [{'given': 'no', 'family': 'authors'}]
     for contributor in contributors:
-        full_name = (contributor.get('given')) or '' + ' '
-        full_name += contributor.get('family') or ''
+        first = contributor.get('given').encode('utf-8') or ''
+        last = contributor.get('family').encode('utf-8') or ''
+        full_name = '{0} {1}'.format(first, last)
         contributor_list.append({'full_name': full_name, 'email': ''})
 
     # ids
     ids = {}
     ids['url'] = doc.get('URL')
+    if ids['url'] == None:
+        raise Exception('Warning: No URL provided...')
     ids['doi'] = doc.get('DOI')
     ids['service_id'] = doc.get('prefix')
-
-    # tags
 
     # date created
 
     normalized_dict = {
-        'title': doc.get('title'),
+        'title': (doc.get('title') or ['No title'])[0],
         'contributors': contributor_list,
         'properties': {
                 'publisher': doc.get('publisher'),
@@ -75,16 +72,15 @@ def normalize(raw_doc, timestamp):
                 'indexed': doc.get('indexed'),
                 'reference-count': doc.get('reference-count') 
         },
-        'description': doc.get('subtitle'),
+        'description': (doc.get('subtitle') or [''])[0],
         'meta': {},
         'id': ids,
         'source': NAME,
-        'tags': ['some', 'tags'],
+        'tags': doc.get('subject') or [],
         'date_created': 'date_created',
         'timestamp': str(timestamp)
     }
 
-    print normalized_dict
     return NormalizedDocument(normalized_dict)
 
 
