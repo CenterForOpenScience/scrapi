@@ -20,10 +20,12 @@ def consume(days_back=3):
     start_date = TODAY - timedelta(days_back)
     # YYYY-MM-DD hh:mm:ss
     url = base_url + str(start_date) + ' 00:00:00'
+    print url
     data = requests.get(url)
     doc =  etree.XML(data.content)
 
     records = doc.xpath('//oai_dc:record', namespaces=NAMESPACES)
+    print len(records)
 
     xml_list = []
     for record in records:
@@ -95,11 +97,23 @@ def normalize(raw_doc, timestamp):
     result = raw_doc.get('doc')
     result = etree.XML(result)
     title = result.xpath('//dc:title/node()', namespaces=NAMESPACES)[0]
-    
+    result_type = result.xpath('//dc:type/node()', namespaces=NAMESPACES) or ['']
+    rights = result.xpath('//dc:rights/node()', namespaces=NAMESPACES) or ['']
+    identifiers = result.xpath('//dc:identifier/node()', namespaces=NAMESPACES) or ['']
+    publisher = result.xpath('//dc:publisher/node()', namespaces=NAMESPACES) or ['']
+
+
+    # import pdb; pdb.set_trace()
+
     payload = {
         'title': title,
         'contributors': getcontributors(result),
-        'properties': {},
+        'properties': {
+            'type': result_type[0],
+            'rights': rights[0],
+            'identifiers': identifiers,
+            'publisher': publisher[0]
+        },
         'description': getabstract(result),
         'tags': gettags(result),
         'meta': {},
@@ -109,7 +123,7 @@ def normalize(raw_doc, timestamp):
         'timestamp': str(timestamp)
     }
 
-    # print payload
+    print payload
     return NormalizedDocument(payload)
 
 
