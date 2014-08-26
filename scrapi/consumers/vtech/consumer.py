@@ -25,7 +25,6 @@ def consume(days_back=3):
     doc =  etree.XML(data.content)
 
     records = doc.xpath('//oai_dc:record', namespaces=NAMESPACES)
-    print len(records)
 
     xml_list = []
     for record in records:
@@ -67,6 +66,9 @@ def getids(result):
             url = item
         if 'dx.doi.org' in item:
             doi = item
+
+    if url == '':
+        raise Exception('Warning: No url provided!')
 
     return {'service_id': service_id, 'url': url, 'doi': doi}
 
@@ -123,7 +125,6 @@ def normalize(raw_doc, timestamp):
         'timestamp': str(timestamp)
     }
 
-    print payload
     return NormalizedDocument(payload)
 
 
