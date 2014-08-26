@@ -13,7 +13,7 @@ NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/',
             'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
             'ns0': 'http://www.openarchives.org/OAI/2.0/'}
 
-def consume(days_back=6):
+def consume(days_back=3):
 
     start_date = str(date.today() - timedelta(days_back))
     base_url = 'http://vtechworks.lib.vt.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from='
@@ -71,7 +71,6 @@ def getids(result):
 def get_earliest_date(result):
     dates = result.xpath('//dc:date/node()', namespaces=NAMESPACES)
     date_list = []
-    print 'getting date!!'
     for item in dates:
         try:
             a_date = time.strptime(str(item)[:10], '%Y-%m-%d')
@@ -82,7 +81,10 @@ def get_earliest_date(result):
                 try:
                     a_date = time.strptime(str(item)[:10], '%m/%d/%Y')
                 except ValueError:
-                    a_date = time.strptime(str(item)[:10], '%Y-%d-%m')
+                    try:
+                        a_date = time.strptime(str(item)[:10], '%Y-%d-%m')
+                    except ValueError:
+                        a_date = time.strptime(str(item)[:10], '%Y-%m')
         date_list.append(a_date)
     min_date =  min(date_list) 
     min_date = time.strftime('%Y-%m-%d', min_date)
@@ -107,6 +109,7 @@ def normalize(raw_doc, timestamp):
         'timestamp': str(timestamp)
     }
 
+    # print payload
     return NormalizedDocument(payload)
 
 
