@@ -13,7 +13,7 @@ NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/',
             'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
             'ns0': 'http://www.openarchives.org/OAI/2.0/'}
 
-def consume(days_back=3):
+def consume(days_back=6):
 
     start_date = str(date.today() - timedelta(days_back))
     base_url = 'http://vtechworks.lib.vt.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from='
@@ -71,13 +71,20 @@ def getids(result):
 def get_earliest_date(result):
     dates = result.xpath('//dc:date/node()', namespaces=NAMESPACES)
     date_list = []
+    print 'getting date!!'
     for item in dates:
         try:
             a_date = time.strptime(str(item)[:10], '%Y-%m-%d')
         except ValueError:
-            a_date = time.strptime(str(item)[:10], '%Y')
+            try:
+                a_date = time.strptime(str(item)[:10], '%Y')
+            except ValueError:
+                try:
+                    a_date = time.strptime(str(item)[:10], '%m/%d/%Y')
+                except ValueError:
+                    a_date = time.strptime(str(item)[:10], '%Y-%d-%m')
         date_list.append(a_date)
-    min_date =  min(date_list)
+    min_date =  min(date_list) 
     min_date = time.strftime('%Y-%m-%d', min_date)
 
     return min_date
