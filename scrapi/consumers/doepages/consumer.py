@@ -46,6 +46,18 @@ def consume(days_back=30):
 
     return xml_list
 
+def get_ids(doc):
+    ids = {}
+    ids['doi'] = (doc.xpath('//dc:doi/node()', namespaces=NAMESPACES) or [''])[0]
+    ids['service_id'] = (doc.xpath('//dc:ostiId/node()', namespaces=NAMESPACES) or [''])[0]
+    url = (doc.xpath('//dcq:identifier-citation/node()', namespaces=NAMESPACES) or [''])[0]
+    if url == '':
+        url = 'http://dx.doi.org/' + ids['doi']
+    if url == '':
+        raise Exception('Warning: url field is blank!')
+    ids['url'] = url
+
+    return ids
 
 def normalize(raw_doc, timestamp):
     raw_doc = raw_doc.get('doc')
@@ -56,21 +68,25 @@ def normalize(raw_doc, timestamp):
     full_contributors = doc.xpath('//dc:creator/node()', namespaces=NAMESPACES)[0].split(';')
     for contributor in full_contributors:
         contributor_list.append({'full_name': contributor, 'email': ''})
-
     normalized_dict = {
-        'title': 'title',
+        'title': doc.xpath('//dc:title/node()', namespaces=NAMESPACES)[0],
         'contributors': contributor_list,
-        'properties': {},
-        'description': 'description',
+        'properties': {
+                'publisher': (doc.xpath('//dcq:publisher/node()', namespaces=NAMESPACES) or [''])[0],
+                'publisher_sponsor': (doc.xpath('//dcq:publisherSponsor/node()', namespaces=NAMESPACES) or [''])[0],
+                'language': (doc.xpath('//dc:language/node()', namespaces=NAMESPACES) or [''])[0],
+                'type': (doc.xpath('//dc:type/node()', namespaces=NAMESPACES) or [''])[0]
+
+        },
+        'description': (doc.xpath('//dc:description/node()', namespaces=NAMESPACES) or [''])[0],
         'meta': {},
-        'id': {'url': 'url', 'service_id': 'service_id', 'doi': 'doi'},
+        'id': get_ids(doc),
         'source': NAME,
-        'tags': ['tags'],
-        'date_created': 'date_created',
+        'tags': doc.xpath('//dc:subject/node()', namespaces=NAMESPACES) or [],
+        'date_created': doc.xpath('//dc:date/node()', namespaces=NAMESPACES)[0],
         'timestamp': str(timestamp)
     }
 
-    print normalized_dict
     return NormalizedDocument(normalized_dict)
 
 
