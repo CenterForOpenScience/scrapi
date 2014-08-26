@@ -1,0 +1,15 @@
+---
+
+days: 'mon-fri'
+hour: 23
+minute: 59
+
+directory: 'crossref'
+
+name: 'CrossRef'
+
+git-url: 'https://github.com/erinspace/CrossRef'
+
+file-format: '.xml'
+
+...
