@@ -20,11 +20,8 @@ def consume(days_back=3):
     start_date = TODAY - timedelta(days_back)
     # YYYY-MM-DD hh:mm:ss
     url = base_url + str(start_date) + ' 00:00:00'
-    print url
-    data = requests.get(url)
-    doc =  etree.XML(data.content)
 
-    records = doc.xpath('//oai_dc:record', namespaces=NAMESPACES)
+    records = get_records(url)
 
     xml_list = []
     for record in records:
@@ -39,6 +36,20 @@ def consume(days_back=3):
                 }))
 
     return xml_list
+
+def get_records(url):
+    data = requests.get(url)
+    doc = etree.XML(data.content)
+    records = doc.xpath('//ns0:record', namespaces=NAMESPACES)
+    token = doc.xpath('//ns0:resumptionToken/node()', namespaces=NAMESPACES)
+
+    if len(token) == 1:
+        time.sleep(0.5)
+        base_url = 'http://vtechworks.lib.vt.edu/oai/request?verb=ListRecords&resumptionToken=' 
+        url = base_url + token[0]
+        records += get_records(url)
+
+    return records
 
 
 def getcontributors(result):
