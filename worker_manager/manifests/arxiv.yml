@@ -1,0 +1,15 @@
+---
+
+days: 'mon-sun'
+hour: 23
+minute: 59
+
+directory: 'arxiv'
+
+name: 'arXiv
+
+git-url: 'https://github.com/erinspace/arxiv.git'
+
+file-format: '.xml'
+
+...
