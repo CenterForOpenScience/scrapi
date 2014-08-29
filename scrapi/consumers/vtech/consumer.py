@@ -108,15 +108,16 @@ def get_earliest_date(result):
 
 def normalize(raw_doc, timestamp):
     result = raw_doc.get('doc')
-    result = etree.XML(result)
+    try:
+        result = etree.XML(result)
+    except etree.XMLSyntaxError:
+        print "Error in namespaces! Skipping this one..."
+
     title = result.xpath('//dc:title/node()', namespaces=NAMESPACES)[0]
     result_type = result.xpath('//dc:type/node()', namespaces=NAMESPACES) or ['']
     rights = result.xpath('//dc:rights/node()', namespaces=NAMESPACES) or ['']
     identifiers = result.xpath('//dc:identifier/node()', namespaces=NAMESPACES) or ['']
     publisher = result.xpath('//dc:publisher/node()', namespaces=NAMESPACES) or ['']
-
-
-    # import pdb; pdb.set_trace()
 
     payload = {
         'title': title,
@@ -137,6 +138,8 @@ def normalize(raw_doc, timestamp):
     }
 
     return NormalizedDocument(payload)
+
+    ## TODO catch namespace exception
 
 
 if __name__ == '__main__':
