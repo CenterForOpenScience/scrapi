@@ -112,6 +112,7 @@ def normalize(raw_doc, timestamp):
         result = etree.XML(result)
     except etree.XMLSyntaxError:
         print "Error in namespaces! Skipping this one..."
+        return None
 
     title = result.xpath('//dc:title/node()', namespaces=NAMESPACES)[0]
     result_type = result.xpath('//dc:type/node()', namespaces=NAMESPACES) or ['']
