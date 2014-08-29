@@ -6,7 +6,7 @@ minute: 59
 
 directory: 'arxiv'
 
-name: 'arXiv
+name: 'arXiv'
 
 git-url: 'https://github.com/erinspace/arxiv.git'
 
