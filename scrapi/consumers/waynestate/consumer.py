@@ -13,7 +13,6 @@ def consume(days_back=5):
     start_date = TODAY - timedelta(days_back)
     base_url = 'http://digitalcommons.wayne.edu/do/oai/?verb=ListRecords&metadataPrefix=oai_dc&from='
     url = base_url + str(start_date) + 'T00:00:00Z'
-    print url
     data = requests.get(url)
     doc =  etree.XML(data.content)
     # import pdb; pdb.set_trace()
