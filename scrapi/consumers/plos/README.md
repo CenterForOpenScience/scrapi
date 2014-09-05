@@ -7,7 +7,7 @@ PLoS-API-consumer
 
 <li>Sign in <a href="http://alm.plos.org/">here</a> and click on your account name. Retrieve your API key.</li>
 
-<li>Create a new file in the folder named "settings.py". In the file, put
+<li>Create a new file in the folder named "settings.py". In the file, put<br>
 <code>API_KEY = (your API key)</code></li>
 
 </ol>
