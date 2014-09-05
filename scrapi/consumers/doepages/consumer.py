@@ -8,7 +8,6 @@ from datetime import date, timedelta, datetime
 from scrapi_tools import lint
 from scrapi_tools.document import RawDocument, NormalizedDocument
 
-
 NAME = 'doepages'
 TODAY = date.today()
 
@@ -20,7 +19,7 @@ def consume(days_back=30):
     start_date = TODAY - timedelta(days_back)
     base_url = 'http://www.osti.gov/pages/pagesxml?nrows=3000&EntryDateFrom='
     url = base_url + start_date.strftime('%m/%d/%Y')
-
+    
     data = requests.get(url)
     doc = etree.XML(data.content)
 
@@ -59,6 +58,7 @@ def get_ids(doc):
 
     return ids
 
+# TODO: dc:rights, dc:dateEntry
 def normalize(raw_doc, timestamp):
     raw_doc = raw_doc.get('doc')
     doc = etree.XML(raw_doc)
@@ -71,12 +71,30 @@ def normalize(raw_doc, timestamp):
     normalized_dict = {
         'title': doc.xpath('//dc:title/node()', namespaces=NAMESPACES)[0],
         'contributors': contributor_list,
-        'properties': {
-                'publisher': (doc.xpath('//dcq:publisher/node()', namespaces=NAMESPACES) or [''])[0],
-                'publisher_sponsor': (doc.xpath('//dcq:publisherSponsor/node()', namespaces=NAMESPACES) or [''])[0],
+        'properties': {                
+                'publisher-info': {
+                    'publisher': (doc.xpath('//dcq:publisher/node()', namespaces=NAMESPACES) or [''])[0],
+                    'publisher_sponsor': (doc.xpath('//dcq:publisherSponsor/node()', namespaces=NAMESPACES) or [''])[0],
+                    'publisher_availability': (doc.xpath('//dcq:publisherAvailability/node()', namespaces=NAMESPACES) or [''])[0],
+                    'publisher_research': (doc.xpath('//dcq:publisherResearch/node()', namespaces=NAMESPACES) or [''])[0],
+                    'publisher_country': (doc.xpath('//dcq:publisherCountry/node()', namespaces=NAMESPACES) or [''])[0]
+                },                
                 'language': (doc.xpath('//dc:language/node()', namespaces=NAMESPACES) or [''])[0],
-                'type': (doc.xpath('//dc:type/node()', namespaces=NAMESPACES) or [''])[0]
-
+                'type': (doc.xpath('//dc:type/node()', namespaces=NAMESPACES) or [''])[0],
+                'type_qualifier': (doc.xpath('//dcq:typeQualifyer/node()', namespaces=NAMESPACES) or [''])[0],
+                'subject_related': (doc.xpath('//dc:subjectRelated/node()', namespaces=NAMESPACES) or [''])[0],
+                'relation': (doc.xpath('//dc:relation/node()', namespaces=NAMESPACES) or [''])[0],
+                'coverage': (doc.xpath('//dc:coverage/node()', namespaces=NAMESPACES) or [''])[0],
+                'format': (doc.xpath('//dc:format/node()', namespaces=NAMESPACES) or [''])[0],
+                'identifier-info': {
+                    'identifier': (doc.xpath('//dc:identifier/node()', namespaces=NAMESPACES) or [''])[0],
+                    'identifier_report': (doc.xpath('//dc:identifierReport/node()', namespaces=NAMESPACES) or [''])[0],
+                    'identifier_DOEcontract': (doc.xpath('//dcq:identifierDOEcontract/node()', namespaces=NAMESPACES) or [''])[0],
+                    'identifier_purl': (doc.xpath('//dcq:identifier-purl/node()', namespaces=NAMESPACES) or [''])[0],
+                    'identifier_other': (doc.xpath('//dc:identifierOther/node()', namespaces=NAMESPACES) or [''])[0]
+                },
+                'rights': (doc.xpath('//dc:rights/node()', namespaces=NAMESPACES) or [''])[0],
+                'date_entry': (doc.xpath('//dc:dateEntry/node()', namespaces=NAMESPACES) or [''])[0]
         },
         'description': (doc.xpath('//dc:description/node()', namespaces=NAMESPACES) or [''])[0],
         'meta': {},
@@ -86,7 +104,6 @@ def normalize(raw_doc, timestamp):
         'date_created': doc.xpath('//dc:date/node()', namespaces=NAMESPACES)[0],
         'timestamp': str(timestamp)
     }
-
     return NormalizedDocument(normalized_dict)
 
 
