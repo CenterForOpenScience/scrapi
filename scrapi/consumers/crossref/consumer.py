@@ -55,12 +55,16 @@ def normalize(raw_doc, timestamp):
     ids['doi'] = doc.get('DOI')
     ids['service_id'] = doc.get('prefix')
 
-    # date created
 
     normalized_dict = {
         'title': (doc.get('title') or ['No title'])[0],
         'contributors': contributor_list,
         'properties': {
+                'published-in': {
+                    'journal-title': doc.get('container-title'),
+                    'volume': doc.get('volume'),
+                    'issue': doc.get('issue')
+                },
                 'publisher': doc.get('publisher'),
                 'type' : doc.get('type'),
                 'ISSN': doc.get('ISSN'),
@@ -70,7 +74,8 @@ def normalize(raw_doc, timestamp):
                 'issued': doc.get('issued'),
                 'deposited': doc.get('deposited'),
                 'indexed': doc.get('indexed'),
-                'reference-count': doc.get('reference-count') 
+                'reference-count': doc.get('reference-count'),
+                'update-policy': doc.get('update-policy')
         },
         'description': (doc.get('subtitle') or [''])[0],
         'meta': {},
@@ -80,7 +85,6 @@ def normalize(raw_doc, timestamp):
         'date_created': 'date_created',
         'timestamp': str(timestamp)
     }
-
     return NormalizedDocument(normalized_dict)
 
 
