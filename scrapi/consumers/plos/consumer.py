@@ -65,11 +65,10 @@ def consume(days_back=1):
 
     return doc_list
 
-
 def normalize(raw_doc, timestamp):
     raw_doc = raw_doc.get('doc')
     record = json.loads(raw_doc)
-    return NormalizedDocument({
+    normalizedDocument = NormalizedDocument({
         'title': record["str"][4]["#text"],
         'contributors': [{
             'email': '',
@@ -79,6 +78,7 @@ def normalize(raw_doc, timestamp):
             'journal': record['str'][1]['#text'],
             'eissn': record['str'][2]['#text'],
             'article_type': record['str'][3]['#text'],
+            'score': record['float']['#text']
         },
         'meta': {},
         'id': {
@@ -92,6 +92,7 @@ def normalize(raw_doc, timestamp):
         'date_created': record['date']['#text'],
         'tags': [],
     })
+    return normalizedDocument
 
 if __name__ == '__main__':
     print(lint(consume, normalize))
