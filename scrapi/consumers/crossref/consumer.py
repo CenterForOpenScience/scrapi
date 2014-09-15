@@ -45,10 +45,12 @@ def normalize(raw_doc, timestamp):
         contributors = [{'given': 'no', 'family': 'authors'}]
     for contributor in contributors:
         try:
-            first = contributor.get('given').encode('utf-8') or ''
-            last = contributor.get('family').encode('utf-8') or ''
+            first = contributor.get('given').encode('utf-8')
         except AttributeError:
             first = ''
+        try:
+            last = contributor.get('family').encode('utf-8')
+        except AttributeError:
             last = ''
         full_name = '{0} {1}'.format(first, last)
         contributor_list.append({'full_name': full_name, 'email': ''})
