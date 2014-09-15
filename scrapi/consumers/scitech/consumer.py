@@ -4,6 +4,7 @@ from lxml import etree
 import requests
 import datetime
 import re
+import json
 
 TODAY = datetime.date.today()
 YESTERDAY = TODAY - datetime.timedelta(1)
@@ -28,6 +29,9 @@ def consume(days_back=1, end_date=None, **kwargs):
         xml = requests.get(base_url, params=parameters).text
         xml_root = etree.XML(xml.encode('utf-8'))
         for record in xml_root.find('records'):
+            #r = etree.tostring(record)
+            #r = '<?xml version="1.0" encoding="UTF-8"?>\n' + r
+            #print(json.dumps(r, sort_keys=True, indent=4, separators=(',', ': ')))
             xml_list.append(RawDocument({
                 'doc': etree.tostring(record, encoding='ASCII'),
                 'source': NAME,
@@ -73,6 +77,18 @@ def normalize(raw_doc, timestamp):
             'date_entered': record.find(str(etree.QName(elements_url, 'dateEntry'))).text or 'Not provided',
             'research_org': record.find(str(etree.QName(terms_url, 'publisherResearch'))).text or 'Not provided',
             'research_sponsor': record.find(str(etree.QName(terms_url, 'publisherSponsor'))).text or 'Not provided',
+            'research_country': record.find(str(etree.QName(terms_url, 'publisherCountry'))).text or 'Not provided',
+            'identifier_info': {
+                'identifier': record.find(str(etree.QName(elements_url, 'identifier'))).text or "Not provided",
+                'identifier_report': record.find(str(etree.QName(elements_url, 'identifierReport'))).text or "Not provided",
+                'identifier_contract': record.find(str(etree.QName(terms_url, 'identifierDOEcontract'))) or "Not provided",
+                'identifier_citation': record.find(str(etree.QName(terms_url, 'identifier-citation'))) or "Not provided",
+                'identifier_other': record.find(str(etree.QName(elements_url, 'identifierOther'))) or "Not provided"
+            },
+            'relation': record.find(str(etree.QName(elements_url, 'relation'))).text or "Not provided",
+            'coverage': record.find(str(etree.QName(elements_url, 'coverage'))).text or "Not provided",
+            'format': record.find(str(etree.QName(elements_url, 'format'))).text or "Not provided",
+            'language': record.find(str(etree.QName(elements_url, 'language'))).text or "Not provided"
         },
         'meta': {},
         'id': {
@@ -86,7 +102,7 @@ def normalize(raw_doc, timestamp):
         'description': record.find(str(etree.QName(elements_url, 'description'))).text or 'No description provided',
         'tags': tags or [],
     }
-
+    print(json.dumps(normalized_dict, sort_keys=True, indent=4, separators=(',', ': ')))
     return NormalizedDocument(normalized_dict)
 
 
