@@ -1,5 +1,6 @@
 ## Consumer for the CrossRef metadata service
 
+import json
 import requests
 from datetime import date, timedelta
 
@@ -23,7 +24,7 @@ def consume(days_back=0):
     for record in records:
         doc_id = record['DOI'] or record['URL']
         doc_list.append(RawDocument({
-                    'doc': record,
+                    'doc': json.dumps(record),
                     'source': NAME,
                     'doc_id': doc_id,
                     'filetype': 'xml'
@@ -33,6 +34,7 @@ def consume(days_back=0):
 
 def normalize(raw_doc, timestamp):
     doc = raw_doc.get('doc')
+    doc = json.loads(doc)
 
     # contributors
     contributor_list = []
@@ -42,8 +44,12 @@ def normalize(raw_doc, timestamp):
     except KeyError:
         contributors = [{'given': 'no', 'family': 'authors'}]
     for contributor in contributors:
-        first = contributor.get('given').encode('utf-8') or ''
-        last = contributor.get('family').encode('utf-8') or ''
+        try:
+            first = contributor.get('given').encode('utf-8') or ''
+            last = contributor.get('family').encode('utf-8') or ''
+        except AttributeError:
+            first = ''
+            last = ''
         full_name = '{0} {1}'.format(first, last)
         contributor_list.append({'full_name': full_name, 'email': ''})
 
