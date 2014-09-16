@@ -73,6 +73,18 @@ def normalize(raw_doc, timestamp):
             'date_entered': record.find(str(etree.QName(elements_url, 'dateEntry'))).text or 'Not provided',
             'research_org': record.find(str(etree.QName(terms_url, 'publisherResearch'))).text or 'Not provided',
             'research_sponsor': record.find(str(etree.QName(terms_url, 'publisherSponsor'))).text or 'Not provided',
+            'research_country': record.find(str(etree.QName(terms_url, 'publisherCountry'))).text or 'Not provided',
+            'identifier_info': {
+                'identifier': record.find(str(etree.QName(elements_url, 'identifier'))).text or "Not provided",
+                'identifier_report': record.find(str(etree.QName(elements_url, 'identifierReport'))).text or "Not provided",
+                'identifier_contract': record.find(str(etree.QName(terms_url, 'identifierDOEcontract'))) or "Not provided",
+                'identifier_citation': record.find(str(etree.QName(terms_url, 'identifier-citation'))) or "Not provided",
+                'identifier_other': record.find(str(etree.QName(elements_url, 'identifierOther'))) or "Not provided"
+            },
+            'relation': record.find(str(etree.QName(elements_url, 'relation'))).text or "Not provided",
+            'coverage': record.find(str(etree.QName(elements_url, 'coverage'))).text or "Not provided",
+            'format': record.find(str(etree.QName(elements_url, 'format'))).text or "Not provided",
+            'language': record.find(str(etree.QName(elements_url, 'language'))).text or "Not provided"
         },
         'meta': {},
         'id': {
@@ -86,7 +98,6 @@ def normalize(raw_doc, timestamp):
         'description': record.find(str(etree.QName(elements_url, 'description'))).text or 'No description provided',
         'tags': tags or [],
     }
-
     return NormalizedDocument(normalized_dict)
 
 
