@@ -15,10 +15,12 @@ NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/',
             'ns0': 'http://www.openarchives.org/OAI/2.0/'}
 
 
-def consume(days_back=3):
+def consume(days_back=1):
     base_url = 'http://academiccommons.columbia.edu/catalog/oai?verb=ListRecords&from='
     start_date = str(date.today() - timedelta(days_back)) + 'T00:00:00Z'
     url = base_url + str(start_date) + '&metadataPrefix=oai_dc'
+
+    print url
 
     records = get_records(url)
 
@@ -46,6 +48,7 @@ def get_records(url):
         time.sleep(0.5)
         base_url = 'http://academiccommons.columbia.edu/catalog/oai?verb=ListRecords&resumptionToken=' 
         url = base_url + token[0]
+        print "requesting records for " + url
         records += get_records(url)
 
     return records
