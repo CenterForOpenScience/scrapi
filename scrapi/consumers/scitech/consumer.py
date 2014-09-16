@@ -4,7 +4,6 @@ from lxml import etree
 import requests
 import datetime
 import re
-import json
 
 TODAY = datetime.date.today()
 YESTERDAY = TODAY - datetime.timedelta(1)
@@ -29,9 +28,6 @@ def consume(days_back=1, end_date=None, **kwargs):
         xml = requests.get(base_url, params=parameters).text
         xml_root = etree.XML(xml.encode('utf-8'))
         for record in xml_root.find('records'):
-            #r = etree.tostring(record)
-            #r = '<?xml version="1.0" encoding="UTF-8"?>\n' + r
-            #print(json.dumps(r, sort_keys=True, indent=4, separators=(',', ': ')))
             xml_list.append(RawDocument({
                 'doc': etree.tostring(record, encoding='ASCII'),
                 'source': NAME,
@@ -102,7 +98,6 @@ def normalize(raw_doc, timestamp):
         'description': record.find(str(etree.QName(elements_url, 'description'))).text or 'No description provided',
         'tags': tags or [],
     }
-    print(json.dumps(normalized_dict, sort_keys=True, indent=4, separators=(',', ': ')))
     return NormalizedDocument(normalized_dict)
 
 
