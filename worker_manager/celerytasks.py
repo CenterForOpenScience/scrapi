@@ -104,15 +104,15 @@ def _send_to_osf(doc):
         logger.warn("scrAPI is not configured to interact with the Open Science Framework")
         return
 
-    data = json.dumps({'title': doc.get('title'), 'description': doc.get('description')})
+    # data = json.dumps({'title': doc.get('title'), 'description': doc.get('description')})
     headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
-    project_id = requests.post(settings.NEW_PROJECT_URL, data=data, headers=headers).json()['id']
+    # project_id = requests.post(settings.NEW_PROJECT_URL, data=data, headers=headers).json()['id']
 
-    url = settings.METADATA_URL.format(guid=project_id)
+    # url = settings.METADATA_URL.format(guid=project_id)
 
     data = json.dumps(doc)
 
-    requests.post(url, data=data, headers=headers)
+    requests.post(settings.NEW_PROJECT_URL, data=data, headers=headers)
 
 
 @app.task
