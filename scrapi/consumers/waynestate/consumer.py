@@ -32,7 +32,7 @@ def consume(days_back=5):
                     'doc_id': doc_id,
                     'filetype': 'xml'
                 }))
-
+    #print(record)
     return xml_list
 
 def get_records(url):
@@ -84,10 +84,17 @@ def normalize(raw_doc, timestamp):
 
     tags = record.xpath('//dc:subject/node()', namespaces=NAMESPACES)
 
+    #properties (publisher and source)
+    properties = {}
+    properties["publisher"] = record.xpath('//dc:publisher/node()', namespaces=namespaces)
+    properties["source"] = record.xpath('//dc:source/node()', namespaces=namespaces)
+    properties["type"] = record.xpath('//dc:type/node()', namespaces=namespaces)
+    properties["format"] = record.xpath('//dc:format/node()', namespaces=namespaces)
+
     normalized_dict = {
             'title': title,
             'contributors': contributor_list,
-            'properties': {},
+            'properties': properties,
             'description': description,
             'meta': {},
             'id': ids,
