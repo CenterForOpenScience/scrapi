@@ -28,6 +28,7 @@ logger = logging.getLogger(__name__)
 app = Celery('worker_manager/celerytasks')
 app.config_from_object('worker_manager.celeryconfig')
 
+HEADERS = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 
 @app.task
 def run_consumers():
@@ -104,15 +105,14 @@ def _send_to_osf(doc):
         logger.warn("scrAPI is not configured to interact with the Open Science Framework")
         return
 
-    # data = json.dumps({'title': doc.get('title'), 'description': doc.get('description')})
-    headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
-    # project_id = requests.post(settings.NEW_PROJECT_URL, data=data, headers=headers).json()['id']
+    ret = requests.post(settings.NEW_RECORD_URL, data=json.dumps(doc), headers=HEADERS, auth=settings.OSF_AUTH)
 
-    # url = settings.METADATA_URL.format(guid=project_id)
+    if ret.status_code != 201:
+        logger.warn('Failed to created a new record on the Open Science Framework')
+        logger.warn('Recieved a response of {} from the Open Science Framework'.format(ret.status_code))
+        logger.warn('The document {} has been marked of it failure to send'.format(doc['title']))
 
-    data = json.dumps(doc)
-
-    requests.post(settings.NEW_PROJECT_URL, data=data, headers=headers)
+    doc['recordCreated'] = ret.status_code == 201
 
 
 @app.task
