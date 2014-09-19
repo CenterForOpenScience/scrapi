@@ -106,7 +106,7 @@ def normalize(raw_doc, timestamp):
     properties["source"] = (record.xpath('//dc:source/node()', namespaces=NAMESPACES) or [''])[0]
     properties["type"] = (record.xpath('//dc:type/node()', namespaces=NAMESPACES) or [''])[0]
     properties["format"] = (record.xpath('//dc:format/node()', namespaces=NAMESPACES) or [''])[0]
-    properties["date"] = record.xpath('//dc:date/node()', namespaces=NAMESPACES)
+    properties["date"] = (record.xpath('//dc:date/node()', namespaces=NAMESPACES) or [''])[0]
     properties["pdf_download"] = pdf
     properties['identifiers'] = all_ids
 
