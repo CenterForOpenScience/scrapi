@@ -1,5 +1,6 @@
 ## consumer for DataONE SOLR search API
 
+import re
 from lxml import etree
 from xml.etree import ElementTree
 import requests
@@ -54,17 +55,17 @@ def normalize(raw_doc, timestamp):
                 contributor_list[0]['email'] = submitter
     #TODO: sometimes email info is in submitter or rights holder fields...
     
-    try:
-        title = doc.xpath("str[@name='title']/node()")[0]
-    except IndexError:
-        title = "No title available"
+    title = (doc.xpath("str[@name='title']/node()") or ['No Title Available'][0]
     
     tags = doc.xpath("//arr[@name='keywords']/str/node()")
 
     doi = ''
     service_id = doc.xpath("str[@name='id']/node()")[0]
     if 'doi' in service_id:
-        doi = service_id
+        # regex for just getting doi out of crazy urls and sometimes not urls
+        doi_re = '10\\.\\d{4}/\\w*\\.\\w{5}|10\\.\\d{4}/\\w*/\\w*\\.\\d*.\\d*'
+        regexed_doi = re.search(doi_re, service_id).group(0)
+        doi = regexed_doi
 
     url = doc.xpath('//str[@name="dataUrl"]/node()') or ['']
 
@@ -109,7 +110,7 @@ def normalize(raw_doc, timestamp):
         'preferredReplicationMN': doc.xpath("arr[@name='preferredReplicationMN']/str/node()"),
 
         'resourceMap': doc.xpath("arr[@name='resourceMap']/str/node()"),
-        
+
 
         'rightsHolder': (doc.xpath("str[@name='rightsHolder']/node()") or [''])[0],
 
