@@ -8,19 +8,22 @@
 import os
 import json
 import logging
-import requests
 import datetime
 import importlib
 import subprocess
 
 import yaml
+import requests
+
 from celery import Celery
 from scrapi_tools.document import RawDocument
 from scrapi_tools.exceptions import MissingAttributeError
 
 from website import search
 from api import process_docs
-from worker_manager import settings
+
+import settings
+
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -29,6 +32,7 @@ app = Celery('worker_manager/celerytasks')
 app.config_from_object('worker_manager.celeryconfig')
 
 HEADERS = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+
 
 @app.task
 def run_consumers():
@@ -96,7 +100,6 @@ def _normalize(result, timestamp, registry, manifest):
         doc.attributes['iso_timestamp'] = str(iso_timestamp)
         logger.info('Document {0} processed successfully'.format(result.get("doc_id")))
         search.update('scrapi', doc.attributes, manifest['directory'], result.get("doc_id"))
-        _send_to_osf(doc.attributes)
     return doc
 
 
