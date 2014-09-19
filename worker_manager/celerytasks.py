@@ -10,7 +10,6 @@ import json
 import logging
 import datetime
 import importlib
-import subprocess
 
 import yaml
 import requests
@@ -81,8 +80,15 @@ def run_consumer(manifest_file):
 def _consume(directory):
     consumer_module = importlib.import_module('worker_manager.consumers.{0}'.format(directory))
     registry = consumer_module.registry
-    consumer_version = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd='worker_manager/consumers/{0}'
-                                               .format(directory))
+    path_to_git_version = 'worker_manager/consumers/{}/.git/refs/heads/master'.format(directory)
+
+    try:
+        with open(path_to_git_version, 'r') as f:
+            consumer_version = f.readline()
+    except OSError as e:
+        logger.exception(e)
+        consumer_version = "ERROR"
+
     results = registry[directory]['consume']()
 
     return results, registry, consumer_version

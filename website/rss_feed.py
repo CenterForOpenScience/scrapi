@@ -29,7 +29,7 @@ def dict_to_rss(results, count, query):
             title=str(doc.get('title')),
             link=doc['id'].get('url'),
             description=json.dumps(doc, indent=4, sort_keys=True),
-            guid='http://' + settings.URL + '/' + doc.get('location')[0],
+            guid=pyrss.Guid(str('http://' + settings.URL + '/' + doc.get('location')[0]), isPermaLink=False),
             pubDate=str(doc.get('timestamp'))
         ) for doc in docs if doc.get('location') is not None
     ]
