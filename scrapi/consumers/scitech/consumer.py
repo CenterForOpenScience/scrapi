@@ -47,7 +47,7 @@ def normalize(raw_doc, timestamp):
     elements_url = 'http://purl.org/dc/elements/1.1/'
     record = etree.XML(raw_doc)
 
-    contributor_list = record.find(str(etree.QName(elements_url, 'creator'))).text.split(';')
+    contributor_list = record.find(str(etree.QName(elements_url, 'creator'))).text.split(';') or ['DoE']
     # for now, scitech does not grab emails, but it could soon?
     contributors = []
     for name in contributor_list:
