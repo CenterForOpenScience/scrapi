@@ -1,0 +1,4 @@
+lxml==3.4.0
+requests==2.4.1
+scrapi-tools==0.4.3
+wsgiref==0.1.2
