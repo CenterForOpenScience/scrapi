@@ -1,10 +1,14 @@
-OSF_ENABLED = True
+OSF_ENABLED = False
 
 PROTOCOL = 'http'
 OSF_PREFIX = 'localhost:5000'
 
 APP_ID = 'some id'
+
+API_KEY_LABEL = 'some label'
 API_KEY = 'some api key'
+
+OSF_AUTH = (API_KEY_LABEL, API_KEY)
 
 NEW_RECORD_URL = '{PROTOCOL}://{API_KEY}@{OSF_PREFIX}/api/v1/{APP_ID}/reports/'
 # Keep a pep8 line length
