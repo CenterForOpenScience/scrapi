@@ -106,6 +106,7 @@ def _normalize(result, timestamp, registry, manifest):
         doc.attributes['iso_timestamp'] = str(iso_timestamp)
         logger.info('Document {0} processed successfully'.format(result.get("doc_id")))
         search.update('scrapi', doc.attributes, manifest['directory'], result.get("doc_id"))
+        _send_to_osf(doc.attributes)
     return doc
 
 
@@ -114,7 +115,7 @@ def _send_to_osf(doc):
         logger.warn("scrAPI is not configured to interact with the Open Science Framework")
         return
 
-    ret = requests.post(settings.NEW_RECORD_URL, data=json.dumps(doc), headers=HEADERS, auth=settings.OSF_AUTH)
+    ret = requests.post(settings.NEW_RECORD_URL, data=json.dumps(doc), headers=HEADERS, auth=settings.OSF_AUTH, verify=settings.VERIFY_SSL)
 
     if ret.status_code != 201:
         logger.warn('Failed to created a new record on the Open Science Framework')

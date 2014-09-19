@@ -1,6 +1,7 @@
 OSF_ENABLED = False
 
 PROTOCOL = 'http'
+VERIFY_SSL = True
 OSF_PREFIX = 'localhost:5000'
 
 APP_ID = 'some id'
