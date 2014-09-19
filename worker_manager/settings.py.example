@@ -1,8 +1,11 @@
-OSF_PREFIX = 'http://localhost:5000'
-OSF_ENABLED = False
-API_KEY = ''
-APP_ID = ''
+OSF_ENABLED = True
 
-NEW_PROJECT_URL = '{OSF_PREFIX}/api/v1/{APP_ID}/project/?api_key={API_KEY}'.format(**locals())
+PROTOCOL = 'http'
+OSF_PREFIX = 'localhost:5000'
 
-METADATA_URL = '{OSF_PREFIX}/api/v1/{APP_ID}/{{guid}}/?api_key={API_KEY}'.format(**locals())
+APP_ID = 'some id'
+API_KEY = 'some api key'
+
+NEW_RECORD_URL = '{PROTOCOL}://{API_KEY}@{OSF_PREFIX}/api/v1/{APP_ID}/reports/'
+# Keep a pep8 line length
+NEW_RECORD_URL = NEW_RECORD_URL.format(**locals())
