@@ -33,6 +33,7 @@ def get_response(rows):
     API, with the specified number of rows.
     Returns an etree element with results '''
     url = 'https://cn.dataone.org/cn/v1/query/solr/?q=dateModified:[NOW-1DAY TO *]&rows=' + str(rows)
+    print url
     data = requests.get(url)
     doc =  etree.XML(data.content)
     return doc
@@ -40,7 +41,9 @@ def get_response(rows):
 def normalize(raw_doc, timestamp):
     raw_doc = raw_doc.get('doc')
     doc = etree.XML(raw_doc)
-    contributors = (doc.xpath("str[@name='author']/node()") + doc.xpath("arr[@name='origin']/str/node()"))  or ['No contributors.']
+
+    # contributors
+    contributors = (doc.xpath("str[@name='author']/node()") + doc.xpath("arr[@name='origin']/str/node()"))  or ['DataONE']
     email = ''
     submitters = doc.xpath("str[@name='submitter']/node()")
     contributor_list = []
@@ -67,10 +70,7 @@ def normalize(raw_doc, timestamp):
 
     ids = {'service_id':service_id, 'doi': doi, 'url':url[0]}
 
-    try: 
-        description = doc.xpath("str[@name='abstract']/node()")[0]
-    except IndexError:
-        description = "No abstract available"
+    description = (doc.xpath("str[@name='abstract']/node()") or [''])[0]
 
     date_created = doc.xpath("date[@name='dateUploaded']/node()")[0]
 
@@ -105,6 +105,11 @@ def normalize(raw_doc, timestamp):
         'replicaMN': doc.xpath("arr[@name='replicaMN']/str/node()"),
         'replicaVerifiedDate': doc.xpath("arr[@name='replicaVerifiedDate']/date/node()"),
         'replicationAllowed': (doc.xpath("bool[@name='replicationAllowed']/node()") or [''])[0],
+        'numberReplicas': (doc.xpath("int[@name='numberReplicas']/node()") or [''])[0],
+        'preferredReplicationMN': doc.xpath("arr[@name='preferredReplicationMN']/str/node()"),
+
+        'resourceMap': doc.xpath("arr[@name='resourceMap']/str/node()"),
+        
 
         'rightsHolder': (doc.xpath("str[@name='rightsHolder']/node()") or [''])[0],
 
@@ -112,6 +117,8 @@ def normalize(raw_doc, timestamp):
         'site': doc.xpath("arr[@name='site']/str/node()"),
         'size': (doc.xpath("long[@name='size']/node()") or [''])[0],
         'sku': (doc.xpath("str[@name='sku']/node()") or [''])[0],
+        'isDocumentedBy': doc.xpath("arr[@name='isDocumentedBy']/str/node()"),
+
     }
 
     # updateDate
