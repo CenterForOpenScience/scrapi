@@ -9,7 +9,7 @@ from scrapi_tools.document import RawDocument, NormalizedDocument
 
 NAME = "DataONE"
 
-def consume(days_back=5):
+def consume(days_back=1):
     doc =  get_response(1, days_back)
     rows = doc.xpath("//result/@numFound")[0]
     doc = get_response(rows, days_back)
@@ -34,7 +34,6 @@ def get_response(rows, days_back):
     API, with the specified number of rows.
     Returns an etree element with results '''
     url = 'https://cn.dataone.org/cn/v1/query/solr/?q=dateModified:[NOW-{0}DAY TO *]&rows='.format(days_back) + str(rows)
-    print url
     data = requests.get(url)
     doc =  etree.XML(data.content)
     return doc
