@@ -7,12 +7,12 @@ import requests
 from scrapi_tools import lint
 from scrapi_tools.document import RawDocument, NormalizedDocument
 
-NAME = "dataone"
+NAME = "DataONE"
 
-def consume(days_back=1):
-    doc =  get_response(1)
+def consume(days_back=5):
+    doc =  get_response(1, days_back)
     rows = doc.xpath("//result/@numFound")[0]
-    doc = get_response(rows)
+    doc = get_response(rows, days_back)
     records = doc.xpath('//doc')
     
     xml_list = []
@@ -29,33 +29,63 @@ def consume(days_back=1):
 
     return xml_list
 
-def get_response(rows):
+def get_response(rows, days_back):
     ''' helper function to get a response from the DataONE
     API, with the specified number of rows.
     Returns an etree element with results '''
-    url = 'https://cn.dataone.org/cn/v1/query/solr/?q=dateModified:[NOW-1DAY TO *]&rows=' + str(rows)
+    url = 'https://cn.dataone.org/cn/v1/query/solr/?q=dateModified:[NOW-{0}DAY TO *]&rows='.format(days_back) + str(rows)
     print url
     data = requests.get(url)
     doc =  etree.XML(data.content)
     return doc
 
+def name_from_email(email):
+    email_re = '(.+?)@'
+    name = re.search(email_re, email).group(1)
+    if '.' in name:
+        name = name.replace('.', ' ').title()
+    return name
+
+def get_contributors(raw_doc):
+    doc = etree.XML(raw_doc)
+    ## where you left off:
+        # contributors returns only numbers, WHYYYYY
+    author = (doc.xpath("str[@name='author']/node()") or [NAME])[0]
+    submitters = doc.xpath("str[@name='submitter']/node()")
+
+    contributors = doc.xpath("arr[@name='origin']/str/node()")
+
+    unique_contributors = list(set([author] + contributors))
+
+    # this is the index of the author in the unique_contributors list
+    if author != '':
+        author_index = unique_contributors.index(author)
+    else:
+        author_index = None
+
+    # grabs the email if there is one, this should go with the author index
+    email = ''
+    for submitter in submitters:
+        if '@' in submitter:
+            email = submitter
+
+    contributor_list = []
+    for index, contributor in enumerate(unique_contributors):
+        if author_index != None and index == author_index:
+            if contributor == NAME and email != '':
+                contributor = name_from_email(email)
+            contributor_list.append({'full_name': contributor, 'email': email})
+        else:
+            contributor_list.append({'full_name': contributor, 'email': ''})
+
+    return contributor_list
+
 def normalize(raw_doc, timestamp):
     raw_doc = raw_doc.get('doc')
     doc = etree.XML(raw_doc)
 
-    # contributors
-    contributors = (doc.xpath("str[@name='author']/node()") + doc.xpath("arr[@name='origin']/str/node()"))  or ['DataONE']
-    email = ''
-    submitters = doc.xpath("str[@name='submitter']/node()")
-    contributor_list = []
-    for contributor in contributors:
-        contributor_list.append({'full_name': contributor, 'email': email})
-        for submitter in submitters:
-            if '@' in submitter:
-                contributor_list[0]['email'] = submitter
-    #TODO: sometimes email info is in submitter or rights holder fields...
-    
-    title = (doc.xpath("str[@name='title']/node()") or ['No Title Available'][0]
+    # title    
+    title = (doc.xpath("str[@name='title']/node()") or ['No Title Available'])[0]
     
     tags = doc.xpath("//arr[@name='keywords']/str/node()")
 
@@ -74,6 +104,8 @@ def normalize(raw_doc, timestamp):
     description = (doc.xpath("str[@name='abstract']/node()") or [''])[0]
 
     date_created = doc.xpath("date[@name='dateUploaded']/node()")[0]
+
+    contributor_list = get_contributors(raw_doc)
 
     ## properties ##
     properties = { 
@@ -111,7 +143,6 @@ def normalize(raw_doc, timestamp):
 
         'resourceMap': doc.xpath("arr[@name='resourceMap']/str/node()"),
 
-
         'rightsHolder': (doc.xpath("str[@name='rightsHolder']/node()") or [''])[0],
 
         'scientificName': doc.xpath("arr[@name='scientificName']/str/node()"),
@@ -119,7 +150,6 @@ def normalize(raw_doc, timestamp):
         'size': (doc.xpath("long[@name='size']/node()") or [''])[0],
         'sku': (doc.xpath("str[@name='sku']/node()") or [''])[0],
         'isDocumentedBy': doc.xpath("arr[@name='isDocumentedBy']/str/node()"),
-
     }
 
     # updateDate
