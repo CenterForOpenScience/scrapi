@@ -13,7 +13,7 @@ NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/',
             'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
             'ns0': 'http://www.openarchives.org/OAI/2.0/'}
 
-def consume(days_back=3):
+def consume(days_back=5):
 
     start_date = str(date.today() - timedelta(days_back))
     base_url = 'http://vtechworks.lib.vt.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from='
@@ -54,9 +54,16 @@ def get_records(url):
 
 def getcontributors(result):
     contributors = result.xpath('//dc:contributor/node()', namespaces=NAMESPACES) or ['']
+    creators = result.xpath('//dc:creator/node()', namespaces=NAMESPACES) or ['']
+    all_contributors = contributors + creators
     contributor_list = []
-    for person in contributors:
+    for person in all_contributors:
         contributor_list.append({'full_name': person, 'email': ''})
+
+    # TODO: this currently deals with non-person contributors by just removing the first name 
+    if len(contributor_list) > 1:
+        contributor_list.pop(0)
+
     return contributor_list
 
 def gettags(result):
@@ -115,19 +122,19 @@ def normalize(raw_doc, timestamp):
         return None
 
     title = result.xpath('//dc:title/node()', namespaces=NAMESPACES)[0]
-    result_type = result.xpath('//dc:type/node()', namespaces=NAMESPACES) or ['']
+    result_type = result.xpath('//dc:type/node()', namespaces=NAMESPACES)
     rights = result.xpath('//dc:rights/node()', namespaces=NAMESPACES) or ['']
     identifiers = result.xpath('//dc:identifier/node()', namespaces=NAMESPACES) or ['']
-    publisher = result.xpath('//dc:publisher/node()', namespaces=NAMESPACES) or ['']
+    publisher = (result.xpath('//dc:publisher/node()', namespaces=NAMESPACES) or [''])[0]
 
     payload = {
         'title': title,
         'contributors': getcontributors(result),
         'properties': {
-            'type': result_type[0],
+            'type': result_type,
             'rights': rights[0],
             'identifiers': identifiers,
-            'publisher': publisher[0]
+            'publisher': publisher
         },
         'description': getabstract(result),
         'tags': gettags(result),
@@ -139,9 +146,6 @@ def normalize(raw_doc, timestamp):
     }
 
     return NormalizedDocument(payload)
-
-    ## TODO catch namespace exception
-
 
 if __name__ == '__main__':
     print(lint(consume, normalize))
