@@ -6,6 +6,7 @@ import time
 from lxml import etree 
 from scrapi_tools import lint
 from scrapi_tools.document import RawDocument, NormalizedDocument
+import json
 
 NAME = 'vtechworks'
 TODAY = date.today()
@@ -20,6 +21,7 @@ def consume(days_back=5):
     start_date = TODAY - timedelta(days_back)
     # YYYY-MM-DD hh:mm:ss
     url = base_url + str(start_date) + ' 00:00:00'
+    print(url)
 
     records = get_records(url)
 
@@ -53,9 +55,13 @@ def get_records(url):
 
 
 def getcontributors(result):
+    dctype = result.xpath('//dc:type/node()', namespaces=NAMESPACES) or ['']
     contributors = result.xpath('//dc:contributor/node()', namespaces=NAMESPACES) or ['']
     creators = result.xpath('//dc:creator/node()', namespaces=NAMESPACES) or ['']
-    all_contributors = contributors + creators
+    if dctype[0].find('hesis') == -1 and dctype[0].find('issertation') == -1:
+        all_contributors = contributors + creators
+    else:
+        all_contributors = creators
     contributor_list = []
     for person in all_contributors:
         contributor_list.append({'full_name': person, 'email': ''})
@@ -144,6 +150,8 @@ def normalize(raw_doc, timestamp):
         'date_created': get_earliest_date(result),
         'timestamp': str(timestamp)
     }
+
+    print(json.dumps(payload, sort_keys=True, indent=4, separators=(',', ': ')))
 
     return NormalizedDocument(payload)
 
