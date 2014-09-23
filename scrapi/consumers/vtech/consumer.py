@@ -53,9 +53,13 @@ def get_records(url):
 
 
 def getcontributors(result):
+    dctype = result.xpath('//dc:type/node()', namespaces=NAMESPACES) or ['']
     contributors = result.xpath('//dc:contributor/node()', namespaces=NAMESPACES) or ['']
     creators = result.xpath('//dc:creator/node()', namespaces=NAMESPACES) or ['']
-    all_contributors = contributors + creators
+    if dctype[0].find('hesis') == -1 and dctype[0].find('issertation') == -1:
+        all_contributors = contributors + creators
+    else:
+        all_contributors = creators
     contributor_list = []
     for person in all_contributors:
         contributor_list.append({'full_name': person, 'email': ''})
