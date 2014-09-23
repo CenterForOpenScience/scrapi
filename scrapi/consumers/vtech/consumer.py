@@ -6,7 +6,6 @@ import time
 from lxml import etree 
 from scrapi_tools import lint
 from scrapi_tools.document import RawDocument, NormalizedDocument
-import json
 
 NAME = 'vtechworks'
 TODAY = date.today()
@@ -21,7 +20,6 @@ def consume(days_back=5):
     start_date = TODAY - timedelta(days_back)
     # YYYY-MM-DD hh:mm:ss
     url = base_url + str(start_date) + ' 00:00:00'
-    print(url)
 
     records = get_records(url)
 
@@ -150,8 +148,6 @@ def normalize(raw_doc, timestamp):
         'date_created': get_earliest_date(result),
         'timestamp': str(timestamp)
     }
-
-    print(json.dumps(payload, sort_keys=True, indent=4, separators=(',', ': ')))
 
     return NormalizedDocument(payload)
 
