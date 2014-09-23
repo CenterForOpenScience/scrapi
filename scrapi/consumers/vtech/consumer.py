@@ -1,22 +1,25 @@
 # Refactored consumer for VTechWorks
 
-import requests
-from datetime import date, timedelta
 import time
+from datetime import date, timedelta
+
+import requests
 from lxml import etree 
+
 from scrapi_tools import lint
 from scrapi_tools.document import RawDocument, NormalizedDocument
 
 NAME = 'vtechworks'
 TODAY = date.today()
+OAI_DC_BASE = 'http://vtechworks.lib.vt.edu/oai/'
 NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/', 
             'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
             'ns0': 'http://www.openarchives.org/OAI/2.0/'}
 
-def consume(days_back=5):
+def consume(days_back=1):
 
     start_date = str(date.today() - timedelta(days_back))
-    base_url = 'http://vtechworks.lib.vt.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from='
+    base_url = OAI_DC_BASE +'request?verb=ListRecords&metadataPrefix=oai_dc&from='
     start_date = TODAY - timedelta(days_back)
     # YYYY-MM-DD hh:mm:ss
     url = base_url + str(start_date) + ' 00:00:00'
@@ -45,7 +48,7 @@ def get_records(url):
 
     if len(token) == 1:
         time.sleep(0.5)
-        base_url = 'http://vtechworks.lib.vt.edu/oai/request?verb=ListRecords&resumptionToken=' 
+        base_url = OAI_DC_BASE + 'request?verb=ListRecords&resumptionToken=' 
         url = base_url + token[0]
         records += get_records(url)
 
@@ -53,20 +56,18 @@ def get_records(url):
 
 
 def getcontributors(result):
-    dctype = result.xpath('//dc:type/node()', namespaces=NAMESPACES) or ['']
-    contributors = result.xpath('//dc:contributor/node()', namespaces=NAMESPACES) or ['']
-    creators = result.xpath('//dc:creator/node()', namespaces=NAMESPACES) or ['']
-    if dctype[0].find('hesis') == -1 and dctype[0].find('issertation') == -1:
+    dctype = (result.xpath('//dc:type/node()', namespaces=NAMESPACES) or [''])[0]
+    contributors = result.xpath('//dc:contributor/node()', namespaces=NAMESPACES)
+    creators = result.xpath('//dc:creator/node()', namespaces=NAMESPACES)
+
+    if 'hesis' not in dctype and 'issertation' not in dctype:
         all_contributors = contributors + creators
     else:
         all_contributors = creators
+
     contributor_list = []
     for person in all_contributors:
         contributor_list.append({'full_name': person, 'email': ''})
-
-    # TODO: this currently deals with non-person contributors by just removing the first name 
-    if len(contributor_list) > 1:
-        contributor_list.pop(0)
 
     return contributor_list
 
