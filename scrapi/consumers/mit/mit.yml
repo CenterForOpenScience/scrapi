@@ -1,0 +1,15 @@
+---
+
+days: 'mon-fri'
+hour: 23
+minute: 59
+
+directory: 'mit'
+
+name: 'MIT DSpace'
+
+git-url: 'https://github.com/csheldonhess/MIT-consumer.git'
+
+file-format: '.xml'
+
+...
