@@ -10,6 +10,7 @@ from datetime import date, timedelta
 import requests
 from scrapi_tools import lint
 from scrapi_tools.document import RawDocument, NormalizedDocument
+import json #delete
 
 TODAY = date.today()
 NAME = "eScholarship"
@@ -69,10 +70,29 @@ def normalize(raw_doc, timestamp):
 
     tags = doc.xpath('//dc:subject/node()', namespaces=NAMESPACES)
 
+    citation = doc.xpath('//dc:source/node()', namespaces=namespaces) or ['']
+
+    dc_type = doc.xpath('//dc:type/node()', namespaces=namespaces) or ['']
+
+    format = doc.xpath('//dc:format/node()', namespaces=namespaces) or ['']
+
+    coverage = doc.xpath('//dc:coverage/node()', namespaces=namespaces) or ['']
+
+    relation = doc.xpath('//dc:relation/node()', namespaces=namespaces) or ['']
+
+    rights = doc.xpath('//dc:rights/node()', namespaces=namespaces) or ['']
+    
     normalized_dict = {
             'title': title,
             'contributors': contributor_list,
-            'properties': {},
+            'properties': {
+                'type': dc_type[0],
+                'format': format[0],
+                'published-in': citation[0],
+                'coverage': coverage[0],
+                'relation': relation[0],
+                'rights': rights[0]
+            },
             'description': description[0],
             'meta': {},
             'id': ids,
@@ -81,6 +101,7 @@ def normalize(raw_doc, timestamp):
             'date_created': date_created,
             'timestamp': str(timestamp)
     }
+    print(json.dumps(normalized_dict, sort_keys=True, indent=4, separators=(',', ': '))) # delete
 
     return NormalizedDocument(normalized_dict)
         
