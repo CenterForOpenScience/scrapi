@@ -15,7 +15,7 @@ NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/',
             'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
             'ns0': 'http://www.openarchives.org/OAI/2.0/'}
 
-def consume(days_back=5):
+def consume(days_back=1):
     start_date = TODAY - timedelta(days_back)
     base_url = 'http://digitalcommons.wayne.edu/do/oai/?verb=ListRecords&metadataPrefix=oai_dc&from='
     url = base_url + str(start_date) + 'T00:00:00Z'
