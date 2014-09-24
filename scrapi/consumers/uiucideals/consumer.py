@@ -14,11 +14,11 @@ NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/',
             'ns0': 'http://www.openarchives.org/OAI/2.0/'}
 
 def consume(days_back=100):
-
+    # days back is set so high because uiuc ideals consumer had nothing for the last three months when consumer was built
     start_date = str(date.today() - timedelta(days_back))
     base_url = 'http://ideals.uiuc.edu/dspace-oai/request?verb=ListRecords&metadataPrefix=oai_dc&from='
     start_date = TODAY - timedelta(days_back)
-    # YYYY-MM-DD hh:mm:ss
+    #YYYY-MM-DD hh:mm:ss
     url = base_url + str(start_date) + ' 00:00:00'
 
     records = get_records(url)
@@ -42,12 +42,6 @@ def get_records(url):
     doc = etree.XML(data.content)
     records = doc.xpath('//ns0:record', namespaces=NAMESPACES)
     token = doc.xpath('//ns0:resumptionToken/node()', namespaces=NAMESPACES)
-
-    if len(token) == 1:
-        time.sleep(0.5)
-        base_url = 'http://vtechworks.lib.vt.edu/oai/request?verb=ListRecords&resumptionToken=' 
-        url = base_url + token[0]
-        records = records + get_records(url)
 
     return records
 
@@ -136,12 +130,10 @@ def normalize(raw_doc, timestamp):
         'source': NAME,
         'date_created': get_earliest_date(result),
         'timestamp': str(timestamp)
+
     }
-
     return NormalizedDocument(payload)
-
     ## TODO catch namespace exception
-
 
 if __name__ == '__main__':
     print(lint(consume, normalize))
