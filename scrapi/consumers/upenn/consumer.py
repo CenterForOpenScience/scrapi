@@ -51,7 +51,7 @@ def consume(days_back=4):
             study_urls.append(study['url'] + '?displayxml=true')
 
         # grab each of those urls for full content
-        for study_url in study_urls[:10]:
+        for study_url in study_urls[:5]:
             content = requests.get(study_url)
             try:
                 xml_doc = xmltodict.parse(content.text)
@@ -133,14 +133,58 @@ def normalize(raw_doc, timestamp):
             'safety_issue': (xml_doc.xpath('//primary_outcome/safety_issue/node()') or [''])[0]
         }
 
+
+    # gives a list of dictionaries of all secondary outcomes
+    secondary_outcome_elements = xml_doc.xpath('//secondary_outcome')
+    secondary_outcomes = []
+    for item in secondary_outcome_elements:
+        secondary_outcome = {element.tag: element.text for element in item.iterdescendants()}
+        secondary_outcomes.append(secondary_outcome)
+
+    # enrollment - can have different types
+    enrollment_list = xml_doc.xpath('//enrollment')
+    enrollment = {item.values()[0]: item.text for item in enrollment_list}
+
+    # arm group
+    arm_group_elements = xml_doc.xpath('//arm_group')
+    arm_groups = []
+    for item in arm_group_elements:
+        arm_group = {element.tag: element.text for element in item.iterdescendants()}
+        arm_groups.append(arm_group)
+
+    # intervention
+    intervention_elements = xml_doc.xpath('//intervention')
+    interventions = []
+    for item in intervention_elements:
+        intervention = {element.tag: element.text for element in item.iterdescendants()}
+        interventions.append(intervention)
+
+    # eligibility
+    eligibility_elements = xml_doc.xpath('//eligibility')
+    
+    eligibility = {}
+    for element in eligibility_elements[0].iterchildren():
+        if element.text.strip() == '':
+            for child in element.iterdescendants():
+                if child.text.strip() != '':               
+                    eligibility[element.tag] = child.text
+        else:
+            eligibility[element.tag] = element.text
+
     ## extra properties ##
     properties = {
         'sponsors': lead_sponsor,
         'oversight_authority': xml_doc.xpath('//oversigh_info/authority/node()'),
         'study_design': (xml_doc.xpath('//study_design/node') or [''])[0],
         'primary_outcome': primary_outcome,
+        'secondary_outcomes': secondary_outcomes,
+        'number_of_arms' : (xml_doc.xpath('//number_of_arms/node()') or [''])[0],
+        'enrollment': enrollment,
         'source': (xml_doc.xpath('//source/node()') or [''])[0],
         'condition': (xml_doc.xpath('//condition/node()') or [''])[0], 
+        'arm_group' : arm_groups, 
+        'intervention': intervention,
+        'eligibility': eligibility,
         'last_changed': (xml_doc.xpath('//lastchanged_date/node()') or [''])[0],
         'status': (xml_doc.xpath('//status/node()') or [''])[0],
         'location_countries': xml_doc.xpath('//location_countries/country/node()')
@@ -159,7 +203,7 @@ def normalize(raw_doc, timestamp):
             'timestamp': str(timestamp)
     }
 
-    print normalized_dict['properties']
+    # print normalized_dict['properties']['eligibility']
     return NormalizedDocument(normalized_dict)
 
 
