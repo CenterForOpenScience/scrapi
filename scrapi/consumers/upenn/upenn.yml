@@ -1,0 +1,15 @@
+---
+
+days: 'mon-fri'
+hour: 23
+minute: 59
+
+directory: 'upenn'
+
+name: 'Penn Scholarly Commons'
+
+git-url: 'https://github.com/csheldonhess/UPenn-consumer.git'
+
+file-format: '.xml'
+
+...
