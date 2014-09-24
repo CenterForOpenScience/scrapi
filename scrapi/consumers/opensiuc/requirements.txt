@@ -1,0 +1,4 @@
+lxml==3.4.0
+requests==2.4.1
+git+http://github.com/fabianvf/scrapi-tools.git
+wsgiref==0.1.2
