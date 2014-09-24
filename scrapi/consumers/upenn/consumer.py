@@ -1,4 +1,4 @@
-# Consumer for MIT DSpace
+# Consumer for UPenn Scholarly Commons
 
 import requests
 from datetime import date, timedelta
