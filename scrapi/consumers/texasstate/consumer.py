@@ -1,4 +1,4 @@
-# Consumer for UIUC-IDEALS
+# Consumer for Texas State University
 
 import requests
 from datetime import date, timedelta
@@ -7,16 +7,16 @@ from lxml import etree
 from scrapi_tools import lint
 from scrapi_tools.document import RawDocument, NormalizedDocument
 
-NAME = 'uiuc-ideals'
+NAME = 'texas state'
 TODAY = date.today()
 NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/', 
             'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
             'ns0': 'http://www.openarchives.org/OAI/2.0/'}
 
-def consume(days_back=100):
-    # days back is set so high because uiuc ideals consumer had nothing for the last three months when consumer was built
+def consume(days_back=250):
+    # days back is set so high because texas state consumer had nothing for the last six months plus when consumer was built
     start_date = str(date.today() - timedelta(days_back))
-    base_url = 'http://ideals.uiuc.edu/dspace-oai/request?verb=ListRecords&metadataPrefix=oai_dc&from='
+    base_url = 'http://digital.library.txstate.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from='
     start_date = TODAY - timedelta(days_back)
     #YYYY-MM-DD hh:mm:ss
     url = base_url + str(start_date) + ' 00:00:00'
@@ -73,7 +73,7 @@ def getids(result):
             doi = item
 
     if url == '':
-        raise Exception('Warning: No url provided!')
+         raise Exception('Warning: No url provided!')
 
     return {'service_id': service_id, 'url': url, 'doi': doi}
 
@@ -132,6 +132,7 @@ def normalize(raw_doc, timestamp):
         'timestamp': str(timestamp)
 
     }
+    print payload
     return NormalizedDocument(payload)
     ## TODO catch namespace exception
 
