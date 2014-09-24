@@ -1,0 +1,16 @@
+-
+-
+
+days: 'mon-fri'
+hour: 23
+minute: 59
+
+directory: 'texas state'
+
+name: 'Texas State University'
+
+git-url: 'https://github.com/vpnagraj/texas-state-consumer.git'
+
+file-format: '.xml'
+
+...
