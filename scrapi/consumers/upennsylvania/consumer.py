@@ -70,8 +70,7 @@ def gettags(result):
     #<dc:subject>Biology, General|Biology, Evolution and Development|Biology, Bioinformatics</dc:subject>
     for subject in subjects:
         alist = subject.split('|')
-        for item in alist:
-            tags.append(item)
+        tags += alist
 
     return tags
 
