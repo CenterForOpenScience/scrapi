@@ -4,6 +4,7 @@ import time
 import xmltodict
 import requests
 from lxml import etree
+from lxml import objectify
 from xml.parsers import expat
 from scrapi_tools import lint
 from scrapi_tools.document import RawDocument, NormalizedDocument
@@ -11,7 +12,7 @@ from scrapi_tools.document import RawDocument, NormalizedDocument
 TODAY = date.today()
 NAME = "ClinicalTrials"
 
-def consume(days_back=4):
+def consume(days_back=1):
     """ First, get a list of all recently updated study urls,
     then get the xml one by one and save it into a list 
     of docs including other information """
@@ -41,7 +42,6 @@ def consume(days_back=4):
     if int(count) > 0:
         # get a new url with all results in it
         url = url + '&count=' + count
-        print url
         total_requests = requests.get(url)
         response = xmltodict.parse(total_requests.text)
 
@@ -84,6 +84,7 @@ def normalize(raw_doc, timestamp):
         pass
 
     xml_doc = etree.XML(raw_doc)
+    xml_object = objectify.XML(raw_doc)
 
     # Title
     try: 
@@ -161,15 +162,45 @@ def normalize(raw_doc, timestamp):
 
     # eligibility
     eligibility_elements = xml_doc.xpath('//eligibility')
-    
+
     eligibility = {}
     for element in eligibility_elements[0].iterchildren():
         if element.text.strip() == '':
-            for child in element.iterdescendants():
+            for child in element.getchildren():
                 if child.text.strip() != '':               
                     eligibility[element.tag] = child.text
         else:
             eligibility[element.tag] = element.text
+
+    ## TODO: location - undone for now
+    ## location has a facility name - and address with seperate city state zip country
+    ## {name: 'facility name', address: {city: 'city', state:'state', zip: 'zip', country:'country'}, status: 'status'}
+
+    # location_elements = xml_doc.xpath('//location')
+    # locations = []
+    # upper_level = [item.getchildren() for item in location_elements]
+    # location = {}
+    # for item in upper_level:
+    #     for element in item:
+    #         for detail in element:
+    #             location[element.tag] = {detail.tag: detail.text}
+
+    # link
+    link_elements = xml_doc.xpath('//link')
+    links = []
+    for item in link_elements:
+        link = {element.tag: element.text for element in item.iterdescendants()}
+        links.append(intervention)
+
+    # responsible party 
+    # TODO: is there ever more than one responsible party? 
+    responsible_party_elements = xml_doc.xpath('//responsible_party')
+    try:
+        responsible_party = {elem.tag: elem.text for elem in responsible_party_elements[0].iterdescendants()}
+    except IndexError:
+        responsible_party = {}
+
+    #TODO: a more robust search for more metadata in different examples
 
     ## extra properties ##
     properties = {
@@ -183,11 +214,17 @@ def normalize(raw_doc, timestamp):
         'source': (xml_doc.xpath('//source/node()') or [''])[0],
         'condition': (xml_doc.xpath('//condition/node()') or [''])[0], 
         'arm_group' : arm_groups, 
-        'intervention': intervention,
+        'intervention': interventions,
         'eligibility': eligibility,
+        'link' : links,
+        'verification_date': (xml_doc.xpath('//verification_date/node()') or [''])[0],
         'last_changed': (xml_doc.xpath('//lastchanged_date/node()') or [''])[0],
+        'responsible_party' : responsible_party,
         'status': (xml_doc.xpath('//status/node()') or [''])[0],
-        'location_countries': xml_doc.xpath('//location_countries/country/node()')
+        'location_countries': xml_doc.xpath('//location_countries/country/node()'),
+        'is_fda_regulated' : (xml_doc.xpath('//is_fda_regulated/node()') or [''])[0],
+        'is_section_801': (xml_doc.xpath('//is_section_801/node()') or [''])[0],
+        'has_expanded_access': (xml_doc.xpath('//has_expanded_access/node()') or [''])[0]
     }
 
     normalized_dict = {
@@ -203,9 +240,7 @@ def normalize(raw_doc, timestamp):
             'timestamp': str(timestamp)
     }
 
-    # print normalized_dict['properties']['eligibility']
     return NormalizedDocument(normalized_dict)
-
 
 
 if __name__ == '__main__':
