@@ -1,0 +1,15 @@
+---
+
+days: 'mon-fri'
+hour: 23
+minute: 59
+
+directory: 'uiuc ideals''
+
+name: 'University of Illinois at Urbana-Champaign IDEALS'
+
+git-url: 'https://github.com/vpnagraj/uiuc-ideals-consumer.git'
+
+file-format: '.xml'
+
+...
