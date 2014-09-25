@@ -16,20 +16,21 @@ from scrapi_tools.manager import _Registry
 from datetime import date
 import yaml
 
-MANIFEST = 'tests/test.yml'
-DIRECTORY = 'TEST'
+MANIFEST = 'worker_manager/manifests/scitech.yml'
+DIRECTORY = 'SciTech'
 TIMESTAMP = date.today()
 
+# TODO: refactor these tests to work with new architecture! 
 
 class TestCelerytasks(unittest.TestCase):
 
-    def tearDown(self):
-        try:
-            shutil.rmtree('archive/TEST')
-        except OSError as e:
-            # Who cares
-            if not e.errno == 2:
-                raise e
+    # def tearDown(self):
+    #     try:
+    #         shutil.rmtree('archive/scitech')
+    #     except OSError as e:
+    #         # Who cares
+    #         if not e.errno == 2:
+    #             raise e
 
     def test_consume_RawDoc(self):
         result_list = celerytasks._consume(DIRECTORY)

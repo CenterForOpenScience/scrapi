@@ -1,0 +1,15 @@
+---
+
+days: 'mon-sun'
+hour: 02
+minute: 00
+
+directory: 'OpenSIUC'
+
+name: 'Southern Illinois University - OpenSIUC'
+
+git-url: 'https://github.com/erinspace/OpenSIUC.git'
+
+file-format: '.xml'
+
+...
