@@ -54,8 +54,8 @@ def get_records(url):
 
 def getcontributors(result):
     dctype = (result.xpath('//dc:type/node()', namespaces=NAMESPACES) or [''])[0]
-    contributors = result.xpath('//dc:contributor/node()', namespaces=NAMESPACES) or ['']
-    creators = result.xpath('//dc:creator/node()', namespaces=NAMESPACES) or ['']
+    contributors = result.xpath('//dc:contributor/node()', namespaces=NAMESPACES) or []
+    creators = result.xpath('//dc:creator/node()', namespaces=NAMESPACES) or []
     if 'hesis' not in dctype and 'issertation' not in dctype:
         all_contributors = contributors + creators
     else:
@@ -84,7 +84,9 @@ def getids(result):
         if 'hdl.handle.net' in item:
             url = item
         if 'dx.doi.org' in item:
-            doi = item
+            doi = item.replace('http://dx.doi.org/', '')
+            if url == '':
+                url = item
 
     if url == '':
         raise Exception('Warning: No url provided!')
