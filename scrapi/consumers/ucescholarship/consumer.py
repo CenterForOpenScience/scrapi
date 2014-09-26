@@ -62,7 +62,7 @@ def normalize(raw_doc, timestamp):
         if 'escholarship.org' in item:
             url = item
 
-    ids = {'url': url, 'service_id': service_id, 'doi': 'doi'}
+    ids = {'url': url, 'service_id': service_id, 'doi': ''}
 
     description = doc.xpath('ns0:metadata/oai_dc:dc/dc:description/node()', namespaces=NAMESPACES) or ['']
 
@@ -70,17 +70,17 @@ def normalize(raw_doc, timestamp):
 
     tags = doc.xpath('//dc:subject/node()', namespaces=NAMESPACES)
 
-    citation = doc.xpath('//dc:source/node()', namespaces=namespaces) or ['']
+    citation = doc.xpath('//dc:source/node()', namespaces=NAMESPACES) or ['']
 
-    dc_type = doc.xpath('//dc:type/node()', namespaces=namespaces) or ['']
+    dc_type = doc.xpath('//dc:type/node()', namespaces=NAMESPACES) or ['']
 
-    format = doc.xpath('//dc:format/node()', namespaces=namespaces) or ['']
+    format = doc.xpath('//dc:format/node()', namespaces=NAMESPACES) or ['']
 
-    coverage = doc.xpath('//dc:coverage/node()', namespaces=namespaces) or ['']
+    coverage = doc.xpath('//dc:coverage/node()', namespaces=NAMESPACES) or ['']
 
-    relation = doc.xpath('//dc:relation/node()', namespaces=namespaces) or ['']
+    relation = doc.xpath('//dc:relation/node()', namespaces=NAMESPACES) or ['']
 
-    rights = doc.xpath('//dc:rights/node()', namespaces=namespaces) or ['']
+    rights = doc.xpath('//dc:rights/node()', namespaces=NAMESPACES) or ['']
     
     normalized_dict = {
             'title': title,
@@ -101,7 +101,8 @@ def normalize(raw_doc, timestamp):
             'date_created': date_created,
             'timestamp': str(timestamp)
     }
-    print(json.dumps(normalized_dict, sort_keys=True, indent=4, separators=(',', ': '))) # delete
+    print normalized_dict['id']
+    # print(json.dumps(normalized_dict, sort_keys=True, indent=4, separators=(',', ': '))) # delete
 
     return NormalizedDocument(normalized_dict)
         
