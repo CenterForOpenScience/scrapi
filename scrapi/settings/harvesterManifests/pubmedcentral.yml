@@ -1,0 +1,15 @@
+---
+
+days: 'mon-sun'
+hour: 23
+minute: 58
+
+directory: 'pubmedcentral'
+
+name: 'PubMed Central'
+
+git-url: 'https://github.com/erinspace/PubMedCentral.git'
+
+file-format: '.xml'
+
+...
