@@ -1,20 +1,18 @@
-from invoke import run, task
 import os
-import yaml
-import subprocess
 import platform
-from worker_manager.celerytasks import run_consumers, run_consumer
-from worker_manager.celerytasks import check_archive as check__archive
+import subprocess
+
+from invoke import run, task
+
+from scrapi import settings
+
+# from worker_manager.celerytasks import run_consumers, run_consumer
+# from worker_manager.celerytasks import check_archive as check__archive
 
 
 @task
 def server():
     run("python website/main.py")
-
-
-@task
-def schedule():
-    run("python worker_manager/schedule.py")
 
 
 @task
@@ -62,40 +60,39 @@ def migrate_search():
 
 
 @task
-def install_consumers(virtualenv='', update=False):
-    virtualenv = virtualenv + 'bin/' if virtualenv else ''
-    for filename in os.listdir('worker_manager/manifests/'):
-        with open('worker_manager/manifests/' + filename) as f:
-            info = yaml.load(f)
-        if not os.path.isdir('worker_manager/consumers/{0}'.format(info['directory'])):
-            run('git clone -b master {0} worker_manager/consumers/{1}'.format(info['git-url'], info['directory']))
+def install_consumers(update=False):
+    for consumer, manifest in settings.MANIFESTS.items():
+        directory = 'scrapi/consumers/{}'.format(manifest['directory'].lower())
+        if not os.path.isdir(directory):
+            run('git clone -b master {git-url} {moddir}'.format(moddir=directory, **manifest))
         elif update:
-            print(subprocess.check_output(['git', 'pull', 'origin', 'master'], cwd='{1}/worker_manager/consumers/{0}'.format(info['directory'], os.getcwd())))
+            run('cd {} && git pull origin master'.format(directory))
 
-        if os.path.isfile('worker_manager/consumers/{0}/requirements.txt'.format(info['directory'])):
-            run('{1}pip install -r worker_manager/consumers/{0}/requirements.txt'.format(info['directory'], virtualenv))
-
-
-@task
-def celery_beat(virtualenv=''):
-    virtualenv = virtualenv + 'bin/' if virtualenv else ''
-    run('{0}celery -A worker_manager.celerytasks beat --loglevel info'.format(virtualenv))
+        if os.path.isfile('{}/requirements.txt'.format(directory)):
+            run('pip install -r {}/requirements.txt'.format(directory))
 
 
 @task
-def celery_worker(virtualenv=''):
-    virtualenv = virtualenv + 'bin/' if virtualenv else ''
-    run('{0}celery -A worker_manager.celerytasks worker --loglevel info'.format(virtualenv))
+def celery_beat():
+    run('celery -A scrapi.tasks beat --loglevel info')
 
 
 @task
-def consumers(manifest=None):
-    if manifest:
-        run_consumer('worker_manager/manifests/{}.yml'.format(manifest))
-    else:
-        run_consumers()
+def celery_worker():
+    run('celery -A scrapi.tasks worker --loglevel info')
 
 
 @task
-def check_archive(directory='', reprocess=False):
-    check__archive(directory, reprocess)
+def consume(consumer_name, async=False):
+    settings.CELERY_ALWAYS_EAGER = async
+    from scrapi.tasks import run_consumer
+    run_consumer(consumer_name)
+
+
+@task
+def run_consumers(async=False):
+    pass  # TODO
+
+# @task
+# def check_archive(directory='', reprocess=False):
+#     check__archive(directory, reprocess)
