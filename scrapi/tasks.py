@@ -5,7 +5,7 @@ from datetime import datetime
 
 from celery import Celery
 
-import settings
+from scrapi import settings
 
 
 app = Celery()
@@ -15,6 +15,7 @@ logger = logging.getLogger(__name__)
 
 
 def import_consumer(consumer_name):
+    # TODO Make suer that consumer_name will always import the correct module
     return importlib.import_module('scrapi.consumers.{}'.format(consumer_name))
 
 
@@ -53,26 +54,42 @@ def consume(consumer_name):
 
 
 @app.task
+def process_raw(raw_doc, timestamp):
+    # This is where the raw_doc should be dumped to disc
+    # And anything else that may need to happen to it
+    pass
+
+
+@app.task
 def normalize(raw_doc, timestamp, consumer_name):
     consumer = import_consumer(consumer_name)
     normalized = consumer.normalize(raw_doc, timestamp)
-    # Do other things here
+
+    logger.info('Document {} normalized sucessfully'.format(normalized.get('doc_id')))
+
+    normalized.attributes['location'] = 'TODO'
+    normalized.attributes['isoTimestamp'] = str(timestamp.isoformat())
+
     return normalized
 
 
 @app.task
-def process_raw(raw_doc, timestamp):
-    pass
-
-
-@app.task
 def process_normalized(normalized_doc):
+    # This is where the normalized doc should be dumped to disc
+    # And then sent to OSF
+    # And anything that may need to occur
     pass
 
 
 @app.task
-def check_archive():
-    pass
+def check_archives(reprocess):
+    for consumer in settings.MANIFESTS.keys():
+        check_archive(consumer, reprocess).apply_async()
+
+
+@app.task
+def check_archive(consumer_name, reprocess):
+    pass  # TODO
 
 
 @app.task
