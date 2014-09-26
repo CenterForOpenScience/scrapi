@@ -15,6 +15,7 @@ def consume(days_back=0):
     base_url = 'http://api.crossref.org/works?filter=from-pub-date:'
     start_date = TODAY - timedelta(days_back)
     url = base_url + str(start_date) + ',until-pub-date:' + str(TODAY) + '&rows=1000'
+    print url
     data = requests.get(url)
     doc = data.json()
 
@@ -61,8 +62,7 @@ def normalize(raw_doc, timestamp):
     if ids['url'] == None:
         raise Exception('Warning: No URL provided...')
     ids['doi'] = doc.get('DOI')
-    ids['service_id'] = doc.get('prefix')
-
+    ids['service_id'] = raw_doc.get('doc_id')
 
     normalized_dict = {
         'title': (doc.get('title') or ['No title'])[0],
@@ -93,6 +93,7 @@ def normalize(raw_doc, timestamp):
         'date_created': 'date_created',
         'timestamp': str(timestamp)
     }
+    # print normalized_dict['id']
     return NormalizedDocument(normalized_dict)
 
 
