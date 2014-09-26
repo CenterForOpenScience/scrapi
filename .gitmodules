@@ -1,0 +1,3 @@
+[submodule "scrapi/settings/consumerManifests"]
+	path = scrapi/settings/consumerManifests
+	url = https://github.com/chrisseto/ScrapiConsumers.git
