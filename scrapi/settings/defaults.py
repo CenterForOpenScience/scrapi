@@ -15,7 +15,7 @@ CELERY_ACCEPT_CONTENT = ['pickle']
 CELERY_ENABLE_UTC = True
 CELERY_TIMEZONE = 'UTC'
 
-CELERY_IMPORTS = ('worker_manager.celerytasks',)
+CELERY_IMPORTS = ('scrapi.tasks',)
 
 #### OUTPUT SETTINGS ####
 OSF_ENABLED = False
