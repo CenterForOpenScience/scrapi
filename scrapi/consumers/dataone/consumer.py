@@ -80,16 +80,17 @@ def get_contributors(raw_doc):
     return contributor_list
 
 def normalize(raw_doc, timestamp):
-    raw_doc = raw_doc.get('doc')
-    doc = etree.XML(raw_doc)
+    raw_doc_text = raw_doc.get('doc')
+    doc = etree.XML(raw_doc_text)
 
     # title    
     title = (doc.xpath("str[@name='title']/node()") or ['No Title Available'])[0]
     
     tags = doc.xpath("//arr[@name='keywords']/str/node()")
 
+    # id
     doi = ''
-    service_id = doc.xpath("str[@name='id']/node()")[0]
+    service_id = raw_doc.get('doc_id')
     if 'doi' in service_id:
         # regex for just getting doi out of crazy urls and sometimes not urls
         doi_re = '10\\.\\d{4}/\\w*\\.\\w{5}|10\\.\\d{4}/\\w*/\\w*\\.\\d*.\\d*'
@@ -104,7 +105,7 @@ def normalize(raw_doc, timestamp):
 
     date_created = doc.xpath("date[@name='dateUploaded']/node()")[0]
 
-    contributor_list = get_contributors(raw_doc)
+    contributor_list = get_contributors(raw_doc_text)
 
     ## properties ##
     properties = { 
