@@ -1,0 +1,9 @@
+{
+    "days": "mon-sun",
+    "hour": 23,
+    "minute": 59,
+    "longName": "Columbia Adacemic Commons",
+    "shortName": "academiccommons",
+    "url": "https://github.com/erinspace/academiccommons.git",
+    "fileFormat": ".xml"
+}
