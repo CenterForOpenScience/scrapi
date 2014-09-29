@@ -7,7 +7,7 @@
     documents.
 """
 import os
-import yaml
+import json
 import logging
 
 from celery.schedules import crontab
@@ -27,12 +27,13 @@ MANIFEST_DIR = os.path.join(os.path.dirname(__file__), 'consumerManifests')
 def load_manifests():
     manifests = {}
     for path in os.listdir(MANIFEST_DIR):
-        if '.yml' not in path:
+        if '.json' not in path:
             continue
 
         with open(os.path.join(MANIFEST_DIR, path)) as manifest_file:
-            loaded = yaml.load(manifest_file)
-            manifests[loaded['short_name']] = loaded
+            loaded = json.load(manifest_file)
+
+        manifests[loaded['shortName']] = loaded
 
     return manifests
 

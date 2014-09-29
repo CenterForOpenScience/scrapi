@@ -1,5 +1,7 @@
 import os
+import json
 import platform
+import subprocess
 
 from invoke import run, task
 
@@ -58,11 +60,22 @@ def migrate_search():
 @task
 def install_consumers(update=False):
     for consumer, manifest in settings.MANIFESTS.items():
-        directory = 'scrapi/consumers/{}'.format(manifest['directory'].lower())
+        directory = 'scrapi/consumers/{}'.format(manifest['shortName'])
+
         if not os.path.isdir(directory):
-            run('git clone -b master {git-url} {moddir}'.format(moddir=directory, **manifest))
+            run('git clone -b master {url} {moddir}'.format(moddir=directory, **manifest))
         elif update:
             run('cd {} && git pull origin master'.format(directory))
+
+        manifest_file = 'scrapi/settings/consumerManifests/{}.json'.format(consumer)
+
+        with open(manifest_file) as f:
+            loaded = json.load(f)
+
+        loaded['version'] = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=directory).strip()
+
+        with open(manifest_file, 'w') as f:
+            json.dump(loaded, f, indent=4, sort_keys=True)
 
         if os.path.isfile('{}/requirements.txt'.format(directory)):
             run('pip install -r {}/requirements.txt'.format(directory))
@@ -79,7 +92,7 @@ def worker():
 
 
 @task
-def run_consumer(consumer_name, async=False):
+def consumer(consumer_name, async=False):
     settings.CELERY_ALWAYS_EAGER = not async
     from scrapi.tasks import run_consumer
 
@@ -87,7 +100,7 @@ def run_consumer(consumer_name, async=False):
 
 
 @task
-def run_consumers(async=False):
+def consumers(async=False):
     settings.CELERY_ALWAYS_EAGER = not async
     from scrapi.tasks import run_consumer
 
