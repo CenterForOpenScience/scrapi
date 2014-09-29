@@ -88,7 +88,23 @@ def check_archives(reprocess):
 
 @app.task
 def check_archive(consumer_name, reprocess):
-    pass  # TODO
+    # TODO Remote filestorage stuff @fabianvf
+    consumer = settings.MANIFESTS[consumer_name]
+
+    for raw_path in store.iter_raws(consumer_name, include_normalized=reprocess):
+        timestamp = raw_path.split('/')[-2], '%Y-%m-%d %H:%M:%S.%f'
+        timestamp = datetime.datetime.strptime(timestamp)
+
+        raw_file = store.get_as_string(raw_path)
+
+        raw_doc = RawDocument({
+            'doc': raw_file.read(),
+            'doc_id': raw_path.split('/')[-3],
+            'source': consumer_name,
+            'filetype': consumer['file_format']
+        })
+
+        normalize.si(raw_doc, timestamp, consumer_name).apply_async()
 
 
 @app.task
