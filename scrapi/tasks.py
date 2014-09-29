@@ -5,6 +5,10 @@ from datetime import datetime
 from celery import Celery
 
 from scrapi import settings
+from scrapi.util import build_raw_dir
+from scrapi.util.storage import store
+from scrapi.util import build_norm_dir
+from scrapi.util import import_consumer
 
 
 app = Celery()
@@ -49,9 +53,10 @@ def consume(consumer_name):
 
 @app.task
 def process_raw(raw_doc, timestamp):
+    path = build_raw_dir(raw_doc)
+    store(raw_doc, path)
     # This is where the raw_doc should be dumped to disc
     # And anything else that may need to happen to it
-    pass
 
 
 @app.task
@@ -68,10 +73,11 @@ def normalize(raw_doc, timestamp, consumer_name):
 
 @app.task
 def process_normalized(normalized_doc):
+    path = build_norm_dir(normalized_doc)
+    store(normalized_doc, path)
     # This is where the normalized doc should be dumped to disc
     # And then sent to OSF
     # And anything that may need to occur
-    pass
 
 
 @app.task
