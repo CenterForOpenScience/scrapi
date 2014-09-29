@@ -20,7 +20,4 @@ def _get_storage(method):
             return klass()
     raise NotImplementedError('Missing storage method "{}"'.format(method))
 
-
-def store(document, filepath):
-    for method in settings.STORAGE_METHODS:
-        _get_storage(method).store(document, filepath)
+store = _get_storage(settings.STORAGE_METHOD)
