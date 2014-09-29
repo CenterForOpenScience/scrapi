@@ -52,10 +52,13 @@ def get_records(url):
 
     return records
 
-def normalize(raw_doc, timestamp):
-    raw_doc = raw_doc.get('doc')
-    doc = etree.XML(raw_doc)
+def get_ids(doc, raw_doc):
+    service_id = raw_doc.get()
+    identifier = doc.xpath('//dc:identifier/node()', namespaces=NAMESPACES) or ['']
 
+    return {'url': identifier[0], 'service_id': service_id, 'doi': ''}
+
+def get_contributors(doc):
     contributors = doc.xpath('//dc:creator', namespaces=NAMESPACES)
     contributor_list = []
     for contributor in contributors:
@@ -63,41 +66,39 @@ def normalize(raw_doc, timestamp):
 
     contributor_list = contributor_list or [{'full_name': 'No contributors', 'email': ''}]
 
-    title = doc.xpath('//dc:title/node()', namespaces=NAMESPACES) or ['No title']
+    return contributor_list
 
-    service_id = doc.xpath('ns0:header/ns0:identifier/node()', 
-                                    namespaces=NAMESPACES)[0]
-    identifier = doc.xpath('//dc:identifier/node()', namespaces=NAMESPACES) or ['no url']
-
-    ids = {'url': identifier[0], 'service_id': service_id, 'doi': 'doi'}
-
-    description = doc.xpath('//dc:description/node()', namespaces=NAMESPACES) or ['']
-
-    date_created = doc.xpath('//dc:date', namespaces=NAMESPACES)[0].text
-
-    tags = doc.xpath('//dc:subject/node()', namespaces=NAMESPACES)
-
+def get_properties(doc):
     language = doc.xpath('//dc:language/node()', namespaces=NAMESPACES) or ['']
-
     resource_type = doc.xpath('//dc:type/node()', namespaces=NAMESPACES) or ['']
-
     publisher = doc.xpath('//dc:publisher/node()', namespaces=NAMESPACES) or ['']
 
+    return {"language": language, "resource_type": resource_type, "publisher": publisher}
+
+def get_tags(doc):
+    return doc.xpath('//dc:subject/node()', namespaces=NAMESPACES)
+
+def get_date_created(doc):
+    date_created = doc.xpath('//dc:date/node()', namespaces=NAMESPACES)[0]
+    return date_created
+
+def get_date_updated(doc):
+    pass
+
+def normalize(raw_doc, timestamp):
+    raw_doc_string = raw_doc.get('doc')
+    doc = etree.XML(raw_doc_string)
+
     normalized_dict = {
-            'title': title[0],
-            'contributors': contributor_list,
-            'properties': {
-                'language': language[0],
-                'resource_type': resource_type[0],
-                'publisher': publisher[0]
-            },
-            'description': description[0],
-            'meta': {},
-            'id': ids,
-            'source': NAME,
-            'tags': tags,
-            'date_created': date_created,
-            'timestamp': str(timestamp)
+            "title": (doc.xpath('//dc:title/node()', namespaces=NAMESPACES) or [''])[0],
+            "contributors": get_contributors(doc),
+            "properties": get_properties(doc),
+            "description": (doc.xpath('//dc:description/node()', namespaces=NAMESPACES) or [""])[0],
+            "id": get_ids(doc, raw_doc),
+            "source": NAME,
+            "tags": get_tags(),
+            "date_created": get_date_created(),
+            "timestamp": str(timestamp)
     }
     return NormalizedDocument(normalized_dict)
 
