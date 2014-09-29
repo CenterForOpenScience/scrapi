@@ -1,8 +1,7 @@
 import os
 import errno
 import importlib
-
-from scrapi import settings
+from urllib2 import quote
 
 
 def import_consumer(consumer_name):
@@ -10,17 +9,15 @@ def import_consumer(consumer_name):
     return importlib.import_module('scrapi.consumers.{}'.format(consumer_name))
 
 
-def build_norm_dir(consumer_name, timestamp, norm_doc):
-    pass  # TODO
-
-
-def build_raw_dir(consumer_name, timestamp, raw_doc):
-    manifest = settings.MANIFESTS[consumer_name]
-    base = [
-        settings.ARCHIVE_DIR,
-        manifest['directory'],
-        str(raw_doc.get('doc_id')).replace()
+# :: Str -> Str
+def doc_id_to_path(doc_id):
+    replacements = [
+        ('/', '%2f'),
     ]
+    for find, replace in replacements:
+        doc_id = doc_id.replace(find, replace)
+
+    return quote(doc_id)
 
 
 # Thanks to https://stackoverflow.com/questions/600268/mkdir-p-functionality-in-python
