@@ -64,8 +64,7 @@ def process_raw(raw_doc, timestamp):
 def normalize(raw_doc, timestamp, consumer_name):
     consumer = import_consumer(consumer_name)
     normalized = consumer.normalize(raw_doc, timestamp)
-
-    logger.info('Document {} normalized sucessfully'.format(normalized.get('doc_id')))
+    logger.info('Document {} normalized sucessfully'.format(raw_doc.get('doc_id')))
 
     normalized.attributes['location'] = 'TODO'
     normalized.attributes['isoTimestamp'] = str(timestamp.isoformat())
