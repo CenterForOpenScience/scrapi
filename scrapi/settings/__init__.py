@@ -32,7 +32,7 @@ def load_manifests():
 
         with open(os.path.join(MANIFEST_DIR, path)) as manifest_file:
             loaded = yaml.load(manifest_file)
-            manifests[path] = loaded
+            manifests[loaded['short_name']] = loaded
 
     return manifests
 
