@@ -4,12 +4,11 @@ from datetime import datetime
 
 from celery import Celery
 
-from scrapi import settings
-from scrapi.util import build_raw_dir
-from scrapi.util.storage import store
-from scrapi.util import build_norm_dir
-from scrapi.util import import_consumer
+from scrapi_tools import RawDocument
 
+from scrapi import settings
+from scrapi.util.storage import store
+from scrapi.util import import_consumer
 
 app = Celery()
 app.config_from_object(settings)
@@ -26,20 +25,6 @@ def run_consumer(consumer_name):
 
 
 @app.task
-def begin_normalization(raw_docs, consumer_name):
-    logger.info('Normalizing {} documents for consumer "{}"'
-                .format(len(raw_docs), consumer_name))
-
-    for raw in raw_docs:
-        timestamp = datetime.now()
-
-        process_raw.si(raw, timestamp).apply_async()
-
-        chain = (normalize.si(raw, timestamp, consumer_name) | process_normalized.s())
-        chain.apply_async()
-
-
-@app.task
 def consume(consumer_name):
     logger.info('Consumer "{}" has begun consumption'.format(consumer_name))
 
@@ -52,9 +37,25 @@ def consume(consumer_name):
 
 
 @app.task
+def begin_normalization(raw_docs, consumer_name):
+    logger.info('Normalizing {} documents for consumer "{}"'
+                .format(len(raw_docs), consumer_name))
+
+    for raw in raw_docs:
+        timestamp = datetime.now().isoformat()
+
+        process_raw.si(raw, timestamp).apply_async()
+
+        chain = (normalize.si(raw, timestamp, consumer_name) |
+                 process_normalized.s(raw))
+
+        chain.apply_async()
+
+
+@app.task
 def process_raw(raw_doc, timestamp):
-    path = build_raw_dir(raw_doc)
-    store(raw_doc, path)
+    raw_doc.attributes['timestamp'] = timestamp
+    store.store_raw(raw_doc)
     # This is where the raw_doc should be dumped to disc
     # And anything else that may need to happen to it
 
@@ -65,16 +66,18 @@ def normalize(raw_doc, timestamp, consumer_name):
     normalized = consumer.normalize(raw_doc, timestamp)
     logger.info('Document {} normalized sucessfully'.format(raw_doc.get('doc_id')))
 
-    normalized.attributes['location'] = 'TODO'
-    normalized.attributes['isoTimestamp'] = str(timestamp.isoformat())
+    # Not useful if using just the osf but may need to be included for
+    # A standalone scrapi
+    # normalized.attributes['location'] = 'TODO'
+    normalized.attributes['timestamp'] = timestamp
 
     return normalized
 
 
 @app.task
-def process_normalized(normalized_doc):
-    path = build_norm_dir(normalized_doc)
-    store(normalized_doc, path)
+def process_normalized(normalized_doc, raw_doc):
+    raise Exception()
+    store.store_normalized(raw_doc, normalized_doc)
     # This is where the normalized doc should be dumped to disc
     # And then sent to OSF
     # And anything that may need to occur
