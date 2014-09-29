@@ -1,13 +1,9 @@
 import os
 import platform
-import subprocess
 
 from invoke import run, task
 
 from scrapi import settings
-
-# from worker_manager.celerytasks import run_consumers, run_consumer
-# from worker_manager.celerytasks import check_archive as check__archive
 
 
 @task
@@ -84,7 +80,7 @@ def celery_worker():
 
 @task
 def consume(consumer_name, async=False):
-    settings.CELERY_ALWAYS_EAGER = async
+    settings.CELERY_ALWAYS_EAGER = not async
     from scrapi.tasks import run_consumer
     run_consumer(consumer_name)
 
@@ -93,6 +89,7 @@ def consume(consumer_name, async=False):
 def run_consumers(async=False):
     pass  # TODO
 
+# TODO
 # @task
 # def check_archive(directory='', reprocess=False):
 #     check__archive(directory, reprocess)
