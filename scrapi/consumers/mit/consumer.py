@@ -54,7 +54,7 @@ def get_records(url):
     return records
 
 
-def getcontributors(result):
+def get_contributors(result):
     dctype = (result.xpath('//dc:type/node()', namespaces=NAMESPACES) or [''])[0]
     contributors = result.xpath('//dc:contributor/node()', namespaces=NAMESPACES) or []
     creators = result.xpath('//dc:creator/node()', namespaces=NAMESPACES) or []
@@ -78,18 +78,18 @@ def getcontributors(result):
         contributor_list.append(contributor)
     return contributor_list
 
-def gettags(result):
+def get_tags(result):
     tags = result.xpath('//dc:subject/node()', namespaces=NAMESPACES) or []
     for tag in tags:
         tag = tag.lower()
     return tags
 
-def getabstract(result):
+def get_description(result):
     abstract = result.xpath('//dc:description/node()', namespaces=NAMESPACES) or ['No abstract']
     return abstract[0]
 
-def getids(result):
-    service_id = result.xpath('ns0:header/ns0:identifier/node()', namespaces=NAMESPACES)[0]
+def get_ids(result, doc):
+    service_id = doc.get('doc_id')
     identifiers = result.xpath('//dc:identifier/node()', namespaces=NAMESPACES)
     identifiers += result.xpath('//dc:relation/node()', namespaces=NAMESPACES)
     url = ''
@@ -106,6 +106,33 @@ def getids(result):
         raise Exception('Warning: No url provided!')
 
     return {'service_id': service_id, 'url': url, 'doi': doi}
+
+def get_properties(result):
+    rights = result.xpath('//dc:rights/node()', namespaces=NAMESPACES) or ['']
+    ids = result.xpath('//dc:identifier/node()', namespaces=NAMESPACES) or ['']
+    ids += result.xpath('//dc:relation/node()', namespaces=NAMESPACES)
+    identifiers = []
+    for identifier in ids:
+        if 'http://' not in identifier:
+            identifiers.append(identifier)
+    source = (result.xpath('//dc:source/node()', namespaces=NAMESPACES) or [''])[0]
+    language = (result.xpath('//dc:language/node()', namespaces=NAMESPACES) or [''])[0]
+    publisher = (result.xpath('//dc:publisher/node()', namespaces=NAMESPACES) or [''])[0]
+    dcformat = (result.xpath('//dc:format/node()', namespaces=NAMESPACES) or [''])[0]
+
+    props = {"permissions":
+         {
+              "copyrightStatement": rights[0],
+         },
+         "identifiers": identifiers,
+         "publisherInfo": {
+         "publisher": publisher,
+         },
+         "format": dcformat,
+         "source": source,
+         "language": language,
+     }
+    return props
 
 def get_date_created(result):
     dates = result.xpath('//dc:date/node()', namespaces=NAMESPACES)
@@ -139,46 +166,24 @@ def normalize(raw_doc, timestamp):
         return None
 
     title = result.xpath('//dc:title/node()', namespaces=NAMESPACES)[0]
-    rights = result.xpath('//dc:rights/node()', namespaces=NAMESPACES) or ['']
-    ids = result.xpath('//dc:identifier/node()', namespaces=NAMESPACES) or ['']
-    ids += result.xpath('//dc:relation/node()', namespaces=NAMESPACES)
-    identifiers = []
-    for identifier in ids:
-        if 'http://' not in identifier:
-            identifiers.append(identifier)
-    source = (result.xpath('//dc:source/node()', namespaces=NAMESPACES) or [''])[0]
-    language = (result.xpath('//dc:language/node()', namespaces=NAMESPACES) or [''])[0]
-    publisher = (result.xpath('//dc:publisher/node()', namespaces=NAMESPACES) or [''])[0]
-    dcformat = result.xpath('//dc:format/node()', namespaces=NAMESPACES) or []
     dateupdated = result.xpath('//ns0:header/ns0:datestamp/node()', namespaces=NAMESPACES)[0]
     dateupdated = parse(dateupdated).isoformat()
 
     payload = {
         "title": title,
-        "contributors": getcontributors(result),
-        "properties": {
-            "permissions": {
-                "copyrightStatement": rights[0],
-            },
-            "identifiers": identifiers,
-            "publisherInfo": {
-                "publisher": publisher,
-            },
-            "format": dcformat,
-            "source": source,
-            "language": language,
-        },
-        "description": getabstract(result),
-        "tags": gettags(result),
-        "id": getids(result),
+        "contributors": get_contributors(result),
+        "properties": get_properties(result),
+        "description": get_description(result),
+        "tags": get_tags(result),
+        "id": get_ids(result,raw_doc),
         "source": NAME,
         "dateUpdated": dateupdated,
         "date_created": get_date_created(result),
         "timestamp": str(timestamp),
     }
 
-    import json
-    print(json.dumps(payload, indent=4))
+    #import json
+    #print(json.dumps(payload, indent=4))
     return NormalizedDocument(payload)
 
 if __name__ == '__main__':
