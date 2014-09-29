@@ -1,6 +1,5 @@
 import os
 import logging
-import importlib
 from datetime import datetime
 
 from celery import Celery
@@ -12,11 +11,6 @@ app = Celery()
 app.config_from_object(settings)
 
 logger = logging.getLogger(__name__)
-
-
-def import_consumer(consumer_name):
-    # TODO Make suer that consumer_name will always import the correct module
-    return importlib.import_module('scrapi.consumers.{}'.format(consumer_name))
 
 
 @app.task
