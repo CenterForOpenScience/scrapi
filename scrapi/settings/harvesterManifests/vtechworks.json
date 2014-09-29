@@ -1,0 +1,9 @@
+{
+    "days": "mon-fri", 
+    "shortName": "vtechworks", 
+    "fileFormat": "xml", 
+    "url": "https://github.com/erinspace/VT-consumer.git", 
+    "hour": 23, 
+    "minute": 59, 
+    "longName": "Virginia Tech VTechWorks"
+}

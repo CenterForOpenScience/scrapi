@@ -1,0 +1,9 @@
+{
+    "days": "mon-fri", 
+    "fileFormat": "xml", 
+    "hour": 13, 
+    "longName": "eScholarship - University of California", 
+    "minute": 45, 
+    "shortName": "eScholarship", 
+    "url": "https://github.com/erinspace/eScholarship.git"
+}
