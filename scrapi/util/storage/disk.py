@@ -22,7 +22,6 @@ class DiskStorage(BaseStorage):
     # :: Str -> Bool -> [RawDocument]
     def iter_raws(self, source, include_normalized=False):
         src_dir = os.path.join(settings.ARCHIVE_DIRECTORY, source)
-
         for dirname, dirnames, filenames in os.walk(src_dir):
             if 'normalized.json' not in filenames or include_normalized:
                 for filename in filenames:

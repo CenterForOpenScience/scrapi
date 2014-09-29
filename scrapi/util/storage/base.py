@@ -43,26 +43,41 @@ class BaseStorage(object):
     # :: NormalizedDocument -> Nothing
     def store_normalized(self, raw_doc, document):
         path = self._build_path(raw_doc)
+        manifest = settings.MANIFESTS[document.get('source')]
+        manifest_update = {
+            'normalizeVersion': manifest['version']
+        }
+
+        self.update_manifest(path, manifest_update)
+
         path = os.path.join(path, 'normalized.json')
 
         self._store(json.dumps(document.attributes), path)
 
     # :: RawDocument -> Nothing
     def store_raw(self, document):
-        manifest = import_consumer(document.get('source'))
-        doc_name = 'raw.{}'.format(manifest['file_type'])
-
+        manifest = settings.MANIFESTS[document.get('source')]
+        doc_name = 'raw.{}'.format(manifest['file_format'])
         path = self._build_path(document)
+        manifest = {
+            'timestamp': document.get('timestamp'),
+            'source': document.get('source'),
+            'consumeVersion': manifest['version']
+        }
+
+        self.update_manifest(path, manifest)
+
         path = os.path.join(path, doc_name)
 
         self._store(document.get('doc'), path)
 
-        manifest_fields = {
-        }
-
     # :: RawDocument -> Dict -> Nothing
     def update_manifest(self, path, fields):
         path = os.path.join(path, 'manifest.json')
-        manifest = self.get_as_json(path)
+        try:
+            manifest = self.get_as_json(path)
+        except Exception:  # TODO Make this more specific
+            manifest = {}
+
         manifest.update(fields)
-        self._store(path, json.dumps(manifest))
+        self._store(json.dumps(manifest), path, overwrite=True)
