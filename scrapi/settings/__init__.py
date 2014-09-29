@@ -41,7 +41,7 @@ def create_schedule():
     schedule = {}
     for consumer_name, manifest in MANIFESTS.items():
         cron = crontab(day_of_week=manifest['days'],
-            hour=manifest['hour'], minute=manifest['minute']),
+            hour=manifest['hour'], minute=manifest['minute'])
 
         schedule['run_{}'.format(consumer_name)] = {
             'task': 'scrapi.tasks.run_consumer',
