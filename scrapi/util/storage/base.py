@@ -4,7 +4,6 @@ import json
 from scrapi import settings
 from scrapi.util import make_dir
 from scrapi.util import doc_id_to_path
-from scrapi.util import import_consumer
 
 
 class BaseStorage(object):

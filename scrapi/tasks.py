@@ -44,8 +44,9 @@ def begin_normalization(raw_docs, consumer_name):
 
     for raw in raw_docs:
         timestamp = datetime.now().isoformat()
+        raw.attributes['timestamp'] = timestamp
 
-        process_raw.si(raw, timestamp).apply_async()
+        process_raw.delay(raw)
 
         chain = (normalize.si(raw, timestamp, consumer_name) |
                  process_normalized.s(raw))
@@ -54,8 +55,7 @@ def begin_normalization(raw_docs, consumer_name):
 
 
 @app.task
-def process_raw(raw_doc, timestamp):
-    raw_doc.attributes['timestamp'] = timestamp
+def process_raw(raw_doc):
     store.store_raw(raw_doc)
     # This is where the raw_doc should be dumped to disc
     # And anything else that may need to happen to it
@@ -64,8 +64,10 @@ def process_raw(raw_doc, timestamp):
 @app.task
 def normalize(raw_doc, timestamp, consumer_name):
     consumer = import_consumer(consumer_name)
+
     normalized = consumer.normalize(raw_doc, timestamp)
-    logger.info('Document {}/{} normalized sucessfully'.format(
+
+    logger.debug('Document {}/{} normalized sucessfully'.format(
         consumer_name, raw_doc.get('doc_id')))
 
     # Not useful if using just the osf but may need to be included for
