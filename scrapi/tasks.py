@@ -1,5 +1,6 @@
 import os
 import logging
+from dateutil import parser
 from datetime import datetime
 
 from celery import Celery
@@ -64,7 +65,8 @@ def process_raw(raw_doc, timestamp):
 def normalize(raw_doc, timestamp, consumer_name):
     consumer = import_consumer(consumer_name)
     normalized = consumer.normalize(raw_doc, timestamp)
-    logger.info('Document {} normalized sucessfully'.format(raw_doc.get('doc_id')))
+    logger.info('Document {}/{} normalized sucessfully'.format(
+        consumer_name, raw_doc.get('doc_id')))
 
     # Not useful if using just the osf but may need to be included for
     # A standalone scrapi
@@ -76,7 +78,6 @@ def normalize(raw_doc, timestamp, consumer_name):
 
 @app.task
 def process_normalized(normalized_doc, raw_doc):
-    raise Exception()
     store.store_normalized(raw_doc, normalized_doc)
     # This is where the normalized doc should be dumped to disc
     # And then sent to OSF
@@ -86,22 +87,19 @@ def process_normalized(normalized_doc, raw_doc):
 @app.task
 def check_archives(reprocess):
     for consumer in settings.MANIFESTS.keys():
-        check_archive(consumer, reprocess).apply_async()
+        check_archive.delay(consumer, reprocess)
 
 
 @app.task
 def check_archive(consumer_name, reprocess):
-    # TODO Remote filestorage stuff @fabianvf
     consumer = settings.MANIFESTS[consumer_name]
 
     for raw_path in store.iter_raws(consumer_name, include_normalized=reprocess):
-        timestamp = raw_path.split('/')[-2], '%Y-%m-%d %H:%M:%S.%f'
-        timestamp = datetime.datetime.strptime(timestamp)
-
+        timestamp = parser.parse(raw_path.split('/')[-2])
         raw_file = store.get_as_string(raw_path)
 
         raw_doc = RawDocument({
-            'doc': raw_file.read(),
+            'doc': raw_file,
             'doc_id': raw_path.split('/')[-3],
             'source': consumer_name,
             'filetype': consumer['file_format']

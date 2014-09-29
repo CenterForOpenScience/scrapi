@@ -89,7 +89,14 @@ def consume(consumer_name, async=False):
 def run_consumers(async=False):
     pass  # TODO
 
-# TODO
-# @task
-# def check_archive(directory='', reprocess=False):
-#     check__archive(directory, reprocess)
+
+@task
+def check_archive(consumer=None, reprocess=False, async=False):
+    settings.CELERY_ALWAYS_EAGER = not async
+
+    if consumer:
+        from scrapi.tasks import check_archive as check
+        check.delay(consumer, reprocess)
+    else:
+        from scrapi.tasks import check_archives
+        check_archives.delay(reprocess)
