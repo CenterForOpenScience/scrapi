@@ -69,25 +69,30 @@ def install_consumers(update=False):
 
 
 @task
-def celery_beat():
+def beat():
     run('celery -A scrapi.tasks beat --loglevel info')
 
 
 @task
-def celery_worker():
+def worker():
     run('celery -A scrapi.tasks worker --loglevel info')
 
 
 @task
-def consume(consumer_name, async=False):
+def run_consumer(consumer_name, async=False):
     settings.CELERY_ALWAYS_EAGER = not async
     from scrapi.tasks import run_consumer
-    run_consumer(consumer_name)
+
+    run_consumer.delay(consumer_name)
 
 
 @task
 def run_consumers(async=False):
-    pass  # TODO
+    settings.CELERY_ALWAYS_EAGER = not async
+    from scrapi.tasks import run_consumer
+
+    for consumer_name in settings.MANIFESTS.keys():
+        run_consumer.delay(consumer_name)
 
 
 @task
