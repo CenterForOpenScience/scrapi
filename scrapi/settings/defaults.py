@@ -7,17 +7,13 @@
     documents.
 """
 BROKER_URL = 'amqp://guest@localhost'
-# CELERY_RESULT_BACKEND = 'amqp://guest@localhost'
+CELERY_RESULT_BACKEND = 'amqp://guest@localhost'
 
-CELERY_TASK_SERIALIZER = 'pickle'
-CELERY_RESULT_SERIALIZER = 'pickle'
-CELERY_ACCEPT_CONTENT = ['pickle']
-CELERY_ENABLE_UTC = True
-CELERY_TIMEZONE = 'UTC'
+STORAGE_METHODS = ['disk']
+ARCHIVE_DIRECTORY = 'archive/'
 
-CELERY_IMPORTS = ('scrapi.tasks',)
 
-#### OUTPUT SETTINGS ####
+# OUTPUT SETTINGS
 OSF_ENABLED = False
 
 PROTOCOL = 'http'

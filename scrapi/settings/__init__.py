@@ -48,12 +48,20 @@ CELERYBEAT_SCHEDULE = create_schedule()
 
 CELERY_ALWAYS_EAGER = False
 
+CELERY_TASK_SERIALIZER = 'pickle'
+CELERY_RESULT_SERIALIZER = 'pickle'
+CELERY_ACCEPT_CONTENT = ['pickle']
+CELERY_ENABLE_UTC = True
+CELERY_TIMEZONE = 'UTC'
+
+CELERY_IMPORTS = ('scrapi.tasks',)
+
 CELERYBEAT_SCHEDULE['check_archive'] = {
-    'task': 'worker_manager.celerytasks.check_archive',
+    'task': 'scrapi.tasks.check_archive',
     'schedule': crontab(day_of_month='1', hour='23', minute='59'),
 }
 
 CELERYBEAT_SCHEDULE['tar archive'] = {
-    'task': 'worker_manager.celerytasks.tar_archive',
+    'task': 'scrapi.tasks.tar_archive',
     'schedule': crontab(hour="3", minute="00")
 }
