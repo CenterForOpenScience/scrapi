@@ -1,10 +1,19 @@
+"""
+    Configuration file for celerybeat/worker.
+
+    Dynamically adds consumers from all manifest files in worker_manager/manifests/
+    to the celerybeat schedule. Also adds a heartbeat function to the schedule,
+    which adds every 30 seconds, and a monthly task to normalize all non-normalized
+    documents.
+"""
 import os
 import yaml
 import logging
 
 from celery.schedules import crontab
 
-from . import defaults, local
+from scrapi.settings.local import *
+from scrapi.settings.defaults import *
 
 
 logging.basicConfig(level=logging.INFO)

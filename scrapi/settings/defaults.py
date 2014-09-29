@@ -1,17 +1,9 @@
-"""
-    Configuration file for celerybeat/worker.
-
-    Dynamically adds consumers from all manifest files in worker_manager/manifests/
-    to the celerybeat schedule. Also adds a heartbeat function to the schedule,
-    which adds every 30 seconds, and a monthly task to normalize all non-normalized
-    documents.
-"""
 BROKER_URL = 'amqp://guest@localhost'
 CELERY_RESULT_BACKEND = 'amqp://guest@localhost'
+CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
 
-STORAGE_METHODS = ['disk']
+STORAGE_METHOD = 'disk'
 ARCHIVE_DIRECTORY = 'archive/'
-
 
 # OUTPUT SETTINGS
 OSF_ENABLED = False
