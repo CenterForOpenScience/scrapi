@@ -10,7 +10,7 @@ from scrapi_tools.document import RawDocument, NormalizedDocument
 
 TODAY = date.today()
 NAME = "StCloudState"
-OAI_DC_BASE = 'http://repository.stcloudstate.edu/do/oai/'
+OAI_DC_BASE_URL = 'http://repository.stcloudstate.edu/do/oai/'
 
 NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/', 
             'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
@@ -19,7 +19,7 @@ NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/',
 
 def consume(days_back=5):
     start_date = TODAY - timedelta(days_back)
-    base_url = OAI_DC_BASE + '?verb=ListRecords&metadataPrefix=oai_dc&from='
+    base_url = OAI_DC_BASE_URL + '?verb=ListRecords&metadataPrefix=oai_dc&from='
     url = base_url + str(start_date) + 'T00:00:00Z'
     print url
 
@@ -54,7 +54,7 @@ def get_records(url):
 
     if len(token) == 1:
         time.sleep(0.5)
-        base_url = OAI_DC_BASE + '?verb=ListRecords&resumptionToken=' 
+        base_url = OAI_DC_BASE_URL + '?verb=ListRecords&resumptionToken=' 
         url = base_url + token[0]
         records += get_records(url)
 
