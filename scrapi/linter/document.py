@@ -47,7 +47,7 @@ class RawDocument(BaseDocument):
 
     REQUIRED_FIELDS = {
         'doc': str,
-        'docId': str,
+        'docID': str,
         'source': str,
         'filetype': str
     }
