@@ -20,7 +20,10 @@ class BaseDocument(object):
                 elif isinstance(field_type, tuple):
                     assert isinstance(actual[field_name], field_type[0])
                     for item in actual[field_name]:
-                        assert isinstance(item, field_type[1])
+                        if isinstance(field_type[1], object):
+                            self._list(field_type[1], item)
+                        else:
+                            assert isinstance(item, field_type[1])
                 else:
                     assert isinstance(actual[field_name], field_type)
             except AssertionError:
@@ -66,7 +69,11 @@ class NormalizedDocument(BaseDocument):
     REQUIRED_FIELDS = {
         'title': str,
         'contributors': (list, CONTRIBUTOR_FIELD),
-        'id': str,
+        'id': {
+            'url': str,
+            'doi': str,
+            'serviceID': str
+        },
         'source': str,
         'timestamp': str,
         'description': str,
