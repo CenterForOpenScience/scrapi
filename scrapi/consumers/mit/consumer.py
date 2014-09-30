@@ -137,22 +137,9 @@ def get_properties(result):
 def get_date_created(result):
     dates = result.xpath('//dc:date/node()', namespaces=NAMESPACES)
     date_list = []
-    DEFAULT = datetime(2010, 01, 01)
+    DEFAULT = datetime(1970, 01, 01)
     for item in dates:
-        try:
-            a_date = parse(str(item)[:10], yearfirst=True).isoformat()
-        except ValueError:
-            try:
-                a_date = parse(str(item)[:10], yearfirst=True).isoformat()
-            except ValueError:
-                try:
-                    a_date = parse(str(item)[:10], yearfirst=True).isoformat()
-                except ValueError:
-                    try:
-                        a_date = parse(str(item)[:10], yearfirst=True).isoformat()
-                    except ValueError:
-                        #import pdb; pdb.set_trace()
-                        a_date = parse(str(item)[:10], yearfirst=True,  default=DEFAULT).isoformat()
+        a_date = parse(str(item)[:10], yearfirst=True,  default=DEFAULT).isoformat()
         date_list.append(a_date)
     min_date = min(date_list)
     return min_date
