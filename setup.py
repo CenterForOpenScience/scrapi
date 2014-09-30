@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='scrAPI Utils',
-    version='0.4.3',
+    version='0.4.4',
     author='Chris Seto',
     author_email='Chris@seto.xyz',
     packages=['scrapi.linter'],
