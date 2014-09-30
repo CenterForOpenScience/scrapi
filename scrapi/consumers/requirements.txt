@@ -1,5 +1,5 @@
-argparse==1.2.1
-requests==2.3.0
-git+https://github.com/fabianvf/scrapi-tools
-wsgiref==0.1.2
-xmltodict==0.9.0
+lxml==3.4.0
+requests==2.4.1
+nameparser==0.3.3
+python-dateutil==2.2
+git+http://github.com/chrisseto/scrapi.git
