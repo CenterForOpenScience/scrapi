@@ -32,7 +32,6 @@ def consume(days_back=1):
     plos_request = requests.get(base_url, params=payload)
     xml_response = etree.XML(plos_request.content)
     num_results = int(xml_response.xpath('//result/@numFound')[0])
-    num_results = 5
 
     start = 0
     rows = MAX_ROWS_PER_REQUEST
