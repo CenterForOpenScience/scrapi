@@ -1,9 +1,0 @@
-{
-    "days": "mon-fri", 
-    "fileFormat": "xml", 
-    "hour": 23, 
-    "longName": "SciTech Connect", 
-    "minute": 59, 
-    "shortName": "scitech", 
-    "url": "https://github.com/fabianvf/pyscitech.git"
-}

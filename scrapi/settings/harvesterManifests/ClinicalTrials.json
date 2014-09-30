@@ -1,9 +1,0 @@
-{
-    "days": "mon-fri", 
-    "fileFormat": "xml", 
-    "hour": 13, 
-    "longName": "Clinical Trials Registry", 
-    "minute": 45, 
-    "shortName": "ClinicalTrials", 
-    "url": "https://github.com/erinspace/ClinicalTrials-consumer.git"
-}

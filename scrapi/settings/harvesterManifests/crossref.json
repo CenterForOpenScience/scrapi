@@ -1,9 +1,0 @@
-{
-    "days": "mon-fri", 
-    "fileFormat": "xml", 
-    "hour": 23, 
-    "longName": "CrossRef", 
-    "minute": 59, 
-    "shortName": "crossref", 
-    "url": "https://github.com/erinspace/CrossRef"
-}

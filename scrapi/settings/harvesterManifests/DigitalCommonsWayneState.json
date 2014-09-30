@@ -1,9 +1,0 @@
-{
-    "days": "mon-fri", 
-    "fileFormat": "xml", 
-    "hour": 18, 
-    "longName": "Digital Commons at Wayne State", 
-    "minute": 0, 
-    "shortName": "DigitalCommonsWayneState", 
-    "url": "https://github.com/erinspace/DigitalCommonsWayneState.git"
-}

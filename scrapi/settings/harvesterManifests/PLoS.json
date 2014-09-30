@@ -1,9 +1,0 @@
-{
-    "days": "mon-fri", 
-    "fileFormat": "html", 
-    "hour": 14, 
-    "longName": "Public Library of Science", 
-    "minute": 53, 
-    "shortName": "PLoS", 
-    "url": "https://github.com/fabianvf/PLoS-API-consumer.git"
-}

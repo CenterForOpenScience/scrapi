@@ -1,9 +1,0 @@
-{
-    "days": "mon-sun", 
-    "fileFormat": "xml", 
-    "hour": 23, 
-    "longName": "PubMed Central", 
-    "minute": 58, 
-    "shortName": "pubmedcentral", 
-    "url": "https://github.com/erinspace/PubMedCentral.git"
-}

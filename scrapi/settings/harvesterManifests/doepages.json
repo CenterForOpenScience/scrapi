@@ -1,9 +1,0 @@
-{
-    "days": "mon-fri", 
-    "fileFormat": "xml", 
-    "hour": 23, 
-    "longName": "Department of Energy Pages", 
-    "minute": 59, 
-    "shortName": "doepages", 
-    "url": "https://github.com/erinspace/DOEPages.git"
-}
