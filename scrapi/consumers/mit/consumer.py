@@ -15,6 +15,7 @@ NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/',
             'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
             'ns0': 'http://www.openarchives.org/OAI/2.0/'}
 OAI_DC_BASE_URL = 'http://dspace.mit.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from='
+DEFAULT = datetime(1970, 01, 01)
 
 def consume(days_back=1):
 
@@ -79,15 +80,7 @@ def get_contributors(result):
 
 def get_tags(result):
     tags = result.xpath('//dc:subject/node()', namespaces=NAMESPACES) or []
-    lctags = []
-    for tag in tags:
-        tag = tag.lower()
-        lctags.append(tag)
-    return lctags
-
-def get_description(result):
-    abstract = result.xpath('//dc:description/node()', namespaces=NAMESPACES) or ['No abstract']
-    return abstract[0]
+    return [tag.lower() for tag in tags]
 
 def get_ids(result, doc):
     serviceID = doc.get('docID')
@@ -138,12 +131,16 @@ def get_properties(result):
 def get_date_created(result):
     dates = result.xpath('//dc:date/node()', namespaces=NAMESPACES)
     date_list = []
-    DEFAULT = datetime(1970, 01, 01)
     for item in dates:
         a_date = parse(str(item)[:10], yearfirst=True,  default=DEFAULT).isoformat()
         date_list.append(a_date)
     min_date = min(date_list)
     return min_date
+
+def get_date_updated(result):
+    dateupdated = result.xpath('//ns0:header/ns0:datestamp/node()', namespaces=NAMESPACES)[0]
+    date_updated = parse(dateupdated).isoformat()
+    return date_updated
 
 def normalize(raw_doc, timestamp):
     result = raw_doc.get('doc')
@@ -154,18 +151,17 @@ def normalize(raw_doc, timestamp):
         return None
 
     title = result.xpath('//dc:title/node()', namespaces=NAMESPACES)[0]
-    dateupdated = result.xpath('//ns0:header/ns0:datestamp/node()', namespaces=NAMESPACES)[0]
-    dateupdated = parse(dateupdated).isoformat()
+    description = (result.xpath('//dc:description/node()', namespaces=NAMESPACES) or [''])[0]
 
     payload = {
         'title': title,
         'contributors': get_contributors(result),
         'properties': get_properties(result),
-        'description': get_description(result),
+        'description': description,
         'tags': get_tags(result),
         'id': get_ids(result,raw_doc),
         'source': NAME,
-        'dateUpdated': dateupdated,
+        'dateUpdated': get_date_updated(result),
         'dateCreated': get_date_created(result),
         'timestamp': str(timestamp),
     }
