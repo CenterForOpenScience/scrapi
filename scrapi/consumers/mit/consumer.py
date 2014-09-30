@@ -31,10 +31,10 @@ def consume(days_back=1):
         record = etree.tostring(record)
         record = '<?xml version="1.0" encoding="UTF-8"?>\n' + record
         xml_list.append(RawDocument({
-                    "doc": record,
-                    "source": NAME,
-                    "docID": doc_id,
-                    "filetype": "xml"
+                    'doc': record,
+                    'source': NAME,
+                    'docID': doc_id,
+                    'filetype': 'xml'
                 }))
     return xml_list
 
@@ -66,13 +66,13 @@ def get_contributors(result):
     for person in all_contributors:
         name = HumanName(person)
         contributor = {
-            "prefix": name.title,
-            "given": name.first,
-            "middle": name.middle,
-            "family": name.last,
-            "suffix": name.suffix,
-            "email": "",
-            "ORCID": "",
+            'prefix': name.title,
+            'given': name.first,
+            'middle': name.middle,
+            'family': name.last,
+            'suffix': name.suffix,
+            'email': '',
+            'ORCID': '',
             }
         contributor_list.append(contributor)
     return contributor_list
@@ -106,7 +106,7 @@ def get_ids(result, doc):
     if url == '':
         raise Exception('Warning: No url provided!')
 
-    return {"serviceID": serviceID, "url": url, "doi": doi}
+    return {'serviceID': serviceID, 'url': url, 'doi': doi}
 
 def get_properties(result):
     rights = result.xpath('//dc:rights/node()', namespaces=NAMESPACES) or ['']
@@ -121,17 +121,17 @@ def get_properties(result):
     publisher = (result.xpath('//dc:publisher/node()', namespaces=NAMESPACES) or [''])[0]
     dcformat = (result.xpath('//dc:format/node()', namespaces=NAMESPACES) or [''])[0]
 
-    props = {"permissions":
+    props = {'permissions':
          {
-              "copyrightStatement": rights[0],
+              'copyrightStatement': rights[0],
          },
-         "identifiers": identifiers,
-         "publisherInfo": {
-         "publisher": publisher,
+         'identifiers': identifiers,
+         'publisherInfo': {
+         'publisher': publisher,
          },
-         "format": dcformat,
-         "source": source,
-         "language": language,
+         'format': dcformat,
+         'source': source,
+         'language': language,
      }
     return props
 
@@ -150,7 +150,7 @@ def normalize(raw_doc, timestamp):
     try:
         result = etree.XML(result)
     except etree.XMLSyntaxError:
-        print "Error in namespaces! Skipping this one..."
+        print 'Error in namespaces! Skipping this one...'
         return None
 
     title = result.xpath('//dc:title/node()', namespaces=NAMESPACES)[0]
@@ -158,16 +158,16 @@ def normalize(raw_doc, timestamp):
     dateupdated = parse(dateupdated).isoformat()
 
     payload = {
-        "title": title,
-        "contributors": get_contributors(result),
-        "properties": get_properties(result),
-        "description": get_description(result),
-        "tags": get_tags(result),
-        "id": get_ids(result,raw_doc),
-        "source": NAME,
-        "dateUpdated": dateupdated,
-        "dateCreated": get_date_created(result),
-        "timestamp": str(timestamp),
+        'title': title,
+        'contributors': get_contributors(result),
+        'properties': get_properties(result),
+        'description': get_description(result),
+        'tags': get_tags(result),
+        'id': get_ids(result,raw_doc),
+        'source': NAME,
+        'dateUpdated': dateupdated,
+        'dateCreated': get_date_created(result),
+        'timestamp': str(timestamp),
     }
 
     #import json
