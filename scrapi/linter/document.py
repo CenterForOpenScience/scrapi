@@ -47,7 +47,7 @@ class RawDocument(BaseDocument):
 
     REQUIRED_FIELDS = {
         'doc': str,
-        'doc_id': str,
+        'docId': str,
         'source': str,
         'filetype': str
     }
@@ -71,5 +71,6 @@ class NormalizedDocument(BaseDocument):
         'timestamp': str,
         'description': str,
         'tags': (list, str),
-        'date_created': str
+        'dateUpdated': str,
+        'dateCreated': str
     }
