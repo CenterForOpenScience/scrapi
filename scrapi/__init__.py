@@ -1,0 +1,1 @@
+from scrapi import linter
