@@ -1,20 +1,17 @@
-from invoke import run, task
 import os
-import yaml
-import subprocess
+import json
+import shutil
 import platform
-from worker_manager.celerytasks import run_consumers, run_consumer
-from worker_manager.celerytasks import check_archive as check__archive
+import subprocess
+
+from invoke import run, task
+
+from scrapi import settings
 
 
 @task
 def server():
     run("python website/main.py")
-
-
-@task
-def schedule():
-    run("python worker_manager/schedule.py")
 
 
 @task
@@ -62,40 +59,74 @@ def migrate_search():
 
 
 @task
-def install_consumers(virtualenv='', update=False):
-    virtualenv = virtualenv + 'bin/' if virtualenv else ''
-    for filename in os.listdir('worker_manager/manifests/'):
-        with open('worker_manager/manifests/' + filename) as f:
-            info = yaml.load(f)
-        if not os.path.isdir('worker_manager/consumers/{0}'.format(info['directory'])):
-            run('git clone -b master {0} worker_manager/consumers/{1}'.format(info['git-url'], info['directory']))
+def install_consumers(update=False):
+    for consumer, manifest in settings.MANIFESTS.items():
+        directory = 'scrapi/consumers/{}'.format(manifest['shortName'])
+
+        if not os.path.isdir(directory):
+            run('git clone -b master {url} {moddir}'.format(moddir=directory, **manifest))
         elif update:
-            print(subprocess.check_output(['git', 'pull', 'origin', 'master'], cwd='{1}/worker_manager/consumers/{0}'.format(info['directory'], os.getcwd())))
+            run('cd {} && git pull origin master'.format(directory))
 
-        if os.path.isfile('worker_manager/consumers/{0}/requirements.txt'.format(info['directory'])):
-            run('{1}pip install -r worker_manager/consumers/{0}/requirements.txt'.format(info['directory'], virtualenv))
+        manifest_file = 'scrapi/settings/consumerManifests/{}.json'.format(consumer)
 
+        with open(manifest_file) as f:
+            loaded = json.load(f)
 
-@task
-def celery_beat(virtualenv=''):
-    virtualenv = virtualenv + 'bin/' if virtualenv else ''
-    run('{0}celery -A worker_manager.celerytasks beat --loglevel info'.format(virtualenv))
+        loaded['version'] = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=directory).strip()
 
+        with open(manifest_file, 'w') as f:
+            json.dump(loaded, f, indent=4, sort_keys=True)
 
-@task
-def celery_worker(virtualenv=''):
-    virtualenv = virtualenv + 'bin/' if virtualenv else ''
-    run('{0}celery -A worker_manager.celerytasks worker --loglevel info'.format(virtualenv))
+        if os.path.isfile('{}/requirements.txt'.format(directory)):
+            run('pip install -r {}/requirements.txt'.format(directory))
 
 
 @task
-def consumers(manifest=None):
-    if manifest:
-        run_consumer('worker_manager/manifests/{}.yml'.format(manifest))
+def clean_consumers():
+    run('cd scrapi/settings/consumerManifests && git reset HEAD --hard && git pull origin master')
+
+    for listing in os.listdir('scrapi/consumers'):
+        path = os.path.join('scrapi', 'consumers', listing)
+        if os.path.isdir(path):
+            print 'Removing {}...'.format(path)
+            shutil.rmtree(path)
+
+
+@task
+def beat():
+    run('celery -A scrapi.tasks beat --loglevel info')
+
+
+@task
+def worker():
+    run('celery -A scrapi.tasks worker --loglevel info')
+
+
+@task
+def consumer(consumer_name, async=False):
+    settings.CELERY_ALWAYS_EAGER = not async
+    from scrapi.tasks import run_consumer
+
+    run_consumer.delay(consumer_name)
+
+
+@task
+def consumers(async=False):
+    settings.CELERY_ALWAYS_EAGER = not async
+    from scrapi.tasks import run_consumer
+
+    for consumer_name in settings.MANIFESTS.keys():
+        run_consumer.delay(consumer_name)
+
+
+@task
+def check_archive(consumer=None, reprocess=False, async=False):
+    settings.CELERY_ALWAYS_EAGER = not async
+
+    if consumer:
+        from scrapi.tasks import check_archive as check
+        check.delay(consumer, reprocess)
     else:
-        run_consumers()
-
-
-@task
-def check_archive(directory='', reprocess=False):
-    check__archive(directory, reprocess)
+        from scrapi.tasks import check_archives
+        check_archives.delay(reprocess)
