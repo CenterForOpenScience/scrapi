@@ -32,6 +32,7 @@ def consume(days_back=1):
                 format(y_month, y_day, y_year, month, day, year)
 
     url = base_url + url_end
+    print url
 
     # grab the total number of studies
     initial_request = requests.get(url)
@@ -74,55 +75,7 @@ def consume(days_back=1):
 
     return xml_list
 
-
-def normalize(raw_doc, timestamp):
-    raw_doc = raw_doc.get('doc')
-    try:
-        result = xmltodict.parse(raw_doc)
-    except expat.ExpatError:
-        print 'xml reading error...'
-        pass
-
-    xml_doc = etree.XML(raw_doc)
-    xml_object = objectify.XML(raw_doc)
-
-    # Title
-    try: 
-        title = result['clinical_study']['official_title']
-    except KeyError:
-        try:
-            title = result['clinical_study']['brief_title']
-        except KeyError:
-            title = 'No title available'
-            pass
-
-    # contributors
-    contributor_list = xml_doc.xpath('//overall_official/last_name/node()') or xml_doc.xpath('//lead_sponsor/agency/node()') or ['No contributors']
-    contributors = [{'full_name': contributor_list[0], 'email': ''}]
-
-    # abstract
-    try:
-        abstract = result['clinical_study']['brief_summary'].get('textblock')
-    except KeyError:
-        try:
-            abstract = result['clinical_study']['detailed_description'].get('textblock')
-        except KeyError:
-            abstract = 'No abstract available'
-
-    # IDs
-    try: 
-        nct_id = result['clinical_study']['id_info']['nct_id']
-    except KeyError:
-        nct_id = 'Secondary ID: ' + result['clinical_study']['id_info'].get('secondary_id')
-    url = result['clinical_study']['required_header'].get('url')
-    ids = {'service_id': nct_id, 'doi': '', 'url': url}
-
-    # date created
-    date_created = result['clinical_study'].get('firstreceived_date')
-
-    # tags/keywords
-    keywords = xml_doc.xpath('//keyword/node()')
-
+def get_properties(xml_doc):
     lead_sponsor  = {
             'agency': (xml_doc.xpath('//lead_sponsor/agency/node()') or [''])[0],
             'agency_class': (xml_doc.xpath('//lead_sponsor/agency_class/node()') or [''])[0]
@@ -133,7 +86,6 @@ def normalize(raw_doc, timestamp):
             'time_frame': (xml_doc.xpath('//primary_outcome/time_frame/node()') or [''])[0],
             'safety_issue': (xml_doc.xpath('//primary_outcome/safety_issue/node()') or [''])[0]
         }
-
 
     # gives a list of dictionaries of all secondary outcomes
     secondary_outcome_elements = xml_doc.xpath('//secondary_outcome')
@@ -227,12 +179,61 @@ def normalize(raw_doc, timestamp):
         'has_expanded_access': (xml_doc.xpath('//has_expanded_access/node()') or [''])[0]
     }
 
+    return properties
+
+def normalize(raw_doc, timestamp):
+    raw_doc = raw_doc.get('doc')
+    try:
+        result = xmltodict.parse(raw_doc)
+    except expat.ExpatError:
+        print 'xml reading error...'
+        pass
+
+    xml_doc = etree.XML(raw_doc)
+    xml_object = objectify.XML(raw_doc)
+
+    # Title
+    try: 
+        title = result['clinical_study']['official_title']
+    except KeyError:
+        try:
+            title = result['clinical_study']['brief_title']
+        except KeyError:
+            title = 'No title available'
+            pass
+
+    # contributors
+    contributor_list = xml_doc.xpath('//overall_official/last_name/node()') or xml_doc.xpath('//lead_sponsor/agency/node()') or ['No contributors']
+    contributors = [{'full_name': contributor_list[0], 'email': ''}]
+
+    # abstract
+    try:
+        abstract = result['clinical_study']['brief_summary'].get('textblock')
+    except KeyError:
+        try:
+            abstract = result['clinical_study']['detailed_description'].get('textblock')
+        except KeyError:
+            abstract = 'No abstract available'
+
+    # IDs
+    try: 
+        nct_id = result['clinical_study']['id_info']['nct_id']
+    except KeyError:
+        nct_id = 'Secondary ID: ' + result['clinical_study']['id_info'].get('secondary_id')
+    url = result['clinical_study']['required_header'].get('url')
+    ids = {'service_id': nct_id, 'doi': '', 'url': url}
+
+    # date created
+    date_created = result['clinical_study'].get('firstreceived_date')
+
+    # tags/keywords
+    keywords = xml_doc.xpath('//keyword/node()')
+
     normalized_dict = {
             'title': title,
             'contributors': contributors,
-            'properties': properties,
+            'properties': get_properties(xml_doc),
             'description': abstract,
-            'meta': {},
             'id': ids,
             'source': NAME,
             'tags': keywords,
