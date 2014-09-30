@@ -20,6 +20,6 @@ def lint(actual, expected, name=''):
     else:
         if not isinstance(actual, expected):
             actual = type(actual)
-            name = ''.join(['[{}]'.format(x) for x in name.split(' ') if x])
+            name = ''.join(["['{}']".format(x) for x in name.split(' ') if x])
             errmsg = 'Expected "root{name}" to be of type {expected} but found {actual}'
             raise TypeError(errmsg.format(**locals()))
