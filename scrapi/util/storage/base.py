@@ -40,7 +40,7 @@ class BaseStorage(object):
         return path
 
     # :: NormalizedDocument -> Nothing
-    def store_normalized(self, raw_doc, document):
+    def store_normalized(self, raw_doc, document, overwrite=False):
         path = self._build_path(raw_doc)
         manifest = settings.MANIFESTS[document.get('source')]
         manifest_update = {
@@ -51,7 +51,7 @@ class BaseStorage(object):
 
         path = os.path.join(path, 'normalized.json')
 
-        self._store(json.dumps(document.attributes), path)
+        self._store(json.dumps(document.attributes), path, overwrite=overwrite)
 
     # :: RawDocument -> Nothing
     def store_raw(self, document):

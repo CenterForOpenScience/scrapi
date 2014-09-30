@@ -80,8 +80,8 @@ def normalize(raw_doc, timestamp, consumer_name):
 
 
 @app.task
-def process_normalized(normalized_doc, raw_doc):
-    processing.process_normalized(raw_doc, normalized_doc)
+def process_normalized(normalized_doc, raw_doc, **kwargs):
+    processing.process_normalized(raw_doc, normalized_doc, kwargs)
     # This is where the normalized doc should be dumped to disc
     # And then sent to OSF
     # And anything that may need to occur
@@ -96,19 +96,24 @@ def check_archives(reprocess):
 @app.task
 def check_archive(consumer_name, reprocess):
     consumer = settings.MANIFESTS[consumer_name]
-
+    extras = {
+        'overwrite': True
+    }
     for raw_path in store.iter_raws(consumer_name, include_normalized=reprocess):
-        timestamp = parser.parse(raw_path.split('/')[-2])
+        timestamp = parser.parse(raw_path.split('/')[-2]).isoformat()
         raw_file = store.get_as_string(raw_path)
 
         raw_doc = RawDocument({
             'doc': raw_file,
+            'timestamp': timestamp,
             'docID': raw_path.split('/')[-3],
             'source': consumer_name,
-            'filetype': consumer['fileFormat']
+            'filetype': consumer['fileFormat'],
         })
 
-        normalize.delay(raw_doc, timestamp, consumer_name)
+        chain = (normalize.si(raw_doc, timestamp, consumer_name) |
+                 process_normalized.s(raw_doc, storage=extras))
+        chain.apply_async()
 
 
 @app.task

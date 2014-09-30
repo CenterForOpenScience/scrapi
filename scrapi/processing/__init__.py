@@ -14,14 +14,16 @@ for mod in os.listdir(os.path.dirname(__file__)):
 from . import *
 
 
-def process_normalized(raw_doc, normalized):
+def process_normalized(raw_doc, normalized, kwargs):
     for p in settings.NORMALIZED_PROCESSING:
-        get_processor(p).process_normalized(raw_doc, normalized)
+        extras = kwargs.get(p, {})
+        get_processor(p).process_normalized(raw_doc, normalized, **extras)
 
 
 def process_raw(raw_doc):
     for p in settings.RAW_PROCESSING:
-        get_processor(p).process_raw(raw_doc)
+        extras = kwargs.get(p, {})
+        get_processor(p).process_raw(raw_doc, **extras)
 
 
 def get_processor(processor_name):
