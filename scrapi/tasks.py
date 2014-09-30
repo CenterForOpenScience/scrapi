@@ -10,7 +10,7 @@ from scrapi_tools import RawDocument
 from scrapi import settings
 from scrapi import processing
 from scrapi.util import import_consumer
-from scrapi.util.store import store
+from scrapi.util.storage import store
 
 
 app = Celery()
