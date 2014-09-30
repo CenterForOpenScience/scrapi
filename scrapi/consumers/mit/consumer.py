@@ -5,8 +5,8 @@ from datetime import date, timedelta, datetime
 from dateutil.parser import *
 import time
 from lxml import etree 
-from scrapi_tools import lint
-from scrapi_tools.document import RawDocument, NormalizedDocument
+from scrapi.linter import lint
+from scrapi.linter.document import RawDocument, NormalizedDocument
 from nameparser import HumanName
 
 NAME = 'mit'
@@ -26,16 +26,15 @@ def consume(days_back=1):
     records = get_records(url)
 
     xml_list = []
-    json_list = []
     for record in records:
         doc_id = record.xpath('ns0:header/ns0:identifier', namespaces=NAMESPACES)[0].text
         record = etree.tostring(record)
         record = '<?xml version="1.0" encoding="UTF-8"?>\n' + record
         xml_list.append(RawDocument({
-                    'doc': record,
-                    'source': NAME,
-                    'doc_id': doc_id,
-                    'filetype': 'xml'
+                    "doc": record,
+                    "source": NAME,
+                    "docID": doc_id,
+                    "filetype": "xml"
                 }))
     return xml_list
 
@@ -80,9 +79,11 @@ def get_contributors(result):
 
 def get_tags(result):
     tags = result.xpath('//dc:subject/node()', namespaces=NAMESPACES) or []
+    lctags = []
     for tag in tags:
         tag = tag.lower()
-    return tags
+        lctags.append(tag)
+    return lctags
 
 def get_description(result):
     abstract = result.xpath('//dc:description/node()', namespaces=NAMESPACES) or ['No abstract']
