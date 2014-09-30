@@ -140,7 +140,7 @@ def normalize(raw_doc, timestamp):
 
     if normalized_dict['properties']['articleType'] == 'Correction':
         normalized_dict['title'] = normalized_dict['title'].replace('Correction: ', '')
-        normalized_dict['contributors'] = {
+        normalized_dict['contributors'] = [{
             'prefix': '',
             'given': '',
             'middle': '',
@@ -148,7 +148,7 @@ def normalize(raw_doc, timestamp):
             'suffix': '',
             'email': '',
             'ORCID': ''
-        }
+        }]
     return NormalizedDocument(normalized_dict)
 
 if __name__ == '__main__':
