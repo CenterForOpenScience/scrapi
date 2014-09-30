@@ -8,8 +8,10 @@ from celery import Celery
 from scrapi_tools import RawDocument
 
 from scrapi import settings
-from scrapi.util.storage import store
+from scrapi import processing
 from scrapi.util import import_consumer
+from scrapi.util.store import store
+
 
 app = Celery()
 app.config_from_object(settings)
@@ -56,7 +58,7 @@ def begin_normalization(raw_docs, consumer_name):
 
 @app.task
 def process_raw(raw_doc):
-    store.store_raw(raw_doc)
+    processing.process_raw(raw_doc)
     # This is where the raw_doc should be dumped to disc
     # And anything else that may need to happen to it
 
@@ -80,7 +82,7 @@ def normalize(raw_doc, timestamp, consumer_name):
 
 @app.task
 def process_normalized(normalized_doc, raw_doc):
-    store.store_normalized(raw_doc, normalized_doc)
+    processing.process_normalized(raw_doc, normalized_doc)
     # This is where the normalized doc should be dumped to disc
     # And then sent to OSF
     # And anything that may need to occur
