@@ -1,3 +1,6 @@
+from scrapi.linter.util import lint
+
+
 class BaseDocument(object):
 
     """
@@ -8,26 +11,9 @@ class BaseDocument(object):
     REQUIRED_FIELDS = {}
 
     def __init__(self, attributes):
-        self._lint(self.REQUIRED_FIELDS, attributes)
+        lint(attributes, self.REQUIRED_FIELDS)
 
         self.attributes = attributes
-
-    def _lint(self, types, actual):
-        for field_name, field_type in types.items():
-            try:
-                if isinstance(field_type, dict):
-                    self._list(field_type, actual[field_name])
-                elif isinstance(field_type, tuple):
-                    assert isinstance(actual[field_name], field_type[0])
-                    for item in actual[field_name]:
-                        if isinstance(field_type[1], object):
-                            self._list(field_type[1], item)
-                        else:
-                            assert isinstance(item, field_type[1])
-                else:
-                    assert isinstance(actual[field_name], field_type)
-            except AssertionError:
-                raise TypeError('Field "{}" must be of type {}'.format(field_name, field_type))
 
     def get(self, attribute):
         """
@@ -49,35 +35,36 @@ class BaseDocument(object):
 class RawDocument(BaseDocument):
 
     REQUIRED_FIELDS = {
-        'doc': str,
-        'docID': str,
-        'source': str,
-        'filetype': str
+        'doc': basestring,
+        'docID': basestring,
+        'source': basestring,
+        'filetype': basestring
     }
 
 
 class NormalizedDocument(BaseDocument):
     CONTRIBUTOR_FIELD = {
-        'email': str,
-        'prefix': str,
-        'given': str,
-        'middle': str,
-        'family': str,
-        'suffix': str
+        'email': basestring,
+        'prefix': basestring,
+        'given': basestring,
+        'middle': basestring,
+        'family': basestring,
+        'suffix': basestring
+    }
+    ID_FIELD = {
+        'url': basestring,
+        'doi': basestring,
+        'serviceID': basestring
     }
 
     REQUIRED_FIELDS = {
-        'title': str,
-        'contributors': (list, CONTRIBUTOR_FIELD),
-        'id': {
-            'url': str,
-            'doi': str,
-            'serviceID': str
-        },
-        'source': str,
-        'timestamp': str,
-        'description': str,
-        'tags': (list, str),
-        'dateUpdated': str,
-        'dateCreated': str
+        'title': basestring,
+        'contributors': [CONTRIBUTOR_FIELD],
+        'id': ID_FIELD,
+        'source': basestring,
+        'timestamp': basestring,
+        'description': basestring,
+        'tags': [basestring],
+        'dateUpdated': basestring,
+        'dateCreated': basestring
     }

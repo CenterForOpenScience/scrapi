@@ -27,4 +27,4 @@ def lint(consume, normalize):
         if not isinstance(doc, NormalizedDocument):
             raise TypeError("{} does not return type NormalizedDocument".format(consume))
 
-    print('Linting passed with 0 Errors')
+    return 'Linting passed with No Errors'
