@@ -90,7 +90,7 @@ def get_description(result):
     return abstract[0]
 
 def get_ids(result, doc):
-    serviceID = doc.get('doc_id')
+    serviceID = doc.get('docID')
     identifiers = result.xpath('//dc:identifier/node()', namespaces=NAMESPACES)
     identifiers += result.xpath('//dc:relation/node()', namespaces=NAMESPACES)
     url = ''
@@ -106,7 +106,7 @@ def get_ids(result, doc):
     if url == '':
         raise Exception('Warning: No url provided!')
 
-    return {'serviceID': serviceID, 'url': url, 'doi': doi}
+    return {"serviceID": serviceID, "url": url, "doi": doi}
 
 def get_properties(result):
     rights = result.xpath('//dc:rights/node()', namespaces=NAMESPACES) or ['']
