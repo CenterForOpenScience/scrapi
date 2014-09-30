@@ -1,5 +1,6 @@
 import os
 import json
+import shutil
 import platform
 import subprocess
 
@@ -79,6 +80,17 @@ def install_consumers(update=False):
 
         if os.path.isfile('{}/requirements.txt'.format(directory)):
             run('pip install -r {}/requirements.txt'.format(directory))
+
+
+@task
+def clean_consumers():
+    run('cd scrapi/settings/consumerManifests && git reset HEAD --hard && git pull origin master')
+
+    for listing in os.listdir('scrapi/consumers'):
+        path = os.path.join('scrapi', 'consumers', listing)
+        if os.path.isdir(path):
+            print 'Removing {}...'.format(path)
+            shutil.rmtree(path)
 
 
 @task
