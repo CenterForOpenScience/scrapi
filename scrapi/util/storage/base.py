@@ -30,7 +30,7 @@ class BaseStorage(object):
         path = [
             settings.ARCHIVE_DIRECTORY,
             raw_doc.get('source'),
-            doc_id_to_path(raw_doc.get('doc_id')),
+            doc_id_to_path(raw_doc.get('docID')),
             raw_doc.get('timestamp')
         ]
 
@@ -56,7 +56,7 @@ class BaseStorage(object):
     # :: RawDocument -> Nothing
     def store_raw(self, document):
         manifest = settings.MANIFESTS[document.get('source')]
-        doc_name = 'raw.{}'.format(manifest['file_format'])
+        doc_name = 'raw.{}'.format(manifest['fileFormat'])
         path = self._build_path(document)
         manifest = {
             'timestamp': document.get('timestamp'),
