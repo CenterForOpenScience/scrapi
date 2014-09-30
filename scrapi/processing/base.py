@@ -1,8 +1,8 @@
 class BaseProcessor(object):
     NAME = None
 
-    def process_normalized(raw_doc, normalized):
+    def process_normalized(self, raw_doc, normalized):
         pass
 
-    def process_raw(raw_doc):
+    def process_raw(self, raw_doc):
         pass

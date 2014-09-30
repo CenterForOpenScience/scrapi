@@ -11,15 +11,17 @@ for mod in os.listdir(os.path.dirname(__file__)):
     if ext == '.py' and root not in ['__init__', 'base']:
         __all__.append(root)
 
+from . import *
+
 
 def process_normalized(raw_doc, normalized):
     for p in settings.NORMALIZED_PROCESSING:
-        get_processor.process_normalized(raw_doc, normalized)
+        get_processor(p).process_normalized(raw_doc, normalized)
 
 
 def process_raw(raw_doc):
     for p in settings.RAW_PROCESSING:
-        get_processor.process_raw(raw_doc)
+        get_processor(p).process_raw(raw_doc)
 
 
 def get_processor(processor_name):
