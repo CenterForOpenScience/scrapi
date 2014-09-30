@@ -69,7 +69,7 @@ def normalize(raw_doc, timestamp, consumer_name):
     normalized = consumer.normalize(raw_doc, timestamp)
 
     logger.debug('Document {}/{} normalized sucessfully'.format(
-        consumer_name, raw_doc.get('doc_id')))
+        consumer_name, raw_doc['docID']))
 
     # Not useful if using just the osf but may need to be included for
     # A standalone scrapi
@@ -103,12 +103,12 @@ def check_archive(consumer_name, reprocess):
 
         raw_doc = RawDocument({
             'doc': raw_file,
-            'doc_id': raw_path.split('/')[-3],
+            'docID': raw_path.split('/')[-3],
             'source': consumer_name,
-            'filetype': consumer['file_format']
+            'filetype': consumer['fileFormat']
         })
 
-        normalize.si(raw_doc, timestamp, consumer_name).apply_async()
+        normalize.delay(raw_doc, timestamp, consumer_name)
 
 
 @app.task
