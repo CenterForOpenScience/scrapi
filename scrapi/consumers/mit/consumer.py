@@ -89,7 +89,7 @@ def get_description(result):
     return abstract[0]
 
 def get_ids(result, doc):
-    service_id = doc.get('doc_id')
+    serviceID = doc.get('doc_id')
     identifiers = result.xpath('//dc:identifier/node()', namespaces=NAMESPACES)
     identifiers += result.xpath('//dc:relation/node()', namespaces=NAMESPACES)
     url = ''
@@ -105,7 +105,7 @@ def get_ids(result, doc):
     if url == '':
         raise Exception('Warning: No url provided!')
 
-    return {'service_id': service_id, 'url': url, 'doi': doi}
+    return {'serviceID': serviceID, 'url': url, 'doi': doi}
 
 def get_properties(result):
     rights = result.xpath('//dc:rights/node()', namespaces=NAMESPACES) or ['']
@@ -165,7 +165,7 @@ def normalize(raw_doc, timestamp):
         "id": get_ids(result,raw_doc),
         "source": NAME,
         "dateUpdated": dateupdated,
-        "date_created": get_date_created(result),
+        "dateCreated": get_date_created(result),
         "timestamp": str(timestamp),
     }
 
