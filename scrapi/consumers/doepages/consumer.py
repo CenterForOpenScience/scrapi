@@ -116,8 +116,14 @@ def normalize(raw_doc, timestamp):
 
     normalized_dict = {
         'title': doc.xpath('//dc:title/node()', namespaces=NAMESPACES)[0],
-        'contributors': get_contributors(doc),
+        'contributors': contributor_list,
+        'properties': {
+                'publisher': (doc.xpath('//dcq:publisher/node()', namespaces=NAMESPACES) or [''])[0],
+                'publisher_sponsor': (doc.xpath('//dcq:publisherSponsor/node()', namespaces=NAMESPACES) or [''])[0],
+                'language': (doc.xpath('//dc:language/node()', namespaces=NAMESPACES) or [''])[0],
+                'type': (doc.xpath('//dc:type/node()', namespaces=NAMESPACES) or [''])[0]
 
+        },
         'description': (doc.xpath('//dc:description/node()', namespaces=NAMESPACES) or [''])[0],
         'id': get_ids(doc, raw_doc),
         'source': NAME,
