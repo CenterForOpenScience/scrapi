@@ -12,8 +12,9 @@ POST_HEADERS = {
 
 class OSFProcessor(BaseProcessor):
     NAME = 'osf'
-    HASH_FUNCTIONS = []
+
     REPORT_HASH_FUNCTIONS = []
+    RESOURCE_HASH_FUNCTIONS = []
 
     def process_normalized(self, raw_doc, normalized):
         if self.is_event(normalized):
@@ -32,7 +33,7 @@ class OSFProcessor(BaseProcessor):
             self.update_resource(normalized, resource)
 
         if not report:
-            self.create_report(normalized, report_hash, resource)
+            self.create_report(normalized, resource, report_hash)
         else:
             self.update_report(normalized, report)
 
@@ -45,11 +46,11 @@ class OSFProcessor(BaseProcessor):
 
         return hashlist
 
-    def detect_collisions(self, normalized, hashlist):
-        uuids = 'uuid:{}'.format(','.join(hashlist))
-        ret = requests.get()  # TODO
-        if ret['count'] > 0:
-            return ret['doc']
+    def detect_collisions(self, hashlist):
+        # uuids = 'uuid:{}'.format(','.join(hashlist))
+        # ret = requests.get()  # TODO
+        # if ret['count'] > 0:
+        #     return ret['doc']
         return None
 
     def create_resource(self, normalized, hashlist):
@@ -60,7 +61,7 @@ class OSFProcessor(BaseProcessor):
             'permissions': ['read']
         }
 
-        self._create_node(normalized, bundle)
+        return self._create_node(normalized, bundle)
 
     def create_report(self, normalized, parent, hashlist):
         bundle = {
@@ -71,11 +72,23 @@ class OSFProcessor(BaseProcessor):
             },
         }
 
-        self._create_node(normalized, bundle)
+        return self._create_node(normalized, bundle)
+
+    def is_event(self, normalized):
+        pass
+
+    def create_event(self, normalized):
+        pass
+
+    def update_resource(self, normalized, resource):
+        pass
+
+    def update_report(self, normalized, report):
+        pass
 
     def _create_node(self, normalized, additional):
         contributors = [
-            {'name': x['full_name'], 'email': x.get('email')}
+            {'name': x['given'], 'email': x.get('email')}
             for x in normalized['contributors']
         ]
 
@@ -92,17 +105,4 @@ class OSFProcessor(BaseProcessor):
             'data': json.dumps(bundle),
             'headers': POST_HEADERS
         }
-
-        requests.post(settings.OSF_NEW_PROJECT, **kwargs)
-
-    def create_event(self, normalized):
-        pass
-
-    def is_event(self, normalized):
-        pass
-
-    def update_resource(self, normalized, resource):
-        pass
-
-    def update_report(self, normalized, report):
-        pass
+        return requests.post(settings.OSF_NEW_PROJECT, **kwargs).json()
