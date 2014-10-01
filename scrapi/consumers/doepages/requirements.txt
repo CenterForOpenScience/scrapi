@@ -2,4 +2,3 @@ lxml==3.3.5
 nameparser==0.3.3
 python-dateutil==2.2
 requests==2.3.0
-git+http://github.com/chrisseto/scrapi.git
