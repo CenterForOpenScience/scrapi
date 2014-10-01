@@ -2,7 +2,7 @@
 -
 {
     "days": "mon-fri", 
-    "shortName": "texas state",
+    "shortName": "texasstate",
     "fileFormat": "xml", 
     "url": "https://github.com/vpnagraj/texas-state-consumer.git",
     "hour": 23,
