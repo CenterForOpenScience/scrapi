@@ -2,4 +2,4 @@ lxml==3.3.5
 requests==2.3.0
 wsgiref==0.1.2
 python-dateutil==2.2
-nameparser==0.3.3f
+nameparser==0.3.3
