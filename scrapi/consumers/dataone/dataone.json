@@ -1,0 +1,9 @@
+{
+    "days": "mon-sun",
+    "hour": 23,
+    "minute": 59,
+    "longName": "DataONE: Data Observation Network for Earth",
+    "shortName": "dataone",
+    "url": "https://github.com/erinspace/DataONE.git",
+    "fileFormat": "xml"
+}
