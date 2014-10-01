@@ -3,3 +3,4 @@ nameparser==0.3.3
 python-dateutil==2.2
 requests==2.3.0
 git+http://github.com/chrisseto/scrapi.git
+wsgiref==0.1.2
