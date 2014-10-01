@@ -1,20 +1,25 @@
 ## Consumer for the CrossRef metadata service
+from __future__ import unicode_literals
 
 import json
 import requests
 from datetime import date, timedelta
 
-from scrapi_tools import lint
-from scrapi_tools.document import RawDocument, NormalizedDocument
+from nameparser import HumanName
+
+from dateutil.parser import *
+
+from scrapi.linter import lint
+from scrapi.linter.document import RawDocument, NormalizedDocument
 
 TODAY = date.today()
 NAME = 'crossref'
 
 
 def consume(days_back=0):
-    base_url = 'http://api.crossref.org/works?filter=from-pub-date:'
+    base_url = 'http://api.crossref.org/works?filter=from-pub-date:{},until-pub-date:{}&rows=1000'
     start_date = TODAY - timedelta(days_back)
-    url = base_url + str(start_date) + ',until-pub-date:' + str(TODAY) + '&rows=1000'
+    url = base_url.format(str(start_date), str(TODAY))
     print url
     data = requests.get(url)
     doc = data.json()
@@ -27,73 +32,98 @@ def consume(days_back=0):
         doc_list.append(RawDocument({
                     'doc': json.dumps(record),
                     'source': NAME,
-                    'doc_id': doc_id,
+                    'docID': doc_id,
                     'filetype': 'xml'
                 }))
 
     return doc_list
 
-def normalize(raw_doc, timestamp):
-    doc = raw_doc.get('doc')
-    doc = json.loads(doc)
-
-    # contributors
+def get_contributors(doc):
     contributor_list = []
-    # import pdb; pdb.set_trace()
-    try:
-        contributors = doc['author']
-    except KeyError:
-        contributors = [{'given': 'no', 'family': 'authors'}]
-    for contributor in contributors:
-        try:
-            first = contributor.get('given').encode('utf-8')
-        except AttributeError:
-            first = ''
-        try:
-            last = contributor.get('family').encode('utf-8')
-        except AttributeError:
-            last = ''
-        full_name = '{0} {1}'.format(first, last)
-        contributor_list.append({'full_name': full_name, 'email': ''})
+    contributor_dict_list = doc.get('author') or []
+    full_names = []
+    for entry in contributor_dict_list:
+        full_name = '{} {}'.format(entry.get('given'), entry.get('family'))
+        full_names.append(full_name)
+    for person in full_names:
+        name = HumanName(person)
+        contributor = {
+            'prefix': name.title,
+            'given': name.first,
+            'middle': name.middle,
+            'family': name.last,
+            'suffix': name.suffix,
+            'email': '',
+            'ORCID': ''
+        }
+        contributor_list.append(contributor)
+    
+    return contributor_list
 
-    # ids
+def get_ids(doc, raw_doc):
     ids = {}
     ids['url'] = doc.get('URL')
     if ids['url'] == None:
         raise Exception('Warning: No URL provided...')
     ids['doi'] = doc.get('DOI')
-    ids['service_id'] = raw_doc.get('doc_id')
+    ids['serviceID'] = raw_doc.get('docID')
+    return ids
+
+def get_properties(doc):
+    properties = {
+        'published-in': {
+            'journalTitle': doc.get('container-title'),
+            'volume': doc.get('volume'),
+            'issue': doc.get('issue')
+        },
+        'publisher': doc.get('publisher'),
+        'type' : doc.get('type'),
+        'ISSN': doc.get('ISSN'),
+        'ISBN': doc.get('ISBN'),
+        'member': doc.get('member'),
+        'score': doc.get('score'),
+        'issued': doc.get('issued'),
+        'deposited': doc.get('deposited'),
+        'indexed': doc.get('indexed'),
+        'page' : doc.get('page'),
+        'issue': doc.get('issue'),
+        'volume' : doc.get('volume'),
+        'referenceCount': doc.get('reference-count'),
+        'updatePolicy': doc.get('update-policy'),
+        'depositedTimestamp': doc['deposited'].get('timestamp')
+    }
+    return properties
+
+def get_tags(doc):
+    tags = (((doc.get('subject') or []) + doc.get('container-title'))) or []
+    return [tag.lower() for tag in tags]
+
+def get_date_created(doc):
+    deposited_date_parts = doc['deposited'].get('date-parts') or []
+    date = ' '.join([str(part) for part in deposited_date_parts[0]]) 
+    return parse(date).isoformat()
+
+def get_date_updated(doc):
+    issued_date_parts = doc['issued'].get('date-parts') or []
+    date = ' '.join([str(part) for part in issued_date_parts[0]]) 
+    return parse(date).isoformat()
+
+def normalize(raw_doc, timestamp):
+    doc_str = raw_doc.get('doc')
+    doc = json.loads(doc_str)
 
     normalized_dict = {
-        'title': (doc.get('title') or ['No title'])[0],
-        'contributors': contributor_list,
-        'properties': {
-                'published-in': {
-                    'journal-title': doc.get('container-title'),
-                    'volume': doc.get('volume'),
-                    'issue': doc.get('issue')
-                },
-                'publisher': doc.get('publisher'),
-                'type' : doc.get('type'),
-                'ISSN': doc.get('ISSN'),
-                'ISBN': doc.get('ISBN'),
-                'member': doc.get('member'),
-                'score': doc.get('score'),
-                'issued': doc.get('issued'),
-                'deposited': doc.get('deposited'),
-                'indexed': doc.get('indexed'),
-                'reference-count': doc.get('reference-count'),
-                'update-policy': doc.get('update-policy')
-        },
+        'title': (doc.get('title') or [''])[0],
+        'contributors': get_contributors(doc),
+        'properties' : get_properties(doc),
         'description': (doc.get('subtitle') or [''])[0],
-        'meta': {},
-        'id': ids,
+        'id': get_ids(doc, raw_doc),
         'source': NAME,
-        'tags': doc.get('subject') or [],
-        'date_created': 'date_created',
-        'timestamp': str(timestamp)
+        'dateCreated': get_date_created(doc),
+        'dateUpdated' : get_date_updated(doc),
+        'timestamp': str(timestamp),
+        'tags': get_tags(doc)
     }
-    # print normalized_dict['id']
     return NormalizedDocument(normalized_dict)
 
 
