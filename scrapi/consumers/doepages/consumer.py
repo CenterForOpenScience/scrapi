@@ -82,9 +82,15 @@ def get_contributors(doc):
 
     return contributor_list
 def get_properties(doc):
-    properties = {
+    publisherInfo = {
         'publisher': (doc.xpath('//dcq:publisher/node()', namespaces=NAMESPACES) or [''])[0],
         'publisherSponsor': (doc.xpath('//dcq:publisherSponsor/node()', namespaces=NAMESPACES) or [''])[0],
+        'publisherAvailability': (doc.xpath('//dcq:publisherAvailability/node()', namespaces=NAMESPACES) or [''])[0],
+        'publisherResearch': (doc.xpath('//dcq:publisherResearch/node()', namespaces=NAMESPACES) or [''])[0],
+        'publisherCountry': (doc.xpath('//dcq:publisherCountry/node()', namespaces=NAMESPACES) or [''])[0],
+    }
+    properties = {
+        'publisherInfo': publisherInfo,
         'language': (doc.xpath('//dc:language/node()', namespaces=NAMESPACES) or [''])[0],
         'type': (doc.xpath('//dc:type/node()', namespaces=NAMESPACES) or [''])[0]
     }
@@ -107,8 +113,11 @@ def get_date_updated(doc):
     return parse(date_updated).isoformat()
 
 def get_tags(doc):
-    tags = doc.xpath('//dc:subject/node()', namespaces=NAMESPACES) or []
-    return [tag.lower() for tag in tags]
+    all_tags = doc.xpath('//dc:subject/node()', namespaces=NAMESPACES) + doc.xpath('//dc:subjectRelated/node()', namespaces=NAMESPACES)
+    tags = []
+    for taglist in all_tags:
+        tags += taglist.split(',')
+    return list(set([tag.lower().strip() for tag in tags]))
 
 def normalize(raw_doc, timestamp):
     raw_doc_string = raw_doc.get('doc')
@@ -116,14 +125,8 @@ def normalize(raw_doc, timestamp):
 
     normalized_dict = {
         'title': doc.xpath('//dc:title/node()', namespaces=NAMESPACES)[0],
-        'contributors': contributor_list,
-        'properties': {
-                'publisher': (doc.xpath('//dcq:publisher/node()', namespaces=NAMESPACES) or [''])[0],
-                'publisher_sponsor': (doc.xpath('//dcq:publisherSponsor/node()', namespaces=NAMESPACES) or [''])[0],
-                'language': (doc.xpath('//dc:language/node()', namespaces=NAMESPACES) or [''])[0],
-                'type': (doc.xpath('//dc:type/node()', namespaces=NAMESPACES) or [''])[0]
-
-        },
+        'contributors': get_contributors(doc),
+        'properties': get_properties(doc),
         'description': (doc.xpath('//dc:description/node()', namespaces=NAMESPACES) or [''])[0],
         'id': get_ids(doc, raw_doc),
         'source': NAME,
@@ -133,7 +136,7 @@ def normalize(raw_doc, timestamp):
         'timestamp': str(timestamp)
     }
 
-    print json.dumps(normalized_dict['id'], indent=4)
+    print json.dumps(normalized_dict['tags'], indent=4)
     return NormalizedDocument(normalized_dict)
 
 
