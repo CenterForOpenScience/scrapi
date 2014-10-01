@@ -1,5 +1,5 @@
 lxml==3.3.5
+nameparser==0.3.3
+python-dateutil==2.2
 requests==2.3.0
-git+http://github.com/fabianvf/scrapi-tools.git
-wsgiref==0.1.2
-xmltodict==0.9.0
+git+http://github.com/chrisseto/scrapi.git
