@@ -5,8 +5,6 @@ import requests
 from lxml import etree
 from datetime import date, timedelta, datetime
 
-import json
-
 from nameparser import HumanName
 
 from dateutil.parser import *
@@ -87,22 +85,25 @@ def get_properties(doc):
         'publisherSponsor': (doc.xpath('//dcq:publisherSponsor/node()', namespaces=NAMESPACES) or [''])[0],
         'publisherAvailability': (doc.xpath('//dcq:publisherAvailability/node()', namespaces=NAMESPACES) or [''])[0],
         'publisherResearch': (doc.xpath('//dcq:publisherResearch/node()', namespaces=NAMESPACES) or [''])[0],
-        'publisherCountry': (doc.xpath('//dcq:publisherCountry/node()', namespaces=NAMESPACES) or [''])[0],
+        'publisherCountry': (doc.xpath('//dcq:publisherCountry/node()', namespaces=NAMESPACES) or [''])[0]
     }
     properties = {
         'publisherInfo': publisherInfo,
         'language': (doc.xpath('//dc:language/node()', namespaces=NAMESPACES) or [''])[0],
-        'type': (doc.xpath('//dc:type/node()', namespaces=NAMESPACES) or [''])[0]
+        'type': (doc.xpath('//dc:type/node()', namespaces=NAMESPACES) or [''])[0],
+        'typeQualifier': (doc.xpath('//dc:typeQualifier/node()', namespaces=NAMESPACES) or [''])[0],
+        'relation': (doc.xpath('//dc:relation/node()', namespaces=NAMESPACES) or [''])[0],
+        'coverage': (doc.xpath('//dc:coverage/node()', namespaces=NAMESPACES) or [''])[0],
+        'format': (doc.xpath('//dc:format/node()', namespaces=NAMESPACES) or [''])[0],
+        'rights': (doc.xpath('//dc:rights/node()', namespaces=NAMESPACES) or [''])[0],
+        # TODO:  parse out some of these identifiers in the strings! 
+        'identifier': (doc.xpath('//dc:identifier/node()', namespaces=NAMESPACES) or [''])[0],
+        'identifierReport': (doc.xpath('//dc:identifier/node()', namespaces=NAMESPACES) or [''])[0],
+        'identifierDOEcontract': (doc.xpath('//dcq:identifierDOEcontract/node()', namespaces=NAMESPACES) or [''])[0],
+        'identifierOther': (doc.xpath('//dc:identifierOther/node()', namespaces=NAMESPACES) or [''])[0],
+        'identifier-purl': (doc.xpath('//dcq:identifier-purl/node()', namespaces=NAMESPACES) or [''])[0]
     }
     return properties
-
-   # "publisherInfo": {
-   #      "publisher": 
-   #      "publisherSponsor": 
-   #      "publisherAvailability": 
-   #      "publisherResearch": 
-   #      "publisherCountry": 
-   #  },  
 
 def get_date_created(doc):
     date_created = doc.xpath('//dc:date/node()', namespaces=NAMESPACES)[0]
@@ -136,7 +137,6 @@ def normalize(raw_doc, timestamp):
         'timestamp': str(timestamp)
     }
 
-    print json.dumps(normalized_dict['tags'], indent=4)
     return NormalizedDocument(normalized_dict)
 
 
