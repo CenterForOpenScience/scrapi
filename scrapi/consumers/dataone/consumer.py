@@ -1,4 +1,5 @@
 ## consumer for DataONE SOLR search API
+# from __future__ import unicode_literals
 
 import re
 from lxml import etree
@@ -11,7 +12,7 @@ from dateutil.parser import *
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
-NAME = "DataONE"
+NAME = "dataone"
 
 def consume(days_back=1):
     doc =  get_response(1, days_back)
@@ -38,6 +39,7 @@ def get_response(rows, days_back):
     API, with the specified number of rows.
     Returns an etree element with results '''
     url = 'https://cn.dataone.org/cn/v1/query/solr/?q=dateModified:[NOW-{0}DAY TO *]&rows='.format(days_back) + str(rows)
+    print url
     data = requests.get(url)
     doc =  etree.XML(data.content)
     return doc
@@ -88,6 +90,7 @@ def get_properties(doc):
     }
     return properties
 
+# currently unused - but maybe in the future? 
 def name_from_email(email):
     email_re = '(.+?)@'
     name = re.search(email_re, email).group(1)
@@ -96,7 +99,7 @@ def name_from_email(email):
     return name
 
 def get_contributors(doc):
-    author = (doc.xpath("str[@name='author']/node()") or [NAME])[0]
+    author = (doc.xpath("str[@name='author']/node()") or [''])[0]
     submitters = doc.xpath("str[@name='submitter']/node()")
     contributors = doc.xpath("arr[@name='origin']/str/node()")
 
@@ -117,8 +120,12 @@ def get_contributors(doc):
     contributor_list = []
     for index, contributor in enumerate(unique_contributors):
         if author_index != None and index == author_index:
-            name = name_from_email(email)
-            name = HumanName(name)
+            # if contributor == NAME and email != '':
+            #     # TODO - maybe add this back in someday
+            #       sometimes this yields really weird names like mjg4
+            #     # TODO - names not always perfectly lined up with emails...
+            #     contributor = name_from_email(email)
+            name = HumanName(contributor)
             contributor_dict = {
                 'prefix': name.title,
                 'given': name.first,
@@ -151,10 +158,13 @@ def get_ids(doc, raw_doc):
     if 'doi' in service_id:
         # regex for just getting doi out of crazy urls and sometimes not urls
         doi_re = '10\\.\\d{4}/\\w*\\.\\w{5}|10\\.\\d{4}/\\w*/\\w*\\.\\d*.\\d*'
-        regexed_doi = re.search(doi_re, service_id).group(0)
-        doi = regexed_doi
+        try:
+            regexed_doi = re.search(doi_re, service_id).group(0)
+            doi = regexed_doi
+        except AttributeError:
+            doi = service_id.replace('doi:', '')
     url = (doc.xpath('//str[@name="dataUrl"]/node()') or [''])[0]
-    ids = {'service_id':service_id, 'doi': doi, 'url':url}
+    ids = {'serviceID':service_id, 'doi': doi, 'url':url}
 
     return ids
 
@@ -163,10 +173,12 @@ def get_tags(doc):
     return [tag.lower() for tag in tags]
 
 def get_date_updated(doc):
-    pass
+    date_updated = (doc.xpath('//date[@name="dateModified"]/node()') or [''])[0]
+    return parse(date_updated).isoformat()
 
 def get_date_created(doc):
-    date_created = doc.xpath("date[@name='dateUploaded']/node()")[0]
+    date_created = (doc.xpath("date[@name='datePublished']/node()") or \
+                    doc.xpath("date[@name='pubDate']/node()") or [''])[0]
     return parse(date_created).isoformat()
 
 def normalize(raw_doc, timestamp):
@@ -181,11 +193,12 @@ def normalize(raw_doc, timestamp):
             'id': get_ids(doc, raw_doc),
             'tags': get_tags(doc),
             'source': NAME,
-            'dateCreated': date_created,
-            'dateUpdated': 'du',
+            'dateCreated': get_date_created(doc),
+            'dateUpdated': get_date_updated(doc),
             'timestamp': str(timestamp)
     }
 
+    import json; print json.dumps(normalized_dict['tags'], indent=4)
     return NormalizedDocument(normalized_dict)
 
 
