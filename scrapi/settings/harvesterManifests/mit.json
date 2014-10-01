@@ -5,5 +5,6 @@
     "url": "https://github.com/csheldonhess/MIT-consumer.git",
     "hour": 22,
     "minute": 59, 
-    "longName": "DSpace@MIT"
+    "longName": "DSpace@MIT",
+    "collisionCategory": 1
 }
