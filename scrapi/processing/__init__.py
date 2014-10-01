@@ -22,8 +22,7 @@ def process_normalized(raw_doc, normalized, kwargs):
 
 def process_raw(raw_doc):
     for p in settings.RAW_PROCESSING:
-        extras = kwargs.get(p, {})
-        get_processor(p).process_raw(raw_doc, **extras)
+        get_processor(p).process_raw(raw_doc)
 
 
 def get_processor(processor_name):
