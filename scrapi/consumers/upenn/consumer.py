@@ -224,27 +224,10 @@ def normalize(raw_doc, timestamp):
     xml_doc = etree.XML(raw_doc_text)
 
     # Title
-    try: 
-        title = result['clinical_study']['official_title']
-    except KeyError:
-        try:
-            title = result['clinical_study']['brief_title']
-        except KeyError:
-            title = ''
-            pass
+    title = (xml_doc.xpath('//official_title/node()') or xml_doc.xpath('//brief_title/node()') or [''])[0]
 
     # abstract
-    try:
-        abstract = result['clinical_study']['brief_summary'].get('textblock')
-    except KeyError:
-        try:
-            abstract = result['clinical_study']['detailed_description'].get('textblock')
-        except KeyError:
-            abstract = ''
-
-    # date created
-    date_created = result['clinical_study'].get('firstreceived_date')
-
+    abstract = (xml_doc.xpath('//brief_summary/textblock/node()') or xml_doc.xpath('//brief_summary/textblock/node()') or [''])[0]
 
     normalized_dict = {
             'title': title,
@@ -259,7 +242,7 @@ def normalize(raw_doc, timestamp):
             'timestamp': str(timestamp)
     }
 
-    print json.dumps(normalized_dict['dateUpdated'], indent=4)
+    print json.dumps(normalized_dict['title'], indent=4)
     return NormalizedDocument(normalized_dict)
 
 
