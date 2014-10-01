@@ -1,50 +1,44 @@
-''' Consumer for Wayne State University -- Digital Commons '''
-
-import time
-from lxml import etree
-from datetime import date, timedelta
+''' Consumer for St Cloud State University '''
 
 import requests
-from scrapi_tools import lint
-from scrapi_tools.document import RawDocument, NormalizedDocument
+from datetime import date, timedelta, datetime
+from dateutil.parser import *
+import time
+from lxml import etree
+from scrapi.linter import lint
+from scrapi.linter.document import RawDocument, NormalizedDocument
+from nameparser import HumanName
 
 TODAY = date.today()
-NAME = "StCloudState"
+NAME = "stcloud"
 OAI_DC_BASE_URL = 'http://repository.stcloudstate.edu/do/oai/'
-
+DEFAULT = datetime(1970, 01, 01)
 NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/', 
-            'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
-            'ns0': 'http://www.openarchives.org/OAI/2.0/'}
+              'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
+              'ns0': 'http://www.openarchives.org/OAI/2.0/'
+              }
 
 
 def consume(days_back=5):
     start_date = TODAY - timedelta(days_back)
     base_url = OAI_DC_BASE_URL + '?verb=ListRecords&metadataPrefix=oai_dc&from='
     url = base_url + str(start_date) + 'T00:00:00Z'
-    print url
-
-    # save the list of approved series names as a big list - first option
-    # series_names_list = ['acb_frp', 'agtc', 'anthrofrp', 'bio_fuel', 'biomed_eng_frp', 'biomedcentral', 'biosci_frp', 'business_frp', 'ce_eng_frp', 'chemfrp', 'cjfrp', 'cmmg', 'coe_aos', 'coe_khs', 'coe_tbf', 'coe_ted', 'commfrp', 'commsci_frp', 'compscifrp', 'cpcs_pubs', 'csdt', 'ec_eng_frp', 'englishfrp', 'geofrp', 'gerontology', 'humbiol_preprints', 'iehs', 'im_eng_frp', 'immunology_frp', 'libsp', 'mathfrp', 'med_anesthesiology', 'med_biochem', 'med_cardio', 'med_cher', 'med_dermatology', 'med_dho', 'med_did', 'med_dpacs', 'med_edm', 'med_em', 'med_intmed', 'med_neurology', 'med_neurosurgery', 'med_obgyn', 'med_ohn_surgery', 'med_oncology', 'med_opthalmology', 'med_ortho_surgery', 'med_path', 'med_pbn', 'med_pediatrics', 'med_pmr', 'med_radiology', 'med_ro', 'med_surgery', 'med_urology', 'mott_pubs', 'musicfrp', 'nfsfrp', 'nursingfrp', 'pet', 'pharm_appsci', 'pharm_healthcare', 'pharm_practice', 'pharm_science', 'pharma_frp', 'philofrp', 'phy_astro_frp', 'physio_frp', 'prb', 'provost_pub', 'psychfrp', 'skillman', 'slisfrp', 'soc_work_pubs', 'socfrp', 'urbstud_frp', 'antipodes', 'criticism', 'discourse', 'framework', 'humbiol', 'jewishfilm', 'jmasm', 'marvels', 'mpq', 'narrative', 'storytelling']
-
-
     records = get_records(url)
 
     xml_list = []
     for record in records:
-        set_spec = record.xpath('ns0:header/ns0:setSpec/node()', namespaces=NAMESPACES)[0]
         doc_id = record.xpath('ns0:header/ns0:identifier/node()', namespaces=NAMESPACES)[0]
         record_string = etree.tostring(record)
         record_string = '<?xml version="1.0" encoding="UTF-8"?>\n' + record_string
-
-        # if set_spec.replace('publication:', '') in series_name_list:
         xml_list.append(RawDocument({
-                    'doc': record_string,
-                    'source': NAME,
-                    'doc_id': doc_id,
-                    'filetype': 'xml'
-                }))
+            'doc': record_string,
+            'source': NAME,
+            'docID': doc_id,
+            'filetype': 'xml'
+        }))
 
     return xml_list
+
 
 def get_records(url):
     data = requests.get(url)
@@ -60,7 +54,69 @@ def get_records(url):
 
     return records
 
-    ## TODO: fix if there are no records found... what would the XML look like?
+
+def get_contributors(record):
+    all_contributors = record.xpath('//dc:creator/node()', namespaces=NAMESPACES)
+    contributor_list = []
+    for person in all_contributors:
+        name = HumanName(person)
+        contributor = {
+            'prefix': name.title,
+            'given': name.first,
+            'middle': name.middle,
+            'family': name.last,
+            'suffix': name.suffix,
+            'email': '',
+            'ORCID': '',
+        }
+        contributor_list.append(contributor)
+    return contributor_list
+
+
+def get_tags(record):
+    tags = record.xpath('//dc:subject/node()', namespaces=NAMESPACES)
+    return [tag.lower() for tag in tags]
+
+
+def get_ids(record, doc):
+    serviceID = doc.get('docID')
+    all_ids = record.xpath('//dc:identifier/node()', namespaces=NAMESPACES)
+    url = ''
+    for identifier in all_ids:
+        if 'viewcontent' not in identifier and OAI_DC_BASE_URL[:-7] in identifier:
+            url = identifier
+    if url is '':
+        raise Exception('Warning: No url provided!')
+    return {'serviceID': serviceID, 'url': url, 'doi': ''}
+
+
+def get_properties(record):
+    publisher = (record.xpath('//dc:publisher/node()', namespaces=NAMESPACES) or [''])[0]
+    source = (record.xpath('//dc:source/node()', namespaces=NAMESPACES) or [''])[0]
+    dctype = (record.xpath('//dc:type/node()', namespaces=NAMESPACES) or [''])[0]
+    dcformat = (record.xpath('//dc:format/node()', namespaces=NAMESPACES) or [''])[0]
+    props = {
+        'publisherInfo': {
+            'publisher': publisher,
+        },
+        'source': source,
+        'type': dctype,
+        'format': dcformat,
+    }
+    return props
+
+
+def get_date_created(record):
+    date_created = (record.xpath('ns0:metadata/oai_dc:dc/dc:date/node()', namespaces=NAMESPACES) or [''])[0]
+    a_date = parse(date_created, yearfirst=True,  default=DEFAULT).isoformat()
+    return a_date
+
+
+def get_date_updated(record):
+    dateupdated = (record.xpath('//ns0:datestamp/node()', namespaces=NAMESPACES) or [''])[0]
+    date_updated = parse(dateupdated).isoformat()
+    return date_updated
+
 
 def normalize(raw_doc, timestamp):
     doc = raw_doc.get('doc')
@@ -74,61 +130,25 @@ def normalize(raw_doc, timestamp):
     if set_spec.replace('publication:', '') not in approved_series:
         return None
 
-    # contributors #
-    contributors = record.xpath('//dc:creator', namespaces=NAMESPACES)
-    contributor_list = []
-    for contributor in contributors:
-        contributor_list.append({'full_name': contributor.text, 'email':''})
-    
-    # title
     title = record.xpath('//dc:title/node()', namespaces=NAMESPACES)[0]
-
-    # ids
-    service_id = record.xpath('ns0:header/ns0:identifier', namespaces=NAMESPACES)[0].text
-
-    all_ids = record.xpath('//dc:identifier/node()', namespaces=NAMESPACES)
-    pdf = ''
-    for identifier in all_ids:
-        if 'cgi/viewcontent' not in identifier and OAI_DC_BASE[:-7] in identifier:
-            url = identifier
-        if 'cgi/viewcontent' in identifier:
-            pdf = identifier
-
-    ids = {'url': url, 'service_id': service_id, 'doi': ''}
-
-    # description
     description = (record.xpath('//dc:description/node()', namespaces=NAMESPACES) or [''])[0]
 
-    # Earliest date - original date - - most only have one date - so this is simple!
-    date_created = (record.xpath('ns0:metadata/oai_dc:dc/dc:date/node()', namespaces=NAMESPACES) or [''])[0]
-
-    # tags
-    tags = record.xpath('//dc:subject/node()', namespaces=NAMESPACES)
-
-    #properties (publisher, source, type, format, date, pdf, all ids)
-    properties = {}
-    properties["publisher"] = (record.xpath('//dc:publisher/node()', namespaces=NAMESPACES) or [''])[0]
-    properties["source"] = (record.xpath('//dc:source/node()', namespaces=NAMESPACES) or [''])[0]
-    properties["type"] = (record.xpath('//dc:type/node()', namespaces=NAMESPACES) or [''])[0]
-    properties["format"] = (record.xpath('//dc:format/node()', namespaces=NAMESPACES) or [''])[0]
-    properties["date"] = (record.xpath('//dc:date/node()', namespaces=NAMESPACES) or [''])[0]
-    properties["pdf_download"] = pdf
-    properties['identifiers'] = all_ids
-
-    normalized_dict = {
-            'title': title,
-            'contributors': contributor_list,
-            'properties': properties,
-            'description': description,
-            'meta': {},
-            'id': ids,
-            'tags': tags,
-            'source': NAME,
-            'date_created': date_created,
-            'timestamp': str(timestamp)
+    payload = {
+        'title': title,
+        'contributors': get_contributors(record),
+        'properties': get_properties(record),
+        'description': description,
+        'tags': get_tags(record),
+        'id': get_ids(record,raw_doc),
+        'source': NAME,
+        'dateUpdated': get_date_updated(record),
+        'dateCreated': get_date_created(record),
+        'timestamp': str(timestamp),
     }
 
-    return NormalizedDocument(normalized_dict)
+    #import json
+    #print(json.dumps(payload, indent=4))
+    return NormalizedDocument(payload)
         
 
 if __name__ == '__main__':
