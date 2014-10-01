@@ -4,8 +4,12 @@ import re
 from lxml import etree
 from xml.etree import ElementTree
 import requests
-from scrapi_tools import lint
-from scrapi_tools.document import RawDocument, NormalizedDocument
+from nameparser import HumanName
+
+from dateutil.parser import *
+
+from scrapi.linter import lint
+from scrapi.linter.document import RawDocument, NormalizedDocument
 
 NAME = "DataONE"
 
@@ -23,7 +27,7 @@ def consume(days_back=1):
         xml_list.append(RawDocument({
                     'doc': record,
                     'source': NAME,
-                    'doc_id': doc_id,
+                    'docID': doc_id,
                     'filetype': 'xml'
                 }))
 
@@ -38,76 +42,7 @@ def get_response(rows, days_back):
     doc =  etree.XML(data.content)
     return doc
 
-def name_from_email(email):
-    email_re = '(.+?)@'
-    name = re.search(email_re, email).group(1)
-    if '.' in name:
-        name = name.replace('.', ' ').title()
-    return name
-
-def get_contributors(raw_doc):
-    doc = etree.XML(raw_doc)
-    ## where you left off:
-        # contributors returns only numbers, WHYYYYY
-    author = (doc.xpath("str[@name='author']/node()") or [NAME])[0]
-    submitters = doc.xpath("str[@name='submitter']/node()")
-
-    contributors = doc.xpath("arr[@name='origin']/str/node()")
-
-    unique_contributors = list(set([author] + contributors))
-
-    # this is the index of the author in the unique_contributors list
-    if author != '':
-        author_index = unique_contributors.index(author)
-    else:
-        author_index = None
-
-    # grabs the email if there is one, this should go with the author index
-    email = ''
-    for submitter in submitters:
-        if '@' in submitter:
-            email = submitter
-
-    contributor_list = []
-    for index, contributor in enumerate(unique_contributors):
-        if author_index != None and index == author_index:
-            if contributor == NAME and email != '':
-                contributor = name_from_email(email)
-            contributor_list.append({'full_name': contributor, 'email': email})
-        else:
-            contributor_list.append({'full_name': contributor, 'email': ''})
-
-    return contributor_list
-
-def normalize(raw_doc, timestamp):
-    raw_doc_text = raw_doc.get('doc')
-    doc = etree.XML(raw_doc_text)
-
-    # title    
-    title = (doc.xpath("str[@name='title']/node()") or ['No Title Available'])[0]
-    
-    tags = doc.xpath("//arr[@name='keywords']/str/node()")
-
-    # id
-    doi = ''
-    service_id = raw_doc.get('doc_id')
-    if 'doi' in service_id:
-        # regex for just getting doi out of crazy urls and sometimes not urls
-        doi_re = '10\\.\\d{4}/\\w*\\.\\w{5}|10\\.\\d{4}/\\w*/\\w*\\.\\d*.\\d*'
-        regexed_doi = re.search(doi_re, service_id).group(0)
-        doi = regexed_doi
-
-    url = doc.xpath('//str[@name="dataUrl"]/node()') or ['']
-
-    ids = {'service_id':service_id, 'doi': doi, 'url':url[0]}
-
-    description = (doc.xpath("str[@name='abstract']/node()") or [''])[0]
-
-    date_created = doc.xpath("date[@name='dateUploaded']/node()")[0]
-
-    contributor_list = get_contributors(raw_doc_text)
-
-    ## properties ##
+def get_properties(doc):
     properties = { 
         'author': (doc.xpath("str[@name='author']/node()") or [''])[0],
         'authorGivenName': (doc.xpath("str[@name='authorGivenName']/node()") or [''])[0],
@@ -151,18 +86,103 @@ def normalize(raw_doc, timestamp):
         'sku': (doc.xpath("str[@name='sku']/node()") or [''])[0],
         'isDocumentedBy': doc.xpath("arr[@name='isDocumentedBy']/str/node()"),
     }
+    return properties
 
-    # updateDate
+def name_from_email(email):
+    email_re = '(.+?)@'
+    name = re.search(email_re, email).group(1)
+    if '.' in name:
+        name = name.replace('.', ' ').title()
+    return name
+
+def get_contributors(doc):
+    author = (doc.xpath("str[@name='author']/node()") or [NAME])[0]
+    submitters = doc.xpath("str[@name='submitter']/node()")
+    contributors = doc.xpath("arr[@name='origin']/str/node()")
+
+    unique_contributors = list(set([author] + contributors))
+
+    # this is the index of the author in the unique_contributors list
+    if author != '':
+        author_index = unique_contributors.index(author)
+    else:
+        author_index = None
+
+    # grabs the email if there is one, this should go with the author index
+    email = ''
+    for submitter in submitters:
+        if '@' in submitter:
+            email = submitter
+
+    contributor_list = []
+    for index, contributor in enumerate(unique_contributors):
+        if author_index != None and index == author_index:
+            name = name_from_email(email)
+            name = HumanName(name)
+            contributor_dict = {
+                'prefix': name.title,
+                'given': name.first,
+                'middle': name.middle,
+                'family': name.last,
+                'suffix': name.suffix,
+                'email': email,
+                'ORCID': ''
+            }
+            contributor_list.append(contributor_dict)
+        else:
+            name = HumanName(contributor)
+            contributor_list.append({
+                'prefix': name.title,
+                'given': name.first,
+                'middle': name.middle,
+                'family': name.last,
+                'suffix': name.suffix,
+                'email': '',
+                'ORCID': ''
+            })
+
+    return contributor_list
+
+
+def get_ids(doc, raw_doc):
+    # id
+    doi = ''
+    service_id = raw_doc.get('docID')
+    if 'doi' in service_id:
+        # regex for just getting doi out of crazy urls and sometimes not urls
+        doi_re = '10\\.\\d{4}/\\w*\\.\\w{5}|10\\.\\d{4}/\\w*/\\w*\\.\\d*.\\d*'
+        regexed_doi = re.search(doi_re, service_id).group(0)
+        doi = regexed_doi
+    url = (doc.xpath('//str[@name="dataUrl"]/node()') or [''])[0]
+    ids = {'service_id':service_id, 'doi': doi, 'url':url}
+
+    return ids
+
+def get_tags(doc):
+    tags = doc.xpath("//arr[@name='keywords']/str/node()")
+    return [tag.lower() for tag in tags]
+
+def get_date_updated(doc):
+    pass
+
+def get_date_created(doc):
+    date_created = doc.xpath("date[@name='dateUploaded']/node()")[0]
+    return parse(date_created).isoformat()
+
+def normalize(raw_doc, timestamp):
+    raw_doc_text = raw_doc.get('doc')
+    doc = etree.XML(raw_doc_text)
+
     normalized_dict = {
-            'title': title,
-            'contributors': contributor_list,
-            'properties': properties,
-            'description': description,
-            'meta': {},
-            'id': ids,
-            'tags': tags,
+            'title': (doc.xpath("str[@name='title']/node()") or [''])[0],
+            'contributors': get_contributors(doc),
+            'properties': get_properties(doc),
+            'description': (doc.xpath("str[@name='abstract']/node()") or [''])[0],
+            'id': get_ids(doc, raw_doc),
+            'tags': get_tags(doc),
             'source': NAME,
-            'date_created': date_created,
+            'dateCreated': date_created,
+            'dateUpdated': 'du',
             'timestamp': str(timestamp)
     }
 
