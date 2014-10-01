@@ -113,6 +113,10 @@ def get_properties(result):
     language = (result.xpath('//dc:language/node()', namespaces=NAMESPACES) or [''])[0]
     publisher = (result.xpath('//dc:publisher/node()', namespaces=NAMESPACES) or [''])[0]
     dcformat = (result.xpath('//dc:format/node()', namespaces=NAMESPACES) or [''])[0]
+    relation = (result.xpath('//dc:relation/node()', namespaces=NAMESPACES) or [''])[0]
+    dctype = (result.xpath('//dc:type/node()', namespaces=NAMESPACES) or [''])
+    if len(dctype) > 1:
+        dctype = ' '.join(dctype)
 
     props = {'permissions':
          {
@@ -125,6 +129,8 @@ def get_properties(result):
          'format': dcformat,
          'source': source,
          'language': language,
+         'relation': relation,
+         'type': dctype,
      }
     return props
 
@@ -148,6 +154,15 @@ def normalize(raw_doc, timestamp):
         result = etree.XML(result)
     except etree.XMLSyntaxError:
         print('Error in namespaces! Skipping this one...')
+        return None
+
+        # # load the list of approved series_names as a file
+    with open('series_names.txt') as series_names:
+        series_name_list = [word.replace('\n', '') for word in series_names]
+    set_spec = result.xpath('ns0:header/ns0:setSpec/node()', namespaces=NAMESPACES)[0]
+
+    if set_spec not in series_name_list:
+        print('Series not in approved list, not normalizing...')
         return None
 
     title = result.xpath('//dc:title/node()', namespaces=NAMESPACES)[0]
