@@ -7,12 +7,14 @@ import re
 
 TODAY = datetime.date.today()
 YESTERDAY = TODAY - datetime.timedelta(1)
-NAME = 'SciTech'
+NAME = 'scitech'
 
 
 def consume(days_back=1, end_date=None, **kwargs):
-    """A function for querying the SciTech Connect database for raw XML. The XML is chunked into smaller pieces, each representing data
-    about an article/report. If there are multiple pages of results, this function iterates through all the pages."""
+    """A function for querying the SciTech Connect database for raw XML. 
+    The XML is chunked into smaller pieces, each representing data
+    about an article/report. If there are multiple pages of results, 
+    this function iterates through all the pages."""
 
     start_date = (TODAY - datetime.timedelta(days_back)).strftime('%m/%d/%Y')
     base_url = 'http://www.osti.gov/scitech/scitechxml'
@@ -40,14 +42,16 @@ def consume(days_back=1, end_date=None, **kwargs):
 
 
 def normalize(raw_doc, timestamp):
-    """A function for parsing the list of XML objects returned by the consume function.
-    Returns a list of Json objects in a format that can be recognized by the OSF scrapi."""
+    """A function for parsing the list of XML objects returned by the 
+    consume function.
+    Returns a list of Json objects in a format that can be recognized 
+    by the OSF scrapi."""
     raw_doc = raw_doc.get('doc')
     terms_url = 'http://purl.org/dc/terms/'
     elements_url = 'http://purl.org/dc/elements/1.1/'
     record = etree.XML(raw_doc)
 
-    contributor_list = record.find(str(etree.QName(elements_url, 'creator'))).text.split(';') or ['DoE']
+    contributor_list = record.find(str(etree.QName(elements_url, 'creator'))).text.split(';') or ['']
     # for now, scitech does not grab emails, but it could soon?
     contributors = []
     for name in contributor_list:
@@ -69,33 +73,33 @@ def normalize(raw_doc, timestamp):
         'title': record.find(str(etree.QName(elements_url, 'title'))).text,
         'contributors': contributors,
         'properties': {
-            'article_type': record.find(str(etree.QName(elements_url, 'type'))).text or 'Not provided',
-            'date_entered': record.find(str(etree.QName(elements_url, 'dateEntry'))).text or 'Not provided',
-            'research_org': record.find(str(etree.QName(terms_url, 'publisherResearch'))).text or 'Not provided',
-            'research_sponsor': record.find(str(etree.QName(terms_url, 'publisherSponsor'))).text or 'Not provided',
-            'research_country': record.find(str(etree.QName(terms_url, 'publisherCountry'))).text or 'Not provided',
+            'article_type': record.find(str(etree.QName(elements_url, 'type'))).text or '',
+            'date_entered': record.find(str(etree.QName(elements_url, 'dateEntry'))).text or '',
+            'research_org': record.find(str(etree.QName(terms_url, 'publisherResearch'))).text or '',
+            'research_sponsor': record.find(str(etree.QName(terms_url, 'publisherSponsor'))).text or '',
+            'research_country': record.find(str(etree.QName(terms_url, 'publisherCountry'))).text or '',
             'identifier_info': {
-                'identifier': record.find(str(etree.QName(elements_url, 'identifier'))).text or "Not provided",
-                'identifier_report': record.find(str(etree.QName(elements_url, 'identifierReport'))).text or "Not provided",
-                'identifier_contract': record.find(str(etree.QName(terms_url, 'identifierDOEcontract'))) or "Not provided",
-                'identifier_citation': record.find(str(etree.QName(terms_url, 'identifier-citation'))) or "Not provided",
-                'identifier_other': record.find(str(etree.QName(elements_url, 'identifierOther'))) or "Not provided"
+                'identifier': record.find(str(etree.QName(elements_url, 'identifier'))).text or "",
+                'identifier_report': record.find(str(etree.QName(elements_url, 'identifierReport'))).text or "",
+                'identifier_contract': record.find(str(etree.QName(terms_url, 'identifierDOEcontract'))) or "",
+                'identifier_citation': record.find(str(etree.QName(terms_url, 'identifier-citation'))) or "",
+                'identifier_other': record.find(str(etree.QName(elements_url, 'identifierOther'))) or ""
             },
-            'relation': record.find(str(etree.QName(elements_url, 'relation'))).text or "Not provided",
-            'coverage': record.find(str(etree.QName(elements_url, 'coverage'))).text or "Not provided",
-            'format': record.find(str(etree.QName(elements_url, 'format'))).text or "Not provided",
-            'language': record.find(str(etree.QName(elements_url, 'language'))).text or "Not provided"
+            'relation': record.find(str(etree.QName(elements_url, 'relation'))).text or "",
+            'coverage': record.find(str(etree.QName(elements_url, 'coverage'))).text or "",
+            'format': record.find(str(etree.QName(elements_url, 'format'))).text or "",
+            'language': record.find(str(etree.QName(elements_url, 'language'))).text or ""
         },
         'meta': {},
         'id': {
             'service_id': record.find(str(etree.QName(elements_url, 'ostiId'))).text,
-            'doi': record.find(str(etree.QName(elements_url, 'doi'))).text or 'Not provided',
-            'url': record.find(str(etree.QName(terms_url, 'identifier-purl'))).text or "Not provided",
+            'doi': record.find(str(etree.QName(elements_url, 'doi'))).text or '',
+            'url': record.find(str(etree.QName(terms_url, 'identifier-purl'))).text or "",
         },
         'source': NAME,
         'timestamp': str(timestamp),
         'date_created': record.find(str(etree.QName(elements_url, 'date'))).text,
-        'description': record.find(str(etree.QName(elements_url, 'description'))).text or 'No description provided',
+        'description': record.find(str(etree.QName(elements_url, 'description'))).text or '',
         'tags': tags or [],
     }
     return NormalizedDocument(normalized_dict)
