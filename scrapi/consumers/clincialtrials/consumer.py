@@ -1,18 +1,22 @@
 #!/usr/bin/env python
 from datetime import date, timedelta
+import json
 import time
 import xmltodict
 import requests
 from lxml import etree
-from lxml import objectify
 from xml.parsers import expat
-from scrapi_tools import lint
-from scrapi_tools.document import RawDocument, NormalizedDocument
+from nameparser import HumanName
+from dateutil.parser import *
+
+
+from scrapi.linter import lint
+from scrapi.linter.document import RawDocument, NormalizedDocument
 
 TODAY = date.today()
 NAME = "ClinicalTrials"
 
-def consume(days_back=1):
+def consume(days_back=5):
     """ First, get a list of all recently updated study urls,
     then get the xml one by one and save it into a list 
     of docs including other information """
@@ -32,48 +36,67 @@ def consume(days_back=1):
                 format(y_month, y_day, y_year, month, day, year)
 
     url = base_url + url_end
-    print url
 
     # grab the total number of studies
     initial_request = requests.get(url)
-    initial_request = xmltodict.parse(initial_request.text) 
-    count = initial_request['search_results']['@count']
+    initial_request_xml = etree.XML(initial_request.content) 
+    count = int(initial_request_xml.xpath('//search_results/@count')[0])
 
     xml_list = []
     if int(count) > 0:
         # get a new url with all results in it
-        url = url + '&count=' + count
+        url = url + '&count=' + str(count)
         total_requests = requests.get(url)
+        initial_doc = etree.XML(total_requests.content)
         response = xmltodict.parse(total_requests.text)
 
         # make a list of urls from that full list of studies
         study_urls = []
-        for study in response['search_results']['clinical_study']:
-            study_urls.append(study['url'] + '?displayxml=true')
+        for study in initial_doc.xpath('//clinical_study'):
+            study_urls.append(study.xpath('url/node()')[0] + '?displayxml=true')
 
         # grab each of those urls for full content
-        for study_url in study_urls[:5]:
+        for study_url in study_urls[:2]:
+            print study_url
             content = requests.get(study_url)
-            try:
-                xml_doc = xmltodict.parse(content.text)
-            except expat.ExpatError:
-                print 'xml reading error for ' + study_url
-                pass
-            doc_id = xml_doc['clinical_study']['id_info']['nct_id']
+            doc = etree.XML(content.content)
+            doc_id = doc.xpath('//nct_id/node()')[0]
             xml_list.append(RawDocument({
                     'doc': content.content,
                     'source': NAME,
-                    'doc_id': doc_id,
+                    'docID': doc_id,
                     'filetype': 'xml',
                 }))
             time.sleep(1)
 
-        if int(count) == 0:
-            print "No new or updated studies!"
-        else: 
-            pass
-
     return xml_list
+
+def get_contributors(xml_doc):
+    contributor_list = []
+    contributors = xml_doc.xpath('//overall_official/last_name/node()') or xml_doc.xpath('//lead_sponsor/agency/node()') or ['']
+    for person in contributors:
+        name = HumanName(person)
+        contributor = {
+            'prefix': name.title,
+            'given': name.first,
+            'middle': name.middle,
+            'family': name.last,
+            'suffix': name.suffix,
+            'email': '',
+            'ORCID': ''
+        }
+        contributor_list.append(contributor)
+    return contributor_list
+
+
+def get_ids(raw_doc, xml_doc):
+    url = (xml_doc.xpath('//required_header/url/node()') or [''])[0]
+    ids = {'serviceID': raw_doc.get('docID'), 'doi': '', 'url': url}
+    return ids
+
+def get_tags(xml_doc):
+    keywords = [tag.lower() for  tag in xml_doc.xpath('//keyword/node()')]
+    return keywords
 
 def get_properties(xml_doc):
     lead_sponsor  = {
@@ -128,6 +151,7 @@ def get_properties(xml_doc):
     ## location has a facility name - and address with seperate city state zip country
     ## {name: 'facility name', address: {city: 'city', state:'state', zip: 'zip', country:'country'}, status: 'status'}
 
+    ## TODO: location sometimes has contact with name and email - what do? 
     # location_elements = xml_doc.xpath('//location')
     # locations = []
     # upper_level = [item.getchildren() for item in location_elements]
@@ -157,40 +181,47 @@ def get_properties(xml_doc):
     ## extra properties ##
     properties = {
         'sponsors': lead_sponsor,
-        'oversight_authority': xml_doc.xpath('//oversigh_info/authority/node()'),
-        'study_design': (xml_doc.xpath('//study_design/node') or [''])[0],
-        'primary_outcome': primary_outcome,
+        'oversightAuthority': xml_doc.xpath('//oversigh_info/authority/node()'),
+        'studyDesign': (xml_doc.xpath('//study_design/node') or [''])[0],
+        'primaryOutcome': primary_outcome,
         'secondary_outcomes': secondary_outcomes,
-        'number_of_arms' : (xml_doc.xpath('//number_of_arms/node()') or [''])[0],
+        'numberOfArms' : (xml_doc.xpath('//number_of_arms/node()') or [''])[0],
         'enrollment': enrollment,
         'source': (xml_doc.xpath('//source/node()') or [''])[0],
         'condition': (xml_doc.xpath('//condition/node()') or [''])[0], 
-        'arm_group' : arm_groups, 
+        'armGroup' : arm_groups, 
         'intervention': interventions,
         'eligibility': eligibility,
         'link' : links,
-        'verification_date': (xml_doc.xpath('//verification_date/node()') or [''])[0],
-        'last_changed': (xml_doc.xpath('//lastchanged_date/node()') or [''])[0],
+        'verificationDate': (xml_doc.xpath('//verification_date/node()') or [''])[0],
+        'lastChanged': (xml_doc.xpath('//lastchanged_date/node()') or [''])[0],
         'responsible_party' : responsible_party,
         'status': (xml_doc.xpath('//status/node()') or [''])[0],
-        'location_countries': xml_doc.xpath('//location_countries/country/node()'),
-        'is_fda_regulated' : (xml_doc.xpath('//is_fda_regulated/node()') or [''])[0],
-        'is_section_801': (xml_doc.xpath('//is_section_801/node()') or [''])[0],
-        'has_expanded_access': (xml_doc.xpath('//has_expanded_access/node()') or [''])[0]
+        'locationCountries': xml_doc.xpath('//location_countries/country/node()'),
+        'isFDARegulated' : (xml_doc.xpath('//is_fda_regulated/node()') or [''])[0],
+        'isSection801': (xml_doc.xpath('//is_section_801/node()') or [''])[0],
+        'hasExpandedAccess': (xml_doc.xpath('//has_expanded_access/node()') or [''])[0]
     }
 
     return properties
 
+def get_date_created(xml_doc):
+    date_created = (xml_doc.xpath('//firstreceived_date/node()') or [''])[0]
+    return parse(date_created).isoformat()
+
+def get_date_updated(xml_doc):
+    date_updated = (xml_doc.xpath('//lastchanged_date/node()') or [''])[0]
+    return parse(date_updated).isoformat()
+
 def normalize(raw_doc, timestamp):
-    raw_doc = raw_doc.get('doc')
+    raw_doc_text = raw_doc.get('doc')
     try:
-        result = xmltodict.parse(raw_doc)
+        result = xmltodict.parse(raw_doc_text)
     except expat.ExpatError:
         print 'xml reading error...'
         pass
 
-    xml_doc = etree.XML(raw_doc)
-    xml_object = objectify.XML(raw_doc)
+    xml_doc = etree.XML(raw_doc_text)
 
     # Title
     try: 
@@ -199,12 +230,8 @@ def normalize(raw_doc, timestamp):
         try:
             title = result['clinical_study']['brief_title']
         except KeyError:
-            title = 'No title available'
+            title = ''
             pass
-
-    # contributors
-    contributor_list = xml_doc.xpath('//overall_official/last_name/node()') or xml_doc.xpath('//lead_sponsor/agency/node()') or ['No contributors']
-    contributors = [{'full_name': contributor_list[0], 'email': ''}]
 
     # abstract
     try:
@@ -213,34 +240,26 @@ def normalize(raw_doc, timestamp):
         try:
             abstract = result['clinical_study']['detailed_description'].get('textblock')
         except KeyError:
-            abstract = 'No abstract available'
-
-    # IDs
-    try: 
-        nct_id = result['clinical_study']['id_info']['nct_id']
-    except KeyError:
-        nct_id = 'Secondary ID: ' + result['clinical_study']['id_info'].get('secondary_id')
-    url = result['clinical_study']['required_header'].get('url')
-    ids = {'service_id': nct_id, 'doi': '', 'url': url}
+            abstract = ''
 
     # date created
     date_created = result['clinical_study'].get('firstreceived_date')
 
-    # tags/keywords
-    keywords = xml_doc.xpath('//keyword/node()')
 
     normalized_dict = {
             'title': title,
-            'contributors': contributors,
+            'contributors': get_contributors(xml_doc),
             'properties': get_properties(xml_doc),
             'description': abstract,
-            'id': ids,
+            'id': get_ids(raw_doc, xml_doc),
             'source': NAME,
-            'tags': keywords,
-            'date_created': date_created,
+            'tags': get_tags(xml_doc),
+            'dateCreated': get_date_created(xml_doc),
+            'dateUpdated': get_date_updated(xml_doc),
             'timestamp': str(timestamp)
     }
 
+    print json.dumps(normalized_dict['dateUpdated'], indent=4)
     return NormalizedDocument(normalized_dict)
 
 
