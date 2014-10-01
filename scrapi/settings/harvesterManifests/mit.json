@@ -1,0 +1,9 @@
+{
+    "days": "mon-fri", 
+    "shortName": "mit",
+    "fileFormat": "xml", 
+    "url": "https://github.com/csheldonhess/MIT-consumer.git",
+    "hour": 22,
+    "minute": 59, 
+    "longName": "DSpace@MIT"
+}
