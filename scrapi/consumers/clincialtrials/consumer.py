@@ -1,20 +1,22 @@
 #!/usr/bin/env python
-from datetime import date, timedelta
-import json
-import time
-import xmltodict
-import requests
-from lxml import etree
-from xml.parsers import expat
-from nameparser import HumanName
-from dateutil.parser import *
+from __future__ import unicode_literals
 
+import time
+from datetime import date, timedelta
+
+import requests
+
+from lxml import etree
+
+from nameparser import HumanName
+
+from dateutil.parser import *
 
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
 TODAY = date.today()
-NAME = "ClinicalTrials"
+NAME = "clinicaltrials"
 
 def consume(days_back=5):
     """ First, get a list of all recently updated study urls,
@@ -48,7 +50,6 @@ def consume(days_back=5):
         url = url + '&count=' + str(count)
         total_requests = requests.get(url)
         initial_doc = etree.XML(total_requests.content)
-        response = xmltodict.parse(total_requests.text)
 
         # make a list of urls from that full list of studies
         study_urls = []
@@ -56,8 +57,7 @@ def consume(days_back=5):
             study_urls.append(study.xpath('url/node()')[0] + '?displayxml=true')
 
         # grab each of those urls for full content
-        for study_url in study_urls[:2]:
-            print study_url
+        for study_url in study_urls:
             content = requests.get(study_url)
             doc = etree.XML(content.content)
             doc_id = doc.xpath('//nct_id/node()')[0]
@@ -73,6 +73,7 @@ def consume(days_back=5):
 
 def get_contributors(xml_doc):
     contributor_list = []
+    #TODO - fix this for weird contributor names like companies
     contributors = xml_doc.xpath('//overall_official/last_name/node()') or xml_doc.xpath('//lead_sponsor/agency/node()') or ['']
     for person in contributors:
         name = HumanName(person)
@@ -215,12 +216,6 @@ def get_date_updated(xml_doc):
 
 def normalize(raw_doc, timestamp):
     raw_doc_text = raw_doc.get('doc')
-    try:
-        result = xmltodict.parse(raw_doc_text)
-    except expat.ExpatError:
-        print 'xml reading error...'
-        pass
-
     xml_doc = etree.XML(raw_doc_text)
 
     # Title
@@ -242,7 +237,6 @@ def normalize(raw_doc, timestamp):
             'timestamp': str(timestamp)
     }
 
-    print json.dumps(normalized_dict['title'], indent=4)
     return NormalizedDocument(normalized_dict)
 
 
