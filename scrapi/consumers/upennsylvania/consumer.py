@@ -1,11 +1,13 @@
 # Consumer for UPenn Scholarly Commons
 
 import requests
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
+from dateutil.parser import *
 import time
-from lxml import etree 
-from scrapi_tools import lint
-from scrapi_tools.document import RawDocument, NormalizedDocument
+from lxml import etree
+from scrapi.linter import lint
+from scrapi.linter.document import RawDocument, NormalizedDocument
+from nameparser import HumanName
 
 NAME = 'upenn'
 TODAY = date.today()
@@ -20,7 +22,6 @@ def consume(days_back=5):
     start_date = TODAY - timedelta(days_back)
     # YYYY-MM-DD hh:mm:ss
     url = base_url + str(start_date)
-
     records = get_records(url)
 
     xml_list = []
