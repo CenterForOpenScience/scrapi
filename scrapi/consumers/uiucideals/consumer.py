@@ -168,7 +168,7 @@ def normalize(raw_doc, timestamp):
         'timestamp': str(timestamp)
 
     }
-    import json; print json.dumps(payload['tags'], indent=4)
+    import json; print json.dumps(payload['dateUpdated'], indent=4)
     return NormalizedDocument(payload)
 
 if __name__ == '__main__':
