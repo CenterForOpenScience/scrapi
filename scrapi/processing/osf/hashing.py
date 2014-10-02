@@ -60,8 +60,8 @@ def get_title(doc):
 
 
 def is_project(doc):
-    return 'cebwrpg'
+    return ';isProject:true'
 
 
-REPORT_HASH_FUNCTIONS = [get_title, get_contributors, get_doi, get_source, get_id]
+REPORT_HASH_FUNCTIONS = [get_title, get_contributors, get_doi, get_id]
 RESOURCE_HASH_FUNCTIONS = [get_title, get_contributors, is_project]

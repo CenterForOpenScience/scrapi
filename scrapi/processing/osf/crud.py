@@ -13,6 +13,7 @@ POST_HEADERS = {
 }
 EVENT_TYPES = ['letter', 'image']
 
+
 def create_resource(normalized, hashlist):
     bundle = {
         'systemData': {
@@ -26,12 +27,13 @@ def create_resource(normalized, hashlist):
 
 def update_resource(normalized, resource):
     current = _get_metadata(resource)
+    normalized = normalized.attributes
 
     if current['collisionCategory'] > normalized['collisionCategory']:
-        new = deepcopy(current.attributes)
+        new = deepcopy(current)
         new.update(normalized)
     else:
-        new = deepcopy(normalized.attributes)
+        new = deepcopy(normalized)
         new.update(current)
 
     if not is_claimed(resource):
@@ -120,8 +122,8 @@ def get_collision_cat(source):
 
 def clean_report(normalized):
     new = deepcopy(normalized)
-    del new['source']
     del new['id']
+    del new['source']
     return new
 
 

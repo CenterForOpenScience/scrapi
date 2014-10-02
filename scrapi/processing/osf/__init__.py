@@ -20,7 +20,7 @@ class OSFProcessor(BaseProcessor):
         resource_hash = collision.generate_resource_hash_list(resource_norm)
 
         report = collision.detect_collisions(report_hash)
-        resource = collision.detect_collisions(resource_hash)
+        resource = collision.detect_collisions(resource_hash, additional=';isProject:true')
 
         if not resource:
             resource = crud.create_resource(resource_norm, resource_hash)
