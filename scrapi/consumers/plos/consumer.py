@@ -59,7 +59,7 @@ def consume(days_back=1):
                     'doc': etree.tostring(result),
                     'source': NAME,
                     'docID': docID,
-                    'filetype': '.xml',
+                    'filetype': 'xml',
                 }))
 
         start += MAX_ROWS_PER_REQUEST
