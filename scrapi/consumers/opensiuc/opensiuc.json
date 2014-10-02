@@ -2,8 +2,8 @@
     "days": "mon-sun",
     "hour": 23,
     "minute": 59,
-    "longName": "ClinicalTrials.gov",
-    "shortName": "clinicaltrials",
+    "longName": "OpenSIUC at the Southern Illinois University Carbondale",
+    "shortName": "opensiuc",
     "url": "https://github.com/erinspace/OpenSIUC.git",
     "fileFormat": "xml",
     "collisionCategory": 1
