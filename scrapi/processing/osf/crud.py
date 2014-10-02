@@ -70,7 +70,12 @@ def is_event(normalized):
 
 
 def create_event(normalized):
-    pass
+    kwargs = {
+        'auth': settings.OSF_AUTH,
+        'data': json.dumps(normalized),
+        'headers': POST_HEADERS
+    }
+    return requests.post(settings.OSF_CREATE_EVENT, **kwargs).json()
 
 
 def is_claimed(resource):
