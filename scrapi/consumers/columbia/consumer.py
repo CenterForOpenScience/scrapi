@@ -4,13 +4,9 @@ from __future__ import unicode_literals
 import time
 import requests
 from lxml import etree
-import datetime
-from datetime import *
-
+from datetime import date, timedelta, datetime
 from nameparser import HumanName
-
 from dateutil.parser import *
-
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
@@ -21,7 +17,7 @@ NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/',
               'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
               'ns0': 'http://www.openarchives.org/OAI/2.0/'}
 OAI_DC_BASE_URL = 'http://academiccommons.columbia.edu/catalog/oai?verb=ListRecords&'
-DEFAULT = datetime(2014, 01, 01)
+DEFAULT = datetime(2070, 01, 01)
 
 
 def consume(days_back=5):
@@ -47,12 +43,11 @@ def consume(days_back=5):
 
 
 def get_records(url):
-    print url
     data = requests.get(url)
     try:
         doc = etree.XML(data.content)
     except etree.XMLSyntaxError:
-        print 'XML error'
+        print('XML error')
         return
 
     records = doc.xpath('//ns0:record', namespaces=NAMESPACES)
@@ -136,7 +131,8 @@ def normalize(raw_doc, timestamp):
         'timestamp': str(timestamp)
     }
 
-    import json; print json.dumps(normalized_dict['tags'], indent=4)
+    #import json
+    # print json.dumps(normalized_dict, indent=4)
     return NormalizedDocument(normalized_dict)
 
 
