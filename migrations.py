@@ -19,8 +19,8 @@ def migrate_from_old_scrapi():
                 with open(oldpath) as old:
                     old_json = json.load(old)
                 new_json = {
-                    'consumerVersion': old_json['version'],
-                    'normalizeVersion': old_json['version'],
+                    'consumerVersion': old_json['consumer_version'],
+                    'normalizeVersion': old_json['consumer_version'],
                     'timestamp': dt,
                     'source': source,
                     'id': sid
