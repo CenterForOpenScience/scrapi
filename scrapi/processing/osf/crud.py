@@ -54,7 +54,8 @@ def update_resource(normalized, resource):
         kwargs = {
             'auth': settings.OSF_AUTH,
             'data': json.dumps(update),
-            'headers': POST_HEADERS
+            'headers': POST_HEADERS,
+            'verify': settings.VERIFY_SSL
         }
         requests.post(resource_url, **kwargs).json()
 
@@ -101,7 +102,8 @@ def create_event(normalized):
     kwargs = {
         'auth': settings.OSF_AUTH,
         'data': json.dumps(normalized),
-        'headers': POST_HEADERS
+        'headers': POST_HEADERS,
+        'verify': settings.VERIFY_SSL
     }
     return requests.post(settings.OSF_CREATE_EVENT, **kwargs).json()
 
@@ -109,7 +111,7 @@ def create_event(normalized):
 def is_claimed(resource):
     url = '{}get_contributors/'.format(settings.OSF_URL.format(resource))
 
-    ret = requests.get(url, auth=settings.OSF_AUTH).json()
+    ret = requests.get(url, auth=settings.OSF_AUTH, verify=settings.VERIFY_SSL).json()
     for contributor in ret['contributors']:
         if contributor['registered']:
             return True
@@ -151,6 +153,7 @@ def _create_node(normalized, additional, hashlist):
     kwargs = {
         'auth': settings.OSF_AUTH,
         'data': json.dumps(bundle),
+        'verify': settings.VERIFY_SSL,
         'headers': POST_HEADERS
     }
     return requests.post(settings.OSF_NEW_PROJECT, **kwargs).json()
@@ -158,14 +161,15 @@ def _create_node(normalized, additional, hashlist):
 
 def _get_metadata(id):
     url = '{}{}/'.format(settings.OSF_APP_URL, id)
-    return requests.get(url, auth=settings.OSF_AUTH).json()
+    return requests.get(url, auth=settings.OSF_AUTH, verify=settings.VERIFY_SSL).json()
 
 
 def _post_metadata(id, data):
     kwargs = {
         'data': json.dumps(data),
         'headers': POST_HEADERS,
-        'auth': settings.OSF_AUTH
+        'auth': settings.OSF_AUTH,
+        'verify': settings.VERIFY_SSL
     }
     url = '{}{}/'.format(settings.OSF_APP_URL, id)
 
