@@ -14,7 +14,10 @@ from nameparser import HumanName
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
-import settings
+try:
+    from settings import PLOS_API_KEY
+except ImportError:
+    from scrapi.settings import PLOS_API_KEY
 
 TODAY = str(date.today()) + "T00:00:00Z"
 MAX_ROWS_PER_REQUEST = 999
@@ -23,9 +26,9 @@ NAME = 'plos'
 
 
 def consume(days_back=1):
-    if not settings.API_KEY:
+    if not PLOS_API_KEY:
         return []
-    payload = {"api_key": settings.API_KEY, "rows": "0"}
+    payload = {"api_key": PLOS_API_KEY, "rows": "0"}
     START_DATE = str(date.today() - timedelta(days_back)) + "T00:00:00Z"
     base_url = 'http://api.plos.org/search?q=publication_date:'
     base_url += '[{}%20TO%20{}]'.format(START_DATE, TODAY)
@@ -38,7 +41,7 @@ def consume(days_back=1):
     doc_list = []
 
     while rows < num_results + MAX_ROWS_PER_REQUEST:
-        payload = {"api_key": settings.API_KEY, "rows": rows, "start": start}
+        payload = {"api_key": PLOS_API_KEY, "rows": rows, "start": start}
         results = requests.get(base_url, params=payload)
 
         tick = time.time()
