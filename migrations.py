@@ -3,6 +3,7 @@ import json
 
 from dateutil.parser import parse
 
+from scrapi.util import make_dir
 from scrapi.util import safe_filename
 
 
@@ -14,6 +15,8 @@ def migrate_from_old_scrapi():
             dt = parse(dt).isoformat()
             sid = safe_filename(sid)
             newpath = os.path.join('archive', source, sid, dt, filename)
+
+            make_dir(os.dirname(newpath))
 
             if filename == 'manifest.json':
                 with open(oldpath) as old:
