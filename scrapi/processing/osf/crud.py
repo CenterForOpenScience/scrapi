@@ -11,7 +11,7 @@ from scrapi import settings
 POST_HEADERS = {
     'Content-Type': 'application/json'
 }
-
+EVENT_TYPES = ['letter', 'image']
 
 def create_resource(normalized, hashlist):
     bundle = {
@@ -73,8 +73,7 @@ def is_event(normalized): # "is event" means "is not project"
     # if it's a type we don't want to be a project, return true
     if normalized['properties'].get('type'): # first of all, if there's a type
         dctype = normalized['properties']['type'].lower()
-        list_of_event_types = ['letter', 'image']
-        if dctype in list_of_event_types:
+        if dctype in EVENT_TYPES:
             return True
     return False
 
