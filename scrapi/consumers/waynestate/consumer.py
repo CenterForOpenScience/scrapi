@@ -1,5 +1,6 @@
 ''' Consumer for Wayne State University -- Digital Commons '''
 
+import os
 import requests
 from datetime import date, timedelta, datetime
 from dateutil.parser import *
@@ -117,7 +118,7 @@ def normalize(raw_doc, timestamp):
     record = etree.XML(doc)
 
     # # load the list of approved series_names as a file
-    with open('series_names.txt') as series_names:
+    with open(os.path.join(os.path.dirname(__file__), 'series_names.txt')) as series_names:
         series_name_list = [word.replace('\n', '') for word in series_names]
     set_spec = record.xpath('ns0:header/ns0:setSpec/node()', namespaces=NAMESPACES)[0]
 
@@ -145,8 +146,6 @@ def normalize(raw_doc, timestamp):
         'timestamp': str(timestamp),
     }
 
-    #import json
-    #print(json.dumps(payload, indent=4))
     return NormalizedDocument(payload)
         
 
