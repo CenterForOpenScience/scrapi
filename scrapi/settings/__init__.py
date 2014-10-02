@@ -53,7 +53,7 @@ def create_schedule():
 
 OSF_AUTH = (API_KEY_LABEL, API_KEY)
 
-OSF_URL = '{PROTOCOL}://{API_KEY}@{OSF_PREFIX}/api/v1/{{guid}}/'
+OSF_URL = '{PROTOCOL}://{API_KEY}@{OSF_PREFIX}/api/v1/{{}}/'
 OSF_APP_URL = '{PROTOCOL}://{API_KEY}@{OSF_PREFIX}/api/v1/{APP_ID}/'
 OSF_NEW_EVENT = '{PROTOCOL}://{API_KEY}@{OSF_PREFIX}/api/v1/{APP_ID}/orphans/'
 OSF_NEW_PROJECT = '{PROTOCOL}://{API_KEY}@{OSF_PREFIX}/api/v1/{APP_ID}/projects/'
