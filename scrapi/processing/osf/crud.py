@@ -39,7 +39,7 @@ def update_resource(normalized, resource):
         update = {
             'title': normalized['title'],
             'description': normalized.get('description'),
-            'tags': normalized.get('tags', []),
+            'tags': normalized.get('tags'),
             'contributors': [
                 {
                     'name': '{given} {middle} {family}'.format(**x),
@@ -100,7 +100,7 @@ def is_claimed(resource):
 
     ret = requests.get(url, auth=settings.OSF_AUTH).json()
     for contributor in ret['contributors']:
-        if contributor['is_active']:
+        if contributor['registered']:
             return True
     return False
 
