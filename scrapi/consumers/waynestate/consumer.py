@@ -9,6 +9,7 @@ from lxml import etree
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 from nameparser import HumanName
+import os
 
 TODAY = date.today()
 NAME = "wayne"
