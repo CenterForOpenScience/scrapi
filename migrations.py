@@ -38,3 +38,18 @@ def migrate_from_old_scrapi():
                     os.rename(oldpath, newpath)
 
                 print '{} -> {}'.format(oldpath, newpath)
+
+
+def migrate_plos_to_xml():
+    import xmltodict
+    for dirname, dirs, filenames in os.walk('archive/plos'):
+        for filename in filenames:
+            if filename == 'raw.json':
+                jsonp = os.path.join(dirname, filename)
+                xmlp = os.path.join(dirname, 'raw.xml')
+                raw = json.load(open(jsonp))
+
+                print '{} -> {}'.format(jsonp, xmlp)
+
+                with open(xmlp, 'w') as xml:
+                    xml.write(xmltodict.unparse({'doc': raw}))
