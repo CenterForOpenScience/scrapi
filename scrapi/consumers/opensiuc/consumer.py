@@ -17,7 +17,7 @@ from scrapi.linter.document import RawDocument, NormalizedDocument
 
 
 TODAY = date.today()
-NAME = "StCloudState"
+NAME = 'StCloudState'
 OAI_DC_BASE = 'http://opensiuc.lib.siu.edu/do/oai/'
 
 NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/', 
@@ -28,14 +28,14 @@ NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/',
 with open(os.path.join(os.path.dirname(__file__), 'approved_sets.txt')) as series_names:
     series_name_list = [word.replace('\n', '') for word in series_names]
     
-def consume(days_back=1):
+def consume(days_back=3):
     start_date = TODAY - timedelta(days_back)
     base_url = OAI_DC_BASE + '?verb=ListRecords&metadataPrefix=oai_dc&from='
     url = base_url + str(start_date) + 'T00:00:00Z'
     print url
 
-    num_approved_sets = 0
-    num_rejected_sets = 0
+    num_approved_records = 0
+    num_rejected_records = 0
     approved_sets = []
     rejected_sets = []
 
@@ -53,10 +53,10 @@ def consume(days_back=1):
 
         if set_spec.replace('publication:', '') in series_name_list:
             approved_sets.append(set_spec)
-            num_approved_sets += 1
+            num_approved_records += 1
         else:
             rejected_sets.append(set_spec)
-            num_rejected_sets += 1
+            num_rejected_records += 1
 
         xml_list.append(RawDocument({
                     'doc': record_string,
@@ -65,10 +65,10 @@ def consume(days_back=1):
                     'filetype': 'xml'
                 }))
 
-    print "There were {} approved sets".format(num_approved_sets)
-    print "These were the approved sets: {}".format(set(approved_sets))
-    print "There were {} rejected sets".format(num_rejected_sets)
-    print "These were the rejected sets: {}".format(set(rejected_sets))
+    print "There were {} approved sets".format(num_approved_records)
+    print "The records were from these approved sets: {}".format(set(approved_sets))
+    print "There were {} rejected sets".format(num_rejected_records)
+    print "The records were from these rejected sets: {}".format(set(rejected_sets))
 
     return xml_list
 
@@ -96,12 +96,13 @@ def get_properties(record):
         if 'cgi/viewcontent' in identifier:
             pdf = identifier
     properties = {}
-    properties["publisher"] = (record.xpath('//dc:publisher/node()', namespaces=NAMESPACES) or [''])[0]
-    properties["source"] = (record.xpath('//dc:source/node()', namespaces=NAMESPACES) or [''])[0]
-    properties["type"] = (record.xpath('//dc:type/node()', namespaces=NAMESPACES) or [''])[0]
-    properties["format"] = (record.xpath('//dc:format/node()', namespaces=NAMESPACES) or [''])[0]
-    properties["date"] = (record.xpath('//dc:date/node()', namespaces=NAMESPACES) or [''])[0]
-    properties["pdf_download"] = pdf
+    properties['set_spec'] = record.xpath('ns0:header/ns0:setSpec/node()', namespaces=NAMESPACES)[0]
+    properties['publisher'] = (record.xpath('//dc:publisher/node()', namespaces=NAMESPACES) or [''])[0]
+    properties['source'] = (record.xpath('//dc:source/node()', namespaces=NAMESPACES) or [''])[0]
+    properties['type'] = (record.xpath('//dc:type/node()', namespaces=NAMESPACES) or [''])[0]
+    properties['format'] = (record.xpath('//dc:format/node()', namespaces=NAMESPACES) or [''])[0]
+    properties['date'] = (record.xpath('//dc:date/node()', namespaces=NAMESPACES) or [''])[0]
+    properties['pdf_download'] = pdf
     properties['identifiers'] = identifier
     return properties
 
@@ -133,7 +134,7 @@ def get_contributors(record):
     return contributor_list
 
 def get_date_created(record):
-    date_created = (record.xpath('ns0:metadata/oai_dc:dc/dc:date/node()', namespaces=NAMESPACES) or [''])[0]
+    date_created = (record.xpath('//dc:date/node()', namespaces=NAMESPACES) or [''])[0]
     return parse(date_created).isoformat()
 
 def get_date_updated(record):
@@ -172,7 +173,6 @@ def normalize(raw_doc, timestamp):
             'timestamp': str(timestamp)
     }
 
-    import json; print json.dumps(normalized_dict['contributors'], indent=4)
     return NormalizedDocument(normalized_dict)
         
 
