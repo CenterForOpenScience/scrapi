@@ -24,7 +24,7 @@ def lint(consume, normalize):
         normalized_output.append(normalize(doc, datetime.now()))
 
     for doc in normalized_output:
-        if not isinstance(doc, NormalizedDocument):
+        if not isinstance(doc, NormalizedDocument) and doc:
             raise TypeError("{} does not return type NormalizedDocument".format(consume))
 
     return 'Linting passed with No Errors'
