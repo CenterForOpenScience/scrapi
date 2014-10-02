@@ -81,6 +81,9 @@ def normalize(raw_doc, timestamp, consumer_name):
 
 @app.task
 def process_normalized(normalized_doc, raw_doc, **kwargs):
+    if not normalized_doc:
+        logger.warning('Not processing document with id {}'.format(raw_doc['docID']))
+
     processing.process_normalized(raw_doc, normalized_doc, kwargs)
     # This is where the normalized doc should be dumped to disc
     # And then sent to OSF
