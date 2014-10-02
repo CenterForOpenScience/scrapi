@@ -67,6 +67,9 @@ def _get_metadata(id):
 
 
 def is_event(normalized):
+    # if no contributors, return false
+    # if no title, return false
+    # if article, return true
     pass
 
 
