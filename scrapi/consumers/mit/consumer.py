@@ -8,6 +8,7 @@ from lxml import etree
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 from nameparser import HumanName
+import os
 
 NAME = 'mit'
 TODAY = date.today()
@@ -157,7 +158,7 @@ def normalize(raw_doc, timestamp):
         return None
 
         # # load the list of approved series_names as a file
-    with open('series_names.txt') as series_names:
+    with open(os.path.join(os.path.dirname(__file__), 'series_names.txt')) as series_names:
         series_name_list = [word.replace('\n', '') for word in series_names]
     set_spec = result.xpath('ns0:header/ns0:setSpec/node()', namespaces=NAMESPACES)[0]
 
