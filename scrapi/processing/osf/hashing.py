@@ -1,19 +1,15 @@
 # trying to match, whether or not from the same source
 
 def get_id(doc):
-    return doc['id']['serviceID'].lower().strip()
+    return normalize_string(doc['id']['serviceID'])
 
 
 def get_source(doc):
-    return doc['source']
-
-
-def get_url(doc):
-    return doc['id']['url']
+    return normalize_string(doc['source'])
 
 
 def get_doi(doc):
-    return doc['id']['doi'] + get_title(doc)
+    return normalize_string(doc['id']['doi'] + get_title(doc))
 
 
 def normalize_string(astring): # helper function for grab_ funcs; takes a unicode string
@@ -34,7 +30,6 @@ def normalize_string(astring): # helper function for grab_ funcs; takes a unicod
     exclude.add(' ')
     exclude.add('\n')
     bstring = ''.join(ch for ch in bstring if ch not in exclude)
-    #bstring = hashlib.md5(bstring).hexdigest()
     return bstring  # returns the essence of the string, as a string
 
 
@@ -44,12 +39,18 @@ def get_contributors(doc):
     for contributor in contributors:
         fullname = contributor['given'] + contributor['family']
         namelist += fullname
+    namelist = sorted(namelist) # alphabetical order, in case contrib order varies by source
+    namelist = ''.join(namelist)
+    namelist = normalize_string(namelist)
+    namelist = hashlib.md5(namelist).hexdigest() # should be shorter as md5 than full list
     return normalize_string(namelist) # returns a list of strings
 
 
 def get_title(doc):
     title = doc['title']
-    return normalize_string(title)  # returns a unicode string
+    title = normalize_string(title)
+    title = hashlib.md5(title).hexdigest()  # should be shorter on average than full title
+    return title
 
 
 def is_project(doc):
@@ -57,5 +58,5 @@ def is_project(doc):
 
 
 
-REPORT_HASH_FUNCTIONS = [get_id, get_title, get_contributors, get_doi]
+REPORT_HASH_FUNCTIONS = [get_title, get_contributors, get_doi, get_source, get_id]
 RESOURCE_HASH_FUNCTIONS = [get_title, get_contributors, get_doi, is_project]
