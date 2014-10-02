@@ -88,10 +88,10 @@ def get_ids(record, doc):
 
 
 def get_properties(record):
-    publisher = record.xpath('//dc:publisher/node()', namespaces=NAMESPACES)
-    source = record.xpath('//dc:source/node()', namespaces=NAMESPACES)
-    type = record.xpath('//dc:type/node()', namespaces=NAMESPACES)
-    format = record.xpath('//dc:format/node()', namespaces=NAMESPACES)
+    publisher = (record.xpath('//dc:publisher/node()', namespaces=NAMESPACES))[0]
+    source = (record.xpath('//dc:source/node()', namespaces=NAMESPACES))[0]
+    type = (record.xpath('//dc:type/node()', namespaces=NAMESPACES))[0]
+    format = (record.xpath('//dc:format/node()', namespaces=NAMESPACES))[0]
     props = {
         'type': type,
         'source': source,
