@@ -1,6 +1,6 @@
-# trying to match, whether or not from the same source
-
+# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+
 import unicodedata
 import string
 import hashlib
@@ -63,6 +63,5 @@ def is_project(doc):
     return 'cebwrpg'
 
 
-
 REPORT_HASH_FUNCTIONS = [get_title, get_contributors, get_doi, get_source, get_id]
-RESOURCE_HASH_FUNCTIONS = [get_title, get_contributors, get_doi, is_project]
+RESOURCE_HASH_FUNCTIONS = [get_title, get_contributors, is_project]
