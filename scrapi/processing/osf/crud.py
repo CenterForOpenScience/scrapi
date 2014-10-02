@@ -79,7 +79,13 @@ def create_event(normalized):
 
 
 def is_claimed(resource):
-    pass
+    url = '{}get_contributors/'.format(settings.OSF_URL.format(resource))
+
+    ret = requests.get(url, auth=settings.OSF_AUTH).json()
+    for contributor in ret['contributors']:
+        if contributor['is_active']:
+            return True
+    return False
 
 
 def get_collision_cat(source):
