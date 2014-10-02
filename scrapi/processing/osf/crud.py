@@ -26,18 +26,35 @@ def create_resource(normalized, hashlist):
 
 def update_resource(normalized, resource):
     current = _get_metadata(resource)
-    # TODO Remove information that would not be included on project ie source
-    # and service IDs
-    if not is_claimed(resource):
-        pass
 
-    # TODO Update actual osf project if unclaimed
     if current['collisionCategory'] > normalized['collisionCategory']:
         new = deepcopy(current.attributes)
         new.update(normalized)
     else:
         new = deepcopy(normalized.attributes)
         new.update(current)
+
+    if not is_claimed(resource):
+        resource_url = '{}/projects/{}/'.format(settings.OSF_APP_URL, resource)
+        update = {
+            'title': normalized['title'],
+            'description': normalized.get('description'),
+            'tags': normalized.get('tags', []),
+            'contributors': [
+                {
+                    'name': '{given} {middle} {family}'.format(**x),
+                    'email': x.get('email')
+                }
+                for x in normalized['contributors']
+            ]
+        }
+
+        kwargs = {
+            'auth': settings.OSF_AUTH,
+            'data': json.dumps(update),
+            'headers': POST_HEADERS
+        }
+        requests.post(resource_url, **kwargs).json()
 
     return _post_metadata(resource, new)
 
