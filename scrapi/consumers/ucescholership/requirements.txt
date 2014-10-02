@@ -1,4 +1,4 @@
 lxml==3.4.0
-requests==2.3.0
+requests==2.4.1
 python-dateutil==2.2
 nameparser==0.3.3
