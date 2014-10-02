@@ -124,9 +124,13 @@ def _get_metadata(id):
 
 def is_event(normalized):
     # if no contributors, return false
+    if normalized['contributors'] is ['']:
+        return False
     # if no title, return false
-    # if article, return true
-    pass
+    if normalized['title'] is '':
+        return False
+    # more logic coming
+    return True
 
 
 def create_event(normalized):
