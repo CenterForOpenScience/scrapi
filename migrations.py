@@ -1,5 +1,6 @@
 import os
 import json
+import codecs
 
 from dateutil.parser import parse
 
@@ -51,5 +52,5 @@ def migrate_plos_to_xml():
 
                 print '{} -> {}'.format(jsonp, xmlp)
 
-                with open(xmlp, 'w') as xml:
+                with codecs.open(xmlp, 'w', encoding='utf-8') as xml:
                     xml.write(xmltodict.unparse({'doc': raw}))
