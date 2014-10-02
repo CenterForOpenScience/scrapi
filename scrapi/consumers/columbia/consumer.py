@@ -1,14 +1,18 @@
 # start to a consumer for Columbia's academic commons for the SHARE project
+from __future__ import unicode_literals
 
-import json
 import time
 import requests
 from lxml import etree
-from dateutil.parser import *
-from datetime import date, timedelta
+import datetime
+from datetime import *
 
-from scrapi_tools import lint
-from scrapi_tools.document import RawDocument, NormalizedDocument
+from nameparser import HumanName
+
+from dateutil.parser import *
+
+from scrapi.linter import lint
+from scrapi.linter.document import RawDocument, NormalizedDocument
 
 
 NAME = 'academiccommons'
@@ -17,6 +21,7 @@ NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/',
               'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
               'ns0': 'http://www.openarchives.org/OAI/2.0/'}
 OAI_DC_BASE_URL = 'http://academiccommons.columbia.edu/catalog/oai?verb=ListRecords&'
+DEFAULT = datetime(2014, 01, 01)
 
 
 def consume(days_back=5):
@@ -30,12 +35,11 @@ def consume(days_back=5):
     for record in records:
         doc_id = record.xpath('ns0:header/ns0:identifier',
                               namespaces=NAMESPACES)[0].text
-        record = etree.tostring(record)
-        record = '<?xml version="1.0" encoding="UTF-8"?>\n' + record
+        record = etree.tostring(record, encoding='UTF-8')
         xml_list.append(RawDocument({
             'doc': record,
             'source': NAME,
-            'doc_id': doc_id,
+            'docID': doc_id,
             'filetype': 'xml'
         }))
 
@@ -50,7 +54,6 @@ def get_records(url):
     except etree.XMLSyntaxError:
         print 'XML error'
         return
-        # import pdb; pdb.set_trace()
 
     records = doc.xpath('//ns0:record', namespaces=NAMESPACES)
     token = doc.xpath('//ns0:resumptionToken/node()', namespaces=NAMESPACES)
@@ -63,21 +66,30 @@ def get_records(url):
 
 
 def get_ids(doc, raw_doc):
-    service_id = raw_doc.get('doc_id')
-    identifier = (
-        doc.xpath('//dc:identifier/node()', namespaces=NAMESPACES) or [''])
+    service_id = raw_doc.get('docID')
+    url = (doc.xpath('//dc:identifier/node()', namespaces=NAMESPACES) or [''])[0]
+    doi = ''
+    if 'doi' in url:
+        doi = url.replace('http://dx.doi.org/', '')
 
-    return {'url': url, 'service_id': service_id, 'doi': ''}
+    return {'url': url, 'serviceID': service_id, 'doi': doi}
 
 
 def get_contributors(doc):
-    contributors = doc.xpath('//dc:creator', namespaces=NAMESPACES)
+    contributors = doc.xpath('//dc:creator/node()', namespaces=NAMESPACES) or []
     contributor_list = []
-    for contributor in contributors:
-        contributor_list.append({'full_name': contributor.text, 'email': ''})
-
-    contributor_list = contributor_list or [
-        {'full_name': 'No contributors', 'email': ''}]
+    for person in contributors:
+        name = HumanName(person)
+        contributor = {
+            'prefix': name.title,
+            'given': name.first,
+            'middle': name.middle,
+            'family': name.last,
+            'suffix': name.suffix,
+            'email': '',
+            'ORCID': ''
+        }
+        contributor_list.append(contributor)
 
     return contributor_list
 
@@ -93,38 +105,38 @@ def get_properties(doc):
 
 
 def get_tags(doc):
-    return doc.xpath('//dc:subject/node()', namespaces=NAMESPACES)
-
+    tags = doc.xpath('//dc:subject/node()', namespaces=NAMESPACES) or []
+    return [tag.lower() for tag in tags]
 
 def get_date_created(doc):
-    date_created = doc.xpath('//dc:date/node()', namespaces=NAMESPACES)[0]
-    return date_created
+    # TODO - this is almost always just a year - what do? 
+    #       right now everyhing just defaults to Jan 1
+    date_created = (doc.xpath('//dc:date/node()', namespaces=NAMESPACES) or [''])[0]
+    return parse(date_created, default=DEFAULT).isoformat()
 
 
 def get_date_updated(doc):
-    datestamp = doc.xpath(
-        'ns0:header/ns0:datestamp/node()', namespaces=NAMESPACES)[0]
-    return parse(datestamp).isotimestamp()
-
+    datestamp = doc.xpath('ns0:header/ns0:datestamp/node()', namespaces=NAMESPACES)[0]
+    return parse(datestamp).isoformat()
 
 def normalize(raw_doc, timestamp):
     raw_doc_string = raw_doc.get('doc')
     doc = etree.XML(raw_doc_string)
 
     normalized_dict = {
-        "title": (doc.xpath('//dc:title/node()', namespaces=NAMESPACES) or [''])[0],
-        "contributors": get_contributors(doc),
-        "properties": get_properties(doc),
-        "description": (doc.xpath('//dc:description/node()', namespaces=NAMESPACES) or [""])[0],
-        "id": get_ids(doc, raw_doc),
-        "source": NAME,
-        "tags": get_tags(doc),
-        "date_created": get_date_created(doc),
-        "dateUpdated": get_date_updated(doc),
-        "timestamp": str(timestamp)
+        'title': (doc.xpath('//dc:title/node()', namespaces=NAMESPACES) or [''])[0],
+        'contributors': get_contributors(doc),
+        'properties': get_properties(doc),
+        'description': (doc.xpath('//dc:description/node()', namespaces=NAMESPACES) or [''])[0],
+        'id': get_ids(doc, raw_doc),
+        'source': NAME,
+        'tags': get_tags(doc),
+        'dateCreated': get_date_created(doc),
+        'dateUpdated': get_date_updated(doc),
+        'timestamp': str(timestamp)
     }
 
-    print json.dumps(normalized_dict['dateUpdated'], indent=4)
+    import json; print json.dumps(normalized_dict['tags'], indent=4)
     return NormalizedDocument(normalized_dict)
 
 
