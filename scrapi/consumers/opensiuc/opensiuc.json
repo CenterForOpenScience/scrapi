@@ -1,0 +1,10 @@
+{
+    "days": "mon-sun",
+    "hour": 23,
+    "minute": 59,
+    "longName": "ClinicalTrials.gov",
+    "shortName": "clinicaltrials",
+    "url": "https://github.com/erinspace/OpenSIUC.git",
+    "fileFormat": "xml",
+    "collisionCategory": 1
+}
