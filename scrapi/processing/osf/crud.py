@@ -65,8 +65,19 @@ def update_report(normalized, report):
     return _post_metadata(report, new)
 
 
-def is_event(normalized):
-    pass
+def is_event(normalized): # "is event" means "is not project"
+    if not normalized.get('contributors'):  # if no contributors, return true
+        return True
+    if normalized.get('title') == '':  # if there's no title, return true
+        return True
+    # if it's a type we don't want to be a project, return true
+    if normalized['properties'].get('type') is not None:
+        dctype = normalized['properties']['type'].lower()
+        if dctype is 'letter':
+            return True
+        if dctype is 'image':
+            return True
+    return False
 
 
 def create_event(normalized):
@@ -120,21 +131,6 @@ def _create_node(normalized, additional, hashlist):
 def _get_metadata(id):
     url = '{}{}/'.format(settings.OSF_APP_URL, id)
     return requests.get(url, auth=settings.OSF_AUTH).json()
-
-
-def is_event(normalized):
-    # if no contributors, return false
-    if normalized['contributors'] is ['']:
-        return False
-    # if no title, return false
-    if normalized['title'] is '':
-        return False
-    # more logic coming
-    return True
-
-
-def create_event(normalized):
-    pass
 
 
 def _post_metadata(id, data):
