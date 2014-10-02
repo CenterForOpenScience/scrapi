@@ -6,4 +6,5 @@
     "shortName": "plos",
     "url": "https://github.com/erinspace/PLoS-API-consumer.git",
     "fileFormat": "xml"
+    "collisionCategory": 0
 }
