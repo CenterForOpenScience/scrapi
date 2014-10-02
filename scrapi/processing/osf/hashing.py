@@ -1,5 +1,10 @@
 # trying to match, whether or not from the same source
 
+from __future__ import unicode_literals
+import unicodedata
+import string
+import hashlib
+
 def get_id(doc):
     return normalize_string(doc['id']['serviceID'])
 
@@ -25,6 +30,7 @@ def normalize_string(astring): # helper function for grab_ funcs; takes a unicod
     astring = astring.replace(u'æ', u'ae')
     astring = astring.replace(u'Æ', u'Ae')
     astring = astring.replace(u'ß', u'ss') # assumes good transliteration
+    astring = astring.replace(u'—', u'')
     bstring = unicodedata.normalize('NFKD', astring).encode('ascii','ignore')
     exclude = set(string.punctuation)
     exclude.add(' ')
