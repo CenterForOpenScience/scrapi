@@ -23,7 +23,7 @@ OAI_DC_BASE_URL = 'http://academiccommons.columbia.edu/catalog/oai?verb=ListReco
 DEFAULT = datetime(2014, 01, 01)
 
 
-def consume(days_back=1):
+def consume(days_back=5):
     base_url = OAI_DC_BASE_URL + 'from={}&until={}'
     start_date = str(date.today() - timedelta(days_back)) + 'T00:00:00Z'
     end_date = str(date.today()) + 'T00:00:00Z'
@@ -46,12 +46,11 @@ def consume(days_back=1):
 
 
 def get_records(url):
-    print url
     data = requests.get(url)
     try:
         doc = etree.XML(data.content)
     except etree.XMLSyntaxError:
-        print 'XML error'
+        print('XML error')
         return
 
     records = doc.xpath('//ns0:record', namespaces=NAMESPACES)
@@ -135,7 +134,8 @@ def normalize(raw_doc, timestamp):
         'timestamp': str(timestamp)
     }
 
-    import json; print json.dumps(normalized_dict['tags'], indent=4)
+    #import json
+    # print json.dumps(normalized_dict, indent=4)
     return NormalizedDocument(normalized_dict)
 
 
