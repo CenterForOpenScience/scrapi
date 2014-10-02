@@ -12,8 +12,8 @@ import logging
 
 from celery.schedules import crontab
 
-from scrapi.settings.local import *
 from scrapi.settings.defaults import *
+from scrapi.settings.local import *
 
 
 logging.basicConfig(level=logging.INFO)
@@ -51,6 +51,13 @@ def create_schedule():
         }
     return schedule
 
+OSF_AUTH = (API_KEY_LABEL, API_KEY)
+
+OSF_APP_URL = '{PROTOCOL}://{API_KEY}@{OSF_PREFIX}/api/v1/{APP_ID}/'
+OSF_NEW_PROJECT = '{PROTOCOL}://{API_KEY}@{OSF_PREFIX}/api/v1/{APP_ID}/projects/'
+# Keep a pep8 line length
+OSF_APP_URL = OSF_APP_URL.format(**locals())
+OSF_NEW_PROJECT = OSF_NEW_PROJECT.format(**locals())
 
 MANIFESTS = load_manifests()
 

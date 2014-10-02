@@ -20,9 +20,3 @@ APP_ID = 'some id'
 
 API_KEY_LABEL = 'some label'
 API_KEY = 'some api key'
-
-OSF_AUTH = (API_KEY_LABEL, API_KEY)
-
-NEW_RECORD_URL = '{PROTOCOL}://{API_KEY}@{OSF_PREFIX}/api/v1/{APP_ID}/reports/'
-# Keep a pep8 line length
-NEW_RECORD_URL = NEW_RECORD_URL.format(**locals())
