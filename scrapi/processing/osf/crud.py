@@ -68,14 +68,13 @@ def update_report(normalized, report):
 def is_event(normalized): # "is event" means "is not project"
     if not normalized.get('contributors'):  # if no contributors, return true
         return True
-    if normalized.get('title') == '':  # if there's no title, return true
+    if not normalized.get('title'):  # if there's no title, return true
         return True
     # if it's a type we don't want to be a project, return true
-    if normalized['properties'].get('type') is not None:
+    if normalized['properties'].get('type'): # first of all, if there's a type
         dctype = normalized['properties']['type'].lower()
-        if dctype is 'letter':
-            return True
-        if dctype is 'image':
+        list_of_event_types = ['letter', 'image']
+        if dctype in list_of_event_types:
             return True
     return False
 
