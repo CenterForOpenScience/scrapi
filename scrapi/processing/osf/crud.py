@@ -11,7 +11,7 @@ from scrapi import settings
 POST_HEADERS = {
     'Content-Type': 'application/json'
 }
-
+EVENT_TYPES = ['letter', 'image']
 
 def create_resource(normalized, hashlist):
     bundle = {
@@ -65,8 +65,17 @@ def update_report(normalized, report):
     return _post_metadata(report, new)
 
 
-def is_event(normalized):
-    pass
+def is_event(normalized): # "is event" means "is not project"
+    if not normalized.get('contributors'):  # if no contributors, return true
+        return True
+    if not normalized.get('title'):  # if there's no title, return true
+        return True
+    # if it's a type we don't want to be a project, return true
+    if normalized['properties'].get('type'): # first of all, if there's a type
+        dctype = normalized['properties']['type'].lower()
+        if dctype in EVENT_TYPES:
+            return True
+    return False
 
 
 def create_event(normalized):
