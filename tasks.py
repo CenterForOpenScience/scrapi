@@ -112,6 +112,9 @@ def consumer(consumer_name, async=False):
     settings.CELERY_ALWAYS_EAGER = not async
     from scrapi.tasks import run_consumer
 
+    if not settings.MANIFESTS.get(consumer_name):
+        print 'No such consumers {}'.format(consumer_name)
+
     run_consumer.delay(consumer_name)
 
 
