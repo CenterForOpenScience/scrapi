@@ -25,9 +25,11 @@ def migrate_from_old_scrapi():
                     'source': source,
                     'id': sid
                 }
-                old_json = json.dumps(old_json, indent=4, sort_keys=True)
                 new_json = json.dumps(new_json, indent=4, sort_keys=True)
-                print old_json
-                print new_json
+                with open(newpath) as new:
+                    new.write(new_json)
+                os.remove(oldpath)
+            else:
+                os.rename(oldpath, newpath)
 
             print '{} -> {}'.format(oldpath, newpath)
