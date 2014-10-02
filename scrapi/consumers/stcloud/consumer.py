@@ -8,6 +8,7 @@ from lxml import etree
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 from nameparser import HumanName
+import os
 
 TODAY = date.today()
 NAME = "stcloud"
@@ -124,7 +125,7 @@ def normalize(raw_doc, timestamp):
     record = etree.XML(doc)
 
     # load the list of approved series_names as a file - second option
-    with open('approved_series.txt') as series_names:
+    with open(os.path.join(os.path.dirname(__file__), 'approved_series.txt')) as series_names:
         approved_series = [word.replace('\n', '') for word in series_names]
     set_spec = record.xpath('ns0:header/ns0:setSpec/node()', namespaces=NAMESPACES)[0]
     if set_spec.replace('publication:', '') not in approved_series:
