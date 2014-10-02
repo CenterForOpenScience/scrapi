@@ -4,34 +4,38 @@ import requests
 from datetime import date, timedelta
 import time
 from lxml import etree 
-from scrapi_tools import lint
-from scrapi_tools.document import RawDocument, NormalizedDocument
+from nameparser import HumanName
+
+from dateutil.parser import *
+
+from scrapi.linter import lint
+from scrapi.linter.document import RawDocument, NormalizedDocument
 
 NAME = 'uiuc-ideals'
 TODAY = date.today()
 NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/', 
             'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
             'ns0': 'http://www.openarchives.org/OAI/2.0/'}
+OAI_DC_BASE = 'http://ideals.uiuc.edu/dspace-oai/request'
 
 def consume(days_back=100):
     # days back is set so high because uiuc ideals consumer had nothing for the last three months when consumer was built
     start_date = str(date.today() - timedelta(days_back))
-    base_url = 'http://ideals.uiuc.edu/dspace-oai/request?verb=ListRecords&metadataPrefix=oai_dc&from='
-    start_date = TODAY - timedelta(days_back)
-    #YYYY-MM-DD hh:mm:ss
-    url = base_url + str(start_date) + ' 00:00:00'
+    base_url = OAI_DC_BASE + '?verb=ListRecords&metadataPrefix=oai_dc&from={} 00:00:00'
+    url = base_url.format(start_date)
+    print url
 
     records = get_records(url)
 
     xml_list = []
     for record in records:
         doc_id = record.xpath('ns0:header/ns0:identifier', namespaces=NAMESPACES)[0].text
-        record = etree.tostring(record)
-        record = '<?xml version="1.0" encoding="UTF-8"?>\n' + record
+        record = etree.tostring(record, encoding="UTF-8")
+        # record = '<?xml version="1.0" encoding="UTF-8"?>\n' + record
         xml_list.append(RawDocument({
                     'doc': record,
                     'source': NAME,
-                    'doc_id': doc_id,
+                    'docID': doc_id,
                     'filetype': 'xml'
                 }))
 
@@ -42,26 +46,47 @@ def get_records(url):
     doc = etree.XML(data.content)
     records = doc.xpath('//ns0:record', namespaces=NAMESPACES)
     token = doc.xpath('//ns0:resumptionToken/node()', namespaces=NAMESPACES)
+    
+    records_collected = 0
 
+    if len(token) == 1:
+        time.sleep(0.5)
+        url = OAI_DC_BASE + '?verb=ListRecords&resumptionToken={}'.format(token[0])
+        records += get_records(url)
     return records
 
 
-def getcontributors(result):
+def get_contributors(result):
     contributors = result.xpath('//dc:contributor/node()', namespaces=NAMESPACES) or ['']
     contributor_list = []
     for person in contributors:
-        contributor_list.append({'full_name': person, 'email': ''})
+        name = HumanName(person)
+        contributor = {
+            'prefix': name.title,
+            'given': name.first,
+            'middle': name.middle,
+            'family': name.last,
+            'suffix': name.suffix,
+            'email': '',
+            'ORCID': '',
+            }
+        contributor_list.append(contributor)
     return contributor_list
 
-def gettags(result):
-    tags = result.xpath('//dc:subject/node()', namespaces=NAMESPACES) or []
-    return tags
+def get_tags(result):
+    all_tags = result.xpath('//dc:subject/node()', namespaces=NAMESPACES) or []
+    tags = []
+    for tag in all_tags:
+        if ',' in tag:
+            tags += tag.split(',')
+        else:
+            tags.append(tag)
+    return [tag.lower().strip() for tag in tags]
 
 def getabstract(result):
-    abstract = result.xpath('//dc:description/node()', namespaces=NAMESPACES) or ['No abstract']
     return abstract[0]
 
-def getids(result):
+def get_ids(result):
     service_id = result.xpath('ns0:header/ns0:identifier/node()', namespaces=NAMESPACES)[0]
     identifiers = result.xpath('//dc:identifier/node()', namespaces=NAMESPACES)
     url = ''
@@ -69,14 +94,14 @@ def getids(result):
     for item in identifiers:
         if 'hdl.handle.net' in item:
             url = item
-        if 'dx.doi.org' in item:
-            doi = item
+    # TODO some DOIs might be buried within identifiers - hard to find, but there
 
     if url == '':
         raise Exception('Warning: No url provided!')
 
-    return {'service_id': service_id, 'url': url, 'doi': doi}
+    return {'serviceID': service_id, 'url': url, 'doi': doi}
 
+# TODO - this function is unused for now - might implement this later
 def get_earliest_date(result):
     dates = result.xpath('//dc:date/node()', namespaces=NAMESPACES)
     date_list = []
@@ -100,6 +125,28 @@ def get_earliest_date(result):
 
     return min_date
 
+def get_properties(result):
+    result_type = result.xpath('//dc:type/node()', namespaces=NAMESPACES) or ['']
+    rights = result.xpath('//dc:rights/node()', namespaces=NAMESPACES) or ['']
+    identifiers = result.xpath('//dc:identifier/node()', namespaces=NAMESPACES) or ['']
+    publisher = result.xpath('//dc:publisher/node()', namespaces=NAMESPACES) or ['']
+
+    properties = {
+        'type': result_type[0],
+        'rights': rights[0],
+        'identifiers': identifiers,
+        'publisher': publisher[0]
+    }
+    return properties
+
+def get_date_created(result):
+    dates = result.xpath('//dc:date/node()', namespaces=NAMESPACES)
+    return parse(dates[0]).isoformat()
+
+def get_date_updated(result):
+    date_updated = result.xpath('ns0:header/ns0:datestamp', namespaces=NAMESPACES)[0].text
+    return parse(date_updated).isoformat()
+
 def normalize(raw_doc, timestamp):
     result = raw_doc.get('doc')
     try:
@@ -108,32 +155,21 @@ def normalize(raw_doc, timestamp):
         print "Error in namespaces! Skipping this one..."
         return None
 
-    title = result.xpath('//dc:title/node()', namespaces=NAMESPACES)[0]
-    result_type = result.xpath('//dc:type/node()', namespaces=NAMESPACES) or ['']
-    rights = result.xpath('//dc:rights/node()', namespaces=NAMESPACES) or ['']
-    identifiers = result.xpath('//dc:identifier/node()', namespaces=NAMESPACES) or ['']
-    publisher = result.xpath('//dc:publisher/node()', namespaces=NAMESPACES) or ['']
-
     payload = {
-        'title': title,
-        'contributors': getcontributors(result),
-        'properties': {
-            'type': result_type[0],
-            'rights': rights[0],
-            'identifiers': identifiers,
-            'publisher': publisher[0]
-        },
-        'description': getabstract(result),
-        'tags': gettags(result),
-        'meta': {},
-        'id': getids(result),
+        'title': (result.xpath('//dc:title/node()', namespaces=NAMESPACES) or [''])[0],
+        'contributors': get_contributors(result),
+        'properties': get_properties(result),
+        'description': (result.xpath('//dc:description/node()', namespaces=NAMESPACES) or [''])[0],
+        'tags': get_tags(result),
+        'id': get_ids(result),
         'source': NAME,
-        'date_created': get_earliest_date(result),
+        'dateCreated': get_date_created(result),
+        'dateUpdated': get_date_updated(result),
         'timestamp': str(timestamp)
 
     }
+    import json; print json.dumps(payload['tags'], indent=4)
     return NormalizedDocument(payload)
-    ## TODO catch namespace exception
 
 if __name__ == '__main__':
     print(lint(consume, normalize))
