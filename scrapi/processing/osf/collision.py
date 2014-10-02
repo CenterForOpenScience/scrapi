@@ -11,7 +11,7 @@ def detect_collisions(hashlist, additional=''):
     uuids = 'uuid:{}'.format(','.join(hashlist))
     url = '{}?q={}{}'.format(settings.OSF_APP_URL, uuids, additional)
 
-    ret = requests.get(url, auth=settings.OSF_AUTH).json()
+    ret = requests.get(url, auth=settings.OSF_AUTH, verify=settings.VERIFY_SSL).json()
 
     if ret['total'] > 0:
         return ret['results'][0]['guid']
