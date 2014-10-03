@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Consumer for MIT DSpace
 
 import requests
@@ -29,8 +28,7 @@ def consume(days_back=1):
     xml_list = []
     for record in records:
         doc_id = record.xpath('ns0:header/ns0:identifier', namespaces=NAMESPACES)[0].text
-        record = etree.tostring(record, encoding = encoding)
-        #import pdb; pdb.set_trace()
+        record = etree.tostring(record, encoding=encoding)
         xml_list.append(RawDocument({
                     'doc': record,
                     'source': NAME,
