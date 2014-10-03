@@ -6,7 +6,9 @@ import subprocess
 
 from invoke import run, task
 
+from scrapi import linter
 from scrapi import settings
+from scrapi.util import import_consumer
 
 
 @task
@@ -130,3 +132,20 @@ def check_archive(consumer=None, reprocess=False, async=False):
     else:
         from scrapi.tasks import check_archives
         check_archives.delay(reprocess)
+
+
+@task
+def lint_all():
+    for name in settings.MANIFESTS.keys():
+        lint(name)
+
+
+@task
+def lint(name):
+    manifest = settings.MANIFESTS[name]
+    consumer = import_consumer(name)
+    try:
+        linter.lint(consumer.consume, consumer.normalize)
+    except Exception as e:
+        print 'Consumer {} raise the following exception'.format(manifest['longName'])
+        print e
