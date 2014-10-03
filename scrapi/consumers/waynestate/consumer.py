@@ -31,11 +31,10 @@ def consume(days_back=1):
         doc_id = record.xpath('ns0:header/ns0:identifier/node()', namespaces=NAMESPACES)[0]
         record_string = etree.tostring(record)
         record_string = '<?xml version="1.0" encoding="UTF-8"?>\n' + record_string
-
         xml_list.append(RawDocument({
                     'doc': record_string,
                     'source': NAME,
-                    'docID': doc_id,
+                    'docID': str(doc_id),
                     'filetype': 'xml'
                 }))
 
