@@ -48,9 +48,11 @@ def lint(consume, normalize):
 
         normalized_output.append(normalize(doc, datetime.now()))
 
-    for doc in normalized_output:
+    for doc, raw_doc in zip(normalized_output, output):
         if not isinstance(doc, NormalizedDocument) and doc:
             raise TypeError("{} does not return type NormalizedDocument".format(consume))
+        if doc['id']['serviceID'] != raw_doc['docID']:
+            raise ValueError('Serivce ID {} does not match {}'.format(doc['id']['serviceID'], raw_doc['docID']))
 
     is_serializable(output[0].attributes)
     is_serializable(normalized_output[0].attributes)
