@@ -18,7 +18,7 @@ from scrapi.settings.local import *
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
+logging.getLogger('requests.packages.urllib3.connectionpool').setLevel(logging.WARNING)
 
 MANIFEST_DIR = os.path.join(os.path.dirname(__file__), 'consumerManifests')
 
