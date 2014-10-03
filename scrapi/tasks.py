@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 
 
 @app.task
-def run_consumer(consumer_name):
+def run_consumer(consumer_name, days_back=1):
     logger.info('Runing consumer "{}"'.format(consumer_name))
     # Form and start a celery chain
     chain = (consume.si(consumer_name) | begin_normalization.s(consumer_name))
@@ -27,11 +27,11 @@ def run_consumer(consumer_name):
 
 
 @app.task
-def consume(consumer_name):
+def consume(consumer_name, days_back=1):
     logger.info('Consumer "{}" has begun consumption'.format(consumer_name))
 
     consumer = import_consumer(consumer_name)
-    result = consumer.consume()
+    result = consumer.consume(days_back=days_back)
 
     logger.info('Consumer "{}" has finished consumption'.format(consumer_name))
 
