@@ -11,7 +11,7 @@ from scrapi.linter.document import RawDocument, NormalizedDocument
 from nameparser import HumanName
 import os
 
-NAME = 'mit'
+NAME = u'mit'
 TODAY = date.today()
 NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/', 
             'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
@@ -20,24 +20,22 @@ OAI_DC_BASE_URL = 'http://dspace.mit.edu/oai/request?verb=ListRecords&metadataPr
 DEFAULT = datetime(1970, 01, 01)
 
 def consume(days_back=1):
-
-    start_date = str(date.today() - timedelta(days_back))
     start_date = TODAY - timedelta(days_back)
     # YYYY-MM-DD hh:mm:ss
     url = OAI_DC_BASE_URL + str(start_date)
-
+    encoding = requests.get(url).encoding
     records = get_records(url)
 
     xml_list = []
     for record in records:
         doc_id = record.xpath('ns0:header/ns0:identifier', namespaces=NAMESPACES)[0].text
-        record = etree.tostring(record)
-        record = '<?xml version="1.0" encoding="UTF-8"?>\n' + record
+        record = etree.tostring(record, encoding = encoding)
+        #import pdb; pdb.set_trace()
         xml_list.append(RawDocument({
                     'doc': record,
                     'source': NAME,
-                    'docID': str(doc_id),
-                    'filetype': 'xml'
+                    'docID': unicode(doc_id, encoding=encoding),
+                    'filetype': u'xml'
                 }))
     return xml_list
 
@@ -69,20 +67,20 @@ def get_contributors(result):
     for person in all_contributors:
         name = HumanName(person)
         contributor = {
-            'prefix': name.title,
-            'given': name.first,
-            'middle': name.middle,
-            'family': name.last,
-            'suffix': name.suffix,
-            'email': '',
-            'ORCID': '',
+            'prefix': unicode(name.title),
+            'given': unicode(name.first),
+            'middle': unicode(name.middle),
+            'family': unicode(name.last),
+            'suffix': unicode(name.suffix),
+            'email': u'',
+            'ORCID': u'',
             }
         contributor_list.append(contributor)
     return contributor_list
 
 def get_tags(result):
     tags = result.xpath('//dc:subject/node()', namespaces=NAMESPACES) or []
-    return [str(tag.lower()) for tag in tags]
+    return [unicode(tag.lower()) for tag in tags]
 
 def get_ids(result, doc):
     serviceID = doc.get('docID')
@@ -101,7 +99,7 @@ def get_ids(result, doc):
     if url == '':
         raise Exception('Warning: No url provided!')
 
-    return {'serviceID': str(serviceID), 'url': str(url), 'doi': str(doi)}
+    return {'serviceID': unicode(serviceID), 'url': unicode(url), 'doi': unicode(doi)}
 
 def get_properties(result):
     rights = result.xpath('//dc:rights/node()', namespaces=NAMESPACES) or ['']
@@ -110,7 +108,7 @@ def get_properties(result):
     identifiers = []
     for identifier in ids:
         if 'http://' not in identifier:
-            identifiers.append(str(identifier.encode('utf-8')))
+            identifiers.append(unicode(identifier))
     source = (result.xpath('//dc:source/node()', namespaces=NAMESPACES) or [''])[0]
     language = (result.xpath('//dc:language/node()', namespaces=NAMESPACES) or [''])[0]
     publisher = (result.xpath('//dc:publisher/node()', namespaces=NAMESPACES) or [''])[0]
@@ -122,17 +120,17 @@ def get_properties(result):
 
     props = {'permissions':
          {
-              'copyrightStatement': str(rights[0]),
+              'copyrightStatement': unicode(rights[0]),
          },
          'identifiers': identifiers,
          'publisherInfo': {
-         'publisher': str(publisher),
+         'publisher': unicode(publisher),
          },
-         'format': str(dcformat),
-         'source': str(source),
-         'language': str(language),
-         'relation': str(relation),
-         'type': str(dctype),
+         'format': unicode(dcformat),
+         'source': unicode(source),
+         'language': unicode(language),
+         'relation': unicode(relation),
+         'type': unicode(dctype),
      }
     return props
 
@@ -171,16 +169,16 @@ def normalize(raw_doc, timestamp):
     description = (result.xpath('//dc:description/node()', namespaces=NAMESPACES) or [''])[0]
 
     payload = {
-        'title': title,
+        'title': unicode(title),
         'contributors': get_contributors(result),
         'properties': get_properties(result),
-        'description': str(description.encode('utf-8')),
+        'description': unicode(description),
         'tags': get_tags(result),
         'id': get_ids(result,raw_doc),
         'source': NAME,
-        'dateUpdated': str(get_date_updated(result)),
-        'dateCreated': str(get_date_created(result)),
-        'timestamp': str(timestamp),
+        'dateUpdated': unicode(get_date_updated(result)),
+        'dateCreated': unicode(get_date_created(result)),
+        'timestamp': unicode(timestamp),
     }
 
     #import json
