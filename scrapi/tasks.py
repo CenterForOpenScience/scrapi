@@ -44,7 +44,7 @@ def begin_normalization(raw_docs, consumer_name):
                 .format(len(raw_docs), consumer_name))
 
     for raw in raw_docs:
-        timestamp = datetime.now().isoformat()
+        timestamp = datetime.now().isoformat().decode('utf-8')
         raw.attributes['timestamp'] = timestamp
 
         process_raw.delay(raw)

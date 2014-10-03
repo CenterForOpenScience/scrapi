@@ -33,6 +33,7 @@ def lint(consume, normalize):
         they match the requirements of scrAPI.
     """
     output = consume()
+    timestamp = datetime.now().isoformat().decode('utf-8')
 
     if not isinstance(output, list):
         raise TypeError("{} does not return type list".format(consume))
@@ -46,7 +47,7 @@ def lint(consume, normalize):
         if not isinstance(doc, RawDocument):
             raise TypeError("{} returned a list containing a non-RawDocument item".format(consume))
 
-        normalized_output.append(normalize(doc, datetime.now()))
+        normalized_output.append(normalize(doc, timestamp))
 
     for doc, raw_doc in zip(normalized_output, output):
         if not isinstance(doc, NormalizedDocument) and doc:
