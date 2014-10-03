@@ -35,7 +35,7 @@ class BaseDocument(object):
 class RawDocument(BaseDocument):
 
     REQUIRED_FIELDS = {
-        'doc': unicode,
+        'doc': str,
         'docID': unicode,
         'source': unicode,
         'filetype': unicode
