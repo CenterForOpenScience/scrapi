@@ -13,6 +13,7 @@ POST_HEADERS = {
 }
 EVENT_TYPES = ['letter', 'image']
 
+
 def create_resource(normalized, hashlist):
     bundle = {
         'systemData': {
@@ -26,18 +27,37 @@ def create_resource(normalized, hashlist):
 
 def update_resource(normalized, resource):
     current = _get_metadata(resource)
-    # TODO Remove information that would not be included on project ie source
-    # and service IDs
-    if not is_claimed(resource):
-        pass
+    normalized = normalized.attributes
 
-    # TODO Update actual osf project if unclaimed
     if current['collisionCategory'] > normalized['collisionCategory']:
-        new = deepcopy(current.attributes)
+        new = deepcopy(current)
         new.update(normalized)
     else:
-        new = deepcopy(normalized.attributes)
+        new = deepcopy(normalized)
         new.update(current)
+
+    if not is_claimed(resource):
+        resource_url = '{}/projects/{}/'.format(settings.OSF_APP_URL, resource)
+        update = {
+            'title': normalized['title'],
+            'description': normalized.get('description'),
+            'tags': normalized.get('tags'),
+            'contributors': [
+                {
+                    'name': '{given} {middle} {family}'.format(**x),
+                    'email': x.get('email')
+                }
+                for x in normalized['contributors']
+            ]
+        }
+
+        kwargs = {
+            'auth': settings.OSF_AUTH,
+            'data': json.dumps(update),
+            'headers': POST_HEADERS,
+            'verify': settings.VERIFY_SSL
+        }
+        requests.post(resource_url, **kwargs).json()
 
     return _post_metadata(resource, new)
 
@@ -79,11 +99,23 @@ def is_event(normalized): # "is event" means "is not project"
 
 
 def create_event(normalized):
-    pass
+    kwargs = {
+        'auth': settings.OSF_AUTH,
+        'data': json.dumps(normalized),
+        'headers': POST_HEADERS,
+        'verify': settings.VERIFY_SSL
+    }
+    return requests.post(settings.OSF_CREATE_EVENT, **kwargs).json()
 
 
 def is_claimed(resource):
-    pass
+    url = '{}get_contributors/'.format(settings.OSF_URL.format(resource))
+
+    ret = requests.get(url, auth=settings.OSF_AUTH, verify=settings.VERIFY_SSL).json()
+    for contributor in ret['contributors']:
+        if contributor['registered']:
+            return True
+    return False
 
 
 def get_collision_cat(source):
@@ -92,8 +124,8 @@ def get_collision_cat(source):
 
 def clean_report(normalized):
     new = deepcopy(normalized)
-    del new['source']
     del new['id']
+    del new['source']
     return new
 
 
@@ -121,6 +153,7 @@ def _create_node(normalized, additional, hashlist):
     kwargs = {
         'auth': settings.OSF_AUTH,
         'data': json.dumps(bundle),
+        'verify': settings.VERIFY_SSL,
         'headers': POST_HEADERS
     }
     return requests.post(settings.OSF_NEW_PROJECT, **kwargs).json()
@@ -128,14 +161,15 @@ def _create_node(normalized, additional, hashlist):
 
 def _get_metadata(id):
     url = '{}{}/'.format(settings.OSF_APP_URL, id)
-    return requests.get(url, auth=settings.OSF_AUTH).json()
+    return requests.get(url, auth=settings.OSF_AUTH, verify=settings.VERIFY_SSL).json()
 
 
 def _post_metadata(id, data):
     kwargs = {
         'data': json.dumps(data),
         'headers': POST_HEADERS,
-        'auth': settings.OSF_AUTH
+        'auth': settings.OSF_AUTH,
+        'verify': settings.VERIFY_SSL
     }
     url = '{}{}/'.format(settings.OSF_APP_URL, id)
 

@@ -1,7 +1,5 @@
 from __future__ import unicode_literals
 
-from urllib2 import quote
-
 import requests
 
 from scrapi import settings
@@ -9,11 +7,11 @@ from scrapi.processing.osf.hashing import REPORT_HASH_FUNCTIONS
 from scrapi.processing.osf.hashing import RESOURCE_HASH_FUNCTIONS
 
 
-def detect_collisions(hashlist):
+def detect_collisions(hashlist, additional=''):
     uuids = 'uuid:{}'.format(','.join(hashlist))
-    url = '{}?q={}'.format(settings.OSF_APP_URL, quote(uuids))
+    url = '{}?q={}{}'.format(settings.OSF_APP_URL, uuids, additional)
 
-    ret = requests.get(url, auth=settings.OSF_AUTH).json()
+    ret = requests.get(url, auth=settings.OSF_AUTH, verify=settings.VERIFY_SSL).json()
 
     if ret['total'] > 0:
         return ret['results'][0]['guid']
