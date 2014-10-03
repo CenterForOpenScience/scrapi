@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Consumer for MIT DSpace
 
 import requests
@@ -35,7 +36,7 @@ def consume(days_back=1):
         xml_list.append(RawDocument({
                     'doc': record,
                     'source': NAME,
-                    'docID': doc_id,
+                    'docID': str(doc_id),
                     'filetype': 'xml'
                 }))
     return xml_list
@@ -81,7 +82,7 @@ def get_contributors(result):
 
 def get_tags(result):
     tags = result.xpath('//dc:subject/node()', namespaces=NAMESPACES) or []
-    return [tag.lower() for tag in tags]
+    return [str(tag.lower()) for tag in tags]
 
 def get_ids(result, doc):
     serviceID = doc.get('docID')
@@ -100,7 +101,7 @@ def get_ids(result, doc):
     if url == '':
         raise Exception('Warning: No url provided!')
 
-    return {'serviceID': serviceID, 'url': url, 'doi': doi}
+    return {'serviceID': str(serviceID), 'url': str(url), 'doi': str(doi)}
 
 def get_properties(result):
     rights = result.xpath('//dc:rights/node()', namespaces=NAMESPACES) or ['']
@@ -109,7 +110,7 @@ def get_properties(result):
     identifiers = []
     for identifier in ids:
         if 'http://' not in identifier:
-            identifiers.append(identifier)
+            identifiers.append(str(identifier.encode('utf-8')))
     source = (result.xpath('//dc:source/node()', namespaces=NAMESPACES) or [''])[0]
     language = (result.xpath('//dc:language/node()', namespaces=NAMESPACES) or [''])[0]
     publisher = (result.xpath('//dc:publisher/node()', namespaces=NAMESPACES) or [''])[0]
@@ -121,17 +122,17 @@ def get_properties(result):
 
     props = {'permissions':
          {
-              'copyrightStatement': rights[0],
+              'copyrightStatement': str(rights[0]),
          },
          'identifiers': identifiers,
          'publisherInfo': {
-         'publisher': publisher,
+         'publisher': str(publisher),
          },
-         'format': dcformat,
-         'source': source,
-         'language': language,
-         'relation': relation,
-         'type': dctype,
+         'format': str(dcformat),
+         'source': str(source),
+         'language': str(language),
+         'relation': str(relation),
+         'type': str(dctype),
      }
     return props
 
@@ -173,12 +174,12 @@ def normalize(raw_doc, timestamp):
         'title': title,
         'contributors': get_contributors(result),
         'properties': get_properties(result),
-        'description': description,
+        'description': str(description.encode('utf-8')),
         'tags': get_tags(result),
         'id': get_ids(result,raw_doc),
         'source': NAME,
-        'dateUpdated': get_date_updated(result),
-        'dateCreated': get_date_created(result),
+        'dateUpdated': str(get_date_updated(result)),
+        'dateCreated': str(get_date_created(result)),
         'timestamp': str(timestamp),
     }
 
