@@ -64,4 +64,4 @@ def is_project(doc):
 
 
 REPORT_HASH_FUNCTIONS = [get_title, get_contributors, get_doi, get_id]
-RESOURCE_HASH_FUNCTIONS = [get_title, get_contributors, is_project]
+RESOURCE_HASH_FUNCTIONS = [get_title, get_contributors]
