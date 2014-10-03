@@ -9,39 +9,41 @@ from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 from nameparser import HumanName
 
-NAME = 'vtechworks'
+NAME = u'vtechworks'
 TODAY = date.today()
 OAI_DC_BASE = 'http://vtechworks.lib.vt.edu/oai/'
 NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/', 
             'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
             'ns0': 'http://www.openarchives.org/OAI/2.0/'}
 DEFAULT = datetime(1970, 01, 01)
+DEFAULT_ENCODING = 'utf-8'
+record_encoding = None
+
 
 def consume(days_back=1):
 
-    start_date = str(date.today() - timedelta(days_back))
     base_url = OAI_DC_BASE +'request?verb=ListRecords&metadataPrefix=oai_dc&from='
     start_date = TODAY - timedelta(days_back)
     # YYYY-MM-DD hh:mm:ss
-    url = base_url + str(start_date) + ' 00:00:00'
+    url = base_url + str(start_date)
     records = get_records(url)
-
     xml_list = []
     for record in records:
         doc_id = record.xpath('ns0:header/ns0:identifier', namespaces=NAMESPACES)[0].text
-        record = etree.tostring(record)
-        record = '<?xml version="1.0" encoding="UTF-8"?>\n' + record
+        record = etree.tostring(record, encoding=(record_encoding or DEFAULT_ENCODING))
         xml_list.append(RawDocument({
                     'doc': record,
                     'source': NAME,
-                    'docID': doc_id,
-                    'filetype': 'xml'
+                    'docID': copy_to_unicode(doc_id),
+                    'filetype': u'xml'
                 }))
 
     return xml_list
 
+
 def get_records(url):
     data = requests.get(url)
+    record_encoding = data.encoding
     doc = etree.XML(data.content)
     records = doc.xpath('//ns0:record', namespaces=NAMESPACES)
     token = doc.xpath('//ns0:resumptionToken/node()', namespaces=NAMESPACES)
@@ -53,6 +55,15 @@ def get_records(url):
         records += get_records(url)
 
     return records
+
+
+def copy_to_unicode(element):
+    encoding = record_encoding or DEFAULT_ENCODING
+    element = ''.join(element)
+    if isinstance(element, unicode):
+        return element
+    else:
+        return unicode(element, encoding=encoding)
 
 
 def get_contributors(result):
@@ -74,15 +85,15 @@ def get_contributors(result):
             'middle': name.middle,
             'family': name.last,
             'suffix': name.suffix,
-            'email': '',
-            'ORCID': '',
+            'email': u'',
+            'ORCID': u'',
             }
         contributor_list.append(contributor)
     return contributor_list
 
 def get_tags(result):
     tags = result.xpath('//dc:subject/node()', namespaces=NAMESPACES) or []
-    return [tag.lower() for tag in tags]
+    return [copy_to_unicode(tag.lower()) for tag in tags]
 
 def get_ids(result, doc):
     serviceID = doc.get('docID')
@@ -102,11 +113,13 @@ def get_ids(result, doc):
     if url == '':
         raise Exception('Warning: No url provided!')
 
-    return {'serviceID': serviceID, 'url': url, 'doi': doi}
+    return {'serviceID': serviceID,
+            'url': copy_to_unicode(url),
+            'doi': copy_to_unicode(doi)}
 
 def get_properties(result):
     result_type = (result.xpath('//dc:type/node()', namespaces=NAMESPACES) or [''])[0]
-    rights = result.xpath('//dc:rights/node()', namespaces=NAMESPACES) or ['']
+    rights = (result.xpath('//dc:rights/node()', namespaces=NAMESPACES) or [''])[0]
     if len(rights) > 1:
         copyright = ' '.join(rights)
     else:
@@ -115,14 +128,14 @@ def get_properties(result):
     relation = (result.xpath('//dc:relation/node()', namespaces=NAMESPACES) or [''])[0]
     language = (result.xpath('//dc:language/node()', namespaces=NAMESPACES) or [''])[0]
     props = {
-        'type': result_type,
-        'language': language,
-        'relation': relation,
+        'type': copy_to_unicode(result_type),
+        'language': copy_to_unicode(language),
+        'relation': copy_to_unicode(relation),
         'publisherInfo': {
-            'publisher': publisher,
+            'publisher': copy_to_unicode(publisher),
         },
         'permissions': {
-            'copyrightStatement': copyright,
+            'copyrightStatement': copy_to_unicode(copyright),
         },
     }
     return props
@@ -152,20 +165,21 @@ def normalize(raw_doc, timestamp):
     title = result.xpath('//dc:title/node()', namespaces=NAMESPACES)[0]
     description = (result.xpath('//dc:description/node()', namespaces=NAMESPACES) or [''])[0]
 
-
     payload = {
-        'title': title,
+        'title': copy_to_unicode(title),
         'contributors': get_contributors(result),
         'properties': get_properties(result),
-        'description': description,
+        'description': copy_to_unicode(description),
         'tags': get_tags(result),
-        'id': get_ids(result,raw_doc),
+        'id': get_ids(result, raw_doc),
         'source': NAME,
-        'dateUpdated': get_date_updated(result),
-        'dateCreated': get_date_created(result),
-        'timestamp': str(timestamp),
+        'dateUpdated': copy_to_unicode(get_date_updated(result)),
+        'dateCreated': copy_to_unicode(get_date_created(result)),
+        'timestamp': copy_to_unicode(str(timestamp)),
     }
 
+    #import json
+    #print(json.dumps(payload, indent=4))
     return NormalizedDocument(payload)
 
 if __name__ == '__main__':
