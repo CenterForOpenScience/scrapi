@@ -96,11 +96,8 @@ def get_tags(result):
             tags.append(tag)
     return [copy_to_unicode(tag.lower().strip()) for tag in tags]
 
-def getabstract(result):
-    return copy_to_unicode(abstract[0])
-
-def get_ids(result):
-    service_id = result.xpath('ns0:header/ns0:identifier/node()', namespaces=NAMESPACES)[0]
+def get_ids(result, raw_doc):
+    service_id = raw_doc.get('docID')
     identifiers = result.xpath('//dc:identifier/node()', namespaces=NAMESPACES)
     url = ''
     doi = ''
@@ -112,7 +109,7 @@ def get_ids(result):
     if url == '':
         raise Exception('Warning: No url provided!')
 
-    return {'serviceID': service_id, 'url': url, 'doi': doi}
+    return {'serviceID': service_id, 'url': copy_to_unicode(url), 'doi': copy_to_unicode(doi)}
 
 # TODO - this function is unused for now - might implement this later
 def get_earliest_date(result):
@@ -136,7 +133,7 @@ def get_earliest_date(result):
     min_date =  min(date_list) 
     min_date = time.strftime('%Y-%m-%d', min_date)
 
-    return min_date
+    return copy_to_unicode(min_date)
 
 def get_properties(result):
     result_type = result.xpath('//dc:type/node()', namespaces=NAMESPACES) or ['']
@@ -145,20 +142,23 @@ def get_properties(result):
     publisher = result.xpath('//dc:publisher/node()', namespaces=NAMESPACES) or ['']
 
     properties = {
-        'type': result_type[0],
-        'rights': rights[0],
-        'identifiers': identifiers,
-        'publisher': publisher[0]
+        'type': copy_to_unicode(result_type[0]),
+        'rights': copy_to_unicode(rights[0]),
+        'identifiers': copy_to_unicode(identifiers),
+        'publisher': copy_to_unicode(publisher[0])
     }
+
     return properties
 
 def get_date_created(result):
     dates = result.xpath('//dc:date/node()', namespaces=NAMESPACES)
-    return parse(dates[0]).isoformat()
+    date = parse(dates[0]).isoformat()
+    return copy_to_unicode(date)
 
 def get_date_updated(result):
     date_updated = result.xpath('ns0:header/ns0:datestamp', namespaces=NAMESPACES)[0].text
-    return parse(date_updated).isoformat()
+    date = parse(date_updated).isoformat()
+    return copy_to_unicode(date)
 
 def normalize(raw_doc, timestamp):
     result = raw_doc.get('doc')
@@ -168,20 +168,23 @@ def normalize(raw_doc, timestamp):
         print "Error in namespaces! Skipping this one..."
         return None
 
+    title = (result.xpath('//dc:title/node()', namespaces=NAMESPACES) or [''])[0]
+    description = (result.xpath('//dc:description/node()', namespaces=NAMESPACES) or [''])[0]
+
     payload = {
-        'title': (result.xpath('//dc:title/node()', namespaces=NAMESPACES) or [''])[0],
+        'title': copy_to_unicode(title),
         'contributors': get_contributors(result),
         'properties': get_properties(result),
-        'description': (result.xpath('//dc:description/node()', namespaces=NAMESPACES) or [''])[0],
+        'description': copy_to_unicode(description),
         'tags': get_tags(result),
-        'id': get_ids(result),
+        'id': get_ids(result, raw_doc),
         'source': NAME,
         'dateCreated': get_date_created(result),
         'dateUpdated': get_date_updated(result),
-        'timestamp': str(timestamp)
+        'timestamp': timestamp
 
     }
-    import json; print json.dumps(payload['dateUpdated'], indent=4)
+    
     return NormalizedDocument(payload)
 
 if __name__ == '__main__':
