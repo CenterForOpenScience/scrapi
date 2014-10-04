@@ -8,7 +8,7 @@ class OSFProcessor(BaseProcessor):
 
     def process_normalized(self, raw_doc, normalized):
         if crud.is_event(normalized):
-            crud.create_event(normalized)
+            crud.dump_metdata(normalized, {})
             return
 
         normalized['collisionCategory'] = crud.get_collision_cat(normalized['source'])
@@ -24,10 +24,14 @@ class OSFProcessor(BaseProcessor):
 
         if not resource:
             resource = crud.create_resource(resource_norm, resource_hash)
-        elif not crud.is_claimed(resource):
-            crud.update_resource(resource_norm, resource)
+        else:
+            crud.dump_metadata(resource_norm, {'nid': resource})
 
         if not report:
-            crud.create_report(report_norm, resource, report_hash)
+            report = crud.create_report(report_norm, resource, report_hash)
         else:
-            crud.update_report(report_norm, report)
+            crud.dump_metadata(report_norm, {'nid': report, 'pid': resource})
+
+        crud.update_report(report, report_norm)
+        if not crud.is_claimed(resource):
+            crud.update_resource(resource, resource_norm)
