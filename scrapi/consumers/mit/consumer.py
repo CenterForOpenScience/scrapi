@@ -13,32 +13,36 @@ import os
 NAME = u'mit'
 TODAY = date.today()
 NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/', 
-            'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
-            'ns0': 'http://www.openarchives.org/OAI/2.0/'}
+              'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
+              'ns0': 'http://www.openarchives.org/OAI/2.0/'}
 OAI_DC_BASE_URL = 'http://dspace.mit.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from='
 DEFAULT = datetime(1970, 01, 01)
+DEFAULT_ENCODING = 'utf-8'
+record_encoding = None
+
 
 def consume(days_back=1):
     start_date = TODAY - timedelta(days_back)
     # YYYY-MM-DD hh:mm:ss
     url = OAI_DC_BASE_URL + str(start_date)
-    encoding = requests.get(url).encoding
     records = get_records(url)
 
     xml_list = []
     for record in records:
         doc_id = record.xpath('ns0:header/ns0:identifier', namespaces=NAMESPACES)[0].text
-        record = etree.tostring(record, encoding=encoding)
+        record = etree.tostring(record, encoding=(record_encoding or DEFAULT_ENCODING))
         xml_list.append(RawDocument({
-                    'doc': record,
-                    'source': NAME,
-                    'docID': unicode(doc_id, encoding=encoding),
-                    'filetype': u'xml'
-                }))
+            'doc': record,
+            'source': NAME,
+            'docID': copy_to_unicode(doc_id),
+            'filetype': u'xml'
+        }))
     return xml_list
+
 
 def get_records(url):
     data = requests.get(url)
+    record_encoding = data.encoding
     doc = etree.XML(data.content)
     records = doc.xpath('//ns0:record', namespaces=NAMESPACES)
     token = doc.xpath('//ns0:resumptionToken/node()', namespaces=NAMESPACES)
@@ -50,6 +54,15 @@ def get_records(url):
         records += get_records(url)
 
     return records
+
+
+def copy_to_unicode(element):
+    encoding = record_encoding or DEFAULT_ENCODING
+    element = ''.join(element)
+    if isinstance(element, unicode):
+        return element
+    else:
+        return unicode(element, encoding=encoding)
 
 
 def get_contributors(result):
@@ -65,20 +78,22 @@ def get_contributors(result):
     for person in all_contributors:
         name = HumanName(person)
         contributor = {
-            'prefix': unicode(name.title),
-            'given': unicode(name.first),
-            'middle': unicode(name.middle),
-            'family': unicode(name.last),
-            'suffix': unicode(name.suffix),
+            'prefix': name.title,
+            'given': name.first,
+            'middle': name.middle,
+            'family': name.last,
+            'suffix': name.suffix,
             'email': u'',
             'ORCID': u'',
-            }
+        }
         contributor_list.append(contributor)
     return contributor_list
 
+
 def get_tags(result):
     tags = result.xpath('//dc:subject/node()', namespaces=NAMESPACES) or []
-    return [unicode(tag.lower()) for tag in tags]
+    return [copy_to_unicode(tag.lower()) for tag in tags]
+
 
 def get_ids(result, doc):
     serviceID = doc.get('docID')
@@ -97,10 +112,17 @@ def get_ids(result, doc):
     if url == '':
         raise Exception('Warning: No url provided!')
 
-    return {'serviceID': unicode(serviceID), 'url': unicode(url), 'doi': unicode(doi)}
+    return {'serviceID': copy_to_unicode(serviceID),
+            'url': copy_to_unicode(url),
+            'doi': copy_to_unicode(doi)}
+
 
 def get_properties(result):
     rights = result.xpath('//dc:rights/node()', namespaces=NAMESPACES) or ['']
+    if len(rights) > 1:
+        copyrightt = ' '.join(rights)
+    else:
+        copyrightt = rights
     ids = result.xpath('//dc:identifier/node()', namespaces=NAMESPACES) or ['']
     ids += result.xpath('//dc:relation/node()', namespaces=NAMESPACES)
     identifiers = []
@@ -118,19 +140,20 @@ def get_properties(result):
 
     props = {'permissions':
          {
-              'copyrightStatement': unicode(rights[0]),
+              'copyrightStatement': copy_to_unicode(copyrightt),
          },
          'identifiers': identifiers,
          'publisherInfo': {
-         'publisher': unicode(publisher),
+         'publisher': copy_to_unicode(publisher),
          },
-         'format': unicode(dcformat),
-         'source': unicode(source),
-         'language': unicode(language),
-         'relation': unicode(relation),
-         'type': unicode(dctype),
+         'format': copy_to_unicode(dcformat),
+         'source': copy_to_unicode(source),
+         'language': copy_to_unicode(language),
+         'relation': copy_to_unicode(relation),
+         'type': copy_to_unicode(dctype),
      }
     return props
+
 
 def get_date_created(result):
     dates = result.xpath('//dc:date/node()', namespaces=NAMESPACES)
@@ -141,10 +164,12 @@ def get_date_created(result):
     min_date = min(date_list)
     return min_date
 
+
 def get_date_updated(result):
     dateupdated = result.xpath('//ns0:header/ns0:datestamp/node()', namespaces=NAMESPACES)[0]
     date_updated = parse(dateupdated).isoformat()
     return date_updated
+
 
 def normalize(raw_doc, timestamp):
     result = raw_doc.get('doc')
@@ -167,21 +192,22 @@ def normalize(raw_doc, timestamp):
     description = (result.xpath('//dc:description/node()', namespaces=NAMESPACES) or [''])[0]
 
     payload = {
-        'title': unicode(title),
+        'title': copy_to_unicode(title),
         'contributors': get_contributors(result),
         'properties': get_properties(result),
-        'description': unicode(description),
+        'description': copy_to_unicode(description),
         'tags': get_tags(result),
-        'id': get_ids(result,raw_doc),
+        'id': get_ids(result, raw_doc),
         'source': NAME,
-        'dateUpdated': unicode(get_date_updated(result)),
-        'dateCreated': unicode(get_date_created(result)),
-        'timestamp': unicode(timestamp),
+        'dateUpdated': copy_to_unicode(get_date_updated(result)),
+        'dateCreated': copy_to_unicode(get_date_created(result)),
+        'timestamp': copy_to_unicode(timestamp),
     }
 
-    #import json
-    #print(json.dumps(payload, indent=4))
+    # import json
+    # print(json.dumps(payload, indent=4))
     return NormalizedDocument(payload)
+
 
 if __name__ == '__main__':
     print(lint(consume, normalize))
