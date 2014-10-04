@@ -1,5 +1,5 @@
 ## consumer for DataONE SOLR search API
-# from __future__ import unicode_literals
+from __future__ import unicode_literals
 
 import re
 from lxml import etree
@@ -14,21 +14,32 @@ from scrapi.linter.document import RawDocument, NormalizedDocument
 
 NAME = "dataone"
 
+DEFAULT_ENCODING = 'UTF-8'
+
+record_encoding = None
+
+def copy_to_unicode(element):
+
+    encoding = record_encoding or DEFAULT_ENCODING
+    element = ''.join(element)
+    if isinstance(element, unicode):
+        return element
+    else:
+        return unicode(element, encoding=encoding)
+
 def consume(days_back=1):
     doc =  get_response(1, days_back)
     rows = doc.xpath("//result/@numFound")[0]
     doc = get_response(rows, days_back)
     records = doc.xpath('//doc')
-    
     xml_list = []
     for record in records:
         doc_id = record.xpath("str[@name='id']")[0].text
-        record = ElementTree.tostring(record)
-        record = '<?xml version="1.0" encoding="UTF-8"?>\n' + record
+        record = ElementTree.tostring(record, encoding=record_encoding)
         xml_list.append(RawDocument({
                     'doc': record,
                     'source': NAME,
-                    'docID': doc_id,
+                    'docID': copy_to_unicode(doc_id),
                     'filetype': 'xml'
                 }))
 
@@ -39,8 +50,8 @@ def get_response(rows, days_back):
     API, with the specified number of rows.
     Returns an etree element with results '''
     url = 'https://cn.dataone.org/cn/v1/query/solr/?q=dateModified:[NOW-{0}DAY TO *]&rows='.format(days_back) + str(rows)
-    print url
     data = requests.get(url)
+    record_encoding = data.encoding
     doc =  etree.XML(data.content)
     return doc
 
@@ -88,6 +99,17 @@ def get_properties(doc):
         'sku': (doc.xpath("str[@name='sku']/node()") or [''])[0],
         'isDocumentedBy': doc.xpath("arr[@name='isDocumentedBy']/str/node()"),
     }
+
+    # make sure everything in propeties is unicode
+    for key, value in properties.iteritems():
+        if isinstance(value, etree._ElementStringResult) or isinstance(value, str):
+            properties[key] = copy_to_unicode(value)
+        elif isinstance(value, list):
+            unicode_list = []
+            for item in value:
+                unicode_list.append(copy_to_unicode(item))
+            properties[key] = unicode_list
+
     return properties
 
 # currently unused - but maybe in the future? 
@@ -132,7 +154,7 @@ def get_contributors(doc):
                 'middle': name.middle,
                 'family': name.last,
                 'suffix': name.suffix,
-                'email': email,
+                'email': copy_to_unicode(email),
                 'ORCID': ''
             }
             contributor_list.append(contributor_dict)
@@ -164,41 +186,46 @@ def get_ids(doc, raw_doc):
         except AttributeError:
             doi = service_id.replace('doi:', '')
     url = (doc.xpath('//str[@name="dataUrl"]/node()') or [''])[0]
-    ids = {'serviceID':service_id, 'doi': doi, 'url':url}
+    ids = {'serviceID':service_id, 'doi': copy_to_unicode(doi), 'url': copy_to_unicode(url)}
 
     return ids
 
 def get_tags(doc):
     tags = doc.xpath("//arr[@name='keywords']/str/node()")
-    return [tag.lower() for tag in tags]
+    return [copy_to_unicode(tag.lower()) for tag in tags]
 
 def get_date_updated(doc):
     date_updated = (doc.xpath('//date[@name="dateModified"]/node()') or [''])[0]
-    return parse(date_updated).isoformat()
+    date = parse(date_updated).isoformat()
+    return copy_to_unicode(date)
 
 def get_date_created(doc):
     date_created = (doc.xpath("date[@name='datePublished']/node()") or \
                     doc.xpath("date[@name='pubDate']/node()") or [''])[0]
-    return parse(date_created).isoformat()
+    date = parse(date_created).isoformat()
+    return copy_to_unicode(date)
 
 def normalize(raw_doc, timestamp):
     raw_doc_text = raw_doc.get('doc')
     doc = etree.XML(raw_doc_text)
 
+    title = (doc.xpath("str[@name='title']/node()") or [''])[0]
+    description = (doc.xpath("str[@name='abstract']/node()") or [''])[0]
+
     normalized_dict = {
-            'title': (doc.xpath("str[@name='title']/node()") or [''])[0],
+            'title': copy_to_unicode(title),
             'contributors': get_contributors(doc),
             'properties': get_properties(doc),
-            'description': (doc.xpath("str[@name='abstract']/node()") or [''])[0],
+            'description': copy_to_unicode(description),
             'id': get_ids(doc, raw_doc),
             'tags': get_tags(doc),
             'source': NAME,
             'dateCreated': get_date_created(doc),
             'dateUpdated': get_date_updated(doc),
-            'timestamp': str(timestamp)
+            'timestamp': timestamp
     }
 
-    import json; print json.dumps(normalized_dict['tags'], indent=4)
+    # import json; print json.dumps(normalized_dict['tags'], indent=4)
     return NormalizedDocument(normalized_dict)
 
 
