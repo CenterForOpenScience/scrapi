@@ -1,0 +1,10 @@
+{
+    "days": "mon-sun",
+    "hour": 23,
+    "minute": 59,
+    "longName": "arXiv",
+    "shortName": "arxiv",
+    "url": "https://github.com/erinspace/arxiv.git",
+    "fileFormat": "xml",
+    "collisionCategory": 0
+}
