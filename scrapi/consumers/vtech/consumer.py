@@ -9,22 +9,21 @@ from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 from nameparser import HumanName
 
+
 NAME = u'vtechworks'
 TODAY = date.today()
 OAI_DC_BASE = 'http://vtechworks.lib.vt.edu/oai/'
 NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/', 
-            'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
-            'ns0': 'http://www.openarchives.org/OAI/2.0/'}
+              'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
+              'ns0': 'http://www.openarchives.org/OAI/2.0/'}
 DEFAULT = datetime(1970, 01, 01)
 DEFAULT_ENCODING = 'utf-8'
 record_encoding = None
 
 
 def consume(days_back=1):
-
-    base_url = OAI_DC_BASE +'request?verb=ListRecords&metadataPrefix=oai_dc&from='
+    base_url = OAI_DC_BASE + 'request?verb=ListRecords&metadataPrefix=oai_dc&from='
     start_date = TODAY - timedelta(days_back)
-    # YYYY-MM-DD hh:mm:ss
     url = base_url + str(start_date)
     records = get_records(url)
     xml_list = []
@@ -32,11 +31,11 @@ def consume(days_back=1):
         doc_id = record.xpath('ns0:header/ns0:identifier', namespaces=NAMESPACES)[0].text
         record = etree.tostring(record, encoding=(record_encoding or DEFAULT_ENCODING))
         xml_list.append(RawDocument({
-                    'doc': record,
-                    'source': NAME,
-                    'docID': copy_to_unicode(doc_id),
-                    'filetype': u'xml'
-                }))
+            'doc': record,
+            'source': NAME,
+            'docID': copy_to_unicode(doc_id),
+            'filetype': u'xml'
+        }))
 
     return xml_list
 
@@ -87,13 +86,15 @@ def get_contributors(result):
             'suffix': name.suffix,
             'email': u'',
             'ORCID': u'',
-            }
+        }
         contributor_list.append(contributor)
     return contributor_list
+
 
 def get_tags(result):
     tags = result.xpath('//dc:subject/node()', namespaces=NAMESPACES) or []
     return [copy_to_unicode(tag.lower()) for tag in tags]
+
 
 def get_ids(result, doc):
     serviceID = doc.get('docID')
@@ -117,13 +118,14 @@ def get_ids(result, doc):
             'url': copy_to_unicode(url),
             'doi': copy_to_unicode(doi)}
 
+
 def get_properties(result):
     result_type = (result.xpath('//dc:type/node()', namespaces=NAMESPACES) or [''])[0]
-    rights = (result.xpath('//dc:rights/node()', namespaces=NAMESPACES) or [''])[0]
+    rights = (result.xpath('//dc:rights/node()', namespaces=NAMESPACES) or [''])
     if len(rights) > 1:
-        copyright = ' '.join(rights)
+        copyrightt = ' '.join(rights)
     else:
-        copyright = rights
+        copyrightt = rights
     publisher = (result.xpath('//dc:publisher/node()', namespaces=NAMESPACES) or [''])[0]
     relation = (result.xpath('//dc:relation/node()', namespaces=NAMESPACES) or [''])[0]
     language = (result.xpath('//dc:language/node()', namespaces=NAMESPACES) or [''])[0]
@@ -135,10 +137,11 @@ def get_properties(result):
             'publisher': copy_to_unicode(publisher),
         },
         'permissions': {
-            'copyrightStatement': copy_to_unicode(copyright),
+            'copyrightStatement': copy_to_unicode(copyrightt),
         },
     }
     return props
+
 
 def get_date_created(result):
     dates = result.xpath('//dc:date/node()', namespaces=NAMESPACES)
@@ -149,10 +152,12 @@ def get_date_created(result):
     min_date = min(date_list)
     return min_date
 
+
 def get_date_updated(result):
     dateupdated = result.xpath('//ns0:header/ns0:datestamp/node()', namespaces=NAMESPACES)[0]
     date_updated = parse(dateupdated).isoformat()
     return date_updated
+
 
 def normalize(raw_doc, timestamp):
     result = raw_doc.get('doc')
@@ -175,12 +180,13 @@ def normalize(raw_doc, timestamp):
         'source': NAME,
         'dateUpdated': copy_to_unicode(get_date_updated(result)),
         'dateCreated': copy_to_unicode(get_date_created(result)),
-        'timestamp': copy_to_unicode(str(timestamp)),
+        'timestamp': copy_to_unicode(timestamp),
     }
 
-    #import json
-    #print(json.dumps(payload, indent=4))
+    # import json
+    # print(json.dumps(payload, indent=4))
     return NormalizedDocument(payload)
+
 
 if __name__ == '__main__':
     print(lint(consume, normalize))
