@@ -15,6 +15,18 @@ from scrapi.linter.document import RawDocument, NormalizedDocument
 TODAY = date.today()
 NAME = 'crossref'
 
+DEFAULT_ENCODING = 'UTF-8'
+
+record_encoding = None
+
+def copy_to_unicode(element):
+
+    encoding = record_encoding or DEFAULT_ENCODING
+    element = ''.join(element)
+    if isinstance(element, unicode):
+        return element
+    else:
+        return unicode(element, encoding=encoding)
 
 def consume(days_back=0):
     base_url = 'http://api.crossref.org/works?filter=from-pub-date:{},until-pub-date:{}&rows=1000'
@@ -22,6 +34,7 @@ def consume(days_back=0):
     url = base_url.format(str(start_date), str(TODAY))
     print url
     data = requests.get(url)
+    record_encoding = data.encoding
     doc = data.json()
 
     records = doc['message']['items']
@@ -101,12 +114,14 @@ def get_tags(doc):
 def get_date_created(doc):
     deposited_date_parts = doc['deposited'].get('date-parts') or []
     date = ' '.join([str(part) for part in deposited_date_parts[0]]) 
-    return parse(date).isoformat()
+    isodatecreated = parse(date).isoformat()
+    return copy_to_unicode(isodatecreated)
 
 def get_date_updated(doc):
     issued_date_parts = doc['issued'].get('date-parts') or []
-    date = ' '.join([str(part) for part in issued_date_parts[0]]) 
-    return parse(date).isoformat()
+    date = ' '.join([str(part) for part in issued_date_parts[0]])
+    isodateupdated = parse(date).isoformat()
+    return copy_to_unicode(isodateupdated)
 
 def normalize(raw_doc, timestamp):
     doc_str = raw_doc.get('doc')
@@ -121,7 +136,7 @@ def normalize(raw_doc, timestamp):
         'source': NAME,
         'dateCreated': get_date_created(doc),
         'dateUpdated' : get_date_updated(doc),
-        'timestamp': str(timestamp),
+        'timestamp': timestamp,
         'tags': get_tags(doc)
     }
     return NormalizedDocument(normalized_dict)
