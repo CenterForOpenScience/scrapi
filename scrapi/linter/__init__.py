@@ -55,7 +55,13 @@ def lint(consume, normalize):
         if doc and doc['id']['serviceID'] != raw_doc['docID']:
             raise ValueError('Serivce ID {} does not match {}'.format(doc['id']['serviceID'], raw_doc['docID']))
 
-    is_serializable(output[0].attributes)
-    is_serializable(normalized_output[0].attributes)
+    output = [x for x in output if x]
+    normalized_output = [x for x in normalized_output if x]
+
+    if output:
+        is_serializable(output[0].attributes)
+
+    if normalized_output:
+        is_serializable(normalized_output[0].attributes)
 
     return 'Linting passed with No Errors'
