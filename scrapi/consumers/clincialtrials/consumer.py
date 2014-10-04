@@ -18,7 +18,20 @@ from scrapi.linter.document import RawDocument, NormalizedDocument
 TODAY = date.today()
 NAME = "clinicaltrials"
 
-def consume(days_back=5):
+DEFAULT_ENCODING = 'UTF-8'
+
+record_encoding = None
+
+def copy_to_unicode(element):
+
+    encoding = record_encoding or DEFAULT_ENCODING
+    element = ''.join(element)
+    if isinstance(element, unicode):
+        return element
+    else:
+        return unicode(element, encoding=encoding)
+
+def consume(days_back=1):
     """ First, get a list of all recently updated study urls,
     then get the xml one by one and save it into a list 
     of docs including other information """
@@ -41,6 +54,7 @@ def consume(days_back=5):
 
     # grab the total number of studies
     initial_request = requests.get(url)
+    record_encoding = initial_request.encoding
     initial_request_xml = etree.XML(initial_request.content) 
     count = int(initial_request_xml.xpath('//search_results/@count')[0])
 
@@ -60,11 +74,12 @@ def consume(days_back=5):
         for study_url in study_urls:
             content = requests.get(study_url)
             doc = etree.XML(content.content)
+            record = etree.tostring(doc, encoding=record_encoding)
             doc_id = doc.xpath('//nct_id/node()')[0]
             xml_list.append(RawDocument({
-                    'doc': content.content,
+                    'doc': record,
                     'source': NAME,
-                    'docID': doc_id,
+                    'docID': copy_to_unicode(doc_id),
                     'filetype': 'xml',
                 }))
             time.sleep(1)
@@ -92,61 +107,66 @@ def get_contributors(xml_doc):
 
 def get_ids(raw_doc, xml_doc):
     url = (xml_doc.xpath('//required_header/url/node()') or [''])[0]
-    ids = {'serviceID': raw_doc.get('docID'), 'doi': '', 'url': url}
+    ids = {'serviceID': raw_doc.get('docID'), 'doi': '', 'url': copy_to_unicode(url)}
     return ids
 
 def get_tags(xml_doc):
-    keywords = [tag.lower() for  tag in xml_doc.xpath('//keyword/node()')]
+    keywords = [copy_to_unicode(tag.lower()) for  tag in xml_doc.xpath('//keyword/node()')]
     return keywords
 
 def get_properties(xml_doc):
     lead_sponsor  = {
             'agency': (xml_doc.xpath('//lead_sponsor/agency/node()') or [''])[0],
             'agency_class': (xml_doc.xpath('//lead_sponsor/agency_class/node()') or [''])[0]
-        }
+    }
+
+    for key, value in lead_sponsor.iteritems():
+        lead_sponsor[key] = copy_to_unicode(value)
 
     primary_outcome = {
             'measure': (xml_doc.xpath('//primary_outcome/measure/node()') or [''])[0],
             'time_frame': (xml_doc.xpath('//primary_outcome/time_frame/node()') or [''])[0],
             'safety_issue': (xml_doc.xpath('//primary_outcome/safety_issue/node()') or [''])[0]
-        }
+    }
+
+    for key, value in primary_outcome.iteritems():
+        primary_outcome[key] = copy_to_unicode(value)
 
     # gives a list of dictionaries of all secondary outcomes
     secondary_outcome_elements = xml_doc.xpath('//secondary_outcome')
     secondary_outcomes = []
     for item in secondary_outcome_elements:
         secondary_outcome = {element.tag: element.text for element in item.iterdescendants()}
-        secondary_outcomes.append(secondary_outcome)
+        secondary_outcomes.append(copy_to_unicode(secondary_outcome))
 
     # enrollment - can have different types
     enrollment_list = xml_doc.xpath('//enrollment')
-    enrollment = {item.values()[0]: item.text for item in enrollment_list}
+    enrollment = {item.values()[0]: copy_to_unicode(item.text) for item in enrollment_list}
 
     # arm group
     arm_group_elements = xml_doc.xpath('//arm_group')
     arm_groups = []
     for item in arm_group_elements:
-        arm_group = {element.tag: element.text for element in item.iterdescendants()}
+        arm_group = {element.tag: copy_to_unicode(element.text) for element in item.iterdescendants()}
         arm_groups.append(arm_group)
 
     # intervention
     intervention_elements = xml_doc.xpath('//intervention')
     interventions = []
     for item in intervention_elements:
-        intervention = {element.tag: element.text for element in item.iterdescendants()}
+        intervention = {element.tag: copy_to_unicode(element.text) for element in item.iterdescendants()}
         interventions.append(intervention)
 
     # eligibility
     eligibility_elements = xml_doc.xpath('//eligibility')
-
     eligibility = {}
     for element in eligibility_elements[0].iterchildren():
         if element.text.strip() == '':
             for child in element.getchildren():
                 if child.text.strip() != '':               
-                    eligibility[element.tag] = child.text
+                    eligibility[element.tag] = copy_to_unicode(child.text)
         else:
-            eligibility[element.tag] = element.text
+            eligibility[element.tag] = copy_to_unicode(element.text)
 
     ## TODO: location - undone for now
     ## location has a facility name - and address with seperate city state zip country
@@ -166,14 +186,14 @@ def get_properties(xml_doc):
     link_elements = xml_doc.xpath('//link')
     links = []
     for item in link_elements:
-        link = {element.tag: element.text for element in item.iterdescendants()}
+        link = {element.tag: copy_to_unicode(element.text) for element in item.iterdescendants()}
         links.append(intervention)
 
     # responsible party 
     # TODO: is there ever more than one responsible party? 
     responsible_party_elements = xml_doc.xpath('//responsible_party')
     try:
-        responsible_party = {elem.tag: elem.text for elem in responsible_party_elements[0].iterdescendants()}
+        responsible_party = {elem.tag: copy_to_unicode(elem.text) for elem in responsible_party_elements[0].iterdescendants()}
     except IndexError:
         responsible_party = {}
 
@@ -204,15 +224,26 @@ def get_properties(xml_doc):
         'hasExpandedAccess': (xml_doc.xpath('//has_expanded_access/node()') or [''])[0]
     }
 
+    for key, value in properties.iteritems():
+        if isinstance(value, etree._ElementStringResult):
+            properties[key] = copy_to_unicode(value)
+        elif isinstance(value, list):
+            unicode_list = []
+            for item in value:
+                unicode_list.append(copy_to_unicode(item))
+            properties[key] = unicode_list
+
     return properties
 
 def get_date_created(xml_doc):
     date_created = (xml_doc.xpath('//firstreceived_date/node()') or [''])[0]
-    return parse(date_created).isoformat()
+    date = parse(date_created).isoformat()
+    return copy_to_unicode(date)
 
 def get_date_updated(xml_doc):
     date_updated = (xml_doc.xpath('//lastchanged_date/node()') or [''])[0]
-    return parse(date_updated).isoformat()
+    date = parse(date_updated).isoformat()
+    return copy_to_unicode(date)
 
 def normalize(raw_doc, timestamp):
     raw_doc_text = raw_doc.get('doc')
@@ -225,16 +256,16 @@ def normalize(raw_doc, timestamp):
     abstract = (xml_doc.xpath('//brief_summary/textblock/node()') or xml_doc.xpath('//brief_summary/textblock/node()') or [''])[0]
 
     normalized_dict = {
-            'title': title,
+            'title': copy_to_unicode(title),
             'contributors': get_contributors(xml_doc),
             'properties': get_properties(xml_doc),
-            'description': abstract,
+            'description': copy_to_unicode(abstract),
             'id': get_ids(raw_doc, xml_doc),
             'source': NAME,
             'tags': get_tags(xml_doc),
             'dateCreated': get_date_created(xml_doc),
             'dateUpdated': get_date_updated(xml_doc),
-            'timestamp': str(timestamp)
+            'timestamp': timestamp
     }
 
     return NormalizedDocument(normalized_dict)
