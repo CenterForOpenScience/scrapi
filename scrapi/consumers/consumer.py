@@ -24,6 +24,18 @@ MAX_ROWS_PER_REQUEST = 999
 
 NAME = 'plos'
 
+DEFAULT_ENCODING = 'UTF-8'
+
+record_encoding = None
+
+def copy_to_unicode(element):
+
+    encoding = record_encoding or DEFAULT_ENCODING
+    element = ''.join(element)
+    if isinstance(element, unicode):
+        return element
+    else:
+        return unicode(element, encoding=encoding)
 
 def consume(days_back=1):
     if not PLOS_API_KEY:
@@ -33,6 +45,7 @@ def consume(days_back=1):
     base_url = 'http://api.plos.org/search?q=publication_date:'
     base_url += '[{}%20TO%20{}]'.format(START_DATE, TODAY)
     plos_request = requests.get(base_url, params=payload)
+    record_encoding = plos_request.encoding
     xml_response = etree.XML(plos_request.content)
     num_results = int(xml_response.xpath('//result/@numFound')[0])
 
@@ -61,7 +74,7 @@ def consume(days_back=1):
                 doc_list.append(RawDocument({
                     'doc': etree.tostring(result),
                     'source': NAME,
-                    'docID': docID,
+                    'docID': copy_to_unicode(docID),
                     'filetype': 'xml',
                 }))
 
@@ -77,7 +90,7 @@ def consume(days_back=1):
 def get_ids(raw_doc, record):
     doi = record.xpath('//str[@name="id"]/node()')[0]
     ids = {
-        'doi': doi,
+        'doi': copy_to_unicode(doi),
         'serviceID': raw_doc.get('docID'),
         'url': 'http://dx.doi.org/{}'.format(doi)
     }
@@ -108,17 +121,22 @@ def get_properties(record):
         'articleType': (record.xpath('//str[@name="article_type"]/node()') or [''])[0],
         'score': (record.xpath('//float[@name="score"]/node()') or [''])[0],
     }
-    return properties
 
+    # ensure everything is in unicode
+    for key, value in properties.iteritems():
+        properties[key] = copy_to_unicode(value)
+
+    return properties
 
 def get_date_created(record):
     date_created =  (record.xpath('//date[@name="publication_date"]/node()') or [''])[0]
-    return parse(date_created).isoformat()
+    date = parse(date_created).isoformat()
+    return copy_to_unicode(date)
 
 # PLoS doesn't seem to return date updated, so just putting 
 # date consumed here... 
 def get_date_updated(timestamp):
-    return str(timestamp)
+    return timestamp
 
 # No tags... 
 def get_tags(record):
@@ -127,19 +145,25 @@ def get_tags(record):
 def normalize(raw_doc, timestamp):
     raw_doc_string = raw_doc.get('doc')
     record = etree.XML(raw_doc_string)
+
+    title = record.xpath('//str[@name="title_display"]/node()')[0]
+    description = (record.xpath('//arr[@name="abstract"]/str/node()') or [''])[0],
+
     normalized_dict = {
-        'title': record.xpath('//str[@name="title_display"]/node()')[0],
+        'title': copy_to_unicode(title),
         'contributors': get_contributors(record),
-        'description': (record.xpath('//arr[@name="abstract"]/str/node()') or [''])[0],
+        'description': copy_to_unicode(description),
         'properties': get_properties(record),
         'id': get_ids(raw_doc, record),
         'source': NAME,
-        'timestamp': str(timestamp),
+        'timestamp': timestamp,
         'dateCreated': get_date_created(record),
         'dateUpdated': get_date_updated(timestamp),
-        'tags': get_tags(record),
+        'tags': get_tags(record)
     }
 
+    # deal with Corrections having "PLoS Staff" listed as contributors
+    # fix correction title
     if normalized_dict['properties']['articleType'] == 'Correction':
         normalized_dict['title'] = normalized_dict['title'].replace('Correction: ', '')
         normalized_dict['contributors'] = [{
