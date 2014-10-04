@@ -5,5 +5,6 @@
     "longName": "ClinicalTrials.gov",
     "shortName": "clinicaltrials",
     "url": "https://github.com/erinspace/ClinicalTrials-consumer.git",
-    "fileFormat": ".xml"
+    "fileFormat": "xml",
+    "collisionCategory": 0
 }
