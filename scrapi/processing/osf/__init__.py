@@ -32,6 +32,6 @@ class OSFProcessor(BaseProcessor):
         else:
             crud.dump_metadata(report_norm, {'nid': report, 'pid': resource})
 
-        crud.update_report(report, report_norm)
+        crud.update_node(report, report_norm)
         if not crud.is_claimed(resource):
-            crud.update_resource(resource, resource_norm)
+            crud.update_node(resource, resource_norm)
