@@ -1,5 +1,7 @@
 ''' Consumer for St Cloud State University '''
 
+from __future__ import unicode_literals
+
 import requests
 from datetime import date, timedelta, datetime
 from dateutil.parser import *
@@ -38,7 +40,6 @@ def consume(days_back=2):
             'docID': copy_to_unicode(doc_id),
             'filetype': u'xml'
         }))
-        #import pdb; pdb.set_trace()
 
     return xml_list
 
@@ -143,7 +144,7 @@ def normalize(raw_doc, timestamp):
 
     # load the list of approved series_names as a file - second option
     with open(os.path.join(os.path.dirname(__file__), 'approved_series.txt')) as series_names:
-        approved_series = [word.replace('\n', '') for word in series_names]
+        approved_series = [str(word.replace('\n', '')) for word in series_names]
     set_spec = record.xpath('ns0:header/ns0:setSpec/node()', namespaces=NAMESPACES)[0]
     if set_spec.replace('publication:', '') not in approved_series:
         return None
