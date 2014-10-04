@@ -1,4 +1,5 @@
 ## Consumer for DOE Pages for SHARE
+from __future__ import unicode_literals
 
 import time
 import requests
@@ -19,17 +20,30 @@ NAMESPACES = {'rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
             'dc': 'http://purl.org/dc/elements/1.1/',
             'dcq': 'http://purl.org/dc/terms/'}
 
+DEFAULT_ENCODING = 'UTF-8'
+
+record_encoding = None
+
+def copy_to_unicode(element):
+
+    encoding = record_encoding or DEFAULT_ENCODING
+    element = ''.join(element)
+    if isinstance(element, unicode):
+        return element
+    else:
+        return unicode(element, encoding=encoding)
+
 def consume(days_back=15):
     start_date = TODAY - timedelta(days_back)
     base_url = 'http://www.osti.gov/pages/pagesxml?nrows={0}&EntryDateFrom={1}'
     url = base_url.format('1', start_date.strftime('%m/%d/%Y'))
     initial_data = requests.get(url)
+    record_encoding = initial_data.encoding
     initial_doc = etree.XML(initial_data.content)
 
     num_results = int(initial_doc.xpath('//records/@count', namespaces=NAMESPACES)[0])
 
     url = base_url.format(num_results, start_date.strftime('%m/%d/%Y'))
-    print url
     data = requests.get(url)
     doc = etree.XML(data.content)
 
@@ -38,12 +52,11 @@ def consume(days_back=15):
     xml_list = []
     for record in records:
         doc_id = record.xpath('dc:ostiId/node()', namespaces=NAMESPACES)[0]
-        record = etree.tostring(record)
-        record = '<?xml version="1.0" encoding="UTF-8"?>\n' + record
+        record = etree.tostring(record, encoding=record_encoding)
         xml_list.append(RawDocument({
                     'doc': record,
                     'source': NAME,
-                    'docID': doc_id,
+                    'docID': copy_to_unicode(doc_id),
                     'filetype': 'xml'
                 }))
 
@@ -59,6 +72,9 @@ def get_ids(doc, raw_doc):
     if url == '':
         raise Exception('Warning: url field is blank!')
     ids['url'] = url
+
+    for key, value in ids.iteritems():
+        ids[key] = copy_to_unicode(value)
 
     return ids
 
@@ -87,8 +103,11 @@ def get_properties(doc):
         'publisherResearch': (doc.xpath('//dcq:publisherResearch/node()', namespaces=NAMESPACES) or [''])[0],
         'publisherCountry': (doc.xpath('//dcq:publisherCountry/node()', namespaces=NAMESPACES) or [''])[0]
     }
+
+    for key, value in publisherInfo.iteritems():
+        publisherInfo[key] = copy_to_unicode(value)
+
     properties = {
-        'publisherInfo': publisherInfo,
         'language': (doc.xpath('//dc:language/node()', namespaces=NAMESPACES) or [''])[0],
         'type': (doc.xpath('//dc:type/node()', namespaces=NAMESPACES) or [''])[0],
         'typeQualifier': (doc.xpath('//dc:typeQualifier/node()', namespaces=NAMESPACES) or [''])[0],
@@ -103,38 +122,48 @@ def get_properties(doc):
         'identifierOther': (doc.xpath('//dc:identifierOther/node()', namespaces=NAMESPACES) or [''])[0],
         'identifier-purl': (doc.xpath('//dcq:identifier-purl/node()', namespaces=NAMESPACES) or [''])[0]
     }
+
+    for key, value in properties.iteritems():
+        properties[key] = copy_to_unicode(value)
+
+    properties['publisherInfo'] = publisherInfo
+
     return properties
 
 def get_date_created(doc):
     date_created = doc.xpath('//dc:date/node()', namespaces=NAMESPACES)[0]
-    return parse(date_created).isoformat()
+    date = parse(date_created).isoformat()
+    return copy_to_unicode(date)
 
 def get_date_updated(doc):
     date_updated = doc.xpath('//dc:dateEntry/node()', namespaces=NAMESPACES)[0]
-    return parse(date_updated).isoformat()
+    date = parse(date_updated).isoformat()
+    return copy_to_unicode(date)
 
 def get_tags(doc):
     all_tags = doc.xpath('//dc:subject/node()', namespaces=NAMESPACES) + doc.xpath('//dc:subjectRelated/node()', namespaces=NAMESPACES)
     tags = []
     for taglist in all_tags:
         tags += taglist.split(',')
-    return list(set([tag.lower().strip() for tag in tags]))
+    return list(set([copy_to_unicode(tag.lower().strip()) for tag in tags]))
 
 def normalize(raw_doc, timestamp):
     raw_doc_string = raw_doc.get('doc')
     doc = etree.XML(raw_doc_string)
 
+    title = doc.xpath('//dc:title/node()', namespaces=NAMESPACES)[0]
+    description = (doc.xpath('//dc:description/node()', namespaces=NAMESPACES) or [''])[0]
     normalized_dict = {
-        'title': doc.xpath('//dc:title/node()', namespaces=NAMESPACES)[0],
+        'title': copy_to_unicode(title),
         'contributors': get_contributors(doc),
         'properties': get_properties(doc),
-        'description': (doc.xpath('//dc:description/node()', namespaces=NAMESPACES) or [''])[0],
+        'description': copy_to_unicode(description),
         'id': get_ids(doc, raw_doc),
         'source': NAME,
         'tags': get_tags(doc),
         'dateCreated': get_date_created(doc),
         'dateUpdated': get_date_updated(doc),
-        'timestamp': str(timestamp)
+        'timestamp': timestamp
     }
 
     return NormalizedDocument(normalized_dict)
