@@ -24,15 +24,28 @@ NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/',
             'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
             'ns0': 'http://www.openarchives.org/OAI/2.0/'}
 
+DEFAULT_ENCODING = 'UTF-8'
+
+record_encoding = None
+
 # load the list of approved series_names as a file - second option
 with open(os.path.join(os.path.dirname(__file__), 'approved_sets.txt')) as series_names:
     series_name_list = [word.replace('\n', '') for word in series_names]
+
+def copy_to_unicode(element):
+
+    encoding = record_encoding or DEFAULT_ENCODING
+    element = ''.join(element)
+    if isinstance(element, unicode):
+        return element
+    else:
+        return unicode(element, encoding=encoding)
     
 def consume(days_back=3):
     start_date = TODAY - timedelta(days_back)
     base_url = OAI_DC_BASE + '?verb=ListRecords&metadataPrefix=oai_dc&from='
     url = base_url + str(start_date) + 'T00:00:00Z'
-    print url
+    record_encoding = requests.get(url).encoding
 
     num_approved_records = 0
     num_rejected_records = 0
@@ -48,8 +61,7 @@ def consume(days_back=3):
 
         set_spec = record.xpath('ns0:header/ns0:setSpec/node()', namespaces=NAMESPACES)[0]
 
-        record_string = etree.tostring(record, encoding='UTF-8')
-        # record_string = '<?xml version="1.0" encoding="UTF-8"?>\n' + record_string
+        record_string = etree.tostring(record, encoding=record_encoding)
 
         if set_spec.replace('publication:', '') in series_name_list:
             approved_sets.append(set_spec)
@@ -61,7 +73,7 @@ def consume(days_back=3):
         xml_list.append(RawDocument({
                     'doc': record_string,
                     'source': NAME,
-                    'docID': doc_id,
+                    'docID': copy_to_unicode(doc_id),
                     'filetype': 'xml'
                 }))
 
@@ -104,6 +116,10 @@ def get_properties(record):
     properties['date'] = (record.xpath('//dc:date/node()', namespaces=NAMESPACES) or [''])[0]
     properties['pdf_download'] = pdf
     properties['identifiers'] = identifier
+
+    for key, item in properties.iteritems():
+        properties[key] = copy_to_unicode(item)
+
     return properties
 
 def get_ids(record, raw_doc):
@@ -114,7 +130,7 @@ def get_ids(record, raw_doc):
         if 'cgi/viewcontent' not in identifier and OAI_DC_BASE[:-7] in identifier:
             url = identifier
 
-    return {'url': url, 'serviceID': service_id, 'doi': ''}
+    return {'url': copy_to_unicode(url), 'serviceID': service_id, 'doi': ''}
 
 def get_contributors(record):
     contributors = record.xpath('//dc:creator/node()', namespaces=NAMESPACES)
@@ -135,15 +151,17 @@ def get_contributors(record):
 
 def get_date_created(record):
     date_created = (record.xpath('//dc:date/node()', namespaces=NAMESPACES) or [''])[0]
-    return parse(date_created).isoformat()
+    date = parse(date_created).isoformat()
+    return copy_to_unicode(date)
 
 def get_date_updated(record):
     date_updated = record.xpath('//ns0:header/ns0:datestamp/node()', namespaces=NAMESPACES)[0]
-    return parse(date_updated).isoformat()
+    date = parse(date_updated).isoformat()
+    return copy_to_unicode(date)
 
 def get_tags(record):    
     tags = record.xpath('//dc:subject/node()', namespaces=NAMESPACES) or []
-    return [tag.lower() for tag in tags]
+    return [copy_to_unicode(tag.lower()) for tag in tags]
 
 def normalize(raw_doc, timestamp):
     doc = raw_doc.get('doc')
@@ -161,16 +179,16 @@ def normalize(raw_doc, timestamp):
     description = (record.xpath('//dc:description/node()', namespaces=NAMESPACES) or [''])[0]
 
     normalized_dict = {
-            'title': title,
+            'title': copy_to_unicode(title),
             'contributors': get_contributors(record),
             'properties': get_properties(record),
-            'description': description,
+            'description': copy_to_unicode(description),
             'id': get_ids(record, raw_doc),
             'tags': get_tags(record),
             'source': NAME,
             'dateCreated': get_date_created(record),
             'dateUpdated': get_date_updated(record),
-            'timestamp': str(timestamp)
+            'timestamp': timestamp
     }
 
     return NormalizedDocument(normalized_dict)
