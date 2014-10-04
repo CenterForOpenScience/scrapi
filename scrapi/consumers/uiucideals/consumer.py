@@ -1,4 +1,5 @@
 # Consumer for UIUC-IDEALS
+from __future__ import unicode_literals
 
 import requests
 from datetime import date, timedelta
@@ -18,24 +19,36 @@ NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/',
             'ns0': 'http://www.openarchives.org/OAI/2.0/'}
 OAI_DC_BASE = 'http://ideals.uiuc.edu/dspace-oai/request'
 
+DEFAULT_ENCODING = 'UTF-8'
+
+record_encoding = None
+
+def copy_to_unicode(element):
+
+    encoding = record_encoding or DEFAULT_ENCODING
+    element = ''.join(element)
+    if isinstance(element, unicode):
+        return element
+    else:
+        return unicode(element, encoding=encoding)
+
 def consume(days_back=100):
     # days back is set so high because uiuc ideals consumer had nothing for the last three months when consumer was built
     start_date = str(date.today() - timedelta(days_back))
     base_url = OAI_DC_BASE + '?verb=ListRecords&metadataPrefix=oai_dc&from={} 00:00:00'
     url = base_url.format(start_date)
-    print url
+    record_encoding = requests.get(url).encoding
 
     records = get_records(url)
 
     xml_list = []
     for record in records:
         doc_id = record.xpath('ns0:header/ns0:identifier', namespaces=NAMESPACES)[0].text
-        record = etree.tostring(record, encoding="UTF-8")
-        # record = '<?xml version="1.0" encoding="UTF-8"?>\n' + record
+        record = etree.tostring(record, encoding=record_encoding)
         xml_list.append(RawDocument({
                     'doc': record,
                     'source': NAME,
-                    'docID': doc_id,
+                    'docID': copy_to_unicode(doc_id),
                     'filetype': 'xml'
                 }))
 
@@ -81,10 +94,10 @@ def get_tags(result):
             tags += tag.split(',')
         else:
             tags.append(tag)
-    return [tag.lower().strip() for tag in tags]
+    return [copy_to_unicode(tag.lower().strip()) for tag in tags]
 
 def getabstract(result):
-    return abstract[0]
+    return copy_to_unicode(abstract[0])
 
 def get_ids(result):
     service_id = result.xpath('ns0:header/ns0:identifier/node()', namespaces=NAMESPACES)[0]

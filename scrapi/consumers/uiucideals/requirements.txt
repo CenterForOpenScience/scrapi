@@ -1,4 +1,8 @@
 lxml==3.4.0
+<<<<<<< HEAD
 requests==2.4.1
+=======
+requests==2.3.0
+>>>>>>> 614907b06012a5d0a27f2fb6747763b09923a9bf
 nameparser==0.3.3
 python-dateutil==2.2
