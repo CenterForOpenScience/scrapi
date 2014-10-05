@@ -7,5 +7,6 @@
     "url": "https://github.com/vpnagraj/texas-state-consumer.git",
     "hour": 23,
     "minute": 59, 
-    "longName": "DSpace at Texas State University"
+    "longName": "DSpace at Texas State University",
+    "collisionCategory": 1
 }
