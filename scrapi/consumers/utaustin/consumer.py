@@ -36,12 +36,12 @@ def copy_to_unicode(element):
     else:
         return unicode(element, encoding=encoding)
 
-def consume(days_back=1):
+def consume(days_back=5):
     start_date = TODAY - timedelta(days_back)
     url = OAI_DC_BASE_URL + '&metadataPrefix=oai_dc&from='
-    if 'YYYY-MM-DDThh:mm:ssZ' == 'YYYY-MM-DDThh:mm:ssZ'
+    if 'YYYY-MM-DDThh:mm:ssZ' == 'YYYY-MM-DDThh:mm:ssZ':
         url += str(start_date) + 'T00:00:00Z'
-    else if 'YYYY-MM-DDThh:mm:ssZ' == 'YYYY-MM-DD hh:mm:ss':
+    elif 'YYYY-MM-DDThh:mm:ssZ' == 'YYYY-MM-DD hh:mm:ss':
         url += str(start_date) + ' 00:00:00'
     else:
         url += str(start_date)
@@ -66,6 +66,7 @@ def consume(days_back=1):
 
 def get_records(url):
     data = requests.get(url)
+    print url
     doc = etree.XML(data.content)
     records = doc.xpath('//ns0:record', namespaces=NAMESPACES)
     token = doc.xpath('//ns0:resumptionToken/node()', namespaces=NAMESPACES)
@@ -79,6 +80,10 @@ def get_records(url):
 
 def get_contributors(record):
     contributors = record.xpath('//dc:creator/node()', namespaces=NAMESPACES)
+    record_type = (record.xpath('//dc:type/node()', namespaces=NAMESPACES) or [''])[0]
+    if record_type != "Thesis":
+        contributors += record.xpath('//dc:contributor/node()', namespaces=NAMESPACES)
+
     contributor_list = []
     for person in contributors:
         name = HumanName(person)
@@ -112,20 +117,31 @@ def get_ids(record, doc):
     return {'serviceID': serviceID, 'url': copy_to_unicode(url), 'doi': copy_to_unicode(doi)}
 
 def get_properties(record):
-    publisher = record.xpath('//dc:publisher/node()', namespaces=NAMESPACES)
-    source = record.xpath('//dc:source/node()', namespaces=NAMESPACES)
-    type = record.xpath('//dc:type/node()', namespaces=NAMESPACES)
-    format = record.xpath('//dc:format/node()', namespaces=NAMESPACES)
+    publisher = (record.xpath('//dc:publisher/node()', namespaces=NAMESPACES) or [''])[0]
+    source = (record.xpath('//dc:source/node()', namespaces=NAMESPACES) or [''])[0]
+    type = (record.xpath('//dc:type/node()', namespaces=NAMESPACES) or [''])[0]
+    format = (record.xpath('//dc:format/node()', namespaces=NAMESPACES) or [''])[0]
+    identifiers = record.xpath('//dc:format/node()', namespaces=NAMESPACES)
+    language = (record.xpath('//dc:language/node()', namespaces=NAMESPACES) or [''])[0]
+    rights = (record.xpath('//dc:rights/node()', namespaces=NAMESPACES) or [''])[0]
+
+
+    unicode_identifiers = []
+    for item in identifiers:
+        unicode_identifiers.append(copy_to_unicode(item))
+
     properties = {
         'type': type,
         'source': source,
         'format': format,
         'publisher': publisher,
-        },
+        'language': language,
+        'rights': rights
     }
 
     for key, value in properties.iteritems():
         properties[key] = copy_to_unicode(value)
+    properties['identifiers']= unicode_identifiers
 
     return properties
 
@@ -150,8 +166,9 @@ def normalize(raw_doc, timestamp):
 
         set_spec = record.xpath('ns0:header/ns0:setSpec/node()', namespaces=NAMESPACES)[0]
 
-        if set_spec.replace('publication:', '') not in series_name_list:
-            print('Series not in approved list, not normalizing...')
+        series = set_spec.replace('publication:', '')
+        if series not in series_name_list:
+            # print('Series {} not in approved list, not normalizing...'.format(set_spec))
             return None
 
     title = record.xpath('//dc:title/node()', namespaces=NAMESPACES)[0]
@@ -170,6 +187,7 @@ def normalize(raw_doc, timestamp):
         'timestamp': timestamp,
     }
 
+    # import json; print json.dumps(normalized_dict, indent=4)
     return NormalizedDocument(normalized_dict)
         
 
