@@ -1,5 +1,7 @@
 # Consumer for MIT DSpace
 
+from __future__ import unicode_literals
+
 import requests
 from datetime import date, timedelta, datetime
 from dateutil.parser import *
@@ -23,7 +25,6 @@ record_encoding = None
 
 def consume(days_back=1):
     start_date = TODAY - timedelta(days_back)
-    # YYYY-MM-DD hh:mm:ss
     url = OAI_DC_BASE_URL + str(start_date)
     records = get_records(url)
 
