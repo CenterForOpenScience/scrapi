@@ -189,6 +189,10 @@ def get_ids(doc, raw_doc):
         except AttributeError:
             doi = service_id.replace('doi:', '')
     url = (doc.xpath('//str[@name="dataUrl"]/node()') or [''])[0]
+
+    if url == '':
+        print("Warning: no URL, not normalizing...")
+
     ids = {'serviceID':service_id, 'doi': copy_to_unicode(doi), 'url': copy_to_unicode(url)}
 
     return ids
@@ -227,6 +231,9 @@ def normalize(raw_doc, timestamp):
             'dateUpdated': get_date_updated(doc),
             'timestamp': timestamp
     }
+
+    if normalized_dict['id']['url'] == u'':
+        return None
 
     # import json; print json.dumps(normalized_dict['tags'], indent=4)
     return NormalizedDocument(normalized_dict)
