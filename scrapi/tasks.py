@@ -83,12 +83,15 @@ def normalize(raw_doc, consumer_name):
 
     normalized = consumer.normalize(raw_doc)
 
+    if not normalized:
+        logger.warning('Did not normalize document [{}]{}'.format(consumer_name, raw_doc['docID']))
+        return None
+
     logger.debug('Document {}/{} normalized sucessfully'.format(
         consumer_name, raw_doc['docID']))
 
     normalized['timestamps'] = raw_doc['timestamps']
     normalized['timestamps']['normalizeFinished'] = timestamp()
-
     return normalized
 
 
