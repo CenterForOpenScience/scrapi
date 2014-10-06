@@ -15,7 +15,7 @@ from scrapi.linter.document import RawDocument, NormalizedDocument
 from nameparser import HumanName
 
 TODAY = date.today()
-NAME = 'escholarship'
+NAME = u'uceschol'
 OAI_DC_BASE_URL = 'http://www.escholarship.org/uc/oai?verb=ListRecords&metadataPrefix=oai_dc&from='
 DEFAULT = datetime(1970, 01, 01)
 DEFAULT_ENCODING = 'utf-8'
