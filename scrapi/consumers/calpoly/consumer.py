@@ -3,8 +3,9 @@ from __future__ import unicode_literals
 
 import os
 import time
+from datetime import date, timedelta
+
 from lxml import etree
-from datetime import date, timedelta, datetime
 
 import requests
 
@@ -20,7 +21,6 @@ OAI_DC_BASE_URL = 'http://digitalcommons.calpoly.edu/do/oai/?verb=ListRecords'
 NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/', 
             'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
             'ns0': 'http://www.openarchives.org/OAI/2.0/'}
-DEFAULT = datetime(1970, 01, 01)
 
 DEFAULT_ENCODING = 'UTF-8'
 
@@ -36,7 +36,8 @@ def copy_to_unicode(element):
         return unicode(element, encoding=encoding)
 
 def consume(days_back=5):
-    start_date = date.today() - timedelta(days_back)
+    today = date.today()
+    start_date = today - timedelta(days_back)
     url = OAI_DC_BASE_URL + '&metadataPrefix=oai_dc&from='
     if 'YYYY-MM-DDThh:mm:ssZ' == 'YYYY-MM-DDThh:mm:ssZ':
         url += str(start_date) + 'T00:00:00Z'
@@ -45,6 +46,7 @@ def consume(days_back=5):
     else:
         url += str(start_date)
 
+    print(url)
     record_encoding = requests.get(url).encoding
     records = get_records(url)
 
@@ -137,7 +139,7 @@ def get_date_updated(record):
     date = parse(dateupdated).isoformat()
     return copy_to_unicode(date)
 
-def normalize(raw_doc, timestamp):
+def normalize(raw_doc):
     doc = raw_doc.get('doc')
     record = etree.XML(doc)
 
@@ -165,10 +167,9 @@ def normalize(raw_doc, timestamp):
         'source': NAME,
         'dateUpdated': get_date_updated(record),
         'dateCreated': get_date_created(record),
-        'timestamp': timestamp
     }
 
-    import json; print(json.dumps(normalized_dict, indent=4))
+    # import json; print(json.dumps(normalized_dict, indent=4))
     return NormalizedDocument(normalized_dict)
         
 
