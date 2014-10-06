@@ -15,7 +15,6 @@ from scrapi.linter.document import RawDocument, NormalizedDocument
 
 
 NAME = 'academiccommons'
-TODAY = date.today()
 NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/',
               'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
               'ns0': 'http://www.openarchives.org/OAI/2.0/'}
@@ -136,7 +135,7 @@ def get_date_updated(doc):
     date = parse(datestamp).isoformat()
     return copy_to_unicode(date)
 
-def normalize(raw_doc, timestamp):
+def normalize(raw_doc):
     raw_doc_string = raw_doc.get('doc')
     doc = etree.XML(raw_doc_string)
 
@@ -152,8 +151,7 @@ def normalize(raw_doc, timestamp):
         'source': NAME,
         'tags': get_tags(doc),
         'dateCreated': get_date_created(doc),
-        'dateUpdated': get_date_updated(doc),
-        'timestamp': timestamp
+        'dateUpdated': get_date_updated(doc)
     }
 
     # import json; print json.dumps(normalized_dict, indent=4)
