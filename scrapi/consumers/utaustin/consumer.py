@@ -36,7 +36,7 @@ def copy_to_unicode(element):
     else:
         return unicode(element, encoding=encoding)
 
-def consume(days_back=5):
+def consume(days_back=8):
     start_date = TODAY - timedelta(days_back)
     url = OAI_DC_BASE_URL + '&metadataPrefix=oai_dc&from='
     if 'YYYY-MM-DDThh:mm:ssZ' == 'YYYY-MM-DDThh:mm:ssZ':
@@ -66,7 +66,6 @@ def consume(days_back=5):
 
 def get_records(url):
     data = requests.get(url)
-    print url
     doc = etree.XML(data.content)
     records = doc.xpath('//ns0:record', namespaces=NAMESPACES)
     token = doc.xpath('//ns0:resumptionToken/node()', namespaces=NAMESPACES)
@@ -146,7 +145,7 @@ def get_properties(record):
     return properties
 
 def get_date_created(record):
-    date_created = (record.xpath('ns0:metadata/oai_dc:dc/dc:date/node()', namespaces=NAMESPACES) or [''])[0]
+    date_created = (record.xpath('//dc:date/node()', namespaces=NAMESPACES) or [''])[0]
     date = parse(date_created).isoformat()
     return copy_to_unicode(date)
 
@@ -187,7 +186,7 @@ def normalize(raw_doc, timestamp):
         'timestamp': timestamp,
     }
 
-    # import json; print json.dumps(normalized_dict, indent=4)
+    # import json; print(json.dumps(normalized_dict, indent=4))
     return NormalizedDocument(normalized_dict)
         
 
