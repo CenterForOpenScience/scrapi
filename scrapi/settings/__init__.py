@@ -61,6 +61,7 @@ OSF_APP_URL = OSF_APP_URL.format(**locals())
 
 OSF_NEW_PROJECT = OSF_APP_URL + 'projects/'
 OSF_METADATA = OSF_APP_URL + 'metadata/'
+OSF_PROMOTE = OSF_METADATA + '{}/promote/'
 
 MANIFESTS = load_manifests()
 
