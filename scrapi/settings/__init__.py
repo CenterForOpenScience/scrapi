@@ -12,6 +12,9 @@ import logging
 
 from celery.schedules import crontab
 
+from raven import Client
+from raven.contrib.celery import register_signal
+
 from scrapi.settings.local import *
 from scrapi.settings.defaults import *
 
@@ -21,6 +24,10 @@ logger = logging.getLogger(__name__)
 logging.getLogger('requests.packages.urllib3.connectionpool').setLevel(logging.WARNING)
 
 MANIFEST_DIR = os.path.join(os.path.dirname(__file__), 'consumerManifests')
+
+if SENTRY_DNS:
+    client = Client(SENTRY_DNS)
+    register_signal(client)
 
 
 # Programmatically generate celery beat schedule
