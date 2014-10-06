@@ -3,7 +3,9 @@ from __future__ import unicode_literals
 
 import os
 import time
+
 from lxml import etree
+
 from datetime import date, timedelta
 
 import requests
@@ -15,9 +17,7 @@ from dateutil.parser import *
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
-
-TODAY = date.today()
-NAME = 'StCloudState'
+NAME = 'opensiuc'
 OAI_DC_BASE = 'http://opensiuc.lib.siu.edu/do/oai/'
 
 NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/', 
@@ -41,8 +41,8 @@ def copy_to_unicode(element):
     else:
         return unicode(element, encoding=encoding)
     
-def consume(days_back=3):
-    start_date = TODAY - timedelta(days_back)
+def consume(days_back=1):
+    start_date = date.today() - timedelta(days_back)
     base_url = OAI_DC_BASE + '?verb=ListRecords&metadataPrefix=oai_dc&from='
     url = base_url + str(start_date) + 'T00:00:00Z'
     record_encoding = requests.get(url).encoding
@@ -98,7 +98,7 @@ def get_records(url):
 
     return records
 
-    ## TODO: fix if there are no records found... what would the XML look like?
+    # TODO: fix if there are no records found... what would the XML look like?
 
 def get_properties(record):
 
@@ -163,7 +163,7 @@ def get_tags(record):
     tags = record.xpath('//dc:subject/node()', namespaces=NAMESPACES) or []
     return [copy_to_unicode(tag.lower()) for tag in tags]
 
-def normalize(raw_doc, timestamp):
+def normalize(raw_doc):
     doc = raw_doc.get('doc')
     record = etree.XML(doc)
     
@@ -188,7 +188,6 @@ def normalize(raw_doc, timestamp):
             'source': NAME,
             'dateCreated': get_date_created(record),
             'dateUpdated': get_date_updated(record),
-            'timestamp': timestamp
     }
 
     return NormalizedDocument(normalized_dict)
