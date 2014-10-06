@@ -79,7 +79,12 @@ def get_contributors(result):
 
 def get_tags(result):
     tags = result.xpath('//dc:subject/node()', namespaces=NAMESPACES)
-    return [copy_to_unicode(tag.lower()) for tag in tags]
+    seperated_tags = []
+    for tag in tags:
+        for single_tag in tag.split('  '):
+            seperated_tags.append(single_tag)
+
+    return [copy_to_unicode(tag.lower()) for tag in seperated_tags]
 
 
 def get_ids(result, raw_doc):
@@ -165,8 +170,7 @@ def normalize(raw_doc):
         'dateCreated': copy_to_unicode(get_date_created(result)),
     }
 
-    # import json
-    # print(json.dumps(payload, indent=4))
+    # import json; print(json.dumps(payload['tags'], indent=4))
     return NormalizedDocument(payload)
         
 
