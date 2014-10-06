@@ -14,7 +14,6 @@ from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 from nameparser import HumanName
 
-TODAY = date.today()
 NAME = u'uceschol'
 OAI_DC_BASE_URL = 'http://www.escholarship.org/uc/oai?verb=ListRecords&metadataPrefix=oai_dc&from='
 DEFAULT = datetime(1970, 01, 01)
@@ -25,8 +24,8 @@ NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/',
              'ns0': 'http://www.openarchives.org/OAI/2.0/'}
 
 
-def consume(days_back=10):
-    start_date = TODAY - timedelta(days_back)
+def consume(days_back=1):
+    start_date = date.today() - timedelta(days_back)
     url = OAI_DC_BASE_URL + str(start_date)
 
     records = get_records(url)
@@ -142,7 +141,7 @@ def get_date_updated(result):
     return date_updated
 
 
-def normalize(raw_doc, timestamp):
+def normalize(raw_doc):
     result = raw_doc.get('doc')
     try:
         result = etree.XML(result)
@@ -164,7 +163,6 @@ def normalize(raw_doc, timestamp):
         'source': NAME,
         'dateUpdated': copy_to_unicode(get_date_updated(result)),
         'dateCreated': copy_to_unicode(get_date_created(result)),
-        'timestamp': copy_to_unicode(timestamp),
     }
 
     # import json
