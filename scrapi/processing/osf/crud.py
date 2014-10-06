@@ -14,33 +14,46 @@ POST_HEADERS = {
 EVENT_TYPES = ['letter', 'image']
 
 
-def create_resource(normalized, hashlist):
-    scratch = deepcopy(normalized.attributes)
-    scratch['uuid'] = hashlist
+def create_resource(normalized):
+    contributors = [
+        {
+            'name': '{} {} {}'.format(x['given'], x['middle'], x['family']),
+            'email': x.get('email')
+        }
+        for x in
+        normalized.attributes['contributors']
+    ]
+
     bundle = {
-        'permissions': ['read']
+        'permissions': ['read'],
+        'contributors': contributors
     }
 
-    return _create_node(scratch, bundle)['id']
+    return _create_node(normalized.attributes, bundle)['id']
 
 
-def create_report(normalized, parent, hashlist):
+def create_report(normalized, parent):
+    contributors = [
+        {
+            'name': '{} {} {}'.format(x['given'], x['middle'], x['family']),
+            'email': x.get('email')
+        }
+        for x in
+        normalized.attributes['contributors']
+    ]
+
     bundle = {
         'title': '{}: {}'.format(normalized['source'], normalized['title']),
         'parent': parent,
         'category': 'report',
+        'contributors': contributors
     }
 
-    data = {
-        'uuid': hashlist
-    }
-
-    return _create_node(normalized, bundle, data)['id']
+    return _create_node(normalized.attributes, bundle)['id']
 
 
 def update_node(nid, normalized):
     current = _get_metadata(nid)
-
     if current['collisionCategory'] > normalized['collisionCategory']:
         new = current.attributes
         new.update(normalized)
@@ -73,7 +86,7 @@ def is_event(normalized): # "is event" means "is not project"
 
 
 def is_claimed(resource):
-    url = '{}get_contributors/'.format(settings.OSF_URL.format(resource))
+    url = '{}{}/get_contributors/'.format(settings.OSF_APP_URL, resource)
 
     ret = requests.get(url, auth=settings.OSF_AUTH, verify=settings.VERIFY_SSL).json()
     for contributor in ret['contributors']:
@@ -101,14 +114,14 @@ def _create_node(bundle, create_options):
         'headers': POST_HEADERS
     }
 
-    mid = requests.post(settings.OSF_APP_URL, **kwargs).json()['_id']
+    mid = requests.post(settings.OSF_METADATA, **kwargs).json()['id']
 
     kwargs['data'] = json.dumps(create_options)
     return requests.post(settings.OSF_PROMOTE.format(mid), **kwargs).json()
 
 
 def _get_metadata(id):
-    url = '{}projects/{}/metadata/'.format(settings.OSF_APP_URL, id)
+    url = '{}projects/{}/?sort=collisionCategory'.format(settings.OSF_APP_URL, id)
     return requests.get(url, auth=settings.OSF_AUTH, verify=settings.VERIFY_SSL).json()
 
 
