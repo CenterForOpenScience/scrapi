@@ -166,6 +166,7 @@ def normalize(raw_doc):
         'dateCreated': copy_to_unicode(get_date_created(record)),
     }
 
+
     # import json
     # print(json.dumps(payload, indent=4))
     return NormalizedDocument(payload)
