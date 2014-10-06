@@ -31,7 +31,7 @@ class BaseStorage(object):
             settings.ARCHIVE_DIRECTORY,
             raw_doc.get('source'),
             doc_id_to_path(raw_doc.get('docID')),
-            raw_doc.get('timestamp')
+            raw_doc['timestamps']['consumeFinished']
         ]
 
         path = os.path.join(*path)
@@ -59,8 +59,8 @@ class BaseStorage(object):
         doc_name = 'raw.{}'.format(manifest['fileFormat'])
         path = self._build_path(document)
         manifest = {
-            'timestamp': document.get('timestamp'),
-            'source': document.get('source'),
+            'consumedTimestamp': document['timestamps']['consumeFinished'],
+            'source': document['source'],
             'consumeVersion': manifest['version']
         }
 
