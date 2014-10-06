@@ -13,8 +13,6 @@ from dateutil.parser import *
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
-TODAY = datetime.date.today()
-YESTERDAY = TODAY - datetime.timedelta(1)
 NAME = 'scitech'
 terms_url = 'http://purl.org/dc/terms/'
 elements_url = 'http://purl.org/dc/elements/1.1/'
@@ -37,7 +35,8 @@ def consume(days_back=1, end_date=None, **kwargs):
     The XML is chunked into smaller pieces, each representing data
     about an article/report. If there are multiple pages of results, 
     this function iterates through all the pages."""
-
+    
+    TODAY = datetime.date.today()
     start_date = (TODAY - datetime.timedelta(days_back)).strftime('%m/%d/%Y')
     base_url = 'http://www.osti.gov/scitech/scitechxml'
     parameters = kwargs
@@ -149,7 +148,7 @@ def get_date_updated(record):
     date = parse(date_updated).isoformat()
     return copy_to_unicode(date)
 
-def normalize(raw_doc, timestamp):
+def normalize(raw_doc):
     """A function for parsing the list of XML objects returned by the 
     consume function.
     Returns a list of Json objects in a format that can be recognized 
@@ -169,7 +168,6 @@ def normalize(raw_doc, timestamp):
         'properties': get_properties(record),
         'id': get_ids(record, raw_doc),
         'source': NAME,
-        'timestamp': timestamp,
         'dateCreated': get_date_created(record),
         'dateUpdated' : get_date_updated(record),
         'tags': get_tags(record)
