@@ -2,6 +2,7 @@
 """
     Search module for the scrAPI website.
 """
+import copy
 import json
 import logging
 import requests
@@ -13,9 +14,9 @@ logging.basicConfig(level=logging.ERROR)
 logger = logging.getLogger(__name__)
 
 DEFAULT_PARAMS = {
-    'q': None,
+    'q': '*',
     'start_date': None,
-    'end_date': datetime.date.today(),
+    'end_date': datetime.date.today().isoformat(),
     'sort_field': 'timestamp',
     'sort_type': 'desc',
     'from': 0,
@@ -27,9 +28,10 @@ DEFAULT_PARAMS = {
 def query_osf(query):
     headers = {'Content-Type': 'application/json'}
     data = json.dumps(query)
+    print data
     return requests.post(settings.OSF_APP_URL, auth=settings.OSF_AUTH, headers=headers, data=data).json()
 
-def tuturial():
+def tutorial():
     return {
         'title': 'string representing title of the resource',
         'contributors': 'a list of dictionaries containing prefix, middle, family, suffix, and ORCID of contributors.',
@@ -45,10 +47,17 @@ def tuturial():
         'dateUpdated': 'string indicating when the resource was last updated in the home repository using the format YYYY-MM-DD in iso format',
     }
 
-def search(params):
-    params = copy.deepcopy(DEFUALT_PARAMS).update(params)
+def search(raw_params):
+    params = copy.deepcopy(DEFAULT_PARAMS)
+    params.update(raw_params)
+    for key in params.keys():
+        if isinstance(params[key], list) and len(params[key]) == 1:
+            params[key] = params[key][0]
+    params['from'] = int(params['from'])
+    params['size'] = int(params['size'])
+    print params
     query = parse_query(params)
-    query['format'] = pqrams.get('format')
+    query['format'] = params.get('format')
     return query_osf(query)
 
 
@@ -96,6 +105,7 @@ def build_date_filter(start_date, end_date):
     }
 
 def build_sort(sort_field, sort_type):
+    print sort_field
     return [{
         sort_field : {
             'order': 'desc'
