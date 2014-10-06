@@ -30,9 +30,9 @@ class BaseStorage(object):
         path = [
             safe_filename(x)
             for x in [
-                raw_doc.get('source'),
-                raw_doc.get('docID'),
-                raw_doc.get('timestamp')
+                raw_doc['source'],
+                raw_doc['docID'],
+                raw_doc['timestamps']['consumeFinished']
             ]
         ]
 
@@ -61,8 +61,8 @@ class BaseStorage(object):
         doc_name = 'raw.{}'.format(manifest['fileFormat'])
         path = self._build_path(document)
         manifest = {
-            'timestamp': document.get('timestamp'),
-            'source': document.get('source'),
+            'consumedTimestamp': document['timestamps']['consumeFinished'],
+            'source': document['source'],
             'consumeVersion': manifest['version']
         }
 

@@ -8,6 +8,9 @@ ARCHIVE_DIRECTORY = 'archive/'
 NORMALIZED_PROCESSING = ['storage']
 RAW_PROCESSING = ['storage']
 
+SENTRY_DNS = None
+
+FLUENTD_ARGS = None
 
 # OUTPUT SETTINGS
 OSF_ENABLED = False
