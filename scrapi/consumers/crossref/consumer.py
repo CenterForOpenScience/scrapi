@@ -12,7 +12,6 @@ from dateutil.parser import *
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
-TODAY = date.today()
 NAME = 'crossref'
 
 DEFAULT_ENCODING = 'UTF-8'
@@ -30,7 +29,7 @@ def copy_to_unicode(element):
 
 def consume(days_back=0):
     base_url = 'http://api.crossref.org/works?filter=from-pub-date:{},until-pub-date:{}&rows=1000'
-    start_date = TODAY - timedelta(days_back)
+    start_date = date.today() - timedelta(days_back)
     url = base_url.format(str(start_date), str(TODAY))
     print url
     data = requests.get(url)
@@ -123,7 +122,7 @@ def get_date_updated(doc):
     isodateupdated = parse(date).isoformat()
     return copy_to_unicode(isodateupdated)
 
-def normalize(raw_doc, timestamp):
+def normalize(raw_doc):
     doc_str = raw_doc.get('doc')
     doc = json.loads(doc_str)
 
@@ -136,7 +135,6 @@ def normalize(raw_doc, timestamp):
         'source': NAME,
         'dateCreated': get_date_created(doc),
         'dateUpdated' : get_date_updated(doc),
-        'timestamp': timestamp,
         'tags': get_tags(doc)
     }
     return NormalizedDocument(normalized_dict)
