@@ -1,5 +1,7 @@
 # VTechWorks consumer by Erin & Coral
 
+from __future__ import unicode_literals
+
 import requests
 from datetime import date, timedelta, datetime
 from dateutil.parser import *
@@ -11,7 +13,6 @@ from nameparser import HumanName
 
 
 NAME = u'vtechworks'
-TODAY = date.today()
 OAI_DC_BASE = 'http://vtechworks.lib.vt.edu/oai/'
 NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/', 
               'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
@@ -21,9 +22,9 @@ DEFAULT_ENCODING = 'utf-8'
 record_encoding = None
 
 
-def consume(days_back=1):
+def consume(days_back=5):
     base_url = OAI_DC_BASE + 'request?verb=ListRecords&metadataPrefix=oai_dc&from='
-    start_date = TODAY - timedelta(days_back)
+    start_date = date.today() - timedelta(days_back)
     url = base_url + str(start_date)
     records = get_records(url)
     xml_list = []
@@ -159,7 +160,7 @@ def get_date_updated(result):
     return date_updated
 
 
-def normalize(raw_doc, timestamp):
+def normalize(raw_doc):
     result = raw_doc.get('doc')
     try:
         result = etree.XML(result)
@@ -180,7 +181,6 @@ def normalize(raw_doc, timestamp):
         'source': NAME,
         'dateUpdated': copy_to_unicode(get_date_updated(result)),
         'dateCreated': copy_to_unicode(get_date_created(result)),
-        'timestamp': copy_to_unicode(timestamp),
     }
 
     # import json
