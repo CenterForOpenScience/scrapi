@@ -212,7 +212,7 @@ def get_date_created(doc):
     date = parse(date_created).isoformat()
     return copy_to_unicode(date)
 
-def normalize(raw_doc, timestamp):
+def normalize(raw_doc):
     raw_doc_text = raw_doc.get('doc')
     doc = etree.XML(raw_doc_text)
 
@@ -228,8 +228,7 @@ def normalize(raw_doc, timestamp):
             'tags': get_tags(doc),
             'source': NAME,
             'dateCreated': get_date_created(doc),
-            'dateUpdated': get_date_updated(doc),
-            'timestamp': timestamp
+            'dateUpdated': get_date_updated(doc)
     }
 
     if normalized_dict['id']['url'] == u'':
