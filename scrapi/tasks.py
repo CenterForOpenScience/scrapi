@@ -30,15 +30,22 @@ def run_consumer(consumer_name, days_back=1):
 
 
 @app.task
-def consume(consumer_name, days_back=1):
+def consume(consumer_name, job_created, days_back=1):
     logger.info('Consumer "{}" has begun consumption'.format(consumer_name))
+
+    timestamps = {
+        'consumeTaskCreated': job_created,
+        'consumeStarted': timestamp()
+    }
 
     consumer = import_consumer(consumer_name)
     result = consumer.consume(days_back=days_back)
 
+    timestamps['consumeFinished'] = timestamp()
+
     logger.info('Consumer "{}" has finished consumption'.format(consumer_name))
 
-    return result
+    return result, timestamps
 
 
 @app.task
