@@ -14,7 +14,6 @@ from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
 NAME = 'doepages'
-TODAY = date.today()
 
 NAMESPACES = {'rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#', 
             'dc': 'http://purl.org/dc/elements/1.1/',
@@ -34,7 +33,7 @@ def copy_to_unicode(element):
         return unicode(element, encoding=encoding)
 
 def consume(days_back=15):
-    start_date = TODAY - timedelta(days_back)
+    start_date = date.today() - timedelta(days_back)
     base_url = 'http://www.osti.gov/pages/pagesxml?nrows={0}&EntryDateFrom={1}'
     url = base_url.format('1', start_date.strftime('%m/%d/%Y'))
     initial_data = requests.get(url)
@@ -147,7 +146,7 @@ def get_tags(doc):
         tags += taglist.split(',')
     return list(set([copy_to_unicode(tag.lower().strip()) for tag in tags]))
 
-def normalize(raw_doc, timestamp):
+def normalize(raw_doc):
     raw_doc_string = raw_doc.get('doc')
     doc = etree.XML(raw_doc_string)
 
@@ -163,7 +162,6 @@ def normalize(raw_doc, timestamp):
         'tags': get_tags(doc),
         'dateCreated': get_date_created(doc),
         'dateUpdated': get_date_updated(doc),
-        'timestamp': timestamp
     }
 
     return NormalizedDocument(normalized_dict)
