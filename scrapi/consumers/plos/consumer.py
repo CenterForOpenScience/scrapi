@@ -19,7 +19,6 @@ try:
 except ImportError:
     from scrapi.settings import PLOS_API_KEY
 
-TODAY = str(date.today()) + "T00:00:00Z"
 MAX_ROWS_PER_REQUEST = 999
 
 NAME = 'plos'
@@ -42,6 +41,7 @@ def consume(days_back=1):
         return []
     payload = {"api_key": PLOS_API_KEY, "rows": "0"}
     START_DATE = str(date.today() - timedelta(days_back)) + "T00:00:00Z"
+    TODAY = str(date.today()) + "T00:00:00Z"
     base_url = 'http://api.plos.org/search?q=publication_date:'
     base_url += '[{}%20TO%20{}]'.format(START_DATE, TODAY)
     plos_request = requests.get(base_url, params=payload)
@@ -56,7 +56,6 @@ def consume(days_back=1):
     while rows < num_results + MAX_ROWS_PER_REQUEST:
         payload = {"api_key": PLOS_API_KEY, "rows": rows, "start": start}
         results = requests.get(base_url, params=payload)
-
         tick = time.time()
         xml_doc = etree.XML(results.content)
         all_docs = xml_doc.xpath('//doc')
@@ -133,16 +132,16 @@ def get_date_created(record):
     date = parse(date_created).isoformat()
     return copy_to_unicode(date)
 
-# PLoS doesn't seem to return date updated, so just putting 
-# date consumed here... 
-def get_date_updated(timestamp):
-    return timestamp
+# TODO - PLoS doesn't seem to return date updated, so just putting 
+# date published here... 
+def get_date_updated(record):
+    return get_date_created(record)
 
 # No tags... 
 def get_tags(record):
     return []
 
-def normalize(raw_doc, timestamp):
+def normalize(raw_doc):
     raw_doc_string = raw_doc.get('doc')
     record = etree.XML(raw_doc_string)
 
@@ -156,9 +155,8 @@ def normalize(raw_doc, timestamp):
         'properties': get_properties(record),
         'id': get_ids(raw_doc, record),
         'source': NAME,
-        'timestamp': timestamp,
         'dateCreated': get_date_created(record),
-        'dateUpdated': get_date_updated(timestamp),
+        'dateUpdated': get_date_updated(record),
         'tags': get_tags(record)
     }
 
