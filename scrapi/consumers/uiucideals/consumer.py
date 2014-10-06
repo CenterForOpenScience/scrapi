@@ -13,7 +13,6 @@ from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
 NAME = 'uiuc-ideals'
-TODAY = date.today()
 NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/', 
             'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
             'ns0': 'http://www.openarchives.org/OAI/2.0/'}
@@ -160,7 +159,7 @@ def get_date_updated(result):
     date = parse(date_updated).isoformat()
     return copy_to_unicode(date)
 
-def normalize(raw_doc, timestamp):
+def normalize(raw_doc):
     result = raw_doc.get('doc')
     try:
         result = etree.XML(result)
@@ -180,9 +179,7 @@ def normalize(raw_doc, timestamp):
         'id': get_ids(result, raw_doc),
         'source': NAME,
         'dateCreated': get_date_created(result),
-        'dateUpdated': get_date_updated(result),
-        'timestamp': timestamp
-
+        'dateUpdated': get_date_updated(result)
     }
     
     return NormalizedDocument(payload)
