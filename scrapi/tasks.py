@@ -68,12 +68,14 @@ def normalize(raw_doc, timestamp, consumer_name):
 
     normalized = consumer.normalize(raw_doc, timestamp)
 
+    if not normalized:
+        return None
+
     logger.debug('Document {}/{} normalized sucessfully'.format(
         consumer_name, raw_doc['docID']))
 
     # Not useful if using just the osf but may need to be included for
     # A standalone scrapi
-    # normalized.attributes['location'] = 'TODO'
     normalized.attributes['timestamp'] = timestamp
 
     return normalized
