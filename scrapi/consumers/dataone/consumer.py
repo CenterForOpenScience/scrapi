@@ -110,6 +110,9 @@ def get_properties(doc):
                 unicode_list.append(copy_to_unicode(item))
             properties[key] = unicode_list
 
+    properties = {key: value for key, value in properties.items() 
+             if value is not u''}
+
     return properties
 
 # currently unused - but maybe in the future? 
