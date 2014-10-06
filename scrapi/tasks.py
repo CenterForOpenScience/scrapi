@@ -25,7 +25,8 @@ timestamp = lambda: datetime.utcnow().isoformat().decode('utf-8')
 def run_consumer(consumer_name, days_back=1):
     logger.info('Runing consumer "{}"'.format(consumer_name))
     # Form and start a celery chain
-    chain = (consume.si(consumer_name) | begin_normalization.s(consumer_name))
+    chain = (consume.si(consumer_name, timestamp(), days_back=days_back)
+             | begin_normalization.s(consumer_name))
     chain.apply_async()
 
 
@@ -49,17 +50,19 @@ def consume(consumer_name, job_created, days_back=1):
 
 
 @app.task
-def begin_normalization(raw_docs, consumer_name):
+def begin_normalization(consume_ret, consumer_name):
+    raw_docs, timestamps = consume_ret
+
     logger.info('Normalizing {} documents for consumer "{}"'
                 .format(len(raw_docs), consumer_name))
 
     for raw in raw_docs:
-        timestamp = datetime.utcnow().isoformat().decode('utf-8')
-        raw.attributes['timestamp'] = timestamp
+        raw['timestamps'] = timestamps
+        raw['timestamps']['normalizeTaskCreated'] = timestamp()
 
         process_raw.delay(raw)
 
-        chain = (normalize.si(raw, timestamp, consumer_name) |
+        chain = (normalize.si(raw, consumer_name) |
                  process_normalized.s(raw))
 
         chain.apply_async()
@@ -73,18 +76,18 @@ def process_raw(raw_doc):
 
 
 @app.task
-def normalize(raw_doc, timestamp, consumer_name):
+def normalize(raw_doc, consumer_name):
     consumer = import_consumer(consumer_name)
 
-    normalized = consumer.normalize(raw_doc, timestamp)
+    raw_doc['timestamps']['normalizeStarted'] = timestamp()
+
+    normalized = consumer.normalize(raw_doc)
 
     logger.debug('Document {}/{} normalized sucessfully'.format(
         consumer_name, raw_doc['docID']))
 
-    # Not useful if using just the osf but may need to be included for
-    # A standalone scrapi
-    # normalized.attributes['location'] = 'TODO'
-    normalized.attributes['timestamp'] = timestamp
+    normalized['timestamps'] = raw_doc['timestamps']
+    normalized['timestamps']['normalizeFinished'] = timestamp()
 
     return normalized
 
@@ -118,13 +121,15 @@ def check_archive(consumer_name, reprocess):
 
         raw_doc = RawDocument({
             'doc': raw_file,
-            'timestamp': timestamp,
+            'timestamps': {
+                'consumeFinished': timestamp
+            },
             'docID': raw_path.split('/')[-3],
             'source': consumer_name,
             'filetype': consumer['fileFormat'],
         })
 
-        chain = (normalize.si(raw_doc, timestamp, consumer_name) |
+        chain = (normalize.si(raw_doc, consumer_name) |
                  process_normalized.s(raw_doc, storage=extras))
         chain.apply_async()
 
