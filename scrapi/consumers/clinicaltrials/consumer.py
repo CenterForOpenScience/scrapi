@@ -15,7 +15,7 @@ from dateutil.parser import *
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
-TODAY = date.today()
+TODAY = 
 NAME = "clinicaltrials"
 
 DEFAULT_ENCODING = 'UTF-8'
@@ -36,11 +36,13 @@ def consume(days_back=1):
     then get the xml one by one and save it into a list 
     of docs including other information """
 
-    start_date = TODAY - timedelta(days_back)
+    today = date.today()
 
-    month = TODAY.strftime('%m')
-    day = TODAY.strftime('%d') 
-    year = TODAY.strftime('%Y')
+    start_date = today - timedelta(days_back)
+
+    month = today.strftime('%m')
+    day = today.strftime('%d') 
+    year = today.strftime('%Y')
 
     y_month = start_date.strftime('%m')
     y_day = start_date.strftime('%d')
