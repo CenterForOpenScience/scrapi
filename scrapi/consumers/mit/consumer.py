@@ -22,7 +22,7 @@ DEFAULT_ENCODING = 'utf-8'
 record_encoding = None
 
 
-def consume(days_back=1):
+def consume(days_back=5):
     start_date = date.today() - timedelta(days_back)
     url = OAI_DC_BASE_URL + '&from=' + str(start_date)
     records = get_records(url)
@@ -171,7 +171,7 @@ def get_date_updated(result):
     return date_updated
 
 
-def normalize(raw_doc, timestamp):
+def normalize(raw_doc):
     result = raw_doc.get('doc')
     try:
         result = etree.XML(result)
@@ -201,7 +201,6 @@ def normalize(raw_doc, timestamp):
         'source': NAME,
         'dateUpdated': copy_to_unicode(get_date_updated(result)),
         'dateCreated': copy_to_unicode(get_date_created(result)),
-        'timestamp': copy_to_unicode(timestamp),
     }
 
     # import json
