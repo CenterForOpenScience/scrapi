@@ -98,6 +98,8 @@ def get_ids(result, raw_doc):
     for item in identifiers:
         if 'escholarship.org' in item:
             url = item
+    if url == '':
+        raise Exception('Warning: No url provided!')
     return {'serviceID': copy_to_unicode(service_id),
             'url': copy_to_unicode(url),
             'doi': copy_to_unicode(doi)}
