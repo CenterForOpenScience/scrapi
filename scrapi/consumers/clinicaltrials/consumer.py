@@ -2,20 +2,19 @@
 from __future__ import unicode_literals
 
 import time
-from datetime import date, timedelta
+import datetime
 
 import requests
 
 from lxml import etree
 
-from nameparser import HumanName
-
 from dateutil.parser import *
+
+from nameparser import HumanName
 
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
-TODAY = 
 NAME = "clinicaltrials"
 
 DEFAULT_ENCODING = 'UTF-8'
@@ -36,9 +35,8 @@ def consume(days_back=1):
     then get the xml one by one and save it into a list 
     of docs including other information """
 
-    today = date.today()
-
-    start_date = today - timedelta(days_back)
+    today = datetime.date.today()
+    start_date = today - datetime.timedelta(1)
 
     month = today.strftime('%m')
     day = today.strftime('%d') 
@@ -247,7 +245,7 @@ def get_date_updated(xml_doc):
     date = parse(date_updated).isoformat()
     return copy_to_unicode(date)
 
-def normalize(raw_doc, timestamp):
+def normalize(raw_doc):
     raw_doc_text = raw_doc.get('doc')
     xml_doc = etree.XML(raw_doc_text)
 
@@ -267,7 +265,6 @@ def normalize(raw_doc, timestamp):
             'tags': get_tags(xml_doc),
             'dateCreated': get_date_created(xml_doc),
             'dateUpdated': get_date_updated(xml_doc),
-            'timestamp': timestamp
     }
 
     return NormalizedDocument(normalized_dict)
