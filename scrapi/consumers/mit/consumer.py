@@ -13,19 +13,18 @@ from nameparser import HumanName
 import os
 
 NAME = u'mit'
-TODAY = date.today()
 NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/', 
               'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
               'ns0': 'http://www.openarchives.org/OAI/2.0/'}
-OAI_DC_BASE_URL = 'http://dspace.mit.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from='
+OAI_DC_BASE_URL = 'http://dspace.mit.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc'
 DEFAULT = datetime(1970, 01, 01)
 DEFAULT_ENCODING = 'utf-8'
 record_encoding = None
 
 
 def consume(days_back=1):
-    start_date = TODAY - timedelta(days_back)
-    url = OAI_DC_BASE_URL + str(start_date)
+    start_date = date.today() - timedelta(days_back)
+    url = OAI_DC_BASE_URL + '&from=' + str(start_date)
     records = get_records(url)
 
     xml_list = []
@@ -50,7 +49,7 @@ def get_records(url):
 
     if len(token) == 1:
         time.sleep(0.5)
-        base_url = 'http://dspace.mit.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc&resumptionToken='
+        base_url = OAI_DC_BASE_URL + '&resumptionToken='
         url = base_url + token[0]
         records += get_records(url)
 
