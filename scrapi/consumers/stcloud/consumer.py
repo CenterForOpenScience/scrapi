@@ -13,7 +13,6 @@ from nameparser import HumanName
 import os
 
 NAME = u"stcloud"
-TODAY = date.today()
 OAI_DC_BASE_URL = 'http://repository.stcloudstate.edu/do/oai/'
 DEFAULT = datetime(1970, 01, 01)
 NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/', 
@@ -25,7 +24,7 @@ record_encoding = None
 
 
 def consume(days_back=2):
-    start_date = TODAY - timedelta(days_back)
+    start_date = date.today() - timedelta(days_back)
     base_url = OAI_DC_BASE_URL + '?verb=ListRecords&metadataPrefix=oai_dc&from='
     url = base_url + str(start_date) + 'T00:00:00Z'
     records = get_records(url)
@@ -134,7 +133,7 @@ def get_date_updated(record):
     return date_updated
 
 
-def normalize(raw_doc, timestamp):
+def normalize(raw_doc):
     record = raw_doc.get('doc')
     try:
         record = etree.XML(record)
@@ -162,7 +161,6 @@ def normalize(raw_doc, timestamp):
         'source': NAME,
         'dateUpdated': copy_to_unicode(get_date_updated(record)),
         'dateCreated': copy_to_unicode(get_date_created(record)),
-        'timestamp': copy_to_unicode(timestamp),
     }
 
     # import json
