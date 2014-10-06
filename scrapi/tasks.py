@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 
 @app.task
 def run_consumer(consumer_name, days_back=1):
-    logger.info('Runing consumer "{}"'.format(consumer_name))
+    logger.info('Running consumer "{}"'.format(consumer_name))
     # Form and start a celery chain
     chain = (consume.si(consumer_name) | begin_normalization.s(consumer_name))
     chain.apply_async()
