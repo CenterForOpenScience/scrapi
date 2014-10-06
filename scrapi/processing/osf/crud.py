@@ -14,67 +14,46 @@ POST_HEADERS = {
 EVENT_TYPES = ['letter', 'image']
 
 
-def create_resource(normalized, hashlist):
+def create_resource(normalized):
+    contributors = [
+        {
+            'name': '{} {} {}'.format(x['given'], x['middle'], x['family']),
+            'email': x.get('email')
+        }
+        for x in
+        normalized.attributes['contributors']
+    ]
+
     bundle = {
-        'systemData': {
-            'isProject': True
-        },
-        'permissions': ['read']
+        'permissions': ['read'],
+        'contributors': contributors
     }
 
-    return _create_node(normalized, bundle, hashlist)['id']
+    return _create_node(normalized.attributes, bundle)['id']
 
 
-def update_resource(normalized, resource):
-    current = _get_metadata(resource)
-    normalized = normalized.attributes
-
-    if current['collisionCategory'] > normalized['collisionCategory']:
-        new = deepcopy(current)
-        new.update(normalized)
-    else:
-        new = deepcopy(normalized)
-        new.update(current)
-
-    if not is_claimed(resource):
-        resource_url = '{}/projects/{}/'.format(settings.OSF_APP_URL, resource)
-        update = {
-            'title': normalized['title'],
-            'description': normalized.get('description'),
-            'tags': normalized.get('tags'),
-            'contributors': [
-                {
-                    'name': '{given} {middle} {family}'.format(**x),
-                    'email': x.get('email')
-                }
-                for x in normalized['contributors']
-            ]
+def create_report(normalized, parent):
+    contributors = [
+        {
+            'name': '{} {} {}'.format(x['given'], x['middle'], x['family']),
+            'email': x.get('email')
         }
+        for x in
+        normalized.attributes['contributors']
+    ]
 
-        kwargs = {
-            'auth': settings.OSF_AUTH,
-            'data': json.dumps(update),
-            'headers': POST_HEADERS,
-            'verify': settings.VERIFY_SSL
-        }
-        requests.post(resource_url, **kwargs).json()
-
-    return _post_metadata(resource, new)
-
-
-def create_report(normalized, parent, hashlist):
     bundle = {
         'title': '{}: {}'.format(normalized['source'], normalized['title']),
         'parent': parent,
         'category': 'report',
+        'contributors': contributors
     }
 
-    return _create_node(normalized, bundle, hashlist)['id']
+    return _create_node(normalized.attributes, bundle)['id']
 
 
-def update_report(normalized, report):
-    current = _get_metadata(report)
-
+def update_node(nid, normalized):
+    current = _get_metadata(nid)
     if current['collisionCategory'] > normalized['collisionCategory']:
         new = current.attributes
         new.update(normalized)
@@ -82,7 +61,15 @@ def update_report(normalized, report):
         new = normalized.attributes
         new.update(current)
 
-    return _post_metadata(report, new)
+    if new != current:
+        url = '{}{}/{}/'.format(settings.OSF_APP_URL, 'projects', nid)
+        kwargs = {
+            'auth': settings.OSF_AUTH,
+            'data': json.dumps(new),
+            'verify': settings.VERIFY_SSL,
+            'headers': POST_HEADERS
+        }
+        return requests.put(url, **kwargs)
 
 
 def is_event(normalized): # "is event" means "is not project"
@@ -98,18 +85,8 @@ def is_event(normalized): # "is event" means "is not project"
     return False
 
 
-def create_event(normalized):
-    kwargs = {
-        'auth': settings.OSF_AUTH,
-        'data': json.dumps(normalized),
-        'headers': POST_HEADERS,
-        'verify': settings.VERIFY_SSL
-    }
-    return requests.post(settings.OSF_CREATE_EVENT, **kwargs).json()
-
-
 def is_claimed(resource):
-    url = '{}get_contributors/'.format(settings.OSF_URL.format(resource))
+    url = '{}{}/get_contributors/'.format(settings.OSF_APP_URL, resource)
 
     ret = requests.get(url, auth=settings.OSF_AUTH, verify=settings.VERIFY_SSL).json()
     for contributor in ret['contributors']:
@@ -129,48 +106,32 @@ def clean_report(normalized):
     return new
 
 
-def _create_node(normalized, additional, hashlist):
-    contributors = [
-        {
-            'name': '{given} {middle} {family}'.format(**x),
-            'email': x.get('email')
-        }
-        for x in normalized['contributors']
-    ]
-
-    bundle = {
-        'title': normalized['title'],
-        'description': normalized.get('description'),
-        'contributors': contributors,
-        'tags': normalized.get('tags'),
-        'metadata': deepcopy(normalized.attributes),
-    }
-
-    bundle.update(additional)
-
-    bundle['metadata']['uuid'] = hashlist
-
+def _create_node(bundle, create_options):
     kwargs = {
         'auth': settings.OSF_AUTH,
         'data': json.dumps(bundle),
         'verify': settings.VERIFY_SSL,
         'headers': POST_HEADERS
     }
-    return requests.post(settings.OSF_NEW_PROJECT, **kwargs).json()
+
+    mid = requests.post(settings.OSF_METADATA, **kwargs).json()['id']
+
+    kwargs['data'] = json.dumps(create_options)
+    return requests.post(settings.OSF_PROMOTE.format(mid), **kwargs).json()
 
 
 def _get_metadata(id):
-    url = '{}{}/'.format(settings.OSF_APP_URL, id)
+    url = '{}projects/{}/?sort=collisionCategory'.format(settings.OSF_APP_URL, id)
     return requests.get(url, auth=settings.OSF_AUTH, verify=settings.VERIFY_SSL).json()
 
 
-def _post_metadata(id, data):
+def dump_metadata(data, attached):
+    data['attached'] = attached
     kwargs = {
-        'data': json.dumps(data),
-        'headers': POST_HEADERS,
         'auth': settings.OSF_AUTH,
+        'data': json.dumps(data.attributes),
+        'headers': POST_HEADERS,
         'verify': settings.VERIFY_SSL
     }
-    url = '{}{}/'.format(settings.OSF_APP_URL, id)
-
-    requests.post(url, **kwargs)
+    ret = requests.post(settings.OSF_METADATA, **kwargs)
+    return ret.json()['id']

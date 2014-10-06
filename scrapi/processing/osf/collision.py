@@ -1,5 +1,8 @@
 from __future__ import unicode_literals
 
+import json
+from hashlib import md5
+
 import requests
 
 from scrapi import settings
@@ -7,14 +10,46 @@ from scrapi.processing.osf.hashing import REPORT_HASH_FUNCTIONS
 from scrapi.processing.osf.hashing import RESOURCE_HASH_FUNCTIONS
 
 
-def detect_collisions(hashlist, additional=''):
-    uuids = 'uuid:{}'.format(','.join(hashlist))
-    url = '{}?q={}{}'.format(settings.OSF_APP_URL, uuids, additional)
+def already_processed(raw_doc):
+    _md5 = md5(raw_doc['doc']).hexdigest()
 
-    ret = requests.get(url, auth=settings.OSF_AUTH, verify=settings.VERIFY_SSL).json()
+    _filter = {
+        'term': {
+            'docHash': _md5
+        }
+    }
 
-    if ret['total'] > 0:
-        return ret['results'][0]['guid']
+    return _search(_filter), _md5
+
+
+def detect_collisions(hashlist, is_resource=False):
+    if is_resource:
+        _filter = {
+            'terms': {
+                'uuid': hashlist
+            }
+        }
+    else:
+        _filter = {
+            'and': [
+                {
+                    'missing': {
+                        'field': 'pid',
+                        'existence': True,
+                        'null_value': True
+                    }
+                },
+                {
+                    'terms': {
+                        'uuid': hashlist
+                    }
+                }
+            ]
+        }
+    found = _search(_filter)
+
+    if found:
+        return found['attached']['nid']
 
     return None
 
@@ -34,3 +69,28 @@ def generate_resource_hash_list(normalized):
 
 def generate_report_hash_list(normalized):
     return generate_hash_list(normalized.attributes, REPORT_HASH_FUNCTIONS)
+
+
+def _search(_filter):
+    query = {
+        'query': {
+            'filtered': {
+                'filter': _filter
+            }
+        }
+    }
+
+    kwargs = {
+        'auth': settings.OSF_AUTH,
+        'verify': settings.VERIFY_SSL,
+        'data': json.dumps(query),
+        'headers': {
+            'Content-Type': 'application/json'
+        }
+    }
+
+    ret = requests.post(settings.OSF_APP_URL, **kwargs).json()
+    if ret['total'] > 0:
+        return ret['results'][0]
+
+    return None

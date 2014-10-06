@@ -18,7 +18,7 @@ from scrapi.settings.local import *
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
+logging.getLogger('requests.packages.urllib3.connectionpool').setLevel(logging.WARNING)
 
 MANIFEST_DIR = os.path.join(os.path.dirname(__file__), 'consumerManifests')
 
@@ -53,15 +53,15 @@ def create_schedule():
 
 OSF_AUTH = (API_KEY_LABEL, API_KEY)
 
-OSF_URL = '{PROTOCOL}://{API_KEY}@{OSF_PREFIX}/api/v1/{{}}/'
-OSF_APP_URL = '{PROTOCOL}://{API_KEY}@{OSF_PREFIX}/api/v1/{APP_ID}/'
-OSF_NEW_EVENT = '{PROTOCOL}://{API_KEY}@{OSF_PREFIX}/api/v1/{APP_ID}/orphans/'
-OSF_NEW_PROJECT = '{PROTOCOL}://{API_KEY}@{OSF_PREFIX}/api/v1/{APP_ID}/projects/'
+OSF_URL = '{PROTOCOL}://{OSF_PREFIX}/api/v1/{{}}/'
+OSF_APP_URL = '{PROTOCOL}://{OSF_PREFIX}/api/v1/app/{APP_ID}/'
 # Keep a pep8 line length
 OSF_URL = OSF_URL.format(**locals())
 OSF_APP_URL = OSF_APP_URL.format(**locals())
-OSF_NEW_EVENT = OSF_NEW_EVENT.format(**locals())
-OSF_NEW_PROJECT = OSF_NEW_PROJECT.format(**locals())
+
+OSF_NEW_PROJECT = OSF_APP_URL + 'projects/'
+OSF_METADATA = OSF_APP_URL + 'metadata/'
+OSF_PROMOTE = OSF_METADATA + '{}/promote/'
 
 MANIFESTS = load_manifests()
 
