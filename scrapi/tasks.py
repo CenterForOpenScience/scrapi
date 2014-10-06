@@ -18,6 +18,9 @@ app.config_from_object(settings)
 logger = logging.getLogger(__name__)
 
 
+timestamp = lambda: datetime.utcnow().isoformat().decode('utf-8')
+
+
 @app.task
 def run_consumer(consumer_name, days_back=1):
     logger.info('Runing consumer "{}"'.format(consumer_name))
