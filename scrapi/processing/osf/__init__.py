@@ -17,7 +17,7 @@ class OSFProcessor(BaseProcessor):
         }
 
         if crud.is_event(normalized):
-            crud.dump_metdata(normalized, {})
+            crud.dump_metadata(normalized, {})
             return
 
         normalized['collisionCategory'] = crud.get_collision_cat(normalized['source'])
