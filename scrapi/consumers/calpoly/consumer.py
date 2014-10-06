@@ -15,7 +15,6 @@ from nameparser import HumanName
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
-TODAY = date.today()
 NAME = 'calpoly'
 OAI_DC_BASE_URL = 'http://digitalcommons.calpoly.edu/do/oai/?verb=ListRecords'
 NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/', 
@@ -37,7 +36,7 @@ def copy_to_unicode(element):
         return unicode(element, encoding=encoding)
 
 def consume(days_back=5):
-    start_date = TODAY - timedelta(days_back)
+    start_date = date.today() - timedelta(days_back)
     url = OAI_DC_BASE_URL + '&metadataPrefix=oai_dc&from='
     if 'YYYY-MM-DDThh:mm:ssZ' == 'YYYY-MM-DDThh:mm:ssZ':
         url += str(start_date) + 'T00:00:00Z'
