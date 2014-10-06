@@ -35,36 +35,36 @@ class BaseDocument(object):
 class RawDocument(BaseDocument):
 
     REQUIRED_FIELDS = {
-        'doc': basestring,
-        'docID': basestring,
-        'source': basestring,
-        'filetype': basestring
+        'doc': str,
+        'docID': unicode,
+        'source': unicode,
+        'filetype': unicode
     }
 
 
 class NormalizedDocument(BaseDocument):
     CONTRIBUTOR_FIELD = {
-        'email': basestring,
-        'prefix': basestring,
-        'given': basestring,
-        'middle': basestring,
-        'family': basestring,
-        'suffix': basestring
+        'email': unicode,
+        'prefix': unicode,
+        'given': unicode,
+        'middle': unicode,
+        'family': unicode,
+        'suffix': unicode
     }
     ID_FIELD = {
-        'url': basestring,
-        'doi': basestring,
-        'serviceID': basestring
+        'url': unicode,
+        'doi': unicode,
+        'serviceID': unicode
     }
 
     REQUIRED_FIELDS = {
-        'title': basestring,
+        'title': unicode,
         'contributors': [CONTRIBUTOR_FIELD],
         'id': ID_FIELD,
-        'source': basestring,
-        'timestamp': basestring,
-        'description': basestring,
-        'tags': [basestring],
-        'dateUpdated': basestring,
-        'dateCreated': basestring
+        'source': unicode,
+        'timestamp': unicode,
+        'description': unicode,
+        'tags': [unicode],
+        'dateUpdated': unicode,
+        'dateCreated': unicode
     }
