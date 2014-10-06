@@ -58,7 +58,7 @@ def begin_normalization(raw_docs, consumer_name):
 @app.task
 def process_raw(raw_doc):
     processing.process_raw(raw_doc)
-    # This is where the raw_doc should be dumped to disc
+    # This is where the raw_doc should be dumped to disk
     # And anything else that may need to happen to it
 
 
@@ -88,7 +88,7 @@ def process_normalized(normalized_doc, raw_doc, **kwargs):
         return
 
     processing.process_normalized(raw_doc, normalized_doc, kwargs)
-    # This is where the normalized doc should be dumped to disc
+    # This is where the normalized doc should be dumped to disk
     # And then sent to OSF
     # And anything that may need to occur
 
