@@ -3,6 +3,8 @@ import logging
 from dateutil import parser
 from datetime import datetime
 
+import vcr
+
 from celery import Celery
 
 from scrapi import settings
@@ -34,13 +36,17 @@ def run_consumer(consumer_name, days_back=1):
 def consume(consumer_name, job_created, days_back=1):
     logger.info('Consumer "{}" has begun consumption'.format(consumer_name))
 
+    cassette = os.path.join(settings.RECORD_DIRECTORY, consumer_name, timestamp() + '.yml')
+
     timestamps = {
         'consumeTaskCreated': job_created,
         'consumeStarted': timestamp()
     }
 
     consumer = import_consumer(consumer_name)
-    result = consumer.consume(days_back=days_back)
+
+    with vcr.use_cassette(cassette, record_mode='all'):
+        result = consumer.consume(days_back=days_back)
 
     timestamps['consumeFinished'] = timestamp()
 
