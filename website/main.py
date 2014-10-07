@@ -17,7 +17,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def home():
-    with open('static/html/index.html', 'r') as f:
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static/html/index.html'), 'r') as f:
         return f.read()
 
 
