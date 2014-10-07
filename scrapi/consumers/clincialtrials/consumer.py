@@ -75,7 +75,7 @@ def consume(days_back=1):
         print("There are {} urls to consume - be patient...".format(len(study_urls)))
         count = 0
         official_count = 0
-        for study_url in study_urls:
+        for study_url in study_urls[:300]:
             content = requests.get(study_url)
             doc = etree.XML(content.content)
             record = etree.tostring(doc, encoding=record_encoding)
@@ -88,7 +88,7 @@ def consume(days_back=1):
                 }))
             official_count += 1
             count += 1
-            if count%10 == 0:
+            if count%100 == 0:
                 print("You've requested {} studies, keep going!".format(official_count))
                 count = 0
             time.sleep(1)
