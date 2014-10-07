@@ -31,6 +31,7 @@ def query_osf(query):
     print data
     return requests.post(settings.OSF_APP_URL, auth=settings.OSF_AUTH, headers=headers, data=data).json()
 
+
 def tutorial():
     return {
         'title': 'string representing title of the resource',
@@ -46,6 +47,7 @@ def tutorial():
         'dateCreated': 'string indicating when the resource was first created or published using the format YYYY-MM-DD in iso format',
         'dateUpdated': 'string indicating when the resource was last updated in the home repository using the format YYYY-MM-DD in iso format',
     }
+
 
 def search(raw_params):
     params = copy.deepcopy(DEFAULT_PARAMS)
