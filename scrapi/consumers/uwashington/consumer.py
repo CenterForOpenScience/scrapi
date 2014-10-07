@@ -26,7 +26,6 @@ def consume(days_back=1):
     base_url = OAI_DC_BASE + 'request?verb=ListRecords&metadataPrefix=oai_dc&from='
     start_date = date.today() - timedelta(days_back)
     url = base_url + str(start_date)
-    print url
     records = get_records(url)
 
     xml_list = []
