@@ -22,16 +22,18 @@ DEFAULT_ENCODING = 'utf-8'
 record_encoding = None
 
 
-def consume(days_back=5):
+def consume(days_back=1):
     base_url = OAI_DC_BASE + 'request?verb=ListRecords&metadataPrefix=oai_dc&from='
     start_date = date.today() - timedelta(days_back)
     url = base_url + str(start_date)
+    print url
     records = get_records(url)
 
     xml_list = []
     for record in records:
         doc_id = record.xpath('ns0:header/ns0:identifier', namespaces=NAMESPACES)[0].text
         record = etree.tostring(record, encoding=(record_encoding or DEFAULT_ENCODING))
+        print(doc_id)
         xml_list.append(RawDocument({
             'doc': record,
             'source': NAME,
@@ -39,6 +41,7 @@ def consume(days_back=5):
             'filetype': u'xml'
         }))
 
+    print(len(xml_list))
     return xml_list
 
 
@@ -99,14 +102,16 @@ def get_tags(result):
     for tag in tags:
         if ';' in tag:
             moretags = tag.split(';')
-            moretags = [word.strip() for word in moretags]
+            thetags = [word.strip() for word in moretags]
         elif '::' in tag:
             moretags = tag.split('::')
-            moretags = [word.strip() for word in moretags]
+            thetags = [word.strip() for word in moretags]
+        elif ',' in tag:
+            moretags = tag.split(',')
+            thetags = [word.strip() for word in moretags]
         else:
-            moretags = []
-        thetags += moretags
-    return [copy_to_unicode(tag.lower()) for tag in tags]
+            thetags = [tag]
+    return [copy_to_unicode(tag.lower()) for tag in thetags]
 
 
 def get_ids(result, doc):
@@ -197,8 +202,7 @@ def normalize(raw_doc):
         'dateCreated': copy_to_unicode(get_date_created(result)),
     }
 
-    # import json
-    # print(json.dumps(payload, indent=4))
+    # import json; print(json.dumps(payload['tags'], indent=4))
     return NormalizedDocument(payload)
 
 
