@@ -47,7 +47,8 @@ def consume(days_back=1):
     records = get_records(url)
 
     xml_list = []
-    for record in records:
+    # TODO - remove the testing restriction of first 500 documents
+    for record in records[:500]:
         doc_id = record.xpath('ns0:header/ns0:identifier/node()', namespaces=NAMESPACES)[0]
         record_string = etree.tostring(record, encoding=record_encoding)
 
