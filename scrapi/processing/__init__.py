@@ -1,7 +1,11 @@
 import os
+import logging
 
 from scrapi import settings
 from scrapi.processing.base import BaseProcessor
+
+
+logger = logging.getLogger(__name__)
 
 
 __all__ = []
@@ -17,12 +21,22 @@ from . import *
 def process_normalized(raw_doc, normalized, kwargs):
     for p in settings.NORMALIZED_PROCESSING:
         extras = kwargs.get(p, {})
-        get_processor(p).process_normalized(raw_doc, normalized, **extras)
+        try:
+            get_processor(p).process_normalized(raw_doc, normalized, **extras)
+        except Exception as e:
+            logger.error('Processor {} raised exception {}'.format(p, e))
+            if settings.DEBUG:
+                raise
 
 
 def process_raw(raw_doc):
     for p in settings.RAW_PROCESSING:
-        get_processor(p).process_raw(raw_doc)
+        try:
+            get_processor(p).process_raw(raw_doc)
+        except Exception as e:
+            logger.error('Processor {} raised exception {}'.format(p, e))
+            if settings.DEBUG:
+                raise
 
 
 def get_processor(processor_name):
