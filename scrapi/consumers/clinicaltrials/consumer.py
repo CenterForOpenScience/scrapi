@@ -57,11 +57,12 @@ def consume(days_back=1):
     record_encoding = initial_request.encoding
     initial_request_xml = etree.XML(initial_request.content) 
     count = int(initial_request_xml.xpath('//search_results/@count')[0])
-
+    # TODO this only gets the most recent 1000 - fix this! 
     xml_list = []
     if int(count) > 0:
         # get a new url with all results in it
         url = url + '&count=' + str(count)
+        print(url)
         total_requests = requests.get(url)
         initial_doc = etree.XML(total_requests.content)
 
@@ -71,8 +72,10 @@ def consume(days_back=1):
             study_urls.append(study.xpath('url/node()')[0] + '?displayxml=true')
 
         # grab each of those urls for full content
+        print("There are {} urls to consume - be patient...".format(len(study_urls)))
+        count = 0
+        official_count = 0
         for study_url in study_urls:
-            print("Now consuming {}".format(study_url))
             content = requests.get(study_url)
             doc = etree.XML(content.content)
             record = etree.tostring(doc, encoding=record_encoding)
@@ -83,7 +86,13 @@ def consume(days_back=1):
                     'docID': copy_to_unicode(doc_id),
                     'filetype': 'xml',
                 }))
+            official_count += 1
+            count += 1
+            if count%10 == 0:
+                print("You've requested {} studies, keep going!".format(official_count))
+                count = 0
             time.sleep(1)
+
 
     return xml_list
 
@@ -161,13 +170,16 @@ def get_properties(xml_doc):
     # eligibility
     eligibility_elements = xml_doc.xpath('//eligibility')
     eligibility = {}
-    for element in eligibility_elements[0].iterchildren():
-        if element.text.strip() == '':
-            for child in element.getchildren():
-                if child.text.strip() != '':               
-                    eligibility[element.tag] = copy_to_unicode(child.text)
-        else:
-            eligibility[element.tag] = copy_to_unicode(element.text)
+    if len(eligibility_elements) > 1:
+        for element in eligibility_elements[0].iterchildren():
+            if element.text.strip() == '':
+                for child in element.getchildren():
+                    if child.text.strip() != '':               
+                        eligibility[element.tag] = copy_to_unicode(child.text)
+            else:
+                eligibility[element.tag] = copy_to_unicode(element.text)
+    else:
+        eligibility_elements = ''
 
     ## TODO: location - undone for now
     ## location has a facility name - and address with seperate city state zip country
