@@ -14,7 +14,7 @@ from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
 
-NAME = 'academiccommons'
+NAME = 'columbia'
 NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/',
               'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
               'ns0': 'http://www.openarchives.org/OAI/2.0/'}
