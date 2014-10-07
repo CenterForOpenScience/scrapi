@@ -1,3 +1,5 @@
+DEBUG = False
+
 BROKER_URL = 'amqp://guest@localhost'
 CELERY_RESULT_BACKEND = 'amqp://guest@localhost'
 CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
