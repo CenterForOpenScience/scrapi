@@ -25,18 +25,17 @@ timestamp = lambda: datetime.utcnow().isoformat().decode('utf-8')
 
 @app.task
 def run_consumer(consumer_name, days_back=1):
-    logger.info('Runing consumer "{}"'.format(consumer_name))
+    logger.info('Running consumer "{}"'.format(consumer_name))
     # Form and start a celery chain
     chain = (consume.si(consumer_name, timestamp(), days_back=days_back)
              | begin_normalization.s(consumer_name))
+
     chain.apply_async()
 
 
 @app.task
 def consume(consumer_name, job_created, days_back=1):
     logger.info('Consumer "{}" has begun consumption'.format(consumer_name))
-
-    cassette = os.path.join(settings.RECORD_DIRECTORY, consumer_name, timestamp() + '.yml')
 
     timestamps = {
         'consumeTaskCreated': job_created,
@@ -46,6 +45,12 @@ def consume(consumer_name, job_created, days_back=1):
     consumer = import_consumer(consumer_name)
 
     if settings.STORE_HTTP_TRANSACTIONS:
+        cassette = os.path.join(settings.RECORD_DIRECTORY,
+                                consumer_name, timestamp() + '.yml')
+
+        logger.debug('Recording HTTP consumption request for {} to {}'
+                     .format(consumer_name, cassette))
+
         with vcr.use_cassette(cassette, record_mode='all'):
             result = consumer.consume(days_back=days_back)
     else:
@@ -69,10 +74,16 @@ def begin_normalization(consume_ret, consumer_name):
         raw['timestamps'] = timestamps
         raw['timestamps']['normalizeTaskCreated'] = timestamp()
 
+        logger.debug('Created the process raw task for {}/{}'
+                     .format(consumer_name, raw['docID']))
+
         process_raw.delay(raw)
 
         chain = (normalize.si(raw, consumer_name) |
                  process_normalized.s(raw))
+
+        logger.debug('Created the process normalized task for {}/{}'
+                     .format(consumer_name, raw['docID']))
 
         chain.apply_async()
 
@@ -89,6 +100,9 @@ def normalize(raw_doc, consumer_name):
     consumer = import_consumer(consumer_name)
 
     raw_doc['timestamps']['normalizeStarted'] = timestamp()
+
+    logger.debug('Document {}/{} normalization began'.format(
+        consumer_name, raw_doc['docID']))
 
     normalized = consumer.normalize(raw_doc)
 
