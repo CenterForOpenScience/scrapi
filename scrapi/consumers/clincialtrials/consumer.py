@@ -72,6 +72,7 @@ def consume(days_back=1):
 
         # grab each of those urls for full content
         for study_url in study_urls:
+            print("Now consuming {}".format(study_url))
             content = requests.get(study_url)
             doc = etree.XML(content.content)
             record = etree.tostring(doc, encoding=record_encoding)
