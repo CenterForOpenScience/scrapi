@@ -6,6 +6,8 @@ STORAGE_METHOD = 'disk'
 ARCHIVE_DIRECTORY = 'archive/'
 RECORD_DIRECTORY = 'records'
 
+STORE_HTTP_TRANSACTIONS = False
+
 NORMALIZED_PROCESSING = ['storage']
 RAW_PROCESSING = ['storage']
 

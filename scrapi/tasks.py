@@ -45,7 +45,10 @@ def consume(consumer_name, job_created, days_back=1):
 
     consumer = import_consumer(consumer_name)
 
-    with vcr.use_cassette(cassette, record_mode='all'):
+    if settings.STORE_HTTP_TRANSACTIONS:
+        with vcr.use_cassette(cassette, record_mode='all'):
+            result = consumer.consume(days_back=days_back)
+    else:
         result = consumer.consume(days_back=days_back)
 
     timestamps['consumeFinished'] = timestamp()
