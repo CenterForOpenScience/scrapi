@@ -12,7 +12,7 @@ from scrapi.linter.document import RawDocument, NormalizedDocument
 from nameparser import HumanName
 import os
 
-NAME = u'mit'
+NAME = 'mit'
 NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/', 
               'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
               'ns0': 'http://www.openarchives.org/OAI/2.0/'}
@@ -35,7 +35,7 @@ def consume(days_back=5):
             'doc': record,
             'source': NAME,
             'docID': copy_to_unicode(doc_id),
-            'filetype': u'xml'
+            'filetype': 'xml'
         }))
     return xml_list
 
