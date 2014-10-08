@@ -126,9 +126,6 @@ def normalize(raw_doc, consumer_name):
         logger.warning('Did not normalize document [{}]{}'.format(consumer_name, raw_doc['docID']))
         return None
 
-    if not normalized:
-        return None
-
     logger.debug('Document {}/{} normalized sucessfully'.format(
         consumer_name, raw_doc['docID']))
 
