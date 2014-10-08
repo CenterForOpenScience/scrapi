@@ -182,7 +182,7 @@ def get_properties(xml_doc):
         eligibility_elements = ''
 
     ## TODO: location - undone for now
-    ## location has a facility name - and address with seperate city state zip country
+    ## location has a facility name - and address with separate city state zip country
     ## {name: 'facility name', address: {city: 'city', state:'state', zip: 'zip', country:'country'}, status: 'status'}
 
     ## TODO: location sometimes has contact with name and email - what do? 
@@ -200,7 +200,7 @@ def get_properties(xml_doc):
     links = []
     for item in link_elements:
         link = {element.tag: copy_to_unicode(element.text) for element in item.iterdescendants()}
-        links.append(intervention)
+        links.append(link)
 
     # responsible party 
     # TODO: is there ever more than one responsible party? 
@@ -238,7 +238,7 @@ def get_properties(xml_doc):
     }
 
     for key, value in properties.iteritems():
-        if isinstance(value, etree._ElementStringResult):
+        if isinstance(value, etree._ElementStringResult) or isinstance(value, etree._ElementUnicodeResult):
             properties[key] = copy_to_unicode(value)
         elif isinstance(value, list):
             unicode_list = []
