@@ -79,6 +79,9 @@ button[type="submit"]{
 	font-size: 20px;
 }
 
+.navigation-controls{
+    text-align: center;
+}
 
 .btn {
 	vertical-align: top;

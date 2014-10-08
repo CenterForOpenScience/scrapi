@@ -2,113 +2,114 @@
 """
     Search module for the scrAPI website.
 """
+import copy
+import json
 import logging
-import pyelasticsearch
-import search_settings
+import requests
+import datetime
 
-logging.basicConfig(level=logging.DEBUG)
+from scrapi import settings
+
+logging.basicConfig(level=logging.ERROR)
 logger = logging.getLogger(__name__)
 
-
-# These are the doc_types that exist in the search database
-TYPES = ['article', 'citation']
-
-try:
-    elastic = pyelasticsearch.ElasticSearch(
-        search_settings.ELASTIC_URI,
-        timeout=search_settings.ELASTIC_TIMEOUT
-    )
-    logging.getLogger('pyelasticsearch').setLevel(logging.WARN)
-    logging.getLogger('requests').setLevel(logging.WARN)
-    elastic.health()
-except pyelasticsearch.exceptions.ConnectionError as e:
-    logger.error(e)
-    logger.warn("The SEARCH_ENGINE setting is set to 'elastic', but there "
-                "was a problem starting the elasticsearch interface. Is "
-                "elasticsearch running?")
-    elastic = None
+DEFAULT_PARAMS = {
+    'q': '*',
+    'start_date': None,
+    'end_date': datetime.date.today().isoformat(),
+    'sort_field': 'consumeFinished',
+    'sort_type': 'desc',
+    'from': 0,
+    'size': 10,
+    'format': 'json'
+}
 
 
-def requires_search(func):
-    def wrapped(*args, **kwargs):
-        if elastic is not None:
-            return func(*args, **kwargs)
-    return wrapped
+def query_osf(query):
+    headers = {'Content-Type': 'application/json'}
+    data = json.dumps(query)
+    print data
+    return requests.post(settings.OSF_APP_URL, auth=settings.OSF_AUTH, headers=headers, data=data).json()
 
 
-@requires_search
-def search(index, raw_query, start=0, size=10):
-    query = _build_query(raw_query, start, size)
-    raw_results = elastic.search(query, index=index)
-    results = [hit['_source'] for hit in raw_results['hits']['hits']]
-    count = raw_results['hits']['total']
-    return results, count
-
-
-def _build_query(raw_query, start, size):
-    inner_query = {}
-    if not raw_query or ':' not in raw_query:
-        inner_query = {'match_all': {}} if not raw_query else {'match': {'_all': raw_query}}
-    else:
-        items = raw_query.split(';')
-        filters = []
-        for item in items:
-            item = item.split(':')
-            if len(item) == 1:
-                item = ['_all', item[0]]
-
-            filters.append({
-                "query": {
-                    'match': {
-                        item[0]: {
-                            'query': item[1],
-                            'operator': 'and',
-                            'type': 'phrase',
-                        }
-                    }
-                }
-            })
-
-        inner_query = {
-            'filtered': {
-                'filter': {
-                    'and': filters
-                },
-            },
-        }
-
+def tutorial():
     return {
-        'sort': [{
-            'iso_timestamp': {
-                'order': 'desc'
-            }
-        }],
-        'query': inner_query,
-        'from': start,
-        'size': size
+        'title': 'string representing title of the resource',
+        'contributors': 'a list of dictionaries containing prefix, middle, family, suffix, and ORCID of contributors.',
+        'id': 'a dictionary of unique IDs given to the resource based on the particular publication we’re accessing. Should include an entry for a URL that links right to the original resource, a DOI, and a service specific ID',
+        'url': 'A url pointing to the resource\' real location',
+        'doi': 'The digital object identifier of the resource, if it has one',
+        'serviceID': 'A service specific identifier for the resource',
+        'description': 'an abstract or general description of the resource',
+        'tags': 'a list of tags or keywords identified in the resource itself, normalized to be all lower case',
+        'source': 'string identifying where the resource came from',
+        'timestamp': 'string indicating when the resource was accessed by scrAPI using the format YYYY-MM-DD h : m : s in iso format',
+        'dateCreated': 'string indicating when the resource was first created or published using the format YYYY-MM-DD in iso format',
+        'dateUpdated': 'string indicating when the resource was last updated in the home repository using the format YYYY-MM-DD in iso format',
     }
 
 
-@requires_search
-def update(index, document, category, id):
-    try:
-        elastic.update(index, category, id, doc=document, upsert=document, refresh=True)
-    except pyelasticsearch.exceptions.ElasticHttpError as e:
-        logger.exception(e)
+def search(raw_params):
+    params = copy.deepcopy(DEFAULT_PARAMS)
+    params.update(raw_params)
+    for key in params.keys():
+        if isinstance(params[key], list) and len(params[key]) == 1:
+            params[key] = params[key][0]
+    params['from'] = int(params['from'])
+    params['size'] = int(params['size'])
+    print params
+    query = parse_query(params)
+    query['format'] = params.get('format')
+    return query_osf(query)
 
 
-@requires_search
-def delete_all(index):
-    try:
-        elastic.delete_index(index)
-    except pyelasticsearch.exceptions.ElasticHttpNotFoundError as e:
-        logger.error(e)
-        logger.error("The index '{}' was not deleted from elasticsearch".format(index))
+def parse_query(params):
+    return {
+        'query': build_query(
+            params.get('q'),
+            params.get('start_date'),
+            params.get('end_date')
+        ),
+        'sort': build_sort(params.get('sort_field'), params.get('sort_type')),
+        'from': params.get('from'),
+        'size': params.get('size'),
+    }
 
 
-@requires_search
-def delete_doc(index, category, doc_id):
-    try:
-        elastic.delete(index, category, doc_id, refresh=True)
-    except pyelasticsearch.exceptions.ElasticHttpNotFoundError:
-        logger.warn("Document with id {} not found in database".format(doc_id))
+def build_query(q, start_date, end_date):
+    return {
+        'filtered': {
+             'query': build_query_string(q),
+             'filter': build_date_filter(start_date, end_date),
+        }
+    }
+
+
+def build_query_string(q):
+    return {
+        'query_string': {
+            'default_field': '_all',
+            'query': q,
+            'analyze_wildcard': True,
+            'lenient': True  # TODO, may not want to do this
+        }
+    }
+
+
+def build_date_filter(start_date, end_date):
+    return {
+        'range': {
+            'consumeFinished': {
+                'gte': start_date,  # TODO, can be None, elasticsearch may not like it
+                'lte': end_date
+            }
+        }
+    }
+
+def build_sort(sort_field, sort_type):
+    print sort_field
+    return [{
+        sort_field : {
+            'order': sort_type
+        }
+    }]
