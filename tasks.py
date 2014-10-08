@@ -8,8 +8,8 @@ from invoke import run, task
 
 from scrapi import linter
 from scrapi import settings
+from scrapi.util import timestamp
 from scrapi.util import import_consumer
-
 
 @task
 def server():
@@ -106,20 +106,20 @@ def worker():
 
 
 @task
-def consumer(consumer_name, async=False):
+def consumer(consumer_name, async=False, days=1):
     settings.CELERY_ALWAYS_EAGER = not async
     from scrapi.tasks import run_consumer
 
-    run_consumer.delay(consumer_name)
+    run_consumer.delay(consumer_name, days_back=1)
 
 
 @task
-def consumers(async=False):
+def consumers(async=False, days=1):
     settings.CELERY_ALWAYS_EAGER = not async
     from scrapi.tasks import run_consumer
 
     for consumer_name in settings.MANIFESTS.keys():
-        run_consumer.delay(consumer_name)
+        run_consumer.delay(consumer_name, days_back=days)
 
 
 @task
