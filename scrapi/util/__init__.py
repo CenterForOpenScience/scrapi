@@ -2,6 +2,10 @@ import os
 import errno
 import importlib
 from urllib2 import quote
+from datetime import datetime
+
+
+timestamp = lambda: datetime.utcnow().isoformat().decode('utf-8')
 
 
 def import_consumer(consumer_name):

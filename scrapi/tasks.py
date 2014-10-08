@@ -1,7 +1,6 @@
 import os
 import logging
 from dateutil import parser
-from datetime import datetime
 
 import vcr
 
@@ -10,6 +9,7 @@ from celery import Celery
 from scrapi import events
 from scrapi import settings
 from scrapi import processing
+from scrapi.util import timestamp
 from scrapi.util import import_consumer
 from scrapi.util.storage import store
 from scrapi.linter.document import RawDocument
@@ -19,9 +19,6 @@ app = Celery()
 app.config_from_object(settings)
 
 logger = logging.getLogger(__name__)
-
-
-timestamp = lambda: datetime.utcnow().isoformat().decode('utf-8')
 
 
 @app.task
