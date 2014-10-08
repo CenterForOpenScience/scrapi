@@ -204,7 +204,7 @@ def check_archive(consumer_name, reprocess):
         events.dispatch(events.NORMALIZATION, events.CREATED,
                         consumer=consumer_name, docID=raw_doc['docID'])
 
-    events.dispatch(events.CHECK_ARCHIVE, events.FINISHED,
+    events.dispatch(events.CHECK_ARCHIVE, events.COMPLETED,
                     consumer=consumer_name, reprocess=reprocess)
 
 
