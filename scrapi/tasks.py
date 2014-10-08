@@ -7,6 +7,7 @@ import vcr
 
 from celery import Celery
 
+from scrapi import events
 from scrapi import settings
 from scrapi import processing
 from scrapi.util import import_consumer
@@ -26,6 +27,8 @@ timestamp = lambda: datetime.utcnow().isoformat().decode('utf-8')
 @app.task
 def run_consumer(consumer_name, days_back=1):
     logger.info('Running consumer "{}"'.format(consumer_name))
+    events.dispatch(events.CONSUMER_RUN, events.CREATED, consumer=consumer_name)
+
     # Form and start a celery chain
     chain = (consume.si(consumer_name, timestamp(), days_back=days_back)
              | begin_normalization.s(consumer_name))
@@ -36,6 +39,7 @@ def run_consumer(consumer_name, days_back=1):
 @app.task
 def consume(consumer_name, job_created, days_back=1):
     logger.info('Consumer "{}" has begun consumption'.format(consumer_name))
+    events.dispatch(events.CONSUMER_RUN, events.STARTED, consumer=consumer_name)
 
     timestamps = {
         'consumeTaskCreated': job_created,
@@ -44,21 +48,27 @@ def consume(consumer_name, job_created, days_back=1):
 
     consumer = import_consumer(consumer_name)
 
-    if settings.STORE_HTTP_TRANSACTIONS:
-        cassette = os.path.join(settings.RECORD_DIRECTORY,
-                                consumer_name, timestamp() + '.yml')
+    try:
+        if settings.STORE_HTTP_TRANSACTIONS:
+            cassette = os.path.join(settings.RECORD_DIRECTORY,
+                                    consumer_name, timestamp() + '.yml')
 
-        logger.debug('Recording HTTP consumption request for {} to {}'
-                     .format(consumer_name, cassette))
+            logger.debug('Recording HTTP consumption request for {} to {}'
+                         .format(consumer_name, cassette))
 
-        with vcr.use_cassette(cassette, record_mode='all'):
+            with vcr.use_cassette(cassette, record_mode='all'):
+                result = consumer.consume(days_back=days_back)
+        else:
             result = consumer.consume(days_back=days_back)
-    else:
-        result = consumer.consume(days_back=days_back)
+    except Exception as e:
+        events.dispatch(events.CONSUMER_RUN, events.FAILED,
+                        consumer=consumer_name, exception=e)
+        raise
 
     timestamps['consumeFinished'] = timestamp()
 
     logger.info('Consumer "{}" has finished consumption'.format(consumer_name))
+    events.dispatch(events.CONSUMER_RUN, events.COMPLETED, consumer=consumer_name)
 
     return result, timestamps
 
@@ -85,6 +95,9 @@ def begin_normalization(consume_ret, consumer_name):
         logger.debug('Created the process normalized task for {}/{}'
                      .format(consumer_name, raw['docID']))
 
+        events.dispatch(events.NORMALIZATION, events.CREATED,
+                        consumer=consumer_name, docId=raw['docID'])
+
         chain.apply_async()
 
 
@@ -101,17 +114,28 @@ def normalize(raw_doc, consumer_name):
 
     raw_doc['timestamps']['normalizeStarted'] = timestamp()
 
+    events.dispatch(events.NORMALIZATION, events.STARTED,
+                    consumer=consumer_name, docID=raw_doc['docID'])
     logger.debug('Document {}/{} normalization began'.format(
         consumer_name, raw_doc['docID']))
 
-    normalized = consumer.normalize(raw_doc)
+    try:
+        normalized = consumer.normalize(raw_doc)
+    except Exception as e:
+        events.dispatch(events.NORMALIZATION, events.FAILED,
+                consumer=consumer_name, docID=raw_doc['docID'], exception=e)
+        raise
 
     if not normalized:
+        events.dispatch(events.NORMALIZATION, events.SKIPPED, consumer=consumer_name)
         logger.warning('Did not normalize document [{}]{}'.format(consumer_name, raw_doc['docID']))
         return None
 
     logger.debug('Document {}/{} normalized sucessfully'.format(
         consumer_name, raw_doc['docID']))
+
+    events.dispatch(events.NORMALIZATION, events.COMPLETED,
+                    consumer=consumer_name, docID=raw_doc['docID'])
 
     normalized['timestamps'] = raw_doc['timestamps']
     normalized['timestamps']['normalizeFinished'] = timestamp()
