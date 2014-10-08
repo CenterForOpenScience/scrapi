@@ -10,9 +10,9 @@ import os
 import json
 import logging
 
-from fluent import handler
-
 from celery.schedules import crontab
+
+from fluent import sender
 
 from raven import Client
 from raven.contrib.celery import register_signal
@@ -20,10 +20,14 @@ from raven.contrib.celery import register_signal
 from scrapi.settings.defaults import *
 from scrapi.settings.local import *
 
+logging.getLogger('requests.packages.urllib3.connectionpool').setLevel(logging.WARNING)
 
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-logging.getLogger('requests.packages.urllib3.connectionpool').setLevel(logging.WARNING)
+
+
+if USE_FLUENTD:
+    sender.setup(*FLUENTD_ARGS)
+
 
 MANIFEST_DIR = os.path.join(os.path.dirname(__file__), 'consumerManifests')
 
@@ -31,10 +35,6 @@ MANIFEST_DIR = os.path.join(os.path.dirname(__file__), 'consumerManifests')
 if SENTRY_DNS:
     client = Client(SENTRY_DNS)
     register_signal(client)
-
-
-if FLUENTD_ARGS:
-    logger.addHandler(handler.FluentHandler(*FLUENTD_ARGS))
 
 
 # Programmatically generate celery beat schedule

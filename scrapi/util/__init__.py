@@ -2,6 +2,10 @@ import os
 import errno
 import string
 import importlib
+from datetime import datetime
+
+
+timestamp = lambda: datetime.utcnow().isoformat().decode('utf-8')
 
 
 def import_consumer(consumer_name):

@@ -1,12 +1,15 @@
 import os
 import logging
 from dateutil import parser
-from datetime import datetime
+
+import vcr
 
 from celery import Celery
 
+from scrapi import events
 from scrapi import settings
 from scrapi import processing
+from scrapi.util import timestamp
 from scrapi.util import import_consumer
 from scrapi.util.storage import store
 from scrapi.linter.document import RawDocument
@@ -18,21 +21,22 @@ app.config_from_object(settings)
 logger = logging.getLogger(__name__)
 
 
-timestamp = lambda: datetime.utcnow().isoformat().decode('utf-8')
-
-
 @app.task
 def run_consumer(consumer_name, days_back=1):
     logger.info('Running consumer "{}"'.format(consumer_name))
+    events.dispatch(events.CONSUMER_RUN, events.CREATED, consumer=consumer_name)
+
     # Form and start a celery chain
     chain = (consume.si(consumer_name, timestamp(), days_back=days_back)
              | begin_normalization.s(consumer_name))
+
     chain.apply_async()
 
 
 @app.task
 def consume(consumer_name, job_created, days_back=1):
     logger.info('Consumer "{}" has begun consumption'.format(consumer_name))
+    events.dispatch(events.CONSUMER_RUN, events.STARTED, consumer=consumer_name)
 
     timestamps = {
         'consumeTaskCreated': job_created,
@@ -40,11 +44,28 @@ def consume(consumer_name, job_created, days_back=1):
     }
 
     consumer = import_consumer(consumer_name)
-    result = consumer.consume(days_back=days_back)
+
+    try:
+        if settings.STORE_HTTP_TRANSACTIONS:
+            cassette = os.path.join(settings.RECORD_DIRECTORY,
+                                    consumer_name, timestamp() + '.yml')
+
+            logger.debug('Recording HTTP consumption request for {} to {}'
+                         .format(consumer_name, cassette))
+
+            with vcr.use_cassette(cassette, record_mode='all'):
+                result = consumer.consume(days_back=days_back)
+        else:
+            result = consumer.consume(days_back=days_back)
+    except Exception as e:
+        events.dispatch(events.CONSUMER_RUN, events.FAILED,
+                        consumer=consumer_name, exception=str(e))
+        raise
 
     timestamps['consumeFinished'] = timestamp()
 
     logger.info('Consumer "{}" has finished consumption'.format(consumer_name))
+    events.dispatch(events.CONSUMER_RUN, events.COMPLETED, consumer=consumer_name)
 
     return result, timestamps
 
@@ -60,10 +81,19 @@ def begin_normalization(consume_ret, consumer_name):
         raw['timestamps'] = timestamps
         raw['timestamps']['normalizeTaskCreated'] = timestamp()
 
+        logger.debug('Created the process raw task for {}/{}'
+                     .format(consumer_name, raw['docID']))
+
         process_raw.delay(raw)
 
         chain = (normalize.si(raw, consumer_name) |
                  process_normalized.s(raw))
+
+        logger.debug('Created the process normalized task for {}/{}'
+                     .format(consumer_name, raw['docID']))
+
+        events.dispatch(events.NORMALIZATION, events.CREATED,
+                        consumer=consumer_name, docID=raw['docID'])
 
         chain.apply_async()
 
@@ -81,7 +111,20 @@ def normalize(raw_doc, consumer_name):
 
     raw_doc['timestamps']['normalizeStarted'] = timestamp()
 
-    normalized = consumer.normalize(raw_doc)
+    logger.debug('Document {}/{} normalization began'.format(
+        consumer_name, raw_doc['docID']))
+
+    try:
+        normalized = consumer.normalize(raw_doc)
+    except Exception as e:
+        events.dispatch(events.NORMALIZATION, events.FAILED,
+                consumer=consumer_name, docID=raw_doc['docID'], exception=str(e))
+        raise
+
+    if not normalized:
+        events.dispatch(events.NORMALIZATION, events.SKIPPED, consumer=consumer_name)
+        logger.warning('Did not normalize document [{}]{}'.format(consumer_name, raw_doc['docID']))
+        return None
 
     if not normalized:
         return None
@@ -89,9 +132,11 @@ def normalize(raw_doc, consumer_name):
     logger.debug('Document {}/{} normalized sucessfully'.format(
         consumer_name, raw_doc['docID']))
 
+    events.dispatch(events.NORMALIZATION, events.COMPLETED,
+                    consumer=consumer_name, docID=raw_doc['docID'])
+
     normalized['timestamps'] = raw_doc['timestamps']
     normalized['timestamps']['normalizeFinished'] = timestamp()
-
     return normalized
 
 
