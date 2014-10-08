@@ -1,6 +1,7 @@
 import os
 import logging
 from dateutil import parser
+from base64 import b64decode
 
 import vcr
 
@@ -192,7 +193,7 @@ def check_archive(consumer_name, reprocess):
             'timestamps': {
                 'consumeFinished': timestamp
             },
-            'docID': raw_path.split('/')[-3],
+            'docID': b64decode(raw_path.split('/')[-3]),
             'source': consumer_name,
             'filetype': consumer['fileFormat'],
         })

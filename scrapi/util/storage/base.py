@@ -1,9 +1,9 @@
 import os
 import json
+from base64 import b64encode
 
 from scrapi import settings
 from scrapi.util import make_dir
-from scrapi.util import doc_id_to_path
 
 
 class BaseStorage(object):
@@ -30,10 +30,9 @@ class BaseStorage(object):
         path = [
             settings.ARCHIVE_DIRECTORY,
             raw_doc.get('source'),
-            doc_id_to_path(raw_doc.get('docID')),
+            b64encode(raw_doc['docID']),
             raw_doc['timestamps']['consumeFinished']
         ]
-
         path = os.path.join(*path)
         make_dir(path)
 
