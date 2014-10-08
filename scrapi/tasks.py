@@ -114,6 +114,8 @@ def normalize(raw_doc, consumer_name):
     logger.debug('Document {}/{} normalization began'.format(
         consumer_name, raw_doc['docID']))
 
+    events.dispatch(events.NORMALIZATION, events.STARTED,
+                    consumer=consumer_name, docID=raw_doc['docID'])
     try:
         normalized = consumer.normalize(raw_doc)
     except Exception as e:
@@ -122,7 +124,7 @@ def normalize(raw_doc, consumer_name):
         raise
 
     if not normalized:
-        events.dispatch(events.NORMALIZATION, events.SKIPPED, consumer=consumer_name)
+        events.dispatch(events.NORMALIZATION, events.SKIPPED, consumer=consumer_name, docID=raw_doc['docID'])
         logger.warning('Did not normalize document [{}]{}'.format(consumer_name, raw_doc['docID']))
         return None
 
