@@ -11,6 +11,7 @@ CREATED = 'created'
 STARTED = 'started'
 COMPLETED = 'completed'
 FAILED = 'failed'
+SKIPPED = 'skipped'
 
 
 def dispatch(_event, status, **kwargs):
