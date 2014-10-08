@@ -193,7 +193,7 @@ def check_archive(consumer_name, reprocess):
             'timestamps': {
                 'consumeFinished': timestamp
             },
-            'docID': b64decode(raw_path.split('/')[-3]),
+            'docID': b64decode(raw_path.split('/')[-3]).decode('utf-8'),
             'source': consumer_name,
             'filetype': consumer['fileFormat'],
         })
