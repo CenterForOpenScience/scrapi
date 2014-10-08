@@ -21,7 +21,7 @@ from . import *
 
 def process_normalized(raw_doc, normalized, kwargs):
     for p in settings.NORMALIZED_PROCESSING:
-        _normalized_event_event(events.STARTED, p, raw_doc)
+        _normalized_event(events.STARTED, p, raw_doc)
 
         extras = kwargs.get(p, {})
 
