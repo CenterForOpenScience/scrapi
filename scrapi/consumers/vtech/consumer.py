@@ -12,8 +12,8 @@ from scrapi.linter.document import RawDocument, NormalizedDocument
 from nameparser import HumanName
 
 
-NAME = u'vtechworks'
-OAI_DC_BASE = 'http://vtechworks.lib.vt.edu/oai/'
+NAME = 'vtechworks'
+OAI_DC_BASE = 'http://vtechworks.lib.vt.edu/oai/request?verb=ListRecords'
 NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/', 
               'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
               'ns0': 'http://www.openarchives.org/OAI/2.0/'}
@@ -23,19 +23,18 @@ record_encoding = None
 
 
 def consume(days_back=5):
-    base_url = OAI_DC_BASE + 'request?verb=ListRecords&metadataPrefix=oai_dc&from='
     start_date = date.today() - timedelta(days_back)
-    url = base_url + str(start_date)
+    url = '{}&metadataPrefix=oai_dc&from={}'.format(OAI_DC_BASE, str(start_date))
     records = get_records(url)
     xml_list = []
     for record in records:
-        doc_id = record.xpath('ns0:header/ns0:identifier', namespaces=NAMESPACES)[0].text
+        doc_id = record.xpath('ns0:header/ns0:identifier/node()', namespaces=NAMESPACES)[0]
         record = etree.tostring(record, encoding=(record_encoding or DEFAULT_ENCODING))
         xml_list.append(RawDocument({
             'doc': record,
             'source': NAME,
             'docID': copy_to_unicode(doc_id),
-            'filetype': u'xml'
+            'filetype': 'xml'
         }))
 
     return xml_list
@@ -50,8 +49,7 @@ def get_records(url):
 
     if len(token) == 1:
         time.sleep(0.5)
-        base_url = OAI_DC_BASE + 'request?verb=ListRecords&resumptionToken=' 
-        url = base_url + token[0]
+        url ='{}&resumptionToken={}'.format(OAI_DC_BASE, token[0])
         records += get_records(url)
 
     return records
@@ -71,7 +69,7 @@ def get_contributors(result):
     contributors = result.xpath('//dc:contributor/node()', namespaces=NAMESPACES)
     creators = result.xpath('//dc:creator/node()', namespaces=NAMESPACES)
 
-    if 'hesis' not in dctype and 'issertation' not in dctype:
+    if 'thesis' not in dctype.lower() and 'dissertation' not in dctype.lower():
         all_contributors = contributors + creators
     else:
         all_contributors = creators
@@ -85,8 +83,8 @@ def get_contributors(result):
             'middle': name.middle,
             'family': name.last,
             'suffix': name.suffix,
-            'email': u'',
-            'ORCID': u'',
+            'email': '',
+            'ORCID': '',
         }
         contributor_list.append(contributor)
     return contributor_list
@@ -98,7 +96,7 @@ def get_tags(result):
 
 
 def get_ids(result, doc):
-    serviceID = doc.get('docID')
+    service_id = doc.get('docID')
     identifiers = result.xpath('//dc:identifier/node()', namespaces=NAMESPACES)
     url = ''
     doi = ''
@@ -115,9 +113,11 @@ def get_ids(result, doc):
     if url == '':
         raise Exception('Warning: No url provided!')
 
-    return {'serviceID': serviceID,
-            'url': copy_to_unicode(url),
-            'doi': copy_to_unicode(doi)}
+    return {
+        'serviceID': service_id,
+        'url': copy_to_unicode(url),
+        'doi': copy_to_unicode(doi)
+    }
 
 
 def get_properties(result):
@@ -151,13 +151,13 @@ def get_date_created(result):
         a_date = parse(str(item)[:10], yearfirst=True,  default=DEFAULT).isoformat()
         date_list.append(a_date)
     min_date = min(date_list)
-    return min_date
+    return copy_to_unicode(min_date)
 
 
 def get_date_updated(result):
     dateupdated = result.xpath('//ns0:header/ns0:datestamp/node()', namespaces=NAMESPACES)[0]
     date_updated = parse(dateupdated).isoformat()
-    return date_updated
+    return copy_to_unicode(date_updated)
 
 
 def normalize(raw_doc):
@@ -168,23 +168,21 @@ def normalize(raw_doc):
         print('Error in namespaces! Skipping this one...')
         return None
 
-    title = result.xpath('//dc:title/node()', namespaces=NAMESPACES)[0]
-    description = (result.xpath('//dc:description/node()', namespaces=NAMESPACES) or [''])[0]
+    title = copy_to_unicode((result.xpath('//dc:title/node()', namespaces=NAMESPACES) or [''])[0])
+    description = copy_to_unicode((result.xpath('//dc:description/node()', namespaces=NAMESPACES) or [''])[0])
 
     payload = {
-        'title': copy_to_unicode(title),
+        'title': title,
         'contributors': get_contributors(result),
         'properties': get_properties(result),
-        'description': copy_to_unicode(description),
+        'description': description,
         'tags': get_tags(result),
         'id': get_ids(result, raw_doc),
         'source': NAME,
-        'dateUpdated': copy_to_unicode(get_date_updated(result)),
-        'dateCreated': copy_to_unicode(get_date_created(result)),
+        'dateUpdated': get_date_updated(result),
+        'dateCreated': get_date_created(result),
     }
 
-    # import json
-    # print(json.dumps(payload, indent=4))
     return NormalizedDocument(payload)
 
 
