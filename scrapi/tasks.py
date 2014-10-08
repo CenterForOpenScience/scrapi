@@ -93,7 +93,7 @@ def begin_normalization(consume_ret, consumer_name):
                      .format(consumer_name, raw['docID']))
 
         events.dispatch(events.NORMALIZATION, events.CREATED,
-                        consumer=consumer_name, docId=raw['docID'])
+                        consumer=consumer_name, docID=raw['docID'])
 
         chain.apply_async()
 
