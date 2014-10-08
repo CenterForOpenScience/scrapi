@@ -59,7 +59,7 @@ def consume(consumer_name, job_created, days_back=1):
             result = consumer.consume(days_back=days_back)
     except Exception as e:
         events.dispatch(events.CONSUMER_RUN, events.FAILED,
-                        consumer=consumer_name, exception=e)
+                        consumer=consumer_name, exception=str(e))
         raise
 
     timestamps['consumeFinished'] = timestamp()
@@ -111,8 +111,6 @@ def normalize(raw_doc, consumer_name):
 
     raw_doc['timestamps']['normalizeStarted'] = timestamp()
 
-    events.dispatch(events.NORMALIZATION, events.STARTED,
-                    consumer=consumer_name, docID=raw_doc['docID'])
     logger.debug('Document {}/{} normalization began'.format(
         consumer_name, raw_doc['docID']))
 
@@ -120,7 +118,7 @@ def normalize(raw_doc, consumer_name):
         normalized = consumer.normalize(raw_doc)
     except Exception as e:
         events.dispatch(events.NORMALIZATION, events.FAILED,
-                consumer=consumer_name, docID=raw_doc['docID'], exception=e)
+                consumer=consumer_name, docID=raw_doc['docID'], exception=str(e))
         raise
 
     if not normalized:
