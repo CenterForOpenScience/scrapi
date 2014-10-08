@@ -25,4 +25,8 @@ def dispatch(_event, status, _index=None, **kwargs):
         }
 
         evnt.update(kwargs)
-        event.Event(_index, evnt)
+
+        if _index:
+            _event = '{}.{}'.format(_event, _index)
+
+        event.Event(_event, evnt)
