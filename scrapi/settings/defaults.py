@@ -1,12 +1,12 @@
 DEBUG = False
 
 BROKER_URL = 'amqp://guest@localhost'
-CELERY_RESULT_BACKEND = 'amqp://guest@localhost'
-CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
 
 STORAGE_METHOD = 'disk'
 ARCHIVE_DIRECTORY = 'archive/'
 RECORD_DIRECTORY = 'records'
+
+CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
 
 STORE_HTTP_TRANSACTIONS = False
 
@@ -16,7 +16,7 @@ RAW_PROCESSING = ['storage']
 SENTRY_DNS = None
 
 USE_FLUENTD = False
-FLUENTD_ARGS = ('app.scrapi',)
+FLUENTD_ARGS = ('scrapi',)
 
 # OUTPUT SETTINGS
 OSF_ENABLED = False

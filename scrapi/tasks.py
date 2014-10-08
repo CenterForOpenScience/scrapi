@@ -24,13 +24,16 @@ logger = logging.getLogger(__name__)
 @app.task
 def run_consumer(consumer_name, days_back=1):
     logger.info('Running consumer "{}"'.format(consumer_name))
-    events.dispatch(events.CONSUMER_RUN, events.CREATED, consumer=consumer_name)
 
     # Form and start a celery chain
     chain = (consume.si(consumer_name, timestamp(), days_back=days_back)
              | begin_normalization.s(consumer_name))
 
     chain.apply_async()
+
+    # Note: Dispatch events only after they run
+
+    events.dispatch(events.CONSUMER_RUN, events.CREATED, consumer=consumer_name)
 
 
 @app.task
@@ -92,17 +95,26 @@ def begin_normalization(consume_ret, consumer_name):
         logger.debug('Created the process normalized task for {}/{}'
                      .format(consumer_name, raw['docID']))
 
+        chain.apply_async()
+
+        # Note: Dispatch events only AFTER the event has actually happened
+
         events.dispatch(events.NORMALIZATION, events.CREATED,
                         consumer=consumer_name, docID=raw['docID'])
 
-        chain.apply_async()
+        events.dispatch(events.PROCESSING, events.CREATED,
+                        consumer=consumer_name, docID=raw['docID'], _index='processing')
 
 
 @app.task
 def process_raw(raw_doc):
+    events.dispatch(events.PROCESSING, events.STARTED,
+                    _index='processing.raw', docID=raw_doc['docID'])
+
     processing.process_raw(raw_doc)
-    # This is where the raw_doc should be dumped to disk
-    # And anything else that may need to happen to it
+
+    events.dispatch(events.PROCESSING, events.COMPLETED,
+                    _index='processing.raw', docID=raw_doc['docID'])
 
 
 @app.task
@@ -114,6 +126,8 @@ def normalize(raw_doc, consumer_name):
     logger.debug('Document {}/{} normalization began'.format(
         consumer_name, raw_doc['docID']))
 
+    events.dispatch(events.NORMALIZATION, events.STARTED,
+                    consumer=consumer_name, docID=raw_doc['docID'])
     try:
         normalized = consumer.normalize(raw_doc)
     except Exception as e:
@@ -122,7 +136,7 @@ def normalize(raw_doc, consumer_name):
         raise
 
     if not normalized:
-        events.dispatch(events.NORMALIZATION, events.SKIPPED, consumer=consumer_name)
+        events.dispatch(events.NORMALIZATION, events.SKIPPED, consumer=consumer_name, docID=raw_doc['docID'])
         logger.warning('Did not normalize document [{}]{}'.format(consumer_name, raw_doc['docID']))
         return None
 
@@ -140,13 +154,15 @@ def normalize(raw_doc, consumer_name):
 @app.task
 def process_normalized(normalized_doc, raw_doc, **kwargs):
     if not normalized_doc:
+        events.dispatch(events.PROCESSING, events.SKIPPED, docID=raw_doc['docID'])
         logger.warning('Not processing document with id {}'.format(raw_doc['docID']))
         return
 
+    events.dispatch(events.PROCESSING, events.STARTED, docID=raw_doc['docID'])
+
     processing.process_normalized(raw_doc, normalized_doc, kwargs)
-    # This is where the normalized doc should be dumped to disk
-    # And then sent to OSF
-    # And anything that may need to occur
+
+    events.dispatch(events.PROCESSING, events.COMPLETED, docID=raw_doc['docID'])
 
 
 @app.task
@@ -154,9 +170,15 @@ def check_archives(reprocess):
     for consumer in settings.MANIFESTS.keys():
         check_archive.delay(consumer, reprocess)
 
+        events.dispatch(events.CHECK_ARCHIVE, events.CREATED,
+                        consumer=consumer, reprocess=reprocess, _index='check')
+
 
 @app.task
 def check_archive(consumer_name, reprocess):
+    events.dispatch(events.CHECK_ARCHIVE, events.STARTED,
+                    consumer=consumer_name, reprocess=reprocess, _index='check')
+
     consumer = settings.MANIFESTS[consumer_name]
     extras = {
         'overwrite': True
@@ -179,7 +201,14 @@ def check_archive(consumer_name, reprocess):
                  process_normalized.s(raw_doc, storage=extras))
         chain.apply_async()
 
+        events.dispatch(events.NORMALIZATION, events.CREATED,
+                        consumer=consumer_name, docID=raw_doc['docID'])
 
+    events.dispatch(events.CHECK_ARCHIVE, events.FINISHED,
+                    consumer=consumer_name, reprocess=reprocess, _index='check')
+
+
+# TODO Fix me @fabianvf @chrisseto
 @app.task
 def tar_archive():
     os.system('tar -czvf website/static/archive.tar.gz archive/')
