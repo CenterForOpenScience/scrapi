@@ -61,12 +61,12 @@ def get_processor(processor_name):
 
 def _normalized_event(status, processor, raw, **kwargs):
     __processing_event(status, processor, raw,
-        _index='processing.normalized.{}'.format(processor), **kwargs)
+        _index='normalized.{}'.format(processor), **kwargs)
 
 
 def _raw_event(status, processor, raw, **kwargs):
     __processing_event(status, processor, raw,
-        _index='processing.raw.{}'.format(processor), **kwargs)
+        _index='raw.{}'.format(processor), **kwargs)
 
 
 def __processing_event(status, processor_name, raw_doc, **kwargs):

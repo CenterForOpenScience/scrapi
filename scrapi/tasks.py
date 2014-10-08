@@ -103,18 +103,18 @@ def begin_normalization(consume_ret, consumer_name):
                         consumer=consumer_name, docID=raw['docID'])
 
         events.dispatch(events.PROCESSING, events.CREATED,
-                        consumer=consumer_name, docID=raw['docID'], _index='processing')
+                        consumer=consumer_name, docID=raw['docID'])
 
 
 @app.task
 def process_raw(raw_doc):
     events.dispatch(events.PROCESSING, events.STARTED,
-                    _index='processing.raw', docID=raw_doc['docID'])
+                    _index='raw', docID=raw_doc['docID'])
 
     processing.process_raw(raw_doc)
 
     events.dispatch(events.PROCESSING, events.COMPLETED,
-                    _index='processing.raw', docID=raw_doc['docID'])
+                    _index='raw', docID=raw_doc['docID'])
 
 
 @app.task
@@ -158,11 +158,11 @@ def process_normalized(normalized_doc, raw_doc, **kwargs):
         logger.warning('Not processing document with id {}'.format(raw_doc['docID']))
         return
 
-    events.dispatch(events.PROCESSING, events.STARTED, docID=raw_doc['docID'])
+    events.dispatch(events.PROCESSING, events.STARTED, docID=raw_doc['docID'], _index='normalized')
 
     processing.process_normalized(raw_doc, normalized_doc, kwargs)
 
-    events.dispatch(events.PROCESSING, events.COMPLETED, docID=raw_doc['docID'])
+    events.dispatch(events.PROCESSING, events.COMPLETED, docID=raw_doc['docID'], _index='normalized')
 
 
 @app.task
@@ -171,13 +171,13 @@ def check_archives(reprocess):
         check_archive.delay(consumer, reprocess)
 
         events.dispatch(events.CHECK_ARCHIVE, events.CREATED,
-                        consumer=consumer, reprocess=reprocess, _index='check')
+                        consumer=consumer, reprocess=reprocess)
 
 
 @app.task
 def check_archive(consumer_name, reprocess):
     events.dispatch(events.CHECK_ARCHIVE, events.STARTED,
-                    consumer=consumer_name, reprocess=reprocess, _index='check')
+                    consumer=consumer_name, reprocess=reprocess)
 
     consumer = settings.MANIFESTS[consumer_name]
     extras = {
@@ -205,7 +205,7 @@ def check_archive(consumer_name, reprocess):
                         consumer=consumer_name, docID=raw_doc['docID'])
 
     events.dispatch(events.CHECK_ARCHIVE, events.FINISHED,
-                    consumer=consumer_name, reprocess=reprocess, _index='check')
+                    consumer=consumer_name, reprocess=reprocess)
 
 
 # TODO Fix me @fabianvf @chrisseto
