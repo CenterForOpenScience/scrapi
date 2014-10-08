@@ -7,11 +7,11 @@ CONSUMER_RUN = 'runConsumer'
 NORMALIZATION = 'normalization'
 
 # statuses
+FAILED = 'failed'
+SKIPPED = 'skipped'
 CREATED = 'created'
 STARTED = 'started'
 COMPLETED = 'completed'
-FAILED = 'failed'
-SKIPPED = 'skipped'
 
 
 def dispatch(_event, status, **kwargs):
