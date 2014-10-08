@@ -14,7 +14,8 @@ STARTED = 'started'
 COMPLETED = 'completed'
 
 
-def dispatch(_event, status, **kwargs):
+# Ues _index here as to not clutter the namespace for kwargs
+def dispatch(_event, status, _index=None, **kwargs):
     if settings.USE_FLUENTD:
         evnt = {
             'event': _event,
@@ -22,4 +23,4 @@ def dispatch(_event, status, **kwargs):
         }
 
         evnt.update(kwargs)
-        event.Event(None, evnt)
+        event.Event(_index, evnt)
