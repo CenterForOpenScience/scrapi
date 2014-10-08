@@ -15,7 +15,8 @@ RAW_PROCESSING = ['storage']
 
 SENTRY_DNS = None
 
-FLUENTD_ARGS = None
+USE_FLUENTD = False
+FLUENTD_ARGS = ('app.scrapi',)
 
 # OUTPUT SETTINGS
 OSF_ENABLED = False

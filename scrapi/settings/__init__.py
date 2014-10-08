@@ -11,12 +11,11 @@ import json
 import logging
 
 from celery.schedules import crontab
-from celery.signals import after_setup_logger
+
+from fluent import sender
 
 from raven import Client
 from raven.contrib.celery import register_signal
-
-from scrapi.logging import FluentHandler
 
 from scrapi.settings.defaults import *
 from scrapi.settings.local import *
@@ -26,14 +25,8 @@ logging.getLogger('requests.packages.urllib3.connectionpool').setLevel(logging.W
 logging.basicConfig(level=logging.INFO)
 
 
-@after_setup_logger.connect
-def config_logging(logger, loglevel, logfile, format, colorize, **kwargs):
-    if FLUENTD_ARGS:
-        logger.addHandler(FluentHandler(*FLUENTD_ARGS))
-
-
-if FLUENTD_ARGS:
-    logger.addHandler(FluentHandler(*FLUENTD_ARGS))
+if USE_FLUENTD:
+    sender.setup(*FLUENTD_ARGS)
 
 
 MANIFEST_DIR = os.path.join(os.path.dirname(__file__), 'consumerManifests')

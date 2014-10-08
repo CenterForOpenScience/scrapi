@@ -11,6 +11,8 @@ STORE_HTTP_TRANSACTIONS = False
 NORMALIZED_PROCESSING = ['storage']
 RAW_PROCESSING = ['storage']
 
+USE_FLUENTD = False
+
 OSF_PREFIX = 'localhost:5000'
 
 APP_ID = 'someid'
