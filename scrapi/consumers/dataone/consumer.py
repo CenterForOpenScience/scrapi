@@ -2,12 +2,16 @@
 from __future__ import unicode_literals
 
 import re
-from lxml import etree
-from xml.etree import ElementTree
+
 import requests
-from nameparser import HumanName
+
+from lxml import etree
 
 from dateutil.parser import *
+
+from nameparser import HumanName
+
+from xml.etree import ElementTree
 
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
