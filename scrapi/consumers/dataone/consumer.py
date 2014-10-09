@@ -130,6 +130,9 @@ def get_contributors(doc):
 
     unique_contributors = list(set([author] + contributors))
 
+    if len(unique_contributors) < 1:
+        return []
+
     # this is the index of the author in the unique_contributors list
     if author != '':
         author_index = unique_contributors.index(author)
@@ -234,7 +237,7 @@ def normalize(raw_doc):
     if normalized_dict['id']['url'] == u'':
         return None
 
-    import json; print json.dumps(normalized_dict['contributors'], indent=4)
+    #import json; print json.dumps(normalized_dict['contributors'], indent=4)
     return NormalizedDocument(normalized_dict)
 
 
