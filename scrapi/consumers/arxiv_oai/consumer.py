@@ -39,7 +39,7 @@ def consume(days_back=1):
     start_date = date.today() - timedelta(days_back)
     url = OAI_DC_BASE_URL + '&metadataPrefix=oai_dc&from='
     url += str(start_date)
-
+    print url
     encoding_url = 'http://export.arxiv.org/oai2?verb=GetRecord&identifier=oai:arXiv.org:0804.2273&metadataPrefix=oai_dc'
     record_encoding = requests.get(encoding_url).encoding
     # TODO - fix these long times to use the  503 Retry-After responses for times
@@ -48,7 +48,7 @@ def consume(days_back=1):
 
     xml_list = []
     # TODO - remove the testing restriction of first 500 documents
-    for record in records[:500]:
+    for record in records:
         doc_id = record.xpath('ns0:header/ns0:identifier/node()', namespaces=NAMESPACES)[0]
         record_string = etree.tostring(record, encoding=record_encoding)
 
