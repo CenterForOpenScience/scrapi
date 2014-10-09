@@ -2,14 +2,19 @@
 
 from __future__ import unicode_literals
 
-import requests
-from datetime import date, timedelta, datetime
-from dateutil.parser import *
 import time
+from datetime import date, timedelta, datetime
+
+import requests
+
 from lxml import etree
+
+from dateutil.parser import *
+
+from nameparser import HumanName
+
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
-from nameparser import HumanName
 
 
 NAME = 'vtechworks'
@@ -87,6 +92,7 @@ def get_contributors(result):
             'ORCID': '',
         }
         contributor_list.append(contributor)
+
     return contributor_list
 
 
@@ -107,8 +113,8 @@ def get_ids(result, doc):
             doi = item
             doi = doi.replace('doi:', '')
             doi = doi.replace('DOI:', '')
-            doi = doi.replace('http://dx.doi.org/', '')
-            doi = doi.strip(' ')
+            doi = doi.replace('http://dx.doi.org/', '').strip()
+            doi = doi.strip()
 
     if url == '':
         raise Exception('Warning: No url provided!')
@@ -130,7 +136,7 @@ def get_properties(result):
     publisher = (result.xpath('//dc:publisher/node()', namespaces=NAMESPACES) or [''])[0]
     relation = (result.xpath('//dc:relation/node()', namespaces=NAMESPACES) or [''])[0]
     language = (result.xpath('//dc:language/node()', namespaces=NAMESPACES) or [''])[0]
-    props = {
+    properties = {
         'type': copy_to_unicode(result_type),
         'language': copy_to_unicode(language),
         'relation': copy_to_unicode(relation),
@@ -141,7 +147,8 @@ def get_properties(result):
             'copyrightStatement': copy_to_unicode(copyrightt),
         },
     }
-    return props
+
+    return properties
 
 
 def get_date_created(result):
@@ -151,6 +158,7 @@ def get_date_created(result):
         a_date = parse(str(item)[:10], yearfirst=True,  default=DEFAULT).isoformat()
         date_list.append(a_date)
     min_date = min(date_list)
+
     return copy_to_unicode(min_date)
 
 
