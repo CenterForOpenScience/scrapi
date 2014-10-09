@@ -50,12 +50,16 @@ def consume(days_back=1):
     num_results = int(xml_response.xpath('//result/@numFound')[0])
 
     start = 0
-    rows = MAX_ROWS_PER_REQUEST
+    count = 0
     doc_list = []
 
-    while rows < num_results + MAX_ROWS_PER_REQUEST:
-        payload = {"api_key": PLOS_API_KEY, "rows": rows, "start": start}
+    while count < num_results:
+        if count + MAX_ROWS_PER_REQUEST > num_results:
+            payload = {"api_key": PLOS_API_KEY, "rows": num_results - count, "start": start}
+        else:
+            payload = {"api_key": PLOS_API_KEY, "rows": MAX_ROWS_PER_REQUEST, "start": start}
         results = requests.get(base_url, params=payload)
+        print results.url
         tick = time.time()
         xml_doc = etree.XML(results.content)
         all_docs = xml_doc.xpath('//doc')
@@ -78,7 +82,7 @@ def consume(days_back=1):
                 }))
 
         start += MAX_ROWS_PER_REQUEST
-        rows += MAX_ROWS_PER_REQUEST
+        count += MAX_ROWS_PER_REQUEST
 
         if time.time() - tick < 5:
             time.sleep(5 - (time.time() - tick))
@@ -173,6 +177,7 @@ def normalize(raw_doc):
             'email': '',
             'ORCID': ''
         }]
+    # import json; print(json.dumps(normalized_dict, indent=4))
     return NormalizedDocument(normalized_dict)
 
 if __name__ == '__main__':
