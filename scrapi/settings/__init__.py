@@ -12,15 +12,29 @@ import logging
 
 from celery.schedules import crontab
 
+from fluent import sender
+
+from raven import Client
+from raven.contrib.celery import register_signal
+
 from scrapi.settings.defaults import *
 from scrapi.settings.local import *
 
-
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 logging.getLogger('requests.packages.urllib3.connectionpool').setLevel(logging.WARNING)
 
+logging.basicConfig(level=logging.INFO)
+
+
+if USE_FLUENTD:
+    sender.setup(*FLUENTD_ARGS)
+
+
 MANIFEST_DIR = os.path.join(os.path.dirname(__file__), 'consumerManifests')
+
+
+if SENTRY_DNS:
+    client = Client(SENTRY_DNS)
+    register_signal(client)
 
 
 # Programmatically generate celery beat schedule
@@ -65,17 +79,25 @@ OSF_PROMOTE = OSF_METADATA + '{}/promote/'
 
 MANIFESTS = load_manifests()
 
-CELERYBEAT_SCHEDULE = create_schedule()
+CELERY_IMPORTS = ('scrapi.tasks',)
 
-CELERY_ALWAYS_EAGER = False
 
 CELERY_TASK_SERIALIZER = 'pickle'
 CELERY_RESULT_SERIALIZER = 'pickle'
 CELERY_ACCEPT_CONTENT = ['pickle']
-CELERY_ENABLE_UTC = True
-CELERY_TIMEZONE = 'UTC'
 
-CELERY_IMPORTS = ('scrapi.tasks',)
+CELERY_ALWAYS_EAGER = False
+
+CELERY_ENABLE_UTC = True
+
+CELERY_ACKS_LATE = True
+
+CELERY_RESULT_PERSISTENT = True
+
+CELERY_RESULT_BACKEND = 'amqp'
+
+# Celery Beat Stuff
+CELERYBEAT_SCHEDULE = create_schedule()
 
 CELERYBEAT_SCHEDULE['check_archive'] = {
     'task': 'scrapi.tasks.check_archive',

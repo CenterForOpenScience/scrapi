@@ -62,7 +62,6 @@ class NormalizedDocument(BaseDocument):
         'contributors': [CONTRIBUTOR_FIELD],
         'id': ID_FIELD,
         'source': unicode,
-        'timestamp': unicode,
         'description': unicode,
         'tags': [unicode],
         'dateUpdated': unicode,
