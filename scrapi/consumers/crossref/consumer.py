@@ -39,7 +39,7 @@ def consume(days_back=0):
     records = doc['message']['items']
 
     doc_list = []
-    for record in records[:500]:
+    for record in records:
         doc_id = record['DOI'] or record['URL']
         doc_list.append(RawDocument({
                     'doc': json.dumps(record),
