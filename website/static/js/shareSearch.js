@@ -13,7 +13,7 @@
 
         self.queryUrl = url;
         self.totalResults = ko.observable(0);
-        self.resultsPerPage = ko.observable(10);
+        self.resultsPerPage = ko.observable(5);
         self.currentPage = ko.observable(1);
         self.query = ko.observable('');
         self.results = ko.observableArray([]);
@@ -49,8 +49,13 @@
             return queryString;
         });
 
+        self.submit = function() {
+            self.currentPage(1);
+            self.results.removeAll();
+            self.search();
+        };
+
         self.search = function() {
-            self.searching(true);
             $.ajax({
                 url: self.queryUrl + self.fullQuery(),
                 type: 'GET'
@@ -58,8 +63,11 @@
                 self.totalResults(data.total);
                 self.results.removeAll();
                 self.results(data.results);
-            }).complete(function() {
-                self.searching(false);
+            }).fail(function(){
+                console.log("error");
+                self.totalResults(0);
+                self.currentPage(0);
+                self.results.removeAll();
             });
         };
 
