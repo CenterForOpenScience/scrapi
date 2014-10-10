@@ -5,6 +5,8 @@ from base64 import b64decode
 
 import vcr
 
+import requests
+
 from celery import Celery
 
 from scrapi import events
@@ -207,6 +209,13 @@ def check_archive(consumer_name, reprocess):
 
     events.dispatch(events.CHECK_ARCHIVE, events.COMPLETED,
                     consumer=consumer_name, reprocess=reprocess)
+
+
+@app.task
+def update_pubsubhubbub():
+    payload = {'hub.mode': 'publish', 'hub.url': '{url}rss/'.format(url=settings.OSF_APP_URL)}
+    headers = {'Content-Type' : 'application/x-www-form-urlencoded'}
+    return requests.post('https://pubsubhubbub.appspot.com', headers=headers, params=payload)
 
 
 # TODO Fix me @fabianvf @chrisseto
