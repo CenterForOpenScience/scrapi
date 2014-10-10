@@ -21,7 +21,7 @@ def create_resource(normalized):
             'email': x.get('email')
         }
         for x in
-        normalized.attributes['contributors']
+        normalized['contributors']
     ]
 
     bundle = {
@@ -29,7 +29,7 @@ def create_resource(normalized):
         'contributors': contributors
     }
 
-    return _create_node(normalized.attributes, bundle)['id']
+    return _create_node(normalized, bundle)['id']
 
 
 def create_report(normalized, parent):
@@ -39,7 +39,7 @@ def create_report(normalized, parent):
             'email': x.get('email')
         }
         for x in
-        normalized.attributes['contributors']
+        normalized['contributors']
     ]
 
     bundle = {
@@ -49,7 +49,7 @@ def create_report(normalized, parent):
         'contributors': contributors
     }
 
-    return _create_node(normalized.attributes, bundle)['id']
+    return _create_node(normalized, bundle)['id']
 
 
 def update_node(nid, normalized):
@@ -128,7 +128,7 @@ def _get_metadata(id):
 def dump_metadata(data):
     kwargs = {
         'auth': settings.OSF_AUTH,
-        'data': json.dumps(data.attributes),
+        'data': json.dumps(data),
         'headers': POST_HEADERS,
         'verify': settings.VERIFY_SSL
     }
@@ -143,7 +143,7 @@ def dump_metadata(data):
 def update_metadata(id, data):
     kwargs = {
         'auth': settings.OSF_AUTH,
-        'data': json.dumps(data.attributes),
+        'data': json.dumps(data),
         'headers': POST_HEADERS,
         'verify': settings.VERIFY_SSL
     }
