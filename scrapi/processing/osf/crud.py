@@ -103,6 +103,7 @@ def clean_report(normalized):
     new = deepcopy(normalized)
     del new['id']
     del new['source']
+    del new['meta']['docHash']
     return new
 
 
