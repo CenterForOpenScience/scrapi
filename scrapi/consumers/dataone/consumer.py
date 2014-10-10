@@ -198,7 +198,7 @@ def get_ids(doc, raw_doc):
     url = (doc.xpath('//str[@name="dataUrl"]/node()') or [''])[0]
 
     if url == '':
-        print("Warning: no URL, not normalizing...")
+        raise Exception('Warning: No url provided!')
 
     ids = {'serviceID':service_id, 'doi': copy_to_unicode(doi), 'url': copy_to_unicode(url)}
 
