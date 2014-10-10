@@ -26,7 +26,7 @@ def detect_collisions(hashlist, is_resource=False):
     if is_resource:
         _filter = {
             'terms': {
-                'uuid': hashlist
+                'uids': hashlist
             }
         }
     else:
@@ -34,14 +34,14 @@ def detect_collisions(hashlist, is_resource=False):
             'and': [
                 {
                     'missing': {
-                        'field': 'pid',
+                        'field': 'isResource',
                         'existence': True,
                         'null_value': True
                     }
                 },
                 {
                     'terms': {
-                        'uuid': hashlist
+                        'uids': hashlist
                     }
                 }
             ]
