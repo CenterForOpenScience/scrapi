@@ -20,14 +20,26 @@
 
             <div id="searchBox">
                 <!--<form class="form-search" action="http://localhost:80/api/search" method="get" role="search">-->
-                <form class="form-search" data-bind= "submit: search" role="search">
-                    <div class="input-append">
+                <form class="form-search" data-bind= "submit: submit" role="search">
+                    <span class="input-append">
                         <input type="text" data-bind= "value: query" class="search-query" name="q">
                         <button type="submit" class="btn">Search</button>
-                    </div>
+                    </span>
                 </form>
+
             </div>
 
+            <div class="navigation-controls">
+                <span data-bind="visible: prevPageExists">
+                    <a href="#" data-bind="click: pagePrev">Previous Page</a> -
+                </span>
+                <span data-bind="visible: totalPages() > 0">
+                    <span data-bind="text: navLocation"></span>
+                </span>
+                <span data-bind="visible: nextPageExists"> -
+                    <a href="#" data-bind="click: pageNext">Next Page </a>
+                </span>
+            </div>
             <div class="search-results" data-bind="foreach: results, visible: totalResults">
                     <h2><span data-bind="text: title"></span></h2>
 
@@ -46,16 +58,12 @@
                     <a href="#" data-bind="click: pageNext">Next Page </a>
                 </span>
             </div>
-            <div class="loader" data-bind="visible: searching">
-                <div class="circle teal"></div>
-                <div class="circle white"></div>
-                <div class="circle small"></div>
-            </div>
+
 
             <div class="buffer"></div>
         </div> <!--SearchControls-->
         <script type='text/javascript' src='static/js/shareSearch.js'></script>
-        <script>shareSearch = ShareSearch('#searchControls', 'http://127.0.0.1:1337/api/search')</script>
+        <script>shareSearch = ShareSearch('#searchControls', '/api/search')</script>
     </body>
     <footer>
         Warning! This is the alpha version.
