@@ -125,8 +125,7 @@ def _get_metadata(id):
     return requests.get(url, auth=settings.OSF_AUTH, verify=settings.VERIFY_SSL).json()
 
 
-def dump_metadata(data, attached):
-    data['attached'] = attached
+def dump_metadata(data):
     kwargs = {
         'auth': settings.OSF_AUTH,
         'data': json.dumps(data.attributes),
@@ -134,4 +133,22 @@ def dump_metadata(data, attached):
         'verify': settings.VERIFY_SSL
     }
     ret = requests.post(settings.OSF_METADATA, **kwargs)
-    return ret.json()['id']
+    if ret.status_code != 201:
+        pass  # TODO
+
+    data['_id'] = ret.json()['id']
+    return data
+
+
+def update_metadata(id, data):
+    kwargs = {
+        'auth': settings.OSF_AUTH,
+        'data': json.dumps(data.attributes),
+        'headers': POST_HEADERS,
+        'verify': settings.VERIFY_SSL
+    }
+    url = '{}{}/'.format(settings.OSF_METADATA, id)
+    ret = requests.put(url, **kwargs)
+
+    if ret.status_code != 200:
+        pass  # TODO

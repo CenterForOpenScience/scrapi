@@ -8,8 +8,8 @@ from invoke import run, task
 
 from scrapi import linter
 from scrapi import settings
-from scrapi.util import timestamp
 from scrapi.util import import_consumer
+
 
 @task
 def server():

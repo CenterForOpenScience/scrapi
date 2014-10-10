@@ -49,7 +49,7 @@ def detect_collisions(hashlist, is_resource=False):
     found = _search(_filter)
 
     if found:
-        return found['attached']['nid']
+        return found
 
     return None
 
