@@ -5,6 +5,7 @@ import unicodedata
 import string
 import hashlib
 
+
 def get_id(doc):
     return normalize_string(doc['id']['serviceID'])
 

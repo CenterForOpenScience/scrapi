@@ -25,9 +25,18 @@ def already_processed(raw_doc):
 def detect_collisions(hashlist, is_resource=False):
     if is_resource:
         _filter = {
-            'terms': {
-                'uids': hashlist
-            }
+            'and': [
+                {
+                    'terms': {
+                        'uids': hashlist
+                    }
+                },
+                {
+                    'term': {
+                        'isResource': True
+                    }
+                }
+            ]
         }
     else:
         _filter = {
@@ -64,11 +73,11 @@ def generate_hash_list(normalized, hashes):
 
 
 def generate_resource_hash_list(normalized):
-    return generate_hash_list(normalized.attributes, RESOURCE_HASH_FUNCTIONS)
+    return generate_hash_list(normalized, RESOURCE_HASH_FUNCTIONS)
 
 
 def generate_report_hash_list(normalized):
-    return generate_hash_list(normalized.attributes, REPORT_HASH_FUNCTIONS)
+    return generate_hash_list(normalized, REPORT_HASH_FUNCTIONS)
 
 
 def _search(_filter):
