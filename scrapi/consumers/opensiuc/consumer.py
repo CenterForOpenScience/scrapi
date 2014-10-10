@@ -45,7 +45,6 @@ def consume(days_back=1):
     start_date = date.today() - timedelta(days_back)
     base_url = OAI_DC_BASE + '?verb=ListRecords&metadataPrefix=oai_dc&from='
     url = base_url + str(start_date) + 'T00:00:00Z'
-    record_encoding = requests.get(url).encoding
 
     num_approved_records = 0
     num_rejected_records = 0
@@ -86,6 +85,7 @@ def consume(days_back=1):
 
 def get_records(url):
     data = requests.get(url)
+    record_encoding = data.encoding
     doc = etree.XML(data.content)
     records = doc.xpath('//ns0:record', namespaces=NAMESPACES)
     token = doc.xpath('//ns0:resumptionToken/node()', namespaces=NAMESPACES)
@@ -124,11 +124,13 @@ def get_properties(record):
 
 def get_ids(record, raw_doc):
     service_id = raw_doc.get('docID')
-
+    url = ''
     all_ids = record.xpath('//dc:identifier/node()', namespaces=NAMESPACES)
     for identifier in all_ids:
         if 'cgi/viewcontent' not in identifier and OAI_DC_BASE[:-7] in identifier:
             url = identifier
+    if url == '':
+        raise Exception('Warning: No url provided!')
 
     return {'url': copy_to_unicode(url), 'serviceID': service_id, 'doi': ''}
 
