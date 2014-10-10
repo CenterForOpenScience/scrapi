@@ -104,6 +104,11 @@ CELERYBEAT_SCHEDULE['check_archive'] = {
     'schedule': crontab(day_of_month='1', hour='23', minute='59'),
 }
 
+CELERYBEAT_SCHEDULE['update pubsubhubbub'] = {
+    'task': 'scrapi.tasks.update_pubsubhubbub',
+    'schedule': crontab(minute='*/5')
+}
+
 CELERYBEAT_SCHEDULE['tar archive'] = {
     'task': 'scrapi.tasks.tar_archive',
     'schedule': crontab(hour="3", minute="00")
