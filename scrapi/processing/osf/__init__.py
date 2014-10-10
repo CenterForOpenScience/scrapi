@@ -1,3 +1,4 @@
+from scrapi.settings import MANIFESTS
 from scrapi.processing.osf import crud
 from scrapi.processing.osf import collision
 from scrapi.processing.base import BaseProcessor
@@ -44,6 +45,16 @@ class OSFProcessor(BaseProcessor):
             resource['attached']['cmids'] += [report['_id']]
         else:
             resource['attached']['cmids'] = [report['_id']]
+
+        if not resource.get('links'):
+            resource['links'] = []
+
+        resource['links'].append({
+            'shortName': report['source'],
+            'longName': MANIFESTS[report['source']]['longName'],
+            'url': report['id']['url']
+        })
+
 
         resource['meta']['uids'] = list(set(resource['meta'].get('uids', []) + resource_hash))
 
