@@ -18,8 +18,8 @@ class OSFProcessor(BaseProcessor):
 
         normalized['collisionCategory'] = crud.get_collision_cat(normalized['source'])
 
-        report_norm = normalized
-        resource_norm = crud.clean_report(normalized)
+        report_norm = normalized.attributes
+        resource_norm = crud.clean_report(normalized.attributes)
 
         report_hash = collision.generate_report_hash_list(report_norm)
         resource_hash = collision.generate_resource_hash_list(resource_norm)
