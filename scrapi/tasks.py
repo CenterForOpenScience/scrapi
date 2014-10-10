@@ -213,7 +213,7 @@ def check_archive(consumer_name, reprocess):
 
 @app.task
 def update_pubsubhubbub():
-    payload = {'hub.mode': 'publish', 'hub.url': '{url}/rss/'.format(url=settings.OSF_APP_URL)}
+    payload = {'hub.mode': 'publish', 'hub.url': '{url}rss/'.format(url=settings.OSF_APP_URL)}
     headers = {'Content-Type' : 'application/x-www-form-urlencoded'}
     return requests.post('https://pubsubhubbub.appspot.com', headers=headers, params=payload)
 
