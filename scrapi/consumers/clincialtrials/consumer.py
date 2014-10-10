@@ -62,7 +62,6 @@ def consume(days_back=1):
     if int(count) > 0:
         # get a new url with all results in it
         url = url + '&count=' + str(count)
-        print(url)
         total_requests = requests.get(url)
         initial_doc = etree.XML(total_requests.content)
 
