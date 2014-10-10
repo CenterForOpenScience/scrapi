@@ -118,6 +118,8 @@ def get_contributors(xml_doc):
 def get_ids(raw_doc, xml_doc):
     url = (xml_doc.xpath('//required_header/url/node()') or [''])[0]
     ids = {'serviceID': raw_doc.get('docID'), 'doi': '', 'url': copy_to_unicode(url)}
+    if url == '':
+        raise Exception('Warning: No url provided!')
     return ids
 
 def get_tags(xml_doc):
