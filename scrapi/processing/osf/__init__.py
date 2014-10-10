@@ -27,6 +27,7 @@ class OSFProcessor(BaseProcessor):
         resource = collision.detect_collisions(resource_hash, is_resource=True)
 
         if not resource:
+            resource_norm['isResource'] = True
             resource = crud.dump_metadata(resource_norm)
 
         report_norm['meta']['uids'] = report_hash
@@ -46,4 +47,4 @@ class OSFProcessor(BaseProcessor):
 
         resource['meta']['uids'] = list(set(resource['meta'].get('uids', []) + resource_hash))
 
-        crud.update_metadata(resource['_id'], resource_norm)
+        crud.update_metadata(resource['_id'], resource)
