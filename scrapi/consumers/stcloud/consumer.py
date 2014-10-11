@@ -116,10 +116,10 @@ def get_properties(record):
         'publisherInfo': {
             'publisher': copy_to_unicode(publisher),
         },
-        'set_spec': copy_to_unicode(set_spec)
+        'set_spec': copy_to_unicode(set_spec),
         'source': copy_to_unicode(source),
         'type': copy_to_unicode(dctype),
-        'format': copy_to_unicode(dcformat),
+        'format': copy_to_unicode(dcformat)
     }
     return props
 
