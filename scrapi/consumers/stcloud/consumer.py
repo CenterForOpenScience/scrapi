@@ -23,7 +23,7 @@ DEFAULT_ENCODING = 'utf-8'
 record_encoding = None
 
 
-def consume(days_back=2):
+def consume(days_back=1):
     start_date = date.today() - timedelta(days_back)
     base_url = OAI_DC_BASE_URL + '?verb=ListRecords&metadataPrefix=oai_dc&from='
     url = base_url + str(start_date) + 'T00:00:00Z'
@@ -45,6 +45,7 @@ def consume(days_back=2):
 
 def get_records(url):
     data = requests.get(url)
+    # print(data.url)
     record_encoding = data.encoding
     doc = etree.XML(data.content)
     records = doc.xpath('//ns0:record', namespaces=NAMESPACES)
@@ -110,10 +111,12 @@ def get_properties(record):
     source = (record.xpath('//dc:source/node()', namespaces=NAMESPACES) or [''])[0]
     dctype = (record.xpath('//dc:type/node()', namespaces=NAMESPACES) or [''])[0]
     dcformat = (record.xpath('//dc:format/node()', namespaces=NAMESPACES) or [''])[0]
+    set_spec = record.xpath('ns0:header/ns0:setSpec/node()', namespaces=NAMESPACES)[0]
     props = {
         'publisherInfo': {
             'publisher': copy_to_unicode(publisher),
         },
+        'set_spec': copy_to_unicode(set_spec)
         'source': copy_to_unicode(source),
         'type': copy_to_unicode(dctype),
         'format': copy_to_unicode(dcformat),
@@ -163,8 +166,7 @@ def normalize(raw_doc):
         'dateCreated': copy_to_unicode(get_date_created(record)),
     }
 
-    # import json
-    # print(json.dumps(payload, indent=4))
+    # import json; print(json.dumps(payload, indent=4))
     return NormalizedDocument(payload)
         
 
