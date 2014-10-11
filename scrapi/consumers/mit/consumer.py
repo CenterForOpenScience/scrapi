@@ -129,7 +129,6 @@ def get_properties(result):
     for identifier in ids:
         if 'http://' not in identifier:
             identifiers.append(unicode(identifier))
-    source = (result.xpath('//dc:source/node()', namespaces=NAMESPACES) or [''])[0]
     language = (result.xpath('//dc:language/node()', namespaces=NAMESPACES) or [''])[0]
     publisher = (result.xpath('//dc:publisher/node()', namespaces=NAMESPACES) or [''])[0]
     dcformat = (result.xpath('//dc:format/node()', namespaces=NAMESPACES) or [''])[0]
@@ -147,7 +146,6 @@ def get_properties(result):
          'publisher': copy_to_unicode(publisher),
          },
          'format': copy_to_unicode(dcformat),
-         'source': copy_to_unicode(source),
          'language': copy_to_unicode(language),
          'relation': copy_to_unicode(relation),
          'type': copy_to_unicode(dctype),
