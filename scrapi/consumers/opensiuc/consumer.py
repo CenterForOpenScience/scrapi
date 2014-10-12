@@ -190,6 +190,7 @@ def normalize(raw_doc):
             'dateUpdated': get_date_updated(record),
     }
 
+    # import json; print(json.dumps(normalized_dict, indent=4))
     return NormalizedDocument(normalized_dict)
         
 
