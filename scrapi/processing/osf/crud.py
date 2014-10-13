@@ -54,6 +54,8 @@ def create_report(normalized, parent):
 
 def update_node(nid, normalized):
     current = _get_metadata(nid)
+    del current['contributors']
+
     if current['collisionCategory'] > normalized['collisionCategory']:
         new = current.attributes
         new.update(normalized)
