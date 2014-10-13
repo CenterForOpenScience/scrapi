@@ -30,6 +30,8 @@ class OSFProcessor(BaseProcessor):
         if not resource:
             resource_norm['isResource'] = True
             resource = crud.dump_metadata(resource_norm)
+        else:
+            del resource['contributors']
 
         report_norm['meta']['uids'] = report_hash
         report_norm['attached'] = {
