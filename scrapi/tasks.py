@@ -71,7 +71,7 @@ def consume(consumer_name, job_created, days_back=1):
     timestamps['consumeFinished'] = timestamp()
 
     logger.info('Consumer "{}" has finished consumption'.format(consumer_name))
-    events.dispatch(events.CONSUMER_RUN, events.COMPLETED, consumer=consumer_name)
+    events.dispatch(events.CONSUMER_RUN, events.COMPLETED, consumer=consumer_name, number=len(result))
 
     return result, timestamps
 
