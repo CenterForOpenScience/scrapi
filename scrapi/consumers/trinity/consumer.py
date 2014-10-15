@@ -166,7 +166,6 @@ def normalize(raw_doc):
         'dateUpdated': get_date_updated(record),
         'dateCreated': get_date_created(record),
     }
-    print normalized_dict
     return NormalizedDocument(normalized_dict)
         
 
