@@ -1,0 +1,9 @@
+{
+    "days": "mon-sun",
+    "shortName": "cmu",
+    "fileFormat": "xml", 
+    "url": "https://github.com/csheldonhess/CMU-harvester.git",
+    "hour": 21,
+    "minute": 59, 
+    "longName": "Carnegie Mellon University Research Showcase"
+}
