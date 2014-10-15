@@ -35,7 +35,7 @@ def copy_to_unicode(element):
     else:
         return unicode(element, encoding=encoding)
 
-def consume(days_back=100):
+def consume(days_back=15):
     start_date = date.today() - timedelta(days_back)
     url = OAI_DC_BASE_URL + '&metadataPrefix=oai_dc&from='
     if 'YYYY-MM-DDThh:mm:ssZ' == 'YYYY-MM-DDThh:mm:ssZ':
