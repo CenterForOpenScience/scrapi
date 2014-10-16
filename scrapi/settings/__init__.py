@@ -65,6 +65,17 @@ def create_schedule():
         }
     return schedule
 
+OSF_AUTH = (API_KEY_LABEL, API_KEY)
+
+OSF_URL = '{PROTOCOL}://{OSF_PREFIX}/api/v1/{{}}/'
+OSF_APP_URL = '{PROTOCOL}://{OSF_PREFIX}/api/v1/app/{APP_ID}/'
+# Keep a pep8 line length
+OSF_URL = OSF_URL.format(**locals())
+OSF_APP_URL = OSF_APP_URL.format(**locals())
+
+OSF_NEW_PROJECT = OSF_APP_URL + 'projects/'
+OSF_METADATA = OSF_APP_URL + 'metadata/'
+OSF_PROMOTE = OSF_METADATA + '{}/promote/'
 
 MANIFESTS = load_manifests()
 
@@ -87,6 +98,11 @@ CELERYBEAT_SCHEDULE = create_schedule()
 CELERYBEAT_SCHEDULE['check_archive'] = {
     'task': 'scrapi.tasks.check_archive',
     'schedule': crontab(day_of_month='1', hour='23', minute='59'),
+}
+
+CELERYBEAT_SCHEDULE['update pubsubhubbub'] = {
+    'task': 'scrapi.tasks.update_pubsubhubbub',
+    'schedule': crontab(minute='*/5')
 }
 
 CELERYBEAT_SCHEDULE['tar archive'] = {

@@ -29,7 +29,7 @@ class BaseStorage(object):
     def _build_path(self, raw_doc):
         path = [
             settings.ARCHIVE_DIRECTORY,
-            raw_doc.get('source'),
+            raw_doc['source'],
             b64encode(raw_doc['docID']),
             raw_doc['timestamps']['consumeFinished']
         ]

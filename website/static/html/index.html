@@ -10,56 +10,62 @@
         <link type="text/css" rel="stylesheet" href="static/css/loader.css"/>
         <script type='text/javascript' src='static/js/jquery.js'></script>
         <script type='text/javascript' src='static/js/knockout-3.1.0.js'></script>
-
+        <script type='text/javascript' src='static/js/knockout.punches.js'></script>
     </head>
     <body>
-        <div id="wrapper">
+        <div id="searchControls">
             <div id="title-box">
-                <h1>WELCOME TO SCRAPI</h1>
+                <h1>Welcome to the SHARE Notification Service Search</h1>
             </div>
 
-            <div id="form-box">
+            <div id="searchBox">
                 <!--<form class="form-search" action="http://localhost:80/api/search" method="get" role="search">-->
-                <form class="form-search" data-bind= "submit: populate_results" role="search">
-                    <div class="input-append">
-                        <input type="text" data-bind= "value: keyword" class="search-query" name="q">
+                <form class="form-search" data-bind= "submit: submit" role="search">
+                    <span class="input-append">
+                        <input type="text" data-bind= "value: query" class="search-query" name="q">
                         <button type="submit" class="btn">Search</button>
-                    </div>
+                    </span>
                 </form>
+
             </div>
 
-            <div class="search-results" data-bind="foreach: Article">
-                <!--<div class="jsonObject" id="no-result"><h2>No results found.</h2></div>-->
-                <div class="jsonObject collapsed">
-                    <h2><span data-bind="text:title"></span></h2>
-                    <p><span data-bind="text:contributors"></span></p>
-                    <p><strong>ID:</strong><span data-bind="text:article_id"></span></p>
-                    <p class="header"><strong>Source:</strong><span data-bind="text:source"></span></p>
+            <div class="navigation-controls">
+                <span data-bind="visible: prevPageExists">
+                    <a href="#" data-bind="click: pagePrev">Previous Page</a> -
+                </span>
+                <span data-bind="visible: totalPages() > 0">
+                    <span data-bind="text: navLocation"></span>
+                </span>
+                <span data-bind="visible: nextPageExists"> -
+                    <a href="#" data-bind="click: pageNext">Next Page </a>
+                </span>
+            </div>
+            <div class="search-results" data-bind="foreach: results, visible: totalResults">
+                    <h2><span data-bind="text: title"></span></h2>
 
-                    <div class="additional-content"><span data-bind="html:properties"></span></div>
+                    <span data-bind='if: typeof(source) !== "undefined"'>
+                        Source:<span data-bind="text: source"><br/></span>
+                    </span>
+            </div>
+            <div class="navigation-controls">
+                <span data-bind="visible: prevPageExists">
+                    <a href="#" data-bind="click: pagePrev">Previous Page</a> -
+                </span>
+                <span data-bind="visible: totalPages() > 0">
+                    <span data-bind="text: navLocation"></span>
+                </span>
+                <span data-bind="visible: nextPageExists"> -
+                    <a href="#" data-bind="click: pageNext">Next Page </a>
+                </span>
+            </div>
 
-                    <p class="expand">---------- More ----------</p>
-                </div>
-            </div>
-            <div class="search-results">
-                <div id="no-results"><h2>End of results</h2></div>
-            </div>
-            <div class="loader">
-                <div class="circle teal"></div>
-                <div class="circle white"></div>
-                <div class="circle small"></div>
-            </div>
 
             <div class="buffer"></div>
-            
-            <div class="attribution">
-                <a href="http://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/A_tower_of_used_books_-_8446.jpg/800px-A_tower_of_used_books_-_8446.jpg">Image: A tower of used books </a> © <a href="http://www.royan.com.ar"> Jorge Royan </a><a href="http://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA-3.0</a>
-            </div>
-
-        </div>
-        <script type='text/javascript' src='static/js/populate.js'></script>
+        </div> <!--SearchControls-->
+        <script type='text/javascript' src='static/js/shareSearch.js'></script>
+        <script>shareSearch = ShareSearch('#searchControls', '/api/search')</script>
     </body>
     <footer>
-        Warning! This is the pre-alpha version!
+        Warning! This is the alpha version.
     </footer>
 </html>

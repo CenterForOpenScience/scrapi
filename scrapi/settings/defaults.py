@@ -29,5 +29,3 @@ APP_ID = 'some id'
 
 API_KEY_LABEL = 'some label'
 API_KEY = 'some api key'
-
-OSF_AUTH = (API_KEY_LABEL, API_KEY)

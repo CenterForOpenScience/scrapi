@@ -62,4 +62,7 @@ def lint(consume, normalize):
     if normalized_output:
         is_serializable(normalized_output[0].attributes)
 
+    is_serializable(output[0].attributes)
+    is_serializable(normalized_output[0].attributes)
+
     return 'Linting passed with No Errors'

@@ -8,8 +8,8 @@ from invoke import run, task
 
 from scrapi import linter
 from scrapi import settings
-from scrapi.util import timestamp
 from scrapi.util import import_consumer
+
 
 @task
 def server():
@@ -62,6 +62,10 @@ def migrate_search():
 
 @task
 def install_consumers(update=False):
+    if update:
+        run('cd scrapi/settings/consumerManifests && git reset HEAD --hard && git pull origin master')
+        settings.MANIFESTS = settings.load_manifests()
+
     for consumer, manifest in settings.MANIFESTS.items():
         directory = 'scrapi/consumers/{}'.format(manifest['shortName'])
 
@@ -110,7 +114,10 @@ def consumer(consumer_name, async=False, days=1):
     settings.CELERY_ALWAYS_EAGER = not async
     from scrapi.tasks import run_consumer
 
-    run_consumer.delay(consumer_name, days_back=1)
+    if not settings.MANIFESTS.get(consumer_name):
+        print 'No such consumers {}'.format(consumer_name)
+
+    run_consumer.delay(consumer_name, days_back=days)
 
 
 @task
