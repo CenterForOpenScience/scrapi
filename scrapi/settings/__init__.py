@@ -10,9 +10,9 @@ import os
 import json
 import logging
 
-from celery.schedules import crontab
-
 from fluent import sender
+
+from celery.schedules import crontab
 
 from raven import Client
 from raven.contrib.celery import register_signal
@@ -20,21 +20,12 @@ from raven.contrib.celery import register_signal
 from scrapi.settings.defaults import *
 from scrapi.settings.local import *
 
-logging.getLogger('requests.packages.urllib3.connectionpool').setLevel(logging.WARNING)
 
 logging.basicConfig(level=logging.INFO)
-
-
-if USE_FLUENTD:
-    sender.setup(*FLUENTD_ARGS)
+logging.getLogger('requests.packages.urllib3.connectionpool').setLevel(logging.WARNING)
 
 
 MANIFEST_DIR = os.path.join(os.path.dirname(__file__), 'consumerManifests')
-
-
-if SENTRY_DNS:
-    client = Client(SENTRY_DNS)
-    register_signal(client)
 
 
 # Programmatically generate celery beat schedule
@@ -65,37 +56,45 @@ def create_schedule():
         }
     return schedule
 
-OSF_AUTH = (API_KEY_LABEL, API_KEY)
 
-OSF_URL = '{PROTOCOL}://{OSF_PREFIX}/api/v1/{{}}/'
-OSF_APP_URL = '{PROTOCOL}://{OSF_PREFIX}/api/v1/app/{APP_ID}/'
+if USE_FLUENTD:
+    sender.setup(*FLUENTD_ARGS)
+
+
+if SENTRY_DNS:
+    client = Client(SENTRY_DNS)
+    register_signal(client)
+
+
+MANIFESTS = load_manifests()
+
+
+OSF_AUTH = (API_KEY_LABEL, API_KEY)
+OSF_URL = '{OSF_PREFIX}/api/v1/{{}}/'
+OSF_APP_URL = '{OSF_PREFIX}/api/v1/app/{APP_ID}/'
+
 # Keep a pep8 line length
 OSF_URL = OSF_URL.format(**locals())
 OSF_APP_URL = OSF_APP_URL.format(**locals())
 
-OSF_NEW_PROJECT = OSF_APP_URL + 'projects/'
 OSF_METADATA = OSF_APP_URL + 'metadata/'
+OSF_NEW_PROJECT = OSF_APP_URL + 'projects/'
 OSF_PROMOTE = OSF_METADATA + '{}/promote/'
 
-MANIFESTS = load_manifests()
-
-CELERY_IMPORTS = ('scrapi.tasks',)
-
-
-CELERY_TASK_SERIALIZER = 'pickle'
-CELERY_RESULT_SERIALIZER = 'pickle'
-CELERY_ACCEPT_CONTENT = ['pickle']
-
-CELERY_ALWAYS_EAGER = False
 
 CELERY_ENABLE_UTC = True
-
+CELERY_ALWAYS_EAGER = False
 CELERY_RESULT_BACKEND = 'amqp'
+CELERY_TASK_SERIALIZER = 'pickle'
+CELERY_ACCEPT_CONTENT = ['pickle']
+CELERY_RESULT_SERIALIZER = 'pickle'
+CELERY_IMPORTS = ('scrapi.tasks',)
+
 
 # Celery Beat Stuff
 CELERYBEAT_SCHEDULE = create_schedule()
 
-CELERYBEAT_SCHEDULE['check_archive'] = {
+CELERYBEAT_SCHEDULE['check archive'] = {
     'task': 'scrapi.tasks.check_archive',
     'schedule': crontab(day_of_month='1', hour='23', minute='59'),
 }

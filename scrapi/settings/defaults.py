@@ -21,9 +21,8 @@ FLUENTD_ARGS = ('scrapi',)
 # OUTPUT SETTINGS
 OSF_ENABLED = False
 
-PROTOCOL = 'http'
 VERIFY_SSL = True
-OSF_PREFIX = 'localhost:5000'
+OSF_PREFIX = 'http://localhost:5000'
 
 APP_ID = 'some id'
 
