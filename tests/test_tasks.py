@@ -2,6 +2,7 @@ import mock
 import pytest
 
 from scrapi import tasks
+from scrapi import events
 
 
 @pytest.fixture
@@ -73,3 +74,6 @@ def test_consume_raises(dispatch, consumer):
         tasks.consume('test', 'TIME')
 
     assert e.value.message == 'testing'
+    assert dispatch.called
+    dispatch.assert_called_with(events.CONSUMER_RUN, events.FAILED,
+            consumer='test', exception=str(e.value))
