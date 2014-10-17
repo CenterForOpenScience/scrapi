@@ -124,3 +124,29 @@ def test_begin_normalize_logging(monkeypatch, dispatch):
                 events.CREATED, consumer='test', docID=x['docID'])
         dispatch.assert_any_call(events.PROCESSING,
                 events.CREATED, consumer='test', docID=x['docID'])
+
+
+def test_process_raw_calls(monkeypatch):
+    pmock = mock.Mock()
+    raw = {'docID': 'foo'}
+
+    monkeypatch.setattr('scrapi.tasks.processing.process_raw', pmock)
+
+    tasks.process_raw(raw)
+
+    pmock.assert_called_once_with(raw)
+
+
+def test_process_raw_logging(dispatch, monkeypatch):
+    raw = {'docID': 'foo'}
+
+    monkeypatch.setattr('scrapi.tasks.processing.process_raw', BLACKHOLE)
+
+    tasks.process_raw(raw)
+
+    calls = [
+        mock.call(events.PROCESSING, events.STARTED, _index='raw', docID='foo'),
+        mock.call(events.PROCESSING, events.COMPLETED, _index='raw', docID='foo')
+    ]
+
+    dispatch.assert_has_calls(calls)
