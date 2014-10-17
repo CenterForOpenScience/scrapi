@@ -5,6 +5,9 @@ from scrapi import tasks
 from scrapi import events
 
 
+BLACKHOLE = lambda *_, **__: None
+
+
 @pytest.fixture
 def dispatch(monkeypatch):
     event_mock = mock.MagicMock()
@@ -102,3 +105,22 @@ def test_begin_normalize_starts(monkeypatch, dispatch):
         mock_pnorm.s.assert_any_call(x)
         mock_praw.delay.assert_any_call(x)
         mock_norm.si.assert_any_call(x, 'test')
+
+
+def test_begin_normalize_logging(monkeypatch, dispatch):
+    monkeypatch.setattr('scrapi.tasks.normalize.si', mock.MagicMock())
+    monkeypatch.setattr('scrapi.tasks.process_raw.delay', BLACKHOLE)
+    monkeypatch.setattr('scrapi.tasks.process_normalized.s', BLACKHOLE)
+
+    timestamps = {}
+    raw_docs = [{'docID': x} for x in xrange(11)]
+
+    tasks.begin_normalization((raw_docs, timestamps), 'test')
+
+    assert dispatch.call_count == 22
+
+    for x in raw_docs:
+        dispatch.assert_any_call(events.NORMALIZATION,
+                events.CREATED, consumer='test', docID=x['docID'])
+        dispatch.assert_any_call(events.PROCESSING,
+                events.CREATED, consumer='test', docID=x['docID'])
