@@ -4,4 +4,6 @@ python:
 
 install: "pip install -r dev-requirements.txt"
 
+before_script: "cp scrapi/settings/local-dist.py scrapi/settings/local.py"
+
 script: py.test
