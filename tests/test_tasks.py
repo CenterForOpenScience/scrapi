@@ -150,3 +150,31 @@ def test_process_raw_logging(dispatch, monkeypatch):
     ]
 
     dispatch.assert_has_calls(calls)
+
+
+def test_process_norm_calls(monkeypatch):
+    pmock = mock.Mock()
+    raw = {'docID': 'foo'}
+
+    monkeypatch.setattr('scrapi.tasks.processing.process_normalized', pmock)
+
+    tasks.process_normalized(raw, raw)
+
+    pmock.assert_called_once_with(raw, raw, {})
+
+
+def test_process_norm_logging(dispatch, monkeypatch):
+    raw = {'docID': 'foo'}
+
+    monkeypatch.setattr('scrapi.tasks.processing.process_normalized', BLACKHOLE)
+
+    tasks.process_normalized(raw, raw)
+
+    calls = [
+        mock.call(events.PROCESSING, events.STARTED, _index='normalized', docID='foo'),
+        mock.call(events.PROCESSING, events.COMPLETED, _index='normalized', docID='foo')
+    ]
+
+    dispatch.assert_has_calls(calls)
+
+
