@@ -13,8 +13,8 @@ from scrapi import events
 from scrapi import settings
 from scrapi import processing
 from scrapi.util import timestamp
-from scrapi.util import import_consumer
 from scrapi.util.storage import store
+from scrapi.util import import_consumer
 from scrapi.linter.document import RawDocument
 
 
@@ -35,7 +35,6 @@ def run_consumer(consumer_name, days_back=1):
     chain.apply_async()
 
     # Note: Dispatch events only after they run
-
     events.dispatch(events.CONSUMER_RUN, events.CREATED, consumer=consumer_name)
 
 
@@ -214,7 +213,7 @@ def check_archive(consumer_name, reprocess):
 @app.task
 def update_pubsubhubbub():
     payload = {'hub.mode': 'publish', 'hub.url': '{url}rss/'.format(url=settings.OSF_APP_URL)}
-    headers = {'Content-Type' : 'application/x-www-form-urlencoded'}
+    headers = {'Content-Type': 'application/x-www-form-urlencoded'}
     return requests.post('https://pubsubhubbub.appspot.com', headers=headers, params=payload)
 
 

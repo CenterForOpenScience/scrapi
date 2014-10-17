@@ -2,6 +2,7 @@ from fluent import event
 
 from scrapi import settings
 
+
 # Events
 PROCESSING = 'processing'
 CONSUMER_RUN = 'runConsumer'

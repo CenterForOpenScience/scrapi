@@ -19,7 +19,7 @@ class DiskStorage(BaseStorage):
         with open(path)as f:
             return f.read()
 
-    # :: Str -> Bool -> [RawDocument]
+    # :: Str -> Bool -> [Str]
     def iter_raws(self, source, include_normalized=False):
         src_dir = os.path.join(settings.ARCHIVE_DIRECTORY, source)
         for dirname, dirnames, filenames in os.walk(src_dir):
