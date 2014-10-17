@@ -54,7 +54,22 @@ def test_consume_runs_consume(dispatch, consumer):
 
 @pytest.mark.usefixtures('consumer')
 def test_consume_days_back(dispatch, consumer):
-    tasks.consume('test', 'TIME', days_back=10)
+    _, timestamps = tasks.consume('test', 'TIME', days_back=10)
+
+    keys = ['consumeFinished', 'consumeTaskCreated', 'consumeStarted']
+
+    for key in keys:
+        assert key in timestamps.keys()
 
     assert consumer.consume.called
     consumer.consume.assert_called_once_with(days_back=10)
+
+
+@pytest.mark.usefixtures('consumer')
+def test_consume_raises(dispatch, consumer):
+    consumer.consume.side_effect = KeyError('testing')
+
+    with pytest.raises(KeyError) as e:
+        tasks.consume('test', 'TIME')
+
+    assert e.value.message == 'testing'
