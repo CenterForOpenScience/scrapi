@@ -77,3 +77,28 @@ def test_consume_raises(dispatch, consumer):
     assert dispatch.called
     dispatch.assert_called_with(events.CONSUMER_RUN, events.FAILED,
             consumer='test', exception=str(e.value))
+
+
+def test_begin_normalize_starts(monkeypatch, dispatch):
+    mock_norm = mock.MagicMock()
+    mock_praw = mock.MagicMock()
+    mock_pnorm = mock.MagicMock()
+
+    monkeypatch.setattr('scrapi.tasks.normalize', mock_norm)
+    monkeypatch.setattr('scrapi.tasks.process_raw', mock_praw)
+    monkeypatch.setattr('scrapi.tasks.process_normalized', mock_pnorm)
+
+    timestamps = {}
+    raw_docs = [{'docID': x} for x in xrange(11)]
+
+    tasks.begin_normalization((raw_docs, timestamps), 'test')
+
+    assert dispatch.call_count == 22
+    assert mock_norm.si.call_count == 11
+    assert mock_pnorm.s.call_count == 11
+    assert mock_praw.delay.call_count == 11
+
+    for x in raw_docs:
+        mock_pnorm.s.assert_any_call(x)
+        mock_praw.delay.assert_any_call(x)
+        mock_norm.si.assert_any_call(x, 'test')
