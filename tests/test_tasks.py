@@ -79,7 +79,7 @@ def test_consume_raises(dispatch, consumer):
     assert e.value.message == 'testing'
     assert dispatch.called
     dispatch.assert_called_with(events.CONSUMER_RUN, events.FAILED,
-            consumer='test', exception=str(e.value))
+            consumer='test', exception=repr(e.value))
 
 
 def test_begin_normalize_starts(monkeypatch, dispatch):
