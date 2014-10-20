@@ -37,7 +37,7 @@ def consume(days_back=1):
     doc = get_response(rows, days_back)
     records = doc.xpath('//doc')
     xml_list = []
-    for record in records:
+    for record in records[:50]:
         doc_id = record.xpath("str[@name='id']")[0].text
         record = ElementTree.tostring(record, encoding=record_encoding)
         xml_list.append(RawDocument({
@@ -55,6 +55,7 @@ def get_response(rows, days_back):
     Returns an etree element with results '''
     url = 'https://cn.dataone.org/cn/v1/query/solr/?q=dateModified:[NOW-{0}DAY TO *]&rows='.format(days_back) + str(rows)
     data = requests.get(url)
+    print(data.url)
     record_encoding = data.encoding
     doc =  etree.XML(data.content)
     return doc
@@ -69,7 +70,8 @@ def get_properties(doc):
         'checksumAlgorithm' : (doc.xpath("str[@name='checksumAlgorithm']/node()") or [''])[0],
         'dataUrl': (doc.xpath("str[@name='dataUrl']/node()") or [''])[0],
         'datasource': (doc.xpath("str[@name='datasource']/node()") or [''])[0],
-
+        'documents': doc.xpath("arr[@name='documents']/str/node()"),
+        
         'dateModified': (doc.xpath("date[@name='dateModified']/node()") or [''])[0],
         'datePublished': (doc.xpath("date[@name='datePublished']/node()") or [''])[0],
         'dateUploaded': (doc.xpath("date[@name='dateUploaded']/node()") or [''])[0],
@@ -235,10 +237,15 @@ def normalize(raw_doc):
             'dateUpdated': get_date_updated(doc)
     }
 
+    # Return none if no url - not good for notification service
     if normalized_dict['id']['url'] == u'':
         return None
 
-    import json; print json.dumps(normalized_dict['contributors'], indent=4)
+    # DATA and RESOURCE info is included in the METADATA's documents
+    # and resourceMap fields aldready - no need to return these 
+    if normalized_dict['properties']['formatType'] != 'METADATA':
+        return None
+
     return NormalizedDocument(normalized_dict)
 
 
