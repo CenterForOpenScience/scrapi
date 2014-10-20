@@ -136,6 +136,9 @@ def get_contributors(doc):
 
     unique_contributors = list(set([author] + contributors))
 
+    if len(unique_contributors) < 1:
+        return []
+
     # this is the index of the author in the unique_contributors list
     if author != '':
         author_index = unique_contributors.index(author)
@@ -197,7 +200,7 @@ def get_ids(doc, raw_doc):
     url = (doc.xpath('//str[@name="dataUrl"]/node()') or [''])[0]
 
     if url == '':
-        print("Warning: no URL, not normalizing...")
+        raise Exception('Warning: No url provided!')
 
     ids = {'serviceID':service_id, 'doi': copy_to_unicode(doi), 'url': copy_to_unicode(url)}
 
