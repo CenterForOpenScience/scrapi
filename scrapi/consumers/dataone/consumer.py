@@ -37,7 +37,7 @@ def consume(days_back=1):
     doc = get_response(rows, days_back)
     records = doc.xpath('//doc')
     xml_list = []
-    for record in records[:50]:
+    for record in records:
         doc_id = record.xpath("str[@name='id']")[0].text
         record = ElementTree.tostring(record, encoding=record_encoding)
         xml_list.append(RawDocument({
