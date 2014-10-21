@@ -54,9 +54,11 @@ def get_contributors(doc):
     contributor_list = []
     contributor_dict_list = doc.get('author') or []
     full_names = []
+    orcid = ''
     for entry in contributor_dict_list:
         full_name = '{} {}'.format(entry.get('given'), entry.get('family'))
         full_names.append(full_name)
+        orcid = entry.get('ORCID') or ''
     for person in full_names:
         name = HumanName(person)
         contributor = {
@@ -66,7 +68,7 @@ def get_contributors(doc):
             'family': name.last,
             'suffix': name.suffix,
             'email': '',
-            'ORCID': ''
+            'ORCID': orcid
         }
         contributor_list.append(contributor)
     
@@ -138,7 +140,6 @@ def normalize(raw_doc):
         'tags': get_tags(doc)
     }
 
-    # print(json.dumps(normalized_dict['id'], indent=4))
     return NormalizedDocument(normalized_dict)
 
 
