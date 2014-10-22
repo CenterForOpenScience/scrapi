@@ -26,7 +26,6 @@ def consume(days_back=1):
     base_url = OAI_DC_BASE + '?verb=ListRecords&metadataPrefix=oai_dc&from='
     start_date = date.today() - timedelta(days_back)
     url = base_url + str(start_date)
-    print(url)
     records = get_records(url)
 
     xml_list = []
@@ -119,11 +118,12 @@ def get_ids(result, doc):
         if 'hdl.handle.net' in item:
             url = item
         if 'doi' in item or 'DOI' in item:
+            url = item
             doi = item
-            doi = doi.replace('doi:', '')
-            doi = doi.replace('DOI:', '')
             doi = doi.replace('http://dx.doi.org/', '')
             doi = doi.strip(' ')
+        if 'repository.cmu.edu' in item and 'viewcontent.cgi' not in item:
+            url = item
 
     if url == '':
         raise Exception('Warning: No url provided!')
@@ -141,19 +141,13 @@ def get_properties(result):
     else:
         copyright = rights
     publisher = (result.xpath('//dc:publisher/node()', namespaces=NAMESPACES) or [''])[0]
-    language = (result.xpath('//dc:language/node()', namespaces=NAMESPACES) or [''])[0]
-    identifiers = result.xpath('//dc:identifier/node()', namespaces=NAMESPACES) or []
-    ids = []
-    for identifier in identifiers:
-        if 'http://' not in identifier:
-            ids.append(copy_to_unicode(identifier))
+    source = (result.xpath('//dc:source/node()', namespaces=NAMESPACES) or [''])[0]
     props = {
         'type': copy_to_unicode(result_type),
-        'language': copy_to_unicode(language),
         'publisherInfo': {
             'publisher': copy_to_unicode(publisher),
         },
-        'identifiers': ids,
+        'source': copy_to_unicode(source),
     }
     return props
 
