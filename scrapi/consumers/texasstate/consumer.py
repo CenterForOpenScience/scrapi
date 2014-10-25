@@ -29,7 +29,7 @@ def copy_to_unicode(element):
     else:
         return unicode(element, encoding=encoding)
 
-def consume(days_back=250):
+def consume(days_back=275):
     # days back is set so high because texas state consumer had nothing for the last six months plus when consumer was built
     start_date = str(date.today() - timedelta(days_back))
     base_url = 'http://digital.library.txstate.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from='
@@ -53,6 +53,7 @@ def consume(days_back=250):
     return xml_list
 
 def get_records(url):
+    print(url)
     data = requests.get(url)
     doc = etree.XML(data.content)
     records = doc.xpath('//ns0:record', namespaces=NAMESPACES)
@@ -117,6 +118,7 @@ def get_properties(result):
     relation = (result.xpath('//dc:relation/node()', namespaces=NAMESPACES) or [''])[0]
     language = (result.xpath('//dc:language/node()', namespaces=NAMESPACES) or [''])[0]
     dates = result.xpath('//dc:date/node()', namespaces=NAMESPACES) or ['']
+    set_spec = record.xpath('ns0:header/ns0:setSpec/node()', namespaces=NAMESPACES)[0]
     props = {
         'type': copy_to_unicode(result_type),
         'dates': copy_to_unicode(dates),
@@ -131,19 +133,12 @@ def get_properties(result):
     }
     return props
 
+
 def get_date_created(result):
     dates = (result.xpath('//dc:date/node()', namespaces=NAMESPACES) or [''])
     date = copy_to_unicode(dates[0])
     return date
-    # date_list = []
-    # for item in dates:
-    #     try: 
-    #         a_date = parse(str(item)[:10], yearfirst=True,  default=DEFAULT).isoformat()
-    #     except ValueError: 
-    #         import pdb; pdb.set_trace()
-    #     date_list.append(a_date)
-    # min_date = date_list[0]
-    # return min_date
+
 
 def get_date_updated(result):
     dateupdated = result.xpath('//ns0:header/ns0:datestamp/node()', namespaces=NAMESPACES)[0]
@@ -156,6 +151,15 @@ def normalize(raw_doc, timestamp):
         result = etree.XML(result)
     except etree.XMLSyntaxError:
         print "Error in namespaces! Skipping this one..."
+        return None
+
+    with open(os.path.join(os.path.dirname(__file__), 'series_names.txt')) as series_names:
+        series_name_list = [word.replace('\n', '') for word in series_names]
+
+    set_spec = record.xpath('ns0:header/ns0:setSpec/node()', namespaces=NAMESPACES)[0]
+    print set_spec
+    if set_spec.replace('publication:', '') not in series_name_list:
+        print('{} not in approved list, not normalizing...'.format(set_spec))
         return None
 
     title = result.xpath('//dc:title/node()', namespaces=NAMESPACES)[0]
@@ -174,6 +178,10 @@ def normalize(raw_doc, timestamp):
         'timestamp': timestamp,
 
     }
+
+    if payload['id']['url'] == '':
+        print "Warning, no URL provided, not normalizing..."
+        return None
     
     return NormalizedDocument(payload)
     ## TODO catch namespace exception
