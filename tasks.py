@@ -135,10 +135,10 @@ def check_archive(consumer=None, reprocess=False, async=False, days=None):
 
     if consumer:
         from scrapi.tasks import check_archive as check
-        check.delay(consumer, reprocess, days_back=days)
+        check.delay(consumer, reprocess, days_back=int(days))
     else:
         from scrapi.tasks import check_archives
-        check_archives.delay(reprocess, days_back=days)
+        check_archives.delay(reprocess, days_back=int(days))
 
 
 @task

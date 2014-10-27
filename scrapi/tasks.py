@@ -2,6 +2,7 @@ import os
 import logging
 from dateutil import parser
 from base64 import b64decode
+from datetime import datetime
 
 import vcr
 
@@ -189,7 +190,13 @@ def check_archive(consumer_name, reprocess, days_back=None):
         'overwrite': True
     }
     for raw_path in store.iter_raws(consumer_name, include_normalized=reprocess):
-        timestamp = parser.parse(raw_path.split('/')[-2]).isoformat()
+        date = parser.parse(raw_path.split('/')[-2])
+
+        if (days_back and (datetime.now() - date).days > days_back):
+            continue
+
+        timestamp = date.isoformat()
+
         raw_file = store.get_as_string(raw_path)
 
         raw_doc = RawDocument({
