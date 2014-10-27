@@ -130,15 +130,15 @@ def consumers(async=False, days=1):
 
 
 @task
-def check_archive(consumer=None, reprocess=False, async=False):
+def check_archive(consumer=None, reprocess=False, async=False, days=None):
     settings.CELERY_ALWAYS_EAGER = not async
 
     if consumer:
         from scrapi.tasks import check_archive as check
-        check.delay(consumer, reprocess)
+        check.delay(consumer, reprocess, days_back=days)
     else:
         from scrapi.tasks import check_archives
-        check_archives.delay(reprocess)
+        check_archives.delay(reprocess, days_back=days)
 
 
 @task

@@ -168,18 +168,21 @@ def process_normalized(normalized_doc, raw_doc, **kwargs):
 
 
 @app.task
-def check_archives(reprocess):
+def check_archives(reprocess, days_back=None):
     for consumer in settings.MANIFESTS.keys():
-        check_archive.delay(consumer, reprocess)
+        check_archive.delay(consumer, reprocess, days_back=days_back)
 
         events.dispatch(events.CHECK_ARCHIVE, events.CREATED,
                         consumer=consumer, reprocess=reprocess)
 
 
 @app.task
-def check_archive(consumer_name, reprocess):
-    events.dispatch(events.CHECK_ARCHIVE, events.STARTED,
-                    consumer=consumer_name, reprocess=reprocess)
+def check_archive(consumer_name, reprocess, days_back=None):
+    events.dispatch(events.CHECK_ARCHIVE, events.STARTED, **{
+        'consumer': consumer_name,
+        'reprocess': reprocess,
+        'daysBack': str(days_back) if days_back else 'All'
+    })
 
     consumer = settings.MANIFESTS[consumer_name]
     extras = {
@@ -203,11 +206,18 @@ def check_archive(consumer_name, reprocess):
                  process_normalized.s(raw_doc, storage=extras))
         chain.apply_async()
 
-        events.dispatch(events.NORMALIZATION, events.CREATED,
-                        consumer=consumer_name, docID=raw_doc['docID'])
+        events.dispatch(events.NORMALIZATION, events.CREATED, **{
+            'consumer': consumer_name,
+            'reprocess': reprocess,
+            'daysBack': str(days_back) if days_back else 'All',
+            'docID': raw_doc['docID']
+        })
 
-    events.dispatch(events.CHECK_ARCHIVE, events.COMPLETED,
-                    consumer=consumer_name, reprocess=reprocess)
+    events.dispatch(events.CHECK_ARCHIVE, events.COMPLETED, **{
+        'consumer': consumer_name,
+        'reprocess': reprocess,
+        'daysBack': str(days_back) if days_back else 'All'
+    })
 
 
 @app.task
