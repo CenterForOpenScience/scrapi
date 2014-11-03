@@ -8,6 +8,7 @@ sys.path.insert(1, os.path.join(
 ))
 
 import search
+import process_metadata
 import logging
 
 
@@ -55,6 +56,12 @@ def archive_exploration(req_path):
 
     return render_template('files.html', files=files, url=BASE_URL)
 
+
+@app.route('/api/v1/SHARE/', methods=['POST'])
+def process_incoming_metadata():
+    if len(request.args.keys()) == 0:
+        return jsonify(process_metadata.tutorial())
+    return 'hello'
 
 
 if __name__ == '__main__':

@@ -17,8 +17,12 @@ class OSFProcessor(BaseProcessor):
             'docHash': _hash
         }
 
-        normalized['collisionCategory'] = crud.get_collision_cat(normalized['source'])
+        # Done so that the collision cat can be obtained from pushed docs
+        # without the manifest needing to be there
+        normalized['collisionCategory'] = '' or crud.get_collision_cat(normalized['source'])
 
+        # unwrapping the normalizedDocument so that it's
+        # a dictiorary from here on out
         report_norm = normalized.attributes
         resource_norm = crud.clean_report(normalized.attributes)
 
@@ -31,6 +35,7 @@ class OSFProcessor(BaseProcessor):
             resource_norm['isResource'] = True
             resource = crud.dump_metadata(resource_norm)
         else:
+            # done because of a conflict of contributors format in the OSF
             del resource['contributors']
 
         report_norm['meta']['uids'] = report_hash
