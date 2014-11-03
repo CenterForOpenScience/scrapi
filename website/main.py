@@ -57,11 +57,14 @@ def archive_exploration(req_path):
     return render_template('files.html', files=files, url=BASE_URL)
 
 
-@app.route('/api/v1/SHARE/', methods=['POST'])
+@app.route('/api/v1/SHARE/', methods=['GET', 'POST'])
 def process_incoming_metadata():
     if len(request.args.keys()) == 0:
         return jsonify(process_metadata.tutorial())
-    return 'hello'
+    if request.method == 'GET':
+        return jsonify(process_metadata.tutorial())
+    else: 
+        return 'You gave us...\n {}'.format(request.args.get('events'))
 
 
 if __name__ == '__main__':
