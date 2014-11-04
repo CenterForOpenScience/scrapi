@@ -2,6 +2,7 @@ import os
 import logging
 from dateutil import parser
 from base64 import b64decode
+from datetime import datetime
 
 import vcr
 
@@ -176,25 +177,34 @@ def process_normalized(normalized_doc, raw_doc, **kwargs):
 
 
 @app.task
-def check_archives(reprocess):
+def check_archives(reprocess, days_back=None):
     for consumer in settings.MANIFESTS.keys():
-        check_archive.delay(consumer, reprocess)
+        check_archive.delay(consumer, reprocess, days_back=days_back)
 
         events.dispatch(events.CHECK_ARCHIVE, events.CREATED,
                         consumer=consumer, reprocess=reprocess)
 
 
 @app.task
-def check_archive(consumer_name, reprocess):
-    events.dispatch(events.CHECK_ARCHIVE, events.STARTED,
-                    consumer=consumer_name, reprocess=reprocess)
+def check_archive(consumer_name, reprocess, days_back=None):
+    events.dispatch(events.CHECK_ARCHIVE, events.STARTED, **{
+        'consumer': consumer_name,
+        'reprocess': reprocess,
+        'daysBack': str(days_back) if days_back else 'All'
+    })
 
     consumer = settings.MANIFESTS[consumer_name]
     extras = {
         'overwrite': True
     }
     for raw_path in store.iter_raws(consumer_name, include_normalized=reprocess):
-        timestamp = parser.parse(raw_path.split('/')[-2]).isoformat()
+        date = parser.parse(raw_path.split('/')[-2])
+
+        if (days_back and (datetime.now() - date).days > days_back):
+            continue
+
+        timestamp = date.isoformat()
+
         raw_file = store.get_as_string(raw_path)
 
         raw_doc = RawDocument({
@@ -211,11 +221,18 @@ def check_archive(consumer_name, reprocess):
                  process_normalized.s(raw_doc, storage=extras))
         chain.apply_async()
 
-        events.dispatch(events.NORMALIZATION, events.CREATED,
-                        consumer=consumer_name, docID=raw_doc['docID'])
+        events.dispatch(events.NORMALIZATION, events.CREATED, **{
+            'consumer': consumer_name,
+            'reprocess': reprocess,
+            'daysBack': str(days_back) if days_back else 'All',
+            'docID': raw_doc['docID']
+        })
 
-    events.dispatch(events.CHECK_ARCHIVE, events.COMPLETED,
-                    consumer=consumer_name, reprocess=reprocess)
+    events.dispatch(events.CHECK_ARCHIVE, events.COMPLETED, **{
+        'consumer': consumer_name,
+        'reprocess': reprocess,
+        'daysBack': str(days_back) if days_back else 'All'
+    })
 
 
 @app.task
