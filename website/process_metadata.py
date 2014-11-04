@@ -11,6 +11,7 @@ import requests
 import datetime
 
 # from scrapi import settings
+from scrapi.util import timestamp
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
@@ -40,8 +41,45 @@ def process_api_input(input_data):
     returns a list of linted normalzied documents
     '''
     raw_documents = consume(input_data)
-    
-    return lint_results(input_data)
+    print(lint_results(input_data))
+
+    consumed_docs = task_consume(raw_documents)
+
+    import pdb; pdb.set_trace()
+
+def task_consume(raw_documents):
+    ''' takes in the raw_doc_list and emulates the 
+    normal scrapi consume task, adding appropriate
+    timestamps and returning a tuple consisting
+    of the raw doc list and the dict of timestamps
+    '''
+
+    timestamps = {
+        'consumeTaskCreated': timestamp(),
+        'consumeStarted': timestamp(),
+        'consumeFinished': timestamp()
+    }
+
+    return raw_documents, timestamps
+
+
+def task_normalize(raw_doc):
+    ''' emulates the normalize function in the celery
+    tasks, adds timestamps to the raw doc and returns
+    a single normalized document with the correct
+    timestamps
+    '''
+
+    raw_doc['timestamps']['normalizeStarted'] = timestamp()
+
+    normalizeStarted = timestamp()
+
+    normalized = normalize(raw_doc)
+
+    normalized['timestamps'] = raw_doc['timestamps']
+    normalized['timestamps']['normalizeFinished'] = timestamp()
+
+    return normalzied
 
 
 def consume(input_data):
