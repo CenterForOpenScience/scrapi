@@ -59,17 +59,19 @@ def archive_exploration(req_path):
 
 @app.route('/api/v1/SHARE/', methods=['GET', 'POST'])
 def process_incoming_metadata():
-    if len(request.args.keys()) == 0:
-        return jsonify(process_metadata.tutorial())
     if request.method == 'GET':
-        return jsonify(process_metadata.tutorial())
-    else: 
-        return 'You gave us...\n {}'.format(request.args.get('events'))
+        return_value = jsonify(process_metadata.tutorial())
+    elif request.get_data():
+        url_data = request.get_data()
+        process_metadata.process_api_input(url_data)
+        return_value = 'You gave us...\n {}'.format(url_data)
+
+    return return_value
 
 
 if __name__ == '__main__':
     app.run(
         host="0.0.0.0",
         port=1337,
-        debug=False
+        debug=True
     )
