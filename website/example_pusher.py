@@ -16,7 +16,7 @@ def generate_events():
          'contributors': [
              {
                  'prefix': 'Mr',
-                 'given': 'Dustin',
+                 'given': 'STARDUST',
                  'middle': 'G',
                  'family': 'Runnels',
                  'suffix': 'II',
@@ -43,8 +43,8 @@ def generate_events():
             'genetics'
          ],
             'source': 'example_pusher',
-            'dateCreated': '2014-05-30T17:05:48+00:00',
-            'dateUpdated': '2014-05-30T17:05:48+00:00',
+            'dateCreated': '2012-11-30T17:05:48+00:00',
+            'dateUpdated': '2014-11-30T17:05:48+00:00',
          }
     ]
 

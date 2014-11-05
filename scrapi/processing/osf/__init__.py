@@ -17,10 +17,11 @@ class OSFProcessor(BaseProcessor):
             'docHash': _hash
         }
 
-        # Done so that the collision cat can be obtained from pushed docs
-        # without the manifest needing to be there
-        normalized['collisionCategory'] = '' or crud.get_collision_cat(normalized['source'])
-
+        # TODO - this is a guess at a solution! halp!
+        try:
+            normalized['collisionCategory'] = crud.get_collision_cat(normalized['source'])
+        except KeyError:
+            normalized['collisionCategory'] = 2
         # unwrapping the normalizedDocument so that it's
         # a dictiorary from here on out
         report_norm = normalized.attributes
@@ -56,9 +57,15 @@ class OSFProcessor(BaseProcessor):
         if not resource.get('links'):
             resource['links'] = []
 
+        # TODO - temporary fix - using source name as long name if push
+        try:
+            long_name = MANIFESTS[report['source']]['longName']
+        except KeyError:
+            long_name = report['source']
+
         resource['links'].append({
             'shortName': report['source'],
-            'longName': MANIFESTS[report['source']]['longName'],
+            'longName': long_name,
             'url': report['id']['url']
         })
 

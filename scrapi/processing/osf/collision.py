@@ -100,7 +100,13 @@ def _search(_filter):
 
     ret = requests.post(settings.OSF_APP_URL, **kwargs).json()
 
-    if ret['count'] > 0:
+    # TODO - this fix is a total guess, is this ok?!
+    try: 
+        count = ret['count']
+    except KeyError:
+        count = 0
+
+    if count > 0:
         return ret['results'][0]
 
     return None
