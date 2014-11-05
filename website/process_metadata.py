@@ -10,8 +10,11 @@ import logging
 import requests
 import datetime
 
-# from scrapi import settings
+from scrapi import tasks
+from scrapi import events
+
 from scrapi.util import timestamp
+
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
@@ -40,12 +43,26 @@ def process_api_input(input_data):
     ''' Takes a list of documents as raw input from API route
     returns a list of linted normalzied documents
     '''
+    # this is a list of scrapi rawDocuments
     raw_documents = consume(input_data)
     print(lint_results(input_data))
 
-    consumed_docs = task_consume(raw_documents)
+    # consumed is a tuple with scrAPI rawDocuments and timestamps
+    consumed = task_consume(raw_documents)
 
-    import pdb; pdb.set_trace()
+    consumed_docs, timestamps = consumed
+
+    storage = {'is_push': True}
+
+    for raw in consumed_docs:
+        raw['timestamps'] = timestamps
+        tasks.process_raw(raw)
+        normalized = normalize(raw)
+
+        #TODO - what are the kwargs here?
+        tasks.process_normalized(normalized, raw, storage=storage)
+
+    # import pdb; pdb.set_trace()
 
 def task_consume(raw_documents):
     ''' takes in the raw_doc_list and emulates the 
@@ -54,11 +71,19 @@ def task_consume(raw_documents):
     of the raw doc list and the dict of timestamps
     '''
 
+    # TODO - better way to get this? 
+    raw_dict = json.loads(raw_documents[0].get('doc'))
+    source = raw_dict['source']
+
     timestamps = {
         'consumeTaskCreated': timestamp(),
         'consumeStarted': timestamp(),
         'consumeFinished': timestamp()
     }
+
+    # TODO - handle consumer_name
+    logger.info('API Input from "{}" has finished consumption'.format(source))
+    events.dispatch(events.CONSUMER_RUN, events.COMPLETED, consumer=source, number=len(raw_documents))
 
     return raw_documents, timestamps
 
@@ -103,6 +128,10 @@ def consume(input_data):
 def normalize(raw_doc):
     raw = raw_doc.get('doc')
     normalized_dict = json.loads(raw)
+    # import pdb; pdb.set_trace()
+    source = normalized_dict['source']
+    events.dispatch(events.PROCESSING, events.CREATED,
+                        consumer=source, docID=raw_doc['docID'])
 
     return NormalizedDocument(normalized_dict)
 
