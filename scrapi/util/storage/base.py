@@ -58,15 +58,23 @@ class BaseStorage(object):
         self._store(json.dumps(document.attributes), path, overwrite=overwrite)
 
     # :: RawDocument -> Nothing
-    def store_raw(self, document):
-        manifest = settings.MANIFESTS[document.get('source')]
-        doc_name = 'raw.{}'.format(manifest['fileFormat'])
+    def store_raw(self, document, is_push=False):
+        if is_push:
+            doc_name = 'raw.json'
+            manifest = document.get('source')
+        else:
+            manifest = settings.MANIFESTS[document.get('source')]
+            doc_name = 'raw.{}'.format(manifest['fileFormat'])
         path = self._build_path(document)
         manifest = {
             'consumedTimestamp': document['timestamps']['consumeFinished'],
-            'source': document['source'],
-            'consumeVersion': manifest['version']
+            'source': document['source']
         }
+
+        if is_push:
+            manifest['consumeVersion'] = 'push api input'
+        else:
+            manifest['consumeVersion'] = manifest['version']
 
         self.update_manifest(path, manifest)
 

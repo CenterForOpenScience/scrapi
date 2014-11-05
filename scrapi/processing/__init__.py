@@ -42,12 +42,13 @@ def process_normalized(raw_doc, normalized, kwargs):
             _normalized_event(events.COMPLETED, p, raw_doc)
 
 
-def process_raw(raw_doc):
+def process_raw(raw_doc, kwargs):
     for p in settings.RAW_PROCESSING:
         _raw_event(events.STARTED, p, raw_doc)
 
+        extras = kwargs.get(p, {})
         try:
-            get_processor(p).process_raw(raw_doc)
+            get_processor(p).process_raw(raw_doc, **extras)
         except Exception as e:
             logger.error('Processor {} raised exception {}'.format(p, e))
             _raw_event(events.FAILED, p, raw_doc, exception=repr(e))

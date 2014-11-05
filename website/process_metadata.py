@@ -56,7 +56,7 @@ def process_api_input(input_data):
 
     for raw in consumed_docs:
         raw['timestamps'] = timestamps
-        tasks.process_raw(raw)
+        tasks.process_raw(raw, storage=storage)
         normalized = normalize(raw)
 
         #TODO - what are the kwargs here?
