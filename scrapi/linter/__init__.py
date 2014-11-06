@@ -26,15 +26,12 @@ def is_pickable(val, name='root'):
         raise TypeError('Cannot pickle type {} from {}'.format(val, name))
 
 
-def lint(consume, normalize, api_input=None):
+def lint(consume, normalize):
     """
         Runs the consume and normalize functions, ensuring that
         they match the requirements of scrAPI.
     """
 
-    # if api_input:
-    #     output = consume(api_input)
-    # else:
     output = consume()
 
     if not isinstance(output, list):
