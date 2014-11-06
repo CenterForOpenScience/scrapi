@@ -11,6 +11,7 @@ import search
 import process_metadata
 import logging
 
+from scrapi import settings
 
 logger = logging.getLogger(__name__)
 app = Flask(__name__)
@@ -62,11 +63,15 @@ def process_incoming_metadata():
     if request.method == 'GET':
         return_value = jsonify(process_metadata.tutorial())
     elif request.get_data():
-        url_data = request.get_data()
-        process_metadata.process_api_input(url_data)
-        return_value = 'You gave us...\n {}'.format(url_data)
+        auth = request.authorization
 
-    return return_value
+        if auth.password not in settings.SCRAPI_KEY:
+            return abort(401)
+
+        url_data = request.get_data()
+        process = process_metadata.process_api_input(url_data)
+
+    return 'You gave us...\n {}'.format(url_data)
 
 
 if __name__ == '__main__':

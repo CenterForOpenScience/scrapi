@@ -12,6 +12,7 @@ import datetime
 
 from scrapi import tasks
 from scrapi import events
+from scrapi import settings
 
 from scrapi.util import timestamp
 
@@ -38,14 +39,18 @@ def tutorial():
         "dateCreated": "string indicating when the resource was first created or published using the format YYYY-MM-DD in iso format",
         "dateUpdated": "string indicating when the resource was last updated in the home repository using the format YYYY-MM-DD in iso format",
     }
+    
 
 def process_api_input(input_data):
     ''' Takes a list of documents as raw input from API route
     returns a list of linted normalzied documents
     '''
+    data = json.loads(input_data)
+
+    events = data['events']
     # this is a list of scrapi rawDocuments
-    raw_documents = consume(input_data)
-    print(lint_results(input_data))
+    raw_documents = consume(events)
+    print(lint_results(events))
 
     # consumed is a tuple with scrAPI rawDocuments and timestamps
     consumed = task_consume(raw_documents)
@@ -62,7 +67,6 @@ def process_api_input(input_data):
         #TODO - what are the kwargs here?
         tasks.process_normalized(normalized, raw, storage=storage)
 
-    # import pdb; pdb.set_trace()
 
 def task_consume(raw_documents):
     ''' takes in the raw_doc_list and emulates the 
@@ -107,11 +111,11 @@ def task_normalize(raw_doc):
     return normalzied
 
 
-def consume(input_data):
+def consume(event_list):
     ''' takes a list of input from the api route,
     returns a list of raw documents 
     '''
-    event_list = json.loads(input_data)
+    # event_list = json.loads(input_data)
 
     raw_doc_list = []
     for event in event_list:
