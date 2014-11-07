@@ -111,8 +111,8 @@ def task_normalize(raw_doc):
     base_64_doc_id = b64encode(raw_doc['docID'])
     source = normalized.get('source')
     consume_finished = normalized['timestamps']['consumeFinished']
-    normalized['raw'] = '{url}{archive}{source}/{doc_id}/{consumeFinished}/raw.json'.format(
-                                            url='http://localhost:1337/',
+    normalized['raw'] = '{url}/{archive}{source}/{doc_id}/{consumeFinished}/raw.json'.format(
+                                            url=settings.SCRAPI_URL,
                                             archive=settings.ARCHIVE_DIRECTORY,
                                             source=source,
                                             doc_id=base_64_doc_id,

@@ -40,11 +40,11 @@ def search_search():
 
     return jsonify(search.search(request.args))
 
+
 @app.route('/archive/', defaults={'req_path': ''})
 @app.route('/archive/<path:req_path>')
 def archive_exploration(req_path):
-    abs_path = os.path.join(os.path.dirname(__file__), '../archive', req_path)
-
+    abs_path = os.path.join(os.path.abspath('.'), 'archive', req_path)
     if not os.path.exists(abs_path):
         return abort(404)
 
