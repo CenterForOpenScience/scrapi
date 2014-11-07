@@ -9,6 +9,7 @@ import json
 import logging
 import requests
 import datetime
+from base64 import b64encode
 
 from scrapi import tasks
 from scrapi import events
@@ -39,7 +40,7 @@ def tutorial():
         "dateCreated": "string indicating when the resource was first created or published using the format YYYY-MM-DD in iso format",
         "dateUpdated": "string indicating when the resource was last updated in the home repository using the format YYYY-MM-DD in iso format",
     }
-    
+
 
 def process_api_input(input_data):
     ''' Takes a list of documents as raw input from API route
@@ -62,7 +63,7 @@ def process_api_input(input_data):
     for raw in consumed_docs:
         raw['timestamps'] = timestamps
         tasks.process_raw(raw, storage=storage)
-        normalized = normalize(raw)
+        normalized = task_normalize(raw)
 
         #TODO - what are the kwargs here?
         tasks.process_normalized(normalized, raw, storage=storage)
@@ -96,7 +97,7 @@ def task_normalize(raw_doc):
     ''' emulates the normalize function in the celery
     tasks, adds timestamps to the raw doc and returns
     a single normalized document with the correct
-    timestamps
+    timestamps and raw field with link to archive
     '''
 
     raw_doc['timestamps']['normalizeStarted'] = timestamp()
@@ -107,8 +108,17 @@ def task_normalize(raw_doc):
 
     normalized['timestamps'] = raw_doc['timestamps']
     normalized['timestamps']['normalizeFinished'] = timestamp()
+    base_64_doc_id = b64encode(raw_doc['docID'])
+    source = normalized.get('source')
+    consume_finished = normalized['timestamps']['consumeFinished']
+    normalized['raw'] = '{url}{archive}{source}/{doc_id}/{consumeFinished}/raw.json'.format(
+                                            url='http://localhost:1337/',
+                                            archive=settings.ARCHIVE_DIRECTORY,
+                                            source=source,
+                                            doc_id=base_64_doc_id,
+                                            consumeFinished=consume_finished)
 
-    return normalzied
+    return normalized
 
 
 def consume(event_list):

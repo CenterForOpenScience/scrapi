@@ -43,8 +43,7 @@ def search_search():
 @app.route('/archive/', defaults={'req_path': ''})
 @app.route('/archive/<path:req_path>')
 def archive_exploration(req_path):
-    BASE_DIR = '../archive'
-    abs_path = os.path.join(BASE_DIR, req_path)
+    abs_path = os.path.join(os.path.dirname(__file__), '../archive', req_path)
 
     if not os.path.exists(abs_path):
         return abort(404)
@@ -71,8 +70,9 @@ def process_incoming_metadata():
         url_data = request.get_data()
         process = process_metadata.process_api_input(url_data)
 
-    return 'You gave us...\n {}'.format(url_data)
+        return_value = 'You gave us...\n {}'.format(url_data)
 
+    return return_value
 
 if __name__ == '__main__':
     app.run(
