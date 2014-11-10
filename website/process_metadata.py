@@ -125,8 +125,7 @@ def consume(event_list):
     ''' takes a list of input from the api route,
     returns a list of raw documents 
     '''
-    # event_list = json.loads(input_data)
-
+    
     raw_doc_list = []
     for event in event_list:
         raw_doc_list.append(RawDocument({
