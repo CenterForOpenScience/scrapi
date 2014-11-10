@@ -70,11 +70,14 @@ def process_incoming_metadata():
             return abort(http.UNAUTHORIZED)
 
         url_data = request.get_data()
-        process = process_metadata.process_api_input(url_data)
+        
+        try: 
+            process = process_metadata.process_api_input(url_data)
+        except TypeError as e: 
 
-        return_value = 'You gave us...\n {}'.format(url_data)
+            return jsonify({'message': e.message}), http.BAD_REQUEST
 
-    return return_value
+    return jsonify({}), http.CREATED
 
 if __name__ == '__main__':
     app.run(
