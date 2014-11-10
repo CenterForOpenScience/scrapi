@@ -68,9 +68,6 @@ if SENTRY_DNS:
 
 MANIFESTS = load_manifests()
 
-
-SCRAPI_KEY = SCRAPI_KEY
-
 OSF_AUTH = (API_KEY_LABEL, API_KEY)
 OSF_URL = '{OSF_PREFIX}/api/v1/{{}}/'
 OSF_APP_URL = '{OSF_PREFIX}/api/v1/app/{APP_ID}/'
