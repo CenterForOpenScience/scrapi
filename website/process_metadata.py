@@ -142,7 +142,6 @@ def consume(event_list):
 def normalize(raw_doc):
     raw = raw_doc.get('doc')
     normalized_dict = json.loads(raw)
-    # import pdb; pdb.set_trace()
     source = normalized_dict['source']
     events.dispatch(events.PROCESSING, events.CREATED,
                         consumer=source, docID=raw_doc['docID'])
