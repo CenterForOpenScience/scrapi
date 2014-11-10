@@ -34,7 +34,6 @@ def process_normalized(raw_doc, normalized, kwargs):
         try:
             get_processor(p).process_normalized(raw_doc, normalized, **extras)
         except Exception as e:
-            print("FAILED IN NORM")
             _normalized_event(events.FAILED, p, raw_doc, exception=repr(e))
             logger.error('Processor {} raised exception {}'.format(p, e))
             if settings.DEBUG:
