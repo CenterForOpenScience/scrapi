@@ -114,7 +114,6 @@ def begin_normalization(consume_ret, consumer_name):
         events.dispatch(events.PROCESSING, events.CREATED,
                         consumer=consumer_name, docID=raw['docID'])
 
-# TODO - add kwargs here!!
 @app.task
 def process_raw(raw_doc, **kwargs):
     events.dispatch(events.PROCESSING, events.STARTED,
