@@ -65,7 +65,6 @@ def process_api_input(input_data):
         tasks.process_raw(raw, storage=storage)
         normalized = task_normalize(raw)
 
-        #TODO - what are the kwargs here?
         tasks.process_normalized(normalized, raw, storage=storage)
 
 
@@ -76,7 +75,7 @@ def task_consume(raw_documents):
     of the raw doc list and the dict of timestamps
     '''
 
-    # TODO - better way to get this? 
+    # TODO - better way to get this?
     raw_dict = json.loads(raw_documents[0].get('doc'))
     source = raw_dict['source']
 
@@ -88,7 +87,8 @@ def task_consume(raw_documents):
 
     # TODO - handle consumer_name
     logger.info('API Input from "{}" has finished consumption'.format(source))
-    events.dispatch(events.CONSUMER_RUN, events.COMPLETED, consumer=source, number=len(raw_documents))
+    events.dispatch(events.CONSUMER_RUN, events.COMPLETED,
+                    consumer=source, number=len(raw_documents))
 
     return raw_documents, timestamps
 
@@ -112,11 +112,11 @@ def task_normalize(raw_doc):
     source = normalized.get('source')
     consume_finished = normalized['timestamps']['consumeFinished']
     normalized['raw'] = '{url}/{archive}{source}/{doc_id}/{consumeFinished}/raw.json'.format(
-                                            url=settings.SCRAPI_URL,
-                                            archive=settings.ARCHIVE_DIRECTORY,
-                                            source=source,
-                                            doc_id=base_64_doc_id,
-                                            consumeFinished=consume_finished)
+        url=settings.SCRAPI_URL,
+        archive=settings.ARCHIVE_DIRECTORY,
+        source=source,
+        doc_id=base_64_doc_id,
+        consumeFinished=consume_finished)
 
     return normalized
 
@@ -125,29 +125,27 @@ def consume(event_list):
     ''' takes a list of input from the api route,
     returns a list of raw documents 
     '''
-    
-    raw_doc_list = []
-    for event in event_list:
-        raw_doc_list.append(RawDocument({
+
+    return [
+        RawDocument({
             'doc': json.dumps(event),
             'source': event.get('source'),
             'docID': event.get('id')['serviceID'],
             'filetype': 'json'
-        }))
-
-    return raw_doc_list
+        })
+        for event in event_list
+    ]
 
 
 def normalize(raw_doc):
-    raw = raw_doc.get('doc')
+    raw = raw_doc['doc']
     normalized_dict = json.loads(raw)
     source = normalized_dict['source']
     events.dispatch(events.PROCESSING, events.CREATED,
-                        consumer=source, docID=raw_doc['docID'])
+                    consumer=source, docID=raw_doc['docID'])
 
     return NormalizedDocument(normalized_dict)
 
 
 def lint_results(input_data):
     print(lint(lambda: consume(input_data), normalize))
-
