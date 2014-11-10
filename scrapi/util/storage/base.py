@@ -61,7 +61,6 @@ class BaseStorage(object):
     def store_raw(self, document, is_push=False):
         if is_push:
             doc_name = 'raw.json'
-            manifest = document.get('source')
         else:
             manifest = settings.MANIFESTS[document.get('source')]
             doc_name = 'raw.{}'.format(manifest['fileFormat'])
