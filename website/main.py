@@ -1,15 +1,17 @@
 from flask import Flask, request, Response, render_template, send_file, abort, jsonify
-import json
-import sys
 import os
+import sys
+import json
 sys.path.insert(1, os.path.join(
     os.path.dirname(os.path.abspath(__file__)),
     os.pardir,
 ))
 
 import search
-import process_metadata
 import logging
+import httplib as http
+
+import process_metadata
 
 from scrapi import settings
 
@@ -44,9 +46,9 @@ def search_search():
 @app.route('/archive/', defaults={'req_path': ''})
 @app.route('/archive/<path:req_path>')
 def archive_exploration(req_path):
-    abs_path = os.path.join(os.path.abspath('.'), 'archive', req_path)
+    abs_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'archive', req_path))
     if not os.path.exists(abs_path):
-        return abort(404)
+        return abort(http.NOT_FOUND)
 
     if os.path.isfile(abs_path):
         return send_file(abs_path)
@@ -65,7 +67,7 @@ def process_incoming_metadata():
         auth = request.authorization
 
         if auth.password not in settings.SCRAPI_KEY:
-            return abort(401)
+            return abort(http.UNAUTHORIZED)
 
         url_data = request.get_data()
         process = process_metadata.process_api_input(url_data)
