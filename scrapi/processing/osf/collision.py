@@ -100,9 +100,7 @@ def _search(_filter):
 
     ret = requests.post(settings.OSF_APP_URL, **kwargs).json()
 
-    count = ret['count']
-
-    if count > 0:
+    if ret['count'] > 0:
         return ret['results'][0]
 
     return None
