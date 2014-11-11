@@ -48,7 +48,7 @@ def process_api_input(input_data):
     events = input_data['events']
     # this is a list of scrapi rawDocuments
     raw_documents = consume(events)
-    lint(lambda: consume(events), normalize))
+    lint(lambda: consume(events), normalize)
 
     # consumed is a tuple with scrAPI rawDocuments and timestamps
     consumed = task_consume(raw_documents)
