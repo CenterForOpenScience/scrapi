@@ -46,9 +46,7 @@ def process_api_input(input_data):
     ''' Takes a list of documents as raw input from API route
     returns a list of linted normalzied documents
     '''
-    data = json.loads(input_data)
-
-    events = data['events']
+    events = input_data['events']
     # this is a list of scrapi rawDocuments
     raw_documents = consume(events)
     lint_results(events)

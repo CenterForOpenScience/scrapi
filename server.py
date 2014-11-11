@@ -12,19 +12,19 @@ from flask import Response
 from flask import send_file
 from flask import render_template
 
-import search
+from website import search
 
-import process_metadata
+from website import process_metadata
 
 from scrapi import settings
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='/website/static/')
 logger = logging.getLogger(__name__)
 
 
 @app.route('/', methods=['GET'])
 def home():
-    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static/html/index.html'), 'r') as f:
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'website/static/html/index.html'), 'r') as f:
         return f.read()
 
 
@@ -49,7 +49,7 @@ def search_search():
 @app.route('/archive/', defaults={'req_path': ''})
 @app.route('/archive/<path:req_path>')
 def archive_exploration(req_path):
-    abs_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'archive', req_path))
+    abs_path = os.path.abspath(os.path.join(os.path.dirname(__file__), 'archive', req_path))
     if not os.path.exists(abs_path):
         return abort(http.NOT_FOUND)
 
