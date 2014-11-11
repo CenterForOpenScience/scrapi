@@ -1,0 +1,10 @@
+{
+    "days": "mon-sun",
+    "hour": "23",
+    "minute": "59",
+    "shortName": "spdataverse",
+    "longName": "ScholarsPortalDataverse",
+    "url": "https://github.com/erinspace/ScholarsPortalDataverse.git",
+    "fileFormat": "xml",
+    "collisionCategory": 1
+}
