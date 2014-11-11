@@ -26,19 +26,19 @@ logger = logging.getLogger(__name__)
 
 
 TUTORIAL = {
-        "title": "string representing title of the resource",
-        "contributors": "a list of dictionaries containing prefix, middle, family, suffix, and ORCID of contributors.",
-        "id": "a dictionary of unique IDs given to the resource based on the particular publication we’re accessing. Should include an entry for a URL that links right to the original resource, a DOI, and a service specific ID",
-        "url": "A url pointing to the resources\'' real location",
-        "doi": "The digital object identifier of the resource, if it has one",
-        "serviceID": "A service specific identifier for the resource",
-        "description": "an abstract or general description of the resource",
-        "tags": "a list of tags or keywords identified in the resource itself, normalized to be all lower case",
-        "source": "string identifying where the resource came from",
-        "timestamp": "string indicating when the resource was accessed by scrAPI using the format YYYY-MM-DD h : m : s in iso format",
-        "dateCreated": "string indicating when the resource was first created or published using the format YYYY-MM-DD in iso format",
-        "dateUpdated": "string indicating when the resource was last updated in the home repository using the format YYYY-MM-DD in iso format",
-    }
+    "title": "string representing title of the resource",
+    "contributors": "a list of dictionaries containing prefix, middle, family, suffix, and ORCID of contributors.",
+    "id": "a dictionary of unique IDs given to the resource based on the particular publication we’re accessing. Should include an entry for a URL that links right to the original resource, a DOI, and a service specific ID",
+    "url": "A url pointing to the resources\' real location",
+    "doi": "The digital object identifier of the resource, if it has one",
+    "serviceID": "A service specific identifier for the resource",
+    "description": "an abstract or general description of the resource",
+    "tags": "a list of tags or keywords identified in the resource itself, normalized to be all lower case",
+    "source": "string identifying where the resource came from",
+    "timestamp": "string indicating when the resource was accessed by scrAPI using the format YYYY-MM-DD h : m : s in iso format",
+    "dateCreated": "string indicating when the resource was first created or published using the format YYYY-MM-DD in iso format",
+    "dateUpdated": "string indicating when the resource was last updated in the home repository using the format YYYY-MM-DD in iso format",
+}
 
 
 def process_api_input(input_data):
@@ -113,7 +113,8 @@ def task_normalize(raw_doc):
         archive=settings.ARCHIVE_DIRECTORY,
         source=source,
         doc_id=base_64_doc_id,
-        consumeFinished=consume_finished)
+        consumeFinished=consume_finished
+    )
 
     return normalized
 
