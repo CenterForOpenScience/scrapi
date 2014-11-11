@@ -64,7 +64,7 @@ def archive_exploration(req_path):
 
 @app.route('/api/v1/share/', methods=['GET'])
 def show_tutorial():
-    return jsonify(process_metadata.tutorial())
+    return jsonify(process_metadata.TUTORIAL)
 
 
 @app.route('/api/v1/share/', methods=['POST'])

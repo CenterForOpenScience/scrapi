@@ -25,8 +25,7 @@ logging.basicConfig(level=logging.ERROR)
 logger = logging.getLogger(__name__)
 
 
-def tutorial():
-    return {
+TUTORIAL = {
         "title": "string representing title of the resource",
         "contributors": "a list of dictionaries containing prefix, middle, family, suffix, and ORCID of contributors.",
         "id": "a dictionary of unique IDs given to the resource based on the particular publication we’re accessing. Should include an entry for a URL that links right to the original resource, a DOI, and a service specific ID",
@@ -49,7 +48,7 @@ def process_api_input(input_data):
     events = input_data['events']
     # this is a list of scrapi rawDocuments
     raw_documents = consume(events)
-    lint_results(events)
+    lint(lambda: consume(events), normalize))
 
     # consumed is a tuple with scrAPI rawDocuments and timestamps
     consumed = task_consume(raw_documents)
@@ -143,7 +142,3 @@ def normalize(raw_doc):
                     consumer=source, docID=raw_doc['docID'])
 
     return NormalizedDocument(normalized_dict)
-
-
-def lint_results(input_data):
-    print(lint(lambda: consume(input_data), normalize))
