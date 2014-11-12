@@ -34,7 +34,7 @@ def test_normalized_calls_all(get_processor):
 
 
 def test_raw_calls_all(get_processor):
-    processing.process_raw(mock.MagicMock())
+    processing.process_raw(mock.MagicMock(), {})
 
     for processor in settings.RAW_PROCESSING:
         get_processor.assert_any_call(processor)
@@ -61,7 +61,7 @@ def test_raw_catches(monkeypatch, get_processor):
 
     monkeypatch.setattr('scrapi.processing._raw_event', mock_event)
 
-    processing.process_raw(raw_mock)
+    processing.process_raw(raw_mock, {})
 
     mock_event.assert_any_call(events.FAILED, 'osf', raw_mock, exception=repr(get_processor.side_effect))
 
@@ -78,7 +78,7 @@ def test_normalized_calls_all_throwing(get_processor):
 def test_normalized_calls_all_throwing(get_processor):
     get_processor.side_effect = lambda x: Exception('Reasons') if x == 'storage' else mock.Mock()
 
-    processing.process_raw(mock.MagicMock())
+    processing.process_raw(mock.MagicMock(), {})
 
     for processor in settings.RAW_PROCESSING:
         get_processor.assert_any_call(processor)

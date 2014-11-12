@@ -49,7 +49,8 @@ def search_search():
 @app.route('/archive/', defaults={'req_path': ''})
 @app.route('/archive/<path:req_path>')
 def archive_exploration(req_path):
-    abs_path = os.path.abspath(os.path.join(os.path.dirname(__file__), 'archive', req_path))
+    abs_path = os.path.abspath(
+        os.path.join(os.path.dirname(__file__), 'archive', req_path))
     if not os.path.exists(abs_path):
         return abort(http.NOT_FOUND)
 
@@ -75,9 +76,9 @@ def process_incoming_metadata():
     if auth.password not in settings.SCRAPI_KEY:
         return abort(http.UNAUTHORIZED)
 
-    try: 
+    try:
         process = process_metadata.process_api_input(data)
-    except TypeError as e: 
+    except TypeError as e:
         return jsonify({'message': e.message}), http.BAD_REQUEST
 
     return jsonify({}), http.CREATED
