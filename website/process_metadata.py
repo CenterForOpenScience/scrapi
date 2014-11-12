@@ -64,6 +64,22 @@ def process_api_input(input_data):
         tasks.process_normalized(normalized, raw, storage=storage)
 
 
+def consume(event_list):
+    ''' takes a list of input from the api route,
+    returns a list of raw documents 
+    '''
+
+    return [
+        RawDocument({
+            'doc': json.dumps(event),
+            'source': event.get('source'),
+            'docID': event.get('id')['serviceID'],
+            'filetype': 'json'
+        })
+        for event in event_list
+    ]
+
+
 def task_consume(raw_documents):
     ''' takes in the raw_doc_list and emulates the 
     normal scrapi consume task, adding appropriate
@@ -116,22 +132,6 @@ def task_normalize(raw_doc):
     )
 
     return normalized
-
-
-def consume(event_list):
-    ''' takes a list of input from the api route,
-    returns a list of raw documents 
-    '''
-
-    return [
-        RawDocument({
-            'doc': json.dumps(event),
-            'source': event.get('source'),
-            'docID': event.get('id')['serviceID'],
-            'filetype': 'json'
-        })
-        for event in event_list
-    ]
 
 
 def normalize(raw_doc):
