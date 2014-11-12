@@ -15,14 +15,13 @@ from scrapi import tasks
 from scrapi import events
 from scrapi import settings
 
-from scrapi.util import timestamp
-
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
+from scrapi.util import timestamp
 
-logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
 
 
 TUTORIAL = {
