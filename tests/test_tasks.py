@@ -132,9 +132,9 @@ def test_process_raw_calls(monkeypatch):
 
     monkeypatch.setattr('scrapi.tasks.processing.process_raw', pmock)
 
-    tasks.process_raw(raw, {})
+    tasks.process_raw(raw)
 
-    pmock.assert_called_once_with(raw)
+    pmock.assert_called_once_with(raw, {})
 
 
 def test_process_raw_logging(dispatch, monkeypatch):
@@ -142,7 +142,7 @@ def test_process_raw_logging(dispatch, monkeypatch):
 
     monkeypatch.setattr('scrapi.tasks.processing.process_raw', BLACKHOLE)
 
-    tasks.process_raw(raw, {})
+    tasks.process_raw(raw)
 
     calls = [
         mock.call(events.PROCESSING, events.STARTED, _index='raw', docID='foo'),
