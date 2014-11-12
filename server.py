@@ -40,7 +40,7 @@ def search_search():
     size=SIZE
     format=OUTPUT FORMAT
     """
-    if len(request.args.keys()) == 0:
+    if not request.args:
         return jsonify(search.tutorial())
 
     return jsonify(search.search(request.args))
