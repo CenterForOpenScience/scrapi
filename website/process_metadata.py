@@ -49,10 +49,7 @@ def process_api_input(input_data):
     raw_documents = consume(events)
     lint(lambda: consume(events), normalize)
 
-    # consumed is a tuple with scrAPI rawDocuments and timestamps
-    consumed = task_consume(raw_documents)
-
-    consumed_docs, timestamps = consumed
+    consumed_docs, timestamps = task_consume(raw_documents)
 
     storage = {'is_push': True}
 
@@ -114,29 +111,24 @@ def task_normalize(raw_doc):
 
     raw_doc['timestamps']['normalizeStarted'] = timestamp()
 
-    normalizeStarted = timestamp()
-
     normalized = normalize(raw_doc)
 
     normalized['timestamps'] = raw_doc['timestamps']
     normalized['timestamps']['normalizeFinished'] = timestamp()
-    base_64_doc_id = b64encode(raw_doc['docID'])
-    source = normalized.get('source')
-    consume_finished = normalized['timestamps']['consumeFinished']
+
     normalized['raw'] = '{url}/{archive}{source}/{doc_id}/{consumeFinished}/raw.json'.format(
         url=settings.SCRAPI_URL,
         archive=settings.ARCHIVE_DIRECTORY,
-        source=source,
-        doc_id=base_64_doc_id,
-        consumeFinished=consume_finished
+        source=normalized['source'],
+        doc_id=b64encode(raw_doc['docID']),
+        consumeFinished=normalized['timestamps']['consumeFinished']
     )
 
     return normalized
 
 
 def normalize(raw_doc):
-    raw = raw_doc['doc']
-    normalized_dict = json.loads(raw)
+    normalized_dict = json.loads(raw_doc['doc'])
     source = normalized_dict['source']
     events.dispatch(events.PROCESSING, events.CREATED,
                     consumer=source, docID=raw_doc['docID'])
