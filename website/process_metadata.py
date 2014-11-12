@@ -21,7 +21,7 @@ from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
 
-logging.basicConfig(level=logging.ERROR)
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 

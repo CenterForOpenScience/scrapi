@@ -18,7 +18,7 @@ from website import process_metadata
 
 from scrapi import settings
 
-app = Flask(__name__, static_folder='/website/static/')
+app = Flask(__name__, static_folder='website/static/', static_url_path='/static')
 logger = logging.getLogger(__name__)
 
 
