@@ -68,17 +68,17 @@ def show_tutorial():
 def process_incoming_metadata():
     data = request.get_json()
     auth = request.authorization
-    headers = {'Content-Type':'application/json'}
+    headers = {'Content-Type': 'application/json'}
     url = '{0}auth/'.format(settings.OSF_APP_URL)
 
     osf_auth = requests.post(url, auth=settings.OSF_AUTH, headers=headers,
-                data=json.dumps({'key': auth['password']})).json()
+                             data=json.dumps({'key': auth['password']})).json()
 
     if 'write' not in osf_auth['permissions']:
         return abort(http.UNAUTHORIZED)
 
     try:
-        process = process_metadata.process_api_input(data)
+        process = process_metadata.process_api_input(data['events'])
     except TypeError as e:
         return jsonify({'message': e.message}), http.BAD_REQUEST
 

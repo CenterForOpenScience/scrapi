@@ -40,11 +40,11 @@ TUTORIAL = {
 }
 
 
-def process_api_input(input_data):
+def process_api_input(events):
     ''' Takes a list of documents as raw input from API route
     returns a list of linted normalzied documents
     '''
-    events = input_data['events']
+
     # this is a list of scrapi rawDocuments
     raw_documents = consume(events)
     lint(lambda: consume(events), normalize)
@@ -69,8 +69,8 @@ def consume(event_list):
     return [
         RawDocument({
             'doc': json.dumps(event),
-            'source': event.get('source'),
-            'docID': event.get('id')['serviceID'],
+            'source': event['source'],
+            'docID': event['id']['serviceID'],
             'filetype': 'json'
         })
         for event in event_list
@@ -85,7 +85,7 @@ def task_consume(raw_documents):
     '''
 
     # TODO - better way to get this?
-    raw_dict = json.loads(raw_documents[0].get('doc'))
+    raw_dict = json.loads(raw_documents[0]['doc'])
     source = raw_dict['source']
 
     timestamps = {
