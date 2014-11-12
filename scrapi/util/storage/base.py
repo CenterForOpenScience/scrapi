@@ -67,11 +67,11 @@ class BaseStorage(object):
         else:
             file_manifest = settings.MANIFESTS[document.get('source')]
             doc_name = 'raw.{}'.format(file_manifest['fileFormat'])
-            path = self._build_path(document)
             manifest = {
                 'consumeVersion' : file_manifest['version']
             }
 
+        path = self._build_path(document)
         manifest['consumedTimestamp'] = document['timestamps']['consumeFinished']
         manifest['source'] = document['source']
 
