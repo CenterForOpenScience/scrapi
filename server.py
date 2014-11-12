@@ -18,7 +18,8 @@ from website import search
 from website import process_metadata
 
 logger = logging.getLogger(__name__)
-app = Flask(__name__, static_folder='website/static/', static_url_path='/static')
+app = Flask(
+    __name__, static_folder='website/static/', static_url_path='/static')
 
 
 @app.route('/', methods=['GET'])
@@ -50,16 +51,10 @@ def search_search():
 def archive_exploration(req_path):
     abs_path = os.path.abspath(
         os.path.join(os.path.dirname(__file__), 'archive', req_path))
-    if not os.path.exists(abs_path):
-        return abort(http.NOT_FOUND)
-
-    if os.path.isfile(abs_path):
+    try:
         return send_file(abs_path)
-
-    files = os.listdir(abs_path)
-    BASE_URL = '/archive' if not req_path else '/archive/' + req_path
-
-    return render_template('files.html', files=files, url=BASE_URL)
+    except IOError:
+        return abort(http.NOT_FOUND)
 
 
 @app.route('/api/v1/share/', methods=['GET'])
