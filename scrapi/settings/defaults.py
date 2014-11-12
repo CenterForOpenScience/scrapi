@@ -1,4 +1,4 @@
-DEBUG = False
+DEBUG = True
 
 BROKER_URL = 'amqp://guest@localhost'
 
