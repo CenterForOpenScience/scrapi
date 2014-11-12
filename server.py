@@ -12,14 +12,13 @@ from flask import Response
 from flask import send_file
 from flask import render_template
 
-from website import search
-
-from website import process_metadata
-
 from scrapi import settings
 
-app = Flask(__name__, static_folder='website/static/', static_url_path='/static')
+from website import search
+from website import process_metadata
+
 logger = logging.getLogger(__name__)
+app = Flask(__name__, static_folder='website/static/', static_url_path='/static')
 
 
 @app.route('/', methods=['GET'])
