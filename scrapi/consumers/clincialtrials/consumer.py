@@ -75,7 +75,12 @@ def consume(days_back=1):
         count = 0
         official_count = 0
         for study_url in study_urls:
-            content = requests.get(study_url)
+            try: 
+                content = requests.get(study_url)
+            except requests.exceptions.ConnectionError as e:
+                print('Connection error, wait a bit')
+                time.sleep(30)
+                continue
             doc = etree.XML(content.content)
             record = etree.tostring(doc, encoding=record_encoding)
             doc_id = doc.xpath('//nct_id/node()')[0]
