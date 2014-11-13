@@ -131,10 +131,9 @@ def get_properties(record):
     record_format = (
         record.xpath('//dc:format/node()', namespaces=NAMESPACES) or [''])[0]
     relation = record.xpath('//dc:relation/node()', namespaces=NAMESPACES)
-    descriptions = record.xpath(
-        '//dc:description/node()', namespaces=NAMESPACES)
+    descriptions = record.xpath('//dc:description/node()', namespaces=NAMESPACES)
     coverage = record.xpath('//dc:coverage/node()', namespaces=NAMESPACES)
-    rights = record.xpath('dc://rights/node()', namespaces=NAMESPACES)
+    rights = record.xpath('//dc:rights/node()', namespaces=NAMESPACES)
     properties = {
         'publisher': publisher,
         'source': source,
