@@ -78,7 +78,7 @@ def consume(days_back=1):
             try: 
                 content = requests.get(study_url)
             except requests.exceptions.ConnectionError as e:
-                print('Connection error, wait a bit')
+                print('Connection error: {}, wait a bit...'.format(e))
                 time.sleep(30)
                 continue
             doc = etree.XML(content.content)
