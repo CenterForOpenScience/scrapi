@@ -37,8 +37,13 @@ def consume(days_back=15):
     base_url = 'http://www.osti.gov/pages/pagesxml?nrows={0}&EntryDateFrom={1}'
     url = base_url.format('1', start_date.strftime('%m/%d/%Y'))
     initial_data = requests.get(url)
+    print(initial_data.url)
     record_encoding = initial_data.encoding
-    initial_doc = etree.XML(initial_data.content)
+    try:
+        initial_doc = etree.XML(initial_data.content)
+    except etree.XMLSyntaxError as e:
+        print("error in namespaces: {}".format(e))
+        return []
 
     num_results = int(initial_doc.xpath('//records/@count', namespaces=NAMESPACES)[0])
 
@@ -162,8 +167,8 @@ def normalize(raw_doc):
         'tags': get_tags(doc),
         'dateCreated': get_date_created(doc),
         'dateUpdated': get_date_updated(doc),
+        'raw': raw_doc_string
     }
-
     return NormalizedDocument(normalized_dict)
 
 
