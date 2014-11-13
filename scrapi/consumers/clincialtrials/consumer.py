@@ -152,7 +152,10 @@ def get_properties(xml_doc):
 
     # enrollment - can have different types
     enrollment_list = xml_doc.xpath('//enrollment')
-    enrollment = {item.values()[0]: copy_to_unicode(item.text) for item in enrollment_list}
+    try: 
+        enrollment = {item.values()[0]: copy_to_unicode(item.text) for item in enrollment_list}
+    except IndexError:
+        enrollment = []
 
     # arm group
     arm_group_elements = xml_doc.xpath('//arm_group')
