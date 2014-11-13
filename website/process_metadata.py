@@ -47,7 +47,6 @@ def process_api_input(events):
 
     # this is a list of scrapi rawDocuments
     raw_documents = consume(events)
-    lint(lambda: consume(events), normalize)
 
     consumed_docs, timestamps = task_consume(raw_documents)
 
@@ -68,10 +67,10 @@ def consume(event_list):
 
     return [
         RawDocument({
+            'filetype': 'json',
             'doc': json.dumps(event),
             'source': event['source'],
-            'docID': event['id']['serviceID'],
-            'filetype': 'json'
+            'docID': event['id']['serviceID']
         })
         for event in event_list
     ]
@@ -84,9 +83,7 @@ def task_consume(raw_documents):
     of the raw doc list and the dict of timestamps
     '''
 
-    # TODO - better way to get this?
-    raw_dict = json.loads(raw_documents[0]['doc'])
-    source = raw_dict['source']
+    source = raw_documents[0]['source']
 
     timestamps = {
         'consumeTaskCreated': timestamp(),
