@@ -23,6 +23,8 @@ logger = logging.getLogger(__name__)
 app = Flask(
     __name__, static_folder='website/static/', static_url_path='/static')
 
+HEADERS = {'Content-Type': 'application/json'}
+
 
 @app.route('/', methods=['GET'])
 def home():
@@ -68,10 +70,9 @@ def show_tutorial():
 def process_incoming_metadata():
     data = request.get_json()
     auth = request.authorization
-    headers = {'Content-Type': 'application/json'}
     url = '{0}auth/'.format(settings.OSF_APP_URL)
 
-    osf_auth = requests.post(url, auth=settings.OSF_AUTH, headers=headers,
+    osf_auth = requests.post(url, auth=settings.OSF_AUTH, headers=HEADERS,
                              data=json.dumps({'key': auth['password']})).json()
 
     if 'write' not in osf_auth['permissions']:

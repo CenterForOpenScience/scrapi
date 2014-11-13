@@ -55,10 +55,10 @@ def process_api_input(events):
 
     for raw in consumed_docs:
         raw['timestamps'] = timestamps
-        tasks.process_raw(raw, storage=storage)
+        tasks.process_raw.delay(raw, storage=storage)
         normalized = task_normalize(raw)
 
-        tasks.process_normalized(normalized, raw, storage=storage)
+        tasks.process_normalized.delay(normalized, raw, storage=storage)
 
 
 def consume(event_list):

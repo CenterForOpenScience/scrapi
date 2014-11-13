@@ -40,21 +40,18 @@ class BaseStorage(object):
 
     # :: NormalizedDocument -> Nothing
     def store_normalized(self, raw_doc, document, overwrite=False, is_push=False):
-        path = self._build_path(raw_doc)
         if is_push:
-            manifest_update = {
-                'normalizeVersion': 'push api input'
-            }
+            manifest = {'version': 'push api input'}
         else:
             manifest = settings.MANIFESTS[document.get('source')]
-            manifest_update = {
-                'normalizeVersion': manifest['version']
-            }
 
+        manifest_update = {
+            'normalizeVersion': manifest['version']
+        }
+
+        path = self._build_path(raw_doc)
         self.update_manifest(path, manifest_update)
-
         path = os.path.join(path, 'normalized.json')
-
         self._store(json.dumps(document.attributes), path, overwrite=overwrite)
 
     # :: RawDocument -> Nothing
