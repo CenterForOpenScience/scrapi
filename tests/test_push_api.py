@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 import json
 import mock
 import pytest
+from datetime import datetime
 
 from website import process_metadata
 
@@ -73,6 +74,20 @@ def test_task_consume_returns_tuple():
     assert isinstance(result, tuple)
 
 
+def test_task_consume_returns_timestamps():
+
+    task_consume_tuple = process_metadata.task_consume(API_INPUT['events'])
+
+    timestamps = task_consume_tuple[1]
+
+    assert isinstance(timestamps, dict)
+    assert sorted(timestamps.keys()) == ['consumeFinished', 'consumeStarted', 'consumeTaskCreated']
+
+    for key, value in timestamps.iteritems():
+        datetime_obj = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
+
+        assert isinstance(datetime_obj, datetime)
+
 def test_task_consume_calls(dispatch):
 
     process_metadata.task_consume(API_INPUT['events'])
@@ -83,3 +98,7 @@ def test_normalize_calls(dispatch):
 
     process_metadata.normalize(RAW_DOC)
     assert dispatch.called
+
+
+
+
