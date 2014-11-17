@@ -54,7 +54,18 @@ API_INPUT = {
 
 RAW_DOC = {
     'doc': json.dumps(API_INPUT['events'][0]),
-    'docID': 'someID'
+    'docID': 'someID',
+    'timestamps': {
+        'consumeFinished': '2012-11-30T17:05:48+00:00',
+        'consumeStarted': '2012-11-30T17:05:48+00:00',
+        'consumeTaskCreated': '2012-11-30T17:05:48+00:00'
+    }
+}
+
+TIMESTAMPS = {
+    'consumeTaskCreated': '2012-11-30T17:05:48+00:00',
+    'consumeStarted': '2012-11-30T17:05:48+00:00',
+    'consumeFinished': '2012-11-30T17:05:48+00:00'
 }
 
 
@@ -104,18 +115,43 @@ def test_task_consume_returns_rawdocs():
 
 
 def test_task_consume_calls(dispatch):
-
     process_metadata.task_consume(API_INPUT['events'])
     assert dispatch.called
 
 
 def test_normalize_calls(dispatch):
-
     process_metadata.normalize(RAW_DOC)
     assert dispatch.called
 
 
 def test_normalize_returns_normalized_document():
     normalized = process_metadata.normalize(RAW_DOC)
-
     assert isinstance(normalized, NormalizedDocument)
+
+
+def test_task_normalize():
+    normed = process_metadata.task_normalize(RAW_DOC)
+    assert isinstance(normed, NormalizedDocument)
+
+
+def test_tutorial_is_dict():
+    tut = process_metadata.TUTORIAL
+    assert isinstance(tut, dict)
+
+
+def test_process_api_input_calls(monkeypatch):
+    mock_consume = mock.MagicMock()
+    mock_task_consume = mock.MagicMock()
+
+    mock_task_consume.return_value = ([RAW_DOC], TIMESTAMPS)
+
+    monkeypatch.setattr('website.process_metadata.consume', mock_consume)
+    monkeypatch.setattr(
+        'website.process_metadata.task_consume', mock_task_consume)
+
+    process_metadata.process_api_input(API_INPUT['events'])
+
+    assert mock_consume.called
+    mock_consume.assert_called_once_with(API_INPUT['events'])
+
+    assert mock_task_consume.called
