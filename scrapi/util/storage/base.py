@@ -43,7 +43,7 @@ class BaseStorage(object):
         if is_push:
             manifest = {'version': 'push api input'}
         else:
-            manifest = settings.MANIFESTS[document['source']
+            manifest = settings.MANIFESTS[document['source']]
 
         manifest_update = {
             'normalizeVersion': manifest['version']
@@ -59,7 +59,7 @@ class BaseStorage(object):
         if is_push:
             file_manifest = {'fileFormat': 'json', 'version': 'push api input'}
         else:
-            file_manifest = settings.MANIFESTS[document['source']
+            file_manifest = settings.MANIFESTS[document['source']]
 
         manifest = {
             'consumeVersion' : file_manifest['version'],

@@ -21,14 +21,18 @@ from website import process_metadata
 
 logger = logging.getLogger(__name__)
 app = Flask(
-    __name__, static_folder='website/static/', static_url_path='/static')
+    __name__,
+    static_folder='website/static/',
+    static_url_path='/static'
+)
 
 HEADERS = {'Content-Type': 'application/json'}
 
 
 @app.route('/', methods=['GET'])
 def home():
-    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'website/static/html/index.html'), 'r') as f:
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                           'website/static/html/index.html'), 'r') as f:
         return f.read()
 
 
@@ -88,7 +92,7 @@ def process_incoming_metadata():
 
 if __name__ == '__main__':
     app.run(
-        host="0.0.0.0",
+        host='0.0.0.0',
         port=1337,
         debug=settings.DEBUG
     )
