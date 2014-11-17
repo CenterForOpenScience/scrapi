@@ -134,7 +134,7 @@ def test_process_raw_calls(monkeypatch):
 
     tasks.process_raw(raw)
 
-    pmock.assert_called_once_with(raw)
+    pmock.assert_called_once_with(raw, {})
 
 
 def test_process_raw_logging(dispatch, monkeypatch):

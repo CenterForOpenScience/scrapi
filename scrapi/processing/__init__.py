@@ -21,6 +21,11 @@ from . import *
 
 
 def process_normalized(raw_doc, normalized, kwargs):
+    ''' kwargs is a dictiorary of kwargs. 
+        keyed by the processor name
+        Exists so that when we run check archive we 
+        specifiy that it's ok to overrite certain files
+    '''
     for p in settings.NORMALIZED_PROCESSING:
         _normalized_event(events.STARTED, p, raw_doc)
 
@@ -37,12 +42,12 @@ def process_normalized(raw_doc, normalized, kwargs):
             _normalized_event(events.COMPLETED, p, raw_doc)
 
 
-def process_raw(raw_doc):
+def process_raw(raw_doc, kwargs):
     for p in settings.RAW_PROCESSING:
         _raw_event(events.STARTED, p, raw_doc)
-
+        extras = kwargs.get(p, {})
         try:
-            get_processor(p).process_raw(raw_doc)
+            get_processor(p).process_raw(raw_doc, **extras)
         except Exception as e:
             logger.error('Processor {} raised exception {}'.format(p, e))
             _raw_event(events.FAILED, p, raw_doc, exception=repr(e))
@@ -62,13 +67,14 @@ def get_processor(processor_name):
 
 def _normalized_event(status, processor, raw, **kwargs):
     __processing_event(status, processor, raw,
-        _index='normalized.{}'.format(processor), **kwargs)
+                       _index='normalized.{}'.format(processor), **kwargs)
 
 
 def _raw_event(status, processor, raw, **kwargs):
     __processing_event(status, processor, raw,
-        _index='raw.{}'.format(processor), **kwargs)
+                       _index='raw.{}'.format(processor), **kwargs)
 
 
 def __processing_event(status, processor_name, raw_doc, **kwargs):
-    events.dispatch(events.PROCESSING, status, docID=raw_doc['docID'], **kwargs)
+    events.dispatch(
+        events.PROCESSING, status, docID=raw_doc['docID'], **kwargs)

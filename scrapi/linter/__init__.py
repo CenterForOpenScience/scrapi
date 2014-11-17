@@ -31,6 +31,7 @@ def lint(consume, normalize):
         Runs the consume and normalize functions, ensuring that
         they match the requirements of scrAPI.
     """
+
     output = consume()
 
     if not isinstance(output, list):

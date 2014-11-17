@@ -17,8 +17,14 @@ class OSFProcessor(BaseProcessor):
             'docHash': _hash
         }
 
-        normalized['collisionCategory'] = crud.get_collision_cat(normalized['source'])
+        try:
+            normalized['collisionCategory'] = crud.get_collision_cat(normalized['source'])
+        except KeyError:
+            # add a collision cat of 5 for pushed docs
+            normalized['collisionCategory'] = 5
 
+        # unwrapping the normalizedDocument so that it's
+        # a dictiorary from here on out
         report_norm = normalized.attributes
         resource_norm = crud.clean_report(normalized.attributes)
 
@@ -31,6 +37,7 @@ class OSFProcessor(BaseProcessor):
             resource_norm['isResource'] = True
             resource = crud.dump_metadata(resource_norm)
         else:
+            # done because of a conflict of contributors format in the OSF
             del resource['contributors']
 
         report_norm['meta']['uids'] = report_hash
@@ -51,9 +58,14 @@ class OSFProcessor(BaseProcessor):
         if not resource.get('links'):
             resource['links'] = []
 
+        try:
+            long_name = MANIFESTS[report['source']]['longName']
+        except KeyError:
+            long_name = report['source']
+
         resource['links'].append({
             'shortName': report['source'],
-            'longName': MANIFESTS[report['source']]['longName'],
+            'longName': long_name,
             'url': report['id']['url']
         })
 

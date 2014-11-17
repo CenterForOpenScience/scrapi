@@ -39,29 +39,36 @@ class BaseStorage(object):
         return path
 
     # :: NormalizedDocument -> Nothing
-    def store_normalized(self, raw_doc, document, overwrite=False):
-        path = self._build_path(raw_doc)
-        manifest = settings.MANIFESTS[document.get('source')]
+    def store_normalized(self, raw_doc, document, overwrite=False, is_push=False):
+        if is_push:
+            manifest = {'version': 'push api input'}
+        else:
+            manifest = settings.MANIFESTS[document['source']]
+
         manifest_update = {
             'normalizeVersion': manifest['version']
         }
 
+        path = self._build_path(raw_doc)
         self.update_manifest(path, manifest_update)
-
         path = os.path.join(path, 'normalized.json')
-
         self._store(json.dumps(document.attributes), path, overwrite=overwrite)
 
     # :: RawDocument -> Nothing
-    def store_raw(self, document):
-        manifest = settings.MANIFESTS[document.get('source')]
-        doc_name = 'raw.{}'.format(manifest['fileFormat'])
-        path = self._build_path(document)
+    def store_raw(self, document, is_push=False):
+        if is_push:
+            file_manifest = {'fileFormat': 'json', 'version': 'push api input'}
+        else:
+            file_manifest = settings.MANIFESTS[document['source']]
+
         manifest = {
+            'consumeVersion' : file_manifest['version'],
             'consumedTimestamp': document['timestamps']['consumeFinished'],
-            'source': document['source'],
-            'consumeVersion': manifest['version']
+            'source': document['source']
         }
+
+        doc_name = 'raw.{}'.format(file_manifest['fileFormat'])
+        path = self._build_path(document)
 
         self.update_manifest(path, manifest)
 

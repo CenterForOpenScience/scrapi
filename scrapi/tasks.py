@@ -73,16 +73,22 @@ def consume(consumer_name, job_created, days_back=1):
     logger.info('Consumer "{}" has finished consumption'.format(consumer_name))
     events.dispatch(events.CONSUMER_RUN, events.COMPLETED, consumer=consumer_name, number=len(result))
 
+    # result is a list of all of the RawDocuments consumed
     return result, timestamps
 
 
 @app.task
 def begin_normalization(consume_ret, consumer_name):
+    ''' consume_ret is consume return value: 
+        a tuple contaiing list of rawDocuments and
+        a dictionary of timestamps
+    '''
     raw_docs, timestamps = consume_ret
 
     logger.info('Normalizing {} documents for consumer "{}"'
                 .format(len(raw_docs), consumer_name))
 
+    # raw is a single raw document
     for raw in raw_docs:
         raw['timestamps'] = timestamps
         raw['timestamps']['normalizeTaskCreated'] = timestamp()
@@ -108,13 +114,11 @@ def begin_normalization(consume_ret, consumer_name):
         events.dispatch(events.PROCESSING, events.CREATED,
                         consumer=consumer_name, docID=raw['docID'])
 
-
 @app.task
-def process_raw(raw_doc):
+def process_raw(raw_doc, **kwargs):
     events.dispatch(events.PROCESSING, events.STARTED,
                     _index='raw', docID=raw_doc['docID'])
-
-    processing.process_raw(raw_doc)
+    processing.process_raw(raw_doc, kwargs)
 
     events.dispatch(events.PROCESSING, events.COMPLETED,
                     _index='raw', docID=raw_doc['docID'])
@@ -151,6 +155,8 @@ def normalize(raw_doc, consumer_name):
 
     normalized['timestamps'] = raw_doc['timestamps']
     normalized['timestamps']['normalizeFinished'] = timestamp()
+
+    # returns a single normalized document
     return normalized
 
 

@@ -68,7 +68,6 @@ if SENTRY_DNS:
 
 MANIFESTS = load_manifests()
 
-
 OSF_AUTH = (API_KEY_LABEL, API_KEY)
 OSF_URL = '{OSF_PREFIX}/api/v1/{{}}/'
 OSF_APP_URL = '{OSF_PREFIX}/api/v1/app/{APP_ID}/'
@@ -80,7 +79,6 @@ OSF_APP_URL = OSF_APP_URL.format(**locals())
 OSF_METADATA = OSF_APP_URL + 'metadata/'
 OSF_NEW_PROJECT = OSF_APP_URL + 'projects/'
 OSF_PROMOTE = OSF_METADATA + '{}/promote/'
-
 
 CELERY_ENABLE_UTC = True
 CELERY_ALWAYS_EAGER = False
