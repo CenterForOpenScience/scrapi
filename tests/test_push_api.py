@@ -5,6 +5,9 @@ import mock
 import pytest
 from datetime import datetime
 
+from scrapi import events
+from scrapi.linter.document import RawDocument, NormalizedDocument
+
 from website import process_metadata
 
 
@@ -81,12 +84,24 @@ def test_task_consume_returns_timestamps():
     timestamps = task_consume_tuple[1]
 
     assert isinstance(timestamps, dict)
-    assert sorted(timestamps.keys()) == ['consumeFinished', 'consumeStarted', 'consumeTaskCreated']
+    assert sorted(timestamps.keys()) == [
+        'consumeFinished', 'consumeStarted', 'consumeTaskCreated']
 
     for key, value in timestamps.iteritems():
         datetime_obj = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
 
         assert isinstance(datetime_obj, datetime)
+
+
+def test_task_consume_returns_rawdocs():
+    task_consume_tuple = process_metadata.task_consume(API_INPUT['events'])
+    raw_docs = task_consume_tuple[0]
+
+    assert isinstance(raw_docs, list)
+
+    for item in raw_docs:
+        assert isinstance(item, dict)
+
 
 def test_task_consume_calls(dispatch):
 
@@ -100,5 +115,7 @@ def test_normalize_calls(dispatch):
     assert dispatch.called
 
 
+def test_normalize_returns_normalized_document():
+    normalized = process_metadata.normalize(RAW_DOC)
 
-
+    assert isinstance(normalized, NormalizedDocument)
