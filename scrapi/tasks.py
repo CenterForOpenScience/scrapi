@@ -156,8 +156,6 @@ def normalize(raw_doc, consumer_name):
     normalized['timestamps'] = raw_doc['timestamps']
     normalized['timestamps']['normalizeFinished'] = timestamp()
 
-    # TODO - add in URL for raw here for consumed docs!! 
-
     # returns a single normalized document
     return normalized
 

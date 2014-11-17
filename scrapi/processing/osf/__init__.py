@@ -20,7 +20,8 @@ class OSFProcessor(BaseProcessor):
         try:
             normalized['collisionCategory'] = crud.get_collision_cat(normalized['source'])
         except KeyError:
-            normalized['collisionCategory'] = 1
+            # add a collision cat of 5 for pushed docs
+            normalized['collisionCategory'] = 5
 
         # unwrapping the normalizedDocument so that it's
         # a dictiorary from here on out
