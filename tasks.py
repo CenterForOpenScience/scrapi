@@ -47,6 +47,7 @@ def tests(cov=False):
     """
     if cov:
         run('py.test --cov-config tests/.coveragerc --cov scrapi tests')
+        run('py.test --cov-config tests/.coveragerc --cov website tests')
     else:
         run('py.test tests')
 
