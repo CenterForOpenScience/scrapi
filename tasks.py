@@ -46,8 +46,8 @@ def tests(cov=False):
     Runs all tests in the 'tests/' directory
     """
     if cov:
-        run('py.test --cov-config tests/.coveragerc --cov scrapi tests')
-        run('py.test --cov-config tests/.coveragerc --cov website tests')
+        run('py.test --cov-report term-missing --cov-config tests/.coveragerc --cov scrapi tests')
+        run('py.test --cov-report term-missing --cov-config tests/.coveragerc --cov website tests')
     else:
         run('py.test tests')
 
