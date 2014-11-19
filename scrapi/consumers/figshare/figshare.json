@@ -1,0 +1,10 @@
+{
+    "days": "mon-sun",
+    "hour": "23",
+    "minute": "59",
+    "shortName": "figshare",
+    "longName": "figshare",
+    "url": "https://github.com/erinspace/figshare.git",
+    "fileFormat": "json",
+    "collisionCategory": 1
+}
