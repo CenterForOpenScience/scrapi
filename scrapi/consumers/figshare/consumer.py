@@ -17,65 +17,52 @@ from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
 NAME = 'figshare'
-BASE_URL = 'http://api.figshare.com/v1/articles/search?search_for=*&from_date='
-
-DEFAULT = datetime(1970, 01, 01)
-
-DEFAULT_ENCODING = 'UTF-8'
-
-record_encoding = None
-
-
-def copy_to_unicode(element):
-
-    encoding = record_encoding or DEFAULT_ENCODING
-    element = ''.join(element)
-    if isinstance(element, unicode):
-        return element
-    else:
-        return unicode(element, encoding=encoding)
-
-
-def list_to_unicode(str_list):
-    return [copy_to_unicode(item) for item in str_list]
+URL = 'http://api.figshare.com/v1/articles/search?search_for=*&from_date='
+ARTICLE_URL = 'http://api.figshare.com/v1/articles?page='
 
 
 def consume(days_back=0):
     start_date = date.today() - timedelta(days_back)
-    url = '{0}{1}-{2}-{3}'.format(BASE_URL, start_date.year, start_date.month, start_date.day)
+    search_url = '{0}{1}-{2}-{3}'.format(URL,
+                                         start_date.year,
+                                         start_date.month,
+                                         start_date.day)
 
-    record_encoding = requests.get(url).encoding
-
-    records = get_records(url)
+    records = get_records(search_url, ARTICLE_URL)
 
     record_list = []
     for record in records:
         doc_id = record['article_id']
 
-        record_list.append(RawDocument({
-            'doc': json.dumps(record),
-            'source': NAME,
-            'docID': unicode(doc_id),
-            'filetype': 'json'
-        }))
+        record_list.append(
+            RawDocument(
+                {
+                    'doc': json.dumps(record),
+                    'source': NAME,
+                    'docID': unicode(doc_id),
+                    'filetype': 'json'
+                }
+            )
+        )
 
     return record_list
 
 
-def get_records(url):
-    records = requests.get(url)
+def get_records(search_url, article_url):
+    records = requests.get(search_url)
     total_records = records.json()['items_found']
-    all_records = []
     page = 1
-
+    full_records = requests.get(article_url + str(page))
+    all_records = []
     while len(all_records) < total_records:
-        record_list = records.json()['items']
+        record_list = full_records.json()['items']
 
         for record in record_list:
-            all_records.append(record)
+            if len(all_records) < total_records:
+                all_records.append(record)
+
         page += 1
-        url += '&page={}'.format(page)
-        records = requests.get(url)
+        full_records = requests.get(article_url + str(page))
         time.sleep(3)
 
     return all_records
@@ -83,16 +70,16 @@ def get_records(url):
 
 def get_contributors(record):
 
-    contributors = record['authors']
+    authors = record['authors']
 
     contributor_list = []
-    for person in contributors:
-        name = HumanName(person['author_name'])
+    for person in authors:
+        name = HumanName(person['full_name'])
         contributor = {
             'prefix': name.title,
-            'given': name.first,
+            'given': person['first_name'],
             'middle': name.middle,
-            'family': name.last,
+            'family': person['last_name'],
             'suffix': name.suffix,
             'email': '',
             'ORCID': '',
@@ -104,18 +91,32 @@ def get_contributors(record):
 def get_ids(record):
 
     return {
-        'serviceID': unicode(record['article_id']), 
-        'url': record['url'], 
-        'doi': record['DOI'].replace('http://dx.doi.org/', '')
+        'serviceID': unicode(record['article_id']),
+        'url': record['figshare_url'],
+        'doi': record['doi'].replace('http://dx.doi.org/', '')
     }
 
 
 def get_properties(record):
 
     return {
-        'type': record['type'],
-        'defined_type': record['defined_type'], 
-        'article_id': record['article_id']
+        'article_id': record['article_id'],
+        'views': record['views'],
+        'downloads': record['downloads'],
+        'shares': record['shares'],
+        'publisher_doi': record['publisher_doi'],
+        'publisher_citation': record['publisher_citation'],
+        'master_publisher_id': record['master_publisher_id'],
+        'status': record['status'],
+        'version': record['version'],
+        'description': record['description'],
+        'total_size': record['total_size'],
+        'defined_type': record['defined_type'],
+        'files': record['files'],
+        'owner': record['owner'],
+        'tags': record['tags'],
+        'categories': record['categories'],
+        'links': record['links']
     }
 
 
@@ -127,15 +128,19 @@ def normalize(raw_doc):
         'title': record['title'],
         'contributors': get_contributors(record),
         'properties': get_properties(record),
-        'description': record['description'],
-        'tags': [],
+        'description': record['description_nohtml'],
+        'tags': [tag['name'] for tag in record['tags']] + [cat['name'] for cat in record['categories']],
         'id': get_ids(record),
         'source': NAME,
-        'dateUpdated': unicode(parse(record['modified_date']).isoformat()),
+        'dateUpdated': unicode(parse(record['published_date']).isoformat()),
         'dateCreated': unicode(parse(record['published_date']).isoformat()),
     }
 
-    print(json.dumps(normalized_dict, indent=4))
+    # TODO - The modifiedDate does not appear in the extended records
+    # This might lead to a bug in us collecting duplicate records that haven't
+    # been updated, and us not getting updated articles. 
+    # the articles route only seems to show new, while the search shows updated
+
     return NormalizedDocument(normalized_dict)
 
 
