@@ -1,8 +1,10 @@
 from __future__ import unicode_literals
 
+import re
 import json
 import mock
 import pytest
+import httpretty
 from datetime import datetime
 
 from scrapi import events
@@ -18,11 +20,11 @@ API_INPUT = {
             'title': 'Using Table Stable Carbon in Gold and STAR Isotopes',
             'contributors': [
                 {
-                    'prefix': 'The One And Only',
+                    'prefix': 'THIS is ffrom the TEST',
                     'given': 'DEVON',
-                    'middle': 'Get The Tables',
+                    'middle': 'Get The TESTS',
                     'family': 'DUDLEY',
-                    'suffix': 'Thirsty Boy',
+                    'suffix': 'TEST Boy',
                     'email': 'dudley.boyz@email.uni.edu',
                     'ORCID': 'BubbaRayDudley'
                 }
@@ -45,7 +47,7 @@ API_INPUT = {
                 'behavior',
                 'genetics'
             ],
-            'source': 'example_pusher',
+            'source': 'example_TEST',
             'dateCreated': '2012-11-30T17:05:48+00:00',
             'dateUpdated': '2015-02-23T17:05:48+00:01',
         }
@@ -138,20 +140,19 @@ def test_tutorial_is_dict():
     tut = process_metadata.TUTORIAL
     assert isinstance(tut, dict)
 
+# this one is fixed with the requests thing enabled
+# ...but not without it
+@httpretty.activate
+@mock.patch('website.process_metadata.consume')
+@mock.patch('website.process_metadata.task_consume')
+def test_process_api_input_calls(mock_task_consume, mock_consume):
 
-def test_process_api_input_calls(monkeypatch):
-    mock_consume = mock.MagicMock()
-    mock_task_consume = mock.MagicMock()
+    httpretty.register_uri(httpretty.POST, re.compile('.*'), body=json.dumps(API_INPUT))
 
     mock_task_consume.return_value = ([RAW_DOC], TIMESTAMPS)
-
-    monkeypatch.setattr('website.process_metadata.consume', mock_consume)
-    monkeypatch.setattr(
-        'website.process_metadata.task_consume', mock_task_consume)
 
     process_metadata.process_api_input(API_INPUT['events'])
 
     assert mock_consume.called
-    mock_consume.assert_called_once_with(API_INPUT['events'])
-
     assert mock_task_consume.called
+    mock_consume.assert_called_once_with(API_INPUT['events'])
