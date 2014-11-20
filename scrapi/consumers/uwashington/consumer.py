@@ -2,14 +2,19 @@
 
 from __future__ import unicode_literals
 
-import requests
-from datetime import date, timedelta, datetime
-from dateutil.parser import *
 import time
+from datetime import date, timedelta, datetime
+
+import requests
+
+from dateutil.parser import *
+
 from lxml import etree
+
+from nameparser import HumanName
+
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
-from nameparser import HumanName
 
 
 NAME = u'uwdspace'
