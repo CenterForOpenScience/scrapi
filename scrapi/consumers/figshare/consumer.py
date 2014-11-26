@@ -19,15 +19,20 @@ from scrapi.linter.document import RawDocument, NormalizedDocument
 
 NAME = 'figshare'
 URL = 'http://api.figshare.com/v1/articles/search?search_for=*&from_date='
-# ARTICLE_URL = 'http://api.figshare.com/v1/articles?page='
 
 
 def consume(days_back=0):
-    start_date = date.today() - timedelta(days_back)
-    search_url = '{0}{1}-{2}-{3}'.format(URL,
+    start_date = date.today() - timedelta(days_back) - timedelta(1)
+    end_date = date.today() - timedelta(1)
+    search_url = '{0}{1}-{2}-{3}&end_date={4}-{5}-{6}'.format(URL,
                                          start_date.year,
                                          start_date.month,
-                                         start_date.day)
+                                         start_date.day,
+                                         end_date.year,
+                                         end_date.month,
+                                         end_date.day)
+    import pdb; pdb.set_trace()
+    print search_url
 
     records = get_records(search_url)
 
