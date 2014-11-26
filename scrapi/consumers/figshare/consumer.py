@@ -50,9 +50,11 @@ def consume(days_back=0):
 
 def get_records(search_url, article_url):
     records = requests.get(search_url)
+    print(records.url)
     total_records = records.json()['items_found']
     page = 1
     full_records = requests.get(article_url + str(page))
+    print(full_records.url)
     all_records = []
     while len(all_records) < total_records:
         record_list = full_records.json()['items']
@@ -63,6 +65,7 @@ def get_records(search_url, article_url):
 
         page += 1
         full_records = requests.get(article_url + str(page))
+        print(full_records.url)
         time.sleep(3)
 
     return all_records
