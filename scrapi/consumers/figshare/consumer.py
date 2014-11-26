@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 
 import os
+import xml
 import time
 import json
 from dateutil.parser import parse
@@ -18,7 +19,7 @@ from scrapi.linter.document import RawDocument, NormalizedDocument
 
 NAME = 'figshare'
 URL = 'http://api.figshare.com/v1/articles/search?search_for=*&from_date='
-ARTICLE_URL = 'http://api.figshare.com/v1/articles?page='
+# ARTICLE_URL = 'http://api.figshare.com/v1/articles?page='
 
 
 def consume(days_back=0):
@@ -28,7 +29,7 @@ def consume(days_back=0):
                                          start_date.month,
                                          start_date.day)
 
-    records = get_records(search_url, ARTICLE_URL)
+    records = get_records(search_url)
 
     record_list = []
     for record in records:
@@ -48,21 +49,21 @@ def consume(days_back=0):
     return record_list
 
 
-def get_records(search_url, article_url):
+def get_records(search_url):
     records = requests.get(search_url)
     total_records = records.json()['items_found']
     page = 1
-    full_records = requests.get(article_url + str(page))
+    # full_records = requests.get(article_url + str(page))
     all_records = []
     while len(all_records) < total_records:
-        record_list = full_records.json()['items']
+        record_list = records.json()['items']
 
         for record in record_list:
             if len(all_records) < total_records:
                 all_records.append(record)
 
         page += 1
-        full_records = requests.get(article_url + str(page))
+        records = requests.get(search_url + '&page='.format(str(page)))
         time.sleep(3)
 
     return all_records
@@ -74,17 +75,18 @@ def get_contributors(record):
 
     contributor_list = []
     for person in authors:
-        name = HumanName(person['full_name'])
+        name = HumanName(person['author_name'])
         contributor = {
             'prefix': name.title,
-            'given': person['first_name'],
+            'given': name.first,
             'middle': name.middle,
-            'family': person['last_name'],
+            'family': name.last,
             'suffix': name.suffix,
             'email': '',
             'ORCID': '',
         }
         contributor_list.append(contributor)
+
     return contributor_list
 
 
@@ -92,8 +94,8 @@ def get_ids(record):
 
     return {
         'serviceID': unicode(record['article_id']),
-        'url': record['figshare_url'],
-        'doi': record['doi'].replace('http://dx.doi.org/', '')
+        'url': record['url'],
+        'doi': record['DOI'].replace('http://dx.doi.org/', '')
     }
 
 
@@ -101,21 +103,8 @@ def get_properties(record):
 
     return {
         'article_id': record['article_id'],
-        'views': record['views'],
-        'downloads': record['downloads'],
-        'shares': record['shares'],
-        'publisher_doi': record['publisher_doi'],
-        'publisher_citation': record['publisher_citation'],
-        'master_publisher_id': record['master_publisher_id'],
-        'status': record['status'],
-        'version': record['version'],
-        'description': record['description'],
-        'total_size': record['total_size'],
         'defined_type': record['defined_type'],
-        'files': record['files'],
-        'owner': record['owner'],
-        'tags': record['tags'],
-        'categories': record['categories'],
+        'type': record['type'],
         'links': record['links']
     }
 
@@ -128,18 +117,13 @@ def normalize(raw_doc):
         'title': record['title'],
         'contributors': get_contributors(record),
         'properties': get_properties(record),
-        'description': record['description_nohtml'],
-        'tags': [tag['name'] for tag in record['tags']] + [cat['name'] for cat in record['categories']],
+        'description': record['description'],
+        'tags': [],
         'id': get_ids(record),
         'source': NAME,
-        'dateUpdated': unicode(parse(record['published_date']).isoformat()),
+        'dateUpdated': unicode(parse(record['modified_date']).isoformat()),
         'dateCreated': unicode(parse(record['published_date']).isoformat()),
     }
-
-    # TODO - The modifiedDate does not appear in the extended records
-    # This might lead to a bug in us collecting duplicate records that haven't
-    # been updated, and us not getting updated articles. 
-    # the articles route only seems to show new, while the search shows updated
 
     return NormalizedDocument(normalized_dict)
 
