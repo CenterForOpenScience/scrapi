@@ -5,6 +5,7 @@ import json
 import mock
 import pytest
 import httpretty
+from copy import deepcopy
 
 from hashlib import md5
 
@@ -25,7 +26,7 @@ RAW_DOC = {
     }
 }
 
-NORM_DOC = {
+RECORD = {
     'title': 'Using Table Stable Carbon in Gold and STAR Isotopes',
     'contributors': [
         {
@@ -63,20 +64,58 @@ NORM_DOC = {
     'count': 0
 }
 
+NORMALIZED = NormalizedDocument(RECORD)
+
 
 @httpretty.activate
 @mock.patch('scrapi.processing.osf.collision.already_processed')
 def test_has_properties(mock_already_processed):
 
-    httpretty.register_uri(httpretty.POST, re.compile('.*'), body=json.dumps(NORM_DOC))
+    normed = deepcopy(NORMALIZED)
+
+    httpretty.register_uri(
+        httpretty.POST, re.compile('.*'), body=json.dumps(RECORD))
     httpretty.register_uri(httpretty.PUT, re.compile('.*'))
 
     mock_already_processed.return_value = False,  md5().hexdigest()
 
-    normalized = NormalizedDocument(NORM_DOC)
+    osf_processor = osf.OSFProcessor()
+    osf_processor.process_normalized(RAW_DOC, normed)
+
+    assert(normed['collisionCategory'])
+    assert(normed['_id'])
+
+
+@mock.patch('scrapi.processing.osf.collision.already_processed')
+def test_found_returns(mock_already_processed):
+    normed = deepcopy(NORMALIZED)
+
+    mock_already_processed.return_value = True,  md5().hexdigest()
 
     osf_processor = osf.OSFProcessor()
-    osf_processor.process_normalized(RAW_DOC, normalized)
+    osf_processor.process_normalized(RAW_DOC, normed)
 
-    assert(normalized['collisionCategory'])
-    assert(normalized['_id'])
+    assert 'meta' not in normed.attributes.keys()
+
+
+@httpretty.activate
+@mock.patch('scrapi.processing.osf.collision.already_processed')
+@mock.patch('scrapi.processing.osf.collision.detect_collisions')
+def test_contrib_deleted_if_resource(mock_detect_collisions, mock_already_processed):
+    normed = deepcopy(NORMALIZED)
+    resource = deepcopy(RECORD)
+
+    httpretty.register_uri(
+        httpretty.POST, re.compile('.*'), body=json.dumps(RECORD))
+    httpretty.register_uri(httpretty.PUT, re.compile('.*'))
+
+    mock_already_processed.return_value = False,  md5().hexdigest()
+
+    mock_detect_collisions.return_value = resource
+
+    resource['meta'] = {}
+
+    osf_processor = osf.OSFProcessor()
+    osf_processor.process_normalized(RAW_DOC, normed)
+
+    assert 'contributors' not in resource.keys()
