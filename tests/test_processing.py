@@ -13,7 +13,6 @@ from scrapi import processing
 BLACKHOLE = lambda *_, **__: None
 
 
-
 @pytest.fixture(autouse=True)
 def no_events(monkeypatch):
     monkeypatch.setattr('scrapi.processing.events.dispatch', BLACKHOLE)
@@ -50,7 +49,8 @@ def test_normalized_catches(monkeypatch, get_processor):
 
     processing.process_normalized(raw_mock, raw_mock, {})
 
-    mock_event.assert_called_with(events.FAILED, 'osf', raw_mock, exception=repr(get_processor.side_effect))
+    mock_event.assert_called_with(
+        events.FAILED, 'osf', raw_mock, exception=repr(get_processor.side_effect))
 
 
 def test_raw_catches(monkeypatch, get_processor):
@@ -63,11 +63,13 @@ def test_raw_catches(monkeypatch, get_processor):
 
     processing.process_raw(raw_mock, {})
 
-    mock_event.assert_any_call(events.FAILED, 'osf', raw_mock, exception=repr(get_processor.side_effect))
+    mock_event.assert_any_call(
+        events.FAILED, 'osf', raw_mock, exception=repr(get_processor.side_effect))
 
 
 def test_normalized_calls_all_throwing(get_processor):
-    get_processor.side_effect = lambda x: Exception('Reasons') if x == 'storage' else mock.Mock()
+    get_processor.side_effect = lambda x: Exception(
+        'Reasons') if x == 'storage' else mock.Mock()
 
     processing.process_normalized(mock.MagicMock(), mock.MagicMock(), {})
 
@@ -76,12 +78,14 @@ def test_normalized_calls_all_throwing(get_processor):
 
 
 def test_normalized_calls_all_throwing(get_processor):
-    get_processor.side_effect = lambda x: Exception('Reasons') if x == 'storage' else mock.Mock()
+    get_processor.side_effect = lambda x: Exception(
+        'Reasons') if x == 'storage' else mock.Mock()
 
     processing.process_raw(mock.MagicMock(), {})
 
     for processor in settings.RAW_PROCESSING:
         get_processor.assert_any_call(processor)
+
 
 def test_raises_on_bad_processor():
     with pytest.raises(NotImplementedError):
