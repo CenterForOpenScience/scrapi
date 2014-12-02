@@ -31,8 +31,6 @@ def consume(days_back=0):
                                          end_date.year,
                                          end_date.month,
                                          end_date.day)
-    import pdb; pdb.set_trace()
-    print search_url
 
     records = get_records(search_url)
 
@@ -58,7 +56,7 @@ def get_records(search_url):
     records = requests.get(search_url)
     total_records = records.json()['items_found']
     page = 1
-    # full_records = requests.get(article_url + str(page))
+
     all_records = []
     while len(all_records) < total_records:
         record_list = records.json()['items']
@@ -68,7 +66,7 @@ def get_records(search_url):
                 all_records.append(record)
 
         page += 1
-        records = requests.get(search_url + '&page='.format(str(page)))
+        records = requests.get(search_url + '&page={}'.format(str(page)))
         time.sleep(3)
 
     return all_records
