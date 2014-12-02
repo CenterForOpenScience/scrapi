@@ -36,18 +36,20 @@ def elasticsearch():
     elif platform.system() == 'Darwin':  # Mac OSX
         run('elasticsearch')
     else:
-        print("Your system is not recognized, you will have to start elasticsearch manually")
+        print(
+            "Your system is not recognized, you will have to start elasticsearch manually")
 
 
 @task
-def test():
+def tests(cov=False):
     """
     Runs all tests in the 'tests/' directory
     """
-    # Allow selecting specific submodule
-    args = " --verbosity={0} -s {1}".format(2, 'tests/')
-    # Use pty so the process buffers "correctly"
-    run('nosetests --rednose' + args, pty=True)
+    if cov:
+        run('py.test --cov-report term-missing --cov-config tests/.coveragerc --cov scrapi tests')
+        run('py.test --cov-report term-missing --cov-config tests/.coveragerc --cov website tests')
+    else:
+        run('py.test tests')
 
 
 @task
@@ -70,16 +72,19 @@ def install_consumers(update=False):
         directory = 'scrapi/consumers/{}'.format(manifest['shortName'])
 
         if not os.path.isdir(directory):
-            run('git clone -b master {url} {moddir}'.format(moddir=directory, **manifest))
+            run('git clone -b master {url} {moddir}'.format(
+                moddir=directory, **manifest))
         elif update:
             run('cd {} && git pull origin master'.format(directory))
 
-        manifest_file = 'scrapi/settings/consumerManifests/{}.json'.format(consumer)
+        manifest_file = 'scrapi/settings/consumerManifests/{}.json'.format(
+            consumer)
 
         with open(manifest_file) as f:
             loaded = json.load(f)
 
-        loaded['version'] = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=directory).strip()
+        loaded['version'] = subprocess.check_output(
+            ['git', 'rev-parse', 'HEAD'], cwd=directory).strip()
 
         with open(manifest_file, 'w') as f:
             json.dump(loaded, f, indent=4, sort_keys=True)
