@@ -28,3 +28,5 @@ APP_ID = 'some id'
 
 API_KEY_LABEL = 'some label'
 API_KEY = 'some api key'
+
+SCRAPI_URL = 'http://173.255.232.219'
