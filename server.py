@@ -1,5 +1,4 @@
 import os
-import sys
 import json
 import logging
 import httplib as http
@@ -10,9 +9,8 @@ from flask import abort
 from flask import Flask
 from flask import jsonify
 from flask import request
-from flask import Response
 from flask import send_file
-from flask import render_template
+from flask import send_from_directory
 
 from scrapi import settings
 
@@ -34,6 +32,11 @@ def home():
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                            'website/static/html/index.html'), 'r') as f:
         return f.read()
+
+
+@app.route('/robots.txt', methods=['GET'])
+def robots():
+    return send_from_directory(app.static_folder, 'robots.txt')
 
 
 @app.route('/api/search', methods=['GET'])
