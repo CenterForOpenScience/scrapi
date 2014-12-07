@@ -12,7 +12,7 @@ from dateutil.parser import *
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
-NAME = 'uiuc-ideals'
+NAME = 'uiucideals'
 NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/', 
             'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
             'ns0': 'http://www.openarchives.org/OAI/2.0/'}
@@ -55,6 +55,7 @@ def consume(days_back=100):
 
 def get_records(url):
     data = requests.get(url)
+    import pdb; pdb.set_trace()
     doc = etree.XML(data.content)
     records = doc.xpath('//ns0:record', namespaces=NAMESPACES)
     token = doc.xpath('//ns0:resumptionToken/node()', namespaces=NAMESPACES)
