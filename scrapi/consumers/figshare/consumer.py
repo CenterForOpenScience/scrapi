@@ -56,10 +56,9 @@ def get_records(search_url):
     records = requests.get(search_url)
     total_records = records.json()['items_found']
     page = 1
-    import pdb; pdb.set_trace()
+
     all_records = []
-    # while len(all_records) < total_records:
-    while len(all_records) < 50:
+    while len(all_records) < total_records:
         record_list = records.json()['items']
 
         for record in record_list:
@@ -119,7 +118,7 @@ def get_properties(record):
         'defined_type': record['defined_type'],
         'type': record['type'],
         'links': record['links'], 
-        'doi' = record['DOI']
+        'doi': record['DOI']
     }
 
 
