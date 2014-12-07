@@ -56,9 +56,10 @@ def get_records(search_url):
     records = requests.get(search_url)
     total_records = records.json()['items_found']
     page = 1
-
+    import pdb; pdb.set_trace()
     all_records = []
-    while len(all_records) < total_records:
+    # while len(all_records) < total_records:
+    while len(all_records) < 50:
         record_list = records.json()['items']
 
         for record in record_list:
@@ -95,10 +96,19 @@ def get_contributors(record):
 
 def get_ids(record):
 
+    # Right now, only take the last DOI - others in properties
+    doi = record['DOI']
+    try:
+        doi = doi.replace('http://dx.doi.org/', '')
+    except AttributeError:
+        for item in doi:
+            item.replace('http://dx.doi.org/', '')
+            doi = item
+
     return {
         'serviceID': unicode(record['article_id']),
         'url': record['url'],
-        'doi': record['DOI'].replace('http://dx.doi.org/', '')
+        'doi': doi
     }
 
 
@@ -108,7 +118,8 @@ def get_properties(record):
         'article_id': record['article_id'],
         'defined_type': record['defined_type'],
         'type': record['type'],
-        'links': record['links']
+        'links': record['links'], 
+        'doi' = record['DOI']
     }
 
 
