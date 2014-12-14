@@ -198,6 +198,8 @@ def get_ids(doc, raw_doc):
         except AttributeError:
             doi = service_id.replace('doi:', '')
     url = (doc.xpath('//str[@name="dataUrl"]/node()') or [''])[0]
+    if 'http' not in url and 'http' in service_id:
+        url == service_id
 
     if url == '':
         raise Exception('Warning: No url provided!')
