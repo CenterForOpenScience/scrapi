@@ -16,7 +16,6 @@ from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
 NAME = 'texasstate'
-TODAY = date.today()
 NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/',
               'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
               'ns0': 'http://www.openarchives.org/OAI/2.0/'}
@@ -38,9 +37,8 @@ def copy_to_unicode(element):
 
 def consume(days_back=10):
     start_date = str(date.today() - timedelta(days_back))
-    start_date = TODAY - timedelta(days_back)
     # YYYY-MM-DD hh:mm:ss
-    url = OAI_DC_BASE_URL + '&metadataPrefix=oai_dc&from=' + str(start_date) + ' 00:00:00'
+    url = OAI_DC_BASE_URL + '&metadataPrefix=oai_dc&from=' + start_date + ' 00:00:00'
     records = get_records(url)
     record_encoding = requests.get(url).encoding
 
