@@ -10,6 +10,8 @@ import requests
 
 from celery import Celery
 
+from base64 import b64encode
+
 from scrapi import events
 from scrapi import settings
 from scrapi import processing
@@ -155,6 +157,15 @@ def normalize(raw_doc, consumer_name):
 
     normalized['timestamps'] = raw_doc['timestamps']
     normalized['timestamps']['normalizeFinished'] = timestamp()
+
+    normalized['raw'] = '{url}/{archive}{source}/{doc_id}/{consumeFinished}/raw.{raw_format}'.format(
+        url=settings.SCRAPI_URL,
+        archive=settings.ARCHIVE_DIRECTORY,
+        source=normalized['source'],
+        doc_id=b64encode(raw_doc['docID']),
+        consumeFinished=normalized['timestamps']['consumeFinished'],
+        raw_format= raw_doc['filetype']
+    )
 
     # returns a single normalized document
     return normalized
