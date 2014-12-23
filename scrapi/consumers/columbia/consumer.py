@@ -57,6 +57,7 @@ def consume(days_back=1):
 
 
 def get_records(url):
+    print(url)
     data = requests.get(url)
     try:
         doc = etree.XML(data.content)
@@ -67,12 +68,11 @@ def get_records(url):
     records = doc.xpath('//ns0:record', namespaces=NAMESPACES)
     token = doc.xpath('//ns0:resumptionToken/node()', namespaces=NAMESPACES)
     # TODO - disabling token for now - test periodically
-    # if len(token) == 1:
-    #     time.sleep(0.5)
-    #     base_url = OAI_DC_BASE_URL + 'resumptionToken='
-    #     url = base_url + token[0]
-    #     print url
-    #     records += get_records(url)
+    if len(token) == 1:
+        time.sleep(0.5)
+        base_url = OAI_DC_BASE_URL + 'resumptionToken='
+        url = base_url + token[0]
+        records += get_records(url)
     return records
 
 
