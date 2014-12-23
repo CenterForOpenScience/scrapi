@@ -57,7 +57,6 @@ def consume(days_back=1):
 
 
 def get_records(url):
-    print(url)
     data = requests.get(url)
     try:
         doc = etree.XML(data.content)
