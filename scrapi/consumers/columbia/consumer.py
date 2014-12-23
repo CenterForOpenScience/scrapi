@@ -82,7 +82,8 @@ def get_ids(doc, raw_doc):
     doi = ''
     if 'doi' in url:
         doi = url.replace('http://dx.doi.org/', '')
-
+    if url == '':
+        raise Exception('Warning: No url provided!')
     return {'url': copy_to_unicode(url), 'serviceID': service_id, 'doi': copy_to_unicode(doi)}
 
 
