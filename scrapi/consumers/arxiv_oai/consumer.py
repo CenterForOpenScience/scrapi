@@ -116,6 +116,8 @@ def get_ids(record, doc):
             url = identifier
         if 'doi' in identifier:
             doi = identifier.replace('doi:', '')
+    if url == '':
+        raise Exception('Warning: No url provided!')
 
     return {'serviceID': serviceID, 'url': copy_to_unicode(url), 'doi': copy_to_unicode(doi)}
 
