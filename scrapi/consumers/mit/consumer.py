@@ -17,7 +17,7 @@ from nameparser import HumanName
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
-NAME = u'mit'
+NAME = 'mit'
 NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/', 
               'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
               'ns0': 'http://www.openarchives.org/OAI/2.0/'}
@@ -27,7 +27,7 @@ DEFAULT_ENCODING = 'utf-8'
 record_encoding = None
 
 
-def consume(days_back=1):
+def consume(days_back=5):
     start_date = date.today() - timedelta(days_back)
     url = OAI_DC_BASE_URL + '&from=' + str(start_date)
     records = get_records(url)
@@ -40,7 +40,7 @@ def consume(days_back=1):
             'doc': record,
             'source': NAME,
             'docID': copy_to_unicode(doc_id),
-            'filetype': u'xml'
+            'filetype': 'xml'
         }))
     return xml_list
 
@@ -134,7 +134,6 @@ def get_properties(result):
     for identifier in ids:
         if 'http://' not in identifier:
             identifiers.append(unicode(identifier))
-    source = (result.xpath('//dc:source/node()', namespaces=NAMESPACES) or [''])[0]
     language = (result.xpath('//dc:language/node()', namespaces=NAMESPACES) or [''])[0]
     publisher = (result.xpath('//dc:publisher/node()', namespaces=NAMESPACES) or [''])[0]
     dcformat = (result.xpath('//dc:format/node()', namespaces=NAMESPACES) or [''])[0]
@@ -152,7 +151,6 @@ def get_properties(result):
          'publisher': copy_to_unicode(publisher),
          },
          'format': copy_to_unicode(dcformat),
-         'source': copy_to_unicode(source),
          'language': copy_to_unicode(language),
          'relation': copy_to_unicode(relation),
          'type': copy_to_unicode(dctype),
@@ -176,7 +174,7 @@ def get_date_updated(result):
     return date_updated
 
 
-def normalize(raw_doc, timestamp):
+def normalize(raw_doc):
     result = raw_doc.get('doc')
     try:
         result = etree.XML(result)
@@ -206,7 +204,6 @@ def normalize(raw_doc, timestamp):
         'source': NAME,
         'dateUpdated': copy_to_unicode(get_date_updated(result)),
         'dateCreated': copy_to_unicode(get_date_created(result)),
-        'timestamp': copy_to_unicode(timestamp),
     }
 
     # import json
