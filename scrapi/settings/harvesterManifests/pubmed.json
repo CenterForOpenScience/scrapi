@@ -1,0 +1,10 @@
+{
+    "days": "mon-sun",
+    "hour": "23",
+    "minute": "59",
+    "shortName": "pubmed",
+    "longName": "PubMed Central",
+    "url": "https://github.com/csheldonhess/PubMedCentralOAI",
+    "fileFormat": "xml",
+    "collisionCategory": 1
+}
