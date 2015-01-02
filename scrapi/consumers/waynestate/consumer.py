@@ -7,7 +7,7 @@ from lxml import etree
 from datetime import date, timedelta, datetime
 
 import requests
-
+    
 from nameparser import HumanName
 
 from dateutil.parser import *
@@ -17,7 +17,7 @@ from scrapi.linter.document import RawDocument, NormalizedDocument
 
 TODAY = date.today()
 NAME = "wayne"
-OAI_DC_BASE_URL = 'http://digitalcommons.wayne.edu/do/oai/?verb=ListRecords'
+OAI_DC_BASE_URL = 'http://digitalcommons.wayne.edu/do/oai/?verb=ListRecords'€
 NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/', 
             'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
             'ns0': 'http://www.openarchives.org/OAI/2.0/'}
