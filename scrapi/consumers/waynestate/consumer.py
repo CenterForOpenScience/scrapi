@@ -1,57 +1,52 @@
 ''' Consumer for Wayne State University -- Digital Commons '''
+
 from __future__ import unicode_literals
 
-import os
+import requests
+from datetime import date, timedelta, datetime
+from dateutil.parser import *
 import time
 from lxml import etree
-from datetime import date, timedelta, datetime
-
-import requests
-    
-from nameparser import HumanName
-
-from dateutil.parser import *
-
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
+from nameparser import HumanName
+import os
 
-TODAY = date.today()
+
 NAME = "wayne"
-OAI_DC_BASE_URL = 'http://digitalcommons.wayne.edu/do/oai/?verb=ListRecords'€
+OAI_DC_BASE_URL = 'http://digitalcommons.wayne.edu/do/oai/?verb=ListRecords'
 NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/', 
-            'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
-            'ns0': 'http://www.openarchives.org/OAI/2.0/'}
+              'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
+              'ns0': 'http://www.openarchives.org/OAI/2.0/'}
 DEFAULT = datetime(1970, 01, 01)
-DEFAULT_ENCODING = 'UTF-8'
+DEFAULT_ENCODING = 'utf-8'
+record_encoding = None
 
-request_encoding = None
 
-
-def consume(days_back=1):
-
-    start_date = TODAY - timedelta(days_back)
+def consume(days_back=5):
+    start_date = date.today() - timedelta(days_back)
     url = OAI_DC_BASE_URL + '&metadataPrefix=oai_dc&from='
-    url += str(start_date) + 'T00:00:00Z'
-    encoding_request = requests.get(url)
-    request_encoding = encoding_request.encoding
+    url += str(start_date)
     records = get_records(url)
+
     xml_list = []
     for record in records:
         set_spec = record.xpath('ns0:header/ns0:setSpec/node()', namespaces=NAMESPACES)[0]
         doc_id = record.xpath('ns0:header/ns0:identifier/node()', namespaces=NAMESPACES)[0]
-        record_string = etree.tostring(record, encoding=request_encoding)
+        record = etree.tostring(record)
         xml_list.append(RawDocument({
-                    'doc': record_string,
-                    'source': NAME,
-                    'docID': unicode(doc_id, request_encoding),
-                    'filetype': 'xml'
-                }))
+            'doc': record,
+            'source': NAME,
+            'docID': copy_to_unicode(doc_id),
+            'filetype': u'xml'
+        }))
 
     return xml_list
 
-def get_records(url):
 
+def get_records(url):
     data = requests.get(url)
+    record_encoding = data.encoding
     doc = etree.XML(data.content)
     records = doc.xpath('//ns0:record', namespaces=NAMESPACES)
     token = doc.xpath('//ns0:resumptionToken/node()', namespaces=NAMESPACES)
@@ -63,17 +58,17 @@ def get_records(url):
 
     return records
 
-def copy_to_unicode(element):
 
-    encoding = request_encoding or DEFAULT_ENCODING
+def copy_to_unicode(element):
+    encoding = record_encoding or DEFAULT_ENCODING
     element = ''.join(element)
     if isinstance(element, unicode):
         return element
     else:
         return unicode(element, encoding=encoding)
 
-def get_contributors(record):
 
+def get_contributors(record):
     contributors = record.xpath('//dc:creator/node()', namespaces=NAMESPACES)
     contributor_list = []
     for person in contributors:
@@ -84,21 +79,19 @@ def get_contributors(record):
             'middle': name.middle,
             'family': name.last,
             'suffix': name.suffix,
-            'email': '',
-            'ORCID': '',
+            'email': u'',
+            'ORCID': u'',
         }
         contributor_list.append(contributor)
     return contributor_list
 
+
 def get_tags(record):
-
-    encoding = request_encoding or DEFAULT_ENCODING
     tags = record.xpath('//dc:subject/node()', namespaces=NAMESPACES)
-
     return [copy_to_unicode(tag.lower()) for tag in tags]
 
-def get_ids(record, doc):
 
+def get_ids(record, doc):
     serviceID = doc.get('docID')
     all_urls = record.xpath('//dc:identifier/node()', namespaces=NAMESPACES)
     url = ''
@@ -108,14 +101,12 @@ def get_ids(record, doc):
     if url is '':
         raise Exception('Warning: No url provided!')
 
-    return {
-        'serviceID': serviceID, 
-        'url': copy_to_unicode(url), 'doi': ''
-    }
+    return {'serviceID': copy_to_unicode(serviceID),
+            'url': copy_to_unicode(url),
+            'doi': ''}
 
 
 def get_properties(record):
-
     publisher = (record.xpath('//dc:publisher/node()', namespaces=NAMESPACES))[0]
     source = (record.xpath('//dc:source/node()', namespaces=NAMESPACES))[0]
     type = (record.xpath('//dc:type/node()', namespaces=NAMESPACES))[0]
@@ -130,22 +121,20 @@ def get_properties(record):
     }
     return props
 
-def get_date_created(record):
 
+def get_date_created(record):
     date_created = (record.xpath('ns0:metadata/oai_dc:dc/dc:date/node()', namespaces=NAMESPACES) or [''])[0]
     a_date = parse(date_created, yearfirst=True,  default=DEFAULT).isoformat()
-    return copy_to_unicode(a_date)
+    return a_date
+
 
 def get_date_updated(record):
-
     dateupdated = (record.xpath('ns0:header/ns0:datestamp/node()', namespaces=NAMESPACES) or [''])[0]
     date_updated = parse(dateupdated).isoformat()
-    # import pdb; pdb.set_trace()
-    return copy_to_unicode(date_updated)
- 
-def normalize(raw_doc, timestamp):
+    return date_updated
 
-    encoding = request_encoding or DEFAULT_ENCODING
+
+def normalize(raw_doc):
     doc = raw_doc.get('doc')
     record = etree.XML(doc)
 
@@ -158,25 +147,28 @@ def normalize(raw_doc, timestamp):
         print('Series not in approved list, not normalizing...')
         return None
 
-    title = (record.xpath('//dc:title/node()', namespaces=NAMESPACES) or [''])[0]
-    title = copy_to_unicode(title)
+    title = record.xpath('//dc:title/node()', namespaces=NAMESPACES)[0]
 
-    description = (record.xpath('ns0:metadata/oai_dc:dc/dc:description/node()', namespaces=NAMESPACES) or [''])[0]
-    description = copy_to_unicode(description)
+    try:
+        description = record.xpath('ns0:metadata/oai_dc:dc/dc:description/node()', namespaces=NAMESPACES)[0]
+    except IndexError:
+        description = ''
 
     payload = {
-        'title': title,
+        'title': copy_to_unicode(title),
         'contributors': get_contributors(record),
         'properties': get_properties(record),
-        'description': description,
+        'description': copy_to_unicode(description),
         'tags': get_tags(record),
-        'id': get_ids(record,raw_doc),
+        'id': get_ids(record, raw_doc),
         'source': NAME,
-        'dateUpdated': get_date_updated(record),
-        'dateCreated': get_date_created(record),
-        'timestamp': timestamp
+        'dateUpdated': copy_to_unicode(get_date_updated(record)),
+        'dateCreated': copy_to_unicode(get_date_created(record)),
     }
 
+
+    # import json
+    # print(json.dumps(payload, indent=4))
     return NormalizedDocument(payload)
         
 
