@@ -30,13 +30,13 @@ def copy_to_unicode(element):
     else:
         return unicode(element, encoding=encoding)
 
-def consume(days_back=1):
+def consume(days_back=10):
     """ First, get a list of all recently updated study urls,
     then get the xml one by one and save it into a list 
     of docs including other information """
 
     today = datetime.date.today()
-    start_date = today - datetime.timedelta(1)
+    start_date = today - datetime.timedelta(days_back)
 
     month = today.strftime('%m')
     day = today.strftime('%d') 
