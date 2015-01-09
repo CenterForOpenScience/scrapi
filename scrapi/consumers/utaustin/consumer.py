@@ -17,14 +17,18 @@ from scrapi.linter.document import RawDocument, NormalizedDocument
 
 NAME = 'utaustin'
 OAI_DC_BASE_URL = 'http://repositories.lib.utexas.edu/oai/request?verb=ListRecords'
-NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/', 
-            'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
-            'ns0': 'http://www.openarchives.org/OAI/2.0/'}
+NAMESPACES = {
+    'dc': 'http://purl.org/dc/elements/1.1/',
+    'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
+    'ns0': 'http://www.openarchives.org/OAI/2.0/'
+}
+
 DEFAULT = datetime(1970, 01, 01)
 
 DEFAULT_ENCODING = 'UTF-8'
 
 record_encoding = None
+
 
 def copy_to_unicode(element):
 
@@ -34,6 +38,7 @@ def copy_to_unicode(element):
         return element
     else:
         return unicode(element, encoding=encoding)
+
 
 def consume(days_back=8):
     start_date = date.today() - timedelta(days_back)
@@ -50,18 +55,18 @@ def consume(days_back=8):
 
     xml_list = []
     for record in records:
-        set_spec = record.xpath('ns0:header/ns0:setSpec/node()', namespaces=NAMESPACES)[0]
         doc_id = record.xpath('ns0:header/ns0:identifier/node()', namespaces=NAMESPACES)[0]
         record_string = etree.tostring(record, encoding=record_encoding)
 
         xml_list.append(RawDocument({
-                    'doc': record_string,
-                    'source': NAME,
-                    'docID': copy_to_unicode(doc_id),
-                    'filetype': 'xml'
-                }))
+            'doc': record_string,
+            'source': NAME,
+            'docID': copy_to_unicode(doc_id),
+            'filetype': 'xml'
+        }))
 
     return xml_list
+
 
 def get_records(url):
     data = requests.get(url)
@@ -75,6 +80,7 @@ def get_records(url):
         records += get_records(url)
 
     return records
+
 
 def get_contributors(record):
     contributors = record.xpath('//dc:creator/node()', namespaces=NAMESPACES)
@@ -93,7 +99,7 @@ def get_contributors(record):
             'suffix': name.suffix,
             'email': '',
             'ORCID': '',
-            }
+        }
         contributor_list.append(contributor)
     return contributor_list
 
@@ -114,6 +120,7 @@ def get_ids(record, doc):
 
     return {'serviceID': serviceID, 'url': copy_to_unicode(url), 'doi': copy_to_unicode(doi)}
 
+
 def get_properties(record):
     publisher = (record.xpath('//dc:publisher/node()', namespaces=NAMESPACES) or [''])[0]
     source = (record.xpath('//dc:source/node()', namespaces=NAMESPACES) or [''])[0]
@@ -122,7 +129,6 @@ def get_properties(record):
     identifiers = record.xpath('//dc:format/node()', namespaces=NAMESPACES)
     language = (record.xpath('//dc:language/node()', namespaces=NAMESPACES) or [''])[0]
     rights = (record.xpath('//dc:rights/node()', namespaces=NAMESPACES) or [''])[0]
-
 
     unicode_identifiers = []
     for item in identifiers:
@@ -139,35 +145,37 @@ def get_properties(record):
 
     for key, value in properties.iteritems():
         properties[key] = copy_to_unicode(value)
-    properties['identifiers']= unicode_identifiers
+
+    properties['identifiers'] = unicode_identifiers
 
     return properties
+
 
 def get_date_created(record):
     date_created = (record.xpath('//dc:date/node()', namespaces=NAMESPACES) or [''])[0]
     date = parse(date_created).isoformat()
     return copy_to_unicode(date)
 
+
 def get_date_updated(record):
     dateupdated = (record.xpath('ns0:header/ns0:datestamp/node()', namespaces=NAMESPACES) or [''])[0]
     date = parse(dateupdated).isoformat()
     return copy_to_unicode(date)
 
+
 def normalize(raw_doc):
     doc = raw_doc.get('doc')
     record = etree.XML(doc)
 
-    if 'True' == 'True':
-        # # load the list of approved series_names as a file
-        with open(os.path.join(os.path.dirname(__file__), 'series_names.txt')) as series_names:
-            series_name_list = [word.replace('\n', '') for word in series_names]
+    # TODO - some of these have 2 series - what to do then? 
+    with open(os.path.join(os.path.dirname(__file__), 'series_names.txt')) as series_names:
+        series_name_list = [word.replace('\n', '') for word in series_names]
 
-        set_spec = record.xpath('ns0:header/ns0:setSpec/node()', namespaces=NAMESPACES)[0]
+    set_spec = record.xpath('ns0:header/ns0:setSpec/node()', namespaces=NAMESPACES)[0]
 
-        series = set_spec.replace('publication:', '')
-        if series not in series_name_list:
-            # print('Series {} not in approved list, not normalizing...'.format(set_spec))
-            return None
+    series = set_spec.replace('publication:', '')
+    if series not in series_name_list:
+        return None
 
     title = record.xpath('//dc:title/node()', namespaces=NAMESPACES)[0]
     description = (record.xpath('ns0:metadata/oai_dc:dc/dc:description/node()', namespaces=NAMESPACES) or [''])[0]
@@ -178,15 +186,14 @@ def normalize(raw_doc):
         'properties': get_properties(record),
         'description': copy_to_unicode(description),
         'tags': get_tags(record),
-        'id': get_ids(record,raw_doc),
+        'id': get_ids(record, raw_doc),
         'source': NAME,
         'dateUpdated': get_date_updated(record),
         'dateCreated': get_date_created(record)
     }
 
-    # import json; print(json.dumps(normalized_dict, indent=4))
     return NormalizedDocument(normalized_dict)
-        
+
 
 if __name__ == '__main__':
     print(lint(consume, normalize))
