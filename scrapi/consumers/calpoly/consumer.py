@@ -61,8 +61,6 @@ def consume(days_back=5):
 
     xml_list = []
     for record in records:
-        set_spec = record.xpath(
-            'ns0:header/ns0:setSpec/node()', namespaces=NAMESPACES)[0]
         doc_id = record.xpath(
             'ns0:header/ns0:identifier/node()', namespaces=NAMESPACES)[0]
         record_string = etree.tostring(record, encoding=record_encoding)
@@ -205,7 +203,6 @@ def normalize(raw_doc):
         'dateCreated': get_date_created(record),
     }
 
-    # import json; print(json.dumps(normalized_dict, indent=4))
     return NormalizedDocument(normalized_dict)
 
 
