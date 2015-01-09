@@ -1,5 +1,5 @@
 
-''' Consumer and Normalizer for the eScholarship Repo 
+''' Consumer and Normalizer for the eScholarship Repo
 at the University of California's California Digital Library
 '''
 
@@ -19,9 +19,11 @@ OAI_DC_BASE_URL = 'http://www.escholarship.org/uc/oai?verb=ListRecords&metadataP
 DEFAULT = datetime(1970, 01, 01)
 DEFAULT_ENCODING = 'utf-8'
 record_encoding = None
-NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/', 
-             'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
-             'ns0': 'http://www.openarchives.org/OAI/2.0/'}
+NAMESPACES = {
+    'dc': 'http://purl.org/dc/elements/1.1/',
+    'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
+    'ns0': 'http://www.openarchives.org/OAI/2.0/'
+}
 
 
 def consume(days_back=1):
@@ -53,8 +55,7 @@ def copy_to_unicode(element):
 
 def get_records(url):
     data = requests.get(url)
-    record_encoding = data.encoding
-    doc =  etree.XML(data.content)
+    doc = etree.XML(data.content)
     records = doc.xpath('//oai_dc:record', namespaces=NAMESPACES)
     return records
 
@@ -72,8 +73,9 @@ def get_contributors(result):
             'suffix': name.suffix,
             'email': u'',
             'ORCID': u'',
-            }
+        }
         contributor_list.append(contributor)
+
     return contributor_list
 
 
@@ -104,6 +106,7 @@ def get_ids(result, raw_doc):
             url = item
     if url == '':
         raise Exception('Warning: No url provided!')
+
     return {'serviceID': copy_to_unicode(service_id),
             'url': copy_to_unicode(url),
             'doi': copy_to_unicode(doi)}
@@ -122,12 +125,8 @@ def get_properties(result):
         'type': copy_to_unicode(dc_type),
         'format': copy_to_unicode(format),
         'relation': copy_to_unicode(relation),
-        'permissions': {
-            'copyrightStatement': copy_to_unicode(rights),
-        },
-        'publisherInfo': {
-          'publisher': copy_to_unicode(publisher),
-        },
+        'rights': copy_to_unicode(rights),
+        'publisher': copy_to_unicode(publisher),
         'coverage': copy_to_unicode(coverage),
         'citation': copy_to_unicode(citation),
     }
@@ -156,7 +155,7 @@ def normalize(raw_doc):
 
     title = (result.xpath('//dc:title/node()', namespaces=NAMESPACES) or [''])[0]
     description = (result.xpath('//dc:description/node()', namespaces=NAMESPACES) or [''])[0]
-    description = description.replace(u'\u00a0', ' ') # someone put in a bunch of non-breaking spaces
+    description = description.replace(u'\u00a0', ' ')  # TODO someone put in a bunch of non-breaking spaces
 
     payload = {
         'title': copy_to_unicode(title),
@@ -170,9 +169,8 @@ def normalize(raw_doc):
         'dateCreated': copy_to_unicode(get_date_created(result)),
     }
 
-    # import json; print(json.dumps(payload['tags'], indent=4))
     return NormalizedDocument(payload)
-        
+
 
 if __name__ == '__main__':
     print(lint(consume, normalize))
