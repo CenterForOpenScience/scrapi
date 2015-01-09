@@ -25,6 +25,8 @@ DEFAULT_ENCODING = 'UTF-8'
 record_encoding = None
 
 OAI_DC_BASE_URL = 'http://digital.library.txstate.edu/oai/request?verb=ListRecords'
+
+
 def copy_to_unicode(element):
 
     encoding = record_encoding or DEFAULT_ENCODING
@@ -35,7 +37,7 @@ def copy_to_unicode(element):
         return unicode(element, encoding=encoding)
 
 
-def consume(days_back=10):
+def consume(days_back=15):
     start_date = str(date.today() - timedelta(days_back))
     # YYYY-MM-DD hh:mm:ss
     url = OAI_DC_BASE_URL + '&metadataPrefix=oai_dc&from=' + start_date + ' 00:00:00'
@@ -68,6 +70,7 @@ def get_records(url):
         time.sleep(0.5)
         base_url = OAI_DC_BASE_URL + '&resumptionToken='
         url = base_url + token[0]
+        print(url)
         records += get_records(url)
 
     return records
@@ -131,18 +134,13 @@ def get_properties(result):
     relation = (result.xpath('//dc:relation/node()', namespaces=NAMESPACES) or [''])[0]
     language = (result.xpath('//dc:language/node()', namespaces=NAMESPACES) or [''])[0]
     dates = result.xpath('//dc:date/node()', namespaces=NAMESPACES) or ['']
-    set_spec = result.xpath('ns0:header/ns0:setSpec/node()', namespaces=NAMESPACES)[0]
     props = {
         'type': copy_to_unicode(result_type),
         'dates': copy_to_unicode(dates),
         'language': copy_to_unicode(language),
         'relation': copy_to_unicode(relation),
-        'publisherInfo': {
-            'publisher': copy_to_unicode(publisher),
-        },
-        'permissions': {
-            'copyrightStatement': copy_to_unicode(copyright),
-        }
+        'publisher': copy_to_unicode(publisher),
+        'copyrightStatement': copy_to_unicode(copyright),
     }
     return props
 
