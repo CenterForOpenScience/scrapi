@@ -8,17 +8,16 @@ from datetime import date, timedelta, datetime
 
 import requests
 
-from lxml import etree 
-
-from dateutil.parser import *
+from lxml import etree
 
 from nameparser import HumanName
+from dateutil.parser import parse
 
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
 NAME = 'mit'
-NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/', 
+NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/',
               'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
               'ns0': 'http://www.openarchives.org/OAI/2.0/'}
 OAI_DC_BASE_URL = 'http://dspace.mit.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc'
@@ -47,7 +46,6 @@ def consume(days_back=5):
 
 def get_records(url):
     data = requests.get(url)
-    record_encoding = data.encoding
     doc = etree.XML(data.content)
     records = doc.xpath('//ns0:record', namespaces=NAMESPACES)
     token = doc.xpath('//ns0:resumptionToken/node()', namespaces=NAMESPACES)
@@ -125,9 +123,9 @@ def get_ids(result, doc):
 def get_properties(result):
     rights = result.xpath('//dc:rights/node()', namespaces=NAMESPACES) or ['']
     if len(rights) > 1:
-        copyrightt = ' '.join(rights)
+        copyright = ' '.join(rights)
     else:
-        copyrightt = rights
+        copyright = rights
     ids = result.xpath('//dc:identifier/node()', namespaces=NAMESPACES) or ['']
     ids += result.xpath('//dc:relation/node()', namespaces=NAMESPACES)
     identifiers = []
@@ -142,19 +140,16 @@ def get_properties(result):
     if len(dctype) > 1:
         dctype = ' '.join(dctype)
 
-    props = {'permissions':
-         {
-              'copyrightStatement': copy_to_unicode(copyrightt),
-         },
-         'identifiers': identifiers,
-         'publisherInfo': {
-         'publisher': copy_to_unicode(publisher),
-         },
-         'format': copy_to_unicode(dcformat),
-         'language': copy_to_unicode(language),
-         'relation': copy_to_unicode(relation),
-         'type': copy_to_unicode(dctype),
-     }
+    props = {
+        'copyrightStatement': copy_to_unicode(copyright),
+        'identifiers': identifiers,
+        'publisher': copy_to_unicode(publisher),
+        'format': copy_to_unicode(dcformat),
+        'language': copy_to_unicode(language),
+        'relation': copy_to_unicode(relation),
+        'type': copy_to_unicode(dctype)
+    }
+
     return props
 
 
@@ -206,8 +201,6 @@ def normalize(raw_doc):
         'dateCreated': copy_to_unicode(get_date_created(result)),
     }
 
-    # import json
-    # print(json.dumps(payload, indent=4))
     return NormalizedDocument(payload)
 
 
