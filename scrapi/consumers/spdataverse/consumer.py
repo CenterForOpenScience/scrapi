@@ -1,7 +1,6 @@
 ''' Consumer for ScholarsPortalDataverse '''
 from __future__ import unicode_literals
 
-import os
 import time
 from lxml import etree
 from datetime import date, timedelta, datetime
@@ -28,7 +27,6 @@ record_encoding = None
 
 
 def copy_to_unicode(element):
-
     encoding = record_encoding or DEFAULT_ENCODING
     element = ''.join(element)
     if isinstance(element, unicode):
@@ -141,7 +139,7 @@ def get_properties(record):
         'format': record_format,
         'relation': relation,
         'descriptions': descriptions,
-        'coverage': coverage, 
+        'coverage': coverage,
         'rights': rights
     }
 
