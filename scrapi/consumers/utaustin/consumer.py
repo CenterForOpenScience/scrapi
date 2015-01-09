@@ -167,7 +167,7 @@ def normalize(raw_doc):
     doc = raw_doc.get('doc')
     record = etree.XML(doc)
 
-    # TODO - some of these have 2 series - what to do then? 
+    # TODO - some of these have 2 series - what to do then?
     with open(os.path.join(os.path.dirname(__file__), 'series_names.txt')) as series_names:
         series_name_list = [word.replace('\n', '') for word in series_names]
 
