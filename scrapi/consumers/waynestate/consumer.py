@@ -15,7 +15,7 @@ import os
 
 NAME = "wayne"
 OAI_DC_BASE_URL = 'http://digitalcommons.wayne.edu/do/oai/?verb=ListRecords'
-NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/', 
+NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/',
               'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
               'ns0': 'http://www.openarchives.org/OAI/2.0/'}
 DEFAULT = datetime(1970, 01, 01)
@@ -31,7 +31,6 @@ def consume(days_back=5):
 
     xml_list = []
     for record in records:
-        set_spec = record.xpath('ns0:header/ns0:setSpec/node()', namespaces=NAMESPACES)[0]
         doc_id = record.xpath('ns0:header/ns0:identifier/node()', namespaces=NAMESPACES)[0]
         record = etree.tostring(record)
         xml_list.append(RawDocument({
@@ -46,7 +45,6 @@ def consume(days_back=5):
 
 def get_records(url):
     data = requests.get(url)
-    record_encoding = data.encoding
     doc = etree.XML(data.content)
     records = doc.xpath('//ns0:record', namespaces=NAMESPACES)
     token = doc.xpath('//ns0:resumptionToken/node()', namespaces=NAMESPACES)
@@ -166,11 +164,7 @@ def normalize(raw_doc):
         'dateCreated': copy_to_unicode(get_date_created(record)),
     }
 
-
-    # import json
-    # print(json.dumps(payload, indent=4))
     return NormalizedDocument(payload)
-        
 
 if __name__ == '__main__':
     print(lint(consume, normalize))

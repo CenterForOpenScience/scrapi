@@ -1,0 +1,10 @@
+{
+    "days": "mon-sun",
+    "hour": "23",
+    "minute": "59",
+    "shortName": "waynestate",
+    "longName": "DigitalCommons@WayneState",
+    "url": "https://github.com/erinspace/DigitalCommonsWayneState.git",
+    "fileFormat": "xml",
+    "collisionCategory": 1
+}
