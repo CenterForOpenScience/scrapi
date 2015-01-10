@@ -104,8 +104,8 @@ def test_contrib_deleted_if_resource(mock_detect_collisions, mock_already_proces
     normed = deepcopy(NORMALIZED)
     resource = deepcopy(RECORD)
 
-    httpretty.register_uri(httpretty.POST, re.compile('{}/.*'.format(settings.OSF_PREFIX)), body=json.dumps(RECORD))
     httpretty.register_uri(httpretty.PUT, re.compile('{}/.*'.format(settings.OSF_PREFIX)))
+    httpretty.register_uri(httpretty.POST, re.compile('{}/.*'.format(settings.OSF_PREFIX)), body=json.dumps(RECORD))
 
     mock_already_processed.return_value = False,  md5().hexdigest()
 

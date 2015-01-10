@@ -76,13 +76,13 @@ def show_tutorial():
 @app.route('/api/v1/share/', methods=['POST'])
 def process_incoming_metadata():
     data = request.get_json()
-    auth = request.authorization
+    auth = request.authorization or {}
     url = '{0}auth/'.format(settings.OSF_APP_URL)
 
     osf_auth = requests.post(url, auth=settings.OSF_AUTH, headers=HEADERS,
-                             data=json.dumps({'key': auth['password']})).json()
+                             data=json.dumps({'key': auth.get('password')})).json()
 
-    if 'write' not in osf_auth['permissions']:
+    if 'write' not in osf_auth.get('permissions', []):
         return abort(http.UNAUTHORIZED)
 
     try:
