@@ -86,7 +86,7 @@ def process_incoming_metadata():
         return abort(http.UNAUTHORIZED)
 
     try:
-        process = process_metadata.process_api_input(data['events'])
+        process_metadata.process_api_input(data['events'])
     except TypeError as e:
         return jsonify({'message': e.message}), http.BAD_REQUEST
 

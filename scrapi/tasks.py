@@ -81,7 +81,7 @@ def consume(consumer_name, job_created, days_back=1):
 
 @app.task
 def begin_normalization(consume_ret, consumer_name):
-    ''' consume_ret is consume return value: 
+    '''consume_ret is consume return value:
         a tuple contaiing list of rawDocuments and
         a dictionary of timestamps
     '''
@@ -116,6 +116,7 @@ def begin_normalization(consume_ret, consumer_name):
         events.dispatch(events.PROCESSING, events.CREATED,
                         consumer=consumer_name, docID=raw['docID'])
 
+
 @app.task
 def process_raw(raw_doc, **kwargs):
     events.dispatch(events.PROCESSING, events.STARTED,
@@ -141,7 +142,7 @@ def normalize(raw_doc, consumer_name):
         normalized = consumer.normalize(raw_doc)
     except Exception as e:
         events.dispatch(events.NORMALIZATION, events.FAILED,
-                consumer=consumer_name, docID=raw_doc['docID'], exception=repr(e))
+                        consumer=consumer_name, docID=raw_doc['docID'], exception=repr(e))
         raise
 
     if not normalized:
@@ -158,13 +159,15 @@ def normalize(raw_doc, consumer_name):
     normalized['timestamps'] = raw_doc['timestamps']
     normalized['timestamps']['normalizeFinished'] = timestamp()
 
+    normalized['dateCollected'] = normalized['timestamps']['normalizeFinished']
+
     normalized['raw'] = '{url}/{archive}{source}/{doc_id}/{consumeFinished}/raw.{raw_format}'.format(
         url=settings.SCRAPI_URL,
         archive=settings.ARCHIVE_DIRECTORY,
         source=normalized['source'],
         doc_id=b64encode(raw_doc['docID']),
         consumeFinished=normalized['timestamps']['consumeFinished'],
-        raw_format= raw_doc['filetype']
+        raw_format=raw_doc['filetype']
     )
 
     # returns a single normalized document

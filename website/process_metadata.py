@@ -4,21 +4,15 @@
 """
 from __future__ import unicode_literals
 
-import copy
 import json
 import logging
-import requests
-import datetime
 from base64 import b64encode
 
 from scrapi import tasks
 from scrapi import events
 from scrapi import settings
-
-from scrapi.linter import lint
-from scrapi.linter.document import RawDocument, NormalizedDocument
-
 from scrapi.util import timestamp
+from scrapi.linter.document import RawDocument, NormalizedDocument
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
@@ -62,7 +56,7 @@ def process_api_input(events):
 
 def consume(event_list):
     ''' takes a list of input from the api route,
-    returns a list of raw documents 
+    returns a list of raw documents
     '''
 
     return [
@@ -77,7 +71,7 @@ def consume(event_list):
 
 
 def task_consume(raw_documents):
-    ''' takes in the raw_doc_list and emulates the 
+    ''' takes in the raw_doc_list and emulates the
     normal scrapi consume task, adding appropriate
     timestamps and returning a tuple consisting
     of the raw doc list and the dict of timestamps
@@ -112,6 +106,8 @@ def task_normalize(raw_doc):
 
     normalized['timestamps'] = raw_doc['timestamps']
     normalized['timestamps']['normalizeFinished'] = timestamp()
+
+    normalized['dateCollected'] = normalized['timestamps']['normalizeFinished']
 
     normalized['raw'] = '{url}/{archive}{source}/{doc_id}/{consumeFinished}/raw.json'.format(
         url=settings.SCRAPI_URL,
