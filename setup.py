@@ -5,7 +5,7 @@ setup(
     version='0.5.4',
     author='Chris Seto',
     author_email='Chris@seto.xyz',
-    packages=['scrapi.linter'],
+    packages=['scrapi.linter', 'scrapi.base'],
     package_data={'scrapi.linter': ['../__init__.py']},
     url='http://www.github.com/chrisseto/scrapi',
     license='LICENSE.txt',
