@@ -159,7 +159,7 @@ def normalize(raw_doc, consumer_name):
     normalized['timestamps'] = raw_doc['timestamps']
     normalized['timestamps']['normalizeFinished'] = timestamp()
 
-    normalized['dateCollected'] = normalized['timestamps']['normalizeFinished']
+    normalized['dateCollected'] = normalized['timestamps']['consumeFinished']
 
     normalized['raw'] = '{url}/{archive}{source}/{doc_id}/{consumeFinished}/raw.{raw_format}'.format(
         url=settings.SCRAPI_URL,
