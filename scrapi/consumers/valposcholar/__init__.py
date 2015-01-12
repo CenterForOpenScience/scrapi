@@ -8,5 +8,5 @@ valposcholar = OAIHarvester(
     approved_sets=True
 )
 
-consume = valposcholar.consume
+consume = valposcholar.harvest
 normalize = valposcholar.normalize
