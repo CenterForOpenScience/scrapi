@@ -85,6 +85,9 @@ def process_incoming_metadata():
     if 'write' not in osf_auth.get('permissions', []):
         return abort(http.UNAUTHORIZED)
 
+    if data.get('source') in settings.MANIFESTS.keys():
+        return abort(http.BAD_REQUEST)
+
     try:
         process = process_metadata.process_api_input(data['events'])
     except TypeError as e:
