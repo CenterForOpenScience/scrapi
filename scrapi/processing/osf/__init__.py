@@ -69,7 +69,6 @@ class OSFProcessor(BaseProcessor):
             'url': report['id']['url']
         })
 
-
         resource['meta']['uids'] = list(set(resource['meta'].get('uids', []) + resource_hash))
 
         crud.update_metadata(resource['_id'], resource)
