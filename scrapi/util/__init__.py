@@ -3,8 +3,11 @@ import errno
 import importlib
 from datetime import datetime
 
+import pytz
 
-timestamp = lambda: datetime.utcnow().isoformat().decode('utf-8')
+
+def timestamp():
+    return pytz.utc.localize(datetime.utcnow()).isoformat().decode('utf-8')
 
 
 def import_consumer(consumer_name):
