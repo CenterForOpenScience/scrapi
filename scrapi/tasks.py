@@ -38,13 +38,24 @@ def run_consumer(consumer_name, days_back=1):
     chain.apply_async()
 
     # Note: Dispatch events only after they run
-    events.dispatch(events.CONSUMER_RUN, events.CREATED, consumer=consumer_name)
+    events.dispatch(
+        events.CONSUMER_RUN,
+        events.CREATED,
+        days_back=days_back,
+        consumer=consumer_name,
+    )
 
 
 @app.task
 def consume(consumer_name, job_created, days_back=1):
     logger.info('Consumer "{}" has begun consumption'.format(consumer_name))
-    events.dispatch(events.CONSUMER_RUN, events.STARTED, consumer=consumer_name)
+    events.dispatch(
+        events.CONSUMER_RUN,
+        events.STARTED,
+        days_back=days_back,
+        consumer=consumer_name,
+        job_created=job_created
+    )
 
     timestamps = {
         'consumeTaskCreated': job_created,
@@ -66,14 +77,25 @@ def consume(consumer_name, job_created, days_back=1):
         else:
             result = consumer.consume(days_back=days_back)
     except Exception as e:
-        events.dispatch(events.CONSUMER_RUN, events.FAILED,
-                        consumer=consumer_name, exception=repr(e))
+        events.dispatch(
+            events.CONSUMER_RUN,
+            events.FAILED,
+            exception=repr(e),
+            days_back=days_back,
+            consumer=consumer_name,
+            job_created=job_created
+        )
         raise
 
     timestamps['consumeFinished'] = timestamp()
 
     logger.info('Consumer "{}" has finished consumption'.format(consumer_name))
-    events.dispatch(events.CONSUMER_RUN, events.COMPLETED, consumer=consumer_name, number=len(result))
+    events.dispatch(
+        events.CONSUMER_RUN,
+        events.COMPLETED,
+        consumer=consumer_name,
+        number=len(result)
+    )
 
     # result is a list of all of the RawDocuments consumed
     return result, timestamps
@@ -111,20 +133,20 @@ def begin_normalization(consume_ret, consumer_name):
         # Note: Dispatch events only AFTER the event has actually happened
 
         events.dispatch(events.NORMALIZATION, events.CREATED,
-                        consumer=consumer_name, docID=raw['docID'])
+                        consumer=consumer_name, **raw.attributes)
 
         events.dispatch(events.PROCESSING, events.CREATED,
-                        consumer=consumer_name, docID=raw['docID'])
+                        consumer=consumer_name, **raw.attributes)
 
 
 @app.task
 def process_raw(raw_doc, **kwargs):
     events.dispatch(events.PROCESSING, events.STARTED,
-                    _index='raw', docID=raw_doc['docID'])
+                    _index='raw', **raw_doc.attributes)
     processing.process_raw(raw_doc, kwargs)
 
     events.dispatch(events.PROCESSING, events.COMPLETED,
-                    _index='raw', docID=raw_doc['docID'])
+                    _index='raw', **raw_doc.attributes)
 
 
 @app.task
@@ -137,24 +159,37 @@ def normalize(raw_doc, consumer_name):
         consumer_name, raw_doc['docID']))
 
     events.dispatch(events.NORMALIZATION, events.STARTED,
-                    consumer=consumer_name, docID=raw_doc['docID'])
+                    consumer=consumer_name, **raw_doc.attributes)
     try:
         normalized = consumer.normalize(raw_doc)
     except Exception as e:
-        events.dispatch(events.NORMALIZATION, events.FAILED,
-                        consumer=consumer_name, docID=raw_doc['docID'], exception=repr(e))
+        events.dispatch(
+            events.NORMALIZATION,
+            events.FAILED,
+            consumer=consumer_name,
+            exception=repr(e),
+            **raw_doc.attributes
+        )
         raise
 
     if not normalized:
-        events.dispatch(events.NORMALIZATION, events.SKIPPED, consumer=consumer_name, docID=raw_doc['docID'])
-        logger.warning('Did not normalize document [{}]{}'.format(consumer_name, raw_doc['docID']))
+        events.dispatch(events.NORMALIZATION, events.SKIPPED,
+                        consumer=consumer_name, **raw_doc.attributes)
+        logger.warning
+        (
+            'Did not normalize document [{}]{}'.format
+            (
+                consumer_name,
+                raw_doc['docID']
+            )
+        )
         return None
 
     logger.debug('Document {}/{} normalized sucessfully'.format(
         consumer_name, raw_doc['docID']))
 
     events.dispatch(events.NORMALIZATION, events.COMPLETED,
-                    consumer=consumer_name, docID=raw_doc['docID'])
+                    consumer=consumer_name, **raw_doc.attributes)
 
     normalized['timestamps'] = raw_doc['timestamps']
     normalized['timestamps']['normalizeFinished'] = timestamp()
@@ -177,15 +212,29 @@ def normalize(raw_doc, consumer_name):
 @app.task
 def process_normalized(normalized_doc, raw_doc, **kwargs):
     if not normalized_doc:
-        events.dispatch(events.PROCESSING, events.SKIPPED, docID=raw_doc['docID'])
+        events.dispatch(
+            events.PROCESSING,
+            events.SKIPPED,
+            **raw_doc.attributes
+        )
         logger.warning('Not processing document with id {}'.format(raw_doc['docID']))
         return
 
-    events.dispatch(events.PROCESSING, events.STARTED, docID=raw_doc['docID'], _index='normalized')
+    events.dispatch(
+        events.PROCESSING,
+        events.STARTED,
+        _index='normalized',
+        **raw_doc.attributes
+    )
 
     processing.process_normalized(raw_doc, normalized_doc, kwargs)
 
-    events.dispatch(events.PROCESSING, events.COMPLETED, docID=raw_doc['docID'], _index='normalized')
+    events.dispatch(
+        events.PROCESSING,
+        events.COMPLETED,
+        _index='normalized',
+        **raw_doc.attributes
+    )
 
 
 @app.task
