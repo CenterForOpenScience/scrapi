@@ -3,6 +3,7 @@ import json
 import shutil
 import platform
 import subprocess
+import logging
 
 from invoke import run, task
 
@@ -10,6 +11,7 @@ from scrapi import linter
 from scrapi import settings
 from scrapi.util import import_consumer
 
+logger = logging.getLogger()
 
 @task
 def server():
@@ -130,8 +132,17 @@ def consumers(async=False, days=1):
     settings.CELERY_ALWAYS_EAGER = not async
     from scrapi.tasks import run_consumer
 
+    exceptions = []
     for consumer_name in settings.MANIFESTS.keys():
-        run_consumer.delay(consumer_name, days_back=days)
+        try:
+            run_consumer.delay(consumer_name, days_back=days)
+        except Exception as e:
+            logger.exception(e)
+            exceptions.append(e)
+
+    logger.info("\n\nNumber of exceptions: {}".format(len(exceptions)))
+    for exception in exceptions:
+        logger.exception(e)
 
 
 @task
