@@ -3,6 +3,8 @@ import pytest
 
 from scrapi import tasks
 from scrapi import events
+from scrapi.linter import RawDocument
+from scrapi.linter import NormalizedDocument
 
 
 BLACKHOLE = lambda *_, **__: None
@@ -13,6 +15,29 @@ def dispatch(monkeypatch):
     event_mock = mock.MagicMock()
     monkeypatch.setattr('scrapi.events.dispatch', event_mock)
     return event_mock
+
+
+@pytest.fixture
+def raw_doc():
+    return RawDocument({
+        'doc': 'bar',
+        'docID': u'foo',
+        'source': u'test',
+        'filetype': u'xml',
+    })
+
+
+@pytest.fixture
+def raw_docs():
+    return [
+        RawDocument({
+            'doc': str(x),
+            'docID': unicode(x),
+            'source': u'test',
+            'filetype': u'xml',
+        })
+        for x in xrange(11)
+    ]
 
 
 def test_run_consumer_calls(monkeypatch, dispatch):
@@ -78,11 +103,17 @@ def test_consume_raises(dispatch, consumer):
 
     assert e.value.message == 'testing'
     assert dispatch.called
-    dispatch.assert_called_with(events.CONSUMER_RUN, events.FAILED,
-            consumer='test', exception=repr(e.value))
+    dispatch.assert_called_with(
+        events.CONSUMER_RUN,
+        events.FAILED,
+        days_back=1,
+        consumer='test',
+        job_created='TIME',
+        exception=repr(e.value),
+    )
 
 
-def test_begin_normalize_starts(monkeypatch, dispatch):
+def test_begin_normalize_starts(raw_docs, monkeypatch, dispatch):
     mock_norm = mock.MagicMock()
     mock_praw = mock.MagicMock()
     mock_pnorm = mock.MagicMock()
@@ -92,8 +123,6 @@ def test_begin_normalize_starts(monkeypatch, dispatch):
     monkeypatch.setattr('scrapi.tasks.process_normalized', mock_pnorm)
 
     timestamps = {}
-    raw_docs = [{'docID': x} for x in xrange(11)]
-
     tasks.begin_normalization((raw_docs, timestamps), 'test')
 
     assert dispatch.call_count == 22
@@ -107,13 +136,12 @@ def test_begin_normalize_starts(monkeypatch, dispatch):
         mock_norm.si.assert_any_call(x, 'test')
 
 
-def test_begin_normalize_logging(monkeypatch, dispatch):
+def test_begin_normalize_logging(raw_docs, monkeypatch, dispatch):
     monkeypatch.setattr('scrapi.tasks.normalize.si', mock.MagicMock())
     monkeypatch.setattr('scrapi.tasks.process_raw.delay', BLACKHOLE)
     monkeypatch.setattr('scrapi.tasks.process_normalized.s', BLACKHOLE)
 
     timestamps = {}
-    raw_docs = [{'docID': x} for x in xrange(11)]
 
     tasks.begin_normalization((raw_docs, timestamps), 'test')
 
@@ -121,58 +149,52 @@ def test_begin_normalize_logging(monkeypatch, dispatch):
 
     for x in raw_docs:
         dispatch.assert_any_call(events.NORMALIZATION,
-                events.CREATED, consumer='test', docID=x['docID'])
+                events.CREATED, consumer='test', **x.attributes)
         dispatch.assert_any_call(events.PROCESSING,
-                events.CREATED, consumer='test', docID=x['docID'])
+                events.CREATED, consumer='test', **x.attributes)
 
 
-def test_process_raw_calls(monkeypatch):
+def test_process_raw_calls(raw_doc, monkeypatch):
     pmock = mock.Mock()
-    raw = {'docID': 'foo'}
 
     monkeypatch.setattr('scrapi.tasks.processing.process_raw', pmock)
 
-    tasks.process_raw(raw)
+    tasks.process_raw(raw_doc)
 
-    pmock.assert_called_once_with(raw, {})
+    pmock.assert_called_once_with(raw_doc, {})
 
 
-def test_process_raw_logging(dispatch, monkeypatch):
-    raw = {'docID': 'foo'}
-
+def test_process_raw_logging(raw_doc, dispatch, monkeypatch):
     monkeypatch.setattr('scrapi.tasks.processing.process_raw', BLACKHOLE)
 
-    tasks.process_raw(raw)
+    tasks.process_raw(raw_doc)
 
     calls = [
-        mock.call(events.PROCESSING, events.STARTED, _index='raw', docID='foo'),
-        mock.call(events.PROCESSING, events.COMPLETED, _index='raw', docID='foo')
+        mock.call(events.PROCESSING, events.STARTED, _index='raw', **raw_doc.attributes),
+        mock.call(events.PROCESSING, events.COMPLETED, _index='raw', **raw_doc.attributes)
     ]
 
     dispatch.assert_has_calls(calls)
 
 
-def test_process_norm_calls(monkeypatch):
+def test_process_norm_calls(raw_doc, monkeypatch):
     pmock = mock.Mock()
-    raw = {'docID': 'foo'}
 
     monkeypatch.setattr('scrapi.tasks.processing.process_normalized', pmock)
 
-    tasks.process_normalized(raw, raw)
+    tasks.process_normalized(raw_doc, raw_doc)
 
-    pmock.assert_called_once_with(raw, raw, {})
+    pmock.assert_called_once_with(raw_doc, raw_doc, {})
 
 
-def test_process_norm_logging(dispatch, monkeypatch):
-    raw = {'docID': 'foo'}
-
+def test_process_norm_logging(raw_doc, dispatch, monkeypatch):
     monkeypatch.setattr('scrapi.tasks.processing.process_normalized', BLACKHOLE)
 
-    tasks.process_normalized(raw, raw)
+    tasks.process_normalized(raw_doc, raw_doc)
 
     calls = [
-        mock.call(events.PROCESSING, events.STARTED, _index='normalized', docID='foo'),
-        mock.call(events.PROCESSING, events.COMPLETED, _index='normalized', docID='foo')
+        mock.call(events.PROCESSING, events.STARTED, _index='normalized', **raw_doc.attributes),
+        mock.call(events.PROCESSING, events.COMPLETED, _index='normalized', **raw_doc.attributes)
     ]
 
     dispatch.assert_has_calls(calls)

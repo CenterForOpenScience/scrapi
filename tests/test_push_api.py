@@ -59,6 +59,8 @@ API_INPUT = {
 RAW_DOC = {
     'doc': json.dumps(API_INPUT['events'][0]),
     'docID': 'someID',
+    'source': 'test',
+    'filetype': 'xml',
     'timestamps': {
         'consumeFinished': '2012-11-30T17:05:48+00:00',
         'consumeStarted': '2012-11-30T17:05:48+00:00',
@@ -151,7 +153,7 @@ def test_process_api_input_calls(mock_task_consume, mock_consume):
 
     httpretty.register_uri(httpretty.POST, re.compile('.*'), body=json.dumps(API_INPUT))
 
-    mock_task_consume.return_value = ([RAW_DOC], TIMESTAMPS)
+    mock_task_consume.return_value = ([RawDocument(RAW_DOC)], TIMESTAMPS)
 
     process_metadata.process_api_input(API_INPUT['events'])
 
