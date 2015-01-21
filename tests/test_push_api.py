@@ -7,6 +7,8 @@ import pytest
 import httpretty
 from datetime import datetime
 
+from dateutil import parser
+
 from scrapi import events
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
@@ -100,8 +102,8 @@ def test_task_consume_returns_timestamps():
     assert sorted(timestamps.keys()) == [
         'consumeFinished', 'consumeStarted', 'consumeTaskCreated']
 
-    for key, value in timestamps.iteritems():
-        datetime_obj = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
+    for value in timestamps.itervalues():
+        datetime_obj = parser.parse(value)
 
         assert isinstance(datetime_obj, datetime)
 
