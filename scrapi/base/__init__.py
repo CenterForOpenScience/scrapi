@@ -24,6 +24,15 @@ class BaseHarvester(object):
     def normalize(self, raw_doc):
         pass
 
+    def copy_to_unicode(self, element):
+        encoding = self.record_encoding or self.DEFAULT_ENCODING
+        element = ''.join(element)
+        if isinstance(element, unicode):
+            return element
+        else:
+            return unicode(element, encoding=encoding)
+
+
 
 class OAIHarvester(BaseHarvester):
 
@@ -46,15 +55,6 @@ class OAIHarvester(BaseHarvester):
         self.base_url = base_url
         self.property_list = property_list or ['date', 'language', 'type']
         self.approved_sets = approved_sets
-
-    def copy_to_unicode(self, element):
-
-        encoding = self.record_encoding or self.DEFAULT_ENCODING
-        element = ''.join(element)
-        if isinstance(element, unicode):
-            return element
-        else:
-            return unicode(element, encoding=encoding)
 
     def harvest(self, days_back):
 
