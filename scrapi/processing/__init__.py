@@ -21,9 +21,9 @@ from . import *
 
 
 def process_normalized(raw_doc, normalized, kwargs):
-    ''' kwargs is a dictiorary of kwargs. 
+    ''' kwargs is a dictiorary of kwargs.
         keyed by the processor name
-        Exists so that when we run check archive we 
+        Exists so that when we run check archive we
         specifiy that it's ok to overrite certain files
     '''
     for p in settings.NORMALIZED_PROCESSING:
