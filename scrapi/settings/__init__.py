@@ -1,10 +1,8 @@
 """
     Configuration file for celerybeat/worker.
 
-    Dynamically adds consumers from all manifest files in worker_manager/manifests/
-    to the celerybeat schedule. Also adds a heartbeat function to the schedule,
-    which adds every 30 seconds, and a monthly task to normalize all non-normalized
-    documents.
+    Dynamically adds consumers from all manifest files in consumerManifests
+    to the celerybeat schedule.
 """
 import os
 import json
@@ -47,7 +45,7 @@ def create_schedule():
     schedule = {}
     for consumer_name, manifest in MANIFESTS.items():
         cron = crontab(day_of_week=manifest['days'],
-            hour=manifest['hour'], minute=manifest['minute'])
+                       hour=manifest['hour'], minute=manifest['minute'])
 
         schedule['run_{}'.format(consumer_name)] = {
             'task': 'scrapi.tasks.run_consumer',
