@@ -5,6 +5,6 @@
     "longName": "CrossRef",
     "shortName": "crossref",
     "url": "https://github.com/erinspace/CrossRef.git",
-    "fileFormat": "xml",
+    "fileFormat": "json",
     "collisionCategory": 0
 }
