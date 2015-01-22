@@ -179,12 +179,6 @@ class OAIHarvester(BaseHarvester):
 
         return properties
 
-    def get_date_created(self, result):
-        dates = (
-            result.xpath('//dc:date/node()', namespaces=self.NAMESPACES) or [''])
-        date = self.copy_to_unicode(dates[0])
-        return date
-
     def get_date_updated(self, result):
         dateupdated = result.xpath(
             '//ns0:header/ns0:datestamp/node()', namespaces=self.NAMESPACES)[0]
@@ -221,8 +215,7 @@ class OAIHarvester(BaseHarvester):
             'contributors': self.get_contributors(result),
             'tags': self.get_tags(result),
             'properties': self.get_properties(result, self.property_list),
-            'dateUpdated': self.get_date_updated(result),
-            'dateCreated': self.get_date_created(result)
+            'dateUpdated': self.get_date_updated(result)
         }
 
         return NormalizedDocument(payload)
