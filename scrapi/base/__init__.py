@@ -1,7 +1,6 @@
 # Classes for scrAPI Harvesters
 from __future__ import unicode_literals
 
-import os
 import time
 from dateutil.parser import parse
 from datetime import date, timedelta
@@ -31,7 +30,6 @@ class BaseHarvester(object):
             return element
         else:
             return unicode(element, encoding=encoding)
-
 
 
 class OAIHarvester(BaseHarvester):
