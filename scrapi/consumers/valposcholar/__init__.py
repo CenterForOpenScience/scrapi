@@ -46,4 +46,3 @@ valposcholar = OAIHarvester(
 
 consume = valposcholar.harvest
 normalize = valposcholar.normalize
-''
