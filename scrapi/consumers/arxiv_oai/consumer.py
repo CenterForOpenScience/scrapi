@@ -65,7 +65,6 @@ def consume(days_back=1):
 
 
 def get_records(url):
-    print(url)
     data = requests.get(url)
     doc = etree.XML(data.content)
     records = doc.xpath('//ns0:record', namespaces=NAMESPACES)
