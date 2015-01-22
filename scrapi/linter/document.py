@@ -64,6 +64,5 @@ class NormalizedDocument(BaseDocument):
         'source': unicode,
         'description': unicode,
         'tags': [unicode],
-        'dateUpdated': unicode,
-        'dateCreated': unicode
+        'dateUpdated': unicode
     }
