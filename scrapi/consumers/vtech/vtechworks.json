@@ -2,7 +2,7 @@
     "days": "mon-fri", 
     "shortName": "vtechworks",
     "fileFormat": "xml", 
-    "url": "https://github.com/csheldonhess/VT-consumer.git",
+    "url": "https://github.com/erinspace/VT-consumer.git",
     "hour": 21,
     "minute": 59, 
     "longName": "Virginia Tech VTechWorks"
