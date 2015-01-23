@@ -1,10 +1,9 @@
 {
     "days": "mon-sun",
-    "shortName": "uceschol",
+    "shortName": "ucescholership",
     "fileFormat": "xml", 
     "url": "https://github.com/erinspace/eScholarship.git",
     "hour": 21,
     "minute": 59, 
-    "longName": "California Digital Library eScholarship System",
-    "collisionCategory": 1
+    "longName": "California Digital Library eScholarship System"
 }
