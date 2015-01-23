@@ -5,7 +5,7 @@ from scrapi.base import OAIHarvester
 
 mit = OAIHarvester(
     name='mit',
-    base_url='http://dspace.mit.edu/oai/',
+    base_url='http://dspace.mit.edu/oai/request',
     property_list=['type', 'source', 'publisher',
                    'format', 'rights', 'identifier',
                    'relation', 'language', 'date'],
