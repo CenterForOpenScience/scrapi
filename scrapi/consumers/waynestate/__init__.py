@@ -6,7 +6,7 @@ from scrapi.base import OAIHarvester
 waynestate = OAIHarvester(
     name='waynestate',
     base_url='http://digitalcommons.wayne.edu/do/oai/',
-    property_list=['type', 'source', 'publisher', 'format'],
+    property_list=['type', 'source', 'publisher', 'format', 'date'],
     approved_sets=[
         'acb_frp',
         'agtc',
