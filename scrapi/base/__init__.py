@@ -48,26 +48,21 @@ class OAIHarvester(BaseHarvester):
 
     record_encoding = None
 
-    def __init__(self, name, base_url, property_list=None, approved_sets=None):
+    def __init__(self, name, base_url, timeout=0.5, property_list=None, approved_sets=None):
         self.name = name
         self.base_url = base_url
         self.property_list = property_list or ['date', 'language', 'type']
         self.approved_sets = approved_sets
+        self.timeout = timeout
 
     def harvest(self, days_back):
 
         start_date = str(date.today() - timedelta(int(days_back)))
 
         records_url = self.base_url + self.RECORDS_URL
-        initial_request_url = records_url + \
-            self.META_PREFIX_DATE.format(start_date)
+        request_url = records_url + self.META_PREFIX_DATE.format(start_date)
 
-        other_request_url = self.base_url + 'request' + self.RECORDS_URL + self.META_PREFIX_DATE.format(start_date)
-
-        records = self.get_records(initial_request_url, start_date)
-
-        if records == 'try a new url':
-            records = self.get_records(other_request_url, start_date)
+        records = self.get_records(request_url, start_date)
 
         rawdoc_list = []
         for record in records:
@@ -87,16 +82,13 @@ class OAIHarvester(BaseHarvester):
         print url
         data = requests.get(url)
 
-        try:
-            doc = etree.XML(data.content)
-        except etree.XMLSyntaxError:
-            return 'try a new url'
+        doc = etree.XML(data.content)
 
         records = doc.xpath('//ns0:record', namespaces=self.NAMESPACES)
         token = doc.xpath(
             '//ns0:resumptionToken/node()', namespaces=self.NAMESPACES)
         if len(token) == 1:
-            time.sleep(0.5)
+            time.sleep(self.timeout)
             base_url = url.replace(
                 self.META_PREFIX_DATE.format(start_date), '')
             base_url = base_url.replace(self.RESUMPTION + resump_token, '')
@@ -167,9 +159,8 @@ class OAIHarvester(BaseHarvester):
 
         properties = {}
         for item in property_list:
-            prop = (
-                result.xpath('//dc:{}/node()'.format(item), namespaces=self.NAMESPACES) or [''])
-
+            prop = (result.xpath('//dc:{}/node()'.format(item), namespaces=self.NAMESPACES) or [''])
+            prop += (result.xpath('//ns0:{}/node()'.format(item), namespaces=self.NAMESPACES) or [''])
             if len(prop) > 1:
                 properties[item] = prop
             else:
@@ -184,8 +175,7 @@ class OAIHarvester(BaseHarvester):
         return self.copy_to_unicode(date_updated)
 
     def get_title(self, result):
-        title = result.xpath(
-            '//dc:title/node()', namespaces=self.NAMESPACES)[0]
+        title = result.xpath('//dc:title/node()', namespaces=self.NAMESPACES)[0]
         return self.copy_to_unicode(title)
 
     def get_description(self, result):
@@ -197,12 +187,10 @@ class OAIHarvester(BaseHarvester):
         result = etree.XML(str_result)
 
         if self.approved_sets:
-            # load the list of approved series_names as a file
-
             set_spec = result.xpath('ns0:header/ns0:setSpec/node()', namespaces=self.NAMESPACES)[0]
-
-            if set_spec.replace('publication:', '') not in self.approved_sets:
-                print('Series not in approved list, not normalizing...')
+            set_spec_mod = set_spec.replace('publication:', '')
+            if set_spec_mod not in self.approved_sets:
+                print('Series {} not in approved list, not normalizing...').format(set_spec)
                 return None
 
         payload = {
