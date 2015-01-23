@@ -7,7 +7,7 @@ spdataverse = OAIHarvester(
     name='spdataverse',
     base_url='http://dataverse.scholarsportal.info/dvn/OAIHandler',
     property_list=['type', 'source', 'publisher', 'format', 'relation',
-                   'description', 'coverage', 'rights', 'setSpec']
+                   'description', 'coverage', 'rights', 'setSpec', 'date']
 )
 
 consume = spdataverse.harvest
