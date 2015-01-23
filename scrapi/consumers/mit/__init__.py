@@ -8,7 +8,7 @@ mit = OAIHarvester(
     base_url='http://dspace.mit.edu/oai/',
     property_list=['type', 'source', 'publisher',
                    'format', 'rights', 'identifier',
-                   'relation', 'language'],
+                   'relation', 'language', 'date'],
     approved_sets=[
         'hdl_1721.1_18193',
         'hdl_1721.1_18194',
