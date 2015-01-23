@@ -1,8 +1,8 @@
 {
     "days": "mon-sun",
-    "shortName": "uwdspace",
+    "shortName": "uwashington",
     "fileFormat": "xml", 
-    "url": "https://github.com/csheldonhess/UW-consumer.git",
+    "url": "https://github.com/erinspace/UW-consumer.git",
     "hour": 19,
     "minute": 59, 
     "longName": "ResearchWorks at the University of Washington"
