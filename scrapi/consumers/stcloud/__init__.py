@@ -6,7 +6,7 @@ from scrapi.base import OAIHarvester
 stcloud = OAIHarvester(
     name='stcloud',
     base_url='http://repository.stcloudstate.edu/do/oai/',
-    property_list=['type', 'source', 'publisher', 'format', 'setSpec'],
+    property_list=['type', 'source', 'publisher', 'format', 'setSpec', 'date'],
     approved_sets=[
         'ews_facpubs',
         'ews_wps',
