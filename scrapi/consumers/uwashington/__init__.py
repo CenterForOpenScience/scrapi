@@ -5,7 +5,7 @@ from scrapi.base import OAIHarvester
 
 uwashington = OAIHarvester(
     name='uwashington',
-    base_url='http://digital.lib.washington.edu/dspace-oai/',
+    base_url='http://digital.lib.washington.edu/dspace-oai/request',
     property_list=['type', 'source', 'publisher', 'format', 'date',
                    'identifier', 'setSpec', 'rights', 'language']
 )
