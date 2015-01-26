@@ -15,22 +15,25 @@ from scrapi.linter.document import RawDocument, NormalizedDocument
 
 NAME = 'doepages'
 
-NAMESPACES = {'rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#', 
-            'dc': 'http://purl.org/dc/elements/1.1/',
-            'dcq': 'http://purl.org/dc/terms/'}
+NAMESPACES = {
+    'rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
+    'dc': 'http://purl.org/dc/elements/1.1/',
+    'dcq': 'http://purl.org/dc/terms/'
+}
 
 DEFAULT_ENCODING = 'UTF-8'
 
 record_encoding = None
 
-def copy_to_unicode(element):
 
+def copy_to_unicode(element):
     encoding = record_encoding or DEFAULT_ENCODING
     element = ''.join(element)
     if isinstance(element, unicode):
         return element
     else:
         return unicode(element, encoding=encoding)
+
 
 def consume(days_back=15):
     start_date = date.today() - timedelta(days_back)
@@ -58,13 +61,14 @@ def consume(days_back=15):
         doc_id = record.xpath('dc:ostiId/node()', namespaces=NAMESPACES)[0]
         record = etree.tostring(record, encoding=record_encoding)
         xml_list.append(RawDocument({
-                    'doc': record,
-                    'source': NAME,
-                    'docID': copy_to_unicode(doc_id),
-                    'filetype': 'xml'
-                }))
+            'doc': record,
+            'source': NAME,
+            'docID': copy_to_unicode(doc_id),
+            'filetype': 'xml'
+        }))
 
     return xml_list
+
 
 def get_ids(doc, raw_doc):
     ids = {}
@@ -81,6 +85,7 @@ def get_ids(doc, raw_doc):
         ids[key] = copy_to_unicode(value)
 
     return ids
+
 
 def get_contributors(doc):
     contributor_list = []
@@ -99,6 +104,8 @@ def get_contributors(doc):
         contributor_list.append(contributor)
 
     return contributor_list
+
+
 def get_properties(doc):
     publisherInfo = {
         'publisher': (doc.xpath('//dcq:publisher/node()', namespaces=NAMESPACES) or [''])[0],
@@ -119,7 +126,7 @@ def get_properties(doc):
         'coverage': (doc.xpath('//dc:coverage/node()', namespaces=NAMESPACES) or [''])[0],
         'format': (doc.xpath('//dc:format/node()', namespaces=NAMESPACES) or [''])[0],
         'rights': (doc.xpath('//dc:rights/node()', namespaces=NAMESPACES) or [''])[0],
-        # TODO:  parse out some of these identifiers in the strings! 
+        # TODO:  parse out some of these identifiers in the strings!
         'identifier': (doc.xpath('//dc:identifier/node()', namespaces=NAMESPACES) or [''])[0],
         'identifierReport': (doc.xpath('//dc:identifier/node()', namespaces=NAMESPACES) or [''])[0],
         'identifierDOEcontract': (doc.xpath('//dcq:identifierDOEcontract/node()', namespaces=NAMESPACES) or [''])[0],
@@ -134,15 +141,12 @@ def get_properties(doc):
 
     return properties
 
-def get_date_created(doc):
-    date_created = doc.xpath('//dc:date/node()', namespaces=NAMESPACES)[0]
-    date = parse(date_created).isoformat()
-    return copy_to_unicode(date)
 
 def get_date_updated(doc):
     date_updated = doc.xpath('//dc:dateEntry/node()', namespaces=NAMESPACES)[0]
     date = parse(date_updated).isoformat()
     return copy_to_unicode(date)
+
 
 def get_tags(doc):
     all_tags = doc.xpath('//dc:subject/node()', namespaces=NAMESPACES) + doc.xpath('//dc:subjectRelated/node()', namespaces=NAMESPACES)
@@ -150,6 +154,7 @@ def get_tags(doc):
     for taglist in all_tags:
         tags += taglist.split(',')
     return list(set([copy_to_unicode(tag.lower().strip()) for tag in tags]))
+
 
 def normalize(raw_doc):
     raw_doc_string = raw_doc.get('doc')
@@ -165,7 +170,6 @@ def normalize(raw_doc):
         'id': get_ids(doc, raw_doc),
         'source': NAME,
         'tags': get_tags(doc),
-        'dateCreated': get_date_created(doc),
         'dateUpdated': get_date_updated(doc),
         'raw': raw_doc_string
     }
