@@ -2,12 +2,10 @@
 from __future__ import unicode_literals
 
 
-import os
-import xml
 import time
 import json
 from dateutil.parser import parse
-from datetime import date, timedelta, datetime
+from datetime import date, timedelta
 
 import requests
 
@@ -25,12 +23,12 @@ def consume(days_back=0):
     start_date = date.today() - timedelta(days_back) - timedelta(1)
     end_date = date.today() - timedelta(1)
     search_url = '{0}{1}-{2}-{3}&end_date={4}-{5}-{6}'.format(URL,
-                                         start_date.year,
-                                         start_date.month,
-                                         start_date.day,
-                                         end_date.year,
-                                         end_date.month,
-                                         end_date.day)
+                                                              start_date.year,
+                                                              start_date.month,
+                                                              start_date.day,
+                                                              end_date.year,
+                                                              end_date.month,
+                                                              end_date.day)
 
     records = get_records(search_url)
 
@@ -94,7 +92,6 @@ def get_contributors(record):
 
 
 def get_ids(record):
-
     # Right now, only take the last DOI - others in properties
     doi = record['DOI']
     try:
@@ -112,12 +109,11 @@ def get_ids(record):
 
 
 def get_properties(record):
-
     return {
         'article_id': record['article_id'],
         'defined_type': record['defined_type'],
         'type': record['type'],
-        'links': record['links'], 
+        'links': record['links'],
         'doi': record['DOI']
     }
 
@@ -134,8 +130,7 @@ def normalize(raw_doc):
         'tags': [],
         'id': get_ids(record),
         'source': NAME,
-        'dateUpdated': unicode(parse(record['modified_date']).isoformat()),
-        'dateCreated': unicode(parse(record['published_date']).isoformat()),
+        'dateUpdated': unicode(parse(record['modified_date']).isoformat())
     }
 
     return NormalizedDocument(normalized_dict)
