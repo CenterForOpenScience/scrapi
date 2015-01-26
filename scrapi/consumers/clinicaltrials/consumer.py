@@ -227,7 +227,7 @@ def get_properties(xml_doc):
     properties = {
         'sponsors': lead_sponsor,
         'oversightAuthority': xml_doc.xpath('//oversigh_info/authority/node()'),
-        'studyDesign': (xml_doc.xpath('//study_design/node') or [''])[0],
+        'studyDesign': (xml_doc.xpath('//study_design/node()') or [''])[0],
         'primaryOutcome': primary_outcome,
         'secondary_outcomes': secondary_outcomes,
         'numberOfArms': (xml_doc.xpath('//number_of_arms/node()') or [''])[0],
@@ -290,8 +290,7 @@ def normalize(raw_doc):
         'id': get_ids(raw_doc, xml_doc),
         'source': NAME,
         'tags': get_tags(xml_doc),
-        'dateCreated': get_date_created(xml_doc),
-        'dateUpdated': get_date_updated(xml_doc),
+        'dateUpdated': get_date_updated(xml_doc)
     }
 
     return NormalizedDocument(normalized_dict)
