@@ -4,11 +4,8 @@ import time
 from datetime import date, timedelta
 
 import requests
-
 from lxml import etree
-
 from dateutil.parser import *
-
 from nameparser import HumanName
 
 from scrapi.linter import lint
@@ -27,6 +24,7 @@ DEFAULT_ENCODING = 'UTF-8'
 
 record_encoding = None
 
+
 def copy_to_unicode(element):
 
     encoding = record_encoding or DEFAULT_ENCODING
@@ -36,7 +34,8 @@ def copy_to_unicode(element):
     else:
         return unicode(element, encoding=encoding)
 
-def consume(days_back=1):
+
+def consume(days_back=3):
     if not PLOS_API_KEY:
         return []
     payload = {"api_key": PLOS_API_KEY, "rows": "0"}
@@ -45,7 +44,6 @@ def consume(days_back=1):
     base_url = 'http://api.plos.org/search?q=publication_date:'
     base_url += '[{}%20TO%20{}]'.format(START_DATE, TODAY)
     plos_request = requests.get(base_url, params=payload)
-    record_encoding = plos_request.encoding
     xml_response = etree.XML(plos_request.content)
     num_results = int(xml_response.xpath('//result/@numFound')[0])
 
@@ -59,6 +57,7 @@ def consume(days_back=1):
         else:
             payload = {"api_key": PLOS_API_KEY, "rows": MAX_ROWS_PER_REQUEST, "start": start}
         results = requests.get(base_url, params=payload)
+        print results.url
         tick = time.time()
         xml_doc = etree.XML(results.content)
         all_docs = xml_doc.xpath('//doc')
@@ -72,7 +71,7 @@ def consume(days_back=1):
                     has_authors_or_abstract = True
                 if name == 'id':
                     docID = element.text
-            if has_authors_or_abstract == True:
+            if has_authors_or_abstract:
                 doc_list.append(RawDocument({
                     'doc': etree.tostring(result),
                     'source': NAME,
@@ -97,6 +96,7 @@ def get_ids(raw_doc, record):
         'url': 'http://dx.doi.org/{}'.format(doi)
     }
     return ids
+
 
 def get_contributors(record):
     contributor_list = []
@@ -130,19 +130,17 @@ def get_properties(record):
 
     return properties
 
-def get_date_created(record):
-    date_created =  (record.xpath('//date[@name="publication_date"]/node()') or [''])[0]
+
+def get_date_updated(record):
+    date_created = (record.xpath('//date[@name="publication_date"]/node()') or [''])[0]
     date = parse(date_created).isoformat()
     return copy_to_unicode(date)
 
-# TODO - PLoS doesn't seem to return date updated, so just putting 
-# date published here... 
-def get_date_updated(record):
-    return get_date_created(record)
 
-# No tags... 
+# No tags...
 def get_tags(record):
     return []
+
 
 def normalize(raw_doc):
     raw_doc_string = raw_doc.get('doc')
@@ -158,7 +156,6 @@ def normalize(raw_doc):
         'properties': get_properties(record),
         'id': get_ids(raw_doc, record),
         'source': NAME,
-        'dateCreated': get_date_created(record),
         'dateUpdated': get_date_updated(record),
         'tags': get_tags(record)
     }
