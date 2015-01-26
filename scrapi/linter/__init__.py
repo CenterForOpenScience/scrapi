@@ -53,6 +53,8 @@ def lint(consume, normalize):
             raise TypeError("{} does not return type NormalizedDocument".format(consume))
         if doc and doc['id']['serviceID'] != raw_doc['docID']:
             raise ValueError('Serivce ID {} does not match {}'.format(doc['id']['serviceID'], raw_doc['docID']))
+        if doc and not doc['id']['url']:
+            raise ValueError('No url provided')
 
     output = [x for x in output if x]
     normalized_output = [x for x in normalized_output if x]

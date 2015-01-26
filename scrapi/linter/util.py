@@ -29,3 +29,10 @@ def pretty_isinstance(actual, expected, name):
         name = ''.join(["['{}']".format(x) for x in name.split(' ') if x])
         errmsg = 'Expected "root{name}" to be of type {expected} but found {actual}'
         raise TypeError(errmsg.format(**locals()))
+
+
+def truthy(actual, expected, name):
+    pretty_isinstance(actual, expected, name)
+
+    if not actual:
+        raise TypeError('Expected {name} to exist, but it does not').format(name=name)

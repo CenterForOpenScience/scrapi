@@ -1,4 +1,5 @@
 from scrapi.linter.util import lint
+from scrapi.linter.util import truthy
 
 
 class BaseDocument(object):
@@ -52,7 +53,7 @@ class NormalizedDocument(BaseDocument):
         'suffix': unicode
     }
     ID_FIELD = {
-        'url': unicode,
+        'url': (truthy, unicode),
         'doi': unicode,
         'serviceID': unicode
     }
@@ -64,6 +65,5 @@ class NormalizedDocument(BaseDocument):
         'source': unicode,
         'description': unicode,
         'tags': [unicode],
-        'dateUpdated': unicode,
-        'dateCreated': unicode
+        'dateUpdated': unicode
     }
