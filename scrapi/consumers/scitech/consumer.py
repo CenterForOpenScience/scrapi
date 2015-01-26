@@ -21,6 +21,7 @@ DEFAULT_ENCODING = 'UTF-8'
 
 record_encoding = None
 
+
 def copy_to_unicode(element):
 
     encoding = record_encoding or DEFAULT_ENCODING
@@ -30,12 +31,13 @@ def copy_to_unicode(element):
     else:
         return unicode(element, encoding=encoding)
 
+
 def consume(days_back=1, end_date=None, **kwargs):
-    """A function for querying the SciTech Connect database for raw XML. 
+    """A function for querying the SciTech Connect database for raw XML.
     The XML is chunked into smaller pieces, each representing data
-    about an article/report. If there are multiple pages of results, 
+    about an article/report. If there are multiple pages of results,
     this function iterates through all the pages."""
-    
+
     TODAY = datetime.date.today()
     start_date = (TODAY - datetime.timedelta(days_back)).strftime('%m/%d/%Y')
     base_url = 'http://www.osti.gov/scitech/scitechxml'
@@ -48,7 +50,8 @@ def consume(days_back=1, end_date=None, **kwargs):
     elements_url = 'http://purl.org/dc/elements/1.1/'
 
     while morepages == 'true':
-        xml = requests.get(base_url, params=parameters)  #.text
+        xml = requests.get(base_url, params=parameters)
+        print(xml.url)
         record_encoding = xml.encoding
         xml = xml.text
         xml_root = etree.XML(xml.encode('utf-8'))
@@ -56,13 +59,14 @@ def consume(days_back=1, end_date=None, **kwargs):
             doc_id = record.find(str(etree.QName(elements_url, 'ostiId'))).text,
             xml_list.append(RawDocument({
                 'doc': etree.tostring(record, encoding=record_encoding),
-                'docID' : copy_to_unicode(doc_id),
+                'docID': copy_to_unicode(doc_id),
                 'source': NAME,
                 'filetype': 'xml'
             }))
         parameters['page'] += 1
         morepages = xml_root.find('records').attrib['morepages']
     return xml_list
+
 
 def get_ids(record, raw_doc):
     url = record.find(str(etree.QName(terms_url, 'identifier-citation'))).text or \
@@ -71,12 +75,13 @@ def get_ids(record, raw_doc):
     url = copy_to_unicode(url)
     doi = record.find(str(etree.QName(elements_url, 'doi'))).text or ''
 
-    ids =  {
+    ids = {
         'serviceID': raw_doc.get('docID'),
         'doi': copy_to_unicode(doi),
         'url': url
     }
     return ids
+
 
 def get_properties(record):
     # TODO - some of these record.finds return a FutureWarning - should be fixed
@@ -108,17 +113,20 @@ def get_properties(record):
 
     return properties
 
+
 def get_tags(record):
     # TODO - filter out some of the tags that aren't tags but paragraphs of stuff?
     tags = record.find(str(etree.QName(elements_url, 'subject'))).text
     tags = re.split(',(?!\s\&)|;', tags) if tags is not None else []
     return [copy_to_unicode(tag.strip().lower()) for tag in tags]
 
+
 def get_contributors(record):
     contributors = record.find(str(etree.QName(elements_url, 'creator'))).text.split(';') or ['']
-    # for now, scitech does not grab emails, but it could soon?
+    # TODO for now, scitech does not grab emails, but it could soon?
+    # TODO some names grabbed are names of Universities - fix this...
     contributor_list = []
-    for person in contributors: 
+    for person in contributors:
         if person != 'none,' and person != 'None':
             person = person.strip()
             if person[0] in ['/', ',', 'et. al']:
@@ -138,23 +146,19 @@ def get_contributors(record):
             contributor_list.append(contributor)
     return contributor_list
 
-def get_date_created(record):
-    date_created = record.find(str(etree.QName(elements_url, 'date'))).text
-    date = parse(date_created).isoformat()
-    return copy_to_unicode(date)
 
 def get_date_updated(record):
     date_updated = record.find(str(etree.QName(elements_url, 'dateEntry'))).text
     date = parse(date_updated).isoformat()
     return copy_to_unicode(date)
 
+
 def normalize(raw_doc):
-    """A function for parsing the list of XML objects returned by the 
+    """A function for parsing the list of XML objects returned by the
     consume function.
-    Returns a list of Json objects in a format that can be recognized 
+    Returns a list of Json objects in a format that can be recognized
     by the OSF scrapi."""
     raw_doc_str = raw_doc.get('doc')
-    terms_url = 'http://purl.org/dc/terms/'
     elements_url = 'http://purl.org/dc/elements/1.1/'
     record = etree.XML(raw_doc_str)
 
@@ -168,10 +172,10 @@ def normalize(raw_doc):
         'properties': get_properties(record),
         'id': get_ids(record, raw_doc),
         'source': NAME,
-        'dateCreated': get_date_created(record),
-        'dateUpdated' : get_date_updated(record),
+        'dateUpdated': get_date_updated(record),
         'tags': get_tags(record)
     }
+
     return NormalizedDocument(normalized_dict)
 
 
