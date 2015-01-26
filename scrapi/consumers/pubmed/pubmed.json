@@ -1,9 +1,9 @@
 {
-    "days": "mon-fri", 
-    "shortName": "stcloud",
+    "days": "mon-sun", 
+    "shortName": "pubmed",
     "fileFormat": "xml", 
     "url": "https://github.com/erinspace/pubmed.git",
     "hour": 22,
     "minute": 59, 
-    "longName": "theRepository at St. Cloud State"
+    "longName": "PubMed Central OAI-PMH"
 }
