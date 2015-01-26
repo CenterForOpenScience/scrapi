@@ -18,6 +18,7 @@ DEFAULT_ENCODING = 'UTF-8'
 
 record_encoding = None
 
+
 def copy_to_unicode(element):
 
     encoding = record_encoding or DEFAULT_ENCODING
@@ -27,13 +28,14 @@ def copy_to_unicode(element):
     else:
         return unicode(element, encoding=encoding)
 
+
 def consume(days_back=0):
     base_url = 'http://api.crossref.org/v1/works?filter=from-pub-date:{},until-pub-date:{}&rows=1000'
     start_date = date.today() - timedelta(days_back)
     url = base_url.format(str(start_date), str(date.today()))
     print(url)
     data = requests.get(url)
-    record_encoding = data.encoding
+    # record_encoding = data.encoding
     doc = data.json()
 
     records = doc['message']['items']
@@ -42,13 +44,14 @@ def consume(days_back=0):
     for record in records:
         doc_id = record['DOI'] or record['URL']
         doc_list.append(RawDocument({
-                    'doc': json.dumps(record),
-                    'source': NAME,
-                    'docID': doc_id,
-                    'filetype': 'xml'
-                }))
+            'doc': json.dumps(record),
+            'source': NAME,
+            'docID': doc_id,
+            'filetype': 'xml'
+        }))
 
     return doc_list
+
 
 def get_contributors(doc):
     contributor_list = []
@@ -71,17 +74,17 @@ def get_contributors(doc):
             'ORCID': orcid
         }
         contributor_list.append(contributor)
-    
+
     return contributor_list
+
 
 def get_ids(doc, raw_doc):
     ids = {}
     ids['url'] = doc.get('URL')
-    if ids['url'] == None:
-        raise Exception('Warning: No URL provided...')
     ids['doi'] = doc.get('DOI')
     ids['serviceID'] = raw_doc.get('docID')
     return ids
+
 
 def get_properties(doc):
     properties = {
@@ -91,7 +94,7 @@ def get_properties(doc):
             'issue': doc.get('issue')
         },
         'publisher': doc.get('publisher'),
-        'type' : doc.get('type'),
+        'type': doc.get('type'),
         'ISSN': doc.get('ISSN'),
         'ISBN': doc.get('ISBN'),
         'member': doc.get('member'),
@@ -99,30 +102,27 @@ def get_properties(doc):
         'issued': doc.get('issued'),
         'deposited': doc.get('deposited'),
         'indexed': doc.get('indexed'),
-        'page' : doc.get('page'),
+        'page': doc.get('page'),
         'issue': doc.get('issue'),
-        'volume' : doc.get('volume'),
+        'volume': doc.get('volume'),
         'referenceCount': doc.get('reference-count'),
         'updatePolicy': doc.get('update-policy'),
         'depositedTimestamp': doc['deposited'].get('timestamp')
     }
     return properties
 
+
 def get_tags(doc):
     tags = (((doc.get('subject') or []) + doc.get('container-title'))) or []
     return [tag.lower() for tag in tags]
 
-def get_date_created(doc):
-    deposited_date_parts = doc['deposited'].get('date-parts') or []
-    date = ' '.join([str(part) for part in deposited_date_parts[0]]) 
-    isodatecreated = parse(date).isoformat()
-    return copy_to_unicode(isodatecreated)
 
 def get_date_updated(doc):
     issued_date_parts = doc['issued'].get('date-parts') or []
     date = ' '.join([str(part) for part in issued_date_parts[0]])
     isodateupdated = parse(date).isoformat()
     return copy_to_unicode(isodateupdated)
+
 
 def normalize(raw_doc):
     doc_str = raw_doc.get('doc')
@@ -131,12 +131,11 @@ def normalize(raw_doc):
     normalized_dict = {
         'title': (doc.get('title') or [''])[0],
         'contributors': get_contributors(doc),
-        'properties' : get_properties(doc),
+        'properties': get_properties(doc),
         'description': (doc.get('subtitle') or [''])[0],
         'id': get_ids(doc, raw_doc),
         'source': NAME,
-        'dateCreated': get_date_created(doc),
-        'dateUpdated' : get_date_updated(doc),
+        'dateUpdated': get_date_updated(doc),
         'tags': get_tags(doc)
     }
 
