@@ -33,6 +33,11 @@ class BaseHarvester(object):
 
 
 class OAIHarvester(BaseHarvester):
+    """ Create a harvester with a oai_dc namespace, in a date range.
+
+    Contains functions for harvesting from an OAI provider, normalizing,
+    and outputting in a way that scrapi can understand, in the most
+    generic terms possible. """
 
     NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/',
                   'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
@@ -98,8 +103,8 @@ class OAIHarvester(BaseHarvester):
         return records
 
     def get_contributors(self, result):
-        ''' this grabs all of the fields marked contributors
-        or creators in the OAI namespaces'''
+        """ this grabs all of the fields marked contributors
+        or creators in the OAI namespaces """
 
         contributors = result.xpath(
             '//dc:contributor/node()', namespaces=self.NAMESPACES) or ['']
@@ -154,17 +159,19 @@ class OAIHarvester(BaseHarvester):
         return {'serviceID': serviceID, 'url': self.copy_to_unicode(url), 'doi': self.copy_to_unicode(doi)}
 
     def get_properties(self, result, property_list):
-        ''' kwargs can be all of the properties in your particular
-        OAI harvester that does not fit into the standard schema '''
+        """ property_list should be all of the properties in your particular
+        OAI harvester that does not fit into the standard schema.
+
+        When you create a class, pass a list of properties to be
+        gathered in either the header or main body of the document,
+        that will then be included in the properties section """
 
         properties = {}
         for item in property_list:
             prop = (result.xpath('//dc:{}/node()'.format(item), namespaces=self.NAMESPACES) or [''])
             prop += (result.xpath('//ns0:{}/node()'.format(item), namespaces=self.NAMESPACES) or [''])
-            if len(prop) > 1:
-                properties[item] = prop
-            else:
-                properties[item] = prop[0]
+
+            properties[item] = prop if len(prop) > 1 else prop[0]
 
         return properties
 
