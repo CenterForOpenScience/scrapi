@@ -1,10 +1,9 @@
 {
-    "days": "mon-sun",
-    "hour": "23",
-    "minute": "59",
+    "days": "mon-sun", 
     "shortName": "pubmed",
-    "longName": "PubMed Central",
-    "url": "https://github.com/csheldonhess/PubMedCentralOAI",
-    "fileFormat": "xml",
-    "collisionCategory": 1
+    "fileFormat": "xml", 
+    "url": "https://github.com/erinspace/pubmed.git",
+    "hour": 22,
+    "minute": 59, 
+    "longName": "PubMed Central OAI-PMH"
 }
