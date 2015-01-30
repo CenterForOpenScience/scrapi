@@ -60,7 +60,7 @@ class OAIHarvester(BaseHarvester):
         self.approved_sets = approved_sets
         self.timeout = timeout
 
-    def harvest(self, days_back):
+    def harvest(self, days_back=1):
 
         start_date = str(date.today() - timedelta(int(days_back)))
 
