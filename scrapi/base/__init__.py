@@ -1,6 +1,7 @@
 # Classes for scrAPI Harvesters
 from __future__ import unicode_literals
 
+import abc
 import time
 from dateutil.parser import parse
 from datetime import date, timedelta
@@ -13,13 +14,13 @@ from scrapi.linter.document import RawDocument, NormalizedDocument
 
 
 class BaseHarvester(object):
+    __metaclass__ = abc.ABCMeta
 
+    @abc.abstractmethod
     def harvest(self, days_back=1):
         pass
 
-    def get_records(self, url):
-        pass
-
+    @abc.abstractmethod
     def normalize(self, raw_doc):
         pass
 
@@ -38,6 +39,8 @@ class OAIHarvester(BaseHarvester):
     Contains functions for harvesting from an OAI provider, normalizing,
     and outputting in a way that scrapi can understand, in the most
     generic terms possible. """
+
+    #TODO - make this a metaclass?
 
     NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/',
                   'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
