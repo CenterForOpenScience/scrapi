@@ -61,7 +61,7 @@ def get_response(rows, days_back):
 
 
 def get_properties(doc):
-    properties = { 
+    properties = {
         'author': (doc.xpath("str[@name='author']/node()") or [''])[0],
         'authorGivenName': (doc.xpath("str[@name='authorGivenName']/node()") or [''])[0],
         'authorSurName': (doc.xpath("str[@name='authorSurName']/node()") or [''])[0],
