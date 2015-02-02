@@ -2,12 +2,12 @@
 from __future__ import unicode_literals
 
 import json
+
 import requests
 from datetime import date, timedelta
 
 from nameparser import HumanName
-
-from dateutil.parser import *
+from dateutil.parser import parse
 
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
@@ -20,7 +20,6 @@ record_encoding = None
 
 
 def copy_to_unicode(element):
-
     encoding = record_encoding or DEFAULT_ENCODING
     element = ''.join(element)
     if isinstance(element, unicode):
@@ -35,7 +34,6 @@ def consume(days_back=0):
     url = base_url.format(str(start_date), str(date.today()))
     print(url)
     data = requests.get(url)
-    # record_encoding = data.encoding
     doc = data.json()
 
     records = doc['message']['items']
