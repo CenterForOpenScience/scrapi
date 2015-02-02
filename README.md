@@ -70,7 +70,7 @@ and you should be good to go.
 - Just run 
 
 ```bash
-$ python main.py
+$ python server.py
 ```
 
 from the scrapi/website/ directory, and the server should be up and running!
@@ -81,6 +81,8 @@ from the scrapi/website/ directory, and the server should be up and running!
 - Just run
 
 ```bash
+$ git submodule init
+$ git submodule update
 $ invoke install_consumers
 ```
 
