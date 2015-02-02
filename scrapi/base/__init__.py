@@ -11,6 +11,7 @@ import requests
 from lxml import etree
 from nameparser import HumanName
 
+from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
 logger = logging.getLogger(__name__)
@@ -31,6 +32,9 @@ class BaseHarvester(object):
     @abc.abstractmethod
     def normalize(self, raw_doc):
         pass
+
+    def lint(self):
+        return lint(self.harvest, self.normalize)
 
     def copy_to_unicode(self, element):
         """ used to transform the lxml version of unicode to a
@@ -186,7 +190,10 @@ class OAIHarvester(BaseHarvester):
             prop = (result.xpath('//dc:{}/node()'.format(item), namespaces=self.NAMESPACES) or [''])
             prop += (result.xpath('//ns0:{}/node()'.format(item), namespaces=self.NAMESPACES) or [''])
 
-            properties[item] = prop if len(prop) > 1 else prop[0]
+            if len(prop) > 1:
+                properties[item] = [self.copy_to_unicode(item) for item in prop]
+            else:
+                properties[item] = self.copy_to_unicode(prop[0])
 
         return properties
 
