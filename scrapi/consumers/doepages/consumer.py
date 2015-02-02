@@ -1,10 +1,9 @@
 ## Consumer for DOE Pages for SHARE
 from __future__ import unicode_literals
 
-import time
 import requests
 from lxml import etree
-from datetime import date, timedelta, datetime
+from datetime import date, timedelta
 
 from nameparser import HumanName
 
