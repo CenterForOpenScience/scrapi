@@ -8,7 +8,7 @@ arxiv_oai = OAIHarvester(
     timeout=30,
     base_url='http://export.arxiv.org/oai2',
     property_list=['type', 'publisher', 'format', 'date',
-                   'identifier', 'language', 'setSpec']
+                   'identifier', 'language', 'setSpec', 'description']
 )
 
 consume = arxiv_oai.harvest
