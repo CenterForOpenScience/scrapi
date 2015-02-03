@@ -24,7 +24,7 @@ and the python requirements for the project will download and install.
 
 
 ### Installing Cassandra
-_note: JDK 7 must be installed for elasticsearch to run_
+_note: JDK 7 must be installed for cassandra to run_
 
 #### Mac OSX
 
