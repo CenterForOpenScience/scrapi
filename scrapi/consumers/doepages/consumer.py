@@ -111,7 +111,8 @@ def get_properties(doc):
         'publisherSponsor': (doc.xpath('//dcq:publisherSponsor/node()', namespaces=NAMESPACES) or [''])[0],
         'publisherAvailability': (doc.xpath('//dcq:publisherAvailability/node()', namespaces=NAMESPACES) or [''])[0],
         'publisherResearch': (doc.xpath('//dcq:publisherResearch/node()', namespaces=NAMESPACES) or [''])[0],
-        'publisherCountry': (doc.xpath('//dcq:publisherCountry/node()', namespaces=NAMESPACES) or [''])[0]
+        'publisherCountry': (doc.xpath('//dcq:publisherCountry/node()', namespaces=NAMESPACES) or [''])[0],
+        'date': (doc.xpath('//dc:date/node()', namespaces=NAMESPACES) or [''])
     }
 
     for key, value in publisherInfo.iteritems():
