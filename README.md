@@ -8,7 +8,7 @@ scrapi
 
 - You will need to:
     - Install requirements.
-    - Install Elasticsearch
+    - Install Cassandra
     - Install consumers
     - Install rabbitmq
 
@@ -23,47 +23,22 @@ $ pip install -r requirements.txt
 and the python requirements for the project will download and install. 
 
 
-### Installing Elasticsearch
+### Installing Cassandra
 _note: JDK 7 must be installed for elasticsearch to run_
 
 #### Mac OSX
 
 ```bash
-$ brew install elasticsearch
+$ brew install cassandra
 ```
 
 Now, just run 
 ```bash
-$ elasticsearch
-```
-
-or 
-
-```bash
-$ invoke elasticsearch
+$ cassandra
 ```
 
 and you should be good to go.
 
-#### Ubuntu 
-
-```bash
-$ wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.2.1.deb 
-$ sudo dpkg -i elasticsearch-1.2.1.deb
-```
-
-Now, just run 
-```bash
-$ sudo service elasticsearch start
-```
-
-or 
-
-```bash
-$ invoke elasticsearch
-```
-
-and you should be good to go.
 
 ### Running the server
 
