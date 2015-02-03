@@ -105,7 +105,9 @@ def get_properties(record):
         'relation': record.find(str(etree.QName(elements_url, 'relation'))).text or "",
         'coverage': record.find(str(etree.QName(elements_url, 'coverage'))).text or "",
         'format': record.find(str(etree.QName(elements_url, 'format'))).text or "",
-        'language': record.find(str(etree.QName(elements_url, 'language'))).text or ""
+        'language': record.find(str(etree.QName(elements_url, 'language'))).text or "",
+        'date': record.find(str(etree.QName(elements_url, 'date'))).text or ""
+
     }
     for key, value in properties.iteritems():
         if isinstance(value, etree._ElementStringResult):
