@@ -40,7 +40,7 @@ def consume(days_back=0):
 
     doc_list = []
     for record in records:
-        doc_id = record['DOI'] or record['URL']
+        doc_id = record['DOI']
         doc_list.append(RawDocument({
             'doc': json.dumps(record),
             'source': NAME,
