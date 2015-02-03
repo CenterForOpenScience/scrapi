@@ -70,7 +70,7 @@ and you should be good to go.
 - Just run 
 
 ```bash
-$ python main.py
+$ python server.py
 ```
 
 from the scrapi/website/ directory, and the server should be up and running!
@@ -78,10 +78,10 @@ from the scrapi/website/ directory, and the server should be up and running!
 
 ### Consumers
 
-- Just run
+- To set up consumers for the first time, Just run
 
 ```bash
-$ invoke install_consumers
+invoke init_consumers
 ```
 
 and the consumers specified in the manifest files of the worker_manager, and their requirements, will be installed.
