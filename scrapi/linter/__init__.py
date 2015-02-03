@@ -66,6 +66,9 @@ def lint(consume, normalize):
         is_serializable(normalized_output[0].attributes)
 
     is_serializable(output[0].attributes)
-    is_serializable(normalized_output[0].attributes)
+    try:
+        is_serializable(normalized_output[0].attributes)
+    except IndexError:
+        raise ValueError('No approved sets found to normalize')
 
     return 'Linting passed with No Errors'

@@ -138,11 +138,11 @@ class OAIHarvester(BaseHarvester):
         contributors = result.xpath(
             '//dc:contributor/node()',
             namespaces=self.NAMESPACES
-        ) or []
+        )
         creators = result.xpath(
             '//dc:creator/node()',
             namespaces=self.NAMESPACES
-        ) or []
+        )
 
         all_contributors = contributors + creators
 
@@ -204,18 +204,14 @@ class OAIHarvester(BaseHarvester):
 
         properties = {}
         for item in property_list:
-            prop = (
-                result.xpath(
-                    '//dc:{}/node()'.format(item),
-                    namespaces=self.NAMESPACES
-                ) or ['']
-            )
-            prop += (
-                result.xpath(
-                    '//ns0:{}/node()'.format(item),
-                    namespaces=self.NAMESPACES
-                ) or ['']
-            )
+            prop = result.xpath(
+                '//dc:{}/node()'.format(item),
+                namespaces=self.NAMESPACES
+            ) or ['']
+            prop += result.xpath(
+                '//ns0:{}/node()'.format(item),
+                namespaces=self.NAMESPACES
+            ) or ['']
 
             if len(prop) > 1:
                 properties[item] = [self.copy_to_unicode(item) for item in prop]
@@ -239,12 +235,11 @@ class OAIHarvester(BaseHarvester):
         return self.copy_to_unicode(title[0])
 
     def get_description(self, result):
-        description = (
-            result.xpath(
-                '//dc:description/node()',
-                namespaces=self.NAMESPACES
-            ) or ['']
-        )
+        description = result.xpath(
+            '//dc:description/node()',
+            namespaces=self.NAMESPACES
+        ) or ['']
+
         return self.copy_to_unicode(description[0])
 
     def normalize(self, raw_doc):
