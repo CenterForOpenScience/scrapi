@@ -12,47 +12,40 @@ class CassandraProcessor(BaseProcessor):
     NAME = 'cassandra'
 
     def __init__(self):
-        sync_table(RawModel)
-        sync_table(NormalizedModel)
+        sync_table(DocumentModel)
 
     def process_normalized(self, raw_doc, normalized):
-        nm = NormalizedModel.create(
+        nm = DocumentModel.objects(docID=normalized.get("id")['serviceID'], source=normalized.get('source')).update(
             url=normalized.get('id')['url'],
             contributors=json.dumps(normalized.get('contributors')),
             id=normalized.get('id'),
             title=normalized.get('title'),
-            source=normalized.get('source'),
             tags=normalized.get('tags'),
             dateUpdated=normalized.get('dateUpdated'),
             properties=json.dumps(normalized.get('properties'))
         )
 
     def process_raw(self, raw_doc):
-        rm = RawModel.create(**raw_doc.attributes)
+        rm = DocumentModel.create(**raw_doc.attributes)
 
-
-class RawModel(Model):
-    __table_name__ = 'raw'
+class DocumentModel(Model):
+    __table_name__ = 'documents'
     __keyspace__ = 'cqlengine'
 
+
+    # Raw
     docID = columns.Text(primary_key=True)
     doc = columns.Bytes()
-    source = columns.Text(index=True)
+    source = columns.Text(primary_key=True, index=True, clustering_order="DESC")
     filetype = columns.Text()
     timestamps = columns.Map(columns.Text, columns.Text)
 
-
-class NormalizedModel(Model):
-    __table_name__ = 'normalized'
-    __keyspace__ = 'cqlengine'
-
-    url = columns.Text(primary_key=True)
-
-    contributors = columns.Text()
+    # Normalized
+    url = columns.Text()
+    contributors = columns.Text() #TODO
     id = columns.Map(columns.Text, columns.Text)
-    title = columns.Text(index=True)
-    source = columns.Text(index=True)
+    title = columns.Text()
     description = columns.Text()
     tags = columns.List(columns.Text())
     dateUpdated = columns.Text()
-    properties=columns.Text()
+    properties = columns.Text() #TODO
