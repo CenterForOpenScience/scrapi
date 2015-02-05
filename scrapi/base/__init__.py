@@ -250,10 +250,15 @@ class OAIHarvester(BaseHarvester):
             set_spec = result.xpath(
                 'ns0:header/ns0:setSpec/node()',
                 namespaces=self.NAMESPACES
-            )[0]
-            set_spec_mod = set_spec.replace('publication:', '')
-            if set_spec_mod not in self.approved_sets:
-                logger.info('Series {} not in approved list'.format(set_spec))
+            )
+            approved = False
+            for item in set_spec:
+                item_mod = item.replace('publication:', '')
+                if item_mod in self.approved_sets:
+                    approved = True
+                else:
+                    logger.info('Series {} not in approved list'.format(item))
+            if not approved:
                 return None
 
         payload = {
