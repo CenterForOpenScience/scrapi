@@ -69,7 +69,7 @@ class OAIHarvester(BaseHarvester):
 
     RECORDS_URL = '?verb=ListRecords'
 
-    META_PREFIX_DATE = '&metadataPrefix=oai_dc&from={}'
+    META_PREFIX_DATE = '&metadataPrefix=oai_dc&from={}T00:00:00Z'
 
     RESUMPTION = '&resumptionToken='
 
