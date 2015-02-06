@@ -77,7 +77,7 @@ def test_normalized_calls_all_throwing(get_processor):
         get_processor.assert_any_call(processor)
 
 
-def test_normalized_calls_all_throwing(get_processor):
+def test_raw_calls_all_throwing(get_processor):
     get_processor.side_effect = lambda x: Exception(
         'Reasons') if x == 'storage' else mock.Mock()
 

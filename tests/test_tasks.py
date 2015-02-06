@@ -4,7 +4,6 @@ import pytest
 from scrapi import tasks
 from scrapi import events
 from scrapi.linter import RawDocument
-from scrapi.linter import NormalizedDocument
 
 
 BLACKHOLE = lambda *_, **__: None
@@ -198,5 +197,3 @@ def test_process_norm_logging(raw_doc, dispatch, monkeypatch):
     ]
 
     dispatch.assert_has_calls(calls)
-
-
