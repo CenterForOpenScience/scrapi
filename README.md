@@ -37,6 +37,11 @@ Now, just run
 $ cassandra
 ```
 
+Or, if you'd like your cassandra session to be bound to your current session, run:
+```bash
+$ cassandra -f
+```
+
 and you should be good to go.
 
 
