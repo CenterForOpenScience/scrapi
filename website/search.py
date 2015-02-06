@@ -79,8 +79,8 @@ def parse_query(params):
 def build_query(q, start_date, end_date):
     return {
         'filtered': {
-             'query': build_query_string(q),
-             'filter': build_date_filter(start_date, end_date),
+            'query': build_query_string(q),
+            'filter': build_date_filter(start_date, end_date),
         }
     }
 
@@ -109,7 +109,7 @@ def build_date_filter(start_date, end_date):
 def build_sort(sort_field, sort_type):
     print sort_field
     return [{
-        sort_field : {
+        sort_field: {
             'order': sort_type
         }
     }]
