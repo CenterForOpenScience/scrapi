@@ -45,7 +45,7 @@ def consume(days_back=0):
             'doc': json.dumps(record),
             'source': NAME,
             'docID': doc_id,
-            'filetype': 'xml'
+            'filetype': 'json'
         }))
 
     return doc_list
