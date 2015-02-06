@@ -9,6 +9,7 @@ from scrapi.processing.base import BaseProcessor
 connection.setup(['127.0.0.1'], 'scrapi')
 create_keyspace('scrapi', replication_factor=1, strategy_class='SimpleStrategy')
 
+
 class CassandraProcessor(BaseProcessor):
     NAME = 'cassandra'
 
@@ -17,7 +18,7 @@ class CassandraProcessor(BaseProcessor):
         sync_table(VersionModel)
 
     def process_normalized(self, raw_doc, normalized):
-        nm = self.send_to_database(
+        self.send_to_database(
             docID=normalized.get("id")['serviceID'],
             source=normalized.get('source'),
             url=normalized.get('id')['url'],
@@ -27,12 +28,10 @@ class CassandraProcessor(BaseProcessor):
             tags=normalized.get('tags'),
             dateUpdated=normalized.get('dateUpdated'),
             properties=json.dumps(normalized.get('properties'))
-        )
-        nm.save()
+        ).save()
 
     def process_raw(self, raw_doc):
-        rm = self.send_to_database(**raw_doc.attributes)
-        rm.save()
+        self.send_to_database(**raw_doc.attributes).save()
 
     def send_to_database(self, docID, source, **kwargs):
         documents = DocumentModel.objects(docID=docID, source=source)
@@ -62,13 +61,13 @@ class DocumentModel(Model):
 
     # Normalized
     url = columns.Text()
-    contributors = columns.Text() #TODO
+    contributors = columns.Text()  # TODO
     id = columns.Map(columns.Text, columns.Text)
     title = columns.Text()
     description = columns.Text()
     tags = columns.List(columns.Text())
     dateUpdated = columns.Text()
-    properties = columns.Text() #TODO
+    properties = columns.Text()  # TODO
 
     # Additional metadata
     versions = columns.List(columns.UUID)
@@ -80,7 +79,7 @@ class VersionModel(Model):
 
     key = columns.UUID(primary_key=True, required=True)
 
-     # Raw
+    # Raw
     docID = columns.Text()
     doc = columns.Bytes()
     source = columns.Text(index=True)
@@ -89,13 +88,13 @@ class VersionModel(Model):
 
     # Normalized
     url = columns.Text()
-    contributors = columns.Text() #TODO: When supported, this should be a user-defined type
+    contributors = columns.Text()  # TODO: When supported, this should be a user-defined type
     id = columns.Map(columns.Text, columns.Text)
     title = columns.Text()
     description = columns.Text()
     tags = columns.List(columns.Text())
     dateUpdated = columns.Text()
-    properties = columns.Text() #TODO
+    properties = columns.Text()  # TODO
 
     # Additional metadata
     versions = columns.List(columns.UUID)
