@@ -11,3 +11,5 @@ PLoS-API-consumer
 <code>API_KEY = (your API key)</code></li>
 
 </ol>
+
+Sample API query: http://api.plos.org/search?q=publication_date:[2015-01-30T00:00:00Z%20TO%202015-02-02T00:00:00Z]&api_key=ayourapikeyhere&rows=999&start=0
