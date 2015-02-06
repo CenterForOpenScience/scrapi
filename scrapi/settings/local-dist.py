@@ -28,3 +28,6 @@ APP_ID = 'some id'
 
 API_KEY_LABEL = 'some label'
 API_KEY = 'some api key'
+
+CASSANDRA_URI = ['127.0.0.1']
+CASSSANDRA_KEYSPACE = 'scrapi'

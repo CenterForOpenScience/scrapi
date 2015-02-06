@@ -5,9 +5,10 @@ from cqlengine import columns, Model, connection
 from cqlengine.management import sync_table, create_keyspace
 
 from scrapi.processing.base import BaseProcessor
+from scrapi.settings import CASSANDRA_URI, CASSANDRA_KEYSPACE
 
-connection.setup(['127.0.0.1'], 'scrapi')
-create_keyspace('scrapi', replication_factor=1, strategy_class='SimpleStrategy')
+connection.setup(CASSANDRA_URI, CASSANDRA_KEYSPACE)
+create_keyspace(CASSANDRA_KEYSPACE, replication_factor=1, strategy_class='SimpleStrategy')
 
 
 class CassandraProcessor(BaseProcessor):
@@ -50,7 +51,7 @@ class CassandraProcessor(BaseProcessor):
 
 class DocumentModel(Model):
     __table_name__ = 'documents'
-    __keyspace__ = 'scrapi'
+    __keyspace__ = CASSANDRA_KEYSPACE
 
     # Raw
     docID = columns.Text(primary_key=True)
@@ -75,7 +76,7 @@ class DocumentModel(Model):
 
 class VersionModel(Model):
     __table_name__ = 'versions'
-    __keyspace__ = 'scrapi'
+    __keyspace__ = CASSANDRA_KEYSPACE
 
     key = columns.UUID(primary_key=True, required=True)
 
