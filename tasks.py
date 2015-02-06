@@ -15,7 +15,7 @@ logger = logging.getLogger()
 
 @task
 def server():
-    run("python website/main.py")
+    run("python server.py")
 
 
 @task
