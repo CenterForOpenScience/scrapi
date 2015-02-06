@@ -9,6 +9,7 @@ from scrapi.processing.base import BaseProcessor
 connection.setup(['127.0.0.1'], 'scrapi')
 create_keyspace('scrapi', replication_factor=1, strategy_class='SimpleStrategy')
 
+
 class CassandraProcessor(BaseProcessor):
     NAME = 'cassandra'
 
@@ -62,13 +63,13 @@ class DocumentModel(Model):
 
     # Normalized
     url = columns.Text()
-    contributors = columns.Text() #TODO
+    contributors = columns.Text()  # TODO
     id = columns.Map(columns.Text, columns.Text)
     title = columns.Text()
     description = columns.Text()
     tags = columns.List(columns.Text())
     dateUpdated = columns.Text()
-    properties = columns.Text() #TODO
+    properties = columns.Text()  # TODO
 
     # Additional metadata
     versions = columns.List(columns.UUID)
@@ -89,13 +90,13 @@ class VersionModel(Model):
 
     # Normalized
     url = columns.Text()
-    contributors = columns.Text() #TODO: When supported, this should be a user-defined type
+    contributors = columns.Text()  # TODO: When supported, this should be a user-defined type
     id = columns.Map(columns.Text, columns.Text)
     title = columns.Text()
     description = columns.Text()
     tags = columns.List(columns.Text())
     dateUpdated = columns.Text()
-    properties = columns.Text() #TODO
+    properties = columns.Text()  # TODO
 
     # Additional metadata
     versions = columns.List(columns.UUID)
