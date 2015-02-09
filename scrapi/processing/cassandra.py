@@ -11,7 +11,6 @@ connection.setup(CASSANDRA_URI, CASSANDRA_KEYSPACE)
 create_keyspace(CASSANDRA_KEYSPACE, replication_factor=1, strategy_class='SimpleStrategy')
 
 
-
 class CassandraProcessor(BaseProcessor):
     NAME = 'cassandra'
 
@@ -49,6 +48,7 @@ class CassandraProcessor(BaseProcessor):
         else:
             # create document
             return DocumentModel.create(docID=docID, source=source, **kwargs)
+
 
 class DocumentModel(Model):
     __table_name__ = 'documents'
