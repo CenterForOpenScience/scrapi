@@ -207,11 +207,11 @@ class OAIHarvester(BaseHarvester):
             prop = result.xpath(
                 '//dc:{}/node()'.format(item),
                 namespaces=self.NAMESPACES
-            ) or ['']
-            prop += result.xpath(
+            )
+            prop.extend(result.xpath(
                 '//ns0:{}/node()'.format(item),
                 namespaces=self.NAMESPACES
-            ) or ['']
+            ) or [''])
 
             if len(prop) > 1:
                 properties[item] = [self.copy_to_unicode(item) for item in prop]
