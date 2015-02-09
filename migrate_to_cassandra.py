@@ -13,8 +13,7 @@ LOG.setLevel(logging.WARN)
 
 
 def main():
-    for consumer_name in settings.MANIFESTS.keys():
-        consumer = settings.MANIFESTS[consumer_name]
+    for consumer_name, consumer in settings.MANIFESTS.items():
         for raw_path in store.iter_raws(consumer_name, include_normalized=True):
             process_one_to_cassandra.delay(consumer_name, consumer, raw_path)
 
