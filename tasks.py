@@ -64,10 +64,10 @@ def migrate_search():
     run('python website/migrate_search.py')
 
 
-''' 
+'''
 Initializes and updates git submodules for consumers and runs the install_consumers task
 '''
-@task 
+@task
 def init_consumers():
     run('git submodule init')
     run('git submodule update')

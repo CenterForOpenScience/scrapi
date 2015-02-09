@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 import re
 import json
 import mock
-import pytest
 import httpretty
 from copy import deepcopy
 
@@ -13,7 +12,7 @@ from scrapi import settings
 
 from scrapi.processing import osf
 
-from scrapi.linter.document import RawDocument, NormalizedDocument
+from scrapi.linter.document import NormalizedDocument
 
 
 RAW_DOC = {
@@ -76,7 +75,7 @@ def test_has_properties(mock_already_processed):
     httpretty.register_uri(httpretty.POST, re.compile('{}/.*'.format(settings.OSF_PREFIX)), body=json.dumps(RECORD))
     httpretty.register_uri(httpretty.PUT, re.compile('{}/.*'.format(settings.OSF_PREFIX)))
 
-    mock_already_processed.return_value = False,  md5().hexdigest()
+    mock_already_processed.return_value = False, md5().hexdigest()
 
     osf_processor = osf.OSFProcessor()
     osf_processor.process_normalized(RAW_DOC, normed)
@@ -89,7 +88,7 @@ def test_has_properties(mock_already_processed):
 def test_found_returns(mock_already_processed):
     normed = deepcopy(NORMALIZED)
 
-    mock_already_processed.return_value = True,  md5().hexdigest()
+    mock_already_processed.return_value = True, md5().hexdigest()
 
     osf_processor = osf.OSFProcessor()
     osf_processor.process_normalized(RAW_DOC, normed)
@@ -107,7 +106,7 @@ def test_contrib_deleted_if_resource(mock_detect_collisions, mock_already_proces
     httpretty.register_uri(httpretty.PUT, re.compile('{}/.*'.format(settings.OSF_PREFIX)))
     httpretty.register_uri(httpretty.POST, re.compile('{}/.*'.format(settings.OSF_PREFIX)), body=json.dumps(RECORD))
 
-    mock_already_processed.return_value = False,  md5().hexdigest()
+    mock_already_processed.return_value = False, md5().hexdigest()
 
     mock_detect_collisions.return_value = resource
 
@@ -130,7 +129,7 @@ def test_report_id_added_to_cmids(mock_detect_collisions, mock_already_processed
     httpretty.register_uri(httpretty.POST, re.compile('{}/.*'.format(settings.OSF_PREFIX)), body=json.dumps(RECORD))
     httpretty.register_uri(httpretty.PUT, re.compile('{}/.*'.format(settings.OSF_PREFIX)))
 
-    mock_already_processed.return_value = False,  md5().hexdigest()
+    mock_already_processed.return_value = False, md5().hexdigest()
 
     mock_detect_collisions.return_value = resource
 

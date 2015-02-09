@@ -9,7 +9,6 @@ from datetime import datetime
 
 from dateutil import parser
 
-from scrapi import events
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
 from website import process_metadata
