@@ -1,13 +1,15 @@
 from __future__ import unicode_literals
 
 RAW_DOC = {
-    'doc': '{}',
+    'doc': str('{}'),
     'docID': 'someID',
     'timestamps': {
         'consumeFinished': '2012-11-30T17:05:48+00:00',
         'consumeStarted': '2012-11-30T17:05:48+00:00',
         'consumeTaskCreated': '2012-11-30T17:05:48+00:00'
-    }
+    },
+    'filetype': 'json',
+    'source': 'tests'
 }
 
 RECORD = {
