@@ -62,7 +62,7 @@ class BaseStorage(object):
             file_manifest = settings.MANIFESTS[document['source']]
 
         manifest = {
-            'consumeVersion' : file_manifest['version'],
+            'consumeVersion': file_manifest['version'],
             'consumedTimestamp': document['timestamps']['consumeFinished'],
             'source': document['source']
         }
