@@ -38,7 +38,6 @@ cass = CassandraProcessor()
 
 @app.task
 def process_one_to_cassandra(consumer_name, consumer, raw_path):
-    exceptions = []
     try:
         date = parser.parse(raw_path.split('/')[-2])
 
@@ -62,5 +61,5 @@ def process_one_to_cassandra(consumer_name, consumer, raw_path):
 
         cass.process_normalized(raw_doc, normalized)
     except Exception as e:
-        exceptions.append(e)
-        raise e
+        logger.exception(e)
+        return e
