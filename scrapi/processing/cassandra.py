@@ -49,6 +49,7 @@ class CassandraProcessor(BaseProcessor):
             # create document
             return DocumentModel.create(docID=docID, source=source, **kwargs)
 
+
 class DocumentModel(Model):
     __table_name__ = 'documents'
     __keyspace__ = CASSANDRA_KEYSPACE

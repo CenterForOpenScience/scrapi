@@ -24,7 +24,7 @@ and the python requirements for the project will download and install.
 
 
 ### Installing Cassandra
-_note: JDK 7 must be installed for elasticsearch to run_
+_note: JDK 7 must be installed for cassandra to run_
 
 #### Mac OSX
 
@@ -35,6 +35,11 @@ $ brew install cassandra
 Now, just run 
 ```bash
 $ cassandra
+```
+
+Or, if you'd like your cassandra session to be bound to your current session, run:
+```bash
+$ cassandra -f
 ```
 
 and you should be good to go.
