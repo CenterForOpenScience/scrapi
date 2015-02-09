@@ -69,7 +69,7 @@ class OAIHarvester(BaseHarvester):
 
     RECORDS_URL = '?verb=ListRecords'
 
-    META_PREFIX_DATE = '&metadataPrefix=oai_dc&from={}'
+    META_PREFIX_DATE = '&metadataPrefix=oai_dc&from={}T00:00:00Z'
 
     RESUMPTION = '&resumptionToken='
 
@@ -138,11 +138,11 @@ class OAIHarvester(BaseHarvester):
         contributors = result.xpath(
             '//dc:contributor/node()',
             namespaces=self.NAMESPACES
-        ) or []
+        )
         creators = result.xpath(
             '//dc:creator/node()',
             namespaces=self.NAMESPACES
-        ) or []
+        )
 
         all_contributors = contributors + creators
 
@@ -204,18 +204,14 @@ class OAIHarvester(BaseHarvester):
 
         properties = {}
         for item in property_list:
-            prop = (
-                result.xpath(
-                    '//dc:{}/node()'.format(item),
-                    namespaces=self.NAMESPACES
-                ) or ['']
+            prop = result.xpath(
+                '//dc:{}/node()'.format(item),
+                namespaces=self.NAMESPACES
             )
-            prop += (
-                result.xpath(
-                    '//ns0:{}/node()'.format(item),
-                    namespaces=self.NAMESPACES
-                ) or ['']
-            )
+            prop.extend(result.xpath(
+                '//ns0:{}/node()'.format(item),
+                namespaces=self.NAMESPACES
+            ) or [''])
 
             if len(prop) > 1:
                 properties[item] = [self.copy_to_unicode(item) for item in prop]
@@ -239,12 +235,11 @@ class OAIHarvester(BaseHarvester):
         return self.copy_to_unicode(title[0])
 
     def get_description(self, result):
-        description = (
-            result.xpath(
-                '//dc:description/node()',
-                namespaces=self.NAMESPACES
-            ) or ['']
-        )
+        description = result.xpath(
+            '//dc:description/node()',
+            namespaces=self.NAMESPACES
+        ) or ['']
+
         return self.copy_to_unicode(description[0])
 
     def normalize(self, raw_doc):
@@ -255,10 +250,15 @@ class OAIHarvester(BaseHarvester):
             set_spec = result.xpath(
                 'ns0:header/ns0:setSpec/node()',
                 namespaces=self.NAMESPACES
-            )[0]
-            set_spec_mod = set_spec.replace('publication:', '')
-            if set_spec_mod not in self.approved_sets:
-                logger.info('Series {} not in approved list'.format(set_spec))
+            )
+            approved = False
+            for item in set_spec:
+                item_mod = item.replace('publication:', '')
+                if item_mod in self.approved_sets:
+                    approved = True
+                else:
+                    logger.info('Series {} not in approved list'.format(item))
+            if not approved:
                 return None
 
         payload = {
