@@ -31,3 +31,14 @@ API_KEY = 'some api key'
 
 ELASTIC_URI = 'localhost:9200'
 ELASTIC_TIMEOUT = 10
+
+FRONTEND_KEYS = [
+    u'description',
+    u'contributors',
+    u'tags',
+    u'raw',
+    u'title',
+    u'id',
+    u'source',
+    u'dateUpdated'
+]
