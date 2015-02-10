@@ -56,20 +56,21 @@ class DocumentModel(Model):
 
     # Raw
     docID = columns.Text(primary_key=True)
-    doc = columns.Bytes()
     source = columns.Text(primary_key=True, index=True, clustering_order="DESC")
+
+    doc = columns.Bytes()
     filetype = columns.Text()
     timestamps = columns.Map(columns.Text, columns.Text)
 
     # Normalized
     url = columns.Text()
-    contributors = columns.Text()  # TODO
-    id = columns.Map(columns.Text, columns.Text)
     title = columns.Text()
-    description = columns.Text()
-    tags = columns.List(columns.Text())
+    properties = columns.Text()
     dateUpdated = columns.Text()
-    properties = columns.Text()  # TODO
+    description = columns.Text()
+    contributors = columns.Text()  # TODO This should use user-defined types (when they're added)
+    tags = columns.List(columns.Text())
+    id = columns.Map(columns.Text, columns.Text)
 
     # Additional metadata
     versions = columns.List(columns.UUID)
@@ -82,21 +83,21 @@ class VersionModel(Model):
     key = columns.UUID(primary_key=True, required=True)
 
     # Raw
-    docID = columns.Text()
     doc = columns.Bytes()
-    source = columns.Text(index=True)
+    docID = columns.Text()
     filetype = columns.Text()
+    source = columns.Text(index=True)
     timestamps = columns.Map(columns.Text, columns.Text)
 
     # Normalized
     url = columns.Text()
-    contributors = columns.Text()  # TODO: When supported, this should be a user-defined type
-    id = columns.Map(columns.Text, columns.Text)
     title = columns.Text()
-    description = columns.Text()
-    tags = columns.List(columns.Text())
-    dateUpdated = columns.Text()
     properties = columns.Text()  # TODO
+    dateUpdated = columns.Text()
+    description = columns.Text()
+    contributors = columns.Text()  # TODO: When supported, this should be a user-defined type
+    tags = columns.List(columns.Text())
+    id = columns.Map(columns.Text, columns.Text)
 
     # Additional metadata
     versions = columns.List(columns.UUID)
