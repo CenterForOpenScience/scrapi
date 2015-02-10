@@ -35,4 +35,4 @@ def truthy(actual, expected, name):
     pretty_isinstance(actual, expected, name)
 
     if not actual:
-        raise TypeError('Expected {name} to exist, but it does not').format(name=name)
+        raise TypeError('Expected {name} to exist, but it does not'.format(name=name))
