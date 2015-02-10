@@ -10,8 +10,8 @@ CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
 
 STORE_HTTP_TRANSACTIONS = False
 
-NORMALIZED_PROCESSING = ['storage']
-RAW_PROCESSING = ['storage']
+NORMALIZED_PROCESSING = ['storage', 'cassandra']
+RAW_PROCESSING = ['storage', 'cassandra']
 
 SENTRY_DNS = None
 
