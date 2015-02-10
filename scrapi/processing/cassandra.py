@@ -20,15 +20,15 @@ class CassandraProcessor(BaseProcessor):
 
     def process_normalized(self, raw_doc, normalized):
         self.send_to_database(
-            docID=normalized.get("id")['serviceID'],
-            source=normalized.get('source'),
-            url=normalized.get('id')['url'],
-            contributors=json.dumps(normalized.get('contributors')),
-            id=normalized.get('id'),
-            title=normalized.get('title'),
-            tags=normalized.get('tags'),
-            dateUpdated=normalized.get('dateUpdated'),
-            properties=json.dumps(normalized.get('properties'))
+            docID=normalized["id"]['serviceID'],
+            source=normalized['source'],
+            url=normalized['id']['url'],
+            contributors=json.dumps(normalized['contributors']),
+            id=normalized['id'],
+            title=normalized['title'],
+            tags=normalized['tags'],
+            dateUpdated=normalized['dateUpdated'],
+            properties=json.dumps(normalized['properties'])
         ).save()
 
     def process_raw(self, raw_doc):
