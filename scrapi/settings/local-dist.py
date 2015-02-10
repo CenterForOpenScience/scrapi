@@ -31,3 +31,14 @@ APP_ID = 'some id'
 
 API_KEY_LABEL = 'some label'
 API_KEY = 'some api key'
+
+FRONTEND_KEYS = [
+    u'description',
+    u'contributors',
+    u'tags',
+    u'raw',
+    u'title',
+    u'id',
+    u'source',
+    u'dateUpdated'
+]

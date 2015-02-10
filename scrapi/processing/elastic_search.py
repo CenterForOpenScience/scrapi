@@ -24,8 +24,12 @@ class ElasticsearchProcessor(BaseProcessor):
         pass
 
     def process_normalized(self, raw_doc, normalized):
+        data = {
+            key: value for key, value in normalized.attributes.items()
+            if key in settings.FRONTEND_KEYS
+        }
         es.index(
-            body=normalized.attributes,
+            body=data,
             refresh=True,
             index='share',
             doc_type=normalized['source'],
