@@ -9,4 +9,4 @@ install: "pip install -r dev-requirements.txt"
 
 before_script: "cp scrapi/settings/travis-dist.py scrapi/settings/local.py"
 
-script: py.test
+script: py.test tests
