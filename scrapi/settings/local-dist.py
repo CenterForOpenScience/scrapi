@@ -1,5 +1,8 @@
 DEBUG = False
 
+ELASTIC_TIMEOUT = 10
+ELASTIC_URI = 'localhost:9200'
+
 BROKER_URL = 'amqp://guest@localhost'
 
 STORAGE_METHOD = 'disk'
