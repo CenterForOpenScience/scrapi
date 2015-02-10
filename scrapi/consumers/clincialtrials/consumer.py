@@ -31,7 +31,7 @@ def copy_to_unicode(element):
         return unicode(element, encoding=encoding)
 
 
-def consume(days_back=10):
+def consume(days_back=1):
     """ First, get a list of all recently updated study urls,
     then get the xml one by one and save it into a list
     of docs including other information """
