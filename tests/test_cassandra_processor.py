@@ -1,20 +1,17 @@
-import cqlengine
-
 import utils
 
+from scrapi import settings
 from scrapi.linter.document import NormalizedDocument, RawDocument
 
-
-NORMALIZED = NormalizedDocument(utils.RECORD)
-RAW = RawDocument(utils.RAW_DOC)
-
-
-from scrapi import settings
-
+# Need to force cassandra to ignore set keyspace
 settings.CASSANDRA_KEYSPACE = 'test'
 from scrapi.processing.cassandra import CassandraProcessor, DocumentModel, VersionModel
 
+
 test_db = CassandraProcessor()
+
+NORMALIZED = NormalizedDocument(utils.RECORD)
+RAW = RawDocument(utils.RAW_DOC)
 
 
 def test_process_raw():
@@ -32,4 +29,18 @@ def test_process_normalized():
 
 
 def test_versions():
-    pass
+    test_db.process_normalized(RAW, NORMALIZED)
+    queryset = DocumentModel.objects(docID=NORMALIZED['id']['serviceID'], source=NORMALIZED['source'])
+
+    assert (len(queryset) == 1)
+
+    old_title = NORMALIZED['title']
+
+    NORMALIZED['title'] = 'some new title'
+    test_db.process_normalized(RAW, NORMALIZED)
+    doc = DocumentModel.objects(docID=NORMALIZED['id']['serviceID'], source=NORMALIZED['source'])[0]
+    assert (doc.title == 'some new title')
+
+    version = VersionModel.objects(key=doc.versions[-1])[0]
+
+    assert (version.title == old_title)
