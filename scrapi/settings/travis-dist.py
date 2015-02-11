@@ -31,6 +31,7 @@ API_KEY = 'some api key'
 
 ELASTIC_URI = 'localhost:9200'
 ELASTIC_TIMEOUT = 10
+ELASTIC_INDEX = 'share'
 
 FRONTEND_KEYS = [
     u'description',
