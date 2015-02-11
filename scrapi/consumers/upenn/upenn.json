@@ -1,0 +1,9 @@
+{
+    "days": "mon-fri", 
+    "shortName": "upenn",
+    "fileFormat": "xml", 
+    "url": "https://github.com/csheldonhess/UPenn-consumer.git",
+    "hour": 21,
+    "minute": 59, 
+    "longName": "University of Pennsylvania Scholarly Commons"
+}
