@@ -1,7 +1,7 @@
-import json
 import logging
 
 from elasticsearch import Elasticsearch
+from elasticsearch.exceptions import NotFoundError
 
 from scrapi import settings
 from scrapi.processing.base import BaseProcessor
@@ -46,7 +46,12 @@ class ElasticsearchProcessor(BaseProcessor):
                 doc_type=normalized['source'],
                 id=normalized['id']['serviceID'],
             )
-        except elasticsearch.IndexMissingException:
-            return normalized['dateUpdated']
+        except NotFoundError:
+            # Normally I don't like exception-driven logic,
+            # but this was the best way to handle missing
+            # types, indices and documents together
+            date = normalized['dateUpdated']
+        else:
+            date = old_doc['dateUpdated']
 
-        return old_doc['dateUpdated'] if old_doc else normalized['dateUpdated']
+        return date
