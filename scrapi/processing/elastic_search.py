@@ -1,3 +1,4 @@
+import json
 import logging
 
 from elasticsearch import Elasticsearch
@@ -15,6 +16,8 @@ logging.getLogger('elasticsearch.trace').setLevel(logging.WARN)
 logging.getLogger('urllib3').setLevel(logging.WARN)
 logging.getLogger('requests').setLevel(logging.WARN)
 es.cluster.health(wait_for_status='yellow')
+
+logger = logging.getLogger(__name__)
 
 
 class ElasticsearchProcessor(BaseProcessor):
@@ -43,5 +46,7 @@ class ElasticsearchProcessor(BaseProcessor):
             id=normalized['id']['serviceID'],
             ignore=[404]
         )
+
+        logger.info(json.dumps(old_doc, indent=4))
 
         return old_doc['dateUpdated'] if old_doc else normalized['dateUpdated']
