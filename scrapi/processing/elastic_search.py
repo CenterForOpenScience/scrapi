@@ -25,6 +25,9 @@ class ElasticsearchProcessor(BaseProcessor):
             key: value for key, value in normalized.attributes.items()
             if key in settings.FRONTEND_KEYS
         }
+
+        normalized['dateUpdated'] = self.version_dateUpdated(normalized)
+
         es.index(
             body=data,
             refresh=True,
@@ -33,5 +36,12 @@ class ElasticsearchProcessor(BaseProcessor):
             id=normalized['id']['serviceID'],
         )
 
-        logger = logging.getLogger(__name__)
-        logger.warn(es.count(index='share'))
+    def version_dateUpdated(self, normalized):
+        old_doc = es.get_source(
+            index='share',
+            doc_type=normalized['source'],
+            id=normalized['id']['serviceID'],
+            ignore=[404]
+        )
+
+        return old_doc['dateUpdated'] if old_doc else normalized['dateUpdated']
