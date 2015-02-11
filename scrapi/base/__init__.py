@@ -213,10 +213,7 @@ class OAIHarvester(BaseHarvester):
                 namespaces=self.NAMESPACES
             ) or [''])
 
-            if len(prop) > 1:
-                properties[item] = [self.copy_to_unicode(item) for item in prop]
-            else:
-                properties[item] = self.copy_to_unicode(prop[0])
+            properties[item] = [self.copy_to_unicode(item) for item in prop]
 
         return properties
 
