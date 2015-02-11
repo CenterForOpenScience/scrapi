@@ -11,13 +11,14 @@ es = Elasticsearch(
     request_timeout=settings.ELASTIC_TIMEOUT
 )
 
-logging.getLogger('elasticsearch').setLevel(logging.WARN)
-logging.getLogger('elasticsearch.trace').setLevel(logging.WARN)
+logger = logging.getLogger(__name__)
 logging.getLogger('urllib3').setLevel(logging.WARN)
 logging.getLogger('requests').setLevel(logging.WARN)
-es.cluster.health(wait_for_status='yellow')
+logging.getLogger('elasticsearch').setLevel(logging.WARN)
+logging.getLogger('elasticsearch.trace').setLevel(logging.WARN)
 
-logger = logging.getLogger(__name__)
+
+es.cluster.health(wait_for_status='yellow')
 
 
 class ElasticsearchProcessor(BaseProcessor):
