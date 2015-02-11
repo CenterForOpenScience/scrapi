@@ -34,7 +34,7 @@ class ElasticsearchProcessor(BaseProcessor):
         es.index(
             body=data,
             refresh=True,
-            index='share',
+            index=settings.ELASTIC_INDEX,
             doc_type=normalized['source'],
             id=normalized['id']['serviceID'],
         )
@@ -42,7 +42,7 @@ class ElasticsearchProcessor(BaseProcessor):
     def version_dateUpdated(self, normalized):
         try:
             old_doc = es.get_source(
-                index='share',
+                index=settings.ELASTIC_INDEX,
                 doc_type=normalized['source'],
                 id=normalized['id']['serviceID'],
             )
