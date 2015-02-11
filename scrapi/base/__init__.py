@@ -58,7 +58,7 @@ class OAIHarvester(BaseHarvester):
 
     RECORDS_URL = '?verb=ListRecords'
 
-    META_PREFIX_DATE = '&metadataPrefix=oai_dc&from={}T00:00:00Z'
+    META_PREFIX_DATE = '&metadataPrefix=oai_dc&from={}'
 
     RESUMPTION = '&resumptionToken='
 
@@ -66,12 +66,13 @@ class OAIHarvester(BaseHarvester):
 
     record_encoding = None
 
-    def __init__(self, name, base_url, timeout=0.5, property_list=None, approved_sets=None):
+    def __init__(self, name, base_url, timezone_granularity=False, timeout=0.5, property_list=None, approved_sets=None):
         self.name = name
         self.base_url = base_url
         self.property_list = property_list or ['date', 'language', 'type']
         self.approved_sets = approved_sets
         self.timeout = timeout
+        self.timezone_granularity = timezone_granularity
 
     def harvest(self, days_back=1):
 
@@ -79,6 +80,9 @@ class OAIHarvester(BaseHarvester):
 
         records_url = self.base_url + self.RECORDS_URL
         request_url = records_url + self.META_PREFIX_DATE.format(start_date)
+
+        if self.timezone_granularity:
+            request_url += 'T00:00:00Z'
 
         records = self.get_records(request_url, start_date)
 
