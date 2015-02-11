@@ -20,9 +20,6 @@ es.cluster.health(wait_for_status='yellow')
 class ElasticsearchProcessor(BaseProcessor):
     NAME = 'elasticsearch'
 
-    def process_raw(*args, **kwargs):
-        pass
-
     def process_normalized(self, raw_doc, normalized):
         data = {
             key: value for key, value in normalized.attributes.items()
@@ -35,3 +32,6 @@ class ElasticsearchProcessor(BaseProcessor):
             doc_type=normalized['source'],
             id=normalized['id']['serviceID'],
         )
+
+        logger = logging.getLogger(__name__)
+        logger.warn(es.count(index='share'))
