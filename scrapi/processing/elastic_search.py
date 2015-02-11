@@ -40,13 +40,13 @@ class ElasticsearchProcessor(BaseProcessor):
         )
 
     def version_dateUpdated(self, normalized):
-        old_doc = es.get_source(
-            index='share',
-            doc_type=normalized['source'],
-            id=normalized['id']['serviceID'],
-            ignore=[404]
-        )
-
-        logger.info(json.dumps(old_doc, indent=4))
+        try:
+            old_doc = es.get_source(
+                index='share',
+                doc_type=normalized['source'],
+                id=normalized['id']['serviceID'],
+            )
+        except elasticsearch.IndexMissingException:
+            return normalized['dateUpdated']
 
         return old_doc['dateUpdated'] if old_doc else normalized['dateUpdated']
