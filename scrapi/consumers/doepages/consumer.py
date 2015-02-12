@@ -1,3 +1,10 @@
+"""
+A harvester for the Department of Energy Pages collection for the SHARE project
+
+Example query: http://www.osti.gov/pages/pagesxml?nrows=10&EntryDateFrom=01/18/2015
+"""
+
+
 ## Consumer for DOE Pages for SHARE
 from __future__ import unicode_literals
 

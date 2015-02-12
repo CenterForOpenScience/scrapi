@@ -1,3 +1,8 @@
+"""
+Harvester of pubmed for the SHARE notification service
+"""
+
+
 from __future__ import unicode_literals
 
 from scrapi.base import OAIHarvester

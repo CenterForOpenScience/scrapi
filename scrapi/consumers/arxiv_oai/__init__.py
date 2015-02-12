@@ -1,3 +1,10 @@
+"""
+Harvests arXiv metadata for ingestion into the SHARE service
+
+Example API call: http://export.arxiv.org/oai2?verb=ListRecords&metadataPrefix=oai_dc&from=2014-10-10
+"""
+
+
 from __future__ import unicode_literals
 
 from scrapi.base import OAIHarvester

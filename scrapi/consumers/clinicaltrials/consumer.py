@@ -1,3 +1,7 @@
+"""
+API harvester for ClinicalTrials.gov for the SHARE Notification Service
+"""
+
 #!/usr/bin/env python
 from __future__ import unicode_literals
 

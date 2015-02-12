@@ -1,3 +1,7 @@
+"""
+Harvester for UTAustin for the SHARE project
+"""
+
 from __future__ import unicode_literals
 
 from scrapi.base import OAIHarvester

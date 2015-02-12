@@ -1,3 +1,9 @@
+"""
+information about the Texas State University harvester can be found here:
+https://github.com/CenterForOpenScience/SHARE/blob/master/providers/edu.txstate.md
+"""
+
+
 from __future__ import unicode_literals
 
 from scrapi.base import OAIHarvester
