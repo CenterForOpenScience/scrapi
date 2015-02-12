@@ -18,7 +18,7 @@ def test_process_raw():
     test_db.process_raw(RAW)
     queryset = DocumentModel.objects(docID='someID', source='tests')
     assert(len(queryset) == 1)
-    # cqlengine.management.delete_keyspace(settings.CASSANDRA_KEYSPACE)
+    wipe_database()
 
 
 def test_process_normalized():
@@ -26,6 +26,8 @@ def test_process_normalized():
     queryset = DocumentModel.objects(docID=NORMALIZED['id']['serviceID'], source=NORMALIZED['source'])
 
     assert(queryset[0].title == utils.RECORD['title'])
+
+    wipe_database()
 
 
 def test_versions():
@@ -44,3 +46,14 @@ def test_versions():
     version = VersionModel.objects(key=doc.versions[-1])[0]
 
     assert (version.title == old_title)
+
+    wipe_database()
+
+
+def wipe_database():
+    for model in DocumentModel.objects():
+        model.delete()
+    for model in VersionModel.objects():
+        model.delete()
+
+    assert (len(DocumentModel.objects) + len(VersionModel.objects)) == 0
