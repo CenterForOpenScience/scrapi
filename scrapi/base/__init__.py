@@ -11,6 +11,7 @@ import requests
 from lxml import etree
 from nameparser import HumanName
 
+from scrapi import util
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
@@ -38,18 +39,6 @@ class BaseHarvester(object):
     def lint(self):
         return lint(self.harvest, self.normalize)
 
-    def copy_to_unicode(self, element):
-        """ used to transform the lxml version of unicode to a
-        standard version of unicode that can be pickalable -
-        necessary for linting """
-
-        encoding = self.record_encoding or self.DEFAULT_ENCODING
-        element = ''.join(element)
-        if isinstance(element, unicode):
-            return element
-        else:
-            return unicode(element, encoding=encoding)
-
 
 class OAIHarvester(BaseHarvester):
     """ Create a harvester with a oai_dc namespace, that will harvest
@@ -69,7 +58,7 @@ class OAIHarvester(BaseHarvester):
 
     RECORDS_URL = '?verb=ListRecords'
 
-    META_PREFIX_DATE = '&metadataPrefix=oai_dc&from={}T00:00:00Z'
+    META_PREFIX_DATE = '&metadataPrefix=oai_dc&from={}'
 
     RESUMPTION = '&resumptionToken='
 
@@ -77,12 +66,13 @@ class OAIHarvester(BaseHarvester):
 
     record_encoding = None
 
-    def __init__(self, name, base_url, timeout=0.5, property_list=None, approved_sets=None):
+    def __init__(self, name, base_url, timezone_granularity=False, timeout=0.5, property_list=None, approved_sets=None):
         self.name = name
         self.base_url = base_url
         self.property_list = property_list or ['date', 'language', 'type']
         self.approved_sets = approved_sets
         self.timeout = timeout
+        self.timezone_granularity = timezone_granularity
 
     def harvest(self, days_back=1):
 
@@ -90,6 +80,9 @@ class OAIHarvester(BaseHarvester):
 
         records_url = self.base_url + self.RECORDS_URL
         request_url = records_url + self.META_PREFIX_DATE.format(start_date)
+
+        if self.timezone_granularity:
+            request_url += 'T00:00:00Z'
 
         records = self.get_records(request_url, start_date)
 
@@ -100,8 +93,8 @@ class OAIHarvester(BaseHarvester):
             record = etree.tostring(record, encoding=self.record_encoding)
             rawdoc_list.append(RawDocument({
                 'doc': record,
-                'source': self.copy_to_unicode(self.name),
-                'docID': self.copy_to_unicode(doc_id),
+                'source': util.copy_to_unicode(self.name),
+                'docID': util.copy_to_unicode(doc_id),
                 'filetype': 'xml'
             }))
 
@@ -170,7 +163,7 @@ class OAIHarvester(BaseHarvester):
                 tags.remove(tag)
                 tags += tag.split(',')
 
-        return [self.copy_to_unicode(tag.lower().strip()) for tag in tags]
+        return [util.copy_to_unicode(tag.lower().strip()) for tag in tags]
 
     def get_ids(self, result, doc):
         serviceID = doc.get('docID')
@@ -190,8 +183,8 @@ class OAIHarvester(BaseHarvester):
 
         return {
             'serviceID': serviceID,
-            'url': self.copy_to_unicode(url),
-            'doi': self.copy_to_unicode(doi)
+            'url': util.copy_to_unicode(url),
+            'doi': util.copy_to_unicode(doi)
         }
 
     def get_properties(self, result, property_list):
@@ -211,12 +204,9 @@ class OAIHarvester(BaseHarvester):
             prop.extend(result.xpath(
                 '//ns0:{}/node()'.format(item),
                 namespaces=self.NAMESPACES
-            ) or [''])
+            ))
 
-            if len(prop) > 1:
-                properties[item] = [self.copy_to_unicode(item) for item in prop]
-            else:
-                properties[item] = self.copy_to_unicode(prop[0])
+            properties[item] = [util.copy_to_unicode(element) for element in prop]
 
         return properties
 
@@ -226,13 +216,13 @@ class OAIHarvester(BaseHarvester):
             namespaces=self.NAMESPACES
         )
         date_updated = parse(dateupdated[0]).isoformat()
-        return self.copy_to_unicode(date_updated)
+        return util.copy_to_unicode(date_updated)
 
     def get_title(self, result):
         title = result.xpath(
             '//dc:title/node()',
             namespaces=self.NAMESPACES)
-        return self.copy_to_unicode(title[0])
+        return util.copy_to_unicode(title[0])
 
     def get_description(self, result):
         description = result.xpath(
@@ -240,7 +230,7 @@ class OAIHarvester(BaseHarvester):
             namespaces=self.NAMESPACES
         ) or ['']
 
-        return self.copy_to_unicode(description[0])
+        return util.copy_to_unicode(description[0])
 
     def normalize(self, raw_doc):
         str_result = raw_doc.get('doc')

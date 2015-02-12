@@ -7,3 +7,4 @@ requests==2.4.1
 python-dateutil==2.2
 fluent-logger==0.3.4
 cqlengine==0.21.0
+elasticsearch==1.3.0

@@ -10,7 +10,7 @@ CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
 
 STORE_HTTP_TRANSACTIONS = False
 
-NORMALIZED_PROCESSING = ['storage', 'cassandra']
+NORMALIZED_PROCESSING = ['storage', 'elasticsearch', 'cassandra']
 RAW_PROCESSING = ['storage', 'cassandra']
 
 SENTRY_DNS = None
@@ -31,3 +31,18 @@ API_KEY = 'some api key'
 
 CASSANDRA_URI = ['127.0.0.1']
 CASSANDRA_KEYSPACE = 'scrapi'
+
+ELASTIC_URI = 'localhost:9200'
+ELASTIC_TIMEOUT = 10
+ELASTIC_INDEX = 'share'
+
+FRONTEND_KEYS = [
+    u'description',
+    u'contributors',
+    u'tags',
+    u'raw',
+    u'title',
+    u'id',
+    u'source',
+    u'dateUpdated'
+]

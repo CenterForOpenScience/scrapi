@@ -1,5 +1,9 @@
 DEBUG = False
 
+ELASTIC_TIMEOUT = 10
+ELASTIC_URI = 'localhost:9200'
+ELASTIC_INDEX = 'share'
+
 BROKER_URL = 'amqp://guest@localhost'
 
 STORAGE_METHOD = 'disk'
@@ -31,3 +35,14 @@ API_KEY = 'some api key'
 
 CASSANDRA_URI = ['127.0.0.1']
 CASSANDRA_KEYSPACE = 'scrapi'
+
+FRONTEND_KEYS = [
+    u'description',
+    u'contributors',
+    u'tags',
+    u'raw',
+    u'title',
+    u'id',
+    u'source',
+    u'dateUpdated'
+]
