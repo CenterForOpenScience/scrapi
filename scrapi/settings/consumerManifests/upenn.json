@@ -1,6 +1,6 @@
 {
     "days": "mon-sun", 
-    "shortName": "upenn",
+    "shortName": "upennsylvania",
     "fileFormat": "xml", 
     "url": "https://github.com/csheldonhess/UPenn-consumer.git",
     "hour": 21,

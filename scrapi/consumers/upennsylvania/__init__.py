@@ -13,7 +13,7 @@ from scrapi.base import OAIHarvester
 
 
 upenn = OAIHarvester(
-    name='upenn',
+    name='upennsylvania',
     timeout=30,
     base_url='http://repository.upenn.edu/do/oai/'
 )
