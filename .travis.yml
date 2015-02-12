@@ -2,8 +2,11 @@ language: python
 python:
     - "2.7"
 
+services:
+  - elasticsearch
+
 install: "pip install -r dev-requirements.txt"
 
-before_script: "cp scrapi/settings/local-dist.py scrapi/settings/local.py"
+before_script: "cp scrapi/settings/travis-dist.py scrapi/settings/local.py"
 
-script: py.test
+script: py.test tests
