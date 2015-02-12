@@ -1,0 +1,9 @@
+{
+    "days": "mon-sun", 
+    "shortName": "pubmed",
+    "fileFormat": "xml", 
+    "url": "https://github.com/erinspace/pubmed.git",
+    "hour": 22,
+    "minute": 59, 
+    "longName": "PubMed Central OAI-PMH"
+}
