@@ -10,8 +10,8 @@ CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
 
 STORE_HTTP_TRANSACTIONS = False
 
-NORMALIZED_PROCESSING = ['storage', 'elasticsearch']
-RAW_PROCESSING = ['storage', 'elasticsearch']
+NORMALIZED_PROCESSING = ['storage', 'elasticsearch', 'cassandra']
+RAW_PROCESSING = ['storage', 'cassandra']
 
 SENTRY_DNS = None
 
@@ -28,6 +28,9 @@ APP_ID = 'some id'
 
 API_KEY_LABEL = 'some label'
 API_KEY = 'some api key'
+
+CASSANDRA_URI = ['127.0.0.1']
+CASSANDRA_KEYSPACE = 'scrapi'
 
 ELASTIC_URI = 'localhost:9200'
 ELASTIC_TIMEOUT = 10

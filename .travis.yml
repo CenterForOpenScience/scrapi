@@ -3,10 +3,11 @@ python:
     - "2.7"
 
 services:
+  - cassandra
   - elasticsearch
 
 install: "pip install -r dev-requirements.txt"
 
 before_script: "cp scrapi/settings/travis-dist.py scrapi/settings/local.py"
 
-script: py.test tests
+script: py.test --cov scrapi --cov-report=term-missing tests
