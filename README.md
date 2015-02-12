@@ -8,6 +8,7 @@ scrapi
 
 - You will need to:
     - Install requirements.
+    - Install Elasticsearch
     - Install Cassandra
     - Install consumers
     - Install rabbitmq
@@ -20,21 +21,23 @@ scrapi
 $ pip install -r requirements.txt
 ```
 
-and the python requirements for the project will download and install. 
+and the python requirements for the project will download and install.
 
 
-### Installing Cassandra
-_note: JDK 7 must be installed for cassandra to run_
+### Installing Cassandra and Elasticsearch
+_note: JDK 7 must be installed for Cassandra and Elasticsearch to run_
 
 #### Mac OSX
 
 ```bash
 $ brew install cassandra
+$ brew install elasticsearch
 ```
 
 Now, just run 
 ```bash
 $ cassandra
+$ elasticsearch
 ```
 
 Or, if you'd like your cassandra session to be bound to your current session, run:
