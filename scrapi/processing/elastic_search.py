@@ -66,7 +66,7 @@ def create_index():
                     "id": {
                         "properties": {
                             "doi": {
-                                "type": "string",
+                                "type": "multi_field",
                                 "index": "not_analyzed",
                                 "fields": {
                                     "analyzed": {
@@ -76,7 +76,7 @@ def create_index():
                                 }
                             },
                             "url": {
-                                "type": "string",
+                                "type": "multi_field",
                                 "index": "not_analyzed",
                                 "fields": {
                                     "analyzed": {
@@ -86,7 +86,7 @@ def create_index():
                                 }
                             },
                             "serviceID": {
-                                "type": "string",
+                                "type": "multi_field",
                                 "index": "not_analyzed",
                                 "fields": {
                                     "analyzed": {
