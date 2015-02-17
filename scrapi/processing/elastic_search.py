@@ -11,6 +11,7 @@ es = Elasticsearch(
     request_timeout=settings.ELASTIC_TIMEOUT
 )
 
+
 logger = logging.getLogger(__name__)
 logging.getLogger('urllib3').setLevel(logging.WARN)
 logging.getLogger('requests').setLevel(logging.WARN)
@@ -56,3 +57,33 @@ class ElasticsearchProcessor(BaseProcessor):
             date = old_doc['dateUpdated']
 
         return date
+
+
+def create_index():
+    body = {
+        "mappings": {
+            harvester: {
+                "properties": {
+                    "id": {
+                        "properties": {
+                            "doi": {
+                                "type": "string",
+                                "index": "not_analyzed"
+                            },
+                            "url": {
+                                "type": "string",
+                                "index": "not_analyzed"
+                            },
+                            "serviceID": {
+                                "type": "string",
+                                "index": "not_analyzed"
+                            }
+                        }
+                    }
+                }
+            } for harvester in settings.MANIFESTS.keys()
+        }
+    }
+    es.indices.create(index=settings.ELASTIC_INDEX, body=body, ignore=400)
+
+create_index()
