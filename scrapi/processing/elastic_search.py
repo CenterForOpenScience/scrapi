@@ -26,12 +26,11 @@ class ElasticsearchProcessor(BaseProcessor):
     NAME = 'elasticsearch'
 
     def process_normalized(self, raw_doc, normalized):
+        normalized['dateUpdated'] = self.version_dateUpdated(normalized)
         data = {
             key: value for key, value in normalized.attributes.items()
             if key in settings.FRONTEND_KEYS
         }
-
-        normalized['dateUpdated'] = self.version_dateUpdated(normalized)
 
         es.index(
             body=data,
@@ -68,15 +67,33 @@ def create_index():
                         "properties": {
                             "doi": {
                                 "type": "string",
-                                "index": "not_analyzed"
+                                "index": "not_analyzed",
+                                "fields": {
+                                    "analyzed": {
+                                        "type": "string",
+                                        "index": "analyzed"
+                                    }
+                                }
                             },
                             "url": {
                                 "type": "string",
-                                "index": "not_analyzed"
+                                "index": "not_analyzed",
+                                "fields": {
+                                    "analyzed": {
+                                        "type": "string",
+                                        "index": "analyzed"
+                                    }
+                                }
                             },
                             "serviceID": {
                                 "type": "string",
-                                "index": "not_analyzed"
+                                "index": "not_analyzed",
+                                "fields": {
+                                    "analyzed": {
+                                        "type": "string",
+                                        "index": "analyzed"
+                                    }
+                                }
                             }
                         }
                     }
