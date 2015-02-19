@@ -11,6 +11,7 @@ es = Elasticsearch(
     request_timeout=settings.ELASTIC_TIMEOUT
 )
 
+
 logger = logging.getLogger(__name__)
 logging.getLogger('urllib3').setLevel(logging.WARN)
 logging.getLogger('requests').setLevel(logging.WARN)
@@ -25,12 +26,11 @@ class ElasticsearchProcessor(BaseProcessor):
     NAME = 'elasticsearch'
 
     def process_normalized(self, raw_doc, normalized):
+        normalized['dateUpdated'] = self.version_dateUpdated(normalized)
         data = {
             key: value for key, value in normalized.attributes.items()
             if key in settings.FRONTEND_KEYS
         }
-
-        normalized['dateUpdated'] = self.version_dateUpdated(normalized)
 
         es.index(
             body=data,
@@ -56,3 +56,51 @@ class ElasticsearchProcessor(BaseProcessor):
             date = old_doc['dateUpdated']
 
         return date
+
+
+def create_index():
+    body = {
+        "mappings": {
+            harvester: {
+                "properties": {
+                    "id": {
+                        "properties": {
+                            "doi": {
+                                "type": "multi_field",
+                                "index": "not_analyzed",
+                                "fields": {
+                                    "analyzed": {
+                                        "type": "string",
+                                        "index": "analyzed"
+                                    }
+                                }
+                            },
+                            "url": {
+                                "type": "multi_field",
+                                "index": "not_analyzed",
+                                "fields": {
+                                    "analyzed": {
+                                        "type": "string",
+                                        "index": "analyzed"
+                                    }
+                                }
+                            },
+                            "serviceID": {
+                                "type": "multi_field",
+                                "index": "not_analyzed",
+                                "fields": {
+                                    "analyzed": {
+                                        "type": "string",
+                                        "index": "analyzed"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } for harvester in settings.MANIFESTS.keys()
+        }
+    }
+    es.indices.create(index=settings.ELASTIC_INDEX, body=body, ignore=400)
+
+create_index()
