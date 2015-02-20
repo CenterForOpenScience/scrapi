@@ -12,11 +12,11 @@ from __future__ import unicode_literals
 from scrapi.base import OAIHarvester
 
 
-upenn = OAIHarvester(
+upennsylvania = OAIHarvester(
     name='upennsylvania',
     timeout=30,
     base_url='http://repository.upenn.edu/do/oai/'
 )
 
-consume = upenn.harvest
-normalize = upenn.normalize
+consume = upennsylvania.harvest
+normalize = upennsylvania.normalize
