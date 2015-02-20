@@ -13,7 +13,7 @@ from scrapi.base import OAIHarvester
 
 vtechworks = OAIHarvester(
     name='vtechworks',
-    base_url='http://vtechworks.lib.vt.edu/oai/',
+    base_url='http://vtechworks.lib.vt.edu/oai/request',
     property_list=['type', 'source', 'publisher', 'format', 'date',
                    'identifier', 'setSpec', 'rights', 'language', 'relation']
 )
