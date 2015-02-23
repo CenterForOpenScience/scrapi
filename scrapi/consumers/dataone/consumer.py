@@ -189,14 +189,21 @@ def get_ids(doc, raw_doc):
     # id
     doi = ''
     service_id = raw_doc.get('docID')
-    if 'doi' in service_id:
-        # regex for just getting doi out of crazy urls and sometimes not urls
-        doi_re = '10\\.\\d{4}/\\w*\\.\\w{5}|10\\.\\d{4}/\\w*/\\w*\\.\\d*.\\d*'
+    # regex for just getting doi out of crazy urls and sometimes not urls
+    doi_re = '10\\.\\d{4}/\\w*\\.\\w*(/\\w*)?'
+    try:
+        regexed_doi = re.search(doi_re, service_id).group(0)
+        doi = regexed_doi
+    except AttributeError:
+        doi = ''
+    if doi == '':
         try:
-            regexed_doi = re.search(doi_re, service_id).group(0)
-            doi = regexed_doi
-        except AttributeError:
-            doi = service_id.replace('doi:', '')
+            doc_doi = doc.xpath("arr[@name='isDocumentedBy']/str/node()")[0]
+            doc_doi = doc_doi.replace('doi:', '')
+            regexed_doi = re.search(doi_re, doc_doi).group(0)
+        except (IndexError, AttributeError):
+            doi = ''
+
     url = (doc.xpath('//str[@name="dataUrl"]/node()') or [''])[0]
     if 'http' not in url and 'http' in service_id:
         url == service_id
