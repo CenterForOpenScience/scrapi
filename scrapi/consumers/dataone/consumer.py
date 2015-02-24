@@ -9,6 +9,7 @@ from __future__ import unicode_literals
 
 import re
 
+import logging
 import requests
 
 from lxml import etree
@@ -19,6 +20,8 @@ from nameparser import HumanName
 
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
+
+logger = logging.getLogger(__name__)
 
 NAME = "dataone"
 
@@ -247,11 +250,13 @@ def normalize(raw_doc):
 
     # Return none if no url - not good for notification service
     if normalized_dict['id']['url'] == u'':
+        logger.info('Document with ID {} has no URL, not being normalized'.format(normalized_dict['id']['serviceID']))
         return None
 
     # DATA and RESOURCE info is included in the METADATA's documents
     # and resourceMap fields aldready - no need to return these
     if normalized_dict['properties']['formatType'] != 'METADATA':
+        logger.info('Document with ID {} has formatType {}, not being normalized'.format(normalized_dict['id']['serviceID'], normalized_dict['properties']['formatType']))
         return None
 
     return NormalizedDocument(normalized_dict)
