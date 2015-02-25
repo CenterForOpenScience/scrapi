@@ -247,9 +247,8 @@ class OAIHarvester(BaseHarvester):
                 item_mod = item.replace('publication:', '')
                 if item_mod in self.approved_sets:
                     approved = True
-                else:
-                    logger.info('Series {} not in approved list'.format(item))
             if not approved:
+                logger.info('Series {} not in approved list'.format(item))
                 return None
 
         payload = {
