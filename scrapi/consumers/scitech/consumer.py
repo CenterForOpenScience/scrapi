@@ -104,16 +104,20 @@ def get_properties(record):
 
     properties = {
         'articleType': record.find(str(etree.QName(elements_url, 'type'))).text or '',
-        'dateEntered': record.find(str(etree.QName(elements_url, 'dateEntry'))).text or '',
-        'researchOrg': record.find(str(etree.QName(terms_url, 'publisherResearch'))).text or '',
-        'researchSponsor': record.find(str(etree.QName(terms_url, 'publisherSponsor'))).text or '',
-        'researchCountry': record.find(str(etree.QName(terms_url, 'publisherCountry'))).text or '',
+        'dateEntry': record.find(str(etree.QName(elements_url, 'dateEntry'))).text or '',
+        'publisherResearch': record.find(str(etree.QName(terms_url, 'publisherResearch'))).text or '',
+        'publisherSponsor': record.find(str(etree.QName(terms_url, 'publisherSponsor'))).text or '',
+        'publisherCountry': record.find(str(etree.QName(terms_url, 'publisherCountry'))).text or '',
         'identifierInfo': identifiers,
         'relation': record.find(str(etree.QName(elements_url, 'relation'))).text or "",
         'coverage': record.find(str(etree.QName(elements_url, 'coverage'))).text or "",
         'format': record.find(str(etree.QName(elements_url, 'format'))).text or "",
         'language': record.find(str(etree.QName(elements_url, 'language'))).text or "",
-        'date': record.find(str(etree.QName(elements_url, 'date'))).text or ""
+        'date': record.find(str(etree.QName(elements_url, 'date'))).text or "",
+        'type': record.find(str(etree.QName(elements_url, 'type'))).text or "",
+        'typeQualifier': record.find(str(etree.QName(elements_url, 'typeQualifier'))).text or "",
+        'rights': record.find(str(etree.QName(elements_url, 'rights'))).text or "",
+        'dateAdded': record.find(str(etree.QName(elements_url, 'dateAdded'))).text or ""
 
     }
     for key, value in properties.iteritems():
