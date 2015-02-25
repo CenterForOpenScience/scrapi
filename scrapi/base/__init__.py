@@ -242,13 +242,8 @@ class OAIHarvester(BaseHarvester):
                 'ns0:header/ns0:setSpec/node()',
                 namespaces=self.NAMESPACES
             )
-            approved = False
-            for item in set_spec:
-                item_mod = item.replace('publication:', '')
-                if item_mod in self.approved_sets:
-                    approved = True
-            if not approved:
-                logger.info('Series {} not in approved list'.format(item))
+            if not set([x.replace('publication:', '') for x in set_spec]).intersection(self.approved_sets):
+                logger.info('Series {} not in approved list'.format(set_spec))
                 return None
 
         payload = {
@@ -265,5 +260,7 @@ class OAIHarvester(BaseHarvester):
         if (result.xpath('ns0:header/@status', namespaces=self.NAMESPACES) or [''])[0] == 'deleted':
             logger.info('Deleted record, not normalizing {}'.format(payload['id']['serviceID']))
             return None
-
+        import json
+        with open('results/{}_normalized_results.json'.format(payload['source']), 'a') as f:
+            f.write(json.dumps(payload, indent=4))
         return NormalizedDocument(payload)
