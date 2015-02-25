@@ -177,8 +177,7 @@ def normalize(raw_doc):
         'id': get_ids(doc, raw_doc),
         'source': NAME,
         'tags': get_tags(doc),
-        'dateUpdated': get_date_updated(doc),
-        'raw': raw_doc_string
+        'dateUpdated': get_date_updated(doc)
     }
     return NormalizedDocument(normalized_dict)
 
