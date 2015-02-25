@@ -1,3 +1,11 @@
+"""
+Consumer for the eScholarship repository at the University of California for the SHARE project
+
+More information available here:
+https://github.com/CenterForOpenScience/SHARE/blob/master/providers/org.escholarship.md
+"""
+
+
 from __future__ import unicode_literals
 
 from scrapi.base import OAIHarvester
