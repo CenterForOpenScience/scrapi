@@ -1,5 +1,7 @@
 """
 Figshare harvester of public projects for the SHARE Notification Service
+Note: At the moment, this harvester only harvests basic data on each article, and does
+not make a seperate request for additional metadata for each record.
 
 Example API query: http://api.figshare.com/v1/articles/search?search_for=*&from_date=2015-2-1&end_date=2015-2-1
 """
