@@ -61,4 +61,3 @@ trinity = OAIHarvester(
 
 consume = trinity.harvest
 normalize = trinity.normalize
-sstate.normalize
