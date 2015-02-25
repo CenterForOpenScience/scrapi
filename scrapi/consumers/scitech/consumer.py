@@ -109,7 +109,6 @@ def get_properties(record):
         'language': record.find(str(etree.QName(elements_url, 'language'))).text or "",
         'date': record.find(str(etree.QName(elements_url, 'date'))).text or "",
         'type': record.find(str(etree.QName(elements_url, 'type'))).text or "",
-        'typeQualifier': record.find(str(etree.QName(elements_url, 'typeQualifier'))).text or "",
         'rights': record.find(str(etree.QName(elements_url, 'rights'))).text or "",
         'dateAdded': record.find(str(etree.QName(elements_url, 'dateAdded'))).text or ""
 
