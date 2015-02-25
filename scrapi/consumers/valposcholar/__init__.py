@@ -10,7 +10,7 @@ from scrapi.base import OAIHarvester
 valposcholar = OAIHarvester(
     name='valposcholar',
     base_url='http://scholar.valpo.edu/do/oai/',
-    property_list=['type', 'source'],
+    property_list=['type', 'source', 'setSpec', 'format', 'identifier', 'publisher'],
     approved_sets=[
         'cc_fac_pub',
         'it_pubs',
