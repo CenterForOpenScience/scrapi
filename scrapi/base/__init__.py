@@ -268,7 +268,5 @@ class OAIHarvester(BaseHarvester):
         if (result.xpath('ns0:header/@status', namespaces=self.NAMESPACES) or [''])[0] == 'deleted':
             logger.info('Deleted record, not normalizing {}'.format(payload['id']['serviceID']))
             return None
-        import json
-        with open('results/{}_normalized_results.json'.format(payload['source']), 'a') as f:
-            f.write(json.dumps(payload, indent=4))
+
         return NormalizedDocument(payload)
