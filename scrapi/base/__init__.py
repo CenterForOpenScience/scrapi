@@ -221,7 +221,8 @@ class OAIHarvester(BaseHarvester):
     def get_title(self, result):
         title = result.xpath(
             '//dc:title/node()',
-            namespaces=self.NAMESPACES)
+            namespaces=self.NAMESPACES
+        ) or ['']
         return util.copy_to_unicode(title[0])
 
     def get_description(self, result):
@@ -262,4 +263,7 @@ class OAIHarvester(BaseHarvester):
             'dateUpdated': self.get_date_updated(result)
         }
 
+        import json
+        with open('results/{}_normalized_results.json'.format(payload['source']), 'a') as f:
+            f.write(json.dumps(payload, indent=4))
         return NormalizedDocument(payload)
