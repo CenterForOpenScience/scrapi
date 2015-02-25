@@ -123,7 +123,8 @@ def get_properties(record):
         'defined_type': record['defined_type'],
         'type': record['type'],
         'links': record['links'],
-        'doi': record['DOI']
+        'doi': record['DOI'],
+        'publishedDate': record['published_date']
     }
 
 
