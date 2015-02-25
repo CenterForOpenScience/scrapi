@@ -15,6 +15,7 @@ from scrapi.base import OAIHarvester
 columbia = OAIHarvester(
     name='columbia',
     base_url='http://academiccommons.columbia.edu/catalog/oai',
+    timezone_granularity=True,
     property_list=['type', 'publisher', 'format', 'date',
                    'identifier', 'language']
 )
