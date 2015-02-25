@@ -166,6 +166,13 @@ class OAIHarvester(BaseHarvester):
         return [util.copy_to_unicode(tag.lower().strip()) for tag in tags]
 
     def get_ids(self, result, doc):
+        """
+        Gather the DOI and url from identifiers, if possible.
+        Tries to save the DOI alone without a url extension.
+        Tries to save a link to the original content at the source,
+        instead of direct to a PDF, which is usually linked with viewcontent.cgi?
+        in the url field
+        """
         serviceID = doc.get('docID')
         identifiers = result.xpath(
             '//dc:identifier/node()', namespaces=self.NAMESPACES)
@@ -179,7 +186,8 @@ class OAIHarvester(BaseHarvester):
                 doi = doi.replace('http://dx.doi.org/', '')
                 doi = doi.strip(' ')
             if 'http://' in item or 'https://' in item:
-                url = item
+                if 'viewcontent' not in item:
+                    url = item
 
         return {
             'serviceID': serviceID,
