@@ -250,6 +250,8 @@ class OAIHarvester(BaseHarvester):
                 'ns0:header/ns0:setSpec/node()',
                 namespaces=self.NAMESPACES
             )
+            # check if there's an intersection between the approved sets and the
+            # setSpec list provided in the record. If there isn't, don't normalize.
             if not set([x.replace('publication:', '') for x in set_spec]).intersection(self.approved_sets):
                 logger.info('Series {} not in approved list'.format(set_spec))
                 return None
