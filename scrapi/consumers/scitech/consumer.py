@@ -92,23 +92,17 @@ def get_ids(record, raw_doc):
 
 def get_properties(record):
     # TODO - some of these record.finds return a FutureWarning - should be fixed
-    identifiers = {
-        'identifier': record.find(str(etree.QName(elements_url, 'identifier'))).text or "",
-        'identifierReport': record.find(str(etree.QName(elements_url, 'identifierReport'))).text or "",
-        'identifierContract': record.find(str(etree.QName(terms_url, 'identifierDOEcontract'))) or "",
-        'identifierCitation': record.find(str(etree.QName(terms_url, 'identifier-citation'))) or "",
-        'identifierOther': record.find(str(etree.QName(elements_url, 'identifierOther'))) or ""
-    }
-    for key, value in identifiers.iteritems():
-        identifiers[key] = copy_to_unicode(value)
-
     properties = {
         'articleType': record.find(str(etree.QName(elements_url, 'type'))).text or '',
         'dateEntry': record.find(str(etree.QName(elements_url, 'dateEntry'))).text or '',
         'publisherResearch': record.find(str(etree.QName(terms_url, 'publisherResearch'))).text or '',
         'publisherSponsor': record.find(str(etree.QName(terms_url, 'publisherSponsor'))).text or '',
         'publisherCountry': record.find(str(etree.QName(terms_url, 'publisherCountry'))).text or '',
-        'identifierInfo': identifiers,
+        'identifier': record.find(str(etree.QName(elements_url, 'identifier'))).text or "",
+        'identifierReport': record.find(str(etree.QName(elements_url, 'identifierReport'))).text or "",
+        'identifierContract': record.find(str(etree.QName(terms_url, 'identifierDOEcontract'))) or "",
+        'identifierCitation': record.find(str(etree.QName(terms_url, 'identifier-citation'))) or "",
+        'identifierOther': record.find(str(etree.QName(elements_url, 'identifierOther'))) or "",
         'relation': record.find(str(etree.QName(elements_url, 'relation'))).text or "",
         'coverage': record.find(str(etree.QName(elements_url, 'coverage'))).text or "",
         'format': record.find(str(etree.QName(elements_url, 'format'))).text or "",
