@@ -4,22 +4,24 @@ Figshare harvester of public projects for the SHARE Notification Service
 Example API query: http://api.figshare.com/v1/articles/search?search_for=*&from_date=2015-2-1&end_date=2015-2-1
 """
 
-
 from __future__ import unicode_literals
-
 
 import time
 import json
+import logging
 from dateutil.parser import parse
 from datetime import date, timedelta
 
 import requests
 
-
 from nameparser import HumanName
 
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
+
+logging.basicConfig(level=logging.INFO)
+
+logger = logging.getLogger(__name__)
 
 NAME = 'figshare'
 URL = 'http://api.figshare.com/v1/articles/search?search_for=*&from_date='
@@ -63,6 +65,7 @@ def get_records(search_url):
 
     all_records = []
     while len(all_records) < total_records:
+        logger.info('Requesting records for url: {}&page={}'.format(search_url, str(page)))
         record_list = records.json()['items']
 
         for record in record_list:
