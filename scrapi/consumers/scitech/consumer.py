@@ -92,28 +92,25 @@ def get_ids(record, raw_doc):
 
 def get_properties(record):
     # TODO - some of these record.finds return a FutureWarning - should be fixed
-    identifiers = {
+    properties = {
+        'articleType': record.find(str(etree.QName(elements_url, 'type'))).text or '',
+        'dateEntry': record.find(str(etree.QName(elements_url, 'dateEntry'))).text or '',
+        'publisherResearch': record.find(str(etree.QName(terms_url, 'publisherResearch'))).text or '',
+        'publisherSponsor': record.find(str(etree.QName(terms_url, 'publisherSponsor'))).text or '',
+        'publisherCountry': record.find(str(etree.QName(terms_url, 'publisherCountry'))).text or '',
         'identifier': record.find(str(etree.QName(elements_url, 'identifier'))).text or "",
         'identifierReport': record.find(str(etree.QName(elements_url, 'identifierReport'))).text or "",
         'identifierContract': record.find(str(etree.QName(terms_url, 'identifierDOEcontract'))) or "",
         'identifierCitation': record.find(str(etree.QName(terms_url, 'identifier-citation'))) or "",
-        'identifierOther': record.find(str(etree.QName(elements_url, 'identifierOther'))) or ""
-    }
-    for key, value in identifiers.iteritems():
-        identifiers[key] = copy_to_unicode(value)
-
-    properties = {
-        'articleType': record.find(str(etree.QName(elements_url, 'type'))).text or '',
-        'dateEntered': record.find(str(etree.QName(elements_url, 'dateEntry'))).text or '',
-        'researchOrg': record.find(str(etree.QName(terms_url, 'publisherResearch'))).text or '',
-        'researchSponsor': record.find(str(etree.QName(terms_url, 'publisherSponsor'))).text or '',
-        'researchCountry': record.find(str(etree.QName(terms_url, 'publisherCountry'))).text or '',
-        'identifierInfo': identifiers,
+        'identifierOther': record.find(str(etree.QName(elements_url, 'identifierOther'))) or "",
         'relation': record.find(str(etree.QName(elements_url, 'relation'))).text or "",
         'coverage': record.find(str(etree.QName(elements_url, 'coverage'))).text or "",
         'format': record.find(str(etree.QName(elements_url, 'format'))).text or "",
         'language': record.find(str(etree.QName(elements_url, 'language'))).text or "",
-        'date': record.find(str(etree.QName(elements_url, 'date'))).text or ""
+        'date': record.find(str(etree.QName(elements_url, 'date'))).text or "",
+        'type': record.find(str(etree.QName(elements_url, 'type'))).text or "",
+        'rights': record.find(str(etree.QName(elements_url, 'rights'))).text or "",
+        'dateAdded': record.find(str(etree.QName(elements_url, 'dateAdded'))).text or ""
 
     }
     for key, value in properties.iteritems():
