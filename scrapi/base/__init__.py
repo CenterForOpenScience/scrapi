@@ -256,7 +256,7 @@ class OAIHarvester(BaseHarvester):
                 logger.info('Series {} not in approved list'.format(set_spec))
                 return None
 
-        payload = {
+        normalized = {
             'source': self.name,
             'title': self.get_title(result),
             'description': self.get_description(result),
@@ -267,8 +267,9 @@ class OAIHarvester(BaseHarvester):
             'dateUpdated': self.get_date_updated(result)
         }
 
-        if (result.xpath('ns0:header/@status', namespaces=self.NAMESPACES) or [''])[0] == 'deleted':
-            logger.info('Deleted record, not normalizing {}'.format(payload['id']['serviceID']))
+        status = result.xpath('ns0:header/@status', namespaces=self.NAMESPACES)
+        if status and status[0] == 'deleted':
+            logger.info('Deleted record, not normalizing {}'.format(normalized['id']['serviceID']))
             return None
 
-        return NormalizedDocument(payload)
+        return NormalizedDocument(normalized)
