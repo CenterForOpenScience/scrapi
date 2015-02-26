@@ -14,8 +14,9 @@ from scrapi.base import OAIHarvester
 
 upennsylvania = OAIHarvester(
     name='upennsylvania',
-    timeout=30,
-    base_url='http://repository.upenn.edu/do/oai/'
+    base_url='http://repository.upenn.edu/do/oai/',
+    property_list=['type', 'publisher', 'format', 'date',
+                   'identifier', 'setSpec', 'source', 'rights']
 )
 
 consume = upennsylvania.harvest
