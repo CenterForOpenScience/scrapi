@@ -10,7 +10,8 @@ from scrapi.base import OAIHarvester
 utaustin = OAIHarvester(
     name='utaustin',
     base_url='http://repositories.lib.utexas.edu/oai/request',
-    property_list=['type', 'source', 'publisher', 'format', 'date', 'identifier', 'setSpec'],
+    property_list=['type', 'source', 'publisher', 'format', 'date',
+                   'identifier', 'setSpec', 'language', 'rights'],
     approved_sets=[
         'hdl_2152_1',
         'hdl_2152_13541',
