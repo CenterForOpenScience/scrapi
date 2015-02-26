@@ -21,8 +21,6 @@ from nameparser import HumanName
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
-logging.basicConfig(level=logging.INFO)
-
 logger = logging.getLogger(__name__)
 
 NAME = 'figshare'
