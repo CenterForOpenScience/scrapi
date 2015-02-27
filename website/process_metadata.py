@@ -42,11 +42,11 @@ def process_api_input(events):
     # this is a list of scrapi rawDocuments
     raw_documents = harvest(events)
 
-    harvestd_docs, timestamps = task_harvest(raw_documents)
+    harvested_docs, timestamps = task_harvest(raw_documents)
 
     storage = {'is_push': True}
 
-    for raw in harvestd_docs:
+    for raw in harvested_docs:
         raw['timestamps'] = timestamps
         tasks.process_raw.delay(raw, storage=storage)
         normalized = task_normalize(raw)

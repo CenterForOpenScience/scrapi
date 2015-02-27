@@ -97,7 +97,7 @@ def harvest(harvester_name, job_created, days_back=1):
         number=len(result)
     )
 
-    # result is a list of all of the RawDocuments harvestd
+    # result is a list of all of the RawDocuments harvested
     return result, timestamps
 
 
