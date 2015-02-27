@@ -9,7 +9,7 @@ from invoke import run, task
 
 from scrapi import linter
 from scrapi import settings
-from scrapi.util import import_consumer
+from scrapi.util import import_harvester
 
 logger = logging.getLogger()
 
@@ -65,23 +65,23 @@ def migrate_search():
 
 
 '''
-Initializes and updates git submodules for consumers and runs the install_consumers task
+Initializes and updates git submodules for harvesters and runs the install_harvesters task
 '''
 @task
-def init_consumers():
+def init_harvesters():
     run('git submodule init')
     run('git submodule update')
-    install_consumers(update=True)
+    install_harvesters(update=True)
 
 
 @task
-def install_consumers(update=False):
+def install_harvesters(update=False):
     if update:
-        run('cd scrapi/settings/consumerManifests && git reset HEAD --hard && git pull origin master')
+        run('cd scrapi/settings/harvesterManifests && git reset HEAD --hard && git pull origin master')
         settings.MANIFESTS = settings.load_manifests()
 
-    for consumer, manifest in settings.MANIFESTS.items():
-        directory = 'scrapi/consumers/{}'.format(manifest['shortName'])
+    for harvester, manifest in settings.MANIFESTS.items():
+        directory = 'scrapi/harvesters/{}'.format(manifest['shortName'])
 
         if not os.path.isdir(directory):
             run('git clone -b master {url} {moddir}'.format(
@@ -89,8 +89,8 @@ def install_consumers(update=False):
         elif update:
             run('cd {} && git pull origin master'.format(directory))
 
-        manifest_file = 'scrapi/settings/consumerManifests/{}.json'.format(
-            consumer)
+        manifest_file = 'scrapi/settings/harvesterManifests/{}.json'.format(
+            harvester)
 
         with open(manifest_file) as f:
             loaded = json.load(f)
@@ -106,11 +106,11 @@ def install_consumers(update=False):
 
 
 @task
-def clean_consumers():
-    run('cd scrapi/settings/consumerManifests && git reset HEAD --hard && git pull origin master')
+def clean_harvesters():
+    run('cd scrapi/settings/harvesterManifests && git reset HEAD --hard && git pull origin master')
 
-    for listing in os.listdir('scrapi/consumers'):
-        path = os.path.join('scrapi', 'consumers', listing)
+    for listing in os.listdir('scrapi/harvesters'):
+        path = os.path.join('scrapi', 'harvesters', listing)
         if os.path.isdir(path):
             print 'Removing {}...'.format(path)
             shutil.rmtree(path)
@@ -127,25 +127,25 @@ def worker():
 
 
 @task
-def consumer(consumer_name, async=False, days=1):
+def harvester(harvester_name, async=False, days=1):
     settings.CELERY_ALWAYS_EAGER = not async
-    from scrapi.tasks import run_consumer
+    from scrapi.tasks import run_harvester
 
-    if not settings.MANIFESTS.get(consumer_name):
-        print 'No such consumers {}'.format(consumer_name)
+    if not settings.MANIFESTS.get(harvester_name):
+        print 'No such harvesters {}'.format(harvester_name)
 
-    run_consumer.delay(consumer_name, days_back=days)
+    run_harvester.delay(harvester_name, days_back=days)
 
 
 @task
-def consumers(async=False, days=1):
+def harvesters(async=False, days=1):
     settings.CELERY_ALWAYS_EAGER = not async
-    from scrapi.tasks import run_consumer
+    from scrapi.tasks import run_harvester
 
     exceptions = []
-    for consumer_name in settings.MANIFESTS.keys():
+    for harvester_name in settings.MANIFESTS.keys():
         try:
-            run_consumer.delay(consumer_name, days_back=days)
+            run_harvester.delay(harvester_name, days_back=days)
         except Exception as e:
             logger.exception(e)
             exceptions.append(e)
@@ -156,12 +156,12 @@ def consumers(async=False, days=1):
 
 
 @task
-def check_archive(consumer=None, reprocess=False, async=False, days=None):
+def check_archive(harvester=None, reprocess=False, async=False, days=None):
     settings.CELERY_ALWAYS_EAGER = not async
 
-    if consumer:
+    if harvester:
         from scrapi.tasks import check_archive as check
-        check.delay(consumer, reprocess, days_back=int(days))
+        check.delay(harvester, reprocess, days_back=int(days))
     else:
         from scrapi.tasks import check_archives
         check_archives.delay(reprocess, days_back=int(days))
@@ -176,9 +176,9 @@ def lint_all():
 @task
 def lint(name):
     manifest = settings.MANIFESTS[name]
-    consumer = import_consumer(name)
+    harvester = import_harvester(name)
     try:
-        linter.lint(consumer.consume, consumer.normalize)
+        linter.lint(harvester.harvest, harvester.normalize)
     except Exception as e:
-        print 'Consumer {} raise the following exception'.format(manifest['longName'])
+        print 'Harvester {} raise the following exception'.format(manifest['longName'])
         print e

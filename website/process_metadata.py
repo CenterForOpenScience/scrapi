@@ -40,13 +40,13 @@ def process_api_input(events):
     '''
 
     # this is a list of scrapi rawDocuments
-    raw_documents = consume(events)
+    raw_documents = harvest(events)
 
-    consumed_docs, timestamps = task_consume(raw_documents)
+    harvestd_docs, timestamps = task_harvest(raw_documents)
 
     storage = {'is_push': True}
 
-    for raw in consumed_docs:
+    for raw in harvestd_docs:
         raw['timestamps'] = timestamps
         tasks.process_raw.delay(raw, storage=storage)
         normalized = task_normalize(raw)
@@ -54,7 +54,7 @@ def process_api_input(events):
         tasks.process_normalized.delay(normalized, raw, storage=storage)
 
 
-def consume(event_list):
+def harvest(event_list):
     ''' takes a list of input from the api route,
     returns a list of raw documents
     '''
@@ -70,9 +70,9 @@ def consume(event_list):
     ]
 
 
-def task_consume(raw_documents):
+def task_harvest(raw_documents):
     ''' takes in the raw_doc_list and emulates the
-    normal scrapi consume task, adding appropriate
+    normal scrapi harvest task, adding appropriate
     timestamps and returning a tuple consisting
     of the raw doc list and the dict of timestamps
     '''
@@ -80,15 +80,15 @@ def task_consume(raw_documents):
     source = raw_documents[0]['source']
 
     timestamps = {
-        'consumeTaskCreated': timestamp(),
-        'consumeStarted': timestamp(),
-        'consumeFinished': timestamp()
+        'harvestTaskCreated': timestamp(),
+        'harvestStarted': timestamp(),
+        'harvestFinished': timestamp()
     }
 
-    # TODO - handle consumer_name
-    logger.info('API Input from "{}" has finished consumption'.format(source))
-    events.dispatch(events.CONSUMER_RUN, events.COMPLETED,
-                    consumer=source, number=len(raw_documents))
+    # TODO - handle harvester_name
+    logger.info('API Input from "{}" has finished harvesting'.format(source))
+    events.dispatch(events.HARVESTER_RUN, events.COMPLETED,
+                    harvester=source, number=len(raw_documents))
 
     return raw_documents, timestamps
 
@@ -107,14 +107,14 @@ def task_normalize(raw_doc):
     normalized['timestamps'] = raw_doc['timestamps']
     normalized['timestamps']['normalizeFinished'] = timestamp()
 
-    normalized['dateCollected'] = normalized['timestamps']['consumeFinished']
+    normalized['dateCollected'] = normalized['timestamps']['harvestFinished']
 
-    normalized['raw'] = '{url}/{archive}{source}/{doc_id}/{consumeFinished}/raw.json'.format(
+    normalized['raw'] = '{url}/{archive}{source}/{doc_id}/{harvestFinished}/raw.json'.format(
         url=settings.SCRAPI_URL,
         archive=settings.ARCHIVE_DIRECTORY,
         source=normalized['source'],
         doc_id=b64encode(raw_doc['docID']),
-        consumeFinished=normalized['timestamps']['consumeFinished']
+        harvestFinished=normalized['timestamps']['harvestFinished']
     )
 
     return normalized
@@ -124,6 +124,6 @@ def normalize(raw_doc):
     normalized_dict = json.loads(raw_doc['doc'])
     source = normalized_dict['source']
     events.dispatch(events.PROCESSING, events.CREATED,
-                    consumer=source, docID=raw_doc['docID'])
+                    harvester=source, docID=raw_doc['docID'])
 
     return NormalizedDocument(normalized_dict)
