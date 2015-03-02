@@ -9,6 +9,7 @@ from __future__ import unicode_literals
 
 import re
 
+import logging
 import requests
 
 from lxml import etree
@@ -19,6 +20,8 @@ from nameparser import HumanName
 
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
+
+logger = logging.getLogger(__name__)
 
 NAME = "dataone"
 
@@ -189,14 +192,21 @@ def get_ids(doc, raw_doc):
     # id
     doi = ''
     service_id = raw_doc.get('docID')
-    if 'doi' in service_id:
-        # regex for just getting doi out of crazy urls and sometimes not urls
-        doi_re = '10\\.\\d{4}/\\w*\\.\\w{5}|10\\.\\d{4}/\\w*/\\w*\\.\\d*.\\d*'
+    # regex for just getting doi out of crazy urls and sometimes not urls
+    doi_re = '10\\.\\d{4}/\\w*\\.\\w*(/\\w*)?'
+    try:
+        regexed_doi = re.search(doi_re, service_id).group(0)
+        doi = regexed_doi
+    except AttributeError:
+        doi = ''
+    if doi == '':
         try:
-            regexed_doi = re.search(doi_re, service_id).group(0)
-            doi = regexed_doi
-        except AttributeError:
-            doi = service_id.replace('doi:', '')
+            doc_doi = doc.xpath("arr[@name='isDocumentedBy']/str/node()")[0]
+            doc_doi = doc_doi.replace('doi:', '')
+            regexed_doi = re.search(doi_re, doc_doi).group(0)
+        except (IndexError, AttributeError):
+            doi = ''
+
     url = (doc.xpath('//str[@name="dataUrl"]/node()') or [''])[0]
     if 'http' not in url and 'http' in service_id:
         url == service_id
@@ -240,11 +250,13 @@ def normalize(raw_doc):
 
     # Return none if no url - not good for notification service
     if normalized_dict['id']['url'] == u'':
+        logger.info('Document with ID {} has no URL, not being normalized'.format(normalized_dict['id']['serviceID']))
         return None
 
     # DATA and RESOURCE info is included in the METADATA's documents
     # and resourceMap fields aldready - no need to return these
     if normalized_dict['properties']['formatType'] != 'METADATA':
+        logger.info('Document with ID {} has formatType {}, not being normalized'.format(normalized_dict['id']['serviceID'], normalized_dict['properties']['formatType']))
         return None
 
     return NormalizedDocument(normalized_dict)

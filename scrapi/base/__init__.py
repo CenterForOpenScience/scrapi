@@ -166,6 +166,13 @@ class OAIHarvester(BaseHarvester):
         return [util.copy_to_unicode(tag.lower().strip()) for tag in tags]
 
     def get_ids(self, result, doc):
+        """
+        Gather the DOI and url from identifiers, if possible.
+        Tries to save the DOI alone without a url extension.
+        Tries to save a link to the original content at the source,
+        instead of direct to a PDF, which is usually linked with viewcontent.cgi?
+        in the url field
+        """
         serviceID = doc.get('docID')
         identifiers = result.xpath(
             '//dc:identifier/node()', namespaces=self.NAMESPACES)
@@ -179,7 +186,8 @@ class OAIHarvester(BaseHarvester):
                 doi = doi.replace('http://dx.doi.org/', '')
                 doi = doi.strip(' ')
             if 'http://' in item or 'https://' in item:
-                url = item
+                if 'viewcontent' not in item:
+                    url = item
 
         return {
             'serviceID': serviceID,
@@ -221,7 +229,8 @@ class OAIHarvester(BaseHarvester):
     def get_title(self, result):
         title = result.xpath(
             '//dc:title/node()',
-            namespaces=self.NAMESPACES)
+            namespaces=self.NAMESPACES
+        ) or ['']
         return util.copy_to_unicode(title[0])
 
     def get_description(self, result):
@@ -241,17 +250,13 @@ class OAIHarvester(BaseHarvester):
                 'ns0:header/ns0:setSpec/node()',
                 namespaces=self.NAMESPACES
             )
-            approved = False
-            for item in set_spec:
-                item_mod = item.replace('publication:', '')
-                if item_mod in self.approved_sets:
-                    approved = True
-                else:
-                    logger.info('Series {} not in approved list'.format(item))
-            if not approved:
+            # check if there's an intersection between the approved sets and the
+            # setSpec list provided in the record. If there isn't, don't normalize.
+            if not {x.replace('publication:', '') for x in set_spec}.intersection(self.approved_sets):
+                logger.info('Series {} not in approved list'.format(set_spec))
                 return None
 
-        payload = {
+        normalized = {
             'source': self.name,
             'title': self.get_title(result),
             'description': self.get_description(result),
@@ -262,4 +267,9 @@ class OAIHarvester(BaseHarvester):
             'dateUpdated': self.get_date_updated(result)
         }
 
-        return NormalizedDocument(payload)
+        status = result.xpath('ns0:header/@status', namespaces=self.NAMESPACES)
+        if status and status[0] == 'deleted':
+            logger.info('Deleted record, not normalizing {}'.format(normalized['id']['serviceID']))
+            return None
+
+        return NormalizedDocument(normalized)
