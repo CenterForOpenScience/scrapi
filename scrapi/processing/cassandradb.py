@@ -6,17 +6,19 @@ from cassandra.cluster import NoHostAvailable
 from cqlengine import columns, Model, connection
 from cqlengine.management import sync_table, create_keyspace
 
+from scrapi import settings
 from scrapi.processing.base import BaseProcessor
-from scrapi.settings import CASSANDRA_URI, CASSANDRA_KEYSPACE
 
 
 logger = logging.getLogger(__name__)
 
 try:
-    connection.setup(CASSANDRA_URI, CASSANDRA_KEYSPACE)
-    create_keyspace(CASSANDRA_KEYSPACE, replication_factor=1, strategy_class='SimpleStrategy')
+    connection.setup(settings.CASSANDRA_URI, settings.CASSANDRA_KEYSPACE)
+    create_keyspace(settings.CASSANDRA_KEYSPACE, replication_factor=1, strategy_class='SimpleStrategy')
 except NoHostAvailable:
     logger.error('Could not connect to Cassandra, expect errors.')
+    if 'cassandra' in settings.NORMALIZED_PROCESSING or settings.RAW_PROCESSING:
+        raise
 
 
 class CassandraProcessor(BaseProcessor):
@@ -71,7 +73,7 @@ class DocumentModel(Model):
     metadata.
     '''
     __table_name__ = 'documents'
-    __keyspace__ = CASSANDRA_KEYSPACE
+    __keyspace__ = settings.CASSANDRA_KEYSPACE
 
     # Raw
     docID = columns.Text(primary_key=True)
@@ -104,7 +106,7 @@ class VersionModel(Model):
     '''
 
     __table_name__ = 'versions'
-    __keyspace__ = CASSANDRA_KEYSPACE
+    __keyspace__ = settings.CASSANDRA_KEYSPACE
 
     key = columns.UUID(primary_key=True, required=True)
 
