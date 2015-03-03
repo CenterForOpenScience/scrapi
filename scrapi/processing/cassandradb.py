@@ -1,14 +1,22 @@
 import json
+import logging
 from uuid import uuid4
 
+from cassandra.cluster import NoHostAvailable
 from cqlengine import columns, Model, connection
 from cqlengine.management import sync_table, create_keyspace
 
 from scrapi.processing.base import BaseProcessor
 from scrapi.settings import CASSANDRA_URI, CASSANDRA_KEYSPACE
 
-connection.setup(CASSANDRA_URI, CASSANDRA_KEYSPACE)
-create_keyspace(CASSANDRA_KEYSPACE, replication_factor=1, strategy_class='SimpleStrategy')
+
+logger = logging.getLogger(__name__)
+
+try:
+    connection.setup(CASSANDRA_URI, CASSANDRA_KEYSPACE)
+    create_keyspace(CASSANDRA_KEYSPACE, replication_factor=1, strategy_class='SimpleStrategy')
+except NoHostAvailable:
+    logger.error('Could not connect to Cassandra, expect errors.')
 
 
 class CassandraProcessor(BaseProcessor):
