@@ -56,7 +56,7 @@ def create_schedule():
 
 
 if USE_FLUENTD:
-    sender.setup(*FLUENTD_ARGS)
+    sender.setup(**FLUENTD_ARGS)
 
 
 if SENTRY_DNS:
