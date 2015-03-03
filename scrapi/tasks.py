@@ -102,12 +102,11 @@ def consume(consumer_name, job_created, days_back=1):
 
 
 @app.task
-def begin_normalization(consume_ret, consumer_name):
+def begin_normalization((raw_docs, timestamps), consumer_name):
     '''consume_ret is consume return value:
         a tuple contaiing list of rawDocuments and
         a dictionary of timestamps
     '''
-    raw_docs, timestamps = consume_ret
 
     logger.info('Normalizing {} documents for consumer "{}"'
                 .format(len(raw_docs), consumer_name))
