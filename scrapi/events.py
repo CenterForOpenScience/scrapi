@@ -51,6 +51,7 @@ def dispatch(_event, status, _index=None, **kwargs):
     if not settings.USE_FLUENTD:
         logger.warning('Dispatched called but USE_FLUENTD is False')
         return
+
     evnt = {
         'event': _event,
         'status': status
