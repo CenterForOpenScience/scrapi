@@ -24,7 +24,7 @@ STARTED = 'started'
 COMPLETED = 'completed'
 
 
-class Skipped(Exception):
+class Skip(Exception):
     pass
 
 
