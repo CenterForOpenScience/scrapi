@@ -230,7 +230,7 @@ def get_properties(xml_doc):
     ## extra properties ##
     properties = {
         'sponsors': lead_sponsor,
-        'oversightAuthority': xml_doc.xpath('//oversigh_info/authority/node()'),
+        'oversightAuthority': xml_doc.xpath('//oversight_info/authority/node()'),
         'studyDesign': (xml_doc.xpath('//study_design/node()') or [''])[0],
         'primaryOutcome': primary_outcome,
         'secondary_outcomes': secondary_outcomes,
