@@ -48,7 +48,7 @@ def run_harvester(harvester_name, days_back=1):
 
 @app.task
 def harvest(harvester_name, job_created, days_back=1):
-    logger.info('harvester "{}" has begun consumption'.format(harvester_name))
+    logger.info('Harvester "{}" has begun harvesting'.format(harvester_name))
     events.dispatch(
         events.HARVESTER_RUN,
         events.STARTED,
@@ -69,7 +69,7 @@ def harvest(harvester_name, job_created, days_back=1):
             cassette = os.path.join(settings.RECORD_DIRECTORY,
                                     harvester_name, timestamp() + '.yml')
 
-            logger.debug('Recording HTTP consumption request for {} to {}'
+            logger.debug('Recording HTTP harvesting request for {} to {}'
                          .format(harvester_name, cassette))
 
             with vcr.use_cassette(cassette, record_mode='all'):
@@ -89,7 +89,7 @@ def harvest(harvester_name, job_created, days_back=1):
 
     timestamps['harvestFinished'] = timestamp()
 
-    logger.info('harvester "{}" has finished consumption'.format(harvester_name))
+    logger.info('Harvester "{}" has finished harvesting'.format(harvester_name))
     events.dispatch(
         events.HARVESTER_RUN,
         events.COMPLETED,
