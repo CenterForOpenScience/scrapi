@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 import logging
 import inspect
 from functools import wraps
-from contextlib import contextmanager
 
 from fluent import event
 
@@ -85,22 +84,6 @@ def logged(event, index=None):
             return res
         return wrapped
     return _logged
-
-
-@contextmanager
-def logged_failure(event, index=None, reraise=True):
-    try:
-        yield
-    except Exception as e:
-        arg_info = inspect.getargvalues(inspect.stack()[2][0])
-        context = {
-            k: v
-            for k, v in arg_info.locals.items()
-            if k in arg_info.args or arg_info.keywords
-        }
-        dispatch(event, FAILED, exception=repr(e), **context)
-        if reraise:
-            raise
 
 
 def extract_context(func, *args, **kwargs):
