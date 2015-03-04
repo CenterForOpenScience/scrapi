@@ -40,7 +40,7 @@ es = ElasticsearchProcessor()
 
 
 @app.task
-def process_one(consumer_name, consumer, raw_path):
+def process_one(harvester_name, harvester, raw_path):
     date = parser.parse(raw_path.split('/')[-2])
 
     timestamp = date.isoformat()
@@ -50,11 +50,11 @@ def process_one(consumer_name, consumer, raw_path):
     raw_doc = RawDocument({
         'doc': raw_file,
         'timestamps': {
-            'consumeFinished': timestamp
+            'harvestFinished': timestamp
         },
         'docID': b64decode(raw_path.split('/')[-3]).decode('utf-8'),
-        'source': consumer_name,
-        'filetype': consumer['fileFormat'],
+        'source': harvester_name,
+        'filetype': harvester['fileFormat'],
     })
 
     try:
@@ -64,7 +64,7 @@ def process_one(consumer_name, consumer, raw_path):
         with open(normalized_path, 'r') as f:
             normalized = NormalizedDocument(json.load(f))
     except Exception:
-        normalized = normalize(raw_doc, consumer_name)
+        normalized = normalize(raw_doc, harvester_name)
 
     process_to_elasticsearch.delay(raw_doc, normalized)
     process_to_cassandra.delay(raw_doc, normalized)

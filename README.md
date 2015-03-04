@@ -10,7 +10,7 @@ scrapi
     - Install requirements.
     - Install Elasticsearch
     - Install Cassandra
-    - Install consumers
+    - Install harvesters
     - Install rabbitmq
 
 ### Requirements
@@ -59,15 +59,15 @@ $ python server.py
 from the scrapi/website/ directory, and the server should be up and running!
 
 
-### Consumers
+### Harvesters
 
-- To set up consumers for the first time, Just run
+- To set up harvesters for the first time, Just run
 
 ```bash
-invoke init_consumers
+invoke init_harvesters
 ```
 
-and the consumers specified in the manifest files of the worker_manager, and their requirements, will be installed.
+and the harvesters specified in the manifest files of the worker_manager, and their requirements, will be installed.
 
 ### Rabbitmq
 

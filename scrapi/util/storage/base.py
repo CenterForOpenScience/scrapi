@@ -31,7 +31,7 @@ class BaseStorage(object):
             settings.ARCHIVE_DIRECTORY,
             raw_doc['source'],
             b64encode(raw_doc['docID']),
-            raw_doc['timestamps']['consumeFinished']
+            raw_doc['timestamps']['harvestFinished']
         ]
         path = os.path.join(*path)
         make_dir(path)
@@ -53,7 +53,7 @@ class BaseStorage(object):
             file_manifest = settings.MANIFESTS[document['source']]
 
         manifest = {
-            'consumedTimestamp': document['timestamps']['consumeFinished'],
+            'harvestedTimestamp': document['timestamps']['harvestFinished'],
             'source': document['source']
         }
 

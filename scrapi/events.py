@@ -5,7 +5,7 @@ from scrapi import settings
 
 # Events
 PROCESSING = 'processing'
-CONSUMER_RUN = 'runConsumer'
+HARVESTER_RUN = 'runHarvester'
 CHECK_ARCHIVE = 'checkArchive'
 NORMALIZATION = 'normalization'
 
