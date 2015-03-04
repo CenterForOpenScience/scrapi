@@ -46,9 +46,9 @@ def harvest(harvester_name, job_created, days_back=1):
 
     # result is a list of all of the RawDocuments consumed
     return result, {
-        'consumeFinished': timestamp(),
-        'consumeTaskCreated': job_created,
-        'consumeStarted': harvest_started,
+        'harvestFinished': timestamp(),
+        'harvestTaskCreated': job_created,
+        'harvestStarted': harvest_started,
     }
 
 
