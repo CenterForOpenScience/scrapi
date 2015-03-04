@@ -100,17 +100,32 @@ def logged_failure(event, index=None, reraise=True):
 
 
 def extract_context(func, *args, **kwargs):
-    full_args = list(args) + kwargs.values()
-    names = list(func.func_code.co_varnames) + kwargs.keys()
-    return {
-        key: val
+    args = list(reversed(args))
+    arginfo = inspect.getargspec(func)
+
+    if arginfo.defaults:
+        arg_names = arginfo.args[:len(arginfo.defaults)]
+        kwarg_names = arginfo.args[len(arginfo.defaults):]
+    else:
+        kwarg_names = []
+        arg_names = arginfo.args
+
+    real_args = {
+        key: kwargs.pop(key, val)
         for key, val
-        in zip(names, full_args)
+        in zip(kwarg_names, arginfo.defaults or [])
     }
 
+    for name in arg_names:
+        real_args[name] = args.pop()
 
-def log_task_created(event, context):
-    dispatch(event, CREATED, **context)
+    if arginfo.varargs:
+        real_args[arginfo.varargs] = list(reversed(args))
+
+    if arginfo.keywords:
+        real_args[arginfo.keywords] = kwargs
+
+    return real_args
 
 
 def creates_task(event):
