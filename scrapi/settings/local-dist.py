@@ -20,10 +20,10 @@ RAW_PROCESSING = ['storage']
 SENTRY_DNS = None
 
 USE_FLUENTD = False
-FLUENTD_ARGS = ('scrapi',)
+FLUENTD_ARGS = {
+    'tag': 'app.scrapi'
+}
 
-# OUTPUT SETTINGS
-OSF_ENABLED = False
 
 VERIFY_SSL = True
 OSF_PREFIX = 'http://localhost:5000'

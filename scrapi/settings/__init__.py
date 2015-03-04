@@ -56,7 +56,7 @@ def create_schedule():
 
 
 if USE_FLUENTD:
-    sender.setup(*FLUENTD_ARGS)
+    sender.setup(**FLUENTD_ARGS)
 
 
 if SENTRY_DNS:
@@ -79,8 +79,7 @@ OSF_NEW_PROJECT = OSF_APP_URL + 'projects/'
 OSF_PROMOTE = OSF_METADATA + '{}/promote/'
 
 CELERY_ENABLE_UTC = True
-CELERY_ALWAYS_EAGER = False
-CELERY_RESULT_BACKEND = 'amqp'
+CELERY_RESULT_BACKEND = None
 CELERY_TASK_SERIALIZER = 'pickle'
 CELERY_ACCEPT_CONTENT = ['pickle']
 CELERY_RESULT_SERIALIZER = 'pickle'

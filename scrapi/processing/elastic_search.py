@@ -2,14 +2,10 @@ import logging
 
 from elasticsearch import Elasticsearch
 from elasticsearch.exceptions import NotFoundError
+from elasticsearch.exceptions import ConnectionError
 
 from scrapi import settings
 from scrapi.processing.base import BaseProcessor
-
-es = Elasticsearch(
-    settings.ELASTIC_URI,
-    request_timeout=settings.ELASTIC_TIMEOUT
-)
 
 
 logger = logging.getLogger(__name__)
@@ -19,7 +15,22 @@ logging.getLogger('elasticsearch').setLevel(logging.WARN)
 logging.getLogger('elasticsearch.trace').setLevel(logging.WARN)
 
 
-es.cluster.health(wait_for_status='yellow')
+try:
+    # If we cant connect to elastic search dont define this class
+    es = Elasticsearch(settings.ELASTIC_URI, request_timeout=settings.ELASTIC_TIMEOUT)
+
+    body = {
+        'mappings': {
+            harvester: settings.ES_SEARCH_MAPPING
+            for harvester in settings.MANIFESTS.keys()
+        }
+    }
+    es.cluster.health(wait_for_status='yellow')
+    es.indices.create(index=settings.ELASTIC_INDEX, body=body, ignore=400)
+except ConnectionError:
+    logger.error('Could not connect to Elasticsearch, expect errors.')
+    if 'elasticsearch' in settings.NORMALIZED_PROCESSING or settings.RAW_PROCESSING:
+        raise
 
 
 class ElasticsearchProcessor(BaseProcessor):
@@ -56,51 +67,3 @@ class ElasticsearchProcessor(BaseProcessor):
             date = old_doc['dateUpdated']
 
         return date
-
-
-def create_index():
-    body = {
-        "mappings": {
-            harvester: {
-                "properties": {
-                    "id": {
-                        "properties": {
-                            "doi": {
-                                "type": "multi_field",
-                                "index": "not_analyzed",
-                                "fields": {
-                                    "analyzed": {
-                                        "type": "string",
-                                        "index": "analyzed"
-                                    }
-                                }
-                            },
-                            "url": {
-                                "type": "multi_field",
-                                "index": "not_analyzed",
-                                "fields": {
-                                    "analyzed": {
-                                        "type": "string",
-                                        "index": "analyzed"
-                                    }
-                                }
-                            },
-                            "serviceID": {
-                                "type": "multi_field",
-                                "index": "not_analyzed",
-                                "fields": {
-                                    "analyzed": {
-                                        "type": "string",
-                                        "index": "analyzed"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            } for harvester in settings.MANIFESTS.keys()
-        }
-    }
-    es.indices.create(index=settings.ELASTIC_INDEX, body=body, ignore=400)
-
-create_index()
