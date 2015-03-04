@@ -70,9 +70,12 @@ def logged(event, index=None):
             dispatch(event, STARTED, _index=index, **context)
             try:
                 res = func(*args, **kwargs)
-            except Skipped:
-                dispatch(event, SKIPPED, _index=index, **context)
+            except Skip as e:
+                dispatch(event, SKIPPED, _index=index, reason=e.message, **context)
                 return None
+            except Exception as e:
+                dispatch(event, FAILED, _index=index, exception=e, **context)
+                raise
             else:
                 dispatch(event, COMPLETED, _index=index, **context)
             return res
