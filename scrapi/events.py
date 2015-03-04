@@ -39,6 +39,8 @@ def serialize_fluent_data(data):
             serialize_fluent_data(item)
             for item in data
         ]
+    elif isinstance(data, (str, unicode)):
+        return data
     else:
         return repr(data)
 
