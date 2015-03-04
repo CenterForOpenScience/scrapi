@@ -53,7 +53,7 @@ class BaseStorage(object):
             file_manifest = settings.MANIFESTS[document['source']]
 
         manifest = {
-            'harvestdTimestamp': document['timestamps']['harvestFinished'],
+            'harvestedTimestamp': document['timestamps']['harvestFinished'],
             'source': document['source']
         }
 

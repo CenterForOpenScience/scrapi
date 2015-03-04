@@ -14,24 +14,11 @@ from nameparser import HumanName
 from scrapi import util
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
+from scrapi.base.transformer import Transformer
 
 logging.basicConfig(level=logging.INFO)
 
 logger = logging.getLogger(__name__)
-
-
-class Transformer(object):
-
-    def __init__(self):
-        self.transformations = {}
-
-    def register_transformation(self, XMLtag, JSONtag, fun=lambda x: x):
-        self.transformations[JSONtag] = lambda doc: fun(doc.xpath(XMLtag))
-
-    def transform(self, doc):
-        return {
-            key: transformation(doc) for key, transformation in self.transformations.items()
-        }
 
 
 class BaseHarvester(object):
@@ -42,8 +29,6 @@ class BaseHarvester(object):
     """
     __metaclass__ = abc.ABCMeta
 
-    transformations = {}
-
     @abc.abstractmethod
     def harvest(self, days_back=1):
         pass
@@ -52,16 +37,19 @@ class BaseHarvester(object):
     def normalize(self, raw_doc):
         pass
 
-    def register_transformation(self, source, target, source_type, fun=lambda x: x):
-        if source_type == 'xml':
-            self.transformations[target] = lambda doc: fun(doc.xpath(source))
-        elif source_type == 'json':
-            pass
-        else:
-            pass  # Raise transformation unsupported error
-
     def lint(self):
         return lint(self.harvest, self.normalize)
+
+
+class TransformerHarvester(BaseHarvester, Transformer):
+
+    def __init__(self, *args, **kwargs):
+        super(TransformerHarvester, self).__init__(*args, **kwargs)
+
+    def normalize(self, raw_doc):
+        transformed = self.transform(raw_doc['doc'])
+        for key, value in transformed.items():
+            pass
 
 
 class OAIHarvester(BaseHarvester):
