@@ -1,14 +1,37 @@
 import json
+import logging
 from uuid import uuid4
 
+from celery.signals import worker_process_init
+
+from cassandra.cluster import NoHostAvailable
 from cqlengine import columns, Model, connection
+from cqlengine.connection import cluster, session
 from cqlengine.management import sync_table, create_keyspace
 
+from scrapi import settings
 from scrapi.processing.base import BaseProcessor
-from scrapi.settings import CASSANDRA_URI, CASSANDRA_KEYSPACE
 
-connection.setup(CASSANDRA_URI, CASSANDRA_KEYSPACE)
-create_keyspace(CASSANDRA_KEYSPACE, replication_factor=1, strategy_class='SimpleStrategy')
+
+logger = logging.getLogger(__name__)
+
+try:
+    connection.setup(settings.CASSANDRA_URI, settings.CASSANDRA_KEYSPACE)
+    create_keyspace(settings.CASSANDRA_KEYSPACE, replication_factor=1, strategy_class='SimpleStrategy')
+except NoHostAvailable:
+    logger.error('Could not connect to Cassandra, expect errors.')
+    if 'cassandra' in settings.NORMALIZED_PROCESSING or settings.RAW_PROCESSING:
+        raise
+
+
+def cassandra_init(*args, **kwargs):
+    if cluster is not None:
+        cluster.shutdown()
+    if session is not None:
+        session.shutdown()
+    connection.setup(settings.CASSANDRA_URI, settings.CASSANDRA_KEYSPACE)
+
+worker_process_init.connect(cassandra_init)
 
 
 class CassandraProcessor(BaseProcessor):
@@ -63,7 +86,7 @@ class DocumentModel(Model):
     metadata.
     '''
     __table_name__ = 'documents'
-    __keyspace__ = CASSANDRA_KEYSPACE
+    __keyspace__ = settings.CASSANDRA_KEYSPACE
 
     # Raw
     docID = columns.Text(primary_key=True)
@@ -96,7 +119,7 @@ class VersionModel(Model):
     '''
 
     __table_name__ = 'versions'
-    __keyspace__ = CASSANDRA_KEYSPACE
+    __keyspace__ = settings.CASSANDRA_KEYSPACE
 
     key = columns.UUID(primary_key=True, required=True)
 

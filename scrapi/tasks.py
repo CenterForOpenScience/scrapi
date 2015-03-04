@@ -102,13 +102,11 @@ def harvest(harvester_name, job_created, days_back=1):
 
 
 @app.task
-def begin_normalization(harvest_ret, harvester_name):
-    '''harvest_ret is harvest return value:
+def begin_normalization((raw_docs, timestamps), consumer_name):
+    '''consume_ret is consume return value:
         a tuple contaiing list of rawDocuments and
         a dictionary of timestamps
     '''
-    raw_docs, timestamps = harvest_ret
-
     logger.info('Normalizing {} documents for harvester "{}"'
                 .format(len(raw_docs), harvester_name))
 

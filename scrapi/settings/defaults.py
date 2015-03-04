@@ -16,7 +16,9 @@ RAW_PROCESSING = ['storage']
 SENTRY_DNS = None
 
 USE_FLUENTD = False
-FLUENTD_ARGS = ('scrapi',)
+FLUENTD_ARGS = {
+    'tag': 'app.scrapi'
+}
 
 # OUTPUT SETTINGS
 OSF_ENABLED = False
@@ -30,3 +32,42 @@ API_KEY_LABEL = 'some label'
 API_KEY = 'some api key'
 
 SCRAPI_URL = 'http://173.255.232.219'
+
+ES_SEARCH_MAPPING = {
+    "properties": {
+        "id": {
+            "properties": {
+                "doi": {
+                    "type": "multi_field",
+                    "index": "not_analyzed",
+                    "fields": {
+                        "analyzed": {
+                            "type": "string",
+                            "index": "analyzed"
+                        }
+                    }
+                },
+                "url": {
+                    "type": "multi_field",
+                    "index": "not_analyzed",
+                    "fields": {
+                        "analyzed": {
+                            "type": "string",
+                            "index": "analyzed"
+                        }
+                    }
+                },
+                "serviceID": {
+                    "type": "multi_field",
+                    "index": "not_analyzed",
+                    "fields": {
+                        "analyzed": {
+                            "type": "string",
+                            "index": "analyzed"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
