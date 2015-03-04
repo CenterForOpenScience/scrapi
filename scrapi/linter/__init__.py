@@ -26,31 +26,31 @@ def is_pickable(val, name='root'):
         raise TypeError('Cannot pickle type {} from {}'.format(val, name))
 
 
-def lint(consume, normalize):
+def lint(harvest, normalize):
     """
-        Runs the consume and normalize functions, ensuring that
+        Runs the harvest and normalize functions, ensuring that
         they match the requirements of scrAPI.
     """
 
-    output = consume()
+    output = harvest()
 
     if not isinstance(output, list):
-        raise TypeError("{} does not return type list".format(consume))
+        raise TypeError("{} does not return type list".format(harvest))
 
     if len(output) == 0:
-        raise ValueError('{} returned an empty list'.format(consume))
+        raise ValueError('{} returned an empty list'.format(harvest))
 
     normalized_output = []
 
     for doc in output:
         if not isinstance(doc, RawDocument):
-            raise TypeError("{} returned a list containing a non-RawDocument item".format(consume))
+            raise TypeError("{} returned a list containing a non-RawDocument item".format(harvest))
 
         normalized_output.append(normalize(doc))
 
     for doc, raw_doc in zip(normalized_output, output):
         if not isinstance(doc, NormalizedDocument) and doc:
-            raise TypeError("{} does not return type NormalizedDocument".format(consume))
+            raise TypeError("{} does not return type NormalizedDocument".format(harvest))
         if doc and doc['id']['serviceID'] != raw_doc['docID']:
             raise ValueError('Serivce ID {} does not match {}'.format(doc['id']['serviceID'], raw_doc['docID']))
         if doc and not doc['id']['url']:

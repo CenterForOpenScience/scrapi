@@ -1,7 +1,7 @@
 """
     Configuration file for celerybeat/worker.
 
-    Dynamically adds consumers from all manifest files in consumerManifests
+    Dynamically adds harvesters from all manifest files in harvesterManifests
     to the celerybeat schedule.
 """
 import os
@@ -23,7 +23,7 @@ logging.basicConfig(level=logging.INFO)
 logging.getLogger('requests.packages.urllib3.connectionpool').setLevel(logging.WARNING)
 
 
-MANIFEST_DIR = os.path.join(os.path.dirname(__file__), 'consumerManifests')
+MANIFEST_DIR = os.path.join(os.path.dirname(__file__), 'harvesterManifests')
 
 
 # Programmatically generate celery beat schedule
@@ -43,14 +43,14 @@ def load_manifests():
 
 def create_schedule():
     schedule = {}
-    for consumer_name, manifest in MANIFESTS.items():
+    for harvester_name, manifest in MANIFESTS.items():
         cron = crontab(day_of_week=manifest['days'],
                        hour=manifest['hour'], minute=manifest['minute'])
 
-        schedule['run_{}'.format(consumer_name)] = {
-            'task': 'scrapi.tasks.run_consumer',
+        schedule['run_{}'.format(harvester_name)] = {
+            'task': 'scrapi.tasks.run_harvester',
             'schedule': cron,
-            'args': [consumer_name]
+            'args': [harvester_name]
         }
     return schedule
 

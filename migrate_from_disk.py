@@ -14,10 +14,10 @@ LOG.setLevel(logging.WARN)
 
 def main():
     exceptions = []
-    for consumer_name, consumer in settings.MANIFESTS.items():
-        for raw_path in store.iter_raws(consumer_name, include_normalized=True):
+    for harvester_name, harvester in settings.MANIFESTS.items():
+        for raw_path in store.iter_raws(harvester_name, include_normalized=True):
             try:
-                process_one.delay(consumer_name, consumer, raw_path)
+                process_one.delay(harvester_name, harvester, raw_path)
             except Exception as e:
                 logger.exception(e)
                 exceptions.append(e)

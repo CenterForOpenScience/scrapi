@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 # Events
 PROCESSING = 'processing'
-CONSUMER_RUN = 'runConsumer'
+HARVESTER_RUN = 'runHarvester'
 CHECK_ARCHIVE = 'checkArchive'
 NORMALIZATION = 'normalization'
 

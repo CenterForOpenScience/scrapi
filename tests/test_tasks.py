@@ -39,74 +39,74 @@ def raw_docs():
     ]
 
 
-def test_run_consumer_calls(monkeypatch, dispatch):
-    mock_consume = mock.MagicMock()
+def test_run_harvester_calls(monkeypatch, dispatch):
+    mock_harvest = mock.MagicMock()
     mock_begin_norm = mock.MagicMock()
 
-    monkeypatch.setattr('scrapi.tasks.consume', mock_consume)
+    monkeypatch.setattr('scrapi.tasks.harvest', mock_harvest)
     monkeypatch.setattr('scrapi.tasks.begin_normalization', mock_begin_norm)
 
-    tasks.run_consumer('test')
+    tasks.run_harvester('test')
 
     assert dispatch.called
-    assert mock_consume.si.called
+    assert mock_harvest.si.called
     assert mock_begin_norm.s.called
 
     mock_begin_norm.s.assert_called_once_with('test')
-    mock_consume.si.assert_called_once_with('test', 'TIME', days_back=1)
+    mock_harvest.si.assert_called_once_with('test', 'TIME', days_back=1)
 
 
-def test_run_consumer_daysback(monkeypatch, dispatch):
-    mock_consume = mock.MagicMock()
+def test_run_harvester_daysback(monkeypatch, dispatch):
+    mock_harvest = mock.MagicMock()
     mock_begin_norm = mock.MagicMock()
 
-    monkeypatch.setattr('scrapi.tasks.consume', mock_consume)
+    monkeypatch.setattr('scrapi.tasks.harvest', mock_harvest)
     monkeypatch.setattr('scrapi.tasks.begin_normalization', mock_begin_norm)
 
-    tasks.run_consumer('test', days_back=10)
+    tasks.run_harvester('test', days_back=10)
 
     assert dispatch.called
-    assert mock_consume.si.called
+    assert mock_harvest.si.called
     assert mock_begin_norm.s.called
 
     mock_begin_norm.s.assert_called_once_with('test')
-    mock_consume.si.assert_called_once_with('test', 'TIME', days_back=10)
+    mock_harvest.si.assert_called_once_with('test', 'TIME', days_back=10)
 
 
-@pytest.mark.usefixtures('consumer')
-def test_consume_runs_consume(dispatch, consumer):
-    tasks.consume('test', 'TIME')
+@pytest.mark.usefixtures('harvester')
+def test_harvest_runs_harvest(dispatch, harvester):
+    tasks.harvest('test', 'TIME')
 
-    assert consumer.consume.called
+    assert harvester.harvest.called
 
 
-@pytest.mark.usefixtures('consumer')
-def test_consume_days_back(dispatch, consumer):
-    _, timestamps = tasks.consume('test', 'TIME', days_back=10)
+@pytest.mark.usefixtures('harvester')
+def test_harvest_days_back(dispatch, harvester):
+    _, timestamps = tasks.harvest('test', 'TIME', days_back=10)
 
-    keys = ['consumeFinished', 'consumeTaskCreated', 'consumeStarted']
+    keys = ['harvestFinished', 'harvestTaskCreated', 'harvestStarted']
 
     for key in keys:
         assert key in timestamps.keys()
 
-    assert consumer.consume.called
-    consumer.consume.assert_called_once_with(days_back=10)
+    assert harvester.harvest.called
+    harvester.harvest.assert_called_once_with(days_back=10)
 
 
-@pytest.mark.usefixtures('consumer')
-def test_consume_raises(dispatch, consumer):
-    consumer.consume.side_effect = KeyError('testing')
+@pytest.mark.usefixtures('harvester')
+def test_harvest_raises(dispatch, harvester):
+    harvester.harvest.side_effect = KeyError('testing')
 
     with pytest.raises(KeyError) as e:
-        tasks.consume('test', 'TIME')
+        tasks.harvest('test', 'TIME')
 
     assert e.value.message == 'testing'
     assert dispatch.called
     dispatch.assert_called_with(
-        events.CONSUMER_RUN,
+        events.HARVESTER_RUN,
         events.FAILED,
         days_back=1,
-        consumer='test',
+        harvester='test',
         job_created='TIME',
         exception=repr(e.value),
     )
@@ -148,9 +148,9 @@ def test_begin_normalize_logging(raw_docs, monkeypatch, dispatch):
 
     for x in raw_docs:
         dispatch.assert_any_call(events.NORMALIZATION,
-                events.CREATED, consumer='test', **x.attributes)
+                events.CREATED, harvester='test', **x.attributes)
         dispatch.assert_any_call(events.PROCESSING,
-                events.CREATED, consumer='test', **x.attributes)
+                events.CREATED, harvester='test', **x.attributes)
 
 
 def test_process_raw_calls(raw_doc, monkeypatch):

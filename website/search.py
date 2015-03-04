@@ -17,7 +17,7 @@ DEFAULT_PARAMS = {
     'q': '*',
     'start_date': None,
     'end_date': datetime.date.today().isoformat(),
-    'sort_field': 'consumeFinished',
+    'sort_field': 'harvestFinished',
     'sort_type': 'desc',
     'from': 0,
     'size': 10,
@@ -99,7 +99,7 @@ def build_query_string(q):
 def build_date_filter(start_date, end_date):
     return {
         'range': {
-            'consumeFinished': {
+            'harvestFinished': {
                 'gte': start_date,  # TODO, can be None, elasticsearch may not like it
                 'lte': end_date
             }

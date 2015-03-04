@@ -4,9 +4,9 @@ RAW_DOC = {
     'doc': str('{}'),
     'docID': 'someID',
     'timestamps': {
-        'consumeFinished': '2012-11-30T17:05:48+00:00',
-        'consumeStarted': '2012-11-30T17:05:48+00:00',
-        'consumeTaskCreated': '2012-11-30T17:05:48+00:00'
+        'harvestFinished': '2012-11-30T17:05:48+00:00',
+        'harvestStarted': '2012-11-30T17:05:48+00:00',
+        'harvestTaskCreated': '2012-11-30T17:05:48+00:00'
     },
     'filetype': 'json',
     'source': 'tests'

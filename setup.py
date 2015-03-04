@@ -9,6 +9,6 @@ setup(
     package_data={'scrapi.linter': ['../__init__.py']},
     url='http://www.github.com/chrisseto/scrapi',
     license='LICENSE.txt',
-    description='Package to aid in consumer creation for scrAPI',
+    description='Package to aid in harvester creation for scrAPI',
     long_description=open('README.md').read(),
 )
