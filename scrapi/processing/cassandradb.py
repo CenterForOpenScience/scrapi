@@ -9,6 +9,7 @@ from cqlengine import columns, Model, connection
 from cqlengine.connection import cluster, session
 from cqlengine.management import sync_table, create_keyspace
 
+from scrapi import events
 from scrapi import settings
 from scrapi.processing.base import BaseProcessor
 
@@ -44,6 +45,7 @@ class CassandraProcessor(BaseProcessor):
         sync_table(DocumentModel)
         sync_table(VersionModel)
 
+    @events.logged(events.PROCESSING, 'normalized.cassandra')
     def process_normalized(self, raw_doc, normalized):
         self.send_to_database(
             docID=normalized["id"]['serviceID'],
@@ -57,6 +59,7 @@ class CassandraProcessor(BaseProcessor):
             properties=json.dumps(normalized['properties'])
         ).save()
 
+    @events.logged(events.PROCESSING, 'raw.cassandra')
     def process_raw(self, raw_doc):
         self.send_to_database(**raw_doc.attributes).save()
 
