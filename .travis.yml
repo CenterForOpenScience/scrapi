@@ -6,8 +6,10 @@ services:
   - cassandra
   - elasticsearch
 
-install: "pip install -r dev-requirements.txt"
+install:
+  - pip install -r dev-requirements.txt
+  - cp scrapi/settings/travis-dist.py scrapi/settings/local.py
 
-before_script: "cp scrapi/settings/travis-dist.py scrapi/settings/local.py"
+before_script: flake8 .
 
-script: py.test --cov scrapi --cov-report=term-missing tests
+script: invoke test
