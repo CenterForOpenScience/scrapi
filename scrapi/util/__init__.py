@@ -2,6 +2,7 @@ import os
 import errno
 import logging
 import importlib
+from base64 import b64encode
 from datetime import datetime
 from contextlib import contextmanager
 
@@ -52,13 +53,13 @@ def stamp_from_raw(raw_doc, **kwargs):
 
 
 def build_raw_url(raw, normalized):
-    return '{url}/{archive}{source}/{doc_id}/{consumeFinished}/raw.{raw_format}'.format(
+    return '{url}/{archive}{source}/{doc_id}/{harvestFinished}/raw.{raw_format}'.format(
         url=settings.SCRAPI_URL,
         source=normalized['source'],
         raw_format=raw['filetype'],
         doc_id=b64encode(raw['docID']),
         archive=settings.ARCHIVE_DIRECTORY,
-        consumeFinished=normalized['timestamps']['consumeFinished'],
+        harvestFinished=normalized['timestamps']['harvestFinished'],
     )
 
 
