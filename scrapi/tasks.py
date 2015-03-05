@@ -88,8 +88,7 @@ def normalize(raw_doc, harvester_name):
     normalized_started = timestamp()
     harvester = import_harvester(harvester_name)
 
-    with events.logged_failure(events.NORMALIZATION):
-        normalized = harvester.normalize(raw_doc)
+    normalized = harvester.normalize(raw_doc)
 
     if not normalized:
         raise events.Skip('Did not normalize document with id {}'.format(raw_doc['docID']))
