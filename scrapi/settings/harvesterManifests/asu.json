@@ -1,8 +1,7 @@
 {
     "days": "mon-sun",
     "shortName": "asu",
-    "fileFormat": "xml", 
-    "url": "https://github.com/fabianvf/scrapi.git",
+    "fileFormat": "xml",
     "hour": 20,
     "minute": 59, 
     "longName": "Arizona State University Digital Repository",
