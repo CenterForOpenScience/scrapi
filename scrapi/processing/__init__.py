@@ -1,6 +1,5 @@
 import os
 
-from scrapi import events
 from scrapi import settings
 from scrapi.processing.base import BaseProcessor
 
@@ -27,8 +26,6 @@ def process_normalized(raw_doc, normalized, kwargs):
         specifiy that it's ok to overrite certain files
     '''
     for p in settings.NORMALIZED_PROCESSING:
-        _normalized_event(events.STARTED, p, raw_doc)
-
         extras = kwargs.get(p, {})
 
         try:
