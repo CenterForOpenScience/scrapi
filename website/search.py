@@ -106,6 +106,7 @@ def build_date_filter(start_date, end_date):
         }
     }
 
+
 def build_sort(sort_field, sort_type):
     print sort_field
     return [{
