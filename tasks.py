@@ -1,9 +1,5 @@
-import os
-import json
-import shutil
-import platform
-import subprocess
 import logging
+import platform
 
 from invoke import run, task
 
@@ -12,6 +8,7 @@ from scrapi import settings
 from scrapi.util import import_harvester
 
 logger = logging.getLogger()
+
 
 @task
 def server():
@@ -43,77 +40,22 @@ def elasticsearch():
 
 
 @task
-def tests(cov=False):
+def test(cov=True, verbose=False):
     """
     Runs all tests in the 'tests/' directory
     """
+    cmd = 'py.test tests'
+    if verbose:
+        cmd += ' -v'
     if cov:
-        run('py.test --cov-report term-missing --cov-config tests/.coveragerc --cov scrapi tests')
-        run('py.test --cov-report term-missing --cov-config tests/.coveragerc --cov website tests')
-    else:
-        run('py.test tests')
+        cmd += ' --cov-report term-missing --cov-config tests/.coveragerc --cov scrapi'
+
+    run(cmd, pty=True)
 
 
 @task
 def requirements():
     run('pip install -r requirements.txt')
-
-
-@task
-def migrate_search():
-    run('python website/migrate_search.py')
-
-
-'''
-Initializes and updates git submodules for harvesters and runs the install_harvesters task
-'''
-@task
-def init_harvesters():
-    run('git submodule init')
-    run('git submodule update')
-    install_harvesters(update=True)
-
-
-@task
-def install_harvesters(update=False):
-    if update:
-        run('cd scrapi/settings/harvesterManifests && git reset HEAD --hard && git pull origin master')
-        settings.MANIFESTS = settings.load_manifests()
-
-    for harvester, manifest in settings.MANIFESTS.items():
-        directory = 'scrapi/harvesters/{}'.format(manifest['shortName'])
-
-        if not os.path.isdir(directory):
-            run('git clone -b master {url} {moddir}'.format(
-                moddir=directory, **manifest))
-        elif update:
-            run('cd {} && git pull origin master'.format(directory))
-
-        manifest_file = 'scrapi/settings/harvesterManifests/{}.json'.format(
-            harvester)
-
-        with open(manifest_file) as f:
-            loaded = json.load(f)
-
-        loaded['version'] = subprocess.check_output(
-            ['git', 'rev-parse', 'HEAD'], cwd=directory).strip()
-
-        with open(manifest_file, 'w') as f:
-            json.dump(loaded, f, indent=4, sort_keys=True)
-
-        if os.path.isfile('{}/requirements.txt'.format(directory)):
-            run('pip install -r {}/requirements.txt'.format(directory))
-
-
-@task
-def clean_harvesters():
-    run('cd scrapi/settings/harvesterManifests && git reset HEAD --hard && git pull origin master')
-
-    for listing in os.listdir('scrapi/harvesters'):
-        path = os.path.join('scrapi', 'harvesters', listing)
-        if os.path.isdir(path):
-            print 'Removing {}...'.format(path)
-            shutil.rmtree(path)
 
 
 @task
@@ -132,7 +74,7 @@ def harvester(harvester_name, async=False, days=1):
     from scrapi.tasks import run_harvester
 
     if not settings.MANIFESTS.get(harvester_name):
-        print 'No such harvesters {}'.format(harvester_name)
+        raise ValueError('No such harvesters {}'.format(harvester_name))
 
     run_harvester.delay(harvester_name, days_back=days)
 
