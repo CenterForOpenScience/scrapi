@@ -1,9 +1,18 @@
 import os
 import errno
+import logging
 import importlib
+from base64 import b64encode
 from datetime import datetime
+from contextlib import contextmanager
 
+import vcr
 import pytz
+
+from scrapi import settings
+
+
+logger = logging.getLogger(__name__)
 
 
 def timestamp():
@@ -34,3 +43,38 @@ def copy_to_unicode(element, encoding='utf-8'):
         return element
     else:
         return unicode(element, encoding=encoding)
+
+
+def stamp_from_raw(raw_doc, **kwargs):
+    kwargs['normalizeFinished'] = timestamp()
+    stamps = raw_doc['timestamps']
+    stamps.update(kwargs)
+    return stamps
+
+
+def build_raw_url(raw, normalized):
+    return '{url}/{archive}{source}/{doc_id}/{harvestFinished}/raw.{raw_format}'.format(
+        url=settings.SCRAPI_URL,
+        source=normalized['source'],
+        raw_format=raw['filetype'],
+        doc_id=b64encode(raw['docID']),
+        archive=settings.ARCHIVE_DIRECTORY,
+        harvestFinished=normalized['timestamps']['harvestFinished'],
+    )
+
+
+@contextmanager
+def maybe_recorded(file_name):
+    # TODO put into cassandra
+    if settings.STORE_HTTP_TRANSACTIONS:
+        cassette = os.path.join(
+            settings.RECORD_DIRECTORY,
+            file_name, timestamp() + '.yml'
+        )
+
+        logger.info('Recording HTTP request for {} to {}'.format(file_name, cassette))
+
+        with vcr.use_cassette(cassette, record_mode='all'):
+            yield
+    else:
+        yield
