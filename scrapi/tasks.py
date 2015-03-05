@@ -17,7 +17,7 @@ from scrapi import settings
 from scrapi import processing
 from scrapi.util import timestamp
 from scrapi.util.storage import store
-from scrapi.util import import_consumer
+from scrapi.util import import_harvester
 from scrapi.linter.document import RawDocument
 
 
@@ -28,88 +28,87 @@ logger = logging.getLogger(__name__)
 
 
 @app.task
-def run_consumer(consumer_name, days_back=1):
-    logger.info('Running consumer "{}"'.format(consumer_name))
+def run_harvester(harvester_name, days_back=1):
+    logger.info('Running harvester "{}"'.format(harvester_name))
 
     # Form and start a celery chain
-    chain = (consume.si(consumer_name, timestamp(), days_back=days_back)
-             | begin_normalization.s(consumer_name))
+    chain = (harvest.si(harvester_name, timestamp(), days_back=days_back)
+             | begin_normalization.s(harvester_name))
 
     chain.apply_async()
 
     # Note: Dispatch events only after they run
     events.dispatch(
-        events.CONSUMER_RUN,
+        events.HARVESTER_RUN,
         events.CREATED,
         days_back=days_back,
-        consumer=consumer_name,
+        harvester=harvester_name,
     )
 
 
 @app.task
-def consume(consumer_name, job_created, days_back=1):
-    logger.info('Consumer "{}" has begun consumption'.format(consumer_name))
+def harvest(harvester_name, job_created, days_back=1):
+    logger.info('Harvester "{}" has begun harvesting'.format(harvester_name))
     events.dispatch(
-        events.CONSUMER_RUN,
+        events.HARVESTER_RUN,
         events.STARTED,
         days_back=days_back,
-        consumer=consumer_name,
+        harvester=harvester_name,
         job_created=job_created
     )
 
     timestamps = {
-        'consumeTaskCreated': job_created,
-        'consumeStarted': timestamp()
+        'harvestTaskCreated': job_created,
+        'harvestStarted': timestamp()
     }
 
-    consumer = import_consumer(consumer_name)
+    harvester = import_harvester(harvester_name)
 
     try:
         if settings.STORE_HTTP_TRANSACTIONS:
             cassette = os.path.join(settings.RECORD_DIRECTORY,
-                                    consumer_name, timestamp() + '.yml')
+                                    harvester_name, timestamp() + '.yml')
 
-            logger.debug('Recording HTTP consumption request for {} to {}'
-                         .format(consumer_name, cassette))
+            logger.debug('Recording HTTP harvesting request for {} to {}'
+                         .format(harvester_name, cassette))
 
             with vcr.use_cassette(cassette, record_mode='all'):
-                result = consumer.consume(days_back=days_back)
+                result = harvester.harvest(days_back=days_back)
         else:
-            result = consumer.consume(days_back=days_back)
+            result = harvester.harvest(days_back=days_back)
     except Exception as e:
         events.dispatch(
-            events.CONSUMER_RUN,
+            events.HARVESTER_RUN,
             events.FAILED,
             exception=repr(e),
             days_back=days_back,
-            consumer=consumer_name,
+            harvester=harvester_name,
             job_created=job_created
         )
         raise
 
-    timestamps['consumeFinished'] = timestamp()
+    timestamps['harvestFinished'] = timestamp()
 
-    logger.info('Consumer "{}" has finished consumption'.format(consumer_name))
+    logger.info('Harvester "{}" has finished harvesting'.format(harvester_name))
     events.dispatch(
-        events.CONSUMER_RUN,
+        events.HARVESTER_RUN,
         events.COMPLETED,
-        consumer=consumer_name,
+        harvester=harvester_name,
         number=len(result)
     )
 
-    # result is a list of all of the RawDocuments consumed
+    # result is a list of all of the RawDocuments harvested
     return result, timestamps
 
 
 @app.task
-def begin_normalization((raw_docs, timestamps), consumer_name):
-    '''consume_ret is consume return value:
+def begin_normalization((raw_docs, timestamps), harvester_name):
+    '''harvest_ret is harvest return value:
         a tuple contaiing list of rawDocuments and
         a dictionary of timestamps
     '''
-
-    logger.info('Normalizing {} documents for consumer "{}"'
-                .format(len(raw_docs), consumer_name))
+    logger.info('Normalizing {} documents for harvester "{}"'
+                .format(len(raw_docs), harvester_name))
 
     # raw is a single raw document
     for raw in raw_docs:
@@ -117,25 +116,25 @@ def begin_normalization((raw_docs, timestamps), consumer_name):
         raw['timestamps']['normalizeTaskCreated'] = timestamp()
 
         logger.debug('Created the process raw task for {}/{}'
-                     .format(consumer_name, raw['docID']))
+                     .format(harvester_name, raw['docID']))
 
         process_raw.delay(raw)
 
-        chain = (normalize.si(raw, consumer_name) |
+        chain = (normalize.si(raw, harvester_name) |
                  process_normalized.s(raw))
 
         logger.debug('Created the process normalized task for {}/{}'
-                     .format(consumer_name, raw['docID']))
+                     .format(harvester_name, raw['docID']))
 
         chain.apply_async()
 
         # Note: Dispatch events only AFTER the event has actually happened
 
         events.dispatch(events.NORMALIZATION, events.CREATED,
-                        consumer=consumer_name, **raw.attributes)
+                        harvester=harvester_name, **raw.attributes)
 
         events.dispatch(events.PROCESSING, events.CREATED,
-                        consumer=consumer_name, **raw.attributes)
+                        harvester=harvester_name, **raw.attributes)
 
 
 @app.task
@@ -149,23 +148,23 @@ def process_raw(raw_doc, **kwargs):
 
 
 @app.task
-def normalize(raw_doc, consumer_name):
-    consumer = import_consumer(consumer_name)
+def normalize(raw_doc, harvester_name):
+    harvester = import_harvester(harvester_name)
 
     raw_doc['timestamps']['normalizeStarted'] = timestamp()
 
     logger.debug('Document {}/{} normalization began'.format(
-        consumer_name, raw_doc['docID']))
+        harvester_name, raw_doc['docID']))
 
     events.dispatch(events.NORMALIZATION, events.STARTED,
-                    consumer=consumer_name, **raw_doc.attributes)
+                    harvester=harvester_name, **raw_doc.attributes)
     try:
-        normalized = consumer.normalize(raw_doc)
+        normalized = harvester.normalize(raw_doc)
     except Exception as e:
         events.dispatch(
             events.NORMALIZATION,
             events.FAILED,
-            consumer=consumer_name,
+            harvester=harvester_name,
             exception=repr(e),
             **raw_doc.attributes
         )
@@ -173,34 +172,34 @@ def normalize(raw_doc, consumer_name):
 
     if not normalized:
         events.dispatch(events.NORMALIZATION, events.SKIPPED,
-                        consumer=consumer_name, **raw_doc.attributes)
+                        harvester=harvester_name, **raw_doc.attributes)
         logger.warning
         (
             'Did not normalize document [{}]{}'.format
             (
-                consumer_name,
+                harvester_name,
                 raw_doc['docID']
             )
         )
         return None
 
     logger.debug('Document {}/{} normalized sucessfully'.format(
-        consumer_name, raw_doc['docID']))
+        harvester_name, raw_doc['docID']))
 
     events.dispatch(events.NORMALIZATION, events.COMPLETED,
-                    consumer=consumer_name, **raw_doc.attributes)
+                    harvester=harvester_name, **raw_doc.attributes)
 
     normalized['timestamps'] = raw_doc['timestamps']
     normalized['timestamps']['normalizeFinished'] = timestamp()
 
-    normalized['dateCollected'] = normalized['timestamps']['consumeFinished']
+    normalized['dateCollected'] = normalized['timestamps']['harvestFinished']
 
-    normalized['raw'] = '{url}/{archive}{source}/{doc_id}/{consumeFinished}/raw.{raw_format}'.format(
+    normalized['raw'] = '{url}/{archive}{source}/{doc_id}/{harvestFinished}/raw.{raw_format}'.format(
         url=settings.SCRAPI_URL,
         archive=settings.ARCHIVE_DIRECTORY,
         source=normalized['source'],
         doc_id=b64encode(raw_doc['docID']),
-        consumeFinished=normalized['timestamps']['consumeFinished'],
+        harvestFinished=normalized['timestamps']['harvestFinished'],
         raw_format=raw_doc['filetype']
     )
 
@@ -238,26 +237,26 @@ def process_normalized(normalized_doc, raw_doc, **kwargs):
 
 @app.task
 def check_archives(reprocess, days_back=None):
-    for consumer in settings.MANIFESTS.keys():
-        check_archive.delay(consumer, reprocess, days_back=days_back)
+    for harvester in settings.MANIFESTS.keys():
+        check_archive.delay(harvester, reprocess, days_back=days_back)
 
         events.dispatch(events.CHECK_ARCHIVE, events.CREATED,
-                        consumer=consumer, reprocess=reprocess)
+                        harvester=harvester, reprocess=reprocess)
 
 
 @app.task
-def check_archive(consumer_name, reprocess, days_back=None):
+def check_archive(harvester_name, reprocess, days_back=None):
     events.dispatch(events.CHECK_ARCHIVE, events.STARTED, **{
-        'consumer': consumer_name,
+        'harvester': harvester_name,
         'reprocess': reprocess,
         'daysBack': str(days_back) if days_back else 'All'
     })
 
-    consumer = settings.MANIFESTS[consumer_name]
+    harvester = settings.MANIFESTS[harvester_name]
     extras = {
         'overwrite': True
     }
-    for raw_path in store.iter_raws(consumer_name, include_normalized=reprocess):
+    for raw_path in store.iter_raws(harvester_name, include_normalized=reprocess):
         date = parser.parse(raw_path.split('/')[-2])
 
         if (days_back and (datetime.now() - date).days > days_back):
@@ -270,26 +269,26 @@ def check_archive(consumer_name, reprocess, days_back=None):
         raw_doc = RawDocument({
             'doc': raw_file,
             'timestamps': {
-                'consumeFinished': timestamp
+                'harvestFinished': timestamp
             },
             'docID': b64decode(raw_path.split('/')[-3]).decode('utf-8'),
-            'source': consumer_name,
-            'filetype': consumer['fileFormat'],
+            'source': harvester_name,
+            'filetype': harvester['fileFormat'],
         })
 
-        chain = (normalize.si(raw_doc, consumer_name) |
+        chain = (normalize.si(raw_doc, harvester_name) |
                  process_normalized.s(raw_doc, storage=extras))
         chain.apply_async()
 
         events.dispatch(events.NORMALIZATION, events.CREATED, **{
-            'consumer': consumer_name,
+            'harvester': harvester_name,
             'reprocess': reprocess,
             'daysBack': str(days_back) if days_back else 'All',
             'docID': raw_doc['docID']
         })
 
     events.dispatch(events.CHECK_ARCHIVE, events.COMPLETED, **{
-        'consumer': consumer_name,
+        'harvester': harvester_name,
         'reprocess': reprocess,
         'daysBack': str(days_back) if days_back else 'All'
     })

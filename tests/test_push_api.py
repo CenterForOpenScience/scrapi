@@ -61,16 +61,16 @@ RAW_DOC = {
     'source': 'test',
     'filetype': 'xml',
     'timestamps': {
-        'consumeFinished': '2012-11-30T17:05:48+00:00',
-        'consumeStarted': '2012-11-30T17:05:48+00:00',
-        'consumeTaskCreated': '2012-11-30T17:05:48+00:00'
+        'harvestFinished': '2012-11-30T17:05:48+00:00',
+        'harvestStarted': '2012-11-30T17:05:48+00:00',
+        'harvestTaskCreated': '2012-11-30T17:05:48+00:00'
     }
 }
 
 TIMESTAMPS = {
-    'consumeTaskCreated': '2012-11-30T17:05:48+00:00',
-    'consumeStarted': '2012-11-30T17:05:48+00:00',
-    'consumeFinished': '2012-11-30T17:05:48+00:00'
+    'harvestTaskCreated': '2012-11-30T17:05:48+00:00',
+    'harvestStarted': '2012-11-30T17:05:48+00:00',
+    'harvestFinished': '2012-11-30T17:05:48+00:00'
 }
 
 
@@ -81,27 +81,27 @@ def dispatch(monkeypatch):
     return event_mock
 
 
-def test_consume_returns_list():
+def test_harvest_returns_list():
 
-    result = process_metadata.consume(API_INPUT['events'])
+    result = process_metadata.harvest(API_INPUT['events'])
     assert isinstance(result, list)
 
 
-def test_task_consume_returns_tuple():
+def test_task_harvest_returns_tuple():
 
-    result = process_metadata.task_consume(API_INPUT['events'])
+    result = process_metadata.task_harvest(API_INPUT['events'])
     assert isinstance(result, tuple)
 
 
-def test_task_consume_returns_timestamps():
+def test_task_harvest_returns_timestamps():
 
-    task_consume_tuple = process_metadata.task_consume(API_INPUT['events'])
+    task_harvest_tuple = process_metadata.task_harvest(API_INPUT['events'])
 
-    timestamps = task_consume_tuple[1]
+    timestamps = task_harvest_tuple[1]
 
     assert isinstance(timestamps, dict)
     assert sorted(timestamps.keys()) == [
-        'consumeFinished', 'consumeStarted', 'consumeTaskCreated']
+        'harvestFinished', 'harvestStarted', 'harvestTaskCreated']
 
     for value in timestamps.itervalues():
         datetime_obj = parser.parse(value)
@@ -109,9 +109,9 @@ def test_task_consume_returns_timestamps():
         assert isinstance(datetime_obj, datetime)
 
 
-def test_task_consume_returns_rawdocs():
-    task_consume_tuple = process_metadata.task_consume(API_INPUT['events'])
-    raw_docs = task_consume_tuple[0]
+def test_task_harvest_returns_rawdocs():
+    task_harvest_tuple = process_metadata.task_harvest(API_INPUT['events'])
+    raw_docs = task_harvest_tuple[0]
 
     assert isinstance(raw_docs, list)
 
@@ -119,8 +119,8 @@ def test_task_consume_returns_rawdocs():
         assert isinstance(item, dict)
 
 
-def test_task_consume_calls(dispatch):
-    process_metadata.task_consume(API_INPUT['events'])
+def test_task_harvest_calls(dispatch):
+    process_metadata.task_harvest(API_INPUT['events'])
     assert dispatch.called
 
 
@@ -146,16 +146,16 @@ def test_tutorial_is_dict():
 # this one is fixed with the requests thing enabled
 # ...but not without it
 @httpretty.activate
-@mock.patch('website.process_metadata.consume')
-@mock.patch('website.process_metadata.task_consume')
-def test_process_api_input_calls(mock_task_consume, mock_consume):
+@mock.patch('website.process_metadata.harvest')
+@mock.patch('website.process_metadata.task_harvest')
+def test_process_api_input_calls(mock_task_harvest, mock_harvest):
 
     httpretty.register_uri(httpretty.POST, re.compile('.*'), body=json.dumps(API_INPUT))
 
-    mock_task_consume.return_value = ([RawDocument(RAW_DOC)], TIMESTAMPS)
+    mock_task_harvest.return_value = ([RawDocument(RAW_DOC)], TIMESTAMPS)
 
     process_metadata.process_api_input(API_INPUT['events'])
 
-    assert mock_consume.called
-    assert mock_task_consume.called
-    mock_consume.assert_called_once_with(API_INPUT['events'])
+    assert mock_harvest.called
+    assert mock_task_harvest.called
+    mock_harvest.assert_called_once_with(API_INPUT['events'])

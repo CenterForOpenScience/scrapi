@@ -10,8 +10,8 @@ def timestamp():
     return pytz.utc.localize(datetime.utcnow()).isoformat().decode('utf-8')
 
 
-def import_consumer(consumer_name):
-    return importlib.import_module('scrapi.consumers.{}'.format(consumer_name))
+def import_harvester(harvester_name):
+    return importlib.import_module('scrapi.harvesters.{}'.format(harvester_name))
 
 
 # Thanks to
