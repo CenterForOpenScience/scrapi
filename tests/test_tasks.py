@@ -2,7 +2,6 @@ import mock
 import pytest
 
 from scrapi import tasks
-from scrapi import events
 from scrapi import settings
 from scrapi.linter import RawDocument
 
