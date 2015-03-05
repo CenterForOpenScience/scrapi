@@ -2,9 +2,11 @@ import mock
 import pytest
 
 from scrapi import events
-from scrapi import settings
 
-settings.USE_FLUENTD = True
+
+@pytest.fixture(autouse=True)
+def mock_fluentd(monkeypatch):
+    monkeypatch.setattr(events.settings, 'USE_FLUENTD', True)
 
 
 @pytest.fixture
@@ -110,5 +112,3 @@ def test_logged_decorator_kwargs(mock_dispatch):
         mock.call('testing', events.STARTED, _index=None, test='baz', pika='chu', kwargs={'tota': 'dile'}),
         mock.call('testing', events.COMPLETED, _index=None, test='baz', pika='chu', kwargs={'tota': 'dile'}),
     ])
-
-settings.USE_FLUENTD = False
