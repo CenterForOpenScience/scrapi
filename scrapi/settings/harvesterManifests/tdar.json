@@ -1,0 +1,10 @@
+{
+    "days": "mon-sun",
+    "shortName": "tdar",
+    "fileFormat": "xml", 
+    "url": "https://github.com/fabianvf/scrapi.git",
+    "hour": 20,
+    "minute": 59, 
+    "longName": "The Digital Archaeological Record",
+    "collisionCategory": 1
+}
