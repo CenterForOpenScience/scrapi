@@ -28,10 +28,10 @@ def run_harvester(harvester_name, days_back=1):
     logger.info('Running harvester "{}"'.format(harvester_name))
 
     normalization = begin_normalization.s(harvester_name)
-    start_consumption = harvest.si(harvester_name, timestamp(), days_back=days_back)
+    start_harvest = harvest.si(harvester_name, timestamp(), days_back=days_back)
 
     # Form and start a celery chain
-    (start_consumption | normalization).apply_async()
+    (start_harvest | normalization).apply_async()
 
 
 @app.task
@@ -44,7 +44,7 @@ def harvest(harvester_name, job_created, days_back=1):
     with util.maybe_recorded(harvester_name):
         result = harvester.harvest(days_back=days_back)
 
-    # result is a list of all of the RawDocuments consumed
+    # result is a list of all of the RawDocuments harvested
     return result, {
         'harvestFinished': timestamp(),
         'harvestTaskCreated': job_created,
