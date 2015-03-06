@@ -12,7 +12,6 @@ from scrapi.base.schemas import BASEXMLSCHEMA, update_schema
 
 class DoepagesHarvester(XMLHarvester):
 
-
     def __init__(self, *args, **kwargs):
         super(DoepagesHarvester, self).__init__(*args, **kwargs)
 
