@@ -59,8 +59,8 @@ if USE_FLUENTD:
     sender.setup(**FLUENTD_ARGS)
 
 
-if SENTRY_DNS:
-    client = Client(SENTRY_DNS)
+if SENTRY_DSN:
+    client = Client(SENTRY_DSN)
     register_signal(client)
 
 
