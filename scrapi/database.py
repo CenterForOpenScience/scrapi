@@ -2,10 +2,8 @@ from __future__ import absolute_import
 
 import logging
 
-import cqlengine
+from cqlengine import connection
 from cqlengine import management
-
-from cassandra import connection
 from cassandra.cluster import NoHostAvailable
 
 from celery.signals import worker_process_init
@@ -17,7 +15,7 @@ logger = logging.getLogger(__name__)
 
 
 try:
-    cqlengine.connection.setup(settings.CASSANDRA_URI, settings.CASSANDRA_KEYSPACE)
+    connection.setup(settings.CASSANDRA_URI, settings.CASSANDRA_KEYSPACE)
     management.create_keyspace(settings.CASSANDRA_KEYSPACE, replication_factor=1, strategy_class='SimpleStrategy')
 except NoHostAvailable:
     logger.error('Could not connect to Cassandra, expect errors.')
