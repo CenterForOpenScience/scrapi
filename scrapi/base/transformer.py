@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 import abc
 import logging
 from functools import partial
@@ -53,7 +55,7 @@ class XMLTransformer(BaseTransformer):
 
     def _process_string(self, string, doc):
         val = doc.xpath(string, namespaces=self.namespaces)
-        return val[0] if len(val) == 1 else val
+        return '' if not val else val[0] if len(val) == 1 else val
 
     def _process_list(self, l, doc):
         fns = []
