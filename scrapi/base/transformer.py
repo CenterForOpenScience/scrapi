@@ -1,52 +1,64 @@
+import abc
 import logging
-
-from lxml import etree
-
-XML_to_JSON = 'xml_to_json'
-
-supported_transformations = [XML_to_JSON]
+from functools import partial
 
 logger = logging.getLogger(__name__)
 
 
-class Transformer(object):
+class BaseTransformer(object):
 
-    def __init__(self, _type):
-        self.transformations = {}
-        if _type in supported_transformations:
-            self._type = _type
-        else:
-            raise TransformationUnsupportedError("Transformation {} unsupported".format(_type))
+    __metaclass__ = abc.ABCMeta
+
+    def __init__(self, schema):
+        self.schema = schema
 
     def transform(self, doc):
-        if self._type == XML_to_JSON:
-            doc = etree.XML(doc)
-            return {
-                key: transformation(doc) for key, transformation in self.transformations.items()
-            }
+        self.process_schema()
+        return self._transform(self.schema, doc)
 
-    def register_transformation(self, source, target, namespaces={}, fun=lambda x: x):
-        if self._type == XML_to_JSON:
-            self.transformations[target] = lambda doc: fun(doc.xpath(source, namespaces=namespaces))
-        else:
-            raise TransformationUnsupportedError
+    def _transform(self, schema, doc):
+        ret = {}
+        for key, transformation in schema.items():
+            if isinstance(transformation, dict):
+                ret[key] = self._transform(transformation, doc)
+            else:
+                ret[key] = transformation(doc)
 
-    def register_transformations(self, transformations):
-        for transformation in transformations:
-            self.register_transformation(
-                transformation[0],
-                transformation[1],
-                namespaces=transformation[2],
-                fun=transformation[3] if len(transformations) == 4 else lambda x: x
-            )
+        return ret
+
+    @abc.abstractmethod
+    def process_schema(self):
+        pass  # Compute lambda functions for schema
 
 
-class TransformationUnsupportedError(Exception):
-    pass
+class XMLTransformer(BaseTransformer):
 
-# register_transformation(
-#     '<dc:title>',
-#     'title',
-#     namespaces={'dc': 'htt[ asfdf'}
-#     fun=to_lowercase
-# )
+    def __init__(self, name, schema, namespaces):
+        super(XMLTransformer, self).__init__(schema)
+        self.namespaces = namespaces
+        self.NAME = name
+
+    def process_schema(self):
+        self.schema = self._process_schema(self.schema)
+
+    def _process_schema(self, schema):
+        for key, value in schema.items():
+            if isinstance(value, dict):
+                schema[key] = self._process_schema(value)
+            elif isinstance(value, list):
+                schema[key] = partial(self._process_list, value)
+            elif isinstance(value, basestring):
+                schema[key] = partial(self._process_string, value)
+        return schema
+
+    def _process_string(self, string, doc):
+        val = doc.xpath(string, namespaces=self.namespaces)
+        return val[0] if len(val) == 1 else val
+
+    def _process_list(self, l, doc):
+        fns = []
+        for value in l:
+            if isinstance(value, basestring):
+                fns.append(partial(self._process_string, value))
+            elif callable(value):
+                return (value(*[fn(doc) for fn in fns]))

@@ -14,7 +14,7 @@ from nameparser import HumanName
 from scrapi import util
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
-from scrapi.base.transformer import Transformer
+from scrapi.base.transformer import XMLTransformer
 
 logging.basicConfig(level=logging.INFO)
 
@@ -41,18 +41,16 @@ class BaseHarvester(object):
         return lint(self.harvest, self.normalize)
 
 
-class TransformerHarvester(BaseHarvester, Transformer):
+class XMLHarvester(BaseHarvester, XMLTransformer):
 
     def __init__(self, *args, **kwargs):
-        super(TransformerHarvester, self).__init__(*args, **kwargs)
+        super(XMLHarvester, self).__init__(*args, **kwargs)
 
     def normalize(self, raw_doc):
-        transformed = self.transform(raw_doc['doc'])
-        for key, value in transformed.items():
-            pass
+        return NormalizedDocument(self.transform(etree.XML(raw_doc['doc'])))
 
 
-class OAIHarvester(BaseHarvester):
+class OAIHarvester(XMLHarvester):
     """ Create a harvester with a oai_dc namespace, that will harvest
     documents within a certain date range
 
