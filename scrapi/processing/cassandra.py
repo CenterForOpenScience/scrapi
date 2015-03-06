@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 import json
 import logging
 from uuid import uuid4
@@ -15,24 +17,6 @@ from scrapi.processing.base import BaseProcessor
 
 
 logger = logging.getLogger(__name__)
-
-try:
-    connection.setup(settings.CASSANDRA_URI, settings.CASSANDRA_KEYSPACE)
-    create_keyspace(settings.CASSANDRA_KEYSPACE, replication_factor=1, strategy_class='SimpleStrategy')
-except NoHostAvailable:
-    logger.error('Could not connect to Cassandra, expect errors.')
-    if 'cassandra' in settings.NORMALIZED_PROCESSING or settings.RAW_PROCESSING:
-        raise
-
-
-def cassandra_init(*args, **kwargs):
-    if cluster is not None:
-        cluster.shutdown()
-    if session is not None:
-        session.shutdown()
-    connection.setup(settings.CASSANDRA_URI, settings.CASSANDRA_KEYSPACE)
-
-worker_process_init.connect(cassandra_init)
 
 
 class CassandraProcessor(BaseProcessor):
