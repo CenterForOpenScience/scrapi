@@ -12,6 +12,7 @@ from cqlengine import connection
 from cqlengine.connection import cluster, session
 
 from scrapi import settings
+from scrapi import database  # noqa
 from scrapi.tasks import normalize
 from scrapi.linter import RawDocument, NormalizedDocument
 
