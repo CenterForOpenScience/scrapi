@@ -43,9 +43,6 @@ class BaseHarvester(object):
 
 class XMLHarvester(BaseHarvester, XMLTransformer):
 
-    def __init__(self, *args, **kwargs):
-        super(XMLHarvester, self).__init__(*args, **kwargs)
-
     def normalize(self, raw_doc):
         return NormalizedDocument(self.transform(etree.XML(raw_doc['doc'])))
 
