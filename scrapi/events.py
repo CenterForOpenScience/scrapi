@@ -11,6 +11,9 @@ from scrapi import settings
 
 logger = logging.getLogger(__name__)
 
+if not settings.USE_FLUENTD:
+    logger.warning('USE_FLUENTD is set to False; logs will not be stored')
+
 # Events
 PROCESSING = 'processing'
 HARVESTER_RUN = 'runHarvester'
@@ -49,7 +52,6 @@ def serialize_fluent_data(data):
 # Ues _index here as to not clutter the namespace for kwargs
 def dispatch(_event, status, _index=None, **kwargs):
     if not settings.USE_FLUENTD:
-        logger.warning('Dispatched called but USE_FLUENTD is False')
         return
 
     evnt = {
@@ -62,7 +64,7 @@ def dispatch(_event, status, _index=None, **kwargs):
     if _index:
         _event = '{}.{}'.format(_event, _index)
 
-    logger.info('[{}][{}]{!r}'.format(_event, status, kwargs))
+    logger.debug('[{}][{}]{!r}'.format(_event, status, kwargs))
     event.Event(_event, evnt)
 
 
