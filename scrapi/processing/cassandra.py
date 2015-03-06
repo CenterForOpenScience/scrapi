@@ -13,6 +13,7 @@ from cqlengine.management import sync_table, create_keyspace
 
 from scrapi import events
 from scrapi import settings
+from scrapi import database  # noqa
 from scrapi.processing.base import BaseProcessor
 
 

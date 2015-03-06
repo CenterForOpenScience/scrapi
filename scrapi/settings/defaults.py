@@ -8,7 +8,7 @@ RECORD_DIRECTORY = 'records'
 
 CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
 
-STORE_HTTP_TRANSACTIONS = False
+RECORD_HTTP_TRANSACTIONS = False
 
 NORMALIZED_PROCESSING = ['storage']
 RAW_PROCESSING = ['storage']
@@ -19,17 +19,6 @@ USE_FLUENTD = False
 FLUENTD_ARGS = {
     'tag': 'app.scrapi'
 }
-
-# OUTPUT SETTINGS
-OSF_ENABLED = False
-
-VERIFY_SSL = True
-OSF_PREFIX = 'http://localhost:5000'
-
-APP_ID = 'some id'
-
-API_KEY_LABEL = 'some label'
-API_KEY = 'some api key'
 
 SCRAPI_URL = 'http://173.255.232.219'
 
