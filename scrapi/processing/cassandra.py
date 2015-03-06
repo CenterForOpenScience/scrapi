@@ -4,15 +4,12 @@ import json
 import logging
 from uuid import uuid4
 
-from celery.signals import worker_process_init
-
-from cassandra.cluster import NoHostAvailable
-from cqlengine import columns, Model, connection
-from cqlengine.connection import cluster, session
-from cqlengine.management import sync_table, create_keyspace
+from cqlengine import columns, Model
+from cqlengine.management import sync_table
 
 from scrapi import events
 from scrapi import settings
+from scrapi import database  # noqa
 from scrapi.processing.base import BaseProcessor
 
 

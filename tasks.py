@@ -48,7 +48,7 @@ def test(cov=True, verbose=False):
     if verbose:
         cmd += ' -v'
     if cov:
-        cmd += ' --cov-report term-missing --cov-config tests/.coveragerc --cov scrapi'
+        cmd += ' --cov-report term-missing --cov-config .coveragerc --cov scrapi'
 
     run(cmd, pty=True)
 

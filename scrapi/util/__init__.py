@@ -66,7 +66,7 @@ def build_raw_url(raw, normalized):
 @contextmanager
 def maybe_recorded(file_name):
     # TODO put into cassandra
-    if settings.STORE_HTTP_TRANSACTIONS:
+    if settings.RECORD_HTTP_TRANSACTIONS:
         cassette = os.path.join(
             settings.RECORD_DIRECTORY,
             file_name, timestamp() + '.yml'

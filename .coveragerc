@@ -1,7 +1,9 @@
 [run]
-omit = 
-    scrapi/consumers/*
+omit =
+    scrapi/settings/*
+    scrapi/harvesters/*
 
 [report]
 omit =
-    scrapi/consumers/*
+    scrapi/settings/*
+    scrapi/harvesters/*

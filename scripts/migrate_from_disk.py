@@ -3,6 +3,7 @@ import logging
 from cqlengine.connection import LOG
 
 from scrapi import settings
+from scrapi import database  # noqa
 from scrapi.util.storage import store
 
 from migration_tasks import process_one
