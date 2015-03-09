@@ -50,7 +50,7 @@ def test_record_or_load_loads(mock_requests, monkeypatch):
 
 @pytest.mark.cassandra
 def test_record_or_load_records(mock_requests, monkeypatch):
-    mock_requests.request.return_value = mock.Mock(content='rawr', status_code=200, headers={'tota': 'dyle'})
+    mock_requests.request.return_value = mock.Mock(encoding='utf-8', content='rawr', status_code=200, headers={'tota': 'dyle'})
 
     resp = requests.get('dinosaurs.sexy')
 
@@ -58,6 +58,7 @@ def test_record_or_load_records(mock_requests, monkeypatch):
 
     assert model.method == 'get'
     assert model.content == 'rawr'
+    assert model.encoding == 'utf-8'
     assert model.status_code == 200
     assert model.url == 'dinosaurs.sexy'
     assert model.headers == {'tota': 'dyle'}
