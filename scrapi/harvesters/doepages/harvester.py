@@ -8,7 +8,6 @@ Example query: http://www.osti.gov/pages/pagesxml?nrows=10&EntryDateFrom=01/18/2
 ## Harvester for DOE Pages for SHARE
 from __future__ import unicode_literals
 
-import requests
 from lxml import etree
 from datetime import date, timedelta
 
@@ -16,6 +15,7 @@ from nameparser import HumanName
 
 from dateutil.parser import *
 
+from scrapi import requests
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 

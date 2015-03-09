@@ -8,7 +8,6 @@ Example API query: http://www.osti.gov/scitech/scitechxml?EntryDateFrom=02%2F02%
 from __future__ import unicode_literals
 
 import re
-import requests
 import datetime
 
 from lxml import etree
@@ -17,6 +16,7 @@ from nameparser import HumanName
 
 from dateutil.parser import *
 
+from scrapi import requests
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 

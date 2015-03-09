@@ -14,10 +14,9 @@ import logging
 from dateutil.parser import parse
 from datetime import date, timedelta
 
-import requests
-
 from nameparser import HumanName
 
+from scrapi import requests
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 

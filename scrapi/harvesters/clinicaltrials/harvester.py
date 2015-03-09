@@ -8,14 +8,13 @@ from __future__ import unicode_literals
 import time
 import datetime
 
-import requests
-
 from lxml import etree
 
 from dateutil.parser import *
 
 from nameparser import HumanName
 
+from scrapi import requests
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 

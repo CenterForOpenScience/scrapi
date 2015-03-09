@@ -10,12 +10,12 @@ from __future__ import unicode_literals
 
 import json
 
-import requests
 from datetime import date, timedelta
 
 from nameparser import HumanName
 from dateutil.parser import parse
 
+from scrapi import requests
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
