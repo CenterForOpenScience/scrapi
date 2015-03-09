@@ -4,7 +4,6 @@ from scrapi import settings
 from scrapi.linter.document import NormalizedDocument, RawDocument
 
 # Need to force cassandra to ignore set keyspace
-settings.CASSANDRA_KEYSPACE = 'test'
 from scrapi.processing.cassandra import CassandraProcessor, DocumentModel, VersionModel
 
 
