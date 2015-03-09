@@ -22,10 +22,6 @@ class CassandraProcessor(BaseProcessor):
     '''
     NAME = 'cassandra'
 
-    def __init__(self):
-        sync_table(DocumentModel)
-        sync_table(VersionModel)
-
     @events.logged(events.PROCESSING, 'normalized.cassandra')
     def process_normalized(self, raw_doc, normalized):
         self.send_to_database(
@@ -60,6 +56,7 @@ class CassandraProcessor(BaseProcessor):
             return DocumentModel.create(docID=docID, source=source, **kwargs)
 
 
+@database.register_model
 class DocumentModel(Model):
     '''
     Defines the schema for a metadata document in cassandra
@@ -94,6 +91,7 @@ class DocumentModel(Model):
     versions = columns.List(columns.UUID)
 
 
+@database.register_model
 class VersionModel(Model):
     '''
     Defines the schema for a version of a metadata document in Cassandra
