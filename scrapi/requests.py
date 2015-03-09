@@ -29,6 +29,7 @@ class HarvesterResponse(cqlengine.Model):
     url = columns.Text(primary_key=True, required=True)
 
     # Raw request data
+    ok = columns.Boolean()
     content = columns.Bytes()
     encoding = columns.Text()
     headers_str = columns.Text()
@@ -52,6 +53,7 @@ def record_or_load_response(method, url, **kwargs):
         return HarvesterResponse(
             url=url,
             method=method,
+            ok=response.ok,
             content=response.content,
             encoding=response.encoding,
             status_code=response.status_code,
