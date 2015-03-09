@@ -25,14 +25,6 @@ class TestTransformer(object):
     def setup_method(self, method):
         self.harvester = TestHarvester("TEST", TEST_SCHEMA, TEST_NAMESPACES)
 
-    def test_process_schema(self):
-        assert self.harvester.schema == TEST_SCHEMA
-        self.harvester.process_schema()
-        assert self.harvester.schema != TEST_SCHEMA
-
-        for (k, v) in get_leaves(self.harvester.schema):
-            assert type(v) == functools.partial
-
     def test_normalize(self):
         results = [
             self.harvester.normalize(record) for record in self.harvester.harvest(days_back=10)
