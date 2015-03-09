@@ -30,7 +30,7 @@ def format_tags(all_tags):
     for taglist in all_tags.split(' '):
         tags += taglist.split(',')
 
-    return list(set([unicode(tag.lower().strip()) for tag in tags]))
+    return list(set([unicode(tag.lower().strip()) for tag in tags if tag.lower().strip()]))
 
 
 def update_schema(old, new):
