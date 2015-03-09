@@ -48,8 +48,6 @@ class XMLTransformer(BaseTransformer):
         self.namespaces = namespaces
         self.NAME = name
 
-        self._transformed = False
-
     def _transform_string(self, string, doc):
         val = doc.xpath(string, namespaces=self.namespaces)
         return '' if not val else val[0] if len(val) == 1 else val
