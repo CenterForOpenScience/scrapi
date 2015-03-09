@@ -1,0 +1,10 @@
+{
+    "days": "mon-sun",
+    "hour": 23,
+    "minute": 59,
+    "longName": "CrossRef",
+    "shortName": "crossref",
+    "url": "https://github.com/erinspace/CrossRef.git",
+    "fileFormat": "json",
+    "collisionCategory": 0
+}

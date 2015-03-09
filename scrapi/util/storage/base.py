@@ -1,9 +1,9 @@
 import os
 import json
+from base64 import b64encode
 
 from scrapi import settings
 from scrapi.util import make_dir
-from scrapi.util import doc_id_to_path
 
 
 class BaseStorage(object):
@@ -29,40 +29,36 @@ class BaseStorage(object):
     def _build_path(self, raw_doc):
         path = [
             settings.ARCHIVE_DIRECTORY,
-            raw_doc.get('source'),
-            doc_id_to_path(raw_doc.get('docID')),
-            raw_doc.get('timestamp')
+            raw_doc['source'],
+            b64encode(raw_doc['docID']),
+            raw_doc['timestamps']['harvestFinished']
         ]
-
         path = os.path.join(*path)
         make_dir(path)
 
         return path
 
     # :: NormalizedDocument -> Nothing
-    def store_normalized(self, raw_doc, document, overwrite=False):
+    def store_normalized(self, raw_doc, document, overwrite=False, is_push=False):
+
         path = self._build_path(raw_doc)
-        manifest = settings.MANIFESTS[document.get('source')]
-        manifest_update = {
-            'normalizeVersion': manifest['version']
-        }
-
-        self.update_manifest(path, manifest_update)
-
         path = os.path.join(path, 'normalized.json')
-
         self._store(json.dumps(document.attributes), path, overwrite=overwrite)
 
     # :: RawDocument -> Nothing
-    def store_raw(self, document):
-        manifest = settings.MANIFESTS[document.get('source')]
-        doc_name = 'raw.{}'.format(manifest['fileFormat'])
-        path = self._build_path(document)
+    def store_raw(self, document, is_push=False):
+        if is_push:
+            file_manifest = {'fileFormat': 'json'}
+        else:
+            file_manifest = settings.MANIFESTS[document['source']]
+
         manifest = {
-            'timestamp': document.get('timestamp'),
-            'source': document.get('source'),
-            'consumeVersion': manifest['version']
+            'harvestedTimestamp': document['timestamps']['harvestFinished'],
+            'source': document['source']
         }
+
+        doc_name = 'raw.{}'.format(file_manifest['fileFormat'])
+        path = self._build_path(document)
 
         self.update_manifest(path, manifest)
 

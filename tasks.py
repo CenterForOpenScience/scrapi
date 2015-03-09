@@ -1,17 +1,18 @@
-import os
-import json
-import shutil
+import logging
 import platform
-import subprocess
 
 from invoke import run, task
 
+from scrapi import linter
 from scrapi import settings
+from scrapi.util import import_harvester
+
+logger = logging.getLogger()
 
 
 @task
 def server():
-    run("python website/main.py")
+    run("python server.py")
 
 
 @task
@@ -34,63 +35,27 @@ def elasticsearch():
     elif platform.system() == 'Darwin':  # Mac OSX
         run('elasticsearch')
     else:
-        print("Your system is not recognized, you will have to start elasticsearch manually")
+        print(
+            "Your system is not recognized, you will have to start elasticsearch manually")
 
 
 @task
-def test():
+def test(cov=True, verbose=False):
     """
     Runs all tests in the 'tests/' directory
     """
-    # Allow selecting specific submodule
-    args = " --verbosity={0} -s {1}".format(2, 'tests/')
-    # Use pty so the process buffers "correctly"
-    run('nosetests --rednose' + args, pty=True)
+    cmd = 'py.test tests'
+    if verbose:
+        cmd += ' -v'
+    if cov:
+        cmd += ' --cov-report term-missing --cov-config .coveragerc --cov scrapi'
+
+    run(cmd, pty=True)
 
 
 @task
 def requirements():
     run('pip install -r requirements.txt')
-
-
-@task
-def migrate_search():
-    run('python website/migrate_search.py')
-
-
-@task
-def install_consumers(update=False):
-    for consumer, manifest in settings.MANIFESTS.items():
-        directory = 'scrapi/consumers/{}'.format(manifest['shortName'])
-
-        if not os.path.isdir(directory):
-            run('git clone -b master {url} {moddir}'.format(moddir=directory, **manifest))
-        elif update:
-            run('cd {} && git pull origin master'.format(directory))
-
-        manifest_file = 'scrapi/settings/consumerManifests/{}.json'.format(consumer)
-
-        with open(manifest_file) as f:
-            loaded = json.load(f)
-
-        loaded['version'] = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=directory).strip()
-
-        with open(manifest_file, 'w') as f:
-            json.dump(loaded, f, indent=4, sort_keys=True)
-
-        if os.path.isfile('{}/requirements.txt'.format(directory)):
-            run('pip install -r {}/requirements.txt'.format(directory))
-
-
-@task
-def clean_consumers():
-    run('cd scrapi/settings/consumerManifests && git reset HEAD --hard && git pull origin master')
-
-    for listing in os.listdir('scrapi/consumers'):
-        path = os.path.join('scrapi', 'consumers', listing)
-        if os.path.isdir(path):
-            print 'Removing {}...'.format(path)
-            shutil.rmtree(path)
 
 
 @task
@@ -100,33 +65,63 @@ def beat():
 
 @task
 def worker():
-    run('celery -A scrapi.tasks worker --loglevel info')
+    from scrapi.tasks import app
+    app.worker_main(['worker', '--loglevel', 'info'])
 
 
 @task
-def consumer(consumer_name, async=False):
+def harvester(harvester_name, async=False, days=1):
     settings.CELERY_ALWAYS_EAGER = not async
-    from scrapi.tasks import run_consumer
+    from scrapi.tasks import run_harvester
 
-    run_consumer.delay(consumer_name)
+    if not settings.MANIFESTS.get(harvester_name):
+        raise ValueError('No such harvesters {}'.format(harvester_name))
+
+    run_harvester.delay(harvester_name, days_back=days)
 
 
 @task
-def consumers(async=False):
+def harvesters(async=False, days=1):
     settings.CELERY_ALWAYS_EAGER = not async
-    from scrapi.tasks import run_consumer
+    from scrapi.tasks import run_harvester
 
-    for consumer_name in settings.MANIFESTS.keys():
-        run_consumer.delay(consumer_name)
+    exceptions = []
+    for harvester_name in settings.MANIFESTS.keys():
+        try:
+            run_harvester.delay(harvester_name, days_back=days)
+        except Exception as e:
+            logger.exception(e)
+            exceptions.append(e)
+
+    logger.info("\n\nNumber of exceptions: {}".format(len(exceptions)))
+    for exception in exceptions:
+        logger.exception(e)
 
 
 @task
-def check_archive(consumer=None, reprocess=False, async=False):
+def check_archive(harvester=None, reprocess=False, async=False, days=None):
     settings.CELERY_ALWAYS_EAGER = not async
 
-    if consumer:
+    if harvester:
         from scrapi.tasks import check_archive as check
-        check.delay(consumer, reprocess)
+        check.delay(harvester, reprocess, days_back=int(days))
     else:
         from scrapi.tasks import check_archives
-        check_archives.delay(reprocess)
+        check_archives.delay(reprocess, days_back=int(days))
+
+
+@task
+def lint_all():
+    for name in settings.MANIFESTS.keys():
+        lint(name)
+
+
+@task
+def lint(name):
+    manifest = settings.MANIFESTS[name]
+    harvester = import_harvester(name)
+    try:
+        linter.lint(harvester.harvest, harvester.normalize)
+    except Exception as e:
+        print 'Harvester {} raise the following exception'.format(manifest['longName'])
+        print e

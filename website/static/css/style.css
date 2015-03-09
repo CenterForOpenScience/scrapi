@@ -40,7 +40,7 @@ strong, h2{
 	color: white;
 }
 
-#wrapper{
+#searchControls{
 	width: 100%;
 	text-align: center;
 	min-height: 100%;
@@ -79,6 +79,9 @@ button[type="submit"]{
 	font-size: 20px;
 }
 
+.navigation-controls{
+    text-align: center;
+}
 
 .btn {
 	vertical-align: top;
@@ -107,6 +110,7 @@ button[type="submit"]{
 	margin-right: auto;
 	margin-left: auto;
 	padding: 10px;
+    text-align: left;
 }
 
 .borderObject{

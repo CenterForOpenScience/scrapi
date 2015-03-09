@@ -1,0 +1,9 @@
+[run]
+omit =
+    scrapi/settings/*
+    scrapi/harvesters/*
+
+[report]
+omit =
+    scrapi/settings/*
+    scrapi/harvesters/*

@@ -1,26 +1,29 @@
 """
     Configuration file for celerybeat/worker.
 
-    Dynamically adds consumers from all manifest files in worker_manager/manifests/
-    to the celerybeat schedule. Also adds a heartbeat function to the schedule,
-    which adds every 30 seconds, and a monthly task to normalize all non-normalized
-    documents.
+    Dynamically adds harvesters from all manifest files in harvesterManifests
+    to the celerybeat schedule.
 """
 import os
 import json
 import logging
 
+from fluent import sender
+
 from celery.schedules import crontab
 
-from scrapi.settings.local import *
+from raven import Client
+from raven.contrib.celery import register_signal
+
 from scrapi.settings.defaults import *
+from scrapi.settings.local import *
 
 
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+logging.getLogger('requests.packages.urllib3.connectionpool').setLevel(logging.WARNING)
 
 
-MANIFEST_DIR = os.path.join(os.path.dirname(__file__), 'consumerManifests')
+MANIFEST_DIR = os.path.join(os.path.dirname(__file__), 'harvesterManifests')
 
 
 # Programmatically generate celery beat schedule
@@ -40,38 +43,41 @@ def load_manifests():
 
 def create_schedule():
     schedule = {}
-    for consumer_name, manifest in MANIFESTS.items():
+    for harvester_name, manifest in MANIFESTS.items():
         cron = crontab(day_of_week=manifest['days'],
-            hour=manifest['hour'], minute=manifest['minute'])
+                       hour=manifest['hour'], minute=manifest['minute'])
 
-        schedule['run_{}'.format(consumer_name)] = {
-            'task': 'scrapi.tasks.run_consumer',
+        schedule['run_{}'.format(harvester_name)] = {
+            'task': 'scrapi.tasks.run_harvester',
             'schedule': cron,
-            'args': [consumer_name]
+            'args': [harvester_name]
         }
     return schedule
 
 
+if USE_FLUENTD:
+    sender.setup(**FLUENTD_ARGS)
+
+
+if SENTRY_DSN:
+    client = Client(SENTRY_DSN)
+    register_signal(client)
+
+
 MANIFESTS = load_manifests()
 
+CELERY_ENABLE_UTC = True
+CELERY_RESULT_BACKEND = None
+CELERY_TASK_SERIALIZER = 'pickle'
+CELERY_ACCEPT_CONTENT = ['pickle']
+CELERY_RESULT_SERIALIZER = 'pickle'
+CELERY_IMPORTS = ('scrapi.tasks', 'scripts.migration_tasks')
+
+
+# Celery Beat Stuff
 CELERYBEAT_SCHEDULE = create_schedule()
 
-CELERY_ALWAYS_EAGER = False
-
-CELERY_TASK_SERIALIZER = 'pickle'
-CELERY_RESULT_SERIALIZER = 'pickle'
-CELERY_ACCEPT_CONTENT = ['pickle']
-CELERY_ENABLE_UTC = True
-CELERY_TIMEZONE = 'UTC'
-
-CELERY_IMPORTS = ('scrapi.tasks',)
-
-CELERYBEAT_SCHEDULE['check_archive'] = {
-    'task': 'scrapi.tasks.check_archive',
-    'schedule': crontab(day_of_month='1', hour='23', minute='59'),
-}
-
-CELERYBEAT_SCHEDULE['tar archive'] = {
-    'task': 'scrapi.tasks.tar_archive',
-    'schedule': crontab(hour="3", minute="00")
-}
+# CELERYBEAT_SCHEDULE['update pubsubhubbub'] = {
+#     'task': 'scrapi.tasks.update_pubsubhubbub',
+#     'schedule': crontab(minute='*/5')
+# }

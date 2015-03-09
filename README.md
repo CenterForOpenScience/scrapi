@@ -9,7 +9,8 @@ scrapi
 - You will need to:
     - Install requirements.
     - Install Elasticsearch
-    - Install consumers
+    - Install Cassandra
+    - Install harvesters
     - Install rabbitmq
 
 ### Requirements
@@ -20,71 +21,53 @@ scrapi
 $ pip install -r requirements.txt
 ```
 
-and the python requirements for the project will download and install. 
+and the python requirements for the project will download and install.
 
 
-### Installing Elasticsearch
-_note: JDK 7 must be installed for elasticsearch to run_
+### Installing Cassandra and Elasticsearch
+_note: JDK 7 must be installed for Cassandra and Elasticsearch to run_
 
 #### Mac OSX
 
 ```bash
+$ brew install cassandra
 $ brew install elasticsearch
 ```
 
 Now, just run 
 ```bash
+$ cassandra
 $ elasticsearch
 ```
 
-or 
-
+Or, if you'd like your cassandra session to be bound to your current session, run:
 ```bash
-$ invoke elasticsearch
+$ cassandra -f
 ```
 
 and you should be good to go.
 
-#### Ubuntu 
-
-```bash
-$ wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.2.1.deb 
-$ sudo dpkg -i elasticsearch-1.2.1.deb
-```
-
-Now, just run 
-```bash
-$ sudo service elasticsearch start
-```
-
-or 
-
-```bash
-$ invoke elasticsearch
-```
-
-and you should be good to go.
 
 ### Running the server
 
 - Just run 
 
 ```bash
-$ python main.py
+$ python server.py
 ```
 
 from the scrapi/website/ directory, and the server should be up and running!
 
 
-### Consumers
+### Harvesters
 
-- Just run
+- To set up harvesters for the first time, Just run
 
 ```bash
-$ invoke install_consumers
+invoke init_harvesters
 ```
 
-and the consumers specified in the manifest files of the worker_manager, and their requirements, will be installed.
+and the harvesters specified in the manifest files of the worker_manager, and their requirements, will be installed.
 
 ### Rabbitmq
 

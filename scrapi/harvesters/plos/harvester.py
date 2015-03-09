@@ -1,0 +1,198 @@
+"""PLoS-API-harvester
+=================
+<p>To run "harvester.py" please follow the instructions:</p>
+<ol>
+
+<li>Create an account on <a href="http://register.plos.org/ambra-registration/register.action">PLOS API</a></li>
+
+<li>Sign in <a href="http://alm.plos.org/">here</a> and click on your account name. Retrieve your API key.</li>
+
+<li>Create a new file in the folder named "settings.py". In the file, put<br>
+<code>API_KEY = (your API key)</code></li>
+
+</ol>
+
+Sample API query: http://api.plos.org/search?q=publication_date:[2015-01-30T00:00:00Z%20TO%202015-02-02T00:00:00Z]&api_key=ayourapikeyhere&rows=999&start=0
+"""
+
+
+from __future__ import unicode_literals
+
+import time
+from datetime import date, timedelta
+
+import requests
+from lxml import etree
+from dateutil.parser import *
+from nameparser import HumanName
+
+from scrapi.linter import lint
+from scrapi.linter.document import RawDocument, NormalizedDocument
+
+try:
+    from settings import PLOS_API_KEY
+except ImportError:
+    from scrapi.settings import PLOS_API_KEY
+
+MAX_ROWS_PER_REQUEST = 999
+
+NAME = 'plos'
+
+DEFAULT_ENCODING = 'UTF-8'
+
+record_encoding = None
+
+
+def copy_to_unicode(element):
+
+    encoding = record_encoding or DEFAULT_ENCODING
+    element = ''.join(element)
+    if isinstance(element, unicode):
+        return element
+    else:
+        return unicode(element, encoding=encoding)
+
+
+def harvest(days_back=3):
+    if not PLOS_API_KEY:
+        return []
+    payload = {"api_key": PLOS_API_KEY, "rows": "0"}
+    START_DATE = str(date.today() - timedelta(days_back)) + "T00:00:00Z"
+    TODAY = str(date.today()) + "T00:00:00Z"
+    base_url = 'http://api.plos.org/search?q=publication_date:'
+    base_url += '[{}%20TO%20{}]'.format(START_DATE, TODAY)
+    plos_request = requests.get(base_url, params=payload)
+    xml_response = etree.XML(plos_request.content)
+    num_results = int(xml_response.xpath('//result/@numFound')[0])
+
+    start = 0
+    count = 0
+    doc_list = []
+
+    while count < num_results:
+        if count + MAX_ROWS_PER_REQUEST > num_results:
+            payload = {"api_key": PLOS_API_KEY, "rows": num_results - count, "start": start}
+        else:
+            payload = {"api_key": PLOS_API_KEY, "rows": MAX_ROWS_PER_REQUEST, "start": start}
+        results = requests.get(base_url, params=payload)
+        print results.url
+        tick = time.time()
+        xml_doc = etree.XML(results.content)
+        all_docs = xml_doc.xpath('//doc')
+
+        for result in all_docs:
+            has_authors_or_abstract = False
+            all_children = result.getchildren()
+            for element in all_children:
+                name = element.attrib.get('name')
+                if name == 'author_display' or name == 'abstract':
+                    has_authors_or_abstract = True
+                if name == 'id':
+                    docID = element.text
+            if has_authors_or_abstract:
+                doc_list.append(RawDocument({
+                    'doc': etree.tostring(result),
+                    'source': NAME,
+                    'docID': copy_to_unicode(docID),
+                    'filetype': 'xml',
+                }))
+
+        start += MAX_ROWS_PER_REQUEST
+        count += MAX_ROWS_PER_REQUEST
+
+        if time.time() - tick < 5:
+            time.sleep(5 - (time.time() - tick))
+
+    return doc_list
+
+
+def get_ids(raw_doc, record):
+    doi = record.xpath('//str[@name="id"]/node()')[0]
+    ids = {
+        'doi': copy_to_unicode(doi),
+        'serviceID': raw_doc.get('docID'),
+        'url': 'http://dx.doi.org/{}'.format(doi)
+    }
+    return ids
+
+
+def get_contributors(record):
+    contributor_list = []
+    contributors = record.xpath('//arr[@name="author_display"]/str/node()') or ['']
+    for person in contributors:
+        name = HumanName(person)
+        contributor = {
+            'prefix': name.title,
+            'given': name.first,
+            'middle': name.middle,
+            'family': name.last,
+            'suffix': name.suffix,
+            'email': '',
+            'ORCID': ''
+        }
+        contributor_list.append(contributor)
+    return contributor_list
+
+
+def get_properties(record):
+    properties = {
+        'journal': (record.xpath('//str[@name="journal"]/node()') or [''])[0],
+        'eissn': (record.xpath('//str[@name="eissn"]/node()') or [''])[0],
+        'articleType': (record.xpath('//str[@name="article_type"]/node()') or [''])[0],
+        'score': (record.xpath('//float[@name="score"]/node()') or [''])[0],
+    }
+
+    # ensure everything is in unicode
+    for key, value in properties.iteritems():
+        properties[key] = copy_to_unicode(value)
+
+    return properties
+
+
+def get_date_updated(record):
+    date_created = (record.xpath('//date[@name="publication_date"]/node()') or [''])[0]
+    date = parse(date_created).isoformat()
+    return copy_to_unicode(date)
+
+
+# No tags...
+def get_tags(record):
+    return []
+
+
+def normalize(raw_doc):
+    raw_doc_string = raw_doc.get('doc')
+    record = etree.XML(raw_doc_string)
+
+    title = record.xpath('//str[@name="title_display"]/node()')[0]
+    description = (record.xpath('//arr[@name="abstract"]/str/node()') or [''])[0],
+
+    normalized_dict = {
+        'title': copy_to_unicode(title),
+        'contributors': get_contributors(record),
+        'description': copy_to_unicode(description),
+        'properties': get_properties(record),
+        'id': get_ids(raw_doc, record),
+        'source': NAME,
+        'dateUpdated': get_date_updated(record),
+        'tags': get_tags(record)
+    }
+
+    # deal with Corrections having "PLoS Staff" listed as contributors
+    # fix correction title
+    if normalized_dict['properties']['articleType'] == 'Correction':
+        normalized_dict['title'] = normalized_dict['title'].replace('Correction: ', '')
+        normalized_dict['contributors'] = [{
+            'prefix': '',
+            'given': '',
+            'middle': '',
+            'family': '',
+            'suffix': '',
+            'email': '',
+            'ORCID': ''
+        }]
+    # import json; print(json.dumps(normalized_dict, indent=4))
+    return NormalizedDocument(normalized_dict)
+
+if __name__ == '__main__':
+    print(lint(harvest, normalize))

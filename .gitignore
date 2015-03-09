@@ -58,5 +58,6 @@ archive/*
 .DS_Store
 
 worker_manager/recent_files.txt
-scrapi/consumers
 scrapi/settings/local.py
+celerybeat-schedule.db
+records/

@@ -1,0 +1,10 @@
+{
+    "days": "mon-sun",
+    "hour": "23",
+    "minute": "59",
+    "shortName": "trinity",
+    "longName": "Digital Commons@Trinity",
+    "url": "https://github.com/vpnagraj/trinity-consumer.git",
+    "fileFormat": "xml",
+    "collisionCategory": 1
+}
