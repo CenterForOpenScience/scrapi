@@ -31,11 +31,11 @@ class BaseHarvester(object):
 
     @abc.abstractmethod
     def harvest(self, days_back=1):
-        pass
+        raise NotImplementedError
 
     @abc.abstractmethod
     def normalize(self, raw_doc):
-        pass
+        raise NotImplementedError
 
     def lint(self):
         return lint(self.harvest, self.normalize)

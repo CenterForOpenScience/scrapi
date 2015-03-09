@@ -31,7 +31,7 @@ class BaseTransformer(object):
 
     @abc.abstractmethod
     def process_schema(self):
-        pass  # Compute lambda functions for schema
+        raise NotImplementedError
 
 
 class XMLTransformer(BaseTransformer):
