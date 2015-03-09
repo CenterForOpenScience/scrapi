@@ -1,1 +1,1 @@
-from harvester import harvest, normalize
+from harvester import harvest, normalize  # noqa

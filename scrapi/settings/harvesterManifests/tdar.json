@@ -1,0 +1,9 @@
+{
+    "days": "mon-sun",
+    "shortName": "tdar",
+    "fileFormat": "xml",
+    "hour": 20,
+    "minute": 59, 
+    "longName": "The Digital Archaeological Record",
+    "collisionCategory": 1
+}

@@ -1,1 +1,1 @@
-from scrapi import linter
+from scrapi import linter  # noqa

@@ -29,7 +29,7 @@ try:
     es.indices.create(index=settings.ELASTIC_INDEX, body=body, ignore=400)
 except ConnectionError:
     logger.error('Could not connect to Elasticsearch, expect errors.')
-    if 'elasticsearch' in settings.NORMALIZED_PROCESSING or settings.RAW_PROCESSING:
+    if 'elasticsearch' in settings.NORMALIZED_PROCESSING or 'elasticsearch' in settings.RAW_PROCESSING:
         raise
 
 

@@ -59,47 +59,25 @@ if USE_FLUENTD:
     sender.setup(**FLUENTD_ARGS)
 
 
-if SENTRY_DNS:
-    client = Client(SENTRY_DNS)
+if SENTRY_DSN:
+    client = Client(SENTRY_DSN)
     register_signal(client)
 
 
 MANIFESTS = load_manifests()
-
-OSF_AUTH = (API_KEY_LABEL, API_KEY)
-OSF_URL = '{OSF_PREFIX}/api/v1/{{}}/'
-OSF_APP_URL = '{OSF_PREFIX}/api/v1/app/{APP_ID}/'
-
-# Keep a pep8 line length
-OSF_URL = OSF_URL.format(**locals())
-OSF_APP_URL = OSF_APP_URL.format(**locals())
-
-OSF_METADATA = OSF_APP_URL + 'metadata/'
-OSF_NEW_PROJECT = OSF_APP_URL + 'projects/'
-OSF_PROMOTE = OSF_METADATA + '{}/promote/'
 
 CELERY_ENABLE_UTC = True
 CELERY_RESULT_BACKEND = None
 CELERY_TASK_SERIALIZER = 'pickle'
 CELERY_ACCEPT_CONTENT = ['pickle']
 CELERY_RESULT_SERIALIZER = 'pickle'
-CELERY_IMPORTS = ('scrapi.tasks',)
+CELERY_IMPORTS = ('scrapi.tasks', 'scripts.migration_tasks')
 
 
 # Celery Beat Stuff
 CELERYBEAT_SCHEDULE = create_schedule()
 
-CELERYBEAT_SCHEDULE['check archive'] = {
-    'task': 'scrapi.tasks.check_archive',
-    'schedule': crontab(day_of_month='1', hour='23', minute='59'),
-}
-
-CELERYBEAT_SCHEDULE['update pubsubhubbub'] = {
-    'task': 'scrapi.tasks.update_pubsubhubbub',
-    'schedule': crontab(minute='*/5')
-}
-
-CELERYBEAT_SCHEDULE['tar archive'] = {
-    'task': 'scrapi.tasks.tar_archive',
-    'schedule': crontab(hour="3", minute="00")
-}
+# CELERYBEAT_SCHEDULE['update pubsubhubbub'] = {
+#     'task': 'scrapi.tasks.update_pubsubhubbub',
+#     'schedule': crontab(minute='*/5')
+# }

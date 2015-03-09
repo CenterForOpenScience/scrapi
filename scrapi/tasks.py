@@ -1,17 +1,12 @@
-import os
 import logging
-from dateutil import parser
 from base64 import b64decode
 from datetime import datetime
 
-import vcr
-
 import requests
-
 from celery import Celery
+from dateutil import parser
 
-from base64 import b64encode
-
+from scrapi import util
 from scrapi import events
 from scrapi import settings
 from scrapi import processing
@@ -28,77 +23,33 @@ logger = logging.getLogger(__name__)
 
 
 @app.task
+@events.creates_task(events.HARVESTER_RUN)
 def run_harvester(harvester_name, days_back=1):
     logger.info('Running harvester "{}"'.format(harvester_name))
 
+    normalization = begin_normalization.s(harvester_name)
+    start_harvest = harvest.si(harvester_name, timestamp(), days_back=days_back)
+
     # Form and start a celery chain
-    chain = (harvest.si(harvester_name, timestamp(), days_back=days_back)
-             | begin_normalization.s(harvester_name))
-
-    chain.apply_async()
-
-    # Note: Dispatch events only after they run
-    events.dispatch(
-        events.HARVESTER_RUN,
-        events.CREATED,
-        days_back=days_back,
-        harvester=harvester_name,
-    )
+    (start_harvest | normalization).apply_async()
 
 
 @app.task
+@events.logged(events.HARVESTER_RUN)
 def harvest(harvester_name, job_created, days_back=1):
-    logger.info('Harvester "{}" has begun harvesting'.format(harvester_name))
-    events.dispatch(
-        events.HARVESTER_RUN,
-        events.STARTED,
-        days_back=days_back,
-        harvester=harvester_name,
-        job_created=job_created
-    )
-
-    timestamps = {
-        'harvestTaskCreated': job_created,
-        'harvestStarted': timestamp()
-    }
-
+    harvest_started = timestamp()
     harvester = import_harvester(harvester_name)
+    logger.info('Harvester "{}" has begun harvesting'.format(harvester_name))
 
-    try:
-        if settings.STORE_HTTP_TRANSACTIONS:
-            cassette = os.path.join(settings.RECORD_DIRECTORY,
-                                    harvester_name, timestamp() + '.yml')
-
-            logger.debug('Recording HTTP harvesting request for {} to {}'
-                         .format(harvester_name, cassette))
-
-            with vcr.use_cassette(cassette, record_mode='all'):
-                result = harvester.harvest(days_back=days_back)
-        else:
-            result = harvester.harvest(days_back=days_back)
-    except Exception as e:
-        events.dispatch(
-            events.HARVESTER_RUN,
-            events.FAILED,
-            exception=repr(e),
-            days_back=days_back,
-            harvester=harvester_name,
-            job_created=job_created
-        )
-        raise
-
-    timestamps['harvestFinished'] = timestamp()
-
-    logger.info('Harvester "{}" has finished harvesting'.format(harvester_name))
-    events.dispatch(
-        events.HARVESTER_RUN,
-        events.COMPLETED,
-        harvester=harvester_name,
-        number=len(result)
-    )
+    with util.maybe_recorded(harvester_name):
+        result = harvester.harvest(days_back=days_back)
 
     # result is a list of all of the RawDocuments harvested
-    return result, timestamps
+    return result, {
+        'harvestFinished': timestamp(),
+        'harvestTaskCreated': job_created,
+        'harvestStarted': harvest_started,
+    }
 
 
 @app.task
@@ -109,130 +60,51 @@ def begin_normalization((raw_docs, timestamps), harvester_name):
     '''
     logger.info('Normalizing {} documents for harvester "{}"'
                 .format(len(raw_docs), harvester_name))
-
     # raw is a single raw document
     for raw in raw_docs:
+        spawn_tasks(raw, timestamps, harvester_name)
+
+
+@events.creates_task(events.PROCESSING)
+@events.creates_task(events.NORMALIZATION)
+def spawn_tasks(raw, timestamps, harvester_name):
         raw['timestamps'] = timestamps
         raw['timestamps']['normalizeTaskCreated'] = timestamp()
-
-        logger.debug('Created the process raw task for {}/{}'
-                     .format(harvester_name, raw['docID']))
-
-        process_raw.delay(raw)
-
-        chain = (normalize.si(raw, harvester_name) |
-                 process_normalized.s(raw))
-
-        logger.debug('Created the process normalized task for {}/{}'
-                     .format(harvester_name, raw['docID']))
+        chain = (normalize.si(raw, harvester_name) | process_normalized.s(raw))
 
         chain.apply_async()
-
-        # Note: Dispatch events only AFTER the event has actually happened
-
-        events.dispatch(events.NORMALIZATION, events.CREATED,
-                        harvester=harvester_name, **raw.attributes)
-
-        events.dispatch(events.PROCESSING, events.CREATED,
-                        harvester=harvester_name, **raw.attributes)
+        process_raw.delay(raw)
 
 
 @app.task
+@events.logged(events.PROCESSING, 'raw')
 def process_raw(raw_doc, **kwargs):
-    events.dispatch(events.PROCESSING, events.STARTED,
-                    _index='raw', **raw_doc.attributes)
     processing.process_raw(raw_doc, kwargs)
 
-    events.dispatch(events.PROCESSING, events.COMPLETED,
-                    _index='raw', **raw_doc.attributes)
-
 
 @app.task
+@events.logged(events.NORMALIZATION)
 def normalize(raw_doc, harvester_name):
+    normalized_started = timestamp()
     harvester = import_harvester(harvester_name)
 
-    raw_doc['timestamps']['normalizeStarted'] = timestamp()
-
-    logger.debug('Document {}/{} normalization began'.format(
-        harvester_name, raw_doc['docID']))
-
-    events.dispatch(events.NORMALIZATION, events.STARTED,
-                    harvester=harvester_name, **raw_doc.attributes)
-    try:
-        normalized = harvester.normalize(raw_doc)
-    except Exception as e:
-        events.dispatch(
-            events.NORMALIZATION,
-            events.FAILED,
-            harvester=harvester_name,
-            exception=repr(e),
-            **raw_doc.attributes
-        )
-        raise
+    normalized = harvester.normalize(raw_doc)
 
     if not normalized:
-        events.dispatch(events.NORMALIZATION, events.SKIPPED,
-                        harvester=harvester_name, **raw_doc.attributes)
-        logger.warning
-        (
-            'Did not normalize document [{}]{}'.format
-            (
-                harvester_name,
-                raw_doc['docID']
-            )
-        )
-        return None
+        raise events.Skip('Did not normalize document with id {}'.format(raw_doc['docID']))
 
-    logger.debug('Document {}/{} normalized sucessfully'.format(
-        harvester_name, raw_doc['docID']))
+    normalized['timestamps'] = util.stamp_from_raw(raw_doc, normalizeStarted=normalized_started)
+    normalized['raw'] = util.build_raw_url(raw_doc, normalized)
 
-    events.dispatch(events.NORMALIZATION, events.COMPLETED,
-                    harvester=harvester_name, **raw_doc.attributes)
-
-    normalized['timestamps'] = raw_doc['timestamps']
-    normalized['timestamps']['normalizeFinished'] = timestamp()
-
-    normalized['dateCollected'] = normalized['timestamps']['harvestFinished']
-
-    normalized['raw'] = '{url}/{archive}{source}/{doc_id}/{harvestFinished}/raw.{raw_format}'.format(
-        url=settings.SCRAPI_URL,
-        archive=settings.ARCHIVE_DIRECTORY,
-        source=normalized['source'],
-        doc_id=b64encode(raw_doc['docID']),
-        harvestFinished=normalized['timestamps']['harvestFinished'],
-        raw_format=raw_doc['filetype']
-    )
-
-    # returns a single normalized document
-    return normalized
+    return normalized  # returns a single normalized document
 
 
 @app.task
+@events.logged(events.PROCESSING, 'normalized')
 def process_normalized(normalized_doc, raw_doc, **kwargs):
     if not normalized_doc:
-        events.dispatch(
-            events.PROCESSING,
-            events.SKIPPED,
-            **raw_doc.attributes
-        )
-        logger.warning('Not processing document with id {}'.format(raw_doc['docID']))
-        return
-
-    events.dispatch(
-        events.PROCESSING,
-        events.STARTED,
-        _index='normalized',
-        **raw_doc.attributes
-    )
-
+        raise events.Skip('Not processing document with id {}'.format(raw_doc['docID']))
     processing.process_normalized(raw_doc, normalized_doc, kwargs)
-
-    events.dispatch(
-        events.PROCESSING,
-        events.COMPLETED,
-        _index='normalized',
-        **raw_doc.attributes
-    )
 
 
 @app.task
@@ -299,9 +171,3 @@ def update_pubsubhubbub():
     payload = {'hub.mode': 'publish', 'hub.url': '{url}rss/'.format(url=settings.OSF_APP_URL)}
     headers = {'Content-Type': 'application/x-www-form-urlencoded'}
     return requests.post('https://pubsubhubbub.appspot.com', headers=headers, params=payload)
-
-
-# TODO Fix me @fabianvf @chrisseto
-@app.task
-def tar_archive():
-    os.system('tar -czvf website/static/archive.tar.gz archive/')
