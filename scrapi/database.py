@@ -19,7 +19,7 @@ try:
     management.create_keyspace(settings.CASSANDRA_KEYSPACE, replication_factor=1, strategy_class='SimpleStrategy')
 except NoHostAvailable:
     logger.error('Could not connect to Cassandra, expect errors.')
-    if settings.RECORD_HTTP_TRANSACTIONS or 'cassandra' in settings.NORMALIZED_PROCESSING or settings.RAW_PROCESSING:
+    if settings.RECORD_HTTP_TRANSACTIONS or 'cassandra' in settings.NORMALIZED_PROCESSING or 'cassandra' in settings.RAW_PROCESSING:
         raise
 
 
