@@ -30,7 +30,7 @@ def format_tags(all_tags):
     for taglist in all_tags.split(' '):
         tags += taglist.split(',')
 
-    return list(set([unicode(tag.lower().strip()) for tag in tags if tag.lower().strip()]))
+    return list(set([unicode(tag.lower().strip(" \n\t")) for tag in tags if tag.lower().strip(" \n\t")]))
 
 
 def update_schema(old, new):
@@ -41,14 +41,14 @@ def update_schema(old, new):
 
 
 BASEXMLSCHEMA = {
-    "description": ['//dc:description/node()', unicode],
+    "description": ['//dc:description/node()', lambda x: unicode(x.strip(" \n\t"))],
     "contributors": ['//dc:creator/node()', default_name_parser],
-    "title": ['//dc:title/node()', unicode],
-    "dateUpdated": ['//dc:dateEntry/node()', unicode],
+    "title": ['//dc:title/node()', lambda x: unicode(x.strip(" \n\t"))],
+    "dateUpdated": ['//dc:dateEntry/node()', lambda x: unicode(x.strip(" \n\t"))],
     "id": {
-        "url": ['//dcq:identifier-citation/node()', unicode],
-        "serviceID": ['//dc:ostiId/node()', unicode],
-        "doi": ['//dc:doi/node()', unicode]
+        "url": ['//dcq:identifier-citation/node()', lambda x: unicode(x.strip(" \n\t"))],
+        "serviceID": ['//dc:ostiId/node()', lambda x: unicode(x.strip(" \n\t"))],
+        "doi": ['//dc:doi/node()', lambda x: unicode(x.strip(" \n\t"))]
     },
     "tags": ['//dc:subject/node()', format_tags]
 }
