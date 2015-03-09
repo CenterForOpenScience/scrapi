@@ -1,3 +1,4 @@
+import pytest
 import utils
 
 from scrapi.linter.document import NormalizedDocument, RawDocument
@@ -10,6 +11,7 @@ RAW = RawDocument(utils.RAW_DOC)
 NORMALIZED = NormalizedDocument(utils.RECORD)
 
 
+@pytest.mark.elasticsearch
 def test_process_normalized():
     NORMALIZED['source'] = 'test'
     NORMALIZED['_id'] = NORMALIZED['id']['serviceID']
@@ -19,6 +21,7 @@ def test_process_normalized():
     assert (len(results['hits']['hits']) == 1)
 
 
+@pytest.mark.elasticsearch
 def test_versions():
     NORMALIZED['source'] = 'test'
     NORMALIZED['_id'] = NORMALIZED['id']['serviceID']
