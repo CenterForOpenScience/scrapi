@@ -1,3 +1,7 @@
+"""A wrapper around requests that records all requests made with it.
+    Supports get, put, post, delete and request
+    all calls return an instance of HarvesterResponse
+"""
 from __future__ import absolute_import
 
 import json
@@ -54,6 +58,11 @@ def record_or_load_response(method, url, **kwargs):
 
 
 def request(method, url, **kwargs):
+    """Make a recorded request or get a record matching method and url
+    :param str method: Get, Put, Post, or Delete
+    :param str url: Where to make the request to
+    :param dict kwargs: Addition keywords to pass to requests
+    """
     if settings.RECORD_HTTP_TRANSACTIONS:
         return record_or_load_response(method, url, **kwargs)
     return requests.request(method, url, **kwargs)
