@@ -9,13 +9,13 @@ import requests
 import cqlengine
 from cqlengine import columns
 
-from scrapi import database  # noqa
+from scrapi import database
 from scrapi import settings
-
 
 logger = logging.getLogger(__name__)
 
 
+@database.register_model
 class HarvesterResponse(cqlengine.Model):
     __table_name__ = 'responses'
     __keyspace__ = settings.CASSANDRA_KEYSPACE
