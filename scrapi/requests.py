@@ -14,6 +14,7 @@ import cqlengine
 from cqlengine import columns
 from requests.structures import CaseInsensitiveDict
 
+from scrapi import events
 from scrapi import database
 from scrapi import settings
 
@@ -47,12 +48,27 @@ class HarvesterResponse(cqlengine.Model):
 
 def record_or_load_response(method, url, **kwargs):
     try:
-        return HarvesterResponse.get(url=url, method=method)
+        resp = HarvesterResponse.get(url=url, method=method)
+        if resp.ok:
+            return resp
     except HarvesterResponse.DoesNotExist:
         response = requests.request(method, url, **kwargs)
         return HarvesterResponse(
             url=url,
             method=method,
+            ok=response.ok,
+            content=response.content,
+            encoding=response.encoding,
+            status_code=response.status_code,
+            headers_str=json.dumps(dict(response.headers))
+        ).save()
+    else:
+        response = requests.request(method, url, **kwargs)
+
+        if not response.ok:
+            events.log_to_sentry('Got non-okay response code.', url=url, method=method)
+
+        return resp.update(
             ok=response.ok,
             content=response.content,
             encoding=response.encoding,
