@@ -12,6 +12,7 @@ from datetime import datetime
 import requests
 import cqlengine
 from cqlengine import columns
+from requests.structures import CaseInsensitiveDict
 
 from scrapi import database
 from scrapi import settings
@@ -29,6 +30,7 @@ class HarvesterResponse(cqlengine.Model):
 
     # Raw request data
     content = columns.Bytes()
+    encoding = columns.Text()
     headers_str = columns.Text()
     status_code = columns.Integer()
     time_made = columns.DateTime(default=datetime.now)
@@ -39,7 +41,7 @@ class HarvesterResponse(cqlengine.Model):
 
     @property
     def headers(self):
-        return json.loads(self.headers_str)
+        return CaseInsensitiveDict(json.loads(self.headers_str))
 
 
 def record_or_load_response(method, url, **kwargs):
