@@ -51,8 +51,9 @@ def record_or_load_response(method, url, **kwargs):
             url=url,
             method=method,
             content=response.content,
+            encoding=response.encoding,
             status_code=response.status_code,
-            headers_str=json.dumps(response.headers)
+            headers_str=json.dumps(dict(response.headers))
         ).save()
 
 
