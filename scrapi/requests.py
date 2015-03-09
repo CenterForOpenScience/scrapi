@@ -25,7 +25,7 @@ class HarvesterResponse(cqlengine.Model):
     __keyspace__ = settings.CASSANDRA_KEYSPACE
 
     method = columns.Text(primary_key=True)
-    url = columns.Text(primary_key=True, required=True, index=True)
+    url = columns.Text(primary_key=True, required=True)
 
     # Raw request data
     content = columns.Bytes()
@@ -39,7 +39,6 @@ class HarvesterResponse(cqlengine.Model):
 
     @property
     def headers(self):
-        # TODO: make case insensitive multidict
         return json.loads(self.headers_str)
 
 
