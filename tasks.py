@@ -65,7 +65,8 @@ def beat():
 
 @task
 def worker():
-    run('celery -A scrapi.tasks worker --loglevel info')
+    from scrapi.tasks import app
+    app.worker_main(['worker', '--loglevel', 'info'])
 
 
 @task

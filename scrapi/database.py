@@ -2,10 +2,8 @@ from __future__ import absolute_import
 
 import logging
 
-import cqlengine
+from cqlengine import connection
 from cqlengine import management
-
-from cassandra import connection
 from cassandra.cluster import NoHostAvailable
 
 from celery.signals import worker_process_init
@@ -29,7 +27,7 @@ class DatabaseManager(object):
             return True
 
         try:
-            cqlengine.connection.setup(self.uri, self.keyspace)
+            connection.setup(self.uri, self.keyspace)
             management.create_keyspace(self.keyspace, replication_factor=1, strategy_class='SimpleStrategy')
             for model in self._models:
                 management.sync_table(model)

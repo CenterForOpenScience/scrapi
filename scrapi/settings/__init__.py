@@ -77,7 +77,7 @@ CELERY_IMPORTS = ('scrapi.tasks', 'scripts.migration_tasks')
 # Celery Beat Stuff
 CELERYBEAT_SCHEDULE = create_schedule()
 
-CELERYBEAT_SCHEDULE['update pubsubhubbub'] = {
-    'task': 'scrapi.tasks.update_pubsubhubbub',
-    'schedule': crontab(minute='*/5')
-}
+# CELERYBEAT_SCHEDULE['update pubsubhubbub'] = {
+#     'task': 'scrapi.tasks.update_pubsubhubbub',
+#     'schedule': crontab(minute='*/5')
+# }
