@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 import abc
 import logging
+from copy import deepcopy
 from functools import partial
 
 logger = logging.getLogger(__name__)
@@ -12,7 +13,7 @@ class BaseTransformer(object):
     __metaclass__ = abc.ABCMeta
 
     def __init__(self, schema):
-        self.schema = schema
+        self.schema = deepcopy(schema)
 
     def transform(self, doc):
         self.process_schema()
@@ -40,8 +41,11 @@ class XMLTransformer(BaseTransformer):
         self.namespaces = namespaces
         self.NAME = name
 
+        self._processed = False
+
     def process_schema(self):
-        self.schema = self._process_schema(self.schema)
+        if not self._processed:
+            self.schema = self._process_schema(self.schema)
 
     def _process_schema(self, schema):
         for key, value in schema.items():
