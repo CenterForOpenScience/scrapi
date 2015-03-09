@@ -16,7 +16,7 @@ from cqlengine import columns
 from scrapi import database
 from scrapi import settings
 
-logger = logging.getLogger(__name__)
+logging.getLogger('cqlengine.cql').setLevel(logging.WARN)
 
 
 @database.register_model

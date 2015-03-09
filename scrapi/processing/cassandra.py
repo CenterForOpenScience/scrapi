@@ -5,7 +5,6 @@ import logging
 from uuid import uuid4
 
 from cqlengine import columns, Model
-from cqlengine.management import sync_table
 
 from scrapi import events
 from scrapi import settings
@@ -14,6 +13,7 @@ from scrapi.processing.base import BaseProcessor
 
 
 logger = logging.getLogger(__name__)
+logging.getLogger('cqlengine.cql').setLevel(logging.WARN)
 
 
 class CassandraProcessor(BaseProcessor):
