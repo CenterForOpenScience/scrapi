@@ -51,8 +51,8 @@ class XMLTransformer(BaseTransformer):
         for key, value in schema.items():
             if isinstance(value, dict):
                 schema[key] = self._process_schema(value)
-            elif isinstance(value, list):
-                schema[key] = partial(self._process_list, value)
+            elif isinstance(value, list) or isinstance(value, tuple):
+                schema[key] = partial(self._process_iter, value)
             elif isinstance(value, basestring):
                 schema[key] = partial(self._process_string, value)
         return schema
@@ -61,7 +61,7 @@ class XMLTransformer(BaseTransformer):
         val = doc.xpath(string, namespaces=self.namespaces)
         return '' if not val else val[0] if len(val) == 1 else val
 
-    def _process_list(self, l, doc):
+    def _process_iter(self, l, doc):
         fns = []
         for value in l:
             if isinstance(value, basestring):
