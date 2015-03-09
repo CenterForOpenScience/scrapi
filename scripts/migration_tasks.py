@@ -116,8 +116,8 @@ def move_to_backup(raw_path):
     mkdir_p(finished_normalized_path)
 
     shutil.move(raw_path, finished_raw_path)
+
     try:
         shutil.move(normalized_path, finished_normalized_path)
-    except OSError as exc:
-        if exc.errno != errno.EEXIST:
-            raise
+    except IOError:
+        pass  # No normalized file to be found
