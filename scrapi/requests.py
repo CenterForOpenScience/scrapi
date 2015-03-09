@@ -52,10 +52,15 @@ def record_or_load_response(method, url, **kwargs):
         if resp.ok:
             return resp
     except HarvesterResponse.DoesNotExist:
-        response = requests.request(method, url, **kwargs)
-        return HarvesterResponse(
-            url=url,
-            method=method,
+        resp = None
+
+    response = requests.request(method, url, **kwargs)
+
+    if not response.ok:
+        events.log_to_sentry('Got non-okay response code.', url=url, method=method)
+
+    if resp:
+        return resp.update(
             ok=response.ok,
             content=response.content,
             encoding=response.encoding,
@@ -63,12 +68,9 @@ def record_or_load_response(method, url, **kwargs):
             headers_str=json.dumps(dict(response.headers))
         ).save()
     else:
-        response = requests.request(method, url, **kwargs)
-
-        if not response.ok:
-            events.log_to_sentry('Got non-okay response code.', url=url, method=method)
-
-        return resp.update(
+        return HarvesterResponse(
+            url=url,
+            method=method,
             ok=response.ok,
             content=response.content,
             encoding=response.encoding,
