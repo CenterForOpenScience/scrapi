@@ -24,21 +24,21 @@ class BaseTransformer(object):
             if isinstance(value, dict):
                 transformed[key] = self._transform(value, doc)
             elif isinstance(value, list) or isinstance(value, tuple):
-                transformed[key] = self._process_iter(value, doc)
+                transformed[key] = self._transform_iter(value, doc)
             elif isinstance(value, basestring):
-                transformed[key] = self._process_string(value, doc)
+                transformed[key] = self._transform_string(value, doc)
         return transformed
 
-    def _process_iter(self, l, doc):
+    def _transform_iter(self, l, doc):
         docs = []
         for value in l:
             if isinstance(value, basestring):
-                docs.append(self._process_string(value, doc))
+                docs.append(self._transform_string(value, doc))
             elif callable(value):
                 return value(*[res for res in docs])
 
     @abc.abstractmethod
-    def _process_string(self, string, doc):
+    def _transform_string(self, string, doc):
         raise NotImplementedError
 
 class XMLTransformer(BaseTransformer):
@@ -48,8 +48,8 @@ class XMLTransformer(BaseTransformer):
         self.namespaces = namespaces
         self.NAME = name
 
-        self._processed = False
+        self._transformed = False
 
-    def _process_string(self, string, doc):
+    def _transform_string(self, string, doc):
         val = doc.xpath(string, namespaces=self.namespaces)
         return '' if not val else val[0] if len(val) == 1 else val
