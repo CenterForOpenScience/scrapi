@@ -36,7 +36,10 @@ def format_tags(all_tags):
 def update_schema(old, new):
     d = deepcopy(old)
     for key, value in new.items():
-        d[key] = value
+        if isinstance(value, dict) and old.get(key) and isinstance(old[key], dict):
+            d[key] = update_schema(old[key], new[key])
+        else:
+            d[key] = value
     return d
 
 
