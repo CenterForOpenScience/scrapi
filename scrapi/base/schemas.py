@@ -41,14 +41,14 @@ def update_schema(old, new):
 
 
 BASEXMLSCHEMA = {
-    "description": ['//dc:description/node()', lambda x: unicode(x.strip(" \n\t"))],
-    "contributors": ['//dc:creator/node()', default_name_parser],
-    "title": ['//dc:title/node()', lambda x: unicode(x.strip(" \n\t"))],
-    "dateUpdated": ['//dc:dateEntry/node()', lambda x: unicode(x.strip(" \n\t"))],
+    "description": ('//dc:description/node()', lambda x: unicode(x.strip(" \n\t"))),
+    "contributors": ('//dc:creator/node()', default_name_parser),
+    "title": ('//dc:title/node()', lambda x: unicode(x.strip(" \n\t"))),
+    "dateUpdated": ('//dc:dateEntry/node()', lambda x: unicode(x.strip(" \n\t"))),
     "id": {
-        "url": ['//dcq:identifier-citation/node()', lambda x: unicode(x.strip(" \n\t"))],
-        "serviceID": ['//dc:ostiId/node()', lambda x: unicode(x.strip(" \n\t"))],
-        "doi": ['//dc:doi/node()', lambda x: unicode(x.strip(" \n\t"))]
+        "url": ('//dcq:identifier-citation/node()', lambda x: unicode(x.strip(" \n\t"))),
+        "serviceID": ('//dc:ostiId/node()', lambda x: unicode(x.strip(" \n\t"))),
+        "doi": ('//dc:doi/node()', lambda x: unicode(x.strip(" \n\t")))
     },
-    "tags": ['//dc:subject/node()', format_tags]
+    "tags": ('//dc:subject/node()', format_tags)
 }
