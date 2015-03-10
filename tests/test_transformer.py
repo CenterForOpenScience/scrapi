@@ -17,7 +17,7 @@ class TestHarvester(XMLHarvester):
             'source': 'TEST',
             'filetype': 'XML',
             'docID': "1"
-        })] * days_back
+        }) for _ in xrange(days_back)]
 
 
 class TestTransformer(object):
