@@ -12,9 +12,6 @@ from scrapi.base.schemas import BASEXMLSCHEMA, update_schema
 
 class DoepagesHarvester(XMLHarvester):
 
-    def __init__(self, *args, **kwargs):
-        super(DoepagesHarvester, self).__init__(*args, **kwargs)
-
     def harvest(self, days_back=1):
         start_date = date.today() - timedelta(days_back)
         base_url = 'http://www.osti.gov/pages/pagesxml?nrows={0}&EntryDateFrom={1}'
@@ -37,7 +34,7 @@ class DoepagesHarvester(XMLHarvester):
             record = etree.tostring(record, encoding=record_encoding)
             xml_list.append(RawDocument({
                 'doc': record,
-                'source': self.NAME,
+                'source': self.name,
                 'docID': self.copy_to_unicode(doc_id),
                 'filetype': 'xml'
             }))
@@ -45,45 +42,56 @@ class DoepagesHarvester(XMLHarvester):
         return xml_list
 
     def copy_to_unicode(self, element, encoding="UTF-8"):
-        encoding = 'UTF-8'
         element = ''.join(element)
         if isinstance(element, unicode):
             return element
         else:
             return unicode(element, encoding=encoding)
 
-namespaces = {
-    'rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
-    'dc': 'http://purl.org/dc/elements/1.1/',
-    'dcq': 'http://purl.org/dc/terms/'
-}
-new = {
-    "properties": {
-        "language": '//dc:language/node()',
-        "type": '//dc:type/node()',
-        "typeQualifier": '//dc:typeQualifier/node()',
-        "language": '//dc:language/node()',
-        "format": '//dc:format/node()',
-        "identifierOther": '//dc:identifierOther/node()',
-        "rights": '//dc:rights/node()',
-        "identifierDOEcontract": '//dcq:identifierDOEcontract/node()',
-        "relation": '//dc:relation/node()',
-        "coverage": '//dc:coverage/node()',
-        "identifier-purl": '//dc:identifier-purl/node()',
-        "identifier": '//dc:identifier/node()',
-        "identifierReport": '//dc:identifierReport/node()',
-        "publisherInfo": {
-            "publisher": '//dcq:publisher/node()',
-            "publisherCountry": '//dcq:publisherCountry/node()',
-            "publisherSponsor": '//dcq:publisherSponsor/node()',
-            "publisherAvailability": '//dcq:publisherAvailability/node()',
-            "publisherResearch": '//dcq:publisherResearch/node()',
-            "date": '//dc:date/node()'
-        }
-    }
-}
+    @property
+    def name(self):
+        return 'doepages'
 
-h = DoepagesHarvester('test_doepages', update_schema(BASEXMLSCHEMA, new), namespaces)
+    @property
+    def namespaces(self):
+        return {
+            'rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
+            'dc': 'http://purl.org/dc/elements/1.1/',
+            'dcq': 'http://purl.org/dc/terms/'
+        }
+
+    @property
+    def schema(self):
+        return update_schema(
+            BASEXMLSCHEMA,
+            {
+                "properties": {
+                    "language": '//dc:language/node()',
+                    "type": '//dc:type/node()',
+                    "typeQualifier": '//dc:typeQualifier/node()',
+                    "language": '//dc:language/node()',
+                    "format": '//dc:format/node()',
+                    "identifierOther": '//dc:identifierOther/node()',
+                    "rights": '//dc:rights/node()',
+                    "identifierDOEcontract": '//dcq:identifierDOEcontract/node()',
+                    "relation": '//dc:relation/node()',
+                    "coverage": '//dc:coverage/node()',
+                    "identifier-purl": '//dc:identifier-purl/node()',
+                    "identifier": '//dc:identifier/node()',
+                    "identifierReport": '//dc:identifierReport/node()',
+                    "publisherInfo": {
+                        "publisher": '//dcq:publisher/node()',
+                        "publisherCountry": '//dcq:publisherCountry/node()',
+                        "publisherSponsor": '//dcq:publisherSponsor/node()',
+                        "publisherAvailability": '//dcq:publisherAvailability/node()',
+                        "publisherResearch": '//dcq:publisherResearch/node()',
+                        "date": '//dc:date/node()'
+                    }
+                }
+            }
+        )
+
+h = DoepagesHarvester()
 
 harvest = h.harvest
 normalize = h.normalize
