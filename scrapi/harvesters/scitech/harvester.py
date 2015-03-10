@@ -58,7 +58,6 @@ def harvest(days_back=1, end_date=None, **kwargs):
 
     while morepages == 'true':
         xml = requests.get(base_url, params=parameters)
-        print(xml.url)
         record_encoding = xml.encoding
         xml = xml.text
         xml_root = etree.XML(xml.encode('utf-8'))

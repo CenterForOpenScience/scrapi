@@ -26,7 +26,6 @@ class tdarHarvester(OAIHarvester):
         serviceID = doc.get('docID')
 
         url = 'http://core.tdar.org/document/' + serviceID.replace('oai:tdar.org:Resource:', '')
-        print(url)
 
         return {
             'serviceID': serviceID,

@@ -64,7 +64,6 @@ def get_response(rows, days_back):
     Returns an etree element with results '''
     url = 'https://cn.dataone.org/cn/v1/query/solr/?q=dateModified:[NOW-{0}DAY TO *]&rows='.format(days_back) + str(rows)
     data = requests.get(url)
-    print(data.url)
     doc = etree.XML(data.content)
     return doc
 

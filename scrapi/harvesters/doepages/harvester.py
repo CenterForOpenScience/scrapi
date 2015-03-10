@@ -46,7 +46,6 @@ def harvest(days_back=15):
     base_url = 'http://www.osti.gov/pages/pagesxml?nrows={0}&EntryDateFrom={1}'
     url = base_url.format('1', start_date.strftime('%m/%d/%Y'))
     initial_data = requests.get(url)
-    print(initial_data.url)
     record_encoding = initial_data.encoding
     try:
         initial_doc = etree.XML(initial_data.content)

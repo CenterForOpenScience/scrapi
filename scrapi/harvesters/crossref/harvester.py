@@ -39,7 +39,6 @@ def harvest(days_back=0):
     base_url = 'http://api.crossref.org/v1/works?filter=from-pub-date:{},until-pub-date:{}&rows=1000'
     start_date = date.today() - timedelta(days_back)
     url = base_url.format(str(start_date), str(date.today()))
-    print(url)
     data = requests.get(url)
     doc = data.json()
 
