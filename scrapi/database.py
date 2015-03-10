@@ -7,6 +7,7 @@ from cqlengine import management
 from cassandra.cluster import NoHostAvailable
 
 from celery.signals import worker_process_init
+from celery.signals import worker_process_shutdown
 
 from scrapi import settings
 
@@ -39,30 +40,35 @@ class DatabaseManager(object):
         self._setup = True
         return True
 
-    def tear_down(self, force=False):
+    def tear_down(self):
         if not self._setup:
             logger.warning('Attempting to tear down a database that was never setup')
 
-        assert force, 'tear_down must be called with force=True'
+        if connection.cluster is not None:
+            connection.cluster.shutdown()
+        if connection.session is not None:
+            connection.session.shutdown()
 
-        management.delete_keyspace(self.keyspace)
         self._setup = False
 
-    def register_model(self, model):
-        if not self._setup:
-            self.setup()
+    def clear_keyspace(self, force=False):
+        assert force, 'clear_keyspace must be called with force'
+        management.delete_keyspace(self.keyspace)
+        self.tear_down()
+        return self.setup()
 
+    def register_model(self, model):
+        model. __keyspace__ = self.keyspace
         self._models.append(model)
-        management.sync_table(model)
+        if self._setup:
+            management.sync_table(model)
         return model
 
+    def celery_setup(self, *args, **kwargs):
+        self.setup()
 
-def cassandra_init(*args, **kwargs):
-    if connection.cluster is not None:
-        connection.cluster.shutdown()
-    if connection.session is not None:
-        connection.session.shutdown()
-    connection.setup(settings.CASSANDRA_URI, settings.CASSANDRA_KEYSPACE)
+    def celery_teardown(self, *arg, **kwargs):
+        self.tear_down()
 
 
 _manager = DatabaseManager()
@@ -70,5 +76,5 @@ _manager = DatabaseManager()
 setup = _manager.setup
 tear_down = _manager.tear_down
 register_model = _manager.register_model
-
-worker_process_init.connect(cassandra_init)
+worker_process_init.connect(_manager.celery_setup)
+worker_process_shutdown.connect(_manager.celery_teardown)
