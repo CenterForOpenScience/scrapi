@@ -45,11 +45,11 @@ class XMLHarvester(BaseHarvester, XMLTransformer):
 
     def normalize(self, raw_doc):
         transformed = self.transform(etree.XML(raw_doc['doc']))
-        transformed['source'] = self.NAME
+        transformed['source'] = self.name
         return NormalizedDocument(transformed)
 
 
-class OAIHarvester(XMLHarvester):
+class OAIHarvester(BaseHarvester):
     """ Create a harvester with a oai_dc namespace, that will harvest
     documents within a certain date range
 

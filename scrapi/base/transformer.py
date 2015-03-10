@@ -11,9 +11,6 @@ class BaseTransformer(object):
 
     __metaclass__ = abc.ABCMeta
 
-    def __init__(self, schema):
-        self.schema = deepcopy(schema)
-
     def transform(self, doc):
         return self._transform(self.schema, doc)
 
@@ -40,14 +37,23 @@ class BaseTransformer(object):
     def _transform_string(self, string, doc):
         raise NotImplementedError
 
+    @abc.abstractproperty
+    def name(self):
+        raise NotImplementedError
+
+    @abc.abstractproperty
+    def schema(self):
+        raise NotImplementedError
+
 
 class XMLTransformer(BaseTransformer):
 
-    def __init__(self, name, schema, namespaces):
-        super(XMLTransformer, self).__init__(schema)
-        self.namespaces = namespaces
-        self.NAME = name
+    __metaclass__ = abc.ABCMeta
 
     def _transform_string(self, string, doc):
         val = doc.xpath(string, namespaces=self.namespaces)
         return '' if not val else val[0] if len(val) == 1 else val
+
+    @abc.abstractproperty
+    def namespaces(self):
+        raise NotImplementedError
