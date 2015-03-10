@@ -7,12 +7,11 @@ from elasticsearch.exceptions import ConnectionError
 from scrapi import settings
 from scrapi import database
 
-database._manager = database.DatabaseManager(keyspace='test')
-
 
 settings.DEBUG = True
 settings.CELERY_ALWAYS_EAGER = True
 settings.CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
+database._manager.keyspace = 'test'
 
 try:
     con = Elasticsearch(settings.ELASTIC_URI, request_timeout=settings.ELASTIC_TIMEOUT)
