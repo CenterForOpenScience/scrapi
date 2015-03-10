@@ -47,7 +47,7 @@ class TestModel(object):
 
         resp = requests.HarvesterResponse(content=json.dumps(data))
 
-        assert resp.json == data
+        assert resp.json() == data
         assert resp.content == json.dumps(data)
 
     @pytest.mark.cassandra
