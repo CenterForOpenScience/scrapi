@@ -6,6 +6,7 @@ API harvester for ClinicalTrials.gov for the SHARE Notification Service
 from __future__ import unicode_literals
 
 import time
+import logging
 import datetime
 
 from lxml import etree
@@ -23,6 +24,8 @@ NAME = "clinicaltrials"
 DEFAULT_ENCODING = 'UTF-8'
 
 record_encoding = None
+
+logging = logging.getLogger(__name__)
 
 
 def copy_to_unicode(element):
@@ -74,14 +77,14 @@ def harvest(days_back=1):
             study_urls.append(study.xpath('url/node()')[0] + '?displayxml=true')
 
         # grab each of those urls for full content
-        print("There are {} urls to harvest - be patient...".format(len(study_urls)))
+        logger.warning("There are {} urls to harvest - be patient...".format(len(study_urls)))
         count = 0
         official_count = 0
         for study_url in study_urls:
             try:
-                content = requests.get(study_url)
+                content = requests.get(study_url, throttle=1)
             except requests.exceptions.ConnectionError as e:
-                print('Connection error: {}, wait a bit...'.format(e))
+                logger.warning('Connection error: {}, wait a bit...'.format(e))
                 time.sleep(30)
                 continue
             doc = etree.XML(content.content)
@@ -96,9 +99,8 @@ def harvest(days_back=1):
             official_count += 1
             count += 1
             if count % 100 == 0:
-                print("You've requested {} studies, keep going!".format(official_count))
+                logger.info("You've requested {} studies, keep going!".format(official_count))
                 count = 0
-            time.sleep(1)
 
     return xml_list
 
