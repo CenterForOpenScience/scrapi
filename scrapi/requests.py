@@ -24,7 +24,6 @@ logging.getLogger('cqlengine.cql').setLevel(logging.WARN)
 @database.register_model
 class HarvesterResponse(cqlengine.Model):
     __table_name__ = 'responses'
-    __keyspace__ = settings.CASSANDRA_KEYSPACE
 
     method = columns.Text(primary_key=True)
     url = columns.Text(primary_key=True, required=True)

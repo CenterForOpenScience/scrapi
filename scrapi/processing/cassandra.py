@@ -67,7 +67,6 @@ class DocumentModel(Model):
     metadata.
     '''
     __table_name__ = 'documents'
-    __keyspace__ = settings.CASSANDRA_KEYSPACE
 
     # Raw
     docID = columns.Text(primary_key=True)
@@ -101,7 +100,6 @@ class VersionModel(Model):
     '''
 
     __table_name__ = 'versions'
-    __keyspace__ = settings.CASSANDRA_KEYSPACE
 
     key = columns.UUID(primary_key=True, required=True)
 
