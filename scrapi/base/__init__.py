@@ -2,7 +2,6 @@
 from __future__ import unicode_literals
 
 import abc
-import time
 import logging
 from dateutil.parser import parse
 from datetime import date, timedelta

@@ -8,7 +8,6 @@ Example API query: http://api.figshare.com/v1/articles/search?search_for=*&from_
 
 from __future__ import unicode_literals
 
-import time
 import json
 import logging
 from dateutil.parser import parse
