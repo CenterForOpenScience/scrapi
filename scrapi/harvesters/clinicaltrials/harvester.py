@@ -25,7 +25,7 @@ DEFAULT_ENCODING = 'UTF-8'
 
 record_encoding = None
 
-logging = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 
 def copy_to_unicode(element):
