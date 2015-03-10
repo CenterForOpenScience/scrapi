@@ -8,7 +8,6 @@ Example API query: http://api.figshare.com/v1/articles/search?search_for=*&from_
 
 from __future__ import unicode_literals
 
-import time
 import json
 import logging
 from dateutil.parser import parse
@@ -71,8 +70,7 @@ def get_records(search_url):
                 all_records.append(record)
 
         page += 1
-        records = requests.get(search_url + '&page={}'.format(str(page)))
-        time.sleep(3)
+        records = requests.get(search_url + '&page={}'.format(str(page)), throttle=3)
 
     return all_records
 
