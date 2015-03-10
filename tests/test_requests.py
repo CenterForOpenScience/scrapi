@@ -115,8 +115,31 @@ class TestCassandraIntegration(object):
         assert model.status_code == 200
         assert model.url == 'dinosaurs.sexy'
         assert model.headers == {'tota': 'dyle'}
+        assert mock_requests.request.called is True
         assert model.headers_str == '{"tota": "dyle"}'
         assert isinstance(resp, requests.HarvesterResponse)
+
+    @pytest.mark.cassandra
+    def test_force_makes_request(self, mock_requests, monkeypatch):
+        mock_requests.request.return_value = mock.Mock(ok=True, encoding='utf-8', content='rawr', status_code=200, headers={'tota': 'dyle'})
+
+        requests.get('dinosaurs.sexy', force=True)
+        assert mock_requests.request.called is True
+
+    @pytest.mark.cassandra
+    def test_force_makes_new_request(self, mock_requests, monkeypatch):
+        requests.HarvesterResponse(ok=True, method='get', url='dinosaurs.sexy', content='citychicken').save()
+        mock_requests.request.return_value = mock.Mock(encoding='utf-8', content='Snapcity', status_code=200, headers={'tota': 'dyle'})
+
+        resp = requests.get('dinosaurs.sexy')
+
+        assert resp.content == 'citychicken'
+        assert mock_requests.request.called is False
+
+        resp = requests.get('dinosaurs.sexy', force=True)
+
+        assert resp.content == 'Snapcity'
+        assert mock_requests.request.called is True
 
     @pytest.mark.cassandra
     def test_record_or_load_logs_not_ok(self, mock_requests, monkeypatch):
@@ -130,6 +153,30 @@ class TestCassandraIntegration(object):
 
         assert resp.ok is False
         assert resp.status_code == 400
+
+    @pytest.mark.cassandra
+    def test_record_or_load_throttle_throttles(self, mock_requests, monkeypatch):
+        mock_sleep = mock.Mock()
+        monkeypatch.setattr(requests.time, 'sleep', mock_sleep)
+        mock_requests.request.return_value = mock.Mock(encoding='utf-8', content='Snapcity', status_code=200, headers={'tota': 'dyle'})
+
+        resp = requests.get('dinosaurs.sexy', throttle=2)
+
+        mock_sleep.assert_called_once_with(2)
+        assert mock_requests.request.called is True
+        assert isinstance(resp, requests.HarvesterResponse)
+
+    @pytest.mark.cassandra
+    def test_record_or_load_throttle_doesnt_on_load(self, mock_requests, monkeypatch):
+        mock_sleep = mock.Mock()
+        monkeypatch.setattr(requests.time, 'sleep', mock_sleep)
+        requests.HarvesterResponse(ok=True, method='get', url='dinosaurs.sexy', content='citychicken').save()
+
+        resp = requests.get('dinosaurs.sexy', throttle=2)
+
+        assert mock_sleep.called is False
+        assert mock_requests.request.called is False
+        assert isinstance(resp, requests.HarvesterResponse)
 
 
 class TestRequestsApi(object):
