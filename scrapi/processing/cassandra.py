@@ -5,15 +5,14 @@ import logging
 from uuid import uuid4
 
 from cqlengine import columns, Model
-from cqlengine.management import sync_table
 
 from scrapi import events
-from scrapi import settings
 from scrapi import database  # noqa
 from scrapi.processing.base import BaseProcessor
 
 
 logger = logging.getLogger(__name__)
+logging.getLogger('cqlengine.cql').setLevel(logging.WARN)
 
 
 class CassandraProcessor(BaseProcessor):
@@ -21,10 +20,6 @@ class CassandraProcessor(BaseProcessor):
     Cassandra processor for scrapi. Handles versioning and storing documents in Cassandra
     '''
     NAME = 'cassandra'
-
-    def __init__(self):
-        sync_table(DocumentModel)
-        sync_table(VersionModel)
 
     @events.logged(events.PROCESSING, 'normalized.cassandra')
     def process_normalized(self, raw_doc, normalized):
@@ -60,6 +55,7 @@ class CassandraProcessor(BaseProcessor):
             return DocumentModel.create(docID=docID, source=source, **kwargs)
 
 
+@database.register_model
 class DocumentModel(Model):
     '''
     Defines the schema for a metadata document in cassandra
@@ -70,7 +66,6 @@ class DocumentModel(Model):
     metadata.
     '''
     __table_name__ = 'documents'
-    __keyspace__ = settings.CASSANDRA_KEYSPACE
 
     # Raw
     docID = columns.Text(primary_key=True)
@@ -94,6 +89,7 @@ class DocumentModel(Model):
     versions = columns.List(columns.UUID)
 
 
+@database.register_model
 class VersionModel(Model):
     '''
     Defines the schema for a version of a metadata document in Cassandra
@@ -103,7 +99,6 @@ class VersionModel(Model):
     '''
 
     __table_name__ = 'versions'
-    __keyspace__ = settings.CASSANDRA_KEYSPACE
 
     key = columns.UUID(primary_key=True, required=True)
 

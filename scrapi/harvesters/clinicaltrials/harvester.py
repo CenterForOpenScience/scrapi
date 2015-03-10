@@ -6,9 +6,8 @@ API harvester for ClinicalTrials.gov for the SHARE Notification Service
 from __future__ import unicode_literals
 
 import time
+import logging
 import datetime
-
-import requests
 
 from lxml import etree
 
@@ -17,6 +16,8 @@ from dateutil.parser import *
 from scrapi.base import XMLHarvester
 from scrapi.base.schemas import default_name_parser
 from scrapi.linter.document import RawDocument
+
+logger = logging.getLogger(__name__)
 
 
 class ClinicalTrialsHarvester(XMLHarvester):
@@ -80,14 +81,14 @@ class ClinicalTrialsHarvester(XMLHarvester):
                 study_urls.append(study.xpath('url/node()')[0] + '?displayxml=true')
 
             # grab each of those urls for full content
-            print("There are {} urls to harvest - be patient...".format(len(study_urls)))
+            logger.info("There are {} urls to harvest - be patient...".format(len(study_urls)))
             count = 0
             official_count = 0
             for study_url in study_urls:
                 try:
                     content = requests.get(study_url)
                 except requests.exceptions.ConnectionError as e:
-                    print('Connection error: {}, wait a bit...'.format(e))
+                    logger.info('Connection error: {}, wait a bit...'.format(e))
                     time.sleep(30)
                     continue
                 doc = etree.XML(content.content)
@@ -102,7 +103,7 @@ class ClinicalTrialsHarvester(XMLHarvester):
                 official_count += 1
                 count += 1
                 if count % 100 == 0:
-                    print("You've requested {} studies, keep going!".format(official_count))
+                    logger.info("You've requested {} studies, keep going!".format(official_count))
                     count = 0
                 time.sleep(1)
 

@@ -18,14 +18,13 @@ Sample API query: http://api.plos.org/search?q=publication_date:[2015-01-30T00:0
 
 from __future__ import unicode_literals
 
-import time
 from datetime import date, timedelta
 
-import requests
 from lxml import etree
 from dateutil.parser import *
 from nameparser import HumanName
 
+from scrapi import requests
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
@@ -74,9 +73,7 @@ def harvest(days_back=3):
             payload = {"api_key": PLOS_API_KEY, "rows": num_results - count, "start": start}
         else:
             payload = {"api_key": PLOS_API_KEY, "rows": MAX_ROWS_PER_REQUEST, "start": start}
-        results = requests.get(base_url, params=payload)
-        print results.url
-        tick = time.time()
+        results = requests.get(base_url, params=payload, throttle=5)
         xml_doc = etree.XML(results.content)
         all_docs = xml_doc.xpath('//doc')
 
@@ -99,9 +96,6 @@ def harvest(days_back=3):
 
         start += MAX_ROWS_PER_REQUEST
         count += MAX_ROWS_PER_REQUEST
-
-        if time.time() - tick < 5:
-            time.sleep(5 - (time.time() - tick))
 
     return doc_list
 
