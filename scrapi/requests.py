@@ -44,6 +44,10 @@ class HarvesterResponse(cqlengine.Model):
     def headers(self):
         return CaseInsensitiveDict(json.loads(self.headers_str))
 
+    @property
+    def text(self):
+        return self.content.decode('utf-8')
+
 
 def record_or_load_response(method, url, **kwargs):
     try:
