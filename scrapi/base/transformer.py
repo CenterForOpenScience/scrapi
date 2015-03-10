@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 import abc
 import logging
 from copy import deepcopy
-from functools import partial
 
 logger = logging.getLogger(__name__)
 
@@ -40,6 +39,7 @@ class BaseTransformer(object):
     @abc.abstractmethod
     def _transform_string(self, string, doc):
         raise NotImplementedError
+
 
 class XMLTransformer(BaseTransformer):
 
