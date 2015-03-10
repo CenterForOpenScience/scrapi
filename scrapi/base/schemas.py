@@ -6,6 +6,16 @@ from dateutil.parser import parse
 from nameparser import HumanName
 
 
+def update_schema(old, new):
+    d = deepcopy(old)
+    for key, value in new.items():
+        if isinstance(value, dict) and old.get(key) and isinstance(old[key], dict):
+            d[key] = update_schema(old[key], new[key])
+        else:
+            d[key] = value
+    return d
+
+
 def default_name_parser(names):
     contributor_list = []
     for person in names:
@@ -24,23 +34,18 @@ def default_name_parser(names):
     return contributor_list
 
 
-def format_tags(all_tags):
+def format_tags(all_tags, sep=','):
     tags = []
     if isinstance(all_tags, basestring):
-        for taglist in all_tags.split(' '):
-            tags += taglist.split(',')
+        tags = all_tags.split(sep)
+    elif isinstance(all_tags, list):
+        for tag in all_tags:
+            if sep in tag:
+                tags.extend(tag.split(sep))
+            else:
+                tags.append(tag)
 
     return list(set([unicode(tag.lower().strip()) for tag in tags if tag.lower().strip()]))
-
-
-def update_schema(old, new):
-    d = deepcopy(old)
-    for key, value in new.items():
-        if isinstance(value, dict) and old.get(key) and isinstance(old[key], dict):
-            d[key] = update_schema(old[key], new[key])
-        else:
-            d[key] = value
-    return d
 
 
 BASEXMLSCHEMA = {
