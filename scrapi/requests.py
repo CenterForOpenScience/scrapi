@@ -56,7 +56,7 @@ def record_or_load_response(method, url, **kwargs):
     response = requests.request(method, url, **kwargs)
 
     if not response.ok:
-        events.log_to_sentry('Got non-okay response code.', url=url, method=method)
+        events.log_to_sentry('Got non-ok response code.', url=url, method=method)
 
     if resp:
         return resp.update(
