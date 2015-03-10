@@ -178,6 +178,14 @@ class TestCassandraIntegration(object):
         assert mock_requests.request.called is False
         assert isinstance(resp, requests.HarvesterResponse)
 
+    @pytest.mark.cassandra
+    def test_record_or_load_params(self, mock_requests, monkeypatch):
+        mock_requests.request.return_value = mock.Mock(encoding='utf-8', content='Snapcity', status_code=200, headers={'tota': 'dyle'})
+
+        resp = requests.get('dinosaurs.sexy', params={'test': 'foo'})
+
+        assert resp.status_code == 200
+        assert resp.url == 'dinosaurs.sexy?test=foo'
 
 class TestRequestsApi(object):
 
