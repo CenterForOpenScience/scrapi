@@ -10,6 +10,8 @@ from __future__ import unicode_literals
 import re
 
 import logging
+from datetime import datetime
+from datetime import timedelta
 
 from lxml import etree
 from dateutil.parser import *
@@ -26,6 +28,7 @@ logger = logging.getLogger(__name__)
 NAME = "dataone"
 
 DEFAULT_ENCODING = 'UTF-8'
+DATAONE_SOLR_ENDPOINT = 'https://cn.dataone.org/cn/v1/query/solr/'
 
 record_encoding = None
 
@@ -62,8 +65,19 @@ def get_response(rows, days_back):
     ''' helper function to get a response from the DataONE
     API, with the specified number of rows.
     Returns an etree element with results '''
-    url = 'https://cn.dataone.org/cn/v1/query/solr/?q=dateModified:[NOW-{0}DAY TO *]&rows='.format(days_back) + str(rows)
-    data = requests.get(url)
+    to_date = datetime.utcnow()
+    from_date = (datetime.utcnow() - timedelta(days=days_back))
+
+    to_date = to_date.replace(hour=0, minute=0, second=0, microsecond=0)
+    from_date = from_date.replace(hour=0, minute=0, second=0, microsecond=0)
+
+    query = 'dateModified:[{}Z TO {}Z]'.format(from_date.isoformat(), to_date.isoformat())
+
+    data = requests.get(DATAONE_SOLR_ENDPOINT, params={
+        'q': query,
+        'rows': rows
+    })
+
     doc = etree.XML(data.content)
     return doc
 
