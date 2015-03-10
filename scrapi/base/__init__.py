@@ -101,7 +101,7 @@ class OAIHarvester(BaseHarvester):
         return rawdoc_list
 
     def get_records(self, url, start_date, resump_token=''):
-        data = requests.get(url)
+        data = requests.get(url, throttle=self.timeout)
 
         doc = etree.XML(data.content)
 
@@ -114,7 +114,6 @@ class OAIHarvester(BaseHarvester):
             namespaces=self.NAMESPACES
         )
         if len(token) == 1:
-            time.sleep(self.timeout)
             base_url = url.replace(
                 self.META_PREFIX_DATE.format(start_date), '')
             base_url = base_url.replace(self.RESUMPTION + resump_token, '')
