@@ -10,6 +10,7 @@ import logging
 import functools
 from datetime import datetime
 
+import furl
 import requests
 import cqlengine
 from cqlengine import columns
@@ -58,7 +59,10 @@ def _maybe_load_response(method, url):
         return None
 
 
-def record_or_load_response(method, url, throttle=None, force=False, **kwargs):
+def record_or_load_response(method, url, throttle=None, force=False, params=None, **kwargs):
+    if params:
+        url = furl.furl(url).set(args=params).url
+
     resp = _maybe_load_response(method, url)
 
     if not force and resp and resp.ok:
