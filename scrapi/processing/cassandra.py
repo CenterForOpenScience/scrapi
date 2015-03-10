@@ -7,7 +7,6 @@ from uuid import uuid4
 from cqlengine import columns, Model
 
 from scrapi import events
-from scrapi import settings
 from scrapi import database  # noqa
 from scrapi.processing.base import BaseProcessor
 
