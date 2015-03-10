@@ -54,6 +54,7 @@ RECORD = {
 
 
 TEST_SCHEMA = update_schema(BASEXMLSCHEMA, {
+    "title": ("//dc:title/node()", lambda x: "Title overwritten"),
     "properties": {
         "title1": "//dc:title/node()",
         "title2": ["//dc:title/node()", lambda x: x.lower()],

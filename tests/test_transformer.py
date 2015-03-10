@@ -44,6 +44,7 @@ class TestTransformer(object):
         ]
 
         for result in results:
+            assert result['title'] == "Title overwritten"
             assert result['properties']['title1'] == 'Test'
             assert result['properties']['title2'] == 'test'
             assert result['properties']['title3'] == 'Testtest'
