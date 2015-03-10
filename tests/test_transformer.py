@@ -20,10 +20,23 @@ class TestHarvester(XMLHarvester):
         }) for _ in xrange(days_back)]
 
 
+    @property
+    def name(self):
+        return 'TEST'
+
+    @property
+    def namespaces(self):
+        return TEST_NAMESPACES
+
+    @property
+    def schema(self):
+        return TEST_SCHEMA
+
+
 class TestTransformer(object):
 
     def setup_method(self, method):
-        self.harvester = TestHarvester("TEST", TEST_SCHEMA, TEST_NAMESPACES)
+        self.harvester = TestHarvester()
 
     def test_normalize(self):
         results = [
