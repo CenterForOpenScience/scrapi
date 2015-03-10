@@ -50,6 +50,19 @@ class TestModel(object):
         assert resp.json == data
         assert resp.content == json.dumps(data)
 
+    @pytest.mark.cassandra
+    def test_text_works(self):
+        resp = requests.HarvesterResponse(content='probably xml')
+
+        assert resp.text == 'probably xml'
+
+    @pytest.mark.cassandra
+    def test_text_is_unicode(self):
+        resp = requests.HarvesterResponse(content='probably xml')
+
+        assert isinstance(resp.text, unicode)
+        assert resp.text == 'probably xml'.decode('utf-8')
+
 
 class TestCassandraIntegration(object):
 
