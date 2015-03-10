@@ -26,6 +26,10 @@ logging.getLogger('cqlengine.cql').setLevel(logging.WARN)
 
 @database.register_model
 class HarvesterResponse(cqlengine.Model):
+    """A parody of requests.response but stored in cassandra
+    Should reflect all methods of a response object
+    Contains an additional field time_made, self-explanitory
+    """
     __table_name__ = 'responses'
 
     method = columns.Text(primary_key=True)
@@ -105,6 +109,7 @@ def record_or_load_response(method, url, throttle=None, force=False, params=None
 
 def request(method, url, **kwargs):
     """Make a recorded request or get a record matching method and url
+
     :param str method: Get, Put, Post, or Delete
     :param str url: Where to make the request to
     :param bool force: Whether or not to force the new request to be made
