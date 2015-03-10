@@ -101,7 +101,6 @@ class OAIHarvester(BaseHarvester):
         return rawdoc_list
 
     def get_records(self, url, start_date, resump_token=''):
-        logger.info('Requesting url for harvesting: {}'.format(url))
         data = requests.get(url)
 
         doc = etree.XML(data.content)
