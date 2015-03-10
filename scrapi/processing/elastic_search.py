@@ -11,8 +11,8 @@ from scrapi.processing.base import BaseProcessor
 logger = logging.getLogger(__name__)
 logging.getLogger('urllib3').setLevel(logging.WARN)
 logging.getLogger('requests').setLevel(logging.WARN)
-logging.getLogger('elasticsearch').setLevel(logging.WARN)
-logging.getLogger('elasticsearch.trace').setLevel(logging.WARN)
+logging.getLogger('elasticsearch').setLevel(logging.FATAL)
+logging.getLogger('elasticsearch.trace').setLevel(logging.FATAL)
 
 
 try:
