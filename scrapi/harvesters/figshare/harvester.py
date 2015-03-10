@@ -64,7 +64,6 @@ def get_records(search_url):
 
     all_records = []
     while len(all_records) < total_records:
-        logger.info('Requesting records for url: {}&page={}'.format(search_url, str(page)))
         record_list = records.json()['items']
 
         for record in record_list:
