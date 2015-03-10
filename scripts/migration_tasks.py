@@ -22,7 +22,7 @@ from scrapi.linter import RawDocument, NormalizedDocument
 from scrapi.util.storage import store
 
 from scrapi.processing.cassandra import CassandraProcessor
-from scrapi.processing.elastic_search import ElasticsearchProcessor
+from scrapi.processing.elasticsearch import ElasticsearchProcessor
 
 logger = logging.getLogger(__name__)
 

@@ -4,9 +4,7 @@ import logging
 import importlib
 from base64 import b64encode
 from datetime import datetime
-from contextlib import contextmanager
 
-import vcr
 import pytz
 
 from scrapi import settings
@@ -61,20 +59,3 @@ def build_raw_url(raw, normalized):
         archive=settings.ARCHIVE_DIRECTORY,
         harvestFinished=normalized['timestamps']['harvestFinished'],
     )
-
-
-@contextmanager
-def maybe_recorded(file_name):
-    # TODO put into cassandra
-    if settings.RECORD_HTTP_TRANSACTIONS:
-        cassette = os.path.join(
-            settings.RECORD_DIRECTORY,
-            file_name, timestamp() + '.yml'
-        )
-
-        logger.info('Recording HTTP request for {} to {}'.format(file_name, cassette))
-
-        with vcr.use_cassette(cassette, record_mode='all'):
-            yield
-    else:
-        yield
