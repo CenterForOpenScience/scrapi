@@ -54,6 +54,8 @@ class DatabaseManager(object):
 
     def clear_keyspace(self, force=False):
         assert force, 'clear_keyspace must be called with force'
+        assert self.keyspace != settings.CASSANDRA_KEYSPACE, 'Cannot erase the keyspace in settings'
+
         management.delete_keyspace(self.keyspace)
         self.tear_down()
         return self.setup()
