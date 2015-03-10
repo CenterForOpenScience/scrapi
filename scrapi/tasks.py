@@ -90,7 +90,6 @@ def normalize(raw_doc, harvester_name):
         raise events.Skip('Did not normalize document with id {}'.format(raw_doc['docID']))
 
     normalized['timestamps'] = util.stamp_from_raw(raw_doc, normalizeStarted=normalized_started)
-    normalized['raw'] = util.build_raw_url(raw_doc, normalized)
 
     return normalized  # returns a single normalized document
 
