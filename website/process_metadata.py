@@ -6,11 +6,9 @@ from __future__ import unicode_literals
 
 import json
 import logging
-from base64 import b64encode
 
 from scrapi import tasks
 from scrapi import events
-from scrapi import settings
 from scrapi.util import timestamp
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
