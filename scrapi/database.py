@@ -31,6 +31,7 @@ class DatabaseManager(object):
             connection.setup(self.uri, self.keyspace)
             management.create_keyspace(self.keyspace, replication_factor=1, strategy_class='SimpleStrategy')
             for model in self._models:
+                model.__keyspace__ = self.keyspace
                 management.sync_table(model)
         except NoHostAvailable:
             logger.error('Could not connect to Cassandra, expect errors.')
