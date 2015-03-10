@@ -18,6 +18,7 @@ def mock_record_transactions(monkeypatch):
 
 
 class TestSettings(object):
+
     def test_record_or_load_response_respects_record_false(self, mock_requests, monkeypatch):
         mock_rec_or_load = mock.Mock()
         monkeypatch.setattr(requests.settings, 'RECORD_HTTP_TRANSACTIONS', False)
@@ -38,8 +39,9 @@ class TestSettings(object):
         assert mock_requests.request.called_once_with('get', 'foo')
 
 
-@pytest.mark.cassandra
 class TestModel(object):
+
+    @pytest.mark.cassandra
     def test_json_works(self):
         data = {'totally': 'dyle'}
 
@@ -49,8 +51,9 @@ class TestModel(object):
         assert resp.content == json.dumps(data)
 
 
-@pytest.mark.cassandra
 class TestCassandraIntegration(object):
+
+    @pytest.mark.cassandra
     def test_record_or_load_loads(self, mock_requests, monkeypatch):
         requests.HarvesterResponse(ok=True, method='get', url='dinosaurs.sexy', content='rawr', headers_str="{}").save()
 
@@ -61,6 +64,7 @@ class TestCassandraIntegration(object):
         assert not mock_requests.request.called
         assert isinstance(resp, requests.HarvesterResponse)
 
+    @pytest.mark.cassandra
     def test_record_or_load_remakes(self, mock_requests, monkeypatch):
         mock_requests.request.return_value = mock.Mock(encoding='utf-8', content='rawr', status_code=200, headers={'tota': 'dyle'})
         requests.HarvesterResponse(ok=False, method='get', url='dinosaurs.sexy').save()
@@ -84,6 +88,7 @@ class TestCassandraIntegration(object):
         assert model.headers_str == '{"tota": "dyle"}'
         assert isinstance(resp, requests.HarvesterResponse)
 
+    @pytest.mark.cassandra
     def test_record_or_load_records(self, mock_requests, monkeypatch):
         mock_requests.request.return_value = mock.Mock(encoding='utf-8', content='rawr', status_code=200, headers={'tota': 'dyle'})
 
@@ -100,17 +105,22 @@ class TestCassandraIntegration(object):
         assert model.headers_str == '{"tota": "dyle"}'
         assert isinstance(resp, requests.HarvesterResponse)
 
+    @pytest.mark.cassandra
     def test_record_or_load_logs_not_ok(self, mock_requests, monkeypatch):
         mock_log = mock.Mock()
         monkeypatch.setattr(requests.events, 'log_to_sentry', mock_log)
-        mock_requests.request.return_value = mock.Mock(ok=False, encoding='utf-8', content='rawr', status_code=200, headers={'tota': 'dyle'})
+        mock_requests.request.return_value = mock.Mock(ok=False, encoding='utf-8', content='rawr', status_code=400, headers={'tota': 'dyle'})
 
-        requests.get('dinosaurs.sexy')
+        resp = requests.get('dinosaurs.sexy')
 
-        mock_log.assert_called_once_with('Got non-okay response code.', url='dinosaurs.sexy', method='get')
+        mock_log.assert_called_once_with('Got non-ok response code.', url='dinosaurs.sexy', method='get')
+
+        assert resp.ok is False
+        assert resp.status_code == 400
 
 
 class TestRequestsApi(object):
+
     def test_get_calls_get(self, monkeypatch):
         mock_request = mock.Mock()
         monkeypatch.setattr(requests, 'record_or_load_response', mock_request)
