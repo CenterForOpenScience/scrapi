@@ -66,4 +66,5 @@ def pytest_runtest_setup(item):
 def pytest_runtest_teardown(item, nextitem):
     marker = item.get_marker('cassandra')
     if marker is not None:
-        database.tear_down(force=True)
+        assert database._manager.keyspace != settings.CASSANDRA_KEYSPACE
+        database._manager.clear_keyspace(force=True)
