@@ -50,7 +50,8 @@ class TestDatabaseManager(object):
         manager = database.DatabaseManager()
         manager._setup = True
 
-        assert 'FooBar' == manager.register_model('FooBar')
+        mock_model = mock.Mock()
+        assert mock_model == manager.register_model(mock_model)
 
-        assert manager._models == ['FooBar']
-        assert mock_sync.called_once_with('FooBar')
+        assert manager._models == [mock_model]
+        assert mock_sync.called_once_with(mock_model)
