@@ -109,14 +109,6 @@ def task_normalize(raw_doc):
 
     normalized['dateCollected'] = normalized['timestamps']['harvestFinished']
 
-    normalized['raw'] = '{url}/{archive}{source}/{doc_id}/{harvestFinished}/raw.json'.format(
-        url=settings.SCRAPI_URL,
-        archive=settings.ARCHIVE_DIRECTORY,
-        source=normalized['source'],
-        doc_id=b64encode(raw_doc['docID']),
-        harvestFinished=normalized['timestamps']['harvestFinished']
-    )
-
     return normalized
 
 
