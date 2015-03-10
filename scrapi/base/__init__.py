@@ -7,11 +7,11 @@ import logging
 from dateutil.parser import parse
 from datetime import date, timedelta
 
-import requests
 from lxml import etree
 from nameparser import HumanName
 
 from scrapi import util
+from scrapi import requests
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
@@ -101,7 +101,6 @@ class OAIHarvester(BaseHarvester):
         return rawdoc_list
 
     def get_records(self, url, start_date, resump_token=''):
-        logger.info('Requesting url for harvesting: {}'.format(url))
         data = requests.get(url)
 
         doc = etree.XML(data.content)

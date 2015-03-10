@@ -6,6 +6,7 @@ from celery import Celery
 from scrapi import util
 from scrapi import events
 from scrapi import settings
+from scrapi import database
 from scrapi import processing
 from scrapi.util import timestamp
 from scrapi.util import import_harvester
@@ -14,6 +15,7 @@ from scrapi.util import import_harvester
 app = Celery()
 app.config_from_object(settings)
 
+database.setup()
 logger = logging.getLogger(__name__)
 
 
@@ -36,8 +38,7 @@ def harvest(harvester_name, job_created, days_back=1):
     harvester = import_harvester(harvester_name)
     logger.info('Harvester "{}" has begun harvesting'.format(harvester_name))
 
-    with util.maybe_recorded(harvester_name):
-        result = harvester.harvest(days_back=days_back)
+    result = harvester.harvest(days_back=days_back)
 
     # result is a list of all of the RawDocuments harvested
     return result, {

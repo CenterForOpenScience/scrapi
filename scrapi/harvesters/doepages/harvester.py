@@ -8,7 +8,6 @@ Example query: http://www.osti.gov/pages/pagesxml?nrows=10&EntryDateFrom=01/18/2
 ## Harvester for DOE Pages for SHARE
 from __future__ import unicode_literals
 
-import requests
 from lxml import etree
 from datetime import date, timedelta
 
@@ -16,6 +15,7 @@ from nameparser import HumanName
 
 from dateutil.parser import *
 
+from scrapi import requests
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
@@ -46,7 +46,6 @@ def harvest(days_back=15):
     base_url = 'http://www.osti.gov/pages/pagesxml?nrows={0}&EntryDateFrom={1}'
     url = base_url.format('1', start_date.strftime('%m/%d/%Y'))
     initial_data = requests.get(url)
-    print(initial_data.url)
     record_encoding = initial_data.encoding
     try:
         initial_doc = etree.XML(initial_data.content)

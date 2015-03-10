@@ -6,10 +6,16 @@ from functools import wraps
 
 from fluent import event
 
+from raven import Client
+
 from scrapi import settings
 
 
 logger = logging.getLogger(__name__)
+sentry = Client(dsn=settings.SENTRY_DSN)
+
+if not settings.USE_FLUENTD:
+    logger.warning('USE_FLUENTD is set to False; logs will not be stored')
 
 # Events
 PROCESSING = 'processing'
@@ -23,6 +29,12 @@ SKIPPED = 'skipped'
 CREATED = 'created'
 STARTED = 'started'
 COMPLETED = 'completed'
+
+
+def log_to_sentry(message, **kwargs):
+    if not settings.SENTRY_DSN:
+        return logger.warn('send_to_raven called with no SENTRY_DSN')
+    return sentry.captureMessage(message, extra=kwargs)
 
 
 class Skip(Exception):
@@ -49,7 +61,6 @@ def serialize_fluent_data(data):
 # Ues _index here as to not clutter the namespace for kwargs
 def dispatch(_event, status, _index=None, **kwargs):
     if not settings.USE_FLUENTD:
-        logger.warning('Dispatched called but USE_FLUENTD is False')
         return
 
     evnt = {
@@ -62,7 +73,7 @@ def dispatch(_event, status, _index=None, **kwargs):
     if _index:
         _event = '{}.{}'.format(_event, _index)
 
-    logger.info('[{}][{}]{!r}'.format(_event, status, kwargs))
+    logger.debug('[{}][{}]{!r}'.format(_event, status, kwargs))
     event.Event(_event, evnt)
 
 

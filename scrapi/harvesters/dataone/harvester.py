@@ -10,7 +10,6 @@ from __future__ import unicode_literals
 import re
 
 import logging
-import requests
 
 from lxml import etree
 from dateutil.parser import *
@@ -18,6 +17,7 @@ from xml.etree import ElementTree
 
 from nameparser import HumanName
 
+from scrapi import requests
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
@@ -64,7 +64,6 @@ def get_response(rows, days_back):
     Returns an etree element with results '''
     url = 'https://cn.dataone.org/cn/v1/query/solr/?q=dateModified:[NOW-{0}DAY TO *]&rows='.format(days_back) + str(rows)
     data = requests.get(url)
-    print(data.url)
     doc = etree.XML(data.content)
     return doc
 
