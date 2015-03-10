@@ -2,7 +2,6 @@ from __future__ import unicode_literals
 
 import abc
 import logging
-from copy import deepcopy
 
 logger = logging.getLogger(__name__)
 
@@ -52,7 +51,7 @@ class XMLTransformer(BaseTransformer):
 
     def _transform_string(self, string, doc):
         val = doc.xpath(string, namespaces=self.namespaces)
-        return '' if not val else val[0] if len(val) == 1 else val
+        return '' if not val else unicode(val[0]) if len(val) == 1 else [unicode(v) for v in val]
 
     @abc.abstractproperty
     def namespaces(self):
