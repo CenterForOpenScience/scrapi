@@ -45,7 +45,7 @@ class TestTransformer(object):
         def process_title(title, title1="test"):
             return title + title1
         def process_title2(title1="test"):
-            return title
+            return title1
 
         args = ("//dc:title/node()", )
         kwargs = {"title1": "//dc:title/node()"}
