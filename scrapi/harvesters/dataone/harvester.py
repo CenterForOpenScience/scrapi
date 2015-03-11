@@ -75,7 +75,6 @@ def get_response(rows, days_back):
     from_date = from_date.replace(hour=0, minute=0, second=0, microsecond=0)
 
     query = 'dateModified:[{}Z TO {}Z]'.format(from_date.isoformat(), to_date.isoformat())
-    logger.info(query)
 
     n = 0
     contents = []
