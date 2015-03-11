@@ -12,11 +12,12 @@ from __future__ import unicode_literals
 from scrapi.base import OAIHarvester
 
 
-calpoly = OAIHarvester(
-    name='calpoly',
-    base_url='http://digitalcommons.calpoly.edu/do/oai/',
-    property_list=['type', 'source', 'publisher', 'format', 'date'],
-    approved_sets=[
+class CalPolyHarvester(OAIHarvester):
+    short_name = 'calpoly'
+    long_name = 'Digital Commons @ CalPoly'
+    base_url = 'http://digitalcommons.calpoly.edu/do/oai/'
+    property_list = ['type', 'source', 'publisher', 'format', 'date']
+    approved_sets = [
         'csusymp2009',
         'acct_fac',
         'aerosp',
@@ -134,7 +135,3 @@ calpoly = OAIHarvester(
         'wvi_fac',
         'wvisp'
     ]
-)
-
-harvest = calpoly.harvest
-normalize = calpoly.normalize

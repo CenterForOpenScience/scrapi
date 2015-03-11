@@ -12,14 +12,13 @@ from __future__ import unicode_literals
 from scrapi.base import OAIHarvester
 
 
-asu = OAIHarvester(
-    name='asu',
-    base_url='http://repository.asu.edu/oai-pmh',
-    property_list=['type', 'source', 'publisher', 'format',
-                   'date', 'description', 'relation', 'setSpec',
-                   'rights', 'identifier'],
-    approved_sets=['research']
-)
-
-harvest = asu.harvest
-normalize = asu.normalize
+class ASUHarvester(OAIHarvester):
+    short_name = 'asu'
+    long_name = 'Arizona State University'
+    base_url = 'http://repository.asu.edu/oai-pmh'
+    approved_sets = ['research']
+    property_list = [
+        'type', 'source', 'publisher', 'format',
+        'date', 'description', 'relation', 'setSpec',
+        'rights', 'identifier'
+    ]

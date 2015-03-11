@@ -11,12 +11,15 @@ from __future__ import unicode_literals
 from scrapi.base import OAIHarvester
 
 
-waynestate = OAIHarvester(
-    name='waynestate',
-    base_url='http://digitalcommons.wayne.edu/do/oai/',
-    property_list=['type', 'source', 'publisher', 'format',
-                   'date', 'setSpec', 'identifier'],
-    approved_sets=[
+class WayneStateHarvester(OAIHarvester):
+    short_name = 'waynestate'
+    long_name = 'Digital Commons @ Wayne State'
+    base_url = 'http://digitalcommons.wayne.edu/do/oai/'
+    property_list = [
+        'type', 'source', 'publisher', 'format',
+        'date', 'setSpec', 'identifier'
+    ]
+    approved_sets = [
         'acb_frp',
         'agtc',
         'anthrofrp',
@@ -107,7 +110,3 @@ waynestate = OAIHarvester(
         'narrative',
         'storytelling'
     ]
-)
-
-harvest = waynestate.harvest
-normalize = waynestate.normalize
