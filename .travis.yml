@@ -8,8 +8,12 @@ services:
 
 install:
   - pip install -r dev-requirements.txt
+  - pip install coveralls
   - cp scrapi/settings/travis-dist.py scrapi/settings/local.py
 
 before_script: flake8 .
 
 script: invoke test
+
+after_success:
+  coveralls
