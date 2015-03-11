@@ -5,9 +5,10 @@ from datetime import date, timedelta
 import requests
 from lxml import etree
 
-from scrapi.linter import RawDocument
 from scrapi.base import XMLHarvester
-from scrapi.base.schemas import BASEXMLSCHEMA, update_schema
+from scrapi.linter import RawDocument
+from scrapi.base.helpers import update_schema
+from scrapi.base.schemas import BASEXMLSCHEMA
 
 
 class DoepagesHarvester(XMLHarvester):
