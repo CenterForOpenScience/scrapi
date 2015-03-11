@@ -2,12 +2,9 @@ import os
 import errno
 import logging
 import importlib
-from base64 import b64encode
 from datetime import datetime
 
 import pytz
-
-from scrapi import settings
 
 
 logger = logging.getLogger(__name__)
@@ -48,14 +45,3 @@ def stamp_from_raw(raw_doc, **kwargs):
     stamps = raw_doc['timestamps']
     stamps.update(kwargs)
     return stamps
-
-
-def build_raw_url(raw, normalized):
-    return '{url}/{archive}{source}/{doc_id}/{harvestFinished}/raw.{raw_format}'.format(
-        url=settings.SCRAPI_URL,
-        source=normalized['source'],
-        raw_format=raw['filetype'],
-        doc_id=b64encode(raw['docID']),
-        archive=settings.ARCHIVE_DIRECTORY,
-        harvestFinished=normalized['timestamps']['harvestFinished'],
-    )

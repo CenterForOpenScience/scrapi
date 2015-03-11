@@ -71,7 +71,7 @@ CELERY_RESULT_BACKEND = None
 CELERY_TASK_SERIALIZER = 'pickle'
 CELERY_ACCEPT_CONTENT = ['pickle']
 CELERY_RESULT_SERIALIZER = 'pickle'
-CELERY_IMPORTS = ('scrapi.tasks', 'scripts.migration_tasks')
+CELERY_IMPORTS = ('scrapi.tasks', )
 
 
 # Celery Beat Stuff

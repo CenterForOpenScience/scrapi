@@ -6,11 +6,9 @@ from __future__ import unicode_literals
 
 import json
 import logging
-from base64 import b64encode
 
 from scrapi import tasks
 from scrapi import events
-from scrapi import settings
 from scrapi.util import timestamp
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
@@ -108,14 +106,6 @@ def task_normalize(raw_doc):
     normalized['timestamps']['normalizeFinished'] = timestamp()
 
     normalized['dateCollected'] = normalized['timestamps']['harvestFinished']
-
-    normalized['raw'] = '{url}/{archive}{source}/{doc_id}/{harvestFinished}/raw.json'.format(
-        url=settings.SCRAPI_URL,
-        archive=settings.ARCHIVE_DIRECTORY,
-        source=normalized['source'],
-        doc_id=b64encode(raw_doc['docID']),
-        harvestFinished=normalized['timestamps']['harvestFinished']
-    )
 
     return normalized
 
