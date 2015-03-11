@@ -10,6 +10,7 @@ from lxml import etree
 from nameparser import HumanName
 
 from scrapi import util
+from scrapi import registry
 from scrapi import requests
 from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
@@ -19,13 +20,32 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
+class HarvesterMeta(abc.ABCMeta):
+    def __init__(cls, name, bases, dct):
+        super(HarvesterMeta, cls).__init__(name, bases, dct)
+        if not isinstance(cls.short_name, abc.abstractproperty):
+            registry[cls.short_name] = cls()
+
+
 class BaseHarvester(object):
     """ This is a base class that all harvesters should inheret from
 
-    Defines the copy to unicde method, which is useful for getting standard
+    Defines the copy to unicode method, which is useful for getting standard
     unicode out of xml results.
     """
-    __metaclass__ = abc.ABCMeta
+    __metaclass__ = HarvesterMeta
+
+    @abc.abstractproperty
+    def short_name(self):
+        raise NotImplementedError
+
+    @abc.abstractproperty
+    def long_name(self):
+        raise NotImplementedError
+
+    @abc.abstractproperty
+    def file_format(self):
+        raise NotImplementedError
 
     @abc.abstractmethod
     def harvest(self, days_back=1):
@@ -37,6 +57,14 @@ class BaseHarvester(object):
 
     def lint(self):
         return lint(self.harvest, self.normalize)
+
+    @property
+    def run_at(self):
+        return {
+            'hour': 22,
+            'minute': 59,
+            'day_of_week': 'mon-fri',
+        }
 
 
 class OAIHarvester(BaseHarvester):
@@ -65,13 +93,19 @@ class OAIHarvester(BaseHarvester):
 
     record_encoding = None
 
-    def __init__(self, name, base_url, timezone_granularity=False, timeout=0.5, property_list=None, approved_sets=None):
-        self.name = name
-        self.base_url = base_url
-        self.property_list = property_list or ['date', 'language', 'type']
-        self.approved_sets = approved_sets
+    def __init__(self, timezone_granularity=False, timeout=0.5, property_list=None, approved_sets=None):
+        # self.name = name
+        # self.base_url = base_url
         self.timeout = timeout
         self.timezone_granularity = timezone_granularity
+
+    @property
+    def property_list(self):
+        return ['date', 'language', 'type']
+
+    @property
+    def file_format(self):
+        return 'xml'
 
     def harvest(self, days_back=1):
 
