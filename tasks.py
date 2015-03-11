@@ -60,7 +60,9 @@ def requirements():
 
 @task
 def beat():
-    run('celery -A scrapi.tasks beat --loglevel info')
+    from scrapi.tasks import app
+    app.conf['CELERYBEAT_SCHEDULE'] = registry.beat_schedule
+    app.Beat().run()
 
 
 @task
