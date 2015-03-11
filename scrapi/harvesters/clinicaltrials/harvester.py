@@ -13,9 +13,10 @@ from lxml import etree
 
 from dateutil.parser import *
 
+from scrapi import requests
 from scrapi.base import XMLHarvester
-from scrapi.base.schemas import default_name_parser
 from scrapi.linter.document import RawDocument
+from scrapi.base.schemas import default_name_parser
 
 logger = logging.getLogger(__name__)
 
