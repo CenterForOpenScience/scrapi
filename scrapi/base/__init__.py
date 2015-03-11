@@ -10,8 +10,9 @@ from lxml import etree
 from scrapi import util
 from scrapi import requests
 from scrapi.linter import lint
+from scrapi.base.schemas import OAISCHEMA
+from scrapi.base.helpers import update_schema
 from scrapi.base.transformer import XMLTransformer
-from scrapi.base.schemas import OAISCHEMA, update_schema
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
 logging.basicConfig(level=logging.INFO)
