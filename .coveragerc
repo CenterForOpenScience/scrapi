@@ -4,6 +4,11 @@ omit =
     scrapi/harvesters/*
 
 [report]
+exclude_lines =
+    pragma: no cover
+
+    raise NotImplementedError
+
 omit =
     scrapi/settings/*
     scrapi/harvesters/*
