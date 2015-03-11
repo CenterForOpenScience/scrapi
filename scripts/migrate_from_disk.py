@@ -12,6 +12,9 @@ from migration_tasks import process_one
 logger = logging.getLogger(__name__)
 LOG.setLevel(logging.WARN)
 
+#  Note: This migration no longer works
+#  Just keeping it around
+
 
 def main():
     exceptions = []

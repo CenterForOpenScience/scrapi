@@ -1,10 +1,7 @@
 import logging
-from base64 import b64decode
-from datetime import datetime
 
 import requests
 from celery import Celery
-from dateutil import parser
 
 from scrapi import util
 from scrapi import events
@@ -12,9 +9,7 @@ from scrapi import settings
 from scrapi import database
 from scrapi import processing
 from scrapi.util import timestamp
-from scrapi.util.storage import store
 from scrapi.util import import_harvester
-from scrapi.linter.document import RawDocument
 
 
 app = Celery()
@@ -95,7 +90,6 @@ def normalize(raw_doc, harvester_name):
         raise events.Skip('Did not normalize document with id {}'.format(raw_doc['docID']))
 
     normalized['timestamps'] = util.stamp_from_raw(raw_doc, normalizeStarted=normalized_started)
-    normalized['raw'] = util.build_raw_url(raw_doc, normalized)
 
     return normalized  # returns a single normalized document
 
@@ -106,65 +100,6 @@ def process_normalized(normalized_doc, raw_doc, **kwargs):
     if not normalized_doc:
         raise events.Skip('Not processing document with id {}'.format(raw_doc['docID']))
     processing.process_normalized(raw_doc, normalized_doc, kwargs)
-
-
-@app.task
-def check_archives(reprocess, days_back=None):
-    for harvester in settings.MANIFESTS.keys():
-        check_archive.delay(harvester, reprocess, days_back=days_back)
-
-        events.dispatch(events.CHECK_ARCHIVE, events.CREATED,
-                        harvester=harvester, reprocess=reprocess)
-
-
-@app.task
-def check_archive(harvester_name, reprocess, days_back=None):
-    events.dispatch(events.CHECK_ARCHIVE, events.STARTED, **{
-        'harvester': harvester_name,
-        'reprocess': reprocess,
-        'daysBack': str(days_back) if days_back else 'All'
-    })
-
-    harvester = settings.MANIFESTS[harvester_name]
-    extras = {
-        'overwrite': True
-    }
-    for raw_path in store.iter_raws(harvester_name, include_normalized=reprocess):
-        date = parser.parse(raw_path.split('/')[-2])
-
-        if (days_back and (datetime.now() - date).days > days_back):
-            continue
-
-        timestamp = date.isoformat()
-
-        raw_file = store.get_as_string(raw_path)
-
-        raw_doc = RawDocument({
-            'doc': raw_file,
-            'timestamps': {
-                'harvestFinished': timestamp
-            },
-            'docID': b64decode(raw_path.split('/')[-3]).decode('utf-8'),
-            'source': harvester_name,
-            'filetype': harvester['fileFormat'],
-        })
-
-        chain = (normalize.si(raw_doc, harvester_name) |
-                 process_normalized.s(raw_doc, storage=extras))
-        chain.apply_async()
-
-        events.dispatch(events.NORMALIZATION, events.CREATED, **{
-            'harvester': harvester_name,
-            'reprocess': reprocess,
-            'daysBack': str(days_back) if days_back else 'All',
-            'docID': raw_doc['docID']
-        })
-
-    events.dispatch(events.CHECK_ARCHIVE, events.COMPLETED, **{
-        'harvester': harvester_name,
-        'reprocess': reprocess,
-        'daysBack': str(days_back) if days_back else 'All'
-    })
 
 
 @app.task
