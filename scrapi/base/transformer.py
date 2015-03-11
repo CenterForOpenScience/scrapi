@@ -44,17 +44,12 @@ class BaseTransformer(object):
         )
 
     def _transform_args(self, t, doc):
-        if not isinstance(t[0], list) and not isinstance(t[0], tuple):
-            return []
-
         return [self._transform_string(arg, doc) for arg in t[0]]
 
     def _transform_kwargs(self, t, doc):
-        kwargs = t[0] if isinstance(t[0], dict) else t[1] if len(t) == 2 else {}
-
         return {
-            k: self._transform_string(v, doc) for k, v in kwargs.items()
-        }
+            k: self._transform_string(v, doc) for k, v in t[1].items()
+        } if len(t) == 2 else {}
 
     @abc.abstractmethod
     def _transform_string(self, string, doc):
