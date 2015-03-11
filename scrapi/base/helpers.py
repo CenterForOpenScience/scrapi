@@ -43,7 +43,7 @@ def format_tags(all_tags, sep=','):
             else:
                 tags.append(tag)
 
-    return list(set([unicode(tag.lower().strip()) for tag in tags if tag.lower().strip()]))
+    return list(set([unicode(tag.lower().strip()) for tag in tags if tag.strip()]))
 
 
 def oai_extract_doi(identifiers):
