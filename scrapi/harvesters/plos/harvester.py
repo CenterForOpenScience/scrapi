@@ -32,7 +32,6 @@ try:
 except ImportError:
     from scrapi.settings import PLOS_API_KEY
 
-MAX_ROWS_PER_REQUEST = 999
 
 NAME = 'plos'
 
@@ -42,6 +41,7 @@ record_encoding = None
 
 
 class PlosHarvester(object):
+    MAX_ROWS_PER_REQUEST = 999
     BASE_URL = 'http://api.plos.org/search?q=publication_date:'
 
     def __init__(self):
@@ -53,7 +53,7 @@ class PlosHarvester(object):
 
         to_date = to_date.replace(hour=0, minute=0, second=0, microsecond=0)
         from_date = from_date.replace(hour=0, minute=0, second=0, microsecond=0)
-        return 'publication_date:[{}Z TO {}Z]'.format(from_data.isoformat(), to_date.isoformat())
+        return 'publication_date:[{}Z TO {}Z]'.format(from_date.isoformat(), to_date.isoformat())
 
     def fetch_rows(self, days_back):
         query = self.build_query(days_back)
@@ -85,12 +85,12 @@ class PlosHarvester(object):
             RawDocument({
                 'doc': etree.tostring(row),
                 'source': NAME,
-                'docID': row.xpath("str[@name='id']")[0].text,
                 'filetype': 'xml',
+                'docID': row.xpath("str[@name='id']")[0].text.decode('utf-8'),
             })
             for row in
             self.fetch_rows(days_back)
-            if row.xpath("str[@name='abstract']")
+            if row.xpath("arr[@name='abstract']")
             or row.xpath("str[@name='author_display']")
         ]
 
