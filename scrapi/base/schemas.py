@@ -96,6 +96,6 @@ OAISCHEMA = {
         'serviceID': '//ns0:header/ns0:identifier/node()'
     },
     'dateUpdated': ('//ns0:header/ns0:datestamp/node()', lambda x: unicode(parse(x).isoformat())),
-    'title': '//dc:title/node()',
+    'title': ('//dc:title/node()', lambda x: x[0] if isinstance(x, list) else x),
     'description': ('//dc:description/node()', lambda x: x[0] if isinstance(x, list) else x)
 }
