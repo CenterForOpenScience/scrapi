@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
-from scrapi.base.schemas import BASEXMLSCHEMA, update_schema
+from scrapi.base.helpers import update_schema
+from scrapi.base.schemas import BASEXMLSCHEMA
 
 RAW_DOC = {
     'doc': str('{}'),
@@ -147,4 +148,35 @@ TEST_XML_DOC = '''
             </record>
         </records>
     </rdf:RDF>
+'''
+
+TEST_OAI_DOC = '''
+    <record>
+    <header>
+    <identifier>oai:digitalcommons.calpoly.edu:aged_rpt-1085</identifier>
+    <datestamp>2014-10-07T00:30:57Z</datestamp>
+    <setSpec>publication:aged_rpt</setSpec>
+    <setSpec>publication:students</setSpec>
+    </header>
+    <metadata>
+    <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+    <dc:title>Test</dc:title>
+    <dc:creator>Mills, Donald W, Jr.</dc:creator>
+    <dc:description>
+    This internship report consists of two parts. The first section addresses the Quality Criteria in Agricultural Education for the program of agricultural instruction at Arvin High School. The second section explains the steps in remodeling the agriculture classroom and agriculture mechanics shop at Arvin High School. The remodeling of the facility was accomplished to address the occupational needs for students entering the work force immediately after high school. It was also designed to prepare students for opportunities in higher education.
+    </dc:description>
+    <dc:date>2014-05-01T07:00:00Z</dc:date>
+    <dc:type>text</dc:type>
+    <dc:format>application/pdf</dc:format>
+    <dc:identifier>http://digitalcommons.calpoly.edu/aged_rpt/64</dc:identifier>
+    <dc:identifier>
+    http://digitalcommons.calpoly.edu/cgi/viewcontent.cgi?article=1085&amp;context=aged_rpt
+    </dc:identifier>
+    <dc:source>
+    Graduate Internship Reports in Agricultural Education
+    </dc:source>
+    <dc:publisher>DigitalCommons@CalPoly</dc:publisher>
+    </oai_dc:dc>
+    </metadata>
+    </record>
 '''
