@@ -102,7 +102,6 @@ class OAIHarvester(XMLHarvester):
         }
         return update_schema(OAISCHEMA, properties)
 
-
     def resolve_property(self, dc, ns0):
         if isinstance(dc, list) and isinstance(ns0, list):
             ret = dc.extend(ns0)
