@@ -6,6 +6,7 @@ from elasticsearch.exceptions import NotFoundError
 from elasticsearch.exceptions import ConnectionError
 
 from scrapi import settings
+from scrapi import registry
 from scrapi.processing.base import BaseProcessor
 
 
@@ -23,7 +24,7 @@ try:
     body = {
         'mappings': {
             harvester: settings.ES_SEARCH_MAPPING
-            for harvester in settings.MANIFESTS.keys()
+            for harvester in registry.keys()
         }
     }
     es.cluster.health(wait_for_status='yellow')
