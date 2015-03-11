@@ -53,10 +53,10 @@ class TestTransformer(object):
         self.harvester.SCHEMA = updated_schema(
             TEST_SCHEMA,
             {
-                'title': ((args, kwargs), process_title),
+                'title': (pack(*args, **kwargs), process_title),
                 'properties': {
-                    'title2': ((args,), process_title),
-                    'title3': ((kwargs, ), process_title2),
+                    'title2': (pack(*args), process_title),
+                    'title3': (pack(**kwargs), process_title2),
                     'title4': (pack('//dc:title/node()', title1="//dc:title/node()"), process_title)
                 }
             }
