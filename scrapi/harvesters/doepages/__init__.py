@@ -42,7 +42,7 @@ class DoepagesHarvester(XMLHarvester):
 
         return xml_list
 
-    def copy_to_unicode(self, element, encoding="UTF-8"):
+    def copy_to_unicode(self, element, encoding='UTF-8'):
         element = ''.join(element)
         if isinstance(element, unicode):
             return element
@@ -66,27 +66,27 @@ class DoepagesHarvester(XMLHarvester):
         return updated_schema(
             BASEXMLSCHEMA,
             {
-                "properties": {
-                    "language": '//dc:language/node()',
-                    "type": '//dc:type/node()',
-                    "typeQualifier": '//dc:typeQualifier/node()',
-                    "language": '//dc:language/node()',
-                    "format": '//dc:format/node()',
-                    "identifierOther": '//dc:identifierOther/node()',
-                    "rights": '//dc:rights/node()',
-                    "identifierDOEcontract": '//dcq:identifierDOEcontract/node()',
-                    "relation": '//dc:relation/node()',
-                    "coverage": '//dc:coverage/node()',
-                    "identifier-purl": '//dc:identifier-purl/node()',
-                    "identifier": '//dc:identifier/node()',
-                    "identifierReport": '//dc:identifierReport/node()',
-                    "publisherInfo": {
-                        "publisher": '//dcq:publisher/node()',
-                        "publisherCountry": '//dcq:publisherCountry/node()',
-                        "publisherSponsor": '//dcq:publisherSponsor/node()',
-                        "publisherAvailability": '//dcq:publisherAvailability/node()',
-                        "publisherResearch": '//dcq:publisherResearch/node()',
-                        "date": '//dc:date/node()'
+                'properties': {
+                    'language': '//dc:language/node()',
+                    'type': '//dc:type/node()',
+                    'typeQualifier': '//dc:typeQualifier/node()',
+                    'language': '//dc:language/node()',
+                    'format': '//dc:format/node()',
+                    'identifierOther': '//dc:identifierOther/node()',
+                    'rights': '//dc:rights/node()',
+                    'identifierDOEcontract': '//dcq:identifierDOEcontract/node()',
+                    'relation': '//dc:relation/node()',
+                    'coverage': '//dc:coverage/node()',
+                    'identifier-purl': '//dc:identifier-purl/node()',
+                    'identifier': '//dc:identifier/node()',
+                    'identifierReport': '//dc:identifierReport/node()',
+                    'publisherInfo': {
+                        'publisher': '//dcq:publisher/node()',
+                        'publisherCountry': '//dcq:publisherCountry/node()',
+                        'publisherSponsor': '//dcq:publisherSponsor/node()',
+                        'publisherAvailability': '//dcq:publisherAvailability/node()',
+                        'publisherResearch': '//dcq:publisherResearch/node()',
+                        'date': '//dc:date/node()'
                     }
                 }
             }
