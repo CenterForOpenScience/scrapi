@@ -26,11 +26,34 @@ class BaseTransformer(object):
 
     def _transform_iter(self, l, doc):
         docs = []
+
+        if isinstance(l[0], tuple) and len(l) == 2:
+            return self._transform_arg_kwargs(l, doc)
+
         for value in l:
             if isinstance(value, basestring):
                 docs.append(self._transform_string(value, doc))
             elif callable(value):
                 return value(*[res for res in docs])
+
+    def _transform_arg_kwargs(self, l, doc):
+        if len(l[0]) == 1:
+            if isinstance(l[0][0], dict):
+                kwargs = l[0][0]
+                args = []
+            elif isinstance(l[0][0], tuple) or isinstance(l[0][0], list):
+                args = l[0][0]
+                kwargs = {}
+            else:
+                raise ValueError("((args, kwargs), callable) pattern not matched, {} does not define args or kwargs correctly".format(l))
+        else:
+            args = l[0][0]
+            kwargs = l[0][1]
+        fn = l[1]
+        return fn(
+            *[self._transform_string(arg, doc) for arg in args],
+            **{key: self._transform_string(value, doc) for key, value in kwargs.items()}
+        )
 
     @abc.abstractmethod
     def _transform_string(self, string, doc):
