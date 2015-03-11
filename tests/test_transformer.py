@@ -4,7 +4,7 @@ import functools
 
 from scrapi.base import XMLHarvester
 from scrapi.linter import RawDocument
-from scrapi.base.schemas import update_schema
+from scrapi.base.helpers import update_schema, pack
 
 from .utils import get_leaves
 from .utils import TEST_SCHEMA, TEST_NAMESPACES, TEST_XML_DOC
@@ -57,6 +57,7 @@ class TestTransformer(object):
                 'properties': {
                     'title2': ((args,), process_title),
                     'title3': ((kwargs, ), process_title2),
+                    'title4': (pack('//dc:title/node()', title1="//dc:title/node()"), process_title)
                 }
             }
         )
@@ -67,6 +68,7 @@ class TestTransformer(object):
             assert result['title'] == "TestTest"
             assert result['properties']['title2'] == 'Testtest'
             assert result['properties']['title3'] == 'Test'
+            assert result['properties']['title4'] == "TestTest"
 
     def test_normalize(self):
         results = [
