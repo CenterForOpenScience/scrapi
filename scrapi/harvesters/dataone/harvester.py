@@ -74,8 +74,8 @@ def get_records(days_back):
         'q': query,
         'start': 0,
         'rows': 1
-    }).content
-    doc = etree.XML(doc)
+    })
+    doc = etree.XML(doc.content)
     rows = int(doc.xpath("//result/@numFound")[0])
 
     n = 0
