@@ -106,7 +106,6 @@ class ClinicalTrialsHarvester(XMLHarvester):
                 if count % 100 == 0:
                     logger.info("You've requested {} studies, keep going!".format(official_count))
                     count = 0
-                time.sleep(1)
 
         return xml_list
 
@@ -116,10 +115,11 @@ class ClinicalTrialsHarvester(XMLHarvester):
             "contributors": ('//overall_official/last_name/node()', default_name_parser),
             "id": {
                 "url": "//required_header/url/node()",
+                "doi": ("//required_header/url/node()", lambda x: ''),
                 "serviceID": "//nct_id/node()"
             },
             "tags": ("//keyword/node()", lambda tags: [unicode(tag.lower()) for tag in tags]),
-            "dateUpdated": ("lastchanged_date/node()", lambda x: parse(x).isoformat()),
+            "dateUpdated": ("lastchanged_date/node()", lambda x: unicode(parse(x).isoformat())),
             "title": ('//official_title/node()', '//brief_title/node()', lambda x, y: x or y or ''),
             "description": ('//brief_summary/textblock/node()', '//brief_summary/textblock/node()', lambda x, y: x or y or ''),
             "properties": {
