@@ -44,16 +44,19 @@ class TestTransformer(object):
     def test_arg_kwargs(self):
         def process_title(title, title1="test"):
             return title + title1
-        def process_title2(title="test"):
+        def process_title2(title1="test"):
             return title
+
+        args = ("//dc:title/node()", )
+        kwargs = {"title1": "//dc:title/node()"}
 
         self.harvester.SCHEMA = update_schema(
             TEST_SCHEMA,
             {
-                'title': ((('//dc:title/node()',), {"title1": "//dc:title/node()"}), process_title),
+                'title': ((args, kwargs), process_title),
                 'properties': {
-                    'title2': ((('//dc:title/node()',),), process_title),
-                    'title3': (({"title": '//dc:title/node()'}, ), process_title2),
+                    'title2': ((args,), process_title),
+                    'title3': ((kwargs, ), process_title2),
                 }
             }
         )
