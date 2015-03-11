@@ -55,7 +55,7 @@ def oai_extract_doi(identifiers):
 
 
 def oai_extract_url(identifiers):
-    identifiers = [identifiers] if isinstance(identifiers, basestring) else identifiers
+    identifiers = [identifiers] if not isinstance(identifiers, list) else identifiers
     for item in identifiers:
         if 'http://' in item or 'https://' in item and 'viewcontent' not in item:
             return unicode(item)
