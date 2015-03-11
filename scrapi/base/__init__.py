@@ -96,11 +96,23 @@ class OAIHarvester(XMLHarvester):
                 item: (
                     '//dc:{}/node()'.format(item),
                     '//ns0:{}/node()'.format(item),
-                    lambda x, y: x.extend(y) if isinstance(x, list) else [x].extend(y) if isinstance(y, list) else [x, y]
+                    self.resolve_property
                 ) for item in self.property_list
             }
         }
         return update_schema(OAISCHEMA, properties)
+
+
+    def resolve_property(self, dc, ns0):
+        if isinstance(dc, list) and isinstance(ns0, list):
+            ret = dc.extend(ns0)
+            return [val for val in ret if ret]
+        elif not dc:
+            return ns0
+        elif not ns0:
+            return dc
+        else:
+            return [dc, ns0]
 
     def harvest(self, days_back=1):
 
