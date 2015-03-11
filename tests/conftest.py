@@ -23,15 +23,13 @@ except ConnectionError:
 
 @pytest.fixture(autouse=True)
 def harvester(monkeypatch):
-    import_mock = mock.MagicMock()
-    harvester_mock = mock.MagicMock()
+    mock_registry = mock.MagicMock()
+    mock_harvester = mock.MagicMock()
+    mock_registry.__getitem__.return_value = mock_harvester
 
-    import_mock.return_value = harvester_mock
+    monkeypatch.setattr('scrapi.tasks.registry', mock_registry)
 
-    monkeypatch.setattr('scrapi.util.import_harvester', import_mock)
-    monkeypatch.setattr('scrapi.tasks.import_harvester', import_mock)
-
-    return harvester_mock
+    return mock_harvester
 
 
 @pytest.fixture(autouse=True)
