@@ -28,7 +28,7 @@ class BaseTransformer(object):
         docs = []
 
         if isinstance(l[0], tuple) and len(l) == 2:
-            return self._transform_arg_kwargs(l, doc)
+            return self._transform_args_kwargs(l, doc)
 
         for value in l:
             if isinstance(value, basestring):
@@ -36,7 +36,7 @@ class BaseTransformer(object):
             elif callable(value):
                 return value(*[res for res in docs])
 
-    def _transform_arg_kwargs(self, l, doc):
+    def _transform_args_kwargs(self, l, doc):
         fn = l[1]
         return fn(
             *self._transform_args(l[0], doc),
