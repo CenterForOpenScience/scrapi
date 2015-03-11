@@ -106,7 +106,7 @@ class OAIHarvester(XMLHarvester):
     def resolve_property(self, dc, ns0):
         if isinstance(dc, list) and isinstance(ns0, list):
             ret = dc.extend(ns0)
-            return [val for val in ret if ret]
+            return [val for val in ret if val]
         elif not dc:
             return ns0
         elif not ns0:
