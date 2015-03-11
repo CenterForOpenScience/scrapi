@@ -112,7 +112,7 @@ class ClinicalTrialsHarvester(XMLHarvester):
     @property
     def schema(self):
         return {
-            "contributors": ('//overall_official/last_name/node()', default_name_parser),
+            "contributors": ('//overall_official/last_name/node()', lambda x: default_name_parser(x) if isinstance(x, list) else default_name_parser([x])),
             "id": {
                 "url": "//required_header/url/node()",
                 "doi": ("//required_header/url/node()", lambda x: ''),
