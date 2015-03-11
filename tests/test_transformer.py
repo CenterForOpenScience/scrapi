@@ -68,18 +68,6 @@ class TestTransformer(object):
             assert result['properties']['title2'] == 'Testtest'
             assert result['properties']['title3'] == 'Test'
 
-    def test_arg_kwargs_fail(self):
-        self.harvester.SCHEMA = update_schema(
-            TEST_SCHEMA,
-            {"title": (("test", ), lambda x: x)}
-        )
-        try:
-            results = [self.harvester.normalize(record) for record in self.harvester.harvest()]
-        except ValueError:
-            assert True
-        else:
-            assert False
-
     def test_normalize(self):
         results = [
             self.harvester.normalize(record) for record in self.harvester.harvest(days_back=10)
