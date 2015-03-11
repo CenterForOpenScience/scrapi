@@ -4,7 +4,7 @@ import functools
 
 from scrapi.base import XMLHarvester
 from scrapi.linter import RawDocument
-from scrapi.base.helpers import update_schema, pack
+from scrapi.base.helpers import updated_schema, pack
 
 from .utils import get_leaves
 from .utils import TEST_SCHEMA, TEST_NAMESPACES, TEST_XML_DOC
@@ -50,7 +50,7 @@ class TestTransformer(object):
         args = ("//dc:title/node()", )
         kwargs = {"title1": "//dc:title/node()"}
 
-        self.harvester.SCHEMA = update_schema(
+        self.harvester.SCHEMA = updated_schema(
             TEST_SCHEMA,
             {
                 'title': ((args, kwargs), process_title),

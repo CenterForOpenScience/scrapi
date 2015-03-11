@@ -4,11 +4,11 @@ from copy import deepcopy
 from nameparser import HumanName
 
 
-def update_schema(old, new):
+def updated_schema(old, new):
     d = deepcopy(old)
     for key, value in new.items():
         if isinstance(value, dict) and old.get(key) and isinstance(old[key], dict):
-            d[key] = update_schema(old[key], new[key])
+            d[key] = updated_schema(old[key], new[key])
         else:
             d[key] = value
     return d

@@ -7,7 +7,7 @@ from lxml import etree
 
 from scrapi.base import XMLHarvester
 from scrapi.linter import RawDocument
-from scrapi.base.helpers import update_schema
+from scrapi.base.helpers import updated_schema
 from scrapi.base.schemas import BASEXMLSCHEMA
 
 
@@ -63,7 +63,7 @@ class DoepagesHarvester(XMLHarvester):
 
     @property
     def schema(self):
-        return update_schema(
+        return updated_schema(
             BASEXMLSCHEMA,
             {
                 "properties": {

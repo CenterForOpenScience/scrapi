@@ -11,7 +11,7 @@ from scrapi import util
 from scrapi import requests
 from scrapi.linter import lint
 from scrapi.base.schemas import OAISCHEMA
-from scrapi.base.helpers import update_schema
+from scrapi.base.helpers import updated_schema
 from scrapi.base.transformer import XMLTransformer
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
@@ -101,7 +101,7 @@ class OAIHarvester(XMLHarvester):
                 ) for item in self.property_list
             }
         }
-        return update_schema(OAISCHEMA, properties)
+        return updated_schema(OAISCHEMA, properties)
 
     def resolve_property(self, dc, ns0):
         if isinstance(dc, list) and isinstance(ns0, list):

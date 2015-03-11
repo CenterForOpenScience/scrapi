@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from scrapi.base.helpers import update_schema
+from scrapi.base.helpers import updated_schema
 from scrapi.base.schemas import BASEXMLSCHEMA
 
 RAW_DOC = {
@@ -54,7 +54,7 @@ RECORD = {
 }
 
 
-TEST_SCHEMA = update_schema(BASEXMLSCHEMA, {
+TEST_SCHEMA = updated_schema(BASEXMLSCHEMA, {
     "title": ("//dc:title/node()", lambda x: "Title overwritten"),
     "properties": {
         "title1": "//dc:title/node()",
