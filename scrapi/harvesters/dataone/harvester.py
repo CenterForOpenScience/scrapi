@@ -90,6 +90,7 @@ def get_records(days_back):
             yield doc
         n += 1000
 
+
 def get_properties(doc):
     properties = {
         'author': (doc.xpath("str[@name='author']/node()") or [''])[0],
