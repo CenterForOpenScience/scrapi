@@ -12,6 +12,7 @@ from flask import request
 from flask import send_file
 from flask import send_from_directory
 
+from scrapi import registry
 from scrapi import settings
 
 from website import search
@@ -85,7 +86,7 @@ def process_incoming_metadata():
     if 'write' not in osf_auth.get('permissions', []):
         return abort(http.UNAUTHORIZED)
 
-    if data.get('source') in settings.MANIFESTS.keys():
+    if data.get('source') in registry.keys():
         return abort(http.BAD_REQUEST)
 
     try:

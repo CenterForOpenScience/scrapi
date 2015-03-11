@@ -5,11 +5,11 @@ from celery import Celery
 
 from scrapi import util
 from scrapi import events
-from scrapi import settings
 from scrapi import database
+from scrapi import settings
+from scrapi import registry
 from scrapi import processing
 from scrapi.util import timestamp
-from scrapi.util import import_harvester
 
 
 app = Celery()
@@ -35,7 +35,8 @@ def run_harvester(harvester_name, days_back=1):
 @events.logged(events.HARVESTER_RUN)
 def harvest(harvester_name, job_created, days_back=1):
     harvest_started = timestamp()
-    harvester = import_harvester(harvester_name)
+    harvester = registry[harvester_name]
+
     logger.info('Harvester "{}" has begun harvesting'.format(harvester_name))
 
     result = harvester.harvest(days_back=days_back)
@@ -82,7 +83,7 @@ def process_raw(raw_doc, **kwargs):
 @events.logged(events.NORMALIZATION)
 def normalize(raw_doc, harvester_name):
     normalized_started = timestamp()
-    harvester = import_harvester(harvester_name)
+    harvester = registry[harvester_name]
 
     normalized = harvester.normalize(raw_doc)
 

@@ -4,6 +4,7 @@ import platform
 from invoke import run, task
 
 from scrapi import linter
+from scrapi import registry
 from scrapi import settings
 from scrapi.util import import_harvester
 
@@ -76,7 +77,7 @@ def harvester(harvester_name, async=False, days=1):
     settings.CELERY_ALWAYS_EAGER = not async
     from scrapi.tasks import run_harvester
 
-    if not settings.MANIFESTS.get(harvester_name):
+    if not registry.get(harvester_name):
         raise ValueError('No such harvesters {}'.format(harvester_name))
 
     run_harvester.delay(harvester_name, days_back=days)
@@ -88,7 +89,7 @@ def harvesters(async=False, days=1):
     from scrapi.tasks import run_harvester
 
     exceptions = []
-    for harvester_name in settings.MANIFESTS.keys():
+    for harvester_name in registry.keys():
         try:
             run_harvester.delay(harvester_name, days_back=days)
         except Exception as e:
@@ -114,16 +115,15 @@ def check_archive(harvester=None, reprocess=False, async=False, days=None):
 
 @task
 def lint_all():
-    for name in settings.MANIFESTS.keys():
+    for name in registry.keys():
         lint(name)
 
 
 @task
 def lint(name):
-    manifest = settings.MANIFESTS[name]
-    harvester = import_harvester(name)
+    harvester = registry[name]
     try:
         linter.lint(harvester.harvest, harvester.normalize)
     except Exception as e:
-        print 'Harvester {} raise the following exception'.format(manifest['longName'])
-        print e
+        print('Harvester {} raise the following exception'.format(harvester.short_name))
+        print(e)
