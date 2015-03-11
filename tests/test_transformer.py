@@ -4,12 +4,15 @@ import functools
 
 from scrapi.base import XMLHarvester
 from scrapi.linter import RawDocument
+from scrapi.base.schemas import update_schema
 
 from .utils import get_leaves
 from .utils import TEST_SCHEMA, TEST_NAMESPACES, TEST_XML_DOC
 
 
 class TestHarvester(XMLHarvester):
+
+    SCHEMA = TEST_SCHEMA
 
     def harvest(self, days_back=1):
         return [RawDocument({
@@ -30,13 +33,49 @@ class TestHarvester(XMLHarvester):
 
     @property
     def schema(self):
-        return TEST_SCHEMA
+        return self.SCHEMA
 
 
 class TestTransformer(object):
 
     def setup_method(self, method):
         self.harvester = TestHarvester()
+
+    def test_arg_kwargs(self):
+        def process_title(title, title1="test"):
+            return title + title1
+        def process_title2(title="test"):
+            return title
+
+        self.harvester.SCHEMA = update_schema(
+            TEST_SCHEMA,
+            {
+                'title': ((('//dc:title/node()',), {"title1": "//dc:title/node()"}), process_title),
+                'properties': {
+                    'title2': ((('//dc:title/node()',),), process_title),
+                    'title3': (({"title": '//dc:title/node()'}, ), process_title2),
+                }
+            }
+        )
+
+        results = [self.harvester.normalize(record) for record in self.harvester.harvest(days_back=1)]
+
+        for result in results:
+            assert result['title'] == "TestTest"
+            assert result['properties']['title2'] == 'Testtest'
+            assert result['properties']['title3'] == 'Test'
+
+    def test_arg_kwargs_fail(self):
+        self.harvester.SCHEMA = update_schema(
+            TEST_SCHEMA,
+            {"title": (("test", ), lambda x: x)}
+        )
+        try:
+            results = [self.harvester.normalize(record) for record in self.harvester.harvest()]
+        except ValueError:
+            assert True
+        else:
+            assert False
 
     def test_normalize(self):
         results = [
