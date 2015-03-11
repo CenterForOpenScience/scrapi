@@ -2,6 +2,7 @@ scrapi
 ======
 
 [![Build Status](https://travis-ci.org/fabianvf/scrapi.svg?branch=develop)](https://travis-ci.org/fabianvf/scrapi)
+[![Coverage Status](https://coveralls.io/repos/fabianvf/scrapi/badge.svg)](https://coveralls.io/r/fabianvf/scrapi)
 
 
 ## Getting started
