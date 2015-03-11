@@ -19,12 +19,12 @@ class BaseTransformer(object):
             if isinstance(value, dict):
                 transformed[key] = self._transform(value, doc)
             elif isinstance(value, list) or isinstance(value, tuple):
-                transformed[key] = self._transform_iter(value, doc)
+                transformed[key] = self._transform_iterable(value, doc)
             elif isinstance(value, basestring):
                 transformed[key] = self._transform_string(value, doc)
         return transformed
 
-    def _transform_iter(self, l, doc):
+    def _transform_iterable(self, l, doc):
         docs = []
 
         if isinstance(l[0], tuple) and len(l) == 2:
