@@ -43,10 +43,13 @@ def copy_to_unicode(element):
 
 
 def harvest(days_back=5):
-    doc = get_response(1, days_back)
-    rows = doc.xpath("//result/@numFound")[0]
-    doc = get_response(rows, days_back)
-    records = doc.xpath('//doc')
+    doc = get_response(1, days_back)[0]
+    rows = int(doc.xpath("//result/@numFound")[0])
+    responses = get_response(rows, days_back)
+    records = []
+    for response in responses:
+        records.extend(response.xpath('//doc'))
+
     xml_list = []
     for record in records:
         doc_id = record.xpath("str[@name='id']")[0].text
@@ -72,14 +75,22 @@ def get_response(rows, days_back):
     from_date = from_date.replace(hour=0, minute=0, second=0, microsecond=0)
 
     query = 'dateModified:[{}Z TO {}Z]'.format(from_date.isoformat(), to_date.isoformat())
+    logger.info(query)
 
-    data = requests.get(DATAONE_SOLR_ENDPOINT, params={
-        'q': query,
-        'rows': rows
-    })
+    n = 0
+    contents = []
+    while n < rows:
+        data = requests.get(DATAONE_SOLR_ENDPOINT, params={
+            'q': query,
+            'start': n,
+            'rows': 1000
+        })
+        contents.append(data.content)
+        n += 1000
 
-    doc = etree.XML(data.content)
-    return doc
+    docs = [etree.XML(content) for content in contents]
+
+    return docs
 
 
 def get_properties(doc):
