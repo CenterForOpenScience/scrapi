@@ -47,7 +47,7 @@ def format_tags(all_tags, sep=','):
 
 
 def oai_extract_doi(identifiers):
-    identifiers = [identifiers] if isinstance(identifiers, basestring) else identifiers
+    identifiers = [identifiers] if not isinstance(identifiers, list) else identifiers
     for item in identifiers:
         if 'doi' in item.lower():
             return unicode(item.replace('doi:', '').replace('DOI:', '').replace('http://dx.doi.org/', '').strip())
