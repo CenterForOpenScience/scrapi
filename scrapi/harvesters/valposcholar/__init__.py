@@ -7,11 +7,14 @@ from __future__ import unicode_literals
 from scrapi.base import OAIHarvester
 
 
-valposcholar = OAIHarvester(
-    name='valposcholar',
-    base_url='http://scholar.valpo.edu/do/oai/',
-    property_list=['type', 'source', 'setSpec', 'format', 'identifier', 'publisher'],
-    approved_sets=[
+class ValpoScholarHarvester(OAIHarvester):
+    short_name = 'valposcholar'
+    base_url = 'http://scholar.valpo.edu/do/oai/'
+    property_list = [
+        'type', 'source', 'setSpec',
+        'format', 'identifier', 'publisher'
+    ]
+    approved_sets = [
         'cc_fac_pub',
         'it_pubs',
         'ccls_fac_pub',
@@ -46,7 +49,3 @@ valposcholar = OAIHarvester(
         'law_fac_pubs',
         'ils_papers'
     ]
-)
-
-harvest = valposcholar.harvest
-normalize = valposcholar.normalize

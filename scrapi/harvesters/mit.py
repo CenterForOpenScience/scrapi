@@ -1,4 +1,3 @@
-
 """Harvests MIT DSpace metadata for ingestion into the SHARE service
 
 More information available here:
