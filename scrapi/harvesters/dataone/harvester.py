@@ -43,10 +43,8 @@ def copy_to_unicode(element):
 
 
 def harvest(days_back=5):
-    doc = get_response(1, days_back)
-    rows = doc.xpath("//result/@numFound")[0]
-    doc = get_response(rows, days_back)
-    records = doc.xpath('//doc')
+    records = get_records(days_back)
+
     xml_list = []
     for record in records:
         doc_id = record.xpath("str[@name='id']")[0].text
@@ -61,7 +59,7 @@ def harvest(days_back=5):
     return xml_list
 
 
-def get_response(rows, days_back):
+def get_records(days_back):
     ''' helper function to get a response from the DataONE
     API, with the specified number of rows.
     Returns an etree element with results '''
@@ -72,14 +70,25 @@ def get_response(rows, days_back):
     from_date = from_date.replace(hour=0, minute=0, second=0, microsecond=0)
 
     query = 'dateModified:[{}Z TO {}Z]'.format(from_date.isoformat(), to_date.isoformat())
-
-    data = requests.get(DATAONE_SOLR_ENDPOINT, params={
+    doc = requests.get(DATAONE_SOLR_ENDPOINT, params={
         'q': query,
-        'rows': rows
+        'start': 0,
+        'rows': 1
     })
+    doc = etree.XML(doc.content)
+    rows = int(doc.xpath("//result/@numFound")[0])
 
-    doc = etree.XML(data.content)
-    return doc
+    n = 0
+    while n < rows:
+        data = requests.get(DATAONE_SOLR_ENDPOINT, params={
+            'q': query,
+            'start': n,
+            'rows': 1000
+        })
+        docs = etree.XML(data.content).xpath('//doc')
+        for doc in docs:
+            yield doc
+        n += 1000
 
 
 def get_properties(doc):

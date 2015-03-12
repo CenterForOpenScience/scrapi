@@ -18,14 +18,13 @@ Sample API query: http://api.plos.org/search?q=publication_date:[2015-01-30T00:0
 
 from __future__ import unicode_literals
 
-from datetime import date, timedelta
+from datetime import datetime, timedelta
 
 from lxml import etree
 from dateutil.parser import *
 from nameparser import HumanName
 
 from scrapi import requests
-from scrapi.linter import lint
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
 try:
@@ -33,13 +32,67 @@ try:
 except ImportError:
     from scrapi.settings import PLOS_API_KEY
 
-MAX_ROWS_PER_REQUEST = 999
 
 NAME = 'plos'
 
 DEFAULT_ENCODING = 'UTF-8'
 
 record_encoding = None
+
+
+class PlosHarvester(object):
+    MAX_ROWS_PER_REQUEST = 999
+    BASE_URL = 'http://api.plos.org/search?q=publication_date:'
+
+    def __init__(self):
+        assert PLOS_API_KEY, 'PLoS requires an API key'
+
+    def build_query(self, days_back):
+        to_date = datetime.utcnow()
+        from_date = (datetime.utcnow() - timedelta(days=days_back))
+
+        to_date = to_date.replace(hour=0, minute=0, second=0, microsecond=0)
+        from_date = from_date.replace(hour=0, minute=0, second=0, microsecond=0)
+        return 'publication_date:[{}Z TO {}Z]'.format(from_date.isoformat(), to_date.isoformat())
+
+    def fetch_rows(self, days_back):
+        query = self.build_query(days_back)
+
+        resp = requests.get(self.BASE_URL, params={
+            'q': query,
+            'rows': '0',
+            'api_key': PLOS_API_KEY,
+        })
+
+        total_rows = int(etree.XML(resp.content).xpath('//result/@numFound')[0])
+
+        current_row = 0
+        while current_row < total_rows:
+            response = requests.get(self.BASE_URL, throttle=5, params={
+                'q': query,
+                'start': current_row,
+                'api_key': PLOS_API_KEY,
+                'rows': self.MAX_ROWS_PER_REQUEST,
+            })
+
+            for doc in etree.XML(response.content).xpath('//doc'):
+                yield doc
+
+            current_row += self.MAX_ROWS_PER_REQUEST
+
+    def harvest(self, days_back=3):
+        return [
+            RawDocument({
+                'doc': etree.tostring(row),
+                'source': NAME,
+                'filetype': 'xml',
+                'docID': row.xpath("str[@name='id']")[0].text.decode('utf-8'),
+            })
+            for row in
+            self.fetch_rows(days_back)
+            if row.xpath("arr[@name='abstract']")
+            or row.xpath("str[@name='author_display']")
+        ]
 
 
 def copy_to_unicode(element):
@@ -50,54 +103,6 @@ def copy_to_unicode(element):
         return element
     else:
         return unicode(element, encoding=encoding)
-
-
-def harvest(days_back=3):
-    if not PLOS_API_KEY:
-        return []
-    payload = {"api_key": PLOS_API_KEY, "rows": "0"}
-    START_DATE = str(date.today() - timedelta(days_back)) + "T00:00:00Z"
-    TODAY = str(date.today()) + "T00:00:00Z"
-    base_url = 'http://api.plos.org/search?q=publication_date:'
-    base_url += '[{}%20TO%20{}]'.format(START_DATE, TODAY)
-    plos_request = requests.get(base_url, params=payload)
-    xml_response = etree.XML(plos_request.content)
-    num_results = int(xml_response.xpath('//result/@numFound')[0])
-
-    start = 0
-    count = 0
-    doc_list = []
-
-    while count < num_results:
-        if count + MAX_ROWS_PER_REQUEST > num_results:
-            payload = {"api_key": PLOS_API_KEY, "rows": num_results - count, "start": start}
-        else:
-            payload = {"api_key": PLOS_API_KEY, "rows": MAX_ROWS_PER_REQUEST, "start": start}
-        results = requests.get(base_url, params=payload, throttle=5)
-        xml_doc = etree.XML(results.content)
-        all_docs = xml_doc.xpath('//doc')
-
-        for result in all_docs:
-            has_authors_or_abstract = False
-            all_children = result.getchildren()
-            for element in all_children:
-                name = element.attrib.get('name')
-                if name == 'author_display' or name == 'abstract':
-                    has_authors_or_abstract = True
-                if name == 'id':
-                    docID = element.text
-            if has_authors_or_abstract:
-                doc_list.append(RawDocument({
-                    'doc': etree.tostring(result),
-                    'source': NAME,
-                    'docID': copy_to_unicode(docID),
-                    'filetype': 'xml',
-                }))
-
-        start += MAX_ROWS_PER_REQUEST
-        count += MAX_ROWS_PER_REQUEST
-
-    return doc_list
 
 
 def get_ids(raw_doc, record):
@@ -188,5 +193,4 @@ def normalize(raw_doc):
     # import json; print(json.dumps(normalized_dict, indent=4))
     return NormalizedDocument(normalized_dict)
 
-if __name__ == '__main__':
-    print(lint(harvest, normalize))
+harvest = PlosHarvester().harvest
