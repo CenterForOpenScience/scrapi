@@ -85,9 +85,9 @@ class PlosHarvester(BaseHarvester):
     def harvest(self, days_back=3):
         return [
             RawDocument({
-                'doc': etree.tostring(row),
-                'source': NAME,
                 'filetype': 'xml',
+                'source': self.short_name,
+                'doc': etree.tostring(row),
                 'docID': row.xpath("str[@name='id']")[0].text.decode('utf-8'),
             })
             for row in
