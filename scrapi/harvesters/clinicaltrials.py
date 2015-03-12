@@ -23,6 +23,9 @@ logger = logging.getLogger(__name__)
 
 class ClinicalTrialsHarvester(XMLHarvester):
 
+    short_name = 'clinicaltrials'
+    long_name = 'ClinicalTrials.gov'
+
     DEFAULT_ENCODING = 'UTF-8'
     record_encoding = None
 
@@ -70,10 +73,6 @@ class ClinicalTrialsHarvester(XMLHarvester):
             'responsible_party': '//responsible_party'
         }
     }
-
-    @property
-    def name(self):
-        return 'clinicaltrials'
 
     @property
     def namespaces(self):
@@ -153,8 +152,3 @@ class ClinicalTrialsHarvester(XMLHarvester):
                     count = 0
 
         return xml_list
-
-    h = ClinicalTrialsHarvester()
-
-harvest = h.harvest
-normalize = h.normalize
