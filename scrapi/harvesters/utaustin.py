@@ -9,7 +9,9 @@ from scrapi.base import OAIHarvester
 
 class UTAustinHarvester(OAIHarvester):
     short_name = 'utaustin'
-    long_name = 'University of Texas at Austin'
+    long_name = 'University of Texas at Austin Digital Repository'
+    url = 'https://repositories.lib.utexas.edu'
+
     base_url = 'http://repositories.lib.utexas.edu/oai/request'
     property_list = [
         'type', 'source', 'publisher', 'format', 'date',

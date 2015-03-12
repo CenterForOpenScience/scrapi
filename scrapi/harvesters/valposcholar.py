@@ -8,8 +8,10 @@ from scrapi.base import OAIHarvester
 
 
 class ValpoScholarHarvester(OAIHarvester):
-    long_name = 'ValpoScholar'
     short_name = 'valposcholar'
+    long_name = 'Valparaiso University ValpoScholar'
+    url = 'http://scholar.valpo.edu/'
+
     base_url = 'http://scholar.valpo.edu/do/oai/'
     property_list = [
         'type', 'source', 'setSpec',

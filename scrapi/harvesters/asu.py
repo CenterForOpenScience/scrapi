@@ -14,7 +14,9 @@ from scrapi.base import OAIHarvester
 
 class ASUHarvester(OAIHarvester):
     short_name = 'asu'
-    long_name = 'Arizona State University'
+    long_name = 'Arizona State University Digital Repository'
+    url = 'http://www.asu.edu/'
+
     base_url = 'http://repository.asu.edu/oai-pmh'
     approved_sets = ['research']
     property_list = [

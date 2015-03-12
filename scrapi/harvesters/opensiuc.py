@@ -15,7 +15,9 @@ from scrapi.base import OAIHarvester
 
 class OpenSIUCHarvester(OAIHarvester):
     short_name = 'opensiuc'
-    long_name = 'OpenSIUC'
+    long_name = 'OpenSIUC at the Southern Illinois University Carbondale'
+    url = 'http://opensiuc.lib.siu.edu/'
+
     base_url = 'http://opensiuc.lib.siu.edu/do/oai/'
     property_list = [
         'type', 'source', 'publisher', 'format',

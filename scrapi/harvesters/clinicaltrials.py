@@ -25,6 +25,7 @@ class ClinicalTrialsHarvester(XMLHarvester):
 
     short_name = 'clinicaltrials'
     long_name = 'ClinicalTrials.gov'
+    url = 'https://clinicaltrials.gov/'
 
     DEFAULT_ENCODING = 'UTF-8'
     record_encoding = None

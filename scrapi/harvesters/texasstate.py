@@ -11,7 +11,9 @@ from scrapi.base import OAIHarvester
 
 class TexasStateHarvester(OAIHarvester):
     short_name = 'texasstate'
-    long_name = 'Texas State University'
+    long_name = 'DSpace at Texas State University'
+    url = 'https://digital.library.txstate.edu/'
+
     base_url = 'http://digital.library.txstate.edu/oai/request'
     property_list = [
         'type', 'publisher', 'format', 'date',

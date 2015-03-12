@@ -15,6 +15,8 @@ from scrapi.base import OAIHarvester
 class MITHarvester(OAIHarvester):
     short_name = 'mit'
     long_name = 'DSpace@MIT'
+    url = 'http://dspace.mit.edu/'
+
     base_url = 'http://dspace.mit.edu/oai/request'
     property_list = [
         'type', 'source', 'publisher',

@@ -25,6 +25,8 @@ logger = logging.getLogger(__name__)
 class FigshareHarvester(BaseHarvester):
     short_name = 'figshare'
     long_name = 'figshare'
+    url = 'http://figshare.com/'
+
     file_format = 'json'
     URL = 'http://api.figshare.com/v1/articles/search?search_for=*&from_date='
 

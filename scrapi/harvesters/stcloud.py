@@ -14,7 +14,9 @@ from scrapi.base import OAIHarvester
 
 class StCloudHarvester(OAIHarvester):
     short_name = 'stcloud'
-    long_name = 'St Cloud State'
+    long_name = 'The repository at St Cloud State'
+    url = 'http://stcloudstate.edu/'
+
     base_url = 'http://repository.stcloudstate.edu/do/oai/'
     property_list = [
         'type', 'source', 'publisher', 'format', 'setSpec', 'date'

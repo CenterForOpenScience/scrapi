@@ -15,6 +15,8 @@ from scrapi.base import OAIHarvester
 class TrinityHarvester(OAIHarvester):
     short_name = 'trinity'
     long_name = 'Digital Commons @ Trinity University'
+    url = 'http://digitalcommons.trinity.edu/'
+
     base_url = 'http://digitalcommons.trinity.edu/do/oai/'
     property_list = [
         'type', 'publisher', 'format', 'date',

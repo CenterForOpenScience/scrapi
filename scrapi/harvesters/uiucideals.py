@@ -14,6 +14,7 @@ from scrapi.base import OAIHarvester
 class UiucIdealsHarvester(OAIHarvester):
     long_name = 'University of Illinois at Urbana-Champaign, IDEALS'
     short_name = 'uiucideals'
+    url = 'https://www.ideals.illinois.edu'
     base_url = 'http://ideals.uiuc.edu/dspace-oai/request'
     property_list = [
         'type', 'publisher', 'format', 'date',

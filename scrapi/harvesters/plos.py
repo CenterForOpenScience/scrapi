@@ -37,6 +37,8 @@ except ImportError:
 class PlosHarvester(BaseHarvester):
     short_name = 'plos'
     long_name = 'Public Library of Science'
+    url = 'http://www.plos.org/'
+
     file_format = 'xml'
 
     DEFAULT_ENCODING = 'UTF-8'

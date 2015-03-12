@@ -14,6 +14,8 @@ from scrapi.base import OAIHarvester
 class UCeScholarship(OAIHarvester):
     name = 'ucescholarship'
     long_name = 'eScholarship @ University of California'
+    url = 'http://www.escholarship.org/'
+
     base_url = 'http://www.escholarship.org/uc/oai'
     property_list = [
         'type', 'publisher', 'format', 'date',

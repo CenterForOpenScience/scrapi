@@ -15,6 +15,7 @@ from scrapi.base import OAIHarvester
 class CMUHarvester(OAIHarvester):
     short_name = 'cmu'
     long_name = 'Carnegie Mellon University'
+    url = 'Carnegie Mellon University Research Showcase'
     base_url = 'http://repository.cmu.edu/do/oai/'
     property_list = [
         'type', 'publisher', 'format', 'date', 'identifier',
