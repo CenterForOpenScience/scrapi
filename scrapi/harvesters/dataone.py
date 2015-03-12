@@ -31,7 +31,6 @@ class DataOneHarvester(BaseHarvester):
     long_name = 'DataONE'
     file_format = 'xml'
 
-
     DEFAULT_ENCODING = 'UTF-8'
     DATAONE_SOLR_ENDPOINT = 'https://cn.dataone.org/cn/v1/query/solr/'
 
@@ -45,17 +44,17 @@ class DataOneHarvester(BaseHarvester):
         else:
             return unicode(element, encoding=encoding)
 
-    def harvest(self, days_back=5):
-        records = get_records(days_back)
+    def harvest(self, days_back=1):
+        records = self.get_records(days_back)
 
         xml_list = []
         for record in records:
             doc_id = record.xpath("str[@name='id']")[0].text
-            record = ElementTree.tostring(record, encoding=record_encoding)
+            record = ElementTree.tostring(record, encoding=self.record_encoding)
             xml_list.append(RawDocument({
                 'doc': record,
-                'source': NAME,
-                'docID': copy_to_unicode(doc_id),
+                'source': self.short_name,
+                'docID': self.copy_to_unicode(doc_id),
                 'filetype': 'xml'
             }))
 
@@ -72,7 +71,7 @@ class DataOneHarvester(BaseHarvester):
         from_date = from_date.replace(hour=0, minute=0, second=0, microsecond=0)
 
         query = 'dateModified:[{}Z TO {}Z]'.format(from_date.isoformat(), to_date.isoformat())
-        doc = requests.get(DATAONE_SOLR_ENDPOINT, params={
+        doc = requests.get(self.DATAONE_SOLR_ENDPOINT, params={
             'q': query,
             'start': 0,
             'rows': 1
@@ -82,7 +81,7 @@ class DataOneHarvester(BaseHarvester):
 
         n = 0
         while n < rows:
-            data = requests.get(DATAONE_SOLR_ENDPOINT, params={
+            data = requests.get(self.DATAONE_SOLR_ENDPOINT, params={
                 'q': query,
                 'start': n,
                 'rows': 1000
@@ -133,11 +132,11 @@ class DataOneHarvester(BaseHarvester):
         # make sure everything in propeties is unicode
         for key, value in properties.iteritems():
             if isinstance(value, etree._ElementStringResult) or isinstance(value, str):
-                properties[key] = copy_to_unicode(value)
+                properties[key] = self.copy_to_unicode(value)
             elif isinstance(value, list):
                 unicode_list = []
                 for item in value:
-                    unicode_list.append(copy_to_unicode(item))
+                    unicode_list.append(self.copy_to_unicode(item))
                 properties[key] = unicode_list
 
         properties = {key: value for key, value in properties.items() if value is not u''}
@@ -189,7 +188,7 @@ class DataOneHarvester(BaseHarvester):
                     'middle': name.middle,
                     'family': name.last,
                     'suffix': name.suffix,
-                    'email': copy_to_unicode(email),
+                    'email': self.copy_to_unicode(email),
                     'ORCID': ''
                 }
                 contributor_list.append(contributor_dict)
@@ -233,18 +232,18 @@ class DataOneHarvester(BaseHarvester):
         if url == '':
             raise Exception('Warning: No url provided!')
 
-        ids = {'serviceID': service_id, 'doi': copy_to_unicode(doi), 'url': copy_to_unicode(url)}
+        ids = {'serviceID': service_id, 'doi': self.copy_to_unicode(doi), 'url': self.copy_to_unicode(url)}
 
         return ids
 
     def get_tags(self, doc):
         tags = doc.xpath("//arr[@name='keywords']/str/node()")
-        return [copy_to_unicode(tag.lower()) for tag in tags]
+        return [self.copy_to_unicode(tag.lower()) for tag in tags]
 
     def get_date_updated(self, doc):
         date_updated = (doc.xpath('//date[@name="dateModified"]/node()') or [''])[0]
         date = parse(date_updated).isoformat()
-        return copy_to_unicode(date)
+        return self.copy_to_unicode(date)
 
     def normalize(self, raw_doc):
         raw_doc_text = raw_doc.get('doc')
@@ -254,14 +253,14 @@ class DataOneHarvester(BaseHarvester):
         description = (doc.xpath("str[@name='abstract']/node()") or [''])[0]
 
         normalized_dict = {
-            'title': copy_to_unicode(title),
-            'contributors': get_contributors(doc),
-            'properties': get_properties(doc),
-            'description': copy_to_unicode(description),
-            'id': get_ids(doc, raw_doc),
-            'tags': get_tags(doc),
-            'source': NAME,
-            'dateUpdated': get_date_updated(doc)
+            'title': self.copy_to_unicode(title),
+            'contributors': self.get_contributors(doc),
+            'properties': self.get_properties(doc),
+            'description': self.copy_to_unicode(description),
+            'id': self.get_ids(doc, raw_doc),
+            'tags': self.get_tags(doc),
+            'source': self.short_name,
+            'dateUpdated': self.get_date_updated(doc)
         }
 
         # Return none if no url - not good for notification service
