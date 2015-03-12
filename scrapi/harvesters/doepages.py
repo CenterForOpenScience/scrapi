@@ -38,7 +38,7 @@ class DoepagesHarvester(XMLHarvester):
             record = etree.tostring(record, encoding=record_encoding)
             xml_list.append(RawDocument({
                 'doc': record,
-                'source': self.name,
+                'source': self.short_name,
                 'docID': self.copy_to_unicode(doc_id),
                 'filetype': 'xml'
             }))
