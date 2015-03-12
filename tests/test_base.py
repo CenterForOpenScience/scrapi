@@ -14,17 +14,6 @@ def mock_registry(monkeypatch):
     return registry
 
 
-@pytest.fixture
-def test_harvester():
-    class TestHarvester(BaseHarvester):
-        short_name = 'test'
-        long_name = 'test'
-        file_format = 'test'
-        harvest = lambda x: x
-        normalize = lambda x: x
-    return TestHarvester
-
-
 class TestHarvesterMeta(object):
 
     def test_meta_records(self, mock_registry):
@@ -58,24 +47,64 @@ class TestHarvesterMeta(object):
 
 
 class TestHarvesterBase(object):
+    ERR_MSG = 'Error when calling the metaclass bases\n    Can\'t instantiate abstract class TestHarvester with abstract methods {}'
 
-    def test_requires_short_name(self, monkeypatch, test_harvester):
-        # monkeypatch.delattr(test_harvester, 'short_name')
-        import ipdb; ipdb.set_trace()
-        test_harvester()
-
-        # assert 'short_name' in e.value.message
-
-    def test_requires_long_name(self):
-
-        class TestHarvester(BaseHarvester):
-            short_name = 'test'
-            long_name = 'test'
-            file_format = 'test'
-            harvest = lambda x: x
-            normalize = lambda x: x
-
+    def test_requires_short_name(self):
         with pytest.raises(TypeError) as e:
+            class TestHarvester(BaseHarvester):
+                long_name = 'test'
+                file_format = 'test'
+                harvest = lambda x: x
+                normalize = lambda x: x
+
             TestHarvester()
 
-        assert 'short_name' in e.value.message
+        assert e.value.message == 'Can\'t instantiate abstract class TestHarvester with abstract methods short_name'
+
+    def test_requires_long_name(self):
+        with pytest.raises(TypeError) as e:
+            class TestHarvester(BaseHarvester):
+                short_name = 'test'
+                file_format = 'test'
+                harvest = lambda x: x
+                normalize = lambda x: x
+
+            TestHarvester()
+
+        assert e.value.message == self.ERR_MSG.format('long_name')
+
+    def test_requires_file_format(self):
+        with pytest.raises(TypeError) as e:
+            class TestHarvester(BaseHarvester):
+                long_name = 'test'
+                short_name = 'test'
+                harvest = lambda x: x
+                normalize = lambda x: x
+
+            TestHarvester()
+
+        assert e.value.message == self.ERR_MSG.format('file_format')
+
+    def test_requires_harvest(self):
+        with pytest.raises(TypeError) as e:
+            class TestHarvester(BaseHarvester):
+                long_name = 'test'
+                short_name = 'test'
+                file_format = 'test'
+                normalize = lambda x: x
+
+            TestHarvester()
+
+        assert e.value.message == self.ERR_MSG.format('harvest')
+
+    def test_requires_normalize(self):
+        with pytest.raises(TypeError) as e:
+            class TestHarvester(BaseHarvester):
+                long_name = 'test'
+                short_name = 'test'
+                file_format = 'test'
+                harvest = lambda x: x
+
+            TestHarvester()
+
+        assert e.value.message == self.ERR_MSG.format('normalize')
