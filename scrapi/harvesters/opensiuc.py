@@ -13,12 +13,15 @@ from __future__ import unicode_literals
 from scrapi.base import OAIHarvester
 
 
-opensiuc = OAIHarvester(
-    name='opensiuc',
-    base_url='http://opensiuc.lib.siu.edu/do/oai/',
-    property_list=['type', 'source', 'publisher', 'format',
-                   'identifier', 'date', 'setSpec'],
-    approved_sets=[
+class OpenSIUCHarvester(OAIHarvester):
+    short_name = 'opensiuc'
+    long_name = 'OpenSIUC'
+    base_url = 'http://opensiuc.lib.siu.edu/do/oai/'
+    property_list = [
+        'type', 'source', 'publisher', 'format',
+        'identifier', 'date', 'setSpec'
+    ]
+    approved_sets = [
         'ad_pubs',
         'agecon_articles',
         'agecon_wp',
@@ -133,7 +136,3 @@ opensiuc = OAIHarvester(
         'zool_diss',
         'zool_pubs'
     ]
-)
-
-harvest = opensiuc.harvest
-normalize = opensiuc.normalize

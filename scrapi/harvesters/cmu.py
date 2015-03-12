@@ -12,12 +12,11 @@ from __future__ import unicode_literals
 from scrapi.base import OAIHarvester
 
 
-cmu = OAIHarvester(
-    name='cmu',
-    base_url='http://repository.cmu.edu/do/oai/',
-    property_list=['type', 'publisher', 'format', 'date',
-                   'identifier', 'language', 'setSpec', 'description']
-)
-
-harvest = cmu.harvest
-normalize = cmu.normalize
+class CMUHarvester(OAIHarvester):
+    short_name = 'cmu',
+    long_name = 'Carnegie Mellon University'
+    base_url = 'http://repository.cmu.edu/do/oai/'
+    property_list = [
+        'type', 'publisher', 'format', 'date', 'identifier',
+        'language', 'setSpec', 'description'
+    ]
