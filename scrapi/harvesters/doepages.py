@@ -2,9 +2,9 @@ from __future__ import unicode_literals
 
 from datetime import date, timedelta
 
-import requests
 from lxml import etree
 
+from scrapi import requests
 from scrapi.base import XMLHarvester
 from scrapi.linter import RawDocument
 from scrapi.base.helpers import updated_schema
