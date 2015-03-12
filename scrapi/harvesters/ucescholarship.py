@@ -5,14 +5,13 @@ More information available here:
 https://github.com/CenterForOpenScience/SHARE/blob/master/providers/org.escholarship.md
 """
 
-
 from __future__ import unicode_literals
 
 from scrapi.base import OAIHarvester
 
 
-class UCeScholarship(OAIHarvester):
-    name = 'ucescholarship'
+class UCeScholarshipHarvester(OAIHarvester):
+    short_name = 'ucescholarship'
     long_name = 'eScholarship @ University of California'
     url = 'http://www.escholarship.org/'
 
