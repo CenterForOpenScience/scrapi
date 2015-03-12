@@ -132,16 +132,18 @@ def lint(name):
 
 @task
 def provider_map():
-    import elasticsearch
-    es = elasticsearch.Elasticsearch(settings.ELASTIC_URI)
+    from scrapi.processing.elasticsearch import es
 
     for harvester_name, harvester in registry.items():
-        es.index('share_providers', harvester.short_name, body={
-            'favicon': 'data:image/png;base64,' + urllib.quote(open("img/favicons/{}_favicon.ico".format(harvester.short_name), "rb").read().encode('base64')),
-            'short_name': harvester.short_name,
-            'long_name': harvester.long_name,
-            'url': harvester.url
-        },
-        id=harvester.short_name,
-        refresh=True
+        es.index(
+            'share_providers',
+            harvester.short_name,
+            body={
+                'favicon': 'data:image/png;base64,' + urllib.quote(open("img/favicons/{}_favicon.ico".format(harvester.short_name), "rb").read().encode('base64')),
+                'short_name': harvester.short_name,
+                'long_name': harvester.long_name,
+                'url': harvester.url
+            },
+            id=harvester.short_name,
+            refresh=True
         )
