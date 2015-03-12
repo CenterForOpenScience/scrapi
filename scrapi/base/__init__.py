@@ -69,10 +69,11 @@ class BaseHarvester(object):
 
 
 class XMLHarvester(BaseHarvester, XMLTransformer):
+    file_format = 'xml'
 
     def normalize(self, raw_doc):
         transformed = self.transform(etree.XML(raw_doc['doc']))
-        transformed['source'] = self.name
+        transformed['source'] = self.short_name
         return NormalizedDocument(transformed)
 
 
@@ -87,43 +88,23 @@ class OAIHarvester(XMLHarvester):
     For more information, see the OAI PMH specification:
     http://www.openarchives.org/OAI/openarchivesprotocol.html
     """
+    record_encoding = None
+    DEFAULT_ENCODING = 'UTF-8'
+    RESUMPTION = '&resumptionToken='
+    RECORDS_URL = '?verb=ListRecords'
+    META_PREFIX_DATE = '&metadataPrefix=oai_dc&from={}'
 
-    NAMESPACES = {
+    # Override these variable is required
+    namespaces = {
         'dc': 'http://purl.org/dc/elements/1.1/',
         'ns0': 'http://www.openarchives.org/OAI/2.0/',
         'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
     }
 
-    RECORDS_URL = '?verb=ListRecords'
-
-    META_PREFIX_DATE = '&metadataPrefix=oai_dc&from={}'
-
-    RESUMPTION = '&resumptionToken='
-
-    DEFAULT_ENCODING = 'UTF-8'
-
-    record_encoding = None
-
-    def __init__(self, timezone_granularity=False, timeout=0.5, property_list=None, approved_sets=None):
-        # self.name = name
-        # self.base_url = base_url
-        self.timeout = timeout
-        self.timezone_granularity = timezone_granularity
-
-    @property
-    def property_list(self):
-        return ['date', 'language', 'type']
-
-    @property
-    def file_format(self):
-        return 'xml'
-
-    def name(self):
-        return self.NAME
-
-    @property
-    def namespaces(self):
-        return self.NAMESPACES
+    timeout = 0.5
+    approved_sets = None
+    timezone_granularity = False
+    property_list = ['date', 'language', 'type']
 
     @property
     def schema(self):
@@ -164,11 +145,11 @@ class OAIHarvester(XMLHarvester):
         rawdoc_list = []
         for record in records:
             doc_id = record.xpath(
-                'ns0:header/ns0:identifier', namespaces=self.NAMESPACES)[0].text
+                'ns0:header/ns0:identifier', namespaces=self.namespaces)[0].text
             record = etree.tostring(record, encoding=self.record_encoding)
             rawdoc_list.append(RawDocument({
                 'doc': record,
-                'source': util.copy_to_unicode(self.name),
+                'source': util.copy_to_unicode(self.short_name),
                 'docID': util.copy_to_unicode(doc_id),
                 'filetype': 'xml'
             }))
@@ -182,11 +163,11 @@ class OAIHarvester(XMLHarvester):
 
         records = doc.xpath(
             '//ns0:record',
-            namespaces=self.NAMESPACES
+            namespaces=self.namespaces
         )
         token = doc.xpath(
             '//ns0:resumptionToken/node()',
-            namespaces=self.NAMESPACES
+            namespaces=self.namespaces
         )
         if len(token) == 1:
             base_url = url.replace(
@@ -204,7 +185,7 @@ class OAIHarvester(XMLHarvester):
         if self.approved_sets:
             set_spec = result.xpath(
                 'ns0:header/ns0:setSpec/node()',
-                namespaces=self.NAMESPACES
+                namespaces=self.namespaces
             )
             # check if there's an intersection between the approved sets and the
             # setSpec list provided in the record. If there isn't, don't normalize.
@@ -212,7 +193,7 @@ class OAIHarvester(XMLHarvester):
                 logger.info('Series {} not in approved list'.format(set_spec))
                 return None
 
-        status = result.xpath('ns0:header/@status', namespaces=self.NAMESPACES)
+        status = result.xpath('ns0:header/@status', namespaces=self.namespaces)
         if status and status[0] == 'deleted':
             logger.info('Deleted record, not normalizing {}'.format(raw_doc['docID']))
             return None
