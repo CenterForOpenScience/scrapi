@@ -41,8 +41,6 @@ class PlosHarvester(BaseHarvester):
 
     DEFAULT_ENCODING = 'UTF-8'
 
-    record_encoding = None
-
     MAX_ROWS_PER_REQUEST = 999
     BASE_URL = 'http://api.plos.org/search?q=publication_date:'
 
@@ -98,17 +96,16 @@ class PlosHarvester(BaseHarvester):
 
     def copy_to_unicode(self, element):
 
-        encoding = record_encoding or DEFAULT_ENCODING
         element = ''.join(element)
         if isinstance(element, unicode):
             return element
         else:
-            return unicode(element, encoding=encoding)
+            return unicode(element, encoding=DEFAULT_ENCODING)
 
     def get_ids(self, raw_doc, record):
         doi = record.xpath('//str[@name="id"]/node()')[0]
         ids = {
-            'doi': copy_to_unicode(doi),
+            'doi': self.copy_to_unicode(doi),
             'serviceID': raw_doc.get('docID'),
             'url': 'http://dx.doi.org/{}'.format(doi)
         }
@@ -141,7 +138,7 @@ class PlosHarvester(BaseHarvester):
 
         # ensure everything is in unicode
         for key, value in properties.iteritems():
-            properties[key] = copy_to_unicode(value)
+            properties[key] = self.copy_to_unicode(value)
 
         return properties
 
