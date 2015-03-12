@@ -13,6 +13,9 @@ from scrapi.base.schemas import BASEXMLSCHEMA
 
 class DoepagesHarvester(XMLHarvester):
 
+    short_name = 'doepages'
+    long_name = 'Department of Energy Pages'
+
     def harvest(self, days_back=1):
         start_date = date.today() - timedelta(days_back)
         base_url = 'http://www.osti.gov/pages/pagesxml?nrows={0}&EntryDateFrom={1}'
@@ -48,10 +51,6 @@ class DoepagesHarvester(XMLHarvester):
             return element
         else:
             return unicode(element, encoding=encoding)
-
-    @property
-    def name(self):
-        return 'doepages'
 
     @property
     def namespaces(self):
@@ -91,8 +90,3 @@ class DoepagesHarvester(XMLHarvester):
                 }
             }
         )
-
-h = DoepagesHarvester()
-
-harvest = h.harvest
-normalize = h.normalize
