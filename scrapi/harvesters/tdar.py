@@ -13,7 +13,11 @@ from scrapi import util
 from scrapi.base import OAIHarvester
 
 
-class tdarHarvester(OAIHarvester):
+class TDARHarvester(OAIHarvester):
+    short_name = 'tdar'
+    long_name = 'The Digital Archaeological Record'
+    base_url = 'http://core.tdar.org/oai-pmh/oai'
+    property_list = ['type', 'date', 'setSpec', 'type', 'publisher', 'coverage']
 
     def get_ids(self, result, doc):
         """
@@ -32,13 +36,3 @@ class tdarHarvester(OAIHarvester):
             'url': util.copy_to_unicode(url),
             'doi': ''
         }
-
-
-tdar = tdarHarvester(
-    name='tdar',
-    base_url='http://core.tdar.org/oai-pmh/oai',
-    property_list=['type', 'date', 'setSpec', 'type', 'publisher', 'coverage']
-)
-
-harvest = tdar.harvest
-normalize = tdar.normalize

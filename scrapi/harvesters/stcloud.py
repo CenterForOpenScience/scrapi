@@ -12,11 +12,14 @@ from __future__ import unicode_literals
 from scrapi.base import OAIHarvester
 
 
-stcloud = OAIHarvester(
-    name='stcloud',
-    base_url='http://repository.stcloudstate.edu/do/oai/',
-    property_list=['type', 'source', 'publisher', 'format', 'setSpec', 'date'],
-    approved_sets=[
+class StCloudHarvester(OAIHarvester):
+    short_name = 'stcloud'
+    long_name = 'St Cloud State'
+    base_url = 'http://repository.stcloudstate.edu/do/oai/'
+    property_list = [
+        'type', 'source', 'publisher', 'format', 'setSpec', 'date'
+    ]
+    approved_sets = [
         'ews_facpubs',
         'ews_wps',
         'hist_facwp',
@@ -36,7 +39,3 @@ stcloud = OAIHarvester(
         'econ_seminars',
         'stcloud_ling'
     ]
-)
-
-harvest = stcloud.harvest
-normalize = stcloud.normalize

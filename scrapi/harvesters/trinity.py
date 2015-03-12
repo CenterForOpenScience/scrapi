@@ -12,13 +12,16 @@ from __future__ import unicode_literals
 from scrapi.base import OAIHarvester
 
 
-trinity = OAIHarvester(
-    name='trinity',
-    base_url='http://digitalcommons.trinity.edu/do/oai/',
-    property_list=['type', 'publisher', 'format', 'date',
-                   'identifier', 'language', 'setSpec', 'source', 'coverage',
-                   'relation', 'rights'],
-    approved_sets=[
+class TrinityHarvester(OAIHarvester):
+    short_name = 'trinity'
+    long_name = 'Digital Commons @ Trinity University'
+    base_url = 'http://digitalcommons.trinity.edu/do/oai/'
+    property_list = [
+        'type', 'publisher', 'format', 'date',
+        'identifier', 'language', 'setSpec', 'source', 'coverage',
+        'relation', 'rights'
+    ]
+    approved_sets = [
         'engine_faculty',
         'env_studocs',
         'geo_faculty',
@@ -57,7 +60,3 @@ trinity = OAIHarvester(
         'urban_studocs',
         'written-communication'
     ]
-)
-
-harvest = trinity.harvest
-normalize = trinity.normalize

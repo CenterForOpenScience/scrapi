@@ -7,12 +7,15 @@ from __future__ import unicode_literals
 from scrapi.base import OAIHarvester
 
 
-utaustin = OAIHarvester(
-    name='utaustin',
-    base_url='http://repositories.lib.utexas.edu/oai/request',
-    property_list=['type', 'source', 'publisher', 'format', 'date',
-                   'identifier', 'setSpec', 'language', 'rights'],
-    approved_sets=[
+class UTAustinHarvester(OAIHarvester):
+    short_name = 'utaustin'
+    long_name = 'University of Texas at Austin'
+    base_url = 'http://repositories.lib.utexas.edu/oai/request',
+    property_list = [
+        'type', 'source', 'publisher', 'format', 'date',
+        'identifier', 'setSpec', 'language', 'rights'
+    ]
+    approved_sets = [
         'hdl_2152_1',
         'hdl_2152_13541',
         'hdl_2152_22957',
@@ -57,7 +60,3 @@ utaustin = OAIHarvester(
         'hdl_2152_6851',
         'hdl_2152_15082'
     ]
-)
-
-harvest = utaustin.harvest
-normalize = utaustin.normalize

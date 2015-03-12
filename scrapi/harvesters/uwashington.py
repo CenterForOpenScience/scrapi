@@ -11,12 +11,11 @@ from __future__ import unicode_literals
 from scrapi.base import OAIHarvester
 
 
-uwashington = OAIHarvester(
-    name='uwashington',
-    base_url='http://digital.lib.washington.edu/dspace-oai/request',
-    property_list=['type', 'source', 'publisher', 'format', 'date',
-                   'identifier', 'setSpec', 'rights', 'language']
-)
-
-harvest = uwashington.harvest
-normalize = uwashington.normalize
+class UWashingtonHarvester(OAIHarvester):
+    short_name = 'uwashington'
+    long_name = 'ResearchWorks @ University of Washington'
+    base_url = 'http://digital.lib.washington.edu/dspace-oai/request',
+    property_list = [
+        'type', 'source', 'publisher', 'format', 'date',
+        'identifier', 'setSpec', 'rights', 'language'
+    ]

@@ -9,13 +9,16 @@ from __future__ import unicode_literals
 from scrapi.base import OAIHarvester
 
 
-texasstate = OAIHarvester(
-    name='texasstate',
-    base_url='http://digital.library.txstate.edu/oai/request',
-    property_list=['type', 'publisher', 'format', 'date',
-                   'identifier', 'language', 'setSpec', 'source', 'coverage',
-                   'relation', 'rights'],
-    approved_sets=[
+class TexasStateHarvester(OAIHarvester):
+    short_name = 'texasstate'
+    long_name = 'Texas State University'
+    base_url = 'http://digital.library.txstate.edu/oai/request'
+    property_list = [
+        'type', 'publisher', 'format', 'date',
+        'identifier', 'language', 'setSpec', 'source', 'coverage',
+        'relation', 'rights'
+    ]
+    approved_sets = [
         'com_10877_2',
         'com_10877_5',
         'com_10877_8',
@@ -68,7 +71,3 @@ texasstate = OAIHarvester(
         'com_10877_4425',
         'col_10877_78'
     ]
-)
-
-harvest = texasstate.harvest
-normalize = texasstate.normalize
