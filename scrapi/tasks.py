@@ -9,6 +9,7 @@ from scrapi import database
 from scrapi import settings
 from scrapi import registry
 from scrapi import processing
+from scrapi import harvesters
 from scrapi.util import timestamp
 
 

@@ -27,8 +27,10 @@ logger = logging.getLogger(__name__)
 
 
 class DataOneHarvester(BaseHarvester):
-    short_name = "dataone"
-    long_name = "DataONE"
+    short_name = 'dataone'
+    long_name = 'DataONE'
+    file_format = 'xml'
+
 
     DEFAULT_ENCODING = 'UTF-8'
     DATAONE_SOLR_ENDPOINT = 'https://cn.dataone.org/cn/v1/query/solr/'

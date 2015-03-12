@@ -17,6 +17,7 @@ from nameparser import HumanName
 from dateutil.parser import *
 
 from scrapi import requests
+from scrapi.base import BaseHarvester
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
 NAME = 'scitech'
