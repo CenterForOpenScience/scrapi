@@ -11,8 +11,10 @@ from .utils import TEST_SCHEMA, TEST_NAMESPACES, TEST_XML_DOC
 
 
 class TestHarvester(XMLHarvester):
-
-    SCHEMA = TEST_SCHEMA
+    long_name = 'TEST'
+    short_name = 'TEST'
+    schema = TEST_SCHEMA
+    namespaces = TEST_NAMESPACES
 
     def harvest(self, days_back=1):
         return [RawDocument({
@@ -23,19 +25,6 @@ class TestHarvester(XMLHarvester):
         }) for _ in xrange(days_back)]
 
 
-    @property
-    def name(self):
-        return 'TEST'
-
-    @property
-    def namespaces(self):
-        return TEST_NAMESPACES
-
-    @property
-    def schema(self):
-        return self.SCHEMA
-
-
 class TestTransformer(object):
 
     def setup_method(self, method):
@@ -44,13 +33,14 @@ class TestTransformer(object):
     def test_arg_kwargs(self):
         def process_title(title, title1="test"):
             return title + title1
+
         def process_title2(title1="test"):
             return title1
 
         args = ("//dc:title/node()", )
         kwargs = {"title1": "//dc:title/node()"}
 
-        self.harvester.SCHEMA = updated_schema(
+        self.harvester.schema = updated_schema(
             TEST_SCHEMA,
             {
                 'title': (pack(*args, **kwargs), process_title),

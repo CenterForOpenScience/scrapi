@@ -5,7 +5,12 @@ from scrapi.linter import RawDocument
 
 from .utils import TEST_OAI_DOC
 
+
 class TestHarvester(OAIHarvester):
+    base_url = ''
+    long_name = 'Test'
+    short_name = 'test'
+    property_list = ['type', 'source', 'publisher', 'format', 'date']
 
     def harvest(self, days_back=1):
         return [RawDocument({
@@ -19,11 +24,7 @@ class TestHarvester(OAIHarvester):
 class TestOAIHarvester(object):
 
     def setup_method(self, method):
-        self.harvester = TestHarvester(
-            name='Test',
-            base_url='',
-            property_list=['type', 'source', 'publisher', 'format', 'date'],
-        )
+        self.harvester = TestHarvester()
 
     def test_normalize(self):
         results = [

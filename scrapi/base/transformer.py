@@ -10,6 +10,18 @@ class BaseTransformer(object):
 
     __metaclass__ = abc.ABCMeta
 
+    @abc.abstractmethod
+    def _transform_string(self, string, doc):
+        raise NotImplementedError
+
+    @abc.abstractproperty
+    def short_name(self):
+        raise NotImplementedError
+
+    @abc.abstractproperty
+    def schema(self):
+        raise NotImplementedError
+
     def transform(self, doc):
         return self._transform(self.schema, doc)
 
@@ -50,18 +62,6 @@ class BaseTransformer(object):
         return {
             k: self._transform_string(v, doc) for k, v in t[1].items()
         } if len(t) == 2 else {}
-
-    @abc.abstractmethod
-    def _transform_string(self, string, doc):
-        raise NotImplementedError
-
-    @abc.abstractproperty
-    def name(self):
-        raise NotImplementedError
-
-    @abc.abstractproperty
-    def schema(self):
-        raise NotImplementedError
 
 
 class XMLTransformer(BaseTransformer):
