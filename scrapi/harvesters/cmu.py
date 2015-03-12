@@ -13,7 +13,7 @@ from scrapi.base import OAIHarvester
 
 
 class CMUHarvester(OAIHarvester):
-    short_name = 'cmu',
+    short_name = 'cmu'
     long_name = 'Carnegie Mellon University'
     base_url = 'http://repository.cmu.edu/do/oai/'
     property_list = [
