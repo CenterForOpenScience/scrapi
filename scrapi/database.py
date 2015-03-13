@@ -7,7 +7,6 @@ from cqlengine import management
 from cassandra.cluster import NoHostAvailable
 
 from celery.signals import worker_process_init
-from celery.signals import worker_process_shutdown
 
 from scrapi import settings
 
