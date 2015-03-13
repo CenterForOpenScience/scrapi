@@ -1,7 +1,6 @@
 import os
 import errno
 import logging
-import importlib
 from datetime import datetime
 
 import pytz
@@ -12,10 +11,6 @@ logger = logging.getLogger(__name__)
 
 def timestamp():
     return pytz.utc.localize(datetime.utcnow()).isoformat().decode('utf-8')
-
-
-def import_harvester(harvester_name):
-    return importlib.import_module('scrapi.harvesters.{}'.format(harvester_name))
 
 
 # Thanks to

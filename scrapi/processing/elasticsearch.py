@@ -6,6 +6,7 @@ from elasticsearch.exceptions import NotFoundError
 from elasticsearch.exceptions import ConnectionError
 
 from scrapi import settings
+from scrapi import registry
 from scrapi.processing.base import BaseProcessor
 
 
@@ -23,12 +24,12 @@ try:
     body = {
         'mappings': {
             harvester: settings.ES_SEARCH_MAPPING
-            for harvester in settings.MANIFESTS.keys()
+            for harvester in registry.keys()
         }
     }
     es.cluster.health(wait_for_status='yellow')
     es.indices.create(index=settings.ELASTIC_INDEX, body=body, ignore=400)
-except ConnectionError:
+except ConnectionError:  # pragma: no cover
     logger.error('Could not connect to Elasticsearch, expect errors.')
     if 'elasticsearch' in settings.NORMALIZED_PROCESSING or 'elasticsearch' in settings.RAW_PROCESSING:
         raise
@@ -59,7 +60,7 @@ class ElasticsearchProcessor(BaseProcessor):
                 doc_type=normalized['source'],
                 id=normalized['id']['serviceID'],
             )
-        except NotFoundError:
+        except NotFoundError:  # pragma: no cover
             # Normally I don't like exception-driven logic,
             # but this was the best way to handle missing
             # types, indices and documents together

@@ -6,6 +6,7 @@ import logging
 from datetime import date, timedelta
 
 from lxml import etree
+from celery.schedules import crontab
 
 from scrapi import util
 from scrapi import requests
@@ -20,13 +21,60 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
+class _Registry(dict):
+
+    def __init__(self):
+        super(_Registry, self).__init__()
+
+    def __getitem__(self, key):
+        try:
+            return super(_Registry, self).__getitem__(key)
+        except KeyError:
+            raise KeyError('No harvester named "{}"'.format(key))
+
+    @property
+    def beat_schedule(self):
+        return {
+            'run_{}'.format(name): {
+                'args': [name],
+                'schedule': crontab(**inst.run_at),
+                'task': 'scrapi.tasks.run_harvester',
+            }
+            for name, inst
+            in self.items()
+        }
+
+registry = _Registry()
+
+
+class HarvesterMeta(abc.ABCMeta):
+    def __init__(cls, name, bases, dct):
+        super(HarvesterMeta, cls).__init__(name, bases, dct)
+        if len(cls.__abstractmethods__) == 0:
+            registry[cls.short_name] = cls()
+        else:
+            logger.info('Class {} not added to registry'.format(cls.__name__))
+
+
 class BaseHarvester(object):
     """ This is a base class that all harvesters should inheret from
 
-    Defines the copy to unicde method, which is useful for getting standard
+    Defines the copy to unicode method, which is useful for getting standard
     unicode out of xml results.
     """
-    __metaclass__ = abc.ABCMeta
+    __metaclass__ = HarvesterMeta
+
+    @abc.abstractproperty
+    def short_name(self):
+        raise NotImplementedError
+
+    @abc.abstractproperty
+    def long_name(self):
+        raise NotImplementedError
+
+    @abc.abstractproperty
+    def file_format(self):
+        raise NotImplementedError
 
     @abc.abstractmethod
     def harvest(self, days_back=1):
@@ -39,12 +87,21 @@ class BaseHarvester(object):
     def lint(self):
         return lint(self.harvest, self.normalize)
 
+    @property
+    def run_at(self):
+        return {
+            'hour': 22,
+            'minute': 59,
+            'day_of_week': 'mon-fri',
+        }
+
 
 class XMLHarvester(BaseHarvester, XMLTransformer):
+    file_format = 'xml'
 
     def normalize(self, raw_doc):
         transformed = self.transform(etree.XML(raw_doc['doc']))
-        transformed['source'] = self.name
+        transformed['source'] = self.short_name
         return NormalizedDocument(transformed)
 
 
@@ -59,36 +116,23 @@ class OAIHarvester(XMLHarvester):
     For more information, see the OAI PMH specification:
     http://www.openarchives.org/OAI/openarchivesprotocol.html
     """
-
-    NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/',
-                  'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
-                  'ns0': 'http://www.openarchives.org/OAI/2.0/'}
-
+    record_encoding = None
+    DEFAULT_ENCODING = 'UTF-8'
+    RESUMPTION = '&resumptionToken='
     RECORDS_URL = '?verb=ListRecords'
-
     META_PREFIX_DATE = '&metadataPrefix=oai_dc&from={}'
 
-    RESUMPTION = '&resumptionToken='
+    # Override these variable is required
+    namespaces = {
+        'dc': 'http://purl.org/dc/elements/1.1/',
+        'ns0': 'http://www.openarchives.org/OAI/2.0/',
+        'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
+    }
 
-    DEFAULT_ENCODING = 'UTF-8'
-
-    record_encoding = None
-
-    def __init__(self, name, base_url, timezone_granularity=False, timeout=0.5, property_list=None, approved_sets=None):
-        self.NAME = name
-        self.base_url = base_url
-        self.property_list = property_list or ['date', 'language', 'type']
-        self.approved_sets = approved_sets
-        self.timeout = timeout
-        self.timezone_granularity = timezone_granularity
-
-    @property
-    def name(self):
-        return self.NAME
-
-    @property
-    def namespaces(self):
-        return self.NAMESPACES
+    timeout = 0.5
+    approved_sets = None
+    timezone_granularity = False
+    property_list = ['date', 'language', 'type']
 
     @property
     def schema(self):
@@ -129,11 +173,11 @@ class OAIHarvester(XMLHarvester):
         rawdoc_list = []
         for record in records:
             doc_id = record.xpath(
-                'ns0:header/ns0:identifier', namespaces=self.NAMESPACES)[0].text
+                'ns0:header/ns0:identifier', namespaces=self.namespaces)[0].text
             record = etree.tostring(record, encoding=self.record_encoding)
             rawdoc_list.append(RawDocument({
                 'doc': record,
-                'source': util.copy_to_unicode(self.name),
+                'source': util.copy_to_unicode(self.short_name),
                 'docID': util.copy_to_unicode(doc_id),
                 'filetype': 'xml'
             }))
@@ -147,11 +191,11 @@ class OAIHarvester(XMLHarvester):
 
         records = doc.xpath(
             '//ns0:record',
-            namespaces=self.NAMESPACES
+            namespaces=self.namespaces
         )
         token = doc.xpath(
             '//ns0:resumptionToken/node()',
-            namespaces=self.NAMESPACES
+            namespaces=self.namespaces
         )
         if len(token) == 1:
             base_url = url.replace(
@@ -169,7 +213,7 @@ class OAIHarvester(XMLHarvester):
         if self.approved_sets:
             set_spec = result.xpath(
                 'ns0:header/ns0:setSpec/node()',
-                namespaces=self.NAMESPACES
+                namespaces=self.namespaces
             )
             # check if there's an intersection between the approved sets and the
             # setSpec list provided in the record. If there isn't, don't normalize.
@@ -177,7 +221,7 @@ class OAIHarvester(XMLHarvester):
                 logger.info('Series {} not in approved list'.format(set_spec))
                 return None
 
-        status = result.xpath('ns0:header/@status', namespaces=self.NAMESPACES)
+        status = result.xpath('ns0:header/@status', namespaces=self.namespaces)
         if status and status[0] == 'deleted':
             logger.info('Deleted record, not normalizing {}'.format(raw_doc['docID']))
             return None
