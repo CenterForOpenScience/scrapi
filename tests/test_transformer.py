@@ -13,6 +13,7 @@ from .utils import TEST_SCHEMA, TEST_NAMESPACES, TEST_XML_DOC
 class TestHarvester(XMLHarvester):
     long_name = 'TEST'
     short_name = 'TEST'
+    url = 'TEST'
     schema = TEST_SCHEMA
     namespaces = TEST_NAMESPACES
 

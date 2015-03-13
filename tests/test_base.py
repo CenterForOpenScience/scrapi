@@ -54,6 +54,7 @@ class TestHarvesterBase(object):
             class TestHarvester(BaseHarvester):
                 long_name = 'test'
                 file_format = 'test'
+                url = 'test'
                 harvest = lambda x: x
                 normalize = lambda x: x
 
@@ -66,6 +67,7 @@ class TestHarvesterBase(object):
             class TestHarvester(BaseHarvester):
                 short_name = 'test'
                 file_format = 'test'
+                url = 'test'
                 harvest = lambda x: x
                 normalize = lambda x: x
 
@@ -78,6 +80,7 @@ class TestHarvesterBase(object):
             class TestHarvester(BaseHarvester):
                 long_name = 'test'
                 short_name = 'test'
+                url='test'
                 harvest = lambda x: x
                 normalize = lambda x: x
 
@@ -90,6 +93,7 @@ class TestHarvesterBase(object):
             class TestHarvester(BaseHarvester):
                 long_name = 'test'
                 short_name = 'test'
+                url = 'test'
                 file_format = 'test'
                 normalize = lambda x: x
 
@@ -102,6 +106,7 @@ class TestHarvesterBase(object):
             class TestHarvester(BaseHarvester):
                 long_name = 'test'
                 short_name = 'test'
+                url = 'test'
                 file_format = 'test'
                 harvest = lambda x: x
 

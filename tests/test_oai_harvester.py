@@ -10,6 +10,7 @@ class TestHarvester(OAIHarvester):
     base_url = ''
     long_name = 'Test'
     short_name = 'test'
+    url = 'test'
     property_list = ['type', 'source', 'publisher', 'format', 'date']
 
     def harvest(self, days_back=1):
