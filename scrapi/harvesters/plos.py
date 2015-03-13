@@ -18,6 +18,7 @@ Sample API query: http://api.plos.org/search?q=publication_date:[2015-01-30T00:0
 
 from __future__ import unicode_literals
 
+import logging
 from datetime import datetime, timedelta
 
 from lxml import etree
@@ -27,6 +28,8 @@ from nameparser import HumanName
 from scrapi import requests
 from scrapi.base import BaseHarvester
 from scrapi.linter.document import RawDocument, NormalizedDocument
+
+logger = logging.getLogger(__name__)
 
 try:
     from scrapi.settings import PLOS_API_KEY
