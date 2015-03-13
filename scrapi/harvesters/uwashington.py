@@ -14,6 +14,8 @@ from scrapi.base import OAIHarvester
 class UWashingtonHarvester(OAIHarvester):
     short_name = 'uwashington'
     long_name = 'ResearchWorks @ University of Washington'
+    url = 'http://digitalcommons.wayne.edu'
+
     base_url = 'http://digital.lib.washington.edu/dspace-oai/request'
     property_list = [
         'type', 'source', 'publisher', 'format', 'date',

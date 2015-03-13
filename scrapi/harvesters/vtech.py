@@ -14,6 +14,8 @@ from scrapi.base import OAIHarvester
 class VTechHarvester(OAIHarvester):
     short_name = 'vtech'
     long_name = 'Virginia Tech VTechWorks'
+    url = 'https://vtechworks.lib.vt.edu'
+
     base_url = 'http://vtechworks.lib.vt.edu/oai/request'
     property_list = [
         'type', 'source', 'publisher', 'format', 'date',

@@ -73,6 +73,10 @@ class BaseHarvester(object):
         raise NotImplementedError
 
     @abc.abstractproperty
+    def url(self):
+        raise NotImplementedError
+
+    @abc.abstractproperty
     def file_format(self):
         raise NotImplementedError
 

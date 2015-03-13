@@ -23,6 +23,8 @@ from scrapi.base import BaseHarvester
 class CrossRefHarvester(BaseHarvester):
     short_name = 'crossref'
     long_name = 'CrossRef'
+    url = 'http://www.crossref.org'
+
     file_format = 'json'
 
     DEFAULT_ENCODING = 'UTF-8'

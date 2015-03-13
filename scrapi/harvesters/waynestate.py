@@ -14,6 +14,8 @@ from scrapi.base import OAIHarvester
 class WayneStateHarvester(OAIHarvester):
     short_name = 'waynestate'
     long_name = 'Digital Commons @ Wayne State'
+    url = 'http://digitalcommons.wayne.edu'
+
     base_url = 'http://digitalcommons.wayne.edu/do/oai/'
     property_list = [
         'type', 'source', 'publisher', 'format',

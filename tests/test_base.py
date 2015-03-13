@@ -59,6 +59,7 @@ class TestHarvesterBase(object):
             class TestHarvester(BaseHarvester):
                 long_name = 'test'
                 file_format = 'test'
+                url = 'test'
                 harvest = lambda x: x
                 normalize = lambda x: x
 
@@ -71,6 +72,7 @@ class TestHarvesterBase(object):
             class TestHarvester(BaseHarvester):
                 short_name = 'test'
                 file_format = 'test'
+                url = 'test'
                 harvest = lambda x: x
                 normalize = lambda x: x
 
@@ -78,11 +80,25 @@ class TestHarvesterBase(object):
 
         assert e.value.message == self.ERR_MSG.format('long_name')
 
+    def test_requires_url(self):
+        with pytest.raises(TypeError) as e:
+            class TestHarvester(BaseHarvester):
+                short_name = 'test'
+                long_name = 'test'
+                file_format = 'test'
+                harvest = lambda x: x
+                normalize = lambda x: x
+
+            TestHarvester()
+
+        assert e.value.message == self.ERR_MSG.format('url')
+
     def test_requires_file_format(self):
         with pytest.raises(TypeError) as e:
             class TestHarvester(BaseHarvester):
                 long_name = 'test'
                 short_name = 'test'
+                url='test'
                 harvest = lambda x: x
                 normalize = lambda x: x
 
@@ -95,6 +111,7 @@ class TestHarvesterBase(object):
             class TestHarvester(BaseHarvester):
                 long_name = 'test'
                 short_name = 'test'
+                url = 'test'
                 file_format = 'test'
                 normalize = lambda x: x
 
@@ -107,6 +124,7 @@ class TestHarvesterBase(object):
             class TestHarvester(BaseHarvester):
                 long_name = 'test'
                 short_name = 'test'
+                url = 'test'
                 file_format = 'test'
                 harvest = lambda x: x
 

@@ -10,7 +10,9 @@ from scrapi.base import OAIHarvester
 
 class PubMedHarvester(OAIHarvester):
     short_name = 'pubmed'
-    long_name = 'PubMed'
+    long_name = 'PubMed Central'
+    url = 'http://www.ncbi.nlm.nih.gov/pmc/'
+
     base_url = 'http://www.pubmedcentral.nih.gov/oai/oai.cgi'
     property_list = [
         'type', 'source', 'publisher', 'rights',

@@ -31,6 +31,8 @@ class SciTechHarvester(XMLHarvester):
     file_format = 'xml'
     short_name = 'scitech'
     long_name = 'DoE\'s SciTech Connect Database'
+    url = 'http://www.osti.gov/scitech'
+
     base_url = 'https://www.osti.gov/scitech/scitechxml'
 
     namespaces = {

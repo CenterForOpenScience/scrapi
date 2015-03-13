@@ -12,9 +12,9 @@ from scrapi.base.schemas import BASEXMLSCHEMA
 
 
 class DoepagesHarvester(XMLHarvester):
-
     short_name = 'doepages'
     long_name = 'Department of Energy Pages'
+    url = 'http://www.osti.gov/pages/'
 
     def harvest(self, days_back=1):
         start_date = date.today() - timedelta(days_back)

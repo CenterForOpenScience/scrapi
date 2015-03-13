@@ -14,7 +14,8 @@ from scrapi.base import OAIHarvester
 
 class UPennsylvaniaHarvester(OAIHarvester):
     short_name = 'upennsylvania'
-    long_name = 'University of Pennsylvania'
+    long_name = 'University of Pennsylvania Scholarly Commons'
+    url = 'http://repository.upenn.edu'
     base_url = 'http://repository.upenn.edu/do/oai/'
     property_list = [
         'type', 'publisher', 'format', 'date',

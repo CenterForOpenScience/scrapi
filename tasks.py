@@ -1,12 +1,13 @@
 import logging
 import platform
 
+import urllib
 from invoke import run, task
 
+import scrapi.harvesters  # noqa
 from scrapi import linter
 from scrapi import registry
 from scrapi import settings
-
 
 logger = logging.getLogger()
 
@@ -127,3 +128,23 @@ def lint(name):
     except Exception as e:
         print('Harvester {} raise the following exception'.format(harvester.short_name))
         print(e)
+
+
+@task
+def provider_map():
+    from scrapi.processing.elasticsearch import es
+
+    for harvester_name, harvester in registry.items():
+        es.index(
+            'share_providers',
+            harvester.short_name,
+            body={
+                'favicon': 'data:image/png;base64,' + urllib.quote(open("img/favicons/{}_favicon.ico".format(harvester.short_name), "rb").read().encode('base64')),
+                'short_name': harvester.short_name,
+                'long_name': harvester.long_name,
+                'url': harvester.url
+            },
+            id=harvester.short_name,
+            refresh=True
+        )
+    print(es.count('share_providers', body={'query': {'match_all': {}}})['count'])

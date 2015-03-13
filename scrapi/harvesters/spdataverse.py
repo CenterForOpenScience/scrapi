@@ -13,6 +13,8 @@ from scrapi.base import OAIHarvester
 class SPDataverse(OAIHarvester):
     short_name = 'spdataverse'
     long_name = 'Scholars Portal dataverse'
+    url = 'http://dataverse.scholarsportal.info/dvn/'
+
     base_url = 'http://dataverse.scholarsportal.info/dvn/OAIHandler'
     property_list = [
         'type', 'source', 'publisher', 'format', 'relation',

@@ -28,7 +28,9 @@ logger = logging.getLogger(__name__)
 
 class DataOneHarvester(BaseHarvester):
     short_name = 'dataone'
-    long_name = 'DataONE'
+    long_name = 'DataONE: Data Observation Network for Earth'
+    url = 'https://www.dataone.org/'
+
     file_format = 'xml'
 
     DEFAULT_ENCODING = 'UTF-8'
