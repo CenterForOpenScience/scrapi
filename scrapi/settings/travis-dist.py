@@ -13,6 +13,8 @@ SENTRY_DSN = None
 
 USE_FLUENTD = False
 
+PLOS_API_KEY = None
+
 CASSANDRA_URI = ['127.0.0.1']
 CASSANDRA_KEYSPACE = 'scrapi'
 
