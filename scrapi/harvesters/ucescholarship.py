@@ -12,7 +12,7 @@ from scrapi.base import OAIHarvester
 
 
 class UCeScholarship(OAIHarvester):
-    name = 'ucescholarship'
+    short_name = 'ucescholarship'
     long_name = 'eScholarship @ University of California'
     base_url = 'http://www.escholarship.org/uc/oai'
     property_list = [
