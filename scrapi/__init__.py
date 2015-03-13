@@ -8,9 +8,6 @@ class _Registry(dict):
     def __init__(self):
         super(_Registry, self).__init__()
 
-    def collect_harvesters(self):
-        pass
-
     def __getitem__(self, key):
         try:
             return super(_Registry, self).__getitem__(key)
