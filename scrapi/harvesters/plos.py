@@ -29,9 +29,10 @@ from scrapi.base import BaseHarvester
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
 try:
-    from settings import PLOS_API_KEY
-except ImportError:
     from scrapi.settings import PLOS_API_KEY
+except ImportError:
+    PLOS_API_KEY = None
+    logger.error('No PLOS_API_KEY found, PLoS will always return []')
 
 
 class PlosHarvester(BaseHarvester):
@@ -43,9 +44,6 @@ class PlosHarvester(BaseHarvester):
 
     MAX_ROWS_PER_REQUEST = 999
     BASE_URL = 'http://api.plos.org/search?q=publication_date:'
-
-    def __init__(self):
-        assert PLOS_API_KEY, 'PLoS requires an API key'
 
     def build_query(self, days_back):
         to_date = datetime.utcnow()
@@ -81,6 +79,9 @@ class PlosHarvester(BaseHarvester):
             current_row += self.MAX_ROWS_PER_REQUEST
 
     def harvest(self, days_back=3):
+        if not PLOS_API_KEY:
+            return []
+
         return [
             RawDocument({
                 'filetype': 'xml',
