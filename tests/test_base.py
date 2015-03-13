@@ -45,6 +45,12 @@ class TestHarvesterMeta(object):
             }
         }
 
+    def test_raises_key_error(self, mock_registry):
+        with pytest.raises(KeyError) as e:
+            mock_registry['FabianVF']
+        assert e.value.message == 'No harvester named "FabianVF"'
+
+
 
 class TestHarvesterBase(object):
     ERR_MSG = 'Error when calling the metaclass bases\n    Can\'t instantiate abstract class TestHarvester with abstract methods {}'
