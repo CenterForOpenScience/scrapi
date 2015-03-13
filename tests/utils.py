@@ -15,6 +15,20 @@ RAW_DOC = {
     'source': 'tests'
 }
 
+NORMALIZED_DOC = {
+    'title': 'No',
+    'description': 'No',
+    'contributors': [],
+    'tags': [],
+    'source': 'No',
+    'dateUpdated': 'No',
+    'id': {
+        'doi': 'No',
+        'url': 'No',
+        'serviceID': 'someID',
+    }
+}
+
 RECORD = {
     'title': 'Using Table Stable Carbon in Gold and STAR Isotopes',
     'contributors': [
