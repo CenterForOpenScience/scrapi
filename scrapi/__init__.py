@@ -1,6 +1,6 @@
 from celery.schedules import crontab
 
-from scrapi import linter, requests  # noqa
+from scrapi import linter, requests, database  # noqa
 
 
 class _Registry(dict):
