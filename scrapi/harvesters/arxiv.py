@@ -11,7 +11,7 @@ from scrapi.base import OAIHarvester
 
 
 class ArxivHarvester(OAIHarvester):
-    short_name = 'arxiv'
+    short_name = 'arxiv_oai'
     long_name = 'ArXiv'
     url = 'http://arxiv.org'
     timeout = 30
