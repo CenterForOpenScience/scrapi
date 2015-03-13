@@ -147,3 +147,4 @@ def provider_map():
             id=harvester.short_name,
             refresh=True
         )
+    print(es.count('share_providers', body={'query': {'match_all': {}}})['count'])
