@@ -6,7 +6,6 @@ from invoke import run, task
 from scrapi import linter
 from scrapi import registry
 from scrapi import settings
-import scrapi.harvesters  # noqa
 
 
 logger = logging.getLogger()
