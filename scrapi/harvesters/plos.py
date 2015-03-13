@@ -18,6 +18,7 @@ Sample API query: http://api.plos.org/search?q=publication_date:[2015-01-30T00:0
 
 from __future__ import unicode_literals
 
+import logging
 from datetime import datetime, timedelta
 
 from lxml import etree
@@ -28,10 +29,13 @@ from scrapi import requests
 from scrapi.base import BaseHarvester
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
+logger = logging.getLogger(__name__)
+
 try:
-    from settings import PLOS_API_KEY
-except ImportError:
     from scrapi.settings import PLOS_API_KEY
+except ImportError:
+    PLOS_API_KEY = None
+    logger.error('No PLOS_API_KEY found, PLoS will always return []')
 
 
 class PlosHarvester(BaseHarvester):
@@ -43,13 +47,8 @@ class PlosHarvester(BaseHarvester):
 
     DEFAULT_ENCODING = 'UTF-8'
 
-    record_encoding = None
-
     MAX_ROWS_PER_REQUEST = 999
     BASE_URL = 'http://api.plos.org/search?q=publication_date:'
-
-    def __init__(self):
-        assert PLOS_API_KEY, 'PLoS requires an API key'
 
     def build_query(self, days_back):
         to_date = datetime.utcnow()
@@ -85,11 +84,14 @@ class PlosHarvester(BaseHarvester):
             current_row += self.MAX_ROWS_PER_REQUEST
 
     def harvest(self, days_back=3):
+        if not PLOS_API_KEY:
+            return []
+
         return [
             RawDocument({
-                'doc': etree.tostring(row),
-                'source': NAME,
                 'filetype': 'xml',
+                'source': self.short_name,
+                'doc': etree.tostring(row),
                 'docID': row.xpath("str[@name='id']")[0].text.decode('utf-8'),
             })
             for row in
@@ -100,17 +102,16 @@ class PlosHarvester(BaseHarvester):
 
     def copy_to_unicode(self, element):
 
-        encoding = record_encoding or DEFAULT_ENCODING
         element = ''.join(element)
         if isinstance(element, unicode):
             return element
         else:
-            return unicode(element, encoding=encoding)
+            return unicode(element, encoding=DEFAULT_ENCODING)
 
     def get_ids(self, raw_doc, record):
         doi = record.xpath('//str[@name="id"]/node()')[0]
         ids = {
-            'doi': copy_to_unicode(doi),
+            'doi': self.copy_to_unicode(doi),
             'serviceID': raw_doc.get('docID'),
             'url': 'http://dx.doi.org/{}'.format(doi)
         }
@@ -143,7 +144,7 @@ class PlosHarvester(BaseHarvester):
 
         # ensure everything is in unicode
         for key, value in properties.iteritems():
-            properties[key] = copy_to_unicode(value)
+            properties[key] = self.copy_to_unicode(value)
 
         return properties
 

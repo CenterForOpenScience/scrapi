@@ -142,7 +142,7 @@ class ClinicalTrialsHarvester(XMLHarvester):
                 doc_id = doc.xpath('//nct_id/node()')[0]
                 xml_list.append(RawDocument({
                     'doc': record,
-                    'source': self.name,
+                    'source': self.short_name,
                     'docID': self.copy_to_unicode(doc_id),
                     'filetype': 'xml',
                 }))

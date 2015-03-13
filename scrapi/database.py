@@ -7,7 +7,6 @@ from cqlengine import management
 from cassandra.cluster import NoHostAvailable
 
 from celery.signals import worker_process_init
-from celery.signals import worker_process_shutdown
 
 from scrapi import settings
 
@@ -68,10 +67,8 @@ class DatabaseManager(object):
         return model
 
     def celery_setup(self, *args, **kwargs):
-        self.setup()
-
-    def celery_teardown(self, *arg, **kwargs):
         self.tear_down()
+        self.setup()
 
 
 _manager = DatabaseManager()
@@ -79,5 +76,5 @@ _manager = DatabaseManager()
 setup = _manager.setup
 tear_down = _manager.tear_down
 register_model = _manager.register_model
+
 worker_process_init.connect(_manager.celery_setup)
-worker_process_shutdown.connect(_manager.celery_teardown)

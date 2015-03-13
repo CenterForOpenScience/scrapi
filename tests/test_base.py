@@ -2,7 +2,7 @@ import pytest
 
 from celery.schedules import crontab
 
-from scrapi import _Registry
+from scrapi.base import _Registry
 from scrapi.base import BaseHarvester
 from scrapi.base import HarvesterMeta
 
@@ -45,9 +45,14 @@ class TestHarvesterMeta(object):
             }
         }
 
+    def test_raises_key_error(self, mock_registry):
+        with pytest.raises(KeyError) as e:
+            mock_registry['FabianVF']
+        assert e.value.message == 'No harvester named "FabianVF"'
+
 
 class TestHarvesterBase(object):
-    ERR_MSG = 'Error when calling the metaclass bases\n    Can\'t instantiate abstract class TestHarvester with abstract methods {}'
+    ERR_MSG = 'Can\'t instantiate abstract class TestHarvester with abstract methods {}'
 
     def test_requires_short_name(self):
         with pytest.raises(TypeError) as e:
@@ -60,7 +65,7 @@ class TestHarvesterBase(object):
 
             TestHarvester()
 
-        assert e.value.message == 'Can\'t instantiate abstract class TestHarvester with abstract methods short_name'
+        assert e.value.message == self.ERR_MSG.format('short_name')
 
     def test_requires_long_name(self):
         with pytest.raises(TypeError) as e:
