@@ -2,17 +2,18 @@
 from __future__ import unicode_literals
 
 import abc
-import time
 import logging
-from dateutil.parser import parse
 from datetime import date, timedelta
 
-import requests
 from lxml import etree
-from nameparser import HumanName
+from celery.schedules import crontab
 
 from scrapi import util
+from scrapi import requests
 from scrapi.linter import lint
+from scrapi.base.schemas import OAISCHEMA
+from scrapi.base.helpers import updated_schema
+from scrapi.base.transformer import XMLTransformer
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
 logging.basicConfig(level=logging.INFO)
@@ -20,27 +21,95 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
+class _Registry(dict):
+
+    def __init__(self):
+        super(_Registry, self).__init__()
+
+    def __getitem__(self, key):
+        try:
+            return super(_Registry, self).__getitem__(key)
+        except KeyError:
+            raise KeyError('No harvester named "{}"'.format(key))
+
+    @property
+    def beat_schedule(self):
+        return {
+            'run_{}'.format(name): {
+                'args': [name],
+                'schedule': crontab(**inst.run_at),
+                'task': 'scrapi.tasks.run_harvester',
+            }
+            for name, inst
+            in self.items()
+        }
+
+registry = _Registry()
+
+
+class HarvesterMeta(abc.ABCMeta):
+    def __init__(cls, name, bases, dct):
+        super(HarvesterMeta, cls).__init__(name, bases, dct)
+        if len(cls.__abstractmethods__) == 0:
+            registry[cls.short_name] = cls()
+        else:
+            logger.info('Class {} not added to registry'.format(cls.__name__))
+
+
 class BaseHarvester(object):
     """ This is a base class that all harvesters should inheret from
 
-    Defines the copy to unicde method, which is useful for getting standard
+    Defines the copy to unicode method, which is useful for getting standard
     unicode out of xml results.
     """
-    __metaclass__ = abc.ABCMeta
+    __metaclass__ = HarvesterMeta
+
+    @abc.abstractproperty
+    def short_name(self):
+        raise NotImplementedError
+
+    @abc.abstractproperty
+    def long_name(self):
+        raise NotImplementedError
+
+    @abc.abstractproperty
+    def url(self):
+        raise NotImplementedError
+
+    @abc.abstractproperty
+    def file_format(self):
+        raise NotImplementedError
 
     @abc.abstractmethod
     def harvest(self, days_back=1):
-        pass
+        raise NotImplementedError
 
     @abc.abstractmethod
     def normalize(self, raw_doc):
-        pass
+        raise NotImplementedError
 
     def lint(self):
         return lint(self.harvest, self.normalize)
 
+    @property
+    def run_at(self):
+        return {
+            'hour': 22,
+            'minute': 59,
+            'day_of_week': 'mon-fri',
+        }
 
-class OAIHarvester(BaseHarvester):
+
+class XMLHarvester(BaseHarvester, XMLTransformer):
+    file_format = 'xml'
+
+    def normalize(self, raw_doc):
+        transformed = self.transform(etree.XML(raw_doc['doc']))
+        transformed['source'] = self.short_name
+        return NormalizedDocument(transformed)
+
+
+class OAIHarvester(XMLHarvester):
     """ Create a harvester with a oai_dc namespace, that will harvest
     documents within a certain date range
 
@@ -51,28 +120,47 @@ class OAIHarvester(BaseHarvester):
     For more information, see the OAI PMH specification:
     http://www.openarchives.org/OAI/openarchivesprotocol.html
     """
-
-    NAMESPACES = {'dc': 'http://purl.org/dc/elements/1.1/',
-                  'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
-                  'ns0': 'http://www.openarchives.org/OAI/2.0/'}
-
+    record_encoding = None
+    DEFAULT_ENCODING = 'UTF-8'
+    RESUMPTION = '&resumptionToken='
     RECORDS_URL = '?verb=ListRecords'
-
     META_PREFIX_DATE = '&metadataPrefix=oai_dc&from={}'
 
-    RESUMPTION = '&resumptionToken='
+    # Override these variable is required
+    namespaces = {
+        'dc': 'http://purl.org/dc/elements/1.1/',
+        'ns0': 'http://www.openarchives.org/OAI/2.0/',
+        'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
+    }
 
-    DEFAULT_ENCODING = 'UTF-8'
+    timeout = 0.5
+    approved_sets = None
+    timezone_granularity = False
+    property_list = ['date', 'language', 'type']
 
-    record_encoding = None
+    @property
+    def schema(self):
+        properties = {
+            'properties': {
+                item: (
+                    '//dc:{}/node()'.format(item),
+                    '//ns0:{}/node()'.format(item),
+                    self.resolve_property
+                ) for item in self.property_list
+            }
+        }
+        return updated_schema(OAISCHEMA, properties)
 
-    def __init__(self, name, base_url, timezone_granularity=False, timeout=0.5, property_list=None, approved_sets=None):
-        self.name = name
-        self.base_url = base_url
-        self.property_list = property_list or ['date', 'language', 'type']
-        self.approved_sets = approved_sets
-        self.timeout = timeout
-        self.timezone_granularity = timezone_granularity
+    def resolve_property(self, dc, ns0):
+        if isinstance(dc, list) and isinstance(ns0, list):
+            ret = dc.extend(ns0)
+            return [val for val in ret if val]
+        elif not dc:
+            return ns0
+        elif not ns0:
+            return dc
+        else:
+            return [dc, ns0]
 
     def harvest(self, days_back=1):
 
@@ -89,11 +177,11 @@ class OAIHarvester(BaseHarvester):
         rawdoc_list = []
         for record in records:
             doc_id = record.xpath(
-                'ns0:header/ns0:identifier', namespaces=self.NAMESPACES)[0].text
+                'ns0:header/ns0:identifier', namespaces=self.namespaces)[0].text
             record = etree.tostring(record, encoding=self.record_encoding)
             rawdoc_list.append(RawDocument({
                 'doc': record,
-                'source': util.copy_to_unicode(self.name),
+                'source': util.copy_to_unicode(self.short_name),
                 'docID': util.copy_to_unicode(doc_id),
                 'filetype': 'xml'
             }))
@@ -101,21 +189,19 @@ class OAIHarvester(BaseHarvester):
         return rawdoc_list
 
     def get_records(self, url, start_date, resump_token=''):
-        logger.info('Requesting url for harvesting: {}'.format(url))
-        data = requests.get(url)
+        data = requests.get(url, throttle=self.timeout)
 
         doc = etree.XML(data.content)
 
         records = doc.xpath(
             '//ns0:record',
-            namespaces=self.NAMESPACES
+            namespaces=self.namespaces
         )
         token = doc.xpath(
             '//ns0:resumptionToken/node()',
-            namespaces=self.NAMESPACES
+            namespaces=self.namespaces
         )
         if len(token) == 1:
-            time.sleep(self.timeout)
             base_url = url.replace(
                 self.META_PREFIX_DATE.format(start_date), '')
             base_url = base_url.replace(self.RESUMPTION + resump_token, '')
@@ -124,123 +210,6 @@ class OAIHarvester(BaseHarvester):
 
         return records
 
-    def get_contributors(self, result):
-        """ this grabs all of the fields marked contributors
-        or creators in the OAI namespaces """
-
-        contributors = result.xpath(
-            '//dc:contributor/node()',
-            namespaces=self.NAMESPACES
-        )
-        creators = result.xpath(
-            '//dc:creator/node()',
-            namespaces=self.NAMESPACES
-        )
-
-        all_contributors = contributors + creators
-
-        contributor_list = []
-        for person in all_contributors:
-            name = HumanName(person)
-            contributor = {
-                'prefix': name.title,
-                'given': name.first,
-                'middle': name.middle,
-                'family': name.last,
-                'suffix': name.suffix,
-                'email': '',
-                'ORCID': ''
-            }
-            contributor_list.append(contributor)
-
-        return contributor_list
-
-    def get_tags(self, result):
-        tags = result.xpath('//dc:subject/node()', namespaces=self.NAMESPACES)
-
-        for tag in tags:
-            if ', ' in tag:
-                tags.remove(tag)
-                tags += tag.split(',')
-
-        return [util.copy_to_unicode(tag.lower().strip()) for tag in tags]
-
-    def get_ids(self, result, doc):
-        """
-        Gather the DOI and url from identifiers, if possible.
-        Tries to save the DOI alone without a url extension.
-        Tries to save a link to the original content at the source,
-        instead of direct to a PDF, which is usually linked with viewcontent.cgi?
-        in the url field
-        """
-        serviceID = doc.get('docID')
-        identifiers = result.xpath(
-            '//dc:identifier/node()', namespaces=self.NAMESPACES)
-        url = ''
-        doi = ''
-        for item in identifiers:
-            if 'doi' in item or 'DOI' in item:
-                doi = item
-                doi = doi.replace('doi:', '')
-                doi = doi.replace('DOI:', '')
-                doi = doi.replace('http://dx.doi.org/', '')
-                doi = doi.strip(' ')
-            if 'http://' in item or 'https://' in item:
-                if 'viewcontent' not in item:
-                    url = item
-
-        return {
-            'serviceID': serviceID,
-            'url': util.copy_to_unicode(url),
-            'doi': util.copy_to_unicode(doi)
-        }
-
-    def get_properties(self, result, property_list):
-        """ property_list should be all of the properties in your particular
-        OAI harvester that does not fit into the standard schema.
-
-        When you create a class, pass a list of properties to be
-        gathered in either the header or main body of the document,
-        that will then be included in the properties section """
-
-        properties = {}
-        for item in property_list:
-            prop = result.xpath(
-                '//dc:{}/node()'.format(item),
-                namespaces=self.NAMESPACES
-            )
-            prop.extend(result.xpath(
-                '//ns0:{}/node()'.format(item),
-                namespaces=self.NAMESPACES
-            ))
-
-            properties[item] = [util.copy_to_unicode(element) for element in prop]
-
-        return properties
-
-    def get_date_updated(self, result):
-        dateupdated = result.xpath(
-            '//ns0:header/ns0:datestamp/node()',
-            namespaces=self.NAMESPACES
-        )
-        date_updated = parse(dateupdated[0]).isoformat()
-        return util.copy_to_unicode(date_updated)
-
-    def get_title(self, result):
-        title = result.xpath(
-            '//dc:title/node()',
-            namespaces=self.NAMESPACES
-        ) or ['']
-        return util.copy_to_unicode(title[0])
-
-    def get_description(self, result):
-        description = result.xpath(
-            '//dc:description/node()',
-            namespaces=self.NAMESPACES
-        ) or ['']
-
-        return util.copy_to_unicode(description[0])
-
     def normalize(self, raw_doc):
         str_result = raw_doc.get('doc')
         result = etree.XML(str_result)
@@ -248,7 +217,7 @@ class OAIHarvester(BaseHarvester):
         if self.approved_sets:
             set_spec = result.xpath(
                 'ns0:header/ns0:setSpec/node()',
-                namespaces=self.NAMESPACES
+                namespaces=self.namespaces
             )
             # check if there's an intersection between the approved sets and the
             # setSpec list provided in the record. If there isn't, don't normalize.
@@ -256,20 +225,9 @@ class OAIHarvester(BaseHarvester):
                 logger.info('Series {} not in approved list'.format(set_spec))
                 return None
 
-        normalized = {
-            'source': self.name,
-            'title': self.get_title(result),
-            'description': self.get_description(result),
-            'id': self.get_ids(result, raw_doc),
-            'contributors': self.get_contributors(result),
-            'tags': self.get_tags(result),
-            'properties': self.get_properties(result, self.property_list),
-            'dateUpdated': self.get_date_updated(result)
-        }
-
-        status = result.xpath('ns0:header/@status', namespaces=self.NAMESPACES)
+        status = result.xpath('ns0:header/@status', namespaces=self.namespaces)
         if status and status[0] == 'deleted':
-            logger.info('Deleted record, not normalizing {}'.format(normalized['id']['serviceID']))
+            logger.info('Deleted record, not normalizing {}'.format(raw_doc['docID']))
             return None
 
-        return NormalizedDocument(normalized)
+        return super(OAIHarvester, self).normalize(raw_doc)

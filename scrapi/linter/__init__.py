@@ -9,14 +9,14 @@ def is_serializable(dill, name=''):
         if isinstance(val, dict):
             is_serializable(val, name=name + ' ' + key)
         else:
-            is_pickable(val, name=name + ' ' + key)
+            is_picklable(val, name=name + ' ' + key)
             json.dumps(val)
 
 
-def is_pickable(val, name='root'):
+def is_picklable(val, name='root'):
     try:
         pickle.dumps(val)
-    except TypeError:
+    except (TypeError, pickle.PicklingError):
         if isinstance(val, list):
             val = type(val[0])
         else:
@@ -52,7 +52,7 @@ def lint(harvest, normalize):
         if not isinstance(doc, NormalizedDocument) and doc:
             raise TypeError("{} does not return type NormalizedDocument".format(harvest))
         if doc and doc['id']['serviceID'] != raw_doc['docID']:
-            raise ValueError('Serivce ID {} does not match {}'.format(doc['id']['serviceID'], raw_doc['docID']))
+            raise ValueError('Service ID {} does not match {}'.format(doc['id']['serviceID'], raw_doc['docID']))
         if doc and not doc['id']['url']:
             raise ValueError('No url provided')
 

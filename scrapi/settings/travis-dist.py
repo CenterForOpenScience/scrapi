@@ -2,16 +2,12 @@ DEBUG = False
 
 BROKER_URL = 'amqp://guest@localhost'
 
-STORAGE_METHOD = 'disk'
-ARCHIVE_DIRECTORY = 'archive/'
-RECORD_DIRECTORY = 'records'
-
 RECORD_HTTP_TRANSACTIONS = False
 
 CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
 
-RAW_PROCESSING = ['storage', 'cassandra']
-NORMALIZED_PROCESSING = ['storage', 'elasticsearch', 'cassandra']
+RAW_PROCESSING = ['cassandra']
+NORMALIZED_PROCESSING = ['elasticsearch', 'cassandra']
 
 SENTRY_DSN = None
 

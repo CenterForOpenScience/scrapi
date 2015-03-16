@@ -1,11 +1,13 @@
 import logging
 import platform
 
+import urllib
 from invoke import run, task
 
+import scrapi.harvesters  # noqa
 from scrapi import linter
+from scrapi import registry
 from scrapi import settings
-from scrapi.util import import_harvester
 
 logger = logging.getLogger()
 
@@ -60,7 +62,9 @@ def requirements():
 
 @task
 def beat():
-    run('celery -A scrapi.tasks beat --loglevel info')
+    from scrapi.tasks import app
+    app.conf['CELERYBEAT_SCHEDULE'] = registry.beat_schedule
+    app.Beat().run()
 
 
 @task
@@ -74,7 +78,7 @@ def harvester(harvester_name, async=False, days=1):
     settings.CELERY_ALWAYS_EAGER = not async
     from scrapi.tasks import run_harvester
 
-    if not settings.MANIFESTS.get(harvester_name):
+    if not registry.get(harvester_name):
         raise ValueError('No such harvesters {}'.format(harvester_name))
 
     run_harvester.delay(harvester_name, days_back=days)
@@ -86,7 +90,7 @@ def harvesters(async=False, days=1):
     from scrapi.tasks import run_harvester
 
     exceptions = []
-    for harvester_name in settings.MANIFESTS.keys():
+    for harvester_name in registry.keys():
         try:
             run_harvester.delay(harvester_name, days_back=days)
         except Exception as e:
@@ -112,16 +116,35 @@ def check_archive(harvester=None, reprocess=False, async=False, days=None):
 
 @task
 def lint_all():
-    for name in settings.MANIFESTS.keys():
+    for name in registry.keys():
         lint(name)
 
 
 @task
 def lint(name):
-    manifest = settings.MANIFESTS[name]
-    harvester = import_harvester(name)
+    harvester = registry[name]
     try:
         linter.lint(harvester.harvest, harvester.normalize)
     except Exception as e:
-        print 'Harvester {} raise the following exception'.format(manifest['longName'])
-        print e
+        print('Harvester {} raise the following exception'.format(harvester.short_name))
+        print(e)
+
+
+@task
+def provider_map():
+    from scrapi.processing.elasticsearch import es
+
+    for harvester_name, harvester in registry.items():
+        es.index(
+            'share_providers',
+            harvester.short_name,
+            body={
+                'favicon': 'data:image/png;base64,' + urllib.quote(open("img/favicons/{}_favicon.ico".format(harvester.short_name), "rb").read().encode('base64')),
+                'short_name': harvester.short_name,
+                'long_name': harvester.long_name,
+                'url': harvester.url
+            },
+            id=harvester.short_name,
+            refresh=True
+        )
+    print(es.count('share_providers', body={'query': {'match_all': {}}})['count'])
