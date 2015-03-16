@@ -43,16 +43,21 @@ class CassandraProcessor(BaseProcessor):
         documents = DocumentModel.objects(docID=docID, source=source)
         if documents:
             document = documents[0]
-            # Create new version, get UUID of new version, update
-            versions = document.versions
-            if document.url:
+            if self.different(dict(document), dict(docID=docID, source=source, **kwargs)):
+                # Create new version, get UUID of new version, update
+                versions = document.versions
                 version = VersionModel(key=uuid4(), **dict(document))
                 version.save()
                 versions.append(version.key)
-            return document.update(versions=versions, **kwargs)
+                return document.update(versions=versions, **kwargs)
+            else:
+                raise events.Skip("No changees detected for document with ID {0} and source {1}.".format(docID, source))
         else:
             # create document
             return DocumentModel.create(docID=docID, source=source, **kwargs)
+
+    def different(self, old, new):
+        return False in [new[key] == old[key] for key in new.keys() if key != 'timestamps']
 
 
 @database.register_model
