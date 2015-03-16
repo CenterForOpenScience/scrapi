@@ -1,0 +1,23 @@
+*********
+ChangeLog
+*********
+
+0.2.0 (2015-03-16)
+==================
+
+- Requests made with scrapi.requests are now recorded and replayed via
+cassandra
+- Improved test coverage
+- Removed website, see erinspace/shareregistration or osf.io/share/ for its
+replacement
+- Manifest system for harvesters removed and replaced with metaclassing
+- Added an img/ folder that stores the favicons of providers
+- Implemented the transformer system which refactors how normalize is defined
+for xml based harvesters
+- Removed the storage module
+
+
+0.1.0 (2015-03-09)
+==================
+
+Initial release
