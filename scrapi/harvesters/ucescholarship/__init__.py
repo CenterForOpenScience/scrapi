@@ -14,6 +14,7 @@ from scrapi.base import OAIHarvester
 ucescholarship = OAIHarvester(
     name='ucescholarship',
     base_url='http://www.escholarship.org/uc/oai',
+    timezone_granularity=True,
     property_list=['type', 'publisher', 'format', 'date',
                    'identifier', 'language', 'setSpec', 'source', 'coverage',
                    'relation', 'rights']
