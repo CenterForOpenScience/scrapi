@@ -1,24 +1,21 @@
 import logging
-from base64 import b64decode
-from datetime import datetime
 
 import requests
 from celery import Celery
-from dateutil import parser
 
 from scrapi import util
 from scrapi import events
+from scrapi import database
 from scrapi import settings
+from scrapi import registry
 from scrapi import processing
 from scrapi.util import timestamp
-from scrapi.util.storage import store
-from scrapi.util import import_harvester
-from scrapi.linter.document import RawDocument
 
 
 app = Celery()
 app.config_from_object(settings)
 
+database.setup()
 logger = logging.getLogger(__name__)
 
 
@@ -38,11 +35,11 @@ def run_harvester(harvester_name, days_back=1):
 @events.logged(events.HARVESTER_RUN)
 def harvest(harvester_name, job_created, days_back=1):
     harvest_started = timestamp()
-    harvester = import_harvester(harvester_name)
+    harvester = registry[harvester_name]
+
     logger.info('Harvester "{}" has begun harvesting'.format(harvester_name))
 
-    with util.maybe_recorded(harvester_name):
-        result = harvester.harvest(days_back=days_back)
+    result = harvester.harvest(days_back=days_back)
 
     # result is a list of all of the RawDocuments harvested
     return result, {
@@ -86,7 +83,7 @@ def process_raw(raw_doc, **kwargs):
 @events.logged(events.NORMALIZATION)
 def normalize(raw_doc, harvester_name):
     normalized_started = timestamp()
-    harvester = import_harvester(harvester_name)
+    harvester = registry[harvester_name]
 
     normalized = harvester.normalize(raw_doc)
 
@@ -94,7 +91,6 @@ def normalize(raw_doc, harvester_name):
         raise events.Skip('Did not normalize document with id {}'.format(raw_doc['docID']))
 
     normalized['timestamps'] = util.stamp_from_raw(raw_doc, normalizeStarted=normalized_started)
-    normalized['raw'] = util.build_raw_url(raw_doc, normalized)
 
     return normalized  # returns a single normalized document
 
@@ -105,65 +101,6 @@ def process_normalized(normalized_doc, raw_doc, **kwargs):
     if not normalized_doc:
         raise events.Skip('Not processing document with id {}'.format(raw_doc['docID']))
     processing.process_normalized(raw_doc, normalized_doc, kwargs)
-
-
-@app.task
-def check_archives(reprocess, days_back=None):
-    for harvester in settings.MANIFESTS.keys():
-        check_archive.delay(harvester, reprocess, days_back=days_back)
-
-        events.dispatch(events.CHECK_ARCHIVE, events.CREATED,
-                        harvester=harvester, reprocess=reprocess)
-
-
-@app.task
-def check_archive(harvester_name, reprocess, days_back=None):
-    events.dispatch(events.CHECK_ARCHIVE, events.STARTED, **{
-        'harvester': harvester_name,
-        'reprocess': reprocess,
-        'daysBack': str(days_back) if days_back else 'All'
-    })
-
-    harvester = settings.MANIFESTS[harvester_name]
-    extras = {
-        'overwrite': True
-    }
-    for raw_path in store.iter_raws(harvester_name, include_normalized=reprocess):
-        date = parser.parse(raw_path.split('/')[-2])
-
-        if (days_back and (datetime.now() - date).days > days_back):
-            continue
-
-        timestamp = date.isoformat()
-
-        raw_file = store.get_as_string(raw_path)
-
-        raw_doc = RawDocument({
-            'doc': raw_file,
-            'timestamps': {
-                'harvestFinished': timestamp
-            },
-            'docID': b64decode(raw_path.split('/')[-3]).decode('utf-8'),
-            'source': harvester_name,
-            'filetype': harvester['fileFormat'],
-        })
-
-        chain = (normalize.si(raw_doc, harvester_name) |
-                 process_normalized.s(raw_doc, storage=extras))
-        chain.apply_async()
-
-        events.dispatch(events.NORMALIZATION, events.CREATED, **{
-            'harvester': harvester_name,
-            'reprocess': reprocess,
-            'daysBack': str(days_back) if days_back else 'All',
-            'docID': raw_doc['docID']
-        })
-
-    events.dispatch(events.CHECK_ARCHIVE, events.COMPLETED, **{
-        'harvester': harvester_name,
-        'reprocess': reprocess,
-        'daysBack': str(days_back) if days_back else 'All'
-    })
 
 
 @app.task
