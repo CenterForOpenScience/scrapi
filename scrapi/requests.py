@@ -120,6 +120,7 @@ def request(method, url, **kwargs):
         return record_or_load_response(method, url, **kwargs)
 
     logger.info('Making request to "{}"'.format(url))
+    kwargs.pop('throttle', '')
     return requests.request(method, url, **kwargs)
 
 
