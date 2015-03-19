@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 
 class biomedHarvester(BaseHarvester):
     short_name = 'biomed'
-    long_name = 'biomed'
+    long_name = 'BioMed Central'
     url = 'http://www.biomedcentral.com/'
 
     file_format = 'json'
