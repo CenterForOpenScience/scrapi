@@ -21,7 +21,7 @@ from scrapi.linter.document import RawDocument, NormalizedDocument
 logger = logging.getLogger(__name__)
 
 
-class biomedHarvester(BaseHarvester):
+class BiomedHarvester(BaseHarvester):
     short_name = 'biomed'
     long_name = 'BioMed Central'
     url = 'http://www.biomedcentral.com/'
@@ -42,7 +42,7 @@ class biomedHarvester(BaseHarvester):
                     {
                         'doc': json.dumps(record),
                         'source': self.short_name,
-                        'docID': unicode(doc_id),
+                        'docID': doc_id.decode('utf-8'),
                         'filetype': 'json'
                     }
                 )
@@ -71,14 +71,11 @@ class biomedHarvester(BaseHarvester):
     def get_contributors(self, record):
 
         authors = record['authorNames']
-        authors = authors.replace('<span class="author-names">', '').replace('</span>', '')
+        authors = authors.strip().replace('<span class="author-names">', '').replace('</span>', '')
         authors = authors.split(',')
 
-        authors = [author.strip() for author in authors]
-
-        if ' and ' in authors[-1]:
-            split_name = authors[-1].split(' and ')
-            authors.pop(-1)
+        if ' and ' in authors[-1] or ' <em>et al.</em>' in authors[-1]:
+            split_name = authors.pop(-1).replace(' <em>et al.</em>', '').split(' and ')
             authors.extend(split_name)
 
         contributor_list = []
@@ -100,7 +97,7 @@ class biomedHarvester(BaseHarvester):
     def get_ids(self, record):
 
         return {
-            'serviceID': unicode(record['arxId']),
+            'serviceID': record['arxId'].decode('utf-8'),
             'url': record['articleFullUrl'],
             'doi': record['doi']
         }
@@ -121,7 +118,7 @@ class biomedHarvester(BaseHarvester):
         }
 
     def normalize(self, raw_doc):
-        doc = raw_doc.get('doc')
+        doc = raw_doc['doc']
         record = json.loads(doc)
 
         normalized_dict = {
