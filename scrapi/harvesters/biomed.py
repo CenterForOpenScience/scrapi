@@ -71,8 +71,10 @@ class biomedHarvester(BaseHarvester):
     def get_contributors(self, record):
 
         authors = record['authorNames']
-        authors = authors.replace(' <span class="author-names"> ', '').replace('</span> ', '')
+        authors = authors.replace('<span class="author-names">', '').replace('</span>', '')
         authors = authors.split(',')
+
+        authors = [author.strip() for author in authors]
 
         if ' and ' in authors[-1]:
             split_name = authors[-1].split(' and ')
