@@ -42,7 +42,13 @@ def test_versions():
     test_db.process_normalized(RAW, NORMALIZED)
     doc = DocumentModel.objects(docID=NORMALIZED['id']['serviceID'], source=NORMALIZED['source'])[0]
     assert (doc.title == 'some new title')
+    assert len(doc.versions) == 1
 
     version = VersionModel.objects(key=doc.versions[-1])[0]
 
     assert (version.title == old_title)
+
+    test_db.process_normalized(RAW, NORMALIZED)
+    doc = DocumentModel.objects(docID=NORMALIZED['id']['serviceID'], source=NORMALIZED['source'])[0]
+    assert (doc.title == 'some new title')
+    assert len(doc.versions) == 1
