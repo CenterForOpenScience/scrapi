@@ -1,7 +1,10 @@
 from __future__ import unicode_literals
 
+import re
 from copy import deepcopy
 from nameparser import HumanName
+
+URL_REGEX = re.compile(ur'(https?://\S*\.\S*)')
 
 
 def updated_schema(old, new):
@@ -57,8 +60,12 @@ def oai_extract_doi(identifiers):
 def oai_extract_url(identifiers):
     identifiers = [identifiers] if not isinstance(identifiers, list) else identifiers
     for item in identifiers:
-        if 'http://' in item or 'https://' in item and 'viewcontent' not in item:
-            return unicode(item)
+        try:
+            found_url = URL_REGEX.search(item).group()
+            if 'viewcontent' not in found_url:
+                return found_url.decode('utf-8')
+        except AttributeError:
+            continue
 
 
 def oai_process_contributors(*args):
