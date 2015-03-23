@@ -4,7 +4,7 @@ import re
 from copy import deepcopy
 from nameparser import HumanName
 
-URL_REGEX = re.compile(ur'(https?://\S*\/\S*)')
+URL_REGEX = re.compile(ur'(https?://\S*\.\S*)')
 
 
 def updated_schema(old, new):
