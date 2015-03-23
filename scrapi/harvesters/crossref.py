@@ -50,8 +50,7 @@ class CrossRefHarvester(BaseHarvester):
 
         doc_list = []
         for i in xrange(0, total, 1000):
-            doc = requests.get(base_url.format(1000, i)).json()
-            records = doc['message']['items']
+            records = requests.get(base_url.format(1000, i)).json()['message']['items']
             logger.info('Harvested {} documents'.format(i + len(records)))
 
             for record in records:
