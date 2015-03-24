@@ -25,19 +25,21 @@ from scrapi.linter.document import RawDocument
 
 logger = logging.getLogger(__name__)
 
+DEFAULT_ENCODING = 'UTF-8'
+DATAONE_SOLR_ENDPOINT = 'https://cn.dataone.org/cn/v1/query/solr/'
+
 
 def process_doi(service_id, doc_doi):
     doi_re = '10\\.\\d{4}/\\w*\\.\\w*(/\\w*)?'
-    try:
-        regexed_doi = re.search(doi_re, service_id).group(0)
-        doi = regexed_doi
-    except AttributeError:
+
+    doi_list = map(lambda x: x.replace('doi', ''), doc_doi) if isinstance(doc_doi, list) else [doc_doi.replace('doi', '')]
+
+    for item in [service_id] + doi_list:
         try:
-            doc_doi = doc_doi.replace('doi:', '')
-            regexed_doi = re.search(doi_re, doc_doi).group(0)
-        except (IndexError, AttributeError):
-            doi = ''
-    return doi
+            return re.search(doi_re, item).group(0)
+        except AttributeError:
+            continue
+    return ''
 
 
 def process_contributors(author, submitters, contributors):
@@ -101,6 +103,8 @@ class DataOneHarvester(XMLHarvester):
 
     namespaces = {}
 
+    record_encoding = None
+
     schema = {
         'properties': {
             'author': "str[@name='author']/node()",
@@ -145,18 +149,13 @@ class DataOneHarvester(XMLHarvester):
             'url': ("str[@name='id']/node()", "//str[@name='dataUrl']/node()", lambda x, y: y if 'http' in y else x if 'http' in x else '')
         },
         'tags': ("//arr[@name='keywords']/str/node()", lambda x: x if isinstance(x, list) else [x]),
-        'dateUpdated': ("str[@name='dateModified']/node()", lambda x: unicode(parse(x).isoformat())),
+        'dateUpdated': ("str[@name='dateModified']/node()", lambda x: parse(x).isoformat().decode('utf-8')),
         'title': "str[@name='title']/node()",
         'description': "str[@name='abstract']/node()"
     }
 
-    DEFAULT_ENCODING = 'UTF-8'
-    DATAONE_SOLR_ENDPOINT = 'https://cn.dataone.org/cn/v1/query/solr/'
-
-    record_encoding = None
-
     def copy_to_unicode(self, element):
-        encoding = self.record_encoding or self.DEFAULT_ENCODING
+        encoding = self.record_encoding or DEFAULT_ENCODING
         element = ''.join(element)
         if isinstance(element, unicode):
             return element
@@ -190,7 +189,7 @@ class DataOneHarvester(XMLHarvester):
         from_date = from_date.replace(hour=0, minute=0, second=0, microsecond=0)
 
         query = 'dateModified:[{}Z TO {}Z]'.format(from_date.isoformat(), to_date.isoformat())
-        doc = requests.get(self.DATAONE_SOLR_ENDPOINT, params={
+        doc = requests.get(DATAONE_SOLR_ENDPOINT, params={
             'q': query,
             'start': 0,
             'rows': 1
@@ -200,7 +199,7 @@ class DataOneHarvester(XMLHarvester):
 
         n = 0
         while n < rows:
-            data = requests.get(self.DATAONE_SOLR_ENDPOINT, params={
+            data = requests.get(DATAONE_SOLR_ENDPOINT, params={
                 'q': query,
                 'start': n,
                 'rows': 1000
