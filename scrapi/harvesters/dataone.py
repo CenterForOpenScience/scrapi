@@ -21,9 +21,10 @@ from nameparser import HumanName
 
 from scrapi import requests
 from scrapi.base import XMLHarvester
-from scrapi.linter.document import RawDocument, NormalizedDocument
+from scrapi.linter.document import RawDocument
 
 logger = logging.getLogger(__name__)
+
 
 def process_doi(service_id, doc_doi):
     doi_re = '10\\.\\d{4}/\\w*\\.\\w*(/\\w*)?'
