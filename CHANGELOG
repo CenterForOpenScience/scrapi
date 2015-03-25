@@ -2,6 +2,12 @@
 ChangeLog
 *********
 
+0.3.0 (Unreleased)
+==================
+- Data One now uses XMLHarvester
+- PLoS now uses XMLHarvester
+- Crossref is no longer limited to collect 1000 documents
+
 0.2.0 (2015-03-16)
 ==================
 
