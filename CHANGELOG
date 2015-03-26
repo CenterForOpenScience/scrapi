@@ -2,6 +2,17 @@
 ChangeLog
 *********
 
+0.3.0 (Unreleased)
+==================
+
+- Data One now uses XMLHarvester
+- PLoS now uses XMLHarvester
+- Crossref is no longer limited to collect 1000 documents
+- Add the BioMed harvester
+- Requests no longer crashes when recording is turned off
+- Cassandra now only stores new versions of documents, no more duplicate
+versions
+
 0.2.0 (2015-03-16)
 ==================
 

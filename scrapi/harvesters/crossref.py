@@ -9,6 +9,7 @@ Example API request: http://api.crossref.org/v1/works?filter=from-pub-date:2015-
 from __future__ import unicode_literals
 
 import json
+import logging
 
 from datetime import date, timedelta
 
@@ -18,6 +19,8 @@ from dateutil.parser import parse
 from scrapi import requests
 from scrapi.linter.document import RawDocument, NormalizedDocument
 from scrapi.base import BaseHarvester
+
+logger = logging.getLogger(__name__)
 
 
 class CrossRefHarvester(BaseHarvester):
@@ -40,23 +43,24 @@ class CrossRefHarvester(BaseHarvester):
             return unicode(element, encoding=encoding)
 
     def harvest(self, days_back=0):
-        base_url = 'http://api.crossref.org/v1/works?filter=from-pub-date:{},until-pub-date:{}&rows=1000'
         start_date = date.today() - timedelta(days_back)
-        url = base_url.format(str(start_date), str(date.today()))
-        data = requests.get(url)
-        doc = data.json()
-
-        records = doc['message']['items']
+        base_url = 'http://api.crossref.org/v1/works?filter=from-pub-date:{},until-pub-date:{}&rows={{}}&offset={{}}'.format(str(start_date), str(date.today()))
+        total = requests.get(base_url.format('0', '0')).json()['message']['total-results']
+        logger.info('{} documents to be harvested'.format(total))
 
         doc_list = []
-        for record in records:
-            doc_id = record['DOI']
-            doc_list.append(RawDocument({
-                'doc': json.dumps(record),
-                'source': self.short_name,
-                'docID': doc_id,
-                'filetype': 'json'
-            }))
+        for i in xrange(0, total, 1000):
+            records = requests.get(base_url.format(1000, i)).json()['message']['items']
+            logger.info('Harvested {} documents'.format(i + len(records)))
+
+            for record in records:
+                doc_id = record['DOI']
+                doc_list.append(RawDocument({
+                    'doc': json.dumps(record),
+                    'source': self.short_name,
+                    'docID': doc_id,
+                    'filetype': 'json'
+                }))
 
         return doc_list
 
