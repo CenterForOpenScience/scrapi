@@ -10,7 +10,7 @@ from .helpers import (
     oai_process_contributors
 )
 
-SKIP = None
+CONSTANT = lambda x: lambda doc: x
 
 BASEXMLSCHEMA = {
     "description": ('//dc:description/node()', lambda x: unicode(x.strip())),
