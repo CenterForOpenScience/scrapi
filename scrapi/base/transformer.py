@@ -3,8 +3,6 @@ from __future__ import unicode_literals
 import abc
 import logging
 
-from scrapi.base.schemas import SKIP
-
 logger = logging.getLogger(__name__)
 
 
@@ -36,8 +34,8 @@ class BaseTransformer(object):
                 transformed[key] = self._transform_iterable(value, doc)
             elif isinstance(value, basestring):
                 transformed[key] = self._transform_string(value, doc)
-            elif value is SKIP:
-                transformed[key] = ''
+            elif callable(value):
+                transformed[key] = value(doc)
         return transformed
 
     def _transform_iterable(self, l, doc):
