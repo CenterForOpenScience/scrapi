@@ -104,15 +104,17 @@ class FigshareHarvester(BaseHarvester):
         # Right now, only take the last DOI - others in properties
         doi = record['DOI']
         try:
+            url = doi
             doi = doi.replace('http://dx.doi.org/', '')
         except AttributeError:
             for item in doi:
+                url = item
                 item.replace('http://dx.doi.org/', '')
                 doi = item
 
         return {
             'serviceID': unicode(record['article_id']),
-            'url': record['url'],
+            'url': url,  # NOTE - takes the last doi as the url to figshare data
             'doi': doi
         }
 
@@ -123,7 +125,8 @@ class FigshareHarvester(BaseHarvester):
             'type': record['type'],
             'links': record['links'],
             'doi': record['DOI'],
-            'publishedDate': record['published_date']
+            'publishedDate': record['published_date'],
+            'url': record['url']
         }
 
     def normalize(self, raw_doc):
