@@ -124,7 +124,7 @@ class OAIHarvester(XMLHarvester):
     DEFAULT_ENCODING = 'UTF-8'
     RESUMPTION = '&resumptionToken='
     RECORDS_URL = '?verb=ListRecords'
-    META_PREFIX_DATE = '&metadataPrefix=oai_dc&from={}'
+    META_PREFIX_DATE = '&metadataPrefix=oai_dc&from={}&until={}'
 
     # Override these variable is required
     namespaces = {
@@ -165,14 +165,16 @@ class OAIHarvester(XMLHarvester):
     def harvest(self, days_back=1):
 
         start_date = str(date.today() - timedelta(int(days_back)))
-
-        records_url = self.base_url + self.RECORDS_URL
-        request_url = records_url + self.META_PREFIX_DATE.format(start_date)
+        end_date = str(date.today())
 
         if self.timezone_granularity:
-            request_url += 'T00:00:00Z'
+            start_date += 'T00:00:00Z'
+            end_date += 'T00:00:00Z'
 
-        records = self.get_records(request_url, start_date)
+        records_url = self.base_url + self.RECORDS_URL
+        request_url = records_url + self.META_PREFIX_DATE.format(start_date, end_date)
+
+        records = self.get_records(request_url, start_date, end_date)
 
         rawdoc_list = []
         for record in records:
@@ -188,7 +190,7 @@ class OAIHarvester(XMLHarvester):
 
         return rawdoc_list
 
-    def get_records(self, url, start_date, resump_token=''):
+    def get_records(self, url, start_date, end_date, resump_token=''):
         data = requests.get(url, throttle=self.timeout)
 
         doc = etree.XML(data.content)
@@ -202,11 +204,10 @@ class OAIHarvester(XMLHarvester):
             namespaces=self.namespaces
         )
         if len(token) == 1:
-            base_url = url.replace(
-                self.META_PREFIX_DATE.format(start_date), '')
+            base_url = url.replace(self.META_PREFIX_DATE.format(start_date, end_date), '')
             base_url = base_url.replace(self.RESUMPTION + resump_token, '')
             url = base_url + self.RESUMPTION + token[0]
-            records += self.get_records(url, start_date, resump_token=token[0])
+            records += self.get_records(url, start_date, end_date, resump_token=token[0])
 
         return records
 
