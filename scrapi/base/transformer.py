@@ -77,3 +77,28 @@ class XMLTransformer(BaseTransformer):
     @abc.abstractproperty
     def namespaces(self):
         raise NotImplementedError
+
+
+class JSONTransformer(BaseTransformer):
+
+    __metaclass__ = abc.ABCMeta
+
+    class Nested(str):
+
+        def __init__(self, strings):
+            self.strings = strings
+
+    def _transform_string(self, value, doc):
+        try:
+            if isinstance(value, self.Nested):
+                return value._process_nested(value.strings, doc)
+            else:
+                return doc[value]
+        except KeyError:
+            return ''
+
+    def _process_nested(self, strings, d):
+        if len(strings) == 1:
+            return d[strings[0]]
+        else:
+            return self._process_nested(strings[1:], d[strings[0]])
