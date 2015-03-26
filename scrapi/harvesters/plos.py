@@ -23,11 +23,11 @@ from datetime import datetime, timedelta
 
 from lxml import etree
 from dateutil.parser import *
-from nameparser import HumanName
 
 from scrapi import requests
-from scrapi.base import BaseHarvester
-from scrapi.linter.document import RawDocument, NormalizedDocument
+from scrapi.base import XMLHarvester
+from scrapi.linter.document import RawDocument
+from scrapi.base.helpers import default_name_parser
 
 logger = logging.getLogger(__name__)
 
@@ -38,14 +38,12 @@ except ImportError:
     logger.error('No PLOS_API_KEY found, PLoS will always return []')
 
 
-class PlosHarvester(BaseHarvester):
+class PlosHarvester(XMLHarvester):
     short_name = 'plos'
     long_name = 'Public Library of Science'
     url = 'http://www.plos.org/'
 
-    file_format = 'xml'
-
-    DEFAULT_ENCODING = 'UTF-8'
+    namespaces = {}
 
     MAX_ROWS_PER_REQUEST = 999
     BASE_URL = 'http://api.plos.org/search?q=publication_date:'
@@ -108,85 +106,21 @@ class PlosHarvester(BaseHarvester):
         else:
             return unicode(element, encoding=DEFAULT_ENCODING)
 
-    def get_ids(self, raw_doc, record):
-        doi = record.xpath('//str[@name="id"]/node()')[0]
-        ids = {
-            'doi': self.copy_to_unicode(doi),
-            'serviceID': raw_doc.get('docID'),
-            'url': 'http://dx.doi.org/{}'.format(doi)
+    schema = {
+        'id': {
+            'doi': '//str[@name="id"]/node()',
+            'serviceID': '//str[@name="id"]/node()',
+            'url': ('//str[@name="id"]/node()', lambda x: 'http://dx.doi.org/{}'.format(x))
+        },
+        'contributors': ('//arr[@name="author_display"]/str/node()', default_name_parser),
+        'dateUpdated': ('//date[@name="publication_data"]/node()', lambda x: parse(x).isoformat().decode('utf-8')),
+        'tags': ('//str[@name="id"]/node()', lambda x: []),  # TODO Have some kind of skip value
+        'title': '//str[@name="title_display"]/node()',
+        'description': '//arr[@name="abstract"]/str/node()',
+        'properties': {
+            'journal': '//str[@name="journal"]/node()',
+            'eissn': '//str[@name="eissn"]/node()',
+            'articleType': '//str[@name="article_type"]/node()',
+            'score': '//float[@name="score"]/node()'
         }
-        return ids
-
-    def get_contributors(self, record):
-        contributor_list = []
-        contributors = record.xpath('//arr[@name="author_display"]/str/node()') or ['']
-        for person in contributors:
-            name = HumanName(person)
-            contributor = {
-                'prefix': name.title,
-                'given': name.first,
-                'middle': name.middle,
-                'family': name.last,
-                'suffix': name.suffix,
-                'email': '',
-                'ORCID': ''
-            }
-            contributor_list.append(contributor)
-        return contributor_list
-
-    def get_properties(self, record):
-        properties = {
-            'journal': (record.xpath('//str[@name="journal"]/node()') or [''])[0],
-            'eissn': (record.xpath('//str[@name="eissn"]/node()') or [''])[0],
-            'articleType': (record.xpath('//str[@name="article_type"]/node()') or [''])[0],
-            'score': (record.xpath('//float[@name="score"]/node()') or [''])[0],
-        }
-
-        # ensure everything is in unicode
-        for key, value in properties.iteritems():
-            properties[key] = self.copy_to_unicode(value)
-
-        return properties
-
-    def get_date_updated(self, record):
-        date_created = (record.xpath('//date[@name="publication_date"]/node()') or [''])[0]
-        date = parse(date_created).isoformat()
-        return self.copy_to_unicode(date)
-
-    # No tags...
-    def get_tags(self, record):
-        return []
-
-    def normalize(self, raw_doc):
-        raw_doc_string = raw_doc.get('doc')
-        record = etree.XML(raw_doc_string)
-
-        title = record.xpath('//str[@name="title_display"]/node()')[0]
-        description = (record.xpath('//arr[@name="abstract"]/str/node()') or [''])[0],
-
-        normalized_dict = {
-            'title': self.copy_to_unicode(title),
-            'contributors': self.get_contributors(record),
-            'description': self.copy_to_unicode(description),
-            'properties': self.get_properties(record),
-            'id': self.get_ids(raw_doc, record),
-            'source': self.short_name,
-            'dateUpdated': self.get_date_updated(record),
-            'tags': self.get_tags(record)
-        }
-
-        # deal with Corrections having "PLoS Staff" listed as contributors
-        # fix correction title
-        if normalized_dict['properties']['articleType'] == 'Correction':
-            normalized_dict['title'] = normalized_dict['title'].replace('Correction: ', '')
-            normalized_dict['contributors'] = [{
-                'prefix': '',
-                'given': '',
-                'middle': '',
-                'family': '',
-                'suffix': '',
-                'email': '',
-                'ORCID': ''
-            }]
-        # import json; print(json.dumps(normalized_dict, indent=4))
-        return NormalizedDocument(normalized_dict)
+    }
