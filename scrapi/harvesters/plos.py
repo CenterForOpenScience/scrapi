@@ -26,6 +26,7 @@ from dateutil.parser import *
 
 from scrapi import requests
 from scrapi.base import XMLHarvester
+from scrapi.base.schemas import CONSTANT
 from scrapi.linter.document import RawDocument
 from scrapi.base.helpers import default_name_parser
 
@@ -114,7 +115,7 @@ class PlosHarvester(XMLHarvester):
         },
         'contributors': ('//arr[@name="author_display"]/str/node()', default_name_parser),
         'dateUpdated': ('//date[@name="publication_data"]/node()', lambda x: parse(x).isoformat().decode('utf-8')),
-        'tags': ('//str[@name="id"]/node()', lambda x: []),  # TODO Have some kind of skip value
+        'tags': CONSTANT([]),
         'title': '//str[@name="title_display"]/node()',
         'description': '//arr[@name="abstract"]/str/node()',
         'properties': {

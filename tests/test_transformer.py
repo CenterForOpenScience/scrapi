@@ -4,6 +4,7 @@ import functools
 
 from scrapi.base import XMLHarvester
 from scrapi.linter import RawDocument
+from scrapi.base.schemas import CONSTANT
 from scrapi.base.helpers import updated_schema, pack
 
 from .utils import get_leaves
@@ -74,3 +75,18 @@ class TestTransformer(object):
 
             for (k, v) in get_leaves(result.attributes):
                 assert type(v) != functools.partial
+
+    def test_constants(self):
+        self.harvester.schema = updated_schema(
+            TEST_SCHEMA, {
+                'properties': {
+                    'test': CONSTANT('test')
+                }
+            }
+        )
+        results = [
+        self.harvester.normalize(record) for record in self.harvester.harvest(days_back=1)
+        ]
+
+        for result in results:
+            assert result['properties']['test'] == 'test'

@@ -34,6 +34,8 @@ class BaseTransformer(object):
                 transformed[key] = self._transform_iterable(value, doc)
             elif isinstance(value, basestring):
                 transformed[key] = self._transform_string(value, doc)
+            elif callable(value):
+                transformed[key] = value(doc)
         return transformed
 
     def _transform_iterable(self, l, doc):
