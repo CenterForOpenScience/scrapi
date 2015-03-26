@@ -101,18 +101,17 @@ class FigshareHarvester(BaseHarvester):
         return contributor_list
 
     def get_ids(self, record):
-        # Right now, only take the last DOI - others in properties
-        doi = record['DOI']
-        try:
-            doi = doi.replace('http://dx.doi.org/', '')
-        except AttributeError:
-            for item in doi:
-                item.replace('http://dx.doi.org/', '')
-                doi = item
+        # Right now, only take the first DOI - others in properties
+        if isinstance(record['DOI'], list):
+            url = record['DOI'][0]
+        else:
+            url = record['DOI']
+
+        doi = url.replace('http://dx.doi.org/', '')
 
         return {
             'serviceID': unicode(record['article_id']),
-            'url': record['url'],
+            'url': url,  # NOTE - takes the first doi as the url to figshare data
             'doi': doi
         }
 
@@ -123,7 +122,8 @@ class FigshareHarvester(BaseHarvester):
             'type': record['type'],
             'links': record['links'],
             'doi': record['DOI'],
-            'publishedDate': record['published_date']
+            'publishedDate': record['published_date'],
+            'url': record['url']
         }
 
     def normalize(self, raw_doc):
