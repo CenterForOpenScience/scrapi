@@ -10,7 +10,7 @@ from .helpers import (
     oai_process_contributors
 )
 
-CONSTANT = lambda x: lambda doc: x
+CONSTANT = lambda x: lambda *_, **__: x
 
 BASEXMLSCHEMA = {
     "description": ('//dc:description/node()', lambda x: unicode(x.strip())),
