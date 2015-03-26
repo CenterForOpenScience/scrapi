@@ -37,7 +37,7 @@ class BaseTransformer(object):
             elif isinstance(value, basestring):
                 transformed[key] = self._transform_string(value, doc)
             elif value is SKIP:
-                continue
+                transformed[key] = ''
         return transformed
 
     def _transform_iterable(self, l, doc):
