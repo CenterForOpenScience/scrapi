@@ -51,7 +51,7 @@ class BaseTransformer(object):
                 docs.append(self._transform_string(value, doc))
             elif callable(value):
                 docs.append(value(doc))
-        return fn(*[res for res in docs])
+        return fn(*docs)
 
     def _transform_args_kwargs(self, l, doc):
         fn = l[1]
