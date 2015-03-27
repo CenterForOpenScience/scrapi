@@ -36,14 +36,6 @@ def process_contributor(author, orcid):
     }
 
 
-def process_date(date):
-    date = ' '.join([str(part) for part in date[0]])
-    date = parse(date)
-    date = date.isoformat()
-    date = date.decode('utf-8')
-    return date
-
-
 class CrossRefHarvester(JSONHarvester):
     short_name = 'crossref'
     long_name = 'CrossRef'
@@ -58,7 +50,7 @@ class CrossRefHarvester(JSONHarvester):
         return {
             'title': ('title', lambda x: x[0] if x else ''),
             'description': ('subtitle', lambda x: x[0] if (isinstance(x, list) and x) else x or ''),
-            'dateUpdated': (self.nested('issued', 'date-parts'), process_date),  # lambda x: parse(' '.join([part for part in x[0]]).isoformat().decode('utf-8'))),
+            'dateUpdated': (self.nested('issued', 'date-parts'), lambda x: parse(' '.join([str(part) for part in x[0]])).isoformat().decode('utf-8')),
             'id': {
                 'serviceID': 'DOI',
                 'doi': 'DOI',
