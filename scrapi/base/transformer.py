@@ -43,8 +43,7 @@ class BaseTransformer(object):
         if isinstance(l[0], tuple) and len(l) == 2:
             return self._transform_args_kwargs(l, doc)
 
-        fn = l[-1]
-        values = l[:-1]
+        fn, values = l[-1], l[:-1]
         args = []
 
         for value in values:
