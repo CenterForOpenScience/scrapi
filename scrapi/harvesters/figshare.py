@@ -31,7 +31,7 @@ class FigshareHarvester(BaseHarvester):
     URL = 'http://api.figshare.com/v1/articles/search?search_for=*&from_date='
 
     def harvest(self, days_back=0):
-        """ Figshare should always have a 24 hour delay because they 
+        """ Figshare should always have a 24 hour delay because they
         manually go through and check for test projects. Most of them
         are removed within 24 hours.
         """
