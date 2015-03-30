@@ -16,19 +16,57 @@ from datetime import date, timedelta
 from nameparser import HumanName
 
 from scrapi import requests
-from scrapi.base import BaseHarvester
-from scrapi.linter.document import RawDocument, NormalizedDocument
+from scrapi.base import JSONHarvester
+from scrapi.base.schemas import CONSTANT
+from scrapi.linter.document import RawDocument
 
 logger = logging.getLogger(__name__)
 
 
-class FigshareHarvester(BaseHarvester):
+def process_contributors(authors):
+
+    contributor_list = []
+    for person in authors:
+        name = HumanName(person['author_name'])
+        contributor = {
+            'prefix': name.title,
+            'given': name.first,
+            'middle': name.middle,
+            'family': name.last,
+            'suffix': name.suffix,
+            'email': '',
+            'ORCID': '',
+        }
+        contributor_list.append(contributor)
+
+    return contributor_list
+
+
+class FigshareHarvester(JSONHarvester):
     short_name = 'figshare'
     long_name = 'figshare'
     url = 'http://figshare.com/'
 
-    file_format = 'json'
     URL = 'http://api.figshare.com/v1/articles/search?search_for=*&from_date='
+
+    schema = {
+        'title': 'title',
+        'description': 'description',
+        'contributors': ('authors', process_contributors),
+        'tags': CONSTANT([]),
+        'dateUpdated': ('modified_date', lambda x: parse(x).isoformat().decode('utf-8')),
+        'id': {
+            'url': ('DOI', lambda x: x[0] if isinstance(x, list) else x),
+            'serviceID': ('article_id', lambda x: str(x).decode('utf-8')),
+            'doi': ('DOI', lambda x: x[0].replace('http://dx.doi.org/', '') if isinstance(x, list) else x.replace('http://dx.doi.org/', ''))
+        },
+        'properties': {
+            'definedType': 'defined_type',
+            'type': 'type',
+            'links': 'links',
+            'publishedDate': 'published_date'
+        }
+    }
 
     def harvest(self, days_back=0):
         start_date = date.today() - timedelta(days_back) - timedelta(1)
@@ -79,66 +117,3 @@ class FigshareHarvester(BaseHarvester):
             records = requests.get(search_url + '&page={}'.format(str(page)), throttle=3)
 
         return all_records
-
-    def get_contributors(self, record):
-
-        authors = record['authors']
-
-        contributor_list = []
-        for person in authors:
-            name = HumanName(person['author_name'])
-            contributor = {
-                'prefix': name.title,
-                'given': name.first,
-                'middle': name.middle,
-                'family': name.last,
-                'suffix': name.suffix,
-                'email': '',
-                'ORCID': '',
-            }
-            contributor_list.append(contributor)
-
-        return contributor_list
-
-    def get_ids(self, record):
-        # Right now, only take the first DOI - others in properties
-        if isinstance(record['DOI'], list):
-            url = record['DOI'][0]
-        else:
-            url = record['DOI']
-
-        doi = url.replace('http://dx.doi.org/', '')
-
-        return {
-            'serviceID': unicode(record['article_id']),
-            'url': url,  # NOTE - takes the first doi as the url to figshare data
-            'doi': doi
-        }
-
-    def get_properties(self, record):
-        return {
-            'article_id': record['article_id'],
-            'defined_type': record['defined_type'],
-            'type': record['type'],
-            'links': record['links'],
-            'doi': record['DOI'],
-            'publishedDate': record['published_date'],
-            'url': record['url']
-        }
-
-    def normalize(self, raw_doc):
-        doc = raw_doc.get('doc')
-        record = json.loads(doc)
-
-        normalized_dict = {
-            'title': record['title'],
-            'contributors': self.get_contributors(record),
-            'properties': self.get_properties(record),
-            'description': record['description'],
-            'tags': [],
-            'id': self.get_ids(record),
-            'source': self.short_name,
-            'dateUpdated': unicode(parse(record['modified_date']).isoformat())
-        }
-
-        return NormalizedDocument(normalized_dict)
