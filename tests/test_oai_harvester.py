@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+import httpretty
+
 from scrapi.base import OAIHarvester
 from scrapi.linter import RawDocument
 
@@ -13,13 +15,26 @@ class TestHarvester(OAIHarvester):
     url = 'test'
     property_list = ['type', 'source', 'publisher', 'format', 'date']
 
+    @httpretty.activate
     def harvest(self, days_back=1):
+
+        start_date = '2015-03-14'
+        end_date = '2015-03-16'
+
+        request_url = 'http://validAI.edu/?from={}&to={}'.format(start_date, end_date)
+
+        httpretty.register_uri(httpretty.GET, request_url,
+                               body=TEST_OAI_DOC,
+                               content_type="application/XML")
+
+        records = self.get_records(request_url, start_date, end_date)
+
         return [RawDocument({
             'doc': str(TEST_OAI_DOC),
             'source': 'TEST',
             'filetype': 'XML',
             'docID': "1"
-        }) for _ in xrange(days_back)]
+        }) for record in records]
 
 
 class TestOAIHarvester(object):
