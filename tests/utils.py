@@ -165,6 +165,10 @@ TEST_XML_DOC = '''
 '''
 
 TEST_OAI_DOC = '''
+    <OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+    <responseDate>2015-03-30T18:31:29Z</responseDate>
+    <request verb="ListRecords" metadataPrefix="oai_dc" from="2014-09-26T00:00:00Z">http://repository.stcloudstate.edu/do/oai/</request>
+    <ListRecords>
     <record>
     <header>
     <identifier>oai:digitalcommons.calpoly.edu:aged_rpt-1085</identifier>
@@ -193,4 +197,6 @@ TEST_OAI_DOC = '''
     </oai_dc:dc>
     </metadata>
     </record>
+    </ListRecords>
+    </OAI-PMH>
 '''
