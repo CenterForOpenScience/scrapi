@@ -39,19 +39,20 @@ class BaseTransformer(object):
         return transformed
 
     def _transform_iterable(self, l, doc):
-        docs = []
 
         if isinstance(l[0], tuple) and len(l) == 2:
             return self._transform_args_kwargs(l, doc)
 
         fn = l[-1]
+        values = l[:-1]
+        args = []
 
-        for value in l[:-1]:
+        for value in values:
             if isinstance(value, basestring):
-                docs.append(self._transform_string(value, doc))
+                args.append(self._transform_string(value, doc))
             elif callable(value):
-                docs.append(value(doc))
-        return fn(*docs)
+                args.append(value(doc))
+        return fn(*args)
 
     def _transform_args_kwargs(self, l, doc):
         fn = l[1]
@@ -97,7 +98,7 @@ class JSONTransformer(BaseTransformer):
                 return self._process_nested(strings[1:], d[strings[0]])
             else:
                 return ''
-        except KeyError:
+        except (KeyError, TypeError):
             return ''
 
     def nested(self, *args):
