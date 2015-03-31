@@ -39,16 +39,19 @@ class BaseTransformer(object):
         return transformed
 
     def _transform_iterable(self, l, doc):
-        docs = []
 
         if isinstance(l[0], tuple) and len(l) == 2:
             return self._transform_args_kwargs(l, doc)
 
-        for value in l:
+        fn, values = l[-1], l[:-1]
+        args = []
+
+        for value in values:
             if isinstance(value, basestring):
-                docs.append(self._transform_string(value, doc))
+                args.append(self._transform_string(value, doc))
             elif callable(value):
-                return value(*[res for res in docs])
+                args.append(value(doc))
+        return fn(*args)
 
     def _transform_args_kwargs(self, l, doc):
         fn = l[1]
@@ -83,22 +86,19 @@ class JSONTransformer(BaseTransformer):
 
     __metaclass__ = abc.ABCMeta
 
-    class Nested(str):
-
-        def __init__(self, strings):
-            self.strings = strings
-
-    def _transform_string(self, value, doc):
-        try:
-            if isinstance(value, self.Nested):
-                return value._process_nested(value.strings, doc)
-            else:
-                return doc[value]
-        except KeyError:
-            return ''
+    def _transform_string(self, val, doc):
+        return doc.get(val, '')
 
     def _process_nested(self, strings, d):
-        if len(strings) == 1:
-            return d[strings[0]]
-        else:
-            return self._process_nested(strings[1:], d[strings[0]])
+        try:
+            if len(strings) == 1:
+                return d[strings[0]]
+            elif len(strings) > 1:
+                return self._process_nested(strings[1:], d[strings[0]])
+            else:
+                return ''
+        except (KeyError, TypeError):
+            return ''
+
+    def nested(self, *args):
+        return lambda doc: self._process_nested(args, doc)
