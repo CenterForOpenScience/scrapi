@@ -2,7 +2,7 @@
 Open Science Framework harvester of public projects for the SHARE Notification Service
 
 Example API query: https://osf.io/api/v1/search/
-https://osf.io/api/v1/search/?q=category:registration&NOT%20title:test%20NOT%20title:%22test%20project%22&size=1000
+https://osf.io/api/v1/search/?q=category:registration%20AND%20NOT%20title=test%20AND%20NOT%20title=%22Test%20Project%22
 """
 
 from __future__ import unicode_literals
@@ -24,7 +24,7 @@ def process_contributors(authors):
 
     contributor_list = []
     for person in authors:
-        name = HumanName(person)
+        name = HumanName(person['fullname'])
         contributor = {
             'prefix': name.title,
             'given': name.first,
@@ -59,7 +59,9 @@ class OSFHarvester(JSONHarvester):
     url = 'http://osf.io/api/v1/search/'
     count = 0
 
-    URL = 'http://osf.io/api/v1/search/?size=500'
+    # Only registrations that aren't just the word "test" or "test project"
+    URL = 'https://osf.io/api/v1/search/?q=category:registration ' + \
+          'AND NOT title=test AND NOT title="Test Project"&size=1000'
 
     schema = {
         'title': ('title', process_null),
@@ -73,13 +75,13 @@ class OSFHarvester(JSONHarvester):
         },
         'contributors': ('contributors', process_contributors),
         'properties': {
-            'contributors_url': 'contributors_url',
             'parent_title': 'parent_title',
             'category': 'category',
             'wiki_link': 'wiki_link',
             'is_component': 'is_component',
             'is_registration': 'is_registration',
-            'parent_url': 'parent_url'
+            'parent_url': 'parent_url',
+            'contributors': 'contributors'
         }
     }
 
@@ -108,7 +110,7 @@ class OSFHarvester(JSONHarvester):
     def get_records(self, search_url):
         records = requests.get(search_url)
 
-        total = int(records.json()['counts']['project'])
+        total = int(records.json()['counts']['registration'])
         from_arg = 0
 
         all_records = []
@@ -116,10 +118,9 @@ class OSFHarvester(JSONHarvester):
             record_list = records.json()['results']
 
             for record in record_list:
-                if record['category'] == 'project':
-                    all_records.append(record)
+                all_records.append(record)
 
-            from_arg += 500
+            from_arg += 1000
             records = requests.get(search_url + '&from={}'.format(str(from_arg)), throttle=10)
 
         return all_records
