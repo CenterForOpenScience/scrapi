@@ -98,7 +98,7 @@ class TestHarvesterBase(object):
             class TestHarvester(BaseHarvester):
                 long_name = 'test'
                 short_name = 'test'
-                url='test'
+                url = 'test'
                 harvest = lambda x: x
                 normalize = lambda x: x
 

@@ -17,16 +17,17 @@ class DoepagesHarvester(XMLHarvester):
     url = 'http://www.osti.gov/pages/'
 
     def harvest(self, days_back=1):
-        start_date = date.today() - timedelta(days_back)
-        base_url = 'http://www.osti.gov/pages/pagesxml?nrows={0}&EntryDateFrom={1}'
-        url = base_url.format('1', start_date.strftime('%m/%d/%Y'))
+        today = date.today()
+        start_date = today - timedelta(days_back)
+        base_url = 'http://www.osti.gov/pages/pagesxml?nrows={0}&EntryDateFrom={1}&EntryDateTo={2}'
+        url = base_url.format('1', start_date.strftime('%m/%d/%Y'), today.strftime('%m/%d/%Y'))
         initial_data = requests.get(url)
         record_encoding = initial_data.encoding
         initial_doc = etree.XML(initial_data.content)
 
         num_results = int(initial_doc.xpath('//records/@count', namespaces=self.namespaces)[0])
 
-        url = base_url.format(num_results, start_date.strftime('%m/%d/%Y'))
+        url = base_url.format(num_results, start_date.strftime('%m/%d/%Y'), today.strftime('%m/%d/%Y'))
         data = requests.get(url)
         doc = etree.XML(data.content)
 
