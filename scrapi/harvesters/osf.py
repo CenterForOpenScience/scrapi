@@ -2,6 +2,7 @@
 Open Science Framework harvester of public projects for the SHARE Notification Service
 
 Example API query: https://osf.io/api/v1/search/
+https://osf.io/api/v1/search/?q=category:registration&NOT%20title:test%20NOT%20title:%22test%20project%22&size=1000
 """
 
 from __future__ import unicode_literals
@@ -52,7 +53,7 @@ def process_tags(entry):
         return [entry]
 
 
-class BiomedHarvester(JSONHarvester):
+class OSFHarvester(JSONHarvester):
     short_name = 'osf'
     long_name = 'Open Science Framework'
     url = 'http://osf.io/api/v1/search/'
