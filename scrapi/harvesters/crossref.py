@@ -17,22 +17,73 @@ from nameparser import HumanName
 from dateutil.parser import parse
 
 from scrapi import requests
-from scrapi.linter.document import RawDocument, NormalizedDocument
-from scrapi.base import BaseHarvester
+from scrapi.base import JSONHarvester
+from scrapi.linter.document import RawDocument
 
 logger = logging.getLogger(__name__)
 
 
-class CrossRefHarvester(BaseHarvester):
+def process_contributor(author, orcid):
+    name = HumanName(author)
+    return {
+        'prefix': name.title,
+        'given': name.first,
+        'middle': name.middle,
+        'family': name.last,
+        'suffix': name.suffix,
+        'email': '',
+        'ORCID': orcid
+    }
+
+
+class CrossRefHarvester(JSONHarvester):
     short_name = 'crossref'
     long_name = 'CrossRef'
     url = 'http://www.crossref.org'
 
-    file_format = 'json'
-
     DEFAULT_ENCODING = 'UTF-8'
 
     record_encoding = None
+
+    @property
+    def schema(self):
+        return {
+            'title': ('title', lambda x: x[0] if x else ''),
+            'description': ('subtitle', lambda x: x[0] if (isinstance(x, list) and x) else x or ''),
+            'dateUpdated': (self.nested('issued', 'date-parts'), lambda x: parse(' '.join([str(part) for part in x[0]])).isoformat().decode('utf-8')),
+            'id': {
+                'serviceID': 'DOI',
+                'doi': 'DOI',
+                'url': 'URL'
+            },
+            'contributors': ('author', lambda x: [
+                process_contributor(*[
+                    '{} {}'.format(entry.get('given'), entry.get('family')),
+                    entry.get('ORCID')
+                ]) for entry in x
+            ]),
+            'tags': ('subject', 'container-title', lambda x, y: [tag.lower() for tag in (x or []) + (y or [])]),
+            'properties': {
+                'journalTitle': 'container-title',
+                'volume': 'volume',
+                'issue': 'issue',
+                'publisher': 'publisher',
+                'type': 'type',
+                'ISSN': 'ISSN',
+                'ISBN': 'ISBN',
+                'member': 'member',
+                'score': 'score',
+                'issued': 'issued',
+                'deposited': 'deposited',
+                'indexed': 'indexed',
+                'page': 'page',
+                'issue': 'issue',
+                'volume': 'volume',
+                'referenceCount': 'reference-count',
+                'updatePolicy': 'update-policy',
+                'depositedTimestamp': self.nested('deposited', 'timestamp')
+            }
+        }
 
     def copy_to_unicode(self, element):
         encoding = self.record_encoding or self.DEFAULT_ENCODING
@@ -63,86 +114,3 @@ class CrossRefHarvester(BaseHarvester):
                 }))
 
         return doc_list
-
-    def get_contributors(self, doc):
-        contributor_list = []
-        contributor_dict_list = doc.get('author') or []
-        full_names = []
-        orcid = ''
-        for entry in contributor_dict_list:
-            full_name = '{} {}'.format(entry.get('given'), entry.get('family'))
-            full_names.append(full_name)
-            orcid = entry.get('ORCID') or ''
-        for person in full_names:
-            name = HumanName(person)
-            contributor = {
-                'prefix': name.title,
-                'given': name.first,
-                'middle': name.middle,
-                'family': name.last,
-                'suffix': name.suffix,
-                'email': '',
-                'ORCID': orcid
-            }
-            contributor_list.append(contributor)
-
-        return contributor_list
-
-    def get_ids(self, doc, raw_doc):
-        ids = {}
-        ids['url'] = doc.get('URL')
-        ids['doi'] = doc.get('DOI')
-        ids['serviceID'] = raw_doc.get('docID')
-        return ids
-
-    def get_properties(self, doc):
-        properties = {
-            'published-in': {
-                'journalTitle': doc.get('container-title'),
-                'volume': doc.get('volume'),
-                'issue': doc.get('issue')
-            },
-            'publisher': doc.get('publisher'),
-            'type': doc.get('type'),
-            'ISSN': doc.get('ISSN'),
-            'ISBN': doc.get('ISBN'),
-            'member': doc.get('member'),
-            'score': doc.get('score'),
-            'issued': doc.get('issued'),
-            'deposited': doc.get('deposited'),
-            'indexed': doc.get('indexed'),
-            'page': doc.get('page'),
-            'issue': doc.get('issue'),
-            'volume': doc.get('volume'),
-            'referenceCount': doc.get('reference-count'),
-            'updatePolicy': doc.get('update-policy'),
-            'depositedTimestamp': doc['deposited'].get('timestamp')
-        }
-        return properties
-
-    def get_tags(self, doc):
-        tags = (((doc.get('subject') or []) + doc.get('container-title'))) or []
-        return [tag.lower() for tag in tags]
-
-    def get_date_updated(self, doc):
-        issued_date_parts = doc['issued'].get('date-parts') or []
-        date = ' '.join([str(part) for part in issued_date_parts[0]])
-        isodateupdated = parse(date).isoformat()
-        return self.copy_to_unicode(isodateupdated)
-
-    def normalize(self, raw_doc):
-        doc_str = raw_doc.get('doc')
-        doc = json.loads(doc_str)
-
-        normalized_dict = {
-            'title': (doc.get('title') or [''])[0],
-            'contributors': self.get_contributors(doc),
-            'properties': self.get_properties(doc),
-            'description': (doc.get('subtitle') or [''])[0],
-            'id': self.get_ids(doc, raw_doc),
-            'source': self.short_name,
-            'dateUpdated': self.get_date_updated(doc),
-            'tags': self.get_tags(doc)
-        }
-
-        return NormalizedDocument(normalized_dict)

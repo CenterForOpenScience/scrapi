@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 import abc
+import json
 import logging
 from datetime import date, timedelta
 
@@ -13,8 +14,8 @@ from scrapi import requests
 from scrapi.linter import lint
 from scrapi.base.schemas import OAISCHEMA
 from scrapi.base.helpers import updated_schema
-from scrapi.base.transformer import XMLTransformer
 from scrapi.linter.document import RawDocument, NormalizedDocument
+from scrapi.base.transformer import XMLTransformer, JSONTransformer
 
 logging.basicConfig(level=logging.INFO)
 
@@ -98,6 +99,15 @@ class BaseHarvester(object):
             'minute': 59,
             'day_of_week': 'mon-fri',
         }
+
+
+class JSONHarvester(BaseHarvester, JSONTransformer):
+    file_format = 'json'
+
+    def normalize(self, raw_doc):
+        transformed = self.transform(json.loads(raw_doc['doc']))
+        transformed['source'] = self.short_name
+        return NormalizedDocument(transformed)
 
 
 class XMLHarvester(BaseHarvester, XMLTransformer):
