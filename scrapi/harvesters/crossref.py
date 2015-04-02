@@ -50,7 +50,7 @@ class CrossRefHarvester(JSONHarvester):
         return {
             'title': ('title', lambda x: x[0] if x else ''),
             'description': ('subtitle', lambda x: x[0] if (isinstance(x, list) and x) else x or ''),
-            'dateUpdated': (self.nested('issued', 'date-parts'), lambda x: parse(' '.join([str(part) for part in x[0]])).isoformat().decode('utf-8')),
+            'dateUpdated': ('#/issued/date-parts', lambda x: parse(' '.join([str(part) for part in x[0]])).isoformat().decode('utf-8')),
             'id': {
                 'serviceID': 'DOI',
                 'doi': 'DOI',
@@ -81,7 +81,7 @@ class CrossRefHarvester(JSONHarvester):
                 'volume': 'volume',
                 'referenceCount': 'reference-count',
                 'updatePolicy': 'update-policy',
-                'depositedTimestamp': self.nested('deposited', 'timestamp')
+                'depositedTimestamp': '#/deposited/timestamp'
             }
         }
 
