@@ -75,6 +75,7 @@ class XMLTransformer(BaseTransformer):
 
     def _transform_string(self, string, doc):
         val = doc.xpath(string, namespaces=self.namespaces)
+        return unicode(val[0]) if len(val) == 1 else [unicode(v) for v in val] or ''
         return '' if not val else unicode(val[0]) if len(val) == 1 else [unicode(v) for v in val]
 
     @abc.abstractproperty
@@ -87,6 +88,10 @@ class JSONTransformer(BaseTransformer):
     __metaclass__ = abc.ABCMeta
 
     def _transform_string(self, val, doc):
+        if val.startswith('#/'):
+            nesting = val[2:].split('/')
+            return self._process_nested(nesting, doc)
+
         return doc.get(val, '')
 
     def _process_nested(self, strings, d):
@@ -99,6 +104,3 @@ class JSONTransformer(BaseTransformer):
                 return ''
         except (KeyError, TypeError):
             return ''
-
-    def nested(self, *args):
-        return lambda doc: self._process_nested(args, doc)
