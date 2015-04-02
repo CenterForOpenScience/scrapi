@@ -48,40 +48,40 @@ class CrossRefHarvester(JSONHarvester):
     @property
     def schema(self):
         return {
-            'title': ('title', lambda x: x[0] if x else ''),
-            'description': ('subtitle', lambda x: x[0] if (isinstance(x, list) and x) else x or ''),
-            'dateUpdated': ('#/issued/date-parts', lambda x: parse(' '.join([str(part) for part in x[0]])).isoformat().decode('utf-8')),
+            'title': ('/title', lambda x: x[0] if x else ''),
+            'description': ('/subtitle', lambda x: x[0] if (isinstance(x, list) and x) else x or ''),
+            'dateUpdated': ('/issued/date-parts', lambda x: parse(' '.join([str(part) for part in x[0]])).isoformat().decode('utf-8')),
             'id': {
-                'serviceID': 'DOI',
-                'doi': 'DOI',
-                'url': 'URL'
+                'serviceID': '/DOI',
+                'doi': '/DOI',
+                'url': '/URL'
             },
-            'contributors': ('author', lambda x: [
+            'contributors': ('/author', lambda x: [
                 process_contributor(*[
                     '{} {}'.format(entry.get('given'), entry.get('family')),
                     entry.get('ORCID')
                 ]) for entry in x
             ]),
-            'tags': ('subject', 'container-title', lambda x, y: [tag.lower() for tag in (x or []) + (y or [])]),
+            'tags': ('/subject', '/container-title', lambda x, y: [tag.lower() for tag in (x or []) + (y or [])]),
             'properties': {
-                'journalTitle': 'container-title',
-                'volume': 'volume',
-                'issue': 'issue',
-                'publisher': 'publisher',
-                'type': 'type',
-                'ISSN': 'ISSN',
-                'ISBN': 'ISBN',
-                'member': 'member',
-                'score': 'score',
-                'issued': 'issued',
-                'deposited': 'deposited',
-                'indexed': 'indexed',
-                'page': 'page',
-                'issue': 'issue',
-                'volume': 'volume',
-                'referenceCount': 'reference-count',
-                'updatePolicy': 'update-policy',
-                'depositedTimestamp': '#/deposited/timestamp'
+                'journalTitle': '/container-title',
+                'volume': '/volume',
+                'issue': '/issue',
+                'publisher': '/publisher',
+                'type': '/type',
+                'ISSN': '/ISSN',
+                'ISBN': '/ISBN',
+                'member': '/member',
+                'score': '/score',
+                'issued': '/issued',
+                'deposited': '/deposited',
+                'indexed': '/indexed',
+                'page': '/page',
+                'issue': '/issue',
+                'volume': '/volume',
+                'referenceCount': '/reference-count',
+                'updatePolicy': '/update-policy',
+                'depositedTimestamp': '/deposited/timestamp'
             }
         }
 
