@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 import abc
 import logging
 
+from jsonpointer import resolve_pointer, JsonPointerException
+
 logger = logging.getLogger(__name__)
 
 
@@ -76,7 +78,6 @@ class XMLTransformer(BaseTransformer):
     def _transform_string(self, string, doc):
         val = doc.xpath(string, namespaces=self.namespaces)
         return unicode(val[0]) if len(val) == 1 else [unicode(v) for v in val] or ''
-        return '' if not val else unicode(val[0]) if len(val) == 1 else [unicode(v) for v in val]
 
     @abc.abstractproperty
     def namespaces(self):
@@ -88,19 +89,7 @@ class JSONTransformer(BaseTransformer):
     __metaclass__ = abc.ABCMeta
 
     def _transform_string(self, val, doc):
-        if val.startswith('#/'):
-            nesting = val[2:].split('/')
-            return self._process_nested(nesting, doc)
-
-        return doc.get(val, '')
-
-    def _process_nested(self, strings, d):
         try:
-            if len(strings) == 1:
-                return d[strings[0]]
-            elif len(strings) > 1:
-                return self._process_nested(strings[1:], d[strings[0]])
-            else:
-                return ''
-        except (KeyError, TypeError):
+            return resolve_pointer(doc, val)
+        except JsonPointerException:
             return ''
