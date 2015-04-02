@@ -66,8 +66,7 @@ class OSFHarvester(JSONHarvester):
     count = 0
 
     # Only registrations that aren't just the word "test" or "test project"
-    # TODO - change this url to production once in production
-    URL = 'https://staging.osf.io/api/v1/search/?q=category:registration ' +\
+    URL = 'https://osf.io/api/v1/search/?q=category:registration ' +\
           ' AND date_created:[{} TO {}]' +\
           ' AND NOT title=test AND NOT title="Test Project"&size=1000'
 
