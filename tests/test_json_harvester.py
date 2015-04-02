@@ -78,7 +78,7 @@ class TestHarvester(JSONHarvester):
         return {
             'title': ('title', lambda x: x[0] if x else ''),
             'description': ('subtitle', lambda x: x[0] if (isinstance(x, list) and x) else x or ''),
-            'dateUpdated': (self.nested('issued', 'date-parts'), lambda x: parse(' '.join([part for part in x[0]])).isoformat().decode('utf-8')),
+            'dateUpdated': ('#/issued/date-parts', lambda x: parse(' '.join([part for part in x[0]])).isoformat().decode('utf-8')),
             'id': {
                 'serviceID': 'DOI',
                 'doi': 'DOI',
@@ -94,9 +94,9 @@ class TestHarvester(JSONHarvester):
             'properties': {
                 'referenceCount': 'reference-count',
                 'updatePolicy': 'update-policy',
-                'depositedTimestamp': self.nested('deposited', 'timestamp'),
-                'Empty': self.nested('trash', 'not-here'),
-                'Empty2': self.nested()
+                'depositedTimestamp': '#/deposited/timestamp',
+                'Empty': '#/trash/not-here',
+                'Empty2': '#/'
             }
         }
 
