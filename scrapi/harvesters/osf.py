@@ -2,6 +2,7 @@
 Open Science Framework harvester of public projects for the SHARE Notification Service
 
 Example API query: https://osf.io/api/v1/search/
+https://staging.osf.io/api/v1/search/?q=category:registration%20AND%20date_created:[2015-01-01%20TO%202015-03-10]&size=1000
 https://osf.io/api/v1/search/?q=category:registration%20AND%20NOT%20title=test%20AND%20NOT%20title=%22Test%20Project%22
 """
 
@@ -9,7 +10,8 @@ from __future__ import unicode_literals
 
 import json
 import logging
-# from dateutil.parser import parse
+from dateutil.parser import parse
+from datetime import date, timedelta
 
 from nameparser import HumanName
 
@@ -53,6 +55,10 @@ def process_tags(entry):
         return [entry]
 
 
+def parse_date(entry):
+    return parse(entry).isoformat().decode('utf-8')
+
+
 class OSFHarvester(JSONHarvester):
     short_name = 'osf'
     long_name = 'Open Science Framework'
@@ -60,14 +66,16 @@ class OSFHarvester(JSONHarvester):
     count = 0
 
     # Only registrations that aren't just the word "test" or "test project"
-    URL = 'https://osf.io/api/v1/search/?q=category:registration ' + \
-          'AND NOT title=test AND NOT title="Test Project"&size=1000'
+    # TODO - change this url to production once in production
+    URL = 'https://staging.osf.io/api/v1/search/?q=category:registration ' +\
+          ' AND date_created:[{} TO {}]' +\
+          ' AND NOT title=test AND NOT title="Test Project"&size=1000'
 
     schema = {
         'title': ('title', process_null),
         'description': ('description', process_null),
         'tags': ('tags', process_tags),
-        'dateUpdated': '',
+        'dateUpdated': ('date_created', parse_date),
         'id': {
             'serviceID': ('url', lambda x: x.replace('/', '').decode('utf-8')),
             'url': ('url', lambda x: 'http://osf.io' + x),
@@ -86,8 +94,10 @@ class OSFHarvester(JSONHarvester):
     }
 
     def harvest(self, days_back=1):
-        # search_url = self.URL.format(days_back)
-        search_url = self.URL
+        start_date = str(date.today() - timedelta(int(days_back)))
+        end_date = str(date.today())
+
+        search_url = self.URL.format(start_date, end_date)
         records = self.get_records(search_url)
 
         record_list = []
@@ -110,9 +120,12 @@ class OSFHarvester(JSONHarvester):
     def get_records(self, search_url):
         records = requests.get(search_url)
 
-        total = int(records.json()['counts']['registration'])
-        from_arg = 0
+        try:
+            total = int(records.json()['counts']['registration'])
+        except KeyError:
+            return []
 
+        from_arg = 0
         all_records = []
         while len(all_records) < total:
             record_list = records.json()['results']
