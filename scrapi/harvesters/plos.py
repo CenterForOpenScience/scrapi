@@ -26,7 +26,6 @@ from dateutil.parser import *
 
 from scrapi import requests
 from scrapi.base import XMLHarvester
-from scrapi.base.schemas import CONSTANT
 from scrapi.linter.document import RawDocument
 from scrapi.base.helpers import default_name_parser
 

@@ -4,7 +4,6 @@ from dateutil.parser import parse
 
 from .helpers import (
     default_name_parser,
-    format_tags,
     oai_extract_url,
     oai_extract_doi,
     oai_process_contributors
