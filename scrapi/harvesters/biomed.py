@@ -17,7 +17,6 @@ from nameparser import HumanName
 
 from scrapi import requests
 from scrapi.base import JSONHarvester
-from scrapi.base.schemas import CONSTANT
 from scrapi.linter.document import RawDocument
 
 logger = logging.getLogger(__name__)
@@ -36,13 +35,12 @@ def process_contributors(authors):
     for person in authors:
         name = HumanName(person)
         contributor = {
-            'prefix': name.title,
-            'given': name.first,
-            'middle': name.middle,
-            'family': name.last,
-            'suffix': name.suffix,
+            'name': person,
+            'givenName': name.first,
+            'additionalName': name.middle,
+            'familyName': name.last,
             'email': '',
-            'ORCID': '',
+            'sameAs': [],
         }
         contributor_list.append(contributor)
 
@@ -57,31 +55,30 @@ class BiomedHarvester(JSONHarvester):
 
     URL = 'http://www.biomedcentral.com/search/results?terms=*&format=json&drpAddedInLast={}&itemsPerPage=250'
 
-    schema = {
-        'title': ('/bibliographyTitle', '/blurbTitle', lambda x, y: x or y),
-        'description': '/blurbText',
-        'tags': CONSTANT([]),
-        'dateUpdated': ('/published Date', lambda x: parse(x).isoformat().decode('utf-8')),
-        'id': {
-            'serviceID': ('/arxId', '/doi', lambda x, y: x.decode('utf-8') or y.decode('utf-8')),
-            'url': '/articleFullUrl',
-            'doi': '/doi'
-        },
-        'contributors': ('/authorNames', process_contributors),
-        'properties': {
-            'blurbTitle': '/blurbTitle',
-            'imageUrl': '/imageUrl',
-            'articleUrl': '/articleUrl',
-            'type': '/type',
-            'isOpenAccess': '/isOpenAccess',
-            'isFree': '/isFree',
-            'isHighlyAccessed': '/isHighlyAccessed',
-            'status': '/status',
-            'abstractPath': '/abstractPath',
-            'journal Id': '/journal Id',
-            'published Date': '/published Date'
+    @property
+    def schema(self):
+        return {
+            'contributor': ('/authorNames', process_contributors),
+            'directLink': '/articleFullUrl',
+            'notificationLink': '/articleFullUrl',
+            'resourceIdentifier': '/articleFullUrl',
+            'source': self.short_name,
+            'title': ('/bibliographyTitle', '/blurbTitle', lambda x, y: x or y),
+            'releaseDate': ('/published Date', lambda x: parse(x).date().isoformat()),
+            'raw': 'http://example.com',
+            'description': '/blurbText',
+            'relation': ('/doi', lambda x: ['http://dx.doi.org/' + x]),
+            'otherProperties': {
+                'imageUrl': '/imageUrl',
+                'type': '/type',
+                'isOpenAccess': '/isOpenAccess',
+                'isFree': '/isFree',
+                'isHighlyAccessed': '/isHighlyAccessed',
+                'status': '/status',
+                'abstractPath': '/abstractPath',
+                'journal Id': '/journal Id',
+            }
         }
-    }
 
     def harvest(self, days_back=1):
         search_url = self.URL.format(days_back)
