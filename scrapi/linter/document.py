@@ -1,18 +1,22 @@
-from scrapi.linter.util import lint
+import json
+
+import jsonschema
+
+from scrapi import registry
 from scrapi.linter.util import truthy
 
 
 class BaseDocument(object):
 
     """
-        For file objects. Automatically lints input to ensure
+        For file objects. Automatically validates input to ensure
         compatibility with scrAPI.
     """
 
-    REQUIRED_FIELDS = {}
+    schema = {}
 
     def __init__(self, attributes):
-        lint(attributes, self.REQUIRED_FIELDS)
+        jsonschema.validate(attributes, self.schema, format_checker=jsonschema.FormatChecker())
 
         self.attributes = attributes
 
@@ -35,35 +39,40 @@ class BaseDocument(object):
 
 class RawDocument(BaseDocument):
 
-    REQUIRED_FIELDS = {
-        'doc': str,
-        'docID': unicode,
-        'source': unicode,
-        'filetype': unicode
-    }
+    @property
+    def schema(self):
+        return {
+            '$schema': 'http://json-schema.org/draft-04/schema#',
+            'type': 'object',
+            'properties': {
+                'doc': {
+                    'type': 'string',
+                    'description': 'The raw metadata'
+                },
+                'docID': {
+                    'type': 'string',
+                    'description': 'A service-unique identifier'
+                },
+                'source': {
+                    'type': 'string',
+                    'enum': [entry.short_name for entry in registry.values()],
+                    'description': 'short_name for the source'
+                },
+                'filetype': {
+                    'type': 'string',
+                    'description': 'The format of the metadata (ie, xml, json)'
+                }
+            },
+            'required': [
+                'doc',
+                'docID',
+                'source',
+                'filetype'
+            ]
+        }
 
 
 class NormalizedDocument(BaseDocument):
-    CONTRIBUTOR_FIELD = {
-        'email': unicode,
-        'prefix': unicode,
-        'given': unicode,
-        'middle': unicode,
-        'family': unicode,
-        'suffix': unicode
-    }
-    ID_FIELD = {
-        'url': (truthy, unicode),
-        'doi': unicode,
-        'serviceID': unicode
-    }
 
-    REQUIRED_FIELDS = {
-        'title': unicode,
-        'contributors': [CONTRIBUTOR_FIELD],
-        'id': ID_FIELD,
-        'source': unicode,
-        'description': unicode,
-        'tags': [unicode],
-        'dateUpdated': unicode
-    }
+    with open('normalized.json') as f:
+        schema = json.load(f)
