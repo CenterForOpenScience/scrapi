@@ -50,21 +50,21 @@ class FigshareHarvester(JSONHarvester):
     URL = 'http://api.figshare.com/v1/articles/search?search_for=*&from_date='
 
     schema = {
-        'title': 'title',
-        'description': 'description',
-        'contributors': ('authors', process_contributors),
+        'title': '/title',
+        'description': '/description',
+        'contributors': ('/authors', process_contributors),
         'tags': CONSTANT([]),
-        'dateUpdated': ('modified_date', lambda x: parse(x).isoformat().decode('utf-8')),
+        'dateUpdated': ('/modified_date', lambda x: parse(x).isoformat().decode('utf-8')),
         'id': {
-            'url': ('DOI', lambda x: x[0] if isinstance(x, list) else x),
-            'serviceID': ('article_id', lambda x: str(x).decode('utf-8')),
-            'doi': ('DOI', lambda x: x[0].replace('http://dx.doi.org/', '') if isinstance(x, list) else x.replace('http://dx.doi.org/', ''))
+            'url': ('/DOI', lambda x: x[0] if isinstance(x, list) else x),
+            'serviceID': ('/article_id', lambda x: str(x).decode('utf-8')),
+            'doi': ('/DOI', lambda x: x[0].replace('http://dx.doi.org/', '') if isinstance(x, list) else x.replace('http://dx.doi.org/', ''))
         },
         'properties': {
-            'definedType': 'defined_type',
-            'type': 'type',
-            'links': 'links',
-            'publishedDate': 'published_date'
+            'definedType': '/defined_type',
+            'type': '/type',
+            'links': '/links',
+            'publishedDate': '/published_date'
         }
     }
 

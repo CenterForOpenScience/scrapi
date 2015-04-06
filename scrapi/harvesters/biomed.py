@@ -10,6 +10,7 @@ from __future__ import unicode_literals
 
 import json
 import logging
+import datetime
 from dateutil.parser import parse
 
 from nameparser import HumanName
@@ -57,28 +58,28 @@ class BiomedHarvester(JSONHarvester):
     URL = 'http://www.biomedcentral.com/search/results?terms=*&format=json&drpAddedInLast={}&itemsPerPage=250'
 
     schema = {
-        'title': ('bibliographyTitle', 'blurbTitle', lambda x, y: x or y),
-        'description': 'blurbText',
+        'title': ('/bibliographyTitle', '/blurbTitle', lambda x, y: x or y),
+        'description': '/blurbText',
         'tags': CONSTANT([]),
-        'dateUpdated': ('published Date', lambda x: parse(x).isoformat().decode('utf-8')),
+        'dateUpdated': ('/published Date', lambda x: parse(x).isoformat().decode('utf-8')),
         'id': {
-            'serviceID': ('arxId', 'doi', lambda x, y: x.decode('utf-8') or y.decode('utf-8')),
-            'url': 'articleFullUrl',
-            'doi': 'doi'
+            'serviceID': ('/arxId', '/doi', lambda x, y: x.decode('utf-8') or y.decode('utf-8')),
+            'url': '/articleFullUrl',
+            'doi': '/doi'
         },
-        'contributors': ('authorNames', process_contributors),
+        'contributors': ('/authorNames', process_contributors),
         'properties': {
-            'blurbTitle': 'blurbTitle',
-            'imageUrl': 'imageUrl',
-            'articleUrl': 'articleUrl',
-            'type': 'type',
-            'isOpenAccess': 'isOpenAccess',
-            'isFree': 'isFree',
-            'isHighlyAccessed': 'isHighlyAccessed',
-            'status': 'status',
-            'abstractPath': 'abstractPath',
-            'journal Id': 'journal Id',
-            'published Date': 'published Date'
+            'blurbTitle': '/blurbTitle',
+            'imageUrl': '/imageUrl',
+            'articleUrl': '/articleUrl',
+            'type': '/type',
+            'isOpenAccess': '/isOpenAccess',
+            'isFree': '/isFree',
+            'isHighlyAccessed': '/isHighlyAccessed',
+            'status': '/status',
+            'abstractPath': '/abstractPath',
+            'journal Id': '/journal Id',
+            'published Date': '/published Date'
         }
     }
 
@@ -104,7 +105,7 @@ class BiomedHarvester(JSONHarvester):
         return record_list
 
     def get_records(self, search_url):
-        records = requests.get(search_url)
+        records = requests.get(search_url + "#{}".format(datetime.date.today()))
         page = 1
 
         all_records = []
@@ -116,7 +117,7 @@ class BiomedHarvester(JSONHarvester):
                 all_records.append(record)
 
             page += 1
-            records = requests.get(search_url + '&page={}'.format(str(page)), throttle=10)
+            records = requests.get(search_url + '&page={}#{}'.format(str(page), datetime.date.today()), throttle=10)
             current_records = len(records.json()['entries'])
 
         return all_records
