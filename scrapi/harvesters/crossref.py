@@ -26,13 +26,12 @@ logger = logging.getLogger(__name__)
 def process_contributor(author, orcid):
     name = HumanName(author)
     return {
-        'prefix': name.title,
-        'given': name.first,
-        'middle': name.middle,
-        'family': name.last,
-        'suffix': name.suffix,
+        'name': author,
+        'givenName': name.first,
+        'additionalName': name.middle,
+        'familyName': name.last,
         'email': '',
-        'ORCID': orcid
+        'sameAs': [orcid or '']
     }
 
 
@@ -50,22 +49,21 @@ class CrossRefHarvester(JSONHarvester):
         return {
             'title': ('/title', lambda x: x[0] if x else ''),
             'description': ('/subtitle', lambda x: x[0] if (isinstance(x, list) and x) else x or ''),
-            'dateUpdated': ('/issued/date-parts', lambda x: parse(' '.join([str(part) for part in x[0]])).isoformat().decode('utf-8')),
-            'id': {
-                'serviceID': '/DOI',
-                'doi': '/DOI',
-                'url': '/URL'
-            },
-            'contributors': ('/author', lambda x: [
+            'releaseDate': ('/issued/date-parts', lambda x: parse(' '.join([str(part) for part in x[0]])).date().isoformat().decode('utf-8')),
+            'relation': ('/DOI', lambda x: [x]),
+            'directLink': '/URL',
+            'resourceIdentifier': '/URL',
+            'notificationLink': '/URL',
+            'contributor': ('/author', lambda x: [
                 process_contributor(*[
                     '{} {}'.format(entry.get('given'), entry.get('family')),
                     entry.get('ORCID')
                 ]) for entry in x
             ]),
-            'tags': ('/subject', '/container-title', lambda x, y: [tag.lower() for tag in (x or []) + (y or [])]),
-            'properties': {
+            'otherProperties': {
                 'journalTitle': '/container-title',
                 'volume': '/volume',
+                'tags': ('/subject', '/container-title', lambda x, y: [tag.lower() for tag in (x or []) + (y or [])]),
                 'issue': '/issue',
                 'publisher': '/publisher',
                 'type': '/type',
