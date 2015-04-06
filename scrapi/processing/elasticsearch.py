@@ -21,14 +21,14 @@ try:
     # If we cant connect to elastic search dont define this class
     es = Elasticsearch(settings.ELASTIC_URI, request_timeout=settings.ELASTIC_TIMEOUT)
 
-    body = {
-        'mappings': {
-            harvester: settings.ES_SEARCH_MAPPING
-            for harvester in registry.keys()
-        }
-    }
-    es.cluster.health(wait_for_status='yellow')
-    es.indices.create(index=settings.ELASTIC_INDEX, body=body, ignore=400)
+    # body = {
+    #     'mappings': {
+    #         harvester: settings.ES_SEARCH_MAPPING
+    #         for harvester in registry.keys()
+    #     }
+    # }
+    # es.cluster.health(wait_for_status='yellow')
+    es.indices.create(index=settings.ELASTIC_INDEX, body={}, ignore=400)
 except ConnectionError:  # pragma: no cover
     logger.error('Could not connect to Elasticsearch, expect errors.')
     if 'elasticsearch' in settings.NORMALIZED_PROCESSING or 'elasticsearch' in settings.RAW_PROCESSING:
@@ -39,33 +39,33 @@ class ElasticsearchProcessor(BaseProcessor):
     NAME = 'elasticsearch'
 
     def process_normalized(self, raw_doc, normalized):
-        # normalized['releaseDate'] = self.version(normalized)
-        # data = {
-        #     key: value for key, value in normalized.attributes.items()
-        #     if key in settings.FRONTEND_KEYS
-        # }
+        normalized['releaseDate'] = self.version(raw_doc, normalized)
+        data = {
+            key: value for key, value in normalized.attributes.items()
+            if key in settings.FRONTEND_KEYS
+        }
 
         es.index(
-            body=normalized.attributes,
+            body=data,
             refresh=True,
             index=settings.ELASTIC_INDEX,
             doc_type=raw_doc['source'],
             id=raw_doc['docID'],
         )
 
-    def version_dateUpdated(self, normalized):
+    def version(self, raw, normalized):
         try:
             old_doc = es.get_source(
                 index=settings.ELASTIC_INDEX,
-                doc_type=normalized['source'],
-                id=normalized['id']['serviceID'],
+                doc_type=raw['source'],
+                id=raw['docID']
             )
         except NotFoundError:  # pragma: no cover
             # Normally I don't like exception-driven logic,
             # but this was the best way to handle missing
             # types, indices and documents together
-            date = normalized['dateUpdated']
+            date = normalized['releaseDate']
         else:
-            date = old_doc['dateUpdated']
+            date = old_doc.get('releaseDate') or normalized['releaseDate']
 
         return date
