@@ -4,6 +4,8 @@ import json
 import logging
 from uuid import uuid4
 
+from dateutil.parser import parse
+
 from cqlengine import columns, Model
 
 from scrapi import events
@@ -26,11 +28,11 @@ class CassandraProcessor(BaseProcessor):
         self.send_to_database(
             source=raw_doc['source'],
             docID=raw_doc['docID'],
-            creationDate=normalized.get('creationDate'),
+            creationDate=parse(normalized.get('creationDate', '')),
             contributor=json.dumps(normalized['contributor']),
             description=normalized.get('description'),
             directLink=normalized['directLink'],
-            releaseDate=normalized['releaseDate'],
+            releaseDate=parse(normalized['releaseDate']),
             freeToRead=json.dumps(normalized.get('freeToRead', {})),
             language=normalized.get('language'),
             licenseRef=json.dumps(normalized.get('licenseRef', [])),
@@ -38,7 +40,7 @@ class CassandraProcessor(BaseProcessor):
             publisher=normalized.get('publisher'),
             raw=normalized['raw'],
             resourceIdentifier=normalized['resourceIdentifier'],
-            revisionTime=normalized.get('revisionTime'),
+            revisionTime=parse(normalized.get('revisionTime', '')),
             sponsorship=json.dumps(normalized.get('sponsorship', [])),
             title=normalized['title'],
             version=normalized.get('version'),
