@@ -39,18 +39,18 @@ class ElasticsearchProcessor(BaseProcessor):
     NAME = 'elasticsearch'
 
     def process_normalized(self, raw_doc, normalized):
-        normalized['dateUpdated'] = self.version_dateUpdated(normalized)
-        data = {
-            key: value for key, value in normalized.attributes.items()
-            if key in settings.FRONTEND_KEYS
-        }
+        # normalized['releaseDate'] = self.version(normalized)
+        # data = {
+        #     key: value for key, value in normalized.attributes.items()
+        #     if key in settings.FRONTEND_KEYS
+        # }
 
         es.index(
-            body=data,
+            body=normalized.attributes,
             refresh=True,
             index=settings.ELASTIC_INDEX,
-            doc_type=normalized['source'],
-            id=normalized['id']['serviceID'],
+            doc_type=raw_doc['source'],
+            id=raw_doc['docID'],
         )
 
     def version_dateUpdated(self, normalized):
