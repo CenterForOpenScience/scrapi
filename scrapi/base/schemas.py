@@ -14,26 +14,22 @@ CONSTANT = lambda x: lambda *_, **__: x
 
 BASEXMLSCHEMA = {
     "description": ('//dc:description/node()', lambda x: unicode(x.strip())),
-    "contributors": ('//dc:creator/node()', lambda x: default_name_parser(x.split(';'))),
+    "contributor": ('//dc:creator/node()', lambda x: default_name_parser(x.split(';'))),
     "title": ('//dc:title/node()', lambda x: unicode(x.strip())),
-    "dateUpdated": ('//dc:dateEntry/node()', lambda x: unicode(x.strip())),
-    "id": {
-        "url": ('//dcq:identifier-citation/node()', lambda x: unicode(x.strip())),
-        "serviceID": ('//dc:ostiId/node()', lambda x: unicode(x.strip())),
-        "doi": ('//dc:doi/node()', lambda x: unicode(x.strip()))
-    },
-    "tags": ('//dc:subject/node()', format_tags)
+    "releaseDate": ('//dc:dateEntry/node()', lambda x: unicode(x.strip())),
+    "notificationLink": ('//dcq:identifier-citation/node()', lambda x: unicode(x.strip())),
+    "resourceIdentifier": ('//dcq:identifier-citation/node()', lambda x: unicode(x.strip())),
+    "directLink": ('//dcq:identifier-citation/node()', lambda x: unicode(x.strip())),
+    "relation": ('//dc:doi/node()', lambda x: [unicode(x.strip())])
 }
 
 OAISCHEMA = {
-    "contributors": ('//dc:creator/node()', '//dc:contributor/node()', oai_process_contributors),
-    'tags': ('//dc:subject/node()', format_tags),
-    'id': {
-        'doi': ('//dc:identifier/node()', oai_extract_doi),
-        'url': ('//dc:identifier/node()', oai_extract_url),
-        'serviceID': '//ns0:header/ns0:identifier/node()'
-    },
-    'dateUpdated': ('//ns0:header/ns0:datestamp/node()', lambda x: unicode(parse(x).isoformat())),
+    "contributor": ('//dc:creator/node()', '//dc:contributor/node()', oai_process_contributors),
+    'directLink': ('//dc:identifier/node()', oai_extract_url),
+    'relation': ('//dc:identifier/node()', lambda x: [oai_extract_doi(x)]),
+    'notificationLink': ('//dc:identifier/node()', oai_extract_url),
+    'resourceIdentifier': ('//dc:identifier/node()', oai_extract_url),
+    'releaseDate': ('//ns0:header/ns0:datestamp/node()', lambda x: unicode(parse(x).date().isoformat())),
     'title': ('//dc:title/node()', lambda x: x[0] if isinstance(x, list) else x),
     'description': ('//dc:description/node()', lambda x: x[0] if isinstance(x, list) else x)
 }
