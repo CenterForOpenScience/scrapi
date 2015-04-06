@@ -46,7 +46,7 @@ class TestTransformer(object):
             TEST_SCHEMA,
             {
                 'title': (pack(*args, **kwargs), process_title),
-                'properties': {
+                'otherProperties': {
                     'title2': (pack(*args), process_title),
                     'title3': (pack(**kwargs), process_title2),
                     'title4': (pack('//dc:title/node()', title1="//dc:title/node()"), process_title)
@@ -58,9 +58,9 @@ class TestTransformer(object):
 
         for result in results:
             assert result['title'] == "TestTest"
-            assert result['properties']['title2'] == 'Testtest'
-            assert result['properties']['title3'] == 'Test'
-            assert result['properties']['title4'] == "TestTest"
+            assert result['otherProperties']['title2'] == 'Testtest'
+            assert result['otherProperties']['title3'] == 'Test'
+            assert result['otherProperties']['title4'] == "TestTest"
 
     def test_normalize(self):
         results = [
@@ -69,9 +69,9 @@ class TestTransformer(object):
 
         for result in results:
             assert result['title'] == "Title overwritten"
-            assert result['properties']['title1'] == 'Test'
-            assert result['properties']['title2'] == 'test'
-            assert result['properties']['title3'] == 'Testtest'
+            assert result['otherProperties']['title1'] == 'Test'
+            assert result['otherProperties']['title2'] == 'test'
+            assert result['otherProperties']['title3'] == 'Testtest'
 
             for (k, v) in get_leaves(result.attributes):
                 assert type(v) != functools.partial
@@ -79,7 +79,7 @@ class TestTransformer(object):
     def test_constants(self):
         self.harvester.schema = updated_schema(
             TEST_SCHEMA, {
-                'properties': {
+                'otherProperties': {
                     'test': CONSTANT('test')
                 }
             }
@@ -89,4 +89,4 @@ class TestTransformer(object):
         ]
 
         for result in results:
-            assert result['properties']['test'] == 'test'
+            assert result['otherProperties']['test'] == 'test'
