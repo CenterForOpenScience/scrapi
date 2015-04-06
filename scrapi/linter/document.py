@@ -3,7 +3,6 @@ import json
 import jsonschema
 
 from scrapi import registry
-from scrapi.linter.util import truthy
 
 
 class BaseDocument(object):
