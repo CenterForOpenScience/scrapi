@@ -72,25 +72,20 @@ def process_contributors(author, submitters, contributors):
             #     contributor = name_from_email(email)
             name = HumanName(contributor)
             contributor_dict = {
-                'prefix': name.title,
-                'given': name.first,
-                'middle': name.middle,
-                'family': name.last,
-                'suffix': name.suffix,
-                'email': unicode(email),
-                'ORCID': ''
+                'name': contributor,
+                'givenName': name.first,
+                'additionalName': name.middle,
+                'familyName': name.last,
+                'email': unicode(email)
             }
             contributor_list.append(contributor_dict)
         else:
             name = HumanName(contributor)
             contributor_list.append({
-                'prefix': name.title,
-                'given': name.first,
-                'middle': name.middle,
-                'family': name.last,
-                'suffix': name.suffix,
-                'email': '',
-                'ORCID': ''
+                'name': contributor,
+                'givenName': name.first,
+                'additionalName': name.middle,
+                'familyName': name.last,
             })
 
     return contributor_list
@@ -106,7 +101,7 @@ class DataOneHarvester(XMLHarvester):
     record_encoding = None
 
     schema = {
-        'properties': {
+        'otherProperties': {
             'author': "str[@name='author']/node()",
             'authorGivenName': ("str[@name='authorGivenName']/node()"),
             'authorSurName': ("str[@name='authorSurName']/node()"),
@@ -141,17 +136,17 @@ class DataOneHarvester(XMLHarvester):
             'size': ("long[@name='size']/node()"),
             'sku': ("str[@name='sku']/node()"),
             'isDocumentedBy': "arr[@name='isDocumentedBy']/str/node()",
+            'serviceID': "str[@name='id']/node()"
         },
-        'contributors': ("str[@name='author']/node()", "str[@name='submitter']/node()", "arr[@name='origin']/str/node()", process_contributors),
-        'id': {
-            'serviceID': "str[@name='id']/node()",
-            'doi': ("str[@name='id']/node()", "arr[@name='isDocumentedBy']/str/node()", process_doi),
-            'url': ("str[@name='id']/node()", "//str[@name='dataUrl']/node()", lambda x, y: y if 'http' in y else x if 'http' in x else '')
-        },
+        'contributor': ("str[@name='author']/node()", "str[@name='submitter']/node()", "arr[@name='origin']/str/node()", process_contributors),
+        'notificationLink': ("str[@name='id']/node()", "//str[@name='dataUrl']/node()", lambda x, y: y if 'http' in y else x if 'http' in x else ''),
+        'directLink': ("str[@name='id']/node()", "//str[@name='dataUrl']/node()", lambda x, y: y if 'http' in y else x if 'http' in x else ''),
+        'resourceIdentifier': ("str[@name='id']/node()", "//str[@name='dataUrl']/node()", lambda x, y: y if 'http' in y else x if 'http' in x else ''),
         'tags': ("//arr[@name='keywords']/str/node()", lambda x: x if isinstance(x, list) else [x]),
-        'dateUpdated': ("str[@name='dateModified']/node()", lambda x: parse(x).isoformat().decode('utf-8')),
+        'releaseDate': ("str[@name='dateModified']/node()", lambda x: parse(x).date().isoformat().decode('utf-8')),
         'title': "str[@name='title']/node()",
-        'description': "str[@name='abstract']/node()"
+        'description': "str[@name='abstract']/node()",
+        'relation': ("str[@name='id']/node()", "arr[@name='isDocumentedBy']/str/node()", lambda x, y: [process_doi(x, y)]),
     }
 
     def copy_to_unicode(self, element):
