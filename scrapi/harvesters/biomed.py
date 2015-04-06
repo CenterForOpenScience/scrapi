@@ -65,7 +65,6 @@ class BiomedHarvester(JSONHarvester):
             'source': self.short_name,
             'title': ('/bibliographyTitle', '/blurbTitle', lambda x, y: x or y),
             'releaseDate': ('/published Date', lambda x: parse(x).date().isoformat()),
-            'raw': 'http://example.com',
             'description': '/blurbText',
             'relation': ('/doi', lambda x: ['http://dx.doi.org/' + x]),
             'otherProperties': {
