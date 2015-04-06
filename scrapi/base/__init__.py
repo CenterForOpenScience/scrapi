@@ -77,6 +77,7 @@ class JSONHarvester(BaseHarvester, JSONTransformer):
     def normalize(self, raw_doc):
         transformed = self.transform(json.loads(raw_doc['doc']))
         transformed['source'] = self.short_name
+        transformed['raw'] = 'http://example.com'  # TODO
         return NormalizedDocument(transformed)
 
 
@@ -86,6 +87,7 @@ class XMLHarvester(BaseHarvester, XMLTransformer):
     def normalize(self, raw_doc):
         transformed = self.transform(etree.XML(raw_doc['doc']))
         transformed['source'] = self.short_name
+        transformed['raw'] = 'http://example.com'  # TODO
         return NormalizedDocument(transformed)
 
 
@@ -121,7 +123,7 @@ class OAIHarvester(XMLHarvester):
     @property
     def schema(self):
         properties = {
-            'properties': {
+            'otherProperties': {
                 item: (
                     '//dc:{}/node()'.format(item),
                     '//ns0:{}/node()'.format(item),
