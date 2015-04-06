@@ -6,7 +6,6 @@ from elasticsearch.exceptions import NotFoundError
 from elasticsearch.exceptions import ConnectionError
 
 from scrapi import settings
-from scrapi import registry
 from scrapi.processing.base import BaseProcessor
 
 
@@ -38,7 +37,7 @@ except ConnectionError:  # pragma: no cover
 class ElasticsearchProcessor(BaseProcessor):
     NAME = 'elasticsearch'
 
-    def process_normalized(self, raw_doc, normalized):
+    def process_normalized(self, raw_doc, normalized, index=settings.ELASTIC_INDEX):
         normalized['releaseDate'] = self.version(raw_doc, normalized)
         data = {
             key: value for key, value in normalized.attributes.items()
@@ -48,7 +47,7 @@ class ElasticsearchProcessor(BaseProcessor):
         es.index(
             body=data,
             refresh=True,
-            index=settings.ELASTIC_INDEX,
+            index=index,
             doc_type=raw_doc['source'],
             id=raw_doc['docID'],
         )
