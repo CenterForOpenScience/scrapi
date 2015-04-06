@@ -19,12 +19,12 @@ class BaseDocument(object):
 
         self.attributes = attributes
 
-    def get(self, attribute):
+    def get(self, attribute, default=None):
         """
             Maintains compatibility with previous dictionary implementation of scrAPI
             :: str -> str
         """
-        return self.attributes.get(attribute)
+        return self.attributes.get(attribute, default)
 
     def __getitem__(self, attr):
         return self.attributes[attr]
