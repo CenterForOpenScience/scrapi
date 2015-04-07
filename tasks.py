@@ -18,6 +18,11 @@ def server():
 
 
 @task
+def renormalize():
+    run('python -m scripts.renormalize')
+
+
+@task
 def reset_search():
     run("curl -XPOST 'http://localhost:9200/_shutdown'")
     if platform.linux_distribution()[0] == 'Ubuntu':
