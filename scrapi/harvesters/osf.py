@@ -28,13 +28,12 @@ def process_contributors(authors):
     for person in authors:
         name = HumanName(person['fullname'])
         contributor = {
-            'prefix': name.title,
-            'given': name.first,
-            'middle': name.middle,
-            'family': name.last,
-            'suffix': name.suffix,
+            'name': person['fullname'],
+            'givenName': name.first,
+            'additionalName': name.middle,
+            'familyName': name.last,
             'email': '',
-            'ORCID': '',
+            'sameAs': [],
         }
         contributor_list.append(contributor)
 
@@ -56,7 +55,7 @@ def process_tags(entry):
 
 
 def parse_date(entry):
-    return parse(entry).isoformat().decode('utf-8')
+    return parse(entry).date().isoformat().decode('utf-8')
 
 
 class OSFHarvester(JSONHarvester):
@@ -66,31 +65,33 @@ class OSFHarvester(JSONHarvester):
     count = 0
 
     # Only registrations that aren't just the word "test" or "test project"
-    URL = 'https://osf.io/api/v1/search/?q=category:registration ' +\
+    URL = 'https://staging.osf.io/api/v1/search/?q=category:registration ' +\
           ' AND date_created:[{} TO {}]' +\
           ' AND NOT title=test AND NOT title="Test Project"&size=1000'
 
-    schema = {
-        'title': ('title', process_null),
-        'description': ('description', process_null),
-        'tags': ('tags', process_tags),
-        'dateUpdated': ('date_created', parse_date),
-        'id': {
-            'serviceID': ('url', lambda x: x.replace('/', '').decode('utf-8')),
-            'url': ('url', lambda x: 'http://osf.io' + x),
-            'doi': 'doi'
-        },
-        'contributors': ('contributors', process_contributors),
-        'properties': {
-            'parent_title': 'parent_title',
-            'category': 'category',
-            'wiki_link': 'wiki_link',
-            'is_component': 'is_component',
-            'is_registration': 'is_registration',
-            'parent_url': 'parent_url',
-            'contributors': 'contributors'
+    @property
+    def schema(self):
+        return {
+            'contributor': ('contributors', process_contributors),
+            'directLink': ('url', lambda x: 'http://osf.io' + x),
+            'notificationLink': ('url', lambda x: 'http://osf.io' + x),
+            'resourceIdentifier': ('url', lambda x: 'http://osf.io' + x),
+            'source': self.short_name,
+            'title': ('title', process_null),
+            'releaseDate': ('date_created', parse_date),
+            'description': ('description', process_null),
+            'otherProperties': {
+                'parent_title': 'parent_title',
+                'category': 'category',
+                'wiki_link': 'wiki_link',
+                'is_component': 'is_component',
+                'is_registration': 'is_registration',
+                'parent_url': 'parent_url',
+                'contributors': 'contributors',
+                'journal Id': '/journal Id',
+                'tags': ('tags', process_tags)
+            }
         }
-    }
 
     def harvest(self, days_back=1):
         start_date = str(date.today() - timedelta(int(days_back)))
