@@ -28,7 +28,7 @@ def reindex(src, dest):
 
 @task
 def alias(alias, index):
-    es.indices.delete_alias(index=alias, name='_all')
+    es.indices.delete_alias(index=alias, name='_all', ignore=404)
     es.indices.put_alias(alias, index)
 
 
