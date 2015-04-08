@@ -13,33 +13,13 @@ import logging
 from dateutil.parser import parse
 from datetime import date, timedelta
 
-from nameparser import HumanName
 
 from scrapi import requests
 from scrapi.base import JSONHarvester
-from scrapi.base.schemas import CONSTANT
 from scrapi.linter.document import RawDocument
+from scrapi.base.helpers import default_name_parser
 
 logger = logging.getLogger(__name__)
-
-
-def process_contributors(authors):
-
-    contributor_list = []
-    for person in authors:
-        name = HumanName(person['author_name'])
-        contributor = {
-            'prefix': name.title,
-            'given': name.first,
-            'middle': name.middle,
-            'family': name.last,
-            'suffix': name.suffix,
-            'email': '',
-            'ORCID': '',
-        }
-        contributor_list.append(contributor)
-
-    return contributor_list
 
 
 class FigshareHarvester(JSONHarvester):
@@ -52,15 +32,14 @@ class FigshareHarvester(JSONHarvester):
     schema = {
         'title': '/title',
         'description': '/description',
-        'contributors': ('/authors', process_contributors),
-        'tags': CONSTANT([]),
-        'dateUpdated': ('/modified_date', lambda x: parse(x).isoformat().decode('utf-8')),
-        'id': {
-            'url': ('/DOI', lambda x: x[0] if isinstance(x, list) else x),
+        'contributor': ('/authors', lambda x: default_name_parser([person['author_name'] for person in x])),
+        'releaseDate': ('/modified_date', lambda x: parse(x).date().isoformat().decode('utf-8')),
+        'notificationLink': ('/DOI', lambda x: x[0] if isinstance(x, list) else x),
+        'directLink': ('/DOI', lambda x: x[0] if isinstance(x, list) else x),
+        'resourceIdentifier': ('/DOI', lambda x: x[0] if isinstance(x, list) else x),
+        'relation': ('/DOI', lambda x: [x[0].replace('http://dx.doi.org/', '')] if isinstance(x, list) else [x.replace('http://dx.doi.org/', '')]),
+        'otherProperties': {
             'serviceID': ('/article_id', lambda x: str(x).decode('utf-8')),
-            'doi': ('/DOI', lambda x: x[0].replace('http://dx.doi.org/', '') if isinstance(x, list) else x.replace('http://dx.doi.org/', ''))
-        },
-        'properties': {
             'definedType': '/defined_type',
             'type': '/type',
             'links': '/links',

@@ -1,7 +1,7 @@
 DEBUG = False
 
 ELASTIC_TIMEOUT = 10
-ELASTIC_INDEX = 'share'
+ELASTIC_INDEX = 'share_v2'
 ELASTIC_URI = 'localhost:9200'
 
 BROKER_URL = 'amqp://guest@localhost'

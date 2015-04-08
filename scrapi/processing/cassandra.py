@@ -4,6 +4,8 @@ import json
 import logging
 from uuid import uuid4
 
+from dateutil.parser import parse
+
 from cqlengine import columns, Model
 
 from scrapi import events
@@ -24,15 +26,27 @@ class CassandraProcessor(BaseProcessor):
     @events.logged(events.PROCESSING, 'normalized.cassandra')
     def process_normalized(self, raw_doc, normalized):
         self.send_to_database(
-            docID=normalized["id"]['serviceID'],
-            source=normalized['source'],
-            url=normalized['id']['url'],
-            contributors=json.dumps(normalized['contributors']),
-            id=normalized['id'],
+            source=raw_doc['source'],
+            docID=raw_doc['docID'],
+            creationDate=parse(normalized.get('creationDate', '')),
+            contributor=json.dumps(normalized['contributor']),
+            description=normalized.get('description'),
+            directLink=normalized['directLink'],
+            releaseDate=parse(normalized['releaseDate']),
+            freeToRead=json.dumps(normalized.get('freeToRead', {})),
+            language=normalized.get('language'),
+            licenseRef=json.dumps(normalized.get('licenseRef', [])),
+            notificationLink=normalized['notificationLink'],
+            publisher=normalized.get('publisher'),
+            raw=normalized['raw'],
+            resourceIdentifier=normalized['resourceIdentifier'],
+            revisionTime=parse(normalized.get('revisionTime', '')),
+            sponsorship=json.dumps(normalized.get('sponsorship', [])),
             title=normalized['title'],
-            tags=normalized['tags'],
-            dateUpdated=normalized['dateUpdated'],
-            properties=json.dumps(normalized['properties'])
+            version=normalized.get('version'),
+            versionOfRecord=normalized.get('versionOfRecord'),
+            otherProperties=json.dumps(normalized.get('otherProperties', {})),
+            shareProperties=json.dumps(normalized.get('shareProperties', {}))
         ).save()
 
     @events.logged(events.PROCESSING, 'raw.cassandra')
@@ -81,14 +95,25 @@ class DocumentModel(Model):
     timestamps = columns.Map(columns.Text, columns.Text)
 
     # Normalized
-    url = columns.Text()
-    title = columns.Text()
-    properties = columns.Text()
-    dateUpdated = columns.Text()
+    creationDate = columns.DateTime()
+    contributor = columns.Text()  # TODO
     description = columns.Text()
-    contributors = columns.Text()  # TODO This should use user-defined types (when they're added)
-    tags = columns.List(columns.Text())
-    id = columns.Map(columns.Text, columns.Text)
+    directLink = columns.Text()
+    releaseDate = columns.DateTime()
+    freeToRead = columns.Text()  # TODO
+    language = columns.Text()
+    licenseRef = columns.Text()  # TODO
+    notificationLink = columns.Text()
+    publisher = columns.Text()
+    raw = columns.Text()
+    resourceIdentifier = columns.Text()
+    revisionTime = columns.DateTime()
+    sponsorship = columns.Text()  # TODO
+    title = columns.Text()
+    version = columns.Text()
+    versionOfRecord = columns.Text()
+    otherProperties = columns.Text()  # TODO
+    shareProperties = columns.Text()  # TODO
 
     # Additional metadata
     versions = columns.List(columns.UUID)
@@ -115,14 +140,25 @@ class VersionModel(Model):
     timestamps = columns.Map(columns.Text, columns.Text)
 
     # Normalized
-    url = columns.Text()
-    title = columns.Text()
-    properties = columns.Text()  # TODO
-    dateUpdated = columns.Text()
+    creationDate = columns.DateTime()
+    contributor = columns.Text()  # TODO
     description = columns.Text()
-    contributors = columns.Text()  # TODO: When supported, this should be a user-defined type
-    tags = columns.List(columns.Text())
-    id = columns.Map(columns.Text, columns.Text)
+    directLink = columns.Text()
+    releaseDate = columns.DateTime()
+    freeToRead = columns.Text()  # TODO
+    language = columns.Text()
+    licenseRef = columns.Text()  # TODO
+    notificationLink = columns.Text()
+    publisher = columns.Text()
+    raw = columns.Text()
+    resourceIdentifier = columns.Text()
+    revisionTime = columns.DateTime()
+    sponsorship = columns.Text()  # TODO
+    title = columns.Text()
+    version = columns.Text()
+    versionOfRecord = columns.Text()
+    otherProperties = columns.Text()  # TODO
+    shareProperties = columns.Text()  # TODO
 
     # Additional metadata
     versions = columns.List(columns.UUID)

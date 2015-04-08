@@ -7,11 +7,10 @@ import logging
 from datetime import date, timedelta
 
 from lxml import etree
-from celery.schedules import crontab
 
 from scrapi import util
 from scrapi import requests
-from scrapi.linter import lint
+from scrapi import registry
 from scrapi.base.schemas import OAISCHEMA
 from scrapi.base.helpers import updated_schema
 from scrapi.linter.document import RawDocument, NormalizedDocument
@@ -20,32 +19,6 @@ from scrapi.base.transformer import XMLTransformer, JSONTransformer
 logging.basicConfig(level=logging.INFO)
 
 logger = logging.getLogger(__name__)
-
-
-class _Registry(dict):
-
-    def __init__(self):
-        super(_Registry, self).__init__()
-
-    def __getitem__(self, key):
-        try:
-            return super(_Registry, self).__getitem__(key)
-        except KeyError:
-            raise KeyError('No harvester named "{}"'.format(key))
-
-    @property
-    def beat_schedule(self):
-        return {
-            'run_{}'.format(name): {
-                'args': [name],
-                'schedule': crontab(**inst.run_at),
-                'task': 'scrapi.tasks.run_harvester',
-            }
-            for name, inst
-            in self.items()
-        }
-
-registry = _Registry()
 
 
 class HarvesterMeta(abc.ABCMeta):
@@ -89,9 +62,6 @@ class BaseHarvester(object):
     def normalize(self, raw_doc):
         raise NotImplementedError
 
-    def lint(self):
-        return lint(self.harvest, self.normalize)
-
     @property
     def run_at(self):
         return {
@@ -107,6 +77,7 @@ class JSONHarvester(BaseHarvester, JSONTransformer):
     def normalize(self, raw_doc):
         transformed = self.transform(json.loads(raw_doc['doc']))
         transformed['source'] = self.short_name
+        transformed['raw'] = 'http://example.com'  # TODO
         return NormalizedDocument(transformed)
 
 
@@ -116,6 +87,7 @@ class XMLHarvester(BaseHarvester, XMLTransformer):
     def normalize(self, raw_doc):
         transformed = self.transform(etree.XML(raw_doc['doc']))
         transformed['source'] = self.short_name
+        transformed['raw'] = 'http://example.com'  # TODO
         return NormalizedDocument(transformed)
 
 
@@ -151,7 +123,7 @@ class OAIHarvester(XMLHarvester):
     @property
     def schema(self):
         properties = {
-            'properties': {
+            'otherProperties': {
                 item: (
                     '//dc:{}/node()'.format(item),
                     '//ns0:{}/node()'.format(item),

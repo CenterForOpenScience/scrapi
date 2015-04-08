@@ -12,42 +12,35 @@ RAW_DOC = {
         'harvestTaskCreated': '2012-11-30T17:05:48+00:00'
     },
     'filetype': 'json',
-    'source': 'tests'
+    'source': 'crossref'
 }
 
 NORMALIZED_DOC = {
     'title': 'No',
-    'description': 'No',
-    'contributors': [],
-    'tags': [],
-    'source': 'No',
-    'dateUpdated': 'No',
-    'id': {
-        'doi': 'No',
-        'url': 'No',
-        'serviceID': 'someID',
-    }
+    'contributor': [{'name': ''}],
+    'source': 'crossref',
+    'releaseDate': '2014-04-04',
+    'directLink': 'http://example.com/direct',
+    'notificationLink': 'http://example.com/notification',
+    'resourceIdentifier': 'http://example.com/id'
 }
 
 RECORD = {
     'title': 'Using Table Stable Carbon in Gold and STAR Isotopes',
-    'contributors': [
+    'contributor': [
         {
-            'prefix': 'The One And Only',
-            'given': 'DEVON',
-            'middle': 'Get The Tables',
-            'family': 'DUDLEY',
-            'suffix': 'Thirsty Boy',
+            'name': 'DEVON Get The Tables DUDLEY',
+            'givenName': 'DEVON',
+            'additionalName': 'Get The Tables',
+            'familyName': 'DUDLEY',
             'email': 'dudley.boyz@email.uni.edu',
-            'ORCID': 'BubbaRayDudley'
+            'sameAs': ['http://example.com/me']
         }
     ],
-    'id': {
-        'url': 'http://www.plosone.org/article',
-        'doi': '10.1371/doi.DOI!',
-        'serviceID': 'AWESOME'
-    },
-    'properties': {
+    'directLink': 'http://www.plosone.org/article',
+    'notificationLink': 'http://www.plosone.org/article',
+    'resourceIdentifier': 'http://www.plosone.org/article',
+    'otherProperties': {
         'figures': ['http://www.plosone.org/article/image.png'],
         'type': 'text',
                 'yep': 'A property'
@@ -56,21 +49,18 @@ RECORD = {
             the dietary patterns of eight free-ranging vervet monkey\
             (Chlorocebus pygerythrus) groups in South Africa using stable\
             isotope analysis.',
-    'tags': [
-        'behavior',
-        'genetics'
-    ],
-    'source': 'example_pusher',
-    'dateCreated': '2012-11-30T17:05:48+00:00',
-    'dateUpdated': '2015-02-23T17:05:48+00:01',
+    'source': 'crossref',
+    'creationDate': '2012-11-30',
+    'releaseDate': '2015-02-23',
     '_id': 'yes! yes! yes!',
-    'count': 0
+    'count': 0,
+    'raw': 'http://example.com'
 }
 
 
 TEST_SCHEMA = updated_schema(BASEXMLSCHEMA, {
     "title": ("//dc:title/node()", lambda x: "Title overwritten"),
-    "properties": {
+    "otherProperties": {
         "title1": "//dc:title/node()",
         "title2": ["//dc:title/node()", lambda x: x.lower()],
         "title3": ["//dc:title/node()", "//dc:title/node()", lambda x, y: x + y.lower()]

@@ -10,39 +10,33 @@ from scrapi.linter import RawDocument
 
 expected = {
     "description": "This is a  test",
-    "contributors": [
+    "contributor": [
         {
-            "given": "Testy",
-            "suffix": "",
-            "family": "Testerson",
-            "middle": "",
-            "prefix": "",
+            "name": "Testy Testerson",
+            "givenName": "Testy",
+            "familyName": "Testerson",
+            "additionalName": "",
             "ORCID": None,
             "email": ""
         },
         {
-            "given": "Test",
-            "suffix": "Jr",
-            "family": "Testerson",
-            "middle": "",
-            "prefix": "",
+            "name": "Test Testerson Jr",
+            "givenName": "Test",
+            "familyName": "Testerson",
+            "additionalName": "",
             "ORCID": None,
             "email": ""
         }
     ],
     "title": "Test",
-    "tags": [
-        "testing",
-        "json tests"
-    ],
-    "id": {
-        "url": "http://example.com",
-        "serviceID": "10.10123/232ff",
-        "doi": "10.10123/232ff"
-    },
+    "directLink": "http://example.com",
+    "notificationLink": "http://example.com",
+    "resourceIdentifier": "http://example.com",
+    "relation": ["10.10123/232ff"],
     "source": "crossref",
-    "dateUpdated": "2015-02-02T00:00:00",
-    "properties": {
+    "releaseDate": "2015-02-02",
+    "raw": 'http://example.com',
+    "otherProperties": {
         "referenceCount": "7",
         "updatePolicy": "No",
         "depositedTimestamp": "right now",
@@ -54,11 +48,10 @@ expected = {
 def process_contributor(author, orcid):
     name = HumanName(author)
     return {
-        'prefix': name.title,
-        'given': name.first,
-        'middle': name.middle,
-        'family': name.last,
-        'suffix': name.suffix,
+        'name': author,
+        'givenName': name.first,
+        'additionalName': name.middle,
+        'familyName': name.last,
         'email': '',
         'ORCID': orcid
     }
@@ -78,20 +71,18 @@ class TestHarvester(JSONHarvester):
         return {
             'title': ('/title', lambda x: x[0] if x else ''),
             'description': ('/subtitle', lambda x: x[0] if (isinstance(x, list) and x) else x or ''),
-            'dateUpdated': ('/issued/date-parts', lambda x: parse(' '.join([part for part in x[0]])).isoformat().decode('utf-8')),
-            'id': {
-                'serviceID': '/DOI',
-                'doi': '/DOI',
-                'url': '/URL'
-            },
-            'contributors': ('/author', lambda x: [
+            'releaseDate': ('/issued/date-parts', lambda x: parse(' '.join([part for part in x[0]])).date().isoformat().decode('utf-8')),
+            'relation': ('/DOI', lambda x: [x]),
+            'directLink': '/URL',
+            'notificationLink': '/URL',
+            'resourceIdentifier': '/URL',
+            'contributor': ('/author', lambda x: [
                 process_contributor(*[
                     '{} {}'.format(entry.get('given'), entry.get('family')),
                     entry.get('ORCID')
                 ]) for entry in x
             ]),
-            'tags': ('/subject', '/container-title', lambda x, y: [tag.lower() for tag in (x or []) + (y or [])]),
-            'properties': {
+            'otherProperties': {
                 'referenceCount': '/reference-count',
                 'updatePolicy': '/update-policy',
                 'depositedTimestamp': '/deposited/timestamp',
@@ -126,7 +117,7 @@ class TestHarvester(JSONHarvester):
                 },
                 'trash': ''
             })),
-            'source': 'TEST',
+            'source': 'crossref',
             'filetype': 'json',
             'docID': '1'
         })]

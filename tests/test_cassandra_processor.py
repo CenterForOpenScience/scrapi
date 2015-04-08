@@ -17,14 +17,14 @@ RAW = RawDocument(utils.RAW_DOC)
 @pytest.mark.cassandra
 def test_process_raw():
     test_db.process_raw(RAW)
-    queryset = DocumentModel.objects(docID='someID', source='tests')
+    queryset = DocumentModel.objects(docID='someID', source=RAW['source'])
     assert(len(queryset) == 1)
 
 
 @pytest.mark.cassandra
 def test_process_normalized():
     test_db.process_normalized(RAW, NORMALIZED)
-    queryset = DocumentModel.objects(docID=NORMALIZED['id']['serviceID'], source=NORMALIZED['source'])
+    queryset = DocumentModel.objects(docID=RAW['docID'], source=NORMALIZED['source'])
 
     assert(queryset[0].title == utils.RECORD['title'])
 
@@ -32,7 +32,7 @@ def test_process_normalized():
 @pytest.mark.cassandra
 def test_versions():
     test_db.process_normalized(RAW, NORMALIZED)
-    queryset = DocumentModel.objects(docID=NORMALIZED['id']['serviceID'], source=NORMALIZED['source'])
+    queryset = DocumentModel.objects(docID=RAW['docID'], source=NORMALIZED['source'])
 
     assert (len(queryset) == 1)
 
@@ -40,7 +40,7 @@ def test_versions():
 
     NORMALIZED['title'] = 'some new title'
     test_db.process_normalized(RAW, NORMALIZED)
-    doc = DocumentModel.objects(docID=NORMALIZED['id']['serviceID'], source=NORMALIZED['source'])[0]
+    doc = DocumentModel.objects(docID=RAW['docID'], source=NORMALIZED['source'])[0]
     assert (doc.title == 'some new title')
     assert len(doc.versions) == 1
 
@@ -49,6 +49,6 @@ def test_versions():
     assert (version.title == old_title)
 
     test_db.process_normalized(RAW, NORMALIZED)
-    doc = DocumentModel.objects(docID=NORMALIZED['id']['serviceID'], source=NORMALIZED['source'])[0]
+    doc = DocumentModel.objects(docID=RAW['docID'], source=NORMALIZED['source'])[0]
     assert (doc.title == 'some new title')
     assert len(doc.versions) == 1

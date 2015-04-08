@@ -41,7 +41,7 @@ class SciTechHarvester(XMLHarvester):
         'dcq': 'http://purl.org/dc/terms/'
     }
     schema = updated_schema(BASEXMLSCHEMA, {
-        'properties': {
+        'otherProperties': {
             'language': '//dc:language/node()',
             'type': '//dc:type/node()',
             'typeQualifier': '//dc:typeQualifier/node()',

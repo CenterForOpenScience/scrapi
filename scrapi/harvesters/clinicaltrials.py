@@ -31,18 +31,17 @@ class ClinicalTrialsHarvester(XMLHarvester):
     record_encoding = None
 
     schema = {
-        "contributors": ('//overall_official/last_name/node()', lambda x: default_name_parser(x) if isinstance(x, list) else default_name_parser([x])),
-        "id": {
-            "url": "//required_header/url/node()",
-            "doi": ("//required_header/url/node()", lambda x: ''),
-            "serviceID": "//nct_id/node()"
-        },
-        "tags": ("//keyword/node()", lambda tags: [unicode(tag.lower()) for tag in tags]),
-        "dateUpdated": ("lastchanged_date/node()", lambda x: unicode(parse(x).isoformat())),
+        "contributor": ('//overall_official/last_name/node()', lambda x: default_name_parser(x) if isinstance(x, list) else default_name_parser([x])),
+        "notificationLink": "//required_header/url/node()",
+        "directLink": "//required_header/url/node()",
+        "resourceIdentifier": "//required_header/url/node()",
+        "releaseDate": ("lastchanged_date/node()", lambda x: unicode(parse(x).date().isoformat())),
         "title": ('//official_title/node()', '//brief_title/node()', lambda x, y: x or y or ''),
         "description": ('//brief_summary/textblock/node()', '//brief_summary/textblock/node()', lambda x, y: x or y or ''),
-        "properties": {
+        "otherProperties": {
             'oversightAuthority': '//oversight_info/authority/node()',
+            "serviceID": "//nct_id/node()",
+            "tags": ("//keyword/node()", lambda tags: [unicode(tag.lower()) for tag in tags]),
             'studyDesign': '//study_design/node()',
             'numberOfArms': '//number_of_arms/node()',
             'source': '//source/node()',

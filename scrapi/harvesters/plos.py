@@ -26,7 +26,6 @@ from dateutil.parser import *
 
 from scrapi import requests
 from scrapi.base import XMLHarvester
-from scrapi.base.schemas import CONSTANT
 from scrapi.linter.document import RawDocument
 from scrapi.base.helpers import default_name_parser
 
@@ -108,17 +107,15 @@ class PlosHarvester(XMLHarvester):
             return unicode(element, encoding=DEFAULT_ENCODING)
 
     schema = {
-        'id': {
-            'doi': '//str[@name="id"]/node()',
-            'serviceID': '//str[@name="id"]/node()',
-            'url': ('//str[@name="id"]/node()', lambda x: 'http://dx.doi.org/{}'.format(x))
-        },
-        'contributors': ('//arr[@name="author_display"]/str/node()', default_name_parser),
-        'dateUpdated': ('//date[@name="publication_data"]/node()', lambda x: parse(x).isoformat().decode('utf-8')),
-        'tags': CONSTANT([]),
+        'relation': ('//str[@name="id"]/node()', lambda x: [x]),
+        'directLink': ('//str[@name="id"]/node()', lambda x: 'http://dx.doi.org/{}'.format(x)),
+        'notificationLink': ('//str[@name="id"]/node()', lambda x: 'http://dx.doi.org/{}'.format(x)),
+        'resourceIdentifier': ('//str[@name="id"]/node()', lambda x: 'http://dx.doi.org/{}'.format(x)),
+        'contributor': ('//arr[@name="author_display"]/str/node()', default_name_parser),
+        'releaseDate': ('//date[@name="publication_data"]/node()', lambda x: parse(x).date().isoformat().decode('utf-8')),
         'title': '//str[@name="title_display"]/node()',
         'description': '//arr[@name="abstract"]/str/node()',
-        'properties': {
+        'otherProperties': {
             'journal': '//str[@name="journal"]/node()',
             'eissn': '//str[@name="eissn"]/node()',
             'articleType': '//str[@name="article_type"]/node()',
