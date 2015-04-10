@@ -10,7 +10,7 @@ from scrapi.linter import RawDocument
 
 expected = {
     "description": "This is a  test",
-    "contributor": [
+    "contributors": [
         {
             "name": "Testy Testerson",
             "givenName": "Testy",
@@ -29,20 +29,20 @@ expected = {
         }
     ],
     "title": "Test",
-    "directLink": "http://example.com",
-    "notificationLink": "http://example.com",
-    "resourceIdentifier": "http://example.com",
-    "relation": ["10.10123/232ff"],
-    "source": "crossref",
-    "releaseDate": "2015-02-02",
-    "raw": 'http://example.com',
-    "otherProperties": {
-        "referenceCount": "7",
-        "updatePolicy": "No",
-        "depositedTimestamp": "right now",
-        "Empty": "",
-        "Empty2": ""
+    'uris': {
+        "canonicalUri": "http://example.com"
+    },
+    "providerUpdatedDateTime": "2015-02-02T00:00:00",
+    "shareProperties": {
+        "source": "crossref"
     }
+    # "otherProperties": {
+    #     "referenceCount": "7",
+    #     "updatePolicy": "No",
+    #     "depositedTimestamp": "right now",
+    #     "Empty": "",
+    #     "Empty2": ""
+    # }
 }
 
 def process_contributor(author, orcid):
@@ -71,24 +71,23 @@ class TestHarvester(JSONHarvester):
         return {
             'title': ('/title', lambda x: x[0] if x else ''),
             'description': ('/subtitle', lambda x: x[0] if (isinstance(x, list) and x) else x or ''),
-            'releaseDate': ('/issued/date-parts', lambda x: parse(' '.join([part for part in x[0]])).date().isoformat().decode('utf-8')),
-            'relation': ('/DOI', lambda x: [x]),
-            'directLink': '/URL',
-            'notificationLink': '/URL',
-            'resourceIdentifier': '/URL',
-            'contributor': ('/author', lambda x: [
+            'providerUpdatedDateTime': ('/issued/date-parts', lambda x: parse(' '.join([part for part in x[0]])).isoformat().decode('utf-8')),
+            'uris': {
+                'canonicalUri': '/URL'
+            },
+            'contributors': ('/author', lambda x: [
                 process_contributor(*[
                     '{} {}'.format(entry.get('given'), entry.get('family')),
                     entry.get('ORCID')
                 ]) for entry in x
             ]),
-            'otherProperties': {
-                'referenceCount': '/reference-count',
-                'updatePolicy': '/update-policy',
-                'depositedTimestamp': '/deposited/timestamp',
-                'Empty': '/trash/not-here',
-                'Empty2': '/'
-            }
+            # 'otherProperties': {
+            #     'referenceCount': '/reference-count',
+            #     'updatePolicy': '/update-policy',
+            #     'depositedTimestamp': '/deposited/timestamp',
+            #     'Empty': '/trash/not-here',
+            #     'Empty2': '/'
+            # }
         }
 
     def harvest(self, days_back=1):
