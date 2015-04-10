@@ -76,8 +76,8 @@ class JSONHarvester(BaseHarvester, JSONTransformer):
 
     def normalize(self, raw_doc):
         transformed = self.transform(json.loads(raw_doc['doc']))
-        transformed['source'] = self.short_name
-        transformed['raw'] = 'http://example.com'  # TODO
+        transformed['shareProperties'] = {}
+        transformed['shareProperties']['source'] = self.short_name
         return NormalizedDocument(transformed)
 
 
@@ -86,8 +86,8 @@ class XMLHarvester(BaseHarvester, XMLTransformer):
 
     def normalize(self, raw_doc):
         transformed = self.transform(etree.XML(raw_doc['doc']))
-        transformed['source'] = self.short_name
-        transformed['raw'] = 'http://example.com'  # TODO
+        transformed['shareProperties'] = {}
+        transformed['shareProperties']['source'] = self.short_name
         return NormalizedDocument(transformed)
 
 
@@ -122,16 +122,17 @@ class OAIHarvester(XMLHarvester):
 
     @property
     def schema(self):
-        properties = {
-            'otherProperties': {
-                item: (
-                    '//dc:{}/node()'.format(item),
-                    '//ns0:{}/node()'.format(item),
-                    self.resolve_property
-                ) for item in self.property_list
-            }
-        }
-        return updated_schema(OAISCHEMA, properties)
+        # properties = {  # TODO, conform to new properties schema
+        #     'otherProperties': {
+        #         item: (
+        #             '//dc:{}/node()'.format(item),
+        #             '//ns0:{}/node()'.format(item),
+        #             self.resolve_property
+        #         ) for item in self.property_list
+        #     }
+        # }
+
+        return OAISCHEMA
 
     def resolve_property(self, dc, ns0):
         if isinstance(dc, list) and isinstance(ns0, list):

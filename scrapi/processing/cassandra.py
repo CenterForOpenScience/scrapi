@@ -28,25 +28,19 @@ class CassandraProcessor(BaseProcessor):
         self.send_to_database(
             source=raw_doc['source'],
             docID=raw_doc['docID'],
-            creationDate=parse(normalized.get('creationDate', '')),
-            contributor=json.dumps(normalized['contributor']),
+            contributors=json.dumps(normalized['contributors']),
             description=normalized.get('description'),
-            directLink=normalized['directLink'],
-            releaseDate=parse(normalized['releaseDate']),
+            uris=json.dumps(normalized['uris']),
+            providerUpdatedDateTime=parse(normalized['providerUpdatedDateTime']),
             freeToRead=json.dumps(normalized.get('freeToRead', {})),
-            language=normalized.get('language'),
-            licenseRef=json.dumps(normalized.get('licenseRef', [])),
-            notificationLink=normalized['notificationLink'],
-            publisher=normalized.get('publisher'),
-            raw=normalized['raw'],
-            resourceIdentifier=normalized['resourceIdentifier'],
-            revisionTime=parse(normalized.get('revisionTime', '')),
-            sponsorship=json.dumps(normalized.get('sponsorship', [])),
+            languages=normalized.get('language'),
+            licenses=json.dumps(normalized.get('licenseRef', [])),
+            publisher=json.dumps(normalized.get('publisher', {})),
+            sponsorships=json.dumps(normalized.get('sponsorship', [])),
             title=normalized['title'],
-            version=normalized.get('version'),
-            versionOfRecord=normalized.get('versionOfRecord'),
+            version=json.dumps(normalized.get('version'), {}),
             otherProperties=json.dumps(normalized.get('otherProperties', {})),
-            shareProperties=json.dumps(normalized.get('shareProperties', {}))
+            shareProperties=json.dumps(normalized['shareProperties'])
         ).save()
 
     @events.logged(events.PROCESSING, 'raw.cassandra')
@@ -95,23 +89,20 @@ class DocumentModel(Model):
     timestamps = columns.Map(columns.Text, columns.Text)
 
     # Normalized
-    creationDate = columns.DateTime()
-    contributor = columns.Text()  # TODO
-    description = columns.Text()
-    directLink = columns.Text()
-    releaseDate = columns.DateTime()
-    freeToRead = columns.Text()  # TODO
-    language = columns.Text()
-    licenseRef = columns.Text()  # TODO
-    notificationLink = columns.Text()
-    publisher = columns.Text()
-    raw = columns.Text()
-    resourceIdentifier = columns.Text()
-    revisionTime = columns.DateTime()
-    sponsorship = columns.Text()  # TODO
+    uris = columns.Text()
     title = columns.Text()
-    version = columns.Text()
-    versionOfRecord = columns.Text()
+    contributors = columns.Text()  # TODO
+    providerUpdatedDateTime = columns.DateTime()
+
+    description = columns.Text()
+    freeToRead = columns.Text()  # TODO
+    languages = columns.List(columns.Text())
+    licenses = columns.Text()  # TODO
+    publisher = columns.Text()  # TODO
+    subjects = columns.List(columns.Text())
+    tags = columns.List(columns.Text())
+    sponsorships = columns.Text()  # TODO
+    version = columns.Text()  # TODO
     otherProperties = columns.Text()  # TODO
     shareProperties = columns.Text()  # TODO
 
@@ -140,23 +131,20 @@ class VersionModel(Model):
     timestamps = columns.Map(columns.Text, columns.Text)
 
     # Normalized
-    creationDate = columns.DateTime()
-    contributor = columns.Text()  # TODO
-    description = columns.Text()
-    directLink = columns.Text()
-    releaseDate = columns.DateTime()
-    freeToRead = columns.Text()  # TODO
-    language = columns.Text()
-    licenseRef = columns.Text()  # TODO
-    notificationLink = columns.Text()
-    publisher = columns.Text()
-    raw = columns.Text()
-    resourceIdentifier = columns.Text()
-    revisionTime = columns.DateTime()
-    sponsorship = columns.Text()  # TODO
+    uris = columns.Text()
     title = columns.Text()
-    version = columns.Text()
-    versionOfRecord = columns.Text()
+    contributors = columns.Text()  # TODO
+    providerUpdatedDateTime = columns.DateTime()
+
+    description = columns.Text()
+    freeToRead = columns.Text()  # TODO
+    languages = columns.List(columns.Text())
+    licenses = columns.Text()  # TODO
+    publisher = columns.Text()  # TODO
+    subjects = columns.List(columns.Text())
+    tags = columns.List(columns.Text())
+    sponsorships = columns.Text()  # TODO
+    version = columns.Text()  # TODO
     otherProperties = columns.Text()  # TODO
     shareProperties = columns.Text()  # TODO
 

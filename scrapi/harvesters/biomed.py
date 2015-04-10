@@ -58,25 +58,24 @@ class BiomedHarvester(JSONHarvester):
     @property
     def schema(self):
         return {
-            'contributor': ('/authorNames', process_contributors),
-            'directLink': '/articleFullUrl',
-            'notificationLink': '/articleFullUrl',
-            'resourceIdentifier': '/articleFullUrl',
-            'source': self.short_name,
+            'contributors': ('/authorNames', process_contributors),
+            'uris': {
+                'canonicalUri': '/articleFullUrl'
+            },
             'title': ('/bibliographyTitle', '/blurbTitle', lambda x, y: x or y),
-            'releaseDate': ('/published Date', lambda x: parse(x).date().isoformat()),
+            'providerUpdatedDateTime': ('/published Date', lambda x: parse(x).isoformat()),
             'description': '/blurbText',
             'relation': ('/doi', lambda x: ['http://dx.doi.org/' + x]),
-            'otherProperties': {
-                'imageUrl': '/imageUrl',
-                'type': '/type',
-                'isOpenAccess': '/isOpenAccess',
-                'isFree': '/isFree',
-                'isHighlyAccessed': '/isHighlyAccessed',
-                'status': '/status',
-                'abstractPath': '/abstractPath',
-                'journal Id': '/journal Id',
-            }
+            # 'otherProperties': {
+            #     'imageUrl': '/imageUrl',
+            #     'type': '/type',
+            #     'isOpenAccess': '/isOpenAccess',
+            #     'isFree': '/isFree',
+            #     'isHighlyAccessed': '/isHighlyAccessed',
+            #     'status': '/status',
+            #     'abstractPath': '/abstractPath',
+            #     'journal Id': '/journal Id',
+            # }
         }
 
     def harvest(self, days_back=1):

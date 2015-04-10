@@ -40,7 +40,7 @@ class ElasticsearchProcessor(BaseProcessor):
     NAME = 'elasticsearch'
 
     def process_normalized(self, raw_doc, normalized, index=settings.ELASTIC_INDEX):
-        normalized['releaseDate'] = self.version(raw_doc, normalized)
+        normalized['providerUpdatedDateTime'] = self.version(raw_doc, normalized)
         data = {
             key: value for key, value in normalized.attributes.items()
             if key in settings.FRONTEND_KEYS
@@ -66,9 +66,9 @@ class ElasticsearchProcessor(BaseProcessor):
             # Normally I don't like exception-driven logic,
             # but this was the best way to handle missing
             # types, indices and documents together
-            date = normalized['releaseDate']
+            date = normalized['providerUpdatedDateTime']
         else:
-            date = old_doc.get('releaseDate') or normalized['releaseDate']
+            date = old_doc.get('providerUpdatedDateTime') or normalized['providerUpdatedDateTime']
 
         return date
 
@@ -101,11 +101,11 @@ class PreserveOldSchema(JSONTransformer):
     schema = {
         'title': '/title',
         'description': '/description',
-        'tags': '/otherProperties/tags',
-        'contributors': ('/contributor', PreserveOldContributors().process_contributors),
-        'dateUpdated': '/releaseDate',
-        'source': '/source',
+        'tags': ('/tags', lambda x: x or []),
+        'contributors': ('/contributors', PreserveOldContributors().process_contributors),
+        'dateUpdated': '/providerUpdatedDateTime',
+        'source': '/shareProperties/source',
         'id': {
-            'url': '/directLink'
+            'url': '/uris/canonicalUri'
         }
     }
