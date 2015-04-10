@@ -27,7 +27,8 @@ try:
     #         for harvester in registry.keys()
     #     }
     # }
-    # es.cluster.health(wait_for_status='yellow')
+
+    es.cluster.health(wait_for_status='yellow')
     es.indices.create(index=settings.ELASTIC_INDEX, body={}, ignore=400)
     es.indices.create(index='share_v1', ignore=400)
 except ConnectionError:  # pragma: no cover
