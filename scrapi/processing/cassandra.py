@@ -65,7 +65,7 @@ class CassandraProcessor(BaseProcessor):
             return DocumentModel.create(docID=docID, source=source, **kwargs)
 
     def different(self, old, new):
-        return not all([new[key] == old[key] for key in new.keys() if key != 'timestamps'])
+        return not all([new[key] == old[key] or (not new[key] and not old[key]) for key in new.keys() if key != 'timestamps'])
 
 
 @database.register_model
