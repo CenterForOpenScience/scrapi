@@ -167,7 +167,7 @@ class TestCassandraIntegration(object):
         assert isinstance(resp, requests.HarvesterResponse)
 
     @pytest.mark.cassandra
-    def test_record_or_load_throttle_doesnt_on_load(self, mock_requests, monkeypatch):
+    def test_request_doesnt_throttle_on_load(self, mock_requests, monkeypatch):
         mock_sleep = mock.Mock()
         monkeypatch.setattr(requests.time, 'sleep', mock_sleep)
         requests.HarvesterResponse(ok=True, method='get', url='dinosaurs.sexy', content='citychicken').save()

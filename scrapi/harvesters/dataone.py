@@ -72,25 +72,20 @@ def process_contributors(author, submitters, contributors):
             #     contributor = name_from_email(email)
             name = HumanName(contributor)
             contributor_dict = {
-                'prefix': name.title,
-                'given': name.first,
-                'middle': name.middle,
-                'family': name.last,
-                'suffix': name.suffix,
-                'email': unicode(email),
-                'ORCID': ''
+                'name': contributor,
+                'givenName': name.first,
+                'additionalName': name.middle,
+                'familyName': name.last,
+                'email': unicode(email)
             }
             contributor_list.append(contributor_dict)
         else:
             name = HumanName(contributor)
             contributor_list.append({
-                'prefix': name.title,
-                'given': name.first,
-                'middle': name.middle,
-                'family': name.last,
-                'suffix': name.suffix,
-                'email': '',
-                'ORCID': ''
+                'name': contributor,
+                'givenName': name.first,
+                'additionalName': name.middle,
+                'familyName': name.last,
             })
 
     return contributor_list
@@ -106,52 +101,51 @@ class DataOneHarvester(XMLHarvester):
     record_encoding = None
 
     schema = {
-        'properties': {
-            'author': "str[@name='author']/node()",
-            'authorGivenName': ("str[@name='authorGivenName']/node()"),
-            'authorSurName': ("str[@name='authorSurName']/node()"),
-            'authoritativeMN': ("str[@name='authoritativeMN']/node()"),
-            'checksum': ("str[@name='checksum']/node()"),
-            'checksumAlgorithm': ("str[@name='checksumAlgorithm']/node()"),
-            'dataUrl': ("str[@name='dataUrl']/node()"),
-            'datasource': ("str[@name='datasource']/node()"),
-            'documents': "arr[@name='documents']/str/node()",
-            'dateModified': ("date[@name='dateModified']/node()"),
-            'datePublished': ("date[@name='datePublished']/node()"),
-            'dateUploaded': ("date[@name='dateUploaded']/node()"),
-            'pubDate': ("date[@name='pubDate']/node()"),
-            'updateDate': ("date[@name='updateDate']/node()"),
-            'fileID': ("str[@name='fileID']/node()"),
-            'formatId': ("str[@name='formatId']/node()"),
-            'formatType': ("str[@name='formatType']/node()"),
-            'identifier': ("str[@name='identifier']/node()"),
-            'investigator': "arr[@name='investigator']/str/node()",
-            'origin': "arr[@name='origin']/str/node()",
-            'isPublic': ("bool[@name='isPublic']/node()"),
-            'readPermission': "arr[@name='readPermission']/str/node()",
-            'replicaMN': "arr[@name='replicaMN']/str/node()",
-            'replicaVerifiedDate': "arr[@name='replicaVerifiedDate']/date/node()",
-            'replicationAllowed': ("bool[@name='replicationAllowed']/node()"),
-            'numberReplicas': ("int[@name='numberReplicas']/node()"),
-            'preferredReplicationMN': "arr[@name='preferredReplicationMN']/str/node()",
-            'resourceMap': "arr[@name='resourceMap']/str/node()",
-            'rightsHolder': ("str[@name='rightsHolder']/node()"),
-            'scientificName': "arr[@name='scientificName']/str/node()",
-            'site': "arr[@name='site']/str/node()",
-            'size': ("long[@name='size']/node()"),
-            'sku': ("str[@name='sku']/node()"),
-            'isDocumentedBy': "arr[@name='isDocumentedBy']/str/node()",
-        },
+        # 'otherProperties': {
+        #     'author': "str[@name='author']/node()",
+        #     'authorGivenName': ("str[@name='authorGivenName']/node()"),
+        #     'authorSurName': ("str[@name='authorSurName']/node()"),
+        #     'authoritativeMN': ("str[@name='authoritativeMN']/node()"),
+        #     'checksum': ("str[@name='checksum']/node()"),
+        #     'checksumAlgorithm': ("str[@name='checksumAlgorithm']/node()"),
+        #     'dataUrl': ("str[@name='dataUrl']/node()"),
+        #     'datasource': ("str[@name='datasource']/node()"),
+        #     'documents': "arr[@name='documents']/str/node()",
+        #     'dateModified': ("date[@name='dateModified']/node()"),
+        #     'datePublished': ("date[@name='datePublished']/node()"),
+        #     'dateUploaded': ("date[@name='dateUploaded']/node()"),
+        #     'pubDate': ("date[@name='pubDate']/node()"),
+        #     'updateDate': ("date[@name='updateDate']/node()"),
+        #     'fileID': ("str[@name='fileID']/node()"),
+        #     'formatId': ("str[@name='formatId']/node()"),
+        #     'formatType': ("str[@name='formatType']/node()"),
+        #     'identifier': ("str[@name='identifier']/node()"),
+        #     'investigator': "arr[@name='investigator']/str/node()",
+        #     'origin': "arr[@name='origin']/str/node()",
+        #     'isPublic': ("bool[@name='isPublic']/node()"),
+        #     'readPermission': "arr[@name='readPermission']/str/node()",
+        #     'replicaMN': "arr[@name='replicaMN']/str/node()",
+        #     'replicaVerifiedDate': "arr[@name='replicaVerifiedDate']/date/node()",
+        #     'replicationAllowed': ("bool[@name='replicationAllowed']/node()"),
+        #     'numberReplicas': ("int[@name='numberReplicas']/node()"),
+        #     'preferredReplicationMN': "arr[@name='preferredReplicationMN']/str/node()",
+        #     'resourceMap': "arr[@name='resourceMap']/str/node()",
+        #     'rightsHolder': ("str[@name='rightsHolder']/node()"),
+        #     'scientificName': "arr[@name='scientificName']/str/node()",
+        #     'site': "arr[@name='site']/str/node()",
+        #     'size': ("long[@name='size']/node()"),
+        #     'sku': ("str[@name='sku']/node()"),
+        #     'isDocumentedBy': "arr[@name='isDocumentedBy']/str/node()",
+        #     'serviceID': "str[@name='id']/node()"
+        # },
         'contributors': ("str[@name='author']/node()", "str[@name='submitter']/node()", "arr[@name='origin']/str/node()", process_contributors),
-        'id': {
-            'serviceID': "str[@name='id']/node()",
-            'doi': ("str[@name='id']/node()", "arr[@name='isDocumentedBy']/str/node()", process_doi),
-            'url': ("str[@name='id']/node()", "//str[@name='dataUrl']/node()", lambda x, y: y if 'http' in y else x if 'http' in x else '')
+        'uris': {
+            'canonicalUri': ("str[@name='id']/node()", "//str[@name='dataUrl']/node()", lambda x, y: y if 'http' in y else x if 'http' in x else ''),
         },
         'tags': ("//arr[@name='keywords']/str/node()", lambda x: x if isinstance(x, list) else [x]),
-        'dateUpdated': ("str[@name='dateModified']/node()", lambda x: parse(x).isoformat().decode('utf-8')),
+        'providerUpdatedDateTime': ("str[@name='dateModified']/node()", lambda x: parse(x).date().isoformat().decode('utf-8')),
         'title': "str[@name='title']/node()",
-        'description': "str[@name='abstract']/node()"
+        'description': "str[@name='abstract']/node()",
     }
 
     def copy_to_unicode(self, element):

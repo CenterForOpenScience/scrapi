@@ -10,24 +10,73 @@ from __future__ import unicode_literals
 
 import json
 import logging
+import datetime
 from dateutil.parser import parse
 
 from nameparser import HumanName
 
 from scrapi import requests
-from scrapi.base import BaseHarvester
-from scrapi.linter.document import RawDocument, NormalizedDocument
+from scrapi.base import JSONHarvester
+from scrapi.linter.document import RawDocument
 
 logger = logging.getLogger(__name__)
 
 
-class BiomedHarvester(BaseHarvester):
+def process_contributors(authors):
+
+    authors = authors.strip().replace('<span class="author-names">', '').replace('</span>', '')
+    authors = authors.split(',')
+
+    if ' and ' in authors[-1] or ' <em>et al.</em>' in authors[-1]:
+        split_name = authors.pop(-1).replace(' <em>et al.</em>', '').split(' and ')
+        authors.extend(split_name)
+
+    contributor_list = []
+    for person in authors:
+        name = HumanName(person)
+        contributor = {
+            'name': person,
+            'givenName': name.first,
+            'additionalName': name.middle,
+            'familyName': name.last,
+            'email': '',
+            'sameAs': [],
+        }
+        contributor_list.append(contributor)
+
+    return contributor_list
+
+
+class BiomedHarvester(JSONHarvester):
     short_name = 'biomed'
     long_name = 'BioMed Central'
     url = 'http://www.biomedcentral.com/'
+    count = 0
 
-    file_format = 'json'
     URL = 'http://www.biomedcentral.com/search/results?terms=*&format=json&drpAddedInLast={}&itemsPerPage=250'
+
+    @property
+    def schema(self):
+        return {
+            'contributors': ('/authorNames', process_contributors),
+            'uris': {
+                'canonicalUri': '/articleFullUrl'
+            },
+            'title': ('/bibliographyTitle', '/blurbTitle', lambda x, y: x or y),
+            'providerUpdatedDateTime': ('/published Date', lambda x: parse(x).isoformat()),
+            'description': '/blurbText',
+            'relation': ('/doi', lambda x: ['http://dx.doi.org/' + x]),
+            # 'otherProperties': {
+            #     'imageUrl': '/imageUrl',
+            #     'type': '/type',
+            #     'isOpenAccess': '/isOpenAccess',
+            #     'isFree': '/isFree',
+            #     'isHighlyAccessed': '/isHighlyAccessed',
+            #     'status': '/status',
+            #     'abstractPath': '/abstractPath',
+            #     'journal Id': '/journal Id',
+            # }
+        }
 
     def harvest(self, days_back=1):
         search_url = self.URL.format(days_back)
@@ -51,7 +100,7 @@ class BiomedHarvester(BaseHarvester):
         return record_list
 
     def get_records(self, search_url):
-        records = requests.get(search_url)
+        records = requests.get(search_url + "#{}".format(datetime.date.today()))
         page = 1
 
         all_records = []
@@ -63,73 +112,7 @@ class BiomedHarvester(BaseHarvester):
                 all_records.append(record)
 
             page += 1
-            records = requests.get(search_url + '&page={}'.format(str(page)), throttle=10)
+            records = requests.get(search_url + '&page={}#{}'.format(str(page), datetime.date.today()), throttle=10)
             current_records = len(records.json()['entries'])
 
         return all_records
-
-    def get_contributors(self, record):
-
-        authors = record['authorNames']
-        authors = authors.strip().replace('<span class="author-names">', '').replace('</span>', '')
-        authors = authors.split(',')
-
-        if ' and ' in authors[-1] or ' <em>et al.</em>' in authors[-1]:
-            split_name = authors.pop(-1).replace(' <em>et al.</em>', '').split(' and ')
-            authors.extend(split_name)
-
-        contributor_list = []
-        for person in authors:
-            name = HumanName(person)
-            contributor = {
-                'prefix': name.title,
-                'given': name.first,
-                'middle': name.middle,
-                'family': name.last,
-                'suffix': name.suffix,
-                'email': '',
-                'ORCID': '',
-            }
-            contributor_list.append(contributor)
-
-        return contributor_list
-
-    def get_ids(self, record):
-
-        return {
-            'serviceID': record['arxId'].decode('utf-8'),
-            'url': record['articleFullUrl'],
-            'doi': record['doi']
-        }
-
-    def get_properties(self, record):
-        return {
-            'blurbTitle': record['blurbTitle'],
-            'imageUrl': record['imageUrl'],
-            'articleUrl': record['articleUrl'],
-            'type': record['type'],
-            'isOpenAccess': record['isOpenAccess'],
-            'isFree': record['isFree'],
-            'isHighlyAccessed': record['isHighlyAccessed'],
-            'status': record['status'],
-            'abstractPath': record['abstractPath'],
-            'journal Id': record['journal Id'],
-            'published Date': record['published Date']
-        }
-
-    def normalize(self, raw_doc):
-        doc = raw_doc['doc']
-        record = json.loads(doc)
-
-        normalized_dict = {
-            'title': record['bibliograhyTitle'],
-            'contributors': self.get_contributors(record),
-            'properties': self.get_properties(record),
-            'description': record['blurbText'],
-            'tags': [],
-            'id': self.get_ids(record),
-            'source': self.short_name,
-            'dateUpdated': unicode(parse(record['published Date']).isoformat())
-        }
-
-        return NormalizedDocument(normalized_dict)

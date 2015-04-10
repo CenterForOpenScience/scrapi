@@ -22,13 +22,12 @@ def default_name_parser(names):
     for person in names:
         name = HumanName(person)
         contributor = {
-            'prefix': name.title,
-            'given': name.first,
-            'middle': name.middle,
-            'family': name.last,
-            'suffix': name.suffix,
+            'name': person,
+            'givenName': name.first,
+            'additionalName': name.middle,
+            'familyName': name.last,
             'email': '',
-            'ORCID': ''
+            'sameAs': []
         }
         contributor_list.append(contributor)
 

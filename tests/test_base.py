@@ -2,15 +2,13 @@ import pytest
 
 from celery.schedules import crontab
 
-from scrapi.base import _Registry
+from scrapi import registry
 from scrapi.base import BaseHarvester
 from scrapi.base import HarvesterMeta
 
 
 @pytest.fixture
 def mock_registry(monkeypatch):
-    registry = _Registry()
-    monkeypatch.setattr('scrapi.base.registry', registry)
     return registry
 
 
@@ -20,12 +18,19 @@ class TestHarvesterMeta(object):
 
         class TestClass(object):
             __metaclass__ = HarvesterMeta
+            long_name = 'test'
             short_name = 'test'
+            url = 'test'
+            run_at = {}
 
         assert isinstance(mock_registry['test'], TestClass)
 
     def test_beat_schedule(self, mock_registry):
-        assert mock_registry.beat_schedule == {}
+        for key, val in mock_registry.items():
+            assert(val.short_name)
+            assert(val.long_name)
+            assert(val.url)
+            assert(isinstance(val.run_at, dict))
 
     def test_beat_schedule_adds(self, mock_registry):
         class TestClass(object):
@@ -37,12 +42,10 @@ class TestHarvesterMeta(object):
                 'day_of_week': 'mon',
             }
 
-        assert mock_registry.beat_schedule == {
-            'run_test': {
-                'args': ['test'],
-                'task': 'scrapi.tasks.run_harvester',
-                'schedule': crontab(**TestClass.run_at),
-            }
+        assert mock_registry.beat_schedule['run_test'] == {
+            'args': ['test'],
+            'task': 'scrapi.tasks.run_harvester',
+            'schedule': crontab(**TestClass.run_at),
         }
 
     def test_raises_key_error(self, mock_registry):

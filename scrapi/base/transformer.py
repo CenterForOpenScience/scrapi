@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 import abc
 import logging
 
+from jsonpointer import resolve_pointer, JsonPointerException
+
 logger = logging.getLogger(__name__)
 
 
@@ -12,10 +14,6 @@ class BaseTransformer(object):
 
     @abc.abstractmethod
     def _transform_string(self, string, doc):
-        raise NotImplementedError
-
-    @abc.abstractproperty
-    def short_name(self):
         raise NotImplementedError
 
     @abc.abstractproperty
@@ -34,19 +32,24 @@ class BaseTransformer(object):
                 transformed[key] = self._transform_iterable(value, doc)
             elif isinstance(value, basestring):
                 transformed[key] = self._transform_string(value, doc)
+            elif callable(value):
+                transformed[key] = value(doc)
         return transformed
 
     def _transform_iterable(self, l, doc):
-        docs = []
 
         if isinstance(l[0], tuple) and len(l) == 2:
             return self._transform_args_kwargs(l, doc)
 
-        for value in l:
+        fn, values = l[-1], l[:-1]
+        args = []
+
+        for value in values:
             if isinstance(value, basestring):
-                docs.append(self._transform_string(value, doc))
+                args.append(self._transform_string(value, doc))
             elif callable(value):
-                return value(*[res for res in docs])
+                args.append(value(doc))
+        return fn(*args)
 
     def _transform_args_kwargs(self, l, doc):
         fn = l[1]
@@ -70,8 +73,19 @@ class XMLTransformer(BaseTransformer):
 
     def _transform_string(self, string, doc):
         val = doc.xpath(string, namespaces=self.namespaces)
-        return '' if not val else unicode(val[0]) if len(val) == 1 else [unicode(v) for v in val]
+        return unicode(val[0]) if len(val) == 1 else [unicode(v) for v in val] or ''
 
     @abc.abstractproperty
     def namespaces(self):
         raise NotImplementedError
+
+
+class JSONTransformer(BaseTransformer):
+
+    __metaclass__ = abc.ABCMeta
+
+    def _transform_string(self, val, doc):
+        try:
+            return resolve_pointer(doc, val)
+        except JsonPointerException:
+            return ''
