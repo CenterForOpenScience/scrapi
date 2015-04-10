@@ -4,6 +4,8 @@ import json
 import logging
 from uuid import uuid4
 
+from dateutil.parser import parse
+
 from cqlengine import columns, Model
 
 from scrapi import events
@@ -24,15 +26,21 @@ class CassandraProcessor(BaseProcessor):
     @events.logged(events.PROCESSING, 'normalized.cassandra')
     def process_normalized(self, raw_doc, normalized):
         self.send_to_database(
-            docID=normalized["id"]['serviceID'],
-            source=normalized['source'],
-            url=normalized['id']['url'],
+            source=raw_doc['source'],
+            docID=raw_doc['docID'],
             contributors=json.dumps(normalized['contributors']),
-            id=normalized['id'],
+            description=normalized.get('description'),
+            uris=json.dumps(normalized['uris']),
+            providerUpdatedDateTime=parse(normalized['providerUpdatedDateTime']),
+            freeToRead=json.dumps(normalized.get('freeToRead', {})),
+            languages=normalized.get('language'),
+            licenses=json.dumps(normalized.get('licenseRef', [])),
+            publisher=json.dumps(normalized.get('publisher', {})),
+            sponsorships=json.dumps(normalized.get('sponsorship', [])),
             title=normalized['title'],
-            tags=normalized['tags'],
-            dateUpdated=normalized['dateUpdated'],
-            properties=json.dumps(normalized['properties'])
+            version=json.dumps(normalized.get('version'), {}),
+            otherProperties=json.dumps(normalized.get('otherProperties', {})),
+            shareProperties=json.dumps(normalized['shareProperties'])
         ).save()
 
     @events.logged(events.PROCESSING, 'raw.cassandra')
@@ -57,7 +65,7 @@ class CassandraProcessor(BaseProcessor):
             return DocumentModel.create(docID=docID, source=source, **kwargs)
 
     def different(self, old, new):
-        return not all([new[key] == old[key] for key in new.keys() if key != 'timestamps'])
+        return not all([new[key] == old[key] or (not new[key] and not old[key]) for key in new.keys() if key != 'timestamps'])
 
 
 @database.register_model
@@ -81,14 +89,22 @@ class DocumentModel(Model):
     timestamps = columns.Map(columns.Text, columns.Text)
 
     # Normalized
-    url = columns.Text()
+    uris = columns.Text()
     title = columns.Text()
-    properties = columns.Text()
-    dateUpdated = columns.Text()
+    contributors = columns.Text()  # TODO
+    providerUpdatedDateTime = columns.DateTime()
+
     description = columns.Text()
-    contributors = columns.Text()  # TODO This should use user-defined types (when they're added)
+    freeToRead = columns.Text()  # TODO
+    languages = columns.List(columns.Text())
+    licenses = columns.Text()  # TODO
+    publisher = columns.Text()  # TODO
+    subjects = columns.List(columns.Text())
     tags = columns.List(columns.Text())
-    id = columns.Map(columns.Text, columns.Text)
+    sponsorships = columns.Text()  # TODO
+    version = columns.Text()  # TODO
+    otherProperties = columns.Text()  # TODO
+    shareProperties = columns.Text()  # TODO
 
     # Additional metadata
     versions = columns.List(columns.UUID)
@@ -115,14 +131,22 @@ class VersionModel(Model):
     timestamps = columns.Map(columns.Text, columns.Text)
 
     # Normalized
-    url = columns.Text()
+    uris = columns.Text()
     title = columns.Text()
-    properties = columns.Text()  # TODO
-    dateUpdated = columns.Text()
+    contributors = columns.Text()  # TODO
+    providerUpdatedDateTime = columns.DateTime()
+
     description = columns.Text()
-    contributors = columns.Text()  # TODO: When supported, this should be a user-defined type
+    freeToRead = columns.Text()  # TODO
+    languages = columns.List(columns.Text())
+    licenses = columns.Text()  # TODO
+    publisher = columns.Text()  # TODO
+    subjects = columns.List(columns.Text())
     tags = columns.List(columns.Text())
-    id = columns.Map(columns.Text, columns.Text)
+    sponsorships = columns.Text()  # TODO
+    version = columns.Text()  # TODO
+    otherProperties = columns.Text()  # TODO
+    shareProperties = columns.Text()  # TODO
 
     # Additional metadata
     versions = columns.List(columns.UUID)

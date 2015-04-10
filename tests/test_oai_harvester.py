@@ -31,7 +31,7 @@ class TestHarvester(OAIHarvester):
 
         return [RawDocument({
             'doc': str(TEST_OAI_DOC),
-            'source': 'TEST',
+            'source': 'crossref',
             'filetype': 'XML',
             'docID': "1"
         }) for record in records]

@@ -32,47 +32,46 @@ class ClinicalTrialsHarvester(XMLHarvester):
 
     schema = {
         "contributors": ('//overall_official/last_name/node()', lambda x: default_name_parser(x) if isinstance(x, list) else default_name_parser([x])),
-        "id": {
-            "url": "//required_header/url/node()",
-            "doi": ("//required_header/url/node()", lambda x: ''),
-            "serviceID": "//nct_id/node()"
+        "uris": {
+            "canonicalUri": "//required_header/url/node()"
         },
-        "tags": ("//keyword/node()", lambda tags: [unicode(tag.lower()) for tag in tags]),
-        "dateUpdated": ("lastchanged_date/node()", lambda x: unicode(parse(x).isoformat())),
+        "providerUpdatedDateTime": ("lastchanged_date/node()", lambda x: unicode(parse(x).replace(tzinfo=None).isoformat())),
         "title": ('//official_title/node()', '//brief_title/node()', lambda x, y: x or y or ''),
         "description": ('//brief_summary/textblock/node()', '//brief_summary/textblock/node()', lambda x, y: x or y or ''),
-        "properties": {
-            'oversightAuthority': '//oversight_info/authority/node()',
-            'studyDesign': '//study_design/node()',
-            'numberOfArms': '//number_of_arms/node()',
-            'source': '//source/node()',
-            'verificationDate': '//verification_date/node()',
-            'lastChanged': '//lastchanged_date/node()',
-            'condition': '//condition/node()',
-            'verificationDate': '//verification_date/node()',
-            'lastChanged': '//lastchanged_date/node()',
-            'status': '//status/node()',
-            'locationCountries': '//location_countries/country/node()',
-            'isFDARegulated': '//is_fda_regulated/node()',
-            'isSection801': '//is_section_801/node()',
-            'hasExpandedAccess': '//has_expanded_access/node()',
-            'sponsors': {
-                'agency': '//lead_sponsor/agency/node()',
-                'agencyClass': '//lead_sponsor/agency_class/node()'
-            },
-            'primaryOutcome': {
-                'measure': '//primary_outcome/measure/node()',
-                'timeFrame': '//primary_outcome/time_frame/node()',
-                'safetyIssue': '//primary_outcome/safety_issue/node()'
-            },
-            'secondaryOutcomes': '//secondary_outcome/node()',
-            'enrollment': '//enrollment/node()',
-            'armGroup': '//arm_group/node()',
-            'intervention': '//intervention/node()',
-            'eligibility': '//elligibility/node()',
-            'link': '//link/node()',
-            'responsible_party': '//responsible_party'
-        }
+        # "otherProperties": {
+        #     'oversightAuthority': '//oversight_info/authority/node()',
+        #     "serviceID": "//nct_id/node()",
+        #     "tags": ("//keyword/node()", lambda tags: [unicode(tag.lower()) for tag in tags]),
+        #     'studyDesign': '//study_design/node()',
+        #     'numberOfArms': '//number_of_arms/node()',
+        #     'source': '//source/node()',
+        #     'verificationDate': '//verification_date/node()',
+        #     'lastChanged': '//lastchanged_date/node()',
+        #     'condition': '//condition/node()',
+        #     'verificationDate': '//verification_date/node()',
+        #     'lastChanged': '//lastchanged_date/node()',
+        #     'status': '//status/node()',
+        #     'locationCountries': '//location_countries/country/node()',
+        #     'isFDARegulated': '//is_fda_regulated/node()',
+        #     'isSection801': '//is_section_801/node()',
+        #     'hasExpandedAccess': '//has_expanded_access/node()',
+        #     'sponsors': {
+        #         'agency': '//lead_sponsor/agency/node()',
+        #         'agencyClass': '//lead_sponsor/agency_class/node()'
+        #     },
+        #     'primaryOutcome': {
+        #         'measure': '//primary_outcome/measure/node()',
+        #         'timeFrame': '//primary_outcome/time_frame/node()',
+        #         'safetyIssue': '//primary_outcome/safety_issue/node()'
+        #     },
+        #     'secondaryOutcomes': '//secondary_outcome/node()',
+        #     'enrollment': '//enrollment/node()',
+        #     'armGroup': '//arm_group/node()',
+        #     'intervention': '//intervention/node()',
+        #     'eligibility': '//elligibility/node()',
+        #     'link': '//link/node()',
+        #     'responsible_party': '//responsible_party'
+        # }
     }
 
     @property

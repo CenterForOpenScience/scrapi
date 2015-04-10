@@ -3,11 +3,14 @@ import platform
 
 import urllib
 from invoke import run, task
+from elasticsearch import helpers
 
 import scrapi.harvesters  # noqa
 from scrapi import linter
 from scrapi import registry
 from scrapi import settings
+
+from scrapi.processing.elasticsearch import es
 
 logger = logging.getLogger()
 
@@ -15,6 +18,23 @@ logger = logging.getLogger()
 @task
 def server():
     run("python server.py")
+
+
+@task
+def reindex(src, dest):
+    helpers.reindex(es, src, dest)
+    es.indices.delete(src)
+
+
+@task
+def alias(alias, index):
+    es.indices.delete_alias(index=alias, name='_all', ignore=404)
+    es.indices.put_alias(alias, index)
+
+
+@task
+def renormalize():
+    run('python -m scripts.renormalize')
 
 
 @task
