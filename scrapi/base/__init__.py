@@ -76,8 +76,9 @@ class JSONHarvester(BaseHarvester, JSONTransformer):
 
     def normalize(self, raw_doc):
         transformed = self.transform(json.loads(raw_doc['doc']))
-        transformed['shareProperties'] = {}
-        transformed['shareProperties']['source'] = self.short_name
+        transformed['shareProperties'] = {
+            'source': self.short_name
+        }
         return NormalizedDocument(transformed)
 
 
@@ -86,8 +87,9 @@ class XMLHarvester(BaseHarvester, XMLTransformer):
 
     def normalize(self, raw_doc):
         transformed = self.transform(etree.XML(raw_doc['doc']))
-        transformed['shareProperties'] = {}
-        transformed['shareProperties']['source'] = self.short_name
+        transformed['shareProperties'] = {
+            'source': self.short_name
+        }
         return NormalizedDocument(transformed)
 
 
