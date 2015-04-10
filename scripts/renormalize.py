@@ -1,3 +1,5 @@
+import datetime as dt
+
 from cqlengine import Token
 
 from scrapi.database import _manager
@@ -14,18 +16,20 @@ def document_generator():
     page = list(query)
     while len(page) > 0:
         for doc in page:
-            count += 1
-            try:
-                yield RawDocument({
-                    'doc': doc.doc,
-                    'docID': doc.docID,
-                    'source': doc.source,
-                    'filetype': doc.filetype,
-                    'timestamps': doc.timestamps
-                })
-            except Exception as e:
-                print(e)
+            if not isinstance(doc.providerUpdatedDateTime, dt.datetime):
+                count += 1
+                try:
+                    yield RawDocument({
+                        'doc': doc.doc,
+                        'docID': doc.docID,
+                        'source': doc.source,
+                        'filetype': doc.filetype,
+                        'timestamps': doc.timestamps
+                    })
+                except Exception as e:
+                    print(e)
         page = list(query.filter(pk__token__gt=Token(page[-1].pk)))
+    print(count)
 
 
 for raw in document_generator():
