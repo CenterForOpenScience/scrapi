@@ -2,7 +2,7 @@
 ChangeLog
 *********
 
-0.3.0 (Unreleased)
+0.3.2 (Unreleased)
 ==================
 
 - Data One now uses XMLHarvester
@@ -12,6 +12,8 @@ ChangeLog
 - Requests no longer crashes when recording is turned off
 - Cassandra now only stores new versions of documents, no more duplicate
 versions
+- Use the jsonschema library for JSON transformer
+- Implement the new schema
 
 0.2.0 (2015-03-16)
 ==================
