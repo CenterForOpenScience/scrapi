@@ -65,32 +65,32 @@ class OSFHarvester(JSONHarvester):
     count = 0
 
     # Only registrations that aren't just the word "test" or "test project"
-    URL = 'https://staging.osf.io/api/v1/search/?q=category:registration ' +\
+    URL = 'https://osf.io/api/v1/search/?q=category:registration ' +\
           ' AND date_created:[{} TO {}]' +\
           ' AND NOT title=test AND NOT title="Test Project"&size=1000'
 
     @property
     def schema(self):
         return {
-            'contributor': ('contributors', process_contributors),
-            'directLink': ('url', lambda x: 'http://osf.io' + x),
-            'notificationLink': ('url', lambda x: 'http://osf.io' + x),
-            'resourceIdentifier': ('url', lambda x: 'http://osf.io' + x),
-            'source': self.short_name,
-            'title': ('title', process_null),
-            'releaseDate': ('date_created', parse_date),
-            'description': ('description', process_null),
-            'otherProperties': {
-                'parent_title': 'parent_title',
-                'category': 'category',
-                'wiki_link': 'wiki_link',
-                'is_component': 'is_component',
-                'is_registration': 'is_registration',
-                'parent_url': 'parent_url',
-                'contributors': 'contributors',
-                'journal Id': '/journal Id',
-                'tags': ('tags', process_tags)
-            }
+            'contributors': ('/contributors', process_contributors),
+            'title': ('/title', process_null),
+            'providerUpdatedDateTime': ('date_created', parse_date),
+            'description': ('/description', process_null),
+            'uris': {
+                'canonicalUri': ('/url', lambda x: 'http://osf.io' + x),
+            },
+            'tags': ('tags', process_tags)
+            # 'otherProperties': {
+            #     'parent_title': 'parent_title',
+            #     'category': 'category',
+            #     'wiki_link': 'wiki_link',
+            #     'is_component': 'is_component',
+            #     'is_registration': 'is_registration',
+            #     'parent_url': 'parent_url',
+            #     'contributors': 'contributors',
+            #     'journal Id': '/journal Id',
+            #     'tags': ('tags', process_tags)
+            # }
         }
 
     def harvest(self, days_back=1):
