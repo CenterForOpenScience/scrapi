@@ -107,18 +107,17 @@ class PlosHarvester(XMLHarvester):
             return unicode(element, encoding=DEFAULT_ENCODING)
 
     schema = {
-        'relation': ('//str[@name="id"]/node()', lambda x: [x]),
-        'directLink': ('//str[@name="id"]/node()', lambda x: 'http://dx.doi.org/{}'.format(x)),
-        'notificationLink': ('//str[@name="id"]/node()', lambda x: 'http://dx.doi.org/{}'.format(x)),
-        'resourceIdentifier': ('//str[@name="id"]/node()', lambda x: 'http://dx.doi.org/{}'.format(x)),
-        'contributor': ('//arr[@name="author_display"]/str/node()', default_name_parser),
-        'releaseDate': ('//date[@name="publication_data"]/node()', lambda x: parse(x).date().isoformat().decode('utf-8')),
+        'uris': {
+            'canonicalUri': ('//str[@name="id"]/node()', lambda x: 'http://dx.doi.org/{}'.format(x)),
+        },
+        'contributors': ('//arr[@name="author_display"]/str/node()', default_name_parser),
+        'providerUpdatedDateTime': ('//date[@name="publication_data"]/node()', lambda x: parse(x).date().isoformat().decode('utf-8')),
         'title': '//str[@name="title_display"]/node()',
         'description': '//arr[@name="abstract"]/str/node()',
-        'otherProperties': {
-            'journal': '//str[@name="journal"]/node()',
-            'eissn': '//str[@name="eissn"]/node()',
-            'articleType': '//str[@name="article_type"]/node()',
-            'score': '//float[@name="score"]/node()'
-        }
+        # 'otherProperties': {
+        #     'journal': '//str[@name="journal"]/node()',
+        #     'eissn': '//str[@name="eissn"]/node()',
+        #     'articleType': '//str[@name="article_type"]/node()',
+        #     'score': '//float[@name="score"]/node()'
+        # }
     }

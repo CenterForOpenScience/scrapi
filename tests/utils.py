@@ -17,17 +17,17 @@ RAW_DOC = {
 
 NORMALIZED_DOC = {
     'title': 'No',
-    'contributor': [{'name': ''}],
+    'contributors': [{'name': ''}],
     'source': 'crossref',
-    'releaseDate': '2014-04-04',
-    'directLink': 'http://example.com/direct',
-    'notificationLink': 'http://example.com/notification',
-    'resourceIdentifier': 'http://example.com/id'
+    'providerUpdatedDateTime': '2014-04-04T00:00:00',
+    'uris': {
+        'canonicalUri': 'http://example.com/direct'
+    }
 }
 
 RECORD = {
     'title': 'Using Table Stable Carbon in Gold and STAR Isotopes',
-    'contributor': [
+    'contributors': [
         {
             'name': 'DEVON Get The Tables DUDLEY',
             'givenName': 'DEVON',
@@ -37,34 +37,32 @@ RECORD = {
             'sameAs': ['http://example.com/me']
         }
     ],
-    'directLink': 'http://www.plosone.org/article',
-    'notificationLink': 'http://www.plosone.org/article',
-    'resourceIdentifier': 'http://www.plosone.org/article',
-    'otherProperties': {
-        'figures': ['http://www.plosone.org/article/image.png'],
-        'type': 'text',
-                'yep': 'A property'
+    'uris': {
+        'canonicalUri': 'http://www.plosone.org/article'
     },
+    # 'otherProperties': {
+    #     'figures': ['http://www.plosone.org/article/image.png'],
+    #     'type': 'text',
+    #             'yep': 'A property'
+    # },
     'description': 'This study seeks to understand how humans impact\
             the dietary patterns of eight free-ranging vervet monkey\
             (Chlorocebus pygerythrus) groups in South Africa using stable\
             isotope analysis.',
-    'source': 'crossref',
-    'creationDate': '2012-11-30',
-    'releaseDate': '2015-02-23',
-    '_id': 'yes! yes! yes!',
-    'count': 0,
-    'raw': 'http://example.com'
+    'providerUpdatedDateTime': '2015-02-23T00:00:00',
+    'shareProperties': {
+        'source': 'crossref'
+    }
 }
 
 
 TEST_SCHEMA = updated_schema(BASEXMLSCHEMA, {
     "title": ("//dc:title/node()", lambda x: "Title overwritten"),
-    "otherProperties": {
-        "title1": "//dc:title/node()",
-        "title2": ["//dc:title/node()", lambda x: x.lower()],
-        "title3": ["//dc:title/node()", "//dc:title/node()", lambda x, y: x + y.lower()]
-    }
+    # "otherProperties": {
+    #     "title1": "//dc:title/node()",
+    #     "title2": ["//dc:title/node()", lambda x: x.lower()],
+    #     "title3": ["//dc:title/node()", "//dc:title/node()", lambda x, y: x + y.lower()]
+    # }
 })
 
 

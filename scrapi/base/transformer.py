@@ -17,10 +17,6 @@ class BaseTransformer(object):
         raise NotImplementedError
 
     @abc.abstractproperty
-    def short_name(self):
-        raise NotImplementedError
-
-    @abc.abstractproperty
     def schema(self):
         raise NotImplementedError
 

@@ -49,38 +49,37 @@ class CrossRefHarvester(JSONHarvester):
         return {
             'title': ('/title', lambda x: x[0] if x else ''),
             'description': ('/subtitle', lambda x: x[0] if (isinstance(x, list) and x) else x or ''),
-            'releaseDate': ('/issued/date-parts', lambda x: parse(' '.join([str(part) for part in x[0]])).date().isoformat().decode('utf-8')),
-            'relation': ('/DOI', lambda x: [x]),
-            'directLink': '/URL',
-            'resourceIdentifier': '/URL',
-            'notificationLink': '/URL',
-            'contributor': ('/author', lambda x: [
+            'providerUpdatedDateTime': ('/issued/date-parts', lambda x: parse(' '.join([str(part) for part in x[0]])).date().isoformat().decode('utf-8')),
+            'uris': {
+                'canonicalUri': '/URL'
+            },
+            'contributors': ('/author', lambda x: [
                 process_contributor(*[
                     '{} {}'.format(entry.get('given'), entry.get('family')),
                     entry.get('ORCID')
                 ]) for entry in x
             ]),
-            'otherProperties': {
-                'journalTitle': '/container-title',
-                'volume': '/volume',
-                'tags': ('/subject', '/container-title', lambda x, y: [tag.lower() for tag in (x or []) + (y or [])]),
-                'issue': '/issue',
-                'publisher': '/publisher',
-                'type': '/type',
-                'ISSN': '/ISSN',
-                'ISBN': '/ISBN',
-                'member': '/member',
-                'score': '/score',
-                'issued': '/issued',
-                'deposited': '/deposited',
-                'indexed': '/indexed',
-                'page': '/page',
-                'issue': '/issue',
-                'volume': '/volume',
-                'referenceCount': '/reference-count',
-                'updatePolicy': '/update-policy',
-                'depositedTimestamp': '/deposited/timestamp'
-            }
+            # 'otherProperties': {
+            #     'journalTitle': '/container-title',
+            #     'volume': '/volume',
+            #     'tags': ('/subject', '/container-title', lambda x, y: [tag.lower() for tag in (x or []) + (y or [])]),
+            #     'issue': '/issue',
+            #     'publisher': '/publisher',
+            #     'type': '/type',
+            #     'ISSN': '/ISSN',
+            #     'ISBN': '/ISBN',
+            #     'member': '/member',
+            #     'score': '/score',
+            #     'issued': '/issued',
+            #     'deposited': '/deposited',
+            #     'indexed': '/indexed',
+            #     'page': '/page',
+            #     'issue': '/issue',
+            #     'volume': '/volume',
+            #     'referenceCount': '/reference-count',
+            #     'updatePolicy': '/update-policy',
+            #     'depositedTimestamp': '/deposited/timestamp'
+            # }
         }
 
     def copy_to_unicode(self, element):

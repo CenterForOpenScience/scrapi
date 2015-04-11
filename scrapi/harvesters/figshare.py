@@ -32,19 +32,18 @@ class FigshareHarvester(JSONHarvester):
     schema = {
         'title': '/title',
         'description': '/description',
-        'contributor': ('/authors', lambda x: default_name_parser([person['author_name'] for person in x])),
-        'releaseDate': ('/modified_date', lambda x: parse(x).date().isoformat().decode('utf-8')),
-        'notificationLink': ('/DOI', lambda x: x[0] if isinstance(x, list) else x),
-        'directLink': ('/DOI', lambda x: x[0] if isinstance(x, list) else x),
-        'resourceIdentifier': ('/DOI', lambda x: x[0] if isinstance(x, list) else x),
-        'relation': ('/DOI', lambda x: [x[0].replace('http://dx.doi.org/', '')] if isinstance(x, list) else [x.replace('http://dx.doi.org/', '')]),
-        'otherProperties': {
-            'serviceID': ('/article_id', lambda x: str(x).decode('utf-8')),
-            'definedType': '/defined_type',
-            'type': '/type',
-            'links': '/links',
-            'publishedDate': '/published_date'
-        }
+        'contributors': ('/authors', lambda x: default_name_parser([person['author_name'] for person in x])),
+        'providerUpdatedDateTime': ('/modified_date', lambda x: parse(x).date().isoformat().decode('utf-8')),
+        'uris': {
+            'canonicalUri': ('/DOI', lambda x: x[0] if isinstance(x, list) else x),
+        },
+        # 'otherProperties': {
+        #     'serviceID': ('/article_id', lambda x: str(x).decode('utf-8')),
+        #     'definedType': '/defined_type',
+        #     'type': '/type',
+        #     'links': '/links',
+        #     'publishedDate': '/published_date'
+        # }
     }
 
     def harvest(self, days_back=0):

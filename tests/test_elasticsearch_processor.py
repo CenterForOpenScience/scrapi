@@ -12,8 +12,6 @@ NORMALIZED = NormalizedDocument(utils.RECORD)
 
 @pytest.mark.elasticsearch
 def test_process_normalized():
-    NORMALIZED['source'] = RAW['source']
-    NORMALIZED['_id'] = RAW['docID']
     test_db.process_normalized(RAW, NORMALIZED, index='test')
 
     results = es.search(index='test', doc_type=RAW['source'])

@@ -7,6 +7,7 @@ from elasticsearch.exceptions import ConnectionError
 
 from scrapi import settings
 from scrapi.processing.base import BaseProcessor
+from scrapi.base.transformer import JSONTransformer
 
 
 logger = logging.getLogger(__name__)
@@ -26,8 +27,10 @@ try:
     #         for harvester in registry.keys()
     #     }
     # }
-    # es.cluster.health(wait_for_status='yellow')
+
+    es.cluster.health(wait_for_status='yellow')
     es.indices.create(index=settings.ELASTIC_INDEX, body={}, ignore=400)
+    es.indices.create(index='share_v1', ignore=400)
 except ConnectionError:  # pragma: no cover
     logger.error('Could not connect to Elasticsearch, expect errors.')
     if 'elasticsearch' in settings.NORMALIZED_PROCESSING or 'elasticsearch' in settings.RAW_PROCESSING:
@@ -38,7 +41,7 @@ class ElasticsearchProcessor(BaseProcessor):
     NAME = 'elasticsearch'
 
     def process_normalized(self, raw_doc, normalized, index=settings.ELASTIC_INDEX):
-        normalized['releaseDate'] = self.version(raw_doc, normalized)
+        normalized['providerUpdatedDateTime'] = self.version(raw_doc, normalized)
         data = {
             key: value for key, value in normalized.attributes.items()
             if key in settings.FRONTEND_KEYS
@@ -51,6 +54,7 @@ class ElasticsearchProcessor(BaseProcessor):
             doc_type=raw_doc['source'],
             id=raw_doc['docID'],
         )
+        self.process_normalized_v1(raw_doc, normalized)
 
     def version(self, raw, normalized):
         try:
@@ -63,8 +67,46 @@ class ElasticsearchProcessor(BaseProcessor):
             # Normally I don't like exception-driven logic,
             # but this was the best way to handle missing
             # types, indices and documents together
-            date = normalized['releaseDate']
+            date = normalized['providerUpdatedDateTime']
         else:
-            date = old_doc.get('releaseDate') or normalized['releaseDate']
+            date = old_doc.get('providerUpdatedDateTime') or normalized['providerUpdatedDateTime']
 
         return date
+
+    def process_normalized_v1(self, raw_doc, normalized):
+        index = 'share_v1'
+        transformer = PreserveOldSchema()
+        data = transformer.transform(normalized.attributes)
+        es.index(
+            body=data,
+            refresh=True,
+            index=index,
+            doc_type=raw_doc['source'],
+            id=raw_doc['docID']
+        )
+
+
+class PreserveOldContributors(JSONTransformer):
+    schema = {
+        'given': '/givenName',
+        'family': '/familyName',
+        'middle': '/additionalName',
+        'email': '/email'
+    }
+
+    def process_contributors(self, contributors):
+        return [self.transform(contributor) for contributor in contributors]
+
+
+class PreserveOldSchema(JSONTransformer):
+    schema = {
+        'title': '/title',
+        'description': '/description',
+        'tags': ('/tags', lambda x: x or []),
+        'contributors': ('/contributors', PreserveOldContributors().process_contributors),
+        'dateUpdated': '/providerUpdatedDateTime',
+        'source': '/shareProperties/source',
+        'id': {
+            'url': '/uris/canonicalUri'
+        }
+    }
