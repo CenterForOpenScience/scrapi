@@ -60,7 +60,13 @@ $ brew install rabbitmq
 ```bash
 $ sudo apt-get install rabbitmq-server
 ```
+### Settings
 
+You will need to have a local copy of the settings
+
+```
+cp scrapi/settings/local-dist.py scrapi/settings/local.py
+```
 
 ### Running the scheduler
 
