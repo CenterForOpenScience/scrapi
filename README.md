@@ -48,9 +48,6 @@ $ cassandra -f
 and you should be good to go.
 
 
-from the scrapi/website/ directory, and the server should be up and running!
-
-
 ### Harvesters
 
 - To set up harvesters for the first time, Just run
