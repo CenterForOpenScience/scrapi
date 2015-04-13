@@ -34,7 +34,6 @@ def harvester(monkeypatch):
 
 @pytest.fixture(autouse=True)
 def timestamp_patch(monkeypatch):
-    monkeypatch.setattr('scrapi.util.timestamp', lambda: 'TIME')
     monkeypatch.setattr('scrapi.tasks.timestamp', lambda: 'TIME')
 
 
