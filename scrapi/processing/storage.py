@@ -1,3 +1,11 @@
+"""Adds a backend for storing documents as flat files.
+
+To use add this to settings.local:
+
+    NORMALIZED_PROCESSING = ['storage']
+    RAW_PROCESSING = ['storage']
+"""
+
 import os
 import json
 
