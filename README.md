@@ -11,7 +11,7 @@ scrapi
     - Install Elasticsearch
     - Install Cassandra
     - Install harvesters
-    - Install rabbitmq
+    - Install rabbitmq (optional)
     - 
 - To only run harvesters locally, you do not have to install rabbitmq
 
@@ -113,9 +113,9 @@ You will need to have a local copy of the settings
 ```
 cp scrapi/settings/local-dist.py scrapi/settings/local.py
 ```
-
+ 
 (Note: only needed if NOT running locally!)
-### Running the scheduler
+### Running the scheduler (optional)
 
 - from the top-level project directory run:
 
