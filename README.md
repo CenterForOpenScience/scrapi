@@ -48,14 +48,6 @@ $ cassandra -f
 and you should be good to go.
 
 
-### Running the server
-
-- Just run 
-
-```bash
-$ python server.py
-```
-
 from the scrapi/website/ directory, and the server should be up and running!
 
 
