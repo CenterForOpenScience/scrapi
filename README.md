@@ -6,12 +6,15 @@ scrapi
 
 ## Getting started
 
-- You will need to:
+- To run absolutely everyting, you will need to:
     - Install requirements.
     - Install Elasticsearch
     - Install Cassandra
     - Install harvesters
     - Install rabbitmq
+    - 
+- To only run harvesters locally, you do not have to install rabbitmq
+
 
 ### Requirements
 
@@ -89,7 +92,8 @@ $ cassandra -f
 
 and you should be good to go.
 
-### Rabbitmq
+(Note, if you're developing locally, you do not have to run Rabbitmq!)
+### Rabbitmq (optional)
 
 #### Mac OSX
 
@@ -110,6 +114,7 @@ You will need to have a local copy of the settings
 cp scrapi/settings/local-dist.py scrapi/settings/local.py
 ```
 
+(Note: only needed if NOT running locally!)
 ### Running the scheduler
 
 - from the top-level project directory run:
