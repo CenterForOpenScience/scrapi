@@ -47,17 +47,6 @@ $ cassandra -f
 
 and you should be good to go.
 
-
-### Harvesters
-
-- To set up harvesters for the first time, Just run
-
-```bash
-invoke init_harvesters
-```
-
-and the harvesters specified in the manifest files of the worker_manager, and their requirements, will be installed.
-
 ### Rabbitmq
 
 #### Mac OSX
@@ -78,17 +67,36 @@ $ sudo apt-get install rabbitmq-server
 - from the top-level project directory run:
 
 ```bash
-$ invoke celery_beat
+$ invoke beat
 ```
 
 to start the scheduler, and 
 
 ```bash
-$ invoke celery_worker
+$ invoke worker
 ```
 
 to start the worker.
 
+
+### Harvesters
+Run all harvesters with 
+
+```bash
+$ invoke harvesters
+```
+
+or, just one with 
+
+```bash
+$ invoke harvester harvester-name
+```
+
+Invove a harvester a certain number of days back with the ```--days``` argument. For example, to run a harvester 5 days in the past, run:
+
+```bash
+$ invoke harvester harvester-name --days=5
+```
 
 ### Testing
 
