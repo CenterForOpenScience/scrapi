@@ -76,7 +76,7 @@ $ brew install elasticsearch
    ```bash
    $ sudo apt-get update
    $ sudo apt-get install elasticsearch
-   ```
+```
 
 
 __Now, just run__
