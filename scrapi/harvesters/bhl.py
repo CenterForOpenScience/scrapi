@@ -38,12 +38,8 @@ def aoi_process_contributors_bhl(*args):
     # Filter institution names and clean tabs
     inst = [re.sub(r'\\t', r'', n).strip() for n in filter(lambda x: ', ' not in x, names) or []]
         
-    # import codecs
-    # with codecs.open("test.txt", mode="a", encoding='utf-8') as f:
-    #     f.write(u" ".join(people) + "\n" + u" ".join(inst) + "\n")                
-
     if len(people)  > 0 and len(inst) > 0:
-        return default_name_parser(people), institution_name_parser(inst)
+        return default_name_parser(people) + institution_name_parser(inst)
     elif len(inst) > 0:
         return institution_name_parser(inst)
     if len(people)  > 0:
