@@ -88,11 +88,10 @@ class StepicHarvester(JSONHarvester):
 
     def get_records(self, search_url):
         all_lessons = []
-        pk = 1500
+        pk = 1
         lesson = requests.get(search_url + "/" + str(pk))
         resp = requests.get(self.URL + '?page=last').json()
         last_lesson_id = resp['lessons'][-1]['id']
-        last_lesson_id = 1600
         while pk < last_lesson_id:
             if lesson.status_code == 200:
                 lesson_list = lesson.json()['lessons'][0]
