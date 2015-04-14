@@ -12,6 +12,7 @@ import json
 from scrapi.processing.base import BaseProcessor
 
 
+
 class StorageProcessor(BaseProcessor):
     NAME = 'storage'
 
