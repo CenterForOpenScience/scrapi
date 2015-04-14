@@ -23,12 +23,17 @@ scrapi
 ```bash
 $ pip install -r requirements.txt
 ```
+Or, if you'd like some nicer testing and debugging utilities in addition to the core requirements, run
+```bash
+$ pip install -r dev-requirements.txt
+```
 
-and the python requirements for the project will download and install.
-
+This will also install the core requirements like normal.
 
 ### Installing Cassandra and Elasticsearch
 _note: JDK 7 must be installed for Cassandra and Elasticsearch to run_
+
+_note: As long as you don't specify Cassandra or Elasticsearch and set RECORD_HTTP_TRANSACTIONS to ```False``` in your local.py, you shouldn't need to have them installed to get at least basic functionality working_
 
 #### Mac OSX
 
@@ -114,7 +119,23 @@ You will need to have a local copy of the settings
 cp scrapi/settings/local-dist.py scrapi/settings/local.py
 ```
  
-(Note: only needed if NOT running locally!)
+If you installed Cassandra and Elasticsearch earlier, you will want add the following configuration to your local.py:
+```python
+RECORD_HTTP_TRANSACTIONS = True  # Only if cassandra is installed
+
+NORMALIZED_PROCESSING = ['cassandra', 'elasticsearch']
+RAW_PROCESSING = ['cassandra']
+```
+Otherwise, you will want to make sure your local.py has the following configuration:
+```python
+RECORD_HTTP_TRANSACTIONS = False
+
+NORMALIZED_PROCESSING = ['storage']
+RAW_PROCESSING = ['storage']
+```
+This will save all harvested/normalized files to the directory ```archive/<source>/<document identifier>```
+
+_note: Be careful with this, as if you harvest too many documents with the storage module enabled, you could start experiencing inode errors_
 ### Running the scheduler (optional)
 
 - from the top-level project directory run:
