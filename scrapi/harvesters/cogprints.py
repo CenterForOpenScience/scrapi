@@ -11,7 +11,7 @@ from scrapi.base import OAIHarvester
 class CogPrintsHarvester(OAIHarvester):
     short_name = 'cogprints'
     long_name = 'Cognitive Sciences ePrint Archive'
-    url = 'http://www.http://cogprints.org/'
+    url = 'http://www.cogprints.org/'
 
     base_url = 'http://cogprints.org/cgi/oai2'
     property_list = [
