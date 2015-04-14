@@ -277,7 +277,7 @@
         }, 
         "languages": {
             "items": {
-                "pattern": "[a-z][a-z][a-z]", 
+                "pattern": "[a-z][a-z]?[a-z]",
                 "type": "string"
             }, 
             "type": "array", 
