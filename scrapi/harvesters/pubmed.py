@@ -26,12 +26,6 @@ class PubMedHarvester(OAIHarvester):
     long_name = 'PubMed Central'
     url = 'http://www.ncbi.nlm.nih.gov/pmc/'
 
-    updated = {
-        "uris": {
-            "canonicalUri": ('//dc:identifier/node()', oai_extract_url_pubmed)
-        }
-    }
-
     schema = helpers.updated_schema(
         schemas.OAISCHEMA,
         {
