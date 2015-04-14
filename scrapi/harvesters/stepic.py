@@ -34,12 +34,12 @@ def process_owner(owners_id):
     except KeyError:
         person = {u'first_name': 'None', u'last_name': 'None'}
     owner = {
-            'name': " ".join([person[u'first_name'], person[u'last_name']]),
-            'givenName': person[u'first_name'],
-            'additionalName': '',
-            'familyName': person[u'last_name'],
-            'email': '',
-            'sameAs': [],
+        'name': " ".join([person[u'first_name'], person[u'last_name']]),
+        'givenName': person[u'first_name'],
+        'additionalName': '',
+        'familyName': person[u'last_name'],
+        'email': '',
+        'sameAs': [],
     }
     return [owner]
 
