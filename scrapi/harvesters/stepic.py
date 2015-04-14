@@ -1,11 +1,3 @@
-# """
-# BioMed Central harvester of public projects for the SHARE Notification Service
-# Note: At the moment, this harvester only harvests basic data on each article, and does
-# not make a seperate request for additional metadata for each record.
-#
-# Example API query: http://www.biomedcentral.com/webapi/1.0/latest_articles.json
-# """
-
 """
 Stepic.org harvester of MOOC-online courses for SHARE Notification Service
 Example API query: https://stepic.org:443/api/lessons/100
