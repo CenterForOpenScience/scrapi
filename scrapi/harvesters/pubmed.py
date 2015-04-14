@@ -32,7 +32,14 @@ class PubMedHarvester(OAIHarvester):
         }
     }
 
-    schema = helpers.updated_schema(schemas.OAISCHEMA, updated)
+    schema = helpers.updated_schema(
+        schemas.OAISCHEMA,
+        {
+            "uris": {
+                "canonicalUri": ('//dc:identifier/node()', oai_extract_url_pubmed)
+            }
+        }
+    )
 
     base_url = 'http://www.pubmedcentral.nih.gov/oai/oai.cgi'
     property_list = [
