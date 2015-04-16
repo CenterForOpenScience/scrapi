@@ -7,6 +7,30 @@ from nameparser import HumanName
 URL_REGEX = re.compile(ur'(https?://\S*\.\S*)')
 
 
+def build_properties(*args):
+    ret = []
+    for arg in args:
+        name, path = arg[0], arg[1]
+        kwargs = arg[2] if len(arg) > 2 else {}
+        description, uri = kwargs.get('description'), kwargs.get('uri')
+        ret.append(build_property(name, path, description=description, uri=uri))
+    return ret
+
+
+def build_property(name, path, description=None, uri=None):
+    property = {
+        'name': name,
+        'properties': {
+            name: path
+        },
+    }
+    if description:
+        property['description'] = description
+    if uri:
+        property['uri'] = uri
+    return property
+
+
 def updated_schema(old, new):
     d = deepcopy(old)
     for key, value in new.items():
