@@ -18,7 +18,7 @@ from nameparser import HumanName
 from scrapi import requests
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
-
+from scrapi.base.helpers import build_properties
 logger = logging.getLogger(__name__)
 
 
@@ -66,16 +66,16 @@ class BiomedHarvester(JSONHarvester):
             'providerUpdatedDateTime': ('/published Date', lambda x: parse(x).isoformat()),
             'description': '/blurbText',
             'relation': ('/doi', lambda x: ['http://dx.doi.org/' + x]),
-            # 'otherProperties': {
-            #     'imageUrl': '/imageUrl',
-            #     'type': '/type',
-            #     'isOpenAccess': '/isOpenAccess',
-            #     'isFree': '/isFree',
-            #     'isHighlyAccessed': '/isHighlyAccessed',
-            #     'status': '/status',
-            #     'abstractPath': '/abstractPath',
-            #     'journal Id': '/journal Id',
-            # }
+            'otherProperties': build_properties(
+                ('imageURL', '/imageUrl', {'description': 'a image url'}),
+                ('type', '/type'),
+                ('isOpenAccess', '/isOpenAccess'),
+                ('isFree', '/isFree'),
+                ('isHighlyAccessed', '/isHighlyAccessed'),
+                ('status', '/status'),
+                ('abstractPath', '/abstractPath'),
+                ('journal Id', '/journal Id')
+            )
         }
 
     def harvest(self, days_back=1):
