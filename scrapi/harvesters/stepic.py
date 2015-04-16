@@ -19,12 +19,11 @@ logger = logging.getLogger(__name__)
 
 
 def process_owner(owners_id):
-    logger.info(owners_id)
-    resp = requests.get("https://stepic.org:443/api/users/" + str(owners_id)).json()
+    resp = requests.get("https://stepic.org/api/users/" + str(owners_id)).json()
     try:
         person = resp[u'users'][0]
     except KeyError:
-        person = {u'first_name': 'None', u'last_name': 'None'}
+        person = {u'first_name': '', u'last_name': ''}
     owner = {
         'name': " ".join([person[u'first_name'], person[u'last_name']]),
         'givenName': person[u'first_name'],
@@ -39,10 +38,10 @@ def process_owner(owners_id):
 class StepicHarvester(JSONHarvester):
     short_name = 'stepic'
     long_name = 'Stepic.org Online Education Platform'
-    url = 'http://www.stepic.org/lesson'
+    url = 'http://www.stepic.org'
     count = 0
 
-    URL = 'https://stepic.org:443/api/lessons'
+    URL = 'https://stepic.org/api/lessons'
 
     @property
     def schema(self):
@@ -80,14 +79,11 @@ class StepicHarvester(JSONHarvester):
 
     def get_records(self, search_url):
         all_lessons = []
-        pk = 1
-        lesson = requests.get(search_url + "/" + str(pk))
         resp = requests.get(self.URL + '?page=last').json()
         last_lesson_id = resp['lessons'][-1]['id']
-        while pk < last_lesson_id:
+        for pk in range(last_lesson_id + 1):
+            lesson = requests.get(search_url + "/" + str(pk))
             if lesson.status_code == 200:
                 lesson_list = lesson.json()['lessons'][0]
                 all_lessons.append(lesson_list)
-            pk += 1
-            lesson = requests.get(search_url + "/" + str(pk))
         return all_lessons
