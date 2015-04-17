@@ -3,6 +3,7 @@ scrapi
 
 [![Build Status](https://travis-ci.org/fabianvf/scrapi.svg?branch=develop)](https://travis-ci.org/fabianvf/scrapi)
 [![Coverage Status](https://coveralls.io/repos/fabianvf/scrapi/badge.svg?branch=develop)](https://coveralls.io/r/fabianvf/scrapi?branch=develop)
+[![Code Climate](https://codeclimate.com/github/fabianvf/scrapi/badges/gpa.svg)](https://codeclimate.com/github/fabianvf/scrapi)
 
 ## Getting started
 
@@ -12,7 +13,6 @@ scrapi
     - Install Cassandra
     - Install harvesters
     - Install rabbitmq (optional)
-    - 
 - To only run harvesters locally, you do not have to install rabbitmq
 
 
