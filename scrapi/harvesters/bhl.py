@@ -1,8 +1,6 @@
-"""Harvests Biodiversity Heritage Library OAI Repository (BHL) metadata for ingestion 
-into the SHARE service.
+"""Harvests Biodiversity Heritage Library OAI Repository (BHL) metadata for ingestion into the SHARE service.
 Example API call: http://www.biodiversitylibrary.org/oai?verb=ListIdentifiers&metadataPrefix=oai_dc&from=2015-02-01
 """
-
 import re
 from scrapi.base import OAIHarvester
 from scrapi.base.schemas import OAISCHEMA
@@ -32,22 +30,21 @@ def aoi_process_contributors_bhl(*args):
                 names.append(name)
         elif arg:
             names.append(arg)
-            
-    # Filter people names and clean dates and extra spaces        
+    # Filter people names and clean dates and extra spaces.
     people = [re.sub(r'\d+-(\d+)?', r'', n).strip() for n in filter(lambda x: ', ' in x, names)] or []
-    # Filter institution names and clean tabs
+    # Filter institution names and clean tabs.
     inst = [re.sub(r'\\t', r'', n).strip() for n in filter(lambda x: ', ' not in x, names) or []]
-        
-    if len(people)  > 0 and len(inst) > 0:
+    # Parse names differently if they're people's or institutions' names.
+    if len(people) > 0 and len(inst) > 0:
         return default_name_parser(people) + institution_name_parser(inst)
     elif len(inst) > 0:
         return institution_name_parser(inst)
-    if len(people)  > 0:
+    if len(people) > 0:
         return default_name_parser(people)
     else:
         return ''
 
-    
+
 class BHLHarvester(OAIHarvester):
     short_name = 'bhl'
     long_name = 'Biodiversity Heritage Library OAI Repository'
@@ -57,8 +54,3 @@ class BHLHarvester(OAIHarvester):
     schema = updated_schema(OAISCHEMA, {
         'contributors': ('//dc:creator/node()', '//dc:contributor/node()', aoi_process_contributors_bhl)
     })
-
-
-
-
-
