@@ -12,7 +12,7 @@ from scrapi import util
 from scrapi import requests
 from scrapi import registry
 from scrapi.base.schemas import OAISCHEMA
-# from scrapi.base.helpers import updated_schema
+from scrapi.base.helpers import updated_schema, build_properties
 from scrapi.linter.document import RawDocument, NormalizedDocument
 from scrapi.base.transformer import XMLTransformer, JSONTransformer
 
@@ -124,17 +124,15 @@ class OAIHarvester(XMLHarvester):
 
     @property
     def schema(self):
-        # properties = {  # TODO, conform to new properties schema
-        #     'otherProperties': {
-        #         item: (
-        #             '//dc:{}/node()'.format(item),
-        #             '//ns0:{}/node()'.format(item),
-        #             self.resolve_property
-        #         ) for item in self.property_list
-        #     }
-        # }
+        properties = {
+            'otherProperties': build_properties(*[(item, (
+                '//dc:{}/node()'.format(item),
+                '//ns0:{}/node()'.format(item),
+                self.resolve_property)
+            ) for item in self.property_list])
+        }
 
-        return OAISCHEMA
+        return updated_schema(OAISCHEMA, properties)
 
     def resolve_property(self, dc, ns0):
         if isinstance(dc, list) and isinstance(ns0, list):
