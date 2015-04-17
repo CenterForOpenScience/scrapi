@@ -10,18 +10,18 @@ URL_REGEX = re.compile(ur'(https?://\S*\.\S*)')
 def build_properties(*args):
     ret = []
     for arg in args:
-        name, path = arg[0], arg[1]
+        name, expr = arg[0], arg[1]
         kwargs = arg[2] if len(arg) > 2 else {}
         description, uri = kwargs.get('description'), kwargs.get('uri')
-        ret.append(build_property(name, path, description=description, uri=uri))
+        ret.append(build_property(name, expr, description=description, uri=uri))
     return ret
 
 
-def build_property(name, path, description=None, uri=None):
+def build_property(name, expr, description=None, uri=None):
     property = {
         'name': name,
         'properties': {
-            name: path
+            name: expr
         },
     }
     if description:
