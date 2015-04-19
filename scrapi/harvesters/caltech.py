@@ -11,7 +11,7 @@ from scrapi.base import OAIHarvester
 class CaltechHarvester(OAIHarvester):
     short_name = 'caltech'
     long_name = 'CaltechAUTHORS'
-    url = 'http://authors.library.caltech.edu//'
+    url = 'http://authors.library.caltech.edu/'
 
     base_url = 'http://authors.library.caltech.edu/cgi/oai2'
     property_list = [
