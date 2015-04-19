@@ -3,19 +3,16 @@ Stepic.org harvester of MOOC-online courses for SHARE Notification Service
 Example API query: https://stepic.org:443/api/lessons/100
 """
 
-
 from __future__ import unicode_literals
 
 import json
-import logging
-from dateutil.parser import parse
+
 import pycountry
+from dateutil.parser import parse
 
 from scrapi import requests
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
-
-logger = logging.getLogger(__name__)
 
 
 def process_owner(owners_id):
@@ -64,7 +61,6 @@ class StepicHarvester(JSONHarvester):
         record_list = []
         for record in records:
             doc_id = record['id']
-            logger.info(doc_id)
             record_list.append(
                 RawDocument(
                     {
