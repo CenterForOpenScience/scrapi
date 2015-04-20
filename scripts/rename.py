@@ -1,6 +1,6 @@
 import logging
 
-from cqlengine import Token, BatchQuery
+from cqlengine import Token
 
 from scrapi import settings
 from scrapi.database import _manager
