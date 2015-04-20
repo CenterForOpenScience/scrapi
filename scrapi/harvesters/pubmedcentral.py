@@ -22,7 +22,7 @@ def oai_extract_url_pubmed(identifiers):
 
 
 class PubMedHarvester(OAIHarvester):
-    short_name = 'pubmed'
+    short_name = 'pubmedcentral'
     long_name = 'PubMed Central'
     url = 'http://www.ncbi.nlm.nih.gov/pmc/'
 
