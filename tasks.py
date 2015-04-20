@@ -38,6 +38,12 @@ def renormalize():
 
 
 @task
+def rename(source, target):
+    from scripts.rename import rename
+    rename(source, target)
+
+
+@task
 def reset_search():
     run("curl -XPOST 'http://localhost:9200/_shutdown'")
     if platform.linux_distribution()[0] == 'Ubuntu':
