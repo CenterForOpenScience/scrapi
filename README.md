@@ -68,6 +68,13 @@ You will need to have a local copy of the settings. Copy local-dist.py into your
 cp scrapi/settings/local-dist.py scrapi/settings/local.py
 ```
 
+If you'd like to be able to run all harvesters, you'll need to [register for a PLOS API key](http://api.plos.org/registration/). 
+
+Add the following line to your local.py file:
+```
+PLOS_API_KEY = 'your-api-key-here'
+```
+
 ### Running the scheduler (optional)
 
 - from the top-level project directory run:
@@ -97,6 +104,8 @@ or, just one with
 ```bash
 $ invoke harvester harvester-name
 ```
+
+Note: harvester-name is the same as the defined harvester "short name".
 
 Invove a harvester a certain number of days back with the ```--days``` argument. For example, to run a harvester 5 days in the past, run:
 
