@@ -62,13 +62,13 @@ $ sudo apt-get install rabbitmq-server
 ```
 ### Settings
 
-You will need to have a local copy of the settings
+You will need to have a local copy of the settings. Copy local-dist.py into your own version of local.py - 
 
 ```
 cp scrapi/settings/local-dist.py scrapi/settings/local.py
 ```
 
-### Running the scheduler
+### Running the scheduler (optional)
 
 - from the top-level project directory run:
 
