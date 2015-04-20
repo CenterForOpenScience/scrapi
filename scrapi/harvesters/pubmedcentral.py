@@ -1,5 +1,5 @@
 """
-Harvester of pubmed for the SHARE notification service
+Harvester of pubmed central for the SHARE notification service
 """
 
 
@@ -10,7 +10,7 @@ from scrapi.base import helpers
 from scrapi.base import OAIHarvester
 
 
-def oai_extract_url_pubmed(identifiers):
+def oai_extract_url_pubmedcentral(identifiers):
     identifiers = [identifiers] if not isinstance(identifiers, list) else identifiers
     for item in identifiers:
         try:
@@ -21,8 +21,8 @@ def oai_extract_url_pubmed(identifiers):
             continue
 
 
-class PubMedHarvester(OAIHarvester):
-    short_name = 'pubmed'
+class PubMedCentralHarvester(OAIHarvester):
+    short_name = 'pubmedcentral'
     long_name = 'PubMed Central'
     url = 'http://www.ncbi.nlm.nih.gov/pmc/'
 
@@ -30,7 +30,7 @@ class PubMedHarvester(OAIHarvester):
         schemas.OAISCHEMA,
         {
             "uris": {
-                "canonicalUri": ('//dc:identifier/node()', oai_extract_url_pubmed)
+                "canonicalUri": ('//dc:identifier/node()', oai_extract_url_pubmedcentral)
             }
         }
     )
