@@ -1,7 +1,11 @@
 """
+<<<<<<< HEAD:scrapi/harvesters/pubmedcentral.py
 Harvester of PubMed Central for the SHARE notification service
 
 Example API call: http://www.pubmedcentral.nih.gov/oai/oai.cgi?verb=ListRecords&metadataPrefix=oai_dc&from=2015-04-13&until=2015-04-14
+=======
+Harvester of pubmed central for the SHARE notification service
+>>>>>>> 10981892c236658dd3d4d9cd6caceedf300088bb:scrapi/harvesters/pubmedcentral.py
 """
 
 
@@ -12,7 +16,7 @@ from scrapi.base import helpers
 from scrapi.base import OAIHarvester
 
 
-def oai_extract_url_pubmed(identifiers):
+def oai_extract_url_pubmedcentral(identifiers):
     identifiers = [identifiers] if not isinstance(identifiers, list) else identifiers
     for item in identifiers:
         try:
@@ -23,7 +27,7 @@ def oai_extract_url_pubmed(identifiers):
             continue
 
 
-class PubMedHarvester(OAIHarvester):
+class PubMedCentralHarvester(OAIHarvester):
     short_name = 'pubmedcentral'
     long_name = 'PubMed Central'
     url = 'http://www.ncbi.nlm.nih.gov/pmc/'
@@ -32,7 +36,7 @@ class PubMedHarvester(OAIHarvester):
         schemas.OAISCHEMA,
         {
             "uris": {
-                "canonicalUri": ('//dc:identifier/node()', oai_extract_url_pubmed)
+                "canonicalUri": ('//dc:identifier/node()', oai_extract_url_pubmedcentral)
             }
         }
     )
