@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 import abc
+import copy
 import logging
 
 from jsonpointer import resolve_pointer, JsonPointerException
@@ -41,6 +42,7 @@ class BaseTransformer(object):
         return transformed
 
     def _transform_list(self, l, doc):
+        l = copy.deepcopy(l)
         for item in l:
             item.update({
                 'properties': self._transform(item['properties'], doc)
@@ -81,7 +83,7 @@ class XMLTransformer(BaseTransformer):
 
     def _transform_string(self, string, doc):
         val = doc.xpath(string, namespaces=self.namespaces)
-        return unicode(val[0]) if len(val) == 1 else [unicode(v) for v in val] or ''
+        return val
 
     @abc.abstractproperty
     def namespaces(self):
