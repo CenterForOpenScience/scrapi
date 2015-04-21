@@ -8,7 +8,8 @@ from .helpers import (
     # oai_extract_doi,
     oai_process_contributors,
     compose,
-    single_result
+    single_result,
+    format_tags
 )
 
 CONSTANT = lambda x: lambda *_, **__: x
@@ -31,5 +32,6 @@ OAISCHEMA = {
     },
     'providerUpdatedDateTime': ('//ns0:header/ns0:datestamp/node()', lambda x: unicode(parse(x[0]).replace(tzinfo=None).isoformat())),
     'title': ('//dc:title/node()', lambda x: x[0] if isinstance(x, list) else x),
-    'description': ('//dc:description/node()', lambda x: x[0] if isinstance(x, list) else x)
+    'description': ('//dc:description/node()', lambda x: x[0] if isinstance(x, list) else x),
+    'tags': ('//dc:subject/node()', format_tags)
 }
