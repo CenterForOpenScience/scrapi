@@ -61,3 +61,7 @@ worker_manager/recent_files.txt
 scrapi/settings/local.py
 celerybeat-schedule.db
 records/
+archive/*
+
+# Emacs edited files:
+*.*~

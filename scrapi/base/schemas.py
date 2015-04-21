@@ -6,7 +6,8 @@ from .helpers import (
     default_name_parser,
     oai_extract_url,
     # oai_extract_doi,
-    oai_process_contributors
+    oai_process_contributors,
+    format_tags
 )
 
 CONSTANT = lambda x: lambda *_, **__: x
@@ -28,5 +29,6 @@ OAISCHEMA = {
     },
     'providerUpdatedDateTime': ('//ns0:header/ns0:datestamp/node()', lambda x: unicode(parse(x).replace(tzinfo=None).isoformat())),
     'title': ('//dc:title/node()', lambda x: x[0] if isinstance(x, list) else x),
-    'description': ('//dc:description/node()', lambda x: x[0] if isinstance(x, list) else x)
+    'description': ('//dc:description/node()', lambda x: x[0] if isinstance(x, list) else x),
+    'tags': ('//dc:subject/node()', format_tags)
 }
