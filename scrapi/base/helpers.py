@@ -34,11 +34,16 @@ def build_property(name, expr, description=None, uri=None):
 
 
 def single_result(l, default=''):
-    return l[0] if len(l) >= 1 else default
+    return l[0] if l else default
 
 
 def compose(*functions):
-    ''' credit to sloria '''
+    '''
+    evaluates functions from right to left.
+    ex. compose(f, g)(x) = f(g(x))
+
+    credit to sloria
+    '''
     def inner(func1, func2):
         return lambda x: func1(func2(x))
     return functools.reduce(inner, functions)
