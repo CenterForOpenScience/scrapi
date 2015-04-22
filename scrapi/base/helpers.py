@@ -2,6 +2,8 @@ from __future__ import unicode_literals
 
 import re
 from copy import deepcopy
+import functools
+
 from nameparser import HumanName
 
 URL_REGEX = re.compile(ur'(https?://\S*\.\S*)')
@@ -29,6 +31,17 @@ def build_property(name, expr, description=None, uri=None):
     if uri:
         property['uri'] = uri
     return property
+
+
+def single_result(l, default=''):
+    return l[0] if len(l) >= 1 else default
+
+
+def compose(*functions):
+    ''' credit to sloria '''
+    def inner(func1, func2):
+        return lambda x: func1(func2(x))
+    return functools.reduce(inner, functions)
 
 
 def updated_schema(old, new):

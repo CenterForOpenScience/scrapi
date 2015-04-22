@@ -18,6 +18,7 @@ from scrapi.base import XMLHarvester
 from scrapi.linter.document import RawDocument
 from scrapi.base.helpers import build_properties
 from scrapi.base.schemas import default_name_parser
+from scrapi.base.helpers import compose, single_result
 
 logger = logging.getLogger(__name__)
 
@@ -32,13 +33,13 @@ class ClinicalTrialsHarvester(XMLHarvester):
     record_encoding = None
 
     schema = {
-        "contributors": ('//overall_official/last_name/node()', lambda x: default_name_parser(x) if isinstance(x, list) else default_name_parser([x])),
+        "contributors": ('//overall_official/last_name/node()', default_name_parser),
         "uris": {
-            "canonicalUri": "//required_header/url/node()"
+            "canonicalUri": ("//required_header/url/node()", single_result)
         },
-        "providerUpdatedDateTime": ("lastchanged_date/node()", lambda x: unicode(parse(x).replace(tzinfo=None).isoformat())),
-        "title": ('//official_title/node()', '//brief_title/node()', lambda x, y: x or y or ''),
-        "description": ('//brief_summary/textblock/node()', '//brief_summary/textblock/node()', lambda x, y: x or y or ''),
+        "providerUpdatedDateTime": ("lastchanged_date/node()", compose(lambda x: parse(x).replace(tzinfo=None).isoformat(), single_result)),
+        "title": ('//official_title/node()', '//brief_title/node()', lambda x, y: single_result(x) or single_result(y)),
+        "description": ('//brief_summary/textblock/node()', '//brief_summary/textblock/node()', lambda x, y: single_result(x) or single_result(y)),
         "otherProperties": build_properties(
             ('oversightAuthority', '//oversight_info/authority/node()'),
             ("serviceID", "//nct_id/node()"),

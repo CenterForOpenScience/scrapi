@@ -33,10 +33,10 @@ class TestTransformer(object):
 
     def test_arg_kwargs(self):
         def process_title(title, title1="test"):
-            return title + title1
+            return title[0] + (title1[0] if isinstance(title1, list) else title1)
 
         def process_title2(title1="test"):
-            return title1
+            return title1[0] if isinstance(title1, list) else title1
 
         args = ("//dc:title/node()", )
         kwargs = {"title1": "//dc:title/node()"}

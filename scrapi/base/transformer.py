@@ -82,8 +82,7 @@ class XMLTransformer(BaseTransformer):
     __metaclass__ = abc.ABCMeta
 
     def _transform_string(self, string, doc):
-        val = doc.xpath(string, namespaces=self.namespaces)
-        return val
+        return doc.xpath(string, namespaces=self.namespaces)
 
     @abc.abstractproperty
     def namespaces(self):

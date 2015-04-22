@@ -135,15 +135,8 @@ class OAIHarvester(XMLHarvester):
         return updated_schema(OAISCHEMA, properties)
 
     def resolve_property(self, dc, ns0):
-        if isinstance(dc, list) and isinstance(ns0, list):
-            ret = dc.extend(ns0)
-            return [val for val in ret if val]
-        elif not dc:
-            return ns0
-        elif not ns0:
-            return dc
-        else:
-            return [dc, ns0]
+        ret = dc + ns0
+        return ret[0] if len(ret) == 1 else ret
 
     def harvest(self, days_back=1):
 
