@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 
+import six
 import json
 import logging
 from uuid import uuid4
@@ -26,21 +27,21 @@ class CassandraProcessor(BaseProcessor):
     @events.logged(events.PROCESSING, 'normalized.cassandra')
     def process_normalized(self, raw_doc, normalized):
         self.send_to_database(
-            source=raw_doc['source'],
-            docID=raw_doc['docID'],
-            contributors=json.dumps(normalized['contributors']),
-            description=normalized.get('description'),
-            uris=json.dumps(normalized['uris']),
+            source=six.u(raw_doc['source']),
+            docID=six.u(raw_doc['docID']),
+            contributors=six.u(json.dumps(normalized['contributors'])),
+            description=six.u(normalized.get('description')),
+            uris=six.u(json.dumps(normalized['uris'])),
             providerUpdatedDateTime=parse(normalized['providerUpdatedDateTime']),
-            freeToRead=json.dumps(normalized.get('freeToRead', {})),
+            freeToRead=six.u(json.dumps(normalized.get('freeToRead', {}))),
             languages=normalized.get('language'),
-            licenses=json.dumps(normalized.get('licenseRef', [])),
-            publisher=json.dumps(normalized.get('publisher', {})),
-            sponsorships=json.dumps(normalized.get('sponsorship', [])),
-            title=normalized['title'],
-            version=json.dumps(normalized.get('version'), {}),
-            otherProperties=json.dumps(normalized.get('otherProperties', {})),
-            shareProperties=json.dumps(normalized['shareProperties'])
+            licenses=six.u(json.dumps(normalized.get('licenseRef', []))),
+            publisher=six.u(json.dumps(normalized.get('publisher', {}))),
+            sponsorships=six.u(json.dumps(normalized.get('sponsorship', []))),
+            title=six.u(normalized['title']),
+            version=six.u(json.dumps(normalized.get('version'), {})),
+            otherProperties=six.u(json.dumps(normalized.get('otherProperties', {}))),
+            shareProperties=six.u(json.dumps(normalized['shareProperties']))
         ).save()
 
     @events.logged(events.PROCESSING, 'raw.cassandra')
