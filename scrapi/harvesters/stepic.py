@@ -50,7 +50,7 @@ class StepicHarvester(JSONHarvester):
             'title': '/title',
             'providerUpdatedDateTime': ('/update_date', lambda x: parse(x).isoformat()),
             'description': '/title',
-            'languages': ('/language', lambda x: [pycountry.languages.get(alpha2=x).terminology, ])
+            'languages': ('/language', lambda x: [pycountry.languages.get(alpha2=x).terminology])
         }
 
     def harvest(self, days_back=1):
@@ -78,7 +78,7 @@ class StepicHarvester(JSONHarvester):
         resp = requests.get(self.URL + '?page=last').json()
         last_lesson_id = resp['lessons'][-1]['id']
         for pk in range(last_lesson_id + 1):
-            lesson = requests.get(search_url + "/" + str(pk))
+            lesson = requests.get(search_url + "/" + str(pk), expected=[200, 403, 404])
             if lesson.status_code == 200:
                 lesson_list = lesson.json()['lessons'][0]
                 all_lessons.append(lesson_list)

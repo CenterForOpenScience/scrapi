@@ -62,7 +62,7 @@ def _maybe_load_response(method, url):
         return None
 
 
-def record_or_load_response(method, url, throttle=None, force=False, params=None, **kwargs):
+def record_or_load_response(method, url, throttle=None, force=False, params=None, expected=(200,), **kwargs):
     if params:
         url = furl.furl(url).set(args=params).url
 
@@ -99,7 +99,7 @@ def record_or_load_response(method, url, throttle=None, force=False, params=None
     logger.warning('Skipped recorded response from "{}"'.format(url))
 
     return resp.update(
-        ok=response.ok,
+        ok=(response.ok or response.status_code in expected),
         content=response.content,
         encoding=response.encoding,
         status_code=response.status_code,
