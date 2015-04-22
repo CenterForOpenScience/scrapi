@@ -26,7 +26,7 @@ class PubMedCentralHarvester(OAIHarvester):
         schemas.OAISCHEMA,
         {
             "uris": {
-                "canonicalUri": ('//ns0:header/ns0:identifier/node()', oai_extract_url_pubmedcentral)
+                "canonicalUri": ('//ns0:header/ns0:identifier/node()', helpers.compose(oai_extract_url_pubmedcentral, helpers.single_result))
             }
         }
     )
