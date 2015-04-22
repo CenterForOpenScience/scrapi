@@ -14,7 +14,12 @@ def single_result(l, default=''):
 
 
 def compose(*functions):
-    ''' credit to sloria '''
+    '''
+    evaluates functions from right to left.
+    ex. compose(f, g)(x) = f(g(x))
+
+    credit to sloria
+    '''
     def inner(func1, func2):
         return lambda x: func1(func2(x))
     return functools.reduce(inner, functions)
