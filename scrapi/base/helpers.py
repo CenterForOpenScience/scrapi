@@ -10,7 +10,7 @@ URL_REGEX = re.compile(ur'(https?://\S*\.\S*)')
 
 
 def single_result(l, default=''):
-    return l[0] if len(l) >= 1 else default
+    return l[0] if l else default
 
 
 def compose(*functions):
