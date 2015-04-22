@@ -1,6 +1,5 @@
 from __future__ import absolute_import
 
-import six
 import json
 import logging
 from uuid import uuid4
@@ -11,6 +10,7 @@ from cqlengine import columns, Model
 
 from scrapi import events
 from scrapi import database  # noqa
+from scrapi.util import copy_to_unicode
 from scrapi.processing.base import BaseProcessor
 
 
@@ -27,21 +27,21 @@ class CassandraProcessor(BaseProcessor):
     @events.logged(events.PROCESSING, 'normalized.cassandra')
     def process_normalized(self, raw_doc, normalized):
         self.send_to_database(
-            source=six.u(raw_doc['source']),
-            docID=six.u(raw_doc['docID']),
-            contributors=six.u(json.dumps(normalized['contributors'])),
-            description=six.u(normalized.get('description')),
-            uris=six.u(json.dumps(normalized['uris'])),
+            source=copy_to_unicode(raw_doc['source']),
+            docID=copy_to_unicode(raw_doc['docID']),
+            contributors=copy_to_unicode(json.dumps(normalized['contributors'])),
+            description=copy_to_unicode(normalized.get('description')),
+            uris=copy_to_unicode(json.dumps(normalized['uris'])),
             providerUpdatedDateTime=parse(normalized['providerUpdatedDateTime']),
-            freeToRead=six.u(json.dumps(normalized.get('freeToRead', {}))),
+            freeToRead=copy_to_unicode(json.dumps(normalized.get('freeToRead', {}))),
             languages=normalized.get('language'),
-            licenses=six.u(json.dumps(normalized.get('licenseRef', []))),
-            publisher=six.u(json.dumps(normalized.get('publisher', {}))),
-            sponsorships=six.u(json.dumps(normalized.get('sponsorship', []))),
-            title=six.u(normalized['title']),
-            version=six.u(json.dumps(normalized.get('version'), {})),
-            otherProperties=six.u(json.dumps(normalized.get('otherProperties', {}))),
-            shareProperties=six.u(json.dumps(normalized['shareProperties']))
+            licenses=copy_to_unicode(json.dumps(normalized.get('licenseRef', []))),
+            publisher=copy_to_unicode(json.dumps(normalized.get('publisher', {}))),
+            sponsorships=copy_to_unicode(json.dumps(normalized.get('sponsorship', []))),
+            title=copy_to_unicode(normalized['title']),
+            version=copy_to_unicode(json.dumps(normalized.get('version'), {})),
+            otherProperties=copy_to_unicode(json.dumps(normalized.get('otherProperties', {}))),
+            shareProperties=copy_to_unicode(json.dumps(normalized['shareProperties']))
         ).save()
 
     @events.logged(events.PROCESSING, 'raw.cassandra')
