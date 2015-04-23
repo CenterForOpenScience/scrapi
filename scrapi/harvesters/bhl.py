@@ -54,3 +54,6 @@ class BHLHarvester(OAIHarvester):
     schema = updated_schema(OAISCHEMA, {
         'contributors': ('//dc:creator/node()', '//dc:contributor/node()', aoi_process_contributors_bhl)
     })
+    property_list = [
+        'type', 'date', 'relation', 'setSpec', 'rights'
+    ]
