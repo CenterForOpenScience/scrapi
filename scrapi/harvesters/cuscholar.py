@@ -19,6 +19,5 @@ class CUScholarHarvester(OAIHarvester):
     base_url = 'http://scholar.colorado.edu/do/oai/'
     property_list = [
         'type', 'source', 'format',
-        'date', 'description', 'relation', 'setSpec',
-        'rights', 'identifier'
+        'date', 'setSpec', 'identifier'
     ]
