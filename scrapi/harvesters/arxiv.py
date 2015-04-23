@@ -17,6 +17,6 @@ class ArxivHarvester(OAIHarvester):
     timeout = 30
     base_url = 'http://export.arxiv.org/oai2'
     property_list = [
-        'type', 'publisher', 'format', 'date',
-        'identifier', 'language', 'setSpec', 'description'
+        'type', 'format', 'date',
+        'identifier', 'setSpec', 'description'
     ]

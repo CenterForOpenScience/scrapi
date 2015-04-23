@@ -33,6 +33,6 @@ class PubMedCentralHarvester(OAIHarvester):
 
     base_url = 'http://www.pubmedcentral.nih.gov/oai/oai.cgi'
     property_list = [
-        'type', 'source', 'publisher', 'rights',
+        'type', 'source', 'rights',
         'format', 'setSpec', 'date', 'identifier'
     ]

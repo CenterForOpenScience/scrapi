@@ -17,7 +17,7 @@ class UiucIdealsHarvester(OAIHarvester):
     url = 'https://www.ideals.illinois.edu'
     base_url = 'http://ideals.uiuc.edu/dspace-oai/request'
     property_list = [
-        'type', 'publisher', 'format', 'date',
-        'identifier', 'language', 'setSpec', 'source', 'coverage',
+        'type', 'format', 'date',
+        'identifier', 'setSpec', 'source', 'coverage',
         'relation', 'rights'
     ]

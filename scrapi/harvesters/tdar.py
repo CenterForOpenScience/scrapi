@@ -19,7 +19,7 @@ class TDARHarvester(OAIHarvester):
     url = 'http://www.tdar.org'
 
     base_url = 'http://core.tdar.org/oai-pmh/oai'
-    property_list = ['type', 'date', 'setSpec', 'type', 'publisher', 'coverage']
+    property_list = ['type', 'date', 'setSpec', 'type', 'coverage']
 
     def get_ids(self, result, doc):
         """

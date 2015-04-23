@@ -17,6 +17,6 @@ class SPDataverse(OAIHarvester):
 
     base_url = 'http://dataverse.scholarsportal.info/dvn/OAIHandler'
     property_list = [
-        'type', 'source', 'publisher', 'format', 'relation',
+        'type', 'source', 'format', 'relation',
         'description', 'coverage', 'rights', 'setSpec', 'date'
     ]
