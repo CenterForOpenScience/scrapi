@@ -34,7 +34,7 @@ OAISCHEMA = {
     'providerUpdatedDateTime': ('//ns0:header/ns0:datestamp/node()', lambda x: parse(x[0]).replace(tzinfo=None).isoformat()),
     'title': ('//dc:title/node()', single_result),
     'description': ('//dc:description/node()', single_result),
-    'tags': ('//dc:subject/node()', format_tags),
+    'subjects': ('//dc:subject/node()', format_tags),
     'publisher': {
         'name': ('//dc:publisher/node()', single_result)
     },
