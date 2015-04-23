@@ -27,7 +27,7 @@ from dateutil.parser import *
 from scrapi import requests
 from scrapi.base import XMLHarvester
 from scrapi.linter.document import RawDocument
-from scrapi.base.helpers import default_name_parser
+from scrapi.base.helpers import default_name_parser, build_properties, compose, single_result
 
 logger = logging.getLogger(__name__)
 
@@ -108,16 +108,16 @@ class PlosHarvester(XMLHarvester):
 
     schema = {
         'uris': {
-            'canonicalUri': ('//str[@name="id"]/node()', lambda x: 'http://dx.doi.org/{}'.format(x)),
+            'canonicalUri': ('//str[@name="id"]/node()', compose('http://dx.doi.org/{}'.format, single_result)),
         },
         'contributors': ('//arr[@name="author_display"]/str/node()', default_name_parser),
-        'providerUpdatedDateTime': ('//date[@name="publication_data"]/node()', lambda x: parse(x).date().isoformat().decode('utf-8')),
-        'title': '//str[@name="title_display"]/node()',
-        'description': '//arr[@name="abstract"]/str/node()',
-        # 'otherProperties': {
-        #     'journal': '//str[@name="journal"]/node()',
-        #     'eissn': '//str[@name="eissn"]/node()',
-        #     'articleType': '//str[@name="article_type"]/node()',
-        #     'score': '//float[@name="score"]/node()'
-        # }
+        'providerUpdatedDateTime': ('//date[@name="publication_data"]/node()', compose(lambda x: parse(x).date().isoformat().decode('utf-8'), single_result)),
+        'title': ('//str[@name="title_display"]/node()', single_result),
+        'description': ('//arr[@name="abstract"]/str/node()', single_result),
+        'otherProperties': build_properties(
+            ('journal', '//str[@name="journal"]/node()'),
+            ('eissn', '//str[@name="eissn"]/node()'),
+            ('articleType', '//str[@name="article_type"]/node()'),
+            ('score', '//float[@name="score"]/node()')
+        )
     }
