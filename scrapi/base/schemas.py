@@ -9,7 +9,8 @@ from .helpers import (
     oai_process_contributors,
     compose,
     single_result,
-    format_tags
+    format_tags,
+    language_code
 )
 
 CONSTANT = lambda x: lambda *_, **__: x
@@ -36,5 +37,6 @@ OAISCHEMA = {
     'tags': ('//dc:subject/node()', format_tags),
     'publisher': {
         'name': ('//dc:publisher/node()', single_result)
-    }
+    },
+    'languages': ('//dc:language', compose(lambda x: [x], language_code, single_result))
 }
