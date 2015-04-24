@@ -1,0 +1,1712 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
+    method: GET
+    uri: http://ideals.uiuc.edu/dspace-oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2014-12-24&until=2014-12-25
+  response:
+    body: {string: !!python/unicode "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet\
+        \ type=\"text/xsl\" href=\"static/style.xsl\"?><OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"\
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
+        http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"\
+        ><responseDate>2015-04-24T09:05:17Z</responseDate>\n    <request verb=\"ListRecords\"\
+        \ metadataPrefix=\"oai_dc\" from=\"2014-12-24\" until=\"2014-12-25\">http://www.ideals.illinois.edu/dspace-oai/request</request>\n\
+        \    <ListRecords>\n        <record>\n            <header>\n             \
+        \   <identifier>oai:www.ideals.illinois.edu:2142/18283</identifier>\n    \
+        \            <datestamp>2014-12-23T22:11:41Z</datestamp>\n               \
+        \ <setSpec>com_2142_5132</setSpec>\n                <setSpec>com_2142_5130</setSpec>\n\
+        \                <setSpec>col_2142_8800</setSpec>\n                <setSpec>col_2142_5131</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Effects\
+        \ of the Project Approach on Children in Inclusive Early Childhood Classrooms</dc:title>\n\
+        <dc:contributor>Ostrosky, Michaelene M.</dc:contributor>\n<dc:contributor>Ostrosky,\
+        \ Michaelene M.</dc:contributor>\n<dc:contributor>Fowler, Susan A.</dc:contributor>\n\
+        <dc:contributor>Santos Gilbertz, Rosa Milagros</dc:contributor>\n<dc:contributor>Katz,\
+        \ Lilian G.</dc:contributor>\n<dc:subject>early childhood education</dc:subject>\n\
+        <dc:subject>special education</dc:subject>\n<dc:subject>inclusion (education)</dc:subject>\n\
+        <dc:subject>coaching</dc:subject>\n<dc:subject>mentors</dc:subject>\n<dc:subject>preschool\
+        \ curriculum</dc:subject>\n<dc:subject>early intervention</dc:subject>\n<dc:subject>inclusive\
+        \ schools</dc:subject>\n<dc:subject>project based learning</dc:subject>\n\
+        <dc:subject>active learning</dc:subject>\n<dc:subject>student projects</dc:subject>\n\
+        <dc:description>Research on the impact of the Project Approach on young children\
+        \ with disabilities or children who are at-risk is limited. Mixed methods\
+        \ were used to study the impact of the Project Approach on the social interactions,\
+        \ challenging behaviors, and language development of eight focal children\
+        \ in two inclusive classrooms. Child participants were two children with IEPs\
+        \ and two children identified as at-risk from each class. Adult participants\
+        \ were six professionals who received high quality supports to implement the\
+        \ Project Approach. Adults were interviewed prior to the beginning of the\
+        \ study and again mid-, and post-implementation. Choice time observations\
+        \ were videotaped twice per week over 14 weeks to assess the impact of the\
+        \ Project Approach on play levels and MLUm. Results revealed that social interactions,\
+        \ challenging behaviors, vocabulary, MLUm, were positively impacted following\
+        \ implementation of the Project Approach. Limitations of the study and suggestions\
+        \ for research and practice are discussed.</dc:description>\n<dc:date>2011-01-14T22:44:40Z</dc:date>\n\
+        <dc:date>2011-01-14T22:44:40Z</dc:date>\n<dc:date>2011-01-14T22:44:40Z</dc:date>\n\
+        <dc:date>December 2010</dc:date>\n<dc:identifier>http://hdl.handle.net/2142/18283</dc:identifier>\n\
+        <dc:language>en</dc:language>\n<dc:rights>Copyright ?? 2010 Sallee Jean Beneke</dc:rights>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/22213</identifier>\n\
+        \                <datestamp>2014-12-23T22:22:51Z</datestamp>\n           \
+        \     <setSpec>com_2142_5132</setSpec>\n                <setSpec>com_2142_5130</setSpec>\n\
+        \                <setSpec>col_2142_8800</setSpec>\n                <setSpec>col_2142_5131</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Toward a systematic\
+        \ approach to translation skills instruction</dc:title>\n<dc:contributor>Savignon,\
+        \ S. J.</dc:contributor>\n<dc:subject>Education, Language and Literature</dc:subject>\n\
+        <dc:description>In this study, a bi-disciplinary approach was taken to investigate\
+        \ translation processes with the objective of establishing the foundation\
+        \ for a systematic approach to the teaching of translation skills for professional\
+        \ purposes. A model of translation in terms of social, communicative processes\
+        \ was developed on the basis of the view of language proposed by J. R. Firth.\
+        \ This social view of translation was complemented by a model of cognitive\
+        \ translation processes based on a contemporary view of psycholinguistic language\
+        \ processing as well as on empirical data collected in the form of think-aloud\
+        \ protocols. The verbal report data were collected during the production of\
+        \ a German $\\to$ English translation, carried out by eight novice translator\
+        \ trainees in a West German university program in Translation Studies, and\
+        \ eight graduates of the same program.</dc:description>\n<dc:description>A\
+        \ coding procedure was developed that provided a graphic representation of\
+        \ a variety of cognitive processing indicators. It was found that intuitive\
+        \ cognitive processes were involved in the translation of virtually all of\
+        \ the translation units identified in the data. No differences were found\
+        \ between the novice and professional subjects with respect to: the types\
+        \ of controlled processes used, the preponderance of controlled or uncontrolled\
+        \ processes implemented, or the quality of their translation products. These\
+        \ findings suggest that (a) rather than being applied in well-planned sequences,\
+        \ controlled translation strategies tend to be used on an ad hoc basis to\
+        \ provide additional raw material for uncontrolled processes, and (b) graduates\
+        \ of translator training programs may be no more competent to translate into\
+        \ their second language than are novices.</dc:description>\n<dc:description>The\
+        \ study concludes that systematic approaches to translation skills instruction\
+        \ must differentiate between general communicative skills and translation-specific\
+        \ skills and knowledge, and that the development of communicative competence\
+        \ must become a main priority in translator training. Recent developments\
+        \ in Communicative Second Language Teaching and isolated initiatives from\
+        \ within the field of Translation Studies are suggested as appropriate sources\
+        \ of innovation for translation skills instruction.</dc:description>\n<dc:date>2011-05-07T13:32:41Z</dc:date>\n\
+        <dc:date>2011-05-07T13:32:41Z</dc:date>\n<dc:date>1990</dc:date>\n<dc:date>10000-01-01</dc:date>\n\
+        <dc:type>text</dc:type>\n<dc:identifier>http://hdl.handle.net/2142/22213</dc:identifier>\n\
+        <dc:identifier>(UMI)AAI9021708</dc:identifier>\n<dc:identifier>AAI9021708</dc:identifier>\n\
+        <dc:rights>Copyright 1990 Kiraly, Donald Charles</dc:rights>\n</oai_dc:dc>\n\
+        </metadata>\n        </record>\n        <record>\n            <header>\n \
+        \               <identifier>oai:www.ideals.illinois.edu:2142/22888</identifier>\n\
+        \                <datestamp>2014-12-23T22:22:30Z</datestamp>\n           \
+        \     <setSpec>com_2142_14852</setSpec>\n                <setSpec>com_2142_8903</setSpec>\n\
+        \                <setSpec>com_2142_5130</setSpec>\n                <setSpec>col_2142_14853</setSpec>\n\
+        \                <setSpec>col_2142_5131</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Task variation\
+        \ and classroom learner discourse</dc:title>\n<dc:contributor>Savignon, S.\
+        \ J.</dc:contributor>\n<dc:subject>Education, Language and Literature</dc:subject>\n\
+        <dc:subject>Language, Linguistics</dc:subject>\n<dc:subject>Language, Modern</dc:subject>\n\
+        <dc:description>In recent years, the second language teaching profession has\
+        \ increasingly adopted peer discussion techniques as a means of improving\
+        \ both the quantity and the quality of classroom language practice opportunities.\
+        \ There is sufficient evidence to support the conclusion that peer interaction\
+        \ provides increased amounts of comprehensible and negotiated linguistic input.\
+        \ However, there has been little research into the ways in which classroom\
+        \ task types, and the classroom context itself, may affect learners' conversational\
+        \ strategies. As a result, little is known of the manner in which these activities\
+        \ may be considered to promote communicative competence in addition to linguistic\
+        \ ability.</dc:description>\n<dc:description>This project, based upon a pilot\
+        \ study completed in December 1987, investigates the conversations of intermediate\
+        \ students of French as they perform tasks regularly assigned in classrooms\
+        \ in two university level instructional settings. Four task types, exerting\
+        \ variable amounts of control upon the nature of the discourse, were selected\
+        \ for inclusion in the study. A total of 32 dyads from four intermediate French\
+        \ classes participated. The students were audio recorded as they performed\
+        \ the tasks, and the tapes were transcribed for analysis. A survey of learner\
+        \ attitudes toward the tasks was administered when the conversational data\
+        \ had been gathered in each class.</dc:description>\n<dc:description>Analysis\
+        \ includes: (1) descriptions of discourse dynamics, including distribution\
+        \ of turns-at-talk, topic management, repair strategies and negotiation for\
+        \ meaning, (2) a summary of findings from learner attitude surveys, and (3)\
+        \ quantitative analysis, including ratios of words per minute, counts of communication\
+        \ units within a time limit, and type/token ratios indicating the variety\
+        \ of vocabulary employed.</dc:description>\n<dc:description>This project is\
+        \ descriptive in nature, and therefore does not address the issue of eventual\
+        \ learning outcomes. However, in describing the learning experiences made\
+        \ available to students through pair work (and by contrast, those which are\
+        \ not) the project contributes to an understanding of one aspect of classroom\
+        \ discourse. It is hoped that these insights will eventually permit informed\
+        \ use of peer discussion techniques in second language classrooms.</dc:description>\n\
+        <dc:date>2011-05-07T13:54:50Z</dc:date>\n<dc:date>2011-05-07T13:54:50Z</dc:date>\n\
+        <dc:date>1990</dc:date>\n<dc:date>10000-01-01</dc:date>\n<dc:type>text</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/2142/22888</dc:identifier>\n<dc:identifier>(UMI)AAI9026231</dc:identifier>\n\
+        <dc:identifier>AAI9026231</dc:identifier>\n<dc:rights>Copyright 1990 Kinginger,\
+        \ Celeste S.</dc:rights>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/23350</identifier>\n\
+        \                <datestamp>2014-12-23T22:25:51Z</datestamp>\n           \
+        \     <setSpec>com_2142_5132</setSpec>\n                <setSpec>com_2142_5130</setSpec>\n\
+        \                <setSpec>col_2142_8800</setSpec>\n                <setSpec>col_2142_5131</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Language universals,\
+        \ language typology and L2 acquisition: A cross-sectional study of adult English\
+        \ speakers learning Chinese</dc:title>\n<dc:contributor>Saville-Troike, Muriel</dc:contributor>\n\
+        <dc:subject>Language, Linguistics</dc:subject>\n<dc:subject>Education, Educational\
+        \ Psychology</dc:subject>\n<dc:description>This study is an attempt to integrate\
+        \ the theories of language universals, language typology, and markedness with\
+        \ interlanguage (IL) phenomena, specifically those relating to the process\
+        \ of acquiring Chinese as a second language. The central question addressed\
+        \ is whether or not a composite theory of universals and typological parameters\
+        \ can account for IL process in terms of developmental patterns, learning\
+        \ difficulty, and possibility of transfer.</dc:description>\n<dc:description>A\
+        \ total of 86 subjects who are native speakers of English learning Chinese\
+        \ as a second language participated in the two studies. Four tasks were used\
+        \ in order to measure the Ss' overall performance on Chinese word order (core\
+        \ and peripheral), Chinese aspect marking, Chinese topic-comment structures,\
+        \ and the pragmatic functions of Chinese ba, jiu, and cai. The ultimate purpose\
+        \ of the tests was to examine the effect of parameter setting with regard\
+        \ to head-initial/head-final, topic-prominent/subject-prominent, and pragmatically\
+        \ governed word order/grammatically governed word order, and lexical/inflectional\
+        \ marking.</dc:description>\n<dc:description>The findings of this study indicate\
+        \ that second language acquisition is influenced by language universals, language\
+        \ typology, markedness hierarchy, as well as cognitive processes and strategies\
+        \ such as transfer, overgeneralization, and simplification. Evidence from\
+        \ the pragmaticization in Chinese L2 acquisition indicates the different stages\
+        \ learners go through in setting a semantic-pragmatic framework from sentence\
+        \ and discourse interpretation. The relative difficulty of this process supports\
+        \ Givon's (1979) claims for the effects of L1 on L1 syntacticization processes\
+        \ and contradicts the claim by Fuller and Gundel (1987) for a universal topic-comment\
+        \ stage in interlanguage. Finally, it is shown that transfer and other learning\
+        \ processes may not appear in surface-level comparisons, but at a more abstract\
+        \ level of linguistic analysis. Interlanguage studies should use investigative\
+        \ procedures which use typological differences between L1 and L2 as a basic\
+        \ point of departure. (Abstract shortened with permission of author.)</dc:description>\n\
+        <dc:date>2011-05-07T14:11:03Z</dc:date>\n<dc:date>2011-05-07T14:11:03Z</dc:date>\n\
+        <dc:date>1989</dc:date>\n<dc:date>10000-01-01</dc:date>\n<dc:type>text</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/2142/23350</dc:identifier>\n<dc:identifier>(UMI)AAI9010900</dc:identifier>\n\
+        <dc:identifier>AAI9010900</dc:identifier>\n<dc:rights>Copyright 1989 Jin,\
+        \ Hong Gang</dc:rights>\n</oai_dc:dc>\n</metadata>\n        </record>\n  \
+        \      <record>\n            <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/24490</identifier>\n\
+        \                <datestamp>2014-12-23T21:50:48Z</datestamp>\n           \
+        \     <setSpec>com_2142_5130</setSpec>\n                <setSpec>com_2142_181</setSpec>\n\
+        \                <setSpec>com_2142_8903</setSpec>\n                <setSpec>col_2142_5131</setSpec>\n\
+        \                <setSpec>col_2142_17395</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The making\
+        \ of regulatory independence</dc:title>\n<dc:contributor>Sandvig, Christian\
+        \ E.</dc:contributor>\n<dc:contributor>Sandvig, Christian E.</dc:contributor>\n\
+        <dc:contributor>Miller, Peggy J.</dc:contributor>\n<dc:contributor>Schiller,\
+        \ Daniel T.</dc:contributor>\n<dc:contributor>Contractor, Noshir S.</dc:contributor>\n\
+        <dc:subject>Telecommunications</dc:subject>\n<dc:subject>regulation</dc:subject>\n\
+        <dc:subject>regulatory independence</dc:subject>\n<dc:subject>India</dc:subject>\n\
+        <dc:subject>Nehru</dc:subject>\n<dc:subject>spectrum</dc:subject>\n<dc:subject>licensing</dc:subject>\n\
+        <dc:subject>globalization</dc:subject>\n<dc:description>This study offers\
+        \ an ethnographic account of life at a regulatory agency to offer a new perspective\
+        \ on an important question: how does a regulatory agency become and remain\
+        \ independent? Relying on an analytical framework based on scholarship in\
+        \ legal anthropology, this study provides elements of an answer based on an\
+        \ insider???s view of regulation, illuminating the complex, messy, and political\
+        \ nature of what may seem from the outside as calm and neutral application\
+        \ of technical expertise. &#13;\nThe formal account suggests that legislative\
+        \ action defines the position and mandate of such an agency making it independent???immune\
+        \ from political influence in its decision-making. However, experience has\
+        \ shown that the making and maintenance of independence is a challenge, especially\
+        \ as these agencies typically enter arenas much after other powerful economic\
+        \ and political interests have established their own positions. The result\
+        \ is that in spite of efforts of international financial institutions, governments,\
+        \ and regulatory staffers worldwide to create independent regulatory agencies,\
+        \ many of these agencies are severely constrained in their ability to function\
+        \ effectively.&#13;\nUsing unprecedented access to individuals working at\
+        \ the Telecom Regulatory Authority of India (TRAI), this study will show that\
+        \ regulatory staffers are constantly struggling to make and maintain their\
+        \ position, define their role, and keep their agency going. These individuals\
+        \ engage in strategic choice-making, applying ideas and creating rituals in\
+        \ their various attempts to define a role for the agency. Even if they could\
+        \ call upon a formal mandate as defined in the law, the agency???s position\
+        \ is largely determined through the actions of the individuals working at\
+        \ the agency and, interestingly, through the actions of other entities in\
+        \ the arena. The role and position of the regulatory agency thus has various\
+        \ sources and is defined through multiple activities, including the act of\
+        \ regulation itself.&#13;\nIf regulation is political, this study proposes\
+        \ rethinking regulation in terms of its semi-independence. A regulatory agency???s\
+        \ procedures and decisions are all part of the attempt of that agency to define\
+        \ a role for itself and are, consequently, political in nature. This political\
+        \ behavior is shaped by the preferences, values, and relative positions of\
+        \ other entities in the arena. By engaging in such political behavior, the\
+        \ agency becomes semi-independent; it might not be an apolitical rule-applier,\
+        \ but it may also be able to define a more meaningful role for itself. Rethinking\
+        \ regulatory independence as an ongoing effort thus situates an agency within\
+        \ political and social contexts, allowing us a new perspective on this widespread\
+        \ activity.</dc:description>\n<dc:date>2011-05-25T14:27:25Z</dc:date>\n<dc:date>2011-05-25T14:27:25Z</dc:date>\n\
+        <dc:date>2011-05-25T14:27:25Z</dc:date>\n<dc:date>2011-05</dc:date>\n<dc:date>2015-07-16\
+        \ 12:23:02.443000</dc:date>\n<dc:identifier>http://hdl.handle.net/2142/24490</dc:identifier>\n\
+        <dc:language>en</dc:language>\n<dc:rights>Copyright 2011 Siddhartha S. Raja</dc:rights>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/24176</identifier>\n\
+        \                <datestamp>2014-12-23T22:16:55Z</datestamp>\n           \
+        \     <setSpec>com_2142_5130</setSpec>\n                <setSpec>com_2142_14845</setSpec>\n\
+        \                <setSpec>com_2142_9614</setSpec>\n                <setSpec>col_2142_5131</setSpec>\n\
+        \                <setSpec>col_2142_14846</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Stakeholder\
+        \ representation in park planning: localized place meanings at Grand Canyon</dc:title>\n\
+        <dc:contributor>Stewart, William P.</dc:contributor>\n<dc:contributor>Stewart,\
+        \ William P.</dc:contributor>\n<dc:contributor>Denzin, Norman K.</dc:contributor>\n\
+        <dc:contributor>Payne, Laura L.</dc:contributor>\n<dc:contributor>Santos,\
+        \ Carla A.</dc:contributor>\n<dc:subject>place meaning</dc:subject>\n<dc:subject>park\
+        \ planning</dc:subject>\n<dc:subject>stakeholder experience and emotion</dc:subject>\n\
+        <dc:subject>photo elicitation</dc:subject>\n<dc:description>This research\
+        \ explores stakeholder representation in park [pre]planning at Grand Canyon\
+        \ National Park through an examination of place meanings from a lived experience\
+        \ perspective.  Using a combination of photo-elicitation methods and semi-structured\
+        \ interviewing this research offers a novel form of representation among localized\
+        \ stakeholders to the backcountry at Grand Canyon and follows up on that by\
+        \ asking the participants about their experience with the research itself.\
+        \  It is found that stakeholders who participated in this process expressed\
+        \ a natural form of caring and sensed the same in others representation of\
+        \ the  meanings associated with their important backcountry places.  As a\
+        \ form of participatory action research, this research shows promise for improving\
+        \ stakeholder dialogue surrounding park planning through the productive inclusion\
+        \ of experiential, emotional knowledge.</dc:description>\n<dc:date>2011-05-25T14:51:59Z</dc:date>\n\
+        <dc:date>2011-05-25T14:51:59Z</dc:date>\n<dc:date>2011-05-25T14:51:59Z</dc:date>\n\
+        <dc:date>2011-05</dc:date>\n<dc:identifier>http://hdl.handle.net/2142/24176</dc:identifier>\n\
+        <dc:language>en</dc:language>\n<dc:rights/>\n<dc:rights>Copyright 2011 James\
+        \ R. Barkley</dc:rights>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/25603</identifier>\n\
+        \                <datestamp>2014-12-23T22:18:38Z</datestamp>\n           \
+        \     <setSpec>com_2142_5130</setSpec>\n                <setSpec>com_2142_8858</setSpec>\n\
+        \                <setSpec>com_2142_234</setSpec>\n                <setSpec>col_2142_5131</setSpec>\n\
+        \                <setSpec>col_2142_8859</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Studies of\
+        \ the low temperature anomaly in palladium hydride</dc:title>\n<dc:contributor>Satterthwaite,\
+        \ C. B.</dc:contributor>\n<dc:subject>low temperature anomally</dc:subject>\n\
+        <dc:subject>palladium hydride</dc:subject>\n<dc:subject>electrical resistance\
+        \ anomally</dc:subject>\n<dc:description>Three studies of the low temperature\
+        \ anomaly in Pd-H and Pd-D have been undertaken. In the first, a study of\
+        \ the electrical resistance anomaly has been made to determine the effects\
+        \ of varying hydrogen concentration. The temperature of the resistive peak\
+        \ was seen to increase with H(D)/Pd for ratios above .63.&#13;\nIn the second\
+        \ experiment samples of Pd-H and Pd-D with high&#13;\n(T &gt; 70 K) anomaly\
+        \ temperatures have been held below T for extended time&#13;\na a periods.\
+        \ Resistance was seen to fall by up to 60% after several days of annealing.\
+        \ Reductions in annealing temperature caused further reductions in resistance.\
+        \ The changes are reversible; heating the samples to 90 K or more restored\
+        \ the original resistance. The third experiment was a neutron diffraction\
+        \ experiment on a single crystal of PdD.76. Annealing the crystal at 70 K\
+        \ produced superlattice diffraction lines belonging to the star {4/5 2/5 0}.\
+        \ The growth of the new lines with time bears a striking relationship to the\
+        \ resistance behavior. The peaks were erased by heating to 90 K, and reappeared\
+        \ at the same locations when the crystal was again annealed at 70 K.</dc:description>\n\
+        <dc:date>2011-06-30T16:59:24Z</dc:date>\n<dc:date>2014-04-18T15:07:57Z</dc:date>\n\
+        <dc:date>1978</dc:date>\n<dc:type>text</dc:type>\n<dc:identifier>http://hdl.handle.net/2142/25603</dc:identifier>\n\
+        <dc:identifier>356082</dc:identifier>\n<dc:rights>Copyright 1978 Thomas Edward\
+        \ Ellis</dc:rights>\n<dc:publisher>University of Illinois at Urbana-Champaign</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/26346</identifier>\n\
+        \                <datestamp>2014-12-23T22:23:58Z</datestamp>\n           \
+        \     <setSpec>com_2142_5130</setSpec>\n                <setSpec>com_2142_8904</setSpec>\n\
+        \                <setSpec>com_2142_8903</setSpec>\n                <setSpec>col_2142_5131</setSpec>\n\
+        \                <setSpec>col_2142_8906</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>A ???Greater\
+        \ Britain???: colonial kin in fictions of settlement, 1850-1890</dc:title>\n\
+        <dc:contributor>Goodlad, Lauren</dc:contributor>\n<dc:contributor>Goodlad,\
+        \ Lauren</dc:contributor>\n<dc:contributor>Burton, Antoinette M.</dc:contributor>\n\
+        <dc:contributor>Saville, Julia Frances</dc:contributor>\n<dc:contributor>Nazar,\
+        \ Hina</dc:contributor>\n<dc:subject>nineteenth-century fiction</dc:subject>\n\
+        <dc:subject>settler colonialism</dc:subject>\n<dc:subject>family</dc:subject>\n\
+        <dc:subject>kinship</dc:subject>\n<dc:subject>Australia</dc:subject>\n<dc:subject>Britain</dc:subject>\n\
+        <dc:subject>Greater Britain</dc:subject>\n<dc:subject>transnational</dc:subject>\n\
+        <dc:subject>politics</dc:subject>\n<dc:description>This dissertation traces\
+        \ the ways in which nineteenth-century fictional narratives of white settlement\
+        \ represent ???family??? as, on the one hand, an abstract theoretical model\
+        \ for a unified and relatively homogenous British settler empire and on the\
+        \ other, a fundamental challenge to ideas about imperial integrity and transnational\
+        \ Anglo-Saxon racial identification. I argue that representations of transoceanic\
+        \ white families in nineteenth-century fictions about Australian settler colonialism\
+        \ negotiate the tension between the bounded domesticity of an insular English\
+        \ nation and the kind of kinship that spans oceans and continents as a result\
+        \ of mass emigration from the British isles to the United States, Canada,\
+        \ New Zealand, and the Australian colonies. As such, these fictions construct\
+        \ productive analogies between the familial metaphors and affective language\
+        \ in the political discourse of ???Greater Britain??????-a transoceanic imagined\
+        \ community of British settler colonies and their ???mother country??? united\
+        \ by race and language???-and ideas of family, gender, and domesticity as\
+        \ they operate within specific bourgeois families.  Concerns over the disruption\
+        \ of transoceanic families bear testament to contradictions between the idea\
+        \ of a unified imperial identity (both British and Anglo-Saxon), the proliferation\
+        \ of fractured local identities (such as settlers??? English, Irish Catholic,\
+        \ and Australian nationalisms), and the conspicuous absence of indigenous\
+        \ families from narratives of settlement.&#13;\n&#13;\nI intervene at the\
+        \ intersection of postcolonial literary criticism and gender theory by examining\
+        \ the strategic deployments of heteronormative kinship metaphors and metonymies\
+        \ in the rhetorical consolidation of settler colonial space. Settler colonialism\
+        \ was distinct from the ???civilizing??? domination of subject peoples in\
+        \ South Asia in that it depended on the rhetorical construction of colonial\
+        \ territory as empty space or as land occupied by nearly extinct ???primitive???\
+        \ races. This dissertation argues that political rhetoric, travel narratives,\
+        \ and fiction used the image of white female bourgeois reproductive power\
+        \ and sentimental attachment as a technology for settler colonial success,\
+        \ embodying this technology both in the benevolent figure of the metropolitan\
+        \ ???mother country??? (the paternalistic female counter to the material realities\
+        \ of patriarchal and violent settler colonial practices) and in fictional\
+        \ juxtapositions of happy white settler fecund families with the solitary\
+        \ self-extinguishing figure of the black aboriginal ???savage.??? Yet even\
+        \ in the narratives where the continuity and coherence of families across\
+        \ imperial space is questioned???-and ???Greater Britain??? itself???-domesticity\
+        \ and heteronormative familial relations effectively rewrite settler space\
+        \ as white, Anglo-Saxon and bourgeois, and the sentimentalism of troubled\
+        \ European families masks the presence and genocide of indigenous aboriginal\
+        \ peoples.&#13;\n&#13;\nI analyze a range of novels and political texts, canonical\
+        \ and non-canonical, metropolitan and colonial. My introductory first chapter\
+        \ examines the discourse on a ???Greater Britain??? in the travel narratives\
+        \ of J.A. Froude, Charles Wentworth Dilke, and Anthony Trollope and in the\
+        \ Oxbridge lectures of Herman Merivale and J.R. Seeley. These writers make\
+        \ arguments for an imperial economy of affect circulating between Britain\
+        \ and the settler colonies that reinforces political connections, and at times\
+        \ surpasses the limits of political possibility by relying on the language\
+        \ of sentiment and feeling to build a transoceanic ???Greater British??? community.\
+        \ Subsequent chapters show how metropolitan and colonial fiction writers,\
+        \ including Charles Dickens, Anthony Trollope, Marcus Clarke, Henry Kingsley,\
+        \ and Catherine Helen Spence, test the viability of this ???Greater British???\
+        \ economy of affect by presenting transoceanic family connections and structures\
+        \ straining under the weight of forces including the vast distances between\
+        \ colonies and the ???mother country,??? settler violence, and the transportation\
+        \ system.</dc:description>\n<dc:date>2011-08-26T15:24:19Z</dc:date>\n<dc:date>2013-08-27T10:00:24Z</dc:date>\n\
+        <dc:date>2011-08-26T15:24:19Z</dc:date>\n<dc:date>2011-08</dc:date>\n<dc:identifier>http://hdl.handle.net/2142/26346</dc:identifier>\n\
+        <dc:language>en</dc:language>\n<dc:rights>Copyright 2011 Terra Diana Walston\
+        \ Joseph</dc:rights>\n</oai_dc:dc>\n</metadata>\n        </record>\n     \
+        \   <record>\n            <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/29710</identifier>\n\
+        \                <datestamp>2014-12-23T21:48:07Z</datestamp>\n           \
+        \     <setSpec>com_2142_10755</setSpec>\n                <setSpec>com_2142_234</setSpec>\n\
+        \                <setSpec>com_2142_5130</setSpec>\n                <setSpec>col_2142_10761</setSpec>\n\
+        \                <setSpec>col_2142_5131</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Addressing\
+        \ production run failures dynamically</dc:title>\n<dc:contributor>Zhou, Yuanyuan</dc:contributor>\n\
+        <dc:contributor>Zhou, Yuanyuan</dc:contributor>\n<dc:contributor>Sanders,\
+        \ William H.</dc:contributor>\n<dc:contributor>King, Samuel T.</dc:contributor>\n\
+        <dc:contributor>Song, Dawn</dc:contributor>\n<dc:subject>software reliability</dc:subject>\n\
+        <dc:subject>re-execution</dc:subject>\n<dc:subject>operating systems</dc:subject>\n\
+        <dc:subject>delta execution</dc:subject>\n<dc:subject>debugging</dc:subject>\n\
+        <dc:subject>flash worm</dc:subject>\n<dc:subject>Triage</dc:subject>\n<dc:subject>Sweeper</dc:subject>\n\
+        <dc:description>The high complexity of modern software, and our pervasive\
+        \ reliance on that software, has made the problems of software reliability\
+        \ increasingly important. Yet despite advances in software engineering practice,\
+        \ pre-release testing, and automated analysis, reports of highsoftware engineering\
+        \ practice, pre-release testing, and automated analysis, reports of highprofile&#13;\n\
+        production failures are still common. This dissertation proposes several run-time\
+        \ techniques to analyze and alleviate software failures dynamically, during\
+        \ production runs.&#13;\n&#13;\nThe first technique is low overhead checkpoint,\
+        \ rollback, and re-execution. By allowing a window of time in which a period\
+        \ of execution can be relived, low overhead checkpointing allows expensive\
+        \ analytical steps to be saved for only when they are needed. The second technique\
+        \ is a collection of dynamically insertable run-time analysis tools, which\
+        \ can use information gleaned over multiple analytical runs of the same execution\
+        \ to incrementally build picture of a production run failure more completely\
+        \ than any individual analysis could. Finally, based on my experience with\
+        \ the behavior of programs under failure, and the underlying causes of said\
+        \ failures, this dissertation introduces the concept of, and provides a run\
+        \ time which supports, delta execution. Delta execution is the process of\
+        \ running more than one instance or version of a program, while sharing the\
+        \ majority of issued instructions and state. This dissertation uses delta\
+        \ execution specifically to validate software patches at production run time.&#13;\n\
+        &#13;\nThese three techniques have been demonstrated in three implemented\
+        \ systems supporting various end-level reliability goals. The first system,\
+        \ called Sweeper, is a run-time defensive system against security bugs. Low\
+        \ overhead checkpointing captures system state until an intrusion tripwire\
+        \ notices an anomaly. The system can then roll back to perform a more thorough\
+        \ (and expensive) analysis of past execution to determine the nature of the\
+        \ exploit. Because of the low overhead of the initial checkpointing, the barriers\
+        \ to widespread deployment are low. Further, because Sweeper can still perform\
+        \ more complex analysis, there is the opportunity to generate strong protective\
+        \ measures, like vulnerability specific execution filters (or VSEFs), which\
+        \ can effectively stop a worm infestation. The implemented Sweeper system\
+        \ imposes only 1% overhead in ordinary operation, and can generate an effective\
+        \ protective measure in only 60 milliseconds. From an analytic model, this\
+        \ is sufficient to minimize the spread of a fast worm to only 5% of the susceptible\
+        \ hosts, even for a worm which spreads 10,000 times faster than any previously\
+        \ observed in the wild.&#13;\n&#13;\nThe second system is called Triage. Rather\
+        \ than improving reliability by improving security, Triage attempts to enable\
+        \ the improvement of the underlying code by automating&#13;\nfailure diagnosis\
+        \ of production run systems. Production run failures are difficult to address.\
+        \ Such failures commonly are irreproducible in a development environment due\
+        \ to workload or scale issues. As they occured in a production run, these\
+        \ are clearly faults which were not caught and fixed by the developer???s\
+        \ standard pre-release testing. Finally, production runs have stringent restrictions\
+        \ on overhead and privacy. Hence giving the programmer enough insight into\
+        \ the failure to implement a patch is challenging. Triage addresses this by\
+        \ performing failure diagnosis post-hoc at the end-user???s site. Low overhead\
+        \ checkpointing allows the capture of a failing execution, so expensive analysis\
+        \ can be deferred until it is definitely needed. Repeated replays allows the\
+        \ incremental application of a variety of failure analysis techniques, similar\
+        \ to the process a human programmer may undertake. For analysis which generally\
+        \ takes direction from a human, Triage substitutes the results of previous\
+        \ analytical steps. Overall, Triage imposes only 5% overhead in failure free\
+        \ execution, and, if a failure occurs, all of the analysis which requires\
+        \ re-execution is complete within about 5 minutes. In a study with human programmers,\
+        \ the output of Triage analysis reduced the time to patch real software faults\
+        \ by 45%.&#13;\n&#13;\nThe third system presented in this dissertation deals\
+        \ with the problems introduced when programmers make changes. Despite testing\
+        \ before release, a large number of software&#13;\npatches are released buggy.\
+        \ Indeed, software patches are generally of such poor quality that to optimize\
+        \ uptime it is better to delay applying even security patches while others\
+        \ act as ???volunteer??? beta testers uncovering the faults which made it\
+        \ though the vendor???s quality control. However, as Triage???s novel delta\
+        \ analysis diagnostic tool shows, the difference between correct and buggy\
+        \ execution can be minimal. Indeed, a manual study of software patches described\
+        \ in this dissertation shows that many patches should not create large changes\
+        \ in the underlying execution. Hence this dissertation proposes delta execution.\
+        \ If the execution (in terms of instruction streams and data) of the patched\
+        \ and unpatched versions of a program are mostly identical, then it is possible\
+        \ to run both versions mostly in one instruction stream. Only rarely, when\
+        \ the executions do differ, is it necessary to run two sets of instructions.\
+        \ By only running the differing, or delta, segments separately, delta execution\
+        \ allows low overhead production run patch validation which is 12% faster\
+        \ than side-by-side patch validation. Further (and perhaps more important),\
+        \ many of the effects which make patch validation difficult (multithreading,\
+        \ timing sensitivity, and system level nondeterminism) are nullified as they\
+        \ effect the two logical executions inside the one physical execution identically.\
+        \ This dissertation shows that, of ten applications tested, delta execution\
+        \ can validate all of the patches, while traditional side-by-side validation\
+        \ only manages to validate 2.</dc:description>\n<dc:date>2012-02-06T20:12:18Z</dc:date>\n\
+        <dc:date>2012-02-06T20:12:18Z</dc:date>\n<dc:date>2011-12</dc:date>\n<dc:date>2012-02-06T20:12:18Z</dc:date>\n\
+        <dc:date>2011-12</dc:date>\n<dc:identifier>http://hdl.handle.net/2142/29710</dc:identifier>\n\
+        <dc:language>en</dc:language>\n<dc:rights>Copyright 2011 Joseph Tucek</dc:rights>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/30474</identifier>\n\
+        \                <datestamp>2014-12-23T22:19:01Z</datestamp>\n           \
+        \     <setSpec>com_2142_8858</setSpec>\n                <setSpec>com_2142_234</setSpec>\n\
+        \                <setSpec>com_2142_5130</setSpec>\n                <setSpec>col_2142_8859</setSpec>\n\
+        \                <setSpec>col_2142_5131</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Superconductivity\
+        \ of thorium hydrides and thorium deuterides</dc:title>\n<dc:contributor>Satterthwaite,\
+        \ C. B.</dc:contributor>\n<dc:subject>superconductivity</dc:subject>\n<dc:subject>thorium\
+        \ hydrides</dc:subject>\n<dc:subject>thorium deuterides</dc:subject>\n<dc:description>Motivated\
+        \ by the possibility that a metallic hydride with a high&#13;\nhydrogen to\
+        \ metal atom ratio would be superconducting?? we have tested the&#13;\nsuperconductivity\
+        \ of thorium hydrides and found that Th4 H15&#13;\nis a superconductor&#13;\n\
+        with a transition temperature near 8K, Measurements of the diamagnetic&#13;\n\
+        susceptibility of 24 thorium hydride and thorium deuteride samples of various&#13;\n\
+        compositions have been made to determine the effect of composition and of&#13;\n\
+        hydrogen isotope on the superconducting transition temperature, The transition&#13;\n\
+        temperatures ranged from 6,8 to 8,4K for samples with hydrogen compositions&#13;\n\
+        greater than the dihydrides~ while the transition temperatures are less&#13;\n\
+        than l,lK for the dihydtide and dideuteride samples, No hydrogen isotope&#13;\n\
+        effect was found outside the 5% uncertainty in transition temperature,&#13;\n\
+        The specific heat of Th4 H15&#13;\nhas been measured in order to determine&#13;\n\
+        a jump in the heat capacity that is characteristic of bulk superconductivity,&#13;\n\
+        No discontinuous change in the specific heat was found indicating that the&#13;\n\
+        transition temperature was smeared out or that the superconductivity is not&#13;\n\
+        characteristic of the bulk material, The effect of heat treatment was also&#13;\n\
+        studied,</dc:description>\n<dc:date>2012-04-05T21:30:25Z</dc:date>\n<dc:date>2012-04-05T21:30:25Z</dc:date>\n\
+        <dc:date>1971</dc:date>\n<dc:date>10000-01-01</dc:date>\n<dc:type>text</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/2142/30474</dc:identifier>\n<dc:rights>??1971\
+        \ Toepke</dc:rights>\n</oai_dc:dc>\n</metadata>\n        </record>\n     \
+        \   <record>\n            <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/30951</identifier>\n\
+        \                <datestamp>2014-12-23T21:46:24Z</datestamp>\n           \
+        \     <setSpec>com_2142_5130</setSpec>\n                <setSpec>com_2142_8887</setSpec>\n\
+        \                <setSpec>com_2142_234</setSpec>\n                <setSpec>col_2142_5131</setSpec>\n\
+        \                <setSpec>col_2142_8888</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Statistical\
+        \ guarantees of performance for RTL designs</dc:title>\n<dc:contributor>Vasudevan,\
+        \ Shobha</dc:contributor>\n<dc:contributor>Vasudevan, Shobha</dc:contributor>\n\
+        <dc:contributor>Nicol, David M.</dc:contributor>\n<dc:contributor>Sanders,\
+        \ William H.</dc:contributor>\n<dc:contributor>Torrellas, Josep</dc:contributor>\n\
+        <dc:subject>Hardware</dc:subject>\n<dc:subject>RTL design</dc:subject>\n<dc:subject>Variations</dc:subject>\n\
+        <dc:subject>Better-than-worst-case design</dc:subject>\n<dc:subject>Statistical\
+        \ analysis</dc:subject>\n<dc:subject>Probabilistic verification</dc:subject>\n\
+        <dc:subject>Formal methods</dc:subject>\n<dc:subject>Performance estimation</dc:subject>\n\
+        <dc:subject>register transfer level (RTL)</dc:subject>\n<dc:description>Traditional\
+        \ hardware verification is a non-probabilistic process that verifies the adherence\
+        \ of a design to a non-probabilistic performance specification. However, adaptive\
+        \ techniques like voltage and frequency scaling, process variations due to\
+        \ shrinking chip geometries and input variations for accommodating \"better-than-worst-case\"\
+        \ design contribute significantly to the stochastic nature of contemporary\
+        \ chips. Therefore, it is desirable to incorporate probabilistic reasoning\
+        \ in the verification paradigm. Moreover, if such probabilistic verification\
+        \ can be applied at the register transfer level (RTL), it would facilitate\
+        \ better choices early in the hardware design cycle.&#13;\n&#13;\nIn this\
+        \ thesis, we introduce the SHARPE (Statistical High-level Analysis and Rigorous\
+        \ Performance Estimation) methodology. Our SHARPE methodology is a rigorous,\
+        \ systematic approach to verify design correctness in RTL in the presence\
+        \ of variations. We construct macromodels to transfer low-level hardware information,\
+        \ such as timing, to the higher RTL. We treat the RTL source code as a program\
+        \ and use static program analysis techniques to propagate signal probabilities.\
+        \ We combine the information obtained from both static analysis and the macromodels\
+        \ and model the RTL design as a statistical entity. We then employ formal\
+        \ probabilistic analysis on this probabilistic RTL model in order to compute\
+        \ the required probabilistic metric. The use of formal analysis makes our\
+        \ methodology high in confidence as opposed to simulation-based methods.&#13;\n\
+        &#13;\nOur SHARPE methodology can be applied to both combinational and sequential\
+        \ designs. In combinational designs, formal probabilistic analysis is performed\
+        \ by exhaustively testing all possible input vectors. In sequential designs,\
+        \ we represent the probabilistic RTL models as discrete time Markov chains\
+        \ (DTMCs) that are then checked formally for probabilistic invariants using\
+        \ PRISM, a probabilistic model checker. When posed with a query, PRISM performs\
+        \ formal probabilistic analysis by exploring all possible transitions of the\
+        \ DTMC model.&#13;\n&#13;\nFormal probabilistic analysis is known to be infeasible\
+        \ for large RTL designs. We improve the scalability of our SHARPE methodology\
+        \ by using sound symmetry reductions, automatic compositional reasoning and\
+        \ value-based interval abstractions in the design source code. For very large\
+        \ RTL designs, we employ statistical model checking, a scalable simulation-based\
+        \ alternative to probabilistic model checking. Since simulation-based analysis\
+        \ is not exhaustive, verification by statistical model checking is inexact.\
+        \ However, the statistical model checker guarantees the verification results\
+        \ to be within specified bounds of error.&#13;\n&#13;\nIn this thesis, we\
+        \ demonstrate several applications of our SHARPE methodology. We first show\
+        \ how our SHARPE methodology can provide statistical timing estimates in RTL\
+        \ in the presence of either input variations or process variations. We then\
+        \ modify the macromodels used by our methodology  and use them to obtain RTL\
+        \ estimates of aging resulting from negative bias temperature instability\
+        \ (NBTI) effects. We describe how our methodology can be extended to compute\
+        \ bit error rates (BER) that are commonly-used performance metrics for RTL\
+        \ designs of wireless communication systems. For RTL of large multicore designs,\
+        \ we employ statistical model checking to provide guarantees regarding the\
+        \ performance of dynamic power management schemes. We perform our experiments\
+        \ on both benchmark RTL designs and real-world RTL designs.</dc:description>\n\
+        <dc:date>2012-05-22T00:18:06Z</dc:date>\n<dc:date>2012-05-22T00:18:06Z</dc:date>\n\
+        <dc:date>2012-05</dc:date>\n<dc:date>2012-05-22T00:18:06Z</dc:date>\n<dc:date>2012-05</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/2142/30951</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:rights>Copyright 2012 Jayanand Asok Kumar</dc:rights>\n</oai_dc:dc>\n\
+        </metadata>\n        </record>\n        <record>\n            <header>\n \
+        \               <identifier>oai:www.ideals.illinois.edu:2142/31068</identifier>\n\
+        \                <datestamp>2014-12-23T21:51:39Z</datestamp>\n           \
+        \     <setSpec>com_2142_181</setSpec>\n                <setSpec>com_2142_8903</setSpec>\n\
+        \                <setSpec>com_2142_5130</setSpec>\n                <setSpec>col_2142_17395</setSpec>\n\
+        \                <setSpec>col_2142_5131</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Malthusian\
+        \ Paradox: weapons rhetoric before the bomb</dc:title>\n<dc:contributor>O'Gorman,\
+        \ Ned</dc:contributor>\n<dc:contributor>O'Gorman, Ned</dc:contributor>\n<dc:contributor>Finnegan,\
+        \ Cara A.</dc:contributor>\n<dc:contributor>Christians, Clifford G.</dc:contributor>\n\
+        <dc:contributor>Sandvig, Christian E.</dc:contributor>\n<dc:subject>Thomas\
+        \ R. Malthus</dc:subject>\n<dc:subject>August Spies</dc:subject>\n<dc:subject>Amos\
+        \ A. Fries</dc:subject>\n<dc:subject>Leo Szilard</dc:subject>\n<dc:subject>rhetorical\
+        \ violence</dc:subject>\n<dc:subject>war rhetoric</dc:subject>\n<dc:description>The\
+        \ Malthusian Paradox: Weapons Rhetoric Before the Bomb is a longitudinal case\
+        \ study of weapons rhetoric leading up to WWII. It examines how influential\
+        \ weapons rhetors negotiated a technological conundrum that I call the ???Malthusian\
+        \ Paradox.??? The Malthusian Paradox is the commonplace belief that while\
+        \ technology will destroy humanity, technology also provides humanity???s\
+        \ only means of preservation. The Malthusian Paradox not only clarifies what\
+        \ Thomas R. Malthus thought about populations and political economy at the\
+        \ end of the 18th century in London, but it also clarifies an enduring pattern\
+        \ of deliberation about technology???s effects on overpopulation, globalization,\
+        \ and war. This scheme of ideas began to inform how rhetors navigated weapons\
+        \ discourse, and in turn, the proliferation of the Paradox in weapons rhetoric\
+        \ reiterated and re-inscribed the concept such that it has acquired an aura\
+        \ of permanence, immutability, and inescapability. The Malthusian Paradox\
+        \ thus refers not just to a person, but also to the conundrum he presented\
+        \ to modern society, the manner of thought it germinated, and a persistent\
+        \ technology rhetoric ??? all of which have a continuing history. Thereby,\
+        \ the Paradox has become a foundational figurative and argumentative principle\
+        \ of technology.&#13;\n\tI argue that the Malthusian Paradox can be construed\
+        \ as a gauge to compare and assess the strategies and tactics of weapons rhetors\
+        \ communicating in discrete historical contexts across time. I therefore implement\
+        \ a longitudinal case study that combines close textual analyses of specific\
+        \ documents with historical analyses of how weapons and their compatible technological\
+        \ logics developed. I suggest that analyzing how weapons rhetors negotiate\
+        \ the Malthusian Paradox grants insight into how people have invented the\
+        \ current technological conditions, understand war, formulate ideologies,\
+        \ and get anxious about weapons. The case studies examine Malthus???s Essay\
+        \ on the Principle of Population (1798), accused Haymarket bomb conspirator\
+        \ August Spies???s courtroom address (1886), Amos A. Fries???s and Clarence\
+        \ J. West???s army textbook Chemical Warfare (1921), and selected correspondence\
+        \ and Manhattan Project memos of nuclear physicist Leo Szilard. As rhetoric\
+        \ and the Paradox smashed into each other over the historical development\
+        \ of weapons, certain overriding strategies have emerged, demonstrating that\
+        \ many of the rhetorical tactics and strategies associated with the Bomb and\
+        \ modern-day terrorism have much older origins. These overriding strategies\
+        \ function as windows into what might be thought of as the dominant network\
+        \ of weapons discourse that help to constitute their political and ideological\
+        \ presence in the world, and bring populations ???before the Bomb.???</dc:description>\n\
+        <dc:date>2012-05-22T00:25:45Z</dc:date>\n<dc:date>2012-05-22T00:25:45Z</dc:date>\n\
+        <dc:date>2012-05</dc:date>\n<dc:date>2012-05-22T00:25:45Z</dc:date>\n<dc:date>2012-05</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/2142/31068</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:rights>Copyright 2012 Ian Hill</dc:rights>\n</oai_dc:dc>\n</metadata>\n\
+        \        </record>\n        <record>\n            <header>\n             \
+        \   <identifier>oai:www.ideals.illinois.edu:2142/32168</identifier>\n    \
+        \            <datestamp>2014-12-23T20:14:24Z</datestamp>\n               \
+        \ <setSpec>com_2142_16943</setSpec>\n                <setSpec>com_2142_10683</setSpec>\n\
+        \                <setSpec>col_2142_33750</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Structure and\
+        \ tectonics of the Rough Creek Graben : Western Kentucky and Southeastern\
+        \ Illinois</dc:title>\n<dc:subject>Geology, Structural</dc:subject>\n<dc:subject>Geology,\
+        \ Stratigraphic</dc:subject>\n<dc:description>\"Prepared for the annual meeting\
+        \ of the Geological Society of America, Cincinnati, Ohio October 26-29, 1992.\"\
+        </dc:description>\n<dc:description>Includes bibliographical references.</dc:description>\n\
+        <dc:date>2012-07-16T18:32:38Z</dc:date>\n<dc:date>2012-07-16T18:32:38Z</dc:date>\n\
+        <dc:date>1992</dc:date>\n<dc:type>text</dc:type>\n<dc:identifier>http://hdl.handle.net/2142/32168</dc:identifier>\n\
+        <dc:identifier>(OCoLC)ocm26987283</dc:identifier>\n<dc:identifier>3433918</dc:identifier>\n\
+        <dc:relation>Guidebook no. 024</dc:relation>\n<dc:relation>http://hdl.handle.net/10111/UIUCOCA:structuretectoni24nels</dc:relation>\n\
+        <dc:relation>http://www.archive.org/details/structuretectoni24nels</dc:relation>\n\
+        <dc:rights>Public domain. Illinois state government document.</dc:rights>\n\
+        <dc:rights>Copyright 1992 Board of Trustees University of Illinois.</dc:rights>\n\
+        <dc:publisher>Champaign, Ill. : Dept. of Energy and Natural Resources,</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/32191</identifier>\n\
+        \                <datestamp>2014-12-23T20:11:05Z</datestamp>\n           \
+        \     <setSpec>com_2142_16943</setSpec>\n                <setSpec>com_2142_10683</setSpec>\n\
+        \                <setSpec>col_2142_33750</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Quaternary\
+        \ records of southwestern Illinois and adjacent Missouri.</dc:title>\n<dc:subject>Geology,\
+        \ Stratigraphic</dc:subject>\n<dc:subject>Geology -- Guidebooks</dc:subject>\n\
+        <dc:description>\"Reprinted 1989.\"</dc:description>\n<dc:description>\"American\
+        \ Quaternary Association, Ninth Biennial Meeting, May 31-June 6, 1986, Champaign,\
+        \ Illinois.\"--T.p.</dc:description>\n<dc:description>Includes bibliographical\
+        \ references.</dc:description>\n<dc:date>2012-07-16T18:33:42Z</dc:date>\n\
+        <dc:date>2012-07-16T18:33:42Z</dc:date>\n<dc:date>1989</dc:date>\n<dc:type>text</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/2142/32191</dc:identifier>\n<dc:identifier>(OCoLC)ocm20882137</dc:identifier>\n\
+        <dc:identifier>1588502</dc:identifier>\n<dc:relation>Guidebook no. 023</dc:relation>\n\
+        <dc:relation>http://hdl.handle.net/10111/UIUCOCA:quaternaryrecord23grah</dc:relation>\n\
+        <dc:relation>http://www.archive.org/details/quaternaryrecord23grah</dc:relation>\n\
+        <dc:rights>Public domain. Illinois state government document.</dc:rights>\n\
+        <dc:rights>Copyright 1989 Board of Trustees University of Illinois.</dc:rights>\n\
+        <dc:publisher>Champaign, Ill. : Illinois State Geological Survey</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/32232</identifier>\n\
+        \                <datestamp>2014-12-23T21:08:50Z</datestamp>\n           \
+        \     <setSpec>com_2142_16943</setSpec>\n                <setSpec>com_2142_10683</setSpec>\n\
+        \                <setSpec>col_2142_33750</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Middle Mississippian\
+        \ carbonates and siliciclastics in Western Illinois</dc:title>\n<dc:subject>Rocks,\
+        \ Carbonate</dc:subject>\n<dc:subject>Geology, Stratigraphic</dc:subject>\n\
+        <dc:subject>Rocks, Siliceous</dc:subject>\n<dc:description>\"Geological field\
+        \ trip 6: April 24-25, 1999. North-central section, Geological Society of\
+        \ America 33rd annual meeting, Champaign-Urbana, Ill. April 22-23, 1999.\"\
+        </dc:description>\n<dc:description>Includes bibliographical references (p.\
+        \ 59-60).</dc:description>\n<dc:date>2012-07-16T18:35:44Z</dc:date>\n<dc:date>2012-07-16T18:35:44Z</dc:date>\n\
+        <dc:date>1999</dc:date>\n<dc:type>text</dc:type>\n<dc:identifier>http://hdl.handle.net/2142/32232</dc:identifier>\n\
+        <dc:identifier>(OCoLC)ocm42412163</dc:identifier>\n<dc:identifier>4219471</dc:identifier>\n\
+        <dc:relation>Guidebook no. 031</dc:relation>\n<dc:relation>http://hdl.handle.net/10111/UIUCOCA:middlemississipp31lase</dc:relation>\n\
+        <dc:relation>http://www.archive.org/details/middlemississipp31lase</dc:relation>\n\
+        <dc:rights>Public domain. Illinois state government document.</dc:rights>\n\
+        <dc:rights>Copyright 1999 Board of Trustees University of Illinois.</dc:rights>\n\
+        <dc:publisher>Champaign, IL : Illinois State Geological Survey,</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/32334</identifier>\n\
+        \                <datestamp>2014-12-23T19:44:01Z</datestamp>\n           \
+        \     <setSpec>com_2142_16943</setSpec>\n                <setSpec>com_2142_10683</setSpec>\n\
+        \                <setSpec>col_2142_33750</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Silurian geology\
+        \ of the Des Plaines River Valley, northeastern Illinois</dc:title>\n<dc:subject>Geology,\
+        \ Stratigraphic -- Silurian</dc:subject>\n<dc:subject>Geology -- Congresses.</dc:subject>\n\
+        <dc:description>\"Nineteenth annual meeting, North-Central Section of the\
+        \ Geological Society of America, Northern Illinois University, DeKalb, Illinois,\
+        \ April 25-27, 1985.\" --Cover.</dc:description>\n<dc:description>Includes\
+        \ bibliographical references (p. 51-56).</dc:description>\n<dc:date>2012-07-16T18:41:02Z</dc:date>\n\
+        <dc:date>2012-07-16T18:41:02Z</dc:date>\n<dc:date>1985</dc:date>\n<dc:type>text</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/2142/32334</dc:identifier>\n<dc:identifier>(OCoLC)ocm12046835</dc:identifier>\n\
+        <dc:identifier>770766</dc:identifier>\n<dc:relation>Guidebook no. 017</dc:relation>\n\
+        <dc:relation>http://hdl.handle.net/10111/UIUCOCA:siluriangeologyo17miku</dc:relation>\n\
+        <dc:relation>http://www.archive.org/details/siluriangeologyo17miku</dc:relation>\n\
+        <dc:rights>Public domain. Illinois state government document.</dc:rights>\n\
+        <dc:rights>Copyright 1985 Board of Trustees University of Illinois.</dc:rights>\n\
+        <dc:publisher>Champaign, Ill. : Illinois State Geological Survey,</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/32352</identifier>\n\
+        \                <datestamp>2014-12-23T19:58:05Z</datestamp>\n           \
+        \     <setSpec>com_2142_16943</setSpec>\n                <setSpec>com_2142_10683</setSpec>\n\
+        \                <setSpec>col_2142_33750</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Wisconsinan\
+        \ and Sangamonian type sections of central Illinois.</dc:title>\n<dc:subject>Geology,\
+        \ Stratigraphic</dc:subject>\n<dc:subject>Soils -- Age</dc:subject>\n<dc:description>\"\
+        Ninth Biennial Meeting, American Quaternary Association, University of Illinois\
+        \ at Urbana-Champaign, May 31-June 6, 1986; sponsored by the Illinois State\
+        \ Geological and Water Surveys ... [et al.]\"</dc:description>\n<dc:description>\"\
+        Reprinted 1990\".</dc:description>\n<dc:description>Includes bibliographical\
+        \ references (p. 41-44).</dc:description>\n<dc:date>2012-07-16T18:41:57Z</dc:date>\n\
+        <dc:date>2012-07-16T18:41:57Z</dc:date>\n<dc:date>1990</dc:date>\n<dc:type>text</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/2142/32352</dc:identifier>\n<dc:identifier>(OCoLC)ocm23284160</dc:identifier>\n\
+        <dc:identifier>1729272</dc:identifier>\n<dc:relation>Guidebook no. 021</dc:relation>\n\
+        <dc:relation>http://hdl.handle.net/10111/UIUCOCA:wisconsinansanga21mcka</dc:relation>\n\
+        <dc:relation>http://www.archive.org/details/wisconsinansanga21mcka</dc:relation>\n\
+        <dc:rights>Public domain. Illinois state government document.</dc:rights>\n\
+        <dc:rights>Copyright 1990 Board of Trustees University of Illinois.</dc:rights>\n\
+        <dc:publisher>Champaign, Ill. : Illinois State Geological Survey</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/32360</identifier>\n\
+        \                <datestamp>2014-12-23T21:31:15Z</datestamp>\n           \
+        \     <setSpec>com_2142_16943</setSpec>\n                <setSpec>com_2142_10683</setSpec>\n\
+        \                <setSpec>col_2142_33750</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Guidebook for\
+        \ field trips for the thirty-fifth annual meeting of the North-Central Section\
+        \ of the Geological Society of America : April 23-24, 2001</dc:title>\n<dc:subject>Geology</dc:subject>\n\
+        <dc:description>Includes bibliographical references.</dc:description>\n<dc:date>2012-07-17T15:09:30Z</dc:date>\n\
+        <dc:date>2012-07-17T15:09:30Z</dc:date>\n<dc:date>2001</dc:date>\n<dc:type>text</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/2142/32360</dc:identifier>\n<dc:identifier>(OCoLC)ocm52126942</dc:identifier>\n\
+        <dc:identifier>5188742</dc:identifier>\n<dc:relation>Guidebook no. 033</dc:relation>\n\
+        <dc:relation>http://hdl.handle.net/10111/UIUCOCA:guidebookforfiel33malo</dc:relation>\n\
+        <dc:relation>http://www.archive.org/details/guidebookforfiel33malo</dc:relation>\n\
+        <dc:rights>Public domain. Illinois state government document.</dc:rights>\n\
+        <dc:rights>Copyright 2001 Board of Trustees University of Illinois.</dc:rights>\n\
+        <dc:publisher>[Champaign, Ill.] : Illinois State Geological Survey,</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/32403</identifier>\n\
+        \                <datestamp>2014-12-23T20:20:12Z</datestamp>\n           \
+        \     <setSpec>com_2142_16943</setSpec>\n                <setSpec>com_2142_10683</setSpec>\n\
+        \                <setSpec>col_2142_33750</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Waulsortian\
+        \ Mounds and reservoir potential of the Ullin limestone (\"Warsaw\") in Southern\
+        \ Illinois and adjacent areas in Kentucky</dc:title>\n<dc:subject>Carbonate\
+        \ reservoirs</dc:subject>\n<dc:subject>Petroleum -- Geology</dc:subject>\n\
+        <dc:subject>Geology</dc:subject>\n<dc:description>\"Geologic field trip, April\
+        \ 19, 1994.\"</dc:description>\n<dc:description>Includes bibliographical references.</dc:description>\n\
+        <dc:date>2012-07-17T15:12:16Z</dc:date>\n<dc:date>2012-07-17T15:12:16Z</dc:date>\n\
+        <dc:date>1994</dc:date>\n<dc:type>text</dc:type>\n<dc:identifier>http://hdl.handle.net/2142/32403</dc:identifier>\n\
+        <dc:identifier>(OCoLC)ocm30679777</dc:identifier>\n<dc:identifier>3642626</dc:identifier>\n\
+        <dc:relation>Guidebook no. 025</dc:relation>\n<dc:relation>http://hdl.handle.net/10111/UIUCOCA:waulsortianmound25lase</dc:relation>\n\
+        <dc:relation>http://www.archive.org/details/waulsortianmound25lase</dc:relation>\n\
+        <dc:rights>Public domain. Illinois state government document.</dc:rights>\n\
+        <dc:rights>Copyright 1994 Board of Trustees University of Illinois.</dc:rights>\n\
+        <dc:publisher>Champaign, Ill. : Dept. of Energy and Natural Resources,</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/32429</identifier>\n\
+        \                <datestamp>2014-12-23T19:55:16Z</datestamp>\n           \
+        \     <setSpec>com_2142_16943</setSpec>\n                <setSpec>com_2142_10683</setSpec>\n\
+        \                <setSpec>col_2142_33750</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Illinoian and\
+        \ Wisconsinan stratigraphy and environments in northern Illinois : the Altonian\
+        \ revised</dc:title>\n<dc:subject>Geology, Stratigraphic -- Guidebooks</dc:subject>\n\
+        <dc:subject>Glacial epoch -- Guidebooks</dc:subject>\n<dc:description>Errata\
+        \ slip inserted.</dc:description>\n<dc:description>\"Midwest Friends of the\
+        \ Pleistocene, 32nd Field Conference, 1985.\"--T.p.</dc:description>\n<dc:description>Includes\
+        \ bibliographical references (p. 149-155).</dc:description>\n<dc:date>2012-07-17T15:13:36Z</dc:date>\n\
+        <dc:date>2012-07-17T15:13:36Z</dc:date>\n<dc:date>1985</dc:date>\n<dc:type>text</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/2142/32429</dc:identifier>\n<dc:identifier>(OCoLC)ocm15222288</dc:identifier>\n\
+        <dc:identifier>1855708</dc:identifier>\n<dc:relation>Guidebook no. 019</dc:relation>\n\
+        <dc:relation>http://hdl.handle.net/10111/UIUCOCA:illinoianwiscons19berg</dc:relation>\n\
+        <dc:relation>http://www.archive.org/details/illinoianwiscons19berg</dc:relation>\n\
+        <dc:rights>Public domain. Illinois state government document.</dc:rights>\n\
+        <dc:rights>Copyright 1985 Board of Trustees University of Illinois.</dc:rights>\n\
+        <dc:publisher>Champaign Ill. : Illinois Dept. of Energy and Natural Resources,\
+        \ State Geological Survey Division,</dc:publisher>\n</oai_dc:dc>\n</metadata>\n\
+        \        </record>\n        <record>\n            <header>\n             \
+        \   <identifier>oai:www.ideals.illinois.edu:2142/32499</identifier>\n    \
+        \            <datestamp>2014-12-23T22:11:30Z</datestamp>\n               \
+        \ <setSpec>com_2142_16943</setSpec>\n                <setSpec>com_2142_10683</setSpec>\n\
+        \                <setSpec>col_2142_33750</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Quaternary\
+        \ deposits and history of the ancient Mississippi River Valley, north-central\
+        \ Illinois : fifty-first Midwest Friends of the Pleistocene field trip : an\
+        \ ISGS centennial field trip, May 13-15, 2005</dc:title>\n<dc:subject>Geology</dc:subject>\n\
+        <dc:subject>Geology, Stratigraphic</dc:subject>\n<dc:description>Cover title.</dc:description>\n\
+        <dc:description>\"5/08.\"</dc:description>\n<dc:description>Another publication\
+        \ with the same title was issued by the Survey as part of its Open file series\
+        \ in 2005.</dc:description>\n<dc:description>Includes bibliographical references\
+        \ (p. 70-75).</dc:description>\n<dc:description>Adobe Acrobat Reader is required.</dc:description>\n\
+        <dc:date>2012-07-17T15:17:28Z</dc:date>\n<dc:date>2012-07-17T15:17:28Z</dc:date>\n\
+        <dc:date>2008</dc:date>\n<dc:type>text</dc:type>\n<dc:identifier>http://hdl.handle.net/2142/32499</dc:identifier>\n\
+        <dc:identifier>(OCoLC)ocn244246979</dc:identifier>\n<dc:identifier>5713951</dc:identifier>\n\
+        <dc:relation>Guidebook no. 035</dc:relation>\n<dc:relation>http://hdl.handle.net/10111/UIUCOCA:quaternarydeposi35mcka</dc:relation>\n\
+        <dc:relation>http://www.archive.org/details/quaternarydeposi35mcka</dc:relation>\n\
+        <dc:rights>Public domain. Illinois state government document.</dc:rights>\n\
+        <dc:rights>Copyright 2008 Board of Trustees University of Illinois.</dc:rights>\n\
+        <dc:publisher>Champaign, Ill. : Illinois State Geological Survey</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/32567</identifier>\n\
+        \                <datestamp>2014-12-23T19:33:13Z</datestamp>\n           \
+        \     <setSpec>com_2142_16943</setSpec>\n                <setSpec>com_2142_10683</setSpec>\n\
+        \                <setSpec>col_2142_33750</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Pleistocene\
+        \ stratigraphy of East-Central Illinois</dc:title>\n<dc:subject>Geology, Stratigraphic</dc:subject>\n\
+        <dc:subject>Geology</dc:subject>\n<dc:description>Cover title.</dc:description>\n\
+        <dc:description>\"Midwest Friends of the Pleistocene, 21st Annual Field Conference,\
+        \ May 12-14, 1972.\"</dc:description>\n<dc:description>Includes bibliographical\
+        \ references (p. 96-97).</dc:description>\n<dc:date>2012-07-17T15:21:27Z</dc:date>\n\
+        <dc:date>2012-07-17T15:21:27Z</dc:date>\n<dc:date>1972</dc:date>\n<dc:type>text</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/2142/32567</dc:identifier>\n<dc:identifier>(OCoLC)ocm00670100</dc:identifier>\n\
+        <dc:identifier>5187874</dc:identifier>\n<dc:relation>Guidebook no. 009</dc:relation>\n\
+        <dc:relation>http://hdl.handle.net/10111/UIUCOCA:pleistocenestrat09john</dc:relation>\n\
+        <dc:relation>http://www.archive.org/details/pleistocenestrat09john</dc:relation>\n\
+        <dc:rights>Public domain. Illinois state government document.</dc:rights>\n\
+        <dc:rights>Copyright 1972 Board of Trustees University of Illinois.</dc:rights>\n\
+        <dc:publisher>[Urbana : Illinois State Geological Survey,</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/32733</identifier>\n\
+        \                <datestamp>2014-12-23T21:17:35Z</datestamp>\n           \
+        \     <setSpec>com_2142_16943</setSpec>\n                <setSpec>com_2142_10683</setSpec>\n\
+        \                <setSpec>col_2142_33750</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Paleozoic and\
+        \ Quaternary geology of the St. Louis Metro East area of Western Illinois\
+        \ : 63rd Annual Tri-State Geological Field Conference, October 6-8, 2000</dc:title>\n\
+        <dc:subject>Geology, Stratigraphic</dc:subject>\n<dc:subject>Geology</dc:subject>\n\
+        <dc:description>Includes bibliographical references.</dc:description>\n<dc:date>2012-07-17T15:31:50Z</dc:date>\n\
+        <dc:date>2012-07-17T15:31:50Z</dc:date>\n<dc:date>2000</dc:date>\n<dc:type>text</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/2142/32733</dc:identifier>\n<dc:identifier>(OCoLC)ocm45850539</dc:identifier>\n\
+        <dc:identifier>4318216</dc:identifier>\n<dc:relation>Guidebook no. 032</dc:relation>\n\
+        <dc:relation>http://hdl.handle.net/10111/UIUCOCA:paleozoicquatern32tris</dc:relation>\n\
+        <dc:relation>http://www.archive.org/details/paleozoicquatern32tris</dc:relation>\n\
+        <dc:rights>Public domain. Illinois state government document.</dc:rights>\n\
+        <dc:rights>Copyright 2000 Board of Trustees University of Illinois.</dc:rights>\n\
+        <dc:publisher>Champaign, Ill. : Illinois State Geological Survey,</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/32734</identifier>\n\
+        \                <datestamp>2014-12-23T20:04:56Z</datestamp>\n           \
+        \     <setSpec>com_2142_16943</setSpec>\n                <setSpec>com_2142_10683</setSpec>\n\
+        \                <setSpec>col_2142_33750</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Quaternary\
+        \ records of northeastern Illinois and northwestern Indiana : American Quaternary\
+        \ Association, ninth biennial meeting, May 31-June 6, 1986, Urbana-Champaign,\
+        \ Illinois</dc:title>\n<dc:subject>Geology, Stratigraphic</dc:subject>\n<dc:subject>Geology</dc:subject>\n\
+        <dc:description>\"Sponsored by the Illinois State Geological and Water Surveys\
+        \ ... [et al.]\"--Cover.</dc:description>\n<dc:description>Includes bibliographical\
+        \ references (p. 99-106).</dc:description>\n<dc:date>2012-07-17T15:31:53Z</dc:date>\n\
+        <dc:date>2012-07-17T15:31:53Z</dc:date>\n<dc:date>1986</dc:date>\n<dc:type>text</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/2142/32734</dc:identifier>\n<dc:identifier>(OCoLC)ocm27177350</dc:identifier>\n\
+        <dc:identifier>5188786</dc:identifier>\n<dc:relation>Guidebook no. 022</dc:relation>\n\
+        <dc:relation>http://hdl.handle.net/10111/UIUCOCA:quaternaryrecord22hans</dc:relation>\n\
+        <dc:relation>http://www.archive.org/details/quaternaryrecord22hans</dc:relation>\n\
+        <dc:rights>Public domain. Illinois state government document.</dc:rights>\n\
+        <dc:rights>Copyright 1986 Board of Trustees University of Illinois.</dc:rights>\n\
+        <dc:publisher>Champaign, Ill. : Illinois State Geological Survey,</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/32774</identifier>\n\
+        \                <datestamp>2014-12-23T20:59:13Z</datestamp>\n           \
+        \     <setSpec>com_2142_16943</setSpec>\n                <setSpec>com_2142_10683</setSpec>\n\
+        \                <setSpec>col_2142_33750</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Quaternary\
+        \ geology, geomorphology, and climatic history of Kane County, Illinois</dc:title>\n\
+        <dc:subject>Geology -- Guide books.</dc:subject>\n<dc:subject>Geology, Stratigraphic</dc:subject>\n\
+        <dc:subject>Geology</dc:subject>\n<dc:description>\"April 24, 1999.\"</dc:description>\n\
+        <dc:description>Includes bibliographical references (p. 36-38).</dc:description>\n\
+        <dc:description>\"33rd annual meeting, April 1999 North-Central section, Geological\
+        \ Society of America\" --cover.</dc:description>\n<dc:date>2012-07-17T15:33:55Z</dc:date>\n\
+        <dc:date>2012-07-17T15:33:55Z</dc:date>\n<dc:date>1999</dc:date>\n<dc:type>text</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/2142/32774</dc:identifier>\n<dc:identifier>(OCoLC)ocm42369532</dc:identifier>\n\
+        <dc:identifier>4219482</dc:identifier>\n<dc:relation>Guidebook no. 028</dc:relation>\n\
+        <dc:relation>http://hdl.handle.net/10111/UIUCOCA:quaternarygeolog28curr</dc:relation>\n\
+        <dc:relation>http://www.archive.org/details/quaternarygeolog28curr</dc:relation>\n\
+        <dc:rights>Public domain. Illinois state government document.</dc:rights>\n\
+        <dc:rights>Copyright 1999 Board of Trustees University of Illinois.</dc:rights>\n\
+        <dc:publisher>Champaign, IL : Dept. of Natural Resources, Illinois State Geological\
+        \ Survey,</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/32818</identifier>\n\
+        \                <datestamp>2014-12-23T20:27:22Z</datestamp>\n           \
+        \     <setSpec>com_2142_16943</setSpec>\n                <setSpec>com_2142_10683</setSpec>\n\
+        \                <setSpec>col_2142_33750</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Glacial sediments,\
+        \ landforms, paleosols, and a 20,000-year-old forest bed in East-Central Illinois</dc:title>\n\
+        <dc:subject>Geology -- Guide books.</dc:subject>\n<dc:subject>Geology</dc:subject>\n\
+        <dc:description>\"April 21, 1999.\"</dc:description>\n<dc:description>Includes\
+        \ bibliographical references (p. 29-31).</dc:description>\n<dc:description>\"\
+        33rd annual meeting, April 1999 North-Central section, Geological Society\
+        \ of America\" --cover.</dc:description>\n<dc:date>2012-07-17T15:36:32Z</dc:date>\n\
+        <dc:date>2012-07-17T15:36:32Z</dc:date>\n<dc:date>1999</dc:date>\n<dc:type>text</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/2142/32818</dc:identifier>\n<dc:identifier>(OCoLC)ocm42361811</dc:identifier>\n\
+        <dc:identifier>4219478</dc:identifier>\n<dc:relation>Guidebook no. 026</dc:relation>\n\
+        <dc:relation>http://hdl.handle.net/10111/UIUCOCA:glacialsediments26hans</dc:relation>\n\
+        <dc:relation>http://www.archive.org/details/glacialsediments26hans</dc:relation>\n\
+        <dc:rights>Public domain. Illinois state government document.</dc:rights>\n\
+        <dc:rights>Copyright 1999 Board of Trustees University of Illinois.</dc:rights>\n\
+        <dc:publisher>Champaign, IL : Dept. of Natural Resources, Illinois State Geological\
+        \ Survey,</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/32825</identifier>\n\
+        \                <datestamp>2014-12-23T21:03:51Z</datestamp>\n           \
+        \     <setSpec>com_2142_16943</setSpec>\n                <setSpec>com_2142_10683</setSpec>\n\
+        \                <setSpec>col_2142_33750</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Neotectonics\
+        \ of the Northern Mississippi embayment</dc:title>\n<dc:subject>Neotectonics</dc:subject>\n\
+        <dc:subject>Geology, Stratigraphic</dc:subject>\n<dc:subject>Geology -- Missouri</dc:subject>\n\
+        <dc:subject>Geology</dc:subject>\n<dc:description>\"Geological field trip\
+        \ 5, April 24-25, 1999. North-Central section, Geological Society of America\
+        \ 33rd annual meeting, Champaign-Urbana, Illinois, April 22-23, 1999.\"</dc:description>\n\
+        <dc:description>Includes bibliographical references (p. 32-34).</dc:description>\n\
+        <dc:date>2012-07-17T15:36:57Z</dc:date>\n<dc:date>2012-07-17T15:36:57Z</dc:date>\n\
+        <dc:date>1999</dc:date>\n<dc:type>text</dc:type>\n<dc:identifier>http://hdl.handle.net/2142/32825</dc:identifier>\n\
+        <dc:identifier>(OCoLC)ocm42369857</dc:identifier>\n<dc:identifier>4219479</dc:identifier>\n\
+        <dc:relation>Guidebook no. 030</dc:relation>\n<dc:relation>http://hdl.handle.net/10111/UIUCOCA:neotectonicsofno30nels</dc:relation>\n\
+        <dc:relation>http://www.archive.org/details/neotectonicsofno30nels</dc:relation>\n\
+        <dc:rights>Public domain. Illinois state government document.</dc:rights>\n\
+        <dc:rights>Copyright 1999 Board of Trustees University of Illinois.</dc:rights>\n\
+        <dc:publisher>Champaign, IL : Dept. of Natural Resources, Illinois State Geological\
+        \ Survey,</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/32913</identifier>\n\
+        \                <datestamp>2014-12-23T20:55:47Z</datestamp>\n           \
+        \     <setSpec>com_2142_16943</setSpec>\n                <setSpec>com_2142_10683</setSpec>\n\
+        \                <setSpec>col_2142_33750</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Geology, hydrogeology,\
+        \ and water quality of the karst regions of southwestern Illinois and Southeastern\
+        \ Missouri.</dc:title>\n<dc:subject>Geology -- Guidebooks</dc:subject>\n<dc:subject>Karst</dc:subject>\n\
+        <dc:subject>Geology</dc:subject>\n<dc:description>Includes bibliographical\
+        \ references (p. 36-38).</dc:description>\n<dc:description>33rd annual meeting,\
+        \ April 24-25 1999 North-Central section, Geological Society of America</dc:description>\n\
+        <dc:date>2012-07-17T15:41:53Z</dc:date>\n<dc:date>2012-07-17T15:41:53Z</dc:date>\n\
+        <dc:date>1999</dc:date>\n<dc:type>text</dc:type>\n<dc:identifier>http://hdl.handle.net/2142/32913</dc:identifier>\n\
+        <dc:identifier>(OCoLC)ocm42285669</dc:identifier>\n<dc:identifier>4219477</dc:identifier>\n\
+        <dc:relation>Guidebook no. 027</dc:relation>\n<dc:relation>http://hdl.handle.net/10111/UIUCOCA:geologyhydrogeol27pann</dc:relation>\n\
+        <dc:relation>http://www.archive.org/details/geologyhydrogeol27pann</dc:relation>\n\
+        <dc:rights>State of Illinois government document.</dc:rights>\n<dc:publisher>Champaign,\
+        \ IL : Dept. of Natural Resources, Illinois State Geological Survey</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/34799</identifier>\n\
+        \                <datestamp>2014-12-23T22:20:31Z</datestamp>\n           \
+        \     <setSpec>com_2142_8887</setSpec>\n                <setSpec>com_2142_234</setSpec>\n\
+        \                <setSpec>com_2142_29957</setSpec>\n                <setSpec>com_2142_5130</setSpec>\n\
+        \                <setSpec>col_2142_8888</setSpec>\n                <setSpec>col_2142_29958</setSpec>\n\
+        \                <setSpec>col_2142_5131</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Dynamic analysis\
+        \ of parallel standby generators serving low leading power factor loads</dc:title>\n\
+        <dc:contributor>Sauer, Peter W.</dc:contributor>\n<dc:subject>Parallel standby\
+        \ generators</dc:subject>\n<dc:date>2012-10-23T22:05:15Z</dc:date>\n<dc:date>2012-10-23T22:05:15Z</dc:date>\n\
+        <dc:date>1982</dc:date>\n<dc:date>10000-01-01</dc:date>\n<dc:type>text</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/2142/34799</dc:identifier>\n<dc:identifier>(OCoLC)ocm08958233</dc:identifier>\n\
+        <dc:identifier>112913</dc:identifier>\n<dc:relation>PAP82-06</dc:relation>\n\
+        <dc:rights>Copyright 1982 Anup Kumar Behera</dc:rights>\n</oai_dc:dc>\n</metadata>\n\
+        \        </record>\n        <record>\n            <header>\n             \
+        \   <identifier>oai:www.ideals.illinois.edu:2142/42216</identifier>\n    \
+        \            <datestamp>2014-12-23T21:47:45Z</datestamp>\n               \
+        \ <setSpec>com_2142_8887</setSpec>\n                <setSpec>com_2142_234</setSpec>\n\
+        \                <setSpec>com_2142_5130</setSpec>\n                <setSpec>col_2142_8888</setSpec>\n\
+        \                <setSpec>col_2142_5131</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Adaptation\
+        \ of the MapReduce programming framework to compute-intensive data-analytics\
+        \ kernels</dc:title>\n<dc:contributor>Campbell, Roy H.</dc:contributor>\n\
+        <dc:contributor>Campbell, Roy H.</dc:contributor>\n<dc:contributor>Sanders,\
+        \ William H.</dc:contributor>\n<dc:contributor>Hwu, Wen-Mei W.</dc:contributor>\n\
+        <dc:contributor>Raghunathan, Anand</dc:contributor>\n<dc:subject>Multiple\
+        \ Independent Threads on a Heterogeneous Resource&#13;\nArchitecture (MITHRA)</dc:subject>\n\
+        <dc:subject>Partitioned Iterative Convergence (PIC)</dc:subject>\n<dc:subject>Plasma</dc:subject>\n\
+        <dc:subject>Loop Maximizing</dc:subject>\n<dc:subject>graphics processing\
+        \ unit (GPU)</dc:subject>\n<dc:subject>Compute Uni ed Device Architecture\
+        \ (CUDA)</dc:subject>\n<dc:subject>MapReduce</dc:subject>\n<dc:subject>Hadoop</dc:subject>\n\
+        <dc:subject>Mahout</dc:subject>\n<dc:subject>Haloop</dc:subject>\n<dc:subject>iMapReduce</dc:subject>\n\
+        <dc:subject>Spark</dc:subject>\n<dc:subject>Twister</dc:subject>\n<dc:description>Compute-intensive\
+        \ data-analytic (CIDA) applications have become a major component of many\
+        \ different business domains, as well as scientific computing applications.\
+        \ &#13;\nThese algorithms stem from domains as diverse as web analysis and\
+        \ social networks, machine learning and data mining, text analysis, bio-informatics,\
+        \ astronomy image analysis, business analytics, large scale graph algorithms,\
+        \ image/video processing and recognition, some high performance computing\
+        \ problems, quantitative finance and simulation among others. These computational\
+        \ problems deal with massive data sets, and require performing lots of computation\
+        \ per data element. &#13;\n&#13;\nThis thesis presents a vision of CIDA applications\
+        \ programmed in a MapReduce style framework and running on clusters of accelerators.\
+        \ Regardless of the type of accelerator, whether GPUs (NVIDIA or AMD), other\
+        \ manycore architectures (like Intel Larrabee or MIC) or even heterogeneous\
+        \ chips (AMD Fusion or IBM Cell processor), there is a fundamental condition\
+        \ imposed on the software, namely the increased sensitivity to locality. As\
+        \ a result, the common theme in this thesis is to increase the locality in\
+        \ CIDA applications. &#13;\n&#13;\nWe report on four research efforts to achieve\
+        \ this goal. The Multiple independent threads on a heterogeneous resource\
+        \ architecture (MITHRA) project integrates Hadoop MapReduce and GPUs together,\
+        \ where the map() functions execute. As a result, by moving the map() functions\
+        \ to GPUs we increase the locality of reference and gain better performance.&#13;\n\
+        We have shown that when the MITHRA model is applicable (for instance for Monte\
+        \ Carlo algorithms), each computing node can perform orders of magnitude more\
+        \ work in the same run-time.&#13;\n&#13;\nThen we introduce partitioned iterative\
+        \ convergence (PIC) as an approach to realize iterative algorithms on clusters.\
+        \ We observed that conventional implementations of iterative algorithms using\
+        \ MapReduce are quite inefficient as a result of several factors. Complementary\
+        \ to prior work, we focused on addressing the challenges of high network traffic\
+        \ due to frequent model updates and lack of parallelism across iterations.\
+        \ &#13;\nPIC has two phases. In the first phase, called the best-effort phase,\
+        \ it partitions the problem and runs the sub-problems in individual cluster\
+        \ nodes, where the locality can be exploited better. &#13;\nThe results of\
+        \ this phase can be numerically inaccurate (about 3\\% based on experimental\
+        \ results), but can be computed much faster. The second phase of PIC, called\
+        \ the top-off phase, runs the original iterative algorithm a few more iterations\
+        \ (starting with the results of the best-effort phase) to compute an accurate\
+        \ answer.&#13;\n&#13;\nFinally we introduce two GPU-based projects that try\
+        \ to increase the performance of MapReduce style functions in GPUs. The first\
+        \ is loop maximizing, a code transformation for GPUs that can eliminate code\
+        \ flow divergence (and hence serialization in GPUs) and result in better usage\
+        \ of GPU processing elements. Using this technique, we have achieved the highest\
+        \ reported speedups for gene alignment algorithms.&#13;\nThe second GPU-based\
+        \ project is a library for dynamic shared memory allocation and access in\
+        \ GPUs assuming independent execution of the GPU threads, which happens in\
+        \ a MapReduce style environment among both map() and reduce() functions. &#13;\n\
+        &#13;\nThe two MapReduce adaptations (MITHRA and PIC), the GPU-based loop-maximizing\
+        \ optimization and the Plasma library together lay the plan for the goal of\
+        \ achieving good performance on locality-sensitive clusters. This thesis shows\
+        \ the feasibility of this approach, and describes how each of these projects\
+        \ contributes to the collective target.</dc:description>\n<dc:date>2013-02-03T19:28:12Z</dc:date>\n\
+        <dc:date>2013-02-03T19:28:12Z</dc:date>\n<dc:date>2012-12</dc:date>\n<dc:date>2013-02-03T19:28:12Z</dc:date>\n\
+        <dc:date>2012-12</dc:date>\n<dc:identifier>http://hdl.handle.net/2142/42216</dc:identifier>\n\
+        <dc:language>en</dc:language>\n<dc:rights>Copyright 2012 Reza Farivar</dc:rights>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/43010</identifier>\n\
+        \                <datestamp>2014-12-23T18:56:07Z</datestamp>\n           \
+        \     <setSpec>com_2142_16943</setSpec>\n                <setSpec>com_2142_10683</setSpec>\n\
+        \                <setSpec>col_2142_43384</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Rock wool from\
+        \ Illinois mineral resources</dc:title>\n<dc:subject>Insulating materials.</dc:subject>\n\
+        <dc:subject>Mines and mineral resources</dc:subject>\n<dc:description>Bibliography:\
+        \ p. 241-242.</dc:description>\n<dc:date>2013-03-29T20:17:34Z</dc:date>\n\
+        <dc:date>2013-03-29T20:17:34Z</dc:date>\n<dc:date>1934</dc:date>\n<dc:type>text</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/2142/43010</dc:identifier>\n<dc:identifier>(OCoLC)ocm01573126</dc:identifier>\n\
+        <dc:identifier>(UIUdb)6221665</dc:identifier>\n<dc:identifier>6221665</dc:identifier>\n\
+        <dc:relation>Bulletin no. 061</dc:relation>\n<dc:relation>http://hdl.handle.net/10111/UIUCOCA:rockwoolfromilli61illi</dc:relation>\n\
+        <dc:relation>http://www.archive.org/details/rockwoolfromilli61illi</dc:relation>\n\
+        <dc:rights>Public domain. Illinois state government document.</dc:rights>\n\
+        <dc:rights>Copyright 1934 Board of Trustees University of Illinois.</dc:rights>\n\
+        <dc:publisher>Urbana, The Survey,</dc:publisher>\n</oai_dc:dc>\n</metadata>\n\
+        \        </record>\n        <record>\n            <header>\n             \
+        \   <identifier>oai:www.ideals.illinois.edu:2142/45353</identifier>\n    \
+        \            <datestamp>2014-12-23T22:13:15Z</datestamp>\n               \
+        \ <setSpec>com_2142_5132</setSpec>\n                <setSpec>com_2142_5130</setSpec>\n\
+        \                <setSpec>col_2142_8800</setSpec>\n                <setSpec>col_2142_5131</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Family empowerment:\
+        \ the use of online parent discussion groups following diagnosis of ASD in\
+        \ young children</dc:title>\n<dc:contributor>Santos Gilbertz, Rosa Milagros</dc:contributor>\n\
+        <dc:contributor>Santos Gilbertz, Rosa Milagros</dc:contributor>\n<dc:contributor>Fowler,\
+        \ Susan A.</dc:contributor>\n<dc:contributor>McBride, Brent A.</dc:contributor>\n\
+        <dc:contributor>Hughes, Mary-Alayne</dc:contributor>\n<dc:subject>autism spectrum\
+        \ disorder</dc:subject>\n<dc:subject>online parent groups</dc:subject>\n<dc:subject>preschool\
+        \ children</dc:subject>\n<dc:subject>framework analysis</dc:subject>\n<dc:description>The\
+        \ overarching purpose of this research study was to examine the usefulness\
+        \ of online discussion groups for mothers and fathers of young children (prior\
+        \ to the entry in kindergarten) with an autism spectrum disorder. Over a 12\
+        \ week time period, parents (15 mothers and 7 fathers) participated in gender-divided\
+        \ online discussion groups. Three online surveys were used to determine discussion\
+        \ topics of importance, to identify services and supports already accessed,\
+        \ and to report parent satisfaction in participation. Fathers and mothers\
+        \ identified similar topic choices for discussion although mothers indicated\
+        \ sleeping and toilet training as higher priorities than fathers. Similarities\
+        \ and differences were identified between the parent groups in their styles\
+        \ of discussion postings. Fathers engaged in more lurking (viewing without\
+        \ posting) behavior and only mothers used emotional support statements (indicating\
+        \ understanding and sympathy) and esteem supportive-compliments in their discussions.\
+        \ New subthemes of Sharing Statements-Information, Sharing Statements-Questions,\
+        \ and Building Relationships through Humor emerged. Mothers found the online\
+        \ discussion groups more useful than fathers, but both indicated they would\
+        \ recommend online discussion groups such as this one. The access to new ideas,\
+        \ the presence of others in a shared situation, and a sense of belonging to\
+        \ a supportive community were reasons mothers found participation useful.\
+        \ Fathers noted the access to others??? perspectives and contact with others\
+        \ sharing the same challenges as reasons the online groups were useful. Limitations\
+        \ of the study and implications for research and practice are discussed.</dc:description>\n\
+        <dc:date>2013-08-22T16:37:34Z</dc:date>\n<dc:date>2013-08-22T16:37:34Z</dc:date>\n\
+        <dc:date>2013-08</dc:date>\n<dc:date>2013-08-22T16:37:34Z</dc:date>\n<dc:date>2013-08</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/2142/45353</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:rights>Copyright 2013 Laurie Marie Jeans</dc:rights>\n</oai_dc:dc>\n</metadata>\n\
+        \        </record>\n        <record>\n            <header>\n             \
+        \   <identifier>oai:www.ideals.illinois.edu:2142/45427</identifier>\n    \
+        \            <datestamp>2014-12-23T21:48:30Z</datestamp>\n               \
+        \ <setSpec>com_2142_8887</setSpec>\n                <setSpec>com_2142_234</setSpec>\n\
+        \                <setSpec>com_2142_5130</setSpec>\n                <setSpec>col_2142_8888</setSpec>\n\
+        \                <setSpec>col_2142_5131</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Network-simulation-based\
+        \ evaluation of smart grid applications</dc:title>\n<dc:contributor>Nicol,\
+        \ David M.</dc:contributor>\n<dc:contributor>Nicol, David M.</dc:contributor>\n\
+        <dc:contributor>Caesar, Matthew C.</dc:contributor>\n<dc:contributor>Bobba,\
+        \ Rakesh</dc:contributor>\n<dc:contributor>Sanders, William H.</dc:contributor>\n\
+        <dc:subject>Smart Grid</dc:subject>\n<dc:subject>Network Security</dc:subject>\n\
+        <dc:subject>Parallel Discrete Event Simulation</dc:subject>\n<dc:subject>Network\
+        \ Emulation</dc:subject>\n<dc:subject>virtual time</dc:subject>\n<dc:description>The\
+        \ United States and many other countries are conducting a major upgrade of\
+        \ their electrical grids. The new ???smart grid??? is not a physically isolated\
+        \ network like the older power grid was, but a complicated network of networks.\
+        \ That greatly increases the security concerns, ranging from hackers who gain\
+        \ access to control networks or create denial-of-service attacks on the networks\
+        \ themselves, to accidental causes, such as natural disasters or operator\
+        \ errors. Therefore, it is critical to build a safe, resilient and secure\
+        \ communication environment for protecting the smart grid. Under this central\
+        \ theme, our research work has two strongly correlated streams.&#13;\nFirst,\
+        \ to analyze large-scale networked systems (e.g., smart grid communication\
+        \ networks) with high fidelity, it is necessary for a testing system to offer\
+        \ both effective emulation (to represent critical software execution) and\
+        \ realistic simulation (to model background computation and communication).\
+        \ We have developed a network testbed using both parallel simulation and virtual-\
+        \ machine-based, virtual-time-embedded emulation to provide both functional\
+        \ and temporal fidelity for running large-scale networking experiments, so\
+        \ that technologies can be appropriately evaluated with modeling and simulation\
+        \ methodologies as well as with real software/hardware testing before they\
+        \ are integrated into the grid.&#13;\nSecond, we have utilized the testbed\
+        \ to study various cyber attacks in the smart grid, including a distributed\
+        \ denial-of-service attack (DDoS) in an advanced metering infrastructure (AMI)\
+        \ and an event buffer flooding attack on a supervisory control and data acquisition\
+        \ (SCADA) system (both for the Trustworthy Cyber Infrastructure for the Power\
+        \ Grid (TCIPG) Center at the University of Illinois at Urbana-Champaign),\
+        \ and also used it to evaluate a demand response design in a hierarchical\
+        \ transactive control network (as part of the Pacific Northwest smart grid\
+        \ demonstration project).</dc:description>\n<dc:date>2013-08-22T16:39:52Z</dc:date>\n\
+        <dc:date>2013-08-22T16:39:52Z</dc:date>\n<dc:date>2013-08</dc:date>\n<dc:date>2013-08-22T16:39:52Z</dc:date>\n\
+        <dc:date>2013-08</dc:date>\n<dc:identifier>http://hdl.handle.net/2142/45427</dc:identifier>\n\
+        <dc:language>en</dc:language>\n<dc:rights>Copyright 2013 Dong Jin</dc:rights>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/45460</identifier>\n\
+        \                <datestamp>2014-12-23T21:51:18Z</datestamp>\n           \
+        \     <setSpec>com_2142_689</setSpec>\n                <setSpec>com_2142_397</setSpec>\n\
+        \                <setSpec>com_2142_5130</setSpec>\n                <setSpec>col_2142_16456</setSpec>\n\
+        \                <setSpec>col_2142_5131</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Living docility\
+        \ and dissent: U.S. small town girls' social media use within social marginalization</dc:title>\n\
+        <dc:contributor>Sandvig, Christian E.</dc:contributor>\n<dc:contributor>Larson,\
+        \ Reed W.</dc:contributor>\n<dc:contributor>Sandvig, Christian E.</dc:contributor>\n\
+        <dc:contributor>Oswald, Ramona F.</dc:contributor>\n<dc:contributor>Kwon,\
+        \ Soo Ah</dc:contributor>\n<dc:contributor>Jarrett, Robin L.</dc:contributor>\n\
+        <dc:contributor>Gray, Mary L.</dc:contributor>\n<dc:subject>Adolescence</dc:subject>\n\
+        <dc:subject>Social Media</dc:subject>\n<dc:subject>Identity</dc:subject>\n\
+        <dc:subject>Infrastructure</dc:subject>\n<dc:subject>Girls</dc:subject>\n\
+        <dc:subject>Marginality</dc:subject>\n<dc:subject>New Media</dc:subject>\n\
+        <dc:subject>Development</dc:subject>\n<dc:subject>Visibility</dc:subject>\n\
+        <dc:subject>Social Media Migration</dc:subject>\n<dc:description>Following\
+        \ in a long history of social panic over females??? lack of safety with new\
+        \ communication technologies, in the US, society has defined adolescent-aged\
+        \ females using social media in a familiar binary fashion: they are either\
+        \ ???at-risk??? or  ???reckless??? in their involvements (Cassell &amp; Cramer,\
+        \ 2007; Standage, 1998). This dissertation is an ethnographic study of rural,\
+        \ teenaged American young women that challenges this view. It employs Lesko\
+        \ (2001) and Gray???s (2009) critical perspectives on youth identities to\
+        \ look beyond the fear and danger traditionally associated with adolescence\
+        \ and with girls??? sociality to consider the broad role social media play\
+        \ in their lives. This ethnography investigates the meaning and context of\
+        \ actions taken by young rural females on Facebook and Twitter that are judged\
+        \ by adults and institutions as risky from within the framing of adolescence.&#13;\n\
+        Looking closely at what is really risky within this milieu, this study finds\
+        \ these teens facing frustrations in restrictive, monitored, censoring, and\
+        \ contained life in their homes and communities are attempting to flee to\
+        \ ???spaces??? in social media where they are able to gain social involvement\
+        \ and perform their identities without fear of reprisal. Teens report that\
+        \ the poor treatment they receive in their day-to-day lives within the context\
+        \ of modern adolescence drives them into what I term ???social media migration.???\
+        \ In the hopes of escaping offline containment, surveillance, and misinterpretation,\
+        \ these teens travel alone to and through online spaces to set up temporary\
+        \ walls of ???public privacy??? that allow them to perform desired identities\
+        \ away from parents??? watchful eyes. Social media migration is undertaken\
+        \ by these young women intentionally to claim social spaces that they feel\
+        \ will allow them new opportunities to interact, to gain visibility for non-childish\
+        \ identities, and to craft counternarratives to trouble their offline marginality.\
+        \ &#13;\nWrit large, this research suggests that these teens do, in fact,\
+        \ find themselves in perilous positions in their life in social media. However,\
+        \ it finds that other analyses failed to capture the actual risks entailed\
+        \ in young women???s social media use because researchers directed attention\
+        \ to youth blaming and re-tooling, and away from important larger structures\
+        \ of power involved in both social Internet technologies and adolescent marginality.</dc:description>\n\
+        <dc:date>2013-08-22T16:40:53Z</dc:date>\n<dc:date>2013-08-22T16:40:53Z</dc:date>\n\
+        <dc:date>2013-08</dc:date>\n<dc:date>2013-08-22T16:40:53Z</dc:date>\n<dc:date>2013-08</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/2142/45460</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:rights>Copyright 2013 Aimee Rickman</dc:rights>\n</oai_dc:dc>\n</metadata>\n\
+        \        </record>\n        <record>\n            <header>\n             \
+        \   <identifier>oai:www.ideals.illinois.edu:2142/45479</identifier>\n    \
+        \            <datestamp>2014-12-23T22:20:08Z</datestamp>\n               \
+        \ <setSpec>com_2142_8887</setSpec>\n                <setSpec>com_2142_234</setSpec>\n\
+        \                <setSpec>com_2142_5130</setSpec>\n                <setSpec>col_2142_8888</setSpec>\n\
+        \                <setSpec>col_2142_5131</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Game-theoretic\
+        \ methods for security and resilience in cyber-physical systems</dc:title>\n\
+        <dc:contributor>Basar, Tamer</dc:contributor>\n<dc:contributor>Basar, Tamer</dc:contributor>\n\
+        <dc:contributor>Hovakimyan, Naira</dc:contributor>\n<dc:contributor>Sanders,\
+        \ William H.</dc:contributor>\n<dc:contributor>Sauer, Peter W.</dc:contributor>\n\
+        <dc:subject>Cyber-Physical Systems</dc:subject>\n<dc:subject>Game Theory</dc:subject>\n\
+        <dc:subject>Resilient Control</dc:subject>\n<dc:subject>Cyber Security</dc:subject>\n\
+        <dc:subject>Dynamic Games</dc:subject>\n<dc:subject>Differential Games</dc:subject>\n\
+        <dc:subject>Learning in Games</dc:subject>\n<dc:description>Modern critical\
+        \ infrastructures are highly integrated systems composed of many complex interactions\
+        \ between different system modules or agents including cyber and physical\
+        \ components as well as human factors. Their growing complexity demands novel\
+        \ design techniques for scalable and efficient control and computations for\
+        \ providing system security and resilience. This dissertation develops new\
+        \ game-theoretic frameworks for addressing security and resilience problems\
+        \ residing at multiple layers of the cyber-physical systems including robust\
+        \ and resilient control, secure network routing and management of information\
+        \ security and smart grid energy systems. &#13;\n&#13;\nHybrid distributed\
+        \ reinforcement learning algorithms are developed as practical modeling tools\
+        \ for defense systems with different levels of rationality and intelligence\
+        \ at different times. The learning algorithms enable online computations of\
+        \ defense strategies, such as routing decisions and configuration policies,\
+        \ for nonzero-sum security games with incomplete information. In addition,\
+        \ games-in-games frameworks are proposed for system-wide modeling of complex\
+        \ hierarchical systems, where games played at different levels interact through\
+        \ their outcomes, action spaces, and costs. This concept is applied to robust\
+        \ and resilient control of power systems in which a zero-sum differential\
+        \ game for physical robust control design is nested in and coupled with a\
+        \ zero-sum stochastic game for security policy design. &#13;\n&#13;\nAt the\
+        \ networking layer of the system, multi-hop secure routing games also exhibit\
+        \ the games-in-games structure, and their equilibrium solutions are characterized\
+        \ by backward induction solving a sequence of nested games. This approach\
+        \ leads to a distributed secure routing protocol that enables the resilience\
+        \ of network routing and self-recovery mechanisms in face of adversarial attacks.\
+        \ &#13;\n&#13;\nFinally,  in order to address emerging energy management issues\
+        \ of the smart grid, we establish a fundamental game-theoretic framework for\
+        \ analyzing system equilibrium under distributed generations, renewable energy\
+        \ sources and active participation of utility users. Furthermore, we develop\
+        \ a novel game framework and its equilibrium solution, named mirror Stackelberg\
+        \ equilibrium, for modeling the demand response management in the smart grid.\
+        \ This approach enables quantitative study of the value of demand response\
+        \ brought by emerging smart grid technologies as compared to the current supply-side\
+        \ economic dispatch model. It facilitates fundamental understanding of pricing,\
+        \ energy policies and infrastructural investment decision in future highly\
+        \ interconnected and interdependent energy systems. Examples from power systems,\
+        \ cognitive radio communication networks, and the smart grid are used as driving\
+        \ examples for illustrating new solution concepts, distributed algorithms\
+        \ and analytical techniques presented in this dissertation.</dc:description>\n\
+        <dc:date>2013-08-22T16:41:27Z</dc:date>\n<dc:date>2013-08-22T16:41:27Z</dc:date>\n\
+        <dc:date>2013-08</dc:date>\n<dc:date>2013-08-22T16:41:27Z</dc:date>\n<dc:date>2013-08</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/2142/45479</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:rights>Copyright 2013 Quanyan Zhu</dc:rights>\n</oai_dc:dc>\n</metadata>\n\
+        \        </record>\n        <record>\n            <header>\n             \
+        \   <identifier>oai:www.ideals.illinois.edu:2142/46751</identifier>\n    \
+        \            <datestamp>2014-12-23T22:14:29Z</datestamp>\n               \
+        \ <setSpec>com_2142_5132</setSpec>\n                <setSpec>com_2142_5130</setSpec>\n\
+        \                <setSpec>col_2142_8800</setSpec>\n                <setSpec>col_2142_5131</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Examining state\
+        \ social emotional standards and professional development related to those\
+        \ standards</dc:title>\n<dc:contributor>Santos Gilbertz, Rosa Milagros</dc:contributor>\n\
+        <dc:contributor>Ostrosky, Michaelene M.</dc:contributor>\n<dc:contributor>Santos\
+        \ Gilbertz, Rosa Milagros</dc:contributor>\n<dc:contributor>Gaffney, Janet\
+        \ S.</dc:contributor>\n<dc:contributor>Hemmeter, Mary Louise</dc:contributor>\n\
+        <dc:subject>Early learning standards</dc:subject>\n<dc:subject>professional\
+        \ development</dc:subject>\n<dc:subject>early childhood</dc:subject>\n<dc:subject>social\
+        \ emotional standards</dc:subject>\n<dc:description>Embedding social emotional\
+        \ standards into professional development can enhance teachers??? ability\
+        \ to address the social emotional needs of young children. However, research\
+        \ on early childhood standards has mainly focused on the development of specific\
+        \ content areas (e.g., mathematics, science, social studies, literacy) within\
+        \ these stadnards while professional development studies have focused mainly\
+        \ on inclusion, evidence-based practices, and social skills interventions.\
+        \ There is little research on professional development that focuses on state\
+        \ social emotional standards. The purpose of this mixed method study was to\
+        \ gain insights into professional development related to early learning standards\
+        \ for early childhood practitioners who work with preschool-age children (3\
+        \ to 5 years old). Using mixed methods, the social emotional content within\
+        \ state early childhood learning standards was examined for similiarities\
+        \ and differences across states. Futhermore, the resources that six states\
+        \ utilized to support the professional development that teachers received\
+        \ in addressing the social emotional needs of children with and without disabilities\
+        \ was investigated. Results indicate variations in state social emotional\
+        \ standards, approaches to professional development in relation to state social\
+        \ emotional standards, and the resources and supports available by states\
+        \ providing social emotional professional development.</dc:description>\n\
+        <dc:date>2014-01-16T18:01:12Z</dc:date>\n<dc:date>2014-01-16T18:01:12Z</dc:date>\n\
+        <dc:date>2013-12</dc:date>\n<dc:date>2014-01-16T18:01:12Z</dc:date>\n<dc:date>2013-12</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/2142/46751</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:rights>Copyright 2013 LaShorage Shaffer</dc:rights>\n</oai_dc:dc>\n</metadata>\n\
+        \        </record>\n        <record>\n            <header>\n             \
+        \   <identifier>oai:www.ideals.illinois.edu:2142/49364</identifier>\n    \
+        \            <datestamp>2014-12-23T22:12:06Z</datestamp>\n               \
+        \ <setSpec>com_2142_5132</setSpec>\n                <setSpec>com_2142_5130</setSpec>\n\
+        \                <setSpec>col_2142_8800</setSpec>\n                <setSpec>col_2142_5131</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Peer interactions\
+        \ and roles of high school students with severe disabilities during inclusive\
+        \ service-learning</dc:title>\n<dc:contributor>Dymond, Stacy K.</dc:contributor>\n\
+        <dc:contributor>Dymond, Stacy K.</dc:contributor>\n<dc:contributor>Halle,\
+        \ James W.</dc:contributor>\n<dc:contributor>Santos Gilbertz, Rosa Milagros</dc:contributor>\n\
+        <dc:contributor>Greene, Jennifer C.</dc:contributor>\n<dc:subject>Severe disabilities</dc:subject>\n\
+        <dc:subject>Secondary education</dc:subject>\n<dc:subject>High school</dc:subject>\n\
+        <dc:subject>Peer interactions</dc:subject>\n<dc:subject>Group roles</dc:subject>\n\
+        <dc:description>The purpose of this mixed methods case study was to examine\
+        \ how high school students with severe disabilities interact with peers and\
+        \ adults, the relationship between specific contextual factors and peer interactions,\
+        \ and the informal roles students with severe disabilities assume during inclusive\
+        \ service-learning. Data were collected through video and live observations\
+        \ of four high school students with severe disabilities throughout an inclusive\
+        \ arts-based service-learning project, and interviews with peers, art teachers,\
+        \ and focus groups of preservice teachers who facilitated the service-learning\
+        \ project. The data were analyzed using a combination of inductive and deductive\
+        \ processes to investigate peer and adult interactions, contextual factors,\
+        \ and the roles assumed by students with severe disabilities during the project.\
+        \ The findings indicate that students with severe disabilities had interactions\
+        \ with peers during inclusive service-learning that ranged in frequency and\
+        \ ease from natural to challenging; the majority of interactions were task\
+        \ related; adults and peers had positive perceptions of group functioning;\
+        \ and adult interactions occurred primarily within the function of providing\
+        \ supports. All of the contextual factors examined were each found to be associated\
+        \ with peer interactions. Students with severe disabilities assumed a variety\
+        \ of roles that fell within the three categories described in the literature:\
+        \ group building roles, task completion roles, and individualistic roles.\
+        \ An additional role category, neutral roles, emerged through the qualitative\
+        \ analysis. Recommendations for future investigations and inclusive service-learning\
+        \ practice are also presented.</dc:description>\n<dc:date>2014-05-30T16:40:17Z</dc:date>\n\
+        <dc:date>2014-05-30T16:40:17Z</dc:date>\n<dc:date>2014-05</dc:date>\n<dc:date>2014-05-30T16:40:17Z</dc:date>\n\
+        <dc:date>2014-05</dc:date>\n<dc:identifier>http://hdl.handle.net/2142/49364</dc:identifier>\n\
+        <dc:language>en</dc:language>\n<dc:rights>Copyright 2014 Michelle Bonati</dc:rights>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/49823</identifier>\n\
+        \                <datestamp>2014-12-23T22:24:14Z</datestamp>\n           \
+        \     <setSpec>com_2142_8904</setSpec>\n                <setSpec>com_2142_8903</setSpec>\n\
+        \                <setSpec>com_2142_5130</setSpec>\n                <setSpec>col_2142_8906</setSpec>\n\
+        \                <setSpec>col_2142_5131</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The black,\
+        \ British Atlantic: Blackness in Victorian literature</dc:title>\n<dc:contributor>Goodlad,\
+        \ Lauren</dc:contributor>\n<dc:contributor>Saville, Julia Frances</dc:contributor>\n\
+        <dc:contributor>Goodlad, Lauren</dc:contributor>\n<dc:contributor>Saville,\
+        \ Julia Frances</dc:contributor>\n<dc:contributor>Chai, Leon</dc:contributor>\n\
+        <dc:contributor>Parker, Robert D.</dc:contributor>\n<dc:subject>Blackness</dc:subject>\n\
+        <dc:subject>Black Atlantic</dc:subject>\n<dc:subject>Slavery</dc:subject>\n\
+        <dc:subject>Victorian Literature</dc:subject>\n<dc:subject>Nineteenth-Century\
+        \ British Literature</dc:subject>\n<dc:subject>Jane Austen</dc:subject>\n\
+        <dc:subject>Elizabeth Barrett Browning</dc:subject>\n<dc:subject>Mary Seacole</dc:subject>\n\
+        <dc:subject>Wilkie Collins</dc:subject>\n<dc:description>My dissertation is\
+        \ about transnational aspects of the Victorian era from the vantage point\
+        \ of what Paul Gilroy described more than two decades ago as the ???black\
+        \ Atlantic.???  Looking at various ways in which the black Atlantic was at\
+        \ times a British Atlantic, my dissertation aims to complicate a flow of discussion\
+        \ that Gilroy???s Americanist successors have interpreted largely in light\
+        \ of U.S. slavery and its discursive contexts.  Specifically, I explore how\
+        \ some nineteenth-century British authors such as Jane Austen, Elizabeth Barrett\
+        \ Browning, Mary Seacole, and Wilkie Collins rejected popular notions of blackness\
+        \ as a racial marker of African slavery with its implied negative qualities.\
+        \  Instead, their works convey a different idea about blackness as a pliable\
+        \ marker of cultural agency that not only constitutes a part of English culture,\
+        \ but is performed by people regardless of racial affiliation.  This notion\
+        \ of blackness as performative signifier goes beyond the slavery metaphor\
+        \ in Victorian literature to frame an interpretive paradigm that allows us\
+        \ to read blackness in broader socio-political contexts.  As I show how canonical\
+        \ and non-canonical nineteenth-century British literature used various kinds\
+        \ of black performativity to undo essentialist notions of blackness, race,\
+        \ and identity itself, I demonstrate the integral status of blackness in Victorian\
+        \ literature.  This in turn points to nineteenth-century English culture not\
+        \ as an isolated entity that imposed itself on Africans and on slave-owning\
+        \ colonies of the British Empire, but as participant in a larger cultural\
+        \ network called the black Atlantic.  The black Atlantic thus invites us to\
+        \ revise British literature and culture by questioning the assumed homogeneity\
+        \ of white-centrism and even the stability of whiteness itself as foundational\
+        \ for English identity.&#13;\n&#13;\nIn the first chapter, I look at how Jane\
+        \ Austen???s Mansfield Park (1814) and Persuasion (1818) engage blackness\
+        \ without featuring a single black or mixed-race character.  Reading this\
+        \ absence as literary strategy, I argue that the two novels reject the popular\
+        \ view of blackness as too restrictively applied to oppression and marginalization,\
+        \ and associate it instead with women???s autonomy and social participation\
+        \ in an era of heightened debate over slavery following the 1807 Slave Trade\
+        \ Act.  Here blackness comes to represent an ethically viable form of women???s\
+        \ autonomy that doesn???t necessarily unsettle the established social order\
+        \ even as it challenges the mercantile logic of sexual hierarchy represented\
+        \ by the corrupt marriage market.  In fact, by validating women???s autonomy\
+        \ in the context of middle-class ethics, Austen suggests that such autonomy\
+        \ is a prerequisite of social stability.&#13;\n&#13;\nChapter two explores\
+        \ how Elizabeth Barrett Browning???s three antislavery poems??????The Runaway\
+        \ Slave at Pilgrim???s Point??? (1847/1848), ???Hiram Powers??? Greek Slave???\
+        \ (1850), and ???A Curse for a Nation??? (1855/1866)???extend beyond the issue\
+        \ of American slavery to address British racism.  Representing blackness as\
+        \ a signifier of artistic creativity, the poems aesthetically challenge essentialist\
+        \ notions of black inferiority in a mid-Victorian society troubled by post-abolition\
+        \ economic decline and colonial unrest in the British West Indies.  EBB???s\
+        \ antislavery poems thus work to liberate blackness from the chains of racial\
+        \ essentialism and draw on black performativity to expand the language of\
+        \ the poet???s social criticism.&#13;\n&#13;\nChapter three investigates Mary\
+        \ Seacole???s performative identity in her travel narrative, Wonderful Adventures\
+        \ of Mrs. Seacole in Many Lands (1857).  Knowing her Victorian readers will\
+        \ be predisposed to read her mixed-race body as a marker of otherness, Seacole\
+        \ plays with their belief in ways that de-essentialize race:  first, she disrupts\
+        \ whiteness as a racial signifier ontologically grounded in skin color by\
+        \ portraying her successful performance of the idealized English mother in\
+        \ the Crimea.  Seacole then represents her physical ???blackness??? as a marker\
+        \ of life-saving hybrid medicine, a cultural signifier that revises racist\
+        \ notions of identity.  In the process, she exposes Englishness as an unstable\
+        \ marker of identity that can be performed by people of different races.&#13;\n\
+        &#13;\nChapter four considers how Wilkie Collins problematizes binaristic\
+        \ notions of race in Armadale (1866), Miss or Mrs? (1873), and The Guilty\
+        \ River (1886).  Collins???s radical reevaluations of racial others vis-??-vis\
+        \ Englishness and Britishness come at a time when a series of colonial uprisings\
+        \ like the Indian ???Mutiny??? and the Morant Bay rebellion exacerbated the\
+        \ growing acceptance of permanent racial hierarchies (as opposed to the older\
+        \ notion of eventual human universality).  Armadale emphasizes blackness as\
+        \ a marker of sympathy???the essential element of English morality seldom\
+        \ seen in the author???s time.  Affirming blackness as the moral essence of\
+        \ Englishness, Miss or Mrs? and The Guilty River reflect Collins???s growing\
+        \ frustration with the way a kind of binaristic thinking he challenged in\
+        \ Armadale continued to thrive in English society.  These texts ultimately\
+        \ call for understanding English identity as an ongoing expression of inter-racial,\
+        \ inter-cultural reciprocity.</dc:description>\n<dc:date>2014-05-30T17:19:29Z</dc:date>\n\
+        <dc:date>2014-05-30T17:19:29Z</dc:date>\n<dc:date>2014-05</dc:date>\n<dc:date>2014-05-30T17:19:29Z</dc:date>\n\
+        <dc:date>2014-05</dc:date>\n<dc:date>2016-05-30 12:21:23.548000</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/2142/49823</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:rights>Copyright 2014 Donghee Om</dc:rights>\n</oai_dc:dc>\n</metadata>\n\
+        \        </record>\n        <record>\n            <header>\n             \
+        \   <identifier>oai:www.ideals.illinois.edu:2142/50367</identifier>\n    \
+        \            <datestamp>2014-12-23T22:13:52Z</datestamp>\n               \
+        \ <setSpec>com_2142_689</setSpec>\n                <setSpec>com_2142_397</setSpec>\n\
+        \                <setSpec>com_2142_5130</setSpec>\n                <setSpec>col_2142_16456</setSpec>\n\
+        \                <setSpec>col_2142_5131</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The effect\
+        \ of child disability/delay status and functional abilities on father involvement:\
+        \ an application of propensity score analysis</dc:title>\n<dc:contributor>McBride,\
+        \ Brent A.</dc:contributor>\n<dc:contributor>McBride, Brent A.</dc:contributor>\n\
+        <dc:contributor>Mangelsdorf, Sarah C.</dc:contributor>\n<dc:contributor>McElwain,\
+        \ Nancy L.</dc:contributor>\n<dc:contributor>Pleck, Joseph</dc:contributor>\n\
+        <dc:contributor>Santos Gilbertz, Rosa Milagros</dc:contributor>\n<dc:subject>Father\
+        \ involvement</dc:subject>\n<dc:subject>Children with disabilities</dc:subject>\n\
+        <dc:subject>Disability Severity</dc:subject>\n<dc:subject>Children's functional\
+        \ abilities</dc:subject>\n<dc:subject>Propensity score analysis</dc:subject>\n\
+        <dc:subject>Families of children with disabilities</dc:subject>\n<dc:description>Past\
+        \ research on father involvement with children with disabilities/delays has\
+        \ been limited to observational/correlational studies that do not provide\
+        \ estimates of causal effects. Propensity score analysis was used to estimate\
+        \ the causal effect of child disability/delay status on father routine caregiving,\
+        \ literacy, play, and responsive caregiving involvement. The association between\
+        \ functional abilities and father involvement was also explored. Results indicate\
+        \ child disability/delay status influences father involvement early on and\
+        \ that changes in early levels of involvement are carried forward across the\
+        \ first four years of the child's life. The association between functional\
+        \ abilities and father involvement was less clear. Implications for future\
+        \ research and intervention work are discussed.</dc:description>\n<dc:date>2014-09-16T17:12:12Z</dc:date>\n\
+        <dc:date>2014-09-16T17:12:12Z</dc:date>\n<dc:date>2014-08</dc:date>\n<dc:date>2014-09-16</dc:date>\n\
+        <dc:date>2014-08</dc:date>\n<dc:date>2016-09-16T17:13:01Z</dc:date>\n<dc:identifier>http://hdl.handle.net/2142/50367</dc:identifier>\n\
+        <dc:language>en</dc:language>\n<dc:rights>Copyright 2014 Daniel James Laxman</dc:rights>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/69140</identifier>\n\
+        \                <datestamp>2014-12-23T22:25:30Z</datestamp>\n           \
+        \     <setSpec>com_2142_5132</setSpec>\n                <setSpec>com_2142_5130</setSpec>\n\
+        \                <setSpec>col_2142_8800</setSpec>\n                <setSpec>col_2142_5131</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Private\
+        \ Speech of a Chinese-English Bilingual Child: A Naturalistic Longitudinal\
+        \ Study</dc:title>\n<dc:contributor>Saville-Troike, Muriel</dc:contributor>\n\
+        <dc:subject>Language, Modern</dc:subject>\n<dc:subject>Education, Educational\
+        \ Psychology</dc:subject>\n<dc:description>283 p.</dc:description>\n<dc:description>Thesis\
+        \ (Ph.D.)--University of Illinois at Urbana-Champaign, 1987.</dc:description>\n\
+        <dc:description>The purpose of this study was to investigate the functions,\
+        \ language choice, developmental changes, and cognitive and social contexts\
+        \ of private speech for an initially monolingual Chinese--subsequently bilingual\
+        \ Chinese-English--child in natural settings. Data were collected through\
+        \ naturalistic videotaping of the child in nursery school and kindergarten\
+        \ for two years, using a radio microphone. Private utterances were identified,\
+        \ and their functional category, language choice, cognitive context, and social\
+        \ context were coded for statistical analysis. Intensive observation of the\
+        \ subject in school and at home, and interviews with him and his parents provided\
+        \ additional qualitative information.</dc:description>\n<dc:description>Results\
+        \ indicated that private speech in natural settings displayed a greater variety\
+        \ of functional types than has been reported in experimental studies. A curvilinear\
+        \ developmental trend was found for the total amount of private speech, supporting\
+        \ Vygotsky's hypothesis. Linear increase in the category of incomprehensible/inaudible\
+        \ supported Vygotsky's contention that private speech &amp;quot;goes underground&amp;quot;\
+        \ to form inner speech. Vygotsky's hypothesis that self-direction would occur\
+        \ more frequently in cognitively demanding than in cognitively undemanding\
+        \ contexts was not confirmed. The small proportion of private speech produced\
+        \ that was strictly self-regulatory in nature ran counter to Vygotsky's claim\
+        \ that self-regulation is the primary function of private speech. Both L1\
+        \ (native language) and L2 (second language) were used for all the functions\
+        \ examined in this study, with a gradual shift to L2 in most of the functions.\
+        \ The language choice in private speech was not correlated with the language\
+        \ spoken by others around at the onset of second language learning, and indeed\
+        \ was somewhat negatively related, suggesting that the child did not wish\
+        \ others to overhear him. As bilingual competence developed, the correlation\
+        \ increased dramatically near L2 speakers, and finally, the language of the\
+        \ setting was adopted almost entirely. Intensive observation suggested that\
+        \ physical settings, nature of activities, social relationships, and feelings\
+        \ about the setting had influence on the production of private speech. Naturalistic\
+        \ methodology is recommended for additional future research on private speech.</dc:description>\n\
+        <dc:date>2014-12-15T18:51:33Z</dc:date>\n<dc:date>2014-12-15T18:51:33Z</dc:date>\n\
+        <dc:date>1987</dc:date>\n<dc:date>1987</dc:date>\n<dc:date>10000-01-01</dc:date>\n\
+        <dc:type>text</dc:type>\n<dc:identifier>http://hdl.handle.net/2142/69140</dc:identifier>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/69210</identifier>\n\
+        \                <datestamp>2014-12-23T22:26:22Z</datestamp>\n           \
+        \     <setSpec>com_2142_5132</setSpec>\n                <setSpec>com_2142_5130</setSpec>\n\
+        \                <setSpec>col_2142_8800</setSpec>\n                <setSpec>col_2142_5131</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>A Study of\
+        \ Temporal Variables in English and Korean: Cross-Linguistic, Development,\
+        \ and Native/nonnative Analyses</dc:title>\n<dc:contributor>Saville-Troike,\
+        \ Muriel</dc:contributor>\n<dc:subject>Language, Linguistics</dc:subject>\n\
+        <dc:description>197 p.</dc:description>\n<dc:description>Thesis (Ph.D.)--University\
+        \ of Illinois at Urbana-Champaign, 1988.</dc:description>\n<dc:description>The\
+        \ present study investigated temporal phenomena in language production, using\
+        \ English and Korean stories based on a film. The temporal variables included\
+        \ were primary temporal variables (speech rate, articulation rate, pause-time\
+        \ ratio, mean length of runs, and mean length of pauses), secondary temporal\
+        \ variables (repeats, false starts, parenthetical remarks, drawls, unfilled\
+        \ pauses, and filled pauses), and temporal cycles. Comparisons were made between\
+        \ Korean and English, adults and children, and native adult English and English\
+        \ spoken by Korean adults.</dc:description>\n<dc:description>It was found\
+        \ that: (a) Korean and English were different in the temporal variables concerning\
+        \ verbalization rate (speech rate, articulation rate, and mean length of runs),\
+        \ but were similar in those concerning pausing (pause-time ratio and mean\
+        \ length of pauses), (b) Korean and English differed in secondary temporal\
+        \ variables, especially in the use of parenthetical remarks and filled pauses,\
+        \ (c) there was no difference in the lengths of temporal cycles as well as\
+        \ in the number of clauses contained in them between Korean and English, (d)\
+        \ adults and children differed in the use of the primary temporal variables\
+        \ except the mean length of pauses, (e) adults and children differed in secondary\
+        \ temporal variables, especially in the use of false starts and filled pauses,\
+        \ (f) adults and children's language differed in the number of clauses contained\
+        \ in temporal cycles but not in their lengths, (g) the pattern of contrast\
+        \ between native and non-native speech was similar to that between children's\
+        \ and adults' speech.</dc:description>\n<dc:description>The findings were\
+        \ interpreted in relation to verbal information processing, especially to\
+        \ linguistic operation and memory. It was concluded that: (a) language identity\
+        \ does not affect language processing processes, but constrains only the output\
+        \ and (b) the inferior rate of information output in children's and non-native\
+        \ adults' speech is attributable to less automatized language system, but\
+        \ not to the memory capacity itself.</dc:description>\n<dc:date>2014-12-15T18:52:04Z</dc:date>\n\
+        <dc:date>2014-12-15T18:52:04Z</dc:date>\n<dc:date>1988</dc:date>\n<dc:date>1988</dc:date>\n\
+        <dc:date>10000-01-01</dc:date>\n<dc:type>text</dc:type>\n<dc:identifier>http://hdl.handle.net/2142/69210</dc:identifier>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/71532</identifier>\n\
+        \                <datestamp>2014-12-23T21:53:27Z</datestamp>\n           \
+        \     <setSpec>com_2142_17377</setSpec>\n                <setSpec>com_2142_8903</setSpec>\n\
+        \                <setSpec>com_2142_5130</setSpec>\n                <setSpec>col_2142_17378</setSpec>\n\
+        \                <setSpec>col_2142_5131</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Interrelationship\
+        \ of Drama and Athletics in Classical Greece</dc:title>\n<dc:contributor>Sansone,\
+        \ David</dc:contributor>\n<dc:subject>Literature, Classical</dc:subject>\n\
+        <dc:description>277 p.</dc:description>\n<dc:description>Thesis (Ph.D.)--University\
+        \ of Illinois at Urbana-Champaign, 1987.</dc:description>\n<dc:description>The\
+        \ purpose of the dissertation is to argue for a change in the traditional\
+        \ approach to Greek drama and athletics: rather than viewing drama and athletics\
+        \ as essentially unrelated, it is preferable to consider each activity in\
+        \ the light of its relationship with the other.</dc:description>\n<dc:description>Chapter\
+        \ one discusses the festival context in which both drama and athletics operate\
+        \ and shows that the conditions of performance are basically the same: dramatic\
+        \ and athletic victors receive similar prizes and have their victories recorded\
+        \ side by side. The rigid separation of athletic and dramatic/musical performances\
+        \ is artificial; the pyrrich dance, for instance, defies classification under\
+        \ the traditional headings.</dc:description>\n<dc:description>Chapter two\
+        \ examines the element of conflict, the agon, which is at the root of both\
+        \ athletic and dramatic spectacles. The structures of both kinds of performance\
+        \ are similar and four basic analogies are proposed: (1) poet: athlete; (2)\
+        \ dramatic competition: athletic contest; (3) character in drama: athlete;\
+        \ (4) dramatic conflict: athletic contest.</dc:description>\n<dc:description>Chapter\
+        \ three focuses on the texts of Greek tragedy and comedy. Athletic terminology\
+        \ and imagery are very common in most extant plays. Words to do with conflict\
+        \ (the agon), victory, wrestling and running are the most frequently used.</dc:description>\n\
+        <dc:date>2014-12-16T18:37:02Z</dc:date>\n<dc:date>2014-12-16T18:37:02Z</dc:date>\n\
+        <dc:date>1987</dc:date>\n<dc:date>1987</dc:date>\n<dc:date>10000-01-01</dc:date>\n\
+        <dc:type>text</dc:type>\n<dc:identifier>http://hdl.handle.net/2142/71532</dc:identifier>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:www.ideals.illinois.edu:2142/71992</identifier>\n\
+        \                <datestamp>2014-12-23T22:20:55Z</datestamp>\n           \
+        \     <setSpec>com_2142_8887</setSpec>\n                <setSpec>com_2142_234</setSpec>\n\
+        \                <setSpec>com_2142_5130</setSpec>\n                <setSpec>col_2142_8888</setSpec>\n\
+        \                <setSpec>col_2142_5131</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Network and\
+        \ Load Modeling for Power System Dynamic Analysis</dc:title>\n<dc:contributor>Sauer,\
+        \ Peter W.</dc:contributor>\n<dc:subject>Engineering, Electronics and Electrical</dc:subject>\n\
+        <dc:description>204 p.</dc:description>\n<dc:description>Thesis (Ph.D.)--University\
+        \ of Illinois at Urbana-Champaign, 1993.</dc:description>\n<dc:description>This\
+        \ thesis involves the development of network and load models for power system\
+        \ analysis. Traditional power system models consist of detailed generator\
+        \ models and simple network and load models. In the past this has been acceptable\
+        \ as these models captured observed phenomena. These models do not sufficiently\
+        \ describe the system under heavily loaded conditions; in fact, the mathematical\
+        \ equations may not exhibit a solution. This is unacceptable. The problem\
+        \ is that the form of traditional load models is chosen for convenience and\
+        \ is not based on actual load dynamics. In this thesis, network and load models\
+        \ are presented that capture important frequency and voltage dependencies.\
+        \ Conditions on a common class of static load models are given to ensure that\
+        \ the power system algebraic equations will exhibit a solution. An induction\
+        \ motor model is used to justify dynamic load models that appear in the literature\
+        \ and to develop new models. These models are important because they are based\
+        \ on physical motor characteristics. Steady-state, transient, and structural\
+        \ stability studies are performed to examine the effects of different static\
+        \ and induction motor loads.</dc:description>\n<dc:date>2014-12-16T22:23:07Z</dc:date>\n\
+        <dc:date>2014-12-16T22:23:07Z</dc:date>\n<dc:date>1993</dc:date>\n<dc:date>1993</dc:date>\n\
+        <dc:date>10000-01-01</dc:date>\n<dc:type>text</dc:type>\n<dc:identifier>http://hdl.handle.net/2142/71992</dc:identifier>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n    </ListRecords>\n</OAI-PMH>\n"}
+    headers:
+      connection: [Keep-Alive]
+      content-type: [application/xml]
+      date: ['Fri, 24 Apr 2015 14:05:15 GMT']
+      keep-alive: ['timeout=5, max=100']
+      server: [Apache/2.2.15 (Red Hat) mod_ssl/2.2.15 OpenSSL/1.0.1e-fips mod_jk/1.2.32]
+      transfer-encoding: [chunked]
+    status: {code: 200, message: OK}
+version: 1

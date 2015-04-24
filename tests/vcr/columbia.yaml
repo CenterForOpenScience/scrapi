@@ -1,0 +1,139 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
+    method: GET
+    uri: http://academiccommons.columbia.edu/catalog/oai?verb=ListRecords&metadataPrefix=oai_dc&from=2015-03-10T00:00:00Z&until=2015-03-11T00:00:00Z
+  response:
+    body: {string: "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<?xml-stylesheet\
+        \ type=\"text/xsl\" href=\"/assets/oai2.xsl\" ?><OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"\
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
+        http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"\
+        ><responseDate>2015-04-24T13:19:35Z</responseDate><request>http://academiccommons.columbia.edu/catalog/oai</request><ListRecords><record><header><identifier>academiccommons.columbia.edu/ac:184350</identifier><datestamp>2015-03-10T00:00:00Z</datestamp></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\"\
+        ><dc:title>Partial Identification of Finite Mixtures in Econometric Models</dc:title><dc:creator>Henry,\
+        \ Marc</dc:creator><dc:creator>Kitamura, Yuichi</dc:creator><dc:creator>Salanie,\
+        \ Bernard</dc:creator><dc:date>2014</dc:date><dc:type>text</dc:type><dc:subject>Economics</dc:subject><dc:subject>Economic\
+        \ theory</dc:subject><dc:identifier>http://dx.doi.org/10.7916/D8959GD4</dc:identifier><dc:description>We\
+        \ consider partial identification of finite mixture models in the presence\
+        \ of an observable source of variation in the mixture weights that leaves\
+        \ component distributions unchanged, as is the case in large classes of econometric\
+        \ models. We first show that when the number J of component distributions\
+        \ is known a priori, the family of mixture models compatible with the data\
+        \ is a subset of a J(J1)-dimensional space. When the outcome variable is continuous,\
+        \ this subset is defined by linear constraints, which we characterize exactly.\
+        \ Our identifying assumption has testable implications, which we spell out\
+        \ for J=2. We also extend our results to the case when the analyst does not\
+        \ know the true number of component distributions and to models with discrete\
+        \ outcomes. Keywords. Partial identification, finite mixture models. JEL classification.\
+        \ C24.</dc:description><dc:language>English</dc:language></oai_dc:dc></metadata></record><record><header><identifier>academiccommons.columbia.edu/ac:184181</identifier><datestamp>2015-03-10T00:00:00Z</datestamp></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\"\
+        ><dc:title>Early Starters versus Late Beginners</dc:title><dc:creator>Chiappori,\
+        \ Pierre\u2010Andre</dc:creator><dc:creator>Salanie, Bernard</dc:creator><dc:creator>Valentin,\
+        \ Julie</dc:creator><dc:date>1999</dc:date><dc:type>text</dc:type><dc:subject>Economics</dc:subject><dc:subject>Business</dc:subject><dc:subject>Economics,\
+        \ Labor</dc:subject><dc:subject>Political science</dc:subject><dc:identifier>http://dx.doi.org/10.7916/D8HQ3XR3</dc:identifier><dc:description>We\
+        \ consider a model of wage formation characterized by two features, learning\
+        \ and downward rigidity. We show that wages should exhibit a late\u2010beginning\
+        \ property: when one controls for the wage at date t, the wage at date t +\
+        \ 1 should be negatively correlated with the wage at date 6\u20131. We test\
+        \ this property on a sample of about 1,000 executives of a French state\u2010\
+        owned firm whose careers we observe for 15 years. This organization exhibits\
+        \ the features that charecterize internal labor markets; in particular, careers\
+        \ consist of sequences of discrete promotions, a fact that generates specific\
+        \ econometric problems. The results confirm the prediction.</dc:description><dc:language>English</dc:language></oai_dc:dc></metadata></record><record><header><identifier>academiccommons.columbia.edu/ac:184175</identifier><datestamp>2015-03-10T00:00:00Z</datestamp></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\"\
+        ><dc:title>Testing for Asymmetric Information in Insurance Markets</dc:title><dc:creator>Salanie,\
+        \ Bernard</dc:creator><dc:creator>Chiappori, Pierre-Andre</dc:creator><dc:date>2000</dc:date><dc:type>text</dc:type><dc:subject>Economics</dc:subject><dc:subject>Economics,\
+        \ Commerce-Business</dc:subject><dc:subject>Economic theory</dc:subject><dc:subject>Political\
+        \ science</dc:subject><dc:identifier>http://dx.doi.org/10.7916/D81R6PDV</dc:identifier><dc:description>The\
+        \ first goal of this paper is to provide a simple and general test of the\
+        \ presence of asymmetric information in contractual relationships within a\
+        \ competitive context. We also argue that insurance data are particularly\
+        \ well suited to such empirical investigations. To illustrate this claim,\
+        \ we use data on contracts and accidents to investigate the extent of asymmetric\
+        \ information in the French market for automobile insurance. Using various\
+        \ parametric and nonparametric methods, we find no evidence for the presence\
+        \ of asymmetric information in this market.</dc:description><dc:language>English</dc:language></oai_dc:dc></metadata></record><record><header><identifier>academiccommons.columbia.edu/ac:184178</identifier><datestamp>2015-03-10T00:00:00Z</datestamp></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\"\
+        ><dc:title>Estimating Preferences under Risk: The Case of Racetrack Bettors</dc:title><dc:creator>Jullien,\
+        \ Bruno</dc:creator><dc:creator>Salanie, Bernard</dc:creator><dc:date>2000</dc:date><dc:type>text</dc:type><dc:subject>Economics</dc:subject><dc:subject>Economic\
+        \ theory</dc:subject><dc:subject>Statistics</dc:subject><dc:identifier>http://dx.doi.org/10.7916/D8S75F6J</dc:identifier><dc:description>In\
+        \ this paper we investigate the attitudes toward risk of bettors in British\
+        \ horse races. The model we use allows us to go beyond the expected utility\
+        \ framework and to explore various alternative proposals by estimating a multinomial\
+        \ model on a 34,443\u2010race data set. We find that rank\u2010dependent utility\
+        \ models do not fit the data noticeably better than expected utility models.\
+        \ On the other hand, cumulative prospect theory has higher explanatory power.\
+        \ Our preferred estimates suggest a pattern of local risk aversion similar\
+        \ to that proposed by Friedman and Savage.</dc:description><dc:language>English</dc:language></oai_dc:dc></metadata></record><record><header><identifier>academiccommons.columbia.edu/ac:184371</identifier><datestamp>2015-03-10T00:00:00Z</datestamp></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\"\
+        ><dc:title>Asymmetric information in insurance: general testable implications</dc:title><dc:creator>Chiappori,\
+        \ Pierre-Andre</dc:creator><dc:creator>Jullien, Bruno</dc:creator><dc:creator>Salanie,\
+        \ Bernard</dc:creator><dc:creator>Salanie, Francois</dc:creator><dc:date>2006</dc:date><dc:type>text</dc:type><dc:subject>Economics</dc:subject><dc:subject>Economics,\
+        \ Commerce-Business</dc:subject><dc:identifier>http://dx.doi.org/10.7916/D8R78D25</dc:identifier><dc:description>Several\
+        \ recent articles on empirical contract theory and insurance have tested for\
+        \ a positive correlation between coverage and ex post risk, as predicted by\
+        \ standard models of pure adverse selection or pure moral hazard. We show\
+        \ here that the positive correlation property can be extended to general setups:\
+        \ competitive insurance markets and cases where risk aversion is public. We\
+        \ test our results on a French dataset. Our tests confirm that the estimated\
+        \ correlation is positive; they also suggest the presence of market power.</dc:description><dc:language>English</dc:language></oai_dc:dc></metadata></record><record><header><identifier>academiccommons.columbia.edu/ac:184353</identifier><datestamp>2015-03-10T00:00:00Z</datestamp></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\"\
+        ><dc:title>Pr\xE9l\xE8vements et transferts sociaux: une analyse descriptive\
+        \ des incitations financi\xE8res au travail</dc:title><dc:creator>Laroque,\
+        \ Guy</dc:creator><dc:creator>Salanie, Bernard</dc:creator><dc:date>1999</dc:date><dc:type>text</dc:type><dc:subject>Economics</dc:subject><dc:subject>Statistics</dc:subject><dc:subject>Economics,\
+        \ Labor</dc:subject><dc:subject>Social research</dc:subject><dc:identifier>http://dx.doi.org/10.7916/D88914Q2</dc:identifier><dc:description>Un\
+        \ ensemble complexe de pr\xE9l\xE8vements et de transferts sociaux s\u2019\
+        interpose entre la r\xE9mun\xE9ration vers\xE9e aux m\xE9nages et le revenu\
+        \ dont ils disposeront effectivement. D\u2019un c\xF4t\xE9, cotisations sociales,\
+        \ imp\xF4ts et taxes viennent grever ce revenu ; de l\u2019autre, prestations\
+        \ sociales et allocations l\u2019augmentent. Mais le fonctionnement de ce\
+        \ syst\xE8me a des cons\xE9quences variables sur le niveau du revenu disponible\
+        \ d\u2019un m\xE9nage en fonction des caract\xE9ristiques de ce m\xE9nage\
+        \ (situation du conjoint, nombre d\u2019enfants) et du niveau de ses revenus\
+        \ (RMI, bas salaires). Jusqu\u2019\xE0 pr\xE9sent, ce fonctionnement n\u2019\
+        \xE9tait d\xE9crit qu\u2019\xE0 travers l\u2019analyse de cas-types. L\u2019\
+        application de ce syst\xE8me \xE0 un \xE9chantillon repr\xE9sentatif d\u2019\
+        une partie de la population fran\xE7aise (pr\xE8s de 20 millions d\u2019individus)\
+        \ permet, en plus, d\u2019\xE9tudier la r\xE9partition des taux nets de pr\xE9\
+        l\xE8vement dans cette sous-population. Des exercices de simulation r\xE9\
+        alis\xE9s, il ressort que ce sont les m\xE9nages ayant les revenus les plus\
+        \ bas qui ont les taux marginaux de pr\xE9l\xE8vement les plus hauts, ce qui\
+        \ peut avoir pour effet de limiter les effets des incitations financi\xE8\
+        res \xE0 la reprise d\u2019un emploi. En particulier, l\u2019incitation financi\xE8\
+        re \xE0 reprendre un emploi pay\xE9 au Smic para\xEEt faible pour nombre des\
+        \ ch\xF4meurs et des inactifs.</dc:description><dc:language>French</dc:language></oai_dc:dc></metadata></record></ListRecords></OAI-PMH>"}
+    headers:
+      cache-control: ['max-age=0, private, must-revalidate']
+      connection: [keep-alive]
+      content-type: [text/xml; charset=utf-8]
+      date: ['Fri, 24 Apr 2015 13:19:35 GMT']
+      etag: ['"9585c0a1ec359e77a7ad127fcbd57234"']
+      server: [nginx/1.0.11 + Phusion Passenger 3.0.11 (mod_rails/mod_rack)]
+      set-cookie: [_cul-blacklight-ac2_session=BAh7CEkiD3Nlc3Npb25faWQGOgZFRkkiJWNkMmRjNTYwZDE0MzJiZjM5YTkzOTUzZTkyYTdmNGMxBjsAVEkiC3NlYXJjaAY7AEZ7AEkiDGhpc3RvcnkGOwBGWwA%3D--fcec056b0e5238f78f11790c2724c331bc41133a;
+          path=/; HttpOnly]
+      status: ['200']
+      transfer-encoding: [chunked]
+      x-powered-by: [Phusion Passenger (mod_rails/mod_rack) 3.0.11]
+      x-rack-cache: [miss]
+      x-request-id: [e7304710dd26c77e07ea136a1cdf2eb1]
+      x-runtime: ['0.079712']
+      x-ua-compatible: ['IE=Edge,chrome=1']
+    status: {code: 200, message: OK}
+version: 1

@@ -1,7 +1,6 @@
 [run]
 omit =
     scrapi/settings/*
-    scrapi/harvesters/*
 
 [report]
 exclude_lines =
@@ -11,4 +10,3 @@ exclude_lines =
 
 omit =
     scrapi/settings/*
-    scrapi/harvesters/*

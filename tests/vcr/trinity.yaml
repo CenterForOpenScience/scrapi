@@ -1,0 +1,55 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
+    method: GET
+    uri: http://digitalcommons.trinity.edu/do/oai/?verb=ListRecords&metadataPrefix=oai_dc&from=2014-12-24&until=2014-12-25
+  response:
+    body:
+      string: !!binary |
+        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
+    headers:
+      cache-control: [private]
+      connection: [keep-alive]
+      content-encoding: [gzip]
+      content-type: [text/xml; charset=UTF-8]
+      date: ['Fri, 24 Apr 2015 14:05:13 GMT']
+      server: [nginx/1.2.1]
+      set-cookie: [bp_plack_session=27f4631dcccc0d9f04a50c08fbdc93ac7a99f113; path=/;
+          HttpOnly]
+      transfer-encoding: [chunked]
+    status: {code: 200, message: OK}
+version: 1

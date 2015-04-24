@@ -1,0 +1,1628 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
+    method: GET
+    uri: http://cogprints.org/cgi/oai2?verb=ListRecords&metadataPrefix=oai_dc&from=2015-04-19&until=2015-04-20
+  response:
+    body: {string: "<?xml version='1.0' encoding='UTF-8'?>\n<?xml-stylesheet type='text/xsl'\
+        \ href='/oai2.xsl' ?>\n<OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"\
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
+        http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"\
+        >\n  <responseDate>2015-04-24T14:09:44Z</responseDate>\n  <request verb=\"\
+        ListRecords\" until=\"2015-04-20\" from=\"2015-04-19\" metadataPrefix=\"oai_dc\"\
+        >http://cogprints.org/cgi/oai2</request>\n  <ListRecords>\n    <record>\n\
+        \    <header>\n      <identifier>oai:cogprints.org:9686</identifier>\n   \
+        \   <datestamp>2015-04-20T11:45:42Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D6E6575726F:6E6575726F2D6E6575</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Two families with quadrupedalism, mental retardation,\
+        \ no&#13;\nspeech, and infantile hypotonia (Uner Tan Syndrome&#13;\nType-II);\
+        \ a novel theory for the evolutionary emergence of&#13;\nhuman bipedalism</dc:title>\n\
+        \        <dc:creator>Tan, Prof. Dr. Uner</dc:creator>\n        <dc:subject>Neurology</dc:subject>\n\
+        \        <dc:description>Two consanguineous families with Uner Tan Syndrome\
+        \ (UTS) were analyzed in relation to self-organizing processes in complex\
+        \ systems, and the evolutionary emergence of human&#13;\nbipedalism. The cases\
+        \ had the key symptoms of previously reported cases of UTS, such as quadrupedalism,\
+        \ mental retardation, and dysarthric or no speech, but the new cases&#13;\n\
+        also exhibited infantile hypotonia and are designated UTS Type-II. There were\
+        \ 10 siblings in Branch I and 12 siblings in Branch II. Of these, there were\
+        \ seven cases exhibiting habitual quadrupedal locomotion (QL): four deceased\
+        \ and three living. The infantile hypotonia in the&#13;\nsurviving cases gradually\
+        \ disappeared over a period of years, so that they could sit by about 10 years,\
+        \ crawl on hands and knees by about 12 years. They began walking on all fours\
+        \ at around 14 years, habitually using QL. Neurological examinations showed\
+        \ normal tonus in&#13;\ntheir arms and legs, no Babinski sign, brisk tendon\
+        \ re\uFB02exes especially in the legs, and mild tremor. The patients could\
+        \ not walk in a straight line, but (except in one case) could stand up and\
+        \ maintain upright posture with truncal ataxia. Cerebello-vermial hypoplasia\
+        \ and mild gyral simpli\uFB01cation were noted in their MRIs. The results\
+        \ of the genetic analysis were inconclusive: no genetic code could be identi\uFB01\
+        ed as the triggering factor for the syndrome&#13;\nin these families. Instead,\
+        \ the extremely low socio-economic status of the patients was thought to play\
+        \ a role in the emergence of UTS, possibly by epigenetically changing the\
+        \ brain structure and function, with a consequent selection of ancestral neural\
+        \ networks for&#13;\nQL during locomotor development. It was suggested that\
+        \ UTS may be regarded as one of the unpredictable outcomes of self-organization\
+        \ within a complex system. It was also&#13;\nnoted that the prominent feature\
+        \ of this syndrome, the diagonal-sequence habitual QL, generated an interference\
+        \ between ipsilateral hands and feet, as innon-humanprimates. It was suggested\
+        \ that this may have been the triggering factor for the attractor state \u201C\
+        bipedal locomotion\u201D (BL), which had visual and manual bene\uFB01ts for\
+        \ our ape-like ancestors, and therefore enhancing their chances for survival,\
+        \ with consequent developments in the psychomotor domain of humans. This was\
+        \ put forward as a novel theory of the evolution of BL in human beings.</dc:description>\n\
+        \        <dc:publisher>www.frontiers.org</dc:publisher>\n        <dc:contributor>Williams,\
+        \ Dr. J. Michael</dc:contributor>\n        <dc:date>2014</dc:date>\n     \
+        \   <dc:type>Journal (On-line/Unpaginated)</dc:type>\n        <dc:type>PeerReviewed</dc:type>\n\
+        \        <dc:format>application/pdf</dc:format>\n        <dc:identifier>http://cogprints.org/9686/1/UTS%20ARTICLE%20and%20NEW%20THEORY%20on%20EVOLUTION%20OF%20BIPEDALISM%202014.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Tan, Prof. Dr. Uner  (2014) Two families with quadrupedalism,\
+        \ mental retardation, no speech, and infantile hypotonia (Uner Tan Syndrome\
+        \ Type-II); a novel theory for the evolutionary emergence of human bipedalism.\
+        \  [Journal (On-line/Unpaginated)]     </dc:identifier>\n        <dc:relation>http://cogprints.org/9686/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9688</identifier>\n\
+        \      <datestamp>2015-04-20T11:45:35Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Evaluation of Supplementary Nutrition Activities under\
+        \ Integrated Child Development Services (ICDS) at Anganwadi Centres of Different\
+        \ Districts of Gujarat</dc:title>\n        <dc:creator>Chudasama, RK</dc:creator>\n\
+        \        <dc:creator>Kadri, AM</dc:creator>\n        <dc:creator>Joshi, N</dc:creator>\n\
+        \        <dc:creator>Bhola, C</dc:creator>\n        <dc:creator>Zalavadiya,\
+        \ D</dc:creator>\n        <dc:creator>Vala, M</dc:creator>\n        <dc:subject>Online\
+        \ Journal of Health and Allied Sciences</dc:subject>\n        <dc:description>The\
+        \ ICDS program aims at enhancing survival and development of children from\
+        \ the vulnerable sections of the society. The present study was conducted\
+        \ to assess supplementary nutrition (SN) activities and its related issues\
+        \ at anganwadi centres. Material and methods: Total 60 anganwadi centres were\
+        \ selected including 46 anganwadi centres (AWCs) from rural area and 14 AWCs\
+        \ from urban area during April 2012 to March 2013 from 12 districts of Gujarat.\
+        \ Five AWCs were selected from one district randomly. Detailed information\
+        \ was collected related to beneficiary\u2019s coverage for SN, type of food\
+        \ provided under SN, and various issues related to supplementary nutrition\
+        \ at anganwadi centres. Results: High coverage of receiving SN among enrolled\
+        \ was reported in pregnant mothers (88.3%), lactating mothers (91.7%) and\
+        \ adolescents (86.7%).  Only 25% AWCs were providing hot cooked food (HCF)\
+        \ to 3 to 6 years children. Less than half of the AWCs were providing ready\
+        \ to eat (RTE) food to 6 months to 3 years children (48.3%), pregnant (46.7%)\
+        \ and lactating (46.7%) mothers, and adolescents (45.0%). Total 38.3% AWCs\
+        \ reported shortage of SN supply, more in rural (41.3%) compare to urban (28.6%).\
+        \ Various problems were reported by anganwadi workers related to SN like lack\
+        \ of storage facility, non availability of separate kitchen, poor quality\
+        \ of food, irregular supply, inadequate supply, and fuel problem. Conclusion:\
+        \ The regular and adequate supply of SN will improve the provision of hot\
+        \ cooked food, ready to eat food and take home ration to the beneficiaries\
+        \ as per the norms, leading to improvement of overall nutritional status of\
+        \ the community. </dc:description>\n        <dc:publisher>Kakkilaya BS</dc:publisher>\n\
+        \        <dc:contributor>Kakkilaya, Dr Srinivas</dc:contributor>\n       \
+        \ <dc:date>2013-11-15</dc:date>\n        <dc:type>Journal (On-line/Unpaginated)</dc:type>\n\
+        \        <dc:type>PeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9688/1/2013-3-1.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Chudasama, RK and Kadri, AM and Joshi, N and Bhola,\
+        \ C and Zalavadiya, D and Vala, M  (2013) Evaluation of Supplementary Nutrition\
+        \ Activities under Integrated Child Development Services (ICDS) at Anganwadi\
+        \ Centres of Different Districts of Gujarat.  [Journal (On-line/Unpaginated)]\
+        \     </dc:identifier>\n        <dc:relation>http://cogprints.org/9688/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9689</identifier>\n\
+        \      <datestamp>2015-04-20T11:45:29Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Determinants and Associated Disability of Leprosy Patients\
+        \ Attending GMLF, Sevagram</dc:title>\n        <dc:creator>Khapre, MP</dc:creator>\n\
+        \        <dc:creator>Mudey, A</dc:creator>\n        <dc:creator>Meshram, R</dc:creator>\n\
+        \        <dc:creator>Naik, AR</dc:creator>\n        <dc:creator>Wagh, V</dc:creator>\n\
+        \        <dc:subject>Online Journal of Health and Allied Sciences</dc:subject>\n\
+        \        <dc:description>Background: Leprosy, as an oldest disease known to\
+        \ a man and already eliminated from India in 2005, still poses a public health\
+        \ problem with steady new case detection rate. Method: The present study was\
+        \ carried out in Gandhi memorial leprosy foundation, Wardha, with the aim\
+        \ to find out proportion of multibacillary leprosy cases and various grading\
+        \ of disability and factors associated with it in this part of country. All\
+        \ the successive new OPD patients were included in study and examined for\
+        \ type of leprosy and grade of disability if present. Analysis done by Descriptive\
+        \ statistics. Result: 66 % had multibacillary type of leprosy and 44 % the\
+        \ disability. Higher age group, females, illiterate and less educated, unskilled\
+        \ and low income group were mostly affected. Conclusion: high proportion of\
+        \ multibacillary cases and disabilities reflects the need for active thrust\
+        \ to identify new cases.</dc:description>\n        <dc:publisher>Kakkilaya\
+        \ BS</dc:publisher>\n        <dc:contributor>Kakkilaya, Dr Srinivas</dc:contributor>\n\
+        \        <dc:date>2013-11-15</dc:date>\n        <dc:type>Journal (On-line/Unpaginated)</dc:type>\n\
+        \        <dc:type>PeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9689/1/2013-3-2.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Khapre, MP and Mudey, A and Meshram, R and Naik,\
+        \ AR and Wagh, V  (2013) Determinants and Associated Disability of Leprosy\
+        \ Patients Attending GMLF, Sevagram.  [Journal (On-line/Unpaginated)]    \
+        \ </dc:identifier>\n        <dc:relation>http://cogprints.org/9689/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9690</identifier>\n\
+        \      <datestamp>2015-04-20T11:45:23Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Healthcare Seeking Behaviour for Symptoms of Reproductive\
+        \ Tract Infections among Rural Married Women in Tamil Nadu - A Community Based\
+        \ Study</dc:title>\n        <dc:creator>Mani, G</dc:creator>\n        <dc:creator>Annadurai,\
+        \ K</dc:creator>\n        <dc:creator>Danasekaran, R</dc:creator>\n      \
+        \  <dc:subject>Online Journal of Health and Allied Sciences</dc:subject>\n\
+        \        <dc:description>Introduction: Reproductive tract infections including\
+        \ sexually transmitted infections (RTI/STIs) are problems of public health\
+        \ priority compromising the reproductive health of women especially in developing\
+        \ countries. The problem is compounded by the poor health care seeking behaviour\
+        \ among women due to lack of awareness and sociocultural factors. Objectives:\
+        \ This study is an attempt to assess the health care seeking behaviour of\
+        \ women reporting RTI symptoms in a rural area of Tamil Nadu state of India\
+        \ and to examine the association of background sociodemographic characteristics\
+        \ with Health care seeking behaviour. Methodology: This was a cross sectional,\
+        \ descriptive study conducted between March to November 2011, among married\
+        \ women aged 18-45 years in a rural area of Kancheepuram district, Tamil Nadu\
+        \ in India. The required sample size was chosen by simple random sampling.\
+        \ The participants were administered a standardized, semi-structured schedule.\
+        \ Results: 520 women participated in the study. 173 women (33.3%) of women\
+        \ reported experiencing symptoms of RTI/STI in the past 12 months. Only 51.45%\
+        \ of those who had RTI/STI symptoms sought health care. Private health care\
+        \ facility was preferred by nearly two-thirds. The health care seeking behaviour\
+        \ showed significant association with age group of women, religion, occupational\
+        \ status, type of family and socioeconomic status. Conclusion: There is a\
+        \ need for increasing awareness among women regarding RTI/STIs and their sequelae.\
+        \ Targeted health education programmes should be necessary to improve health\
+        \ care seeking among women.</dc:description>\n        <dc:publisher>Kakkilaya\
+        \ BS</dc:publisher>\n        <dc:contributor>Kakkilaya, Dr Srinivas</dc:contributor>\n\
+        \        <dc:date>2013-11-15</dc:date>\n        <dc:type>Journal (On-line/Unpaginated)</dc:type>\n\
+        \        <dc:type>PeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9690/1/2013-3-3.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Mani, G and Annadurai, K and Danasekaran, R  (2013)\
+        \ Healthcare Seeking Behaviour for Symptoms of Reproductive Tract Infections\
+        \ among Rural Married Women in Tamil Nadu - A Community Based Study.  [Journal\
+        \ (On-line/Unpaginated)]     </dc:identifier>\n        <dc:relation>http://cogprints.org/9690/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9691</identifier>\n\
+        \      <datestamp>2015-04-20T11:45:19Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Attitude and Myths Towards Rape among Medical Students\
+        \ in Rajkot, India</dc:title>\n        <dc:creator>Chudasama, RK</dc:creator>\n\
+        \        <dc:creator>Kadri, AM</dc:creator>\n        <dc:creator>Zalavadiya,\
+        \ D</dc:creator>\n        <dc:creator>Joshi, N</dc:creator>\n        <dc:creator>Bhola,\
+        \ C</dc:creator>\n        <dc:creator>Verma, M</dc:creator>\n        <dc:subject>Online\
+        \ Journal of Health and Allied Sciences</dc:subject>\n        <dc:description>Background:\
+        \ Violence against women takes many forms \u2013 physical, sexual, psychological\
+        \ and economic. Violence against women harms families and communities across\
+        \ generations and reinforces other violence prevalent in society. Rape myths\
+        \ encompass a set of (false) beliefs about rape that places the blame on the\
+        \ victim and not the perpetrator. Objective: to assess the prevailing attitudes\
+        \ on rape myths among the medical students. Methods: The study was conducted\
+        \ after taking informed consent among 346 undergraduate medical students of\
+        \ P D U Government Medical College, Rajkot, India from January to June, 2013\
+        \ by using previously validated questionnaire using updated Illinois Rape\
+        \ Myth Acceptance Scale. Results: The age range of 346 medical students was\
+        \ 17 to 23 years with 172 male and 174 female students. Total 24.4% male and\
+        \ 23% female students had very good positive attitude. One fourth of male\
+        \ and one fifth of female students had a more negative attitude. No relation\
+        \ was observed for rape myth acceptance among medical students for residential\
+        \ or socio-economic status. Conclusion: The present study provides insight\
+        \ to the prevalence of attitude and rape myths towards rape among medical\
+        \ students. Introduction of education on gender violence with introduction\
+        \ of courses on \u2018sexual violence\u2019 in medical curriculum may help\
+        \ to decrease rape incidence and for better management of victims.</dc:description>\n\
+        \        <dc:publisher>Kakkilaya BS</dc:publisher>\n        <dc:contributor>Kakkilaya,\
+        \ Dr Srinivas</dc:contributor>\n        <dc:date>2013-11-15</dc:date>\n  \
+        \      <dc:type>Journal (On-line/Unpaginated)</dc:type>\n        <dc:type>PeerReviewed</dc:type>\n\
+        \        <dc:format>application/pdf</dc:format>\n        <dc:identifier>http://cogprints.org/9691/1/2013-3-4.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Chudasama, RK and Kadri, AM and Zalavadiya, D and\
+        \ Joshi, N and Bhola, C and Verma, M  (2013) Attitude and Myths Towards Rape\
+        \ among Medical Students in Rajkot, India.  [Journal (On-line/Unpaginated)]\
+        \     </dc:identifier>\n        <dc:relation>http://cogprints.org/9691/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9695</identifier>\n\
+        \      <datestamp>2015-04-20T11:45:14Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Type A Dissection Presenting as a Double Aortic Valve</dc:title>\n\
+        \        <dc:creator>Raval, J</dc:creator>\n        <dc:creator>Nagaraja,\
+        \ V</dc:creator>\n        <dc:creator>Fahmy, PNA</dc:creator>\n        <dc:creator>Denniss,\
+        \ AR</dc:creator>\n        <dc:subject>Online Journal of Health and Allied\
+        \ Sciences</dc:subject>\n        <dc:description>We report a case of spontaneous\
+        \ aortic root dissection in a middle-aged male without history of recent trauma,\
+        \ mimicking double aortic valve on the echocardiogram which extended to the\
+        \ right brachiocephalic artery. The patient immediately underwent Bentall\
+        \ procedure.</dc:description>\n        <dc:publisher>Kakkilaya BS</dc:publisher>\n\
+        \        <dc:contributor>Kakkilaya, Dr Srinivas</dc:contributor>\n       \
+        \ <dc:date>2013-11-15</dc:date>\n        <dc:type>Journal (On-line/Unpaginated)</dc:type>\n\
+        \        <dc:type>PeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9695/1/2013-3-8.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Raval, J and Nagaraja, V and Fahmy, PNA and Denniss,\
+        \ AR  (2013) Type A Dissection Presenting as a Double Aortic Valve.  [Journal\
+        \ (On-line/Unpaginated)]     </dc:identifier>\n        <dc:relation>http://cogprints.org/9695/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9696</identifier>\n\
+        \      <datestamp>2015-04-20T11:45:09Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Removal of Open Safety Pin in Larynx: A Challenging Event\
+        \ for an Otolaryngologist</dc:title>\n        <dc:creator>Kumar, A</dc:creator>\n\
+        \        <dc:creator>Dubey, KP</dc:creator>\n        <dc:creator>Gupta, A</dc:creator>\n\
+        \        <dc:creator>Baruah, B</dc:creator>\n        <dc:subject>Online Journal\
+        \ of Health and Allied Sciences</dc:subject>\n        <dc:description>Inhalation\
+        \ of foreign body is a serious event. The numbers of foreign bodies that become\
+        \ impacted in the larynx are small and require urgent recognition. We describe\
+        \ the case of a 12 year old girl with an impacted open safety pin in the larynx.\
+        \ The sharp end of the safety pin was upward, below the level of the vocal\
+        \ cords and had pierced the soft tissue. Tracheostomy was required to secure\
+        \ the airway and the child had an uneventful recovery. We discuss the management\
+        \ and describe our method of removal of the foreign body with a brief review\
+        \ of literature.</dc:description>\n        <dc:publisher>Kakkilaya BS</dc:publisher>\n\
+        \        <dc:contributor>Kakkilaya, Dr Srinivas</dc:contributor>\n       \
+        \ <dc:date>2013-11-15</dc:date>\n        <dc:type>Journal (On-line/Unpaginated)</dc:type>\n\
+        \        <dc:type>PeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9696/1/2013-3-9.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Kumar, A and Dubey, KP and Gupta, A and Baruah,\
+        \ B  (2013) Removal of Open Safety Pin in Larynx: A Challenging Event for\
+        \ an Otolaryngologist.  [Journal (On-line/Unpaginated)]     </dc:identifier>\n\
+        \        <dc:relation>http://cogprints.org/9696/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9697</identifier>\n\
+        \      <datestamp>2015-04-20T11:45:04Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Variant Musculo-tendinous Slip between Teres major and\
+        \ Triceps brachii</dc:title>\n        <dc:creator>Quadros, LS</dc:creator>\n\
+        \        <dc:creator>Babu, A</dc:creator>\n        <dc:creator>Bhat, N</dc:creator>\n\
+        \        <dc:creator>Ankolekar, VH</dc:creator>\n        <dc:creator>D'souza,\
+        \ AS</dc:creator>\n        <dc:subject>Online Journal of Health and Allied\
+        \ Sciences</dc:subject>\n        <dc:description>A variation of the muscles\
+        \ of the scapular region is a very rare finding. During the routine dissection\
+        \ for the undergraduates, a variant short musculo-tendinous slip in between\
+        \ the teres major and the long head of triceps brachii muscles was seen. This\
+        \ slip could cause compression of the underlying brachial vessels and the\
+        \ cords of brachial plexus. Therefore this type of variation is worthy of\
+        \ being noted by the surgeons.</dc:description>\n        <dc:publisher>Kakkilaya\
+        \ BS</dc:publisher>\n        <dc:contributor>Kakkilaya, Dr Srinivas</dc:contributor>\n\
+        \        <dc:date>2013-11-15</dc:date>\n        <dc:type>Journal (On-line/Unpaginated)</dc:type>\n\
+        \        <dc:type>PeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9697/1/2013-3-10.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Quadros, LS and Babu, A and Bhat, N and Ankolekar,\
+        \ VH and D'souza, AS  (2013) Variant Musculo-tendinous Slip between Teres\
+        \ major and Triceps brachii.  [Journal (On-line/Unpaginated)]     </dc:identifier>\n\
+        \        <dc:relation>http://cogprints.org/9697/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9698</identifier>\n\
+        \      <datestamp>2015-04-20T11:44:59Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>A Rare Case of Gastric Carcinoma with Oral Metastasis</dc:title>\n\
+        \        <dc:creator>Manjunath, KV</dc:creator>\n        <dc:creator>Guruprasad,\
+        \ B</dc:creator>\n        <dc:subject>Online Journal of Health and Allied\
+        \ Sciences</dc:subject>\n        <dc:description>Oral region is an uncommon\
+        \ site for metastatic tumour cell colonization and usually evidence of wide\
+        \ spread disease, It accounts for only 1% of all oral malignant neoplasm\u2019\
+        s. They mainly involve the bony structures (particularly the mandible), whereas\
+        \ primary metastases to soft tissues are extraordinarily rare (only 0.1% of\
+        \ oral malignancies). The breast is the most common primary site for tumors\
+        \ that metastasize to the jawbones, whereas the lung is the most common source\
+        \ for cancers that metastasize to the oral soft tissues. We are reporting\
+        \ an extremely rare case of carcinoma stomach with oral soft tissue metastatic\
+        \ lesion in the upper alveolar ridge extending to involving the upper labial\
+        \ mucosa extending up to the premolars on right side on the gingio- buccal\
+        \ sulcus.</dc:description>\n        <dc:publisher>Kakkilaya BS</dc:publisher>\n\
+        \        <dc:contributor>Kakkilaya, Dr Srinivas</dc:contributor>\n       \
+        \ <dc:date>2013-11-13</dc:date>\n        <dc:type>Journal (On-line/Unpaginated)</dc:type>\n\
+        \        <dc:type>PeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9698/1/2013-3-11.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Manjunath, KV and Guruprasad, B  (2013) A Rare Case\
+        \ of Gastric Carcinoma with Oral Metastasis.  [Journal (On-line/Unpaginated)]\
+        \     </dc:identifier>\n        <dc:relation>http://cogprints.org/9698/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9699</identifier>\n\
+        \      <datestamp>2015-04-20T11:44:54Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Meningeal Hemangiopericytoma of Brain: Role of Radiation\
+        \ Therapy</dc:title>\n        <dc:creator>Kaur, P</dc:creator>\n        <dc:creator>Khurana,\
+        \ A</dc:creator>\n        <dc:creator>Chauhan, AK</dc:creator>\n        <dc:creator>Singh,\
+        \ G</dc:creator>\n        <dc:creator>Singh, S</dc:creator>\n        <dc:subject>Online\
+        \ Journal of Health and Allied Sciences</dc:subject>\n        <dc:description>Hemangiopericytoma\
+        \ is an uncommon vascular tumour. Complete surgical resection is treatment\
+        \ of choice. However, late local recurrences and distant extraneural metastases\
+        \ ranging from 12% to 57% are reported in literature after complete removal.\
+        \ Post operative radiotherapy is indicated in unresectable or incompletely\
+        \ excised tumour. We present a case of meningeal hemangiopericytoma in a 60\
+        \ years old female patient treated with surgery and adjuvant radiotherapy.\
+        \ There is no evidence of disease at primary site and no sign or symptoms\
+        \ of metastatic disease in the patient after three years.</dc:description>\n\
+        \        <dc:publisher>Kakkilaya BS</dc:publisher>\n        <dc:contributor>Kakkilaya,\
+        \ Dr Srinivas</dc:contributor>\n        <dc:date>2013-11-15</dc:date>\n  \
+        \      <dc:type>Journal (On-line/Unpaginated)</dc:type>\n        <dc:type>PeerReviewed</dc:type>\n\
+        \        <dc:format>application/pdf</dc:format>\n        <dc:identifier>http://cogprints.org/9699/1/2013-3-12.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Kaur, P and Khurana, A and Chauhan, AK and Singh,\
+        \ G and Singh, S  (2013) Meningeal Hemangiopericytoma of Brain: Role of Radiation\
+        \ Therapy.  [Journal (On-line/Unpaginated)]     </dc:identifier>\n       \
+        \ <dc:relation>http://cogprints.org/9699/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9700</identifier>\n\
+        \      <datestamp>2015-04-20T11:44:50Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Spontaneous Bacterial Peritonitis in Subclinical Hypothyroidism</dc:title>\n\
+        \        <dc:creator>Gupta, D</dc:creator>\n        <dc:creator>Thakur, P</dc:creator>\n\
+        \        <dc:creator>Chabra, V</dc:creator>\n        <dc:creator>Kapur, G</dc:creator>\n\
+        \        <dc:creator>Sondhi, S</dc:creator>\n        <dc:subject>Online Journal\
+        \ of Health and Allied Sciences</dc:subject>\n        <dc:description>Hypothyroidism\
+        \ is an uncommon cause of ascites. Here we describe a case of a 75 year-old\
+        \ female patient with spontaneous bacterial peritonitis and subclinical hypothyroidism\
+        \ that resolved with thyroid replacement and antibiotic therapy respectively.\
+        \ Ascitic fluid analysis revealed a gram-positive bacterium on gram staining.\
+        \ A review of the literature revealed just one other reported case of myxoedema\
+        \ ascites with concomitant spontaneous bacterial peritonitis and no case has\
+        \ till been reported of spontaneous bacterial peritonitis in subclinical hypothyroidism.</dc:description>\n\
+        \        <dc:publisher>Kakkilaya BS</dc:publisher>\n        <dc:contributor>Kakkilaya,\
+        \ Dr Srinivas</dc:contributor>\n        <dc:date>2013-11-15</dc:date>\n  \
+        \      <dc:type>Journal (On-line/Unpaginated)</dc:type>\n        <dc:type>PeerReviewed</dc:type>\n\
+        \        <dc:format>application/pdf</dc:format>\n        <dc:identifier>http://cogprints.org/9700/1/2013-3-13.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Gupta, D and Thakur, P and Chabra, V and Kapur,\
+        \ G and Sondhi, S  (2013) Spontaneous Bacterial Peritonitis in Subclinical\
+        \ Hypothyroidism.  [Journal (On-line/Unpaginated)]     </dc:identifier>\n\
+        \        <dc:relation>http://cogprints.org/9700/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9701</identifier>\n\
+        \      <datestamp>2015-04-20T11:44:45Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Cytomorphological Diagnosis of Giant Cell Tumour of Distal\
+        \ End Radius in Elderly Patient</dc:title>\n        <dc:creator>Bagale, P</dc:creator>\n\
+        \        <dc:creator>Suryawanshi, K</dc:creator>\n        <dc:creator>Gadre,\
+        \ AS</dc:creator>\n        <dc:creator>Dravid, NV</dc:creator>\n        <dc:creator>Tayade,\
+        \ Y</dc:creator>\n        <dc:subject>Online Journal of Health and Allied\
+        \ Sciences</dc:subject>\n        <dc:description>Giant cell tumours (GCTs)\
+        \ of bone have been described as the most challenging benign bone tumors.\
+        \ It is very unusual for GCT to occur in patients younger than 20 yrs or older\
+        \ than 55 years. GCT is seen with a slightly increased frequency in females.\
+        \ The typical giant cell tumor (GCT) is a solitary neoplasm that occurs in\
+        \ the epiphysis or metaphysis of long bones. The most common sites include\
+        \ the distal femur, proximal tibia and distal radius. The sacrum, distal tibia,\
+        \ proximal humerus, proximal femur, pelvis and proximal fibula are not infrequent\
+        \ sites. Here we report cytologically diagnosed case of GCT distal end radius\
+        \ in 75 yrs male patient. We discuss its clinicopathologic features, differential\
+        \ diagnosis and its optimal treatment.</dc:description>\n        <dc:publisher>Kakkilaya\
+        \ BS</dc:publisher>\n        <dc:contributor>Kakkilaya, Dr Srinivas</dc:contributor>\n\
+        \        <dc:date>2013-11-15</dc:date>\n        <dc:type>Journal (On-line/Unpaginated)</dc:type>\n\
+        \        <dc:type>PeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9701/1/2013-3-14.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Bagale, P and Suryawanshi, K and Gadre, AS and Dravid,\
+        \ NV and Tayade, Y  (2013) Cytomorphological Diagnosis of Giant Cell Tumour\
+        \ of Distal End Radius in Elderly Patient.  [Journal (On-line/Unpaginated)]\
+        \     </dc:identifier>\n        <dc:relation>http://cogprints.org/9701/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9702</identifier>\n\
+        \      <datestamp>2015-04-20T11:44:40Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Ocular Surface Squamous Neoplasia in Xeroderma Pigmentosum</dc:title>\n\
+        \        <dc:creator>Nayak, RR</dc:creator>\n        <dc:creator>Kamath, GM</dc:creator>\n\
+        \        <dc:creator>Kamath, MM</dc:creator>\n        <dc:creator>Kamath,\
+        \ AR</dc:creator>\n        <dc:creator>D'Souza, S</dc:creator>\n        <dc:subject>Online\
+        \ Journal of Health and Allied Sciences</dc:subject>\n        <dc:description>Xeroderma\
+        \ pigmentosum (XP) is a rare genetic disorder associated with multiple oculocutaneous\
+        \ and neurological manifestations. It occurs due to deficiency of the enzymes\
+        \ responsible for repairing ultraviolet radiation-induced DNA damage. Persistence\
+        \ of un-repaired DNA results in somatic mutations, leading to neoplasia of\
+        \ the skin and ocular surface. As this condition is rare, only isolated case\
+        \ reports of XP with ocular surface squamous neoplasia (OSSN) are found in\
+        \ literature. </dc:description>\n        <dc:publisher>Kakkilaya BS</dc:publisher>\n\
+        \        <dc:contributor>Kakkilaya, Dr Srinivas</dc:contributor>\n       \
+        \ <dc:date>2013-11-15</dc:date>\n        <dc:type>Journal (On-line/Unpaginated)</dc:type>\n\
+        \        <dc:type>PeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9702/1/2013-3-15.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Nayak, RR and Kamath, GM and Kamath, MM and Kamath,\
+        \ AR and D'Souza, S  (2013) Ocular Surface Squamous Neoplasia in Xeroderma\
+        \ Pigmentosum.  [Journal (On-line/Unpaginated)]     </dc:identifier>\n   \
+        \     <dc:relation>http://cogprints.org/9702/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9703</identifier>\n\
+        \      <datestamp>2015-04-20T11:44:35Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Hirayama Disease - A Variant of Motor Neuron Disease\
+        \ and Role of Flexion MRI in Diagnosis</dc:title>\n        <dc:creator>Mahajan,\
+        \ SK</dc:creator>\n        <dc:creator>Kaushik, M</dc:creator>\n        <dc:creator>Raina,\
+        \ R</dc:creator>\n        <dc:creator>Sharath Babu, NM</dc:creator>\n    \
+        \    <dc:creator>Raghav, S</dc:creator>\n        <dc:subject>Online Journal\
+        \ of Health and Allied Sciences</dc:subject>\n        <dc:description>Hirayama\
+        \ disease is a monomyelic variant of motor neuron disease (MND) and has distinctive\
+        \ features of male predominance, asymmetric involvement of upper extremities\
+        \ with a self limiting course. Flexion MRI (magnetic resonance imaging) forms\
+        \ the main stay for diagnosis of this condition. Here we report such an unusual\
+        \ case of Hirayama disease in a male patient of 20 years who presented with\
+        \ weakness and atrophy in right upper limb. Careful clinical examination will\
+        \ help to use the flexion MRI studies for the diagnosis of this condition\
+        \ as done in our case.</dc:description>\n        <dc:publisher>Kakkilaya BS</dc:publisher>\n\
+        \        <dc:contributor>Kakkilaya, Dr Srinivas</dc:contributor>\n       \
+        \ <dc:date>2013-11-15</dc:date>\n        <dc:type>Journal (On-line/Unpaginated)</dc:type>\n\
+        \        <dc:type>PeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9703/1/2013-3-16.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Mahajan, SK and Kaushik, M and Raina, R and Sharath\
+        \ Babu, NM and Raghav, S  (2013) Hirayama Disease - A Variant of Motor Neuron\
+        \ Disease and Role of Flexion MRI in Diagnosis.  [Journal (On-line/Unpaginated)]\
+        \     </dc:identifier>\n        <dc:relation>http://cogprints.org/9703/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9704</identifier>\n\
+        \      <datestamp>2015-04-20T11:44:30Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Brunner Gland Hamartoma: A Rare Incidental Finding on\
+        \ Autopsy</dc:title>\n        <dc:creator>Jayker, SS</dc:creator>\n      \
+        \  <dc:creator>Surhonne, SP</dc:creator>\n        <dc:creator>Rajaram, T</dc:creator>\n\
+        \        <dc:subject>Online Journal of Health and Allied Sciences</dc:subject>\n\
+        \        <dc:description>Brunner gland hamartoma (BGH), is a very rare benign\
+        \ tumor of the duodenum. It is usually asymptomatic and detected incidentally\
+        \ by endoscopy or other imaging modality. But, the definitive diagnosis is\
+        \ only by histopathological examination. We report an autopsy case in which\
+        \ a duodenal mass was found incidentally which was then confirmed histologically\
+        \ as Brunner gland hamartoma and the cause of death in this case was cerebral\
+        \ haemorrhage.</dc:description>\n        <dc:publisher>Kakkilaya BS</dc:publisher>\n\
+        \        <dc:contributor>Kakkilaya, Dr Srinivas</dc:contributor>\n       \
+        \ <dc:date>2013-11-15</dc:date>\n        <dc:type>Journal (On-line/Unpaginated)</dc:type>\n\
+        \        <dc:type>PeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9704/1/2013-3-17.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Jayker, SS and Surhonne, SP and Rajaram, T  (2013)\
+        \ Brunner Gland Hamartoma: A Rare Incidental Finding on Autopsy.  [Journal\
+        \ (On-line/Unpaginated)]     </dc:identifier>\n        <dc:relation>http://cogprints.org/9704/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9705</identifier>\n\
+        \      <datestamp>2015-04-20T11:44:26Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Atypical Presentation of Mollaret\u2019s Meningitis</dc:title>\n\
+        \        <dc:creator>Hassan, M</dc:creator>\n        <dc:creator>Amer, S</dc:creator>\n\
+        \        <dc:creator>Sklar, L</dc:creator>\n        <dc:creator>Hassan, S</dc:creator>\n\
+        \        <dc:subject>Online Journal of Health and Allied Sciences</dc:subject>\n\
+        \        <dc:description>Mollaret\u2019s meningitis is mostly described in\
+        \ the setting of recurrent attacks of fever along with signs and symptoms\
+        \ of meningitis. It resolves spontaneously without any treatment and in most\
+        \ of the cases no causative organism is identified. Here we present an atypical\
+        \ case of mollaret\u2019s meningitis in which the patient presented with headache\
+        \ and meningismus in the absence of fever.</dc:description>\n        <dc:publisher>Kakkilaya\
+        \ BS</dc:publisher>\n        <dc:contributor>Kakkilaya, Dr Srinivas</dc:contributor>\n\
+        \        <dc:date>2013-11-15</dc:date>\n        <dc:type>Journal (On-line/Unpaginated)</dc:type>\n\
+        \        <dc:type>PeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9705/1/2013-3-18.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Hassan, M and Amer, S and Sklar, L and Hassan, S\
+        \  (2013) Atypical Presentation of Mollaret\u2019s Meningitis.  [Journal (On-line/Unpaginated)]\
+        \     </dc:identifier>\n        <dc:relation>http://cogprints.org/9705/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9706</identifier>\n\
+        \      <datestamp>2015-04-20T11:44:21Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Vigorous Oil Massage in a Neonate: Cause for Fracture</dc:title>\n\
+        \        <dc:creator>Sowmya, SG</dc:creator>\n        <dc:creator>Avabratha,\
+        \ KS</dc:creator>\n        <dc:creator>Rai, BS</dc:creator>\n        <dc:subject>Online\
+        \ Journal of Health and Allied Sciences</dc:subject>\n        <dc:description>Massaging\
+        \ the newborn has been a tradition in India and other Asian countries since\
+        \ time immemorial. There are many benefits of traditional oil massage. Although\
+        \ considered as a safe practice with no significant harmful effects, rarely\
+        \ if performed improperly baby may end up having adverse effects like fracture.\
+        \ We report a forearm fracture in a neonate following vigorous oil massage.\
+        \ A 15 days old male baby was brought with the complaints of reduced movement,\
+        \ pain and swelling in right forearm of one day duration. The baby was born\
+        \ full term to a non consanguineous parent. His birth weight was 3.12kg and\
+        \ APGAR score was good. Post natal period was uneventful except for neonatal\
+        \ hyperbilirubinemia for which he had received phototherapy. At home he was\
+        \ getting daily oil massage and bath by traditional techniques. On examination\
+        \ there was diffuse, tender swelling on the ventral aspect of right forearm\
+        \ which was firm in consistency and there was paucity of movement. X ray revealed\
+        \ fracture of proximal radius and middle third of ulna. Skeletal survey did\
+        \ not reveal any other fracture. Baby was treated with a short arm, below\
+        \ the elbow cast. Absence of family history and no other bone involvement\
+        \ made osteogenesis imperfecta and child abuse less likely. In conclusion\
+        \ simple causes like oil massage also to be kept in mind in dealing with neonatal\
+        \ fractures.</dc:description>\n        <dc:publisher>Kakkilaya BS</dc:publisher>\n\
+        \        <dc:contributor>Kakkilaya, Dr Srinivas</dc:contributor>\n       \
+        \ <dc:date>2013-11-15</dc:date>\n        <dc:type>Journal (On-line/Unpaginated)</dc:type>\n\
+        \        <dc:type>PeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9706/1/2013-3-19.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Sowmya, SG and Avabratha, KS and Rai, BS  (2013)\
+        \ Vigorous Oil Massage in a Neonate: Cause for Fracture.  [Journal (On-line/Unpaginated)]\
+        \     </dc:identifier>\n        <dc:relation>http://cogprints.org/9706/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9708</identifier>\n\
+        \      <datestamp>2015-04-20T11:44:16Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53</setSpec>\n      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Assessment of Functioning of Village Health and Sanitation\
+        \ Committees (VHSCs) of Indore District</dc:title>\n        <dc:creator>Malviya,\
+        \ A</dc:creator>\n        <dc:creator>Dixit, S</dc:creator>\n        <dc:creator>Bhagwat,\
+        \ AK</dc:creator>\n        <dc:creator>Bansal, SB</dc:creator>\n        <dc:creator>Khatri,\
+        \ AK</dc:creator>\n        <dc:subject>JOURNALS</dc:subject>\n        <dc:subject>Online\
+        \ Journal of Health and Allied Sciences</dc:subject>\n        <dc:description>Background:\
+        \ The NRHM framework of implementation mentions provision of Village Health\
+        \ and Sanitation Committee (VHSC) in each revenue village that has to be formed\
+        \ within the overall framework of Panchayati Raj Institution (PRI). Objective:\
+        \ To review the current status of formation, training and functioning of VHSCs\
+        \ in Indore district and mechanism of utilization of united funds in these\
+        \ VHSCs. Materials and Methods: A cross sectional study was carried out in\
+        \ 32 villages, of four blocks of Indore district. Different stakeholders of\
+        \ VHSCs of these 32 villages were included purposively as study subjects.\
+        \ Data was collected using predesigned, pretested semi structured questionnaires\
+        \ and checklist. Total of 133 interviews of different stakeholders and 32\
+        \ record reviews were carried out. The quantitative data collected by interviews\
+        \ and record reviews was analyzed by SPSS software and qualitative data was\
+        \ analyzed manually using qualifier. Results: Significant association between\
+        \ knowledge and awareness about any aspect of VHSC and type of stakeholder\
+        \ has been observed. PRI members and Self Help Group (SHG) members have been\
+        \ found to be totally ignorant about many aspects of VHSC. No formal training\
+        \ has ever been imparted to the members of VHSCs regarding functioning of\
+        \ VHSC at village level. None of the functionaries were found to be aware\
+        \ of village health plan. Conclusion: The efficiency and impact of VHSCs have\
+        \ been found to be very limited.</dc:description>\n        <dc:publisher>Kakkilaya\
+        \ BS</dc:publisher>\n        <dc:contributor>Kakkilaya, Dr Srinivas</dc:contributor>\n\
+        \        <dc:date>2014-02-20</dc:date>\n        <dc:type>Journal (On-line/Unpaginated)</dc:type>\n\
+        \        <dc:type>PeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9708/1/2013-4-1.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Malviya, A and Dixit, S and Bhagwat, AK and Bansal,\
+        \ SB and Khatri, AK  (2014) Assessment of Functioning of Village Health and\
+        \ Sanitation Committees (VHSCs) of Indore District.  [Journal (On-line/Unpaginated)]\
+        \     </dc:identifier>\n        <dc:relation>http://cogprints.org/9708/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9709</identifier>\n\
+        \      <datestamp>2015-04-20T11:44:11Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>An Approach of Initiating Geriatric Screening OPD at\
+        \ the Rural Health Training Centre of SMVMCH, Pondicherry</dc:title>\n   \
+        \     <dc:creator>Muruganandham, R</dc:creator>\n        <dc:creator>Ingole,\
+        \ A</dc:creator>\n        <dc:creator>Murugan, V</dc:creator>\n        <dc:creator>Dongre,\
+        \ AR</dc:creator>\n        <dc:subject>Online Journal of Health and Allied\
+        \ Sciences</dc:subject>\n        <dc:description>Objectives: To study the\
+        \ common chronic health problems among the elderly patients attending in recently\
+        \ initiated geriatric screening OPD at the RHTC. Material and Methods: Since\
+        \ one year, screening OPD has been started at RHTC of SMVMCH, for old patients\
+        \ (&gt;60 years), twice a week. A team of trained medical interns, a post-graduate,\
+        \ a faculty in Community Medicine and a counselor screen and counsel the elderly\
+        \ patients for common medical and mental health problems. The screening tool\
+        \ is structured and has been adopted for patients of geriatric OPD at RHTC.\
+        \ The screening tool consist of General Health Questionnaire (GHQ-5), Psychosis\
+        \ screening, Alzheimer\u2019s disease (AD8) questionnaire and checklist of\
+        \ common medical conditions. Patients were screened for early detection of\
+        \ health problems followed by counseling them/their caregivers and referral\
+        \ to specialty OPD for further care. Results: Total 512 elderly patients were\
+        \ screened over 4 months period from the start of geriatric OPD. Out of them,\
+        \ 276 (54%) and 117 (23%) were between the age group of 60-65 years and 66-70\
+        \ years respectively. Among them 387 (75%) were below poverty line and 68\
+        \ (13.3%) were having some kind of health insurance. GHQ score indicates that\
+        \ 255 (50%) patients had a score more than one and it was significantly higher\
+        \ among females compared to males. About 76 (16.8%) elderly had a score of\
+        \ &gt; 1 for psychosis, out of which only 12 (14%) were referred to the higher\
+        \ centre. AD8 score shows 204 (40%) patients attended the clinic having a\
+        \ score more than 1 and it is significantly higher among females compared\
+        \ to males. Counseling for caregivers was given only in 13 (6%) of the patients\
+        \ with high AD8 score. Common chronic conditions present among them were joint\
+        \ pains (310, 60%), visual disturbances (247, 48%), hearing difficulty (120,\
+        \ 23.4%) and hypertension (107, 21%). Conclusion: The proportion of people\
+        \ with AD8 score more than 1 is high and most common chronic condition seen\
+        \ is joint pain. The action component of the clinic such as referral of dementia\
+        \ patients, psychosis patients and counseling of their care-givers need to\
+        \ be strengthened. </dc:description>\n        <dc:publisher>Kakkilaya BS</dc:publisher>\n\
+        \        <dc:contributor>Kakkilaya, Dr Srinivas</dc:contributor>\n       \
+        \ <dc:date>2014-02-20</dc:date>\n        <dc:type>Journal (On-line/Unpaginated)</dc:type>\n\
+        \        <dc:type>PeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9709/1/2013-4-2.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Muruganandham, R and Ingole, A and Murugan, V and\
+        \ Dongre, AR  (2014) An Approach of Initiating Geriatric Screening OPD at\
+        \ the Rural Health Training Centre of SMVMCH, Pondicherry.  [Journal (On-line/Unpaginated)]\
+        \     </dc:identifier>\n        <dc:relation>http://cogprints.org/9709/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9710</identifier>\n\
+        \      <datestamp>2015-04-20T11:44:03Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Approaches for Transcatheter Aortic Valve Replacement:\
+        \ A Systematic Review and Meta-Analysis</dc:title>\n        <dc:creator>Nagaraja,\
+        \ V</dc:creator>\n        <dc:creator>Raval, J</dc:creator>\n        <dc:creator>Eslick,\
+        \ GD</dc:creator>\n        <dc:creator>Denniss, AR</dc:creator>\n        <dc:subject>Online\
+        \ Journal of Health and Allied Sciences</dc:subject>\n        <dc:description>Introduction:\
+        \ Retrograde transfemoral and antegrade transapical approaches are mostly\
+        \ used for transcatheter aortic valve replacement. This meta-analysis is designed\
+        \ to assess the performance of the transfemoral and transapical approach.\
+        \ Methods: A systematic search was conducted using MEDLINE, PubMed, EMBASE,\
+        \ Current Contents Connect, Cochrane library, Google Scholar, Science Direct,\
+        \ and Web of Science. Original data was abstracted from each study and used\
+        \ to calculate a pooled odd ratio (OR) and 95% confidence interval (95% CI).\
+        \ Results: Only 14 studies comprising of 6965 patients met full criteria for\
+        \ analysis. The mean duration of hospitalisation and procedure duration were\
+        \ similar among the 2 cohorts. The 30 days mortality (OR: 0.70, 95% CI: 0.531-0.921),\
+        \ the need for haemodialysis (OR: 0.29, 95% CI: 0.157-0.525) and one year\
+        \ mortality (OR: 0.72, 95% CI: 0.564-0.927) were lower in the transfemoral\
+        \ cohort. The frequency of stroke at 30 days and new pacemaker insertion were\
+        \ comparable. However, the prevalence of vascular complication (OR: 2.88,\
+        \ 95% CI: 1.821-4.563) was higher in the transfemoral group. The incidence\
+        \ of aortic regurgitation (OR: 1.25, 95% CI: 0.844-1.855), valve embolization\
+        \ (OR: 2.00, 95% CI: 0.622-6.448), major bleeding incidence rates (OR:0.77,\
+        \ 95% CI: 0.488-1.225), coronary obstruction (OR:0.74, 95% CI:0.234-2.311),\
+        \ myocardial infarction (OR: 0.75, 95% CI: 0.28-2.00), conversion to open\
+        \ cardiac surgery (OR: 0.29, 95% CI: 0.062-1.343) and successful implantation\
+        \ (OR: 0.67, 95% CI: 0.394-1.149) were comparable in the two cohorts. Conclusions:\
+        \ In the absence of a randomized controlled study, the ability to discriminate\
+        \ true differences is challenging. Even though the complications rate was\
+        \ much lower in transfemoral group as compared to transapical group, the current\
+        \ literature does not support a clear superiority of one approach to TAVR\
+        \ over the other.</dc:description>\n        <dc:publisher>Kakkilaya BS</dc:publisher>\n\
+        \        <dc:contributor>Kakkilaya, Dr Srinivas</dc:contributor>\n       \
+        \ <dc:date>2014-02-20</dc:date>\n        <dc:type>Journal (On-line/Unpaginated)</dc:type>\n\
+        \        <dc:type>PeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9710/1/2013-4-3.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Nagaraja, V and Raval, J and Eslick, GD and Denniss,\
+        \ AR  (2014) Approaches for Transcatheter Aortic Valve Replacement: A Systematic\
+        \ Review and Meta-Analysis.  [Journal (On-line/Unpaginated)]     </dc:identifier>\n\
+        \        <dc:relation>http://cogprints.org/9710/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9711</identifier>\n\
+        \      <datestamp>2015-04-20T11:43:58Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53</setSpec>\n      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>A Cross-Sectional Study of Hemoglobin Disorders in Pregnant\
+        \ Women Attending Two Urban Hospitals in Eastern Coast of Odisha, India.</dc:title>\n\
+        \        <dc:creator>Balgir, RS</dc:creator>\n        <dc:subject>JOURNALS</dc:subject>\n\
+        \        <dc:subject>Online Journal of Health and Allied Sciences</dc:subject>\n\
+        \        <dc:description>Pregnant women are an important segment of the society.\
+        \ They bear the children and provide nourishment to them during the period\
+        \ of gestation of nine months. The health of a mother reflects the health\
+        \ of a child. No such study of prevalence of hemoglobinopathy in pregnant\
+        \ women from India is available. The study objectives were: to find the prevalence\
+        \ (genetic burden) of hemoglobin disorders in pregnant women belonging to\
+        \ urban setting; identify the communities at risk, and to determine the hematological\
+        \ profile of native pregnant women of coastal Odisha. A cross-sectional study\
+        \ of pregnant women visiting for antenatal care at two urban hospitals, Bhubaneswar\
+        \ and Berhampur in Coastal Odisha was investigated. A total of 178 pregnant\
+        \ women attending antenatal care check up at two urban hospitals in coastal\
+        \ Odisha were studied. Appropriate statistical tools were used for analysis\
+        \ of data. High prevalence of 13.5% for hemoglobin disorders was observed\
+        \ in urban pregnant women visiting two major hospitals in coastal Odisha.\
+        \ Mild to moderate anemia was recorded. Reduced values of hematological indices\
+        \ in women afflicted with hemoglobin disorders than the normal controls were\
+        \ noted. Major hemoglobinopathies detected were: \u03B2-thalassemia trait\
+        \ (5.6%), sickle cell trait (5.6%), hemoglobin E trait (1.1%), sickle cell-E-disease\
+        \ (0.6%), and hemoglobin H disease (0.6%). Mandatory awareness, comprehensive\
+        \ clinical management, and genetic/marriage counseling are highly essential\
+        \ to ameliorate the sufferings of afflicted pregnant women of coastal Odisha.</dc:description>\n\
+        \        <dc:publisher>Kakkilaya BS</dc:publisher>\n        <dc:contributor>Kakkilaya,\
+        \ Dr Srinivas</dc:contributor>\n        <dc:date>2014-02-20</dc:date>\n  \
+        \      <dc:type>Journal (On-line/Unpaginated)</dc:type>\n        <dc:type>PeerReviewed</dc:type>\n\
+        \        <dc:format>application/pdf</dc:format>\n        <dc:identifier>http://cogprints.org/9711/1/2013-4-4.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Balgir, RS  (2014) A Cross-Sectional Study of Hemoglobin\
+        \ Disorders in Pregnant Women Attending Two Urban Hospitals in Eastern Coast\
+        \ of Odisha, India.  [Journal (On-line/Unpaginated)]     </dc:identifier>\n\
+        \        <dc:relation>http://cogprints.org/9711/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9712</identifier>\n\
+        \      <datestamp>2015-04-20T11:43:51Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Red Cell Genetic Markers in Malarial Susceptibility and\
+        \ Selective Advantage Hypothesis</dc:title>\n        <dc:creator>Balgir, RS</dc:creator>\n\
+        \        <dc:subject>Online Journal of Health and Allied Sciences</dc:subject>\n\
+        \        <dc:description>Malaria is still a serious public health challenge\
+        \ in many parts of the world including India. Human genetic susceptibility\
+        \ to malaria varies from individual to individual depending upon the genetic\
+        \ constitution and from region to region based on geo-ecological and climatic\
+        \ conditions. In the present study, intravenous 334 random blood samples of\
+        \ unrelated adult individuals belonging to Mongoloid ethnic stock were taken\
+        \ after informed consent from the endemic localities of Arunachal Pradesh,\
+        \ Assam and Nagaland to find out the relationship between the abnormal hemoglobin\
+        \ and G6PD enzyme deficiency, and susceptibility to malaria. Abnormal hemoglobin\
+        \ E and G6PD enzyme deficiency seem to interact with malarial parasite in\
+        \ such a way that they probably provide decreased susceptibility or inhibitory\
+        \ effect or increased resistance. Genetic alterations in human genome are\
+        \ maintained in the specific population by natural selection to protect the\
+        \ host against the malarial infection.  These findings are consistent with\
+        \ those studies which support the notion of selective genetic advantage hypothesis\
+        \ against the malaria infection.</dc:description>\n        <dc:publisher>Kakkilaya\
+        \ BS</dc:publisher>\n        <dc:contributor>Kakkilaya, Dr Srinivas</dc:contributor>\n\
+        \        <dc:date>2014-02-20</dc:date>\n        <dc:type>Journal (On-line/Unpaginated)</dc:type>\n\
+        \        <dc:type>PeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9712/1/2013-4-5.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Balgir, RS  (2014) Red Cell Genetic Markers in Malarial\
+        \ Susceptibility and Selective Advantage Hypothesis.  [Journal (On-line/Unpaginated)]\
+        \     </dc:identifier>\n        <dc:relation>http://cogprints.org/9712/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9713</identifier>\n\
+        \      <datestamp>2015-04-20T11:43:46Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Optimisation of Surgical Results in de-Quervain\u2019\
+        s Disease</dc:title>\n        <dc:creator>Kamath, BJ</dc:creator>\n      \
+        \  <dc:creator>Vardhan, H</dc:creator>\n        <dc:creator> Jayasheelan,\
+        \ N</dc:creator>\n        <dc:creator>Mahale, A</dc:creator>\n        <dc:creator>Kumar,\
+        \ A</dc:creator>\n        <dc:subject>Online Journal of Health and Allied\
+        \ Sciences</dc:subject>\n        <dc:description>Background: De Quervain\u2019\
+        s disease poses more problems with respect to management than the diagnosis.\
+        \ Surgery is resorted to when the conservative methods fail. There are known\
+        \ complications of the surgical intervention. Surgeon contemplating the surgery\
+        \ should be aware of these and make every attempt to optimize the results\
+        \ and avoid the above mentioned complication. Methods: Sixty symptomatic wrists\
+        \ in 57 individuals suffering from de Quervain\u2019s disease who needed surgery\
+        \ were studied preoperatively with ultrasound. Number of tendons and the sub\
+        \ septae identified in the ultrasound examination preoperatively were confirmed\
+        \ on the table during the surgery. The release was brought about under local\
+        \ anesthesia, with magnification taking care to avoid injury to the cephalic\
+        \ vein and superficial branch of radial nerve, not to violate the anterior\
+        \ margin of the sheath, thus preventing complications. A negative post release\
+        \ finkelstein test was ensured before the wound closure. Results: All 60 patients\
+        \ who underwent release for de Quervain\u2019s disease were symptom free,\
+        \ satisfied and fully functional. Conclusions: De-Quervain's disease not relieved\
+        \ by conservative methods needs surgical release under local anesthesia with\
+        \ a transverse incision with Preoperative ultrasound examination for the number\
+        \ of tendons and subseptae. Avoiding the violation of the volar aspect of\
+        \ the sheath, loupe magnification, tourniquet and post release Finkelstein\u2019\
+        s test before wound closure, will ensure optimal results.</dc:description>\n\
+        \        <dc:publisher>Kakkilaya BS</dc:publisher>\n        <dc:contributor>Kakkilaya,\
+        \ Dr Srinivas</dc:contributor>\n        <dc:date>2014-02-20</dc:date>\n  \
+        \      <dc:type>Journal (On-line/Unpaginated)</dc:type>\n        <dc:type>PeerReviewed</dc:type>\n\
+        \        <dc:format>application/pdf</dc:format>\n        <dc:identifier>http://cogprints.org/9713/1/2013-4-6.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Kamath, BJ and Vardhan, H and  Jayasheelan, N and\
+        \ Mahale, A and Kumar, A  (2014) Optimisation of Surgical Results in de-Quervain\u2019\
+        s Disease.  [Journal (On-line/Unpaginated)]     </dc:identifier>\n       \
+        \ <dc:relation>http://cogprints.org/9713/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9714</identifier>\n\
+        \      <datestamp>2015-04-20T11:43:40Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Adult Umbilical Disorders in Surgical Practice \u2013\
+        \ An Experience from Kashmir.</dc:title>\n        <dc:creator>Salati, SA</dc:creator>\n\
+        \        <dc:creator>Rather, AA</dc:creator>\n        <dc:subject>Online Journal\
+        \ of Health and Allied Sciences</dc:subject>\n        <dc:description>Umbilical\
+        \ disorders form an important part of general surgical practice. The disorders\
+        \ may be congenital or acquired and manifest in both genders and affects all\
+        \ age groups. This article analyses the profile of adult umbilical disorders\
+        \ as seen in a surgical division of a medical college in Kashmir valley over\
+        \ a period of two years.</dc:description>\n        <dc:publisher>Kakkilaya\
+        \ BS</dc:publisher>\n        <dc:contributor>Kakkilaya, Dr Srinivas</dc:contributor>\n\
+        \        <dc:date>2014-02-20</dc:date>\n        <dc:type>Journal (On-line/Unpaginated)</dc:type>\n\
+        \        <dc:type>PeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9714/1/2013-4-7.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Salati, SA and Rather, AA  (2014) Adult Umbilical\
+        \ Disorders in Surgical Practice \u2013 An Experience from Kashmir.  [Journal\
+        \ (On-line/Unpaginated)]     </dc:identifier>\n        <dc:relation>http://cogprints.org/9714/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9715</identifier>\n\
+        \      <datestamp>2015-04-20T11:43:35Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Reports of Child Abuse in India from Scientific Journals\
+        \ and Newspapers - An Exploratory Study</dc:title>\n        <dc:creator>Nalini,\
+        \ PR</dc:creator>\n        <dc:creator>Thirunavukarasu, MR</dc:creator>\n\
+        \        <dc:creator>Dongre, AR</dc:creator>\n        <dc:subject>Online Journal\
+        \ of Health and Allied Sciences</dc:subject>\n        <dc:description>Background:\
+        \ Child abuse is a state of emotional, physical, economic and sexual maltreatment\
+        \ meted out to a person below the age of eighteen and is a globally prevalent\
+        \ phenomenon. A total of 33,098 cases of crimes against children were reported\
+        \ in India during 2011 as compared to 26,694 cases during 2010, suggesting\
+        \ a recent increase of 24 percent. Objectives: To explore the contents of\
+        \ the published articles/reports on child abuse in India from scientific journals\
+        \ and newspapers identifying areas and gaps for further research and program\
+        \ development. Material and Methods: Published articles in scientific journals\
+        \ during the years 2007-2012 with free access and online versions of English\
+        \ newspapers (2007-2012) in India were searched using the search engines such\
+        \ as \u2018PubMed\u2019 and \u2018Google\u2019. The key words used were \u2018\
+        child abuse in (on, about) India. First two researchers independently reviewed\
+        \ the content of articles/newspaper reports and decided the categories emerging\
+        \ from the articles and reports. Later on, the quantification of these categories\
+        \ was done by identifying the number of times it was reported in the reports.\
+        \ Results: The nature and extent of reporting child abuse in scientific journal\
+        \ is different from that of newspapers. In Journals, our search provided us\
+        \ with 9 articles, of which prevalence studies were predominant (4) followed\
+        \ by case reports (3) and Knowledge, Attitude, Practice studies (2). The studies\
+        \ were mostly conducted in the hospital setting. We obtained 38 reports from\
+        \ newspapers. Child abuse was found more among girls. Among type of abuse,\
+        \ sexual abuse was more common (84.2%). About 52.6% of the abusers were members\
+        \ known to the victim. The maximum cases were reported from West India especially\
+        \ in Goa, followed by South region. Most reports reported legal action on\
+        \ accused. Little was reported on what happened to a victim, indicators of\
+        \ abuse and settings of the abuse. The motives and consequences of the abuses\
+        \ were not mentioned explicitly. Conclusions:  The articles were more focused\
+        \ on prevalence of child abuse in hospital settings. As per newspaper reports,\
+        \ female child abuse (sexual abuse) by a known person to family was reported\
+        \ more. It was found more in West part of India. Recommendations: More research/reporting\
+        \ is required to study the extent of problem in different settings of India,\
+        \ settings of abuse, quality of life of victims, parental/community education\
+        \ on indicators of abuse and development of support program to victim.</dc:description>\n\
+        \        <dc:publisher>Kakkilaya BS</dc:publisher>\n        <dc:contributor>Kakkilaya,\
+        \ Dr Srinivas</dc:contributor>\n        <dc:date>2014-02-20</dc:date>\n  \
+        \      <dc:type>Journal (On-line/Unpaginated)</dc:type>\n        <dc:type>PeerReviewed</dc:type>\n\
+        \        <dc:format>application/pdf</dc:format>\n        <dc:identifier>http://cogprints.org/9715/1/2013-4-8.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Nalini, PR and Thirunavukarasu, MR and Dongre, AR\
+        \  (2014) Reports of Child Abuse in India from Scientific Journals and Newspapers\
+        \ - An Exploratory Study.  [Journal (On-line/Unpaginated)]     </dc:identifier>\n\
+        \        <dc:relation>http://cogprints.org/9715/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9716</identifier>\n\
+        \      <datestamp>2015-04-20T11:43:30Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>\u2018Gas Syndrome\u2019 - A Culture Bound Syndrome</dc:title>\n\
+        \        <dc:creator>Kakunje, Anil</dc:creator>\n        <dc:creator>Puthran,\
+        \ S</dc:creator>\n        <dc:creator>Shihabuddeen, ITM</dc:creator>\n   \
+        \     <dc:creator>Chandran, MVV</dc:creator>\n        <dc:subject>Online Journal\
+        \ of Health and Allied Sciences</dc:subject>\n        <dc:description>Culture\
+        \ refers to the shared patterns of feelings, beliefs and behaviour that reflect\
+        \ in the way of living in a society. Culture uniquely influence the role functioning\
+        \ or  psychosoical wellbeing of people living in a given society by exerting\
+        \ influence on their mind by their traditional health beliefs. Cultural factors\
+        \ influence understanding, presentation, diagnosis, management, course and\
+        \ outcome of many diseases, especially psychiatric disorders. Culture-bound\
+        \ syndromes seem to be episodic, dramatic and discrete patterns of behavioral\
+        \ reactions specific to a particular community that articulate both personal\
+        \ predicament and public concerns. Every culture provides explanations and\
+        \ causal attributions for somatic symptoms. One of the common complaints of\
+        \ persons coming to medical attention is \u2018Gas\u2019 or similar terminologies\
+        \ like \u2018vayu\u2019 etc. People attribute varied symptoms from abdominal\
+        \ discomfort, chest pain, headache, joint pains, back pain, somatic complaints\
+        \ to \u2018Gas\u2019. \u2018Gas\u2019 is reported to be the cause for the\
+        \ distress and the primary duty of the treating clinician is to relieve them\
+        \ of the gas. The problem of troubling Gas or vayu has been influencing Indian\
+        \ culture/tradition since ancient days. We do see a significant proportion\
+        \ of patients visiting varied specialists attributing all their problems to\
+        \ Gas. 'Gas Syndrome\u2019 is proposed as a culture bound syndrome.</dc:description>\n\
+        \        <dc:publisher>Kakkilaya BS</dc:publisher>\n        <dc:contributor>Kakkilaya,\
+        \ Dr Srinivas</dc:contributor>\n        <dc:date>2014-02-20</dc:date>\n  \
+        \      <dc:type>Journal (On-line/Unpaginated)</dc:type>\n        <dc:type>PeerReviewed</dc:type>\n\
+        \        <dc:format>application/pdf</dc:format>\n        <dc:identifier>http://cogprints.org/9716/1/2013-4-9.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Kakunje, Anil and Puthran, S and Shihabuddeen, ITM\
+        \ and Chandran, MVV  (2014) \u2018Gas Syndrome\u2019 - A Culture Bound Syndrome.\
+        \  [Journal (On-line/Unpaginated)]     </dc:identifier>\n        <dc:relation>http://cogprints.org/9716/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9717</identifier>\n\
+        \      <datestamp>2015-04-20T11:43:25Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>A Rare Presentation of Odontogenic Keratocyst Mimicking\
+        \ an Antral Polyp</dc:title>\n        <dc:creator>Sudhakar, S</dc:creator>\n\
+        \        <dc:creator>Geethika, V</dc:creator>\n        <dc:creator>Ramaswamy,\
+        \ P</dc:creator>\n        <dc:creator>Kumar, PK</dc:creator>\n        <dc:creator>Sreenivasulu,\
+        \ P</dc:creator>\n        <dc:subject>Online Journal of Health and Allied\
+        \ Sciences</dc:subject>\n        <dc:description>Maxillary sinus harbours\
+        \ many pathological lesions. Many of those presents as a sinonasal mass and\
+        \ are rarely symptomatic. These masses are usually an antral polyp, mucoceles\
+        \ or mucous retention cysts. Odontogenic keratocyst, a benign odontogenic\
+        \ lesion presenting within the maxillary sinus is a rare entity. We present\
+        \ a case of odontogenic keratocyst of the maxillary sinus in a 35 years old\
+        \ female.</dc:description>\n        <dc:publisher>Kakkilaya BS</dc:publisher>\n\
+        \        <dc:contributor>Kakkilaya, Dr Srinivas</dc:contributor>\n       \
+        \ <dc:date>2014-02-20</dc:date>\n        <dc:type>Journal (On-line/Unpaginated)</dc:type>\n\
+        \        <dc:type>PeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9717/1/2013-4-10.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Sudhakar, S and Geethika, V and Ramaswamy, P and\
+        \ Kumar, PK and Sreenivasulu, P  (2014) A Rare Presentation of Odontogenic\
+        \ Keratocyst Mimicking an Antral Polyp.  [Journal (On-line/Unpaginated)] \
+        \    </dc:identifier>\n        <dc:relation>http://cogprints.org/9717/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9718</identifier>\n\
+        \      <datestamp>2015-04-20T11:43:21Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Prallethrin Poisoning Presenting as Status Epilepticus</dc:title>\n\
+        \        <dc:creator>Vijayaraju, D</dc:creator>\n        <dc:creator>Ramkumar,\
+        \ S</dc:creator>\n        <dc:creator>Subramanian, SR</dc:creator>\n     \
+        \   <dc:subject>Online Journal of Health and Allied Sciences</dc:subject>\n\
+        \        <dc:description>Mosquito repellents contain pyrethroid derivatives,\
+        \ as the active ingredient. Data regarding human toxicity following oral intake\
+        \ is limited. This is a case report of an individual who presented with neurotoxicity\
+        \ following oral ingestion of prallethrin (2.4% w/w) of a higher concentration\
+        \ present in formulations commercially available than previously. A 22 year\
+        \ old male presented to the emergency Room (ER) in status epilepticus. He\
+        \ was managed in the Intensive Care Unit (ICU). No cause for his status could\
+        \ be determined after all laboratory investigations. A review of history with\
+        \ the patient revealed that he had ingested a bottle of liquid mosquito repellent\
+        \ (45 ml). The patient has had no further symptoms on follow up and has been\
+        \ off anti epileptics. Pyrethroid containing mosquito repellents act on neuronal\
+        \ sodium channels causing hyperexcitiability. With no known specific antidotes,\
+        \ symptomatic treatment is the main stay of management.</dc:description>\n\
+        \        <dc:publisher>Kakkilaya BS</dc:publisher>\n        <dc:contributor>Kakkilaya,\
+        \ Dr Srinivas</dc:contributor>\n        <dc:date>2014-02-20</dc:date>\n  \
+        \      <dc:type>Journal (On-line/Unpaginated)</dc:type>\n        <dc:type>PeerReviewed</dc:type>\n\
+        \        <dc:format>application/pdf</dc:format>\n        <dc:identifier>http://cogprints.org/9718/1/2013-4-11.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Vijayaraju, D and Ramkumar, S and Subramanian, SR\
+        \  (2014) Prallethrin Poisoning Presenting as Status Epilepticus.  [Journal\
+        \ (On-line/Unpaginated)]     </dc:identifier>\n        <dc:relation>http://cogprints.org/9718/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9719</identifier>\n\
+        \      <datestamp>2015-04-20T11:43:15Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Preoperative Surprise of a Mass per Abdomen Mimicking\
+        \ Ovarian Neoplasm in a 50 Years Old Woman</dc:title>\n        <dc:creator>Sailaja,\
+        \ S</dc:creator>\n        <dc:creator>Rathod, PS</dc:creator>\n        <dc:creator>Umadevi,\
+        \ K</dc:creator>\n        <dc:creator>Shruti, S</dc:creator>\n        <dc:creator>Bafna,\
+        \ UD</dc:creator>\n        <dc:subject>Online Journal of Health and Allied\
+        \ Sciences</dc:subject>\n        <dc:description>We report a large cystic\
+        \ tumour of about 40cms size  in a perimenopusal woman mimicking ovarian tumour,\
+        \ with peroperative surprise of  finding it as degenerated fibroid arising\
+        \ from fundus of the uterus.</dc:description>\n        <dc:publisher>Kakkilaya\
+        \ BS</dc:publisher>\n        <dc:contributor>Kakkilaya, Dr Srinivas</dc:contributor>\n\
+        \        <dc:date>2014-02-20</dc:date>\n        <dc:type>Journal (On-line/Unpaginated)</dc:type>\n\
+        \        <dc:type>PeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9719/1/2013-4-12.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Sailaja, S and Rathod, PS and Umadevi, K and Shruti,\
+        \ S and Bafna, UD  (2014) Preoperative Surprise of a Mass per Abdomen Mimicking\
+        \ Ovarian Neoplasm in a 50 Years Old Woman.  [Journal (On-line/Unpaginated)]\
+        \     </dc:identifier>\n        <dc:relation>http://cogprints.org/9719/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9720</identifier>\n\
+        \      <datestamp>2015-04-20T11:43:10Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Himalayan P waves in COPD - A Rare Feature</dc:title>\n\
+        \        <dc:creator>Kumar SS, S</dc:creator>\n        <dc:creator>Babu, SNM</dc:creator>\n\
+        \        <dc:creator>Mahajan, SK</dc:creator>\n        <dc:creator>Kaushik,\
+        \ M</dc:creator>\n        <dc:creator>Verma, BS</dc:creator>\n        <dc:creator>Kaushal,\
+        \ SS</dc:creator>\n        <dc:subject>Online Journal of Health and Allied\
+        \ Sciences</dc:subject>\n        <dc:description>Himalayan or giant P-waves\
+        \ (amplitude =5 mm) are often known to be classically associated with congenital\
+        \ heart diseases with right to left shunt like tricuspid atresia, Ebstein\
+        \ anomaly, combined tricuspid and pulmonic stenosis, etc, where they indicate\
+        \ a dilated right atrium and tend to be persistent. These type P waves are\
+        \ rarely seen in chronic obstructive pulmonary disease (COPD) and in this\
+        \ condition it may be due to structural right atrial changes or hypoxemia\
+        \ or combination of both. Here we report a case of COPD with Himalayan P waves\
+        \ which is a rare entity.</dc:description>\n        <dc:publisher>Kakkilaya\
+        \ BS</dc:publisher>\n        <dc:contributor>Kakkilaya, Dr Srinivas</dc:contributor>\n\
+        \        <dc:date>2014-02-20</dc:date>\n        <dc:type>Journal (On-line/Unpaginated)</dc:type>\n\
+        \        <dc:type>PeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9720/1/2013-4-13.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Kumar SS, S and Babu, SNM and Mahajan, SK and Kaushik,\
+        \ M and Verma, BS and Kaushal, SS  (2014) Himalayan P waves in COPD - A Rare\
+        \ Feature.  [Journal (On-line/Unpaginated)]     </dc:identifier>\n       \
+        \ <dc:relation>http://cogprints.org/9720/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9721</identifier>\n\
+        \      <datestamp>2015-04-20T11:43:06Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Scrub Typhus Presenting as Acute Mastoiditis.</dc:title>\n\
+        \        <dc:creator>Lal, B</dc:creator>\n        <dc:creator>Minhas, RS</dc:creator>\n\
+        \        <dc:creator>Sharma, DR</dc:creator>\n        <dc:creator>Kumar, S</dc:creator>\n\
+        \        <dc:subject>Online Journal of Health and Allied Sciences</dc:subject>\n\
+        \        <dc:description>Scrub typhus, a zoonosis, is known to present with\
+        \ varied clinical presentation. We present a case of acute mastoiditis who\
+        \ did not respond to conventional antibiotic therapy. The detailed repeat\
+        \ clinical examination revealed lymphadenopathy with eschar and IgM antibodies\
+        \ for scrub typhus by ELISA were positive. Patient had dramatic response to\
+        \ doxycycline therapy.</dc:description>\n        <dc:publisher>Kakkilaya BS</dc:publisher>\n\
+        \        <dc:contributor>Kakkilaya, Dr Srinivas</dc:contributor>\n       \
+        \ <dc:date>2014-02-20</dc:date>\n        <dc:type>Journal (On-line/Unpaginated)</dc:type>\n\
+        \        <dc:type>PeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9721/1/2013-4-14.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Lal, B and Minhas, RS and Sharma, DR and Kumar,\
+        \ S  (2014) Scrub Typhus Presenting as Acute Mastoiditis.  [Journal (On-line/Unpaginated)]\
+        \     </dc:identifier>\n        <dc:relation>http://cogprints.org/9721/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9722</identifier>\n\
+        \      <datestamp>2015-04-20T11:43:01Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Spontaneous Evisceration of an Incisional Hernia Presenting\
+        \ One Year After Primary Surgery</dc:title>\n        <dc:creator>Sailaja,\
+        \ s</dc:creator>\n        <dc:creator>Umadevi, K</dc:creator>\n        <dc:creator>Rathod,\
+        \ PS</dc:creator>\n        <dc:creator>Shruti, s</dc:creator>\n        <dc:creator>Bafna,\
+        \ UD</dc:creator>\n        <dc:subject>Online Journal of Health and Allied\
+        \ Sciences</dc:subject>\n        <dc:description>Spontaneous evisceration\
+        \ is a rare complication associated with incisional hernia which demands an\
+        \ emergency surgery. A few cases have been reported on this. We report a spontaneous\
+        \ evisceration of bowel with strangulation which was managed by bowel resection\
+        \ and anastomosis and anatomical repair of incisional hernia.</dc:description>\n\
+        \        <dc:publisher>Kakkilaya BS</dc:publisher>\n        <dc:contributor>Kakkilaya,\
+        \ Dr Srinivas</dc:contributor>\n        <dc:date>2014-02-20</dc:date>\n  \
+        \      <dc:type>Journal (On-line/Unpaginated)</dc:type>\n        <dc:type>PeerReviewed</dc:type>\n\
+        \        <dc:format>application/pdf</dc:format>\n        <dc:identifier>http://cogprints.org/9722/1/2013-4-15.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Sailaja, s and Umadevi, K and Rathod, PS and Shruti,\
+        \ s and Bafna, UD  (2014) Spontaneous Evisceration of an Incisional Hernia\
+        \ Presenting One Year After Primary Surgery.  [Journal (On-line/Unpaginated)]\
+        \     </dc:identifier>\n        <dc:relation>http://cogprints.org/9722/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9723</identifier>\n\
+        \      <datestamp>2015-04-20T11:42:56Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Mercury Free Healthcare by 2020: Time for Action</dc:title>\n\
+        \        <dc:creator>Danasekaran, R</dc:creator>\n        <dc:creator>Mani,\
+        \ G</dc:creator>\n        <dc:creator>Annadurai, K</dc:creator>\n        <dc:subject>Online\
+        \ Journal of Health and Allied Sciences</dc:subject>\n        <dc:description>Urgent\
+        \ steps are needed to realise the goals of mercury free healthcare by 2020.</dc:description>\n\
+        \        <dc:publisher>Kakkilaya BS</dc:publisher>\n        <dc:contributor>Kakkilaya,\
+        \ Dr Srinivas</dc:contributor>\n        <dc:date>2014-02-20</dc:date>\n  \
+        \      <dc:type>Journal (On-line/Unpaginated)</dc:type>\n        <dc:type>PeerReviewed</dc:type>\n\
+        \        <dc:format>application/pdf</dc:format>\n        <dc:identifier>http://cogprints.org/9723/1/2013-4-16.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Danasekaran, R and Mani, G and Annadurai, K  (2014)\
+        \ Mercury Free Healthcare by 2020: Time for Action.  [Journal (On-line/Unpaginated)]\
+        \     </dc:identifier>\n        <dc:relation>http://cogprints.org/9723/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9724</identifier>\n\
+        \      <datestamp>2015-04-20T11:42:49Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D70737963:6170706C2D636F672D707379</setSpec>\n\
+        \      <setSpec>7375626A656374733D70737963:7073792D6C696E67</setSpec>\n  \
+        \    <setSpec>74797065733D6A6F75726E616C70</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>ABaCo: Assessment Battery for Communication</dc:title>\n\
+        \        <dc:creator>Sacco, Ph.D Katiuscia</dc:creator>\n        <dc:creator>Angeleri,\
+        \ Ph.D. Romina</dc:creator>\n        <dc:creator>Colle, Ph.D. Livia</dc:creator>\n\
+        \        <dc:creator>Gabbatore, Ph.D. Ilaria</dc:creator>\n        <dc:creator>Bara,\
+        \ Prof. Bruno G.</dc:creator>\n        <dc:creator>Bosco, Prof. Francesca\
+        \ M.</dc:creator>\n        <dc:subject>Applied Cognitive Psychology</dc:subject>\n\
+        \        <dc:subject>Psycholinguistics</dc:subject>\n        <dc:description>&#13;\n\
+        Human communication is&#13;\none of the most complex social&#13;\nactivity:\
+        \ it is a process of meaning&#13;\nconstruction which cooperatively&#13;\n\
+        involves all participants taking&#13;\npart in the interaction. Various&#13;\n\
+        clinical conditions may lead to&#13;\nimpairments of communicative&#13;\n\
+        abilities: developmental disorders&#13;\n(e.g., autism, specific language&#13;\n\
+        impairment, Down syndrome),&#13;\nbrain pathologies (e.g., closed&#13;\nhead\
+        \ injury, right hemisphere&#13;\ndamage, aphasia), psychiatric disorders&#13;\n\
+        (schizophrenia), disorders&#13;\nof old age (e.g. dementia). The&#13;\nassessment\
+        \ of a patient\u2019s abilities&#13;\nand disabilities is the crucial starting&#13;\n\
+        point for planning an efficient&#13;\nrehabilitation path, where&#13;\nresidual\
+        \ capacities are strengthen&#13;\nand, whenever possible, impaired&#13;\n\
+        components are restored. However,&#13;\nwhile the phonological,&#13;\nsyntactic\
+        \ and semantic components&#13;\nof language can be assessed&#13;\nby numerous\
+        \ tests, instruments&#13;\nfor the evaluation of pragmatic&#13;\naspects of\
+        \ communication are&#13;\nscarce (see Sacco et al., 2008 for a&#13;\nmore\
+        \ detailed analysis of the existing&#13;\ninstruments for the assessment&#13;\n\
+        of communication).&#13;\nThe Assessment Battery for&#13;\nCommunication (ABaCo)\
+        \ has&#13;\nbeen created to be a theoretically&#13;\ngrounded, wide-range\
+        \ clinical&#13;\ninstrument. Its theoretical bases&#13;\nstem from Cognitive\
+        \ Pragmatics&#13;\ntheory (Airenti, Bara &amp; Colombetti,&#13;\n1993; Bara,\
+        \ 2010), a theory of&#13;\nthe cognitive processes underlying&#13;\nhuman\
+        \ communicative exchanges,&#13;\nframed within the inferential&#13;\nmodel\
+        \ of communication (Grice,&#13;\n1975) and the speech acts perspective&#13;\n\
+        (Austin, 1962; Searle, 1969).&#13;\nThe theory has been shown to&#13;\nbe\
+        \ able to make predictions on&#13;\ntypically developing children (Bucciarelli,&#13;\n\
+        Colle &amp; Bara, 2003; Bosco,&#13;\nBucciarelli &amp; Bara, 2004; 2006;&#13;\n\
+        Bosco &amp; Buciarelli, 2008; Bosco,&#13;\nVallana &amp; Bucciarelli, 2012),\
+        \ atypically&#13;\ndeveloping children (Bara,&#13;\nBosco &amp; Bucciarelli,\
+        \ 1999; Bara,&#13;\nBucciarelli &amp; Colle, 2001; De&#13;\nMarco, Colle &amp;\
+        \ Bucciarelli, 2007),&#13;\npatients with traumatic brain injury&#13;\n(Bara,\
+        \ Tirassa &amp; Zettin, 1997;&#13;\nBara, Cutica &amp; Tirassa, 2001; Angeleri&#13;\n\
+        et al., 2008), patients with right&#13;\nand left focal brain lesions (Cutica,&#13;\n\
+        Bucciarelli &amp; Bara, 2006), patients&#13;\nwith Alzheimer\u2019s disease\
+        \ (Bara,&#13;\nBucciarelli &amp; Geminiani, 2000)&#13;\nand patients with\
+        \ schizophrenia&#13;\n(Bosco, Bono &amp; Bara, 2012). In&#13;\nthis view,\
+        \ communication is the&#13;\nability to comprehend and produce&#13;\nlinguistic\
+        \ and extralinguistic&#13;\ncommunication acts, accompanied&#13;\nby suitable\
+        \ paralinguistic features,&#13;\nappropriate with respect to discourse&#13;\n\
+        and social norms, and fluently&#13;\nintegrated within the conversation.&#13;\n\
+        The ABaCo assesses each of&#13;\nthese components, encompassing&#13;\nthe\
+        \ major aspects involved in communication.&#13;\nIn this paper, we will&#13;\n\
+        briefly describe the features of the&#13;\nbattery, and summarize its psychometric&#13;\n\
+        properties, providing some&#13;\nsuggestions for clinical application.</dc:description>\n\
+        \        <dc:date>2013</dc:date>\n        <dc:type>Journal (Paginated)</dc:type>\n\
+        \        <dc:type>PeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9724/1/Afasi_BpA%20268g.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Sacco, Ph.D Katiuscia and Angeleri, Ph.D. Romina\
+        \ and Colle, Ph.D. Livia and Gabbatore, Ph.D. Ilaria and Bara, Prof. Bruno\
+        \ G. and Bosco, Prof. Francesca M.  (2013) ABaCo: Assessment Battery for Communication.\
+        \  [Journal (Paginated)]     </dc:identifier>\n        <dc:relation>http://cogprints.org/9724/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9725</identifier>\n\
+        \      <datestamp>2015-04-20T11:42:35Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D70737963:7073792D6C696E67</setSpec>\n  \
+        \    <setSpec>74797065733D636F6E667061706572</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Abilit\xE0 linguistiche ed extralinguistiche in pazienti\
+        \ con afasia</dc:title>\n        <dc:creator>Gabbatore, Ph.D. Ilaria</dc:creator>\n\
+        \        <dc:creator>angeleri, Ph. D. romina</dc:creator>\n        <dc:creator>bara,\
+        \ Prof. bruno</dc:creator>\n        <dc:creator>bosco, prof. francesca</dc:creator>\n\
+        \        <dc:creator>sacco, Ph.D. katiuscia</dc:creator>\n        <dc:subject>Psycholinguistics</dc:subject>\n\
+        \        <dc:description>L\u2019afasia \xE8 una condizione patologica che\
+        \ si verifica prevalentemente a&#13;\nseguito di una lesione cerebrale in\
+        \ specifiche aree dell\u2019emisfero sinistro, che&#13;\ncomporta deficit\
+        \ che limitano gravemente l\u2019efficacia comunicativa nella vita&#13;\n\
+        quotidiana (Darrigrand et al., 2011). Tradizionalmente si sono indagate soprattutto&#13;\n\
+        le implicazioni sul piano del linguaggio e sono stati proposti numerosi&#13;\n\
+        strumenti per la valutazione del puro deficit linguistico: WAB (Kertesz,&#13;\n\
+        1982), BADA (Miceli et al., 1994), Test dei Gettoni (De Renzi e Vignolo,&#13;\n\
+        1962).&#13;\nAnche la componente gestuale della comunicazione, tuttavia, sembra&#13;\n\
+        compromessa. Cutica e colleghi (2006) hanno evidenziato prestazioni deficitarie&#13;\n\
+        dei pazienti con lesione cerebrale sinistra nella comprensione di atti comunicativi&#13;\n\
+        complessi, come inganni e ironie, espresse attraverso i gesti. La&#13;\nperformance\
+        \ era, invece, paragonabile a quella dei soggetti di controllo nei&#13;\n\
+        compiti comunicativi pi\xF9 semplici. Sebbene l\u2019utilizzo di gesti possa\
+        \ rappresentare&#13;\nuna modalit\xE0 di compenso del deficit linguistico\
+        \ nei pazienti afasici,&#13;\nquesto sembra valere solo per compiti che non\
+        \ implichino la gestione di rappresentazioni&#13;\nmentali complesse. Questi\
+        \ dati sono interpretabili in riferimento&#13;\nal modello di Bara e Tirassa\
+        \ (1999) che definiscono la comunicazione come&#13;\nun processo nel quale\
+        \ la via linguistica ed extralinguistica rappresentano&#13;\ndue modalit\xE0\
+        \ espressive parallele e integrantisi a vicenda. Conferme a riguardo&#13;\n\
+        derivano dalla psicologia dello sviluppo: bambini a sviluppo tipico mostrano&#13;\n\
+        la stessa difficolt\xE0 di comprensione di differenti compiti pragmatici,&#13;\n\
+        sia che si realizzino per via linguistica sia per via extralinguistica (Bucciarelli&#13;\n\
+        et al., 2003). Inoltre, studi mostrano come la competenza comunicativa sia&#13;\n\
+        indipendente dalla modalit\xE0 specifica e come la modalit\xE0 linguistica\
+        \ e extralinguistica&#13;\npresentino gli stessi tratti di acquisizione (Bara\
+        \ et al., 2000). Il&#13;\npresente lavoro si inserisce nel quadro teorico\
+        \ della teoria della Pragmatica&#13;\nCognitiva (Bara, 2010) una teoria dei\
+        \ processi mentali sottostanti la comunicazione.&#13;\nAll\u2019interno di\
+        \ tale quadro teorico \xE8 possibile ordinare diversi fenomeni&#13;\npragmatici\
+        \ lungo un gradiente di difficolt\xE0 crescente, in base alla complessit\xE0\
+        &#13;\ndelle rappresentazioni mentali coinvolte, e indipendente dalla modalit\xE0\
+        &#13;\nin cui sono espresse (Angeleri et al., 2008; Bosco et al., 2006; Bosco\
+        \ e&#13;\nBucciarelli, 2008; Bara et al., 2001).</dc:description>\n      \
+        \  <dc:publisher>NEAScience</dc:publisher>\n        <dc:contributor>A., Auricchio</dc:contributor>\n\
+        \        <dc:contributor>M., Cruciani</dc:contributor>\n        <dc:contributor>A.,\
+        \ Rega</dc:contributor>\n        <dc:contributor>M., Villani</dc:contributor>\n\
+        \        <dc:date>2013</dc:date>\n        <dc:type>Conference Paper</dc:type>\n\
+        \        <dc:type>PeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9725/1/Gabbatore_NEAScience%20ANNO%201%20-%20VOL.2%20ISSN-2282%206009.pdf</dc:identifier>\n\
+        \        <dc:format>application/pdf</dc:format>\n        <dc:identifier>http://cogprints.org/9725/2/Gabbatore%20et%20al.%2C%202013_NEAScience%20ANNO%201%20-%20VOL.2%20ISSN-2282%206009-2.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Gabbatore, Ph.D. Ilaria and angeleri, Ph. D. romina\
+        \ and bara, Prof. bruno and bosco, prof. francesca and sacco, Ph.D. katiuscia\
+        \  (2013) Abilit\xE0 linguistiche ed extralinguistiche in pazienti con afasia.\
+        \  [Conference Paper]     </dc:identifier>\n        <dc:relation>http://cogprints.org/9725/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9727</identifier>\n\
+        \      <datestamp>2015-04-20T11:42:24Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Awareness and Practice of Biomedical Waste Management\
+        \ Among Different Health Care Personnel at Tertiary Care Centre, Rajkot, India</dc:title>\n\
+        \        <dc:creator>Chudasama, Rajesh K</dc:creator>\n        <dc:creator>Sheth,\
+        \ Ankit</dc:creator>\n        <dc:creator>Rangoonwala, Matib</dc:creator>\n\
+        \        <dc:creator>Joshi, Nirav</dc:creator>\n        <dc:creator>Zalavadiya,\
+        \ Dipesh</dc:creator>\n        <dc:creator>Bhola, Chirag</dc:creator>\n  \
+        \      <dc:subject>Online Journal of Health and Allied Sciences</dc:subject>\n\
+        \        <dc:description>Background: Bio medical waste collection and proper\
+        \ disposal has become a significant concern for both the medical and general\
+        \ community. Objective: To know the awareness and practice of biomedical waste\
+        \ management (BMW) among health care personnel working at a tertiary care\
+        \ centre. Methods: The study was conducted from January 2013 to June 2013.\
+        \ It was a descriptive observational hospital based cross sectional study.\
+        \ Study participants included the resident and intern doctors, nursing staff,\
+        \ laboratory technicians, sanitary staff (ward boys, aaya and sweepers) working\
+        \ in the P D U Government Medical College and Civil Hospital, Rajkot who are\
+        \ dealing with BMW. The study was conducted by using pretested, semi-structured\
+        \ pro forma. Results: Total 282 health care personnel participated, including\
+        \ 123 resident and intern doctors, 92 nursing personnel, 13 laboratory technicians\
+        \ and 54 sanitary staff. Only 44.3% study participants received training for\
+        \ bio medical waste management. Except for doctors (98.4%), awareness regarding\
+        \ identification and use of color coded bags as per BMW act, was very poor\
+        \ among health care personnel. Record keeping for injuries related to biomedical\
+        \ waste was very poor for all health care personnel. Significant number of\
+        \ paramedics maintained record of BMW at work place, practiced disinfection\
+        \ and segregation of BMW at work place, used personal protective measures\
+        \ while handling BMW. Significant number of resident and intern doctors practiced\
+        \ correct method for collecting sharps and needles than paramedical staff.\
+        \ Conclusion: Intensive training program at regular time interval and a system\
+        \ of monitoring and surveillance about practice of day to day BMW management\
+        \ should be evolved.</dc:description>\n        <dc:publisher>Kakkilaya BS</dc:publisher>\n\
+        \        <dc:contributor>Kakkilaya, Dr Srinivas</dc:contributor>\n       \
+        \ <dc:date>2014-05-15</dc:date>\n        <dc:type>Journal (On-line/Unpaginated)</dc:type>\n\
+        \        <dc:type>PeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9727/1/2014-1-1.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Chudasama, Rajesh K and Sheth, Ankit and Rangoonwala,\
+        \ Matib and Joshi, Nirav and Zalavadiya, Dipesh and Bhola, Chirag  (2014)\
+        \ Awareness and Practice of Biomedical Waste Management Among Different Health\
+        \ Care Personnel at Tertiary Care Centre, Rajkot, India.  [Journal (On-line/Unpaginated)]\
+        \     </dc:identifier>\n        <dc:relation>http://cogprints.org/9727/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9728</identifier>\n\
+        \      <datestamp>2015-04-20T11:42:18Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Comparative Evaluation of Cash Benefit Scheme of Janani\
+        \ Suraksha Yojana for Beneficiary Mothers from Different Health Care Settings\
+        \ of Rewa District, Madhya Pradesh, India</dc:title>\n        <dc:creator>Trivedi,\
+        \ R</dc:creator>\n        <dc:creator>Adhikari, P</dc:creator>\n        <dc:creator>Singh,\
+        \ SP</dc:creator>\n        <dc:creator>Singh, S</dc:creator>\n        <dc:creator>Nath,\
+        \ S</dc:creator>\n        <dc:creator>Saxena, M</dc:creator>\n        <dc:subject>Online\
+        \ Journal of Health and Allied Sciences</dc:subject>\n        <dc:description>Introduction:\
+        \ For better outcomes in mother and child health, Government of India launched\
+        \ the National Rural Health Mission (NRHM) in 2005 with a major objective\
+        \ of providing accessible, affordable and quality health care to the rural\
+        \ population; especially the vulnerable. Reduction in MMR to 100/100,000 is\
+        \ one of its goals and the Janani Suraksha Yojana (JSY) is the key strategy\
+        \ of NRHM to achieve this reduction. The JSY, as a safe motherhood intervention\
+        \ and modified alternative of the National Maternity Benefit Scheme (NMBS),\
+        \ has been implemented in all states and Union territories with special focus\
+        \ on low performing states. The main objective and vision of JSY is to reduce\
+        \ maternal, neo-natal mortality and promote institutional delivery among the\
+        \ poor pregnant women of rural and urban areas. This scheme is 100% centrally\
+        \ sponsored and has an integrated delivery and post delivery care with the\
+        \ help of a key person i.e. ASHA (Accredited Social Health Activist), followed\
+        \ by cash monetary help to the women. Objectives: 1)To evaluate cash benefit\
+        \ service provided under JSY at different health care settings. 2) To know\
+        \ the perception and elicit suggestions of beneficiaries on quality of cash\
+        \ benefit scheme of JSY. Methodology: This is a health care institute based\
+        \ observational cross sectional study including randomly selected 200 JSY\
+        \ beneficiary mothers from the different health care settings i.e., Primary\
+        \ Health Centres, Community Health Centres, District Hospital and Medical\
+        \ College Hospital of Rewa District of Madhya Pradesh state. Data was collected\
+        \ with the help of set pro forma and then analysed with Epi Info 2000. Chi\
+        \ square test was applied appropriately. Results: 60% and 80% beneficiaries\
+        \ from PHC and CHC received cash within 1 week after discharge whereas 100%\
+        \ beneficiaries of District Hospital and Medical College Hospital received\
+        \ cash at the time of discharge; the overall distribution of time of cash\
+        \ disbursement among beneficiaries of PHC, CHC, DH and Medical College Hospital\
+        \ were found to be statistically significant.(Chi-square =45.04, p-value:\
+        \ 0.0000). Shortage of doctors at Health Care Centers was found to be a major\
+        \ cause for the delay in cash disbursement.</dc:description>\n        <dc:publisher>Kakkilaya\
+        \ BS</dc:publisher>\n        <dc:contributor>Kakkilaya, Dr Srinivas</dc:contributor>\n\
+        \        <dc:date>2014-05-15</dc:date>\n        <dc:type>Journal (On-line/Unpaginated)</dc:type>\n\
+        \        <dc:type>PeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9728/1/2014-1-2.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Trivedi, R and Adhikari, P and Singh, SP and Singh,\
+        \ S and Nath, S and Saxena, M  (2014) Comparative Evaluation of Cash Benefit\
+        \ Scheme of Janani Suraksha Yojana for Beneficiary Mothers from Different\
+        \ Health Care Settings of Rewa District, Madhya Pradesh, India.  [Journal\
+        \ (On-line/Unpaginated)]     </dc:identifier>\n        <dc:relation>http://cogprints.org/9728/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9740</identifier>\n\
+        \      <datestamp>2015-04-20T11:41:20Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D4A4F55524E414C53:4F4A484153</setSpec>\n\
+        \      <setSpec>74797065733D6A6F75726E616C65</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>How Does Seating Arrangement Matter While Teaching in\
+        \ Small Groups?</dc:title>\n        <dc:creator>Mahalakshmy, T</dc:creator>\n\
+        \        <dc:creator>Dongre, AR</dc:creator>\n        <dc:creator>Kalaiselvan,\
+        \ G</dc:creator>\n        <dc:subject>Online Journal of Health and Allied\
+        \ Sciences</dc:subject>\n        <dc:description>A circular seating arrangement\
+        \ is best suited for small group discussions.</dc:description>\n        <dc:publisher>Kakkilaya\
+        \ BS</dc:publisher>\n        <dc:contributor>Kakkilaya, Dr Srinivas</dc:contributor>\n\
+        \        <dc:date>2014-05-15</dc:date>\n        <dc:type>Journal (On-line/Unpaginated)</dc:type>\n\
+        \        <dc:type>PeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9740/1/2014-1-14.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Mahalakshmy, T and Dongre, AR and Kalaiselvan, G\
+        \  (2014) How Does Seating Arrangement Matter While Teaching in Small Groups?\
+        \  [Journal (On-line/Unpaginated)]     </dc:identifier>\n        <dc:relation>http://cogprints.org/9740/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9748</identifier>\n\
+        \      <datestamp>2015-04-20T11:41:00Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D62696F:62696F2D706F70</setSpec>\n      <setSpec>7375626A656374733D636F6D70:636F6D702D7363692D737461742D6D6F64656C</setSpec>\n\
+        \      <setSpec>74797065733D6F74686572</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>English Surnames: DNA, plural origins and emigration</dc:title>\n\
+        \        <dc:creator>Plant, Dr John S</dc:creator>\n        <dc:creator>Plant,\
+        \ Prof Richard E</dc:creator>\n        <dc:subject>Population Biology</dc:subject>\n\
+        \        <dc:subject>Statistical Models</dc:subject>\n        <dc:description>Since\
+        \ the turn of the millennium, DNA testing has helped with establishing the\
+        \ sizes of biological descent families within surnames. Some surnames have\
+        \ a dominant family: their remaining populations can be ascribed either to\
+        \ NPEs (non paternity events)or to smaller separate-origin families. Previously,\
+        \ there was no direct evidence as to how large each male-line family could\
+        \ grow within a surname,&#13;\nconsidering that real-life plural-origin surnames\
+        \ could contain a few or many separate-origin families of various sizes. However,\
+        \ DNA testing is providing evidence to help indicate in particular the size\
+        \ of the largest male-line medieval descent family in a surname. We here perform\
+        \ statistical analyses of some relevant DNA results. This allows us to compare\
+        \ the DNA results with some predicted findings from our computer simulations.&#13;\n\
+        &#13;\n</dc:description>\n        <dc:date>2014-06-14</dc:date>\n        <dc:type>Other</dc:type>\n\
+        \        <dc:type>PeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9748/1/ESDE-Guild-June2014.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Plant, Dr John S and Plant, Prof Richard E  (2014)\
+        \ English Surnames: DNA, plural origins and emigration.      </dc:identifier>\n\
+        \        <dc:relation>http://cogprints.org/9748/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9751</identifier>\n\
+        \      <datestamp>2015-04-20T11:40:56Z</datestamp>\n      <setSpec>7375626A656374733D6E6575726F:636F6D702D6E6575726F2D736369</setSpec>\n\
+        \      <setSpec>7375626A656374733D636F6D70:636F6D702D7363692D6D6163682D766973</setSpec>\n\
+        \      <setSpec>7375626A656374733D636F6D70:636F6D702D7363692D737461742D6D6F64656C</setSpec>\n\
+        \      <setSpec>7375626A656374733D6E6575726F:6E6575726F2D6D6F64</setSpec>\n\
+        \      <setSpec>74797065733D7072657072696E74</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>A Unified Quantitative Model of Vision and Audition </dc:title>\n\
+        \        <dc:creator>Liu, Mr. Peilei</dc:creator>\n        <dc:creator>Wang,\
+        \ Professor Ting</dc:creator>\n        <dc:subject>Computational Neuroscience</dc:subject>\n\
+        \        <dc:subject>Machine Vision</dc:subject>\n        <dc:subject>Statistical\
+        \ Models</dc:subject>\n        <dc:subject>Neural Modelling</dc:subject>\n\
+        \        <dc:description>We have put forwards a unified quantitative framework\
+        \ of vision and audition, based on existing data and theories. According to\
+        \ this model, the retina is a feedforward network self-adaptive to inputs\
+        \ in a specific period. After fully grown, cells become specialized detectors\
+        \ based on statistics of stimulus history. This model has provided explanations\
+        \ for perception mechanisms of colour, shape, depth and motion. Moreover,\
+        \ based on this ground we have put forwards a bold conjecture that single\
+        \ ear can detect sound\u2019s direction. This is complementary to existing\
+        \ theories and has provided better explanations for sound localization. </dc:description>\n\
+        \        <dc:date>2014-06-01</dc:date>\n        <dc:type>Preprint</dc:type>\n\
+        \        <dc:type>NonPeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9751/1/Liu_Text.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Liu, Mr. Peilei and Wang, Professor Ting  (2014)\
+        \ A Unified Quantitative Model of Vision and Audition.  [Preprint]     </dc:identifier>\n\
+        \        <dc:relation>http://cogprints.org/9751/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9753</identifier>\n\
+        \      <datestamp>2015-04-20T11:40:52Z</datestamp>\n      <setSpec>7375626A656374733D70737963:636F672D707379</setSpec>\n\
+        \      <setSpec>7375626A656374733D6E6575726F:636F6D702D6E6575726F2D736369</setSpec>\n\
+        \      <setSpec>7375626A656374733D636F6D70:636F6D702D7363692D6D6163682D64796E616D2D737973</setSpec>\n\
+        \      <setSpec>7375626A656374733D636F6D70:636F6D702D7363692D6D6163682D6C6561726E</setSpec>\n\
+        \      <setSpec>7375626A656374733D636F6D70:636F6D702D7363692D6E657572616C2D6E657473</setSpec>\n\
+        \      <setSpec>7375626A656374733D636F6D70:636F6D702D7363692D737461742D6D6F64656C</setSpec>\n\
+        \      <setSpec>7375626A656374733D6E6575726F:6E6575726F2D6D6F64</setSpec>\n\
+        \      <setSpec>7375626A656374733D7068696C:7068696C2D6C6F676963</setSpec>\n\
+        \      <setSpec>7375626A656374733D7068696C:7068696C2D6D696E64</setSpec>\n\
+        \      <setSpec>74797065733D7072657072696E74</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>A Quantitative Neural Coding Model of Sensory Memory&#13;\n\
+        </dc:title>\n        <dc:creator>Liu, PHD Peilei</dc:creator>\n        <dc:creator>Wang,\
+        \ Professor Ting</dc:creator>\n        <dc:subject>Cognitive Psychology</dc:subject>\n\
+        \        <dc:subject>Computational Neuroscience</dc:subject>\n        <dc:subject>Dynamical\
+        \ Systems</dc:subject>\n        <dc:subject>Machine Learning</dc:subject>\n\
+        \        <dc:subject>Neural Nets</dc:subject>\n        <dc:subject>Statistical\
+        \ Models</dc:subject>\n        <dc:subject>Neural Modelling</dc:subject>\n\
+        \        <dc:subject>Logic</dc:subject>\n        <dc:subject>Philosophy of\
+        \ Mind</dc:subject>\n        <dc:description>The coding mechanism of sensory\
+        \ memory on the neuron scale is one of the most&#13;\nimportant questions\
+        \ in neuroscience. We have put forward a quantitative neural network model,&#13;\n\
+        which is self-organized, self-similar, and self-adaptive, just like an ecosystem\
+        \ following&#13;\nDarwin's theory. According to this model, neural coding\
+        \ is a \u201Cmult-to-one\u201Dmapping from&#13;\nobjects to neurons. And the\
+        \ whole cerebrum is a real-time statistical Turing Machine, with&#13;\npowerful\
+        \ representing and learning ability. This model can reconcile some important\
+        \ disputations,&#13;\nsuch as: temporal coding versus rate-based coding, grandmother\
+        \ cell versus population coding,&#13;\nand decay theory versus interference\
+        \ theory. And it has also provided explanations for some key&#13;\nquestions\
+        \ such as memory consolidation, episodic memory, consciousness, and sentiment.&#13;\n\
+        Philosophical significance is indicated at last.&#13;\n</dc:description>\n\
+        \        <dc:date>2014-06-30</dc:date>\n        <dc:type>Preprint</dc:type>\n\
+        \        <dc:type>NonPeerReviewed</dc:type>\n        <dc:format>application/pdf</dc:format>\n\
+        \        <dc:identifier>http://cogprints.org/9753/1/liutextfigs.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Liu, PHD Peilei and Wang, Professor Ting  (2014)\
+        \ A Quantitative Neural Coding Model of Sensory Memory.  [Preprint]     </dc:identifier>\n\
+        \        <dc:relation>http://cogprints.org/9753/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9756</identifier>\n\
+        \      <datestamp>2015-04-20T11:40:47Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D70737963:6170706C2D636F672D707379</setSpec>\n\
+        \      <setSpec>7375626A656374733D70737963:626568616E616C</setSpec>\n    \
+        \  <setSpec>7375626A656374733D6E6575726F:62656861762D6E6575726F2D736369</setSpec>\n\
+        \      <setSpec>7375626A656374733D6E6575726F:627261696E2D696D67</setSpec>\n\
+        \      <setSpec>7375626A656374733D70737963:636C696E2D707379</setSpec>\n  \
+        \    <setSpec>7375626A656374733D70737963:636F672D707379</setSpec>\n      <setSpec>7375626A656374733D70737963:65766F6C2D707379</setSpec>\n\
+        \      <setSpec>7375626A656374733D6E6575726F:6E6575726F2D616E6174</setSpec>\n\
+        \      <setSpec>7375626A656374733D6E6575726F:6E6575726F2D6C696E67</setSpec>\n\
+        \      <setSpec>7375626A656374733D6E6575726F:6E6575726F2D6E6575</setSpec>\n\
+        \      <setSpec>7375626A656374733D6E6575726F:6E6575726F2D70687973696F</setSpec>\n\
+        \      <setSpec>7375626A656374733D6E6575726F:6E6575726F2D707379</setSpec>\n\
+        \      <setSpec>7375626A656374733D6E6575726F:6E6575726F2D7073796368</setSpec>\n\
+        \      <setSpec>7375626A656374733D7068696C:7068696C2D736369</setSpec>\n  \
+        \    <setSpec>7375626A656374733D70737963:70687973696F2D707379</setSpec>\n\
+        \      <setSpec>7375626A656374733D70737963:70737963706873</setSpec>\n    \
+        \  <setSpec>7375626A656374733D70737963:736F632D707379</setSpec>\n      <setSpec>74797065733D6A6F75726E616C70</setSpec></header>\n\
+        \    <metadata>\n      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Co-Variations among Cognition, Cerebellar&#13;\nDisorders\
+        \ and Cortical Areas With&#13;\nRegional Glucose-Metabolic Activities in a&#13;\n\
+        Homogeneous Sample with Uner Tan Syndrome:&#13;\nHolistic Functioning of the\
+        \ Human Brain</dc:title>\n        <dc:creator>Tan, Prof. Dr.  Uner</dc:creator>\n\
+        \        <dc:subject>Applied Cognitive Psychology</dc:subject>\n        <dc:subject>Behavioral\
+        \ Analysis</dc:subject>\n        <dc:subject>Behavioral Neuroscience</dc:subject>\n\
+        \        <dc:subject>Brain Imaging</dc:subject>\n        <dc:subject>Clinical\
+        \ Psychology</dc:subject>\n        <dc:subject>Cognitive Psychology</dc:subject>\n\
+        \        <dc:subject>Evolutionary Psychology</dc:subject>\n        <dc:subject>Neuroanatomy</dc:subject>\n\
+        \        <dc:subject>Neurolinguistics</dc:subject>\n        <dc:subject>Neurology</dc:subject>\n\
+        \        <dc:subject>Neurophysiology</dc:subject>\n        <dc:subject>Neuropsychology</dc:subject>\n\
+        \        <dc:subject>Neuropsychiatry</dc:subject>\n        <dc:subject>Philosophy\
+        \ of Science</dc:subject>\n        <dc:subject>Physiological Psychology</dc:subject>\n\
+        \        <dc:subject>Psychophysiology</dc:subject>\n        <dc:subject>Social\
+        \ Psychology</dc:subject>\n        <dc:description>Patients with Uner Tan\
+        \ syndrome (UTS) exhibit habitual quadrupedal locomotion (QL), intellectual\
+        \ disability, dysarthric speech and truncal ataxia. Examination of cognitive\
+        \ ability in this syndrome has not yet been demonstrated in the scientific\
+        \ literature.  Aims: (i) To analyze the cognitive abilities of the siblings\
+        \ with UTS; (ii) to assess the grade of their ataxia in relation to cerebellar\
+        \ disorders; (iii) to measure the metabolic activities of various cerebral\
+        \ regions in comparison with healthy individuals; (iv) to detect the interrelationships\
+        \ among all of the measured variables (IQ test scores, ataxia scores, cerebro-cerebellar\
+        \ areas and their metabolic activity levels) to reveal the holistic activity\
+        \ of the&#13;\nbrain.  The Minimental State Examination (MMSE) and Wechsler\
+        \ Adult Intelligence Scale (WAIS-R) were applied to the affected cases and\
+        \ healthy subjects. Cerebellar disorders were assessed by the International\
+        \ Cooperative Ataxia Rating Scale (ICARS). Brain MRI scans were performed\
+        \ and cerebro-cerebellar areas were measured on MRI scans, including their\
+        \ metabolic activities (SUV), measured by positron emission tomography (PET)\
+        \ scanning. MMSE and WAIS-R scores both correlated with cerebro-cerebellar\
+        \ areas. Cerebello-vermial areas and their metabolic activities were significantly\
+        \ smaller in patients than in normal controls; areas of the remaining structures\
+        \ were not significantly different between patients and healthy subjects.\
+        \ Brain areas significantly inter-correlated: ICARS negatively correlated\
+        \ with WAIS-R,MMSE scores, SUV, and cerebro-cerebellar areas, which significantly\
+        \ correlated with each other. The results suggested (i) ICARS may not only\
+        \ be a test for cerebellar disorders, but also may be related to global functioning\
+        \ of all of the&#13;\ncerebro-cerebellar regions; (ii) ICARS, WAIS-R and MMSE\
+        \ may be measures of emergent properties of the holistic&#13;\nactivity of\
+        \ the brain; (iii) the psychomotor disorders in UTS may be related to decreased\
+        \ brain metabolism.</dc:description>\n        <dc:contributor>Tarlaci, Prof.\
+        \ Dr.  Sultan</dc:contributor>\n        <dc:date>2014-07-09</dc:date>\n  \
+        \      <dc:type>Journal (Paginated)</dc:type>\n        <dc:type>PeerReviewed</dc:type>\n\
+        \        <dc:format>application/pdf</dc:format>\n        <dc:identifier>http://cogprints.org/9756/1/TAN%20PAPER%20NQ%202014%20%281%29.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Tan, Prof. Dr. Uner  (2014) Co-Variations among\
+        \ Cognition, Cerebellar Disorders and Cortical Areas With Regional Glucose-Metabolic\
+        \ Activities in a Homogeneous Sample with Uner Tan Syndrome: Holistic Functioning\
+        \ of the Human Brain.  [Journal (Paginated)]     </dc:identifier>\n      \
+        \  <dc:relation>http://cogprints.org/9756/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9760</identifier>\n\
+        \      <datestamp>2015-04-20T11:40:42Z</datestamp>\n      <setSpec>7375626A656374733D6E6575726F:62656861762D6E6575726F2D736369</setSpec>\n\
+        \      <setSpec>7375626A656374733D62696F:62696F2D616E692D6265686176</setSpec>\n\
+        \      <setSpec>7375626A656374733D6E6575726F:62696F2D70687973</setSpec>\n\
+        \      <setSpec>7375626A656374733D62696F:636F6761726368</setSpec>\n      <setSpec>7375626A656374733D6E6575726F:636F6D702D6E6575726F2D736369</setSpec>\n\
+        \      <setSpec>7375626A656374733D636F6D70:636F6D702D7363692D6172742D696E74656C</setSpec>\n\
+        \      <setSpec>7375626A656374733D636F6D70:636F6D702D7363692D6D6163682D64796E616D2D737973</setSpec>\n\
+        \      <setSpec>7375626A656374733D636F6D70:636F6D702D7363692D6D6163682D6C6561726E</setSpec>\n\
+        \      <setSpec>7375626A656374733D6E6575726F:6E6575726F2D6D6F64</setSpec>\n\
+        \      <setSpec>74797065733D7072657072696E74</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Motor Learning Mechanism on the Neuron Scale </dc:title>\n\
+        \        <dc:creator>Liu, Mr. Peilei</dc:creator>\n        <dc:creator>Wang,\
+        \ Prof. Ting</dc:creator>\n        <dc:subject>Behavioral Neuroscience</dc:subject>\n\
+        \        <dc:subject>Animal Behavior</dc:subject>\n        <dc:subject>Biophysics</dc:subject>\n\
+        \        <dc:subject>Cognitive Archeology</dc:subject>\n        <dc:subject>Computational\
+        \ Neuroscience</dc:subject>\n        <dc:subject>Artificial Intelligence</dc:subject>\n\
+        \        <dc:subject>Dynamical Systems</dc:subject>\n        <dc:subject>Machine\
+        \ Learning</dc:subject>\n        <dc:subject>Neural Modelling</dc:subject>\n\
+        \        <dc:description>Based on existing data, we wish to put forward a\
+        \ biological model of motor system on the neuron scale. Then we indicate its\
+        \ implications in statistics and learning. Specifically, neuron\u2019s firing\
+        \ frequency and synaptic strength are probability estimates in essence. And\
+        \ the lateral inhibition also has statistical implications. From the standpoint\
+        \ of learning, dendritic competition through retrograde messengers is the\
+        \ foundation of conditional reflex and \u201Cgrandmother cell\u201D coding.\
+        \ And they are the kernel mechanisms of motor learning and sensory-motor integration\
+        \ respectively. Finally, we compare motor system with sensory system. In short,\
+        \ we would like to bridge the gap between molecule evidences and computational\
+        \ models. </dc:description>\n        <dc:date>2014-07-01</dc:date>\n     \
+        \   <dc:type>Preprint</dc:type>\n        <dc:type>NonPeerReviewed</dc:type>\n\
+        \        <dc:format>application/pdf</dc:format>\n        <dc:identifier>http://cogprints.org/9760/1/liutextfigs.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Liu, Mr. Peilei and Wang, Prof. Ting  (2014) Motor\
+        \ Learning Mechanism on the Neuron Scale.  [Preprint]     </dc:identifier>\n\
+        \        <dc:relation>http://cogprints.org/9760/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9764</identifier>\n\
+        \      <datestamp>2015-04-20T11:40:32Z</datestamp>\n      <setSpec>7374617475733D756E707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D636F6D70:636F6D702D7363692D6C616E67</setSpec>\n\
+        \      <setSpec>7375626A656374733D6C696E67:6C696E672D636F6D70617261</setSpec>\n\
+        \      <setSpec>74797065733D7072657072696E74</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Targetable Named Entity Recognition in Social Media</dc:title>\n\
+        \        <dc:creator>Ashwini, Sandeep</dc:creator>\n        <dc:creator>Choi,\
+        \ Jinho D.</dc:creator>\n        <dc:subject>Language</dc:subject>\n     \
+        \   <dc:subject>Comparative Linguistics</dc:subject>\n        <dc:description>We\
+        \ present a novel approach for recognizing what we call targetable named entities;\
+        \ that is, named entities in a targeted set (e.g, movies, books, TV shows).\
+        \ Unlike many other NER systems that need to retrain their statistical models\
+        \ as new entities arrive, our approach does not require such retraining, which\
+        \ makes it more adaptable for types of entities that are frequently updated.\
+        \ For this preliminary study, we focus on one entity type, movie title, using\
+        \ data collected from Twitter. Our system is tested on two evaluation sets,\
+        \ one including only entities corresponding to movies in our training set,\
+        \ and the other excluding any of those entities. Our final model shows F1-scores\
+        \ of 76.19% and 78.70% on these evaluation sets, which gives strong evidence\
+        \ that our approach is completely unbiased to any particular set of entities\
+        \ found during training.</dc:description>\n        <dc:date>2014-07-31</dc:date>\n\
+        \        <dc:type>Preprint</dc:type>\n        <dc:type>NonPeerReviewed</dc:type>\n\
+        \        <dc:format>application/pdf</dc:format>\n        <dc:identifier>http://cogprints.org/9764/1/cogprints2014a.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Ashwini, Sandeep and Choi, Jinho D.  (2014) Targetable\
+        \ Named Entity Recognition in Social Media.  [Preprint]    (Unpublished) \
+        \ </dc:identifier>\n        <dc:relation>http://cogprints.org/9764/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \    <record>\n    <header>\n      <identifier>oai:cogprints.org:9816</identifier>\n\
+        \      <datestamp>2015-04-20T11:26:30Z</datestamp>\n      <setSpec>7374617475733D707562</setSpec>\n\
+        \      <setSpec>7375626A656374733D70737963:636F672D707379</setSpec>\n    \
+        \  <setSpec>74797065733D6A6F75726E616C70</setSpec></header>\n    <metadata>\n\
+        \      <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        >\n        <dc:title>Interference produces different forgetting rates for\
+        \ implicit and explicit knowledge</dc:title>\n        <dc:creator>Tamayo,\
+        \ Ricardo</dc:creator>\n        <dc:creator>Frensch, Peter A.</dc:creator>\n\
+        \        <dc:subject>Cognitive Psychology</dc:subject>\n        <dc:description>Exposure\
+        \ to a repeating set of target strings generated by an artificial grammar\
+        \ in a speeded matching task generates both explicit and implicit knowledge.\
+        \ Previous research has shown that implicit knowledge (assessed via a priming\
+        \ measure) is preserved after a retention interval of one week but explicit\
+        \ knowledge (assessed via recognition) is significantly reduced (Tunney, 2003).\
+        \ In two experiments, we replicated and extended Tunney's findings. Experiment\
+        \ 1 was a partial replication of the experiment conducted by Tunney (2003),\
+        \ and demonstrated that the decline in recognition shown by Tunney was not\
+        \ due to a repetition of test items at the pre and post times of assessment.\
+        \ In addition, Experiment 1 lends credibility to Tunney's assumption that\
+        \ recognition scores assess explicit rather than implicit knowledge. Experiment\
+        \ 2 extended Tunney's findings theoretically by demonstrating that interference\
+        \ can produce the pattern of findings demonstrated in the present Experiment\
+        \ 1 as well as in Tunney (2003).</dc:description>\n        <dc:publisher>Hogrefe\
+        \ &amp; Huber Publishers</dc:publisher>\n        <dc:date>2007</dc:date>\n\
+        \        <dc:type>Journal (Paginated)</dc:type>\n        <dc:type>PeerReviewed</dc:type>\n\
+        \        <dc:format>application/pdf</dc:format>\n        <dc:identifier>http://cogprints.org/9816/1/Tamayo%20%26%20Frensch%2012.09.06%20revised.pdf</dc:identifier>\n\
+        \        <dc:identifier>  Tamayo, Ricardo and Frensch, Peter A.  (2007) Interference\
+        \ produces different forgetting rates for implicit and explicit knowledge.\
+        \  [Journal (Paginated)]     </dc:identifier>\n        <dc:relation>http://cogprints.org/9816/</dc:relation></oai_dc:dc></metadata></record>\n\
+        \  </ListRecords>\n</OAI-PMH>"}
+    headers:
+      cache-control: ['no-store, no-cache, must-revalidate']
+      connection: [close]
+      content-type: [text/xml; charset=UTF-8]
+      date: ['Fri, 24 Apr 2015 14:09:43 GMT']
+      server: [Apache/2.2.3 (Red Hat)]
+      transfer-encoding: [chunked]
+    status: {code: 200, message: OK}
+version: 1
