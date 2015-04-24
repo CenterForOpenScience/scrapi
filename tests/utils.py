@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from scrapi.base.helpers import updated_schema
-from scrapi.base.schemas import BASEXMLSCHEMA
+from scrapi.base.schemas import DOESCHEMA
 from scrapi.base.helpers import updated_schema, build_properties, single_result
 
 RAW_DOC = {
@@ -64,7 +64,7 @@ RECORD = {
 }
 
 
-TEST_SCHEMA = updated_schema(BASEXMLSCHEMA, {
+TEST_SCHEMA = updated_schema(DOESCHEMA, {
     "title": ("//dc:title/node()", lambda x: "Title overwritten"),
     "otherProperties": build_properties(
         ("title1", ("//dc:title/node()", single_result)),
