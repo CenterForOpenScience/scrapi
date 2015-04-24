@@ -22,6 +22,8 @@ ELASTIC_INDEX = 'share'
 
 PLOS_API_KEY = 'fakekey'
 
+disabled = ['stepic']
+
 FRONTEND_KEYS = [
     u'description',
     u'contributors',
