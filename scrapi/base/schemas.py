@@ -9,7 +9,7 @@ from .helpers import (
     compose,
     single_result,
     format_tags,
-    build_properties
+    build_properties,
     language_code
 )
 
