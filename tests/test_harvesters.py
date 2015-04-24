@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 def test_harvester(monkeypatch, harvester_name, *args, **kwargs):
     monkeypatch.setattr(requests.time, 'sleep', lambda *_, **__: None)
 
-    with vcr.use_cassette('tests/vcr/{}.yaml'.format(harvester_name), match_on=['host'], record_mode='once'):
+    with vcr.use_cassette('tests/vcr/{}.yaml'.format(harvester_name), match_on=['host'], record_mode='none'):
         harvester = registry[harvester_name]
         try:
             normalized = [harvester.normalize(doc) for doc in harvester.harvest()]
