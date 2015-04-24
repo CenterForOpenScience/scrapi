@@ -18,6 +18,6 @@ class VTechHarvester(OAIHarvester):
 
     base_url = 'http://vtechworks.lib.vt.edu/oai/request'
     property_list = [
-        'type', 'source', 'publisher', 'format', 'date',
-        'identifier', 'setSpec', 'rights', 'language', 'relation'
+        'type', 'source', 'format', 'date',
+        'identifier', 'setSpec', 'rights', 'relation'
     ]

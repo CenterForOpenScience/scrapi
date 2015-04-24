@@ -1,9 +1,10 @@
 from __future__ import unicode_literals
 
 import re
-from copy import deepcopy
 import functools
+from copy import deepcopy
 
+from pycountry import languages
 from nameparser import HumanName
 
 URL_REGEX = re.compile(ur'(https?://\S*\.\S*)')
@@ -122,3 +123,10 @@ def oai_process_contributors(*args):
 
 def pack(*args, **kwargs):
     return args, kwargs
+
+
+def language_code(language):
+    try:
+        return languages.get(name=language)
+    except KeyError:
+        return None

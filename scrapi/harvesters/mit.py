@@ -19,9 +19,8 @@ class MITHarvester(OAIHarvester):
 
     base_url = 'http://dspace.mit.edu/oai/request'
     property_list = [
-        'type', 'source', 'publisher',
-        'format', 'rights', 'identifier',
-        'relation', 'language', 'date', 'description'
+        'type', 'source', 'format', 'rights', 'identifier',
+        'relation', 'date', 'description', 'setSpec'
     ]
 
     @property

@@ -19,7 +19,7 @@ class StCloudHarvester(OAIHarvester):
 
     base_url = 'http://repository.stcloudstate.edu/do/oai/'
     property_list = [
-        'type', 'source', 'publisher', 'format', 'setSpec', 'date'
+        'type', 'source', 'format', 'setSpec', 'date'
     ]
     approved_sets = [
         'ews_facpubs',
