@@ -7,7 +7,7 @@ interactions:
       Connection: [keep-alive]
       User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
     method: GET
-    uri: http://api.plos.org/search?q=publication_date:%5B2007-12-20T00:00:00Z+TO+2007-12-21T00:00:00Z%5D&api_key=a1TjkHdh2NzVd6jhsDzM&rows=0
+    uri: http://api.plos.org/search?q=publication_date:%5B2007-12-20T00:00:00Z+TO+2007-12-21T00:00:00Z%5D&api_key=fakekey&rows=0
   response:
     body: {string: !!python/unicode '<?xml version="1.0" encoding="UTF-8"?>
 
@@ -36,7 +36,7 @@ interactions:
       Connection: [keep-alive]
       User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
     method: GET
-    uri: http://api.plos.org/search?q=publication_date:%5B2007-12-20T00:00:00Z+TO+2007-12-21T00:00:00Z%5D&start=0&api_key=a1TjkHdh2NzVd6jhsDzM&rows=999
+    uri: http://api.plos.org/search?q=publication_date:%5B2007-12-20T00:00:00Z+TO+2007-12-21T00:00:00Z%5D&start=0&api_key=fakekey&rows=999
   response:
     body: {string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<response>\n<result\
         \ name=\"response\" numFound=\"116\" start=\"0\" maxScore=\"1.0\"><doc><str\
