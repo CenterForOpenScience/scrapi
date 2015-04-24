@@ -100,14 +100,6 @@ class PlosHarvester(XMLHarvester):
             or row.xpath("str[@name='author_display']")
         ]
 
-    def copy_to_unicode(self, element):
-
-        element = ''.join(element)
-        if isinstance(element, unicode):
-            return element
-        else:
-            return unicode(element, encoding=DEFAULT_ENCODING)
-
     schema = {
         'uris': {
             'canonicalUri': ('//str[@name="id"]/node()', compose('http://dx.doi.org/{}'.format, single_result)),

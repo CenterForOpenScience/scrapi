@@ -21,6 +21,7 @@ from nameparser import HumanName
 
 from scrapi import requests
 from scrapi.base import XMLHarvester
+from scrapi.util import copy_to_unicode
 from scrapi.linter.document import RawDocument
 from scrapi.base.helpers import compose, single_result
 
@@ -153,14 +154,6 @@ class DataOneHarvester(XMLHarvester):
         'description': ("str[@name='abstract']/node()", single_result)
     }
 
-    def copy_to_unicode(self, element):
-        encoding = self.record_encoding or DEFAULT_ENCODING
-        element = ''.join(element)
-        if isinstance(element, unicode):
-            return element
-        else:
-            return unicode(element, encoding=encoding)
-
     def harvest(self, days_back=1):
         records = self.get_records(days_back)
 
@@ -171,7 +164,7 @@ class DataOneHarvester(XMLHarvester):
             xml_list.append(RawDocument({
                 'doc': record,
                 'source': self.short_name,
-                'docID': self.copy_to_unicode(doc_id),
+                'docID': copy_to_unicode(doc_id),
                 'filetype': 'xml'
             }))
 
