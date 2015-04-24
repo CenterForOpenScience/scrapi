@@ -1,0 +1,42 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
+    method: GET
+    uri: http://scholarsbank.uoregon.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2015-04-23T00:00:00Z&until=2015-04-24T00:00:00Z
+  response:
+    body: {string: !!python/unicode "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet\
+        \ type=\"text/xsl\" href=\"static/style.xsl\"?><OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"\
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
+        http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"\
+        ><responseDate>2015-04-24T13:25:58Z</responseDate>\n    <request verb=\"ListRecords\"\
+        \ metadataPrefix=\"oai_dc\" from=\"2015-04-23T00:00:00Z\" until=\"2015-04-24T00:00:00Z\"\
+        >http://scholarsbank.uoregon.edu/oai/request</request>\n    <ListRecords>\n\
+        \        <record>\n            <header>\n                <identifier>oai:scholarsbank.uoregon.edu:1794/18865</identifier>\n\
+        \                <datestamp>2015-04-23T09:00:31Z</datestamp>\n           \
+        \     <setSpec>com_1794_13653</setSpec>\n                <setSpec>com_1794_10989</setSpec>\n\
+        \                <setSpec>com_1794_151</setSpec>\n                <setSpec>col_1794_13654</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Selling Native\
+        \ Americans Through Sports</dc:title>\n<dc:creator>DeBeau, Garrett</dc:creator>\n\
+        <dc:creator>Sprague, Graham</dc:creator>\n<dc:subject>Native Americans</dc:subject>\n\
+        <dc:subject>professional sports</dc:subject>\n<dc:subject>marketing</dc:subject>\n\
+        <dc:subject>commodification</dc:subject>\n<dc:description>15 page paper, 8\
+        \ page slide presentation.</dc:description>\n<dc:date>2015-04-23T00:28:57Z</dc:date>\n\
+        <dc:date>2015-04-23T00:28:57Z</dc:date>\n<dc:date>2014-03-17</dc:date>\n<dc:type>Other</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/1794/18865</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:rights>All Rights Reserved.</dc:rights>\n<dc:publisher>University of Oregon</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n    </ListRecords>\n</OAI-PMH>\n"}
+    headers:
+      connection: [close]
+      content-type: [application/xml]
+      date: ['Fri, 24 Apr 2015 20:25:58 GMT']
+      transfer-encoding: [chunked]
+    status: {code: 200, message: OK}
+version: 1

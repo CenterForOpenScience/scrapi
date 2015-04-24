@@ -1,0 +1,47 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
+    method: GET
+    uri: http://scholar.colorado.edu/do/oai/?verb=ListRecords&metadataPrefix=oai_dc&from=2015-04-23T00:00:00Z&until=2015-04-24T00:00:00Z
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA51WW2/bNhR+tn8FoQHDBtiW7LhYqtoKigZZNsRt0KTY0JeCJo8ibhSpkVRs99fv
+        kJJjKRcjG+AHi/zO7Ts3Ls62pST3YKzQahlNJ0lEQDHNhbpbRl9uL8an0Vk2XHx6/9v4enU5HCBc
+        2WVUOFelcbzZbCa6AkUNK8Q92Ik2dzFi49kkiaMWnW6t6ElsTgJuliTT+M/V1Q0roKRjoayjioEX
+        syK14fRKM+qCa6+xOBwMXgNrg5lsLY+y4WBhwFZaWTinDrJZMn0zTubj2fx2lqSzk3T29usi7kGC
+        yD81WOeZWy+jK2HdZ2DacBuREhzl1NFrA7nYLiNNxTfOIkJyo8tl9KD/5DZJ0vD7ipe1ckJ2bufd
+        26yNCjnRkpoJ01IbyvUEeB1zHaOJ2PsYfMKI0MGOS3gwGAwxSu+gj7cAysH444XggIZzgZ+oxJP+
+        xEBKq6r8llNW0QrrZDxNkmQRdwS9HgwY6aBl1eVveppOk3Q+R/4O996ZwcKCu6mAZVW9lqJJcbCz
+        iPc3x3EHf14jAerO9HGL+IGExT5hgZAmWylnJFR62nz3yvfFgm+wcdSKcvYgVtVGhprnLAYJJZJu
+        4+lk+oD9jy1C/m+HtC6S17RJg913iU8yS51wErJP2CyO6Jzc7BQrjFbie+hSIhRxBZBzYbHUwAAn
+        l7QU0iGCKrICqsYXAiQnK81BYlnsNQ69cmaAOm2yFQhrR+R3WoINmP1FD/UZC85ApRFYo/JfnyI5
+        WGZE5edH9gcQ62q+C/51nSrRKYINgE79dLm6+JmU3jUfHNN1JR+FYDQ6aMlGuIJQUoADo+9Aga4t
+        4TgFjFjX3p6XL3XIs/8rFBgnKKGKN2pxvKI/BgvTFXZCvHeF3qBz1JFNAQ2NFTVIAZqwXocntjVP
+        DfRtjzACJRyMrfgOJJc1c3XIiCUMw7vzxMqdD03kDQUhuK4XJFgWrAiGBO6AAhOoHLqJvU2ktmD9
+        /7WQwu3IeodB8Zp5FThXDMjW3hrcBtoAGgaasF8KBoPfx/uYQB+SoBIHp59sign0oCVCWyYkmvTJ
+        EOhXnecC75WPEreR0ZsRko0/KncOB4wksK1wiPs1R3JtQpCBjnb6+NLFYmmwT8lBG3rtKOaRN0li
+        WuXClJaougQTLFhR1i0LIaOYkhZ8qBNPXdskz5SHA8UtcXrPM+bSZ/1xMkZYIkJ2S6Cj9onvqHCv
+        FhuiSeALiifk43PRdGoT3bFAIM+BuVDxuByAmkApxbbgMCJrgcR20rbrdcYk9Gm3NUNX+wXhd8d8
+        nLwZT9/eJr+0u7GB+9uAc7sKMgdbF87DVzjHnJbUZejOfp/EFc8DqL0KsMPaIkeXan/nxdOg6CDc
+        +NL5Prag2Z2I7wVssGQwE26C32cUxwGTsPTL9McfTk7f4ep8FwBbt+wbf9a01bVhkL334WJJrigm
+        BuMXzJILymqJZfYBze3HUTNGW6FARFi8Fls8+/CF4AvMr/1g6XAxDEBbr//CZGe2P+oDdn/XAyoc
+        ANr83ZpspXuI7vjlO4Ubgh1BnzcI3DXWQXkE+FGrscQOxXJsZY6Ab3Cq4bz2jTsiKNkI+qHByY3O
+        nacUJy+5Lnb2iXv+xeMfXfiuw5eCf1LFh0eEf4g1Ly3/hFnEvZfYwr+O/Us6+xdzMEVUegsAAA==
+    headers:
+      cache-control: [private]
+      connection: [keep-alive]
+      content-encoding: [gzip]
+      content-type: [text/xml; charset=UTF-8]
+      date: ['Fri, 24 Apr 2015 20:23:29 GMT']
+      server: [nginx/1.2.1]
+      set-cookie: [bp_plack_session=b11fef3cfe18a3d03af6d78b9e82dd9415b80cb5; path=/;
+          HttpOnly]
+      transfer-encoding: [chunked]
+    status: {code: 200, message: OK}
+version: 1
