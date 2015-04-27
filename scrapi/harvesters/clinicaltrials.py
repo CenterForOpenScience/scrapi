@@ -1,5 +1,9 @@
 """
 API harvester for ClinicalTrials.gov for the SHARE Notification Service
+
+http://clinicaltrials.gov/ct2/results?lup_s=04%2F26%2F2015%2F&lup_e=04%2F27%2F2015&displayxml=true
+iindividual result: http://ClinicalTrials.gov/show/NCT02425332?displayxml=true
+
 """
 
 #!/usr/bin/env python
@@ -40,10 +44,17 @@ class ClinicalTrialsHarvester(XMLHarvester):
         "providerUpdatedDateTime": ("lastchanged_date/node()", compose(lambda x: parse(x).replace(tzinfo=None).isoformat(), single_result)),
         "title": ('//official_title/node()', '//brief_title/node()', lambda x, y: single_result(x) or single_result(y)),
         "description": ('//brief_summary/textblock/node()', '//brief_summary/textblock/node()', lambda x, y: single_result(x) or single_result(y)),
+        "tags": ("//keyword/node()", lambda tags: [unicode(tag.lower()) for tag in tags]),
+        "sponsorships": [
+            {
+                "sponsor": {
+                    "sponsorName": "//sponsors/lead_sponsor/agency/node()"
+                }
+            }
+        ],
         "otherProperties": build_properties(
             ('oversightAuthority', '//oversight_info/authority/node()'),
             ("serviceID", "//nct_id/node()"),
-            ("tags", ("//keyword/node()", lambda tags: [unicode(tag.lower()) for tag in tags])),
             ('studyDesign', '//study_design/node()'),
             ('numberOfArms', '//number_of_arms/node()'),
             ('source', '//source/node()'),
@@ -57,7 +68,6 @@ class ClinicalTrialsHarvester(XMLHarvester):
             ('isFDARegulated', '//is_fda_regulated/node()'),
             ('isSection801', '//is_section_801/node()'),
             ('hasExpandedAccess', '//has_expanded_access/node()'),
-            ('agency', '//lead_sponsor/agency/node()'),
             ('agencyClass', '//lead_sponsor/agency_class/node()'),
             ('measure', '//primary_outcome/measure/node()'),
             ('timeFrame', '//primary_outcome/time_frame/node()'),
