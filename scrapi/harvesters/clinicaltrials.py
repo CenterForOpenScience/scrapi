@@ -21,7 +21,7 @@ from scrapi import requests
 from scrapi.base import XMLHarvester
 from scrapi.linter.document import RawDocument
 from scrapi.base.schemas import default_name_parser
-from scrapi.base.helpers import compose, single_result
+from scrapi.base.helpers import compose, single_result, build_properties
 
 logger = logging.getLogger(__name__)
 
@@ -35,6 +35,8 @@ class ClinicalTrialsHarvester(XMLHarvester):
     DEFAULT_ENCODING = 'UTF-8'
     record_encoding = None
 
+    # TODO - clinicaltrials elements have a lot of extra metadata - at some
+    # point in the future we should do a more thorough audit.
     schema = {
         "contributors": ('//overall_official/last_name/node()', default_name_parser),
         "uris": {
@@ -75,16 +77,16 @@ class ClinicalTrialsHarvester(XMLHarvester):
             ('leadSponsorAgencyClass', '//lead_sponsor/agency_class/node()'),
             ('collaborator', '//collaborator/agency/node()'),
             ('collaboratorAgencyClass', '//collaborator/agency_class/node()'),
-            ('measure', '//primary_outcome/measure/text()'),
+            ('measure', '//primary_outcome/measure/node()'),
             ('timeFrame', '//primary_outcome/time_frame/node()'),
             ('safetyIssue', '//primary_outcome/safety_issue/node()'),
-            ('secondaryOutcomes', '//secondary_outcome/node()'),
+            ('secondaryOutcomes', '//secondary_outcome/measure/node()'),
             ('enrollment', '//enrollment/node()'),
-            ('armGroup', '//arm_group/node()'),
-            ('intervention', '//intervention/node()'),
+            ('armGroup', '//arm_group/arm_group_label/node()'),
+            ('intervention', '//intervention/intervention_type/node()'),
             ('eligibility', '//elligibility/node()'),
-            ('link', '//link/node()'),
-            ('responsible_party', '//responsible_party/node()')
+            ('link', '//link/url/node()'),
+            ('responsible_party', '//responsible_party/responsible_party_full_name/node()')
         )
     }
 
