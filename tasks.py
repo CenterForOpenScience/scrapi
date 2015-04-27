@@ -34,7 +34,8 @@ def alias(alias, index):
 
 @task
 def renormalize():
-    run('python -m scripts.renormalize')
+    from scripts.renormalize import renormalize
+    renormalize()
 
 
 @task
