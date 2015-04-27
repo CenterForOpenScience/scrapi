@@ -8,10 +8,10 @@ from scrapi.tasks import normalize, process_normalized
 logger = logging.getLogger(__name__)
 
 
-def renormalize():
+def renormalize(sources=None):
     count = 0
     exceptions = []
-    for doc in documents():
+    for doc in documents(sources):
         count += 1
         try:
             raw = RawDocument({
