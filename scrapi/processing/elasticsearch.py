@@ -43,10 +43,11 @@ class ElasticsearchProcessor(BaseProcessor):
 
     def process_normalized(self, raw_doc, normalized, index=settings.ELASTIC_INDEX):
         normalized['providerUpdatedDateTime'] = self.version(raw_doc, normalized)
-        data = copy_to_unicode({
+        data = {
             key: value for key, value in normalized.attributes.items()
             if key in settings.FRONTEND_KEYS
-        })
+        }
+
         es.index(
             body=data,
             refresh=True,
