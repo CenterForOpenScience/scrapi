@@ -6,9 +6,9 @@ from scrapi.processing.cassandra import DocumentModel
 _manager.setup()
 
 
-def documents(sources):
+def documents(sources=None):
     q = DocumentModel.objects.all().limit(1000)
-    querysets = (q.filter(source=source) for source in sources)
+    querysets = (q.filter(source=source) for source in sources) if sources else [q]
     for query in querysets:
         page = list(query)
         while len(page) > 0:
