@@ -7,6 +7,7 @@ from copy import deepcopy
 from pycountry import languages
 from nameparser import HumanName
 
+
 URL_REGEX = re.compile(ur'(https?://\S*\.\S*)')
 
 
@@ -21,16 +22,18 @@ def build_properties(*args):
 
 
 def build_property(name, expr, description=None, uri=None):
+    from scrapi.base.schemas import CONSTANT
+
     property = {
-        'name': name,
+        'name': CONSTANT(name),
         'properties': {
             name: expr
         },
     }
     if description:
-        property['description'] = description
+        property['description'] = CONSTANT(description)
     if uri:
-        property['uri'] = uri
+        property['uri'] = CONSTANT(uri)
     return property
 
 

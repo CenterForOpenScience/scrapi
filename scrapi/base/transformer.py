@@ -42,12 +42,9 @@ class BaseTransformer(object):
         return transformed
 
     def _transform_list(self, l, doc):
-        l = copy.deepcopy(l)
-        for item in l:
-            item.update({
-                'properties': self._transform(item['properties'], doc)
-            })
-        return l
+        return [
+            self._transform(item, doc) for item in l
+        ]
 
     def _transform_tuple(self, l, doc):
 
