@@ -6,6 +6,7 @@ from elasticsearch.exceptions import NotFoundError
 from elasticsearch.exceptions import ConnectionError
 
 from scrapi import settings
+from scrapi.util import copy_to_unicode
 from scrapi.processing.base import BaseProcessor
 from scrapi.base.transformer import JSONTransformer
 
@@ -42,11 +43,10 @@ class ElasticsearchProcessor(BaseProcessor):
 
     def process_normalized(self, raw_doc, normalized, index=settings.ELASTIC_INDEX):
         normalized['providerUpdatedDateTime'] = self.version(raw_doc, normalized)
-        data = {
+        data = copy_to_unicode({
             key: value for key, value in normalized.attributes.items()
             if key in settings.FRONTEND_KEYS
-        }
-
+        })
         es.index(
             body=data,
             refresh=True,
