@@ -20,7 +20,6 @@ from dateutil.parser import *
 from scrapi import requests
 from scrapi.base import XMLHarvester
 from scrapi.linter.document import RawDocument
-from scrapi.base.helpers import build_properties
 from scrapi.base.schemas import default_name_parser
 from scrapi.base.helpers import compose, single_result
 
@@ -48,13 +47,18 @@ class ClinicalTrialsHarvester(XMLHarvester):
         "sponsorships": [
             {
                 "sponsor": {
-                    "sponsorName": "//sponsors/lead_sponsor/agency/node()"
+                    "sponsorName": ("//sponsors/lead_sponsor/agency/node()", single_result)
+                }
+            },
+            {
+                "sponsor": {
+                    "sponsorName": ("//sponsors/collaborator/agency/node()", single_result)
                 }
             }
         ],
         "otherProperties": build_properties(
-            ('oversightAuthority', '//oversight_info/authority/node()'),
             ("serviceID", "//nct_id/node()"),
+            ('oversightAuthority', '//oversight_info/authority/node()'),
             ('studyDesign', '//study_design/node()'),
             ('numberOfArms', '//number_of_arms/node()'),
             ('source', '//source/node()'),
@@ -68,8 +72,10 @@ class ClinicalTrialsHarvester(XMLHarvester):
             ('isFDARegulated', '//is_fda_regulated/node()'),
             ('isSection801', '//is_section_801/node()'),
             ('hasExpandedAccess', '//has_expanded_access/node()'),
-            ('agencyClass', '//lead_sponsor/agency_class/node()'),
-            ('measure', '//primary_outcome/measure/node()'),
+            ('leadSponsorAgencyClass', '//lead_sponsor/agency_class/node()'),
+            ('collaborator', '//collaborator/agency/node()'),
+            ('collaboratorAgencyClass', '//collaborator/agency_class/node()'),
+            ('measure', '//primary_outcome/measure/text()'),
             ('timeFrame', '//primary_outcome/time_frame/node()'),
             ('safetyIssue', '//primary_outcome/safety_issue/node()'),
             ('secondaryOutcomes', '//secondary_outcome/node()'),
