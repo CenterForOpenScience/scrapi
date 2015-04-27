@@ -15,6 +15,7 @@ from dateutil.parser import *
 
 from scrapi import requests
 from scrapi.base import XMLHarvester
+from scrapi.util import copy_to_unicode
 from scrapi.linter.document import RawDocument
 from scrapi.base.schemas import default_name_parser
 from scrapi.base.helpers import compose, single_result
@@ -79,14 +80,6 @@ class ClinicalTrialsHarvester(XMLHarvester):
     def namespaces(self):
         return None
 
-    def copy_to_unicode(self, element):
-        encoding = self.record_encoding or self.DEFAULT_ENCODING
-        element = ''.join(element)
-        if isinstance(element, unicode):
-            return element
-        else:
-            return unicode(element, encoding=encoding)
-
     def harvest(self, days_back=1):
         """ First, get a list of all recently updated study urls,
         then get the xml one by one and save it into a list
@@ -143,7 +136,7 @@ class ClinicalTrialsHarvester(XMLHarvester):
                 xml_list.append(RawDocument({
                     'doc': record,
                     'source': self.short_name,
-                    'docID': self.copy_to_unicode(doc_id),
+                    'docID': copy_to_unicode(doc_id),
                     'filetype': 'xml',
                 }))
                 official_count += 1

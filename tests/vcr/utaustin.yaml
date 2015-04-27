@@ -1,0 +1,54 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
+    method: GET
+    uri: http://repositories.lib.utexas.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2014-12-24&until=2014-12-25
+  response:
+    body:
+      string: !!binary |
+        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
+        gMHv52eZpHtG+mqVHD8vrfaPZ+nvc12E2DUUAAA=
+    headers:
+      content-encoding: [gzip]
+      content-length: ['1853']
+      content-type: [text/xml;charset=UTF-8]
+      date: ['Fri, 24 Apr 2015 14:05:20 GMT']
+      server: [Apache-Coyote/1.1]
+    status: {code: 200, message: OK}
+version: 1
