@@ -12,6 +12,7 @@ logger = logging.getLogger(__name__)
 
 
 def rename(source, target, dry=True):
+    assert source != target
     count = 0
     exceptions = []
 
