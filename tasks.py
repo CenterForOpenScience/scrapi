@@ -38,9 +38,9 @@ def renormalize():
 
 
 @task
-def rename(source, target):
+def rename(source, target, dry=True):
     from scripts.rename import rename
-    rename(source, target)
+    rename(source, target, dry)
 
 
 @task
