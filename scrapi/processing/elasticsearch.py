@@ -6,7 +6,6 @@ from elasticsearch.exceptions import NotFoundError
 from elasticsearch.exceptions import ConnectionError
 
 from scrapi import settings
-from scrapi.util import copy_to_unicode
 from scrapi.processing.base import BaseProcessor
 from scrapi.base.transformer import JSONTransformer
 
