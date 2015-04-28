@@ -1,6 +1,5 @@
 import os
 
-
 from scrapi import settings
 from scrapi.processing.base import BaseProcessor
 
