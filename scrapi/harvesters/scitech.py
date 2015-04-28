@@ -17,8 +17,7 @@ from scrapi import requests
 
 from scrapi.base import XMLHarvester
 from scrapi.linter import RawDocument
-from scrapi.base.schemas import BASEXMLSCHEMA
-from scrapi.base.helpers import updated_schema, build_properties
+from scrapi.base.schemas import DOESCHEMA
 
 NAME = 'scitech'
 
@@ -41,28 +40,7 @@ class SciTechHarvester(XMLHarvester):
         'dcq': 'http://purl.org/dc/terms/'
     }
 
-    schema = updated_schema(BASEXMLSCHEMA, {
-        'otherProperties': build_properties(
-            ('language', '//dc:language/node()'),
-            ('type', '//dc:type/node()'),
-            ('typeQualifier', '//dc:typeQualifier/node()'),
-            ('format', '//dc:format/node()'),
-            ('identifierOther', '//dc:identifierOther/node()'),
-            ('rights', '//dc:rights/node()'),
-            ('identifierDOEcontract', '//dcq:identifierDOEcontract/node()'),
-            ('relation', '//dc:relation/node()'),
-            ('coverage', '//dc:coverage/node()'),
-            ('identifier-purl', '//dc:identifier-purl/node()'),
-            ('identifier', '//dc:identifier/node()'),
-            ('identifierReport', '//dc:identifierReport/node()'),
-            ('publisher', '//dcq:publisher/node()'),
-            ('publisherCountry', '//dcq:publisherCountry/node()'),
-            ('publisherSponsor', '//dcq:publisherSponsor/node()'),
-            ('publisherAvailability', '//dcq:publisherAvailability/node()'),
-            ('publisherResearch', '//dcq:publisherResearch/node()'),
-            ('date', '//dc:date/node()')
-        )
-    })
+    schema = DOESCHEMA
 
     def harvest(self, days_back=1):
         """A function for querying the SciTech Connect database for raw XML.

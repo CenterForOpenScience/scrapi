@@ -10,12 +10,21 @@ from scrapi.linter import RawDocument
 from scrapi.util import copy_to_unicode
 from scrapi.base.schemas import BASEXMLSCHEMA
 from scrapi.base.helpers import updated_schema, build_properties
+from scrapi.base.schemas import DOESCHEMA
 
 
 class DoepagesHarvester(XMLHarvester):
     short_name = 'doepages'
     long_name = 'Department of Energy Pages'
     url = 'http://www.osti.gov/pages/'
+
+    schema = DOESCHEMA
+
+    namespaces = {
+        'rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
+        'dc': 'http://purl.org/dc/elements/1.1/',
+        'dcq': 'http://purl.org/dc/terms/'
+    }
 
     def harvest(self, days_back=1):
         today = date.today()
@@ -46,6 +55,13 @@ class DoepagesHarvester(XMLHarvester):
             }))
 
         return xml_list
+
+    def copy_to_unicode(self, element, encoding='UTF-8'):
+        element = ''.join(element)
+        if isinstance(element, unicode):
+            return element
+        else:
+            return unicode(element, encoding=encoding)
 
     @property
     def namespaces(self):
