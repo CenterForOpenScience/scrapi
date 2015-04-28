@@ -3,7 +3,7 @@ Figshare harvester of public projects for the SHARE Notification Service
 Note: At the moment, this harvester only harvests basic data on each article, and does
 not make a seperate request for additional metadata for each record.
 
-Example API query: http://api.figshare.com/v1/articles/search?search_for=*&from_date=2015-2-1&end_date=2015-2-1
+Example API query: http://api.figshare.com/v1/articles/search?search_for=*&from_date=2015-2-1&to_date=2015-2-1
 """
 
 from __future__ import unicode_literals
@@ -46,21 +46,21 @@ class FigshareHarvester(JSONHarvester):
         )
     }
 
-    def harvest(self, days_back=0):
+    def harvest(self, days_back=1):
         """ Figshare should always have a 24 hour delay because they
         manually go through and check for test projects. Most of them
         are removed within 24 hours.
         """
         start_date = date.today() - timedelta(days_back) - timedelta(1)
-        end_date = date.today() - timedelta(1)
-        search_url = '{0}{1}-{2}-{3}&end_date={4}-{5}-{6}'.format(
+        to_date = start_date + timedelta(1)
+        search_url = '{0}{1}-{2}-{3}&to_date={4}-{5}-{6}'.format(
             self.URL,
             start_date.year,
             start_date.month,
             start_date.day,
-            end_date.year,
-            end_date.month,
-            end_date.day
+            to_date.year,
+            to_date.month,
+            to_date.day
         )
 
         records = self.get_records(search_url)

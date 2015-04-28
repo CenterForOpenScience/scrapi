@@ -1,0 +1,44 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
+    method: GET
+    uri: http://digital.lib.washington.edu/dspace-oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2015-04-21&until=2015-04-22
+  response:
+    body: {string: !!python/unicode "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet\
+        \ type=\"text/xsl\" href=\"static/style.xsl\"?><OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"\
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
+        http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"\
+        ><responseDate>2015-04-24T08:04:57Z</responseDate>\n    <request verb=\"ListRecords\"\
+        \ metadataPrefix=\"oai_dc\" from=\"2015-04-21\" until=\"2015-04-22\">http://digital.lib.washington.edu/dspace-oai/request</request>\n\
+        \    <ListRecords>\n        <record>\n            <header>\n             \
+        \   <identifier>oai:digital.lib.washington.edu:1773/27618</identifier>\n \
+        \               <datestamp>2015-04-21T10:00:39Z</datestamp>\n            \
+        \    <setSpec>com_1773_3117</setSpec>\n                <setSpec>com_1773_3774</setSpec>\n\
+        \                <setSpec>col_1773_27617</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Zumou walls\
+        \ project Jul 05-Jun 06</dc:title>\n<dc:creator>Skinner, William G.</dc:creator>\n\
+        <dc:description>research related letter/email</dc:description>\n<dc:date>2015-04-20T18:54:37Z</dc:date>\n\
+        <dc:date>2015-04-20T18:54:37Z</dc:date>\n<dc:date>2015</dc:date>\n<dc:type>Other</dc:type>\n\
+        <dc:identifier>Box 103</dc:identifier>\n<dc:identifier>Skinner Archive Document\
+        \ # 02612</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1773/27618</dc:identifier>\n\
+        <dc:relation>Central Place Analysis and China's Urban Systems project</dc:relation>\n\
+        <dc:relation>ChinaW 1820-1893 Central Place (Capitals at all levels) dataset</dc:relation>\n\
+        <dc:format>8.5 x 11 inch paper</dc:format>\n<dc:coverage>China</dc:coverage>\n\
+        <dc:coverage>July 2005-June 2006</dc:coverage>\n</oai_dc:dc>\n</metadata>\n\
+        \        </record>\n    </ListRecords>\n</OAI-PMH>\n"}
+    headers:
+      connection: [close]
+      content-type: [application/xml]
+      date: ['Fri, 24 Apr 2015 15:04:55 GMT']
+      transfer-encoding: [chunked]
+      which-server: [demeter2]
+    status: {code: 200, message: OK}
+version: 1

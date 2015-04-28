@@ -63,8 +63,6 @@ def _maybe_load_response(method, url):
 
 
 def record_or_load_response(method, url, throttle=None, force=False, params=None, expected=(200,), **kwargs):
-    if params:
-        url = furl.furl(url).set(args=params).url
 
     resp = _maybe_load_response(method, url)
 
@@ -107,7 +105,7 @@ def record_or_load_response(method, url, throttle=None, force=False, params=None
     ).save()
 
 
-def request(method, url, **kwargs):
+def request(method, url, params=None, **kwargs):
     """Make a recorded request or get a record matching method and url
 
     :param str method: Get, Put, Post, or Delete
@@ -116,11 +114,14 @@ def request(method, url, **kwargs):
     :param int throttle: A time in seconds to sleep before making requests
     :param dict kwargs: Addition keywords to pass to requests
     """
+    if params:
+        url = furl.furl(url).set(args=params).url
+    logger.info(url)
     if settings.RECORD_HTTP_TRANSACTIONS:
         return record_or_load_response(method, url, **kwargs)
 
     logger.info('Making request to "{}"'.format(url))
-    kwargs.pop('throttle', '')
+    time.sleep(kwargs.pop('throttle', 0))
     return requests.request(method, url, **kwargs)
 
 

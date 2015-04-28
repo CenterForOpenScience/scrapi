@@ -1,0 +1,98 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
+    method: GET
+    uri: http://dataverse.scholarsportal.info/dvn/OAIHandler?verb=ListRecords&metadataPrefix=oai_dc&from=2015-04-21&until=2015-04-22
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAAM1XXW/bNhR936+40LOsLzupIssqMq9LuzprUDvFsGEoGJGWuEikSlJJnF/fS9lO
+        5LRes60Y7BfJ5P04vOdcUkxf3tUV3DCluRQTJ/QCB5jIJeWimDiXi58HsQMvs/Td6ZvBxflrQGuh
+        J05pTJP4/u3trScbJojKS37DtCdV4aOpH3mB76yNkzvNdxxuh51ZFASh/9v5bJ6XrCYDLrQhImfo
+        pXmiu8GZzInpcD0nHzzHaLMO705TJ0sV040Umv1EDMuiIDwaBKNBNFqER0kwSkbHv6f+jgk6fGqZ
+        NrZgVxNnxrV5z3KpqHagZoZQYsiFYkt+N3Ek4R9p7sBSyXriPAQPHWiF4VVvKHKyDXTrb7lgHhZA
+        VkRhbmVI5XGxlD69ERb/ayJoxZSF1oHJ0h6O7AfEaN+ytGSEMpWlnDJMuOT4XtIqCYP4eOSHwdHw
+        KPV7cykmx2ikbh4rES3COAmCJAixEo/zqb+NvV10lq6Xm9B8w/r6//OYW9s+CKbn1rSq6kxxmlWs
+        RrTaD73wfxfXBiLg7/nmG5VhWQw3Fcve1DUvVJcV5gaf2vBcAxdgSgZzpm0TkgouSIMigDA+PoEB
+        PuIIq78NYsP1KV2jQWa9shOGJ5jxd0jedbD+uWLESJX9iF1ektqFVzWvVp3ldmrHrFVGim9ZTcsW
+        bX5pK0722py1LpwTtT/IeX6mWCGVC1OCRVFcsL2283vy1xWrVi7MSKv2J73Eblldu3AqRE0U/zIg
+        ZTpXvLG8ZPMGJ6guGTNQtFg3MBL6xOlH4payFXQvfXLZjU+JIJQTgcMKS2Ml7HbUDiyxHvrlEqPk
+        slnBLTclXL6f6S6pMEwhmXC6Vpj7EIpYrQGyDdLWCCgvOO4SNgZnGnAFDVGMwtUqgVei0Aa3IFx+
+        qxgCGGO1RIGvlQtvsaXHgE1Sc2rct9uKj606xbW84TkSin0n0Gt+n98zLTi5dmdtvhrDAldbWDqL
+        grMODaEUsyJ0U3KNhWrpyoOu2v0KP634lJuusgnsynEMO7obQ09gY9gqaQxfkYxFu6ONMTwVgQvO
+        v29Hx4Vv9h18GMIfH9YH659fLUIuca8nBcsWvGZwgcglhakdZDT5ovsfrHdcpyhBo1b+r5sSdhIh
+        f+NwxiSuuSl5vk6FY//M61Jws/XoWLdHVKf2Cv8hg0/C+A8nA74/nhf+5ph6el51/dXiJwZF3Rlm
+        9889B1gcBf/9APsOMMIXhwHj5CBgDIeHAeMwSBkdHwaM8DBgHEbDDr8zKbqtu019Ia+ZAHbX8PWh
+        Yq8Mvc/80SIKNtcKB4/qurE47af7nN+jXXiCo63SUk2cwMnCUXQSxy/i+DiOTj6KtrILSLrnekPt
+        rib9zAiqfxFIt3ed7DOftAYe5A0AAA==
+    headers:
+      content-encoding: [gzip]
+      content-length: ['1048']
+      content-type: [text/xml;charset=UTF-8]
+      date: ['Fri, 24 Apr 2015 15:04:46 GMT']
+      server: [GlassFish Server Open Source Edition 3.1.2]
+      x-powered-by: [Servlet/3.0 JSP/2.2 (GlassFish Server Open Source Edition 3.1.2
+          Java/Sun Microsystems Inc./1.6)]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
+    method: GET
+    uri: http://dataverse.scholarsportal.info/dvn/OAIHandler?verb=ListRecords&resumptionToken=1429887886829_null:10:null:oai_dc
+  response:
+    body:
+      string: !!binary |
+        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
+        md+5oIKL6V+i2pvf2Dr/A5Z1M4xcHAAA
+    headers:
+      content-encoding: [gzip]
+      content-length: ['1962']
+      content-type: [text/xml;charset=UTF-8]
+      date: ['Fri, 24 Apr 2015 15:04:46 GMT']
+      server: [GlassFish Server Open Source Edition 3.1.2]
+      x-powered-by: [Servlet/3.0 JSP/2.2 (GlassFish Server Open Source Edition 3.1.2
+          Java/Sun Microsystems Inc./1.6)]
+    status: {code: 200, message: OK}
+version: 1

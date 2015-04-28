@@ -1,0 +1,35 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
+    method: GET
+    uri: http://www.datadryad.org/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2015-04-19T00:00:00Z&until=2015-04-20T00:00:00Z
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAAO3bSYvbMBQA4Ht/hdE90WIri1A8FErpQIYOnRTKXIrGViaC2E4tZem/r2xncW6C
+        QqkSQQ5O/J4t6xOCJ8X84VCso52starKGcBDBCJZZlWuyvcZ+L74PJiA6CHlXz8+Dp6fvkQ2utQz
+        sDJmwyDc7/fDaiNLUWcrtZN6WNXv0IZCMkQQdMHsoNVVwj5uwwhCGP54mr9kK1mIgSq1EWUmbZZW
+        TLc/zqtMmLZdLveLXIKOzzE86BykvJZ6U5VafhJGpgRhOkDJgCQLghhJWDx95fAqxCb82kptom1p
+        1HoGzilogRBrP68gKqQRuTDiuZZLdZiBSqifeQaiZV0Vlxw87edYgbcZmCttvsmsqnMN0t7jNFfL
+        698ib5/FXg8eG8JPBynv5aYfbEObo5SvpMhlnXKVS9vkpbLHNp1dXZBhRCiF3XdKJnjMYS+e22B7
+        B1Fs0l7bMWLUtn1ku+hynsPT/U59kPLu6VmeHYdD992NtIs9j6Re2mZbr9tQe1quZWFbqyEe4n8+
+        6o5NdBp8Xexx7Nk+sfc2W50+GllESkdlZSKxE2ot3tbSdus5gMNzJ9rjS9fCo/Jfck/cuJMJQzRw
+        e809oaOpC3c3M1EUuL3nngbu++EeI+TCPWJkypLA7T83Dtz3xO0ymeO4mcyTJHD7zo1dJvPAfTPc
+        LpN54L4ZbhK474k7Dtz3xJ24cFNGEIvDIqr/3DRw3xP3yIV7xOiEYRy4ved22hEL3LfC7bQjNmZx
+        u3kbuD3nJk7LLFOWEBaHDVDvuWOXupvEzX534L4Bbpe6u+FOWBwHbu+5XeruhpsyFLj953apuzvu
+        MJnfALdL3d1w21osFGL+c7vU3Q33ONTdt8DtUnd33HHYIvGf2+XfLB03DWvm3nMnLsssoe7+n7hh
+        /6USfnp5Jv0DjQfZ7TU0AAA=
+    headers:
+      connection: [Keep-Alive]
+      content-encoding: [gzip]
+      content-length: ['701']
+      content-type: [text/xml;charset=UTF-8]
+      date: ['Fri, 24 Apr 2015 20:24:39 GMT']
+      keep-alive: ['timeout=5, max=100']
+    status: {code: 200, message: OK}
+version: 1

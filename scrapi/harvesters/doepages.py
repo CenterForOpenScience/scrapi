@@ -7,6 +7,7 @@ from lxml import etree
 from scrapi import requests
 from scrapi.base import XMLHarvester
 from scrapi.linter import RawDocument
+from scrapi.util import copy_to_unicode
 from scrapi.base.schemas import DOESCHEMA
 
 
@@ -47,15 +48,8 @@ class DoepagesHarvester(XMLHarvester):
             xml_list.append(RawDocument({
                 'doc': record,
                 'source': self.short_name,
-                'docID': self.copy_to_unicode(doc_id),
+                'docID': copy_to_unicode(doc_id),
                 'filetype': 'xml'
             }))
 
         return xml_list
-
-    def copy_to_unicode(self, element, encoding='UTF-8'):
-        element = ''.join(element)
-        if isinstance(element, unicode):
-            return element
-        else:
-            return unicode(element, encoding=encoding)
