@@ -2,7 +2,6 @@ import os
 
 
 from scrapi import settings
-from scrapi.events import sentry
 from scrapi.processing.base import BaseProcessor
 
 __all__ = []
@@ -35,8 +34,7 @@ def process_normalized(raw_doc, normalized, kwargs):
         except Exception:
             if settings.DEBUG:
                 raise
-            else:
-                sentry.captureException()
+
 
 def process_raw(raw_doc, kwargs):
     for p in settings.RAW_PROCESSING:

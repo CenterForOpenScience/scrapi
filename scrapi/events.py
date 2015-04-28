@@ -89,6 +89,7 @@ def logged(event, index=None):
                 dispatch(event, SKIPPED, _index=index, reason=e.message, **context)
                 return None
             except Exception as e:
+                sentry.captureException()
                 dispatch(event, FAILED, _index=index, exception=e, **context)
                 raise
             else:
