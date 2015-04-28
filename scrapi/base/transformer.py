@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
 import abc
-import copy
 import logging
 
 from jsonpointer import resolve_pointer, JsonPointerException
