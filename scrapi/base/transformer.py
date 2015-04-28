@@ -27,23 +27,26 @@ class BaseTransformer(object):
     def _transform(self, schema, doc):
         transformed = {}
         for key, value in schema.items():
-            if isinstance(value, dict):
-                transformed[key] = self._transform(value, doc)
-            elif isinstance(value, list):
-                transformed[key] = self._transform_list(value, doc)
-            elif isinstance(value, tuple) and len(value) == 2 and isinstance(value[0], tuple):
-                transformed[key] = self._transform_args_kwargs(value, doc)
-            elif isinstance(value, tuple):
-                transformed[key] = self._transform_tuple(value, doc)
-            elif isinstance(value, basestring):
-                transformed[key] = self._transform_string(value, doc)
-            elif callable(value):
-                transformed[key] = value(doc)
+            transformed[key] = self._transform_value(value, doc)
         return transformed
+
+    def _transform_value(self, value, doc):
+        if isinstance(value, dict):
+            return self._transform(value, doc)
+        elif isinstance(value, list):
+            return self._transform_list(value, doc)
+        elif isinstance(value, tuple) and len(value) == 2 and isinstance(value[0], tuple):
+            return self._transform_args_kwargs(value, doc)
+        elif isinstance(value, tuple):
+            return self._transform_tuple(value, doc)
+        elif isinstance(value, basestring):
+            return self._transform_string(value, doc)
+        elif callable(value):
+            return value(doc)
 
     def _transform_list(self, l, doc):
         return [
-            self._transform(item, doc) for item in l
+            self._transform_value(item, doc) for item in l
         ]
 
     def _transform_tuple(self, l, doc):
