@@ -1,0 +1,1017 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
+    method: GET
+    uri: http://api.plos.org/search?q=publication_date:%5B2007-12-20T00:00:00Z+TO+2007-12-21T00:00:00Z%5D&api_key=fakekey&rows=0
+  response:
+    body: {string: !!python/unicode '<?xml version="1.0" encoding="UTF-8"?>
+
+        <response>
+
+        <result name="response" numFound="116" start="0" maxScore="1.0"></result>
+
+        </response>
+
+        '}
+    headers:
+      connection: [close]
+      content-type: [application/xml;charset=UTF-8]
+      date: ['Fri, 24 Apr 2015 19:16:31 GMT']
+      etag: ['"OWZmZjcwMDAwMDAwMDAwMFNvbHI="']
+      last-modified: ['Fri, 24 Apr 2015 17:54:22 GMT']
+      server: [Apache-Coyote/1.1]
+      set-cookie: ['Coyote-2-9514450c=9514451d:0; path=/']
+      transfer-encoding: [chunked]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
+    method: GET
+    uri: http://api.plos.org/search?q=publication_date:%5B2007-12-20T00:00:00Z+TO+2007-12-21T00:00:00Z%5D&start=0&api_key=fakekey&rows=999
+  response:
+    body: {string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<response>\n<result\
+        \ name=\"response\" numFound=\"116\" start=\"0\" maxScore=\"1.0\"><doc><str\
+        \ name=\"id\">10.1371/journal.ppat.0030198</str><str name=\"journal\">PLoS\
+        \ Pathogens</str><str name=\"eissn\">1553-7374</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><arr\
+        \ name=\"author_display\"><str>Jason G Smith</str><str>James M Cunningham</str></arr><arr\
+        \ name=\"abstract\"><str>According to current models of retrovirus infection,\
+        \ receptor binding to the surface subunit (SU) of the envelope glycoprotein\
+        \ (Env) triggers a conformational change in the transmembrane subunit (TM)\
+        \ that mediates virus fusion to cell membranes. To understand how this occurs,\
+        \ we investigated the role of the receptor Tva in avian leukosis virus-A (ALV-A)\
+        \ infection. We find that Tva binding induced the formation of a reactive\
+        \ thiolate on Cys38 (Cys38-S\u2212) in SU. Both chemical and genetic inactivation\
+        \ of Cys38-S\u2212 completely abrogated ALV fusion and infection. Remarkably,\
+        \ Cys38-S\u2212 does not mediate isomerization of the SU-TM disulfide bond\
+        \ and is not required for Tva-induced activation of TM, including pre-hairpin\
+        \ association with membranes and low pH assembly of helical bundles. These\
+        \ findings indicate that, contrary to current models, receptor activation\
+        \ of TM is not sufficient for ALV fusion and infection and that formation\
+        \ of a reactive thiolate is an additional receptor-dependent step.: Many pathogenic\
+        \ viruses including retroviruses, ebolavirus, and SARS have adopted similar\
+        \ ways to enter cells. According to current models of infection, the envelope\
+        \ glycoproteins (Env) of these viruses are activated by their encounter with\
+        \ specific receptor proteins on target cells. In this scheme, receptor binding\
+        \ to the glycoprotein surface subunit releases constraints on the intrinsic\
+        \ membrane fusion activity of the transmembrane subunit. New studies summarized\
+        \ in this report have examined the chemical basis for receptor activation\
+        \ of avian retrovirus envelope glycoproteins. They show that receptor binding\
+        \ creates a reactive cysteine thiolate in the surface subunit that is essential\
+        \ for infection. Remarkably, this cysteine thiolate is not required to activate\
+        \ the known steps in infection mediated by the transmembrane subunit, including\
+        \ insertion into the target membrane and assembly into helical bundles. Thus,\
+        \ the receptor-induced cysteine thiolate mediates a key step in infection\
+        \ that is not accounted for by current models of Env function. </str></arr><str\
+        \ name=\"title_display\">Receptor-Induced Thiolate Couples Env Activation\
+        \ to Retrovirus Fusion and Infection</str><float name=\"score\">1.0</float></doc><doc><str\
+        \ name=\"id\">10.1371/journal.ppat.0030198/title</str><str name=\"journal\"\
+        >PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.ppat.0030198/abstract</str><str\
+        \ name=\"journal\">PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.ppat.0030198/references</str><str name=\"journal\">PLoS\
+        \ Pathogens</str><str name=\"eissn\">1553-7374</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.ppat.0030198/body</str><str\
+        \ name=\"journal\">PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.ppat.0030198/introduction</str><str name=\"journal\"\
+        >PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.ppat.0030198/results_and_discussion</str><str\
+        \ name=\"journal\">PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.ppat.0030198/materials_and_methods</str><str name=\"\
+        journal\">PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date name=\"\
+        publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\">Research\
+        \ Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"id\"\
+        >10.1371/journal.ppat.0030197</str><str name=\"journal\">PLoS Pathogens</str><str\
+        \ name=\"eissn\">1553-7374</str><date name=\"publication_date\">2007-12-21T00:00:00Z</date><str\
+        \ name=\"article_type\">Research Article</str><arr name=\"author_display\"\
+        ><str>Sara L Sawyer</str><str>Michael Emerman</str><str>Harmit S Malik</str></arr><arr\
+        \ name=\"abstract\"><str>TRIM5\u03B1 provides a cytoplasmic block to retroviral\
+        \ infection, and orthologs encoded by some primates are active against HIV.\
+        \ Here, we present an evolutionary comparison of the TRIM5 gene to its closest\
+        \ human paralogs: TRIM22, TRIM34, and TRIM6. We show that TRIM5 and TRIM22\
+        \ have a dynamic history of gene expansion and loss during the evolution of\
+        \ mammals. The cow genome contains an expanded cluster of TRIM5 genes and\
+        \ no TRIM22 gene, while the dog genome encodes TRIM22 but has lost TRIM5.\
+        \ In contrast, TRIM6 and TRIM34 have been strictly preserved as single gene\
+        \ orthologs in human, dog, and cow. A more focused analysis of primates reveals\
+        \ that, while TRIM6 and TRIM34 have evolved under purifying selection, TRIM22\
+        \ has evolved under positive selection as was previously observed for TRIM5.\
+        \ Based on TRIM22 sequences obtained from 27 primate genomes, we find that\
+        \ the positive selection of TRIM22 has occurred episodically for approximately\
+        \ 23 million years, perhaps reflecting the changing pathogenic landscape.\
+        \ However, we find that the evolutionary episodes of positive selection that\
+        \ have acted on TRIM5 and TRIM22 are mutually exclusive, with generally only\
+        \ one of these genes being positively selected in any given primate lineage.\
+        \ We interpret this to mean that the positive selection of one gene has constrained\
+        \ the adaptive flexibility of its neighbor, probably due to genetic linkage.\
+        \ Finally, we find a striking congruence in the positions of amino acid residues\
+        \ found to be under positive selection in both TRIM5\u03B1 and TRIM22, which\
+        \ in both proteins fall predominantly in the \u03B22-\u03B23 surface loop\
+        \ of the B30.2 domain. Astonishingly, this same loop is under positive selection\
+        \ in the multiple cow TRIM5 genes as well, indicating that this small structural\
+        \ loop may be a viral recognition motif spanning a hundred million years of\
+        \ mammalian evolution.: The intrinsic immunity protein TRIM5\u03B1 provides\
+        \ a post-entry defense against retroviral infection, which depends on its\
+        \ specific ability to recognize retroviral capsids. TRIM5\u03B1 has been locked\
+        \ in genetic conflict with retroviruses throughout most of primate evolution,\
+        \ characterized by a higher than expected rate of amino acid change, referred\
+        \ to as positive selection. Here, we find that one of TRIM5's closest human\
+        \ paralogs, TRIM22, has also undergone positive selection in primates. However,\
+        \ we find that its close linkage to TRIM5 has resulted in an anti-correlated\
+        \ pattern of positive selection, with primate lineages generally showing positive\
+        \ selection in either TRIM5 or TRIM22, but not both. Amino acid positions\
+        \ in TRIM22 found to be under positive selection are in remarkable proximity\
+        \ to the \u201Cantiviral specificity patch\u201D previously described for\
+        \ TRIM5\u03B1. TRIM5 and TRIM22 evolution appears to be equally discordant\
+        \ in other mammals; the cow genome contains an expanded cluster of TRIM5 genes\
+        \ and no TRIM22 gene, while the dog genome encodes TRIM22 but has lost TRIM5.\
+        \ Our analyses highlight TRIM22 as bearing all the evolutionary hallmarks\
+        \ of a candidate intrinsic immunity gene. </str></arr><str name=\"title_display\"\
+        >Discordant Evolution of the Adjacent Antiretroviral Genes &lt;i&gt;TRIM22&lt;/i&gt;\
+        \ and &lt;i&gt;TRIM5&lt;/i&gt; in Mammals</str><float name=\"score\">1.0</float></doc><doc><str\
+        \ name=\"id\">10.1371/journal.ppat.0030197/title</str><str name=\"journal\"\
+        >PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.ppat.0030197/abstract</str><str\
+        \ name=\"journal\">PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.ppat.0030197/references</str><str name=\"journal\">PLoS\
+        \ Pathogens</str><str name=\"eissn\">1553-7374</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.ppat.0030197/body</str><str\
+        \ name=\"journal\">PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.ppat.0030197/introduction</str><str name=\"journal\"\
+        >PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.ppat.0030197/results_and_discussion</str><str\
+        \ name=\"journal\">PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.ppat.0030197/materials_and_methods</str><str name=\"\
+        journal\">PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date name=\"\
+        publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\">Research\
+        \ Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"id\"\
+        >10.1371/journal.ppat.0030197/supporting_information</str><str name=\"journal\"\
+        >PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.ppat.0030196/title</str><str\
+        \ name=\"journal\">PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.ppat.0030196/abstract</str><str name=\"journal\">PLoS\
+        \ Pathogens</str><str name=\"eissn\">1553-7374</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.ppat.0030196/references</str><str\
+        \ name=\"journal\">PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.ppat.0030196/body</str><str name=\"journal\">PLoS Pathogens</str><str\
+        \ name=\"eissn\">1553-7374</str><date name=\"publication_date\">2007-12-21T00:00:00Z</date><str\
+        \ name=\"article_type\">Research Article</str><float name=\"score\">1.0</float></doc><doc><str\
+        \ name=\"id\">10.1371/journal.ppat.0030196/introduction</str><str name=\"\
+        journal\">PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date name=\"\
+        publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\">Research\
+        \ Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"id\"\
+        >10.1371/journal.ppat.0030196/results_and_discussion</str><str name=\"journal\"\
+        >PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.ppat.0030196/materials_and_methods</str><str\
+        \ name=\"journal\">PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.ppat.0030196/supporting_information</str><str name=\"\
+        journal\">PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date name=\"\
+        publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\">Research\
+        \ Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"id\"\
+        >10.1371/journal.ppat.0030199</str><str name=\"journal\">PLoS Pathogens</str><str\
+        \ name=\"eissn\">1553-7374</str><date name=\"publication_date\">2007-12-21T00:00:00Z</date><str\
+        \ name=\"article_type\">Research Article</str><arr name=\"author_display\"\
+        ><str>Jennifer L Konopka</str><str>Luiz O Penalva</str><str>Joseph M Thompson</str><str>Laura\
+        \ J White</str><str>Clayton W Beard</str><str>Jack D Keene</str><str>Robert\
+        \ E Johnston</str></arr><arr name=\"abstract\"><str>A concept fundamental\
+        \ to viral pathogenesis is that infection induces specific changes within\
+        \ the host cell, within specific tissues, or within the entire animal. These\
+        \ changes are reflected in a cascade of altered transcription patterns evident\
+        \ during infection. However, elucidation of this cascade in vivo has been\
+        \ limited by a general inability to distinguish changes occurring in the minority\
+        \ of infected cells from those in surrounding uninfected cells. To circumvent\
+        \ this inherent limitation of traditional gene expression profiling methods,\
+        \ an innovative mRNP-tagging technique was implemented to isolate host mRNA\
+        \ specifically from infected cells in vitro as well as in vivo following Venezuelan\
+        \ equine encephalitis virus (VEE) infection. This technique facilitated a\
+        \ direct characterization of the host defense response specifically within\
+        \ the first cells infected with VEE, while simultaneous total RNA analysis\
+        \ assessed the collective response of both the infected and uninfected cells.\
+        \ The result was a unique, multifaceted profile of the early response to VEE\
+        \ infection in primary dendritic cells, as well as in the draining lymph node,\
+        \ the initially targeted tissue in the mouse model. A dynamic environment\
+        \ of complex interactions was revealed, and suggested a two-step innate response\
+        \ in which activation of a subset of host genes in infected cells subsequently\
+        \ leads to activation of the surrounding uninfected cells. Our findings suggest\
+        \ that the application of viral mRNP-tagging systems, as introduced here,\
+        \ will facilitate a much more detailed understanding of the highly coordinated\
+        \ host response to infectious agents.: A major element of viral pathogenesis\
+        \ is the induction of specific changes within the infected host, often reflected\
+        \ in altered gene expression patterns. However, revealing these changes in\
+        \ vivo has been limited by an inability to distinguish changes within the\
+        \ minority of infected cells from that in surrounding uninfected cells. Here\
+        \ we introduce a viral mRNP-tagging system, based on Venezuelan equine encephalitis\
+        \ virus (VEE), that enables the isolation of host mRNA specifically from infected\
+        \ cells in vitro and in vivo, even when they are a small minority. This system\
+        \ allowed us for the first time to monitor the innate response specifically\
+        \ within the cells initially infected in vivo. In combination with simultaneous\
+        \ analysis of the entire tissue response, the result was a multifaceted view\
+        \ of the innate response to VEE in dendritic cells, and in the draining lymph\
+        \ node. The results supported a two-step response in which activation of host\
+        \ genes within infected cells leads to activation of bystander cells, offering\
+        \ insight into the process by which the greater innate immune response to\
+        \ alphaviruses is established in vivo. This system may be employed for a wide\
+        \ variety of pathogens, offering broader implications to the manner in which\
+        \ interactions between pathogens and their hosts are studied. </str></arr><str\
+        \ name=\"title_display\">A Two-Phase Innate Host Response to Alphavirus Infection\
+        \ Identified by mRNP-Tagging In Vivo</str><float name=\"score\">1.0</float></doc><doc><str\
+        \ name=\"id\">10.1371/journal.ppat.0030199/title</str><str name=\"journal\"\
+        >PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.ppat.0030199/abstract</str><str\
+        \ name=\"journal\">PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.ppat.0030199/references</str><str name=\"journal\">PLoS\
+        \ Pathogens</str><str name=\"eissn\">1553-7374</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.ppat.0030199/body</str><str\
+        \ name=\"journal\">PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.ppat.0030199/introduction</str><str name=\"journal\"\
+        >PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.ppat.0030199/results_and_discussion</str><str\
+        \ name=\"journal\">PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.ppat.0030199/materials_and_methods</str><str name=\"\
+        journal\">PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date name=\"\
+        publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\">Research\
+        \ Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"id\"\
+        >10.1371/journal.ppat.0030199/supporting_information</str><str name=\"journal\"\
+        >PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.ppat.0030196</str><str\
+        \ name=\"journal\">PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><arr name=\"author_display\"><str>Kaoru Geddes</str><str>Frank\
+        \ Cruz</str><str>Fred Heffron</str></arr><arr name=\"abstract\"><str>The type\
+        \ III secretion systems (TTSS) encoded in Salmonella pathogenicity island-1\
+        \ and -2 (SPI-1 and -2) are virulence factors required for specific phases\
+        \ of Salmonella infection in animal hosts. However, the host cell types targeted\
+        \ by the TTSS have not been determined. To investigate this, we have constructed\
+        \ translational fusions between the \xDF-lactamase reporter and a broad array\
+        \ of TTSS effectors secreted via SPI-1, SPI-2, or both. Secretion of the fusion\
+        \ protein to a host cell was determined by cleavage of a specific fluorescent\
+        \ substrate. In cultured cells, secretion of all six effectors could be observed.\
+        \ However, two to four days following i.p. infection of mice, only effectors\
+        \ secreted by SPI-2 were detected in spleen cells. The cells targeted were\
+        \ identified via staining with nine different cell surface markers followed\
+        \ by FACS analysis as well as by conventional cytological methods. The targeted\
+        \ cells include B and T lymphocytes, neutrophils, monocytes, and dendritic\
+        \ cells, but not mature macrophages. To further investigate replication in\
+        \ these various cell types, Salmonella derivatives were constructed that express\
+        \ a red fluorescent protein. Bacteria could be seen in each of the cell types\
+        \ above; however, most viable bacteria were present in neutrophils. We find\
+        \ that Salmonella is capable of targeting most phagocytic and non-phagocytic\
+        \ cells in the spleen but has a surprisingly high preference for neutrophils.\
+        \ These findings suggest that Salmonella specifically target splenic neutrophils\
+        \ presumably to attenuate their microbicidal functions, thereby promoting\
+        \ intracellular survival and replication in the mouse.: Bacteria of the Salmonella\
+        \ genus are important human pathogens and a leading cause of food-borne illness.\
+        \ Salmonella species' ability to cause disease relies on the activities of\
+        \ two sophisticated molecular syringes that allow the bacteria to pump proteins\
+        \ into cells that they infect. The activities of these syringes have been\
+        \ studied extensively in cells grown under laboratory conditions and shown\
+        \ to be essential for the infectious process in animal models. However, the\
+        \ specific cells within infected organs that are targeted by these syringes\
+        \ have not been identified. In this work we describe the specific spleen cells\
+        \ targeted by Salmonella in the mouse. We find that Salmonella is capable\
+        \ of targeting most cell types using their molecular syringes. Quite surprisingly,\
+        \ we find that Salmonella mostly targets neutrophils, a cell type not thought\
+        \ to be associated with live Salmonella in host tissues. These findings challenge\
+        \ our current views of Salmonella infection and may lead to new insight for\
+        \ treating the disease. </str></arr><str name=\"title_display\">Analysis of\
+        \ Cells Targeted by &lt;i&gt;Salmonella&lt;/i&gt; Type III Secretion In Vivo</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.ppat.0030192</str><str\
+        \ name=\"journal\">PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><arr name=\"author_display\"><str>Shigeto Yoshida</str><str>Yohei\
+        \ Shimada</str><str>Daisuke Kondoh</str><str>Yoshiaki Kouzuma</str><str>Anil\
+        \ K Ghosh</str><str>Marcelo Jacobs-Lorena</str><str>Robert E Sinden</str></arr><arr\
+        \ name=\"abstract\"><str>The midgut environment of anopheline mosquitoes plays\
+        \ an important role in the development of the malaria parasite. Using genetic\
+        \ manipulation of anopheline mosquitoes to change the environment in the mosquito\
+        \ midgut may inhibit development of the malaria parasite, thus blocking malaria\
+        \ transmission. Here we generate transgenic Anopheles stephensi mosquitoes\
+        \ that express the C-type lectin CEL-III from the sea cucumber, Cucumaria\
+        \ echinata, in a midgut-specific manner. CEL-III has strong and rapid hemolytic\
+        \ activity toward human and rat erythrocytes in the presence of serum. Importantly,\
+        \ CEL-III binds to ookinetes, leading to strong inhibition of ookinete formation\
+        \ in vitro with an IC50 of 15 nM. Thus, CEL-III exhibits not only hemolytic\
+        \ activity but also cytotoxicity toward ookinetes. In these transgenic mosquitoes,\
+        \ sporogonic development of Plasmodium berghei is severely impaired. Moderate,\
+        \ but significant inhibition was found against Plasmodium falciparum. To our\
+        \ knowledge, this is the first demonstration of stably engineered anophelines\
+        \ that affect the Plasmodium transmission dynamics of human malaria. Although\
+        \ our laboratory-based research does not have immediate applications to block\
+        \ natural malaria transmission, these findings have significant implications\
+        \ for the generation of refractory mosquitoes to all species of human Plasmodium\
+        \ and elucidation of mosquito\u2013parasite interactions.: Malaria is arguably\
+        \ the most important vector-borne disease worldwide, affecting 300 million\
+        \ people and killing 1\u20132 million people every year. The lack of an effective\
+        \ vaccine and the emergence of the parasites' resistance to many existing\
+        \ anti-malarial drugs have aggravated the situation. Clearly, development\
+        \ of novel strategies for control of the disease is urgently needed. Mosquitoes\
+        \ are obligatory vectors for the disease and inhibition of parasite development\
+        \ in the mosquito has considerable promise as a new approach in the fight\
+        \ against malaria. Based on recent advances in the genetic engineering of\
+        \ mosquitoes, the concept of generating genetically modified (GM) mosquitoes\
+        \ that hinder transmission by either killing or interfering with parasite\
+        \ development is a potential means of controlling the disease. To generate\
+        \ these GM mosquitoes, the authors focused on a unique lectin isolated from\
+        \ the sea cucumber, which has both hemolytic and cytotoxic activities, as\
+        \ an anti-parasite effector molecule. A transgenic mosquito expressing the\
+        \ lectin effectively caused erythrocyte lysis in the midgut after ingestion\
+        \ of an infectious blood meal and severely impaired parasite development.\
+        \ This laboratory-acquired finding may provide significant implications for\
+        \ future malaria control using GM mosquitoes refractory to the parasites.\
+        \ </str></arr><str name=\"title_display\">Hemolytic C-Type Lectin CEL-III\
+        \ from Sea Cucumber Expressed in Transgenic Mosquitoes Impairs Malaria Parasite\
+        \ Development</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.ppat.0030192/title</str><str name=\"journal\">PLoS Pathogens</str><str\
+        \ name=\"eissn\">1553-7374</str><date name=\"publication_date\">2007-12-21T00:00:00Z</date><str\
+        \ name=\"article_type\">Research Article</str><float name=\"score\">1.0</float></doc><doc><str\
+        \ name=\"id\">10.1371/journal.ppat.0030192/abstract</str><str name=\"journal\"\
+        >PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.ppat.0030192/references</str><str\
+        \ name=\"journal\">PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.ppat.0030192/body</str><str name=\"journal\">PLoS Pathogens</str><str\
+        \ name=\"eissn\">1553-7374</str><date name=\"publication_date\">2007-12-21T00:00:00Z</date><str\
+        \ name=\"article_type\">Research Article</str><float name=\"score\">1.0</float></doc><doc><str\
+        \ name=\"id\">10.1371/journal.ppat.0030192/introduction</str><str name=\"\
+        journal\">PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date name=\"\
+        publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\">Research\
+        \ Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"id\"\
+        >10.1371/journal.ppat.0030192/results_and_discussion</str><str name=\"journal\"\
+        >PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.ppat.0030192/materials_and_methods</str><str\
+        \ name=\"journal\">PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.ppat.0030192/supporting_information</str><str name=\"\
+        journal\">PLoS Pathogens</str><str name=\"eissn\">1553-7374</str><date name=\"\
+        publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\">Research\
+        \ Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"id\"\
+        >10.1371/journal.pcbi.0030248</str><str name=\"journal\">PLoS Computational\
+        \ Biology</str><str name=\"eissn\">1553-7358</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><arr\
+        \ name=\"author_display\"><str>Tamir Tuller</str><str>Martin Kupiec</str><str>Eytan\
+        \ Ruppin</str></arr><arr name=\"abstract\"><str>The translation efficiency\
+        \ of most Saccharomyces cerevisiae genes remains fairly constant across poor\
+        \ and rich growth media. This observation has led us to revisit the available\
+        \ data and to examine the potential utility of a protein abundance predictor\
+        \ in reinterpreting existing mRNA expression data. Our predictor is based\
+        \ on large-scale data of mRNA levels, the tRNA adaptation index, and the evolutionary\
+        \ rate. It attains a correlation of 0.76 with experimentally determined protein\
+        \ abundance levels on unseen data and successfully cross-predicts protein\
+        \ abundance levels in another yeast species (Schizosaccharomyces pombe). The\
+        \ predicted abundance levels of proteins in known S. cerevisiae complexes,\
+        \ and of interacting proteins, are significantly more coherent than their\
+        \ corresponding mRNA expression levels. Analysis of gene expression measurement\
+        \ experiments using the predicted protein abundance levels yields new insights\
+        \ that are not readily discernable when clustering the corresponding mRNA\
+        \ expression levels. Comparing protein abundance levels across poor and rich\
+        \ media, we find a general trend for homeostatic regulation where transcription\
+        \ and translation change in a reciprocal manner. This phenomenon is more prominent\
+        \ near origins of replications. Our analysis shows that in parallel to the\
+        \ adaptation occurring at the tRNA level via the codon bias, proteins do undergo\
+        \ a complementary adaptation at the amino acid level to further increase their\
+        \ abundance.: DNA microarrays measuring gene expression levels have been a\
+        \ mainstay of systems biology research, but since proteins are more direct\
+        \ mediators of cellular processes, protein abundance levels are likely to\
+        \ be a better indicator of the cellular state. However, as proteomic measurements\
+        \ are still lagging behind gene expression measurements, there has been considerable\
+        \ effort in recent years to study the correlations between gene expression\
+        \ (and a plethora of protein characteristics) and protein abundance. Addressing\
+        \ this challenge, the current study is one of the first to introduce a predictor\
+        \ for protein abundance levels that is tested and validated on unseen data\
+        \ using all currently available large-scale proteomic data. The utility of\
+        \ this predictor is shown via a comprehensive set of tests and applications,\
+        \ including improved functional coherency of complexes and interacting proteins,\
+        \ better fit with gene phenotypic data, cross-species prediction of protein\
+        \ abundance, and most importantly, the reinterpretation of existing gene expression\
+        \ microarray data. Finally, our revisit and analysis of the existing large-scale\
+        \ proteomic data reveals new key insights concerning the regulation of translation\
+        \ efficiency and its evolution. Overall, a solid protein abundance prediction\
+        \ tool is invaluable for advancing our understanding of cellular processes;\
+        \ this study presents a further step in this direction. </str></arr><str name=\"\
+        title_display\">Determinants of Protein Abundance and Translation Efficiency\
+        \ in &lt;i&gt;S. cerevisiae&lt;/i&gt;</str><float name=\"score\">1.0</float></doc><doc><str\
+        \ name=\"id\">10.1371/journal.pcbi.0030248/title</str><str name=\"journal\"\
+        >PLoS Computational Biology</str><str name=\"eissn\">1553-7358</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pcbi.0030248/abstract</str><str name=\"journal\">PLoS\
+        \ Computational Biology</str><str name=\"eissn\">1553-7358</str><date name=\"\
+        publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\">Research\
+        \ Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"id\"\
+        >10.1371/journal.pcbi.0030248/references</str><str name=\"journal\">PLoS Computational\
+        \ Biology</str><str name=\"eissn\">1553-7358</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.pcbi.0030248/body</str><str\
+        \ name=\"journal\">PLoS Computational Biology</str><str name=\"eissn\">1553-7358</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pcbi.0030248/introduction</str><str name=\"journal\"\
+        >PLoS Computational Biology</str><str name=\"eissn\">1553-7358</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pcbi.0030248/results_and_discussion</str><str name=\"\
+        journal\">PLoS Computational Biology</str><str name=\"eissn\">1553-7358</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pcbi.0030248/materials_and_methods</str><str name=\"\
+        journal\">PLoS Computational Biology</str><str name=\"eissn\">1553-7358</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pcbi.0030248/supporting_information</str><str name=\"\
+        journal\">PLoS Computational Biology</str><str name=\"eissn\">1553-7358</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pcbi.0030249</str><str name=\"journal\">PLoS Computational\
+        \ Biology</str><str name=\"eissn\">1553-7358</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><arr\
+        \ name=\"author_display\"><str>Andrea P Weber</str><str>Richard H. R Hahnloser</str></arr><arr\
+        \ name=\"abstract\"><str>The relationships between neural activity at the\
+        \ single-cell and the population levels are of central importance for understanding\
+        \ neural codes. In many sensory systems, collective behaviors in large cell\
+        \ groups can be described by pairwise spike correlations. Here, we test whether\
+        \ in a highly specialized premotor system of songbirds, pairwise spike correlations\
+        \ themselves can be seen as a simple corollary of an underlying random process.\
+        \ We test hypotheses on connectivity and network dynamics in the motor pathway\
+        \ of zebra finches using a high-level population model that is independent\
+        \ of detailed single-neuron properties. We assume that neural population activity\
+        \ evolves along a finite set of states during singing, and that during sleep\
+        \ population activity randomly switches back and forth between song states\
+        \ and a single resting state. Individual spike trains are generated by associating\
+        \ with each of the population states a particular firing mode, such as bursting\
+        \ or tonic firing. With an overall modification of one or two simple control\
+        \ parameters, the Markov model is able to reproduce observed firing statistics\
+        \ and spike correlations in different neuron types and behavioral states.\
+        \ Our results suggest that song- and sleep-related firing patterns are identical\
+        \ on short time scales and result from random sampling of a unique underlying\
+        \ theme. The efficiency of our population model may apply also to other neural\
+        \ systems in which population hypotheses can be tested on recordings from\
+        \ small neuron groups.: To deal with the vast complexity of the brain and\
+        \ its many degrees of freedom, many reductionist methods have been designed\
+        \ that can be used to simplify neural interactions to just a few key underlying\
+        \ macroscopic variables. Despite these theoretical advances, even today relatively\
+        \ few population models have been subjected to stringent experimental tests.\
+        \ We explore whether second-order spike correlations measured in songbirds\
+        \ can be explained by single-neuron statistics and population dynamics, both\
+        \ reflecting hypotheses on network connectivity. We formulate a Markov population\
+        \ model with essentially two degrees of freedom and associated with different\
+        \ behavioral states of birds such as waking, singing, or sleeping. Excellent\
+        \ agreement between spike-train data and model is achieved, given a few connectivity\
+        \ assumptions that strengthen the view of a hierarchical organization of songbird\
+        \ motor networks. This work is an important demonstration that a broad range\
+        \ of neural activity patterns can be compatible at the population level with\
+        \ few underlying degrees of freedom. </str></arr><str name=\"title_display\"\
+        >Spike Correlations in a Songbird Agree with a Simple Markov Population Model</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.pcbi.0030249/title</str><str\
+        \ name=\"journal\">PLoS Computational Biology</str><str name=\"eissn\">1553-7358</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pcbi.0030249/abstract</str><str name=\"journal\">PLoS\
+        \ Computational Biology</str><str name=\"eissn\">1553-7358</str><date name=\"\
+        publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\">Research\
+        \ Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"id\"\
+        >10.1371/journal.pcbi.0030249/references</str><str name=\"journal\">PLoS Computational\
+        \ Biology</str><str name=\"eissn\">1553-7358</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.pcbi.0030249/body</str><str\
+        \ name=\"journal\">PLoS Computational Biology</str><str name=\"eissn\">1553-7358</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pcbi.0030249/introduction</str><str name=\"journal\"\
+        >PLoS Computational Biology</str><str name=\"eissn\">1553-7358</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pcbi.0030249/results_and_discussion</str><str name=\"\
+        journal\">PLoS Computational Biology</str><str name=\"eissn\">1553-7358</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pcbi.0030249/materials_and_methods</str><str name=\"\
+        journal\">PLoS Computational Biology</str><str name=\"eissn\">1553-7358</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pcbi.0030249/supporting_information</str><str name=\"\
+        journal\">PLoS Computational Biology</str><str name=\"eissn\">1553-7358</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pcbi.0030246</str><str name=\"journal\">PLoS Computational\
+        \ Biology</str><str name=\"eissn\">1553-7358</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><arr\
+        \ name=\"author_display\"><str>Carlos Gomez-Uribe</str><str>George C Verghese</str><str>Leonid\
+        \ A Mirny</str></arr><arr name=\"abstract\"><str>A ubiquitous building block\
+        \ of signaling pathways is a cycle of covalent modification (e.g., phosphorylation\
+        \ and dephosphorylation in MAPK cascades). Our paper explores the kind of\
+        \ information processing and filtering that can be accomplished by this simple\
+        \ biochemical circuit. Signaling cycles are particularly known for exhibiting\
+        \ a highly sigmoidal (ultrasensitive) input\u2013output characteristic in\
+        \ a certain steady-state regime. Here, we systematically study the cycle's\
+        \ steady-state behavior and its response to time-varying stimuli. We demonstrate\
+        \ that the cycle can actually operate in four different regimes, each with\
+        \ its specific input\u2013output characteristics. These results are obtained\
+        \ using the total quasi\u2013steady-state approximation, which is more generally\
+        \ valid than the typically used Michaelis-Menten approximation for enzymatic\
+        \ reactions. We invoke experimental data that suggest the possibility of signaling\
+        \ cycles operating in one of the new regimes. We then consider the cycle's\
+        \ dynamic behavior, which has so far been relatively neglected. We demonstrate\
+        \ that the intrinsic architecture of the cycles makes them act\u2014in all\
+        \ four regimes\u2014as tunable low-pass filters, filtering out high-frequency\
+        \ fluctuations or noise in signals and environmental cues. Moreover, the cutoff\
+        \ frequency can be adjusted by the cell. Numerical simulations show that our\
+        \ analytical results hold well even for noise of large amplitude. We suggest\
+        \ that noise filtering and tunability make signaling cycles versatile components\
+        \ of more elaborate cell-signaling pathways.: A cell is subjected to constantly\
+        \ changing environments and time-varying stimuli. Signals sensed at the cell\
+        \ surface are transmitted inside the cell by signaling pathways. Such pathways\
+        \ can transform signals in diverse ways and perform some preliminary information\
+        \ processing. A ubiquitous building block of signaling pathways is a simple\
+        \ biochemical cycle involving covalent modification of an enzyme\u2013substrate\
+        \ pair. Our paper is devoted to fully characterizing the static and dynamic\
+        \ behavior of this simple cycle, an essential first step in understanding\
+        \ the behavior of interconnections of such cycles. It is known that a signaling\
+        \ cycle can function as a static switch, with the steady-state output being\
+        \ an \u201Cultrasensitive\u201D function of the input, i.e., changing from\
+        \ a low to high value for only a small change in the input. We show that there\
+        \ are in fact precisely four major regimes of static and dynamic operation\
+        \ (with ultrasensitive being one of the static regimes). Each regime has its\
+        \ own input\u2013output characteristics. Despite the distinctive features\
+        \ of these four regimes, they all respond to time-varying stimuli by filtering\
+        \ out high-frequency fluctuations or noise in their inputs, while passing\
+        \ through the lower-frequency information-bearing variations. A cell can select\
+        \ the regime and tune the noise-filtering characteristics of the individual\
+        \ cycles in a specific signaling pathway. This tunability makes signaling\
+        \ cycles versatile components of elaborate cell-signaling pathways. </str></arr><str\
+        \ name=\"title_display\">Operating Regimes of Signaling Cycles: Statics, Dynamics,\
+        \ and Noise Filtering</str><float name=\"score\">1.0</float></doc><doc><str\
+        \ name=\"id\">10.1371/journal.pcbi.0030246/title</str><str name=\"journal\"\
+        >PLoS Computational Biology</str><str name=\"eissn\">1553-7358</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pcbi.0030246/abstract</str><str name=\"journal\">PLoS\
+        \ Computational Biology</str><str name=\"eissn\">1553-7358</str><date name=\"\
+        publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\">Research\
+        \ Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"id\"\
+        >10.1371/journal.pcbi.0030246/references</str><str name=\"journal\">PLoS Computational\
+        \ Biology</str><str name=\"eissn\">1553-7358</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.pcbi.0030246/body</str><str\
+        \ name=\"journal\">PLoS Computational Biology</str><str name=\"eissn\">1553-7358</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pcbi.0030246/introduction</str><str name=\"journal\"\
+        >PLoS Computational Biology</str><str name=\"eissn\">1553-7358</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pcbi.0030246/results_and_discussion</str><str name=\"\
+        journal\">PLoS Computational Biology</str><str name=\"eissn\">1553-7358</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pcbi.0030246/materials_and_methods</str><str name=\"\
+        journal\">PLoS Computational Biology</str><str name=\"eissn\">1553-7358</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pcbi.0030246/supporting_information</str><str name=\"\
+        journal\">PLoS Computational Biology</str><str name=\"eissn\">1553-7358</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pgen.0030237</str><str name=\"journal\">PLoS Genetics</str><str\
+        \ name=\"eissn\">1553-7404</str><date name=\"publication_date\">2007-12-21T00:00:00Z</date><str\
+        \ name=\"article_type\">Research Article</str><arr name=\"author_display\"\
+        ><str>Elena V Linardopoulou</str><str>Sean S Parghi</str><str>Cynthia Friedman</str><str>Gregory\
+        \ E Osborn</str><str>Susan M Parkhurst</str><str>Barbara J Trask</str></arr><arr\
+        \ name=\"abstract\"><str>Subtelomeres are duplication-rich, structurally variable\
+        \ regions of the human genome situated just proximal of telomeres. We report\
+        \ here that the most terminally located human subtelomeric genes encode a\
+        \ previously unrecognized third subclass of the Wiskott-Aldrich Syndrome Protein\
+        \ family, whose known members reorganize the actin cytoskeleton in response\
+        \ to extracellular stimuli. This new subclass, which we call WASH, is evolutionarily\
+        \ conserved in species as diverged as Entamoeba. We demonstrate that WASH\
+        \ is essential in Drosophila. WASH is widely expressed in human tissues, and\
+        \ human WASH protein colocalizes with actin in filopodia and lamellipodia.\
+        \ The VCA domain of human WASH promotes actin polymerization by the Arp2/3\
+        \ complex in vitro. WASH duplicated to multiple chromosomal ends during primate\
+        \ evolution, with highest copy number reached in humans, whose WASH repertoires\
+        \ vary. Thus, human subtelomeres are not genetic junkyards, and WASH's location\
+        \ in these dynamic regions could have advantageous as well as pathologic consequences.:\
+        \ Human subtelomeres are rearrangement-prone regions near chromosome ends.\
+        \ They are concentrations of large, recent interchromosomal duplications.\
+        \ Over half of subtelomeric sequences changed copy number or location since\
+        \ humans and chimpanzee diverged, and subtelomeric content varies greatly\
+        \ among humans. Despite this dynamic activity, subtelomeres contain genes.\
+        \ We report the discovery of genes defining a previously unrecognized third\
+        \ subclass of the Wiskott-Aldrich Syndrome protein (WASP) family within human\
+        \ subtelomeres. The known WASP family members reorganize actin structures\
+        \ in cells in response to various signals, thereby causing cells to change\
+        \ shape and/or move. Representatives of this newly identified subclass, called\
+        \ WASH, exist in many other species, even in Entamoeba and slime mold. Like\
+        \ other WASP family members, WASH colocalizes with actin at the cell periphery\
+        \ and promotes actin polymerization in vitro. Flies lacking WASH die before\
+        \ becoming adults, demonstrating that WASH is critical for survival, and its\
+        \ function is distinct from that of the two other WASP subclasses, Wasp and\
+        \ Scar. Identification of the WASH subclass opens the way for future elucidation\
+        \ of WASH's role in the life cycles of diverse organisms, the implications\
+        \ of human variation in WASH copy number, and the consequences of WASH's location\
+        \ in dynamic telomere-adjacent regions. </str></arr><str name=\"title_display\"\
+        >Human Subtelomeric WASH Genes Encode a New Subclass of the WASP Family</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.pgen.0030237/title</str><str\
+        \ name=\"journal\">PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pgen.0030237/abstract</str><str name=\"journal\">PLoS\
+        \ Genetics</str><str name=\"eissn\">1553-7404</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.pgen.0030237/references</str><str\
+        \ name=\"journal\">PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pgen.0030237/body</str><str name=\"journal\">PLoS Genetics</str><str\
+        \ name=\"eissn\">1553-7404</str><date name=\"publication_date\">2007-12-21T00:00:00Z</date><str\
+        \ name=\"article_type\">Research Article</str><float name=\"score\">1.0</float></doc><doc><str\
+        \ name=\"id\">10.1371/journal.pgen.0030237/introduction</str><str name=\"\
+        journal\">PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date name=\"\
+        publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\">Research\
+        \ Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"id\"\
+        >10.1371/journal.pgen.0030237/results_and_discussion</str><str name=\"journal\"\
+        >PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.pgen.0030237/materials_and_methods</str><str\
+        \ name=\"journal\">PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pgen.0030237/supporting_information</str><str name=\"\
+        journal\">PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date name=\"\
+        publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\">Research\
+        \ Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"id\"\
+        >10.1371/journal.pgen.0030229/title</str><str name=\"journal\">PLoS Genetics</str><str\
+        \ name=\"eissn\">1553-7404</str><date name=\"publication_date\">2007-12-21T00:00:00Z</date><str\
+        \ name=\"article_type\">Research Article</str><float name=\"score\">1.0</float></doc><doc><str\
+        \ name=\"id\">10.1371/journal.pgen.0030229/abstract</str><str name=\"journal\"\
+        >PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.pgen.0030229/references</str><str\
+        \ name=\"journal\">PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pgen.0030229/body</str><str name=\"journal\">PLoS Genetics</str><str\
+        \ name=\"eissn\">1553-7404</str><date name=\"publication_date\">2007-12-21T00:00:00Z</date><str\
+        \ name=\"article_type\">Research Article</str><float name=\"score\">1.0</float></doc><doc><str\
+        \ name=\"id\">10.1371/journal.pgen.0030229/introduction</str><str name=\"\
+        journal\">PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date name=\"\
+        publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\">Research\
+        \ Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"id\"\
+        >10.1371/journal.pgen.0030229/results_and_discussion</str><str name=\"journal\"\
+        >PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.pgen.0030229/materials_and_methods</str><str\
+        \ name=\"journal\">PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pgen.0030229/supporting_information</str><str name=\"\
+        journal\">PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date name=\"\
+        publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\">Research\
+        \ Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"id\"\
+        >10.1371/journal.pgen.0030232</str><str name=\"journal\">PLoS Genetics</str><str\
+        \ name=\"eissn\">1553-7404</str><date name=\"publication_date\">2007-12-21T00:00:00Z</date><str\
+        \ name=\"article_type\">Research Article</str><arr name=\"author_display\"\
+        ><str>Nicolas Di-Po\xEF</str><str>J\xF3zsef Z\xE1k\xE1ny</str><str>Denis Duboule</str></arr><arr\
+        \ name=\"abstract\"><str>Hox genes encode homeodomain-containing proteins\
+        \ that control embryonic development in multiple contexts. Up to 30 Hox genes,\
+        \ distributed among all four clusters, are expressed during mammalian kidney\
+        \ morphogenesis, but functional redundancy between them has made a detailed\
+        \ functional account difficult to achieve. We have investigated the role of\
+        \ the HoxD cluster through comparative molecular embryological analysis of\
+        \ a set of mouse strains carrying targeted genomic rearrangements such as\
+        \ deletions, duplications, and inversions. This analysis allowed us to uncover\
+        \ and genetically dissect the complex role of the HoxD cluster. Regulation\
+        \ of metanephric mesenchyme-ureteric bud interactions and maintenance of structural\
+        \ integrity of tubular epithelia are differentially controlled by some Hoxd\
+        \ genes during renal development, consistent with their specific expression\
+        \ profiles. We also provide evidence for a kidney-specific form of colinearity\
+        \ that underlies the differential expression of two distinct sets of genes\
+        \ located on both sides and overlapping at the Hoxd9 locus. These insights\
+        \ further our knowledge of the genetic control of kidney morphogenesis and\
+        \ may contribute to understanding certain congenital kidney malformations,\
+        \ including polycystic kidney disease and renal hypoplasia.: Hox genes encode\
+        \ proteins that control embryonic development along the head-to-tail axis\
+        \ and in multiple organs. Here, we show that several members of this gene\
+        \ family are necessary for the normal development of the mammalian kidneys.\
+        \ These genes are clustered in one site on the chromosome and their respective\
+        \ positions within the group determine which component of the kidneys they\
+        \ will contribute to. Using a large collection of engineered mutations in\
+        \ this system, we show that these genes are required both for the growth of\
+        \ the kidneys and for their proper organization, such that mutations in some\
+        \ genes reduce the size of the organs, whereas mutations in others induce\
+        \ polycystic kidneys. Our set of genetic rearrangements also allowed us to\
+        \ localize the position of regulatory sequences, which control the expression\
+        \ of these genes during kidney development. </str></arr><str name=\"title_display\"\
+        >Distinct Roles and Regulations for &lt;i&gt;Hoxd&lt;/i&gt; Genes in Metanephric\
+        \ Kidney Development</str><float name=\"score\">1.0</float></doc><doc><str\
+        \ name=\"id\">10.1371/journal.pgen.0030232/title</str><str name=\"journal\"\
+        >PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.pgen.0030232/abstract</str><str\
+        \ name=\"journal\">PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pgen.0030232/body</str><str name=\"journal\">PLoS Genetics</str><str\
+        \ name=\"eissn\">1553-7404</str><date name=\"publication_date\">2007-12-21T00:00:00Z</date><str\
+        \ name=\"article_type\">Research Article</str><float name=\"score\">1.0</float></doc><doc><str\
+        \ name=\"id\">10.1371/journal.pgen.0030232/introduction</str><str name=\"\
+        journal\">PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date name=\"\
+        publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\">Research\
+        \ Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"id\"\
+        >10.1371/journal.pgen.0030232/results_and_discussion</str><str name=\"journal\"\
+        >PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.pgen.0030232/materials_and_methods</str><str\
+        \ name=\"journal\">PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pgen.0030232/supporting_information</str><str name=\"\
+        journal\">PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date name=\"\
+        publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\">Research\
+        \ Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"id\"\
+        >10.1371/journal.pgen.0030232/references</str><str name=\"journal\">PLoS Genetics</str><str\
+        \ name=\"eissn\">1553-7404</str><date name=\"publication_date\">2007-12-21T00:00:00Z</date><str\
+        \ name=\"article_type\">Research Article</str><float name=\"score\">1.0</float></doc><doc><str\
+        \ name=\"id\">10.1371/journal.pgen.0030231</str><str name=\"journal\">PLoS\
+        \ Genetics</str><str name=\"eissn\">1553-7404</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><arr\
+        \ name=\"author_display\"><str>Gregory C Kettler</str><str>Adam C Martiny</str><str>Katherine\
+        \ Huang</str><str>Jeremy Zucker</str><str>Maureen L Coleman</str><str>Sebastien\
+        \ Rodrigue</str><str>Feng Chen</str><str>Alla Lapidus</str><str>Steven Ferriera</str><str>Justin\
+        \ Johnson</str><str>Claudia Steglich</str><str>George M Church</str><str>Paul\
+        \ Richardson</str><str>Sallie W Chisholm</str></arr><arr name=\"abstract\"\
+        ><str>Prochlorococcus is a marine cyanobacterium that numerically dominates\
+        \ the mid-latitude oceans and is the smallest known oxygenic phototroph. Numerous\
+        \ isolates from diverse areas of the world's oceans have been studied and\
+        \ shown to be physiologically and genetically distinct. All isolates described\
+        \ thus far can be assigned to either a tightly clustered high-light (HL)-adapted\
+        \ clade, or a more divergent low-light (LL)-adapted group. The 16S rRNA sequences\
+        \ of the entire Prochlorococcus group differ by at most 3%, and the four initially\
+        \ published genomes revealed patterns of genetic differentiation that help\
+        \ explain physiological differences among the isolates. Here we describe the\
+        \ genomes of eight newly sequenced isolates and combine them with the first\
+        \ four genomes for a comprehensive analysis of the core (shared by all isolates)\
+        \ and flexible genes of the Prochlorococcus group, and the patterns of loss\
+        \ and gain of the flexible genes over the course of evolution. There are 1,273\
+        \ genes that represent the core shared by all 12 genomes. They are apparently\
+        \ sufficient, according to metabolic reconstruction, to encode a functional\
+        \ cell. We describe a phylogeny for all 12 isolates by subjecting their complete\
+        \ proteomes to three different phylogenetic analyses. For each non-core gene,\
+        \ we used a maximum parsimony method to estimate which ancestor likely first\
+        \ acquired or lost each gene. Many of the genetic differences among isolates,\
+        \ especially for genes involved in outer membrane synthesis and nutrient transport,\
+        \ are found within the same clade. Nevertheless, we identified some genes\
+        \ defining HL and LL ecotypes, and clades within these broad ecotypes, helping\
+        \ to demonstrate the basis of HL and LL adaptations in Prochlorococcus. Furthermore,\
+        \ our estimates of gene gain events allow us to identify highly variable genomic\
+        \ islands that are not apparent through simple pairwise comparisons. These\
+        \ results emphasize the functional roles, especially those connected to outer\
+        \ membrane synthesis and transport that dominate the flexible genome and set\
+        \ it apart from the core. Besides identifying islands and demonstrating their\
+        \ role throughout the history of Prochlorococcus, reconstruction of past gene\
+        \ gains and losses shows that much of the variability exists at the \u201C\
+        leaves of the tree,\u201D between the most closely related strains. Finally,\
+        \ the identification of core and flexible genes from this 12-genome comparison\
+        \ is largely consistent with the relative frequency of Prochlorococcus genes\
+        \ found in global ocean metagenomic databases, further closing the gap between\
+        \ our understanding of these organisms in the lab and the wild.: Prochlorococcus\u2014\
+        the most abundant photosynthetic microbe living in the vast, nutrient-poor\
+        \ areas of the ocean\u2014is a major contributor to the global carbon cycle.\
+        \ Prochlorococcus is composed of closely related, physiologically distinct\
+        \ lineages whose differences enable the group as a whole to proliferate over\
+        \ a broad range of environmental conditions. We compare the genomes of 12\
+        \ strains of Prochlorococcus representing its major lineages in order to identify\
+        \ genetic differences affecting the ecology of different lineages and their\
+        \ evolutionary origin. First, we identify the core genome: the 1,273 genes\
+        \ shared among all strains. This core set of genes encodes the essentials\
+        \ of a functional cell, enabling it to make living matter out of sunlight\
+        \ and carbon dioxide. We then create a genomic tree that maps the gain and\
+        \ loss of non-core genes in individual strains, showing that a striking number\
+        \ of genes are gained or lost even among the most closely related strains.\
+        \ We find that lost and gained genes commonly cluster in highly variable regions\
+        \ called genomic islands. The level of diversity among the non-core genes,\
+        \ and the number of new genes added with each new genome sequenced, suggest\
+        \ far more diversity to be discovered. </str></arr><str name=\"title_display\"\
+        >Patterns and Implications of Gene Gain and Loss in the Evolution of &lt;i&gt;Prochlorococcus&lt;/i&gt;</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.pgen.0030231/title</str><str\
+        \ name=\"journal\">PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pgen.0030231/abstract</str><str name=\"journal\">PLoS\
+        \ Genetics</str><str name=\"eissn\">1553-7404</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.pgen.0030231/references</str><str\
+        \ name=\"journal\">PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pgen.0030231/body</str><str name=\"journal\">PLoS Genetics</str><str\
+        \ name=\"eissn\">1553-7404</str><date name=\"publication_date\">2007-12-21T00:00:00Z</date><str\
+        \ name=\"article_type\">Research Article</str><float name=\"score\">1.0</float></doc><doc><str\
+        \ name=\"id\">10.1371/journal.pgen.0030231/introduction</str><str name=\"\
+        journal\">PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date name=\"\
+        publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\">Research\
+        \ Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"id\"\
+        >10.1371/journal.pgen.0030231/results_and_discussion</str><str name=\"journal\"\
+        >PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.pgen.0030231/materials_and_methods</str><str\
+        \ name=\"journal\">PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pgen.0030231/supporting_information</str><str name=\"\
+        journal\">PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date name=\"\
+        publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\">Research\
+        \ Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"id\"\
+        >10.1371/journal.pgen.0030229</str><str name=\"journal\">PLoS Genetics</str><str\
+        \ name=\"eissn\">1553-7404</str><date name=\"publication_date\">2007-12-21T00:00:00Z</date><str\
+        \ name=\"article_type\">Research Article</str><arr name=\"author_display\"\
+        ><str>Mariam Brenneis</str><str>Oliver Hering</str><str>Christian Lange</str><str>J\xF6\
+        rg Soppa</str></arr><arr name=\"abstract\"><str>The basal transcription apparatus\
+        \ of archaea is well characterized. However, much less is known about the\
+        \ mechanisms of transcription termination and translation initation. Recently,\
+        \ experimental determination of the 5\u2032-ends of ten transcripts from Pyrobaculum\
+        \ aerophilum revealed that these are devoid of a 5\u2032-UTR. Bioinformatic\
+        \ analysis indicated that many transcripts of other archaeal species might\
+        \ also be leaderless. The 5\u2032-ends and 3\u2032-ends of 40 transcripts\
+        \ of two haloarchaeal species, Halobacterium salinarum and Haloferax volcanii,\
+        \ have been determined. They were used to characterize the lengths of 5\u2032\
+        -UTRs and 3\u2032-UTRs and to deduce consensus sequence-elements for transcription\
+        \ and translation. The experimental approach was complemented with a bioinformatics\
+        \ analysis of the H. salinarum genome sequence. Furthermore, the influence\
+        \ of selected 5\u2032-UTRs and 3\u2032-UTRs on transcript stability and translational\
+        \ efficiency in vivo was characterized using a newly established reporter\
+        \ gene system, gene fusions, and real-time PCR. Consensus sequences for basal\
+        \ promoter elements could be refined and a novel element was discovered. A\
+        \ consensus motif probably important for transcriptional termination was established.\
+        \ All 40 haloarchaeal transcripts analyzed had a 3\u2032-UTR (average size\
+        \ 57 nt), and their 3\u2032-ends were not posttranscriptionally modified.\
+        \ Experimental data and genome analyses revealed that the majority of haloarchaeal\
+        \ transcripts are leaderless, indicating that this is the predominant mode\
+        \ for translation initiation in haloarchaea. Surprisingly, the 5\u2032-UTRs\
+        \ of most leadered transcripts did not contain a Shine-Dalgarno (SD) sequence.\
+        \ A genome analysis indicated that less than 10% of all genes are preceded\
+        \ by a SD sequence and even most proximal genes in operons lack a SD sequence.\
+        \ Seven different leadered transcripts devoid of a SD sequence were efficiently\
+        \ translated in vivo, including artificial 5\u2032-UTRs of random sequences.\
+        \ Thus, an interaction of the 5\u2032-UTRs of these leadered transcripts with\
+        \ the 16S rRNA could be excluded. Taken together, either a scanning mechanism\
+        \ similar to the mechanism of translation initiation operating in eukaryotes\
+        \ or a novel mechanism must operate on most leadered haloarchaeal transcripts.:\
+        \ Expression of the information encoded in the genome of an organism into\
+        \ its phenotype involves transcription of the DNA into messenger RNAs and\
+        \ translation of mRNAs into proteins. The textbook view is that an mRNA consists\
+        \ of an untranslated region (5\u2032-UTR), an open reading frame encoding\
+        \ the protein, and another untranslated region (3\u2032-UTR). We have determined\
+        \ the 5\u2032-ends and the 3\u2032-ends of 40 mRNAs of two haloarchaeal species\
+        \ and used this dataset to gain information about nucleotide elements important\
+        \ for transcription and translation. Two thirds of the mRNAs were devoid of\
+        \ a 5\u2032-UTR, and therefore the major pathway for translation initiation\
+        \ in haloarchaea involves so-called leaderless transcripts. Very unexpectedly,\
+        \ most leadered mRNAs were found to be devoid of a sequence motif believed\
+        \ to be essential for translation initiation in bacteria and archaea (Shine-Dalgarno\
+        \ sequence). A bioinformatic genome analysis revealed that less than 10% of\
+        \ the genes contain a Shine-Dalgarno sequence. mRNAs lacking this motif were\
+        \ efficiently translated in vivo, including mRNAs with artificial 5\u2032\
+        -UTRs of total random sequence. Thus, translation initiation on these mRNAs\
+        \ either involves a scanning mechanism similar to the mechanism operating\
+        \ in eukaryotes or a totally novel mechanism operating at least in haloarchaea.\
+        \ </str></arr><str name=\"title_display\">Experimental Characterization of\
+        \ &lt;i&gt;Cis&lt;/i&gt;-Acting Elements Important for Translation and Transcription\
+        \ in Halophilic Archaea</str><float name=\"score\">1.0</float></doc><doc><str\
+        \ name=\"id\">10.1371/journal.pgen.0030225</str><str name=\"journal\">PLoS\
+        \ Genetics</str><str name=\"eissn\">1553-7404</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><arr\
+        \ name=\"author_display\"><str>Chris Jopling</str><str>Daphne van Geemen</str><str>Jeroen\
+        \ den Hertog</str></arr><arr name=\"abstract\"><str>Shp2 is a cytoplasmic\
+        \ protein-tyrosine phosphatase that is essential for normal development. Activating\
+        \ and inactivating mutations have been identified in humans to cause the related\
+        \ Noonan and LEOPARD syndromes, respectively. The cell biological cause of\
+        \ these syndromes remains to be determined. We have used the zebrafish to\
+        \ assess the role of Shp2 in early development. Here, we report that morpholino-mediated\
+        \ knockdown of Shp2 in zebrafish resulted in defects during gastrulation.\
+        \ Cell tracing experiments demonstrated that Shp2 knockdown induced defects\
+        \ in convergence and extension cell movements. In situ hybridization using\
+        \ a panel of markers indicated that cell fate was not affected by Shp2 knock\
+        \ down. The Shp2 knockdown\u2013induced defects were rescued by active Fyn\
+        \ and Yes and by active RhoA. We generated mutants of Shp2 with mutations\
+        \ that were identified in human patients with Noonan or LEOPARD Syndrome and\
+        \ established that Noonan Shp2 was activated and LEOPARD Shp2 lacked catalytic\
+        \ protein-tyrosine phosphatase activity. Expression of Noonan or LEOPARD mutant\
+        \ Shp2 in zebrafish embryos induced convergence and extension cell movement\
+        \ defects without affecting cell fate. Moreover, these embryos displayed craniofacial\
+        \ and cardiac defects, reminiscent of human symptoms. Noonan and LEOPARD mutant\
+        \ Shp2s were not additive nor synergistic, consistent with the mutant Shp2s\
+        \ having activating and inactivating roles in the same signaling pathway.\
+        \ Our results demonstrate that Shp2 is required for normal convergence and\
+        \ extension cell movements during gastrulation and that Src family kinases\
+        \ and RhoA were downstream of Shp2. Expression of Noonan or LEOPARD Shp2 phenocopied\
+        \ the craniofacial and cardiac defects of human patients. The finding that\
+        \ defective Shp2 signaling induced cell movement defects as early as gastrulation\
+        \ may have implications for the monitoring and diagnosis of Noonan and LEOPARD\
+        \ syndrome.: Shp2 is a protein-tyrosine phosphatase and mutations in Shp2\
+        \ cause the related Noonan and LEOPARD syndromes in humans. We used the zebrafish\
+        \ to investigate the cell biological role of Shp2 in early development. Shp2\
+        \ knockdown and expression of mutant Shp2 that contained mutations corresponding\
+        \ to those found in human Noonan and LEOPARD patients, induced similar convergence\
+        \ and extension cell movement defects during gastrulation without affecting\
+        \ cell specification. Active Src family kinases and active RhoA rescued the\
+        \ Shp2 knockdown, indicating that signaling downstream of Shp2 was mediated\
+        \ by Src family kinases and RhoA. Expression of the Noonan and LEOPARD Shp2s\
+        \ in zebrafish induced craniofacial and cardiac defects that were reminiscent\
+        \ of the symptoms observed in human patients. Coinjections demonstrated that\
+        \ Noonan and LEOPARD Shp2s did not cooperate, which is consistent with the\
+        \ two mutants acting in the same signaling pathway with opposing effects.\
+        \ The finding that defective Shp2 signaling induced cell movement defects\
+        \ as early as gastrulation may have important implications for the monitoring\
+        \ and diagnosis of Noonan and LEOPARD syndromes in humans. </str></arr><str\
+        \ name=\"title_display\">Shp2 Knockdown and Noonan/LEOPARD Mutant Shp2\u2013\
+        Induced Gastrulation Defects</str><float name=\"score\">1.0</float></doc><doc><str\
+        \ name=\"id\">10.1371/journal.pgen.0030225/title</str><str name=\"journal\"\
+        >PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.pgen.0030225/abstract</str><str\
+        \ name=\"journal\">PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pgen.0030225/references</str><str name=\"journal\">PLoS\
+        \ Genetics</str><str name=\"eissn\">1553-7404</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.pgen.0030225/body</str><str\
+        \ name=\"journal\">PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pgen.0030225/introduction</str><str name=\"journal\"\
+        >PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc><doc><str name=\"id\">10.1371/journal.pgen.0030225/results_and_discussion</str><str\
+        \ name=\"journal\">PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date\
+        \ name=\"publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\"\
+        >Research Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"\
+        id\">10.1371/journal.pgen.0030225/materials_and_methods</str><str name=\"\
+        journal\">PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date name=\"\
+        publication_date\">2007-12-21T00:00:00Z</date><str name=\"article_type\">Research\
+        \ Article</str><float name=\"score\">1.0</float></doc><doc><str name=\"id\"\
+        >10.1371/journal.pgen.0030225/supporting_information</str><str name=\"journal\"\
+        >PLoS Genetics</str><str name=\"eissn\">1553-7404</str><date name=\"publication_date\"\
+        >2007-12-21T00:00:00Z</date><str name=\"article_type\">Research Article</str><float\
+        \ name=\"score\">1.0</float></doc></result>\n</response>\n"}
+    headers:
+      connection: [close]
+      content-type: [application/xml;charset=UTF-8]
+      date: ['Fri, 24 Apr 2015 19:16:31 GMT']
+      etag: ['"OWZmZjcwMDAwMDAwMDAwMFNvbHI="']
+      last-modified: ['Fri, 24 Apr 2015 17:54:22 GMT']
+      server: [Apache-Coyote/1.1]
+      set-cookie: ['Coyote-2-9514450c=95144522:0; path=/']
+      transfer-encoding: [chunked]
+    status: {code: 200, message: OK}
+version: 1

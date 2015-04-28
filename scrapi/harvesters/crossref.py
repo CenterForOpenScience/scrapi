@@ -83,14 +83,6 @@ class CrossRefHarvester(JSONHarvester):
             )
         }
 
-    def copy_to_unicode(self, element):
-        encoding = self.record_encoding or self.DEFAULT_ENCODING
-        element = ''.join(element)
-        if isinstance(element, unicode):
-            return element
-        else:
-            return unicode(element, encoding=encoding)
-
     def harvest(self, days_back=0):
         start_date = date.today() - timedelta(days_back)
         base_url = 'http://api.crossref.org/v1/works?filter=from-pub-date:{},until-pub-date:{}&rows={{}}&offset={{}}'.format(str(start_date), str(date.today()))

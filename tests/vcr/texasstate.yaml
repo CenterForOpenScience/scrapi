@@ -1,0 +1,76 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
+    method: GET
+    uri: http://digital.library.txstate.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2015-04-08&until=2015-04-09
+  response:
+    body: {string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"\
+        text/xsl\" href=\"static/style.xsl\"?><OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"\
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
+        http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"\
+        ><responseDate>2015-04-24T10:07:35Z</responseDate>\n    <request verb=\"ListRecords\"\
+        \ metadataPrefix=\"oai_dc\" from=\"2015-04-08\" until=\"2015-04-09\">https://digital.library.txstate.edu/oai/request</request>\n\
+        \    <ListRecords>\n        <record>\n            <header>\n             \
+        \   <identifier>oai:digital.library.txstate.edu:10877/5483</identifier>\n\
+        \                <datestamp>2015-04-08T00:00:27Z</datestamp>\n           \
+        \     <setSpec>com_10877_111</setSpec>\n                <setSpec>com_10877_1</setSpec>\n\
+        \                <setSpec>com_10877_134</setSpec>\n                <setSpec>col_10877_113</setSpec>\n\
+        \                <setSpec>col_10877_135</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>THE EFFECTS\
+        \ OF MUSIC ON MOOD, ANXIETY, AND JOB SATISFACTION: SELF-REPORTS FROM OCCUPATIONAL\
+        \ WORKERS</dc:title>\n<dc:creator>Smith, Jessica R.</dc:creator>\n<dc:contributor>Oberle,\
+        \ Crystal D.</dc:contributor>\n<dc:contributor>Schepis, Ty S.</dc:contributor>\n\
+        <dc:contributor>Nagurney, Alexander J.</dc:contributor>\n<dc:subject>Job Satisfaction</dc:subject>\n\
+        <dc:subject>Anxiety</dc:subject>\n<dc:subject>Mood</dc:subject>\n<dc:subject>Music</dc:subject>\n\
+        <dc:description>The effects of music on mood, anxiety and job satisfaction\
+        \ were investigated within an occupational setting of employees in a cardiologist\
+        \ office. All participants were exposed to nine consecutive Monday workdays\
+        \ alternating between classical music, dance/electronic music, or no music\
+        \ being played in the background throughout the workday. Participants\u2019\
+        \ self-reported positive and negative affect, state anxiety, and job satisfaction\
+        \ levels were measured twice during each experimental workday. 3 x 2 mixed-design\
+        \ ANOVAs and chi-square tests of association were used to assess the effects\
+        \ of the music intervention. Only two ANOVAs approached significance: music\u2019\
+        s effect on anxiety and music\u2019s effect on job satisfaction. Significant\
+        \ associations in subsequent chi-square tests were found, supporting the effects\
+        \ of music on anxiety and job satisfaction.</dc:description>\n<dc:date>2015-04-07T20:55:12Z</dc:date>\n\
+        <dc:date>2015-04-07T20:55:12Z</dc:date>\n<dc:date>2012-05</dc:date>\n<dc:date>2012-04-19</dc:date>\n\
+        <dc:date>May 2012</dc:date>\n<dc:date>2015-04-07T20:55:15Z</dc:date>\n<dc:type>Thesis</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/10877/ETD-TXSTATE-2012-05-358</dc:identifier>\n\
+        <dc:identifier>https://digital.library.txstate.edu/handle/10877/5483</dc:identifier>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:digital.library.txstate.edu:10877/5484</identifier>\n\
+        \                <datestamp>2015-04-08T00:00:23Z</datestamp>\n           \
+        \     <setSpec>com_10877_16</setSpec>\n                <setSpec>com_10877_1</setSpec>\n\
+        \                <setSpec>com_10877_134</setSpec>\n                <setSpec>col_10877_18</setSpec>\n\
+        \                <setSpec>col_10877_135</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Investigation\
+        \ of DNA stability in Saccharomyces cerevisiae mutants defective in the repair\
+        \ of broken chromosomes</dc:title>\n<dc:creator>Nguyen, Thuy Nhu</dc:creator>\n\
+        <dc:contributor>Lewis, Lytle K.</dc:contributor>\n<dc:contributor>Whitten,\
+        \ Steven T.</dc:contributor>\n<dc:contributor>Watkins, Linette M.</dc:contributor>\n\
+        <dc:subject>Saccharomyces cerevisiae</dc:subject>\n<dc:subject>DNA repair</dc:subject>\n\
+        <dc:date>2015-04-07T21:07:19Z</dc:date>\n<dc:date>2015-04-07T21:07:19Z</dc:date>\n\
+        <dc:date>2012-08</dc:date>\n<dc:date>2012-07-19</dc:date>\n<dc:date>August\
+        \ 2012</dc:date>\n<dc:date>2015-04-07T21:07:20Z</dc:date>\n<dc:type>Thesis</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/10877/ETD-TXSTATE-2012-08-473</dc:identifier>\n\
+        <dc:identifier>https://digital.library.txstate.edu/handle/10877/5484</dc:identifier>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n    </ListRecords>\n</OAI-PMH>\n"}
+    headers:
+      connection: [close]
+      content-type: [application/xml]
+      date: ['Fri, 24 Apr 2015 15:07:35 GMT']
+      transfer-encoding: [chunked]
+    status: {code: 200, message: OK}
+version: 1

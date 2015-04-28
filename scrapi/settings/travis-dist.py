@@ -20,6 +20,10 @@ ELASTIC_URI = 'localhost:9200'
 ELASTIC_TIMEOUT = 10
 ELASTIC_INDEX = 'share'
 
+PLOS_API_KEY = 'fakekey'
+
+disabled = ['stepic']
+
 FRONTEND_KEYS = [
     u'description',
     u'contributors',

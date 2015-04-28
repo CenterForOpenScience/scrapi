@@ -1,0 +1,82 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
+    method: GET
+    uri: http://vtechworks.lib.vt.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2014-12-24&until=2014-12-25
+  response:
+    body: {string: !!python/unicode "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet\
+        \ type=\"text/xsl\" href=\"static/style.xsl\"?><OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"\
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
+        http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"\
+        ><responseDate>2015-04-24T10:05:26Z</responseDate>\n    <request verb=\"ListRecords\"\
+        \ metadataPrefix=\"oai_dc\" from=\"2014-12-24\" until=\"2014-12-25\">https://vtechworks.lib.vt.edu/oai/request</request>\n\
+        \    <ListRecords>\n        <record>\n            <header>\n             \
+        \   <identifier>oai:vtechworks.lib.vt.edu:10919/51158</identifier>\n     \
+        \           <datestamp>2014-12-24T09:00:07Z</datestamp>\n                <setSpec>com_10919_5534</setSpec>\n\
+        \                <setSpec>col_10919_9291</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Retention of\
+        \ underrepresented groups in corporate agribusinesses: Assessing the intentions\
+        \ of underrepresented groups to remain working for corporate agribusinesses</dc:title>\n\
+        <dc:creator>Wright, Brielle Simone</dc:creator>\n<dc:contributor>Agricultural\
+        \ and Extension Education</dc:contributor>\n<dc:contributor>Friedel, Curtis\
+        \ Robert</dc:contributor>\n<dc:contributor>Faulkner, Paula E.</dc:contributor>\n\
+        <dc:contributor>Anderson, James C.</dc:contributor>\n<dc:subject>Agribusiness</dc:subject>\n\
+        <dc:subject>Diversity</dc:subject>\n<dc:subject>Recruitment</dc:subject>\n\
+        <dc:subject>Retention</dc:subject>\n<dc:subject>Underrepresented Groups</dc:subject>\n\
+        <dc:description>It is projected that the majority population will become the\
+        \ minority population by 2050. In order to serve the needs of an ethnically\
+        \ diverse U.S. population, corporate agribusinesses are encouraged to employ\
+        \ an ethnically diverse workforce. The purpose of this research was to understand\
+        \ how attitudes, subjective norms, and perceived behavioral control in the\
+        \ workplace affects the intent of underrepresented groups to remain in working\
+        \ for their current corporate  agribusiness. In current agriculture research,\
+        \ there are very few studies that focus on the experiences of underrepresented\
+        \ groups in corporate agribusinesses. There is also very little research and\
+        \ public information that provides the number of underrepresented students\
+        \ who are recruited and retained in corporate agribusinesses from year to\
+        \ year.  For this reason the author sought to explore the experiences of underrepresented\
+        \ groups who work for agricultural organizations and gain an understanding\
+        \ of factors that impact their intentions to maintain a career in the field.\
+        \ \nUsing a phenomenological qualitative research study design, individual\
+        \ interviews were conducted with underrepresented employees from various corporate\
+        \ agribusinesses from across the United States. A review of the findings indicate\
+        \ that underrepresented groups who work for corporate agribusinesses are satisfied\
+        \ with their jobs in terms of compensation, work/life balance, and the opportunities\
+        \ for advancement. Yet, they are sometimes faced with micro-aggressions, at\
+        \ times feel they are treated differently because of their race, and often\
+        \ work in cultural climates that lack inclusion and/or cultural intelligence.\
+        \ As a result the majority of the participants who participated in the study\
+        \ felt that they would remain with their corporate agribusiness employer until\
+        \ they found a new company to work for, started their own business, or a better\
+        \ opportunity presented itself.  \n The findings from this study also show\
+        \ that anyone seeking employment in corporate agribusinesses need to have\
+        \ effective communication skills, cultural and emotional intelligence, agricultural\
+        \ competency, and a true passion for their field of agriculture in order to\
+        \ be successful in the industry. Other findings show that underrepresented\
+        \ groups and their White counterparts need to be educated on the contributions\
+        \ that underrepresented groups have made to the agricultural field in efforts\
+        \ to change the negative perceptions that underrepresented groups have about\
+        \ agriculture.</dc:description>\n<dc:description>MSLFS</dc:description>\n\
+        <dc:date>2014-12-24T09:00:07Z</dc:date>\n<dc:date>2014-12-24T09:00:07Z</dc:date>\n\
+        <dc:date>2014-12-23</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:identifier>vt_gsexam:3939</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/10919/51158</dc:identifier>\n<dc:rights>The\
+        \ authors of the theses and dissertations are the copyright owners. Virginia\
+        \ Tech's Digital Library and Archives has their permission to store and provide\
+        \ access to these works.</dc:rights>\n<dc:format>ETD</dc:format>\n<dc:publisher>Virginia\
+        \ Tech</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n    </ListRecords>\n\
+        </OAI-PMH>\n"}
+    headers:
+      connection: [close]
+      content-type: [application/xml]
+      date: ['Fri, 24 Apr 2015 14:05:26 GMT']
+      transfer-encoding: [chunked]
+    status: {code: 200, message: OK}
+version: 1

@@ -1,0 +1,73 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
+    method: GET
+    uri: http://www.escholarship.org/uc/oai?verb=ListRecords&metadataPrefix=oai_dc&from=2014-12-24&until=2014-12-25
+  response:
+    body: {string: !!python/unicode ''}
+    headers:
+      connection: [keep-alive]
+      content-length: ['0']
+      content-type: [text/html]
+      date: ['Fri, 24 Apr 2015 14:05:13 GMT']
+      expires: ['Sat, 6 May 1995 12:00:00 GMT']
+      location: ['http://escholarship.org/uc/oai?verb=ListRecords&metadataPrefix=oai_dc&from=2014-12-24&until=2014-12-25']
+      server: [Apache-Coyote/1.1]
+      set-cookie: [JSESSIONID=3DA8DD7F8D6F3A384DD87933C3926DA3; Path=/uc/; HttpOnly,
+        AWSELB=43770BA51A0EC9CB916A9DB2D4BB0ED6011A78A011D9D2620E64C13D9F6459AEA1A39818F148EFE064363B2BD25CC0DB57BE7C9F1C34B448C852688B8706CE7D774B2D89AF0986D67A6030D9E42C6C16B96E679A70;PATH=/uc/;HTTPONLY]
+    status: {code: 301, message: Moved Permanently}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Cookie: [AWSELB=43770BA51A0EC9CB916A9DB2D4BB0ED6011A78A011D9D2620E64C13D9F6459AEA1A39818F148EFE064363B2BD25CC0DB57BE7C9F1C34B448C852688B8706CE7D774B2D89AF0986D67A6030D9E42C6C16B96E679A70;
+          JSESSIONID=3DA8DD7F8D6F3A384DD87933C3926DA3]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
+    method: GET
+    uri: http://escholarship.org/uc/oai?verb=ListRecords&metadataPrefix=oai_dc&from=2014-12-24&until=2014-12-25
+  response:
+    body:
+      string: !!binary |
+        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
+    headers:
+      connection: [keep-alive]
+      content-encoding: [gzip]
+      content-type: [text/xml]
+      date: ['Fri, 24 Apr 2015 14:05:14 GMT']
+      expires: ['Sat, 6 May 1995 12:00:00 GMT']
+      server: [Apache-Coyote/1.1]
+      transfer-encoding: [chunked]
+      vary: [Accept-Encoding]
+    status: {code: 200, message: OK}
+version: 1
