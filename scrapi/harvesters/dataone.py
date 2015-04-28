@@ -107,7 +107,6 @@ class DataOneHarvester(XMLHarvester):
 
     schema = {
         'otherProperties': build_properties(
-            ('author', "str[@name='author']/node()"),
             ('authorGivenName', ("str[@name='authorGivenName']/node()")),
             ('authorSurName', ("str[@name='authorSurName']/node()")),
             ('authoritativeMN', ("str[@name='authoritativeMN']/node()")),
@@ -115,7 +114,6 @@ class DataOneHarvester(XMLHarvester):
             ('checksumAlgorithm', ("str[@name='checksumAlgorithm']/node()")),
             ('dataUrl', ("str[@name='dataUrl']/node()")),
             ('datasource', ("str[@name='datasource']/node()")),
-            ('documents', "arr[@name='documents']/str/node()"),
             ('dateModified', ("date[@name='dateModified']/node()")),
             ('datePublished', ("date[@name='datePublished']/node()")),
             ('dateUploaded', ("date[@name='dateUploaded']/node()")),
@@ -143,12 +141,15 @@ class DataOneHarvester(XMLHarvester):
             ('isDocumentedBy', "arr[@name='isDocumentedBy']/str/node()"),
             ('serviceID', "str[@name='id']/node()")
         ),
+        'freeToRead': {
+            'startDate': ("bool[@name='isPublic']/node()", "date[@name='dateModified']/node()", lambda x, y: parse(y[0]).date().isoformat() if x else None)
+        },
         'contributors': ("str[@name='author']/node()", "str[@name='submitter']/node()", "arr[@name='origin']/str/node()", process_contributors),
         'uris': {
             'canonicalUri': ("str[@name='id']/node()", "//str[@name='dataUrl']/node()", lambda x, y: y[0] if 'http' in single_result(y) else x[0] if 'http' in single_result(x) else ''),
         },
         'tags': ("//arr[@name='keywords']/str/node()", lambda x: x if isinstance(x, list) else [x]),
-        'providerUpdatedDateTime': ("str[@name='dateModified']/node()", compose(lambda x: parse(x).date().isoformat().decode('utf-8'), single_result)),
+        'providerUpdatedDateTime': ("str[@name='dateModified']/node()", compose(lambda x: parse(x).date().isoformat(), single_result)),
         'title': ("str[@name='title']/node()", single_result),
         'description': ("str[@name='abstract']/node()", single_result)
     }
