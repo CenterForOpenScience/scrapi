@@ -7,9 +7,8 @@ _manager.setup()
 
 
 def documents(*sources):
-    print(sources)
     q = DocumentModel.objects.all().limit(1000)
-    querysets = (q.filter(source=source) for source in sources) or (q,)
+    querysets = (q.filter(source=source) for source in sources) if sources else [q]
     for query in querysets:
         page = list(query)
         while len(page) > 0:
