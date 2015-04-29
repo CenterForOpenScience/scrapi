@@ -41,3 +41,5 @@ FRONTEND_KEYS = [
     "otherProperties",
     "shareProperties"
 ]
+
+PLOS_API_KEY = None
