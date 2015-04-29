@@ -54,7 +54,6 @@ class PlosHarvester(XMLHarvester):
 
         to_date = to_date.replace(hour=0, minute=0, second=0, microsecond=0)
         from_date = from_date.replace(hour=0, minute=0, second=0, microsecond=0)
-
         return 'publication_date:[{}Z TO {}Z]'.format(from_date.isoformat(), to_date.isoformat())
 
     def fetch_rows(self, days_back):
@@ -108,8 +107,10 @@ class PlosHarvester(XMLHarvester):
         'providerUpdatedDateTime': ('//date[@name="publication_data"]/node()', compose(lambda x: parse(x).date().isoformat().decode('utf-8'), single_result)),
         'title': ('//str[@name="title_display"]/node()', single_result),
         'description': ('//arr[@name="abstract"]/str/node()', single_result),
+        'publisher': {
+            'name': ('//str[@name="journal"]/node()', single_result)
+        },
         'otherProperties': build_properties(
-            ('journal', '//str[@name="journal"]/node()'),
             ('eissn', '//str[@name="eissn"]/node()'),
             ('articleType', '//str[@name="article_type"]/node()'),
             ('score', '//float[@name="score"]/node()')

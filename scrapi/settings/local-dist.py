@@ -20,6 +20,7 @@ FLUENTD_ARGS = {
     'tag': 'app.scrapi'
 }
 
+disabled = []
 
 CASSANDRA_URI = ['127.0.0.1']
 CASSANDRA_KEYSPACE = 'scrapi'
@@ -40,3 +41,5 @@ FRONTEND_KEYS = [
     "otherProperties",
     "shareProperties"
 ]
+
+PLOS_API_KEY = None

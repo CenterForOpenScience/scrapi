@@ -3,7 +3,7 @@ BioMed Central harvester of public projects for the SHARE Notification Service
 Note: At the moment, this harvester only harvests basic data on each article, and does
 not make a seperate request for additional metadata for each record.
 
-Example API query: http://www.biomedcentral.com/webapi/1.0/latest_articles.json
+Example API query: http://www.biomedcentral.com/search/results?terms=*&format=json&drpAddedInLast=1&itemsPerPage=250#2015-04-23
 """
 
 from __future__ import unicode_literals
@@ -47,8 +47,8 @@ def process_contributors(authors):
     return contributor_list
 
 
-class BiomedHarvester(JSONHarvester):
-    short_name = 'biomed'
+class BiomedCentralHarvester(JSONHarvester):
+    short_name = 'biomedcentral'
     long_name = 'BioMed Central'
     url = 'http://www.biomedcentral.com/'
     count = 0
@@ -60,21 +60,29 @@ class BiomedHarvester(JSONHarvester):
         return {
             'contributors': ('/authorNames', process_contributors),
             'uris': {
-                'canonicalUri': '/articleFullUrl'
+                'canonicalUri': '/articleFullUrl',
+                'objectUris': ('/doi', lambda x: ['http://dx.doi.org/' + x])
             },
             'title': ('/bibliographyTitle', '/blurbTitle', lambda x, y: x or y),
             'providerUpdatedDateTime': ('/published Date', lambda x: parse(x).isoformat()),
             'description': '/blurbText',
-            'relation': ('/doi', lambda x: ['http://dx.doi.org/' + x]),
+            'freeToRead': {
+                'startDate': ('/is_free', '/published Date', lambda x, y: y if x else None)
+            },
             'otherProperties': build_properties(
                 ('imageURL', '/imageUrl', {'description': 'a image url'}),
                 ('type', '/type'),
                 ('isOpenAccess', '/isOpenAccess'),
+                ('articleUrl', '/articleUrl'),
+                ('articleFullUrl', '/articleFullUrl'),
                 ('isFree', '/isFree'),
                 ('isHighlyAccessed', '/isHighlyAccessed'),
                 ('status', '/status'),
                 ('abstractPath', '/abstractPath'),
-                ('journal Id', '/journal Id')
+                ('journal Id', '/journal Id'),
+                ('article_host', '/article_host'),
+                ('longCitation', '/longCitation'),
+                ('is_subscription', '/is_subscription')
             )
         }
 

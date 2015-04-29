@@ -36,6 +36,9 @@ class FigshareHarvester(JSONHarvester):
         'providerUpdatedDateTime': ('/modified_date', lambda x: parse(x).date().isoformat().decode('utf-8')),
         'uris': {
             'canonicalUri': ('/DOI', lambda x: x[0] if isinstance(x, list) else x),
+            'providerUris': [
+                ('/url')
+            ]
         },
         'otherProperties': build_properties(
             ('serviceID', ('/article_id', lambda x: str(x).decode('utf-8'))),
