@@ -107,8 +107,10 @@ class PlosHarvester(XMLHarvester):
         'providerUpdatedDateTime': ('//date[@name="publication_data"]/node()', compose(lambda x: parse(x).date().isoformat().decode('utf-8'), single_result)),
         'title': ('//str[@name="title_display"]/node()', single_result),
         'description': ('//arr[@name="abstract"]/str/node()', single_result),
+        'publisher': {
+            'name': ('//str[@name="journal"]/node()', single_result)
+        },
         'otherProperties': build_properties(
-            ('journal', '//str[@name="journal"]/node()'),
             ('eissn', '//str[@name="eissn"]/node()'),
             ('articleType', '//str[@name="article_type"]/node()'),
             ('score', '//float[@name="score"]/node()')
