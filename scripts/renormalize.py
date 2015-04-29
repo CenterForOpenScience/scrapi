@@ -8,7 +8,7 @@ from scrapi.tasks import normalize, process_normalized
 logger = logging.getLogger(__name__)
 
 
-def renormalize(sources=None):
+def renormalize(sources=()):
     count = 0
     exceptions = []
     for doc in documents(*sources):
