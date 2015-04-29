@@ -69,7 +69,7 @@ class CassandraProcessor(BaseProcessor):
         try:
             return not all([new[key] == old[key] or (not new[key] and not old[key]) for key in new.keys() if key != 'timestamps'])
         except Exception:
-            return True
+            return True  # If the document fails to load/compare for some reason, accept a new version
 
 
 @database.register_model
