@@ -7,6 +7,7 @@ _manager.setup()
 
 
 def documents(*sources):
+    print(sources)
     q = DocumentModel.objects.all().limit(1000)
     querysets = (q.filter(source=source) for source in sources) or (q,)
     for query in querysets:

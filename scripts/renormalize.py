@@ -9,6 +9,7 @@ logger = logging.getLogger(__name__)
 
 
 def renormalize(sources=None):
+    print(sources)
     count = 0
     exceptions = []
     for doc in documents(*sources):
