@@ -18,6 +18,6 @@ class CMUHarvester(OAIHarvester):
     url = 'http://repository.cmu.edu/'
     base_url = 'http://repository.cmu.edu/do/oai/'
     property_list = [
-        'type', 'publisher', 'format', 'date', 'identifier',
-        'language', 'setSpec', 'description'
+        'type', 'format', 'date', 'identifier',
+        'setSpec', 'description'
     ]

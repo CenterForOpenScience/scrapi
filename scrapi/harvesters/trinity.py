@@ -19,8 +19,8 @@ class TrinityHarvester(OAIHarvester):
 
     base_url = 'http://digitalcommons.trinity.edu/do/oai/'
     property_list = [
-        'type', 'publisher', 'format', 'date',
-        'identifier', 'language', 'setSpec', 'source', 'coverage',
+        'type', 'format', 'date',
+        'identifier', 'setSpec', 'source', 'coverage',
         'relation', 'rights'
     ]
     approved_sets = [

@@ -17,7 +17,7 @@ from datetime import date, timedelta
 from scrapi import requests
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
-from scrapi.base.helpers import default_name_parser
+from scrapi.base.helpers import default_name_parser, build_properties
 
 logger = logging.getLogger(__name__)
 
@@ -36,14 +36,17 @@ class FigshareHarvester(JSONHarvester):
         'providerUpdatedDateTime': ('/modified_date', lambda x: parse(x).date().isoformat().decode('utf-8')),
         'uris': {
             'canonicalUri': ('/DOI', lambda x: x[0] if isinstance(x, list) else x),
+            'providerUris': [
+                ('/url')
+            ]
         },
-        # 'otherProperties': {
-        #     'serviceID': ('/article_id', lambda x: str(x).decode('utf-8')),
-        #     'definedType': '/defined_type',
-        #     'type': '/type',
-        #     'links': '/links',
-        #     'publishedDate': '/published_date'
-        # }
+        'otherProperties': build_properties(
+            ('serviceID', ('/article_id', lambda x: str(x).decode('utf-8'))),
+            ('definedType', '/defined_type'),
+            ('type', '/type'),
+            ('links', '/links'),
+            ('publishedDate', '/published_date')
+        )
     }
 
     def harvest(self, days_back=1):

@@ -20,7 +20,6 @@ class ASUHarvester(OAIHarvester):
     base_url = 'http://repository.asu.edu/oai-pmh'
     approved_sets = ['research']
     property_list = [
-        'type', 'source', 'publisher', 'format',
-        'date', 'description', 'relation', 'setSpec',
-        'rights', 'identifier'
+        'type', 'format', 'date', 'description', 'relation',
+        'setSpec', 'rights', 'identifier'
     ]

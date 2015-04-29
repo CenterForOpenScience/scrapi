@@ -17,7 +17,7 @@ class CalhounHarvester(OAIHarvester):
 
     base_url = 'http://calhoun.nps.edu/oai/request'
     property_list = [
-        'type', 'source', 'publisher', 'format', 'setSpec', 'date', 'rights'
+        'type', 'source', 'format', 'setSpec', 'date', 'rights'
     ]
     approved_sets = [
         'com_10945_7075', 'com_10945_6', 'col_10945_17'
