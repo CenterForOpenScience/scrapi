@@ -33,14 +33,15 @@ def alias(alias, index):
 
 
 @task
-def renormalize():
-    run('python -m scripts.renormalize')
+def renormalize(sources=None):
+    from scripts.renormalize import renormalize
+    renormalize(sources.split(',') if sources else [])
 
 
 @task
-def rename(source, target):
+def rename(source, target, dry=True):
     from scripts.rename import rename
-    rename(source, target)
+    rename(source, target, dry)
 
 
 @task
