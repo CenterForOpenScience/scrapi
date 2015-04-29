@@ -1,6 +1,5 @@
 import logging
 
-
 from scripts.util import documents
 
 from scrapi import settings
@@ -12,11 +11,11 @@ logger = logging.getLogger(__name__)
 
 
 def rename(source, target, dry=True):
-    assert source != target
+    assert source != target, "Can't rename {} to {}, names are the same".format(source, target)
     count = 0
     exceptions = []
 
-    for doc in documents([source]):
+    for doc in documents(source):
         count += 1
         try:
             raw = RawDocument({
@@ -30,8 +29,7 @@ def rename(source, target, dry=True):
             if not dry:
                 process_raw(raw)
                 process_normalized(normalize(raw, raw['source']), raw)
-            else:
-                logger.info('Processing document from {} with id {}'.format(source, raw['docID']))
+            logger.info('Processed document from {} with id {}'.format(source, raw['docID']))
         except Exception as e:
             logger.exception(e)
             exceptions.append(e)
@@ -39,8 +37,9 @@ def rename(source, target, dry=True):
             if not dry:
                 doc.delete()
                 es.delete(index=settings.ELASTIC_INDEX, doc_type=source, id=raw['docID'])
-            else:
-                logger.info('Deleting document from {} with id {}'.format(source, raw['docID']))
+            logger.info('Deleted document from {} with id {}'.format(source, raw['docID']))
+    if dry:
+        logger.info('Dry run complete')
 
     for ex in exceptions:
         logger.exception(e)

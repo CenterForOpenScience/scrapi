@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 def renormalize(sources=None):
     count = 0
     exceptions = []
-    for doc in documents(sources):
+    for doc in documents(*sources):
         count += 1
         try:
             raw = RawDocument({

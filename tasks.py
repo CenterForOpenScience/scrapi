@@ -35,7 +35,7 @@ def alias(alias, index):
 @task
 def renormalize(sources=None):
     from scripts.renormalize import renormalize
-    renormalize(sources.split(',') if sources else None)
+    renormalize(*sources.split(',') if sources else [])
 
 
 @task
