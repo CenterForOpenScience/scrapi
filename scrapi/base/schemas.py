@@ -13,8 +13,6 @@ from .helpers import (
     language_code
 )
 
-CONSTANT = lambda x: lambda *_, **__: x
-
 
 DOESCHEMA = {
     "description": ('//dc:description/node()', compose(lambda x: x.strip(), single_result)),
