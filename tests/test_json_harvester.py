@@ -7,6 +7,7 @@ from dateutil.parser import parse
 
 from scrapi.base import JSONHarvester
 from scrapi.linter import RawDocument
+from scrapi.base.helpers import build_properties
 
 expected = {
     "description": "This is a  test",
@@ -35,14 +36,39 @@ expected = {
     "providerUpdatedDateTime": "2015-02-02T00:00:00",
     "shareProperties": {
         "source": "crossref"
-    }
-    # "otherProperties": {
-    #     "referenceCount": "7",
-    #     "updatePolicy": "No",
-    #     "depositedTimestamp": "right now",
-    #     "Empty": "",
-    #     "Empty2": ""
-    # }
+    },
+    "otherProperties": [
+        {
+            "name": "referenceCount",
+            "properties": {
+                "referenceCount": "7"
+            }
+        },
+        {
+            "name": "updatePolicy",
+            "properties": {
+                "updatePolicy": "No"
+            }
+        },
+        {
+            "name": "depositedTimestamp",
+            "properties": {
+                "depositedTimestamp": "right now"
+                }
+        },
+        {
+            "name": "Empty",
+            "properties": {
+                "Empty": ""
+            }
+        },
+        {
+            "name": "Empty2",
+            "properties": {
+                "Empty2": ""
+            }
+        }
+    ]
 }
 
 def process_contributor(author, orcid):
@@ -81,13 +107,13 @@ class TestHarvester(JSONHarvester):
                     entry.get('ORCID')
                 ]) for entry in x
             ]),
-            # 'otherProperties': {
-            #     'referenceCount': '/reference-count',
-            #     'updatePolicy': '/update-policy',
-            #     'depositedTimestamp': '/deposited/timestamp',
-            #     'Empty': '/trash/not-here',
-            #     'Empty2': '/'
-            # }
+            'otherProperties': build_properties(
+                ('referenceCount', '/reference-count'),
+                ('updatePolicy', '/update-policy'),
+                ('depositedTimestamp', '/deposited/timestamp'),
+                ('Empty', '/trash/not-here'),
+                ('Empty2', '/')
+            )
         }
 
     def harvest(self, days_back=1):
