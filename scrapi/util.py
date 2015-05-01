@@ -23,7 +23,7 @@ def copy_to_unicode(element):
         element = ''.join(element)
         try:
             element = six.u(element)
-        except TypeError:
+        except (TypeError, UnicodeDecodeError):
             pass
     return element
 
