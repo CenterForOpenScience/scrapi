@@ -4,8 +4,7 @@ import functools
 
 from scrapi.base import XMLHarvester
 from scrapi.linter import RawDocument
-from scrapi.base.schemas import CONSTANT
-from scrapi.base.helpers import updated_schema, pack, build_properties
+from scrapi.base.helpers import updated_schema, pack, build_properties, CONSTANT
 
 from .utils import TEST_SCHEMA, TEST_NAMESPACES, TEST_XML_DOC
 
