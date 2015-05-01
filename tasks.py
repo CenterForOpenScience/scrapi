@@ -160,6 +160,7 @@ def lint(name):
 @task
 def provider_map():
     from scrapi.processing.elasticsearch import es
+    es.indices.delete(index='share_providers', ignore=['404'])
 
     for harvester_name, harvester in registry.items():
         es.index(
