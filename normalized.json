@@ -322,7 +322,7 @@
             "description": "A date range specifying when this research object will be accessible, without restrictsions such as fee or registration). If the object is free to read, then only the startDate is required.", 
             "properties": {
                 "startDate": {
-                    "type": "string", 
+                    "type": ["string", "null"], 
                     "description": "The date and time at which the object will be accessible. If the resource was always free to read, then the date the object was created should be used.", 
                     "format": "date"
                 }, 

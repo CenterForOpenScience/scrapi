@@ -78,12 +78,12 @@ class TestTransformer(object):
             TEST_SCHEMA, {
                 'tags': (CONSTANT(['X']), lambda x: x),
                 'otherProperties': [{
-                    'name': 'test',
+                    'name': CONSTANT('test'),
                     'properties':{
                         'test':  CONSTANT('test')
                     },
-                    'uri': 'http://example.com',
-                    'description': 'A test field'
+                    'uri': CONSTANT('http://example.com'),
+                    'description': CONSTANT('A test field')
                 }]
             }
         )

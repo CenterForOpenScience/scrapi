@@ -2,7 +2,6 @@ from __future__ import unicode_literals
 
 import six
 import abc
-import copy
 import logging
 
 from jsonpointer import resolve_pointer, JsonPointerException
@@ -28,27 +27,27 @@ class BaseTransformer(object):
     def _transform(self, schema, doc):
         transformed = {}
         for key, value in schema.items():
-            if isinstance(value, dict):
-                transformed[key] = self._transform(value, doc)
-            elif isinstance(value, list):
-                transformed[key] = self._transform_list(value, doc)
-            elif isinstance(value, tuple) and len(value) == 2 and isinstance(value[0], tuple):
-                transformed[key] = self._transform_args_kwargs(value, doc)
-            elif isinstance(value, tuple):
-                transformed[key] = self._transform_tuple(value, doc)
-            elif isinstance(value, six.string_types):
-                transformed[key] = self._transform_string(value, doc)
-            elif callable(value):
-                transformed[key] = value(doc)
+            transformed[key] = self._transform_value(value, doc)
         return transformed
 
+    def _transform_value(self, value, doc):
+        if isinstance(value, dict):
+            return self._transform(value, doc)
+        elif isinstance(value, list):
+            return self._transform_list(value, doc)
+        elif isinstance(value, tuple) and len(value) == 2 and isinstance(value[0], tuple):
+            return self._transform_args_kwargs(value, doc)
+        elif isinstance(value, tuple):
+            return self._transform_tuple(value, doc)
+        elif isinstance(value, six.string_types):
+            return self._transform_string(value, doc)
+        elif callable(value):
+            return value(doc)
+
     def _transform_list(self, l, doc):
-        l = copy.deepcopy(l)
-        for item in l:
-            item.update({
-                'properties': self._transform(item['properties'], doc)
-            })
-        return l
+        return [
+            self._transform_value(item, doc) for item in l
+        ]
 
     def _transform_tuple(self, l, doc):
 

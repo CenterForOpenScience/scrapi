@@ -23,7 +23,17 @@ DOESCHEMA = {
     "providerUpdatedDateTime": ('//dc:dateEntry/node()', compose(lambda x: x.strip(), single_result)),
     "uris": {
         "canonicalUri": ('//dcq:identifier-citation/node()', compose(lambda x: x.strip(), single_result)),
+        "objectUris": [('//dc:doi/node()', compose(lambda x: 'http://dx.doi.org/' + x, single_result))]
     },
+    "languages": ("//dc:language", compose(lambda x: [x], language_code, single_result)),
+    "publisher": {
+        "name": ("//dcq:publisher/node()", single_result)
+    },
+    "sponsorships": [{
+        "sponsor": {
+            "sponsorName": ("//dcq:publisherSponsor/node()", single_result)
+        }
+    }],
     "otherProperties": build_properties(
         ('coverage', '//dc:coverage/node()'),
         ('date', '//dc:date/node()'),
@@ -33,12 +43,9 @@ DOESCHEMA = {
         ('identifierOther', '//dc:identifierOther/node()'),
         ('identifier-purl', '//dc:identifier-purl/node()'),
         ('identifierReport', '//dc:identifierReport/node()'),
-        ('language', '//dc:language/node()'),
-        ('publisher', '//dcq:publisher/node()'),
         ('publisherAvailability', '//dcq:publisherAvailability/node()'),
         ('publisherCountry', '//dcq:publisherCountry/node()'),
         ('publisherResearch', '//dcq:publisherResearch/node()'),
-        ('publisherSponsor', '//dcq:publisherSponsor/node()'),
         ('relation', '//dc:relation/node()'),
         ('rights', '//dc:rights/node()'),
         ('type', '//dc:type/node()'),
@@ -54,7 +61,7 @@ OAISCHEMA = {
     'providerUpdatedDateTime': ('//ns0:header/ns0:datestamp/node()', lambda x: parse(x[0]).replace(tzinfo=None).isoformat()),
     'title': ('//dc:title/node()', single_result),
     'description': ('//dc:description/node()', single_result),
-    'tags': ('//dc:subject/node()', format_tags),
+    'subjects': ('//dc:subject/node()', format_tags),
     'publisher': {
         'name': ('//dc:publisher/node()', single_result)
     },
