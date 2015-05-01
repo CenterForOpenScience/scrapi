@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+import six
 import abc
 import copy
 import logging
@@ -35,7 +36,7 @@ class BaseTransformer(object):
                 transformed[key] = self._transform_args_kwargs(value, doc)
             elif isinstance(value, tuple):
                 transformed[key] = self._transform_tuple(value, doc)
-            elif isinstance(value, basestring):
+            elif isinstance(value, six.string_types):
                 transformed[key] = self._transform_string(value, doc)
             elif callable(value):
                 transformed[key] = value(doc)
