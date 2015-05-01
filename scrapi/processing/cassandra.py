@@ -54,7 +54,7 @@ class CassandraProcessor(BaseProcessor):
             document = documents[0]
             if self.different(dict(document), dict(docID=docID, source=source, **kwargs)):
                 # Create new version, get UUID of new version, update
-                versions = document.versions
+                versions = document.versions + kwargs.pop('versions', [])
                 version = VersionModel(key=uuid4(), **dict(document))
                 version.save()
                 versions.append(version.key)
