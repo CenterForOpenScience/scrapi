@@ -16,8 +16,8 @@ class TexasStateHarvester(OAIHarvester):
 
     base_url = 'http://digital.library.txstate.edu/oai/request'
     property_list = [
-        'type', 'publisher', 'format', 'date',
-        'identifier', 'language', 'setSpec', 'source', 'coverage',
+        'type', 'format', 'date',
+        'identifier', 'setSpec', 'source', 'coverage',
         'relation', 'rights'
     ]
     approved_sets = [

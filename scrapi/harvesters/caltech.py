@@ -15,5 +15,5 @@ class CaltechHarvester(OAIHarvester):
 
     base_url = 'http://authors.library.caltech.edu/cgi/oai2'
     property_list = [
-        'date', 'resource type', 'format', 'resource identifier', 'relation'
+        'date', 'type', 'format', 'identifier', 'relation'
     ]

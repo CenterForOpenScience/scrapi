@@ -4,10 +4,8 @@ import functools
 
 from scrapi.base import XMLHarvester
 from scrapi.linter import RawDocument
-from scrapi.base.schemas import CONSTANT
-from scrapi.base.helpers import updated_schema, pack
+from scrapi.base.helpers import updated_schema, pack, build_properties, CONSTANT
 
-from .utils import get_leaves
 from .utils import TEST_SCHEMA, TEST_NAMESPACES, TEST_XML_DOC
 
 
@@ -46,47 +44,52 @@ class TestTransformer(object):
             TEST_SCHEMA,
             {
                 'title': (pack(*args, **kwargs), process_title),
-                # 'otherProperties': {
-                #     'title2': (pack(*args), process_title),
-                #     'title3': (pack(**kwargs), process_title2),
-                #     'title4': (pack('//dc:title/node()', title1="//dc:title/node()"), process_title)
-                # }
+                'otherProperties': build_properties(
+                    ('title2', (pack(*args), process_title)),
+                    ('title3', (pack(**kwargs), process_title2)),
+                    ('title4', (pack('//dc:title/node()', title1='//dc:title/node()'), process_title))
+                )
             }
         )
+
 
         results = [self.harvester.normalize(record) for record in self.harvester.harvest(days_back=1)]
 
         for result in results:
             assert result['title'] == "TestTest"
-            # assert result['otherProperties']['title2'] == 'Testtest'
-            # assert result['otherProperties']['title3'] == 'Test'
-            # assert result['otherProperties']['title4'] == "TestTest"
+            assert result['otherProperties'][0]['properties']['title2'] == 'Testtest'
+            assert result['otherProperties'][1]['properties']['title3'] == 'Test'
+            assert result['otherProperties'][2]['properties']['title4'] == "TestTest"
 
     def test_normalize(self):
         results = [
-            self.harvester.normalize(record) for record in self.harvester.harvest(days_back=10)
+            self.harvester.normalize(record) for record in self.harvester.harvest(days_back=1)
         ]
 
         for result in results:
             assert result['title'] == "Title overwritten"
-            # assert result['otherProperties']['title1'] == 'Test'
-            # assert result['otherProperties']['title2'] == 'test'
-            # assert result['otherProperties']['title3'] == 'Testtest'
-
-            for (k, v) in get_leaves(result.attributes):
-                assert type(v) != functools.partial
+            assert result['otherProperties'][0]['properties']['title1'] == 'Test'
+            assert result['otherProperties'][1]['properties']['title2'] == 'test'
+            assert result['otherProperties'][2]['properties']['title3'] == 'Testtest'
 
     def test_constants(self):
         self.harvester.schema = updated_schema(
             TEST_SCHEMA, {
-                # 'otherProperties': {
-                #     'test': CONSTANT('test')
-                # }
+                'tags': (CONSTANT(['X']), lambda x: x),
+                'otherProperties': [{
+                    'name': CONSTANT('test'),
+                    'properties':{
+                        'test':  CONSTANT('test')
+                    },
+                    'uri': CONSTANT('http://example.com'),
+                    'description': CONSTANT('A test field')
+                }]
             }
         )
         results = [
-        self.harvester.normalize(record) for record in self.harvester.harvest(days_back=1)
+            self.harvester.normalize(record) for record in self.harvester.harvest(days_back=1)
         ]
 
-        # for result in results:
-            # assert result['otherProperties']['test'] == 'test'
+        for result in results:
+            assert result['otherProperties'][0]['properties']['test'] == 'test'
+            assert result['tags'] == ['X']

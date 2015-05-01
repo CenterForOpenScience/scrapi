@@ -18,6 +18,6 @@ class UPennsylvaniaHarvester(OAIHarvester):
     url = 'http://repository.upenn.edu'
     base_url = 'http://repository.upenn.edu/do/oai/'
     property_list = [
-        'type', 'publisher', 'format', 'date',
+        'type', 'format', 'date',
         'identifier', 'setSpec', 'source', 'rights'
     ]

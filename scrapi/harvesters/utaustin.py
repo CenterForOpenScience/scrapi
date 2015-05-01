@@ -14,8 +14,8 @@ class UTAustinHarvester(OAIHarvester):
 
     base_url = 'http://repositories.lib.utexas.edu/oai/request'
     property_list = [
-        'type', 'source', 'publisher', 'format', 'date',
-        'identifier', 'setSpec', 'language', 'rights'
+        'type', 'source', 'format', 'date',
+        'identifier', 'setSpec', 'rights'
     ]
     approved_sets = [
         'hdl_2152_1',

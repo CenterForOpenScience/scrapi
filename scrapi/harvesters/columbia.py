@@ -20,6 +20,5 @@ class ColumbiaHarvester(OAIHarvester):
     base_url = 'http://academiccommons.columbia.edu/catalog/oai'
     timezone_granularity = True
     property_list = [
-        'type', 'publisher', 'format', 'date',
-        'identifier', 'language'
+        'type', 'format', 'date', 'identifier', 'setSpec'
     ]

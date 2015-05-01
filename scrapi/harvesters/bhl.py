@@ -1,5 +1,5 @@
 """Harvests Biodiversity Heritage Library OAI Repository (BHL) metadata for ingestion into the SHARE service.
-Example API call: http://www.biodiversitylibrary.org/oai?verb=ListIdentifiers&metadataPrefix=oai_dc&from=2015-02-01
+Example API call: http://www.biodiversitylibrary.org/oai?verb=ListRecords&metadataPrefix=oai_dc&from=2015-02-01
 """
 import re
 from scrapi.base import OAIHarvester
@@ -54,3 +54,6 @@ class BHLHarvester(OAIHarvester):
     schema = updated_schema(OAISCHEMA, {
         'contributors': ('//dc:creator/node()', '//dc:contributor/node()', aoi_process_contributors_bhl)
     })
+    property_list = [
+        'type', 'date', 'relation', 'setSpec', 'rights'
+    ]

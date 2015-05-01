@@ -15,5 +15,5 @@ class CogPrintsHarvester(OAIHarvester):
 
     base_url = 'http://cogprints.org/cgi/oai2'
     property_list = [
-        'date', 'resource type', 'format', 'resource identifier', 'relation'
+        'date', 'type', 'format', 'identifier', 'relation'
     ]

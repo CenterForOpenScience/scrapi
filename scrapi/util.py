@@ -13,11 +13,19 @@ def copy_to_unicode(element):
     standard version of unicode that can be pickalable -
     necessary for linting """
 
-    element = ''.join(element)
-    try:
-        return six.u(element)
-    except TypeError:
-        return element
+    if isinstance(element, dict):
+        for key, val in element.items():
+            element[key] = copy_to_unicode(val)
+    elif isinstance(element, list):
+        for idx, item in enumerate(element):
+            element[idx] = copy_to_unicode(item)
+    else:
+        element = ''.join(element)
+        try:
+            element = six.u(element)
+        except TypeError:
+            pass
+    return element
 
 
 def stamp_from_raw(raw_doc, **kwargs):

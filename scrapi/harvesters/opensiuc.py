@@ -20,7 +20,7 @@ class OpenSIUCHarvester(OAIHarvester):
 
     base_url = 'http://opensiuc.lib.siu.edu/do/oai/'
     property_list = [
-        'type', 'source', 'publisher', 'format',
+        'type', 'source', 'format',
         'identifier', 'date', 'setSpec'
     ]
     approved_sets = [

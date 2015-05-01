@@ -17,7 +17,7 @@ class UCeScholarshipHarvester(OAIHarvester):
 
     base_url = 'http://www.escholarship.org/uc/oai'
     property_list = [
-        'type', 'publisher', 'format', 'date',
-        'identifier', 'language', 'setSpec', 'source', 'coverage',
+        'type', 'format', 'date',
+        'identifier', 'setSpec', 'source', 'coverage',
         'relation', 'rights'
     ]
