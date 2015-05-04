@@ -20,6 +20,7 @@ def copy_to_unicode(element):
             element[idx] = copy_to_unicode(item)
     else:
         try:
+            # A dirty way to convert to unicode in python 2 + 3.3+
             element = u''.join(element)
         except TypeError:
             pass
