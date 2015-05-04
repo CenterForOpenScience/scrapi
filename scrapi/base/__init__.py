@@ -4,7 +4,6 @@ from __future__ import unicode_literals
 import abc
 import json
 import logging
-from datetime import date, timedelta
 
 from lxml import etree
 
