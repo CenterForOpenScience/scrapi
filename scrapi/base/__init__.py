@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 import abc
 import json
 import logging
+from datetime import datetime, timedelta, date
 
 from lxml import etree
 
@@ -138,7 +139,10 @@ class OAIHarvester(XMLHarvester):
         ret = dc + ns0
         return ret[0] if len(ret) == 1 else ret
 
-    def harvest(self, start_date, end_date):
+    def harvest(self, start_date=None, end_date=None):
+
+        start_date = datetime.strptime(start_date, '%Y-%m-%d').date().isoformat() if start_date else (date.today() - timedelta(1)).isoformat()
+        end_date = datetime.strptime(end_date, '%Y-%m-%d').date().isoformat() if end_date else date.today().isoformat()
 
         if self.timezone_granularity:
             start_date += 'T00:00:00Z'
