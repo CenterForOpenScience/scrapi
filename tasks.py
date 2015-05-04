@@ -1,5 +1,6 @@
 import logging
 import platform
+from datetime import date, timedelta, datetime
 
 import urllib
 from invoke import run, task
@@ -101,25 +102,31 @@ def worker():
 
 
 @task
-def harvester(harvester_name, async=False, days=1):
+def harvester(harvester_name, async=False, start=None, end=None):
     settings.CELERY_ALWAYS_EAGER = not async
     from scrapi.tasks import run_harvester
 
     if not registry.get(harvester_name):
         raise ValueError('No such harvesters {}'.format(harvester_name))
 
-    run_harvester.delay(harvester_name, days_back=days)
+    start = datetime.strptime(start, '%Y-%m-%d').date().isoformat() if start else (date.today() - timedelta(1)).isoformat()
+    end = datetime.strptime(end, '%Y-%m-%d').date().isoformat() if end else date.today().isoformat()
+
+    run_harvester.delay(harvester_name, start_date=start, end_date=end)
 
 
 @task
-def harvesters(async=False, days=1):
+def harvesters(async=False, start=None, end=None):
     settings.CELERY_ALWAYS_EAGER = not async
     from scrapi.tasks import run_harvester
+
+    start = datetime.strptime(start, '%Y-%m-%d').date().isoformat() if start else (date.today() - timedelta(1)).isoformat()
+    end = datetime.strptime(end, '%Y-%m-%d').date().isoformat() if end else date.today().isoformat()
 
     exceptions = []
     for harvester_name in registry.keys():
         try:
-            run_harvester.delay(harvester_name, days_back=days)
+            run_harvester.delay(harvester_name, start_date=start.isoformat(), end_date=end.isoformat())
         except Exception as e:
             logger.exception(e)
             exceptions.append(e)
@@ -130,15 +137,18 @@ def harvesters(async=False, days=1):
 
 
 @task
-def check_archive(harvester=None, reprocess=False, async=False, days=None):
+def check_archive(harvester=None, reprocess=False, async=False, start=None, end=None):
     settings.CELERY_ALWAYS_EAGER = not async
+
+    start = datetime.strptime(start, '%Y-%m-%d').date().isoformat() if start else (date.today() - timedelta(1)).isoformat()
+    end = datetime.strptime(end, '%Y-%m-%d').date().isoformat() if end else date.today().isoformat()
 
     if harvester:
         from scrapi.tasks import check_archive as check
-        check.delay(harvester, reprocess, days_back=int(days))
+        check.delay(harvester, reprocess, start_date=start, end_date=end)
     else:
         from scrapi.tasks import check_archives
-        check_archives.delay(reprocess, days_back=int(days))
+        check_archives.delay(reprocess, start_date=start, end_date=end)
 
 
 @task
