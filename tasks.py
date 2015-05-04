@@ -45,6 +45,12 @@ def rename(source, target, dry=True):
 
 
 @task
+def delete(source):
+    from scripts.delete import delete_by_source
+    delete_by_source(source)
+
+
+@task
 def reset_search():
     run("curl -XPOST 'http://localhost:9200/_shutdown'")
     if platform.linux_distribution()[0] == 'Ubuntu':
@@ -160,7 +166,7 @@ def lint(name):
 @task
 def provider_map():
     from scrapi.processing.elasticsearch import es
-    es.indices.delete(index='share_providers', ignore=['404'])
+    es.indices.delete(index='share_providers', ignore=[404])
 
     for harvester_name, harvester in registry.items():
         es.index(
