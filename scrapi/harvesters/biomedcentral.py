@@ -86,8 +86,15 @@ class BiomedCentralHarvester(JSONHarvester):
             )
         }
 
-    def harvest(self, days_back=1):
-        search_url = self.URL.format(days_back)
+    def harvest(self, start_date, end_date):
+
+        start_date = datetime.datetime.strptime(start_date, '%Y-%m-%d').date()
+
+        # Biomed central can only have a start date
+        end_date = datetime.date.today()
+        date_number = end_date - start_date
+
+        search_url = self.URL.format(date_number.days)
         records = self.get_records(search_url)
 
         record_list = []
