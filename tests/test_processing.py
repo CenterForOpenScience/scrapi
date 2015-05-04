@@ -1,7 +1,6 @@
 import mock
 import pytest
 
-from scrapi import events
 from scrapi import settings
 
 settings.DEBUG = False
@@ -18,6 +17,7 @@ def get_processor(monkeypatch):
     mock_get_proc = mock.MagicMock()
     monkeypatch.setattr('scrapi.processing.get_processor', mock_get_proc)
     return mock_get_proc
+
 
 def raise_exception(x):
     if x == 'storage':
@@ -51,7 +51,6 @@ def test_raw_calls_all_throwing(get_processor):
 
     with pytest.raises(Exception):
         processing.process_raw(mock.MagicMock(), {})
-
 
 
 def test_raises_on_bad_processor():
