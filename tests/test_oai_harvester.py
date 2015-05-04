@@ -16,10 +16,7 @@ class TestHarvester(OAIHarvester):
     property_list = ['type', 'source', 'publisher', 'format', 'date']
 
     @httpretty.activate
-    def harvest(self, days_back=1):
-
-        start_date = '2015-03-14'
-        end_date = '2015-03-16'
+    def harvest(self, start_date='2015-03-14', end_date='2015-03-16'):
 
         request_url = 'http://validAI.edu/?from={}&to={}'.format(start_date, end_date)
 
