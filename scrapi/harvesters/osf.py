@@ -18,6 +18,7 @@ from nameparser import HumanName
 from scrapi import requests
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
+from scrapi.base.helpers import build_properties
 
 logger = logging.getLogger(__name__)
 
@@ -79,18 +80,18 @@ class OSFHarvester(JSONHarvester):
             'uris': {
                 'canonicalUri': ('/url', lambda x: 'http://osf.io' + x),
             },
-            'tags': ('tags', process_tags)
-            # 'otherProperties': {
-            #     'parent_title': 'parent_title',
-            #     'category': 'category',
-            #     'wiki_link': 'wiki_link',
-            #     'is_component': 'is_component',
-            #     'is_registration': 'is_registration',
-            #     'parent_url': 'parent_url',
-            #     'contributors': 'contributors',
-            #     'journal Id': '/journal Id',
-            #     'tags': ('tags', process_tags)
-            # }
+            'tags': ('tags', process_tags),
+            'otherProperties': build_properties(
+                ('parent_title', 'parent_title'),
+                ('category', 'category'),
+                ('wiki_link', 'wiki_link'),
+                ('is_component', 'is_component'),
+                ('is_registration', 'is_registration'),
+                ('parent_url', 'parent_url'),
+                ('contributors', 'contributors'),
+                ('journal Id', '/journal Id'),
+                ('tags', ('tags', process_tags))
+            )
         }
 
     def harvest(self, days_back=1):

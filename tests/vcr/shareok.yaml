@@ -1,0 +1,114 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
+    method: GET
+    uri: https://shareok.org:443/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2015-04-23T00:00:00Z&until=2015-04-24T00:00:00Z
+  response:
+    body: {string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"\
+        text/xsl\" href=\"static/style.xsl\"?><OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"\
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
+        http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"\
+        ><responseDate>2015-04-24T15:26:14Z</responseDate>\n    <request verb=\"ListRecords\"\
+        \ metadataPrefix=\"oai_dc\" from=\"2015-04-23T00:00:00Z\" until=\"2015-04-24T00:00:00Z\"\
+        >https://shareok.org/oai/request</request>\n    <ListRecords>\n        <record>\n\
+        \            <header>\n                <identifier>oai:shareok.org:11244/14441</identifier>\n\
+        \                <datestamp>2015-04-23T02:00:38Z</datestamp>\n           \
+        \     <setSpec>com_11244_1</setSpec>\n                <setSpec>col_11244_10476</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The effects\
+        \ of undermining on newcomer socialization</dc:title>\n<dc:creator>Peacock,\
+        \ Juandre</dc:creator>\n<dc:contributor>Buckley, Michael</dc:contributor>\n\
+        <dc:contributor>Connelly, Shane</dc:contributor>\n<dc:contributor>Mumford,\
+        \ Michael</dc:contributor>\n<dc:contributor>Bolino, Mark</dc:contributor>\n\
+        <dc:contributor>Terry, Robert</dc:contributor>\n<dc:subject>Organizational\
+        \ Socialization</dc:subject>\n<dc:subject>Peer undermining</dc:subject>\n\
+        <dc:subject>Supervisor Undermining</dc:subject>\n<dc:subject>two stage mediation</dc:subject>\n\
+        <dc:description>Although much is known about the nature of supportive behaviors\
+        \ during organizational socialization, less is known about the effects of\
+        \ undermining during this process. This study examines the effects of undermining\
+        \ from peers and supervisors on organizational newcomers during the early\
+        \ stages of socialization. It examines these effects on select outcome variables\
+        \ (organizational commitment, withdrawal behaviors, coworker satisfaction,\
+        \ burnout, and thriving) via a two-stage mediation process model that includes\
+        \ proactive socialization, newcomer adaptation, role clarity, and social acceptance\
+        \ as mediating variables. The effects were examined using structural equation\
+        \ modeling, and the results indicate that undermining in general does have\
+        \ deleterious effects on the outcomes via the mediational processes, but that\
+        \ the relationships are complex. Implications for the findings and future\
+        \ directions are also highlighted.</dc:description>\n<dc:date>2015-04-22T16:13:54Z</dc:date>\n\
+        <dc:date>2015-04-22T16:13:54Z</dc:date>\n<dc:date>2015</dc:date>\n<dc:date>2015</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/11244/14441</dc:identifier>\n</oai_dc:dc>\n\
+        </metadata>\n        </record>\n        <record>\n            <header>\n \
+        \               <identifier>oai:shareok.org:11244/14442</identifier>\n   \
+        \             <datestamp>2015-04-23T02:00:29Z</datestamp>\n              \
+        \  <setSpec>com_11244_10460</setSpec>\n                <setSpec>com_11244_6231</setSpec>\n\
+        \                <setSpec>col_11244_10464</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Outcrop-Based\
+        \ Gamma-Ray Characterization of Arsenic-Bearing Lithofacies in the Garber-Wellington\
+        \ Formation, Central Oklahoma Aquifer (COA), Cleveland County, Oklahoma</dc:title>\n\
+        <dc:creator>Gromadzki, Gregory A.</dc:creator>\n<dc:date>2015-04-22T17:34:31Z</dc:date>\n\
+        <dc:date>2015-04-22T17:34:31Z</dc:date>\n<dc:date>2015-04-22</dc:date>\n<dc:date>2004-05-01</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/11244/14442</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:rights>Copyright is held by the author who has granted the Oklahoma State\
+        \ University Library the non-exclusive right to share this material in its\
+        \ institutional repository. Contact Digital Library Services at lib-dls@okstate.edu\
+        \ or 405-744-9161 for the permission policy on the use, reproduction or distribution\
+        \ of this material.</dc:rights>\n</oai_dc:dc>\n</metadata>\n        </record>\n\
+        \        <record>\n            <header>\n                <identifier>oai:shareok.org:11244/14443</identifier>\n\
+        \                <datestamp>2015-04-23T02:00:24Z</datestamp>\n           \
+        \     <setSpec>com_11244_1</setSpec>\n                <setSpec>col_11244_10476</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>PROFESSIONAL,\
+        \ MARKET, AND CULTURAL VALUES IN NEWS PRODUCTION</dc:title>\n<dc:creator>Tahat,\
+        \ Khalaf</dc:creator>\n<dc:contributor>Craig, David</dc:contributor>\n<dc:contributor>Taylor,\
+        \ Maureen</dc:contributor>\n<dc:contributor>Gade, Peter</dc:contributor>\n\
+        <dc:contributor>Meirick, Patrick</dc:contributor>\n<dc:contributor>Jones,\
+        \ Julie</dc:contributor>\n<dc:subject>News production, professionalsim, framing,\
+        \ Al Jazeera, Marketing in news</dc:subject>\n<dc:description>In an era of\
+        \ global communication where efforts are increasingly paid to communicate\
+        \ with people of widely-varying cultures across the world, this study examines\
+        \ how one news organization communicates to international audiences of different\
+        \ languages, cultural backgrounds and interests. This study aims to identify\
+        \ which values are more prevalent in the content in both AJA and AJE to communicate\
+        \ to their audiences with different cultural, language, and interest backgrounds.\
+        \ The study tests three models developed from the literature in news production:\
+        \ The professional values model, the marketing values model, and the cultural\
+        \ values model. A total of 592 news stories \u2013 234 from Al Jazeera English\
+        \ and 358 from Al Jazeera Arabic websites \u2013 published from Jan. 1, 2014,\
+        \ to April 30, 2014, were analyzed. &#13;\nThe findings of this study indicate\
+        \ that Al Jazeera reflects professional values to a substantial degree, marketing\
+        \ values and cultural values were evident at a moderate level. However, a\
+        \ comparison of the news stories on the Arabic and English websites showed\
+        \ that Al Jazeera tailors its stories to the taste of the target audience\
+        \ in different ways. In fact Al Jazeera considers the cultural, social, language,\
+        \ religious, and interest backgrounds of its target audience when producing\
+        \ its contents.  Specifically, although professional news values were most\
+        \ prevalent in both websites, AJA and AJE showed some differences in the prevalence\
+        \ of the three models. The findings show that AJE reflected a moderate level\
+        \ of marketing values, and a low level of the cultural values when communicating\
+        \ with its non-Arab readers. However, AJA reflects a moderate level of cultural\
+        \ values and a relatively low level of marketing values when communicating\
+        \ with its Arab readers. Scholarly implications, future studies and limitations\
+        \ were presented in this study.</dc:description>\n<dc:date>2015-04-22T20:26:48Z</dc:date>\n\
+        <dc:date>2015-04-22T20:26:48Z</dc:date>\n<dc:date>2015-05-08</dc:date>\n<dc:date>2015-01-29</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/11244/14443</dc:identifier>\n</oai_dc:dc>\n\
+        </metadata>\n        </record>\n    </ListRecords>\n</OAI-PMH>\n"}
+    headers:
+      connection: [close]
+      content-type: [application/xml]
+      date: ['Fri, 24 Apr 2015 20:26:14 GMT']
+      transfer-encoding: [chunked]
+    status: {code: 200, message: OK}
+version: 1

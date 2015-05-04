@@ -1,5 +1,9 @@
 """
 API harvester for ClinicalTrials.gov for the SHARE Notification Service
+
+http://clinicaltrials.gov/ct2/results?lup_s=04%2F26%2F2015%2F&lup_e=04%2F27%2F2015&displayxml=true
+iindividual result: http://ClinicalTrials.gov/show/NCT02425332?displayxml=true
+
 """
 
 #!/usr/bin/env python
@@ -15,8 +19,10 @@ from dateutil.parser import *
 
 from scrapi import requests
 from scrapi.base import XMLHarvester
+from scrapi.util import copy_to_unicode
 from scrapi.linter.document import RawDocument
 from scrapi.base.schemas import default_name_parser
+from scrapi.base.helpers import compose, single_result, build_properties
 
 logger = logging.getLogger(__name__)
 
@@ -30,61 +36,64 @@ class ClinicalTrialsHarvester(XMLHarvester):
     DEFAULT_ENCODING = 'UTF-8'
     record_encoding = None
 
+    # TODO - clinicaltrials elements have a lot of extra metadata - at some
+    # point in the future we should do a more thorough audit.
     schema = {
-        "contributors": ('//overall_official/last_name/node()', lambda x: default_name_parser(x) if isinstance(x, list) else default_name_parser([x])),
+        "contributors": ('//overall_official/last_name/node()', default_name_parser),
         "uris": {
-            "canonicalUri": "//required_header/url/node()"
+            "canonicalUri": ("//required_header/url/node()", single_result)
         },
-        "providerUpdatedDateTime": ("lastchanged_date/node()", lambda x: unicode(parse(x).replace(tzinfo=None).isoformat())),
-        "title": ('//official_title/node()', '//brief_title/node()', lambda x, y: x or y or ''),
-        "description": ('//brief_summary/textblock/node()', '//brief_summary/textblock/node()', lambda x, y: x or y or ''),
-        # "otherProperties": {
-        #     'oversightAuthority': '//oversight_info/authority/node()',
-        #     "serviceID": "//nct_id/node()",
-        #     "tags": ("//keyword/node()", lambda tags: [unicode(tag.lower()) for tag in tags]),
-        #     'studyDesign': '//study_design/node()',
-        #     'numberOfArms': '//number_of_arms/node()',
-        #     'source': '//source/node()',
-        #     'verificationDate': '//verification_date/node()',
-        #     'lastChanged': '//lastchanged_date/node()',
-        #     'condition': '//condition/node()',
-        #     'verificationDate': '//verification_date/node()',
-        #     'lastChanged': '//lastchanged_date/node()',
-        #     'status': '//status/node()',
-        #     'locationCountries': '//location_countries/country/node()',
-        #     'isFDARegulated': '//is_fda_regulated/node()',
-        #     'isSection801': '//is_section_801/node()',
-        #     'hasExpandedAccess': '//has_expanded_access/node()',
-        #     'sponsors': {
-        #         'agency': '//lead_sponsor/agency/node()',
-        #         'agencyClass': '//lead_sponsor/agency_class/node()'
-        #     },
-        #     'primaryOutcome': {
-        #         'measure': '//primary_outcome/measure/node()',
-        #         'timeFrame': '//primary_outcome/time_frame/node()',
-        #         'safetyIssue': '//primary_outcome/safety_issue/node()'
-        #     },
-        #     'secondaryOutcomes': '//secondary_outcome/node()',
-        #     'enrollment': '//enrollment/node()',
-        #     'armGroup': '//arm_group/node()',
-        #     'intervention': '//intervention/node()',
-        #     'eligibility': '//elligibility/node()',
-        #     'link': '//link/node()',
-        #     'responsible_party': '//responsible_party'
-        # }
+        "providerUpdatedDateTime": ("lastchanged_date/node()", compose(lambda x: parse(x).replace(tzinfo=None).isoformat(), single_result)),
+        "title": ('//official_title/node()', '//brief_title/node()', lambda x, y: single_result(x) or single_result(y)),
+        "description": ('//brief_summary/textblock/node()', '//brief_summary/textblock/node()', lambda x, y: single_result(x) or single_result(y)),
+        "tags": ("//keyword/node()", lambda tags: [unicode(tag.lower()) for tag in tags]),
+        "sponsorships": [
+            {
+                "sponsor": {
+                    "sponsorName": ("//sponsors/lead_sponsor/agency/node()", single_result)
+                }
+            },
+            {
+                "sponsor": {
+                    "sponsorName": ("//sponsors/collaborator/agency/node()", single_result)
+                }
+            }
+        ],
+        "otherProperties": build_properties(
+            ("serviceID", "//nct_id/node()"),
+            ('oversightAuthority', '//oversight_info/authority/node()'),
+            ('studyDesign', '//study_design/node()'),
+            ('numberOfArms', '//number_of_arms/node()'),
+            ('source', '//source/node()'),
+            ('verificationDate', '//verification_date/node()'),
+            ('lastChanged', '//lastchanged_date/node()'),
+            ('condition', '//condition/node()'),
+            ('verificationDate', '//verification_date/node()'),
+            ('lastChanged', '//lastchanged_date/node()'),
+            ('status', '//status/node()'),
+            ('locationCountries', '//location_countries/country/node()'),
+            ('isFDARegulated', '//is_fda_regulated/node()'),
+            ('isSection801', '//is_section_801/node()'),
+            ('hasExpandedAccess', '//has_expanded_access/node()'),
+            ('leadSponsorAgencyClass', '//lead_sponsor/agency_class/node()'),
+            ('collaborator', '//collaborator/agency/node()'),
+            ('collaboratorAgencyClass', '//collaborator/agency_class/node()'),
+            ('measure', '//primary_outcome/measure/node()'),
+            ('timeFrame', '//primary_outcome/time_frame/node()'),
+            ('safetyIssue', '//primary_outcome/safety_issue/node()'),
+            ('secondaryOutcomes', '//secondary_outcome/measure/node()'),
+            ('enrollment', '//enrollment/node()'),
+            ('armGroup', '//arm_group/arm_group_label/node()'),
+            ('intervention', '//intervention/intervention_type/node()'),
+            ('eligibility', '//elligibility/node()'),
+            ('link', '//link/url/node()'),
+            ('responsible_party', '//responsible_party/responsible_party_full_name/node()')
+        )
     }
 
     @property
     def namespaces(self):
         return None
-
-    def copy_to_unicode(self, element):
-        encoding = self.record_encoding or self.DEFAULT_ENCODING
-        element = ''.join(element)
-        if isinstance(element, unicode):
-            return element
-        else:
-            return unicode(element, encoding=encoding)
 
     def harvest(self, days_back=1):
         """ First, get a list of all recently updated study urls,
@@ -142,7 +151,7 @@ class ClinicalTrialsHarvester(XMLHarvester):
                 xml_list.append(RawDocument({
                     'doc': record,
                     'source': self.short_name,
-                    'docID': self.copy_to_unicode(doc_id),
+                    'docID': copy_to_unicode(doc_id),
                     'filetype': 'xml',
                 }))
                 official_count += 1

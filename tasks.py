@@ -33,8 +33,21 @@ def alias(alias, index):
 
 
 @task
-def renormalize():
-    run('python -m scripts.renormalize')
+def renormalize(sources=None):
+    from scripts.renormalize import renormalize
+    renormalize(sources.split(',') if sources else [])
+
+
+@task
+def rename(source, target, dry=True):
+    from scripts.rename import rename
+    rename(source, target, dry)
+
+
+@task
+def delete(source):
+    from scripts.delete import delete_by_source
+    delete_by_source(source)
 
 
 @task
@@ -153,6 +166,7 @@ def lint(name):
 @task
 def provider_map():
     from scrapi.processing.elasticsearch import es
+    es.indices.delete(index='share_providers', ignore=[404])
 
     for harvester_name, harvester in registry.items():
         es.index(

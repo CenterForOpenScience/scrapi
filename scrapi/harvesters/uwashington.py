@@ -18,6 +18,6 @@ class UWashingtonHarvester(OAIHarvester):
 
     base_url = 'http://digital.lib.washington.edu/dspace-oai/request'
     property_list = [
-        'type', 'source', 'publisher', 'format', 'date',
-        'identifier', 'setSpec', 'rights', 'language'
+        'type', 'source', 'format', 'date',
+        'identifier', 'setSpec', 'rights'
     ]

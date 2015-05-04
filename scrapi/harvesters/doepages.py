@@ -7,14 +7,22 @@ from lxml import etree
 from scrapi import requests
 from scrapi.base import XMLHarvester
 from scrapi.linter import RawDocument
-# from scrapi.base.helpers import updated_schema
-from scrapi.base.schemas import BASEXMLSCHEMA
+from scrapi.util import copy_to_unicode
+from scrapi.base.schemas import DOESCHEMA
 
 
 class DoepagesHarvester(XMLHarvester):
     short_name = 'doepages'
     long_name = 'Department of Energy Pages'
     url = 'http://www.osti.gov/pages/'
+
+    schema = DOESCHEMA
+
+    namespaces = {
+        'rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
+        'dc': 'http://purl.org/dc/elements/1.1/',
+        'dcq': 'http://purl.org/dc/terms/'
+    }
 
     def harvest(self, days_back=1):
         today = date.today()
@@ -40,55 +48,8 @@ class DoepagesHarvester(XMLHarvester):
             xml_list.append(RawDocument({
                 'doc': record,
                 'source': self.short_name,
-                'docID': self.copy_to_unicode(doc_id),
+                'docID': copy_to_unicode(doc_id),
                 'filetype': 'xml'
             }))
 
         return xml_list
-
-    def copy_to_unicode(self, element, encoding='UTF-8'):
-        element = ''.join(element)
-        if isinstance(element, unicode):
-            return element
-        else:
-            return unicode(element, encoding=encoding)
-
-    @property
-    def namespaces(self):
-        return {
-            'rdf': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
-            'dc': 'http://purl.org/dc/elements/1.1/',
-            'dcq': 'http://purl.org/dc/terms/'
-        }
-
-    @property
-    def schema(self):
-        return BASEXMLSCHEMA
-        # return updated_schema(
-        #     BASEXMLSCHEMA,
-        #     {
-        #         'properties': {
-        #             'language': '//dc:language/node()',
-        #             'type': '//dc:type/node()',
-        #             'typeQualifier': '//dc:typeQualifier/node()',
-        #             'language': '//dc:language/node()',
-        #             'format': '//dc:format/node()',
-        #             'identifierOther': '//dc:identifierOther/node()',
-        #             'rights': '//dc:rights/node()',
-        #             'identifierDOEcontract': '//dcq:identifierDOEcontract/node()',
-        #             'relation': '//dc:relation/node()',
-        #             'coverage': '//dc:coverage/node()',
-        #             'identifier-purl': '//dc:identifier-purl/node()',
-        #             'identifier': '//dc:identifier/node()',
-        #             'identifierReport': '//dc:identifierReport/node()',
-        #             'publisherInfo': {
-        #                 'publisher': '//dcq:publisher/node()',
-        #                 'publisherCountry': '//dcq:publisherCountry/node()',
-        #                 'publisherSponsor': '//dcq:publisherSponsor/node()',
-        #                 'publisherAvailability': '//dcq:publisherAvailability/node()',
-        #                 'publisherResearch': '//dcq:publisherResearch/node()',
-        #                 'date': '//dc:date/node()'
-        #             }
-        #         }
-        #     }
-        # )

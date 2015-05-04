@@ -27,19 +27,10 @@ def process_normalized(raw_doc, normalized, kwargs):
     '''
     for p in settings.NORMALIZED_PROCESSING:
         extras = kwargs.get(p, {})
-
-        try:
-            get_processor(p).process_normalized(raw_doc, normalized, **extras)
-        except Exception:
-            if settings.DEBUG:
-                raise
+        get_processor(p).process_normalized(raw_doc, normalized, **extras)
 
 
 def process_raw(raw_doc, kwargs):
     for p in settings.RAW_PROCESSING:
         extras = kwargs.get(p, {})
-        try:
-            get_processor(p).process_raw(raw_doc, **extras)
-        except Exception:
-            if settings.DEBUG:
-                raise
+        get_processor(p).process_raw(raw_doc, **extras)

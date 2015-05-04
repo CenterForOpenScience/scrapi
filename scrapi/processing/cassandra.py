@@ -10,6 +10,7 @@ from cqlengine import columns, Model
 
 from scrapi import events
 from scrapi import database  # noqa
+from scrapi.util import copy_to_unicode
 from scrapi.processing.base import BaseProcessor
 
 
@@ -26,21 +27,21 @@ class CassandraProcessor(BaseProcessor):
     @events.logged(events.PROCESSING, 'normalized.cassandra')
     def process_normalized(self, raw_doc, normalized):
         self.send_to_database(
-            source=raw_doc['source'],
-            docID=raw_doc['docID'],
-            contributors=json.dumps(normalized['contributors']),
-            description=normalized.get('description'),
-            uris=json.dumps(normalized['uris']),
+            source=copy_to_unicode(raw_doc['source']),
+            docID=copy_to_unicode(raw_doc['docID']),
+            contributors=copy_to_unicode(json.dumps(normalized['contributors'])),
+            description=copy_to_unicode(normalized.get('description')),
+            uris=copy_to_unicode(json.dumps(normalized['uris'])),
             providerUpdatedDateTime=parse(normalized['providerUpdatedDateTime']),
-            freeToRead=json.dumps(normalized.get('freeToRead', {})),
+            freeToRead=copy_to_unicode(json.dumps(normalized.get('freeToRead', {}))),
             languages=normalized.get('language'),
-            licenses=json.dumps(normalized.get('licenseRef', [])),
-            publisher=json.dumps(normalized.get('publisher', {})),
-            sponsorships=json.dumps(normalized.get('sponsorship', [])),
-            title=normalized['title'],
-            version=json.dumps(normalized.get('version'), {}),
-            otherProperties=json.dumps(normalized.get('otherProperties', {})),
-            shareProperties=json.dumps(normalized['shareProperties'])
+            licenses=copy_to_unicode(json.dumps(normalized.get('licenseRef', []))),
+            publisher=copy_to_unicode(json.dumps(normalized.get('publisher', {}))),
+            sponsorships=copy_to_unicode(json.dumps(normalized.get('sponsorship', []))),
+            title=copy_to_unicode(normalized['title']),
+            version=copy_to_unicode(json.dumps(normalized.get('version'), {})),
+            otherProperties=copy_to_unicode(json.dumps(normalized.get('otherProperties', {}))),
+            shareProperties=copy_to_unicode(json.dumps(normalized['shareProperties']))
         ).save()
 
     @events.logged(events.PROCESSING, 'raw.cassandra')
@@ -53,7 +54,7 @@ class CassandraProcessor(BaseProcessor):
             document = documents[0]
             if self.different(dict(document), dict(docID=docID, source=source, **kwargs)):
                 # Create new version, get UUID of new version, update
-                versions = document.versions
+                versions = document.versions + kwargs.pop('versions', [])
                 version = VersionModel(key=uuid4(), **dict(document))
                 version.save()
                 versions.append(version.key)
@@ -65,7 +66,10 @@ class CassandraProcessor(BaseProcessor):
             return DocumentModel.create(docID=docID, source=source, **kwargs)
 
     def different(self, old, new):
-        return not all([new[key] == old[key] or (not new[key] and not old[key]) for key in new.keys() if key != 'timestamps'])
+        try:
+            return not all([new[key] == old[key] or (not new[key] and not old[key]) for key in new.keys() if key != 'timestamps'])
+        except Exception:
+            return True  # If the document fails to load/compare for some reason, accept a new version
 
 
 @database.register_model

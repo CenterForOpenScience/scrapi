@@ -21,7 +21,9 @@ from nameparser import HumanName
 
 from scrapi import requests
 from scrapi.base import XMLHarvester
+from scrapi.util import copy_to_unicode
 from scrapi.linter.document import RawDocument
+from scrapi.base.helpers import compose, single_result, build_properties
 
 logger = logging.getLogger(__name__)
 
@@ -43,6 +45,10 @@ def process_doi(service_id, doc_doi):
 
 
 def process_contributors(author, submitters, contributors):
+    if not author:
+        author = ''
+    elif isinstance(author, list):
+        author = author[0]
     if not isinstance(contributors, list):
         contributors = [contributors]
     unique_contributors = list(set([author] + contributors))
@@ -101,60 +107,53 @@ class DataOneHarvester(XMLHarvester):
     record_encoding = None
 
     schema = {
-        # 'otherProperties': {
-        #     'author': "str[@name='author']/node()",
-        #     'authorGivenName': ("str[@name='authorGivenName']/node()"),
-        #     'authorSurName': ("str[@name='authorSurName']/node()"),
-        #     'authoritativeMN': ("str[@name='authoritativeMN']/node()"),
-        #     'checksum': ("str[@name='checksum']/node()"),
-        #     'checksumAlgorithm': ("str[@name='checksumAlgorithm']/node()"),
-        #     'dataUrl': ("str[@name='dataUrl']/node()"),
-        #     'datasource': ("str[@name='datasource']/node()"),
-        #     'documents': "arr[@name='documents']/str/node()",
-        #     'dateModified': ("date[@name='dateModified']/node()"),
-        #     'datePublished': ("date[@name='datePublished']/node()"),
-        #     'dateUploaded': ("date[@name='dateUploaded']/node()"),
-        #     'pubDate': ("date[@name='pubDate']/node()"),
-        #     'updateDate': ("date[@name='updateDate']/node()"),
-        #     'fileID': ("str[@name='fileID']/node()"),
-        #     'formatId': ("str[@name='formatId']/node()"),
-        #     'formatType': ("str[@name='formatType']/node()"),
-        #     'identifier': ("str[@name='identifier']/node()"),
-        #     'investigator': "arr[@name='investigator']/str/node()",
-        #     'origin': "arr[@name='origin']/str/node()",
-        #     'isPublic': ("bool[@name='isPublic']/node()"),
-        #     'readPermission': "arr[@name='readPermission']/str/node()",
-        #     'replicaMN': "arr[@name='replicaMN']/str/node()",
-        #     'replicaVerifiedDate': "arr[@name='replicaVerifiedDate']/date/node()",
-        #     'replicationAllowed': ("bool[@name='replicationAllowed']/node()"),
-        #     'numberReplicas': ("int[@name='numberReplicas']/node()"),
-        #     'preferredReplicationMN': "arr[@name='preferredReplicationMN']/str/node()",
-        #     'resourceMap': "arr[@name='resourceMap']/str/node()",
-        #     'rightsHolder': ("str[@name='rightsHolder']/node()"),
-        #     'scientificName': "arr[@name='scientificName']/str/node()",
-        #     'site': "arr[@name='site']/str/node()",
-        #     'size': ("long[@name='size']/node()"),
-        #     'sku': ("str[@name='sku']/node()"),
-        #     'isDocumentedBy': "arr[@name='isDocumentedBy']/str/node()",
-        #     'serviceID': "str[@name='id']/node()"
-        # },
+        'otherProperties': build_properties(
+            ('authorGivenName', ("str[@name='authorGivenName']/node()")),
+            ('authorSurName', ("str[@name='authorSurName']/node()")),
+            ('authoritativeMN', ("str[@name='authoritativeMN']/node()")),
+            ('checksum', ("str[@name='checksum']/node()")),
+            ('checksumAlgorithm', ("str[@name='checksumAlgorithm']/node()")),
+            ('dataUrl', ("str[@name='dataUrl']/node()")),
+            ('datasource', ("str[@name='datasource']/node()")),
+            ('dateModified', ("date[@name='dateModified']/node()")),
+            ('datePublished', ("date[@name='datePublished']/node()")),
+            ('dateUploaded', ("date[@name='dateUploaded']/node()")),
+            ('pubDate', ("date[@name='pubDate']/node()")),
+            ('updateDate', ("date[@name='updateDate']/node()")),
+            ('fileID', ("str[@name='fileID']/node()")),
+            ('formatId', ("str[@name='formatId']/node()")),
+            ('formatType', ("str[@name='formatType']/node()")),
+            ('identifier', ("str[@name='identifier']/node()")),
+            ('investigator', "arr[@name='investigator']/str/node()"),
+            ('origin', "arr[@name='origin']/str/node()"),
+            ('isPublic', ("bool[@name='isPublic']/node()")),
+            ('readPermission', "arr[@name='readPermission']/str/node()"),
+            ('replicaMN', "arr[@name='replicaMN']/str/node()"),
+            ('replicaVerifiedDate', "arr[@name='replicaVerifiedDate']/date/node()"),
+            ('replicationAllowed', ("bool[@name='replicationAllowed']/node()")),
+            ('numberReplicas', ("int[@name='numberReplicas']/node()")),
+            ('preferredReplicationMN', "arr[@name='preferredReplicationMN']/str/node()"),
+            ('resourceMap', "arr[@name='resourceMap']/str/node()"),
+            ('rightsHolder', ("str[@name='rightsHolder']/node()")),
+            ('scientificName', "arr[@name='scientificName']/str/node()"),
+            ('site', "arr[@name='site']/str/node()"),
+            ('size', ("long[@name='size']/node()")),
+            ('sku', ("str[@name='sku']/node()")),
+            ('isDocumentedBy', "arr[@name='isDocumentedBy']/str/node()"),
+            ('serviceID', "str[@name='id']/node()")
+        ),
+        'freeToRead': {
+            'startDate': ("bool[@name='isPublic']/node()", "date[@name='dateModified']/node()", lambda x, y: parse(y[0]).date().isoformat() if x else None)
+        },
         'contributors': ("str[@name='author']/node()", "str[@name='submitter']/node()", "arr[@name='origin']/str/node()", process_contributors),
         'uris': {
-            'canonicalUri': ("str[@name='id']/node()", "//str[@name='dataUrl']/node()", lambda x, y: y if 'http' in y else x if 'http' in x else ''),
+            'canonicalUri': ("str[@name='id']/node()", "//str[@name='dataUrl']/node()", lambda x, y: y[0] if 'http' in single_result(y) else x[0] if 'http' in single_result(x) else ''),
         },
         'tags': ("//arr[@name='keywords']/str/node()", lambda x: x if isinstance(x, list) else [x]),
-        'providerUpdatedDateTime': ("str[@name='dateModified']/node()", lambda x: parse(x).date().isoformat().decode('utf-8')),
-        'title': "str[@name='title']/node()",
-        'description': "str[@name='abstract']/node()",
+        'providerUpdatedDateTime': ("str[@name='dateModified']/node()", compose(lambda x: parse(x).date().isoformat(), single_result)),
+        'title': ("str[@name='title']/node()", single_result),
+        'description': ("str[@name='abstract']/node()", single_result)
     }
-
-    def copy_to_unicode(self, element):
-        encoding = self.record_encoding or DEFAULT_ENCODING
-        element = ''.join(element)
-        if isinstance(element, unicode):
-            return element
-        else:
-            return unicode(element, encoding=encoding)
 
     def harvest(self, days_back=1):
         records = self.get_records(days_back)
@@ -166,7 +165,7 @@ class DataOneHarvester(XMLHarvester):
             xml_list.append(RawDocument({
                 'doc': record,
                 'source': self.short_name,
-                'docID': self.copy_to_unicode(doc_id),
+                'docID': copy_to_unicode(doc_id),
                 'filetype': 'xml'
             }))
 

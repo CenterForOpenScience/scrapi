@@ -1,0 +1,65 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
+    method: GET
+    uri: http://scholar.valpo.edu/do/oai/?verb=ListRecords&metadataPrefix=oai_dc&from=2015-04-15&until=2015-04-16
+  response:
+    body:
+      string: !!binary |
+        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
+        J/Q1l778Tn8DW3jV9ioeAAA=
+    headers:
+      cache-control: [private]
+      connection: [keep-alive]
+      content-encoding: [gzip]
+      content-type: [text/xml; charset=UTF-8]
+      date: ['Fri, 24 Apr 2015 15:16:21 GMT']
+      server: [nginx/1.2.1]
+      set-cookie: [bp_plack_session=269a26837901ce57c31bf3762029b78a9dd93651; path=/;
+          HttpOnly]
+      transfer-encoding: [chunked]
+    status: {code: 200, message: OK}
+version: 1

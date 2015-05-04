@@ -17,7 +17,7 @@ class CalPolyHarvester(OAIHarvester):
     long_name = 'Digital Commons @ CalPoly'
     url = 'http://digitalcommons.calpoly.edu/'
     base_url = 'http://digitalcommons.calpoly.edu/do/oai/'
-    property_list = ['type', 'source', 'publisher', 'format', 'date']
+    property_list = ['type', 'source', 'format', 'date', 'setSpec']
     approved_sets = [
         'csusymp2009',
         'acct_fac',

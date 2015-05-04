@@ -1,0 +1,114 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
+    method: GET
+    uri: http://www.osti.gov/pages/pagesxml?nrows=1&EntryDateFrom=03/10/2015&EntryDateTo=03/11/2015
+  response:
+    body: {string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><rdf:RDF xmlns:rdf=\"\
+        http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\
+        \ xmlns:dcq=\"http://purl.org/dc/terms/\"><records count=\"4\" morepages=\"\
+        true\" start=\"1\" end=\"1\"><record rownumber=\"1\"><dc:title>Reliable Energy\
+        \ Level Alignment at Physisorbed Molecule\u2013Metal Interfaces from Density\
+        \ Functional Theory</dc:title><dc:creator>Egger, David A.; Liu, Zhen-Fei;\
+        \ Neaton, Jeffrey B.; Kronik, Leeor</dc:creator><dc:subject/><dc:subjectRelated/><dc:description/><dcq:publisher>American\
+        \ Chemical Society</dcq:publisher><dcq:publisherAvailability/><dcq:publisherResearch>None</dcq:publisherResearch><dcq:publisherSponsor>USDOE\
+        \ Office of Science (SC), Basic Energy Sciences (BES) (SC-22)</dcq:publisherSponsor><dcq:publisherCountry>United\
+        \ States</dcq:publisherCountry><dc:date>2015-04-08</dc:date><dc:language>English</dc:language><dc:type>Journal\
+        \ Article</dc:type><dcq:typeQualifier/><dc:relation>Journal Name: Nano Letters;\
+        \ Journal Volume: 15; Journal Issue: 4</dc:relation><dc:coverage/><dc:format>Medium:\
+        \ X; Size: Pages 2448 to 2455</dc:format><dc:identifier>OSTI ID: 1172172,\
+        \ Legacy ID: OSTI ID: 1172172</dc:identifier><dc:identifierReport>None</dc:identifierReport><dcq:identifierDOEcontract>J3608-N20;\
+        \ AC02-05CH11231</dcq:identifierDOEcontract><dc:identifierOther>Journal ID:\
+        \ ISSN 1530-6984</dc:identifierOther><dc:doi>10.1021/nl504863r</dc:doi><dc:rights/><dc:dateEntry>2015-04-10</dc:dateEntry><dc:dateAdded>2015-03-11</dc:dateAdded><dc:ostiId>1172172</dc:ostiId><dcq:identifier-purl\
+        \ type=\"\"/><dcq:identifier-citation>http://www.osti.gov/pages/biblio/1172172</dcq:identifier-citation></record></records></rdf:RDF>"}
+    headers:
+      connection: [Keep-Alive]
+      content-length: ['1684']
+      content-type: [application/xml;charset=UTF-8]
+      date: ['Fri, 24 Apr 2015 13:26:33 GMT']
+      keep-alive: ['timeout=5, max=99']
+      server: [Apache-Coyote/1.1]
+      set-cookie: [JSESSIONID=CC5BDBF2F2FEA910E4721919A7363A11; Path=/pages; HttpOnly,
+        BIGipServerlbapp_pages=3858760202.41030.0000; path=/, BIGipServerwww.osti.gov_pool=1149271494.20480.0000;
+          path=/]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
+    method: GET
+    uri: http://www.osti.gov/pages/pagesxml?nrows=4&EntryDateFrom=03/10/2015&EntryDateTo=03/11/2015
+  response:
+    body: {string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><rdf:RDF xmlns:rdf=\"\
+        http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\
+        \ xmlns:dcq=\"http://purl.org/dc/terms/\"><records count=\"4\" morepages=\"\
+        false\" start=\"1\" end=\"4\"><record rownumber=\"1\"><dc:title>Reliable Energy\
+        \ Level Alignment at Physisorbed Molecule\u2013Metal Interfaces from Density\
+        \ Functional Theory</dc:title><dc:creator>Egger, David A.; Liu, Zhen-Fei;\
+        \ Neaton, Jeffrey B.; Kronik, Leeor</dc:creator><dc:subject/><dc:subjectRelated/><dc:description/><dcq:publisher>American\
+        \ Chemical Society</dcq:publisher><dcq:publisherAvailability/><dcq:publisherResearch>None</dcq:publisherResearch><dcq:publisherSponsor>USDOE\
+        \ Office of Science (SC), Basic Energy Sciences (BES) (SC-22)</dcq:publisherSponsor><dcq:publisherCountry>United\
+        \ States</dcq:publisherCountry><dc:date>2015-04-08</dc:date><dc:language>English</dc:language><dc:type>Journal\
+        \ Article</dc:type><dcq:typeQualifier/><dc:relation>Journal Name: Nano Letters;\
+        \ Journal Volume: 15; Journal Issue: 4</dc:relation><dc:coverage/><dc:format>Medium:\
+        \ X; Size: Pages 2448 to 2455</dc:format><dc:identifier>OSTI ID: 1172172,\
+        \ Legacy ID: OSTI ID: 1172172</dc:identifier><dc:identifierReport>None</dc:identifierReport><dcq:identifierDOEcontract>J3608-N20;\
+        \ AC02-05CH11231</dcq:identifierDOEcontract><dc:identifierOther>Journal ID:\
+        \ ISSN 1530-6984</dc:identifierOther><dc:doi>10.1021/nl504863r</dc:doi><dc:rights/><dc:dateEntry>2015-04-10</dc:dateEntry><dc:dateAdded>2015-03-11</dc:dateAdded><dc:ostiId>1172172</dc:ostiId><dcq:identifier-purl\
+        \ type=\"\"/><dcq:identifier-citation>http://www.osti.gov/pages/biblio/1172172</dcq:identifier-citation></record><record\
+        \ rownumber=\"2\"><dc:title>Tip-Enhanced Raman Nanographs: Mapping Topography\
+        \ and Local Electric Fields</dc:title><dc:creator>El-Khoury, Patrick Z.; Gong,\
+        \ Yu; Abellan, Patricia; Arey, Bruce W.; Joly, Alan G.; Hu, Dehong; Evans,\
+        \ James E.; Browning, Nigel D.; Hess, Wayne P.</dc:creator><dc:subject/><dc:subjectRelated/><dc:description/><dcq:publisher>American\
+        \ Chemical Society</dcq:publisher><dcq:publisherAvailability/><dcq:publisherResearch>None</dcq:publisherResearch><dcq:publisherSponsor>USDOE\
+        \ Office of Science (SC), Basic Energy Sciences (BES) (SC-22)</dcq:publisherSponsor><dcq:publisherCountry>United\
+        \ States</dcq:publisherCountry><dc:date>2015-04-08</dc:date><dc:language>English</dc:language><dc:type>Journal\
+        \ Article</dc:type><dcq:typeQualifier/><dc:relation>Journal Name: Nano Letters;\
+        \ Journal Volume: 15; Journal Issue: 4</dc:relation><dc:coverage/><dc:format>Medium:\
+        \ X; Size: Pages 2385 to 2390</dc:format><dc:identifier>OSTI ID: 1172173,\
+        \ Legacy ID: OSTI ID: 1172173</dc:identifier><dc:identifierReport>None</dc:identifierReport><dcq:identifierDOEcontract>None</dcq:identifierDOEcontract><dc:identifierOther>Journal\
+        \ ID: ISSN 1530-6984</dc:identifierOther><dc:doi>10.1021/acs.nanolett.5b00609</dc:doi><dc:rights/><dc:dateEntry>2015-04-10</dc:dateEntry><dc:dateAdded>2015-03-11</dc:dateAdded><dc:ostiId>1172173</dc:ostiId><dcq:identifier-purl\
+        \ type=\"\"/><dcq:identifier-citation>http://www.osti.gov/pages/biblio/1172173</dcq:identifier-citation></record><record\
+        \ rownumber=\"3\"><dc:title>Catalyst Design with Atomic Layer Deposition</dc:title><dc:creator>O\u2019\
+        Neill, Brandon J.; Jackson, David H. K.; Lee, Jechan; Canlas, Christian; Stair,\
+        \ Peter C.; Marshall, Christopher L.; Elam, Jeffrey W.; Kuech, Thomas F.;\
+        \ Dumesic, James A.; Huber, George W.</dc:creator><dc:subject/><dc:subjectRelated/><dc:description/><dcq:publisher>American\
+        \ Chemical Society</dcq:publisher><dcq:publisherAvailability/><dcq:publisherResearch>None</dcq:publisherResearch><dcq:publisherSponsor>USDOE\
+        \ Office of Science (SC), Basic Energy Sciences (BES) (SC-22)</dcq:publisherSponsor><dcq:publisherCountry>United\
+        \ States</dcq:publisherCountry><dc:date>2015-03-06</dc:date><dc:language>English</dc:language><dc:type>Journal\
+        \ Article</dc:type><dcq:typeQualifier/><dc:relation>Journal Name: ACS Catalysis;\
+        \ Journal Volume: 5; Journal Issue: 3</dc:relation><dc:coverage/><dc:format>Medium:\
+        \ X; Size: Pages 1804 to 1825</dc:format><dc:identifier>OSTI ID: 1172068,\
+        \ Legacy ID: OSTI ID: 1172068</dc:identifier><dc:identifierReport>None</dc:identifierReport><dcq:identifierDOEcontract>None</dcq:identifierDOEcontract><dc:identifierOther>Journal\
+        \ ID: ISSN 2155-5435</dc:identifierOther><dc:doi>10.1021/cs501862h</dc:doi><dc:rights/><dc:dateEntry>2015-03-10</dc:dateEntry><dc:dateAdded>2015-03-10</dc:dateAdded><dc:ostiId>1172068</dc:ostiId><dcq:identifier-purl\
+        \ type=\"\"/><dcq:identifier-citation>http://www.osti.gov/pages/biblio/1172068</dcq:identifier-citation></record><record\
+        \ rownumber=\"4\"><dc:title>Cast Stone Formulation for Nuclear Waste Immobilization\
+        \ at Higher Sodium Concentrations</dc:title><dc:creator>Fox, K. M.; Cozzi,\
+        \ A. D.; Roberts, K. A.; Edwards, T. B.</dc:creator><dc:subject/><dc:subjectRelated/><dc:description/><dcq:publisher/><dcq:publisherAvailability>available</dcq:publisherAvailability><dcq:publisherResearch>SRS</dcq:publisherResearch><dcq:publisherSponsor>DOE</dcq:publisherSponsor><dcq:publisherCountry>United\
+        \ States</dcq:publisherCountry><dc:date>2014-11-01</dc:date><dc:language>English</dc:language><dc:type>Journal\
+        \ Article</dc:type><dcq:typeQualifier/><dc:relation>Journal Name: International\
+        \ Journal of Applied Ceramic Technology</dc:relation><dc:coverage/><dc:format>Medium:\
+        \ ED; Size: p. n/a, n/a-n/a</dc:format><dc:identifier>OSTI ID: 1171995, Legacy\
+        \ ID: OSTI ID: 1171995</dc:identifier><dc:identifierReport>SRNL-STI-2013-00499-M1</dc:identifierReport><dcq:identifierDOEcontract>AC09-08SR22470</dcq:identifierDOEcontract><dc:identifierOther>Journal\
+        \ ID: ISSN 1546-542X</dc:identifierOther><dc:doi>10.1111/ijac.12348</dc:doi><dc:rights/><dc:dateEntry>2015-03-11</dc:dateEntry><dc:dateAdded>2015-03-11</dc:dateAdded><dc:ostiId>1171995</dc:ostiId><dcq:identifier-purl\
+        \ type=\"\"/><dcq:identifier-citation>http://www.osti.gov/pages/biblio/1171995</dcq:identifier-citation></record></records></rdf:RDF>"}
+    headers:
+      connection: [Keep-Alive]
+      content-length: ['5958']
+      content-type: [application/xml;charset=UTF-8]
+      date: ['Fri, 24 Apr 2015 13:26:33 GMT']
+      keep-alive: ['timeout=5, max=100']
+      server: [Apache-Coyote/1.1]
+      set-cookie: [JSESSIONID=56AB38F709056B7CE11CA2A9E166FB68; Path=/pages; HttpOnly,
+        BIGipServerlbapp_pages=3858760202.41030.0000; path=/, BIGipServerwww.osti.gov_pool=1149271494.20480.0000;
+          path=/]
+    status: {code: 200, message: OK}
+version: 1

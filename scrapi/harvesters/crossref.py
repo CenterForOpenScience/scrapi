@@ -18,6 +18,7 @@ from dateutil.parser import parse
 
 from scrapi import requests
 from scrapi.base import JSONHarvester
+from scrapi.base.helpers import build_properties
 from scrapi.linter.document import RawDocument
 
 logger = logging.getLogger(__name__)
@@ -59,36 +60,28 @@ class CrossRefHarvester(JSONHarvester):
                     entry.get('ORCID')
                 ]) for entry in x
             ]),
-            # 'otherProperties': {
-            #     'journalTitle': '/container-title',
-            #     'volume': '/volume',
-            #     'tags': ('/subject', '/container-title', lambda x, y: [tag.lower() for tag in (x or []) + (y or [])]),
-            #     'issue': '/issue',
-            #     'publisher': '/publisher',
-            #     'type': '/type',
-            #     'ISSN': '/ISSN',
-            #     'ISBN': '/ISBN',
-            #     'member': '/member',
-            #     'score': '/score',
-            #     'issued': '/issued',
-            #     'deposited': '/deposited',
-            #     'indexed': '/indexed',
-            #     'page': '/page',
-            #     'issue': '/issue',
-            #     'volume': '/volume',
-            #     'referenceCount': '/reference-count',
-            #     'updatePolicy': '/update-policy',
-            #     'depositedTimestamp': '/deposited/timestamp'
-            # }
+            'otherProperties': build_properties(
+                ('journalTitle', '/container-title'),
+                ('volume', '/volume'),
+                ('tags', ('/subject', '/container-title', lambda x, y: [tag.lower() for tag in (x or []) + (y or [])])),
+                ('issue', '/issue'),
+                ('publisher', '/publisher'),
+                ('type', '/type'),
+                ('ISSN', '/ISSN'),
+                ('ISBN', '/ISBN'),
+                ('member', '/member'),
+                ('score', '/score'),
+                ('issued', '/issued'),
+                ('deposited', '/deposited'),
+                ('indexed', '/indexed'),
+                ('page', '/page'),
+                ('issue', '/issue'),
+                ('volume', '/volume'),
+                ('referenceCount', '/reference-count'),
+                ('updatePolicy', '/update-policy'),
+                ('depositedTimestamp', '/deposited/timestamp')
+            )
         }
-
-    def copy_to_unicode(self, element):
-        encoding = self.record_encoding or self.DEFAULT_ENCODING
-        element = ''.join(element)
-        if isinstance(element, unicode):
-            return element
-        else:
-            return unicode(element, encoding=encoding)
 
     def harvest(self, days_back=0):
         start_date = date.today() - timedelta(days_back)

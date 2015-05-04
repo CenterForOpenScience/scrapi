@@ -7,16 +7,24 @@ def timestamp():
     return pytz.utc.localize(datetime.utcnow()).isoformat().decode('utf-8')
 
 
-def copy_to_unicode(element, encoding='utf-8'):
+def copy_to_unicode(element):
     """ used to transform the lxml version of unicode to a
     standard version of unicode that can be pickalable -
     necessary for linting """
 
-    element = ''.join(element)
-    if isinstance(element, unicode):
-        return element
+    if isinstance(element, dict):
+        for key, val in element.items():
+            element[key] = copy_to_unicode(val)
+    elif isinstance(element, list):
+        for idx, item in enumerate(element):
+            element[idx] = copy_to_unicode(item)
     else:
-        return unicode(element, encoding=encoding)
+        try:
+            # A dirty way to convert to unicode in python 2 + 3.3+
+            element = u''.join(element)
+        except TypeError:
+            pass
+    return element
 
 
 def stamp_from_raw(raw_doc, **kwargs):

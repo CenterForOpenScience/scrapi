@@ -1,7 +1,8 @@
 from __future__ import unicode_literals
 
 from scrapi.base.helpers import updated_schema
-from scrapi.base.schemas import BASEXMLSCHEMA
+from scrapi.base.schemas import DOESCHEMA
+from scrapi.base.helpers import updated_schema, build_properties, single_result
 
 RAW_DOC = {
     'doc': str('{}'),
@@ -40,11 +41,18 @@ RECORD = {
     'uris': {
         'canonicalUri': 'http://www.plosone.org/article'
     },
-    # 'otherProperties': {
-    #     'figures': ['http://www.plosone.org/article/image.png'],
-    #     'type': 'text',
-    #             'yep': 'A property'
-    # },
+    'otherProperties': [{
+        'name': 'figures',
+        'properties': {
+            'figures': 'http://www.plosone.org/article/image.png',
+            }
+        }, {
+        'name': 'type',
+        'properties': {
+            'type': 'text',
+            'yep': 'A property'
+        }
+    }],
     'description': 'This study seeks to understand how humans impact\
             the dietary patterns of eight free-ranging vervet monkey\
             (Chlorocebus pygerythrus) groups in South Africa using stable\
@@ -56,27 +64,14 @@ RECORD = {
 }
 
 
-TEST_SCHEMA = updated_schema(BASEXMLSCHEMA, {
+TEST_SCHEMA = updated_schema(DOESCHEMA, {
     "title": ("//dc:title/node()", lambda x: "Title overwritten"),
-    # "otherProperties": {
-    #     "title1": "//dc:title/node()",
-    #     "title2": ["//dc:title/node()", lambda x: x.lower()],
-    #     "title3": ["//dc:title/node()", "//dc:title/node()", lambda x, y: x + y.lower()]
-    # }
+    "otherProperties": build_properties(
+        ("title1", ("//dc:title/node()", single_result)),
+        ("title2", ("//dc:title/node()", lambda x: single_result(x).lower())),
+        ("title3", ("//dc:title/node()", "//dc:title/node()", lambda x, y: single_result(x) + single_result(y).lower()))
+    )
 })
-
-
-def get_leaves(d, leaves=None):
-    if leaves is None:
-        leaves = []
-
-    for k, v in d.items():
-        if isinstance(v, dict):
-            leaves.extend(get_leaves(v, leaves))
-        else:
-            leaves.append((k, v))
-
-    return leaves
 
 
 TEST_NAMESPACES = {

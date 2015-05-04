@@ -18,7 +18,7 @@ class WayneStateHarvester(OAIHarvester):
 
     base_url = 'http://digitalcommons.wayne.edu/do/oai/'
     property_list = [
-        'type', 'source', 'publisher', 'format',
+        'type', 'source', 'format',
         'date', 'setSpec', 'identifier'
     ]
     approved_sets = [

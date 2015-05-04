@@ -15,7 +15,7 @@ class ValpoScholarHarvester(OAIHarvester):
     base_url = 'http://scholar.valpo.edu/do/oai/'
     property_list = [
         'type', 'source', 'setSpec',
-        'format', 'identifier', 'publisher'
+        'format', 'identifier'
     ]
     approved_sets = [
         'cc_fac_pub',
