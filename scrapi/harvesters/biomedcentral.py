@@ -10,7 +10,7 @@ from __future__ import unicode_literals
 
 import json
 import logging
-import datetime
+from datetime import date, datetime, timedelta
 from dateutil.parser import parse
 
 from nameparser import HumanName
@@ -86,12 +86,12 @@ class BiomedCentralHarvester(JSONHarvester):
             )
         }
 
-    def harvest(self, start_date, end_date):
+    def harvest(self, start_date=None, end_date=None):
 
-        start_date = datetime.datetime.strptime(start_date, '%Y-%m-%d').date()
+        start_date = datetime.strptime(start_date, '%Y-%m-%d').date() if start_date else (date.today() - timedelta(1))
 
         # Biomed central can only have a start date
-        end_date = datetime.date.today()
+        end_date = date.today()
         date_number = end_date - start_date
 
         search_url = self.URL.format(date_number.days)
@@ -115,7 +115,7 @@ class BiomedCentralHarvester(JSONHarvester):
         return record_list
 
     def get_records(self, search_url):
-        records = requests.get(search_url + "#{}".format(datetime.date.today()))
+        records = requests.get(search_url + "#{}".format(date.today()))
         page = 1
 
         all_records = []
@@ -127,7 +127,7 @@ class BiomedCentralHarvester(JSONHarvester):
                 all_records.append(record)
 
             page += 1
-            records = requests.get(search_url + '&page={}#{}'.format(str(page), datetime.date.today()), throttle=10)
+            records = requests.get(search_url + '&page={}#{}'.format(str(page), date.today()), throttle=10)
             current_records = len(records.json()['entries'])
 
         return all_records
