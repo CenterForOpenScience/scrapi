@@ -105,8 +105,8 @@ def extract_context(func, *args, **kwargs):
     arginfo = inspect.getargspec(func)
 
     if arginfo.defaults:
-        arg_names = arginfo.args[:len(arginfo.defaults)]
-        kwarg_names = arginfo.args[len(arginfo.defaults):]
+        arg_names = arginfo.args[:len(arginfo.defaults) - 1]
+        kwarg_names = arginfo.args[len(arginfo.defaults) - 1:]
     else:
         kwarg_names = []
         arg_names = arginfo.args
