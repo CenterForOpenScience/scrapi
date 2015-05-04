@@ -1,4 +1,5 @@
 import logging
+from datetime import date, datetime, timedelta
 
 import requests
 from celery import Celery
@@ -21,11 +22,14 @@ logger = logging.getLogger(__name__)
 
 @app.task
 @events.creates_task(events.HARVESTER_RUN)
-def run_harvester(harvester_name, days_back=1):
+def run_harvester(harvester_name, start_date=None, end_date=None):
     logger.info('Running harvester "{}"'.format(harvester_name))
 
+    start_date = datetime.strptime(start_date, '%Y-%m-%d').date().isoformat() if start_date else (date.today() - timedelta(1)).isoformat()
+    end_date = datetime.strptime(end_date, '%Y-%m-%d').date().isoformat() if end_date else date.today().isoformat()
+
     normalization = begin_normalization.s(harvester_name)
-    start_harvest = harvest.si(harvester_name, timestamp(), days_back=days_back)
+    start_harvest = harvest.si(harvester_name, timestamp(), start_date=start_date, end_date=end_date)
 
     # Form and start a celery chain
     (start_harvest | normalization).apply_async()
@@ -33,13 +37,16 @@ def run_harvester(harvester_name, days_back=1):
 
 @app.task
 @events.logged(events.HARVESTER_RUN)
-def harvest(harvester_name, job_created, days_back=1):
+def harvest(harvester_name, job_created, start_date=None, end_date=None):
     harvest_started = timestamp()
     harvester = registry[harvester_name]
 
+    start_date = datetime.strptime(start_date, '%Y-%m-%d').date().isoformat() if start_date else (date.today() - timedelta(1)).isoformat()
+    end_date = datetime.strptime(end_date, '%Y-%m-%d').date().isoformat() if end_date else date.today().isoformat()
+
     logger.info('Harvester "{}" has begun harvesting'.format(harvester_name))
 
-    result = harvester.harvest(days_back=days_back)
+    result = harvester.harvest(start_date=start_date, end_date=end_date)
 
     # result is a list of all of the RawDocuments harvested
     return result, {
