@@ -2,6 +2,18 @@
 ChangeLog
 *********
 
+
+0.6.0 (2015-05-04)
+==================
+
+- Better logging
+- Add tests for harvesters
+- Add the rename migration script
+- Add the delete migration script
+- Add the Zenodo, Scholarsbank, SHARE OK, CU Scholar, Calhoun, Caltech
+Authors, BHL, and CogPrints harvesters
+
+
 0.5.0 (2015-04-13)
 ==================
 
