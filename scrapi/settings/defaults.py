@@ -1,5 +1,7 @@
 DEBUG = False
 
+RAISE_IN_TRANSFORMER = True
+
 BROKER_URL = 'amqp://guest@localhost'
 
 CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
@@ -14,45 +16,4 @@ SENTRY_DSN = None
 USE_FLUENTD = False
 FLUENTD_ARGS = {
     'tag': 'app.scrapi'
-}
-
-SCRAPI_URL = 'http://173.255.232.219'
-
-ES_SEARCH_MAPPING = {
-    "properties": {
-        "id": {
-            "properties": {
-                "doi": {
-                    "type": "multi_field",
-                    "index": "not_analyzed",
-                    "fields": {
-                        "analyzed": {
-                            "type": "string",
-                            "index": "analyzed"
-                        }
-                    }
-                },
-                "url": {
-                    "type": "multi_field",
-                    "index": "not_analyzed",
-                    "fields": {
-                        "analyzed": {
-                            "type": "string",
-                            "index": "analyzed"
-                        }
-                    }
-                },
-                "serviceID": {
-                    "type": "multi_field",
-                    "index": "not_analyzed",
-                    "fields": {
-                        "analyzed": {
-                            "type": "string",
-                            "index": "analyzed"
-                        }
-                    }
-                }
-            }
-        }
-    }
 }

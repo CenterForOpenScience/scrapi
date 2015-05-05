@@ -21,14 +21,24 @@ class BaseTransformer(object):
     def schema(self):
         raise NotImplementedError
 
-    def transform(self, doc):
-        return self._transform(self.schema, doc)
+    def transform(self, doc, fail=False):
+        return self._transform(self.schema, doc, fail=fail)
 
-    def _transform(self, schema, doc):
+    def _transform(self, schema, doc, fail=False):
         transformed = {}
         for key, value in schema.items():
-            transformed[key] = self._transform_value(value, doc)
+            transformed[key] = self._maybe_transform_value(value, doc, fail=fail)
         return transformed
+
+    def _maybe_transform_value(self, value, doc, fail=False):
+        try:
+            return self._transform_value(value, doc)
+        except Exception as e:
+            if fail:
+                raise
+            logger.error('{} failed to transform'.format(value))
+            logger.exception(e)
+            return None
 
     def _transform_value(self, value, doc):
         if isinstance(value, dict):
@@ -44,10 +54,10 @@ class BaseTransformer(object):
         elif callable(value):
             return value(doc)
 
-    def _transform_list(self, l, doc):
-        return [
-            self._transform_value(item, doc) for item in l
-        ]
+    def _transform_list(self, l, doc, fail=False):
+        return filter(lambda x: x is not None, [
+            self._maybe_transform_value(item, doc) for item in l
+        ])
 
     def _transform_tuple(self, l, doc):
 
