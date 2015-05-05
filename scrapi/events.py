@@ -108,7 +108,14 @@ def extract_context(func, *args, **kwargs):
         for kwarg in (arginfo.defaults or [])
     }
 
-    return dict(zip(arg_names, args), **dict(defaults, **kwargs))
+    computed_args = zip(arg_names, args)
+    if arginfo.varargs:
+        computed_args.append(('args', list(args[len(arg_names):])))
+
+    if kwargs:
+        defaults['kwargs'] = kwargs
+
+    return dict(computed_args, **defaults)
 
 
 def creates_task(event):
