@@ -24,7 +24,7 @@ def documents(*sources):
 def next_page(query, page):
     while True:
         try:
-            return list(query.filter(pk__token__gt=Token(page[-1].pk)))
+            return query.filter(pk__token__gt=Token(page[-1].pk))
         except Exception as e:
             logger.exception(e)
             time.sleep(5)
