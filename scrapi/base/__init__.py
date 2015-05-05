@@ -121,7 +121,7 @@ class OAIHarvester(XMLHarvester):
     timeout = 0.5
     approved_sets = None
     timezone_granularity = False
-    property_list = ['date', 'language', 'type']
+    property_list = ['date', 'type']
 
     @property
     def schema(self):
