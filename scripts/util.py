@@ -7,7 +7,7 @@ _manager.setup()
 
 
 def documents(*sources):
-    q = DocumentModel.objects.all().limit(1000)
+    q = DocumentModel.objects.timeout(500).all().limit(1000)
     querysets = (q.filter(source=source) for source in sources) if sources else [q]
     for query in querysets:
         page = list(query)
