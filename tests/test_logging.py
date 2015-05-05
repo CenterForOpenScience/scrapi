@@ -92,20 +92,18 @@ def test_logged_decorator_skipped(mock_dispatch):
     ])
 
 
-## TODO - logging does not currently support args
-# def test_logged_decorator_stargs(mock_dispatch):
-#     @events.logged('testing')
-#     def logged_func(test, *args):
-#         return 'share'
+def test_logged_decorator_stargs(mock_dispatch):
+    @events.logged('testing')
+    def logged_func(test, *args):
+        return 'share'
 
-#     assert logged_func('baz', 1, 2, 3) == 'share'
-#     mock_dispatch.assert_has_calls([
-#         mock.call('testing', events.STARTED, _index=None, test='baz', args=[1, 2, 3]),
-#         mock.call('testing', events.COMPLETED, _index=None, test='baz', args=[1, 2, 3])
-#     ])
+    assert logged_func('baz', 1, 2, 3) == 'share'
+    mock_dispatch.assert_has_calls([
+        mock.call('testing', events.STARTED, _index=None, test='baz', args=[1, 2, 3]),
+        mock.call('testing', events.COMPLETED, _index=None, test='baz', args=[1, 2, 3])
+    ])
 
 
-## TODO - Logging currently breaks apart kwargs in a dictionary, maybe should change
 def test_logged_decorator_kwargs(mock_dispatch):
     @events.logged('testing')
     def logged_func(test, pika='chu', **kwargs):
@@ -113,6 +111,6 @@ def test_logged_decorator_kwargs(mock_dispatch):
 
     assert logged_func('baz', tota='dile') == 'share'
     mock_dispatch.assert_has_calls([
-        mock.call('testing', events.STARTED, _index=None, test='baz', pika='chu', tota='dile'),
-        mock.call('testing', events.COMPLETED, _index=None, test='baz', pika='chu', tota='dile'),
+        mock.call('testing', events.STARTED, _index=None, test='baz', pika='chu', kwargs={'tota': 'dile'}),
+        mock.call('testing', events.COMPLETED, _index=None, test='baz', pika='chu', kwargs={'tota': 'dile'}),
     ])
