@@ -1,9 +1,13 @@
+import time
+import logging
+
 from cqlengine import Token
 
 from scrapi.database import _manager
 from scrapi.processing.cassandra import DocumentModel
 
 _manager.setup()
+logger = logging.getLogger(__name__)
 
 
 def documents(*sources):
@@ -14,4 +18,14 @@ def documents(*sources):
         while len(page) > 0:
             for doc in page:
                 yield doc
-            page = list(query.filter(pk__token__gt=Token(page[-1].pk)))
+            page = next_page(query, page)
+
+
+def next_page(query, page):
+    while True:
+        try:
+            return list(query.filter(pk__token__gt=Token(page[-1].pk)))
+        except Exception as e:
+            logger.exception(e)
+            time.sleep(5)
+            logger.info("Trying again...")
