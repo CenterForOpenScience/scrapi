@@ -14,15 +14,11 @@ def documents(*sources):
     q = DocumentModel.objects.all().limit(1000)
     querysets = (q.filter(source=source) for source in sources) if sources else [q]
     for query in querysets:
-        page = try_forever(first_page, query)
+        page = try_forever(list, query)
         while len(page) > 0:
             for doc in page:
                 yield doc
             page = try_forever(next_page, query, page)
-
-
-def first_page(query):
-    return list(query)
 
 
 def next_page(query, page):
@@ -32,7 +28,7 @@ def next_page(query, page):
 def try_forever(action, *args, **kwargs):
     while True:
         try:
-            action(*args, **kwargs)
+            return action(*args, **kwargs)
         except Exception as e:
             logger.exception(e)
             time.sleep(5)
