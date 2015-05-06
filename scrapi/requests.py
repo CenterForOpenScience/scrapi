@@ -12,8 +12,7 @@ from datetime import datetime
 
 import furl
 import requests
-import cqlengine
-from cqlengine import columns
+from cassandra.cqlengine import columns, models
 from requests.structures import CaseInsensitiveDict
 
 from scrapi import events
@@ -25,7 +24,7 @@ logging.getLogger('cqlengine.cql').setLevel(logging.WARN)
 
 
 @database.register_model
-class HarvesterResponse(cqlengine.Model):
+class HarvesterResponse(models.Model):
     """A parody of requests.response but stored in cassandra
     Should reflect all methods of a response object
     Contains an additional field time_made, self-explanitory
