@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 
 from lxml import etree
 
@@ -24,18 +24,20 @@ class DoepagesHarvester(XMLHarvester):
         'dcq': 'http://purl.org/dc/terms/'
     }
 
-    def harvest(self, days_back=1):
-        today = date.today()
-        start_date = today - timedelta(days_back)
+    def harvest(self, start_date=None, end_date=None):
+
+        start_date = datetime.strptime(start_date, '%Y-%m-%d').date() if start_date else (date.today() - timedelta(1))
+        end_date = datetime.strptime(end_date, '%Y-%m-%d').date() if end_date else date.today()
+
         base_url = 'http://www.osti.gov/pages/pagesxml?nrows={0}&EntryDateFrom={1}&EntryDateTo={2}'
-        url = base_url.format('1', start_date.strftime('%m/%d/%Y'), today.strftime('%m/%d/%Y'))
+        url = base_url.format('1', start_date.strftime('%m/%d/%Y'), end_date.strftime('%m/%d/%Y'))
         initial_data = requests.get(url)
         record_encoding = initial_data.encoding
         initial_doc = etree.XML(initial_data.content)
 
         num_results = int(initial_doc.xpath('//records/@count', namespaces=self.namespaces)[0])
 
-        url = base_url.format(num_results, start_date.strftime('%m/%d/%Y'), today.strftime('%m/%d/%Y'))
+        url = base_url.format(num_results, start_date.strftime('%m/%d/%Y'), end_date.strftime('%m/%d/%Y'))
         data = requests.get(url)
         doc = etree.XML(data.content)
 
