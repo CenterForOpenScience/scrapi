@@ -2,8 +2,8 @@ from __future__ import absolute_import
 
 import logging
 
-from cqlengine import connection
-from cqlengine import management
+from cassandra.cqlengine import connection
+from cassandra.cqlengine import management
 from cassandra.cluster import NoHostAvailable
 
 from celery.signals import worker_process_init
