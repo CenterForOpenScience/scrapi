@@ -54,10 +54,10 @@ class BaseTransformer(object):
         elif callable(value):
             return value(doc)
 
-    def _transform_list(self, l, doc, fail=False):
-        return filter(lambda x: x is not None, [
+    def _transform_list(self, l, doc):
+        return [
             self._maybe_transform_value(item, doc) for item in l
-        ])
+        ]
 
     def _transform_tuple(self, l, doc):
 
