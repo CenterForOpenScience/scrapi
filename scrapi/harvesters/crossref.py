@@ -11,7 +11,7 @@ from __future__ import unicode_literals
 import json
 import logging
 
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 
 from nameparser import HumanName
 from dateutil.parser import parse
@@ -83,9 +83,11 @@ class CrossRefHarvester(JSONHarvester):
             )
         }
 
-    def harvest(self, days_back=0):
-        start_date = date.today() - timedelta(days_back)
-        base_url = 'http://api.crossref.org/v1/works?filter=from-pub-date:{},until-pub-date:{}&rows={{}}&offset={{}}'.format(str(start_date), str(date.today()))
+    def harvest(self, start_date=None, end_date=None):
+        start_date = datetime.strptime(start_date, '%Y-%m-%d').date().isoformat() if start_date else (date.today() - timedelta(1)).isoformat()
+        end_date = datetime.strptime(end_date, '%Y-%m-%d').date().isoformat() if end_date else date.today().isoformat()
+
+        base_url = 'http://api.crossref.org/v1/works?filter=from-pub-date:{},until-pub-date:{}&rows={{}}&offset={{}}'.format(start_date, end_date)
         total = requests.get(base_url.format('0', '0')).json()['message']['total-results']
         logger.info('{} documents to be harvested'.format(total))
 
