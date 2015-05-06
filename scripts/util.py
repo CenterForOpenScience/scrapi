@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 
 def documents(*sources):
-    q = DocumentModel.objects.allow_filtering().all().limit(1000)
+    q = DocumentModel.objects.timeout(500).allow_filtering().all().limit(1000)
     querysets = (q.filter(source=source) for source in sources) if sources else [q]
     for query in querysets:
         page = try_forever(list, query)
