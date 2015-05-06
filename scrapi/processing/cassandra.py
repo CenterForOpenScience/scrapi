@@ -86,7 +86,7 @@ class DocumentModel(Model):
 
     # Raw
     docID = columns.Text(primary_key=True)
-    source = columns.Text(primary_key=True, index=True, clustering_order="DESC")
+    source = columns.Text(primary_key=True, clustering_order="DESC")
 
     doc = columns.Bytes()
     filetype = columns.Text()
@@ -131,7 +131,7 @@ class VersionModel(Model):
     doc = columns.Bytes()
     docID = columns.Text()
     filetype = columns.Text()
-    source = columns.Text(index=True)
+    source = columns.Text()
     timestamps = columns.Map(columns.Text, columns.Text)
 
     # Normalized
