@@ -7,7 +7,7 @@ Example API query: http://www.osti.gov/scitech/scitechxml?EntryDateFrom=02%2F02%
 
 from __future__ import unicode_literals
 
-from datetime import datetime
+from datetime import datetime, date, timedelta
 
 from lxml import etree
 
@@ -62,8 +62,8 @@ class SciTechHarvester(XMLHarvester):
         page = 0
         morepages = True
 
-        start_date = datetime.strptime(start_date, '%Y-%m-%d').date().strftime('%m/%d/%Y')
-        end_date = datetime.strptime(end_date, '%Y-%m-%d').date().strftime('%m/%d/%Y')
+        start_date = datetime.strptime(start_date, '%Y-%m-%d').date().strftime('%m/%d/%Y') if start_date else date.today().strftime('%m/%d/%Y')
+        end_date = datetime.strptime(end_date, '%Y-%m-%d').date().strftime('%m/%d/%Y') if end_date else (date.today() - timedelta(1)).strftime('%m/%d/%Y')
 
         while morepages:
             resp = requests.get(self.base_url, params={
