@@ -11,7 +11,7 @@ import re
 
 import logging
 from datetime import datetime
-from datetime import timedelta
+from datetime import timedelta, date
 
 from lxml import etree
 from dateutil.parser import *
