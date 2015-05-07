@@ -53,7 +53,7 @@ class StepicHarvester(JSONHarvester):
             'languages': ('/language', lambda x: [pycountry.languages.get(alpha2=x).terminology])
         }
 
-    def harvest(self, days_back=1):
+    def harvest(self, start_date=None, end_date=None):
 
         search_url = self.URL
         records = self.get_records(search_url)
