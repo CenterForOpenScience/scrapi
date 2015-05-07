@@ -4,17 +4,13 @@ A harvester for the DoE's SciTech Connect Database. Makes use of SciTech's XML Q
 Example API query: http://www.osti.gov/scitech/scitechxml?EntryDateFrom=02%2F02%2F2015&page=0
 """
 
-
 from __future__ import unicode_literals
 
-from datetime import datetime, date, timedelta
-
 from lxml import etree
-
 from dateutil.parser import *
+from datetime import date, timedelta
 
 from scrapi import requests
-
 from scrapi.base import XMLHarvester
 from scrapi.linter import RawDocument
 from scrapi.base.schemas import DOESCHEMA
@@ -62,14 +58,14 @@ class SciTechHarvester(XMLHarvester):
         page = 0
         morepages = True
 
-        start_date = datetime.strptime(start_date, '%Y-%m-%d').date().strftime('%m/%d/%Y') if start_date else date.today().strftime('%m/%d/%Y')
-        end_date = datetime.strptime(end_date, '%Y-%m-%d').date().strftime('%m/%d/%Y') if end_date else (date.today() - timedelta(1)).strftime('%m/%d/%Y')
+        start_date = start_date or date.today()
+        end_date = end_date or date.today() - timedelta(1)
 
         while morepages:
             resp = requests.get(self.base_url, params={
                 'page': page,
-                'EntryDateTo': end_date,
-                'EntryDateFrom': start_date,
+                'EntryDateTo': end_date.strftime('%m/%d/%Y'),
+                'EntryDateFrom': start_date.strftime('%m/%d/%Y'),
             })
 
             xml = etree.XML(resp.content)

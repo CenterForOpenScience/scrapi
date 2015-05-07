@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 import abc
 import json
 import logging
-from datetime import datetime, timedelta, date
+from datetime import timedelta, date
 
 from lxml import etree
 
@@ -56,7 +56,7 @@ class BaseHarvester(object):
         raise NotImplementedError
 
     @abc.abstractmethod
-    def harvest(self, days_back=1):
+    def harvest(self, start_date=None, end_date=None):
         raise NotImplementedError
 
     @abc.abstractmethod
@@ -141,8 +141,8 @@ class OAIHarvester(XMLHarvester):
 
     def harvest(self, start_date=None, end_date=None):
 
-        start_date = datetime.strptime(start_date, '%Y-%m-%d').date().isoformat() if start_date else (date.today() - timedelta(1)).isoformat()
-        end_date = datetime.strptime(end_date, '%Y-%m-%d').date().isoformat() if end_date else date.today().isoformat()
+        start_date = start_date.isoformat() if start_date else (date.today() - timedelta(1)).isoformat()
+        end_date = end_date.isoformat() if end_date else date.today().isoformat()
 
         if self.timezone_granularity:
             start_date += 'T00:00:00Z'

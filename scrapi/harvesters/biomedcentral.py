@@ -88,7 +88,7 @@ class BiomedCentralHarvester(JSONHarvester):
 
     def harvest(self, start_date=None, end_date=None):
 
-        start_date = datetime.strptime(start_date, '%Y-%m-%d').date() if start_date else (date.today() - timedelta(1))
+        start_date = start_date or (date.today() - timedelta(1))
 
         # Biomed central can only have a start date
         end_date = date.today()

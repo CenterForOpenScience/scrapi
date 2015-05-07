@@ -157,8 +157,8 @@ class DataOneHarvester(XMLHarvester):
 
     def harvest(self, start_date=None, end_date=None):
 
-        start_date = datetime.strptime(start_date, '%Y-%m-%d').date().isoformat() if start_date else (date.today() - timedelta(1)).isoformat()
-        end_date = datetime.strptime(end_date, '%Y-%m-%d').date().isoformat() if end_date else date.today().isoformat()
+        start_date = start_date or (date.today() - timedelta(1))
+        end_date = end_date or date.today()
 
         records = self.get_records(start_date, end_date)
 
@@ -180,7 +180,7 @@ class DataOneHarvester(XMLHarvester):
         API, with the specified number of rows.
         Returns an etree element with results '''
 
-        query = 'dateModified:[{}T00:00:00Z TO {}T00:00:00Z]'.format(start_date, end_date)
+        query = 'dateModified:[{}T00:00:00Z TO {}T00:00:00Z]'.format(start_date.isoformat(), end_date.isoformat())
         doc = requests.get(DATAONE_SOLR_ENDPOINT, params={
             'q': query,
             'start': 0,

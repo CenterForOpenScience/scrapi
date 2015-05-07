@@ -25,8 +25,8 @@ logger = logging.getLogger(__name__)
 def run_harvester(harvester_name, start_date=None, end_date=None):
     logger.info('Running harvester "{}"'.format(harvester_name))
 
-    start_date = datetime.strptime(start_date, '%Y-%m-%d').date().isoformat() if start_date else (date.today() - timedelta(1)).isoformat()
-    end_date = datetime.strptime(end_date, '%Y-%m-%d').date().isoformat() if end_date else date.today().isoformat()
+    start_date = start_date or date.today() - timedelta(1)
+    end_date = end_date or date.today()
 
     normalization = begin_normalization.s(harvester_name)
     start_harvest = harvest.si(harvester_name, timestamp(), start_date=start_date, end_date=end_date)
@@ -41,8 +41,8 @@ def harvest(harvester_name, job_created, start_date=None, end_date=None):
     harvest_started = timestamp()
     harvester = registry[harvester_name]
 
-    start_date = datetime.strptime(start_date, '%Y-%m-%d').date().isoformat() if start_date else (date.today() - timedelta(1)).isoformat()
-    end_date = datetime.strptime(end_date, '%Y-%m-%d').date().isoformat() if end_date else date.today().isoformat()
+    start_date = start_date if start_date else date.today() - timedelta(1)
+    end_date = end_date if end_date else date.today()
 
     logger.info('Harvester "{}" has begun harvesting'.format(harvester_name))
 

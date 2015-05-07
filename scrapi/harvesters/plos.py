@@ -19,6 +19,7 @@ Sample API query: http://api.plos.org/search?q=publication_date:[2015-01-30T00:0
 from __future__ import unicode_literals
 
 import logging
+from datetime import date, timedelta
 
 from lxml import etree
 from dateutil.parser import *
@@ -74,6 +75,10 @@ class PlosHarvester(XMLHarvester):
             current_row += self.MAX_ROWS_PER_REQUEST
 
     def harvest(self, start_date=None, end_date=None):
+
+        start_date = start_date or date.today() - timedelta(1)
+        end_date = end_date or date.today()
+
         if not PLOS_API_KEY:
             return []
 
@@ -85,7 +90,7 @@ class PlosHarvester(XMLHarvester):
                 'docID': row.xpath("str[@name='id']")[0].text.decode('utf-8'),
             })
             for row in
-            self.fetch_rows(start_date, end_date)
+            self.fetch_rows(start_date.isoformat(), end_date.isoformat())
             if row.xpath("arr[@name='abstract']")
             or row.xpath("str[@name='author_display']")
         ]

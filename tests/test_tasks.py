@@ -1,5 +1,6 @@
 import mock
 import pytest
+from datetime import datetime
 from freezegun import freeze_time
 
 from scrapi import tasks
@@ -46,9 +47,12 @@ def test_run_harvester_calls(monkeypatch):
 
     assert mock_harvest.si.called
     assert mock_begin_norm.s.called
+    # import ipdb; ipdb.set_trace()
+    start_date = datetime.strptime('2015-03-15', '%Y-%m-%d').date()
+    end_date = datetime.strptime('2015-03-16', '%Y-%m-%d').date()
 
     mock_begin_norm.s.assert_called_once_with('test')
-    mock_harvest.si.assert_called_once_with('test', 'TIME', start_date='2015-03-15', end_date='2015-03-16')
+    mock_harvest.si.assert_called_once_with('test', 'TIME', start_date=start_date, end_date=end_date)
 
 
 def test_run_harvester_daysback(monkeypatch):
