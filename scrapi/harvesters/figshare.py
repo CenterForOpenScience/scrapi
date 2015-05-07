@@ -11,7 +11,7 @@ from __future__ import unicode_literals
 import json
 import logging
 from dateutil.parser import parse
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 
 
 from scrapi import requests
@@ -49,21 +49,18 @@ class FigshareHarvester(JSONHarvester):
         )
     }
 
-    def harvest(self, days_back=1):
+    def harvest(self, start_date=None, end_date=None):
         """ Figshare should always have a 24 hour delay because they
         manually go through and check for test projects. Most of them
         are removed within 24 hours.
         """
-        start_date = date.today() - timedelta(days_back) - timedelta(1)
-        to_date = start_date + timedelta(1)
-        search_url = '{0}{1}-{2}-{3}&to_date={4}-{5}-{6}'.format(
+        start_date = datetime.strptime(start_date, '%Y-%m-%d').date() - timedelta(1)
+        end_date = datetime.strptime(end_date, '%Y-%m-%d').date() - timedelta(1)
+
+        search_url = '{0}{1}&to_date={2}'.format(
             self.URL,
-            start_date.year,
-            start_date.month,
-            start_date.day,
-            to_date.year,
-            to_date.month,
-            to_date.day
+            start_date,
+            end_date
         )
 
         records = self.get_records(search_url)
