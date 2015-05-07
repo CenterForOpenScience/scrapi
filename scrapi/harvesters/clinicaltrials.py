@@ -11,7 +11,7 @@ from __future__ import unicode_literals
 
 import time
 import logging
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 
 from lxml import etree
 
