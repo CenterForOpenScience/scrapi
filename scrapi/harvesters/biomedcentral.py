@@ -10,7 +10,7 @@ from __future__ import unicode_literals
 
 import json
 import logging
-from datetime import date, datetime, timedelta
+from datetime import date, timedelta
 from dateutil.parser import parse
 
 from nameparser import HumanName

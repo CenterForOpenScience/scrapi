@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from datetime import date, timedelta, datetime
+from datetime import date, timedelta
 
 from lxml import etree
 

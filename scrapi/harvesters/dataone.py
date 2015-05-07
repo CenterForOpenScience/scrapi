@@ -10,7 +10,6 @@ from __future__ import unicode_literals
 import re
 
 import logging
-from datetime import datetime
 from datetime import timedelta, date
 
 from lxml import etree
