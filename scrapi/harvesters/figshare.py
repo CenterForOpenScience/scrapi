@@ -54,8 +54,8 @@ class FigshareHarvester(JSONHarvester):
         manually go through and check for test projects. Most of them
         are removed within 24 hours.
         """
-        start_date = datetime.strptime(start_date, '%Y-%m-%d').date() - timedelta(1)
-        end_date = datetime.strptime(end_date, '%Y-%m-%d').date() - timedelta(1)
+        start_date = datetime.strptime(start_date, '%Y-%m-%d').date() - timedelta(1) if start_date else date.today().isoformat()
+        end_date = datetime.strptime(end_date, '%Y-%m-%d').date() - timedelta(1) if end_date else (date.today() - timedelta(1)).isoformat()
 
         search_url = '{0}{1}&to_date={2}'.format(
             self.URL,
