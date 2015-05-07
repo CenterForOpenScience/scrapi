@@ -7,7 +7,7 @@ Example API query: http://www.osti.gov/scitech/scitechxml?EntryDateFrom=02%2F02%
 
 from __future__ import unicode_literals
 
-import datetime
+from datetime import datetime
 
 from lxml import etree
 
@@ -42,7 +42,7 @@ class SciTechHarvester(XMLHarvester):
 
     schema = DOESCHEMA
 
-    def harvest(self, days_back=1):
+    def harvest(self, start_date=None, end_date=None):
         """A function for querying the SciTech Connect database for raw XML.
         The XML is chunked into smaller pieces, each representing data
         about an article/report. If there are multiple pages of results,
@@ -55,20 +55,21 @@ class SciTechHarvester(XMLHarvester):
                 'doc': etree.tostring(record),
                 'docID': record.xpath('dc:ostiId/node()', namespaces=self.namespaces)[0].decode('utf-8'),
             })
-            for record in self._fetch_records(days_back)
+            for record in self._fetch_records(start_date, end_date)
         ]
 
-    def _fetch_records(self, days_back):
+    def _fetch_records(self, start_date, end_date):
         page = 0
         morepages = True
-        to_date = datetime.date.today().strftime('%m/%d/%Y')
-        from_date = (datetime.date.today() - datetime.timedelta(days_back)).strftime('%m/%d/%Y')
+
+        start_date = datetime.strptime(start_date, '%Y-%m-%d').date().strftime('%m/%d/%Y')
+        end_date = datetime.strptime(end_date, '%Y-%m-%d').date().strftime('%m/%d/%Y')
 
         while morepages:
             resp = requests.get(self.base_url, params={
                 'page': page,
-                'EntryDateTo': to_date,
-                'EntryDateFrom': from_date,
+                'EntryDateTo': end_date,
+                'EntryDateFrom': start_date,
             })
 
             xml = etree.XML(resp.content)
