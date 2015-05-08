@@ -75,13 +75,15 @@ def elasticsearch():
 
 
 @task
-def test(cov=True, verbose=False):
+def test(cov=True, verbose=False, debug=False):
     """
     Runs all tests in the 'tests/' directory
     """
     cmd = 'py.test tests'
     if verbose:
         cmd += ' -v'
+    if debug:
+        cmd += ' -s'
     if cov:
         cmd += ' --cov-report term-missing --cov-config .coveragerc --cov scrapi'
 
