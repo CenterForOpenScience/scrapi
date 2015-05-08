@@ -11,7 +11,7 @@ from __future__ import unicode_literals
 import json
 import logging
 from dateutil.parser import parse
-from datetime import date, timedelta, datetime
+from datetime import date, timedelta
 
 
 from scrapi import requests
