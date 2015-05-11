@@ -33,3 +33,7 @@ def stamp_from_raw(raw_doc, **kwargs):
     stamps = raw_doc['timestamps']
     stamps.update(kwargs)
     return stamps
+
+
+def format_date_with_slashes(date):
+    return date.strftime('%m/%d/%Y')
