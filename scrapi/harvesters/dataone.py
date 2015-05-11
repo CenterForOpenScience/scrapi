@@ -19,6 +19,7 @@ from xml.etree import ElementTree
 from nameparser import HumanName
 
 from scrapi import requests
+from scrapi import settings
 from scrapi.base import XMLHarvester
 from scrapi.util import copy_to_unicode
 from scrapi.linter.document import RawDocument
@@ -156,7 +157,7 @@ class DataOneHarvester(XMLHarvester):
 
     def harvest(self, start_date=None, end_date=None):
 
-        start_date = start_date or date.today() - timedelta(1)
+        start_date = start_date or date.today() - timedelta(settings.DAYS_BACK)
         end_date = end_date or date.today()
 
         records = self.get_records(start_date, end_date)
