@@ -110,8 +110,8 @@ def harvester(harvester_name, async=False, start=None, end=None):
     if not registry.get(harvester_name):
         raise ValueError('No such harvesters {}'.format(harvester_name))
 
-    start = parse(start) if start else date.today() - timedelta(settings.DAYS_BACK)
-    end = parse(end) if end else date.today()
+    start = parse(start) or date.today() - timedelta(settings.DAYS_BACK)
+    end = parse(end) or date.today()
 
     run_harvester.delay(harvester_name, start_date=start, end_date=end)
 
@@ -121,8 +121,8 @@ def harvesters(async=False, start=None, end=None):
     settings.CELERY_ALWAYS_EAGER = not async
     from scrapi.tasks import run_harvester
 
-    start = parse(start) if start else date.today() - timedelta(settings.DAYS_BACK)
-    end = parse(end) if end else date.today()
+    start = parse(start) or date.today() - timedelta(settings.DAYS_BACK)
+    end = parse(end) or date.today()
 
     exceptions = []
     for harvester_name in registry.keys():
@@ -141,8 +141,8 @@ def harvesters(async=False, start=None, end=None):
 def check_archive(harvester=None, reprocess=False, async=False, start=None, end=None):
     settings.CELERY_ALWAYS_EAGER = not async
 
-    start = parse(start) if start else date.today() - timedelta(settings.DAYS_BACK)
-    end = parse(end) if end else date.today()
+    start = parse(start) or date.today() - timedelta(settings.DAYS_BACK)
+    end = parse(end) or date.today()
 
     if harvester:
         from scrapi.tasks import check_archive as check
