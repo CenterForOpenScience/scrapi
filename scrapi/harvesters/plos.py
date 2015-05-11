@@ -25,6 +25,7 @@ from lxml import etree
 from dateutil.parser import *
 
 from scrapi import requests
+from scrapi import settings
 from scrapi.base import XMLHarvester
 from scrapi.linter.document import RawDocument
 from scrapi.base.helpers import default_name_parser, build_properties, compose, single_result
@@ -76,7 +77,7 @@ class PlosHarvester(XMLHarvester):
 
     def harvest(self, start_date=None, end_date=None):
 
-        start_date = start_date or date.today() - timedelta(1)
+        start_date = start_date or date.today() - timedelta(settings.DAYS_BACK)
         end_date = end_date or date.today()
 
         if not PLOS_API_KEY:
