@@ -121,8 +121,8 @@ def harvesters(async=False, start=None, end=None):
     settings.CELERY_ALWAYS_EAGER = not async
     from scrapi.tasks import run_harvester
 
-    start = datetime.strptime(start, '%Y-%m-%d').date() if start else (date.today() - timedelta(settings.DAYS_BACK))
-    end = datetime.strptime(end, '%Y-%m-%d').date() if end else date.today()
+    start = parser.parse(start) if start else date.today() - timedelta(settings.DAYS_BACK)
+    end = parser.parse(end) if end else date.today()
 
     exceptions = []
     for harvester_name in registry.keys():
@@ -141,8 +141,8 @@ def harvesters(async=False, start=None, end=None):
 def check_archive(harvester=None, reprocess=False, async=False, start=None, end=None):
     settings.CELERY_ALWAYS_EAGER = not async
 
-    start = datetime.strptime(start, '%Y-%m-%d').date() if start else date.today() - timedelta(1)
-    end = datetime.strptime(end, '%Y-%m-%d').date() if end else date.today()
+    start = parser.parse(start) if start else date.today() - timedelta(settings.DAYS_BACK)
+    end = parser.parse(end) if end else date.today()
 
     if harvester:
         from scrapi.tasks import check_archive as check
