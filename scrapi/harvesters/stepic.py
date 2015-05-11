@@ -54,6 +54,8 @@ class StepicHarvester(JSONHarvester):
         }
 
     def harvest(self, start_date=None, end_date=None):
+        # TODO - stepic has no means of querying by date, we should add handling for the
+        # start and end date once it does.
 
         search_url = self.URL
         records = self.get_records(search_url)
