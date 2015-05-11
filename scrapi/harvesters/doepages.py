@@ -26,8 +26,8 @@ class DoepagesHarvester(XMLHarvester):
 
     def harvest(self, start_date=None, end_date=None):
 
-        start_date = start_date or date.today()
-        end_date = end_date or date.today() - timedelta(1)
+        start_date = start_date or date.today() - timedelta(1)
+        end_date = end_date or date.today()
 
         base_url = 'http://www.osti.gov/pages/pagesxml?nrows={0}&EntryDateFrom={1}&EntryDateTo={2}'
         url = base_url.format('1', start_date.strftime('%m/%d/%Y'), end_date.strftime('%m/%d/%Y'))
