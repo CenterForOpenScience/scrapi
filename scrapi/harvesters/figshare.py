@@ -15,6 +15,7 @@ from datetime import date, timedelta
 
 
 from scrapi import requests
+from scrapi import settings
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
 from scrapi.base.helpers import default_name_parser, build_properties
@@ -57,7 +58,7 @@ class FigshareHarvester(JSONHarvester):
         So, we will shift everything back a day with harvesting to ensure
         nothing is harvested on the day of.
         """
-        start_date = start_date - timedelta(1) if start_date else date.today() - timedelta(2)
+        start_date = start_date - timedelta(1) if start_date else date.today() - timedelta(1 + settings.DAYS_BACK)
         end_date = end_date - timedelta(1) if end_date else date.today() - timedelta(1)
 
         search_url = '{0}{1}&to_date={2}'.format(
