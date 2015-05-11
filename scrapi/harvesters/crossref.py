@@ -84,10 +84,10 @@ class CrossRefHarvester(JSONHarvester):
         }
 
     def harvest(self, start_date=None, end_date=None):
-        start_date = datetime.strptime(start_date, '%Y-%m-%d').date().isoformat() if start_date else (date.today() - timedelta(1)).isoformat()
-        end_date = datetime.strptime(end_date, '%Y-%m-%d').date().isoformat() if end_date else date.today().isoformat()
+        start_date = start_date or date.today() - timedelta(1)
+        end_date = end_date or date.today()
 
-        base_url = 'http://api.crossref.org/v1/works?filter=from-pub-date:{},until-pub-date:{}&rows={{}}&offset={{}}'.format(start_date, end_date)
+        base_url = 'http://api.crossref.org/v1/works?filter=from-pub-date:{},until-pub-date:{}&rows={{}}&offset={{}}'.format(start_date.isoformat(), end_date.isoformat())
         total = requests.get(base_url.format('0', '0')).json()['message']['total-results']
         logger.info('{} documents to be harvested'.format(total))
 
