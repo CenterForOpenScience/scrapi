@@ -11,12 +11,13 @@ from __future__ import unicode_literals
 import json
 import logging
 
-from datetime import date, timedelta, datetime
+from datetime import date, timedelta
 
 from nameparser import HumanName
 from dateutil.parser import parse
 
 from scrapi import requests
+from scrapi import settings
 from scrapi.base import JSONHarvester
 from scrapi.base.helpers import build_properties
 from scrapi.linter.document import RawDocument
@@ -84,7 +85,7 @@ class CrossRefHarvester(JSONHarvester):
         }
 
     def harvest(self, start_date=None, end_date=None):
-        start_date = start_date or date.today() - timedelta(1)
+        start_date = start_date or date.today() - timedelta(settings.DAYS_BACK)
         end_date = end_date or date.today()
 
         base_url = 'http://api.crossref.org/v1/works?filter=from-pub-date:{},until-pub-date:{}&rows={{}}&offset={{}}'.format(start_date.isoformat(), end_date.isoformat())
