@@ -53,9 +53,12 @@ class FigshareHarvester(JSONHarvester):
         """ Figshare should always have a 24 hour delay because they
         manually go through and check for test projects. Most of them
         are removed within 24 hours.
+
+        So, we will shift everything back a day with harvesting to ensure
+        nothing is harvested on the day of.
         """
         start_date = start_date - timedelta(1) if start_date else date.today() - timedelta(2)
-        end_date = end_date - timedelta(1) if end_date else (date.today() - timedelta(1))
+        end_date = end_date - timedelta(1) if end_date else date.today() - timedelta(1)
 
         search_url = '{0}{1}&to_date={2}'.format(
             self.URL,
