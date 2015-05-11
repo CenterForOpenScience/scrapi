@@ -1,6 +1,6 @@
 import mock
 import pytest
-from datetime import datetime
+from datetime import datetime, timedelta
 from freezegun import freeze_time
 
 from scrapi import tasks
@@ -47,8 +47,8 @@ def test_run_harvester_calls(monkeypatch):
 
     assert mock_harvest.si.called
     assert mock_begin_norm.s.called
-    start_date = datetime(2015, 03, 15).date()
     end_date = datetime(2015, 03, 16).date()
+    start_date = end_date - timedelta(settings.DAYS_BACK)
 
     mock_begin_norm.s.assert_called_once_with('test')
     mock_harvest.si.assert_called_once_with('test', 'TIME', start_date=start_date, end_date=end_date)
