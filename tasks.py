@@ -7,6 +7,7 @@ from invoke import run, task
 from elasticsearch import helpers
 
 import scrapi.harvesters  # noqa
+from dateutil import parser
 from scrapi import linter
 from scrapi import registry
 from scrapi import settings
@@ -109,7 +110,8 @@ def harvester(harvester_name, async=False, start=None, end=None):
     if not registry.get(harvester_name):
         raise ValueError('No such harvesters {}'.format(harvester_name))
 
-    start = datetime.strptime(start, '%Y-%m-%d').date() if start else (date.today() - timedelta(settings.DAYS_BACK))
+    start = parser.parse(start) if start else date.today() - timedelta(settings.DAYS_BACK)
+    end = parser.parse(end) if end else date.today()
 
     run_harvester.delay(harvester_name, start_date=start, end_date=end)
 
