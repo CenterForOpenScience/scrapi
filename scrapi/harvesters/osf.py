@@ -96,8 +96,8 @@ class OSFHarvester(JSONHarvester):
 
     def harvest(self, start_date=None, end_date=None):
 
-        start_date = start_date or date.today()
-        end_date = end_date or date.today() - timedelta(1)
+        start_date = start_date or date.today() - timedelta(1)
+        end_date = end_date or date.today()
 
         search_url = self.URL.format(start_date.isoformat(), end_date.isoformat())
         records = self.get_records(search_url)
