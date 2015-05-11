@@ -100,7 +100,7 @@ class ClinicalTrialsHarvester(XMLHarvester):
         then get the xml one by one and save it into a list
         of docs including other information """
 
-        start_date = start_date or (date.today() - timedelta(1))
+        start_date = start_date or date.today() - timedelta(1)
         end_date = end_date or date.today()
 
         end_month = end_date.strftime('%m')
