@@ -16,6 +16,7 @@ from dateutil.parser import parse
 from nameparser import HumanName
 
 from scrapi import requests
+from scrapi import settings
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
 from scrapi.base.helpers import build_properties
@@ -88,7 +89,7 @@ class BiomedCentralHarvester(JSONHarvester):
 
     def harvest(self, start_date=None, end_date=None):
 
-        start_date = start_date or (date.today() - timedelta(1))
+        start_date = start_date or date.today() - timedelta(settings.DAYS_BACK)
 
         # Biomed central can only have a start date
         end_date = date.today()
