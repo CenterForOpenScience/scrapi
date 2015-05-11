@@ -41,8 +41,8 @@ def harvest(harvester_name, job_created, start_date=None, end_date=None):
     harvest_started = timestamp()
     harvester = registry[harvester_name]
 
-    start_date = start_date if start_date else date.today() - timedelta(settings.DAYS_BACK)
-    end_date = end_date if end_date else date.today()
+    start_date = start_date or date.today() - timedelta(settings.DAYS_BACK)
+    end_date = end_date or date.today()
 
     logger.info('Harvester "{}" has begun harvesting'.format(harvester_name))
 
