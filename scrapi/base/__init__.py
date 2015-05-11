@@ -141,8 +141,8 @@ class OAIHarvester(XMLHarvester):
 
     def harvest(self, start_date=None, end_date=None):
 
-        start_date = start_date.isoformat() if start_date else (date.today() - timedelta(1)).isoformat()
-        end_date = end_date.isoformat() if end_date else date.today().isoformat()
+        start_date = (start_date or date.today() - timedelta(1)).isoformat()
+        end_date = (end_date or date.today()).isoformat()
 
         if self.timezone_granularity:
             start_date += 'T00:00:00Z'
