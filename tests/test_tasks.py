@@ -1,6 +1,6 @@
 import mock
 import pytest
-from datetime import datetime, timedelta
+from datetime import date, timedelta
 from freezegun import freeze_time
 
 from scrapi import tasks
@@ -47,7 +47,7 @@ def test_run_harvester_calls(monkeypatch):
 
     assert mock_harvest.si.called
     assert mock_begin_norm.s.called
-    end_date = datetime(2015, 03, 16).date()
+    end_date = date(2015, 03, 16)
     start_date = end_date - timedelta(settings.DAYS_BACK)
 
     mock_begin_norm.s.assert_called_once_with('test')
@@ -61,8 +61,8 @@ def test_run_harvester_daysback(monkeypatch):
     monkeypatch.setattr('scrapi.tasks.harvest', mock_harvest)
     monkeypatch.setattr('scrapi.tasks.begin_normalization', mock_begin_norm)
 
-    start_date = datetime(2015, 03, 14).date()
-    end_date = datetime(2015, 03, 16).date()
+    start_date = date(2015, 03, 14)
+    end_date = date(2015, 03, 16)
 
     tasks.run_harvester('test', start_date=start_date, end_date=end_date)
 
@@ -82,8 +82,8 @@ def test_harvest_runs_harvest(harvester):
 
 @pytest.mark.usefixtures('harvester')
 def test_harvest_days_back(harvester):
-    start_date = datetime(2015, 03, 14).date()
-    end_date = datetime(2015, 03, 16).date()
+    start_date = date(2015, 03, 14)
+    end_date = date(2015, 03, 16)
 
     _, timestamps = tasks.harvest('test', 'TIME', start_date=start_date, end_date=end_date)
 
