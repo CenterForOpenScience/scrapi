@@ -16,6 +16,8 @@ FLUENTD_ARGS = {
     'tag': 'app.scrapi'
 }
 
+DAYS_BACK = 2
+
 SCRAPI_URL = 'http://173.255.232.219'
 
 ES_SEARCH_MAPPING = {
