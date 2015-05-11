@@ -47,9 +47,8 @@ def test_run_harvester_calls(monkeypatch):
 
     assert mock_harvest.si.called
     assert mock_begin_norm.s.called
-    # import ipdb; ipdb.set_trace()
-    start_date = datetime.strptime('2015-03-15', '%Y-%m-%d').date()
-    end_date = datetime.strptime('2015-03-16', '%Y-%m-%d').date()
+    start_date = datetime(2015, 03, 15).date()
+    end_date = datetime(2015, 03, 16).date()
 
     mock_begin_norm.s.assert_called_once_with('test')
     mock_harvest.si.assert_called_once_with('test', 'TIME', start_date=start_date, end_date=end_date)
@@ -62,13 +61,16 @@ def test_run_harvester_daysback(monkeypatch):
     monkeypatch.setattr('scrapi.tasks.harvest', mock_harvest)
     monkeypatch.setattr('scrapi.tasks.begin_normalization', mock_begin_norm)
 
-    tasks.run_harvester('test', start_date='2015-03-06', end_date='2015-03-16')
+    start_date = datetime(2015, 03, 14).date()
+    end_date = datetime(2015, 03, 16).date()
+
+    tasks.run_harvester('test', start_date=start_date, end_date=end_date)
 
     assert mock_harvest.si.called
     assert mock_begin_norm.s.called
 
     mock_begin_norm.s.assert_called_once_with('test')
-    mock_harvest.si.assert_called_once_with('test', 'TIME', start_date='2015-03-06', end_date='2015-03-16')
+    mock_harvest.si.assert_called_once_with('test', 'TIME', start_date=start_date, end_date=end_date)
 
 
 @pytest.mark.usefixtures('harvester')
@@ -80,7 +82,10 @@ def test_harvest_runs_harvest(harvester):
 
 @pytest.mark.usefixtures('harvester')
 def test_harvest_days_back(harvester):
-    _, timestamps = tasks.harvest('test', 'TIME', start_date='2015-03-06', end_date='2015-03-16')
+    start_date = datetime(2015, 03, 14).date()
+    end_date = datetime(2015, 03, 16).date()
+
+    _, timestamps = tasks.harvest('test', 'TIME', start_date=start_date, end_date=end_date)
 
     keys = ['harvestFinished', 'harvestTaskCreated', 'harvestStarted']
 
@@ -88,7 +93,7 @@ def test_harvest_days_back(harvester):
         assert key in timestamps.keys()
 
     assert harvester.harvest.called
-    harvester.harvest.assert_called_once_with(start_date='2015-03-06', end_date='2015-03-16')
+    harvester.harvest.assert_called_once_with(start_date=start_date, end_date=end_date)
 
 
 @pytest.mark.usefixtures('harvester')
