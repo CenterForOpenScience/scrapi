@@ -11,9 +11,11 @@ from dateutil.parser import *
 from datetime import date, timedelta
 
 from scrapi import requests
+from scrapi import settings
 from scrapi.base import XMLHarvester
 from scrapi.linter import RawDocument
 from scrapi.base.schemas import DOESCHEMA
+from scrapi.util import format_date_with_slashes
 
 NAME = 'scitech'
 
@@ -58,14 +60,14 @@ class SciTechHarvester(XMLHarvester):
         page = 0
         morepages = True
 
-        start_date = start_date or date.today() - timedelta(1)
+        start_date = start_date or date.today() - timedelta(settings.DAYS_BACK)
         end_date = end_date or date.today()
 
         while morepages:
             resp = requests.get(self.base_url, params={
                 'page': page,
-                'EntryDateTo': end_date.strftime('%m/%d/%Y'),
-                'EntryDateFrom': start_date.strftime('%m/%d/%Y'),
+                'EntryDateTo': format_date_with_slashes(start_date),
+                'EntryDateFrom': format_date_with_slashes(end_date),
             })
 
             xml = etree.XML(resp.content)
