@@ -19,12 +19,13 @@ Sample API query: http://api.plos.org/search?q=publication_date:[2015-01-30T00:0
 from __future__ import unicode_literals
 
 import logging
-from datetime import datetime, timedelta
+from datetime import date, timedelta
 
 from lxml import etree
 from dateutil.parser import *
 
 from scrapi import requests
+from scrapi import settings
 from scrapi.base import XMLHarvester
 from scrapi.linter.document import RawDocument
 from scrapi.base.helpers import default_name_parser, build_properties, compose, single_result
@@ -48,16 +49,8 @@ class PlosHarvester(XMLHarvester):
     MAX_ROWS_PER_REQUEST = 999
     BASE_URL = 'http://api.plos.org/search'
 
-    def build_query(self, days_back):
-        to_date = datetime.utcnow()
-        from_date = (datetime.utcnow() - timedelta(days=days_back))
-
-        to_date = to_date.replace(hour=0, minute=0, second=0, microsecond=0)
-        from_date = from_date.replace(hour=0, minute=0, second=0, microsecond=0)
-        return 'publication_date:[{}Z TO {}Z]'.format(from_date.isoformat(), to_date.isoformat())
-
-    def fetch_rows(self, days_back):
-        query = self.build_query(days_back)
+    def fetch_rows(self, start_date, end_date):
+        query = 'publication_date:[{}T00:00:00Z TO {}T00:00:00Z]'.format(start_date, end_date)
 
         resp = requests.get(self.BASE_URL, params={
             'q': query,
@@ -82,7 +75,11 @@ class PlosHarvester(XMLHarvester):
 
             current_row += self.MAX_ROWS_PER_REQUEST
 
-    def harvest(self, days_back=1):
+    def harvest(self, start_date=None, end_date=None):
+
+        start_date = start_date or date.today() - timedelta(settings.DAYS_BACK)
+        end_date = end_date or date.today()
+
         if not PLOS_API_KEY:
             return []
 
@@ -94,7 +91,7 @@ class PlosHarvester(XMLHarvester):
                 'docID': row.xpath("str[@name='id']")[0].text.decode('utf-8'),
             })
             for row in
-            self.fetch_rows(days_back)
+            self.fetch_rows(start_date.isoformat(), end_date.isoformat())
             if row.xpath("arr[@name='abstract']")
             or row.xpath("str[@name='author_display']")
         ]

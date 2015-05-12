@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 import httpretty
+from datetime import date
 
 from scrapi.base import OAIHarvester
 from scrapi.linter import RawDocument
@@ -16,10 +17,10 @@ class TestHarvester(OAIHarvester):
     property_list = ['type', 'source', 'publisher', 'format', 'date']
 
     @httpretty.activate
-    def harvest(self, days_back=1):
+    def harvest(self, start_date=None, end_date=None):
 
-        start_date = '2015-03-14'
-        end_date = '2015-03-16'
+        start_date = date(2015, 03, 14)
+        end_date = date(2015, 03, 16)
 
         request_url = 'http://validAI.edu/?from={}&to={}'.format(start_date, end_date)
 
