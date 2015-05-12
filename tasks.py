@@ -121,8 +121,6 @@ def harvester(harvester_name, async=False, start=None, end=None):
     start = parse(start).date() if start else date.today() - timedelta(settings.DAYS_BACK)
     end = parse(end).date() if end else date.today()
 
-    import ipdb; ipdb.set_trace()
-
     run_harvester.delay(harvester_name, start_date=start, end_date=end)
 
 
