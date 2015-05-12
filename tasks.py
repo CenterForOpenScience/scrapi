@@ -129,8 +129,8 @@ def harvesters(async=False, start=None, end=None):
     settings.CELERY_ALWAYS_EAGER = not async
     from scrapi.tasks import run_harvester
 
-    start = parse(start) or date.today() - timedelta(settings.DAYS_BACK)
-    end = parse(end) or date.today()
+    start = parse(start) if start else date.today() - timedelta(settings.DAYS_BACK)
+    end = parse(end) if end else date.today()
 
     exceptions = []
     for harvester_name in registry.keys():
