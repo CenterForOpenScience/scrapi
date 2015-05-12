@@ -17,6 +17,7 @@ from nameparser import HumanName
 from dateutil.parser import parse
 
 from scrapi import requests
+from scrapi import settings
 from scrapi.base import JSONHarvester
 from scrapi.base.helpers import build_properties
 from scrapi.linter.document import RawDocument
@@ -83,9 +84,11 @@ class CrossRefHarvester(JSONHarvester):
             )
         }
 
-    def harvest(self, days_back=0):
-        start_date = date.today() - timedelta(days_back)
-        base_url = 'http://api.crossref.org/v1/works?filter=from-pub-date:{},until-pub-date:{}&rows={{}}&offset={{}}'.format(str(start_date), str(date.today()))
+    def harvest(self, start_date=None, end_date=None):
+        start_date = start_date or date.today() - timedelta(settings.DAYS_BACK)
+        end_date = end_date or date.today()
+
+        base_url = 'http://api.crossref.org/v1/works?filter=from-pub-date:{},until-pub-date:{}&rows={{}}&offset={{}}'.format(start_date.isoformat(), end_date.isoformat())
         total = requests.get(base_url.format('0', '0')).json()['message']['total-results']
         logger.info('{} documents to be harvested'.format(total))
 

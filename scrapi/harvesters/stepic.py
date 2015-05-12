@@ -53,7 +53,9 @@ class StepicHarvester(JSONHarvester):
             'languages': ('/language', lambda x: [pycountry.languages.get(alpha2=x).terminology])
         }
 
-    def harvest(self, days_back=1):
+    def harvest(self, start_date=None, end_date=None):
+        # TODO - stepic has no means of querying by date, we should add handling for the
+        # start and end date once it does.
 
         search_url = self.URL
         records = self.get_records(search_url)

@@ -2,12 +2,12 @@ import logging
 
 import vcr
 import pytest
-from mock import patch
 from freezegun import freeze_time
 
 from scrapi import registry, requests
 
 logger = logging.getLogger(__name__)
+
 
 @freeze_time("2007-12-21")
 @pytest.mark.parametrize('harvester_name', sorted(map(str, registry.keys())))

@@ -4,20 +4,18 @@ A harvester for the DoE's SciTech Connect Database. Makes use of SciTech's XML Q
 Example API query: http://www.osti.gov/scitech/scitechxml?EntryDateFrom=02%2F02%2F2015&page=0
 """
 
-
 from __future__ import unicode_literals
 
-import datetime
-
 from lxml import etree
-
 from dateutil.parser import *
+from datetime import date, timedelta
 
 from scrapi import requests
-
+from scrapi import settings
 from scrapi.base import XMLHarvester
 from scrapi.linter import RawDocument
 from scrapi.base.schemas import DOESCHEMA
+from scrapi.util import format_date_with_slashes
 
 NAME = 'scitech'
 
@@ -42,7 +40,7 @@ class SciTechHarvester(XMLHarvester):
 
     schema = DOESCHEMA
 
-    def harvest(self, days_back=1):
+    def harvest(self, start_date=None, end_date=None):
         """A function for querying the SciTech Connect database for raw XML.
         The XML is chunked into smaller pieces, each representing data
         about an article/report. If there are multiple pages of results,
@@ -55,20 +53,21 @@ class SciTechHarvester(XMLHarvester):
                 'doc': etree.tostring(record),
                 'docID': record.xpath('dc:ostiId/node()', namespaces=self.namespaces)[0].decode('utf-8'),
             })
-            for record in self._fetch_records(days_back)
+            for record in self._fetch_records(start_date, end_date)
         ]
 
-    def _fetch_records(self, days_back):
+    def _fetch_records(self, start_date, end_date):
         page = 0
         morepages = True
-        to_date = datetime.date.today().strftime('%m/%d/%Y')
-        from_date = (datetime.date.today() - datetime.timedelta(days_back)).strftime('%m/%d/%Y')
+
+        start_date = start_date or date.today() - timedelta(settings.DAYS_BACK)
+        end_date = end_date or date.today()
 
         while morepages:
             resp = requests.get(self.base_url, params={
                 'page': page,
-                'EntryDateTo': to_date,
-                'EntryDateFrom': from_date,
+                'EntryDateTo': format_date_with_slashes(start_date),
+                'EntryDateFrom': format_date_with_slashes(end_date),
             })
 
             xml = etree.XML(resp.content)

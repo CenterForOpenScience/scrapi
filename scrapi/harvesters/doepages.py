@@ -5,9 +5,10 @@ from datetime import date, timedelta
 from lxml import etree
 
 from scrapi import requests
+from scrapi import settings
 from scrapi.base import XMLHarvester
 from scrapi.linter import RawDocument
-from scrapi.util import copy_to_unicode
+from scrapi.util import copy_to_unicode, format_date_with_slashes
 from scrapi.base.schemas import DOESCHEMA
 
 
@@ -24,18 +25,21 @@ class DoepagesHarvester(XMLHarvester):
         'dcq': 'http://purl.org/dc/terms/'
     }
 
-    def harvest(self, days_back=1):
-        today = date.today()
-        start_date = today - timedelta(days_back)
+    def harvest(self, start_date=None, end_date=None):
+
+        start_date = start_date or date.today() - timedelta(settings.DAYS_BACK)
+        end_date = end_date or date.today()
+
         base_url = 'http://www.osti.gov/pages/pagesxml?nrows={0}&EntryDateFrom={1}&EntryDateTo={2}'
-        url = base_url.format('1', start_date.strftime('%m/%d/%Y'), today.strftime('%m/%d/%Y'))
+        url = base_url.format('1', format_date_with_slashes(start_date), format_date_with_slashes(end_date))
         initial_data = requests.get(url)
         record_encoding = initial_data.encoding
         initial_doc = etree.XML(initial_data.content)
 
         num_results = int(initial_doc.xpath('//records/@count', namespaces=self.namespaces)[0])
 
-        url = base_url.format(num_results, start_date.strftime('%m/%d/%Y'), today.strftime('%m/%d/%Y'))
+        url = base_url.format(num_results, start_date, end_date)
+
         data = requests.get(url)
         doc = etree.XML(data.content)
 
