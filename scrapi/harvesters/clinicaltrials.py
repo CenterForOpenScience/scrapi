@@ -11,13 +11,14 @@ from __future__ import unicode_literals
 
 import time
 import logging
-import datetime
+from datetime import date, timedelta
 
 from lxml import etree
 
 from dateutil.parser import *
 
 from scrapi import requests
+from scrapi import settings
 from scrapi.base import XMLHarvester
 from scrapi.util import copy_to_unicode
 from scrapi.linter.document import RawDocument
@@ -95,25 +96,25 @@ class ClinicalTrialsHarvester(XMLHarvester):
     def namespaces(self):
         return None
 
-    def harvest(self, days_back=1):
+    def harvest(self, start_date=None, end_date=None):
         """ First, get a list of all recently updated study urls,
         then get the xml one by one and save it into a list
         of docs including other information """
 
-        today = datetime.date.today()
-        start_date = today - datetime.timedelta(days_back)
+        start_date = start_date or date.today() - timedelta(settings.DAYS_BACK)
+        end_date = end_date or date.today()
 
-        month = today.strftime('%m')
-        day = today.strftime('%d')
-        year = today.strftime('%Y')
+        end_month = end_date.strftime('%m')
+        end_day = end_date.strftime('%d')
+        end_year = end_date.strftime('%Y')
 
-        y_month = start_date.strftime('%m')
-        y_day = start_date.strftime('%d')
-        y_year = start_date.strftime('%Y')
+        start_month = start_date.strftime('%m')
+        start_day = start_date.strftime('%d')
+        start_year = start_date.strftime('%Y')
 
         base_url = 'http://clinicaltrials.gov/ct2/results?lup_s='
         url_end = '{}%2F{}%2F{}%2F&lup_e={}%2F{}%2F{}&displayxml=true'.\
-            format(y_month, y_day, y_year, month, day, year)
+            format(start_month, start_day, start_year, end_month, end_day, end_year)
 
         url = base_url + url_end
 
