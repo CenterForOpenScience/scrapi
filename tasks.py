@@ -1,6 +1,6 @@
 import logging
 import platform
-from datetime import date, timedelta, datetime
+from datetime import date, timedelta
 
 import urllib
 from invoke import run, task
