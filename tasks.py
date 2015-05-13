@@ -146,21 +146,6 @@ def harvesters(async=False, start=None, end=None):
 
 
 @task
-def check_archive(harvester=None, reprocess=False, async=False, start=None, end=None):
-    settings.CELERY_ALWAYS_EAGER = not async
-
-    start = parse(start) or date.today() - timedelta(settings.DAYS_BACK)
-    end = parse(end) or date.today()
-
-    if harvester:
-        from scrapi.tasks import check_archive as check
-        check.delay(harvester, reprocess, start_date=start, end_date=end)
-    else:
-        from scrapi.tasks import check_archives
-        check_archives.delay(reprocess, start_date=start, end_date=end)
-
-
-@task
 def lint_all():
     for name in registry.keys():
         lint(name)
