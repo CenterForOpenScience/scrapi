@@ -21,6 +21,8 @@ logging.basicConfig(level=logging.INFO)
 
 logger = logging.getLogger(__name__)
 
+etree.set_default_parser(etree.XMLParser(recover=True))
+
 
 class HarvesterMeta(abc.ABCMeta):
     def __init__(cls, name, bases, dct):
