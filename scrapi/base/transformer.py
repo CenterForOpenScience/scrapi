@@ -21,20 +21,35 @@ class BaseTransformer(object):
     def schema(self):
         raise NotImplementedError
 
-    def transform(self, doc):
-        return self._transform(self.schema, doc)
+    def transform(self, doc, fail=False):
+        return self._transform_dict(self.schema, doc, fail=fail)
 
-    def _transform(self, schema, doc):
-        transformed = {}
-        for key, value in schema.items():
-            transformed[key] = self._transform_value(value, doc)
-        return transformed
+    def _transform_dict(self, d, doc, fail=False):
+        return {
+            key: self._maybe_transform_value(value, doc, fail=fail)
+            for key, value in d.items()
+        }
 
-    def _transform_value(self, value, doc):
+    def _transform_list(self, l, doc, fail=False):
+        return [
+            self._maybe_transform_value(item, doc, fail=fail)
+            for item in l
+        ]
+
+    def _maybe_transform_value(self, value, doc, fail=False):
+        try:
+            return self._transform_value(value, doc, fail=fail)
+        except Exception as e:
+            if fail:
+                raise
+            logger.exception(e)
+            return None
+
+    def _transform_value(self, value, doc, fail=False):
         if isinstance(value, dict):
-            return self._transform(value, doc)
+            return self._transform_dict(value, doc, fail=fail)
         elif isinstance(value, list):
-            return self._transform_list(value, doc)
+            return self._transform_list(value, doc, fail=fail)
         elif isinstance(value, tuple) and len(value) == 2 and isinstance(value[0], tuple):
             return self._transform_args_kwargs(value, doc)
         elif isinstance(value, tuple):
@@ -43,11 +58,6 @@ class BaseTransformer(object):
             return self._transform_string(value, doc)
         elif callable(value):
             return value(doc)
-
-    def _transform_list(self, l, doc):
-        return [
-            self._transform_value(item, doc) for item in l
-        ]
 
     def _transform_tuple(self, l, doc):
 
