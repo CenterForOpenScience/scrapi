@@ -32,7 +32,7 @@ class BaseTransformer(object):
 
     def _maybe_transform_value(self, value, doc, fail=False):
         try:
-            return self._transform_value(value, doc)
+            return self._transform_value(value, doc, fail=fail)
         except Exception as e:
             if fail:
                 raise
@@ -40,11 +40,11 @@ class BaseTransformer(object):
             logger.exception(e)
             return None
 
-    def _transform_value(self, value, doc):
+    def _transform_value(self, value, doc, fail=False):
         if isinstance(value, dict):
-            return self._transform(value, doc)
+            return self._transform(value, doc, fail=fail)
         elif isinstance(value, list):
-            return self._transform_list(value, doc)
+            return self._transform_list(value, doc, fail=fail)
         elif isinstance(value, tuple) and len(value) == 2 and isinstance(value[0], tuple):
             return self._transform_args_kwargs(value, doc)
         elif isinstance(value, tuple):
@@ -54,9 +54,9 @@ class BaseTransformer(object):
         elif callable(value):
             return value(doc)
 
-    def _transform_list(self, l, doc):
+    def _transform_list(self, l, doc, fail=False):
         return [
-            self._maybe_transform_value(item, doc) for item in l
+            self._maybe_transform_value(item, doc, fail=fail) for item in l
         ]
 
     def _transform_tuple(self, l, doc):
