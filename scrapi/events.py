@@ -101,32 +101,21 @@ def logged(event, index=None):
 
 
 def extract_context(func, *args, **kwargs):
-    args = list(reversed(args))
     arginfo = inspect.getargspec(func)
-
-    if arginfo.defaults:
-        arg_names = arginfo.args[:len(arginfo.defaults)]
-        kwarg_names = arginfo.args[len(arginfo.defaults):]
-    else:
-        kwarg_names = []
-        arg_names = arginfo.args
-
-    real_args = {
-        key: kwargs.pop(key, val)
-        for key, val
-        in zip(kwarg_names, arginfo.defaults or [])
+    arg_names = arginfo.args
+    defaults = {
+        arg_names.pop(-1): kwarg
+        for kwarg in (arginfo.defaults or [])
     }
 
-    for name in arg_names:
-        real_args[name] = args.pop()
-
+    computed_args = zip(arg_names, args)
     if arginfo.varargs:
-        real_args[arginfo.varargs] = list(reversed(args))
+        computed_args.append(('args', list(args[len(arg_names):])))
 
-    if arginfo.keywords:
-        real_args[arginfo.keywords] = kwargs
+    if kwargs:
+        defaults['kwargs'] = kwargs
 
-    return real_args
+    return dict(computed_args, **defaults)
 
 
 def creates_task(event):

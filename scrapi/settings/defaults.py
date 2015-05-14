@@ -8,6 +8,7 @@ CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
 
 RECORD_HTTP_TRANSACTIONS = False
 
+disabled = []
 RAW_PROCESSING = []
 NORMALIZED_PROCESSING = []
 
@@ -17,3 +18,5 @@ USE_FLUENTD = False
 FLUENTD_ARGS = {
     'tag': 'app.scrapi'
 }
+
+DAYS_BACK = 2

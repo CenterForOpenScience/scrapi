@@ -35,8 +35,8 @@ def rename(source, target, dry=True):
             exceptions.append(e)
         else:
             if not dry:
-                doc.delete()
                 es.delete(index=settings.ELASTIC_INDEX, doc_type=source, id=raw['docID'], ignore=[404])
+                es.delete(index='share_v1', doc_type=source, id=raw['docID'], ignore=[404])
             logger.info('Deleted document from {} with id {}'.format(source, raw['docID']))
     if dry:
         logger.info('Dry run complete')

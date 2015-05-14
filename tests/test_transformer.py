@@ -17,7 +17,7 @@ from .utils import TEST_SCHEMA, TEST_NAMESPACES, TEST_XML_DOC
 
 class TestHarvester(XMLHarvester):
     long_name = 'TEST'
-    short_name = 'crossref'
+    short_name = 'test'
     url = 'TEST'
     schema = TEST_SCHEMA
     namespaces = TEST_NAMESPACES
@@ -25,7 +25,7 @@ class TestHarvester(XMLHarvester):
     def harvest(self, days_back=1):
         return [RawDocument({
             'doc': str(TEST_XML_DOC),
-            'source': 'crossref',
+            'source': 'test',
             'filetype': 'XML',
             'docID': "1"
         }) for _ in xrange(days_back)]

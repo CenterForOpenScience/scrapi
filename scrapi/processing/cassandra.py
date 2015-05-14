@@ -6,7 +6,7 @@ from uuid import uuid4
 
 from dateutil.parser import parse
 
-from cqlengine import columns, Model
+from cassandra.cqlengine import columns, models
 
 from scrapi import events
 from scrapi import database  # noqa
@@ -73,7 +73,7 @@ class CassandraProcessor(BaseProcessor):
 
 
 @database.register_model
-class DocumentModel(Model):
+class DocumentModel(models.Model):
     '''
     Defines the schema for a metadata document in cassandra
 
@@ -86,7 +86,7 @@ class DocumentModel(Model):
 
     # Raw
     docID = columns.Text(primary_key=True)
-    source = columns.Text(primary_key=True, index=True, clustering_order="DESC")
+    source = columns.Text(primary_key=True, clustering_order="DESC")
 
     doc = columns.Bytes()
     filetype = columns.Text()
@@ -115,7 +115,7 @@ class DocumentModel(Model):
 
 
 @database.register_model
-class VersionModel(Model):
+class VersionModel(models.Model):
     '''
     Defines the schema for a version of a metadata document in Cassandra
 
@@ -131,7 +131,7 @@ class VersionModel(Model):
     doc = columns.Bytes()
     docID = columns.Text()
     filetype = columns.Text()
-    source = columns.Text(index=True)
+    source = columns.Text()
     timestamps = columns.Map(columns.Text, columns.Text)
 
     # Normalized

@@ -13,7 +13,9 @@ install:
 
 before_script: flake8 .
 
-script: invoke test
+script:
+  - invoke provider_map
+  - invoke test
 
 after_success:
   coveralls

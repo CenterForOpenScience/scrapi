@@ -1,11 +1,13 @@
 import logging
 import platform
+from datetime import date, timedelta
 
 import urllib
 from invoke import run, task
 from elasticsearch import helpers
 
 import scrapi.harvesters  # noqa
+from dateutil.parser import parse
 from scrapi import linter
 from scrapi import registry
 from scrapi import settings
@@ -45,6 +47,12 @@ def rename(source, target, dry=True):
 
 
 @task
+def delete(source):
+    from scripts.delete import delete_by_source
+    delete_by_source(source)
+
+
+@task
 def reset_search():
     run("curl -XPOST 'http://localhost:9200/_shutdown'")
     if platform.linux_distribution()[0] == 'Ubuntu':
@@ -69,13 +77,15 @@ def elasticsearch():
 
 
 @task
-def test(cov=True, verbose=False):
+def test(cov=True, verbose=False, debug=False):
     """
     Runs all tests in the 'tests/' directory
     """
     cmd = 'py.test tests'
     if verbose:
         cmd += ' -v'
+    if debug:
+        cmd += ' -s'
     if cov:
         cmd += ' --cov-report term-missing --cov-config .coveragerc --cov scrapi'
 
@@ -101,25 +111,31 @@ def worker():
 
 
 @task
-def harvester(harvester_name, async=False, days=1):
+def harvester(harvester_name, async=False, start=None, end=None):
     settings.CELERY_ALWAYS_EAGER = not async
     from scrapi.tasks import run_harvester
 
     if not registry.get(harvester_name):
         raise ValueError('No such harvesters {}'.format(harvester_name))
 
-    run_harvester.delay(harvester_name, days_back=days)
+    start = parse(start).date() if start else date.today() - timedelta(settings.DAYS_BACK)
+    end = parse(end).date() if end else date.today()
+
+    run_harvester.delay(harvester_name, start_date=start, end_date=end)
 
 
 @task
-def harvesters(async=False, days=1):
+def harvesters(async=False, start=None, end=None):
     settings.CELERY_ALWAYS_EAGER = not async
     from scrapi.tasks import run_harvester
+
+    start = parse(start).date() if start else date.today() - timedelta(settings.DAYS_BACK)
+    end = parse(end).date() if end else date.today()
 
     exceptions = []
     for harvester_name in registry.keys():
         try:
-            run_harvester.delay(harvester_name, days_back=days)
+            run_harvester.delay(harvester_name, start_date=start, end_date=end)
         except Exception as e:
             logger.exception(e)
             exceptions.append(e)
@@ -127,18 +143,6 @@ def harvesters(async=False, days=1):
     logger.info("\n\nNumber of exceptions: {}".format(len(exceptions)))
     for exception in exceptions:
         logger.exception(e)
-
-
-@task
-def check_archive(harvester=None, reprocess=False, async=False, days=None):
-    settings.CELERY_ALWAYS_EAGER = not async
-
-    if harvester:
-        from scrapi.tasks import check_archive as check
-        check.delay(harvester, reprocess, days_back=int(days))
-    else:
-        from scrapi.tasks import check_archives
-        check_archives.delay(reprocess, days_back=int(days))
 
 
 @task
@@ -158,9 +162,10 @@ def lint(name):
 
 
 @task
-def provider_map():
+def provider_map(delete=False):
     from scrapi.processing.elasticsearch import es
-    es.indices.delete(index='share_providers', ignore=['404'])
+    if delete:
+        es.indices.delete(index='share_providers', ignore=[404])
 
     for harvester_name, harvester in registry.items():
         es.index(

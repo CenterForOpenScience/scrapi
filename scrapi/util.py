@@ -1,4 +1,3 @@
-import six
 from datetime import datetime
 
 import pytz
@@ -20,9 +19,9 @@ def copy_to_unicode(element):
         for idx, item in enumerate(element):
             element[idx] = copy_to_unicode(item)
     else:
-        element = ''.join(element)
         try:
-            element = six.u(element)
+            # A dirty way to convert to unicode in python 2 + 3.3+
+            element = u''.join(element)
         except TypeError:
             pass
     return element
@@ -33,3 +32,7 @@ def stamp_from_raw(raw_doc, **kwargs):
     stamps = raw_doc['timestamps']
     stamps.update(kwargs)
     return stamps
+
+
+def format_date_with_slashes(date):
+    return date.strftime('%m/%d/%Y')
