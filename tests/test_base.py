@@ -16,8 +16,7 @@ class TestHarvesterMeta(object):
 
     def test_meta_records(self, mock_registry):
 
-        class TestClass(object):
-            __metaclass__ = HarvesterMeta
+        class TestClass(object, metaclass=HarvesterMeta):
             long_name = 'test'
             short_name = 'test'
             url = 'test'
@@ -26,15 +25,14 @@ class TestHarvesterMeta(object):
         assert isinstance(mock_registry['test'], TestClass)
 
     def test_beat_schedule(self, mock_registry):
-        for key, val in mock_registry.items():
+        for key, val in list(mock_registry.items()):
             assert(val.short_name)
             assert(val.long_name)
             assert(val.url)
             assert(isinstance(val.run_at, dict))
 
     def test_beat_schedule_adds(self, mock_registry):
-        class TestClass(object):
-            __metaclass__ = HarvesterMeta
+        class TestClass(object, metaclass=HarvesterMeta):
             short_name = 'test'
             run_at = {
                 'hour': 1,
@@ -51,7 +49,7 @@ class TestHarvesterMeta(object):
     def test_raises_key_error(self, mock_registry):
         with pytest.raises(KeyError) as e:
             mock_registry['FabianVF']
-        assert e.value.message == 'No harvester named "FabianVF"'
+        assert 'No harvester named "FabianVF"' in str(e.value)
 
 
 class TestHarvesterBase(object):
@@ -68,7 +66,7 @@ class TestHarvesterBase(object):
 
             TestHarvester()
 
-        assert e.value.message == self.ERR_MSG.format('short_name')
+        assert self.ERR_MSG.format('short_name') in str(e.value)
 
     def test_requires_long_name(self):
         with pytest.raises(TypeError) as e:
@@ -81,7 +79,7 @@ class TestHarvesterBase(object):
 
             TestHarvester()
 
-        assert e.value.message == self.ERR_MSG.format('long_name')
+        assert self.ERR_MSG.format('long_name') in str(e.value)
 
     def test_requires_url(self):
         with pytest.raises(TypeError) as e:
@@ -94,7 +92,7 @@ class TestHarvesterBase(object):
 
             TestHarvester()
 
-        assert e.value.message == self.ERR_MSG.format('url')
+        assert self.ERR_MSG.format('url') in str(e.value)
 
     def test_requires_file_format(self):
         with pytest.raises(TypeError) as e:
@@ -107,7 +105,7 @@ class TestHarvesterBase(object):
 
             TestHarvester()
 
-        assert e.value.message == self.ERR_MSG.format('file_format')
+        assert self.ERR_MSG.format('file_format') in str(e.value)
 
     def test_requires_harvest(self):
         with pytest.raises(TypeError) as e:
@@ -120,7 +118,7 @@ class TestHarvesterBase(object):
 
             TestHarvester()
 
-        assert e.value.message == self.ERR_MSG.format('harvest')
+        assert self.ERR_MSG.format('harvest') in str(e.value)
 
     def test_requires_normalize(self):
         with pytest.raises(TypeError) as e:
@@ -133,4 +131,4 @@ class TestHarvesterBase(object):
 
             TestHarvester()
 
-        assert e.value.message == self.ERR_MSG.format('normalize')
+        assert self.ERR_MSG.format('normalize') in str(e.value)
