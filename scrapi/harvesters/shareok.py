@@ -17,7 +17,9 @@ class ShareOKHarvester(OAIHarvester):
     timezone_granularity = True
 
     base_url = 'https://shareok.org/oai/request'
+
+    # TODO - add date back in once we fix elasticsearch mapping
     property_list = [
         'type', 'source', 'format',
-        'date', 'description', 'setSpec'
+        'description', 'setSpec'
     ]
