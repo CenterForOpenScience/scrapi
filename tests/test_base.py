@@ -33,7 +33,8 @@ class TestHarvesterMeta(object):
             assert(isinstance(val.run_at, dict))
 
     def test_beat_schedule_adds(self, mock_registry):
-        class TestClass(object, metaclass=HarvesterMeta):
+        class TestClass(object):
+            __metaclass__ = HarvesterMeta
             short_name = 'test'
             run_at = {
                 'hour': 1,
