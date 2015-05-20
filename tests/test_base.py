@@ -16,7 +16,8 @@ class TestHarvesterMeta(object):
 
     def test_meta_records(self, mock_registry):
 
-        class TestClass(object, metaclass=HarvesterMeta):
+        class TestClass(object):
+            __metaclass__ = HarvesterMeta
             long_name = 'test'
             short_name = 'test'
             url = 'test'
@@ -25,7 +26,7 @@ class TestHarvesterMeta(object):
         assert isinstance(mock_registry['test'], TestClass)
 
     def test_beat_schedule(self, mock_registry):
-        for key, val in list(mock_registry.items()):
+        for key, val in mock_registry.items():
             assert(val.short_name)
             assert(val.long_name)
             assert(val.url)
