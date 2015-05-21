@@ -110,7 +110,7 @@ def process_normalized(normalized_doc, raw_doc, **kwargs):
     processing.process_normalized(raw_doc, normalized_doc, kwargs)
 
 
-@app.task(bind=True, default_retry_delay=300, max_retries=5)
+@app.task
 def update_pubsubhubbub():
     payload = {'hub.mode': 'publish', 'hub.url': '{url}rss/'.format(url=settings.OSF_APP_URL)}
     headers = {'Content-Type': 'application/x-www-form-urlencoded'}
