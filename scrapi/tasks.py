@@ -20,7 +20,7 @@ database.setup()
 logger = logging.getLogger(__name__)
 
 
-@app.task
+@app.task(bind=True, default_retry_delay=300, max_retries=5)
 @events.creates_task(events.HARVESTER_RUN)
 def run_harvester(harvester_name, start_date=None, end_date=None):
     logger.info('Running harvester "{}"'.format(harvester_name))
@@ -35,7 +35,7 @@ def run_harvester(harvester_name, start_date=None, end_date=None):
     (start_harvest | normalization).apply_async()
 
 
-@app.task
+@app.task(bind=True, default_retry_delay=300, max_retries=5)
 @events.logged(events.HARVESTER_RUN)
 def harvest(harvester_name, job_created, start_date=None, end_date=None):
     harvest_started = timestamp()
@@ -56,7 +56,7 @@ def harvest(harvester_name, job_created, start_date=None, end_date=None):
     }
 
 
-@app.task
+@app.task(bind=True, default_retry_delay=300, max_retries=5)
 def begin_normalization((raw_docs, timestamps), harvester_name):
     '''harvest_ret is harvest return value:
         a tuple contaiing list of rawDocuments and
@@ -80,13 +80,13 @@ def spawn_tasks(raw, timestamps, harvester_name):
         process_raw.delay(raw)
 
 
-@app.task
+@app.task(bind=True, default_retry_delay=300, max_retries=5)
 @events.logged(events.PROCESSING, 'raw')
 def process_raw(raw_doc, **kwargs):
     processing.process_raw(raw_doc, kwargs)
 
 
-@app.task
+@app.task(bind=True, default_retry_delay=300, max_retries=5)
 @events.logged(events.NORMALIZATION)
 def normalize(raw_doc, harvester_name):
     normalized_started = timestamp()
@@ -102,7 +102,7 @@ def normalize(raw_doc, harvester_name):
     return normalized  # returns a single normalized document
 
 
-@app.task
+@app.task(bind=True, default_retry_delay=300, max_retries=5)
 @events.logged(events.PROCESSING, 'normalized')
 def process_normalized(normalized_doc, raw_doc, **kwargs):
     if not normalized_doc:
@@ -110,7 +110,7 @@ def process_normalized(normalized_doc, raw_doc, **kwargs):
     processing.process_normalized(raw_doc, normalized_doc, kwargs)
 
 
-@app.task
+@app.task(bind=True, default_retry_delay=300, max_retries=5)
 def update_pubsubhubbub():
     payload = {'hub.mode': 'publish', 'hub.url': '{url}rss/'.format(url=settings.OSF_APP_URL)}
     headers = {'Content-Type': 'application/x-www-form-urlencoded'}
