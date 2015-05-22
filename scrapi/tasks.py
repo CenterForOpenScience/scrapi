@@ -86,7 +86,7 @@ def process_raw(raw_doc, **kwargs):
     processing.process_raw(raw_doc, kwargs)
 
 
-@app.task(bind=True, default_retry_delay=300, max_retries=5)
+@app.task(default_retry_delay=300, max_retries=5)
 @events.logged(events.NORMALIZATION)
 def normalize(raw_doc, harvester_name):
     normalized_started = timestamp()
