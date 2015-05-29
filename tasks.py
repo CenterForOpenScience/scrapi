@@ -18,11 +18,6 @@ logger = logging.getLogger()
 
 
 @task
-def server():
-    run("python server.py")
-
-
-@task
 def reindex(src, dest):
     helpers.reindex(es, src, dest)
     es.indices.delete(src)
