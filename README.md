@@ -187,6 +187,14 @@ Invove a harvester a certain number of days back with the ```--days``` argument.
 $ invoke harvester harvester-name --days=5
 ```
 
+
+###Working with the OSF
+
+-To run on the OSF type
+```bash
+$ inv provider_map 
+```
+
 ### Testing
 
 - To run the tests for the project, just type
