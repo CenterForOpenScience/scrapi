@@ -49,7 +49,7 @@ class CassandraProcessor(BaseProcessor):
         self.send_to_database(**raw_doc.attributes).save()
 
     def send_to_database(self, docID, source, **kwargs):
-        documents = DocumentModel.objects(docID=docID, source=source)
+        documents = DocumentModelV2.objects(docID=docID, source=source)
         if documents:
             document = documents[0]
             if self.different(dict(document), dict(docID=docID, source=source, **kwargs)):
@@ -63,13 +63,55 @@ class CassandraProcessor(BaseProcessor):
                 raise events.Skip("No changees detected for document with ID {0} and source {1}.".format(docID, source))
         else:
             # create document
-            return DocumentModel.create(docID=docID, source=source, **kwargs)
+            return DocumentModelV2.create(docID=docID, source=source, **kwargs)
 
     def different(self, old, new):
         try:
             return not all([new[key] == old[key] or (not new[key] and not old[key]) for key in new.keys() if key != 'timestamps'])
         except Exception:
             return True  # If the document fails to load/compare for some reason, accept a new version
+
+
+@database.register_model
+class DocumentModelV2(models.Model):
+    '''
+    Defines the schema for a metadata document in cassandra
+
+    The schema contains denormalized raw document, denormalized
+    normalized (so sorry for the terminology clash) document, and
+    a list of version IDs that refer to previous versions of this
+    metadata.
+    '''
+    __table_name__ = 'documents_v2'
+
+    # Raw
+    source = columns.Text(primary_key=True, partition_key=True)
+    docID = columns.Text(primary_key=True, index=True, clustering_order='ASC')
+
+    doc = columns.Bytes()
+    filetype = columns.Text()
+    timestamps = columns.Map(columns.Text, columns.Text)
+
+    # Normalized
+    uris = columns.Text()
+    title = columns.Text()
+    contributors = columns.Text()  # TODO
+    providerUpdatedDateTime = columns.DateTime()
+
+    description = columns.Text()
+    freeToRead = columns.Text()  # TODO
+    languages = columns.List(columns.Text())
+    licenses = columns.Text()  # TODO
+    publisher = columns.Text()  # TODO
+    subjects = columns.List(columns.Text())
+    tags = columns.List(columns.Text())
+    sponsorships = columns.Text()  # TODO
+    version = columns.Text()  # TODO
+    otherProperties = columns.Text()  # TODO
+    shareProperties = columns.Text()  # TODO
+
+    # Additional metadata
+    versions = columns.List(columns.UUID)
 
 
 @database.register_model
