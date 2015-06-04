@@ -49,7 +49,7 @@ class CassandraProcessor(BaseProcessor):
         self.send_to_database(**raw_doc.attributes).save()
 
     def send_to_database(self, docID, source, **kwargs):
-        documents = DocumentModelV2.objects(docID=docID, source=source)
+        documents = DocumentModel.objects(docID=docID, source=source)
         if documents:
             document = documents[0]
             if self.different(dict(document), dict(docID=docID, source=source, **kwargs)):
@@ -63,7 +63,7 @@ class CassandraProcessor(BaseProcessor):
                 raise events.Skip("No changees detected for document with ID {0} and source {1}.".format(docID, source))
         else:
             # create document
-            return DocumentModelV2.create(docID=docID, source=source, **kwargs)
+            return DocumentModel.create(docID=docID, source=source, **kwargs)
 
     def different(self, old, new):
         try:
@@ -73,7 +73,7 @@ class CassandraProcessor(BaseProcessor):
 
 
 @database.register_model
-class DocumentModelV2(models.Model):
+class DocumentModel(models.Model):
     '''
     Defines the schema for a metadata document in cassandra
 
@@ -82,7 +82,7 @@ class DocumentModelV2(models.Model):
     a list of version IDs that refer to previous versions of this
     metadata.
     '''
-    __table_name__ = 'documents_v2'
+    __table_name__ = 'documents_source_partitioned'
 
     # Raw
     source = columns.Text(primary_key=True, partition_key=True)
@@ -115,7 +115,7 @@ class DocumentModelV2(models.Model):
 
 
 @database.register_model
-class DocumentModel(models.Model):
+class DocumentModelOld(models.Model):
     '''
     Defines the schema for a metadata document in cassandra
 

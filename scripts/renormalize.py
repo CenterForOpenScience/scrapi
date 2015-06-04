@@ -1,6 +1,6 @@
 import logging
 
-from scripts.util import documents_v2 as documents
+from scripts.util import documents
 
 from scrapi.linter import RawDocument
 from scrapi.tasks import normalize, process_normalized

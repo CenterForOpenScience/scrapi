@@ -4,7 +4,7 @@ import logging
 from cassandra.cqlengine.query import Token
 
 from scrapi.database import _manager
-from scrapi.processing.cassandra import DocumentModel, DocumentModelV2
+from scrapi.processing.cassandra import DocumentModel, DocumentModelOld
 
 _manager.setup()
 logger = logging.getLogger(__name__)
@@ -23,15 +23,15 @@ def ModelIteratorFactory(model, next_page):
     return model_iterator
 
 
-def next_page_v1(query, page):
+def next_page_old(query, page):
     return list(query.filter(pk__token__gt=Token(page[-1].pk)))
 
 
-def next_page_v2(query, page):
+def next_page_source_partition(query, page):
     return list(query.filter(docID__gt=page[-1].docID))
 
-documents_v1 = ModelIteratorFactory(DocumentModel, next_page_v1)
-documents_v2 = ModelIteratorFactory(DocumentModelV2, next_page_v2)
+documents_old = ModelIteratorFactory(DocumentModelOld, next_page_old)
+documents = ModelIteratorFactory(DocumentModel, next_page_source_partition)
 
 
 def try_forever(action, *args, **kwargs):
