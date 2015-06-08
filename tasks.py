@@ -36,9 +36,34 @@ def renormalize(sources=None):
 
 
 @task
-def rename(source, target, dry=True):
-    from scripts.rename import rename
+def rename(source, target, dry=True, async=False):
+    settings.CELERY_ALWAYS_EAGER = not async
+    from scrapi.tasks import rename
+
+    if not registry.get(source):
+        raise ValueError('No such harvester {}'.format(source))
+
     rename(source, target, dry)
+
+
+@task
+def migrate(migration, kwargs_string, dry=True, async=False):
+    settings.CELERY_ALWAYS_EAGER = not async
+
+    from scrapi import migrations
+    from scrapi.tasks import migrate
+
+    kwargs = {
+        key.strip(): val.strip() for key, val in map(lambda x: x.split(':'), kwargs_string.split(','))
+    }
+
+    migrate_func = migrations.__dict__[migration]
+
+    if migration == rename:
+        if not registry.get(kwargs['source']):
+            raise ValueError('No such harvester {}'.format(kwargs['source']))
+
+    migrate(migrate_func, source=kwargs['source'], target=kwargs['target'], dry=dry)
 
 
 @task
