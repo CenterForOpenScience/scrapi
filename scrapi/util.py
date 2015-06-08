@@ -36,3 +36,7 @@ def stamp_from_raw(raw_doc, **kwargs):
 
 def format_date_with_slashes(date):
     return date.strftime('%m/%d/%Y')
+
+
+def create_rename_iterable(documents, source, target, dry):
+    return [(doc, source, target, dry) for doc in documents]
