@@ -14,5 +14,6 @@ class DryadHarvester(OAIHarvester):
     url = 'http://www.datadryad.org/oai/request'
 
     base_url = 'http://www.datadryad.org/oai/request'
-    property_list = ['rights', 'format', 'relation', 'date', 'identifier', 'type']
+    property_list = ['rights', 'format', 'relation', 'date',
+                     'identifier', 'type', 'setSpec']
     timezone_granularity = True
