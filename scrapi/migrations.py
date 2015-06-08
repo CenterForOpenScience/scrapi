@@ -1,5 +1,4 @@
 import logging
-# import functools
 
 from scrapi import tasks
 from scrapi import settings
@@ -10,7 +9,9 @@ logger = logging.getLogger()
 
 
 @tasks.task_autoretry(default_retry_delay=30, max_retries=5)
-def rename(doc, source=None, target=None, dry=True):
+def rename(doc, **kwargs):
+    source = kwargs.get('source')
+    target = kwargs.get('target')
     assert source and target, "To run this migration you need both a source and a target"
     assert source != target, "Can't rename {} to {}, names are the same".format(source, target)
 
@@ -22,7 +23,7 @@ def rename(doc, source=None, target=None, dry=True):
         'timestamps': doc.timestamps,
         'versions': doc.versions
     })
-    if not dry:
+    if not kwargs.get('dry'):
         tasks.process_raw(raw)
         tasks.process_normalized(tasks.normalize(raw, raw['source']), raw)
         logger.info('Processed document from {} with id {}'.format(source, raw['docID']))
