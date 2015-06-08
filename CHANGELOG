@@ -2,6 +2,12 @@
 ChangeLog
 *********
 
+0.6.5 (2015-06-08)
+==================
+- Add harvard-dash, iowa research, and data dryad harvesters
+- Make migrations a little more resilient (with autoretries)
+- Fix a bug with introspection into function arguments for logging
+
 
 0.6.0 (2015-05-04)
 ==================
