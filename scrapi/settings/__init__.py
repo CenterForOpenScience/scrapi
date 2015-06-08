@@ -26,4 +26,4 @@ CELERY_RESULT_BACKEND = None
 CELERY_TASK_SERIALIZER = 'pickle'
 CELERY_ACCEPT_CONTENT = ['pickle']
 CELERY_RESULT_SERIALIZER = 'pickle'
-CELERY_IMPORTS = ('scrapi.tasks', )
+CELERY_IMPORTS = ('scrapi.tasks', 'scrapi.migrations')
