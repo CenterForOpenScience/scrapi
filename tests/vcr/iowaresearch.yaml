@@ -1,0 +1,64 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/13.4.0]
+    method: GET
+    uri: http://ir.uiowa.edu/do/oai/?verb=ListRecords&metadataPrefix=oai_dc&from=2012-12-17T00:00:00Z&until=2012-12-19T00:00:00Z
+  response:
+    body:
+      string: !!binary |
+        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
+        7xH9/IB+qjD+FXpEhRzbIAAA
+    headers:
+      cache-control: [private]
+      connection: [keep-alive]
+      content-encoding: [gzip]
+      content-type: [text/xml; charset=UTF-8]
+      date: ['Thu, 21 May 2015 21:07:16 GMT']
+      server: [nginx/1.2.1]
+      set-cookie: [bp_plack_session=2c583e5479181872639a9fdfa30159da9db76a56; path=/;
+          HttpOnly]
+      transfer-encoding: [chunked]
+    status: {code: 200, message: OK}
+version: 1
