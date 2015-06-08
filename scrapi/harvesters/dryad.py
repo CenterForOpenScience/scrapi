@@ -27,8 +27,8 @@ class DryadHarvester(OAIHarvester):
         str_result = raw_doc.get('doc')
         result = etree.XML(str_result)
 
-        status = (result.xpath('ns0:header/@status', namespaces=self.namespaces) or [''])[0]
-        if status.lower() == 'deleted' or status.lower() == 'item is not available':
+        status = (result.xpath('//dc:status/node()', namespaces=self.namespaces) or [''])[0]
+        if str(status).lower() == 'deleted' or str(status).lower() == 'item is not available':
             logger.info('Not normalizing record with ID {}, status {}'.format(raw_doc['docID'], status))
             return None
 
