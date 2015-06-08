@@ -57,13 +57,12 @@ def migrate(migration, kwargs_string, dry=True, async=False):
         key.strip(): val.strip() for key, val in map(lambda x: x.split(':'), kwargs_string.split(','))
     }
 
+    kwargs['dry'] = dry
+    kwargs['async'] = async
+
     migrate_func = migrations.__dict__[migration]
 
-    if migration == rename:
-        if not registry.get(kwargs['source']):
-            raise ValueError('No such harvester {}'.format(kwargs['source']))
-
-    migrate(migrate_func, source=kwargs['source'], target=kwargs['target'], dry=dry)
+    migrate(migrate_func, **kwargs)
 
 
 @task
