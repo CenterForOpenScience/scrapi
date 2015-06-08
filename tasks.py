@@ -45,8 +45,6 @@ def migrate(migration, kwargs_string, dry=True, async=False):
     An example of usage would be:
         inv migrate rename 'source: mit, target:mit2' --no-dry --no-async
     '''
-    settings.CELERY_ALWAYS_EAGER = not async
-
     from scrapi import migrations
     from scrapi.tasks import migrate
 
