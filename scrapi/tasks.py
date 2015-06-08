@@ -118,7 +118,7 @@ def normalize(raw_doc, harvester_name):
     return normalized  # returns a single normalized document
 
 
-@app.task(default_retry_delay=30, max_retries=5)
+@app.task
 @events.logged(events.PROCESSING, 'normalized')
 def process_normalized(normalized_doc, raw_doc, **kwargs):
     try:
@@ -133,13 +133,13 @@ def process_normalized(normalized_doc, raw_doc, **kwargs):
 @app.task
 def migrate(migration, **kwargs):
     count = 0
-    for doc in documents(kwargs['source']):
+    for doc in documents(kwargs.get('source')):
         count += 1
 
         if kwargs.get('async'):
-            migration.s(doc, kwargs['source'], kwargs['target'], kwargs.get('dry')).apply_async()
+            migration.s(doc, **kwargs).apply_async()
         else:
-            migration(doc, kwargs['source'], kwargs['target'], kwargs.get('dry'))
+            migration(doc, **kwargs)
 
     if kwargs.get('dry'):
         logger.info('Dry run complete')
