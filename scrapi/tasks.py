@@ -136,10 +136,10 @@ def migrate(migration, **kwargs):
     for doc in documents(kwargs['source']):
         count += 1
 
-    if kwargs.get('async'):
-        migration.s(doc, kwargs['source'], kwargs['target'], kwargs.get('dry')).apply_async()
-    else:
-        migration(doc, kwargs['source'], kwargs['target'], kwargs.get('dry'))
+        if kwargs.get('async'):
+            migration.s(doc, kwargs['source'], kwargs['target'], kwargs.get('dry')).apply_async()
+        else:
+            migration(doc, kwargs['source'], kwargs['target'], kwargs.get('dry'))
 
     if kwargs.get('dry'):
         logger.info('Dry run complete')
