@@ -37,14 +37,25 @@ def renormalize(sources=None):
 
 @task
 def migrate(migration, kwargs_string, dry=True, async=False):
-    ''' Task to run a migration. kwargs_string is a string passed to the
-    invoke task that is then parsed into an optional set of keyword
-    arguments. This is a way to get around passing a variable number
-    of kwargs to the invoke task.
+    ''' Task to run a migration.
 
-    An example of usage would be:
+    :param migration: The migration function to run. This is passed in
+    as a string then interpreted as a function by the invoke task.
+    :type migration: str
+
+    :param kwargs_string: parsed into an optional set of keyword
+    arguments, so that the invoke migrate task can accept a variable
+    number of arguments for each migration.
+    The kwargs_string should be in the following format:
+        'key:value, key2:value2'
+    ...with the keys and values seperated by colons, and each kwarg seperated
+    by commas.
+    :type kwarg_string: str
+
+    An example of usage renaming mit to mit 2 would be:
         inv migrate rename 'source: mit, target:mit2' --no-dry --no-async
     '''
+
     from scrapi import migrations
     from scrapi.tasks import migrate
 
