@@ -37,6 +37,14 @@ def renormalize(sources=None):
 
 @task
 def migrate(migration, kwargs_string, dry=True, async=False):
+    ''' Task to run a migration. kwargs_string is a string passed to the
+    invoke task that is then parsed into an optional set of keyword
+    arguments. This is a way to get around passing a variable number
+    of kwargs to the invoke task.
+
+    An example of usage would be:
+        inv migrate rename 'source: mit, target:mit2' --no-dry --no-async
+    '''
     settings.CELERY_ALWAYS_EAGER = not async
 
     from scrapi import migrations
