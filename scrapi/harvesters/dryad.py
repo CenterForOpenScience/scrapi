@@ -24,11 +24,10 @@ class DryadHarvester(OAIHarvester):
     timezone_granularity = True
 
     def normalize(self, raw_doc):
-        str_result = raw_doc.get('doc')
-        result = etree.XML(str_result)
+        result = etree.XML(raw_doc['doc'])
 
         status = (result.xpath('//dc:status/node()', namespaces=self.namespaces) or [''])[0]
-        if str(status).lower() == 'deleted' or str(status).lower() == 'item is not available':
+        if str(status).lower() in ['deleted', 'item is not available']:
             logger.info('Not normalizing record with ID {}, status {}'.format(raw_doc['docID'], status))
             return None
 
