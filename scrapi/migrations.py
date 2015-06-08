@@ -30,10 +30,5 @@ def rename(doc, **kwargs):
 
         es.delete(index=settings.ELASTIC_INDEX, doc_type=source, id=raw['docID'], ignore=[404])
         es.delete(index='share_v1', doc_type=source, id=raw['docID'], ignore=[404])
+
     logger.info('Deleted document from {} with id {}'.format(source, raw['docID']))
-
-
-def create_rename_iterable(documents, source, target, dry):
-    """ Will only be used if the migration is using async, and only if we
-    can get the chunks issue of retrying worked out."""
-    return [(doc, source, target, dry) for doc in documents]
