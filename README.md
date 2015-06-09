@@ -68,7 +68,7 @@ $ brew install elasticsearch
 4. Install the package.
    ```bash
    $ sudo apt-get update
-   $ sudo apt-get install dsc20=2.0.11-1 cassandra=2.0.11
+   $ sudo apt-get install cassandra
    ```
 
 ##### Install ElasticSearch
