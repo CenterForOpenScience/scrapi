@@ -15,8 +15,18 @@ from scrapi.base import OAIHarvester
 logger = logging.getLogger(__name__)
 
 
-def format_dois_dryad(relations):
-    return ['http://dx.doi.org/{}'.format(url.replace('doi:', '')) for url in relations if 'doi:' in url]
+def format_dois_dryad(*args):
+    prefix = 'http://dx.doi.org/{}'
+    urls = []
+    for arg in args:
+        if isinstance(arg, list):
+            for url in arg:
+                if 'doi:' in url:
+                    urls.append(prefix.format(url.replace('doi:', '')))
+        elif arg:
+            if 'doi:' in arg:
+                urls.append(prefix.format(arg.replace('doi:', '')))
+    return urls
 
 
 class DryadHarvester(OAIHarvester):
@@ -33,7 +43,7 @@ class DryadHarvester(OAIHarvester):
         schemas.OAISCHEMA,
         {
             "uris": {
-                "objectUris": ('//dc:relation/node()', format_dois_dryad)
+                "objectUris": ('//dc:relation/node()', '//dc:identifier/node()', format_dois_dryad)
             }
         }
     )
