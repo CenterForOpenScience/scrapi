@@ -2,6 +2,11 @@
 ChangeLog
 *********
 
+0.6.6 (2015-06-08)
+==================
+- Fixed small bug in dryad where documents without URIs were created
+
+
 0.6.5 (2015-06-08)
 ==================
 - Add harvard-dash, iowa research, and data dryad harvesters
