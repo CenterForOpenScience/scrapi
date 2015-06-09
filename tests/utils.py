@@ -1,8 +1,9 @@
 from __future__ import unicode_literals
 
 from scrapi.base import XMLHarvester
+from scrapi.linter.document import RawDocument
 from scrapi.base.schemas import DOESCHEMA
-from scrapi.base.helpers import updated_schema, build_properties, single_result, updated_schema
+from scrapi.base.helpers import updated_schema, build_properties, single_result
 
 
 RAW_DOC = {
@@ -46,7 +47,7 @@ RECORD = {
         'name': 'figures',
         'properties': {
             'figures': 'http://www.plosone.org/article/image.png',
-            }
+        }
         }, {
         'name': 'type',
         'properties': {
@@ -185,6 +186,7 @@ TEST_OAI_DOC = '''
     </OAI-PMH>
 '''
 
+
 class TestHarvester(XMLHarvester):
     long_name = 'TEST'
     short_name = 'test'
@@ -199,5 +201,3 @@ class TestHarvester(XMLHarvester):
             'filetype': 'XML',
             'docID': "1"
         }) for _ in xrange(days_back)]
-
-
