@@ -5,12 +5,28 @@ Example API call: http://www.datadryad.org/oai/request?verb=ListRecords&metadata
 '''
 from __future__ import unicode_literals
 
-from lxml import etree
 import logging
+from lxml import etree
 
+from scrapi.base import schemas
+from scrapi.base import helpers
 from scrapi.base import OAIHarvester
 
 logger = logging.getLogger(__name__)
+
+
+def format_dois_dryad(*args):
+    prefix = 'http://dx.doi.org/{}'
+    urls = []
+    for arg in args:
+        if isinstance(arg, list):
+            for url in arg:
+                if 'doi:' in url:
+                    urls.append(prefix.format(url.replace('doi:', '')))
+        elif arg:
+            if 'doi:' in arg:
+                urls.append(prefix.format(arg.replace('doi:', '')))
+    return urls
 
 
 class DryadHarvester(OAIHarvester):
@@ -22,6 +38,15 @@ class DryadHarvester(OAIHarvester):
     property_list = ['rights', 'format', 'relation', 'date',
                      'identifier', 'type', 'setSpec']
     timezone_granularity = True
+
+    schema = helpers.updated_schema(
+        schemas.OAISCHEMA,
+        {
+            "uris": {
+                "objectUris": ('//dc:relation/node()', '//dc:identifier/node()', format_dois_dryad)
+            }
+        }
+    )
 
     def normalize(self, raw_doc):
         result = etree.XML(raw_doc['doc'])
