@@ -57,7 +57,7 @@ def pytest_runtest_setup(item):
     marker = item.get_marker('elasticsearch')
     if marker is not None:
         if not use_es:
-            pytest.skip('No connection to Cassandra')
+            pytest.skip('No connection to Elasticsearch')
 
 
 def pytest_runtest_teardown(item, nextitem):
