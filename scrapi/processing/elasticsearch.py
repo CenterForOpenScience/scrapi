@@ -41,11 +41,11 @@ class ElasticsearchProcessor(BaseProcessor):
     NAME = 'elasticsearch'
 
     def process_normalized(self, raw_doc, normalized, index=settings.ELASTIC_INDEX):
-        normalized['providerUpdatedDateTime'] = self.version(raw_doc, normalized)
         data = {
             key: value for key, value in normalized.attributes.items()
             if key in settings.FRONTEND_KEYS
         }
+        data['providerUpdatedDateTime'] = self.version(raw_doc, normalized)
 
         es.index(
             body=data,
@@ -54,7 +54,7 @@ class ElasticsearchProcessor(BaseProcessor):
             doc_type=raw_doc['source'],
             id=raw_doc['docID'],
         )
-        self.process_normalized_v1(raw_doc, normalized)
+        self.process_normalized_v1(raw_doc, normalized, data['providerUpdatedDateTime'])
 
     def version(self, raw, normalized):
         try:
@@ -73,10 +73,11 @@ class ElasticsearchProcessor(BaseProcessor):
 
         return date
 
-    def process_normalized_v1(self, raw_doc, normalized):
+    def process_normalized_v1(self, raw_doc, normalized, date):
         index = 'share_v1'
         transformer = PreserveOldSchema()
         data = transformer.transform(normalized.attributes)
+        data['providerUpdatedDateTime'] = date
         es.index(
             body=data,
             refresh=True,
