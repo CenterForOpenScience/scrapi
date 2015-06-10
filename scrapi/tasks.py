@@ -136,9 +136,9 @@ def migrate(migration, sources=tuple(), async=False, dry=True, **kwargs):
         count += 1
 
         if async:
-            migration.s(doc, dry=dry, **kwargs).apply_async()
+            migration.s(doc, sources=sources, dry=dry, **kwargs).apply_async()
         else:
-            migration(doc, dry=dry, **kwargs)
+            migration(doc, sources=sources, dry=dry, **kwargs)
 
     if dry:
         logger.info('Dry run complete')
