@@ -31,7 +31,7 @@ def rename(doc, target=None, **kwargs):
 
     if not kwargs.get('dry'):
         tasks.process_raw(raw)
-        tasks.m(tasks.normalize(raw, raw['source']), raw)
+        tasks.process_normalized(tasks.normalize(raw, raw['source']), raw)
         logger.info('Processed document from {} with id {}'.format(doc.source, raw['docID']))
 
         es.delete(index=settings.ELASTIC_INDEX, doc_type=doc.source, id=raw['docID'], ignore=[404])
