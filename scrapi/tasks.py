@@ -131,17 +131,17 @@ def process_normalized(normalized_doc, raw_doc, **kwargs):
 
 
 @app.task
-def migrate(migration, **kwargs):
+def migrate(migration, sources=tuple(), async=False, dry=True, **kwargs):
     count = 0
-    for doc in documents(kwargs.get('source')):
+    for doc in documents(*sources):
         count += 1
 
-        if kwargs.get('async'):
-            migration.s(doc, **kwargs).apply_async()
+        if async:
+            migration.s(doc, dry=dry, **kwargs).apply_async()
         else:
-            migration(doc, **kwargs)
+            migration(doc, dry=dry, **kwargs)
 
-    if kwargs.get('dry'):
+    if dry:
         logger.info('Dry run complete')
 
     logger.info('{} documents processed for migration {}'.format(count, str(migration)))
