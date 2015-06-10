@@ -72,12 +72,6 @@ def migrate(migration, kwargs_string, dry=True, async=False):
 
 
 @task
-def delete(source):
-    from scripts.delete import delete_by_source
-    delete_by_source(source)
-
-
-@task
 def reset_search():
     run("curl -XPOST 'http://localhost:9200/_shutdown'")
     if platform.linux_distribution()[0] == 'Ubuntu':
