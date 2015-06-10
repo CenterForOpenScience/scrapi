@@ -30,12 +30,6 @@ def alias(alias, index):
 
 
 @task
-def renormalize(sources=None):
-    from scripts.renormalize import renormalize
-    renormalize(sources.split(',') if sources else [])
-
-
-@task
 def migrate(migration, sources=None, kwargs_string=None, dry=True, async=False):
     ''' Task to run a migration.
 
