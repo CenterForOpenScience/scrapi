@@ -7,6 +7,8 @@ from scrapi.linter.document import NormalizedDocument
 
 from scrapi import tasks
 
+import tasks as invoke_tasks
+
 from scrapi import registry
 from scrapi.migrations import delete
 from scrapi.migrations import rename
@@ -52,7 +54,7 @@ def test_rename():
 
     registry['wwe_news'] = test_info
 
-    tasks.migrate(rename, source=old_source, target='wwe_news')
+    tasks.migrate(rename, sources=[old_source], target='wwe_news', dry=False)
 
     queryset = DocumentModel.objects(docID=RAW['docID'], source='wwe_news')
     assert(queryset[0].source == 'wwe_news')
@@ -70,7 +72,7 @@ def test_delete():
     queryset = DocumentModel.objects(docID=RAW['docID'], source=RAW['source'])
     assert(len(queryset) == 1)
 
-    tasks.migrate(delete, source=RAW['source'])
+    tasks.migrate(delete, sources=RAW['source'], dry=False)
     queryset = DocumentModel.objects(docID=RAW['docID'], source=RAW['source'])
     assert(len(queryset) == 0)
     scrapi.processing.elasticsearch.es = real_es
