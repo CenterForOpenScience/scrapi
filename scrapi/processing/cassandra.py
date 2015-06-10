@@ -82,6 +82,48 @@ class DocumentModel(models.Model):
     a list of version IDs that refer to previous versions of this
     metadata.
     '''
+    __table_name__ = 'documents_source_partitioned'
+
+    # Raw
+    source = columns.Text(primary_key=True, partition_key=True)
+    docID = columns.Text(primary_key=True, index=True, clustering_order='ASC')
+
+    doc = columns.Bytes()
+    filetype = columns.Text()
+    timestamps = columns.Map(columns.Text, columns.Text)
+
+    # Normalized
+    uris = columns.Text()
+    title = columns.Text()
+    contributors = columns.Text()  # TODO
+    providerUpdatedDateTime = columns.DateTime()
+
+    description = columns.Text()
+    freeToRead = columns.Text()  # TODO
+    languages = columns.List(columns.Text())
+    licenses = columns.Text()  # TODO
+    publisher = columns.Text()  # TODO
+    subjects = columns.List(columns.Text())
+    tags = columns.List(columns.Text())
+    sponsorships = columns.Text()  # TODO
+    version = columns.Text()  # TODO
+    otherProperties = columns.Text()  # TODO
+    shareProperties = columns.Text()  # TODO
+
+    # Additional metadata
+    versions = columns.List(columns.UUID)
+
+
+@database.register_model
+class DocumentModelOld(models.Model):
+    '''
+    Defines the schema for a metadata document in cassandra
+
+    The schema contains denormalized raw document, denormalized
+    normalized (so sorry for the terminology clash) document, and
+    a list of version IDs that refer to previous versions of this
+    metadata.
+    '''
     __table_name__ = 'documents'
 
     # Raw
