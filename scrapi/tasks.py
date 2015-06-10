@@ -12,8 +12,7 @@ from scrapi import registry
 from scrapi import processing
 from scrapi.util import timestamp
 
-from scripts.util import documents
-
+from scrapi.migrations import documents
 
 app = Celery()
 app.config_from_object(settings)
