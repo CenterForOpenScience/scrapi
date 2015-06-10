@@ -72,7 +72,7 @@ def test_delete():
     queryset = DocumentModel.objects(docID=RAW['docID'], source=RAW['source'])
     assert(len(queryset) == 1)
 
-    tasks.migrate(delete, sources=RAW['source'], dry=False)
+    tasks.migrate(delete, sources=[RAW['source']], dry=False)
     queryset = DocumentModel.objects(docID=RAW['docID'], source=RAW['source'])
     assert(len(queryset) == 0)
     scrapi.processing.elasticsearch.es = real_es
