@@ -36,7 +36,7 @@ def renormalize(sources=None):
 
 
 @task
-def migrate(migration, kwargs_string, dry=True, async=False):
+def migrate(migration, sources=None, kwargs_string=None, dry=True, async=False):
     ''' Task to run a migration.
 
     :param migration: The migration function to run. This is passed in
@@ -52,19 +52,33 @@ def migrate(migration, kwargs_string, dry=True, async=False):
     by commas.
     :type kwarg_string: str
 
-    An example of usage renaming mit to mit 2 would be:
-        inv migrate rename 'source: mit, target:mit2' --no-dry --no-async
+    An example of usage renaming mit to mit 2 as a real run would be:
+        inv migrate rename -s mit -k 'target:mit2' --no-dry
+    An example of calling renormalize on two sources as an async dry run:
+        inv migrate renormalize -s 'mit,asu' -a
     '''
+    kwargs_string = kwargs_string or ':'
+    sources = sources or ''
 
     from scrapi import migrations
     from scrapi.tasks import migrate
 
-    kwargs = {
-        key.strip(): val.strip() for key, val in map(lambda x: x.split(':'), kwargs_string.split(','))
-    }
+    kwargs = {}
+    for key, val in map(lambda x: x.split(':'), kwargs_string.split(',')):
+        key, val = key.strip(), val.strip()
+        if key not in kwargs.keys():
+            kwargs[key] = val
+        elif isinstance(kwargs[key], list):
+            kwargs[key].append(val)
+        else:
+            kwargs[key] = [kwargs[key], val]
 
     kwargs['dry'] = dry
     kwargs['async'] = async
+    kwargs['sources'] = map(lambda x: x.strip(), sources.split(','))
+
+    if kwargs['sources'] == ['']:
+        kwargs.pop('sources')
 
     migrate_func = migrations.__dict__[migration]
 
