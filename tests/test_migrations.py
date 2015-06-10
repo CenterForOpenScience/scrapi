@@ -14,7 +14,6 @@ from scrapi.migrations import rename
 # Need to force cassandra to ignore set keyspace
 from scrapi.processing.cassandra import CassandraProcessor, DocumentModel
 
-
 from . import utils
 
 test_cass = CassandraProcessor()
