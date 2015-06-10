@@ -41,7 +41,7 @@ def rename(doc, target=None, **kwargs):
 
 
 @tasks.task_autoretry(default_retry_delay=1, max_retries=1)
-def renormalize(doc, source=None, **kwargs):
+def renormalize(doc, **kwargs):
     raw = RawDocument({
         'doc': doc.doc,
         'docID': doc.docID,
@@ -55,13 +55,13 @@ def renormalize(doc, source=None, **kwargs):
 
 
 @tasks.task_autoretry(default_retry_delay=30, max_retries=5)
-def delete(doc, source=None, **kwargs):
-    assert source, "To run this migration you need a source."
+def delete(doc, sources=None, **kwargs):
+    assert sources, "To run this migration you need a source."
     doc.timeout(5).delete()
-    es.delete(index=settings.ELASTIC_INDEX, doc_type=source, id=doc.docID, ignore=[404])
-    es.delete(index='share_v1', doc_type=source, id=doc.docID, ignore=[404])
+    es.delete(index=settings.ELASTIC_INDEX, doc_type=sources, id=doc.docID, ignore=[404])
+    es.delete(index='share_v1', doc_type=sources, id=doc.docID, ignore=[404])
 
-    logger.info('Deleted document from {} with id {}'.format(source, doc.docID))
+    logger.info('Deleted document from {} with id {}'.format(sources, doc.docID))
 
 
 def ModelIteratorFactory(model, next_page, default_args=None):
