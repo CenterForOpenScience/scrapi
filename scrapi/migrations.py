@@ -36,7 +36,6 @@ def rename(doc, target=None, **kwargs):
 
 @tasks.task_autoretry(default_retry_delay=1, max_retries=1)
 def renormalize(doc, source=None, **kwargs):
-    logger.info(doc.doc)
     raw = RawDocument({
         'doc': doc.doc,
         'docID': doc.docID,
