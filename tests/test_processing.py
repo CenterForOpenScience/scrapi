@@ -2,14 +2,21 @@ import mock
 import pytest
 
 from scrapi import settings
-
-settings.DEBUG = False
-settings.RAW_PROCESSING = ['storage', 'osf', 'foo', 'bar']
-settings.NORMALIZED_PROCESSING = ['storage', 'osf', 'foo', 'bar']
-
 from scrapi import processing
 
 BLACKHOLE = lambda *_, **__: None
+
+
+def patch_processing():
+    settings.DEBUG = False
+    settings.RAW_PROCESSING = ['storage', 'osf', 'foo', 'bar']
+    settings.NORMALIZED_PROCESSING = ['storage', 'osf', 'foo', 'bar']
+
+
+def unpatch_processing():
+    settings.DEBUG = True
+    settings.RAW_PROCESSING = ['cassandra']
+    settings.NORMALIZED_PROCESSING = ['cassandra', 'elasticsearch']
 
 
 @pytest.fixture
@@ -40,17 +47,21 @@ def test_raw_calls_all(get_processor):
 
 
 def test_normalized_calls_all_throwing(get_processor):
+    patch_processing()
     get_processor.side_effect = raise_exception
 
     with pytest.raises(Exception):
         processing.process_normalized(mock.MagicMock(), mock.MagicMock(), {})
+    unpatch_processing()
 
 
 def test_raw_calls_all_throwing(get_processor):
+    patch_processing()
     get_processor.side_effect = raise_exception
 
     with pytest.raises(Exception):
         processing.process_raw(mock.MagicMock(), {})
+    unpatch_processing()
 
 
 def test_raises_on_bad_processor():

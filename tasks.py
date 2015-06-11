@@ -30,21 +30,59 @@ def alias(alias, index):
 
 
 @task
-def renormalize(sources=None):
-    from scripts.renormalize import renormalize
-    renormalize(sources.split(',') if sources else [])
+def migrate(migration, sources=None, kwargs_string=None, dry=True, async=False):
+    ''' Task to run a migration.
+
+    :param migration: The migration function to run. This is passed in
+    as a string then interpreted as a function by the invoke task.
+    :type migration: str
+
+    :param kwargs_string: parsed into an optional set of keyword
+    arguments, so that the invoke migrate task can accept a variable
+    number of arguments for each migration.
+    The kwargs_string should be in the following format:
+        'key:value, key2:value2'
+    ...with the keys and values seperated by colons, and each kwarg seperated
+    by commas.
+    :type kwarg_string: str
+
+    An example of usage renaming mit to mit 2 as a real run would be:
+        inv migrate rename -s mit -k 'target:mit2' --no-dry
+    An example of calling renormalize on two sources as an async dry run:
+        inv migrate renormalize -s 'mit,asu' -a
+    '''
+    kwargs_string = kwargs_string or ':'
+    sources = sources or ''
+
+    from scrapi import migrations
+    from scrapi.tasks import migrate
+
+    kwargs = {}
+    for key, val in map(lambda x: x.split(':'), kwargs_string.split(',')):
+        key, val = key.strip(), val.strip()
+        if key not in kwargs.keys():
+            kwargs[key] = val
+        elif isinstance(kwargs[key], list):
+            kwargs[key].append(val)
+        else:
+            kwargs[key] = [kwargs[key], val]
+
+    kwargs['dry'] = dry
+    kwargs['async'] = async
+    kwargs['sources'] = map(lambda x: x.strip(), sources.split(','))
+
+    if kwargs['sources'] == ['']:
+        kwargs.pop('sources')
+
+    migrate_func = migrations.__dict__[migration]
+
+    migrate(migrate_func, **kwargs)
 
 
 @task
-def rename(source, target, dry=True):
-    from scripts.rename import rename
-    rename(source, target, dry)
-
-
-@task
-def delete(source):
-    from scripts.delete import delete_by_source
-    delete_by_source(source)
+def migrate_to_source_partition(dry=True, async=False):
+    from scrapi.tasks import migrate_to_source_partition
+    migrate_to_source_partition()
 
 
 @task

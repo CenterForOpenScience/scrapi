@@ -1,7 +1,7 @@
 import logging
+import functools
 from datetime import date, timedelta
 
-import requests
 from celery import Celery
 
 from scrapi import util
@@ -12,7 +12,6 @@ from scrapi import registry
 from scrapi import processing
 from scrapi.util import timestamp
 
-
 app = Celery()
 app.config_from_object(settings)
 
@@ -20,7 +19,21 @@ database.setup()
 logger = logging.getLogger(__name__)
 
 
-@app.task(default_retry_delay=300, max_retries=5)
+def task_autoretry(*args_task, **kwargs_task):
+    def actual_decorator(func):
+        @app.task(*args_task, **kwargs_task)
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            try:
+                func(*args, **kwargs)
+            except kwargs_task.get('autoretry_on', Exception) as exc:
+                logger.info('Retrying with exception {}'.format(exc))
+                wrapper.retry(exc=exc)
+        return wrapper
+    return actual_decorator
+
+
+@app.task
 @events.creates_task(events.HARVESTER_RUN)
 def run_harvester(harvester_name, start_date=None, end_date=None):
     logger.info('Running harvester "{}"'.format(harvester_name))
@@ -35,7 +48,7 @@ def run_harvester(harvester_name, start_date=None, end_date=None):
     (start_harvest | normalization).apply_async()
 
 
-@app.task(default_retry_delay=300, max_retries=5)
+@app.task
 @events.logged(events.HARVESTER_RUN)
 def harvest(harvester_name, job_created, start_date=None, end_date=None):
     harvest_started = timestamp()
@@ -56,7 +69,7 @@ def harvest(harvester_name, job_created, start_date=None, end_date=None):
     }
 
 
-@app.task(default_retry_delay=300, max_retries=5)
+@app.task
 def begin_normalization((raw_docs, timestamps), harvester_name):
     '''harvest_ret is harvest return value:
         a tuple contaiing list of rawDocuments and
@@ -72,21 +85,21 @@ def begin_normalization((raw_docs, timestamps), harvester_name):
 @events.creates_task(events.PROCESSING)
 @events.creates_task(events.NORMALIZATION)
 def spawn_tasks(raw, timestamps, harvester_name):
-        raw['timestamps'] = timestamps
-        raw['timestamps']['normalizeTaskCreated'] = timestamp()
-        chain = (normalize.si(raw, harvester_name) | process_normalized.s(raw))
+    raw['timestamps'] = timestamps
+    raw['timestamps']['normalizeTaskCreated'] = timestamp()
+    chain = (normalize.si(raw, harvester_name) | process_normalized.s(raw))
 
-        chain.apply_async()
-        process_raw.delay(raw)
+    chain.apply_async()
+    process_raw.delay(raw)
 
 
-@app.task(default_retry_delay=300, max_retries=5)
+@app.task
 @events.logged(events.PROCESSING, 'raw')
 def process_raw(raw_doc, **kwargs):
     processing.process_raw(raw_doc, kwargs)
 
 
-@app.task(default_retry_delay=300, max_retries=5)
+@app.task
 @events.logged(events.NORMALIZATION)
 def normalize(raw_doc, harvester_name):
     normalized_started = timestamp()
@@ -102,16 +115,47 @@ def normalize(raw_doc, harvester_name):
     return normalized  # returns a single normalized document
 
 
-@app.task(default_retry_delay=300, max_retries=5)
+@app.task
 @events.logged(events.PROCESSING, 'normalized')
 def process_normalized(normalized_doc, raw_doc, **kwargs):
-    if not normalized_doc:
-        raise events.Skip('Not processing document with id {}'.format(raw_doc['docID']))
-    processing.process_normalized(raw_doc, normalized_doc, kwargs)
+    try:
+        if not normalized_doc:
+            raise events.Skip('Not processing document with id {}'.format(raw_doc['docID']))
+        processing.process_normalized(raw_doc, normalized_doc, kwargs)
+    except Exception as e:
+        logger.info('Retrying withiin PROCESS NORMALIZED with exception {}'.format(e))
+        process_normalized.retry(exc=e)
 
 
-@app.task(default_retry_delay=300, max_retries=5)
-def update_pubsubhubbub():
-    payload = {'hub.mode': 'publish', 'hub.url': '{url}rss/'.format(url=settings.OSF_APP_URL)}
-    headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-    return requests.post('https://pubsubhubbub.appspot.com', headers=headers, params=payload)
+@app.task
+def migrate(migration, sources=tuple(), async=False, dry=True, **kwargs):
+    from scrapi.migrations import documents
+
+    count = 0
+    for doc in documents(*sources):
+        count += 1
+
+        if async:
+            migration.s(doc, sources=sources, dry=dry, **kwargs).apply_async()
+        else:
+            migration(doc, sources=sources, dry=dry, **kwargs)
+
+    if dry:
+        logger.info('Dry run complete')
+
+    logger.info('{} documents processed for migration {}'.format(count, str(migration)))
+
+
+@app.task
+def migrate_to_source_partition(dry=True, async=False):
+    from scrapi import migrations
+    count = 0
+    for doc in migrations.documents_old():
+        count += 1
+        if async:
+            migrations.document_v2_migration.s(doc, dry=dry).apply_async()
+        else:
+            migrations.document_v2_migration(doc, dry=dry)
+    if dry:
+        logger.info('Dry run complete')
+    logger.info('{} documents processed for migration {}'.format(count, str(migrations.document_v2_migration)))
