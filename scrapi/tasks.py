@@ -144,3 +144,18 @@ def migrate(migration, sources=tuple(), async=False, dry=True, **kwargs):
         logger.info('Dry run complete')
 
     logger.info('{} documents processed for migration {}'.format(count, str(migration)))
+
+
+@app.task
+def migrate_to_source_partition(dry=True, async=False):
+    from scrapi import migrations
+    count = 0
+    for doc in migrations.documents_old():
+        count += 1
+        if async:
+            migrations.document_v2_migration.s(doc, dry=dry).apply_async()
+        else:
+            migrations.document_v2_migration(doc, dry=dry)
+    if dry:
+        logger.info('Dry run complete')
+    logger.info('{} documents processed for migration {}'.format(count, str(migrations.document_v2_migration)))
