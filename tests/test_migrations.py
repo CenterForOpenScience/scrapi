@@ -10,6 +10,8 @@ from scrapi import registry
 from scrapi.migrations import delete
 from scrapi.migrations import rename
 from scrapi.migrations import renormalize
+from scrapi.migrations import DocumentModelOld
+from scrapi.migrations import document_v2_migration
 
 # Need to force cassandra to ignore set keyspace
 from scrapi.processing.cassandra import CassandraProcessor, DocumentModel
@@ -88,3 +90,13 @@ def test_renormalize():
     queryset = DocumentModel.objects(docID=RAW['docID'], source=RAW['source'])
     assert(len(queryset) == 1)
     scrapi.processing.elasticsearch.es = real_es
+
+
+@pytest.mark.cassandra
+def test_migrate_v2():
+    DocumentModelOld.create(**RAW.attributes).save()
+    queryset = DocumentModel.objects(docID=RAW['docID'], source=RAW['source'])
+    assert(len(queryset) == 0)
+    tasks.migrate_to_source_partition(dry=False)
+    queryset = DocumentModel.objects(docID=RAW['docID'], source=RAW['source'])
+    assert(len(queryset) == 1)
