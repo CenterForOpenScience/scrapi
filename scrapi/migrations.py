@@ -16,7 +16,7 @@ logger = logging.getLogger()
 
 @tasks.task_autoretry(default_retry_delay=30, max_retries=5)
 def rename(doc, target=None, **kwargs):
-    assert target, "To run this migration you need both a source and a target"
+    assert target, "To run this migration you need a target."
 
     raw = RawDocument({
         'doc': doc.doc,
@@ -27,7 +27,7 @@ def rename(doc, target=None, **kwargs):
         'versions': doc.versions
     })
 
-    assert doc.source != target, "Can't rename {} to {}, names are the same".format(doc.source, target)
+    assert doc.source != target, "Can't rename {} to {}, names are the same.".format(doc.source, target)
 
     if not kwargs.get('dry'):
         tasks.process_raw(raw)
