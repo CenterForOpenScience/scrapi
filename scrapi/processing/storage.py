@@ -23,11 +23,7 @@ class StorageProcessor(BaseProcessor):
 
         new_attrs = copy.deepcopy(raw.attributes)
         if new_attrs.get('versions'):
-
-            if isinstance(new_attrs['versions'], list):
-                new_attrs['versions'] = map(str, new_attrs['versions'])
-            else:
-                new_attrs['verisons'] = str(new_attrs['versions'])
+            new_attrs['versions'] = map(str, new_attrs['versions'])
 
         with open(filename, 'w') as f:
             f.write(json.dumps(new_attrs, indent=4))
