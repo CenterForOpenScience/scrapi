@@ -6,10 +6,8 @@ import scrapi
 from scrapi.linter.document import NormalizedDocument
 
 from scrapi import tasks
-
-import tasks as invoke_tasks
-
 from scrapi import registry
+from scrapi import settings
 from scrapi.migrations import delete
 from scrapi.migrations import rename
 from scrapi.migrations import renormalize
@@ -22,6 +20,9 @@ from . import utils
 test_cass = CassandraProcessor()
 
 harvester = utils.TestHarvester()
+
+settings.RAW_PROCESSING = ['cassandra']
+settings.NORMALIZED_PROCESSING = ['cassadra', 'elasticsearch']
 
 NORMALIZED = NormalizedDocument(utils.RECORD)
 RAW = harvester.harvest()[0]
