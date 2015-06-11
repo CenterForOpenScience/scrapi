@@ -7,7 +7,6 @@ from scrapi.linter.document import NormalizedDocument
 
 from scrapi import tasks
 from scrapi import registry
-from scrapi import settings
 from scrapi.migrations import delete
 from scrapi.migrations import rename
 from scrapi.migrations import renormalize
@@ -19,13 +18,10 @@ from . import utils
 
 test_cass = CassandraProcessor()
 
-harvester = utils.TestHarvester()
-
-settings.RAW_PROCESSING = ['cassandra']
-settings.NORMALIZED_PROCESSING = ['cassadra', 'elasticsearch']
+test_harvester = utils.TestHarvester()
 
 NORMALIZED = NormalizedDocument(utils.RECORD)
-RAW = harvester.harvest()[0]
+RAW = test_harvester.harvest()[0]
 
 
 @pytest.fixture
@@ -49,11 +45,10 @@ def test_rename():
     new_record = copy.deepcopy(utils.RECORD)
 
     new_record['shareProperties']['source'] = 'wwe_news'
-    test_info = registry['test'].__class__()
 
-    test_info.short_name = 'wwe_news'
+    test_harvester.short_name = 'wwe_news'
 
-    registry['wwe_news'] = test_info
+    registry['wwe_news'] = test_harvester
 
     tasks.migrate(rename, sources=[old_source], target='wwe_news', dry=False)
 
