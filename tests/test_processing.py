@@ -2,11 +2,6 @@ import mock
 import pytest
 
 from scrapi import settings
-
-# settings.DEBUG = False
-# settings.RAW_PROCESSING = ['storage', 'osf', 'foo', 'bar']
-# settings.NORMALIZED_PROCESSING = ['storage', 'osf', 'foo', 'bar']
-
 from scrapi import processing
 
 BLACKHOLE = lambda *_, **__: None
