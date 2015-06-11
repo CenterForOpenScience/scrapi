@@ -64,6 +64,11 @@ def delete(doc, sources=None, **kwargs):
     logger.info('Deleted document from {} with id {}'.format(sources, doc.docID))
 
 
+@tasks.task_autoretry(default_retry_delay=30, max_retries=5)
+def document_v2_migration(doc):
+    DocumentModel.create(**dict(doc)).save()
+
+
 def ModelIteratorFactory(model, next_page, default_args=None):
     def model_iterator(*sources):
         sources = sources or default_args
