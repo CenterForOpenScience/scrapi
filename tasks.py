@@ -80,6 +80,12 @@ def migrate(migration, sources=None, kwargs_string=None, dry=True, async=False):
 
 
 @task
+def migrate_to_source_partition(dry=True, async=False):
+    from scrapi.tasks import migrate_to_source_partition
+    migrate_to_source_partition()
+
+
+@task
 def reset_search():
     run("curl -XPOST 'http://localhost:9200/_shutdown'")
     if platform.linux_distribution()[0] == 'Ubuntu':
