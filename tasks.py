@@ -82,7 +82,7 @@ def migrate(migration, sources=None, kwargs_string=None, dry=True, async=False):
 @task
 def migrate_to_source_partition(dry=True, async=False):
     from scrapi.tasks import migrate_to_source_partition
-    migrate_to_source_partition()
+    migrate_to_source_partition(dry=dry, async=async)
 
 
 @task
