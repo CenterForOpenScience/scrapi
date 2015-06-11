@@ -12,8 +12,6 @@ from scrapi import registry
 from scrapi import processing
 from scrapi.util import timestamp
 
-from scripts.util import documents
-
 app = Celery()
 app.config_from_object(settings)
 
@@ -131,6 +129,8 @@ def process_normalized(normalized_doc, raw_doc, **kwargs):
 
 @app.task
 def migrate(migration, sources=tuple(), async=False, dry=True, **kwargs):
+    from scrapi.migrations import documents
+
     count = 0
     for doc in documents(*sources):
         count += 1
