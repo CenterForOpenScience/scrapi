@@ -1,8 +1,8 @@
 from __future__ import unicode_literals
 
 from scrapi.base import XMLHarvester
-from scrapi.linter.document import RawDocument
 from scrapi.base.schemas import DOESCHEMA
+from scrapi.linter.document import RawDocument
 from scrapi.base.helpers import updated_schema, build_properties, single_result
 
 
