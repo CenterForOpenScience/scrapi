@@ -65,8 +65,9 @@ def delete(doc, sources=None, **kwargs):
 
 
 @tasks.task_autoretry(default_retry_delay=30, max_retries=5)
-def document_v2_migration(doc):
-    DocumentModel.create(**dict(doc)).save()
+def document_v2_migration(doc, dry=True):
+    if not dry:
+        DocumentModel.create(**dict(doc)).save()
 
 
 def ModelIteratorFactory(model, next_page, default_args=None):
