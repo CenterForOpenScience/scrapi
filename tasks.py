@@ -1,11 +1,13 @@
 import logging
 import platform
+from datetime import date, timedelta
 
 import urllib
 from invoke import run, task
 from elasticsearch import helpers
 
 import scrapi.harvesters  # noqa
+from dateutil.parser import parse
 from scrapi import linter
 from scrapi import registry
 from scrapi import settings
@@ -13,11 +15,6 @@ from scrapi import settings
 from scrapi.processing.elasticsearch import es
 
 logger = logging.getLogger()
-
-
-@task
-def server():
-    run("python server.py")
 
 
 @task
@@ -33,21 +30,59 @@ def alias(alias, index):
 
 
 @task
-def renormalize(sources=None):
-    from scripts.renormalize import renormalize
-    renormalize(sources.split(',') if sources else [])
+def migrate(migration, sources=None, kwargs_string=None, dry=True, async=False):
+    ''' Task to run a migration.
+
+    :param migration: The migration function to run. This is passed in
+    as a string then interpreted as a function by the invoke task.
+    :type migration: str
+
+    :param kwargs_string: parsed into an optional set of keyword
+    arguments, so that the invoke migrate task can accept a variable
+    number of arguments for each migration.
+    The kwargs_string should be in the following format:
+        'key:value, key2:value2'
+    ...with the keys and values seperated by colons, and each kwarg seperated
+    by commas.
+    :type kwarg_string: str
+
+    An example of usage renaming mit to mit 2 as a real run would be:
+        inv migrate rename -s mit -k 'target:mit2' --no-dry
+    An example of calling renormalize on two sources as an async dry run:
+        inv migrate renormalize -s 'mit,asu' -a
+    '''
+    kwargs_string = kwargs_string or ':'
+    sources = sources or ''
+
+    from scrapi import migrations
+    from scrapi.tasks import migrate
+
+    kwargs = {}
+    for key, val in map(lambda x: x.split(':'), kwargs_string.split(',')):
+        key, val = key.strip(), val.strip()
+        if key not in kwargs.keys():
+            kwargs[key] = val
+        elif isinstance(kwargs[key], list):
+            kwargs[key].append(val)
+        else:
+            kwargs[key] = [kwargs[key], val]
+
+    kwargs['dry'] = dry
+    kwargs['async'] = async
+    kwargs['sources'] = map(lambda x: x.strip(), sources.split(','))
+
+    if kwargs['sources'] == ['']:
+        kwargs.pop('sources')
+
+    migrate_func = migrations.__dict__[migration]
+
+    migrate(migrate_func, **kwargs)
 
 
 @task
-def rename(source, target, dry=True):
-    from scripts.rename import rename
-    rename(source, target, dry)
-
-
-@task
-def delete(source):
-    from scripts.delete import delete_by_source
-    delete_by_source(source)
+def migrate_to_source_partition(dry=True, async=False):
+    from scrapi.tasks import migrate_to_source_partition
+    migrate_to_source_partition(dry=dry, async=async)
 
 
 @task
@@ -75,13 +110,15 @@ def elasticsearch():
 
 
 @task
-def test(cov=True, verbose=False):
+def test(cov=True, verbose=False, debug=False):
     """
     Runs all tests in the 'tests/' directory
     """
     cmd = 'py.test tests'
     if verbose:
         cmd += ' -v'
+    if debug:
+        cmd += ' -s'
     if cov:
         cmd += ' --cov-report term-missing --cov-config .coveragerc --cov scrapi'
 
@@ -107,25 +144,31 @@ def worker():
 
 
 @task
-def harvester(harvester_name, async=False, days=1):
+def harvester(harvester_name, async=False, start=None, end=None):
     settings.CELERY_ALWAYS_EAGER = not async
     from scrapi.tasks import run_harvester
 
     if not registry.get(harvester_name):
         raise ValueError('No such harvesters {}'.format(harvester_name))
 
-    run_harvester.delay(harvester_name, days_back=days)
+    start = parse(start).date() if start else date.today() - timedelta(settings.DAYS_BACK)
+    end = parse(end).date() if end else date.today()
+
+    run_harvester.delay(harvester_name, start_date=start, end_date=end)
 
 
 @task
-def harvesters(async=False, days=1):
+def harvesters(async=False, start=None, end=None):
     settings.CELERY_ALWAYS_EAGER = not async
     from scrapi.tasks import run_harvester
+
+    start = parse(start).date() if start else date.today() - timedelta(settings.DAYS_BACK)
+    end = parse(end).date() if end else date.today()
 
     exceptions = []
     for harvester_name in registry.keys():
         try:
-            run_harvester.delay(harvester_name, days_back=days)
+            run_harvester.delay(harvester_name, start_date=start, end_date=end)
         except Exception as e:
             logger.exception(e)
             exceptions.append(e)
@@ -133,18 +176,6 @@ def harvesters(async=False, days=1):
     logger.info("\n\nNumber of exceptions: {}".format(len(exceptions)))
     for exception in exceptions:
         logger.exception(e)
-
-
-@task
-def check_archive(harvester=None, reprocess=False, async=False, days=None):
-    settings.CELERY_ALWAYS_EAGER = not async
-
-    if harvester:
-        from scrapi.tasks import check_archive as check
-        check.delay(harvester, reprocess, days_back=int(days))
-    else:
-        from scrapi.tasks import check_archives
-        check_archives.delay(reprocess, days_back=int(days))
 
 
 @task

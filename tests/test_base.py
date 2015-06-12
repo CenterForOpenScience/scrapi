@@ -51,7 +51,7 @@ class TestHarvesterMeta(object):
     def test_raises_key_error(self, mock_registry):
         with pytest.raises(KeyError) as e:
             mock_registry['FabianVF']
-        assert e.value.message == 'No harvester named "FabianVF"'
+        assert 'No harvester named "FabianVF"' in str(e.value)
 
 
 class TestHarvesterBase(object):
@@ -68,7 +68,7 @@ class TestHarvesterBase(object):
 
             TestHarvester()
 
-        assert e.value.message == self.ERR_MSG.format('short_name')
+        assert self.ERR_MSG.format('short_name') in str(e.value)
 
     def test_requires_long_name(self):
         with pytest.raises(TypeError) as e:
@@ -81,7 +81,7 @@ class TestHarvesterBase(object):
 
             TestHarvester()
 
-        assert e.value.message == self.ERR_MSG.format('long_name')
+        assert self.ERR_MSG.format('long_name') in str(e.value)
 
     def test_requires_url(self):
         with pytest.raises(TypeError) as e:
@@ -94,7 +94,7 @@ class TestHarvesterBase(object):
 
             TestHarvester()
 
-        assert e.value.message == self.ERR_MSG.format('url')
+        assert self.ERR_MSG.format('url') in str(e.value)
 
     def test_requires_file_format(self):
         with pytest.raises(TypeError) as e:
@@ -107,7 +107,7 @@ class TestHarvesterBase(object):
 
             TestHarvester()
 
-        assert e.value.message == self.ERR_MSG.format('file_format')
+        assert self.ERR_MSG.format('file_format') in str(e.value)
 
     def test_requires_harvest(self):
         with pytest.raises(TypeError) as e:
@@ -120,7 +120,7 @@ class TestHarvesterBase(object):
 
             TestHarvester()
 
-        assert e.value.message == self.ERR_MSG.format('harvest')
+        assert self.ERR_MSG.format('harvest') in str(e.value)
 
     def test_requires_normalize(self):
         with pytest.raises(TypeError) as e:
@@ -133,4 +133,4 @@ class TestHarvesterBase(object):
 
             TestHarvester()
 
-        assert e.value.message == self.ERR_MSG.format('normalize')
+        assert self.ERR_MSG.format('normalize') in str(e.value)

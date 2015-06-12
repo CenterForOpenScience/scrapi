@@ -1,8 +1,10 @@
 from __future__ import unicode_literals
 
-from scrapi.base.helpers import updated_schema
+from scrapi.base import XMLHarvester
 from scrapi.base.schemas import DOESCHEMA
+from scrapi.linter.document import RawDocument
 from scrapi.base.helpers import updated_schema, build_properties, single_result
+
 
 RAW_DOC = {
     'doc': str('{}'),
@@ -13,13 +15,13 @@ RAW_DOC = {
         'harvestTaskCreated': '2012-11-30T17:05:48+00:00'
     },
     'filetype': 'json',
-    'source': 'crossref'
+    'source': 'test'
 }
 
 NORMALIZED_DOC = {
     'title': 'No',
     'contributors': [{'name': ''}],
-    'source': 'crossref',
+    'source': 'test',
     'providerUpdatedDateTime': '2014-04-04T00:00:00',
     'uris': {
         'canonicalUri': 'http://example.com/direct'
@@ -45,7 +47,7 @@ RECORD = {
         'name': 'figures',
         'properties': {
             'figures': 'http://www.plosone.org/article/image.png',
-            }
+        }
         }, {
         'name': 'type',
         'properties': {
@@ -59,7 +61,7 @@ RECORD = {
             isotope analysis.',
     'providerUpdatedDateTime': '2015-02-23T00:00:00',
     'shareProperties': {
-        'source': 'crossref'
+        'source': 'test'
     }
 }
 
@@ -183,3 +185,19 @@ TEST_OAI_DOC = '''
     </ListRecords>
     </OAI-PMH>
 '''
+
+
+class TestHarvester(XMLHarvester):
+    long_name = 'TEST'
+    short_name = 'test'
+    url = 'TEST'
+    schema = TEST_SCHEMA
+    namespaces = TEST_NAMESPACES
+
+    def harvest(self, days_back=1):
+        return [RawDocument({
+            'doc': str(TEST_XML_DOC),
+            'source': 'test',
+            'filetype': 'XML',
+            'docID': "1"
+        }) for _ in xrange(days_back)]

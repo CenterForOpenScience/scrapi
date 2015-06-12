@@ -1,7 +1,12 @@
 scrapi
 ======
 
-[![Build Status](https://travis-ci.org/fabianvf/scrapi.svg?branch=develop)](https://travis-ci.org/fabianvf/scrapi)
+```master``` build status: [![Build Status](https://travis-ci.org/fabianvf/scrapi.svg?branch=master)](https://travis-ci.org/fabianvf/scrapi)
+
+
+```develop``` build status: [![Build Status](https://travis-ci.org/fabianvf/scrapi.svg?branch=develop)](https://travis-ci.org/fabianvf/scrapi)
+
+
 [![Coverage Status](https://coveralls.io/repos/fabianvf/scrapi/badge.svg?branch=develop)](https://coveralls.io/r/fabianvf/scrapi?branch=develop)
 [![Code Climate](https://codeclimate.com/github/fabianvf/scrapi/badges/gpa.svg)](https://codeclimate.com/github/fabianvf/scrapi)
 
@@ -63,7 +68,7 @@ $ brew install elasticsearch
 4. Install the package.
    ```bash
    $ sudo apt-get update
-   $ sudo apt-get install dsc20=2.0.11-1 cassandra=2.0.11
+   $ sudo apt-get install cassandra
    ```
 
 ##### Install ElasticSearch
@@ -180,6 +185,14 @@ Invove a harvester a certain number of days back with the ```--days``` argument.
 
 ```bash
 $ invoke harvester harvester-name --days=5
+```
+
+
+###Working with the OSF
+
+-To run on the OSF type
+```bash
+$ inv provider_map 
 ```
 
 ### Testing

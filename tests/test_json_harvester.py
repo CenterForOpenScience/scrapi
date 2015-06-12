@@ -35,7 +35,7 @@ expected = {
     },
     "providerUpdatedDateTime": "2015-02-02T00:00:00",
     "shareProperties": {
-        "source": "crossref"
+        "source": "test"
     },
     "otherProperties": [
         {
@@ -84,9 +84,9 @@ def process_contributor(author, orcid):
 
 
 class TestHarvester(JSONHarvester):
-    short_name = 'crossref'
-    long_name = 'CrossRef'
-    url = 'http://www.crossref.org'
+    short_name = 'test'
+    long_name = 'test'
+    url = 'http://www.test.org'
 
     DEFAULT_ENCODING = 'UTF-8'
 
@@ -142,7 +142,7 @@ class TestHarvester(JSONHarvester):
                 },
                 'trash': ''
             })),
-            'source': 'crossref',
+            'source': 'test',
             'filetype': 'json',
             'docID': '1'
         })]

@@ -2,6 +2,8 @@ import mock
 import pytest
 
 from scrapi import events
+# from scrapi import tasks
+from tests import utils
 
 
 @pytest.fixture(autouse=True)

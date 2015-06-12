@@ -10,8 +10,7 @@ from __future__ import unicode_literals
 import re
 
 import logging
-from datetime import datetime
-from datetime import timedelta
+from datetime import timedelta, date
 
 from lxml import etree
 from dateutil.parser import *
@@ -20,6 +19,7 @@ from xml.etree import ElementTree
 from nameparser import HumanName
 
 from scrapi import requests
+from scrapi import settings
 from scrapi.base import XMLHarvester
 from scrapi.util import copy_to_unicode
 from scrapi.linter.document import RawDocument
@@ -155,8 +155,12 @@ class DataOneHarvester(XMLHarvester):
         'description': ("str[@name='abstract']/node()", single_result)
     }
 
-    def harvest(self, days_back=1):
-        records = self.get_records(days_back)
+    def harvest(self, start_date=None, end_date=None):
+
+        start_date = start_date or date.today() - timedelta(settings.DAYS_BACK)
+        end_date = end_date or date.today()
+
+        records = self.get_records(start_date, end_date)
 
         xml_list = []
         for record in records:
@@ -171,17 +175,12 @@ class DataOneHarvester(XMLHarvester):
 
         return xml_list
 
-    def get_records(self, days_back):
+    def get_records(self, start_date, end_date):
         ''' helper function to get a response from the DataONE
         API, with the specified number of rows.
         Returns an etree element with results '''
-        to_date = datetime.utcnow()
-        from_date = (datetime.utcnow() - timedelta(days=days_back))
 
-        to_date = to_date.replace(hour=0, minute=0, second=0, microsecond=0)
-        from_date = from_date.replace(hour=0, minute=0, second=0, microsecond=0)
-
-        query = 'dateModified:[{}Z TO {}Z]'.format(from_date.isoformat(), to_date.isoformat())
+        query = 'dateModified:[{}T00:00:00Z TO {}T00:00:00Z]'.format(start_date.isoformat(), end_date.isoformat())
         doc = requests.get(DATAONE_SOLR_ENDPOINT, params={
             'q': query,
             'start': 0,

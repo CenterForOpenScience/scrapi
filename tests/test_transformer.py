@@ -2,8 +2,14 @@ from __future__ import unicode_literals
 
 import functools
 
+import mock
+import pytest
+from lxml.etree import XPathEvalError
+from jsonschema.exceptions import ValidationError
+
 from scrapi.base import XMLHarvester
 from scrapi.linter import RawDocument
+from scrapi import base
 from scrapi.base.helpers import updated_schema, pack, build_properties, CONSTANT
 
 from .utils import TEST_SCHEMA, TEST_NAMESPACES, TEST_XML_DOC
@@ -11,7 +17,7 @@ from .utils import TEST_SCHEMA, TEST_NAMESPACES, TEST_XML_DOC
 
 class TestHarvester(XMLHarvester):
     long_name = 'TEST'
-    short_name = 'crossref'
+    short_name = 'test'
     url = 'TEST'
     schema = TEST_SCHEMA
     namespaces = TEST_NAMESPACES
@@ -19,7 +25,7 @@ class TestHarvester(XMLHarvester):
     def harvest(self, days_back=1):
         return [RawDocument({
             'doc': str(TEST_XML_DOC),
-            'source': 'crossref',
+            'source': 'test',
             'filetype': 'XML',
             'docID': "1"
         }) for _ in xrange(days_back)]
@@ -93,3 +99,20 @@ class TestTransformer(object):
         for result in results:
             assert result['otherProperties'][0]['properties']['test'] == 'test'
             assert result['tags'] == ['X']
+
+    def test_failing_transformation_with_raises(self):
+        base.settings.RAISE_IN_TRANSFORMER = True
+
+        self.harvester.schema = updated_schema(TEST_SCHEMA, {'title': 'A completely 1n\/@lid expre55ion'})
+
+        with pytest.raises(XPathEvalError) as e:
+            x = [self.harvester.normalize(record) for record in self.harvester.harvest()]
+
+    def test_failing_transformation_wont_raise(self):
+        base.transformer.logger.setLevel(50)
+        base.settings.RAISE_IN_TRANSFORMER = False
+
+        self.harvester.schema = updated_schema(TEST_SCHEMA, {'title': 'A completely 1n\/@lid expre55ion'})
+
+        with pytest.raises(ValidationError) as e:
+            x = [self.harvester.normalize(record) for record in self.harvester.harvest()]
