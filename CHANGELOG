@@ -2,6 +2,17 @@
 ChangeLog
 *********
 
+0.7.0 (2015-06-12)
+==================
+- Add University of Delaware, Harvard Dash,
+	Data Dryad, and Iowa Research harvesters
+- Update skip logic for shareok
+- Rewrote cassandra models to partition data to make migrations more efficient
+- Added migration script for new models
+- Rewrote migrations to take advantage of celery
+- Added automatic malformed XML recovery
+
+
 0.6.6 (2015-06-08)
 ==================
 - Fixed small bug in dryad where documents without URIs were created
