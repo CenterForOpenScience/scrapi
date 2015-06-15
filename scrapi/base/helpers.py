@@ -115,8 +115,7 @@ def oai_extract_dois(*args):
                 dois.append(doi)
             else:
                 dois.append('http://dx.doi.org/{}'.format(doi))
-            return dois
-    return []
+    return dois
 
 
 def oai_extract_url(identifiers):
