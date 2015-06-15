@@ -6,6 +6,7 @@ from cassandra.cqlengine.query import Token
 from scrapi import tasks
 from scrapi import registry
 from scrapi import settings
+from scrapi.database import setup
 from scrapi.linter import RawDocument
 from scrapi.processing.elasticsearch import es
 from scrapi.processing.cassandra import DocumentModel, DocumentModelOld
@@ -67,7 +68,7 @@ def delete(doc, sources=None, **kwargs):
 @tasks.task_autoretry(default_retry_delay=30, max_retries=5)
 def document_v2_migration(doc, dry=True):
     if not dry:
-        DocumentModel.create(**dict(doc)).save()
+        try_n_times(5, DocumentModel.create, **dict(doc)).save()
 
 
 def ModelIteratorFactory(model, next_page, default_args=None):
@@ -76,11 +77,11 @@ def ModelIteratorFactory(model, next_page, default_args=None):
         q = model.objects.timeout(500).allow_filtering().all().limit(1000)
         querysets = (q.filter(source=source) for source in sources) if sources else [q]
         for query in querysets:
-            page = try_forever(list, query)
+            page = try_n_times(5, list, query)
             while len(page) > 0:
                 for doc in page:
                     yield doc
-                page = try_forever(next_page, query, page)
+                page = try_n_times(5, next_page, query, page)
     return model_iterator
 
 
@@ -95,11 +96,14 @@ documents_old = ModelIteratorFactory(DocumentModelOld, next_page_old)
 documents = ModelIteratorFactory(DocumentModel, next_page_source_partition, default_args=registry.keys())
 
 
-def try_forever(action, *args, **kwargs):
-    while True:
+def try_n_times(n, action, *args, **kwargs):
+    for _ in xrange(n):
         try:
             return action(*args, **kwargs)
         except Exception as e:
             logger.exception(e)
-            time.sleep(5)
-            logger.info("Trying again...")
+            time.sleep(15)
+            connection_open = setup(force=True, sync=False)
+            logger.info("Trying again... Cassandra connection open: {}".format(connection_open))
+    if e:
+        raise e

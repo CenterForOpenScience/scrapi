@@ -99,12 +99,23 @@ def format_tags(all_tags, sep=','):
     return list(set([unicode(tag.lower().strip()) for tag in tags if tag.strip()]))
 
 
-def oai_extract_doi(identifiers):
-    identifiers = [identifiers] if not isinstance(identifiers, list) else identifiers
+def oai_extract_dois(*args):
+    identifiers = []
+    for arg in args:
+        if isinstance(arg, list):
+            for identifier in arg:
+                identifiers.append(identifier)
+        elif arg:
+            identifiers.append(arg)
+    dois = []
     for item in identifiers:
         if 'doi' in item.lower():
-            return unicode(item.replace('doi:', '').replace('DOI:', '').replace('http://dx.doi.org/', '').strip())
-    return ''
+            doi = item.replace('doi:', '').replace('DOI:', '').strip()
+            if 'http://dx.doi.org/' in doi:
+                dois.append(doi)
+            else:
+                dois.append('http://dx.doi.org/{}'.format(doi))
+    return dois
 
 
 def oai_extract_url(identifiers):
