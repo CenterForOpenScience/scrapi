@@ -22,16 +22,17 @@ class DatabaseManager(object):
         self.uri = uri or settings.CASSANDRA_URI
         self.keyspace = keyspace or settings.CASSANDRA_KEYSPACE
 
-    def setup(self, force=False, throw=False):
+    def setup(self, force=False, sync=True):
         if self._setup and not force:
             return True
 
         try:
             connection.setup(self.uri, self.keyspace)
-            management.create_keyspace(self.keyspace, replication_factor=1, strategy_class='SimpleStrategy')
-            for model in self._models:
-                model.__keyspace__ = self.keyspace
-                management.sync_table(model)
+            if sync:
+                management.create_keyspace(self.keyspace, replication_factor=1, strategy_class='SimpleStrategy')
+                for model in self._models:
+                    model.__keyspace__ = self.keyspace
+                    management.sync_table(model)
         except NoHostAvailable:
             logger.error('Could not connect to Cassandra, expect errors.')
             return False
