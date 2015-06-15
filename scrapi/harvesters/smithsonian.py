@@ -9,10 +9,10 @@ from scrapi.base import OAIHarvester
 
 
 class SiHarvester(OAIHarvester):
-    short_name = 'si'
+    short_name = 'smithsonian'
     long_name = 'Smithsonian Digital Repository'
     url = 'http://repository.si.edu/oai/request'
 
     base_url = 'http://repository.si.edu/oai/request'
-    property_list = ['date', 'identifier', 'type', 'format']
+    property_list = ['date', 'identifier', 'type', 'format', 'setSpec']
     timezone_granularity = True
