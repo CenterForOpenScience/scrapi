@@ -22,7 +22,7 @@ ELASTIC_INDEX = 'share'
 
 PLOS_API_KEY = 'fakekey'
 
-disabled = ['stepic']
+disabled = ['stepic', 'shareok']
 
 FRONTEND_KEYS = [
     u'description',

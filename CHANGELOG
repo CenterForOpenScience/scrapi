@@ -2,6 +2,13 @@
 ChangeLog
 *********
 
+0.7.1 (2015-06-15)
+==================
+- Base OAI schema now includes DOIs as object URIs
+- If a migration begins to fail due to cassandra connection errors, we now
+attempt to re-establish the connection
+
+
 0.7.0 (2015-06-12)
 ==================
 - Add University of Delaware, Harvard Dash,

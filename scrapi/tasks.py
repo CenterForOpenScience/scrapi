@@ -118,13 +118,9 @@ def normalize(raw_doc, harvester_name):
 @app.task
 @events.logged(events.PROCESSING, 'normalized')
 def process_normalized(normalized_doc, raw_doc, **kwargs):
-    try:
-        if not normalized_doc:
-            raise events.Skip('Not processing document with id {}'.format(raw_doc['docID']))
-        processing.process_normalized(raw_doc, normalized_doc, kwargs)
-    except Exception as e:
-        logger.info('Retrying withiin PROCESS NORMALIZED with exception {}'.format(e))
-        process_normalized.retry(exc=e)
+    if not normalized_doc:
+        raise events.Skip('Not processing document with id {}'.format(raw_doc['docID']))
+    processing.process_normalized(raw_doc, normalized_doc, kwargs)
 
 
 @app.task
