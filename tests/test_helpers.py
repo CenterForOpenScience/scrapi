@@ -19,9 +19,9 @@ class TestHelpers(object):
         sep_output = helpers.format_tags(sep_tags, sep=',')
         assert set(sep_output) == set(['these', 'we know', 'should be many'])
 
-    def test_extract_doi(self):
+    def test_extract_dois(self):
         identifiers = 'doi: THIS_IS_A_DOI!'
-        valid_doi = helpers.oai_extract_doi(identifiers)
+        valid_doi = helpers.oai_extract_dois(identifiers)
         assert valid_doi == 'THIS_IS_A_DOI!'
 
     def test_oai_extract_url(self):
