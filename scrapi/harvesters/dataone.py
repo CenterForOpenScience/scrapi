@@ -43,6 +43,7 @@ def process_doi(service_id, doc_doi):
             continue
     return ''
 
+
 def process_contributors(author, submitters, contributors,
                          investigators):
     if not author:
