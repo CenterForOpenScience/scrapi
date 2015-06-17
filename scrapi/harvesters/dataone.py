@@ -30,6 +30,7 @@ logger = logging.getLogger(__name__)
 DEFAULT_ENCODING = 'UTF-8'
 DATAONE_SOLR_ENDPOINT = 'https://cn.dataone.org/cn/v1/query/solr/'
 
+
 def process_doi(service_id, doc_doi):
     doi_re = '10\\.\\d{4}/\\w*\\.\\w*(/\\w*)?'
 
@@ -42,8 +43,8 @@ def process_doi(service_id, doc_doi):
             continue
     return ''
 
-
-def process_contributors(author, submitters, contributors,investigators):
+def process_contributors(author, submitters, contributors,
+                         investigators):
     if not author:
         author = ''
     elif isinstance(author, list):
