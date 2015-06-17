@@ -137,7 +137,8 @@ class DataOneHarvester(XMLHarvester):
             ('site', "arr[@name='site']/str/node()"),
             ('size', ("long[@name='size']/node()")),
             ('isDocumentedBy', "arr[@name='isDocumentedBy']/str/node()"),
-            ('serviceID', "str[@name='id']/node()")
+            ('serviceID', "str[@name='id']/node()"),
+            ('sku', "str[@name='sku']/node()")
         ),
         'freeToRead': {
             'startDate': ("bool[@name='isPublic']/node()", "date[@name='dateModified']/node()", lambda x, y: parse(y[0]).date().isoformat() if x else None)
@@ -145,13 +146,12 @@ class DataOneHarvester(XMLHarvester):
         'contributors': ("str[@name='author']/node()", "str[@name='submitter']/node()", "arr[@name='origin']/str/node()", "arr[@name='investigator']/str/node()", process_contributors),
         'uris': {
             'canonicalUri': ("str[@name='id']/node()", "//str[@name='dataUrl']/node()", lambda x, y: y[0] if 'http' in single_result(y) else x[0] if 'http' in single_result(x) else ''),
-            'objectUri': "str[@name='resourceMap']/node()".replace("doi:", "http://dx.doi.org/")
+            'objectUri': ("arr[@name='resourceMap']/str/node()", compose(lambda x: x.replace('doi:', 'http://dx.doi.org/'), single_result))
         },
         'tags': ("//arr[@name='keywords']/str/node()", lambda x: x if isinstance(x, list) else [x]),
         'providerUpdatedDateTime': ("str[@name='dateModified']/node()", compose(lambda x: parse(x).date().isoformat(), single_result)),
         'title': ("str[@name='title']/node()", single_result),
         'description': ("str[@name='abstract']/node()", single_result)
-
     }
 
     def harvest(self, start_date=None, end_date=None):
