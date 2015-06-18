@@ -1,0 +1,32 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/13.4.0]
+    method: GET
+    uri: http://dh.howard.edu/do/oai/?verb=ListRecords&metadataPrefix=oai_dc&from=2014-12-19T00:00:00Z&until=2014-12-21T00:00:00Z
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA41S0UrDMBR97r4i5Hlt0s7JLG2HIKKw4dAJshfJmrs10CYzSdf596axovNpJBBy
+        77k355zcbH5qanQEbYSSOY4jihHIUnEh9zl+Xd+HMzwvRtnT7WO4Wj6MAgeXJseVtYeUkK7rInUA
+        yXRZiSOYSOk9cViSRJTgAZ2ejDir6CYel1Aak7fl4qWsoGGhkMYyWUJfZkRqfHShSmY9tUteHAXB
+        JbBBTHQyHBejINNgDkoauGMWioTG05Beh/FsndB0Mk2n8SYjZxBf8tGCsb1z2xwvhLHPUCrNDUYN
+        WMaZZSsNO3HKsWLinZcYoZ1WTY5d/6swTsL4Zk1p6vfGJVtpRf2bTeK/2WJQxauoUh3TPALeEq6I
+        6016cp6MkxJkoLXSyH0g5FiqgdSS2bLCxboCl2m2QnpPkdoh60JHVjstP7ee5fibzhgZsIhJ/k8T
+        YnrfNiCtQc6XtnankA6HoDnYT1Q7N6KMeCaOk19ZPxX9BBVfRkIBHnICAAA=
+    headers:
+      cache-control: [private]
+      connection: [keep-alive]
+      content-encoding: [gzip]
+      content-type: [text/xml; charset=UTF-8]
+      date: ['Thu, 18 Jun 2015 20:35:51 GMT']
+      server: [nginx/1.2.1]
+      set-cookie: [bp_plack_session=ef56d2cf19307df4f889a9ae23eee733db6f2c97; path=/;
+          HttpOnly]
+      transfer-encoding: [chunked]
+    status: {code: 200, message: OK}
+version: 1

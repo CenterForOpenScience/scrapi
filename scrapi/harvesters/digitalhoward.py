@@ -9,7 +9,7 @@ from scrapi.base import OAIHarvester
 
 
 class HowardHarvester(OAIHarvester):
-    short_name = 'howard'
+    short_name = 'digitalhoward'
     long_name = 'Digital Howard @ Howard University'
     url = 'http://dh.howard.edu/do/oai/'
 
