@@ -106,5 +106,8 @@ class JSONTransformer(BaseTransformer):
     def _transform_string(self, val, doc):
         try:
             return resolve_pointer(doc, val)
-        except JsonPointerException:
-            return ''
+        except JsonPointerException as e:
+            # This is because of jsonpointer's exception structure
+            if 'not found in' in e.message:
+                return None
+            raise e
