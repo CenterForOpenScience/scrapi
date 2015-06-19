@@ -19,7 +19,7 @@ DOESCHEMA = {
     "description": ('//dc:description/node()', compose(lambda x: x.strip(), single_result)),
     "contributors": ('//dc:creator/node()', compose(default_name_parser, lambda x: x.split(';'), single_result)),
     "title": ('//dc:title/node()', compose(lambda x: x.strip(), single_result)),
-    "providerUpdatedDateTime": ('//dc:dateEntry/node()', compose(parse, lambda x: x.strip(), single_result)),
+    "providerUpdatedDateTime": ('//dc:dateEntry/node()', compose(lambda x: x.isoformat(), parse, lambda x: x.strip(), single_result)),
     "uris": {
         "canonicalUri": ('//dcq:identifier-citation/node()', compose(lambda x: x.strip(), single_result)),
         "objectUris": [('//dc:doi/node()', compose(lambda x: 'http://dx.doi.org/' + x, single_result))]
