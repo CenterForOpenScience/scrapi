@@ -9,9 +9,8 @@ from jsonpointer import resolve_pointer, JsonPointerException
 logger = logging.getLogger(__name__)
 
 
+@six.add_metaclass(abc.ABCMeta)
 class BaseTransformer(object):
-
-    __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
     def _transform_string(self, string, doc):
@@ -87,9 +86,8 @@ class BaseTransformer(object):
         } if len(t) == 2 else {}
 
 
+@six.add_metaclass(abc.ABCMeta)
 class XMLTransformer(BaseTransformer):
-
-    __metaclass__ = abc.ABCMeta
 
     def _transform_string(self, string, doc):
         return doc.xpath(string, namespaces=self.namespaces)
@@ -99,9 +97,8 @@ class XMLTransformer(BaseTransformer):
         raise NotImplementedError
 
 
+@six.add_metaclass(abc.ABCMeta)
 class JSONTransformer(BaseTransformer):
-
-    __metaclass__ = abc.ABCMeta
 
     def _transform_string(self, val, doc):
         try:
