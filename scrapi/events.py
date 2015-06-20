@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 import logging
 import inspect
 from functools import wraps
+import six
 
 from fluent import event
 
@@ -52,7 +53,7 @@ def serialize_fluent_data(data):
             serialize_fluent_data(item)
             for item in data
         ]
-    elif isinstance(data, (str, unicode)):
+    elif isinstance(data, six.string_types):
         return data
     else:
         return repr(data)
