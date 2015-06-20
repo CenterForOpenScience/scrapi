@@ -25,7 +25,7 @@ class TestHarvester(XMLHarvester):
 
     def harvest(self, days_back=1):
         return [RawDocument({
-            'doc': str(TEST_XML_DOC),
+            'doc': TEST_XML_DOC,
             'source': 'test',
             'filetype': 'XML',
             'docID': "1"
