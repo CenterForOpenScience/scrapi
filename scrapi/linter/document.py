@@ -1,8 +1,10 @@
 import json
 
+import six
 import jsonschema
 
 from scrapi import registry
+from scrapi.util import json_without_bytes
 
 
 class BaseDocument(object):
@@ -15,7 +17,10 @@ class BaseDocument(object):
     schema = {}
 
     def __init__(self, attributes):
-        jsonschema.validate(attributes, self.schema, format_checker=jsonschema.FormatChecker())
+        # validate a version of the attributes that are safe to check
+        # against the JSON schema
+        jsonschema.validate(json_without_bytes(attributes), self.schema,
+                            format_checker=jsonschema.FormatChecker())
 
         self.attributes = attributes
 
