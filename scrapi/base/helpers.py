@@ -97,7 +97,7 @@ def format_tags(all_tags, sep=','):
             else:
                 tags.append(tag)
 
-    return list(set([unicode(tag.lower().strip()) for tag in tags if tag.strip()]))
+    return list(set([six.text_type(tag.lower().strip()) for tag in tags if tag.strip()]))
 
 
 def oai_extract_dois(*args):

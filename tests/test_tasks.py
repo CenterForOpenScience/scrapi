@@ -2,6 +2,7 @@ import mock
 import pytest
 from datetime import date, timedelta
 from freezegun import freeze_time
+import six
 from six.moves import xrange
 
 from scrapi import tasks
@@ -27,8 +28,8 @@ def raw_doc():
 def raw_docs():
     return [
         RawDocument({
-            'doc': str(x),
-            'docID': unicode(x),
+            'doc': six.binary_type(x),
+            'docID': six.text_type(x),
             'source': u'test',
             'filetype': u'xml',
         })
