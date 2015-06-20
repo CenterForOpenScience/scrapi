@@ -87,7 +87,8 @@ def logged(event, index=None):
             try:
                 res = func(*args, **kwargs)
             except Skip as e:
-                dispatch(event, SKIPPED, _index=index, reason=e.message, **context)
+                # args[0] instead of message for Py3
+                dispatch(event, SKIPPED, _index=index, reason=e.args[0], **context)
                 return None
             except Exception as e:
                 if settings.SENTRY_DSN:

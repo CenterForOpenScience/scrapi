@@ -105,7 +105,8 @@ def test_harvest_raises(harvester):
     with pytest.raises(KeyError) as e:
         tasks.harvest('test', 'TIME')
 
-    assert e.value.message == 'testing'
+    # no .message in Python3
+    assert e.value.args[0] == 'testing'
 
 
 def test_begin_normalize_starts(raw_docs, monkeypatch):
