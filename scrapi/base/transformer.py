@@ -65,7 +65,7 @@ class BaseTransformer(object):
         args = []
 
         for value in values:
-            if isinstance(value, basestring):
+            if isinstance(value, six.string_types):
                 args.append(self._transform_string(value, doc))
             elif callable(value):
                 args.append(value(doc))

@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 import re
 import functools
 from copy import deepcopy
+import six
 
 from pycountry import languages
 from nameparser import HumanName
@@ -87,7 +88,7 @@ def default_name_parser(names):
 
 def format_tags(all_tags, sep=','):
     tags = []
-    if isinstance(all_tags, basestring):
+    if isinstance(all_tags, six.string_types):
         tags = all_tags.split(sep)
     elif isinstance(all_tags, list):
         for tag in all_tags:
