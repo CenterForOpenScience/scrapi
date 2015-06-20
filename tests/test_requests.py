@@ -69,12 +69,13 @@ class TestCassandraIntegration(object):
 
     @pytest.mark.cassandra
     def test_record_or_load_loads(self, mock_requests, monkeypatch):
-        requests.HarvesterResponse(ok=True, method='get', url='dinosaurs.sexy', content='rawr', headers_str="{}").save()
+        requests.HarvesterResponse(ok=True, method='get', url='dinosaurs.sexy',
+                                   content=b'rawr', headers_str="{}").save()
 
         resp = requests.get('dinosaurs.sexy')
 
         assert resp.headers == {}
-        assert resp.content == 'rawr'
+        assert resp.content == b'rawr'
         assert not mock_requests.request.called
         assert isinstance(resp, requests.HarvesterResponse)
 
@@ -94,7 +95,7 @@ class TestCassandraIntegration(object):
         model = requests.HarvesterResponse.get(method='get', url='dinosaurs.sexy')
 
         assert model.method == 'get'
-        assert model.content == 'rawr'
+        assert model.content == b'rawr'
         assert model.encoding == 'utf-8'
         assert model.status_code == 200
         assert model.url == 'dinosaurs.sexy'
@@ -111,7 +112,7 @@ class TestCassandraIntegration(object):
         model = requests.HarvesterResponse.get(method='get', url='dinosaurs.sexy')
 
         assert model.method == 'get'
-        assert model.content == 'rawr'
+        assert model.content == b'rawr'
         assert model.encoding == 'utf-8'
         assert model.status_code == 200
         assert model.url == 'dinosaurs.sexy'
@@ -129,17 +130,20 @@ class TestCassandraIntegration(object):
 
     @pytest.mark.cassandra
     def test_force_makes_new_request(self, mock_requests, monkeypatch):
-        requests.HarvesterResponse(ok=True, method='get', url='dinosaurs.sexy', content='citychicken').save()
-        mock_requests.request.return_value = mock.Mock(encoding='utf-8', content='Snapcity', status_code=200, headers={'tota': 'dyle'})
+        requests.HarvesterResponse(ok=True, method='get', url='dinosaurs.sexy',
+                                   content=b'citychicken').save()
+        mock_requests.request.return_value = mock.Mock(encoding='utf-8',
+                                                       content=b'Snapcity', status_code=200,
+                                                       headers={'tota': 'dyle'})
 
         resp = requests.get('dinosaurs.sexy')
 
-        assert resp.content == 'citychicken'
+        assert resp.content == b'citychicken'
         assert mock_requests.request.called is False
 
         resp = requests.get('dinosaurs.sexy', force=True)
 
-        assert resp.content == 'Snapcity'
+        assert resp.content == b'Snapcity'
         assert mock_requests.request.called is True
 
     @pytest.mark.cassandra
@@ -150,7 +154,8 @@ class TestCassandraIntegration(object):
 
         resp = requests.get('dinosaurs.sexy')
 
-        mock_log.assert_called_once_with('Got non-ok response code.', url='dinosaurs.sexy', method='get')
+        mock_log.assert_called_once_with('Got non-ok response code.',
+                                         url='dinosaurs.sexy', method='get')
 
         assert resp.ok is False
         assert resp.status_code == 400
@@ -159,7 +164,8 @@ class TestCassandraIntegration(object):
     def test_record_or_load_throttle_throttles(self, mock_requests, monkeypatch):
         mock_sleep = mock.Mock()
         monkeypatch.setattr(requests.time, 'sleep', mock_sleep)
-        mock_requests.request.return_value = mock.Mock(encoding='utf-8', content='Snapcity', status_code=200, headers={'tota': 'dyle'})
+        mock_requests.request.return_value = mock.Mock(encoding='utf-8',
+                                                       content=b'Snapcity', status_code=200, headers={'tota': 'dyle'})
 
         resp = requests.get('dinosaurs.sexy', throttle=2)
 
@@ -171,7 +177,8 @@ class TestCassandraIntegration(object):
     def test_request_doesnt_throttle_on_load(self, mock_requests, monkeypatch):
         mock_sleep = mock.Mock()
         monkeypatch.setattr(requests.time, 'sleep', mock_sleep)
-        requests.HarvesterResponse(ok=True, method='get', url='dinosaurs.sexy', content='citychicken').save()
+        requests.HarvesterResponse(ok=True, method='get', url='dinosaurs.sexy',
+                                   content=b'citychicken').save()
 
         resp = requests.get('dinosaurs.sexy', throttle=2)
 
@@ -181,7 +188,8 @@ class TestCassandraIntegration(object):
 
     @pytest.mark.cassandra
     def test_record_or_load_params(self, mock_requests, monkeypatch):
-        mock_requests.request.return_value = mock.Mock(encoding='utf-8', content='Snapcity', status_code=200, headers={'tota': 'dyle'})
+        mock_requests.request.return_value = mock.Mock(encoding='utf-8', content=b'Snapcity',
+                                                       status_code=200, headers={'tota': 'dyle'})
 
         resp = requests.get('dinosaurs.sexy', params={'test': 'foo'})
 

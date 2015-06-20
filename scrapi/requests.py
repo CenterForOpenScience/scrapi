@@ -83,6 +83,9 @@ def record_or_load_response(method, url, throttle=None, force=False, params=None
     if not response.ok:
         events.log_to_sentry('Got non-ok response code.', url=url, method=method)
 
+    if isinstance(response.content, six.text_type):
+        response.content = response.content.encode('utf8')
+
     if not resp:
         return HarvesterResponse(
             url=url,
