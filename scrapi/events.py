@@ -109,7 +109,7 @@ def extract_context(func, *args, **kwargs):
         for kwarg in (arginfo.defaults or [])
     }
 
-    computed_args = zip(arg_names, args)
+    computed_args = list(zip(arg_names, args))
     if arginfo.varargs:
         computed_args.append(('args', list(args[len(arg_names):])))
 
