@@ -61,7 +61,7 @@ class TestModel(object):
         resp = requests.HarvesterResponse(content='probably xml')
 
         assert isinstance(resp.text, unicode)
-        assert resp.text == 'probably xml'.decode('utf-8')
+        assert resp.text == u'probably xml'
 
 
 class TestCassandraIntegration(object):

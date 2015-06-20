@@ -51,7 +51,7 @@ class SciTechHarvester(XMLHarvester):
                 'source': self.short_name,
                 'filetype': self.file_format,
                 'doc': etree.tostring(record),
-                'docID': record.xpath('dc:ostiId/node()', namespaces=self.namespaces)[0].decode('utf-8'),
+                'docID': six.u(record.xpath('dc:ostiId/node()', namespaces=self.namespaces)[0]),
             })
             for record in self._fetch_records(start_date, end_date)
         ]

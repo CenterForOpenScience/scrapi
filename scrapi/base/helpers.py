@@ -125,7 +125,7 @@ def oai_extract_url(identifiers):
         try:
             found_url = URL_REGEX.search(item).group()
             if 'viewcontent' not in found_url:
-                return found_url.decode('utf-8')
+                return found_url
         except AttributeError:
             continue
 

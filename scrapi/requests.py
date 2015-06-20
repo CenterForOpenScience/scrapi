@@ -10,6 +10,7 @@ import logging
 import functools
 from datetime import datetime
 
+import six
 import furl
 import requests
 from cassandra.cqlengine import columns, models
@@ -51,7 +52,7 @@ class HarvesterResponse(models.Model):
 
     @property
     def text(self):
-        return self.content.decode('utf-8')
+        return six.u(self.content)
 
 
 def _maybe_load_response(method, url):

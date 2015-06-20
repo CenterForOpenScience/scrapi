@@ -13,6 +13,7 @@ import logging
 from datetime import date, timedelta
 from dateutil.parser import parse
 
+import six
 from nameparser import HumanName
 
 from scrapi import requests
@@ -107,7 +108,7 @@ class BiomedCentralHarvester(JSONHarvester):
                     {
                         'doc': json.dumps(record),
                         'source': self.short_name,
-                        'docID': doc_id.decode('utf-8'),
+                        'docID': six.u(doc_id),
                         'filetype': 'json'
                     }
                 )
