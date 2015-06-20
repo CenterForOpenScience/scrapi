@@ -1,6 +1,5 @@
 import json
 
-import six
 import jsonschema
 
 from scrapi import registry

@@ -13,7 +13,6 @@ import logging
 from datetime import date, timedelta
 from dateutil.parser import parse
 
-import six
 from nameparser import HumanName
 
 from scrapi import requests

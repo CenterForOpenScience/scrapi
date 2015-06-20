@@ -3,6 +3,7 @@ from datetime import datetime
 import pytz
 import six
 
+
 def timestamp():
     return pytz.utc.localize(datetime.utcnow()).isoformat()
 
