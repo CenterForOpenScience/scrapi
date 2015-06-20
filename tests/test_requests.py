@@ -1,6 +1,7 @@
 import mock
 import json
 import pytest
+import six
 
 from scrapi import requests
 
@@ -60,7 +61,7 @@ class TestModel(object):
     def test_text_is_unicode(self):
         resp = requests.HarvesterResponse(content='probably xml')
 
-        assert isinstance(resp.text, unicode)
+        assert isinstance(resp.text, six.text_type)
         assert resp.text == u'probably xml'
 
 
