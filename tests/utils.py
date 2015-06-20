@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+import six
 from six.moves import xrange
 
 from scrapi.base import XMLHarvester
@@ -9,7 +10,7 @@ from scrapi.base.helpers import updated_schema, build_properties, single_result
 
 
 RAW_DOC = {
-    'doc': str('{}'),
+    'doc': six.b('{}'),
     'docID': 'someID',
     'timestamps': {
         'harvestFinished': '2012-11-30T17:05:48+00:00',
@@ -198,7 +199,7 @@ class TestHarvester(XMLHarvester):
 
     def harvest(self, days_back=1):
         return [RawDocument({
-            'doc': str(TEST_XML_DOC),
+            'doc': six.b(TEST_XML_DOC),
             'source': 'test',
             'filetype': 'XML',
             'docID': "1"
