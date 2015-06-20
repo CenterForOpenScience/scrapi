@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 import httpretty
 from datetime import date
 
+import six
 from scrapi.base import OAIHarvester
 from scrapi.linter import RawDocument
 
@@ -31,7 +32,7 @@ class TestHarvester(OAIHarvester):
         records = self.get_records(request_url, start_date, end_date)
 
         return [RawDocument({
-            'doc': str(TEST_OAI_DOC),
+            'doc': TEST_OAI_DOC,
             'source': 'test',
             'filetype': 'XML',
             'docID': "1"

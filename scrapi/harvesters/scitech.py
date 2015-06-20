@@ -9,6 +9,7 @@ from __future__ import unicode_literals
 from lxml import etree
 from dateutil.parser import *
 from datetime import date, timedelta
+import six
 
 from scrapi import requests
 from scrapi import settings

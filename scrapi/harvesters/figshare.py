@@ -13,6 +13,7 @@ import logging
 from dateutil.parser import parse
 from datetime import date, timedelta
 
+import six
 
 from scrapi import requests
 from scrapi import settings
@@ -78,7 +79,7 @@ class FigshareHarvester(JSONHarvester):
                     {
                         'doc': json.dumps(record),
                         'source': self.short_name,
-                        'docID': unicode(doc_id),
+                        'docID': six.text_type(doc_id),
                         'filetype': 'json'
                     }
                 )

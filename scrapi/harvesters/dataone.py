@@ -12,6 +12,7 @@ import re
 import logging
 from datetime import timedelta, date
 
+import six
 from lxml import etree
 from dateutil.parser import *
 from xml.etree import ElementTree
@@ -88,7 +89,7 @@ def process_contributors(author, submitters, contributors,
                 'givenName': name.first,
                 'additionalName': name.middle,
                 'familyName': name.last,
-                'email': unicode(email)
+                'email': six.text_type(email)
             }
             contributor_list.append(contributor_dict)
         else:

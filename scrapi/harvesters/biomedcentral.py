@@ -106,9 +106,9 @@ class BiomedCentralHarvester(JSONHarvester):
             record_list.append(
                 RawDocument(
                     {
-                        'doc': json.dumps(record),
+                        'doc': json.dumps(record).decode('utf8'),
                         'source': self.short_name,
-                        'docID': six.u(doc_id),
+                        'docID': doc_id,
                         'filetype': 'json'
                     }
                 )
