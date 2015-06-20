@@ -8,7 +8,7 @@ from pycountry import languages
 from nameparser import HumanName
 
 
-URL_REGEX = re.compile(ur'(https?://\S*\.\S*)')
+URL_REGEX = re.compile(r'(https?://\S*\.\S*)')
 
 ''' Takes a value, returns a function that always returns that value
     Useful inside schemas for defining constants '''
