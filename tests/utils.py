@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+from six.moves import xrange
+
 from scrapi.base import XMLHarvester
 from scrapi.base.schemas import DOESCHEMA
 from scrapi.linter.document import RawDocument

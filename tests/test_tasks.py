@@ -2,6 +2,7 @@ import mock
 import pytest
 from datetime import date, timedelta
 from freezegun import freeze_time
+from six.moves import xrange
 
 from scrapi import tasks
 from scrapi import settings
