@@ -124,7 +124,9 @@ def request(method, url, params=None, **kwargs):
         return record_or_load_response(method, url, **kwargs)
 
     logger.info('Making request to "{}"'.format(url))
-    time.sleep(kwargs.pop('throttle', 0))
+    throttle = kwargs.pop('throttle', 0)
+    if throttle:
+        time.sleep(throttle)
     return requests.request(method, url, **kwargs)
 
 
