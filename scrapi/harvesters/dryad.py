@@ -55,5 +55,9 @@ class DryadHarvester(OAIHarvester):
         if str(status).lower() in ['deleted', 'item is not available']:
             logger.info('Not normalizing record with ID {}, status {}'.format(raw_doc['docID'], status))
             return None
+        doc_type = (result.xpath('//dc:type/node()', namespaces=self.namespaces) or [''])[0]
+        if not doc_type.lower() == 'article':
+            logger.info('Not normalizing record with ID {}, type {}'.format(raw_doc['docID'], doc_type))
+            return None
 
         return super(OAIHarvester, self).normalize(raw_doc)
