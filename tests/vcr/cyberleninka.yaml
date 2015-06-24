@@ -11,7 +11,7 @@ interactions:
     body: {string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<OAI-PMH xmlns=\"\
         http://www.openarchives.org/OAI/2.0/\" \n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
         \n         xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/\n   \
-        \      http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\">\n  <responseDate>2015-06-24T14:32:32Z</responseDate>\n\
+        \      http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\">\n  <responseDate>2015-06-24T16:41:39Z</responseDate>\n\
         \  <request verb=\"ListRecords\" metadataPrefix=\"oai_dc\" from=\"2015-06-22\"\
         \ until=\"2015-06-24\">http://cyberleninka.ru/oai?verb=ListRecords&amp;metadataPrefix=oai_dc&amp;from=2015-06-22&amp;until=2015-06-24</request>\n\
         \    <ListRecords>\n     <record>\n  <header>\n    <identifier>oai:cyberleninka.ru:article/13934492</identifier>\n\
@@ -14162,19 +14162,19 @@ interactions:
         , \u0422\u043E\u043C\u0441\u043A</dcterms:bibliographicCitation>\n      <dc:identifier\
         \ linktype=\"thumbnail\">http://cyberleninka.ru/article_covers/428363.png</dc:identifier>\n\
         \    </oai_dc:dc>\n  </metadata>\n</record>\n\n  <resumptionToken cursor=\"\
-        0\">2eb70e03-3a63-431b-ab65-06bfaf34c61b</resumptionToken>\n</ListRecords>\n\
+        0\">0307ce3b-7e79-4240-84c1-12068eaf66ff</resumptionToken>\n</ListRecords>\n\
         \n</OAI-PMH>\n"}
     headers:
       cache-control: ['max-age=0, private, must-revalidate']
       connection: [close]
       content-type: [application/xml; charset=utf-8]
-      date: ['Wed, 24 Jun 2015 14:32:32 GMT']
-      etag: [W/"f0739f81f50900f703a33030fb51eaf5"]
+      date: ['Wed, 24 Jun 2015 16:41:39 GMT']
+      etag: [W/"3b8121430babc913292ba72752052ea9"]
       server: [nginx/1.8.0 + Phusion Passenger 5.0.10]
       status: [200 OK]
       x-frame-options: [ALLOWALL]
       x-powered-by: [Phusion Passenger 5.0.10]
-      x-request-id: [29230da1-8af2-4318-96f5-bbdf6d0522b3]
-      x-runtime: ['7.007468']
+      x-request-id: [f1955803-9436-46dc-a6d1-e923595a73cc]
+      x-runtime: ['4.076306']
     status: {code: 200, message: OK}
 version: 1
