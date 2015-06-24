@@ -19,8 +19,8 @@ from dateutil.parser import parse
 from scrapi import requests
 from scrapi import settings
 from scrapi.base import JSONHarvester
-from scrapi.base.helpers import build_properties
 from scrapi.linter.document import RawDocument
+from scrapi.base.helpers import build_properties, compose
 
 logger = logging.getLogger(__name__)
 
@@ -55,12 +55,12 @@ class CrossRefHarvester(JSONHarvester):
             'uris': {
                 'canonicalUri': '/URL'
             },
-            'contributors': ('/author', lambda x: [
+            'contributors': ('/author', compose(lambda x: [
                 process_contributor(*[
                     '{} {}'.format(entry.get('given'), entry.get('family')),
                     entry.get('ORCID')
                 ]) for entry in x
-            ]),
+            ], lambda x: x or [])),
             'otherProperties': build_properties(
                 ('journalTitle', '/container-title'),
                 ('volume', '/volume'),

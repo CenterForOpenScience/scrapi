@@ -127,15 +127,21 @@ class OAIHarvester(XMLHarvester):
 
     @property
     def schema(self):
-        properties = {
+        return self._schema
+
+    @property
+    def _schema(self):
+        return updated_schema(OAISCHEMA, self.formatted_properties)
+
+    @property
+    def formatted_properties(self):
+        return {
             'otherProperties': build_properties(*[(item, (
                 '//dc:{}/node()'.format(item),
                 '//ns0:{}/node()'.format(item),
                 self.resolve_property)
             ) for item in self.property_list])
         }
-
-        return updated_schema(OAISCHEMA, properties)
 
     def resolve_property(self, dc, ns0):
         ret = dc + ns0

@@ -76,22 +76,20 @@ class OSFHarvester(JSONHarvester):
         return {
             'contributors': ('/contributors', process_contributors),
             'title': ('/title', process_null),
-            'providerUpdatedDateTime': ('date_created', parse_date),
+            'providerUpdatedDateTime': ('/date_created', parse_date),
             'description': ('/description', process_null),
             'uris': {
                 'canonicalUri': ('/url', lambda x: 'http://osf.io' + x),
             },
-            'tags': ('tags', process_tags),
+            'tags': ('/tags', process_tags),
             'otherProperties': build_properties(
-                ('parent_title', 'parent_title'),
-                ('category', 'category'),
-                ('wiki_link', 'wiki_link'),
-                ('is_component', 'is_component'),
-                ('is_registration', 'is_registration'),
-                ('parent_url', 'parent_url'),
-                ('contributors', 'contributors'),
-                ('journal Id', '/journal Id'),
-                ('tags', ('tags', process_tags))
+                ('parent_title', '/parent_title'),
+                ('category', '/category'),
+                ('wiki_link', '/wiki_link'),
+                ('is_component', '/is_component'),
+                ('is_registration', '/is_registration'),
+                ('parent_url', '/parent_url'),
+                ('journal Id', '/journal Id')
             )
         }
 

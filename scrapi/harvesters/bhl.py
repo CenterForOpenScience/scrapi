@@ -3,7 +3,6 @@ Example API call: http://www.biodiversitylibrary.org/oai?verb=ListRecords&metada
 """
 import re
 from scrapi.base import OAIHarvester
-from scrapi.base.schemas import OAISCHEMA
 from scrapi.base.helpers import updated_schema, default_name_parser
 
 
@@ -51,9 +50,13 @@ class BHLHarvester(OAIHarvester):
     url = 'http://www.biodiversitylibrary.org/'
 
     base_url = 'http://www.biodiversitylibrary.org/oai'
-    schema = updated_schema(OAISCHEMA, {
-        'contributors': ('//dc:creator/node()', '//dc:contributor/node()', aoi_process_contributors_bhl)
-    })
+
+    @property
+    def schema(self):
+        return updated_schema(self._schema, {
+            'contributors': ('//dc:creator/node()', '//dc:contributor/node()', aoi_process_contributors_bhl)
+        })
+
     property_list = [
         'type', 'date', 'relation', 'setSpec', 'rights'
     ]
