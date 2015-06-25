@@ -4,8 +4,11 @@ import re
 import functools
 from copy import deepcopy
 
+from lxml import etree
 from pycountry import languages
 from nameparser import HumanName
+
+from scrapi import requests
 
 
 URL_REGEX = re.compile(ur'(https?://\S*\.\S*)')
@@ -149,3 +152,21 @@ def language_code(language):
         return languages.get(name=language)
     except KeyError:
         return None
+
+
+def get_records_and_token(url, throttle, force, namespaces):
+    data = requests.get(url, throttle=throttle, force=force)
+
+    doc = etree.XML(data.content)
+
+    records = doc.xpath(
+        '//ns0:record',
+        namespaces=namespaces
+    )
+
+    token = doc.xpath(
+        '//ns0:resumptionToken/node()',
+        namespaces=namespaces
+    )
+
+    return records, token
