@@ -175,8 +175,9 @@ class OAIHarvester(XMLHarvester):
 
         return rawdoc_list
 
-    def get_records(self, url, start_date, end_date, resump_token=''):
-        data = requests.get(url, throttle=self.timeout)
+    def get_records(self, url, start_date, end_date):
+
+        data = requests.get(url, throttle=self.timeout, force=self.force_request_update)
 
         doc = etree.XML(data.content)
 
@@ -188,11 +189,31 @@ class OAIHarvester(XMLHarvester):
             '//ns0:resumptionToken/node()',
             namespaces=self.namespaces
         )
-        if len(token) == 1:
+        date = doc.xpath('//ns0:header/ns0:datestamp/node()', namespaces=self.namespaces)[0]
+        cursor = doc.xpath('//ns0:resumptionToken/@cursor', namespaces=self.namespaces)
+
+        while token:
             base_url = url.replace(self.META_PREFIX_DATE.format(start_date, end_date), '')
-            base_url = base_url.replace(self.RESUMPTION + resump_token, '')
+            base_url = base_url.replace(self.RESUMPTION + token[0], '')
             url = base_url + self.RESUMPTION + token[0]
-            records += self.get_records(url, start_date, end_date, resump_token=token[0])
+            data = requests.get(url, throttle=self.timeout, force=self.force_request_update)
+
+            doc = etree.XML(data.content)
+
+            records += doc.xpath(
+                '//ns0:record',
+                namespaces=self.namespaces
+            )
+
+            token = doc.xpath(
+                '//ns0:resumptionToken/node()',
+                namespaces=self.namespaces
+            )
+            cursor = doc.xpath('//ns0:resumptionToken/@cursor', namespaces=self.namespaces)
+            date = doc.xpath('//ns0:header/ns0:datestamp/node()', namespaces=self.namespaces)[0]
+
+            print(cursor)
+            print(date)
 
         return records
 
