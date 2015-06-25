@@ -211,10 +211,7 @@ class OAIHarvester(XMLHarvester):
             )
             cursor = doc.xpath('//ns0:resumptionToken/@cursor', namespaces=self.namespaces)
             date = doc.xpath('//ns0:header/ns0:datestamp/node()', namespaces=self.namespaces)[0]
-
-            print(cursor)
-            print(date)
-
+            logger.info('Harvested {} records starting from {}'.format(cursor, date))
         return records
 
     def normalize(self, raw_doc):
