@@ -9,13 +9,12 @@ from datetime import timedelta, date
 from lxml import etree
 
 from scrapi import util
-from scrapi import requests
 from scrapi import registry
 from scrapi import settings
 from scrapi.base.schemas import OAISCHEMA
-from scrapi.base.helpers import updated_schema, build_properties
 from scrapi.linter.document import RawDocument, NormalizedDocument
 from scrapi.base.transformer import XMLTransformer, JSONTransformer
+from scrapi.base.helpers import updated_schema, build_properties, get_records_and_token
 
 logging.basicConfig(level=logging.INFO)
 
@@ -124,6 +123,7 @@ class OAIHarvester(XMLHarvester):
     approved_sets = None
     timezone_granularity = False
     property_list = ['date', 'type']
+    force_request_update = False
 
     @property
     def schema(self):
@@ -177,42 +177,16 @@ class OAIHarvester(XMLHarvester):
 
     def get_records(self, url, start_date, end_date):
 
-        data = requests.get(url, throttle=self.timeout, force=self.force_request_update)
-
-        doc = etree.XML(data.content)
-
-        records = doc.xpath(
-            '//ns0:record',
-            namespaces=self.namespaces
-        )
-        token = doc.xpath(
-            '//ns0:resumptionToken/node()',
-            namespaces=self.namespaces
-        )
-        date = doc.xpath('//ns0:header/ns0:datestamp/node()', namespaces=self.namespaces)[0]
-        cursor = doc.xpath('//ns0:resumptionToken/@cursor', namespaces=self.namespaces)
+        all_records, token = get_records_and_token(url, self.timeout, self.force_request_update, self.namespaces)
 
         while token:
             base_url = url.replace(self.META_PREFIX_DATE.format(start_date, end_date), '')
             base_url = base_url.replace(self.RESUMPTION + token[0], '')
             url = base_url + self.RESUMPTION + token[0]
-            data = requests.get(url, throttle=self.timeout, force=self.force_request_update)
+            records, token = get_records_and_token(url, self.timeout, self.force_request_update, self.namespaces)
+            all_records += records
 
-            doc = etree.XML(data.content)
-
-            records += doc.xpath(
-                '//ns0:record',
-                namespaces=self.namespaces
-            )
-
-            token = doc.xpath(
-                '//ns0:resumptionToken/node()',
-                namespaces=self.namespaces
-            )
-            cursor = doc.xpath('//ns0:resumptionToken/@cursor', namespaces=self.namespaces)
-            date = doc.xpath('//ns0:header/ns0:datestamp/node()', namespaces=self.namespaces)[0]
-            logger.info('Harvested {} records starting from {}'.format(cursor, date))
-        return records
+        return all_records
 
     def normalize(self, raw_doc):
         str_result = raw_doc.get('doc')
