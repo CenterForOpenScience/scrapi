@@ -14,7 +14,7 @@ from scrapi import settings
 from scrapi.base.schemas import OAISCHEMA
 from scrapi.linter.document import RawDocument, NormalizedDocument
 from scrapi.base.transformer import XMLTransformer, JSONTransformer
-from scrapi.base.helpers import updated_schema, build_properties, get_records_and_token
+from scrapi.base.helpers import updated_schema, build_properties, oai_get_records_and_token
 
 logging.basicConfig(level=logging.INFO)
 
@@ -177,13 +177,13 @@ class OAIHarvester(XMLHarvester):
 
     def get_records(self, url, start_date, end_date):
 
-        all_records, token = get_records_and_token(url, self.timeout, self.force_request_update, self.namespaces)
+        all_records, token = oai_get_records_and_token(url, self.timeout, self.force_request_update, self.namespaces)
 
         while token:
             base_url = url.replace(self.META_PREFIX_DATE.format(start_date, end_date), '')
             base_url = base_url.replace(self.RESUMPTION + token[0], '')
             url = base_url + self.RESUMPTION + token[0]
-            records, token = get_records_and_token(url, self.timeout, self.force_request_update, self.namespaces)
+            records, token = oai_get_records_and_token(url, self.timeout, self.force_request_update, self.namespaces)
             all_records += records
 
         return all_records

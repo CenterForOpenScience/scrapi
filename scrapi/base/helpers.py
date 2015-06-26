@@ -154,7 +154,7 @@ def language_code(language):
         return None
 
 
-def get_records_and_token(url, throttle, force, namespaces):
+def oai_get_records_and_token(url, throttle, force, namespaces):
     data = requests.get(url, throttle=throttle, force=force)
 
     doc = etree.XML(data.content)
