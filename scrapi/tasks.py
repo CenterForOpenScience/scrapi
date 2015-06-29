@@ -33,7 +33,8 @@ def task_autoretry(*args_task, **kwargs_task):
     return actual_decorator
 
 
-@app.task
+# @app.task
+@task_autoretry
 @events.creates_task(events.HARVESTER_RUN)
 def run_harvester(harvester_name, start_date=None, end_date=None):
     logger.info('Running harvester "{}"'.format(harvester_name))
