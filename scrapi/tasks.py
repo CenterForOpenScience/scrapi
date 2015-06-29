@@ -33,8 +33,7 @@ def task_autoretry(*args_task, **kwargs_task):
     return actual_decorator
 
 
-# @app.task
-@task_autoretry
+@app.task
 @events.creates_task(events.HARVESTER_RUN)
 def run_harvester(harvester_name, start_date=None, end_date=None):
     logger.info('Running harvester "{}"'.format(harvester_name))
@@ -94,13 +93,13 @@ def spawn_tasks(raw, timestamps, harvester_name):
     process_raw.delay(raw)
 
 
-@app.task
+@task_autoretry(default_retry_delay=30, max_retries=5)
 @events.logged(events.PROCESSING, 'raw')
 def process_raw(raw_doc, **kwargs):
     processing.process_raw(raw_doc, kwargs)
 
 
-@app.task
+@task_autoretry(default_retry_delay=30, max_retries=5)
 @events.logged(events.NORMALIZATION)
 def normalize(raw_doc, harvester_name):
     normalized_started = timestamp()
@@ -116,7 +115,7 @@ def normalize(raw_doc, harvester_name):
     return normalized  # returns a single normalized document
 
 
-@app.task
+@task_autoretry(default_retry_delay=30, max_retries=5)
 @events.logged(events.PROCESSING, 'normalized')
 def process_normalized(normalized_doc, raw_doc, **kwargs):
     if not normalized_doc:
