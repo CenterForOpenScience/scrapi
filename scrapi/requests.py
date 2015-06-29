@@ -121,6 +121,8 @@ def request(method, url, params=None, **kwargs):
 
     logger.info('Making request to "{}"'.format(url))
     time.sleep(kwargs.pop('throttle', 0))
+    # Need to prevent force from being passed to real requests module
+    kwargs.pop('force', None)
     return requests.request(method, url, **kwargs)
 
 

@@ -9,13 +9,12 @@ from datetime import timedelta, date
 from lxml import etree
 
 from scrapi import util
-from scrapi import requests
 from scrapi import registry
 from scrapi import settings
 from scrapi.base.schemas import OAISCHEMA
-from scrapi.base.helpers import updated_schema, build_properties
 from scrapi.linter.document import RawDocument, NormalizedDocument
 from scrapi.base.transformer import XMLTransformer, JSONTransformer
+from scrapi.base.helpers import updated_schema, build_properties, oai_get_records_and_token
 
 logging.basicConfig(level=logging.INFO)
 
@@ -124,6 +123,7 @@ class OAIHarvester(XMLHarvester):
     approved_sets = None
     timezone_granularity = False
     property_list = ['date', 'type']
+    force_request_update = False
 
     @property
     def schema(self):
@@ -175,26 +175,18 @@ class OAIHarvester(XMLHarvester):
 
         return rawdoc_list
 
-    def get_records(self, url, start_date, end_date, resump_token=''):
-        data = requests.get(url, throttle=self.timeout)
+    def get_records(self, url, start_date, end_date):
 
-        doc = etree.XML(data.content)
+        all_records, token = oai_get_records_and_token(url, self.timeout, self.force_request_update, self.namespaces)
 
-        records = doc.xpath(
-            '//ns0:record',
-            namespaces=self.namespaces
-        )
-        token = doc.xpath(
-            '//ns0:resumptionToken/node()',
-            namespaces=self.namespaces
-        )
-        if len(token) == 1:
+        while token:
             base_url = url.replace(self.META_PREFIX_DATE.format(start_date, end_date), '')
-            base_url = base_url.replace(self.RESUMPTION + resump_token, '')
+            base_url = base_url.replace(self.RESUMPTION + token[0], '')
             url = base_url + self.RESUMPTION + token[0]
-            records += self.get_records(url, start_date, end_date, resump_token=token[0])
+            records, token = oai_get_records_and_token(url, self.timeout, self.force_request_update, self.namespaces)
+            all_records += records
 
-        return records
+        return all_records
 
     def normalize(self, raw_doc):
         str_result = raw_doc.get('doc')
