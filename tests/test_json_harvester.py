@@ -59,13 +59,13 @@ expected = {
         {
             "name": "Empty",
             "properties": {
-                "Empty": ""
+                "Empty": None
             }
         },
         {
             "name": "Empty2",
             "properties": {
-                "Empty2": ""
+                "Empty2": None
             }
         }
     ]

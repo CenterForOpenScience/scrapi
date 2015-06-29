@@ -7,7 +7,6 @@ Example API call: http://www.pubmedcentral.nih.gov/oai/oai.cgi?verb=ListRecords&
 
 from __future__ import unicode_literals
 
-from scrapi.base import schemas
 from scrapi.base import helpers
 from scrapi.base import OAIHarvester
 
@@ -22,14 +21,13 @@ class PubMedCentralHarvester(OAIHarvester):
     long_name = 'PubMed Central'
     url = 'http://www.ncbi.nlm.nih.gov/pmc/'
 
-    schema = helpers.updated_schema(
-        schemas.OAISCHEMA,
-        {
+    @property
+    def schema(self):
+        return helpers.updated_schema(self._schema, {
             "uris": {
                 "canonicalUri": ('//ns0:header/ns0:identifier/node()', helpers.compose(oai_extract_url_pubmedcentral, helpers.single_result))
             }
-        }
-    )
+        })
 
     base_url = 'http://www.pubmedcentral.nih.gov/oai/oai.cgi'
     property_list = [
