@@ -8,50 +8,15 @@ import json
 import time
 import logging
 import functools
-from datetime import datetime
 
 import furl
 import requests
-from cassandra.cqlengine import columns, models
-from requests.structures import CaseInsensitiveDict
 
 from scrapi import events
-from scrapi import database
 from scrapi import settings
+from scrapi.processing import HarvesterResponse
 
 logger = logging.getLogger(__name__)
-logging.getLogger('cqlengine.cql').setLevel(logging.WARN)
-
-
-@database.register_model
-class HarvesterResponse(models.Model):
-    """A parody of requests.response but stored in cassandra
-    Should reflect all methods of a response object
-    Contains an additional field time_made, self-explanitory
-    """
-    __table_name__ = 'responses'
-
-    method = columns.Text(primary_key=True)
-    url = columns.Text(primary_key=True, required=True)
-
-    # Raw request data
-    ok = columns.Boolean()
-    content = columns.Bytes()
-    encoding = columns.Text()
-    headers_str = columns.Text()
-    status_code = columns.Integer()
-    time_made = columns.DateTime(default=datetime.now)
-
-    def json(self):
-        return json.loads(self.content)
-
-    @property
-    def headers(self):
-        return CaseInsensitiveDict(json.loads(self.headers_str))
-
-    @property
-    def text(self):
-        return self.content.decode('utf-8')
 
 
 def _maybe_load_response(method, url):
@@ -91,7 +56,7 @@ def record_or_load_response(method, url, throttle=None, force=False, params=None
             encoding=response.encoding,
             status_code=response.status_code,
             headers_str=json.dumps(dict(response.headers))
-        ).save()
+        )
 
     logger.warning('Skipped recorded response from "{}"'.format(url))
 
@@ -101,7 +66,7 @@ def record_or_load_response(method, url, throttle=None, force=False, params=None
         encoding=response.encoding,
         status_code=response.status_code,
         headers_str=json.dumps(dict(response.headers))
-    ).save()
+    )
 
 
 def request(method, url, params=None, **kwargs):

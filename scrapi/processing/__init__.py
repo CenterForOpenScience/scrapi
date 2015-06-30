@@ -3,6 +3,9 @@ import os
 from scrapi import settings
 from scrapi.processing.base import BaseProcessor
 
+# TODO, make generic
+from scrapi.processing.postgres import HarvesterResponse  # noqa
+
 __all__ = []
 for mod in os.listdir(os.path.dirname(__file__)):
     root, ext = os.path.splitext(mod)
