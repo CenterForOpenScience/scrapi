@@ -30,6 +30,10 @@ class DataciteHarvester(OAIHarvester):
 
 
 def get_second_description(descriptions):
+    ''' In the DataCite OAI PMH api, there are often 2 descriptions: A type and
+    a longer kind of abstract. If there are two options, pick the second one which
+    is almost always the longer abstract
+    '''
     if descriptions:
         if len(descriptions) > 1:
             return descriptions[1]
