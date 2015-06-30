@@ -27,8 +27,9 @@ def task_autoretry(*args_task, **kwargs_task):
             try:
                 func(*args, **kwargs)
             except kwargs_task.get('autoretry_on', Exception) as exc:
-                logger.info('Retrying with exception {}'.format(exc))
-                wrapper.retry(exc=exc)
+                if exc != events.Skip:
+                    logger.info('Retrying with exception {}'.format(exc))
+                    wrapper.retry(exc=exc)
         return wrapper
     return actual_decorator
 
