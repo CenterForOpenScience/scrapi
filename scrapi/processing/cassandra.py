@@ -3,6 +3,7 @@ from __future__ import absolute_import
 import json
 import logging
 from uuid import uuid4
+from datetime import datetime as dt
 
 from dateutil.parser import parse
 
@@ -11,7 +12,7 @@ from cassandra.cqlengine import columns, models
 from scrapi import events
 from scrapi import database  # noqa
 from scrapi.util import copy_to_unicode
-from scrapi.processing.base import BaseProcessor
+from scrapi.processing.base import BaseProcessor, HarvesterResponseModel
 
 
 logger = logging.getLogger(__name__)
@@ -196,3 +197,37 @@ class VersionModel(models.Model):
 
     # Additional metadata
     versions = columns.List(columns.UUID)
+
+
+@database.register_model
+class HarvesterResponse(HarvesterResponseModel, models.Model):
+    """A parody of requests.response but stored in cassandra
+    Should reflect all methods of a response object
+    Contains an additional field time_made, self-explanitory
+    """
+    __table_name__ = 'responses'
+
+    def __init__(self, *args, **kwargs):
+        super(HarvesterResponse, self).__init__(*args, **kwargs)
+        self.save()
+
+    @classmethod
+    def get(self, url=None, method=None):
+        try:
+            ret = self.get(url=url, method=method)
+        except Exception:
+            ret = None
+        if not ret:
+            raise self.DoesNotExist
+        return ret
+
+    method = columns.Text(primary_key=True)
+    url = columns.Text(primary_key=True, required=True)
+
+    # Raw request data
+    ok = columns.Boolean()
+    content = columns.Bytes()
+    encoding = columns.Text()
+    headers_str = columns.Text()
+    status_code = columns.Integer()
+    time_made = columns.DateTime(default=dt.now)
