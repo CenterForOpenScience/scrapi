@@ -1,17 +1,18 @@
 from __future__ import absolute_import
 
 import logging
+from datetime import datetime as dt
 
 from sqlalchemy import create_engine, ForeignKeyConstraint
 from sqlalchemy.ext.declarative import declarative_base
 
 from sqlalchemy.orm import relationship, sessionmaker
-from sqlalchemy import Column, String, Integer, LargeBinary, DateTime, ForeignKey, Table
+from sqlalchemy import Column, Boolean, String, Integer, LargeBinary, DateTime, ForeignKey, Table
 
 from sqlalchemy.dialects.postgresql import JSON, ARRAY
 
 from scrapi import events
-from scrapi.processing.base import BaseProcessor
+from scrapi.processing.base import BaseProcessor, HarvesterResponseModel
 
 logger = logging.getLogger(__name__)
 
@@ -223,3 +224,37 @@ class Log(Base):
             [Document.source, Document.docID]
         ), {}
     )
+
+
+class HarvesterResponse(HarvesterResponseModel, Base):
+    """A parody of requests.response but stored in cassandra
+    Should reflect all methods of a response object
+    Contains an additional field time_made, self-explanitory
+    """
+    __tablename__ = 'responses'
+
+    def __init__(self, *args, **kwargs):
+        super(HarvesterResponse, self).__init__(*args, **kwargs)
+        session.add(self)
+        session.commit()
+
+    method = Column(String, primary_key=True)
+    url = Column(String, primary_key=True)
+
+    # Raw request data
+    ok = Column(Boolean)
+    content = Column(LargeBinary)
+    encoding = Column(String)
+    headers_str = Column(String)
+    status_code = Column(String)
+    time_made = Column(DateTime, default=dt.now)
+
+    @classmethod
+    def get(self, method=None, url=None):
+        try:
+            ret = session.query(self).get((method, url))
+        except Exception:
+            ret = None
+        if not ret:
+            raise self.DoesNotExist
+        return ret
