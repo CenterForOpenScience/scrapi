@@ -1,3 +1,5 @@
+import vcr
+
 from scrapi.base import helpers
 
 
@@ -37,3 +39,18 @@ class TestHelpers(object):
         args = ['Stardust Rhodes', 'Golddust Rhodes', 'Dusty Rhodes']
         response = helpers.oai_process_contributors(args)
         assert isinstance(response, list)
+
+    @vcr.use_cassette('tests/vcr/asu.yaml')
+    def test_oai_get_records_and_token(self):
+        url = 'http://repository.asu.edu/oai-pmh?verb=ListRecords&metadataPrefix=oai_dc&from=2015-03-10&until=2015-03-11'
+        force = False
+        throttle = 0.5
+        namespaces = {
+            'dc': 'http://purl.org/dc/elements/1.1/',
+            'ns0': 'http://www.openarchives.org/OAI/2.0/',
+            'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
+        }
+        records, token = helpers.oai_get_records_and_token(url, throttle, force, namespaces)
+        assert records
+        assert token
+        assert len(records) == 50
