@@ -1,0 +1,38 @@
+'''
+Harvester for the DataCite MDS for the SHARE project
+
+Example API call: http://oai.datacite.org/oai?verb=ListRecords&metadataPrefix=oai_dc
+'''
+from __future__ import unicode_literals
+
+from scrapi.base import OAIHarvester
+from scrapi.base.helpers import updated_schema, oai_extract_dois
+
+
+class DataciteHarvester(OAIHarvester):
+    short_name = 'datacite'
+    long_name = 'DataCite MDS'
+    url = 'http://oai.datacite.org/oai'
+
+    base_url = 'http://oai.datacite.org/oai'
+    property_list = ['date', 'identifier', 'setSpec', 'description']
+    timezone_granularity = True
+
+    @property
+    def schema(self):
+        return updated_schema(self._schema, {
+            "description": ("//dc:description/node()", get_second_description),
+            "uris": {
+                "canonicalUri": ('//dc:identifier/node()', oai_extract_dois),
+                "objectUris": ('//dc:identifier/node()', oai_extract_dois)
+            }
+        })
+
+
+def get_second_description(descriptions):
+    if descriptions:
+        if len(descriptions) > 1:
+            return descriptions[1]
+        else:
+            return descriptions[0]
+    return ''
