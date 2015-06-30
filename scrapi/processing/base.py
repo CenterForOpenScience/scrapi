@@ -33,3 +33,11 @@ class HarvesterResponseModel(object):
     @abc.abstractmethod
     def get(self, url=None, method=None):
         raise NotImplementedError
+
+    @abc.abstractmethod
+    def save(self):
+        raise NotImplementedError
+
+    @abc.abstractmethod
+    def update(self, **kwargs):
+        raise NotImplementedError

@@ -56,7 +56,7 @@ def record_or_load_response(method, url, throttle=None, force=False, params=None
             encoding=response.encoding,
             status_code=response.status_code,
             headers_str=json.dumps(dict(response.headers))
-        )
+        ).save()
 
     logger.warning('Skipped recorded response from "{}"'.format(url))
 
@@ -66,7 +66,7 @@ def record_or_load_response(method, url, throttle=None, force=False, params=None
         encoding=response.encoding,
         status_code=response.status_code,
         headers_str=json.dumps(dict(response.headers))
-    )
+    ).save()
 
 
 def request(method, url, params=None, **kwargs):

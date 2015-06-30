@@ -233,10 +233,10 @@ class HarvesterResponse(HarvesterResponseModel, Base):
     """
     __tablename__ = 'responses'
 
-    def __init__(self, *args, **kwargs):
-        super(HarvesterResponse, self).__init__(*args, **kwargs)
+    def save(self):
         session.add(self)
         session.commit()
+        return self
 
     method = Column(String, primary_key=True)
     url = Column(String, primary_key=True)
@@ -258,3 +258,17 @@ class HarvesterResponse(HarvesterResponseModel, Base):
         if not ret:
             raise self.DoesNotExist
         return ret
+
+    def update(self, url=None, method=None, ok=None, content=None,
+               encoding=None, headers_str=None, status_code=None, time_made=None):
+
+        self.method = method or self.method
+        self.url = url or self.url
+        self.ok = ok or self.ok
+        self.content = content or self.content
+        self.encoding = encoding or self.encoding
+        self.headers_str = headers_str or self.headers_str
+        self.status_code = status_code or self.status_code
+        self.time_made = time_made or self.time_made
+
+        return self

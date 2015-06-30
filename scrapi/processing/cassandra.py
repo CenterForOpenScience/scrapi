@@ -200,16 +200,12 @@ class VersionModel(models.Model):
 
 
 @database.register_model
-class HarvesterResponse(HarvesterResponseModel, models.Model):
+class HarvesterResponse(models.Model, HarvesterResponseModel):
     """A parody of requests.response but stored in cassandra
     Should reflect all methods of a response object
     Contains an additional field time_made, self-explanitory
     """
     __table_name__ = 'responses'
-
-    def __init__(self, *args, **kwargs):
-        super(HarvesterResponse, self).__init__(*args, **kwargs)
-        self.save()
 
     @classmethod
     def get(self, url=None, method=None):
