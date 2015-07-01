@@ -1,4 +1,4 @@
-import utils
+from . import utils
 
 from mock import mock_open, patch
 

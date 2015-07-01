@@ -1,13 +1,14 @@
+import base64
 import logging
 import platform
 from datetime import date, timedelta
 
-import urllib
 from invoke import run, task
 from elasticsearch import helpers
+from dateutil.parser import parse
+from six.moves.urllib import parse as urllib_parse
 
 import scrapi.harvesters  # noqa
-from dateutil.parser import parse
 from scrapi import linter
 from scrapi import registry
 from scrapi import settings
@@ -201,11 +202,14 @@ def provider_map(delete=False):
         es.indices.delete(index='share_providers', ignore=[404])
 
     for harvester_name, harvester in registry.items():
+        with open("img/favicons/{}_favicon.ico".format(harvester.short_name), "rb") as f:
+            favicon = urllib_parse.quote(base64.encodestring(f.read()))
+
         es.index(
             'share_providers',
             harvester.short_name,
             body={
-                'favicon': 'data:image/png;base64,' + urllib.quote(open("img/favicons/{}_favicon.ico".format(harvester.short_name), "rb").read().encode('base64')),
+                'favicon': 'data:image/png;base64,' + favicon,
                 'short_name': harvester.short_name,
                 'long_name': harvester.long_name,
                 'url': harvester.url

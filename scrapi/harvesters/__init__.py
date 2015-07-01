@@ -7,6 +7,9 @@ import os
 # Get a list of folders
 _, __all__, files = next(os.walk(os.path.dirname(__file__)))
 
+# remove __pycache__ directories
+__all__ = [d for d in __all__ if d != '__pycache__']
+
 # Find all .py files that are not init
 __all__.extend([
     name[:-3]

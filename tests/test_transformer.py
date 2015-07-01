@@ -1,9 +1,7 @@
 from __future__ import unicode_literals
 
-import functools
-
-import mock
 import pytest
+from six.moves import xrange
 from lxml.etree import XPathEvalError
 from jsonschema.exceptions import ValidationError
 
@@ -24,7 +22,7 @@ class TestHarvester(XMLHarvester):
 
     def harvest(self, days_back=1):
         return [RawDocument({
-            'doc': str(TEST_XML_DOC),
+            'doc': TEST_XML_DOC,
             'source': 'test',
             'filetype': 'XML',
             'docID': "1"
@@ -58,7 +56,6 @@ class TestTransformer(object):
             }
         )
 
-
         results = [self.harvester.normalize(record) for record in self.harvester.harvest(days_back=1)]
 
         for result in results:
@@ -84,7 +81,7 @@ class TestTransformer(object):
                 'tags': (CONSTANT(['X']), lambda x: x),
                 'otherProperties': [{
                     'name': CONSTANT('test'),
-                    'properties':{
+                    'properties': {
                         'test':  CONSTANT('test')
                     },
                     'uri': CONSTANT('http://example.com'),

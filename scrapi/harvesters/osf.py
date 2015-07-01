@@ -57,7 +57,7 @@ def process_tags(entry):
 
 
 def parse_date(entry):
-    return parse(entry).date().isoformat().decode('utf-8')
+    return parse(entry).date().isoformat()
 
 
 class OSFHarvester(JSONHarvester):
@@ -110,7 +110,7 @@ class OSFHarvester(JSONHarvester):
                     {
                         'doc': json.dumps(record),
                         'source': self.short_name,
-                        'docID': doc_id.decode('utf-8'),
+                        'docID': doc_id,
                         'filetype': 'json'
                     }
                 )

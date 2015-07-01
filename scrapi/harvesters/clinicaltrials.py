@@ -6,7 +6,6 @@ iindividual result: http://ClinicalTrials.gov/show/NCT02425332?displayxml=true
 
 """
 
-#!/usr/bin/env python
 from __future__ import unicode_literals
 
 import time
@@ -14,8 +13,7 @@ import logging
 from datetime import date, timedelta
 
 from lxml import etree
-
-from dateutil.parser import *
+from dateutil.parser import parse
 
 from scrapi import requests
 from scrapi import settings
@@ -47,7 +45,7 @@ class ClinicalTrialsHarvester(XMLHarvester):
         "providerUpdatedDateTime": ("lastchanged_date/node()", compose(lambda x: parse(x).replace(tzinfo=None).isoformat(), single_result)),
         "title": ('//official_title/node()', '//brief_title/node()', lambda x, y: single_result(x) or single_result(y)),
         "description": ('//brief_summary/textblock/node()', '//brief_summary/textblock/node()', lambda x, y: single_result(x) or single_result(y)),
-        "tags": ("//keyword/node()", lambda tags: [unicode(tag.lower()) for tag in tags]),
+        "tags": ("//keyword/node()", lambda tags: [tag.lower() for tag in tags]),
         "sponsorships": [
             {
                 "sponsor": {
