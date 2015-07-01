@@ -3,8 +3,6 @@
 Example query: https://cn.dataone.org/cn/v1/query/solr/?q=dateModified:[NOW-5DAY%20TO%20*]&rows=10
 """
 
-
-# harvester for DataONE SOLR search API
 from __future__ import unicode_literals
 
 import re
