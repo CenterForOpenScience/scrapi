@@ -10,7 +10,7 @@ from scrapi.base import OAIHarvester
 
 class HacettepeHarvester(OAIHarvester):
     short_name = 'hacettepe'
-    long_name = 'DSpace on LibLiveCD'
+    long_name = 'Hacettepe University DSpace on LibLiveCD'
     url = 'http://bbytezarsivi.hacettepe.edu.tr/oai/request'
 
     base_url = 'http://bbytezarsivi.hacettepe.edu.tr/oai/request'
