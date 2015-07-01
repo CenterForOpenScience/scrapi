@@ -5,7 +5,7 @@ Example API request: http://api.crossref.org/v1/works?filter=from-pub-date:2015-
 """
 
 
-## Harvester for the CrossRef metadata service
+# Harvester for the CrossRef metadata service
 from __future__ import unicode_literals
 
 import json

@@ -6,7 +6,7 @@ iindividual result: http://ClinicalTrials.gov/show/NCT02425332?displayxml=true
 
 """
 
-#!/usr/bin/env python
+# !/usr/bin/env python
 from __future__ import unicode_literals
 
 import time
@@ -14,8 +14,7 @@ import logging
 from datetime import date, timedelta
 
 from lxml import etree
-
-from dateutil.parser import *
+from dateutil.parser import parse
 
 from scrapi import requests
 from scrapi import settings

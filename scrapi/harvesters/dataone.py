@@ -4,7 +4,7 @@ Example query: https://cn.dataone.org/cn/v1/query/solr/?q=dateModified:[NOW-5DAY
 """
 
 
-## harvester for DataONE SOLR search API
+# harvester for DataONE SOLR search API
 from __future__ import unicode_literals
 
 import re
@@ -14,7 +14,7 @@ from datetime import timedelta, date
 
 import six
 from lxml import etree
-from dateutil.parser import *
+from dateutil.parser import parse
 from xml.etree import ElementTree
 
 from nameparser import HumanName

@@ -22,7 +22,7 @@ import logging
 from datetime import date, timedelta
 
 from lxml import etree
-from dateutil.parser import *
+from dateutil.parser import parse
 
 from scrapi import requests
 from scrapi import settings
