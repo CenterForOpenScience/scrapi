@@ -54,7 +54,7 @@ expected = {
             "name": "depositedTimestamp",
             "properties": {
                 "depositedTimestamp": "right now"
-                }
+            }
         },
         {
             "name": "Empty",
@@ -70,6 +70,7 @@ expected = {
         }
     ]
 }
+
 
 def process_contributor(author, orcid):
     name = HumanName(author)
