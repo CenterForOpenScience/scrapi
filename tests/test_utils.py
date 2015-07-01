@@ -1,6 +1,7 @@
 import datetime
-from dateutil.parser import parse
+
 import six
+from dateutil.parser import parse
 
 from scrapi import util
 

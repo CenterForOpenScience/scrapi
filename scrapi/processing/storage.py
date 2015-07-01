@@ -10,8 +10,8 @@ import os
 import copy
 import json
 
-from scrapi.processing.base import BaseProcessor
 from scrapi.util import json_without_bytes
+from scrapi.processing.base import BaseProcessor
 
 
 class StorageProcessor(BaseProcessor):

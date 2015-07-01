@@ -3,8 +3,8 @@ from __future__ import unicode_literals
 import re
 import functools
 from copy import deepcopy
-import six
 
+import six
 from lxml import etree
 from pycountry import languages
 from nameparser import HumanName

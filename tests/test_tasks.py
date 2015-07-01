@@ -1,9 +1,9 @@
+import six
 import mock
 import pytest
-from datetime import date, timedelta
-from freezegun import freeze_time
-import six
 from six.moves import xrange
+from freezegun import freeze_time
+from datetime import date, timedelta
 
 from scrapi import tasks
 from scrapi import settings

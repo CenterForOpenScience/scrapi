@@ -1,7 +1,7 @@
 from datetime import datetime
 
-import pytz
 import six
+import pytz
 
 
 def timestamp():

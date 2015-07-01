@@ -6,7 +6,6 @@ iindividual result: http://ClinicalTrials.gov/show/NCT02425332?displayxml=true
 
 """
 
-# !/usr/bin/env python
 from __future__ import unicode_literals
 
 import time

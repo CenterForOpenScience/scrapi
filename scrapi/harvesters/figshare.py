@@ -10,10 +10,10 @@ from __future__ import unicode_literals
 
 import json
 import logging
-from dateutil.parser import parse
 from datetime import date, timedelta
 
 import six
+from dateutil.parser import parse
 
 from scrapi import requests
 from scrapi import settings

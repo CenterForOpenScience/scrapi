@@ -6,9 +6,10 @@ Example API query: http://www.osti.gov/scitech/scitechxml?EntryDateFrom=02%2F02%
 
 from __future__ import unicode_literals
 
+from datetime import date, timedelta
+
 import six
 from lxml import etree
-from datetime import date, timedelta
 
 from scrapi import requests
 from scrapi import settings

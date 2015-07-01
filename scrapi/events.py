@@ -3,10 +3,9 @@ from __future__ import unicode_literals
 import logging
 import inspect
 from functools import wraps
+
 import six
-
 from fluent import event
-
 from raven import Client
 
 from scrapi import settings

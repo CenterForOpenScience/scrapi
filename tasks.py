@@ -1,14 +1,14 @@
+import base64
 import logging
 import platform
-import base64
 from datetime import date, timedelta
 
-from six.moves.urllib import parse as urllib_parse
 from invoke import run, task
 from elasticsearch import helpers
+from dateutil.parser import parse
+from six.moves.urllib import parse as urllib_parse
 
 import scrapi.harvesters  # noqa
-from dateutil.parser import parse
 from scrapi import linter
 from scrapi import registry
 from scrapi import settings
