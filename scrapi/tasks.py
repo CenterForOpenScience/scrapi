@@ -2,6 +2,7 @@ import logging
 import functools
 from datetime import date, timedelta
 
+from celery import group
 from celery import Celery
 
 from scrapi import util
@@ -25,11 +26,11 @@ def task_autoretry(*args_task, **kwargs_task):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
             try:
-                func(*args, **kwargs)
+                return func(*args, **kwargs)
             except kwargs_task.get('autoretry_on', Exception) as exc:
-                if exc != events.Skip:
+                if not isinstance(exc, events.Skip):
                     logger.info('Retrying with exception {}'.format(exc))
-                    wrapper.retry(exc=exc)
+                    return wrapper.retry(exc=exc)
         return wrapper
     return actual_decorator
 
@@ -142,6 +143,18 @@ def migrate(migration, sources=tuple(), async=False, dry=True, **kwargs):
         logger.info('Dry run complete')
 
     logger.info('{} documents processed for migration {}'.format(count, str(migration)))
+
+
+@app.task
+def migrate_in_groups(migration, sources=tuple(), async=False, dry=True, **kwargs):
+    from scrapi.migrations import documents
+
+    # count = 0
+    for page in xrange(100):
+        group(
+            migration.s(doc, sources=sources, dry=dry, **kwargs)
+            for doc in documents(*sources)
+        ).apply_async()
 
 
 @app.task
