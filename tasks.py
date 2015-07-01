@@ -202,7 +202,9 @@ def provider_map(delete=False):
         es.indices.delete(index='share_providers', ignore=[404])
 
     for harvester_name, harvester in registry.items():
-        favicon = urllib_parse.quote(base64.encodestring(open("img/favicons/{}_favicon.ico".format(harvester.short_name), "rb").read()))
+        with open("img/favicons/{}_favicon.ico".format(harvester.short_name), "rb") as f:
+            favicon = urllib_parse.quote(base64.encodestring(f.read()))
+
         es.index(
             'share_providers',
             harvester.short_name,
