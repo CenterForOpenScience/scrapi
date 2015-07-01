@@ -8,8 +8,8 @@ from __future__ import unicode_literals
 from scrapi.base import OAIHarvester
 
 
-class Hacettepe_u_dimHarvester(OAIHarvester):
-    short_name = 'hacettepe_U_DIM'
+class HacettepeHarvester(OAIHarvester):
+    short_name = 'hacettepe'
     long_name = 'DSpace on LibLiveCD'
     url = 'http://bbytezarsivi.hacettepe.edu.tr/oai/request'
 
