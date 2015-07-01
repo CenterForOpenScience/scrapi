@@ -105,6 +105,6 @@ class JSONTransformer(BaseTransformer):
             return resolve_pointer(doc, val)
         except JsonPointerException as e:
             # This is because of jsonpointer's exception structure
-            if 'not found in' in e.message or 'is not a valid list index' in e.message:
+            if 'not found in' in e.args[0] or 'is not a valid list index' in e.args[0]:
                 return None
             raise e
