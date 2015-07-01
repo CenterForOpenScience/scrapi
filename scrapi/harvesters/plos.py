@@ -22,7 +22,7 @@ import logging
 from datetime import date, timedelta
 
 from lxml import etree
-from dateutil.parser import *
+from dateutil.parser import parse
 
 from scrapi import requests
 from scrapi import settings
@@ -88,7 +88,7 @@ class PlosHarvester(XMLHarvester):
                 'filetype': 'xml',
                 'source': self.short_name,
                 'doc': etree.tostring(row),
-                'docID': row.xpath("str[@name='id']")[0].text.decode('utf-8'),
+                'docID': row.xpath("str[@name='id']")[0].text,
             })
             for row in
             self.fetch_rows(start_date.isoformat(), end_date.isoformat())
@@ -101,7 +101,7 @@ class PlosHarvester(XMLHarvester):
             'canonicalUri': ('//str[@name="id"]/node()', compose('http://dx.doi.org/{}'.format, single_result)),
         },
         'contributors': ('//arr[@name="author_display"]/str/node()', default_name_parser),
-        'providerUpdatedDateTime': ('//date[@name="publication_data"]/node()', compose(lambda x: parse(x).date().isoformat().decode('utf-8'), single_result)),
+        'providerUpdatedDateTime': ('//date[@name="publication_data"]/node()', compose(lambda x: parse(x).date().isoformat(), single_result)),
         'title': ('//str[@name="title_display"]/node()', single_result),
         'description': ('//arr[@name="abstract"]/str/node()', single_result),
         'publisher': {

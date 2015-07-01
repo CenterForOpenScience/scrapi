@@ -70,7 +70,8 @@ def test_logged_decorator_exceptions(mock_dispatch):
     with pytest.raises(ValueError) as e:
         logged_func('foo')
 
-    assert e.value.message == 'test'
+    # no .message in Python3
+    assert e.value.args[0] == 'test'
     assert mock_dispatch.call_count == 2
     mock_dispatch.assert_has_calls([
         mock.call('testing', events.STARTED, _index=None, test='foo'),

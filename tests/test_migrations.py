@@ -41,8 +41,8 @@ def test_rename():
     queryset = DocumentModel.objects(docID=RAW['docID'], source=RAW['source'])
     old_source = NORMALIZED['shareProperties']['source']
 
-    assert(queryset[0].source == utils.RECORD['shareProperties']['source'])
-    assert(queryset[0].source == old_source)
+    assert queryset[0].source == utils.RECORD['shareProperties']['source']
+    assert queryset[0].source == old_source
 
     new_record = copy.deepcopy(utils.RECORD)
 
@@ -55,8 +55,8 @@ def test_rename():
     tasks.migrate(rename, sources=[old_source], target='wwe_news', dry=False)
 
     queryset = DocumentModel.objects(docID=RAW['docID'], source='wwe_news')
-    assert(queryset[0].source == 'wwe_news')
-    assert(len(queryset) == 1)
+    assert queryset[0].source == 'wwe_news'
+    assert len(queryset) == 1
     scrapi.processing.elasticsearch.es = real_es
 
 
@@ -68,11 +68,11 @@ def test_delete():
     test_cass.process_normalized(RAW, NORMALIZED)
 
     queryset = DocumentModel.objects(docID=RAW['docID'], source=RAW['source'])
-    assert(len(queryset) == 1)
+    assert len(queryset) == 1
 
     tasks.migrate(delete, sources=[RAW['source']], dry=False)
     queryset = DocumentModel.objects(docID=RAW['docID'], source=RAW['source'])
-    assert(len(queryset) == 0)
+    assert len(queryset) == 0
     scrapi.processing.elasticsearch.es = real_es
 
 
@@ -84,11 +84,11 @@ def test_renormalize():
     test_cass.process_normalized(RAW, NORMALIZED)
 
     queryset = DocumentModel.objects(docID=RAW['docID'], source=RAW['source'])
-    assert(len(queryset) == 1)
+    assert len(queryset) == 1
 
     tasks.migrate(renormalize, source=RAW['source'])
     queryset = DocumentModel.objects(docID=RAW['docID'], source=RAW['source'])
-    assert(len(queryset) == 1)
+    assert len(queryset) == 1
     scrapi.processing.elasticsearch.es = real_es
 
 
@@ -96,7 +96,7 @@ def test_renormalize():
 def test_migrate_v2():
     DocumentModelOld.create(**RAW.attributes).save()
     queryset = DocumentModel.objects(docID=RAW['docID'], source=RAW['source'])
-    assert(len(queryset) == 0)
+    assert len(queryset) == 0
     tasks.migrate_to_source_partition(dry=False)
     queryset = DocumentModel.objects(docID=RAW['docID'], source=RAW['source'])
-    assert(len(queryset) == 1)
+    assert len(queryset) == 1

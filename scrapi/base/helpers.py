@@ -4,6 +4,7 @@ import re
 import functools
 from copy import deepcopy
 
+import six
 from lxml import etree
 from pycountry import languages
 from nameparser import HumanName
@@ -11,7 +12,7 @@ from nameparser import HumanName
 from scrapi import requests
 
 
-URL_REGEX = re.compile(ur'(https?://\S*\.\S*)')
+URL_REGEX = re.compile(r'(https?://\S*\.\S*)')
 
 ''' Takes a value, returns a function that always returns that value
     Useful inside schemas for defining constants '''
@@ -90,7 +91,7 @@ def default_name_parser(names):
 
 def format_tags(all_tags, sep=','):
     tags = []
-    if isinstance(all_tags, basestring):
+    if isinstance(all_tags, six.string_types):
         tags = all_tags.split(sep)
     elif isinstance(all_tags, list):
         for tag in all_tags:
@@ -99,7 +100,7 @@ def format_tags(all_tags, sep=','):
             else:
                 tags.append(tag)
 
-    return list(set([unicode(tag.lower().strip()) for tag in tags if tag.strip()]))
+    return list(set([six.text_type(tag.lower().strip()) for tag in tags if tag.strip()]))
 
 
 def oai_extract_dois(*args):
@@ -127,7 +128,7 @@ def oai_extract_url(identifiers):
         try:
             found_url = URL_REGEX.search(item).group()
             if 'viewcontent' not in found_url:
-                return found_url.decode('utf-8')
+                return found_url
         except AttributeError:
             continue
 

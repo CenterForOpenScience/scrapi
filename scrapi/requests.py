@@ -10,6 +10,7 @@ import logging
 import functools
 from datetime import datetime
 
+import six
 import furl
 import requests
 from cassandra.cqlengine import columns, models
@@ -51,7 +52,7 @@ class HarvesterResponse(models.Model):
 
     @property
     def text(self):
-        return self.content.decode('utf-8')
+        return six.u(self.content)
 
 
 def _maybe_load_response(method, url):
@@ -81,6 +82,9 @@ def record_or_load_response(method, url, throttle=None, force=False, params=None
 
     if not response.ok:
         events.log_to_sentry('Got non-ok response code.', url=url, method=method)
+
+    if isinstance(response.content, six.text_type):
+        response.content = response.content.encode('utf8')
 
     if not resp:
         return HarvesterResponse(
@@ -120,7 +124,9 @@ def request(method, url, params=None, **kwargs):
         return record_or_load_response(method, url, **kwargs)
 
     logger.info('Making request to "{}"'.format(url))
-    time.sleep(kwargs.pop('throttle', 0))
+    throttle = kwargs.pop('throttle', 0)
+    if throttle:
+        time.sleep(throttle)
     # Need to prevent force from being passed to real requests module
     kwargs.pop('force', None)
     return requests.request(method, url, **kwargs)

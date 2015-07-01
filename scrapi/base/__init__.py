@@ -6,6 +6,7 @@ import json
 import logging
 from datetime import timedelta, date
 
+import six
 from lxml import etree
 
 from scrapi import util
@@ -32,13 +33,13 @@ class HarvesterMeta(abc.ABCMeta):
             logger.info('Class {} not added to registry'.format(cls.__name__))
 
 
+@six.add_metaclass(HarvesterMeta)
 class BaseHarvester(object):
     """ This is a base class that all harvesters should inheret from
 
     Defines the copy to unicode method, which is useful for getting standard
     unicode out of xml results.
     """
-    __metaclass__ = HarvesterMeta
 
     @abc.abstractproperty
     def short_name(self):

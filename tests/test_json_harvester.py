@@ -54,7 +54,7 @@ expected = {
             "name": "depositedTimestamp",
             "properties": {
                 "depositedTimestamp": "right now"
-                }
+            }
         },
         {
             "name": "Empty",
@@ -70,6 +70,7 @@ expected = {
         }
     ]
 }
+
 
 def process_contributor(author, orcid):
     name = HumanName(author)
@@ -97,7 +98,9 @@ class TestHarvester(JSONHarvester):
         return {
             'title': ('/title', lambda x: x[0] if x else ''),
             'description': ('/subtitle', lambda x: x[0] if (isinstance(x, list) and x) else x or ''),
-            'providerUpdatedDateTime': ('/issued/date-parts', lambda x: parse(' '.join([part for part in x[0]])).isoformat().decode('utf-8')),
+            'providerUpdatedDateTime': ('/issued/date-parts', lambda x: parse(' '.join(
+                [part for part in x[0]])).isoformat()
+            ),
             'uris': {
                 'canonicalUri': '/URL'
             },

@@ -3,8 +3,6 @@
 Example query: https://cn.dataone.org/cn/v1/query/solr/?q=dateModified:[NOW-5DAY%20TO%20*]&rows=10
 """
 
-
-## harvester for DataONE SOLR search API
 from __future__ import unicode_literals
 
 import re
@@ -12,8 +10,9 @@ import re
 import logging
 from datetime import timedelta, date
 
+import six
 from lxml import etree
-from dateutil.parser import *
+from dateutil.parser import parse
 from xml.etree import ElementTree
 
 from nameparser import HumanName
@@ -88,7 +87,7 @@ def process_contributors(author, submitters, contributors,
                 'givenName': name.first,
                 'additionalName': name.middle,
                 'familyName': name.last,
-                'email': unicode(email)
+                'email': six.text_type(email)
             }
             contributor_list.append(contributor_dict)
         else:
