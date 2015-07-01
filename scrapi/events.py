@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 import logging
 import inspect
 from functools import wraps
+import six
 
 from fluent import event
 
@@ -52,7 +53,7 @@ def serialize_fluent_data(data):
             serialize_fluent_data(item)
             for item in data
         ]
-    elif isinstance(data, (str, unicode)):
+    elif isinstance(data, six.string_types):
         return data
     else:
         return repr(data)
@@ -86,7 +87,8 @@ def logged(event, index=None):
             try:
                 res = func(*args, **kwargs)
             except Skip as e:
-                dispatch(event, SKIPPED, _index=index, reason=e.message, **context)
+                # args[0] instead of message for Py3
+                dispatch(event, SKIPPED, _index=index, reason=e.args[0], **context)
                 return None
             except Exception as e:
                 if settings.SENTRY_DSN:
@@ -108,7 +110,7 @@ def extract_context(func, *args, **kwargs):
         for kwarg in (arginfo.defaults or [])
     }
 
-    computed_args = zip(arg_names, args)
+    computed_args = list(zip(arg_names, args))
     if arginfo.varargs:
         computed_args.append(('args', list(args[len(arg_names):])))
 

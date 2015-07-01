@@ -1,5 +1,5 @@
 import pytest
-import utils
+from . import utils
 
 from scrapi.linter.document import NormalizedDocument, RawDocument
 from scrapi.processing.elasticsearch import es, ElasticsearchProcessor

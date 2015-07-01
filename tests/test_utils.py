@@ -1,5 +1,6 @@
 import datetime
 from dateutil.parser import parse
+import six
 
 from scrapi import util
 
@@ -10,7 +11,7 @@ class TestScrapiUtils(object):
         converted = util.copy_to_unicode('test')
 
         assert converted == u'test'
-        assert isinstance(converted, unicode)
+        assert isinstance(converted, six.text_type)
 
     def test_timestamp(self):
         timestamp = util.timestamp()

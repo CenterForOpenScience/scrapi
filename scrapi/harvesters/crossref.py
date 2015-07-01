@@ -15,6 +15,7 @@ from datetime import date, timedelta
 
 from nameparser import HumanName
 from dateutil.parser import parse
+from six.moves import xrange
 
 from scrapi import requests
 from scrapi import settings
@@ -51,7 +52,7 @@ class CrossRefHarvester(JSONHarvester):
         return {
             'title': ('/title', lambda x: x[0] if x else ''),
             'description': ('/subtitle', lambda x: x[0] if (isinstance(x, list) and x) else x or ''),
-            'providerUpdatedDateTime': ('/issued/date-parts', lambda x: parse(' '.join([str(part) for part in x[0]])).date().isoformat().decode('utf-8')),
+            'providerUpdatedDateTime': ('/issued/date-parts', lambda x: parse(' '.join([str(part) for part in x[0]])).date().isoformat()),
             'uris': {
                 'canonicalUri': '/URL'
             },

@@ -1,8 +1,9 @@
 import logging
 import platform
+import base64
 from datetime import date, timedelta
 
-import urllib
+from six.moves.urllib import parse as urllib_parse
 from invoke import run, task
 from elasticsearch import helpers
 
@@ -201,11 +202,12 @@ def provider_map(delete=False):
         es.indices.delete(index='share_providers', ignore=[404])
 
     for harvester_name, harvester in registry.items():
+        favicon = urllib_parse.quote(base64.encodestring(open("img/favicons/{}_favicon.ico".format(harvester.short_name), "rb").read()))
         es.index(
             'share_providers',
             harvester.short_name,
             body={
-                'favicon': 'data:image/png;base64,' + urllib.quote(open("img/favicons/{}_favicon.ico".format(harvester.short_name), "rb").read().encode('base64')),
+                'favicon': 'data:image/png;base64,' + favicon,
                 'short_name': harvester.short_name,
                 'long_name': harvester.long_name,
                 'url': harvester.url
