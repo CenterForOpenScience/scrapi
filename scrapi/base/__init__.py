@@ -70,7 +70,7 @@ class BaseHarvester(object):
         return {
             'hour': 22,
             'minute': 59,
-            'day_of_week': 'mon-fri',
+            'day_of_week': 'mon-sun',
         }
 
 
