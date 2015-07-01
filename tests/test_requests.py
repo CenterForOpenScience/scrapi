@@ -1,7 +1,7 @@
+import six
 import mock
 import json
 import pytest
-import six
 
 from scrapi import requests
 
