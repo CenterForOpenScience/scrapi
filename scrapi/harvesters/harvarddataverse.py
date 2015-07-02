@@ -8,13 +8,14 @@ from __future__ import unicode_literals
 
 import json
 import logging
-from datetime import datetime
+from datetime import date
 from datetime import timedelta
 
 import furl
 from dateutil.parser import parse
 
 from scrapi import requests
+from scrapi import settings
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
 from scrapi.base.helpers import default_name_parser, build_properties
@@ -58,10 +59,8 @@ class HarvardDataverseHarvester(JSONHarvester):
     }
 
     def harvest(self, start_date=None, end_date=None):
-        if not start_date:
-            start_date = datetime.datetime.now() - timedelta(2)
-        if not end_date:
-            end_date = datetime.datetime.now()
+        start_date = (start_date or date.today() - timedelta(settings.DAYS_BACK)).isoformat()
+        end_date = (end_date or date.today()).isoformat()
 
         query = furl.furl(self.URL)
         query.args['type'] = self.TYPE
