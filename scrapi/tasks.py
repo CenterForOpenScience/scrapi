@@ -2,8 +2,8 @@ import logging
 import functools
 from datetime import date, timedelta
 
-from celery import group
 from celery import Celery
+from itertools import islice
 
 from scrapi import util
 from scrapi import events
@@ -126,28 +126,8 @@ def process_normalized(normalized_doc, raw_doc, **kwargs):
 
 
 @app.task
-def migrate(migration, sources=tuple(), async=False, dry=True, **kwargs):
+def migrate(migration, sources=tuple(), async=False, dry=True, group_size=1000, **kwargs):
     from scrapi.migrations import documents
-
-    count = 0
-    for doc in documents(*sources):
-        count += 1
-
-        if async:
-            migration.s(doc, sources=sources, dry=dry, **kwargs).apply_async()
-        else:
-            migration(doc, sources=sources, dry=dry, **kwargs)
-
-    if dry:
-        logger.info('Dry run complete')
-
-    logger.info('{} documents processed for migration {}'.format(count, str(migration)))
-
-
-@app.task
-def migrate_in_groups(migration, sources=tuple(), async=False, dry=True, group_size=10, **kwargs):
-    from scrapi.migrations import documents
-    from itertools import islice
 
     docs = documents(*sources)
     if async:
@@ -155,7 +135,6 @@ def migrate_in_groups(migration, sources=tuple(), async=False, dry=True, group_s
         while segment:
             migration.s(segment, sources=sources, dry=dry, **kwargs).apply_async()
             segment = list(islice(docs, group_size))
-
     else:
         for doc in documents(*sources):
             migration(doc, sources=sources, dry=dry, **kwargs)
@@ -164,10 +143,6 @@ def migrate_in_groups(migration, sources=tuple(), async=False, dry=True, group_s
         logger.info('Dry run complete')
 
     logger.info('Documents processed for migration {}'.format(str(migration)))
-
-
-# @app.task
-# migrate_in_groups(sources=tuple(), dry=True, group_size=1000, **kwargs):
 
 
 @app.task
