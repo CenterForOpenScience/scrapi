@@ -137,7 +137,7 @@ def migrate(migration, sources=tuple(), async=False, dry=True, group_size=1000, 
             segment = list(islice(docs, group_size))
     else:
         for doc in documents(*sources):
-            migration(doc, sources=sources, dry=dry, **kwargs)
+            migration((doc,), sources=sources, dry=dry, **kwargs)
 
     if dry:
         logger.info('Dry run complete')
