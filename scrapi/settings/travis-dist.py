@@ -21,6 +21,7 @@ ELASTIC_TIMEOUT = 10
 ELASTIC_INDEX = 'share'
 
 PLOS_API_KEY = 'fakekey'
+HARVARD_DATAVERSE_API_KEY = 'anotherfakekey'
 
 disabled = ['stepic', 'shareok']
 
