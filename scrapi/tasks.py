@@ -1,9 +1,9 @@
 import logging
 import functools
+from itertools import islice
 from datetime import date, timedelta
 
 from celery import Celery
-from itertools import islice
 
 from scrapi import util
 from scrapi import events
@@ -95,13 +95,13 @@ def spawn_tasks(raw, timestamps, harvester_name):
     process_raw.delay(raw)
 
 
-@task_autoretry(default_retry_delay=30, max_retries=5)
+@task_autoretry(default_retry_delay=settings.CELERY_RETRY_DELAY, max_retries=settings.CELERY_MAX_RETRIES)
 @events.logged(events.PROCESSING, 'raw')
 def process_raw(raw_doc, **kwargs):
     processing.process_raw(raw_doc, kwargs)
 
 
-@task_autoretry(default_retry_delay=30, max_retries=5, throws=events.Skip)
+@task_autoretry(default_retry_delay=settings.CELERY_RETRY_DELAY, max_retries=settings.CELERY_MAX_RETRIES, throws=events.Skip)
 @events.logged(events.NORMALIZATION)
 def normalize(raw_doc, harvester_name):
     normalized_started = timestamp()
@@ -117,7 +117,7 @@ def normalize(raw_doc, harvester_name):
     return normalized  # returns a single normalized document
 
 
-@task_autoretry(default_retry_delay=30, max_retries=5, throws=events.Skip)
+@task_autoretry(default_retry_delay=settings.CELERY_RETRY_DELAY, max_retries=settings.CELERY_MAX_RETRIES, throws=events.Skip)
 @events.logged(events.PROCESSING, 'normalized')
 def process_normalized(normalized_doc, raw_doc, **kwargs):
     if not normalized_doc:
