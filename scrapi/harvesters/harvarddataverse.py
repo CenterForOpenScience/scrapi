@@ -36,7 +36,7 @@ class HarvardDataverseHarvester(JSONHarvester):
 
     namespaces = {}
 
-    MAX_ITEMS_PER_REQUEST = 20
+    MAX_ITEMS_PER_REQUEST = 1000
     URL = 'https://dataverse.harvard.edu/api/search/?q=*'
     TYPE = 'dataset'
 
@@ -90,13 +90,11 @@ class HarvardDataverseHarvester(JSONHarvester):
                 )
             )
 
-        print('I harvested {} records'.format(len(record_list)))
         return record_list
 
     def get_records(self, search_url):
         records = requests.get(search_url)
         total_records = records.json()['data']['total_count']
-        print('Gonna harvest {} records'.foramt(total_records))
         start = 0
         all_records = []
 
