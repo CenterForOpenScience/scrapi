@@ -69,10 +69,12 @@ def delete(docs, sources=None, **kwargs):
 
 
 @tasks.task_autoretry(default_retry_delay=30, max_retries=5)
-def document_v2_migration(docs, dry=True):
-    for doc in docs:
-        if not dry:
-            try_n_times(5, DocumentModel.create, **dict(doc)).save()
+def document_v2_migration(doc, dry=True):
+    logger.warning(
+        'This function has been deprecated, and will be removed in future versions of scrapi'
+    )
+    if not dry:
+        try_n_times(5, DocumentModel.create, **dict(doc)).save()
 
 
 def ModelIteratorFactory(model, next_page, default_args=None):
