@@ -31,7 +31,7 @@ def alias(alias, index):
 
 
 @task
-def migrate(migration, sources=None, kwargs_string=None, dry=True, async=False):
+def migrate(migration, sources=None, kwargs_string=None, dry=True, async=False, group_size=1000):
     ''' Task to run a migration.
 
     :param migration: The migration function to run. This is passed in
@@ -70,6 +70,7 @@ def migrate(migration, sources=None, kwargs_string=None, dry=True, async=False):
 
     kwargs['dry'] = dry
     kwargs['async'] = async
+    kwargs['group_size'] = group_size
     kwargs['sources'] = map(lambda x: x.strip(), sources.split(','))
 
     if kwargs['sources'] == ['']:

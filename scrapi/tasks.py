@@ -1,5 +1,6 @@
 import logging
 import functools
+from itertools import islice
 from datetime import date, timedelta
 
 from celery import Celery
@@ -25,10 +26,10 @@ def task_autoretry(*args_task, **kwargs_task):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
             try:
-                func(*args, **kwargs)
+                return func(*args, **kwargs)
             except kwargs_task.get('autoretry_on', Exception) as exc:
                 logger.info('Retrying with exception {}'.format(exc))
-                wrapper.retry(exc=exc)
+                raise wrapper.retry(exc=exc)
         return wrapper
     return actual_decorator
 
@@ -94,13 +95,13 @@ def spawn_tasks(raw, timestamps, harvester_name):
     process_raw.delay(raw)
 
 
-@app.task
+@task_autoretry(default_retry_delay=settings.CELERY_RETRY_DELAY, max_retries=settings.CELERY_MAX_RETRIES)
 @events.logged(events.PROCESSING, 'raw')
 def process_raw(raw_doc, **kwargs):
     processing.process_raw(raw_doc, kwargs)
 
 
-@app.task
+@task_autoretry(default_retry_delay=settings.CELERY_RETRY_DELAY, max_retries=settings.CELERY_MAX_RETRIES, throws=events.Skip)
 @events.logged(events.NORMALIZATION)
 def normalize(raw_doc, harvester_name):
     normalized_started = timestamp()
@@ -116,7 +117,7 @@ def normalize(raw_doc, harvester_name):
     return normalized  # returns a single normalized document
 
 
-@app.task
+@task_autoretry(default_retry_delay=settings.CELERY_RETRY_DELAY, max_retries=settings.CELERY_MAX_RETRIES, throws=events.Skip)
 @events.logged(events.PROCESSING, 'normalized')
 def process_normalized(normalized_doc, raw_doc, **kwargs):
     if not normalized_doc:
@@ -125,22 +126,23 @@ def process_normalized(normalized_doc, raw_doc, **kwargs):
 
 
 @app.task
-def migrate(migration, sources=tuple(), async=False, dry=True, **kwargs):
+def migrate(migration, sources=tuple(), async=False, dry=True, group_size=1000, **kwargs):
     from scrapi.migrations import documents
 
-    count = 0
-    for doc in documents(*sources):
-        count += 1
-
-        if async:
-            migration.s(doc, sources=sources, dry=dry, **kwargs).apply_async()
-        else:
-            migration(doc, sources=sources, dry=dry, **kwargs)
+    docs = documents(*sources)
+    if async:
+        segment = list(islice(docs, group_size))
+        while segment:
+            migration.s(segment, sources=sources, dry=dry, **kwargs).apply_async()
+            segment = list(islice(docs, group_size))
+    else:
+        for doc in docs:
+            migration((doc,), sources=sources, dry=dry, **kwargs)
 
     if dry:
         logger.info('Dry run complete')
 
-    logger.info('{} documents processed for migration {}'.format(count, str(migration)))
+    logger.info('Documents processed for migration {}'.format(str(migration)))
 
 
 @app.task
