@@ -23,5 +23,5 @@ def test_harvester(monkeypatch, harvester_name, *args, **kwargs):
         harvested = harvester.harvest()
         assert len(harvested) > 0
 
-    normalized = filter(lambda x: x is not None, map(harvester.normalize, harvested))
+    normalized = list(filter(lambda x: x is not None, map(harvester.normalize, harvested[:25])))
     assert len(normalized) > 0

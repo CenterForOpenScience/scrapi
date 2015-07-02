@@ -4,12 +4,10 @@ Harvester for Scholars Bank University of Oregon for the SHARE project
 Example API call: http://scholarsbank.uoregon.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc
 """
 
-
 from __future__ import unicode_literals
 
 from scrapi.base import OAIHarvester
-from scrapi.base.schemas import OAISCHEMA
-from scrapi.base.helpers import updated_schema
+from scrapi.base import helpers
 
 
 def second_result(des):
@@ -28,6 +26,8 @@ class ScholarsbankHarvester(OAIHarvester):
         'date', 'description', 'setSpec', 'identifier'
     ]
 
-    schema = updated_schema(OAISCHEMA, {
-        'description': ('//dc:description/node()', second_result)
-    })
+    @property
+    def schema(self):
+        return helpers.updated_schema(self._schema, {
+            'description': ('//dc:description/node()', second_result)
+        })

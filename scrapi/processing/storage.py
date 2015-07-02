@@ -10,6 +10,7 @@ import os
 import copy
 import json
 
+from scrapi.util import json_without_bytes
 from scrapi.processing.base import BaseProcessor
 
 
@@ -26,7 +27,7 @@ class StorageProcessor(BaseProcessor):
             new_attrs['versions'] = map(str, new_attrs['versions'])
 
         with open(filename, 'w') as f:
-            f.write(json.dumps(new_attrs, indent=4))
+            f.write(json.dumps(json_without_bytes(new_attrs), indent=4))
 
     def process_normalized(self, raw, normalized):
         filename = 'archive/{}/{}/normalized.json'.format(raw['source'], raw['docID'], raw['filetype'])
@@ -34,4 +35,4 @@ class StorageProcessor(BaseProcessor):
             os.makedirs(os.path.dirname(filename))
 
         with open(filename, 'w') as f:
-            f.write(json.dumps(normalized.attributes, indent=4))
+            f.write(json.dumps(json_without_bytes(normalized.attributes), indent=4))

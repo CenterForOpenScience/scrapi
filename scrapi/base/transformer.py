@@ -9,9 +9,8 @@ from jsonpointer import resolve_pointer, JsonPointerException
 logger = logging.getLogger(__name__)
 
 
+@six.add_metaclass(abc.ABCMeta)
 class BaseTransformer(object):
-
-    __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
     def _transform_string(self, string, doc):
@@ -65,7 +64,7 @@ class BaseTransformer(object):
         args = []
 
         for value in values:
-            if isinstance(value, basestring):
+            if isinstance(value, six.string_types):
                 args.append(self._transform_string(value, doc))
             elif callable(value):
                 args.append(value(doc))
@@ -87,9 +86,8 @@ class BaseTransformer(object):
         } if len(t) == 2 else {}
 
 
+@six.add_metaclass(abc.ABCMeta)
 class XMLTransformer(BaseTransformer):
-
-    __metaclass__ = abc.ABCMeta
 
     def _transform_string(self, string, doc):
         return doc.xpath(string, namespaces=self.namespaces)
@@ -99,12 +97,14 @@ class XMLTransformer(BaseTransformer):
         raise NotImplementedError
 
 
+@six.add_metaclass(abc.ABCMeta)
 class JSONTransformer(BaseTransformer):
-
-    __metaclass__ = abc.ABCMeta
 
     def _transform_string(self, val, doc):
         try:
             return resolve_pointer(doc, val)
-        except JsonPointerException:
-            return ''
+        except JsonPointerException as e:
+            # This is because of jsonpointer's exception structure
+            if 'not found in' in e.args[0] or 'is not a valid list index' in e.args[0]:
+                return None
+            raise e

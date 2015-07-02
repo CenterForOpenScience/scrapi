@@ -1,6 +1,7 @@
 import time
 import logging
 
+from six.moves import xrange
 from cassandra.cqlengine.query import Token
 
 from scrapi import tasks
