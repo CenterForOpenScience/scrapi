@@ -146,18 +146,19 @@ def migrate(migration, sources=tuple(), async=False, dry=True, **kwargs):
 
 
 @app.task
-def migrate_in_groups(migration, sources=tuple(), async=False, dry=True, **kwargs):
+def migrate_in_groups(migration, sources=tuple(), async=False, dry=True, group_size=50, **kwargs):
     from scrapi.migrations import documents
     from itertools import islice
     docs = documents(*sources)
     # count = 0
     if async:
-        for segment in list(islice(docs, 50)):
-            logger.error(segment)
+        segment = islice(docs, 50)
+        while segment:
             group(
                 migration.s(doc, sources=sources, dry=dry, **kwargs)
                 for doc in segment
             ).apply_async()
+            segment = islice(docs, 50)
 
     else:
         for doc in documents(*sources):
