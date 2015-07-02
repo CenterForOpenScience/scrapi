@@ -28,9 +28,8 @@ def task_autoretry(*args_task, **kwargs_task):
             try:
                 return func(*args, **kwargs)
             except kwargs_task.get('autoretry_on', Exception) as exc:
-                if not isinstance(exc, events.Skip):
-                    logger.info('Retrying with exception {}'.format(exc))
-                    return wrapper.retry(exc=exc)
+                logger.info('Retrying with exception {}'.format(exc))
+                raise wrapper.retry(exc=exc)
         return wrapper
     return actual_decorator
 
@@ -102,7 +101,7 @@ def process_raw(raw_doc, **kwargs):
     processing.process_raw(raw_doc, kwargs)
 
 
-@task_autoretry(default_retry_delay=30, max_retries=5)
+@task_autoretry(default_retry_delay=30, max_retries=5, throws=events.Skip)
 @events.logged(events.NORMALIZATION)
 def normalize(raw_doc, harvester_name):
     normalized_started = timestamp()
@@ -118,7 +117,7 @@ def normalize(raw_doc, harvester_name):
     return normalized  # returns a single normalized document
 
 
-@task_autoretry(default_retry_delay=30, max_retries=5)
+@task_autoretry(default_retry_delay=30, max_retries=5, throws=events.Skip)
 @events.logged(events.PROCESSING, 'normalized')
 def process_normalized(normalized_doc, raw_doc, **kwargs):
     if not normalized_doc:
@@ -146,19 +145,16 @@ def migrate(migration, sources=tuple(), async=False, dry=True, **kwargs):
 
 
 @app.task
-def migrate_in_groups(migration, sources=tuple(), async=False, dry=True, group_size=50, **kwargs):
+def migrate_in_groups(migration, sources=tuple(), async=False, dry=True, group_size=10, **kwargs):
     from scrapi.migrations import documents
     from itertools import islice
+
     docs = documents(*sources)
-    # count = 0
     if async:
-        segment = islice(docs, 50)
+        segment = list(islice(docs, group_size))
         while segment:
-            group(
-                migration.s(doc, sources=sources, dry=dry, **kwargs)
-                for doc in segment
-            ).apply_async()
-            segment = islice(docs, 50)
+            migration.s(segment, sources=sources, dry=dry, **kwargs).apply_async()
+            segment = list(islice(docs, group_size))
 
     else:
         for doc in documents(*sources):
@@ -168,6 +164,10 @@ def migrate_in_groups(migration, sources=tuple(), async=False, dry=True, group_s
         logger.info('Dry run complete')
 
     logger.info('Documents processed for migration {}'.format(str(migration)))
+
+
+# @app.task
+# migrate_in_groups(sources=tuple(), dry=True, group_size=1000, **kwargs):
 
 
 @app.task
