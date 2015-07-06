@@ -2,11 +2,12 @@ from __future__ import absolute_import
 import logging
 
 from elasticsearch import Elasticsearch
-from elasticsearch.exceptions import NotFoundError
 from elasticsearch.exceptions import ConnectionError
+
+from elasticsearch_dsl.connections import connections
 from elasticsearch_dsl import DocType, String, Date, Object
 
-from scrapi import settings
+from scrapi import settings, registry
 from scrapi.processing.base import BaseProcessor
 from scrapi.base.transformer import JSONTransformer
 
@@ -19,60 +20,49 @@ logging.getLogger('elasticsearch.trace').setLevel(logging.FATAL)
 
 
 try:
-    # If we cant connect to elastic search dont define this class
     es = Elasticsearch(settings.ELASTIC_URI, request_timeout=settings.ELASTIC_TIMEOUT)
-
-    # body = {
-    #     'mappings': {
-    #         harvester: settings.ES_SEARCH_MAPPING
-    #         for harvester in registry.keys()
-    #     }
-    # }
+    connections.add_connection('default', es)
 
     es.cluster.health(wait_for_status='yellow')
     es.indices.create(index=settings.ELASTIC_INDEX, body={}, ignore=400)
     es.indices.create(index='share_v1', ignore=400)
 except ConnectionError:  # pragma: no cover
-    logger.error('Could not connect to Elasticsearch, expect errors.')
     if 'elasticsearch' in settings.NORMALIZED_PROCESSING or 'elasticsearch' in settings.RAW_PROCESSING:
         raise
+    logger.error('Could not connect to Elasticsearch, expect errors.')
+
+
+# This must remain until the next elasticsearch-dsl update
+def update(self, **kwargs):
+    for k, v in kwargs.items():
+        self.__dict__['_d_'][k] = v
+    self.save()
+
+DocType.update = update
 
 
 class ElasticsearchProcessor(BaseProcessor):
     NAME = 'elasticsearch'
 
     def process_normalized(self, raw_doc, normalized, index=settings.ELASTIC_INDEX):
+        doc_type = self.Document(raw_doc['source'])
+
         data = {
             key: value for key, value in normalized.attributes.items()
             if key in settings.FRONTEND_KEYS
         }
-        data['providerUpdatedDateTime'] = self.version(raw_doc, normalized)
 
-        es.index(
-            body=data,
-            refresh=True,
-            index=index,
-            doc_type=raw_doc['source'],
-            id=raw_doc['docID'],
-        )
-        self.process_normalized_v1(raw_doc, normalized, data['providerUpdatedDateTime'])
-
-    def version(self, raw, normalized):
-        try:
-            old_doc = es.get_source(
-                index=settings.ELASTIC_INDEX,
-                doc_type=raw['source'],
-                id=raw['docID']
-            )
-        except NotFoundError:  # pragma: no cover
-            # Normally I don't like exception-driven logic,
-            # but this was the best way to handle missing
-            # types, indices and documents together
-            date = normalized['providerUpdatedDateTime']
+        doc = doc_type.get(id=raw_doc['docID'], ignore=404)
+        if doc:
+            if doc.providerUpdatedDateTime:
+                data['providerUpdatedDateTime'] = doc.providerUpdatedDateTime
+            doc.update(**data)
         else:
-            date = old_doc.get('providerUpdatedDateTime') or normalized['providerUpdatedDateTime']
-
-        return date
+            doc = doc_type(**data)
+            doc.meta.id = raw_doc['docID']
+            doc.meta.type = raw_doc['source']
+            doc.save()
+        self.process_normalized_v1(raw_doc, normalized, data['providerUpdatedDateTime'])
 
     def process_normalized_v1(self, raw_doc, normalized, date):
         index = 'share_v1'
@@ -86,6 +76,9 @@ class ElasticsearchProcessor(BaseProcessor):
             doc_type=raw_doc['source'],
             id=raw_doc['docID']
         )
+
+    def Document(self, name):
+        return globals()[str(name).capitalize() + 'Document']
 
 
 class PreserveOldContributors(JSONTransformer):
@@ -104,7 +97,7 @@ class PreserveOldSchema(JSONTransformer):
     schema = {
         'title': '/title',
         'description': '/description',
-        'tags': ('/tags', lambda x: x or []),
+        'tags': ('/tags', '/subjects', lambda x, y: (x + y) if (x and y) else (x or y or [])),
         'contributors': ('/contributors', PreserveOldContributors().process_contributors),
         'dateUpdated': '/providerUpdatedDateTime',
         'source': '/shareProperties/source',
@@ -132,7 +125,10 @@ CONTRIBUTOR = Object(
 )
 
 
-class Normalized(DocType):
+class NormalizedDocument(DocType):
+
+    class Meta:
+        index = 'share_v3'
 
     title = String()
     description = String()
@@ -184,3 +180,14 @@ class Normalized(DocType):
     )
     otherProperties = Object()
     shareProperties = Object()
+
+
+def gen(name):
+    klass = type(str(name.capitalize()) + 'Document', (NormalizedDocument, ), dict(Meta=type('Meta', (), dict(index='share_v3', doc_type=name))))
+    klass._doc_type.mapping.save('share_v3')
+    return klass
+
+
+for name in registry.keys():
+    class_name = name.capitalize() + 'Document'
+    globals()[class_name] = gen(name)
