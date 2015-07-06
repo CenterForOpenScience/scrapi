@@ -16,3 +16,4 @@ furl==0.4.4
 jsonschema==2.4.0
 jsonpointer==1.7
 pycountry==1.10
+elasticsearch-dsl==0.0.4
