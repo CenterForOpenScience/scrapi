@@ -183,7 +183,15 @@ class NormalizedDocument(DocType):
 
 
 def gen(name):
-    klass = type(str(name.capitalize()) + 'Document', (NormalizedDocument, ), dict(Meta=type('Meta', (), dict(index='share_v3', doc_type=name))))
+    klass = type(
+        str(name.capitalize()) + 'Document',
+        (NormalizedDocument, ),
+        dict(Meta=type(
+            'Meta',
+            (),
+            dict(index='share_v3', doc_type=name)
+        ))
+    )
     klass._doc_type.mapping.save('share_v3')
     return klass
 
