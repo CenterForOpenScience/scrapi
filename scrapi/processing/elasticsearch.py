@@ -4,6 +4,7 @@ import logging
 from elasticsearch import Elasticsearch
 from elasticsearch.exceptions import NotFoundError
 from elasticsearch.exceptions import ConnectionError
+from elasticsearch_dsl import DocType, String, Date, Object
 
 from scrapi import settings
 from scrapi.processing.base import BaseProcessor
@@ -111,3 +112,75 @@ class PreserveOldSchema(JSONTransformer):
             'url': '/uris/canonicalUri'
         }
     }
+
+
+URI_FIELD = String(fields={
+    'raw': String(index='not_analyzed')
+})
+
+
+CONTRIBUTOR = Object(
+    properties={
+        'name': String(),
+        'email': URI_FIELD,
+        'sameAs': URI_FIELD,
+        'familyName': String(),
+        'additionalName': String(),
+        'givenName': String(),
+        'affiliation': URI_FIELD
+    }
+)
+
+
+class Normalized(DocType):
+
+    title = String()
+    description = String()
+    tags = String(index='not_analyzed')
+    subjects = String(index='not_analyzed')
+
+    uris = Object(
+        properties={
+            'canonicalUri': URI_FIELD,
+            'objectUris': URI_FIELD,
+            'descriptorUris': URI_FIELD,
+            'providerUris': URI_FIELD
+        }
+    )
+    contributors = CONTRIBUTOR
+    providerUpdatedDateTime = Date()
+    description = String()
+    freeToRead = Object(
+        properties={
+            'startDate': Date(),
+            'endDate': Date()
+        }
+    )
+    languages = String()
+    licenses = Object(
+        properties={
+            'uri': URI_FIELD,
+            'description': String(),
+            'startDate': Date(),
+            'endDate': Date()
+        }
+    )
+    publisher = CONTRIBUTOR
+    sponsorships = Object(
+        properties={
+            'award': Object(
+                properties={
+                    'awardName': String(),
+                    'awardIdentifier': URI_FIELD
+                }
+            ),
+            'sponsor': Object(
+                properties={
+                    'sponsorName': String(),
+                    'sponsorIdentifier': URI_FIELD
+                }
+            )
+        }
+    )
+    otherProperties = Object()
+    shareProperties = Object()
