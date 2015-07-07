@@ -19,17 +19,38 @@ logging.getLogger('elasticsearch').setLevel(logging.FATAL)
 logging.getLogger('elasticsearch.trace').setLevel(logging.FATAL)
 
 
-try:
-    es = Elasticsearch(settings.ELASTIC_URI, request_timeout=settings.ELASTIC_TIMEOUT)
-    connections.add_connection('default', es)
+def gen(name):
+    klass = type(
+        str(name),
+        (NormalizedDocument, ),
+        dict(Meta=type(
+            'Meta',
+            (),
+            dict(index=settings.ELASTIC_INDEX, doc_type=name)
+        ))
+    )
+    klass._doc_type.mapping.save(settings.ELASTIC_INDEX)
+    return klass
 
-    es.cluster.health(wait_for_status='yellow')
-    es.indices.create(index=settings.ELASTIC_INDEX, body={}, ignore=400)
-    es.indices.create(index='share_v1', ignore=400)
-except ConnectionError:  # pragma: no cover
-    if 'elasticsearch' in settings.NORMALIZED_PROCESSING or 'elasticsearch' in settings.RAW_PROCESSING:
-        raise
-    logger.error('Could not connect to Elasticsearch, expect errors.')
+
+def setup():
+    try:
+        es = Elasticsearch(settings.ELASTIC_URI, request_timeout=settings.ELASTIC_TIMEOUT)
+        connections.add_connection('default', es)
+
+        es.cluster.health(wait_for_status='yellow')
+        es.indices.create(index=settings.ELASTIC_INDEX, body={}, ignore=400)
+        es.indices.create(index='share_v1', ignore=400)
+
+        model_registry = {
+            name: gen(name) for name in registry.keys()
+        }
+        return es, model_registry
+    except ConnectionError:  # pragma: no cover
+        if 'elasticsearch' in settings.NORMALIZED_PROCESSING or 'elasticsearch' in settings.RAW_PROCESSING:
+            raise
+        logger.error('Could not connect to Elasticsearch, expect errors.')
+        return None, {}
 
 
 # This must remain until the next elasticsearch-dsl update
@@ -45,7 +66,10 @@ class ElasticsearchProcessor(BaseProcessor):
     NAME = 'elasticsearch'
 
     def process_normalized(self, raw_doc, normalized, index=settings.ELASTIC_INDEX):
-        doc_type = self.Document(raw_doc['source'])
+        doc_type = model_registry.get(raw_doc['source'])
+        if not doc_type:
+            model_registry[raw_doc['source']] = gen(raw_doc['source'])
+            doc_type = model_registry[raw_doc['source']]
 
         data = {
             key: value for key, value in normalized.attributes.items()
@@ -76,9 +100,6 @@ class ElasticsearchProcessor(BaseProcessor):
             doc_type=raw_doc['source'],
             id=raw_doc['docID']
         )
-
-    def Document(self, name):
-        return globals()[str(name).capitalize() + 'Document']
 
 
 class PreserveOldContributors(JSONTransformer):
@@ -128,7 +149,7 @@ CONTRIBUTOR = Object(
 class NormalizedDocument(DocType):
 
     class Meta:
-        index = 'share_v3'
+        index = settings.ELASTIC_INDEX
 
     title = String()
     description = String()
@@ -181,21 +202,4 @@ class NormalizedDocument(DocType):
     otherProperties = Object()
     shareProperties = Object()
 
-
-def gen(name):
-    klass = type(
-        str(name.capitalize()) + 'Document',
-        (NormalizedDocument, ),
-        dict(Meta=type(
-            'Meta',
-            (),
-            dict(index='share_v3', doc_type=name)
-        ))
-    )
-    klass._doc_type.mapping.save('share_v3')
-    return klass
-
-
-for name in registry.keys():
-    class_name = name.capitalize() + 'Document'
-    globals()[class_name] = gen(name)
+es, model_registry = setup()

@@ -3,29 +3,45 @@ import logging
 import platform
 from datetime import date, timedelta
 
+
 from invoke import run, task
-from elasticsearch import helpers
 from dateutil.parser import parse
 from six.moves.urllib import parse as urllib_parse
+
+from elasticsearch import helpers, Elasticsearch
+from elasticsearch.exceptions import ConnectionError
 
 import scrapi.harvesters  # noqa
 from scrapi import linter
 from scrapi import registry
 from scrapi import settings
 
-from scrapi.processing.elasticsearch import es
 
 logger = logging.getLogger()
 
 
+def setup_es():
+    '''Helper function to connect to elasticsearch separate from other code
+    '''
+    try:
+        return Elasticsearch(settings.ELASTIC_URI, request_timeout=settings.ELASTIC_TIMEOUT)
+    except ConnectionError:  # pragma: no cover
+        if 'elasticsearch' in settings.NORMALIZED_PROCESSING or 'elasticsearch' in settings.RAW_PROCESSING:
+            raise
+        logger.error('Could not connect to Elasticsearch, expect errors.')
+
+
 @task
-def reindex(src, dest):
+def reindex(src, dest, delete=False):
+    es = setup_es()
     helpers.reindex(es, src, dest)
-    es.indices.delete(src)
+    if delete:
+        es.indices.delete(src)
 
 
 @task
 def alias(alias, index):
+    es = setup_es()
     es.indices.delete_alias(index=alias, name='_all', ignore=404)
     es.indices.put_alias(alias, index)
 
