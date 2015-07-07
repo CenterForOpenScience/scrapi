@@ -91,12 +91,10 @@ class XMLTransformer(BaseTransformer):
 
     __metaclass__ = abc.ABCMeta
 
+    namespaces = {}
+
     def _transform_string(self, string, doc):
         return doc.xpath(string, namespaces=self.namespaces)
-
-    @abc.abstractproperty
-    def namespaces(self):
-        raise NotImplementedError
 
 
 class JSONTransformer(BaseTransformer):
