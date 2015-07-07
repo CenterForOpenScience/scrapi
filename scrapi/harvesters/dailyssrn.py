@@ -40,7 +40,6 @@ class DailyssrnHarvester(XMLHarvester):
 
         xml_list = []
         for record in records:
-            # import ipdb; ipdb.set_trace()
             doc_id = parse_id_from_url(record.xpath('link/node()'))
             record = etree.tostring(record)
             xml_list.append(RawDocument({
