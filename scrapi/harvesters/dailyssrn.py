@@ -1,13 +1,11 @@
 from __future__ import unicode_literals
 
 from dateutil.parser import parse
-# from datetime import date, timedelta
 
 import furl
 from lxml import etree
 
 from scrapi import requests
-# from scrapi import settings
 from scrapi.base import XMLHarvester
 from scrapi.linter import RawDocument
 from scrapi.util import copy_to_unicode
