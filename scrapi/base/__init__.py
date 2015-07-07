@@ -124,6 +124,7 @@ class OAIHarvester(XMLHarvester):
     approved_sets = None
     timezone_granularity = False
     property_list = ['date', 'type']
+    verify = True
 
     @property
     def schema(self):
@@ -153,7 +154,7 @@ class OAIHarvester(XMLHarvester):
         records_url = self.base_url + self.RECORDS_URL
         request_url = records_url + self.META_PREFIX_DATE.format(start_date, end_date)
 
-        records = self.get_records(request_url, start_date, end_date)
+        records = self.get_records(request_url, start_date, end_date, verify=self.verify)
 
         rawdoc_list = []
         for record in records:
@@ -169,8 +170,8 @@ class OAIHarvester(XMLHarvester):
 
         return rawdoc_list
 
-    def get_records(self, url, start_date, end_date, resump_token=''):
-        data = requests.get(url, throttle=self.timeout)
+    def get_records(self, url, start_date, end_date, verify, resump_token=''):
+        data = requests.get(url, throttle=self.timeout, verify=verify)
 
         doc = etree.XML(data.content)
 
@@ -186,7 +187,7 @@ class OAIHarvester(XMLHarvester):
             base_url = url.replace(self.META_PREFIX_DATE.format(start_date, end_date), '')
             base_url = base_url.replace(self.RESUMPTION + resump_token, '')
             url = base_url + self.RESUMPTION + token[0]
-            records += self.get_records(url, start_date, end_date, resump_token=token[0])
+            records += self.get_records(url, start_date, end_date, resump_token=token[0], verify=verify)
 
         return records
 
