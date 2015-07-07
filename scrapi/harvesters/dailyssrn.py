@@ -54,6 +54,5 @@ class DailyssrnHarvester(XMLHarvester):
 
 
 def parse_id_from_url(url):
-    # import ipdb; ipdb.set_trace()
     parsed_url = furl.furl(url[0])
     return parsed_url.args['abstract_id']
