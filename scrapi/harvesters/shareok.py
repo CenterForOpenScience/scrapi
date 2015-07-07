@@ -53,7 +53,6 @@ class ShareOKHarvester(OAIHarvester):
         # check if all of the sets in the record are in the approved set list.
         # If all of them aren't, don't normalize.
         actual = {x.replace('publication:', '') for x in set_spec}
-        # import ipdb; ipdb.set_trace()
         if not len(set(self.approved_sets).intersection(actual)) == len(actual):
             logger.info('Series {} not in approved list'.format(set_spec))
             return None
