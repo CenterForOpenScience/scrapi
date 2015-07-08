@@ -29,7 +29,7 @@ class TestHarvester(OAIHarvester):
                                body=TEST_OAI_DOC,
                                content_type="application/XML")
 
-        records = self.get_records(request_url, start_date, end_date, self.verify)
+        records = self.get_records(request_url, start_date, end_date)
 
         return [RawDocument({
             'doc': str(TEST_OAI_DOC),
