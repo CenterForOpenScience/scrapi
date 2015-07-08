@@ -53,6 +53,8 @@ class PostgresProcessor(BaseProcessor):
         session.add(document)
         session.commit()
 
+        session.close()
+
     def _get_by_source_id(self, model, source, docID):
         return session.query(model).filter_by(source=source, docID=docID).first()
 
