@@ -6,9 +6,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy import Column, String, DateTime, Integer
+from sqlalchemy import Column, String, DateTime
 
-from sqlalchemy.dialects.postgresql import JSON, BYTEA
+from sqlalchemy.dialects.postgresql import JSON
 
 from scrapi import events
 from scrapi.processing.base import BaseProcessor
@@ -33,7 +33,7 @@ class PostgresProcessor(BaseProcessor):
         source, docID = raw_doc['source'], raw_doc['docID']
         document = self._get_by_source_id(Document, source, docID) or Document(source=source, docID=docID)
 
-        document.raw = raw_doc
+        document.raw = raw_doc.attributes
         session.add(document)
         session.commit()
 
@@ -61,5 +61,5 @@ class Document(Base):
     docID = Column(String, primary_key=True)
     providerUpdatedDateTime = Column(DateTime, primary_key=True)
 
-    raw = Column(BYTEA)
+    raw = Column(JSON)
     normalized = Column(JSON)
