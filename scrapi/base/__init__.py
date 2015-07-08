@@ -154,7 +154,7 @@ class OAIHarvester(XMLHarvester):
         records_url = self.base_url + self.RECORDS_URL
         request_url = records_url + self.META_PREFIX_DATE.format(start_date, end_date)
 
-        records = self.get_records(request_url, start_date, end_date, verify=self.verify)
+        records = self.get_records(request_url, start_date, end_date, self.verify)
 
         rawdoc_list = []
         for record in records:

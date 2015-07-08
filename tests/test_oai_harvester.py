@@ -15,6 +15,7 @@ class TestHarvester(OAIHarvester):
     short_name = 'test'
     url = 'test'
     property_list = ['type', 'source', 'publisher', 'format', 'date']
+    verify = True
 
     @httpretty.activate
     def harvest(self, start_date=None, end_date=None):
@@ -28,7 +29,7 @@ class TestHarvester(OAIHarvester):
                                body=TEST_OAI_DOC,
                                content_type="application/XML")
 
-        records = self.get_records(request_url, start_date, end_date)
+        records = self.get_records(request_url, start_date, end_date, self.verify)
 
         return [RawDocument({
             'doc': str(TEST_OAI_DOC),
