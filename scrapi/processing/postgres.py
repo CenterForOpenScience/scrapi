@@ -1,15 +1,14 @@
 from __future__ import absolute_import
 
 import logging
-from datetime import datetime as dt
 
-from sqlalchemy import create_engine, ForeignKeyConstraint
+from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 
-from sqlalchemy.orm import relationship, sessionmaker
-from sqlalchemy import Column, Boolean, String, Integer, LargeBinary, DateTime, ForeignKey, Table
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy import Column, String, DateTime
 
-from sqlalchemy.dialects.postgresql import JSON, ARRAY
+from sqlalchemy.dialects.postgresql import JSON, ARRAY, BYTEA
 
 from scrapi import events
 from scrapi.processing.base import BaseProcessor
@@ -42,6 +41,15 @@ class PostgresProcessor(BaseProcessor):
         source, docID = raw_doc['source'], raw_doc['docID']
         document = self._get_by_source_id(Document, source, docID) or Document(source=source, docID=docID)
 
+        document.title = normalized['title'],
+        document.providerUpdatedDateTime = normalized['providerUpdatedDateTime'],
+        document.uris = normalized['uris'],
+        document.description = normalized.get('description'),
+        document.tags = normalized.get('tags'),
+        document.subjects = normalized.get('subjects'),
+        document.otherProperties = normalized.get('otherProperties'),
+        document.shareProperties = normalized.get('shareProperties')
+
         session.add(document)
         session.commit()
 
@@ -55,7 +63,14 @@ class Document(Base):
     source = Column(String, primary_key=True)
     docID = Column(String, primary_key=True)
 
-    raws = relationship('Raw', backref='document')
-    normalized = relationship('Normalized', backref='document')
+    raw = Column(BYTEA)
+    normalized = Column(JSON)
+    uris = Column(JSON)
+    contributors = Column(ARRAY)
+    description = Column(String)
+    providerUpdatedDateTime = Column(DateTime)
+    tags = Column(ARRAY)
+    subjects = Column(ARRAY)
 
-    logs = relationship('Log', backref='document')
+    otherProperties = Column(JSON)
+    shareProperties = Column(JSON)
