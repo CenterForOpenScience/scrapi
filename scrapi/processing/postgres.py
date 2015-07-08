@@ -6,7 +6,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy import Column, String, DateTime
+from sqlalchemy import Column, String, DateTime, Integer, Sequence
 
 from sqlalchemy.dialects.postgresql import JSON
 
@@ -48,8 +48,6 @@ class PostgresProcessor(BaseProcessor):
         session.add(document)
         session.commit()
 
-        session.close()
-
     def _get_by_source_id(self, model, source, docID):
         return session.query(model).filter_by(source=source, docID=docID).first()
 
@@ -59,7 +57,9 @@ class Document(Base):
 
     source = Column(String, primary_key=True)
     docID = Column(String, primary_key=True)
-    providerUpdatedDateTime = Column(DateTime, primary_key=True)
+    shareID = Column(Integer, Sequence('shareid_seq'), primary_key=True)
+
+    providerUpdatedDateTime = Column(DateTime)
 
     raw = Column(JSON)
     normalized = Column(JSON)
