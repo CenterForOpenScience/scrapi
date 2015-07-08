@@ -6,9 +6,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy import Column, String, DateTime
+from sqlalchemy import Column, String, DateTime, Integer
 
-from sqlalchemy.dialects.postgresql import JSON, ARRAY, BYTEA
+from sqlalchemy.dialects.postgresql import JSON, BYTEA
 
 from scrapi import events
 from scrapi.processing.base import BaseProcessor
@@ -33,6 +33,7 @@ class PostgresProcessor(BaseProcessor):
         source, docID = raw_doc['source'], raw_doc['docID']
         document = self._get_by_source_id(Document, source, docID) or Document(source=source, docID=docID)
 
+        document.raw = raw_doc
         session.add(document)
         session.commit()
 
@@ -41,14 +42,8 @@ class PostgresProcessor(BaseProcessor):
         source, docID = raw_doc['source'], raw_doc['docID']
         document = self._get_by_source_id(Document, source, docID) or Document(source=source, docID=docID)
 
-        document.title = normalized['title'],
-        document.providerUpdatedDateTime = normalized['providerUpdatedDateTime'],
-        document.uris = normalized['uris'],
-        document.description = normalized.get('description'),
-        document.tags = normalized.get('tags'),
-        document.subjects = normalized.get('subjects'),
-        document.otherProperties = normalized.get('otherProperties'),
-        document.shareProperties = normalized.get('shareProperties')
+        document.normalized = normalized.attributes
+        document.providerUpdatedDateTime = normalized['providerUpdatedDateTime']
 
         session.add(document)
         session.commit()
@@ -64,15 +59,7 @@ class Document(Base):
 
     source = Column(String, primary_key=True)
     docID = Column(String, primary_key=True)
+    providerUpdatedDateTime = Column(DateTime, primary_key=True)
 
     raw = Column(BYTEA)
     normalized = Column(JSON)
-    uris = Column(JSON)
-    contributors = Column(ARRAY(String))
-    description = Column(String)
-    providerUpdatedDateTime = Column(DateTime)
-    tags = Column(ARRAY(String))
-    subjects = Column(ARRAY(String))
-
-    otherProperties = Column(JSON)
-    shareProperties = Column(JSON)
