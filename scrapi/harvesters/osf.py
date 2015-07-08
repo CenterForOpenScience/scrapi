@@ -16,7 +16,6 @@ from datetime import date, timedelta
 from nameparser import HumanName
 
 from scrapi import requests
-from scrapi import settings
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
 from scrapi.base.helpers import build_properties
