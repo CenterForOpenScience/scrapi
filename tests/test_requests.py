@@ -157,7 +157,7 @@ class TestCassandraIntegration(object):
     @pytest.mark.cassandra
     def test_record_or_load_throttle_throttles(self, mock_requests, monkeypatch):
         mock_sleep = mock.Mock()
-        monkeypatch.setattr(requests.time, 'maybe_sleep', mock_sleep)
+        monkeypatch.setattr(requests, 'maybe_sleep', mock_sleep)
         mock_requests.request.return_value = mock.Mock(encoding='utf-8', content='Snapcity', status_code=200, headers={'tota': 'dyle'})
 
         resp = requests.get('dusty.rhodes', throttle=2)
