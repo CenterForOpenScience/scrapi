@@ -6,7 +6,7 @@ from django.db import models
 from jsonfield import JSONField
 
 
-class ShareDocument(models.Model):
+class Document(models.Model):
     source = models.CharField(max_length=100)
     docID = models.IntegerField()
     shareID = models.IntegerField()
