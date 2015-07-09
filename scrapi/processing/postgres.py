@@ -3,11 +3,14 @@ from __future__ import absolute_import
 import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "webview.settings")
 
+import django
 import logging
 from api.webview.models import Document
 
 from scrapi import events
 from scrapi.processing.base import BaseProcessor
+
+django.setup()
 
 logger = logging.getLogger(__name__)
 
