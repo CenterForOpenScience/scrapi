@@ -3,15 +3,12 @@ from __future__ import absolute_import
 import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "api.api.settings")
 
-# import django
 import logging
 
 from scrapi import events
 from scrapi.processing.base import BaseProcessor
 
 from api.webview.models import Document
-
-# django.setup()
 
 logger = logging.getLogger(__name__)
 
@@ -39,4 +36,7 @@ class PostgresProcessor(BaseProcessor):
         document.save()
 
     def _get_by_source_id(self, model, source, docID):
-        return Document.objects.filter(source=source, docID=docID)[0]
+        try:
+            return Document.objects.filter(source=source, docID=docID)[0]
+        except IndexError:
+            return None
