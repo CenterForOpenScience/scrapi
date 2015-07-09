@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from scrapi.processing.postgres import Document
+from webview.models import Document
 
 
 class DocumentSerializer(serializers.ModelSerializer):
