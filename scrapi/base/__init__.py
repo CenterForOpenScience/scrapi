@@ -159,10 +159,13 @@ class OAIHarvester(XMLHarvester):
             start_date += 'T00:00:00Z'
             end_date += 'T00:00:00Z'
 
-        records_url = self.base_url + self.RECORDS_URL
-        request_url = records_url + self.META_PREFIX_DATE.format(start_date, end_date)
+        url = furl(self.base_url)
+        url.args['verb'] = 'ListRecords'
+        url.args['metadataPrefix'] = 'oai_dc'
+        url.args['from'] = start_date
+        url.args['until'] = end_date
 
-        records = self.get_records(request_url, start_date, end_date)
+        records = self.get_records(url.url, start_date, end_date)
 
         rawdoc_list = []
         for record in records:
