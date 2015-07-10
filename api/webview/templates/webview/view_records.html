@@ -4,25 +4,21 @@
 
 <div class="row">
     <div class="col-xs-12">
+    {% for document in document_list %}
         <div class="row">
 
-            {% for document in document_list %}
-                <div>####################################</div>
-                <div>######## RAW ###############</div>
+                <p>#################################################</p>
+                <p>######## RAW ###############</p>
 
                 <div class="col-xs-6">
                     {{ document.raw }}
                 </div>
-                <div>######## NORMALLIZED ###############</div>
-
-
+                <p>######## NORMALLIZED ###############</p>
                 <div class="col-xs-6">
                     {{ document.normed }}
                 </div>
         </div>
-            {% endfor %}
-
-
+    {% endfor %}
 
     </div>
 </div>
