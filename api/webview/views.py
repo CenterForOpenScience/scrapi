@@ -1,11 +1,12 @@
+import json
+from xml.dom import minidom
+from xml.parsers.expat import ExpatError
+
 from django.shortcuts import render
 from rest_framework import generics
 
 from webview.models import Document
 from webview.serializers import DocumentSerializer
-
-from xml.dom import minidom
-from xml.parsers.expat import ExpatError
 
 
 class DocumentList(generics.ListCreateAPIView):
@@ -37,7 +38,7 @@ def view_records(request):
         except ExpatError:
             this_xml = minidom.parseString('<xml></xml>')
         the_d['raw'] = (this_xml.toprettyxml())
-        the_d['normed'] = doc.normalized
+        the_d['normed'] = json.dumps(doc.normalized, indent=4)
         document_list.append(the_d)
 
     return render(
