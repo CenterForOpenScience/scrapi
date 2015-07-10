@@ -124,6 +124,7 @@ class OAIHarvester(XMLHarvester):
     approved_sets = None
     timezone_granularity = False
     property_list = ['date', 'type']
+    verify = True
 
     @property
     def schema(self):
@@ -170,7 +171,7 @@ class OAIHarvester(XMLHarvester):
         return rawdoc_list
 
     def get_records(self, url, start_date, end_date, resump_token=''):
-        data = requests.get(url, throttle=self.timeout)
+        data = requests.get(url, throttle=self.timeout, verify=self.verify)
 
         doc = etree.XML(data.content)
 

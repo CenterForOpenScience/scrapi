@@ -15,6 +15,7 @@ class TestHarvester(OAIHarvester):
     short_name = 'test'
     url = 'test'
     property_list = ['type', 'source', 'publisher', 'format', 'date']
+    verify = True
 
     @httpretty.activate
     def harvest(self, start_date=None, end_date=None):
