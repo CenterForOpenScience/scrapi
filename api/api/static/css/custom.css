@@ -152,3 +152,11 @@ div.help_information {
   text-align: right;
   margin-bottom: 10px;
 }
+
+
+pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
+.string { color: darkblue; }
+.number { color: magenta; }
+.boolean { color: blue; }
+.null { color: green; }
+.key { color: darkorange; }
