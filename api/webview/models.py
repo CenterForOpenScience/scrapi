@@ -1,9 +1,6 @@
-# Create your models here.
-import collections
-
 from django.db import models
 
-from jsonfield import JSONField
+from django_pgjson.fields import JsonField
 
 
 class Document(models.Model):
@@ -12,5 +9,5 @@ class Document(models.Model):
 
     providerUpdatedDateTime = models.DateTimeField(null=True)
 
-    raw = JSONField(load_kwargs={'object_pairs_hook': collections.OrderedDict})
-    normalized = JSONField(load_kwargs={'object_pairs_hook': collections.OrderedDict}, null=True)
+    raw = JsonField()
+    normalized = JsonField()
