@@ -7,17 +7,18 @@
     {% for document in document_list %}
         <div class="row">
 
-                <p>#################################################</p>
-                <p>######## RAW ###############</p>
+                <p></p>
 
                 <div class="col-xs-6">
+                <p>######## RAW ###############</p>
                     {{ document.raw }}
                 </div>
-                <p>######## NORMALLIZED ###############</p>
                 <div class="col-xs-6">
+                <p>######## NORMALLIZED ###############</p>
                     {{ document.normed }}
                 </div>
         </div>
+        <hr>
     {% endfor %}
 
     </div>
