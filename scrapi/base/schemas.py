@@ -24,7 +24,7 @@ DOESCHEMA = {
         "canonicalUri": ('//dcq:identifier-citation/node()', compose(lambda x: x.strip(), single_result)),
         "objectUris": [('//dc:doi/node()', compose(lambda x: 'http://dx.doi.org/' + x, single_result))]
     },
-    "languages": ("//dc:language", compose(lambda x: [x], language_code, single_result)),
+    "languages": ("//dc:language/text()", language_code),
     "publisher": {
         "name": ("//dcq:publisher/node()", single_result)
     },
@@ -65,5 +65,5 @@ OAISCHEMA = {
     'publisher': {
         'name': ('//dc:publisher/node()', single_result)
     },
-    'languages': ('//dc:language', compose(lambda x: [x], language_code, single_result))
+    'languages': ('//dc:language/text()', language_code)
 }
