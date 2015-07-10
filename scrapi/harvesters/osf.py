@@ -16,7 +16,6 @@ from datetime import date, timedelta
 from nameparser import HumanName
 
 from scrapi import requests
-from scrapi import settings
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
 from scrapi.base.helpers import build_properties
@@ -94,9 +93,10 @@ class OSFHarvester(JSONHarvester):
         }
 
     def harvest(self, start_date=None, end_date=None):
-
-        start_date = start_date or date.today() - timedelta(settings.DAYS_BACK)
-        end_date = end_date or date.today()
+        # Always harvest a 2 day period starting 2 days back to honor time given
+        # to contributors to cancel a public registration
+        start_date = start_date or date.today() - timedelta(4)
+        end_date = end_date or date.today() - timedelta(2)
 
         search_url = self.URL.format(start_date.isoformat(), end_date.isoformat())
         records = self.get_records(search_url)
