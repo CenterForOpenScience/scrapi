@@ -1,0 +1,30 @@
+{% extends "webview/base.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="row">
+
+            {% for document in document_list %}
+                <div>####################################</div>
+                <div>######## RAW ###############</div>
+
+                <div class="col-xs-6">
+                    {{ document.raw }}
+                </div>
+                <div>######## NORMALLIZED ###############</div>
+
+
+                <div class="col-xs-6">
+                    {{ document.normed }}
+                </div>
+        </div>
+            {% endfor %}
+
+
+
+    </div>
+</div>
+
+{% endblock %}
