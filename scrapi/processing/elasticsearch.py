@@ -41,10 +41,12 @@ class ElasticsearchProcessor(BaseProcessor):
     NAME = 'elasticsearch'
 
     def process_normalized(self, raw_doc, normalized, index=settings.ELASTIC_INDEX):
+        # import ipdb; ipdb.set_trace()
         data = {
             key: value for key, value in normalized.attributes.items()
             if key in settings.FRONTEND_KEYS
         }
+        data['docID'] = raw_doc['docID']
         data['providerUpdatedDateTime'] = self.version(raw_doc, normalized)
 
         es.index(
