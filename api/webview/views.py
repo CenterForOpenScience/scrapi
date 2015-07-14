@@ -28,6 +28,9 @@ class DocumentList(generics.ListCreateAPIView):
 
 def view_records(request):
 
+    source_list = [entry['source'] for entry in Document.objects.order_by().values('source').distinct()]
+    source_list.append('All')
+
     queryset = Document.objects.all()
     document_list = []
 
@@ -44,5 +47,5 @@ def view_records(request):
     return render(
         request,
         'webview/view_records.html',
-        {'document_list': document_list}
+        {'document_list': document_list, 'sources': source_list}
     )
