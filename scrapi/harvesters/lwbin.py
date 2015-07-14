@@ -1,8 +1,8 @@
 """
 A Lake Winnipeg Basin Information Network (BIN) harvester for the SHARE project
 
-Example API request: http://130.179.67.140/api/3/action/package_search?q=
-
+Example API request: http://130.179.67.140/api/3/action/package_search?q= (problematic)
+http://130.179.67.140/api/3/action/current_package_list_with_resources (currently using)
 """
 
 from __future__ import unicode_literals
@@ -62,7 +62,7 @@ class LWBINHarvester(JSONHarvester):
     @property
     def schema(self):
         return {
-            'title': ('/title', lambda x: x[0] if x else ''),
+            'title': ('/title', lambda x: x if x else ''),
             'description': ('/notes', lambda x: x[0] if (isinstance(x, list) and x) else x or ''),
             'providerUpdatedDateTime': ('/metadata_modified', lambda x: parse(x).isoformat()),
             'uris': {
@@ -98,13 +98,14 @@ class LWBINHarvester(JSONHarvester):
         :returns: a list of documents (metadata)
         """
 
-        base_url = 'http://130.179.67.140/api/3/action/package_search?q='
-        total = requests.get(base_url).json()['result']['count']
-        logger.info('{} documents to be harvested'.format(total))
+        base_url = 'http://130.179.67.140/api/3/action/current_package_list_with_resources'
 
         doc_list = []
-        records = requests.get(base_url).json()['result']['results']
-        names = ",/n".join([records[i]['title'] for i in xrange(0,len(records))])
+        records = requests.get(base_url).json()['result']
+        total = len(records) # Total number of documents
+        logger.info('{} documents to be harvested'.format(total))
+
+        names = ", ".join([records[i]['title'] for i in xrange(0,len(records))])
         logger.info(names)
         logger.info('Harvested {} documents'.format(len(records)))
 
