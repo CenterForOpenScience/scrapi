@@ -25,7 +25,7 @@ SECRET_KEY = '&6(nqe!c+ft)1&4dvs+=pq-us%&nd$-4a8p4y%=sk4(k2cfhn*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost:5000']
 
 DOMAIN = 'http://localhost:8000'
 
@@ -40,10 +40,12 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'webview'
+    'webview',
+    'corsheaders'
 )
 
 MIDDLEWARE_CLASSES = (
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -53,6 +55,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 )
+
+# X_FRAME_OPTIONS = 'ALLOW-FROM http://localhost:5000'
 
 ROOT_URLCONF = 'api.urls'
 
@@ -119,4 +123,9 @@ STATICFILES_DIRS = (
         # '..', # up one level from the settings directory
         'static',
     ),
+)
+
+CORS_ORIGIN_WHITELIST = (
+    'localhost:5000',
+    'staging.osf.io'
 )
