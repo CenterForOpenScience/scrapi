@@ -164,11 +164,10 @@ class TestCassandraIntegration(object):
     @pytest.mark.cassandra
     def test_record_or_load_throttle_throttles(self, mock_requests, monkeypatch):
         mock_sleep = mock.Mock()
-        monkeypatch.setattr(requests.time, 'sleep', mock_sleep)
-        mock_requests.request.return_value = mock.Mock(encoding='utf-8',
-                                                       content=b'Snapcity', status_code=200, headers={'tota': 'dyle'})
+        monkeypatch.setattr(requests, 'maybe_sleep', mock_sleep)
+        mock_requests.request.return_value = mock.Mock(encoding='utf-8', content=b'Snapcity', status_code=200, headers={'tota': 'dyle'})
 
-        resp = requests.get('dinosaurs.sexy', throttle=2)
+        resp = requests.get('dusty.rhodes', throttle=2)
 
         mock_sleep.assert_called_once_with(2)
         assert mock_requests.request.called is True
@@ -177,7 +176,7 @@ class TestCassandraIntegration(object):
     @pytest.mark.cassandra
     def test_request_doesnt_throttle_on_load(self, mock_requests, monkeypatch):
         mock_sleep = mock.Mock()
-        monkeypatch.setattr(requests.time, 'sleep', mock_sleep)
+        monkeypatch.setattr(requests, 'maybe_sleep', mock_sleep)
         requests.HarvesterResponse(ok=True, method='get', url='dinosaurs.sexy',
                                    content=b'citychicken').save()
 
@@ -196,6 +195,7 @@ class TestCassandraIntegration(object):
 
         assert resp.status_code == 200
         assert resp.url == 'dinosaurs.sexy?test=foo'
+
 
 class TestRequestsApi(object):
 

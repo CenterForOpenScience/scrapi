@@ -44,13 +44,14 @@ class TestHelpers(object):
     def test_oai_get_records_and_token(self):
         url = 'http://repository.asu.edu/oai-pmh?verb=ListRecords&metadataPrefix=oai_dc&from=2015-03-10&until=2015-03-11'
         force = False
+        verify = True
         throttle = 0.5
         namespaces = {
             'dc': 'http://purl.org/dc/elements/1.1/',
             'ns0': 'http://www.openarchives.org/OAI/2.0/',
             'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
         }
-        records, token = helpers.oai_get_records_and_token(url, throttle, force, namespaces)
+        records, token = helpers.oai_get_records_and_token(url, throttle, force, namespaces, verify)
         assert records
         assert token
         assert len(records) == 50

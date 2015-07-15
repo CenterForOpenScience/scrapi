@@ -155,14 +155,14 @@ def language_code(language):
         return None
 
 
-def oai_get_records_and_token(url, throttle, force, namespaces):
+def oai_get_records_and_token(url, throttle, force, namespaces, verify):
     """ Helper function to get the records and any resumptionToken
     from an OAI request.
 
     Takes a url and any request parameters and returns the records
     along with the resumptionToken if there is one.
     """
-    data = requests.get(url, throttle=throttle, force=force)
+    data = requests.get(url, throttle=throttle, force=force, verify=verify)
 
     doc = etree.XML(data.content)
 
