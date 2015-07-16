@@ -3774,7 +3774,7 @@ interactions:
       connection: [keep-alive]
       content-length: ['324635']
       content-type: [application/json;charset=utf-8]
-      date: ['Tue, 14 Jul 2015 20:02:28 GMT']
+      date: ['Thu, 16 Jul 2015 15:31:24 GMT']
       pragma: [no-cache]
       server: [nginx/1.1.19]
     status: {code: 200, message: OK}
