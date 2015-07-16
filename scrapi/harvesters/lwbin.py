@@ -23,17 +23,13 @@ from __future__ import unicode_literals
 import json
 import logging
 
-from datetime import date, timedelta
-
-from six.moves import xrange
 from nameparser import HumanName
 from dateutil.parser import parse
 
 from scrapi import requests
-from scrapi import settings
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
-from scrapi.base.helpers import build_properties, compose
+from scrapi.base.helpers import build_properties
 
 from urlparse import urljoin
 
@@ -68,7 +64,7 @@ def process_contributors(authors):
 
 def construct_url(url, dataset_path, end_point):
     """Return a url that directs back to the page on LBWIN Data Hub instead of the source page.
-    
+
     Keyword arguments:
     url -- host url
     dataset_path -- parent path of all datasets
