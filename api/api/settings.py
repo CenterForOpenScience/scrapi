@@ -56,7 +56,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
 )
 
-# X_FRAME_OPTIONS = 'ALLOW-FROM http://localhost:5000'
 
 ROOT_URLCONF = 'api.urls'
 
@@ -110,7 +109,6 @@ USE_TZ = True
 STATIC_URL = '/static/'.format(DOMAIN)
 
 STATIC_ROOT = os.path.join('..', BASE_DIR, 'static')
-# STATIC_URL = '{}/static/'.format(DOMAIN)
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
@@ -120,12 +118,12 @@ STATICFILES_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(
         os.path.dirname(__file__),
-        # '..', # up one level from the settings directory
         'static',
     ),
 )
 
 CORS_ORIGIN_WHITELIST = (
     'localhost:5000',
-    'staging.osf.io'
+    'staging.osf.io',
+    'osf.io'
 )
