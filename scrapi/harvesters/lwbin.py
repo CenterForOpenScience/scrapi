@@ -31,8 +31,6 @@ from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
 from scrapi.base.helpers import build_properties
 
-from urlparse import urljoin
-
 
 logger = logging.getLogger(__name__)
 
@@ -71,7 +69,7 @@ def construct_url(url, dataset_path, end_point):
     end_point -- name of datasets
     """
 
-    return urljoin(url, "/".join([dataset_path, end_point]))
+    return "/".join([url, dataset_path, end_point])
 
 
 class LWBINHarvester(JSONHarvester):
