@@ -2,17 +2,17 @@
 A Lake Winnipeg Basin Information Network (BIN) harvester for the SHARE project
 
 Example API request: http://130.179.67.140/api/3/action/package_search?q= (problematic)
-http://130.179.67.140/api/3/action/current_package_list_with_resources (currently using) 
+http://130.179.67.140/api/3/action/current_package_list_with_resources (currently using)
 It oddly returns 5 more datasets than all searchable ones on LWBIN data hub.
 
 Known issues:
-1 -- Five datasets can be searched but cannot be accessed via LWBIN. 
+1 -- Five datasets can be searched but cannot be accessed via LWBIN.
 Clicking on the searching result would result in linking to a redirected page like this:
 http://130.179.67.140/user/login?came_from=http://130.179.67.140/dataset/mpca-surface-water-data-access-interactive-map
-Within each dataset there are resouces that contain urls to source pages. For future work considering using resources 
-urls as canonical urls. 
-2 -- Resouces properties contained in raw metadata of the datasets are not added to the normalized metadata at this point. 
-For future work.
+Within each dataset there are resouces that contain urls to source pages. For future work considering using resources
+urls as canonical urls.
+2 -- Resouces properties contained in raw metadata of the datasets are not added to the normalized metadata at this
+point.
 3 -- Lots of DOIs and groups were missing in the original data. Excluded them at current point.
 4 -- Author emails are stored in otherProperties instead of contributors.
 5 -- Single name contributors can be used as filters or an invalid query will be returned. Has nothing to do with scrapi but the frontend.
@@ -65,6 +65,7 @@ def process_contributors(authors):
 
     return contributor_list
 
+
 def construct_url(url, dataset_path, end_point):
     """Return a url that directs back to the page on LBWIN Data Hub instead of the source page.
     
@@ -81,8 +82,8 @@ class LWBINHarvester(JSONHarvester):
     short_name = 'lwbin'
     long_name = 'Lake Winnipeg Basin Information Network'
     url = 'http://130.179.67.140'
-    dataset_path =  "dataset"   # dataset base url for constructing urls that go back to LWBIN instead of source pages. 
-    
+    dataset_path = "dataset"   # dataset base url for constructing urls that go back to LWBIN instead of source pages.
+
     DEFAULT_ENCODING = 'UTF-8'
 
     record_encoding = None
@@ -94,8 +95,8 @@ class LWBINHarvester(JSONHarvester):
             'description': ('/notes', lambda x: x[0] if (isinstance(x, list) and x) else x or ''),
             'providerUpdatedDateTime': ('/metadata_modified', lambda x: parse(x).isoformat()),
             'uris': {
-                'canonicalUri': ('/name', lambda x: construct_url(self.url, self.dataset_path, x)), # Construct new urls directing to LWBIN
-                'objectUris':'/url' # Default urls from the metadata directing to source pages
+                'canonicalUri': ('/name', lambda x: construct_url(self.url, self.dataset_path, x)),  # Construct new urls directing to LWBIN
+                'objectUris': '/url'  # Default urls from the metadata directing to source pages
             },
             'contributors': ('/author', process_contributors),
             'otherProperties': build_properties(
@@ -122,7 +123,6 @@ class LWBINHarvester(JSONHarvester):
 
     def harvest(self, start_date=None, end_date=None):
         """Returns a list of Rawdocuments (metadata)
-        
         Searching by time is not supported by LWBIN CKAN API. all datasets have to be scanned each time.
         """
 
@@ -130,7 +130,7 @@ class LWBINHarvester(JSONHarvester):
 
         doc_list = []
         records = requests.get(base_url).json()['result']
-        total = len(records) # Total number of documents
+        total = len(records)  # Total number of documents
         logger.info('{} documents to be harvested'.format(total))
 
         for record in records:
