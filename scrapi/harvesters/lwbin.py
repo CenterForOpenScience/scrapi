@@ -13,7 +13,7 @@ Within each dataset there are resouces that contain urls to source pages. For fu
 urls as canonical urls. 
 2 -- Resouces properties contained in raw metadata of the datasets are not added to the normalized metadata at this point. 
 For future work.
-3 -- Lots of DOIs were missing in the original data. Excluded them at current point.
+3 -- Lots of DOIs and groups were missing in the original data. Excluded them at current point.
 4 -- Author emails are stored in otherProperties instead of contributors.
 5 -- Single name contributors can be used as filters or an invalid query will be returned. Has nothing to do with scrapi but the frontend.
 """
@@ -120,7 +120,7 @@ class LWBINHarvester(JSONHarvester):
             )
         }
 
-    def harvest(self):
+    def harvest(self, start_date=None, end_date=None):
         """Returns a list of Rawdocuments (metadata)
         
         Searching by time is not supported by LWBIN CKAN API. all datasets have to be scanned each time.
