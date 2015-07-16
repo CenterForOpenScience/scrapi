@@ -21,6 +21,7 @@ class PostgresProcessor(BaseProcessor):
         source, docID = raw_doc['source'], raw_doc['docID']
         document = self._get_by_source_id(Document, source, docID) or Document(source=source, docID=docID)
 
+        raw_doc.attributes.pop('versions')  # TODO Versions not saved to postgres right now
         document.raw = raw_doc.attributes
 
         document.save()
