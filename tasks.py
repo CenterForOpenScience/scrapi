@@ -1,3 +1,4 @@
+import os
 import base64
 import logging
 import platform
@@ -13,19 +14,20 @@ from scrapi import linter
 from scrapi import registry
 from scrapi import settings
 
-from scrapi.processing.elasticsearch import es
 
 logger = logging.getLogger()
 
 
 @task
 def reindex(src, dest):
+    from scrapi.processing.elasticsearch import es
     helpers.reindex(es, src, dest)
     es.indices.delete(src)
 
 
 @task
 def alias(alias, index):
+    from scrapi.processing.elasticsearch import es
     es.indices.delete_alias(index=alias, name='_all', ignore=404)
     es.indices.put_alias(alias, index)
 
@@ -125,6 +127,16 @@ def test(cov=True, verbose=False, debug=False):
         cmd += ' --cov-report term-missing --cov-config .coveragerc --cov scrapi'
 
     run(cmd, pty=True)
+
+
+@task
+def apitest():
+    savedpath = os.getcwd()
+    os.chdir('api')
+
+    run('python manage.py test')
+
+    os.chdir(savedpath)
 
 
 @task
