@@ -3,6 +3,7 @@ from __future__ import absolute_import
 import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "api.api.settings")
 
+import copy
 import logging
 
 from scrapi import events
@@ -21,8 +22,11 @@ class PostgresProcessor(BaseProcessor):
         source, docID = raw_doc['source'], raw_doc['docID']
         document = self._get_by_source_id(Document, source, docID) or Document(source=source, docID=docID)
 
-        raw_doc.attributes.pop('versions')  # TODO Versions not saved to postgres right now
-        document.raw = raw_doc.attributes
+        modified_doc = copy.deepcopy(raw_doc.attributes)
+        if modified_doc.get('versions'):
+            modified_doc['versions'] = str(modified_doc['versions'])
+
+        document.raw = modified_doc
 
         document.save()
 
