@@ -144,8 +144,16 @@ def pack(*args, **kwargs):
     return args, kwargs
 
 
-def language_code(language):
+def language_codes(langs):
+    '''Given an array of language names, returns an array of ISO 639-3 codes
+
+    e.g. ['English', 'Russian'] -> ['eng', 'rus']
+    '''
+    return filter(lambda x: x, map(get_code, langs))
+
+
+def get_code(language):
     try:
-        return languages.get(name=language)
+        return languages.get(name=language).bibliographic
     except KeyError:
         return None
