@@ -144,7 +144,7 @@ def pack(*args, **kwargs):
     return args, kwargs
 
 
-def language_code(langs):
+def language_codes(langs):
     '''Given an array of language names, returns an array of ISO 639-3 codes
 
     e.g. ['English', 'Russian'] -> ['eng', 'rus']
