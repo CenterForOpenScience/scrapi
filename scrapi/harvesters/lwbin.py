@@ -13,9 +13,7 @@ Within each dataset there are resouces that contain urls to source pages. For fu
 urls as canonical urls.
 2 -- Resouces properties contained in raw metadata of the datasets are not added to the normalized metadata at this
 point.
-3 -- Lots of DOIs and groups were missing in the original data. Excluded them at current point.
-4 -- Author emails are stored in otherProperties instead of contributors.
-5 -- Single name contributors can be used as filters or an invalid query will be returned. Has nothing to do with scrapi but the frontend.
+3 -- Single name contributors can be used as filters or an invalid query will be returned. Has nothing to do with scrapi but the frontend.
 """
 
 from __future__ import unicode_literals
@@ -35,7 +33,9 @@ from scrapi.base.helpers import build_properties
 logger = logging.getLogger(__name__)
 
 
-def process_contributors(authors):
+def process_contributors(authors, email):
+    """Process authors and add author emails
+    """
 
     authors = authors.strip().replace('<span class="author-names">', '').replace('</span>', '')
     authors = authors.split(',')
@@ -52,13 +52,24 @@ def process_contributors(authors):
             'givenName': name.first,
             'additionalName': name.middle,
             'familyName': name.last,
-            'email': '',
+            'email': email,
             'sameAs': [],
         }
         contributor_list.append(contributor)
 
     return contributor_list
 
+
+def process_licenses(license_title, license_url):
+    """Process licenses to comply with the noormalized schema
+    """
+
+    license = {
+        'uri': license_url or "",
+        'description': license_title or ""
+    }
+
+    return [license]
 
 def construct_url(url, dataset_path, end_point):
     """Return a url that directs back to the page on LBWIN Data Hub instead of the source page.
@@ -92,12 +103,15 @@ class LWBINHarvester(JSONHarvester):
                 'canonicalUri': ('/name', lambda x: construct_url(self.url, self.dataset_path, x)),  # Construct new urls directing to LWBIN
                 'objectUris': '/url'  # Default urls from the metadata directing to source pages
             },
-            'contributors': ('/author', process_contributors),
+            'contributors': ('/author', '/author_email', process_contributors),
+            'licenses': ('/license_title', '/license_url', process_licenses),
+            'tags': ('/tags', lambda x: [tag['name'].lower() for tag in (x or [])]),
+            'freeToRead': {
+                'startDate': ('/isopen', '/metadata_created', lambda x, y: parse(y).date().isoformat() if x else None)
+            },
             'otherProperties': build_properties(
-                ('tags', ('/tags', lambda x: [tag['name'].lower() for tag in (x or [])])),
                 ('licenseTitle', '/license_title'),
                 ('maintainer', '/maintainer'),
-                ('isPrivate', '/private'),
                 ('maintainerEmail', '/maintainer_email'),
                 ('revisionTimestamp', ('/revision_timestamp', lambda x: parse(x).isoformat())),
                 ('id', '/id'),
@@ -106,12 +120,13 @@ class LWBINHarvester(JSONHarvester):
                 ('state', '/state'),
                 ('version', '/version'),
                 ('creatorUserId', '/creator_user_id'),
-                ('type', '/type'),
+                ('type', '/type'),  
                 ('licenseId', '/license_id'),
                 ('numberOfResources', '/num_resources'),
                 ('numberOfTags', '/num_tags'),
-                ('isOpen', '/isopen'),
-                ('name', '/name')
+                ('name', '/name'),
+                ('groups', '/groups'),
+                ('DOI', ('/extras', lambda x: "".join([d['value'] for d in x if d['key'] is 'DOI'])))
             )
         }
 
