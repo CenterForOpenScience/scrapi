@@ -29,6 +29,7 @@ class TestHarvester(OAIHarvester):
     short_name = 'test'
     url = 'test'
     property_list = ['type', 'source', 'publisher', 'format', 'date']
+    verify = True
 
     def harvest(self, mock_requests, start_date=None, end_date=None):
         request_url = 'http://validOAI.edu/?sonofaplumber'

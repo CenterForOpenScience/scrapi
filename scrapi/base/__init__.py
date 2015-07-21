@@ -125,6 +125,7 @@ class OAIHarvester(XMLHarvester):
     timezone_granularity = False
     property_list = ['date', 'type']
     force_request_update = False
+    verify = True
 
     @property
     def schema(self):
@@ -177,14 +178,13 @@ class OAIHarvester(XMLHarvester):
         return rawdoc_list
 
     def get_records(self, url, start_date, end_date):
-
-        all_records, token = oai_get_records_and_token(url, self.timeout, self.force_request_update, self.namespaces)
+        all_records, token = oai_get_records_and_token(url, self.timeout, self.force_request_update, self.namespaces, self.verify)
 
         while token:
             base_url = url.replace(self.META_PREFIX_DATE.format(start_date, end_date), '')
             base_url = base_url.replace(self.RESUMPTION + token[0], '')
             url = base_url + self.RESUMPTION + token[0]
-            records, token = oai_get_records_and_token(url, self.timeout, self.force_request_update, self.namespaces)
+            records, token = oai_get_records_and_token(url, self.timeout, self.force_request_update, self.namespaces, self.verify)
             all_records += records
 
         return all_records

@@ -89,12 +89,10 @@ class BaseTransformer(object):
 @six.add_metaclass(abc.ABCMeta)
 class XMLTransformer(BaseTransformer):
 
+    namespaces = {}
+
     def _transform_string(self, string, doc):
         return doc.xpath(string, namespaces=self.namespaces)
-
-    @abc.abstractproperty
-    def namespaces(self):
-        raise NotImplementedError
 
 
 @six.add_metaclass(abc.ABCMeta)
