@@ -1,7 +1,7 @@
 import pytest
 
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+# from sqlalchemy import create_engine
+# from sqlalchemy.orm import sessionmaker
 
 from scrapi.linter.document import NormalizedDocument, RawDocument
 
@@ -10,9 +10,6 @@ from scrapi.processing.postgres import PostgresProcessor, Document
 from . import utils
 
 test_db = PostgresProcessor()
-
-engine = create_engine('postgresql://localhost/test', echo=True)
-session = sessionmaker(bind=engine)()
 
 NORMALIZED = NormalizedDocument(utils.RECORD)
 RAW = RawDocument(utils.RAW_DOC)
