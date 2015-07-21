@@ -29,7 +29,8 @@ try:
     postgres_con = connect(dbname='postgres', host='localhost')
     postgres_con.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
     cur = postgres_con.cursor()
-    cur.execute('CREATE DATABASE test')
+    cur.close()
+    postgres_con.close()
     use_pg = True
 except DatabaseError:
     use_pg = False
@@ -79,7 +80,14 @@ def pytest_runtest_setup(item):
 
     marker = item.get_marker('postgres')
     if marker is not None:
-        if not use_pg:
+        if use_pg:
+            global postgres_con
+            global cur
+            postgres_con = connect(dbname='postgres', host='localhost')
+            postgres_con.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
+            cur = postgres_con.cursor()
+            cur.execute('CREATE DATABASE test')
+        else:
             pytest.skip('No connection to Postgres')
 
 
@@ -90,5 +98,6 @@ def pytest_runtest_teardown(item, nextitem):
 
     marker = item.get_marker('postgres')
     if marker is not None:
+        cur.execute('DROP DATABASE test')
         cur.close()
         postgres_con.close()
