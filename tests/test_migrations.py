@@ -19,7 +19,7 @@ from scrapi.processing.postgres import PostgresProcessor
 from . import utils
 
 test_cass = CassandraProcessor()
-test_postgress = PostgresProcessor()
+test_postgres = PostgresProcessor()
 
 test_harvester = utils.TestHarvester()
 
