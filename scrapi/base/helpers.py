@@ -153,7 +153,7 @@ def language_codes(langs):
 
     e.g. ['English', 'Russian'] -> ['eng', 'rus']
     '''
-    return filter(lambda x: x, map(get_code, langs))
+    return list(filter(lambda x: x, map(get_code, langs)))
 
 
 def get_code(language):
