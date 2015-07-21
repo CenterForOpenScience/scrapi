@@ -71,6 +71,7 @@ def process_licenses(license_title, license_url):
 
     return [license]
 
+
 def construct_url(url, dataset_path, end_point):
     """Return a url that directs back to the page on LBWIN Data Hub instead of the source page.
 
@@ -120,7 +121,7 @@ class LWBINHarvester(JSONHarvester):
                 ('state', '/state'),
                 ('version', '/version'),
                 ('creatorUserId', '/creator_user_id'),
-                ('type', '/type'),  
+                ('type', '/type'),
                 ('licenseId', '/license_id'),
                 ('numberOfResources', '/num_resources'),
                 ('numberOfTags', '/num_tags'),
