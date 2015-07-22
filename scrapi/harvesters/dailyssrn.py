@@ -14,7 +14,7 @@ from scrapi.base.helpers import compose, single_result
 
 class DailyssrnHarvester(XMLHarvester):
     short_name = 'dailyssrn'
-    long_name = 'RSS Feed from the Social Science Research Network'
+    long_name = 'Social Science Research Network'
     url = 'http://papers.ssrn.com/'
 
     schema = {
