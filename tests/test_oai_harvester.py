@@ -36,7 +36,7 @@ class TestHarvester(OAIHarvester):
         requests.HarvesterResponse(
             ok=True,
             method='get',
-            url=request_url,
+            url=request_url.lower(),
             content=TEST_OAI_DOC,
             content_type="application/XML"
         ).save()

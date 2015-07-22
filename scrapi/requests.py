@@ -57,7 +57,7 @@ class HarvesterResponse(models.Model):
 
 def _maybe_load_response(method, url):
     try:
-        return HarvesterResponse.get(url=url, method=method)
+        return HarvesterResponse.get(url=url.lower(), method=method)
     except HarvesterResponse.DoesNotExist:
         return None
 
@@ -87,7 +87,7 @@ def record_or_load_response(method, url, throttle=None, force=False, params=None
 
     if not resp:
         return HarvesterResponse(
-            url=url,
+            url=url.lower(),
             method=method,
             ok=response.ok,
             content=response.content,

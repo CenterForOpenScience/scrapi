@@ -7,6 +7,7 @@ import logging
 from datetime import timedelta, date
 
 import six
+from furl import furl
 from lxml import etree
 
 from scrapi import util
@@ -158,10 +159,13 @@ class OAIHarvester(XMLHarvester):
             start_date += 'T00:00:00Z'
             end_date += 'T00:00:00Z'
 
-        records_url = self.base_url + self.RECORDS_URL
-        request_url = records_url + self.META_PREFIX_DATE.format(start_date, end_date)
+        url = furl(self.base_url)
+        url.args['verb'] = 'ListRecords'
+        url.args['metadataPrefix'] = 'oai_dc'
+        url.args['from'] = start_date
+        url.args['until'] = end_date
 
-        records = self.get_records(request_url, start_date, end_date)
+        records = self.get_records(url.url, start_date, end_date)
 
         rawdoc_list = []
         for record in records:
@@ -178,13 +182,14 @@ class OAIHarvester(XMLHarvester):
         return rawdoc_list
 
     def get_records(self, url, start_date, end_date):
-        all_records, token = oai_get_records_and_token(url, self.timeout, self.force_request_update, self.namespaces, self.verify)
+        url = furl(url)
+        all_records, token = oai_get_records_and_token(url.url, self.timeout, self.force_request_update, self.namespaces, self.verify)
 
         while token:
-            base_url = url.replace(self.META_PREFIX_DATE.format(start_date, end_date), '')
-            base_url = base_url.replace(self.RESUMPTION + token[0], '')
-            url = base_url + self.RESUMPTION + token[0]
-            records, token = oai_get_records_and_token(url, self.timeout, self.force_request_update, self.namespaces, self.verify)
+            url.remove('from')
+            url.remove('until')
+            url.args['resumptionToken'] = token[0]
+            records, token = oai_get_records_and_token(url.url, self.timeout, self.force_request_update, self.namespaces, self.verify)
             all_records += records
 
         return all_records
