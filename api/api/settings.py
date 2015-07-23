@@ -23,9 +23,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '&6(nqe!c+ft)1&4dvs+=pq-us%&nd$-4a8p4y%=sk4(k2cfhn*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost:5000']
+# ALLOWED_HOSTS = ['localhost:5000']
+ALLOWED_HOSTS = ['*']
 
 DOMAIN = 'http://localhost:8000'
 
@@ -85,11 +87,6 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'scrapi',
-    },
-    'test': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'test',
-        'TEST_MIRROR': 'default'
     }
 }
 
