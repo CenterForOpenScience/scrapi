@@ -1,12 +1,14 @@
+import os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "api.api.settings")
+
 import mock
 import pytest
 
 from elasticsearch import Elasticsearch
 from elasticsearch.exceptions import ConnectionError
 
-from psycopg2 import connect
-from psycopg2 import DatabaseError
-from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
+from django.db import connection
+from django.db.utils import DatabaseError
 
 from scrapi import settings
 from scrapi import database
@@ -25,12 +27,9 @@ except ConnectionError:
     use_es = False
 
 try:
-    # Need to create a test database
-    postgres_con = connect(dbname='postgres', host='localhost')
-    postgres_con.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
-    cur = postgres_con.cursor()
-    cur.close()
-    postgres_con.close()
+    # Try connecting to postgres
+    cursor = connection.cursor()
+    cursor.close()
     use_pg = True
 except DatabaseError:
     use_pg = False
@@ -81,12 +80,9 @@ def pytest_runtest_setup(item):
     marker = item.get_marker('postgres')
     if marker is not None:
         if use_pg:
-            global postgres_con
-            global cur
-            postgres_con = connect(dbname='postgres', host='localhost')
-            postgres_con.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
-            cur = postgres_con.cursor()
-            cur.execute('CREATE DATABASE test')
+            global cursor
+            cursor = connection.cursor()
+            cursor.execute("CREATE DATABASE test")
         else:
             pytest.skip('No connection to Postgres')
 
@@ -98,6 +94,5 @@ def pytest_runtest_teardown(item, nextitem):
 
     marker = item.get_marker('postgres')
     if marker is not None:
-        cur.execute('DROP DATABASE test')
-        cur.close()
-        postgres_con.close()
+        cursor.execute('DROP DATABASE test')
+        cursor.close()
