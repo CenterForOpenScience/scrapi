@@ -1,13 +1,11 @@
 import pytest
 
-# from sqlalchemy import create_engine
-# from sqlalchemy.orm import sessionmaker
-
-from scrapi.linter.document import NormalizedDocument, RawDocument
-
-from scrapi.processing.postgres import PostgresProcessor, Document
+import os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "api.api.settings")
 
 from . import utils
+from scrapi.linter.document import NormalizedDocument, RawDocument
+from scrapi.processing.postgres import PostgresProcessor, Document
 
 test_db = PostgresProcessor()
 
