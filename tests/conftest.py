@@ -21,6 +21,8 @@ settings.CELERY_ALWAYS_EAGER = True
 settings.CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
 database._manager.keyspace = 'test'
 
+postgres_exc = None
+
 try:
     con = Elasticsearch(settings.ELASTIC_URI, request_timeout=settings.ELASTIC_TIMEOUT)
     con.cluster.health(wait_for_status='yellow')
@@ -34,7 +36,7 @@ try:
     cursor.close()
     use_pg = True
 except DatabaseError as e:
-    print(e)
+    postgres_exc = e
     use_pg = False
 
 
@@ -87,7 +89,8 @@ def pytest_runtest_setup(item):
             cursor = connection.cursor()
             cursor.execute("CREATE DATABASE test")
         else:
-            pytest.skip('No connection to Postgres')
+            raise postgres_exc
+            pytest.skip(postgres_exc)
 
 
 def pytest_runtest_teardown(item, nextitem):
