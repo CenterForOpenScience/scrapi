@@ -4,8 +4,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.views.decorators.clickjacking import xframe_options_exempt
 
-from webview.models import Document
-from webview.serializers import DocumentSerializer
+from api.webview.models import Document
+from api.webview.serializers import DocumentSerializer
 
 
 class DocumentList(generics.ListCreateAPIView):

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from webview.models import Document
+from api.webview.models import Document
 
 
 class DocumentSerializer(serializers.ModelSerializer):

@@ -1,7 +1,7 @@
 from django.test import TestCase
 from rest_framework.test import APIRequestFactory
 
-from webview.views import DocumentList
+from api.webview.views import DocumentList
 
 
 class APIViewTests(TestCase):
