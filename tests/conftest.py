@@ -92,9 +92,12 @@ def pytest_runtest_setup(item):
     marker = item.get_marker('postgres')
     if marker is not None:
         if use_pg:
-            global cursor
-            cursor = postgres_con.cursor()
-            cursor.execute("CREATE DATABASE test")
+            global cur
+            global postgres_con
+            postgres_con = connect(dbname='postgres', host='localhost')
+            postgres_con.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
+            cur = postgres_con.cursor()
+            cur.execute("CREATE DATABASE test")
         else:
             raise postgres_exc
             pytest.skip(postgres_exc)
@@ -110,3 +113,4 @@ def pytest_runtest_teardown(item, nextitem):
         if use_pg:
             cur.execute('DROP DATABASE test')
             cur.close()
+            postgres_con.close()
