@@ -1,16 +1,8 @@
-# from __future__ import absolute_import
-
-# import os
-# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "api.api.settings")
-
 import mock
 import pytest
 
 from elasticsearch import Elasticsearch
 from elasticsearch.exceptions import ConnectionError
-
-# from django.db import connection
-# from django.db.utils import DatabaseError
 
 from psycopg2 import connect
 from psycopg2 import DatabaseError
@@ -99,7 +91,6 @@ def pytest_runtest_setup(item):
             cur = postgres_con.cursor()
             cur.execute("CREATE DATABASE test")
         else:
-            raise postgres_exc
             pytest.skip(postgres_exc)
 
 
