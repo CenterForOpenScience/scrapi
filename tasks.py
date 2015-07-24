@@ -130,16 +130,6 @@ def test(cov=True, verbose=False, debug=False):
 
 
 @task
-def apitest():
-    savedpath = os.getcwd()
-    os.chdir('api')
-
-    run('python manage.py test')
-
-    os.chdir(savedpath)
-
-
-@task
 def requirements():
     run('pip install -r requirements.txt')
 
