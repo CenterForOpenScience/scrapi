@@ -31,7 +31,8 @@ try:
     cursor = connection.cursor()
     cursor.close()
     use_pg = True
-except DatabaseError:
+except DatabaseError as e:
+    print(e)
     use_pg = False
 
 
