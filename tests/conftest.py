@@ -94,5 +94,6 @@ def pytest_runtest_teardown(item, nextitem):
 
     marker = item.get_marker('postgres')
     if marker is not None:
-        cursor.execute('DROP DATABASE test')
-        cursor.close()
+        if use_pg:
+            cursor.execute('DROP DATABASE test')
+            cursor.close()
