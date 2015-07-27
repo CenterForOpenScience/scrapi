@@ -3,11 +3,14 @@ import pytest
 import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "api.api.settings")
 
+import django
 from django.test import TestCase
 from scrapi.processing.postgres import PostgresProcessor, Document
 
 from . import utils
 from scrapi.linter.document import RawDocument
+
+django.setup()
 
 test_db = PostgresProcessor()
 
