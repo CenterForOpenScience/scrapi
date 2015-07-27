@@ -25,7 +25,7 @@ from nameparser import HumanName
 from dateutil.parser import parse
 
 from scrapi import requests
-from scrapi.base import JSONHarvester, nameidentifier
+from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
 from scrapi.base.helpers import build_properties
 
