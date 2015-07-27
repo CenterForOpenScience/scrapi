@@ -13,7 +13,6 @@ NORMALIZED = NormalizedDocument(utils.RECORD)
 RAW = RawDocument(utils.RAW_DOC)
 
 
-@pytest.mark.postgres
 @pytest.mark.django_db
 def test_process_raw():
     test_db.process_raw(RAW)
