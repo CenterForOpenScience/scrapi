@@ -204,8 +204,4 @@ class LWBINHarvester(JSONHarvester):
                 'filetype': 'json'
             }))
 
-            with open('/Users/jliu3230/Desktop/authors.json', 'a') as f:
-                f.write(record['author'].encode('utf-8'))
-                f.write('/n')
-
         return doc_list
