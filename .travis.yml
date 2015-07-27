@@ -17,9 +17,9 @@ install:
   - pip install coveralls
   - cp scrapi/settings/travis-dist.py scrapi/settings/local.py
 
-before_script: 
+before_script:
   - flake8 .
-  - psql -c "CREATE DATABASE scrapi;" -U postgres
+  # - psql -c "CREATE DATABASE scrapi;" -U postgres
 
 script:
   - invoke provider_map
