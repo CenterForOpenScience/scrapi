@@ -31,7 +31,7 @@ class DailyssrnHarvester(XMLHarvester):
 
         url = 'http://dailyssrn.com/rss/rss-all-2.0.xml'
 
-        data = requests.get(url)
+        data = requests.get(url, force=True)
         doc = etree.XML(data.content)
 
         records = doc.xpath('channel/item')
