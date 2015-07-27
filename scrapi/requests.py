@@ -126,6 +126,7 @@ def request(method, url, params=None, **kwargs):
 
     logger.info('Making request to "{}"'.format(url))
     maybe_sleep(kwargs.pop('throttle', 0))
+    kwargs.pop('force', None)
     return requests.request(method, url, **kwargs)
 
 
