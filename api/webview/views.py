@@ -1,4 +1,3 @@
-from django.http import Http404
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -18,23 +17,41 @@ class DocumentList(generics.ListCreateAPIView):
         serializer.save(source=self.request.user)
 
     def get_queryset(self):
-        """ Return queryset based on from and to kwargs
+        """ Return all documents
         """
         queryset = Document.objects.all()
 
         return queryset
 
 
+class DocumentsFromSource(generics.ListCreateAPIView):
+    """
+    List all documents from a source
+    """
+    serializer_class = DocumentSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(source=self.request.user)
+
+    def get_queryset(self):
+        """ Return queryset based on source
+        """
+        queryset = Document.objects.filter(source=self.kwargs['source'])
+
+        return queryset
+
+
 @api_view(['GET'])
 @xframe_options_exempt
-def document_detail(request, docID):
+def document_detail(request, source, docID):
     """
-    Retrieve, update or delete a document instance.
+    Retrieve a document instance.
     """
     try:
-        document = Document.objects.get(docID=docID)
-    except document.DoesNotExist:
-        return Response(status=Http404)
+        all_sources = Document.objects.filter(source=source)
+        document = all_sources.get(docID=docID)
+    except Document.DoesNotExist:
+        return Response(status=404)
 
     if request.method == 'GET':
         serializer = DocumentSerializer(document)
