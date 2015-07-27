@@ -25,51 +25,93 @@ from nameparser import HumanName
 from dateutil.parser import parse
 
 from scrapi import requests
-from scrapi.base import JSONHarvester
+from scrapi.base import JSONHarvester, nameidentifier
 from scrapi.linter.document import RawDocument
 from scrapi.base.helpers import build_properties
 
 
 logger = logging.getLogger(__name__)
 
+organization_dict = [
+    "organization", "Organization", "fund", "Fund", "canada", "Canada", "agriculture", "Agriculture", "commitee",
+    "Commitee", "international", "International", "council", "Council", "office", "Office", "of", "Of"
+]
 
-def process_contributors(authors, email):
+customized_organization_dict = ["LWBIN", "CoCoRaHS", "USGS"]
+
+
+def is_organization(name):
+    """Return a boolean to indicate if the name passed to the function is an organization
+    """
+    words = name.split(' ')
+    while len(words) > 0:
+        word = words.pop()
+        if word in organization_dict or word in customized_organization_dict:
+            return True
+
+
+def process_contributors(authors, emails):
     """Process authors and add author emails
+    If multiple authors and one email, put email in a new author
     """
 
     authors = authors.strip().replace('<span class="author-names">', '').replace('</span>', '')
     authors = authors.split(',')
+    emails = emails.split(',')
 
-    if ' and ' in authors[-1] or ' <em>et al.</em>' in authors[-1]:
-        split_name = authors.pop(-1).replace(' <em>et al.</em>', '').split(' and ')
-        authors.extend(split_name)
+    for author in authors:
+        if is_organization(author):
+            break
+    else:
+        if ' and ' in authors[-1] or ' <em>et al.</em>' in authors[-1]:
+            split_name = authors.pop(-1).replace(' <em>et al.</em>', '').split(' and ')
+            authors.extend(split_name)
 
     contributor_list = []
-    for person in authors:
+    append_emails = True
+    if len(authors) > len(emails):
+        append_emails = False  # if there are more authors than emails, do no append emails to authors; instead create new authors.
+
+    for ind, person in enumerate(authors):
         name = HumanName(person)
         contributor = {
             'name': person,
             'givenName': name.first,
             'additionalName': name.middle,
             'familyName': name.last,
-            'email': email,
+            'email': emails[ind] if append_emails else '',
             'sameAs': [],
         }
         contributor_list.append(contributor)
 
+    if not append_emails:
+        for email in emails:
+            contributor = {
+                'name': '',
+                'givenName': '',
+                'additionalName': '',
+                'familyName': '',
+                'email': email,
+                'sameAs': [],
+            }
+            contributor_list.append(contributor)
+
     return contributor_list
 
 
-def process_licenses(license_title, license_url):
+def process_licenses(license_title, license_url, license_id):
     """Process licenses to comply with the noormalized schema
     """
 
-    license = {
-        'uri': license_url or "",
-        'description': license_title or ""
-    }
+    if not license_url:
+        return []
+    else:
+        license = {
+            'uri': license_url,
+            'description': "{} ({})".format(license_title, license_id) or ""
+        }
 
-    return [license]
+        return [license]
 
 
 def construct_url(url, dataset_path, end_point):
@@ -82,6 +124,20 @@ def construct_url(url, dataset_path, end_point):
     """
 
     return "/".join([url, dataset_path, end_point])
+
+
+def process_object_uris(url, extras):
+    """Extract doi from /extras, and return a list or object uris including /url and doi if it exists.
+    """
+    doi = ""
+    for d in extras:
+        if d['key'] == "DOI" or d['key'] == "DOI:":
+            doi = d['value']
+            break
+    if doi == "":
+        return [url]
+    else:
+        return [url, doi]
 
 
 class LWBINHarvester(JSONHarvester):
@@ -102,32 +158,28 @@ class LWBINHarvester(JSONHarvester):
             'providerUpdatedDateTime': ('/metadata_modified', lambda x: parse(x).isoformat()),
             'uris': {
                 'canonicalUri': ('/name', lambda x: construct_url(self.url, self.dataset_path, x)),  # Construct new urls directing to LWBIN
-                'objectUris': '/url'  # Default urls from the metadata directing to source pages
+                'objectUris': ('/url', '/extras', process_object_uris)  # Default urls from the metadata directing to source pages
             },
             'contributors': ('/author', '/author_email', process_contributors),
-            'licenses': ('/license_title', '/license_url', process_licenses),
+            'licenses': ('/license_title', '/license_url', '/license_id', process_licenses),
             'tags': ('/tags', lambda x: [tag['name'].lower() for tag in (x or [])]),
             'freeToRead': {
                 'startDate': ('/isopen', '/metadata_created', lambda x, y: parse(y).date().isoformat() if x else None)
             },
             'otherProperties': build_properties(
-                ('licenseTitle', '/license_title'),
                 ('maintainer', '/maintainer'),
                 ('maintainerEmail', '/maintainer_email'),
                 ('revisionTimestamp', ('/revision_timestamp', lambda x: parse(x).isoformat())),
                 ('id', '/id'),
                 ('metadataCreated', ('/metadata_created', lambda x: parse(x).isoformat())),
-                ('authorEmail', '/author_email'),
                 ('state', '/state'),
                 ('version', '/version'),
                 ('creatorUserId', '/creator_user_id'),
                 ('type', '/type'),
-                ('licenseId', '/license_id'),
                 ('numberOfResources', '/num_resources'),
                 ('numberOfTags', '/num_tags'),
                 ('name', '/name'),
                 ('groups', '/groups'),
-                ('DOI', ('/extras', lambda x: "".join([d['value'] for d in x if d['key'] is 'DOI'])))
             )
         }
 
@@ -151,5 +203,9 @@ class LWBINHarvester(JSONHarvester):
                 'docID': doc_id,
                 'filetype': 'json'
             }))
+
+            with open('/Users/jliu3230/Desktop/authors.json', 'a') as f:
+                f.write(record['author'].encode('utf-8'))
+                f.write('/n')
 
         return doc_list
