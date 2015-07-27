@@ -89,7 +89,6 @@ def pytest_runtest_setup(item):
             postgres_con = connect(dbname='postgres', host='localhost')
             postgres_con.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
             cur = postgres_con.cursor()
-            cur.execute("CREATE DATABASE scrapi")
             cur.execute("CREATE DATABASE test")
         else:
             pytest.skip(postgres_exc)
