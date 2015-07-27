@@ -4,6 +4,7 @@ httpretty==0.8.4
 pytest-cov==1.8.1
 ipdb==0.8
 ipython==3.1.0
+django-pytest==0.2.0
 
 pep8>=1.5.7,<1.6.0
 pyflakes>=0.8,<0.9
