@@ -16,8 +16,9 @@ RAW = RawDocument(utils.RAW_DOC)
 
 
 class DocumentTestCase(TestCase):
+
     @pytest.mark.django_db
-    def test_Documents_can_speak(self):
+    def test_raw_processing(self):
         test_db.process_raw(RAW)
         queryset = Document(docID='someID', source=RAW['source'])
         assert queryset.docID == RAW.attributes['docID']
