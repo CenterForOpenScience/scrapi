@@ -24,6 +24,7 @@ before_script:
 script:
   - invoke provider_map
   - invoke test
+  - python manage.py test
 
 after_success:
   coveralls
