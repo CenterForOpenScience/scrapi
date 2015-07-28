@@ -204,3 +204,22 @@ $ invoke test
 ```
 
 and all of the tests in the 'tests/' directory will be run.
+
+
+### Pitfalls
+
+#### Installing with anaconda
+If you're using anaconda on your system at all, using pip to install all requirements from scratch from requirements.txt and dev-requirements.txt results in an Import Error when invoking tests or harvesters.
+
+Example:
+
+ImportError: dlopen(/Users/username/.virtualenvs/scrapi2/lib/python2.7/site-packages/lxml/etree.so, 2): Library not loaded: libxml2.2.dylib
+  Referenced from: /Users/username/.virtualenvs/scrapi2/lib/python2.7/site-packages/lxml/etree.so
+  Reason: Incompatible library version: etree.so requires version 12.0.0 or later, but libxml2.2.dylib provides version 10.0.0
+
+To fix:
+- run ```pip uninstall lxml```
+- remove the anaconda/bin from your system path in your bash_profile
+- reinstall requirements as usual
+
+Answer found in [this stack overflow question and answer](http://stackoverflow.com/questions/23172384/lxml-runtime-error-reason-incompatible-library-version-etree-so-requires-vers)
