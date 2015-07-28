@@ -16,9 +16,6 @@ from django.conf import global_settings
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '...'
 
@@ -31,6 +28,7 @@ DOMAIN = 'http://localhost:8000'
 
 ALLOWED_HOSTS = [
     '.osf.io',
+    'testserver'
 ]
 
 # Application definition
@@ -44,7 +42,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sites',
     'robots',
-    'webview',
+    'api.webview',
     'rest_framework',
     'corsheaders'
 )
