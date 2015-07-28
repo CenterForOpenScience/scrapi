@@ -131,7 +131,7 @@ def oai_extract_url(identifiers):
                 return found_url
         except AttributeError:
             continue
-    raise ValueError('No Cannonical URI was returned for this record.')
+    raise ValueError('No Canonical URI was returned for this record.')
 
 
 def oai_process_contributors(*args):
