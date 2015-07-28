@@ -133,7 +133,6 @@ def request(method, url, params=None, **kwargs):
     maybe_sleep(throttle)
     # Need to prevent force from being passed to real requests module
     kwargs.pop('force', None)
-
     return requests.request(method, url, **kwargs)
 
 
