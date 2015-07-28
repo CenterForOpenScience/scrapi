@@ -59,7 +59,6 @@ archive/*
 
 worker_manager/recent_files.txt
 **/settings/local.py
-api/api/settings/local.py
 celerybeat-schedule.db
 records/
 archive/*
