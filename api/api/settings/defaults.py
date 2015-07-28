@@ -41,7 +41,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.contenttypes',
     'django.contrib.sites',
-    'robots',
     'api.webview',
     'rest_framework',
     'corsheaders'
