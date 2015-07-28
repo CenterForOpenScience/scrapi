@@ -107,7 +107,7 @@ STATICFILES_DIRS = (
     os.path.join(
         os.path.dirname(__file__),
         '..',  # up one level from the settings directory
-        'static',
+        'static'
     ),
 )
 
