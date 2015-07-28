@@ -67,9 +67,7 @@ TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
     'django.contrib.auth.context_processors.auth',
 )
 
-ROOT_URLCONF = 'shareregistration.urls'
-
-WSGI_APPLICATION = 'shareregistration.wsgi.application'
+ROOT_URLCONF = 'api.api.urls'
 
 
 # Database

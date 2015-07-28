@@ -7,7 +7,7 @@ DOMAIN = 'http://localhost:8000'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'share_registration',
+        'NAME': 'scrapi',
         # 'USER': 'name',
         # 'PASSWORD': 'password',
         # 'HOST': '127.0.0.1',
