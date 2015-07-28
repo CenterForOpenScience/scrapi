@@ -15,7 +15,7 @@ django.setup()
 test_db = PostgresProcessor()
 
 # NORMALIZED = NormalizedDocument(utils.RECORD)
-RAW = RawDocument(utils.RAW_DOC)
+RAW = RawDocument(utils.POSTGRES_RAW_DOC)
 
 
 class DocumentTestCase(TestCase):
