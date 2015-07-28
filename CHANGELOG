@@ -2,6 +2,20 @@
 ChangeLog
 *********
 
+0.8.0 (2015-07-28)
+==================
+- Add harvesters for Smithsonian Digital Repository, Hacettepe,
+	Harvard Dataverse, Cyberleninka, Howard University, Scholarworks Umass,
+	Inter-University Consortium for Political and Social Research
+- Python 3 support
+- Fix DOI harvesting for OAI harvesters
+- Fix OAI harvesters having their otherProperties overwritten when they
+	defined a new schema.
+- Fix resumption tokens in OAI harvesters
+- Fix date parsing for DOE schema harvesters
+- Stop JSON processor from swallowing exceptions
+- Update harvesters to make their schemas more closely match the spec
+
 0.7.6 (2015-07-10)
 ==================
 - Fix language harvesting for DOE and OAI harvesters
