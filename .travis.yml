@@ -20,6 +20,7 @@ install:
 before_script:
   - flake8 .
   - psql -c "CREATE DATABASE scrapi;" -U postgres
+  - python manage.py migrate
 
 script:
   - invoke provider_map
