@@ -188,6 +188,7 @@ class OAIHarvester(XMLHarvester):
         while token:
             url.remove('from')
             url.remove('until')
+            url.remove('metadataPrefix')
             url.args['resumptionToken'] = token[0]
             records, token = oai_get_records_and_token(url.url, self.timeout, self.force_request_update, self.namespaces, self.verify)
             all_records += records
