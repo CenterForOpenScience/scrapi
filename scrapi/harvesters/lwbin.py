@@ -32,22 +32,18 @@ from scrapi.base.helpers import build_properties
 
 logger = logging.getLogger(__name__)
 
-organization_dict = [
+ORGANIZATIONS = (
     "organization", "Organization", "fund", "Fund", "canada", "Canada", "agriculture", "Agriculture", "commitee",
-    "Commitee", "international", "International", "council", "Council", "office", "Office", "of", "Of"
-]
-
-customized_organization_dict = ["LWBIN", "CoCoRaHS", "USGS"]
+    "Commitee", "international", "International", "council", "Council", "office", "Office", "of", "Of",
+    "observation", "Observation", "LWBIN", "CoCoRaHS", "USGS", "NSIDC"
+)
 
 
 def is_organization(name):
     """Return a boolean to indicate if the name passed to the function is an organization
     """
     words = name.split(' ')
-    while len(words) > 0:
-        word = words.pop()
-        if word in organization_dict or word in customized_organization_dict:
-            return True
+    return any(word.strip(";") in ORGANIZATIONS for word in words)
 
 
 def process_contributors(authors, emails):
