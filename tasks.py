@@ -140,9 +140,14 @@ def beat():
 
 
 @task
-def worker():
+def worker(loglevel='INFO', hostname='%h'):
     from scrapi.tasks import app
-    app.worker_main(['worker', '--loglevel', 'info'])
+    command = ['worker']
+    if loglevel:
+        command.extend(['--loglevel', loglevel])
+    if hostname:
+        command.extend(['--hostname', hostname])
+    app.worker_main(command)
 
 
 @task
