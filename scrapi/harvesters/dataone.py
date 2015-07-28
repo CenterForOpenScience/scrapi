@@ -3,8 +3,6 @@
 Example query: https://cn.dataone.org/cn/v1/query/solr/?q=dateModified:[NOW-5DAY%20TO%20*]&rows=10
 """
 
-
-## harvester for DataONE SOLR search API
 from __future__ import unicode_literals
 
 import re
@@ -12,8 +10,9 @@ import re
 import logging
 from datetime import timedelta, date
 
+import six
 from lxml import etree
-from dateutil.parser import *
+from dateutil.parser import parse
 from xml.etree import ElementTree
 
 from nameparser import HumanName
@@ -44,14 +43,20 @@ def process_doi(service_id, doc_doi):
     return ''
 
 
-def process_contributors(author, submitters, contributors):
+def process_contributors(author, submitters, contributors,
+                         investigators):
     if not author:
         author = ''
     elif isinstance(author, list):
         author = author[0]
+
     if not isinstance(contributors, list):
         contributors = [contributors]
-    unique_contributors = list(set([author] + contributors))
+
+    if not isinstance(investigators, list):
+        investigators = [investigators]
+
+    unique_contributors = list(set([author] + contributors + investigators))
 
     if len(unique_contributors) < 1:
         return []
@@ -82,7 +87,7 @@ def process_contributors(author, submitters, contributors):
                 'givenName': name.first,
                 'additionalName': name.middle,
                 'familyName': name.last,
-                'email': unicode(email)
+                'email': six.text_type(email)
             }
             contributor_list.append(contributor_dict)
         else:
@@ -113,9 +118,7 @@ class DataOneHarvester(XMLHarvester):
             ('authoritativeMN', ("str[@name='authoritativeMN']/node()")),
             ('checksum', ("str[@name='checksum']/node()")),
             ('checksumAlgorithm', ("str[@name='checksumAlgorithm']/node()")),
-            ('dataUrl', ("str[@name='dataUrl']/node()")),
             ('datasource', ("str[@name='datasource']/node()")),
-            ('dateModified', ("date[@name='dateModified']/node()")),
             ('datePublished', ("date[@name='datePublished']/node()")),
             ('dateUploaded', ("date[@name='dateUploaded']/node()")),
             ('pubDate', ("date[@name='pubDate']/node()")),
@@ -124,30 +127,27 @@ class DataOneHarvester(XMLHarvester):
             ('formatId', ("str[@name='formatId']/node()")),
             ('formatType', ("str[@name='formatType']/node()")),
             ('identifier', ("str[@name='identifier']/node()")),
-            ('investigator', "arr[@name='investigator']/str/node()"),
-            ('origin', "arr[@name='origin']/str/node()"),
-            ('isPublic', ("bool[@name='isPublic']/node()")),
             ('readPermission', "arr[@name='readPermission']/str/node()"),
             ('replicaMN', "arr[@name='replicaMN']/str/node()"),
             ('replicaVerifiedDate', "arr[@name='replicaVerifiedDate']/date/node()"),
             ('replicationAllowed', ("bool[@name='replicationAllowed']/node()")),
             ('numberReplicas', ("int[@name='numberReplicas']/node()")),
             ('preferredReplicationMN', "arr[@name='preferredReplicationMN']/str/node()"),
-            ('resourceMap', "arr[@name='resourceMap']/str/node()"),
             ('rightsHolder', ("str[@name='rightsHolder']/node()")),
             ('scientificName', "arr[@name='scientificName']/str/node()"),
             ('site', "arr[@name='site']/str/node()"),
             ('size', ("long[@name='size']/node()")),
-            ('sku', ("str[@name='sku']/node()")),
             ('isDocumentedBy', "arr[@name='isDocumentedBy']/str/node()"),
-            ('serviceID', "str[@name='id']/node()")
+            ('serviceID', "str[@name='id']/node()"),
+            ('sku', "str[@name='sku']/node()")
         ),
         'freeToRead': {
             'startDate': ("bool[@name='isPublic']/node()", "date[@name='dateModified']/node()", lambda x, y: parse(y[0]).date().isoformat() if x else None)
         },
-        'contributors': ("str[@name='author']/node()", "str[@name='submitter']/node()", "arr[@name='origin']/str/node()", process_contributors),
+        'contributors': ("str[@name='author']/node()", "str[@name='submitter']/node()", "arr[@name='origin']/str/node()", "arr[@name='investigator']/str/node()", process_contributors),
         'uris': {
             'canonicalUri': ("str[@name='id']/node()", "//str[@name='dataUrl']/node()", lambda x, y: y[0] if 'http' in single_result(y) else x[0] if 'http' in single_result(x) else ''),
+            'objectUri': ("arr[@name='resourceMap']/str/node()", compose(lambda x: x.replace('doi:', 'http://dx.doi.org/'), single_result))
         },
         'tags': ("//arr[@name='keywords']/str/node()", lambda x: x if isinstance(x, list) else [x]),
         'providerUpdatedDateTime': ("str[@name='dateModified']/node()", compose(lambda x: parse(x).date().isoformat(), single_result)),

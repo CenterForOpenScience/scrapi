@@ -68,7 +68,7 @@ class StepicHarvester(JSONHarvester):
                     {
                         'doc': json.dumps(record),
                         'source': self.short_name,
-                        'docID': ('stepic_doc' + str(doc_id)).decode('utf-8'),
+                        'docID': ('stepic_doc' + str(doc_id)),
                         'filetype': 'json'
                     }
                 )

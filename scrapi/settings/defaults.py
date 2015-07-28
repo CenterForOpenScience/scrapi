@@ -20,3 +20,7 @@ FLUENTD_ARGS = {
 }
 
 DAYS_BACK = 2
+
+# Retrying Celery tasks
+CELERY_RETRY_DELAY = 30
+CELERY_MAX_RETRIES = 5

@@ -1,7 +1,9 @@
+import six
 import mock
 import pytest
-from datetime import date, timedelta
+from six.moves import xrange
 from freezegun import freeze_time
+from datetime import date, timedelta
 
 from scrapi import tasks
 from scrapi import settings
@@ -26,8 +28,8 @@ def raw_doc():
 def raw_docs():
     return [
         RawDocument({
-            'doc': str(x),
-            'docID': unicode(x),
+            'doc': six.binary_type(x),
+            'docID': six.text_type(x),
             'source': u'test',
             'filetype': u'xml',
         })
@@ -47,7 +49,7 @@ def test_run_harvester_calls(monkeypatch):
 
     assert mock_harvest.si.called
     assert mock_begin_norm.s.called
-    end_date = date(2015, 03, 16)
+    end_date = date(2015, 3, 16)
     start_date = end_date - timedelta(settings.DAYS_BACK)
 
     mock_begin_norm.s.assert_called_once_with('test')
@@ -61,8 +63,8 @@ def test_run_harvester_daysback(monkeypatch):
     monkeypatch.setattr('scrapi.tasks.harvest', mock_harvest)
     monkeypatch.setattr('scrapi.tasks.begin_normalization', mock_begin_norm)
 
-    start_date = date(2015, 03, 14)
-    end_date = date(2015, 03, 16)
+    start_date = date(2015, 3, 14)
+    end_date = date(2015, 3, 16)
 
     tasks.run_harvester('test', start_date=start_date, end_date=end_date)
 
@@ -82,8 +84,8 @@ def test_harvest_runs_harvest(harvester):
 
 @pytest.mark.usefixtures('harvester')
 def test_harvest_days_back(harvester):
-    start_date = date(2015, 03, 14)
-    end_date = date(2015, 03, 16)
+    start_date = date(2015, 3, 14)
+    end_date = date(2015, 3, 16)
 
     _, timestamps = tasks.harvest('test', 'TIME', start_date=start_date, end_date=end_date)
 
@@ -103,7 +105,8 @@ def test_harvest_raises(harvester):
     with pytest.raises(KeyError) as e:
         tasks.harvest('test', 'TIME')
 
-    assert e.value.message == 'testing'
+    # no .message in Python3
+    assert e.value.args[0] == 'testing'
 
 
 def test_begin_normalize_starts(raw_docs, monkeypatch):

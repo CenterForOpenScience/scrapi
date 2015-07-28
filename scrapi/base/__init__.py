@@ -6,16 +6,17 @@ import json
 import logging
 from datetime import timedelta, date
 
+import six
+from furl import furl
 from lxml import etree
 
 from scrapi import util
-from scrapi import requests
 from scrapi import registry
 from scrapi import settings
 from scrapi.base.schemas import OAISCHEMA
-from scrapi.base.helpers import updated_schema, build_properties
 from scrapi.linter.document import RawDocument, NormalizedDocument
 from scrapi.base.transformer import XMLTransformer, JSONTransformer
+from scrapi.base.helpers import updated_schema, build_properties, oai_get_records_and_token
 
 logging.basicConfig(level=logging.INFO)
 
@@ -33,13 +34,13 @@ class HarvesterMeta(abc.ABCMeta):
             logger.info('Class {} not added to registry'.format(cls.__name__))
 
 
+@six.add_metaclass(HarvesterMeta)
 class BaseHarvester(object):
     """ This is a base class that all harvesters should inheret from
 
     Defines the copy to unicode method, which is useful for getting standard
     unicode out of xml results.
     """
-    __metaclass__ = HarvesterMeta
 
     @abc.abstractproperty
     def short_name(self):
@@ -124,19 +125,26 @@ class OAIHarvester(XMLHarvester):
     approved_sets = None
     timezone_granularity = False
     property_list = ['date', 'type']
+    force_request_update = False
     verify = True
 
     @property
     def schema(self):
-        properties = {
+        return self._schema
+
+    @property
+    def _schema(self):
+        return updated_schema(OAISCHEMA, self.formatted_properties)
+
+    @property
+    def formatted_properties(self):
+        return {
             'otherProperties': build_properties(*[(item, (
                 '//dc:{}/node()'.format(item),
                 '//ns0:{}/node()'.format(item),
                 self.resolve_property)
             ) for item in self.property_list])
         }
-
-        return updated_schema(OAISCHEMA, properties)
 
     def resolve_property(self, dc, ns0):
         ret = dc + ns0
@@ -151,10 +159,13 @@ class OAIHarvester(XMLHarvester):
             start_date += 'T00:00:00Z'
             end_date += 'T00:00:00Z'
 
-        records_url = self.base_url + self.RECORDS_URL
-        request_url = records_url + self.META_PREFIX_DATE.format(start_date, end_date)
+        url = furl(self.base_url)
+        url.args['verb'] = 'ListRecords'
+        url.args['metadataPrefix'] = 'oai_dc'
+        url.args['from'] = start_date
+        url.args['until'] = end_date
 
-        records = self.get_records(request_url, start_date, end_date)
+        records = self.get_records(url.url, start_date, end_date)
 
         rawdoc_list = []
         for record in records:
@@ -170,26 +181,18 @@ class OAIHarvester(XMLHarvester):
 
         return rawdoc_list
 
-    def get_records(self, url, start_date, end_date, resump_token=''):
-        data = requests.get(url, throttle=self.timeout, verify=self.verify)
+    def get_records(self, url, start_date, end_date):
+        url = furl(url)
+        all_records, token = oai_get_records_and_token(url.url, self.timeout, self.force_request_update, self.namespaces, self.verify)
 
-        doc = etree.XML(data.content)
+        while token:
+            url.remove('from')
+            url.remove('until')
+            url.args['resumptionToken'] = token[0]
+            records, token = oai_get_records_and_token(url.url, self.timeout, self.force_request_update, self.namespaces, self.verify)
+            all_records += records
 
-        records = doc.xpath(
-            '//ns0:record',
-            namespaces=self.namespaces
-        )
-        token = doc.xpath(
-            '//ns0:resumptionToken/node()',
-            namespaces=self.namespaces
-        )
-        if len(token) == 1:
-            base_url = url.replace(self.META_PREFIX_DATE.format(start_date, end_date), '')
-            base_url = base_url.replace(self.RESUMPTION + resump_token, '')
-            url = base_url + self.RESUMPTION + token[0]
-            records += self.get_records(url, start_date, end_date, resump_token=token[0])
-
-        return records
+        return all_records
 
     def normalize(self, raw_doc):
         str_result = raw_doc.get('doc')

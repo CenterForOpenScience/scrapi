@@ -1,5 +1,8 @@
 from __future__ import unicode_literals
 
+import six
+from six.moves import xrange
+
 from scrapi.base import XMLHarvester
 from scrapi.base.schemas import DOESCHEMA
 from scrapi.linter.document import RawDocument
@@ -7,7 +10,7 @@ from scrapi.base.helpers import updated_schema, build_properties, single_result
 
 
 RAW_DOC = {
-    'doc': str('{}'),
+    'doc': b'{}',
     'docID': 'someID',
     'timestamps': {
         'harvestFinished': '2012-11-30T17:05:48+00:00',
@@ -83,7 +86,7 @@ TEST_NAMESPACES = {
 }
 
 
-TEST_XML_DOC = '''
+TEST_XML_DOC = b'''
     <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcq="http://purl.org/dc/terms/">
         <records count="97" morepages="true" start="1" end="10">
             <record rownumber="1">
@@ -149,7 +152,7 @@ TEST_XML_DOC = '''
     </rdf:RDF>
 '''
 
-TEST_OAI_DOC = '''
+TEST_OAI_DOC = b'''
     <OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
     <responseDate>2015-03-30T18:31:29Z</responseDate>
     <request verb="ListRecords" metadataPrefix="oai_dc" from="2014-09-26T00:00:00Z">http://repository.stcloudstate.edu/do/oai/</request>
@@ -196,7 +199,7 @@ class TestHarvester(XMLHarvester):
 
     def harvest(self, days_back=1):
         return [RawDocument({
-            'doc': str(TEST_XML_DOC),
+            'doc': TEST_XML_DOC,
             'source': 'test',
             'filetype': 'XML',
             'docID': "1"

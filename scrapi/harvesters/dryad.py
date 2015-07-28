@@ -8,7 +8,6 @@ from __future__ import unicode_literals
 import logging
 from lxml import etree
 
-from scrapi.base import schemas
 from scrapi.base import helpers
 from scrapi.base import OAIHarvester
 
@@ -39,14 +38,13 @@ class DryadHarvester(OAIHarvester):
                      'identifier', 'type', 'setSpec']
     timezone_granularity = True
 
-    schema = helpers.updated_schema(
-        schemas.OAISCHEMA,
-        {
+    @property
+    def schema(self):
+        return helpers.updated_schema(self._schema, {
             "uris": {
                 "objectUris": ('//dc:relation/node()', '//dc:identifier/node()', format_dois_dryad)
             }
-        }
-    )
+        })
 
     def normalize(self, raw_doc):
         result = etree.XML(raw_doc['doc'])

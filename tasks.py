@@ -1,13 +1,14 @@
+import base64
 import logging
 import platform
 from datetime import date, timedelta
 
-import urllib
 from invoke import run, task
 from elasticsearch import helpers
+from dateutil.parser import parse
+from six.moves.urllib import parse as urllib_parse
 
 import scrapi.harvesters  # noqa
-from dateutil.parser import parse
 from scrapi import linter
 from scrapi import registry
 from scrapi import settings
@@ -30,7 +31,7 @@ def alias(alias, index):
 
 
 @task
-def migrate(migration, sources=None, kwargs_string=None, dry=True, async=False):
+def migrate(migration, sources=None, kwargs_string=None, dry=True, async=False, group_size=1000):
     ''' Task to run a migration.
 
     :param migration: The migration function to run. This is passed in
@@ -69,6 +70,7 @@ def migrate(migration, sources=None, kwargs_string=None, dry=True, async=False):
 
     kwargs['dry'] = dry
     kwargs['async'] = async
+    kwargs['group_size'] = group_size
     kwargs['sources'] = map(lambda x: x.strip(), sources.split(','))
 
     if kwargs['sources'] == ['']:
@@ -201,11 +203,14 @@ def provider_map(delete=False):
         es.indices.delete(index='share_providers', ignore=[404])
 
     for harvester_name, harvester in registry.items():
+        with open("img/favicons/{}_favicon.ico".format(harvester.short_name), "rb") as f:
+            favicon = urllib_parse.quote(base64.encodestring(f.read()))
+
         es.index(
             'share_providers',
             harvester.short_name,
             body={
-                'favicon': 'data:image/png;base64,' + urllib.quote(open("img/favicons/{}_favicon.ico".format(harvester.short_name), "rb").read().encode('base64')),
+                'favicon': 'data:image/png;base64,' + favicon,
                 'short_name': harvester.short_name,
                 'long_name': harvester.long_name,
                 'url': harvester.url

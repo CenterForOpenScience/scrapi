@@ -1,0 +1,1807 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/13.4.0]
+    method: GET
+    uri: http://repository.si.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2013-03-17T00:00:00Z&until=2013-03-19T00:00:00Z
+  response:
+    body: {string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
+        href=\"static/style.xsl\"?><OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/
+        http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"><responseDate>2015-06-15T15:42:37Z</responseDate>\n
+        \   <request verb=\"ListRecords\" metadataPrefix=\"oai_dc\" from=\"2013-03-17T00:00:00Z\"
+        until=\"2013-03-19T00:00:00Z\">http://repository.si.edu/oai/request</request>\n
+        \   <ListRecords>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/19590</identifier>\n
+        \               <datestamp>2013-03-18T05:39:21Z</datestamp>\n                <setSpec>com_10088_5</setSpec>\n
+        \               <setSpec>col_10088_3583</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Using hand proportions
+        to test taxonomic boundaries within the Tupaia glis species complex (Scandentia,
+        Tupaiidae)</dc:title>\n<dc:creator>Sargis, Eric J.</dc:creator>\n<dc:creator>Woodman,
+        Neal</dc:creator>\n<dc:creator>Reese, Aspen T.</dc:creator>\n<dc:creator>Olson,
+        Link E.</dc:creator>\n<dc:date>2013-03-12T18:05:35Z</dc:date>\n<dc:date>2013-03-12T18:05:35Z</dc:date>\n<dc:date>2013</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Journal
+        of Mammalogy, 94(1) : 183-201.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/19590</dc:identifier>\n<dc:identifier>114529</dc:identifier>\n<dc:identifier>10.1644/11-MAMM-A-343.1</dc:identifier>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/19591</identifier>\n
+        \               <datestamp>2013-03-18T05:39:24Z</datestamp>\n                <setSpec>com_10088_5</setSpec>\n
+        \               <setSpec>col_10088_3583</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>New species of
+        Trichomycterus (Teleostei: Siluriformes) from the Andean Cordillera of Argentina
+        and the second record of the genus in thermal waters</dc:title>\n<dc:creator>Fernandez,
+        Luis</dc:creator>\n<dc:creator>Vari, Richard P.</dc:creator>\n<dc:date>2013-03-12T18:05:37Z</dc:date>\n<dc:date>2013-03-12T18:05:37Z</dc:date>\n<dc:date>2012</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Copeia,
+        2012(4) : 631-636.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/19591</dc:identifier>\n<dc:identifier>114168</dc:identifier>\n<dc:identifier>10.1643/CI-12-035</dc:identifier>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/19592</identifier>\n
+        \               <datestamp>2013-03-18T05:39:27Z</datestamp>\n                <setSpec>com_10088_5</setSpec>\n
+        \               <setSpec>col_10088_3583</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Piecewise Disassembly
+        of a Large-Herbivore community across a rainfall gradient: The UHURU experiment</dc:title>\n<dc:creator>Goheen,
+        Jacob R.</dc:creator>\n<dc:creator>Palmer, Todd M.</dc:creator>\n<dc:creator>Charles,
+        Grace K.</dc:creator>\n<dc:creator>Helgen, Kristofer M.</dc:creator>\n<dc:creator>Kinyua,
+        Stephen N.</dc:creator>\n<dc:creator>Maclean, Janet E.</dc:creator>\n<dc:creator>Turner,
+        Benjamin L.</dc:creator>\n<dc:creator>Young, Hillary S.</dc:creator>\n<dc:creator>Pringle,
+        Robert M.</dc:creator>\n<dc:date>2013-03-12T18:05:39Z</dc:date>\n<dc:date>2013-03-12T18:05:39Z</dc:date>\n<dc:date>2013</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>PLoS
+        ONE, 8(2) : 1-16.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/19592</dc:identifier>\n<dc:identifier>114463</dc:identifier>\n<dc:identifier>10.1371/journal.pone.0055192</dc:identifier>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/19593</identifier>\n
+        \               <datestamp>2013-03-18T08:58:01Z</datestamp>\n                <setSpec>com_10088_9989</setSpec>\n
+        \               <setSpec>col_10088_11431</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Caligoid copepods
+        parasitic on sharks in the Indian Ocean</dc:title>\n<dc:creator>Cressey, Roger
+        F.</dc:creator>\n<dc:date>2013-03-12T18:07:56Z</dc:date>\n<dc:date>2013-03-12T18:07:56Z</dc:date>\n<dc:date>1967</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Proceedings
+        of the United States National Museum, 121(3572) : 1-21.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/19593</dc:identifier>\n<dc:identifier>13782</dc:identifier>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/19594</identifier>\n
+        \               <datestamp>2013-03-18T17:11:48Z</datestamp>\n                <setSpec>com_10088_8</setSpec>\n
+        \               <setSpec>col_10088_1025</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Extinction and
+        climate change He and Hubbell reply</dc:title>\n<dc:creator>He, Fangliang</dc:creator>\n<dc:creator>Hubbell,
+        Stephen P.</dc:creator>\n<dc:date>2013-03-12T18:09:21Z</dc:date>\n<dc:date>2013-03-12T18:09:21Z</dc:date>\n<dc:date>2012</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Nature,
+        482(7386) : E5-E6.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/19594</dc:identifier>\n<dc:identifier>110228</dc:identifier>\n<dc:identifier>10.1038/nature10859</dc:identifier>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/19595</identifier>\n
+        \               <datestamp>2013-03-18T13:33:26Z</datestamp>\n                <setSpec>com_10088_8</setSpec>\n
+        \               <setSpec>col_10088_1025</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The false limpet
+        Siphonaria gigas, a simultaneous hermaphrodite, lives in pairs in rock fissures
+        on the Pacific coast of Panama</dc:title>\n<dc:creator>Lombardo, Roberto C.</dc:creator>\n<dc:creator>Christy,
+        John H.</dc:creator>\n<dc:creator>Cipriani, Roberto</dc:creator>\n<dc:date>2013-03-12T18:09:23Z</dc:date>\n<dc:date>2013-03-12T18:09:23Z</dc:date>\n<dc:date>2013</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Marine
+        Biology, 160(3) : 729-735.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/19595</dc:identifier>\n<dc:identifier>114560</dc:identifier>\n<dc:identifier>10.1007/s00227-012-2127-y</dc:identifier>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/19596</identifier>\n
+        \               <datestamp>2013-03-18T20:02:14Z</datestamp>\n                <setSpec>com_10088_7</setSpec>\n
+        \               <setSpec>col_10088_21</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Evaluation
+        of the Effectiveness of SAV Restoration Approaches in the Chesapeake Bay</dc:title>\n<dc:creator>Luckenbach,
+        Mark</dc:creator>\n<dc:creator>Wainger, Lisa</dc:creator>\n<dc:creator>Weller,
+        Donald E.</dc:creator>\n<dc:creator>Bell, Susan</dc:creator>\n<dc:creator>Fonseca,
+        Mark</dc:creator>\n<dc:creator>Heck, Ken</dc:creator>\n<dc:creator>Neckles,
+        Hilary</dc:creator>\n<dc:creator>Smart, Mike</dc:creator>\n<dc:creator>Pickerell,
+        Chris;</dc:creator>\n<dc:date>2013-03-12T18:12:05Z</dc:date>\n<dc:date>2013-03-12T18:12:05Z</dc:date>\n<dc:date>2011</dc:date>\n<dc:type>Book</dc:type>\n<dc:identifier>http://hdl.handle.net/10088/19596</dc:identifier>\n<dc:identifier>112208</dc:identifier>\n<dc:relation>STAC
+        Publication</dc:relation>\n<dc:publisher>STAC Publication</dc:publisher>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/19597</identifier>\n
+        \               <datestamp>2013-03-18T20:02:30Z</datestamp>\n                <setSpec>com_10088_7</setSpec>\n
+        \               <setSpec>col_10088_21</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Effect
+        of Three Marsh Management Techniques on the Ecology of Irregularly Flooded
+        Chesapeake Bay Wetlands. Vegetation and Water Quality Studies</dc:title>\n<dc:creator>Whigham,
+        Dennis F.</dc:creator>\n<dc:creator>O'Neill, John P.</dc:creator>\n<dc:creator>McWethy,
+        Margaret;</dc:creator>\n<dc:date>2013-03-12T18:12:09Z</dc:date>\n<dc:date>2013-03-12T18:12:09Z</dc:date>\n<dc:date>1982</dc:date>\n<dc:type>Book</dc:type>\n<dc:identifier>http://hdl.handle.net/10088/19597</dc:identifier>\n<dc:identifier>30803</dc:identifier>\n<dc:publisher/>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/19598</identifier>\n
+        \               <datestamp>2013-03-18T20:02:36Z</datestamp>\n                <setSpec>com_10088_2705</setSpec>\n
+        \               <setSpec>com_10088_5</setSpec>\n                <setSpec>col_10088_2657</setSpec>\n
+        \           </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>A Cultural niche
+        construction theory of initial domestication</dc:title>\n<dc:creator>Smith,
+        Bruce D.</dc:creator>\n<dc:date>2013-03-12T18:19:04Z</dc:date>\n<dc:date>2013-03-12T18:19:04Z</dc:date>\n<dc:date>2012</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Biological
+        Theory, 6(3) : 260-271.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/19598</dc:identifier>\n<dc:identifier>112451</dc:identifier>\n<dc:identifier>10.1007/s13752-012-0028-4</dc:identifier>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/19599</identifier>\n
+        \               <datestamp>2013-03-18T20:03:30Z</datestamp>\n                <setSpec>com_10088_5</setSpec>\n
+        \               <setSpec>col_10088_2471</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The genus Eragrostis
+        (Poaceae: Chloridoideae) in northwestern South America (Colombia, Ecuador,
+        and Peru): morphological and taxonomic studies</dc:title>\n<dc:creator>Peterson,
+        Paul M.</dc:creator>\n<dc:creator>Giraldo-Canas, D.</dc:creator>\n<dc:date>2013-03-12T18:34:45Z</dc:date>\n<dc:date>2013-03-12T18:34:45Z</dc:date>\n<dc:date>2012</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Biblioteca
+        Jose Jeronimo Triana, 24 : 1-195.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/19599</dc:identifier>\n<dc:identifier>113856</dc:identifier>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/19600</identifier>\n
+        \               <datestamp>2013-03-18T20:03:40Z</datestamp>\n                <setSpec>com_10088_5</setSpec>\n
+        \               <setSpec>col_10088_2845</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Contributions
+        of deaf people to entomology: A hidden legacy</dc:title>\n<dc:creator>Lang,
+        Harry G.</dc:creator>\n<dc:creator>Santiago-Blay, Jorge A.</dc:creator>\n<dc:date>2013-03-12T18:47:21Z</dc:date>\n<dc:date>2013-03-12T18:47:21Z</dc:date>\n<dc:date>2012</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Terrestrial
+        Arthropod Reviews, 5(2012) : 223-268.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/19600</dc:identifier>\n<dc:identifier>114176</dc:identifier>\n<dc:identifier>10.1163/18749836-05031052</dc:identifier>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1353</identifier>\n
+        \               <datestamp>2013-03-18T05:57:45Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Archaeological
+        Investigations on the Rio Napo, Eastern Ecuador</dc:title>\n<dc:creator>Evans,
+        Clifford</dc:creator>\n<dc:creator>Meggers, Betty</dc:creator>\n<dc:description>The
+        eastern slopes of the Andes attracted our attention in 1950, when it became\nprobable
+        that the Marajoara Phase on the island of Marajo at the mouth of the Amazon\nwas
+        derived from northwestern South America. Our first opportunity to investigate
+        the\npossibilities for archeological fieldwork came when we were in Guayaquil,
+        Ecuador, in\n1954 and met Coronel Jorge V. Gortoire, who had served for a
+        period as commandant\nof the Ecuadorian Army Post at Tiputini. Conversation
+        with him reawakened our latent\ninterest in the area, and we began to make
+        specific plans. In October 1956, having been\nawarded Grant No. 2012 from
+        the Penrose Fund by the American Philosophical Society\nand granted official
+        detail by the Smithsonian Institution, we returned to Ecuador to\nundertake
+        the fieldwork.\n    Through the courtesy of Coronel Rafael Andrade Ochoa,
+        at that time Commander-\ngeneral of the Fuerza Aerea Ecuatoriana, we received
+        authorization to fly from Quito\nto Tiputini in an Ecuadorian Air Force DC-3
+        transport plane. However, almost daily\nrains maintained the airstrip in unsuitable
+        condition for landing and after several weeks\nof waiting in Quito for the
+        weather to break, we gave up and arranged to fly by commercial\nairline in
+        a Junkers Tri-Motor to Shell-Mera and then in a single engine Norseman to\nTena.
+        A day on horseback brought us to Latas, where we secured a dugout canoe manned\nby
+        Quechua-speaking Indians to take us downriver. Although the trip was longer
+        and\nmore difficult than it would have been by air, it gave us invaluable
+        first-hand experience\nwith conditions along the Rio Napo (pis. 1-5). We were
+        able to follow our hourly progress\non U.S. Air Force Preliminary Base Map
+        950A (Scale 1:500,000), which perfectly repro-\nduced every bend and island.
+        By the afternoon of the fifth day, when we arrived at Tiputini,\nwe were well
+        prepared to appreciate the comments of Orellana's men, who preceded us\nby
+        415 years.\n    When we stepped on shore at Tiputini, the military post that
+        was to be our base of\noperations, we were delighted to discover not only
+        that there was an archeological site\non the spot, but that the pottery included
+        incised and excised techniques of decoration\ndiagnostic of the Marajoara
+        Phase, although only painted vessels had been previously\nreported from the
+        Rio Napo. With the cooperation of army personnel and local residents,\nwe
+        were able to investigate a number of sites particularly along the portion
+        of the river\nbetween Tiputini and the mouth of the Rio Yasuni, which marks
+        the boundary between\nEcuador and Peru. We also checked the lower Rio Tiputini.
+        During our stay, the river\nwas unusually low, and extensive sand bars reduced
+        the channel in places to a slender\nmeandering stream (pi. 4b). Giant trees
+        temporarily resting on beaches (pi. 3b) attested\nto the force of the current
+        at other times of the year, lending credence to descriptions by\nOrellana's
+        companions (see pp. 106-107), who had the misfortune to encounter higher\nwater
+        than we did.\n    At the conclusion of the survey, we had accumulated several
+        tons of specimens and\nwere sufficiently familiar with the river to look forward
+        to returning to Quito by air. As\nwas the case in October, intermittent rain
+        kept the airstrip soft, but we were prepared to\nwait as long as necessary
+        this time, since going by river would have taken at least two\nweeks. An Ecuadorian
+        Air Force DC-3 finally came on December 15, and two hours after\ntakeoff we
+        were in Quito\u2014by every standard of comparison, another world.\n    We
+        left behind us in the Province of Napo-Pastaza many friends never to be seen\nagain,
+        and memories still fresh as we write this ten years later. Sr. Jose Bernardo
+        Crespo\nPando made us his guests while we worked at Nueva Armenia, and allowed
+        us to use his\nhome as a base from which to visit nearby sites. Philosopher,
+        businessman, and astute\nobserver of the world from afar, he was an invaluable
+        promoter of our cause as^ well as\nan entertaining host. Several pleasant
+        days were also spent at the home of Sr. Jose Rafael\nUrvina on the Rio Tiputini,
+        where we received all possible cooperation and courtesy.\nOther land owners
+        who granted us permission to work on their property and to whom\nwe offer
+        our thanks are Sr. Juan Francisco Buitron (Hacienda San Juan, Cotacocha),\nSr.
+        Osvaldo Bijarini Aridi (Florencia), and Sr. Alfonso Antonio Cox Vega (Bello
+        Hori-\nzonte). Sr. Pedro Jamn, at that time Jefe Politico of the Junta del
+        Canton Aguarico,\nkindly allowed us to dig a few holes in the main street
+        of Nuevo Rocafuerte.\n    Since we were unable to arrange for a trip to the
+        Rio Aguarico, we are particularly\nindebted to Rene Alberto Hinoyosa Carrera,
+        then a second lieutenant stationed at Tipu-\ntini, who collected sherds for
+        us from Cabo Minacho on the Rio Giiepi and Panacocha\non the Rio Cuyabeno
+        (fig. 3). Other young officers at Tiputini, who provided us not\nonly with
+        various kinds of assistance but also with pleasant companionship, include
+        Solo-\nman Hernandez V., Augustin Carvalho V., Raul Costales, and Fausto Bustamonte.
+        We\nare indebted to the commandant at that time, then Major J. Gonzalo Ramos
+        Sevilla,\nfor permitting us to use Tiputini as our base, and providing us
+        with quarters and other\nkinds of help.\n    During our negotiations to enter
+        the Oriente by air, we were aided in numerous ways\nby Jorge V. Gortaire V.,
+        then a colonel and director of the Colegio Militar \"Eloy Alfaro\"\nin Quito.
+        Other kinds of help and guidance were provided by Enrique Martinez Q.,\nmanager
+        of the Compania General de Comercio y Mandato in Quito, and his assistant\nFrancisco
+        Punina Y. To these and other military and governmental officials whose names\nescape
+        us after a decade, we wish to express our appreciation for the many favors,
+        large\nand small, that we have not forgotten, and which helped to make our
+        visit memorable\nas well as scientifically fruitful.\n    Finally, we wish
+        to record our indebtedness to the late Emilio Estrada, who while\nteasing
+        us for persisting in our \"whim\" to go to the Rio Napo, exercised his considerable\ninfluence
+        to help us secure the necessary permissions from military authorities. Although\nhis
+        interventions were often unobtrusive, it is probable that they were instrumental
+        in\nmaking it possible for us to carry out the work described in the present
+        report.\n    Other obligations have been incurred during efforts to work out
+        the affiliations of\nRio Napo archeological complexes. Our ability to trace
+        the downriver movement of the\nPolychrome Horizon Style (fig. 68) stems from
+        permission granted by the Ethnographical\nMuseum in Goteborg, Sweden, to take
+        detailed notes and photographs during the summer\nof 1960 of sherd samples
+        collected in the 1920's by Curt Nimuendajii. This museum work\nwas supported
+        financially by Grant No. 2664 from the Penrose Fund of the American\nPhilosophical
+        Society. Peter Paul Hilbert, who is responsible for what little stratigraphic\ninformation
+        is available from the middle and upper Amazon, has again generously made\navailable
+        unpublished data. Donald Lathrap, whose chronological sequence in eastern\nPeru
+        is one of the rare reliable reference points, has kindly allowed us to consult
+        his un-\npublished doctoral dissertation at Harvard University, which supplements
+        data secured\nby examination of the collections from his 1956 fieldwork. We
+        wish also to record our\nappreciation to the American Museum of Natural History,
+        the Museum of the American\nIndian (Heye Foundation), the Brooklyn Museum,
+        the Museum of Primitive Art, the\n    Peabody Museum of Archaeology and Ethnology
+        (Harvard University), the Musee de\nl'Homme (Paris), the Museu Paraense Emilio
+        Goeldi (Belem), the Museu Paulista (Sao\nPaulo), the Instituto Geografico
+        e Historico do Amazonas (Manaus), the Museo Victor\nEmilio Estrada (Guayaquil),
+        the Museo Arqueologico del Banco Central del Ecuador\n(Quito), and the Casa
+        de la Cultura Ecuatoriana (Quito), all of which have granted us\npermission
+        to examine and photograph specimens or have provided us with photographs\nfor
+        publication. Several Napo Phase anthropomorphic urns have passed into the
+        hands of\nprivate collectors, who have allowed us to include them in our illustrations.
+        To Thomas P.\nFlannery, Alan C. Lapiner, Jay C. Leff and Howard S. Strouth,
+        we take this opportunity\nto offer public thanks.\n    Carbon-14 dates have
+        been furnished by the Smithsonian Institution and the Univer-\nsity of Pennsylvania.
+        We are indebted to the Creole Foundation for a grant to assist in\nobtaining
+        the first series of dates from the latter laboratory.\n    In conclusion,
+        it is a pleasure to record once again our indebtedness to members of the\nSmithsonian
+        Office of Anthropology Processing Lab staff, especially Willie Mae Pelham\nand
+        Robert C. Jenkins, for their careful preparation of the sherd collections
+        for study.\nGeorge Robert Lewis, scientific illustrator in the Smithsonian
+        Office of Anthropology, has\nproduced his customarily excellent drawings from
+        badly eroded pottery, poor illustrations\nin published sources or photographs,
+        as well as the maps and diagrams. We apologize for\ndelaying so many years
+        to provide them with captions. The plates owe their clarity to the\nhigh quality
+        enlargements furnished by the staff of the Smithsonian Institution Museum\nof
+        Natural History Photo Lab. The manuscript was efficiently typed by Anne M.
+        Lewis,\nSmithsonian Office of Anthropology.\n    For scholars interested in
+        consulting the illustrated material, some clarification of the\nsymbols and
+        legends may be useful. All specimens not otherwise credited are in the United\nStates
+        National Museum, where a large type collection of sherds has been deposited.\nSpecimens
+        in other collections are so identified, and addition of the word \"courtesy\"\nindicates
+        that the photographs were supplied by the individual or institution named.\nA
+        key has been employed in figures showing rim profiles, permitting rapid recognition
+        of\nassociation between form and presence or absence of red slip or decoration,
+        explained in\neach caption. The relative frequency of rims, shown in black,
+        white, or hachure, approxi-\nmates the relative popularity of the form with
+        each type of surface treatment.\nCE\nBJM\nSmithsonian Institution\nWashington,
+        D.C.\nDecember 13, 1966</dc:description>\n<dc:date>2007-05-29T12:51:33Z</dc:date>\n<dc:date>2013-03-14T18:56:11Z</dc:date>\n<dc:date>2007-05-29T12:51:33Z</dc:date>\n<dc:date>2013-03-14T18:56:11Z</dc:date>\n<dc:date>1968-10-04</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 6</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1353</dc:identifier>\n<dc:identifier>113388</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.6.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>81712048
+        bytes</dc:format>\n<dc:format>23748182 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1351</identifier>\n
+        \               <datestamp>2013-03-18T06:32:00Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Notebook of a
+        Cherokee Shaman</dc:title>\n<dc:creator>Kilpatrick, Jack Frederick</dc:creator>\n<dc:creator>Kilpatrick,
+        Anna Gritts</dc:creator>\n<dc:description/>\n<dc:date>2007-05-29T12:51:10Z</dc:date>\n<dc:date>2013-03-14T18:56:43Z</dc:date>\n<dc:date>2007-05-29T12:51:10Z</dc:date>\n<dc:date>2013-03-14T18:56:43Z</dc:date>\n<dc:date>1970-05-06</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 2.6</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1351</dc:identifier>\n<dc:identifier>113382</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.2.6</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>15573758
+        bytes</dc:format>\n<dc:format>2076294 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1352</identifier>\n
+        \               <datestamp>2013-03-18T06:46:40Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Early Cultures
+        and Human Ecology in South Coastal Guatemala</dc:title>\n<dc:creator>Coe,
+        Michael D.</dc:creator>\n<dc:creator>Flannery, Kent V.</dc:creator>\n<dc:description>The
+        present report is concerned with investigations\ncarried out on the Pacific
+        coast of Guatemala, in a\nregion very close to the Mexican border, during
+        the\nmonths of January through March of 1962 (see maps,\nfigs. 1 and 2). This
+        research centered on Salinas La\nBlanca, a small village site of the Formative
+        period,\nsituated on the east bank of the Naranjo River, about\n1.5 km. north
+        of Oc6s (Department of San Marcos).\nIt was our intention to throw further
+        light on the\nearliest village-farming occupation of this region, as\na follow
+        up to investigations carried out at the nearby\nsite of La Victoria during
+        1958 (Coe, 1961).</dc:description>\n<dc:date>2007-05-29T12:51:20Z</dc:date>\n<dc:date>2013-03-14T18:56:57Z</dc:date>\n<dc:date>2007-05-29T12:51:20Z</dc:date>\n<dc:date>2013-03-14T18:56:57Z</dc:date>\n<dc:date>1967-02-24</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 3</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1352</dc:identifier>\n<dc:identifier>113390</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.3.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>72787048
+        bytes</dc:format>\n<dc:format>12840590 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1357</identifier>\n
+        \               <datestamp>2013-03-18T06:55:01Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Cultural Chronology
+        of the Gulf of Chiriqu\xED, Panam\xE1</dc:title>\n<dc:creator>Linares de Sapir,
+        Olga</dc:creator>\n<dc:description>This field work was part of a much larger
+        program lasting three years entitled \"Interrelationships of New World Cultures\"
+        and organized by the Institute of Andean Research with financement from the
+        National Science Foundation (Ekholm and Evans, 1962). Evidence of interconnection
+        during the Formative period and at other points in time was sought in particular
+        regions of the Intermediate area between Mesoamerica and South America. The
+        Panam\xC8\xEDnian region surveyed is the Pacific coast from the Costa Rican
+        border to the Colombian border. It was covered in two consecutive seasons.
+        The first, in February through May of 1961, included the western coast and
+        principal offshore islands from Punta Burica to Punta Mariato in the southwestern
+        corner of the Azuero Peninsula. The second, in 1962, extended the work to
+        cover coastal Darien. This is a report of the work done in the first season.
+        The participants of the project were Dr. Charles R. McGimsey III of the University
+        of Arkansas, as principal investigator, and two assistants, besides me, who
+        were also graduate students at the time: Mr. William Bishop, geologist, and
+        Mr. Freeman Mobley, ethnologist, both from the University of Arkansas. In
+        four months we visited over 60 sites and tested 12 of these. To each of the
+        sites that we recorded we assigned a letter-number combination. The letters
+        designated the district, and the numbers, the sites in the order found. The
+        site of El Cangrejal was thus given the code number SL-1, with SL standing
+        for the district of San Lorenzo in the province of Chiriqu\xED, and number
+        1 standing for the first site found in this district. Island sites could not
+        be assigned to districts, so they were simply given a number preceded by the
+        letters IS which stand for \"isla.\" Thus, Isla Villalba became IS-7, Isla
+        Palenque became IS-3, and Islas Las Secas became IS-11. Reported in this study
+        are the four most important sites where the most concentrated work was done.
+        These are the sites mentioned above, all of them located in the Chiriqu\xED
+        Gulf. Three are on islands, the fourth on the mainland. Distances between
+        them vary. The closest to each other are Isla Villalba (IS-7) and El Cangrejal
+        (SL-1), separated by 10 kilometers of water channels. The farthest away is
+        Las Secas (IS-11); it is 37 kilometers from Isla Palenque (IS-3), 53 kilometers
+        from Isla Villalba (IS-7), and 55 kilometers from El Cangrejal (SL-1). The
+        three island sites are located on ridges in back of the beaches, often the
+        highest spot available. The mainland site is on a high bank near the edge
+        of an estuary. All four sites consist of middens formed by the deposition
+        of abundant cultural materials: discarded pottery, stone tools, and the remains
+        of marine and land fauna. These were choice locations and, to judge from the
+        refuse, the occupation of them was continuous. Listed in summary form, the
+        main aims of this report are as follows: (1) To establish a preliminary chronology
+        for the Gulf of Chiriqu\xED, based on local sequences of pottery; (2) to trace,
+        in time and space, the cultural contacts of the inhabitants of these sites
+        with each other and with peoples on the mainland; (3) to reconstruct as much
+        as possible the manner of living and the subsistence patterns of the occupants
+        of these sites; (4) to summarize ethnohistorical accounts of the area in an
+        effort to tie these in with the terminal part of the archeological sequence;
+        (5) to place the Chiriqu\xC8\xA1 phases in proper chronological relationship
+        to other Panamanian sequences; and (6) to relate the chronology thus established
+        to those of other lower Central American areas. Two approaches were used in
+        our pottery classification. The first was a subdivision of the decorated sherds
+        into types, differentiated from each other primarily by decorative treatment
+        and secondarily by paste attributes. Their percentage frequencies were plotted
+        by levels. Since the plain pottery does not always appear to show any distinctive
+        differences in temper or paste, it was not divided into the full, conventional
+        pottery type description, but instead was sorted into groups named A-J. Only
+        one plain ware was distinctive enough to be described fully and was labeled
+        Tarrago Bisquit Ware. Perhaps a larger sample from more sites in Chiriqu\xED,
+        or from sites with deeper stratified refuse, will eventually permit the detailed
+        refinement of the plain wares, but for this study they receive secondary treatment
+        even though the percentages were always calculated and actually show some
+        interesting trends in the site seriation charts. There are also some small
+        samples of pottery types that fit into the \"Classical\" Chiriqu\xED wares
+        known for so many decades from the large museum collections; they are listed
+        under their well-known published names. The pottery type description follows
+        the style established in earlier Smithsonian publications on the archeology
+        of South America, with each type subdivided into the major categories of paste,
+        surface, form, decoration, and chronological position. To these I have added
+        one other category: geographical distribution and comparative materials. For
+        the color identifications of paste or surfaces, words rather than the Munsell
+        Color Chart have been used, for no more precise a code is needed to describe
+        pottery with only simple paints, no polychrome, and variable firing. Hardness
+        is stated in the Mohs scale. It is perhaps interesting to record how the rim
+        profiles were drawn. To facilitate and increase the accuracy of the rim profile
+        drawings, a section from each rim was cut with a blunt-edged carbide geological
+        power saw at right angles to the lip. Unless the rim was badly mutilated,
+        I always cut a section on the right side of the rim exterior so that, when
+        drawn, all rim profiles faced in the same direction. By cutting the rim it
+        was easy to trace the correct profile because it lay flat on the paper. A
+        second method of analysis used in this report, first separately, and then
+        in conjunction with the type approach, is a modal analysis of all appendages
+        (supports and handles) found in each level of the pits. I have chosen to use
+        \"mode\" to mean \"a small group of inseparable attributes\" because this
+        is useful in making geographical comparisons. If, for example, a tripod foot
+        shares a cluster of salient attributes with a tripod foot in another area,
+        one can be reasonably certain that some kind of historical relationship, rather
+        than mere chance, accounts for the similarities. In this study, modes have
+        been kept separate from types by using different, though not mutually exclusive,
+        criteria for classification. The main criterion used in the type approach
+        is surface decoration; in the modal approach, the main criterion for distinguishing
+        modes is shape. These criteria could just as well be reversed in another area.
+        The result is that modes and types often crosscut, so that the same mode may
+        appear in more than one type. This may have interesting cultural and chronological
+        implications. The potters, conforming to standardized stylistic patterns (types),
+        were able to isolate features (modes) in this pattern and reproduce them in
+        another context. Chronologically, a mode that crosscuts two types may sometimes
+        indicate contemporaneity as, for example, with Tripod Foot Mode e, which appears
+        in two different but contemporaneous types. A separate modal approach, based
+        on shape elements rather than on painted motifs, is particularly suited to
+        an analysis of the Gulf of Chiriqu\xED collections because this area belongs
+        to a primarily plastic tradition. Paints and slips were used, to be sure,
+        but vessels of the Gulf were not elaborately painted as they were in the Cocl\xC8\xA8-Azuero
+        region. Rather, it is the shape of handles, supports, and rims, and the manner
+        in which these were decorated with plastic motifs, such as applique strips,
+        incisions, and punctations, that make Chiriqu\xED pottery so enormously varied.
+        Using a modal analysis had advantages of a very practical nature. Handles,
+        feet, and supports are so distinctive that they can be recognized easily in
+        any context. Since the surface collections (Ranere, Appendix 2) were made
+        without any regard to randomness, they contain a disproportionate number of
+        such fragments. A modal approach serves to relate these to the excavated collections.
+        The distribution of certain modes beyond the Chiriqu\xED Gulf has also offered
+        important insights into the influences that came there from Costa Rica and
+        from the central provinces of Panam\xE1. In short, modes were used in this
+        study as timemakers and as indices of geographical distribution. From them
+        we could draw inferences concerning wider cultural contacts. I have used several
+        criteria to interdigitate the site sequences and to mark off units of time
+        into phases: (1) the appearance of new types in the stratigraphic columns;
+        (2) marked contrasts in the percentage frequencies of pottery types; (3) the
+        presence or absence of particular modes; (4) the association of types; and
+        (5) the presence of trade wares from known areas. The use of these criteria
+        was facilitated by the deep stratified sequence of Pit No. 3 at Site IS-3.
+        A very distinctive type of pottery was strongly represented in the bottom
+        levels, different types were associated with the intermediate levels, and
+        the most recent levels were marked by the appearance of several new types.
+        In addition, modes were absent from some levels and present in others, and
+        trade pottery from several phases of the Cocle-Azuero area came in at different
+        levels and served to confirm my phase divisions. The other three sites, none
+        of which had the complete sequence represented, were therefore interdigitated
+        with reference to IS-3. The assumption made was that all four sites were close
+        enough geographically to show the same general chronological trends. Contrasts
+        in the percentage frequencies of pottery types proved useful in coordinating
+        pit levels within a site and in differentiating between units of levels in
+        which certain types were heavily represented from units in which they were
+        not. The pottery types are described by phase for easy reference, moving from
+        the oldest to the most recent in the sequence. The modes are described separately.
+        Stone tools and shell ornaments found at these sites were not used in establishing
+        a tentative chronology because they did not show enough changes through time.
+        Along with bones and mollusks, however, they are essential to our cultural
+        reconstructions. A description of surface collections from 26 sites in the
+        adjacent districts of San Felix and Remedios has been appended (Ranere, Appendix
+        2) to the body of the report, which describes our excavations, to enlarge
+        the scope of this analysis. In this appendix Mr. Ranere has contributed ethnohistorical
+        data and new insights into the archeological material, making his section
+        an important part of this work. I would like to thank first Dr. Charles R.
+        McGimsey III, principal investigator of the project, for inviting me to collaborate
+        in the field work and for asking me to report and interpret the results. The
+        success of the expedition was also due to Mr. William Bishop and Mr. Freeman
+        Mobley, who were indefatigable in their search for sites and acute in their
+        observations of the Panamanian countryside. The authorities of Panam\xE1,
+        as well as Dr. Alejandro M\xE9ndez, Director of the Museo Nacional, and Dra.
+        Reina Torres de Araiiz, Professor of Anthropology at the University of Panam\xC8\xED,
+        greatly supported the work by their kind cooperation. The entire survey was
+        facilitated by cartographic aids provided by Ing. Amado Araiiz of the Subcomite
+        del Darien and of the Pan American Highway Program. Ample laboratory space
+        to analyze the collections was generously provided by Professor John Otis
+        Brew, Director of the Peabody Museum of Archeology and Ethnology at Harvard
+        University. A grant from the National Science Foundation and a Thaw Fellowship
+        in the Peabody Museum permitted survival during the summer and fall of 1963,
+        when the first, unrevised version of this monograph was being prepared as
+        a doctoral dissertation (Linares, 1964). Drs. George Cowgill, James Gifford,
+        and John Ladd were knowledgeable in their advice on how to handle particular
+        problems in the analysis. Mr. Anthony J. Renere worked with me on the Chiriqu\xED
+        collections and expanded this study in his Appendix No. 2. Mrs. Alexandra
+        W. de Garc\xEDa-Bryce advised me on the latest sources for Latin American
+        Archeology. Miss Margaret Currier of the Peabody Museum Library was helpful
+        in the initial research. Mr. Arsen Charles took the photographs on plate 14.
+        From Professor Gordon R. Willey of Harvard University, I have received endless
+        encouragement through the years and most of my knowledge of New World Archeology.
+        My intellectual debt to him is enormous. Expert advice was provided in 1964
+        by several investigators of the Museum of Comparative Zoology, Harvard University.
+        Dr. W. J. Clench, Curator of Mollusks, guided my identifications of the shellfish
+        material; Dr. E. E. Williams, Curator of Reptiles and Amphibians, sorted out
+        at a glance any reptiles represented on a mass of tiny fragments. All mammal
+        bones were identified by Mr. Charles Mack. Mr. William Bishop, geologist for
+        the expedition, made the rock identifications while in the field, and the
+        material identifications in the descriptions of stone artifacts are all his;
+        his report on the geology of the coast, from which Mr. Ranere and I have quoted
+        extensively, has been of additional value. Mrs. Charles R. McGimsey did the
+        field cataloging of all materials collected and took the photographs of stone
+        artifacts for plates 19 and 20. Dr. Clifford Evans and Dr. Betty J. Meggers
+        of the Smithsonian Institution have spent countless hours over the last years
+        teaching me to classify pottery, making suggestions about plans of research,
+        and helping me in every phase of preparing this manuscript for publication.
+        I cannot thank them enough for their generous help. Dr. Alexander Wetmore,
+        Research Associate of the Smithsonian Institution, provided various maps from
+        his vast collections that were the basis for the final maps produced in this
+        report. To Mrs. Marcia P. Bakry, Scientific Illustrator of the Office of Anthropology,
+        Museum of Natural History, I wish to express my appreciation for preparing
+        the final copies of the maps and seriation charts. I have profited greatly
+        from conversations with Dr. Claude F. Baudez of the Mus\xE9e de l'Homme, regarding
+        his archeological investigations in nearby Costa Rica. Recently, Dr. Roberto
+        de la Guardia of the Museo Chiricano in David, Panam\xE1, brought me up to
+        date on finds in Chiriqu\xED. In typical Latin American style, my work became
+        a true family enterprise. Sr. Frank Linares Danz, my father, loaned a jeep
+        to the expedition, and Sr. Guillermo Tribaldos, Jr., my grandfather, made
+        his boat available to us. Sra. Olga Tribaldos de Linares, my mother, did the
+        drawings of the artifacts, prepared an original version of the pottery type
+        frequency charts, and typed this report twice, first as a dissertation, then
+        as a manuscript for publication. Their interest in my work is immensely gratifying.
+        I also thank my husband, J. David Sapir, for his patience and continuous encouragement.
+        O. L. de S. Department of Anthropology University of Pennsylvania Philadelphia
+        March 24, 1967</dc:description>\n<dc:date>2007-05-29T12:53:08Z</dc:date>\n<dc:date>2013-03-14T18:57:06Z</dc:date>\n<dc:date>2007-05-29T12:53:08Z</dc:date>\n<dc:date>2013-03-14T18:57:06Z</dc:date>\n<dc:date>1968-12-06</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 8</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1357</dc:identifier>\n<dc:identifier>113395</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.8.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>51055375
+        bytes</dc:format>\n<dc:format>8998760 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1361</identifier>\n
+        \               <datestamp>2013-03-18T08:11:37Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Of Wonders Wild
+        and New: Dreams from Zinacantan</dc:title>\n<dc:creator>Laughlin, Robert M.</dc:creator>\n<dc:description>This
+        collection of 260 dream texts from Zinacantan, Chiapas,\nMexico, was recorded
+        in Tzotzil, primarily during 1963, and subsequently\ntranslated by the author
+        into English. Dreams are ascribed considerable impor-\ntance by the Zinacantecs,
+        who see them not merely as portents of future events,\nbut as actual, present
+        encounters of the individual's soul, both in its contest\nwith the souls of
+        hostile humans and in communicataion with the deities.\nDreams inform an individual
+        of his capacity as a musician, a bonesetter, a mid-\nwife, or a shaman.\n
+        \ Over one hundred dream motifs are given standard interpretations by the\nZinacantecs,
+        who modify them to fit personal situations.\n  Included here are the dreams
+        of eleven Zinacantecs, two of whom were shamans.\nTheir richness of dialogue
+        and imagery represent a hitherto much neglected aspect\nof Middle American
+        culture. The dreams are accompanied by ethnographic commentary.</dc:description>\n<dc:date>2007-05-29T12:54:17Z</dc:date>\n<dc:date>2013-03-14T18:57:56Z</dc:date>\n<dc:date>2007-05-29T12:54:17Z</dc:date>\n<dc:date>2013-03-14T18:57:56Z</dc:date>\n<dc:date>1976-08-09</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 22</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1361</dc:identifier>\n<dc:identifier>113365</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.22.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>72910252
+        bytes</dc:format>\n<dc:format>9064095 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1359</identifier>\n
+        \               <datestamp>2013-03-18T08:51:08Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Reconstruction
+        of Demographic Profiles from Ossuary Skeletal Samples: A Case Study from the
+        Tidewater Potomac</dc:title>\n<dc:creator>Ubelaker, Douglas H.</dc:creator>\n<dc:description>The
+        excavation and\nanalysis of two Late Woodland ossuaries from the Juhle site
+        (18CH89) in southern\nMaryland are described in detail. The report includes
+        a discussion of archeological\nfeatures of the ossuaries, but emphasizes the
+        reconstruction of population profiles\nderived from the analysis of the recovered
+        skeletal samples. Ethnohistorical and arche-\nological sources are consulted
+        to suggest that ossuaries contain nearly all individuals\nwho died in the
+        contributing populations during culturally prescribed numbers of years\nand,
+        consequently, offer somewhat unique opportunities for demographic analysis.\n
+        \    Several methods are employed to estimate the chronological age at death
+        of indi-\nviduals in both ossuaries. Subadult ages are derived from the formation
+        and eruption\nof the teeth and from the maximum length of the femora. Adult
+        ages are calculated\nfrom examinations of the symphyseal faces of the pubes
+        and the degree of microscopic\ncortical remodeling in the femora. The latter
+        method involved the preparation of 151\nground thin sections taken from the
+        anterior cortices of the right femora, and it repre-\nsents the first application
+        of Kerley's relatively new method (1965) to a large arche-\nological population.
+        The resulting death curves are compared and the methods\nevaluated. Data from
+        the most reliable of these age-determinative methods are used to\ncalculate
+        curves of mortality and survivorship, life tables, and crude mortality rates
+        for\nthe populations represented.\n     Population estimates are attempted
+        by utilizing the crude mortality rates (calcu-\nlated from the life tables),
+        the length of time represented by each ossuary (calculated\nfrom archeological
+        data), and the total numbers of individuals in the ossuaries. The\nresulting
+        population size estimates are considered against both archeological and\nethnohistorical
+        data to suggest the nature of the sociopolitical unit serviced by the\nossuaries.
+        Finally, both local and regional population-size estimates are compared with\nthose
+        estimated by others using different types of data.</dc:description>\n<dc:date>2007-05-29T12:53:32Z</dc:date>\n<dc:date>2013-03-14T18:58:25Z</dc:date>\n<dc:date>2007-05-29T12:53:32Z</dc:date>\n<dc:date>2013-03-14T18:58:25Z</dc:date>\n<dc:date>1974-08-08</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 18</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1359</dc:identifier>\n<dc:identifier>113375</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.18.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>36814279
+        bytes</dc:format>\n<dc:format>6013396 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1340</identifier>\n
+        \               <datestamp>2013-03-18T09:19:29Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Geochronology
+        of Sandia Cave</dc:title>\n<dc:creator>Haynes, C. Vance, Jr.</dc:creator>\n<dc:creator>Agogino,
+        George A.</dc:creator>\n<dc:description>Excavations in Sandia Cave, New Mexico,
+        in the late 1930s provided the first recognized stratigraphic evidence for
+        a pre-Folsom culture in North America. This, the Sandia complex, is represented
+        by diagnostic projectile points found in a loose deposit underlying a limonite
+        ocher deposit which, in turn, underlies a cave breccia containing Folsom artifacts
+        and reportedly sealed by an overlying dripstone. Our investigations in the
+        1960s revealed that the Sandia deposit (unit X) is in fact, a rodent deposit
+        created by bioturbation of the limonite ocher (unit C) and contains material
+        derived from most of the other deposits. A second dripstone (unit D) is recognized
+        as being much older (preoccupation) than the post-Folsom dripstone, instead
+        of being a contemporary facies as originally reported. Its absence from the
+        deposits near the mouth of the cave is believed to be due to removal during
+        the mining of the yellow ocher by Paleo-Indians. Paleoclimatic interpretations
+        of the stratigraphic units include (1) a warm moist period for the derivation
+        of the ocher by leaching from a pedalferic paleosol formed during a previous
+        cool moist period, (2) desiccation of the ocher during a dry climate, (3)
+        formation of the lower dripstone during a cool moist period, (4) gypsum precipitation
+        (unit E) due to either a dry period or opening of the cave or both, and (5)
+        accumulation of dust and debris (units F and H) under dry conditions alternating
+        with dripstones (units G and I) and breccia cementation under wet conditions.
+        From 14,000 B.P. on, the cave interior was accessible to man and animals.
+        Accumulation of dust and debris (unit F) occurred during a dry period during
+        which a portion of the lower dripstone was removed, presumably by Paleo-Indians
+        in order to extract ocher. During the subsequent moist period the artifact-bearing
+        debris became cemented by cave drip where not protected by the lower dripstone.
+        Under recent climatic conditions another loose debris layer (unit J) has accumulated
+        during the middle and late Holocene and has always been connected to the lower
+        loose-debris deposit (unit X). We conclude that Sandia points are definitely
+        less than 14,000 years old and suggest they may be specialized Clovis or Folsom
+        artifacts used for mining ocher. However, we cannot preclude a pre-Clovis
+        age or even post-Folsom. Undisturbed cave strata provide valuable paleoenvironmental
+        data, but redeposition and bioturbation is the rule rather than the exception
+        for most, if not all, cave deposits that were once unconsolidated debris.</dc:description>\n<dc:date>2007-05-25T17:41:12Z</dc:date>\n<dc:date>2013-03-14T18:58:40Z</dc:date>\n<dc:date>2007-05-25T17:41:12Z</dc:date>\n<dc:date>2013-03-14T18:58:40Z</dc:date>\n<dc:date>1986-04-21</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 32</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1340</dc:identifier>\n<dc:identifier>113410</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.32.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>13403019
+        bytes</dc:format>\n<dc:format>2106446 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1341</identifier>\n
+        \               <datestamp>2013-03-18T09:40:22Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Folk Biology
+        of the Tobelo People: A Study in Folk Classification</dc:title>\n<dc:creator>Taylor,
+        Paul Michael</dc:creator>\n<dc:description>The This ethnographic study of
+        folk biology among the Tobelo (a West Papuan-speaking ethnic group of Halmahera
+        Island, Maluku, Indonesia) outlines local cultural presumptions about classifying
+        flora and fauna, describes the system of folk biological nomenclature in terms
+        consistent with the morphology and syntax of the Tobelo language, and analyzes
+        the local system of folk classification within a posited semantic domain of
+        \"biotic forms.\" In the local linguistic context, dialectal differences,
+        multilingualism, an apparently strict in-law name taboo, and particular speech
+        registers for which Tobelo consider their own language inappropriate are shown
+        to affect word formation, the adoption of foreign plant and animal names,
+        and other aspects of ethnobiological classification. Culturally, the belief
+        that names for plants and animals were set down by ancestors vastly more familiar
+        with local biota than are their descendants, the notion that there is a \"proper\"
+        name for virtually all easily visible plants and animals, and that much knowledge
+        is and should remain esoteric, justify several alternative ways in which the
+        Tobelo may reconcile individual or dialectal variation to determine \"proper\"
+        details of classification consistent with these presumptions. Nomenclature
+        is considered in detail. The importance of recognizing the lexemic status
+        of homonymous and polysemous terms is illustrated; and means of recognizing
+        lexemes having the same form as non-lexemic expressions are detailed. A morphosyntactic
+        classification of lexemic types is here applied to the formation of terms
+        in this domain. Unlabeled classes within this semantic domain (including the
+        highest-level class BIOTIC FORM) are posited, and new methods are presented
+        for determining and evaluating such \"covert categories.\" A critique of other
+        procedures based on perceived similarities among plants and animals shows
+        that the only local cultural significance of those classes may be their sudden
+        appearance as a result of tests designed to find them, that similarities observed
+        may not be those used in hierarchically relating folk taxa, and that such
+        classes do not in any case belong in a linguistic description. From a systematic
+        review of Tobelo lexemes it is possible to avoid these difficulties. The analysis
+        of Tobelo folk biological classification (the system of semantic relations
+        among usually lexically labeled classes) provides various types of evidence
+        for the distinctiveness of a \"basic\" level, and details methods for distinguishing
+        basic terms. Taxonomic relations order the set of hierarchically related folk
+        classes into eleven levels: the widest or \"basic\" level, along with six
+        above and four below. Non-\"regular\" elements of this folk taxonomy include
+        nonsymmetric and disjunctive contrast, \"residue\" of higher-level classes,
+        ambiguous subclass-superclass relations, and dual structural positions of
+        a single class in the overall hierarchic structure. Also analyzed are other
+        types of semantic relations among folk classes, including a \"mother\"-\"child\"
+        relation among FAUNAL FORMS, crosscutting and intersecting subclasses of the
+        basic class, and classification by growth stage and size. The Tobelo are able
+        to use these methods of classifying local fauna and flora to justify the observed
+        differences among themselves (or among Tobelo dialects) in how they classify
+        the same plants and animals. They even sometimes use this classificatory system
+        to productively predict the existence of plants and animals that have not
+        yet been observed, much as our chemists once used the Periodic Table of the
+        Elements to predict the existence of elements that had not been observed.
+        Detailed folk classificatory, nomenclatural, and systematic botanical and
+        zoological information for all recorded BIOTIC FORMS is given in the appendixes,
+        which are based upon extensive collections of Halmaheran terrestrial and marine
+        animals and plants, along with their associated ethnographic information.</dc:description>\n<dc:date>2007-05-25T17:41:23Z</dc:date>\n<dc:date>2013-03-14T18:58:50Z</dc:date>\n<dc:date>2007-05-25T17:41:23Z</dc:date>\n<dc:date>2013-03-14T18:58:50Z</dc:date>\n<dc:date>1990-06-01</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 34</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1341</dc:identifier>\n<dc:identifier>113408</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.34.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>82124149
+        bytes</dc:format>\n<dc:format>10275454 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1342</identifier>\n
+        \               <datestamp>2013-03-18T07:25:59Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Archeological
+        Exploration of Patawomeke: The Indian Town Site (44St2) Ancestral to the One
+        (44St1) Visited in 1608 by Captain John Smith</dc:title>\n<dc:creator>Stewart,
+        T. Dale</dc:creator>\n<dc:description>Excavations by Judge William J. Graham
+        and by T. Dale Stewart of the U.S. National Museum/Natural History from 1935
+        to 1940 at Potomac Neck in Stafford County, Virginia (site 44St2), produced
+        evidence of a Late Woodland palisaded village (seven concentric palisade lines),
+        enclosing an area of about 1.4 acres (0.56 ha). In the village were circular
+        and elongate houses, plus storage pits, and three mass graves (ossuaries).
+        The village proper dates from pre-Contact times. Two burial pits (one outside
+        the palisade, and one that intruded into the outer palisade line) contained
+        European trade items, indicating use of the site during post-Contact times,
+        probably limited to a short time following the first European visit to the
+        area by Captain John Smith in 1608. Extensive collections of cultural materials
+        and data exemplify what Karl Schmitt in 1952 named the Potomac Creek Focus.
+        Ceramics are predominantly Potomac Creek Cord-impressed types; projectile
+        points are small triangles, usually of white quartz; a majority of the clay
+        pipes are of the obtuse angle type; and there is a diversity of bone tools.
+        Shell beads are numerous, especially in the ossuaries. Burials are predominantly
+        secondary bundle burials, with a few articulated flexed or extended, and even
+        fewer cremations. Coupled with evidence of long-term occupation of the site
+        (e.g., six rebuildings of the palisade), there is evidence of evolving pottery
+        types. The earliest ware equates closely with Shepard Cord-marked type of
+        the Piedmont Potomac valley, and this evolves into the Potomac Creek Cord-impressed
+        and Potomac Creek Plain wares typical of the early 17th century.</dc:description>\n<dc:date>2007-05-25T17:41:30Z</dc:date>\n<dc:date>2013-03-14T18:59:02Z</dc:date>\n<dc:date>2007-05-25T17:41:30Z</dc:date>\n<dc:date>2013-03-14T18:59:02Z</dc:date>\n<dc:date>1992-11-27</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 36</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1342</dc:identifier>\n<dc:identifier>113406</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.36.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>41707161
+        bytes</dc:format>\n<dc:format>8014195 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1343</identifier>\n
+        \               <datestamp>2013-03-18T08:58:00Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Artifacts of
+        Diplomacy: Smithsonian Collections from Commodore Matthew Perry's Japan Expedition
+        (1853-1854)</dc:title>\n<dc:creator>Houchins, Chang-su</dc:creator>\n<dc:description>Commodore
+        Matthew Calbraith Perry's Japan Expedition (1853-1854) not only began a tradition
+        of \"gunboat diplomacy\" so often associated with mid-nineteenth century American
+        expansionism, it also initiated a new collection of \"artifacts of diplomacy\"--;historical,
+        scientific, and ethnological materials that would become the first acquisition
+        of Japanese artifacts by the former United States National Museum, now the
+        National Museum of Natural History, Smithsonian Institution. Commodore Perry
+        practiced traditional diplomatic gift exchanges. The ethnological artifacts
+        described in this catalog are, in the main, the reciprocal gifts to the United
+        States government, President Franklin Pierce, the Commodore himself, and other
+        members of the expedition party by Japanese government commissioners and by
+        officials of the Kingdom of Ryukyu. They were received prior to and following
+        the signing of The Treaty of Kanagawa on 31 March 1854. Also included are
+        artifacts purchased at bazaars in Hakodate and Shimoda by some members of
+        the expedition party for the specific purpose of expanding the collections
+        of the United States National Museum. Descriptions of all known materials
+        collected by individual expedition members as well as expedition-related graphics
+        now in the Smithsonian Institution collections also have been included here.
+        This study of the Japan Expedition collection, through the compilation of
+        a catalog, provides a comprehensive chronicle of the collections. The chronicle
+        records the expedition party's collecting activities, scenes of gift exchanges,
+        and the assessments of the gifts, both positive and negative, made by Commodore
+        Perry and others. It includes a history of previous exhibitions of portions
+        of the collection. The catalog contains extensive documentation of the artifacts,
+        with full descriptions based on both published and archival sources in English
+        and Japanese. These descriptions, combined with the provenance of each object,
+        provide a unique profile of mid-nineteenth century, preindustrial Japanese
+        material culture.</dc:description>\n<dc:date>2007-05-25T17:41:38Z</dc:date>\n<dc:date>2013-03-14T18:59:30Z</dc:date>\n<dc:date>2007-05-25T17:41:38Z</dc:date>\n<dc:date>2013-03-14T18:59:30Z</dc:date>\n<dc:date>1995-05-31</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 37</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1343</dc:identifier>\n<dc:identifier>113405</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.37.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>50590913
+        bytes</dc:format>\n<dc:format>12259731 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1344</identifier>\n
+        \               <datestamp>2013-03-18T10:04:43Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Modernization
+        of Three Korean Villages, 1951-1981: An Illustrated Study of a People and
+        Their Material Culture</dc:title>\n<dc:creator>Knez, Eugene I.</dc:creator>\n<dc:description>The
+        \"totality\" of artifacts in three distinct villages, now consolidated into
+        a city ward, represent an ethnohistorical perspective of material culture
+        within a specific time-level of cultural evolution. Detailed descriptions
+        of 413 selected artifacts are provided. These artifacts are assigned to four
+        categories, namely Traditional, Traditional/Modified, New, and New/Modified,
+        to reveal the number and distribution of artifacts in households and cultivated
+        fields. Although the field study emphasizes the more durable objects, the
+        perishables are also examined. The \"totality\" of artifacts will provide
+        the reader \"an archeology of the living\" for Korean folk life.</dc:description>\n<dc:date>2007-05-25T17:41:50Z</dc:date>\n<dc:date>2013-03-14T18:59:56Z</dc:date>\n<dc:date>2007-05-25T17:41:50Z</dc:date>\n<dc:date>2013-03-14T18:59:56Z</dc:date>\n<dc:date>1997-10-06</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 39</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1344</dc:identifier>\n<dc:identifier>113403</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.39.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>86178736
+        bytes</dc:format>\n<dc:format>15399288 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1346</identifier>\n
+        \               <datestamp>2013-03-18T10:38:30Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Human Remains
+        from La Florida, Quito, Ecuador</dc:title>\n<dc:creator>Ubelaker, Douglas
+        H.</dc:creator>\n<dc:description>Excavations from 1984 to 1988 at the site
+        of La Florida in suburban Quito, Ecuador, discovered six very deep shaft tombs
+        dating to about AD 340 (Chaupicruz phase of the Regional Development period).
+        Analysis of the human remains recovered from the tombs indicates the presence
+        of at least 76 individuals. Data are presented to support archeological interpretations
+        of mortuary procedure and social status of individuals. Cultural observations
+        include perimortem sharp-force trauma, cranial deformation, interproximal
+        grooves, and evidence of squatting postures on foot bones. Frequencies of
+        skeletal indicators of pathology are low compared to other prehistoric samples
+        from Ecuador, suggesting relatively good health. Biological evidence of status
+        differences were largely confined to carbon isotopes, suggesting high-status
+        individuals consumed more maize.</dc:description>\n<dc:date>2007-05-25T17:42:14Z</dc:date>\n<dc:date>2013-03-14T19:00:24Z</dc:date>\n<dc:date>2007-05-25T17:42:14Z</dc:date>\n<dc:date>2013-03-14T19:00:24Z</dc:date>\n<dc:date>2000-02-08</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 43</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1346</dc:identifier>\n<dc:identifier>113412</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.43.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>13782436
+        bytes</dc:format>\n<dc:format>1911628 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1321</identifier>\n
+        \               <datestamp>2013-03-18T11:03:15Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Land Tenure of
+        the Rainy Lake Chippewa at the Beginning of the 19th Century</dc:title>\n<dc:creator>Hickerson,
+        Harold</dc:creator>\n<dc:description>The land tenure of northeastern Algonkians
+        has been the subject of discussion and controversy over the past 50 years,
+        since Speck first began describing family hunting territory systems among
+        Algonquin and Chippewa of the Ottowa River valley (1914-15; 1915 a; 1915 b).
+        The issue has boiled down to whether division of land among families or heads
+        of families maintaining them in more or less permanent usufruct, and involving
+        sanctions against trespass, was an aboriginal or postcontact form. I believe
+        consensus now would hold that tenure based on small patrilocal family usufruct
+        (the classic, but by no means universal form) is postcontact (cf. Driver,
+        1961, pp. 249-250), but the precise form of tenure in aboriginal times would
+        be a matter of doubt. Leacock (1954) quite conclusively demonstrated that
+        family holdings came into existence as a result in subarctic cultures of emphasis
+        on trapping fur for the European fur trade. Such emphasis, in brief, led to
+        the husbanding of beaver and other sedentary game on an individual basis,
+        replacing old communal large-game hunting patterns. The controversy over the
+        aboriginality of the family tenure system relates to questions concerning
+        the organization of primitives generally, and particularly to the question
+        of the universality of primitive communism. This was recognized quite early
+        in the discussion (Lowie, 1920, p. 211; Speck, 1922, pp. 83-84), and has been
+        a tacit and at times explicit part of it ever since. I have discussed this
+        at length in a review article (Hickerson, 1967). More recently, Rogers has
+        argued that the question of land tenure should be separated from that of the
+        constitution of social units (1963, pp. 77 ff.). On the basis of his assessment
+        of ecological and socioreligious factors operating among the Mistassini Montagnais
+        and other eastern subarctic peoples he has observed, Rogers suggests that
+        a \"hunting group\" unit consisting of five or so linked biological families
+        comprised the basic social unit for the area. The fur trade had the effect
+        of tying such units to specific territories due to such factors as the need
+        to conserve fur and fuel, ensure a game supply in a region of limited transportation
+        facilities, provide mutual assistance in times of need, have available the
+        counsel of respected elders, etc. Territorial stability for such units developed
+        from the reliance on fur game, the supply of which had to be regulated and
+        conserved by trapper-proprietors. If I understand Rogers correctly, in pretrade
+        times when fur was not the chief object of the chase, the hunting groups were
+        free to utilize range over which they held no exclusive rights. Without an
+        allotment system, the bands were nevertheless restricted to roughly defined
+        areas without set boundaries.</dc:description>\n<dc:date>2007-05-25T17:37:54Z</dc:date>\n<dc:date>2013-03-14T19:00:41Z</dc:date>\n<dc:date>2007-05-25T17:37:54Z</dc:date>\n<dc:date>2013-03-14T19:00:41Z</dc:date>\n<dc:date>1967-03-06</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 2.4</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1321</dc:identifier>\n<dc:identifier>113384</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.2.4</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>12732208
+        bytes</dc:format>\n<dc:format>1172913 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1320</identifier>\n
+        \               <datestamp>2013-03-18T09:19:34Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Muskogean Charm
+        Songs Among the Oklahoma Cherokees</dc:title>\n<dc:creator>Kilpatrick, Jack
+        Frederick</dc:creator>\n<dc:creator>Kilpatrick, Anna Gritts</dc:creator>\n<dc:description>Manuscript
+        works on medicine and magic among the Oklahoma Cherokees sometimes contain
+        idi:gaw\u0228:sdi (to be said, them, by one) or the texts of charm songs that,
+        although written or partially written in the Sequoyah syllabary, are not in
+        the Cherokee language. Cherokee din(a)da:hnvwi:sg(i) (those who cure them=equals;medicine
+        men), who as a rule know no Indian language other than their own, are aware
+        that such writings, in some instances handed down to them through several
+        generations, are in either Creek or Natchez. But only rarely does one encounter
+        a medicine man who thinks that he knows the meaning of a specific word here
+        or there. More commonly he will not know even the general drift of what is
+        written, and is not quite sure which particular grouping of syllables constitutes
+        a word. But he does know that his saying or song is powerful--;\"alive,\"
+        as he expresses it--;and there the matter rests. Since some of the phonemes
+        of Muskogean languages are not found in Cherokee, a certain amount of ingenuity
+        had to be exerted in representing them in the Sequoyah syllabary. The Sequoyan
+        symbol for gwa, for example, may have been chosen to stand for pa. We have
+        seen examples wherein new symbols had been created, or standard symbols reversed
+        or inverted. We have also seen examples in which recourse to the English alphabet
+        had been made in order to compensate for specific deficiencies in the Sequoyah
+        syllabary. In addition to these Muskogean materials in the possession of din
+        (a)da:hnvwi:sg(i), there is a corpus of charms, chiefly pertaining to hunting,
+        that was once, and perhaps to a certain extent still is, employed by the laity.
+        As pointed out in Kilpatrick and Kilpatrick (1967) for some reason as yet
+        undetermined the aboriginal Cherokee hunting charms were largely supplanted
+        by those of Muskogean origin. As one might expect, Muskogean medicomagic is
+        most commonly encountered in the southern part of the territory of the Oklahoma
+        Cherokees, a region containing several clearly defined and long-established
+        Muskogean enclaves.</dc:description>\n<dc:date>2007-05-25T17:37:51Z</dc:date>\n<dc:date>2013-03-14T19:00:44Z</dc:date>\n<dc:date>2007-05-25T17:37:51Z</dc:date>\n<dc:date>2013-03-14T19:00:44Z</dc:date>\n<dc:date>1967-03-06</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 2.3</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1320</dc:identifier>\n<dc:identifier>113385</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.2.3</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>4992270
+        bytes</dc:format>\n<dc:format>691897 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1319</identifier>\n
+        \               <datestamp>2013-03-18T11:03:34Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Early Skeletons
+        from Tranquillity, California</dc:title>\n<dc:creator>Angel, J. Lawrence</dc:creator>\n<dc:description>From
+        these speculations one can draw three conclusions, differing in certainty.
+        The most certain one is that the first invaders from Asia, the Palaeamericans,
+        migrating southward over a timespan of 5-10,000 years after the height of
+        the last glaciation (Willey, 1961), split up into many slightly differing
+        breeding isolates, whose divergences occurred more through sampling accidents
+        (drift) than through selection. The kind of variability of the Tranquillity
+        sample, especially the extreme in Burial 5, supports this picture. The least
+        certain, conclusion concerns evolutionary selective pressures resulting from
+        a tough meat diet and hard living conditions leading to a short lifespan.
+        These pressures would put a high premium on the fertility of a few women,
+        especially those having massive teeth to resist wear (cf. Brace, 1962). Possibly
+        Mongoloid features are a result of such pressures. The source for this extra
+        tooth and face size not yet fully developed in late Pleistocene East Asia
+        might be a recombination of genes from a tropical Negritoid population (contributing
+        canine plus incisor breadth and prognathism) with genes from Sinanthropus
+        descendants like Mapa (Woo, 1959 b; Coon, 1962) contributing shovel incisors
+        and face massiveness, and perhaps also with Upper Paleolithic \"White\" genes.
+        Evolution from such a proto-Mongoloid blend in a Mongoloid direction would
+        have occurred in both Asia and America after 20,000 B.C. Apparently this evolution
+        went much further in Asia. The third conclusion concerns this difference in
+        speeds of microevolution. The Tranquillity group in particular is still proto-Mongoloid
+        and modern Hill Yokuts, Southern Miwok, and Western Mono appear to have changed
+        little from it. Until very recently the tule-swamp character of the region
+        had changed very little, except for the gradual (and late ?) extinction of
+        most larger game mammals other than deer, and the ensuing wet phase. Regions
+        of climatic and ecologic stability during the retreat of the last glaciation
+        would probably be influenced by maritime climate and separated from the North
+        or Plains areas. In contrast to this, Northeast Asia, the Bering Strait region,
+        and northern North America underwent a series of climatic and sea level changes
+        comparable to those of Europe and the Mediterranean. Here there took place
+        an evolutionary change to a big-faced, large-headed fully Mongoloid norm,
+        equivalent to the Upper Paleolithic to Alpine and Mediterranean change in
+        Europe and the Near East. A little of this Mongoloid change was plausibly
+        injected into America in early Mesolithic times, and again to form the Aleut-Eskimo
+        people (Laughlin, 1963) before 6,000 B.C. Until we have more data on frequencies
+        of key traits and complexes, it is hard to guess whether the American Indian
+        in general has absorbed Asiatic genes to any extent in post-Pleistocene times:
+        the probable relation of Diego blood type to a Palaeamerican distribution
+        and the lack of type B in the New World suggest that there was little addition
+        from Asia after the end of the Pleistocene. In that case we are faced with
+        an interesting parallelism in evolution in a Mongoloid direction, with the
+        slower rate of change in America partly explained by relative climatic stability
+        of southern coastal, island, mountain, jungle, and woodland ecologic zones
+        as opposed to northern coastal, plateau, and plains areas, even though the
+        variety of American ecologic zones is wide.</dc:description>\n<dc:date>2007-05-25T17:37:48Z</dc:date>\n<dc:date>2013-03-14T19:00:47Z</dc:date>\n<dc:date>2007-05-25T17:37:48Z</dc:date>\n<dc:date>2013-03-14T19:00:47Z</dc:date>\n<dc:date>1966-11-25</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 2.1</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1319</dc:identifier>\n<dc:identifier>113374</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.2.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>10777058
+        bytes</dc:format>\n<dc:format>1896238 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1325</identifier>\n
+        \               <datestamp>2013-03-18T11:08:29Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Navajo Political
+        Process</dc:title>\n<dc:creator>Williams, Aubrey W., Jr.</dc:creator>\n<dc:description>The
+        purpose of this work is to describe the function of various political structures
+        and their incorporation into the Navajo way of life. The data presented in
+        this study were collected over a 2-year period--;January 1961 to December
+        1963--;during which I spent 18 months on the Navajo Reservation and adjoining
+        areas as a participant-observer of Navajo culture. The report was written,
+        in part, while I was in the field in order to utilize both historical and
+        contemporary documents maintained by the Navajo Tribe and the Bureau of Indian
+        Affairs at Window Rock, Arizona. My introduction to contemporary Navajo life
+        was as an employee of the Navajo Tribe in the capacity of an ethnographer.
+        On January 1, 1961, I became a member of a research team seeking ethnohistorical
+        facts from elderly Navajos to support a land claims case against the U.S.
+        Government. On the afternoon of the day I arrived on the Navajo Reservation,
+        I was \"presented\" with two 4-wheel-drive Jeeps, two tape recorders, two
+        interpreters, four Navajo helpers, and a list of Navajo place names and personal
+        names which I was to go out and locate and interview on the following day.
+        I was told that I could spend the remainder of the afternoon securing food
+        and provisions for my research team for a 3-week stay in the field. During
+        the next 2 months nearly 150 informants over the age of 60 years were interviewed
+        (a maximum of 14 on any single day) concerning the cultural patterns of their
+        families and relatives as far back in time as each informant was able to remember.
+        My work with the Navajo Tribe put me in contact with many tribal officials,
+        traders, Bureau of Indian Affairs personnel, missionaries, grazing committee
+        members, and chapter officers in all parts of the Navajo Reservation. The
+        most frequent contact was with chapter officials; we frequently utilized chapter
+        houses as temporary headquarters in our search for informants. In most cases
+        it was necessary to obtain the approval of each chapter's officers before
+        we were allowed to use chapter buildings for interviews and living quarters.
+        I soon learned that obtaining this approval was no mere formality even though
+        we had the general blessings of the Navajo Tribal Council and the approval
+        of the tribal government to conduct such inquiries. Chapter officers almost
+        invariably wanted to know a great deal about what we hoped to do with the
+        information we were planning to collect, and why certain members of their
+        chapter had been named as prospective informants. The independent spirit and
+        actions of each chapter organization aroused my interest and resulted in the
+        study presented here. I am indebted to a great many people for the information
+        presented herein. Chronologically, I am grateful to David M. Brugge, J. Lee
+        Correll, Clyde Peshlakai, Bernadine Whitegoat, and Maxwell Yazzi who first
+        introduced and interpreted Navajo culture to me on the Navajo Reservation.
+        I am indebted to John Y. Begaye and Ralph Johns who, as tribal employees,
+        allowed me to pester both them and their staffs with questions about Navajo
+        life for over 14 months. I owe a great debt to the hundreds of Navajo men
+        and women who tried to answer my questions concerning the operation of their
+        chapter organization. Thanks are due to Jane Erickson who helped in final
+        proofreading and to Mary Anne Libby who assisted in indexing the study. My
+        greatest debt is that which I owe to Edward H. Spicer who acted as the supervisor
+        of my graduate studies in the Department of Anthropology at the University
+        of Arizona. I feel certain that without his gentle but persistent demand for
+        the highest possible quality of workmanship both in the field and in writing,
+        the study would not contain what clarity it now possesses. The research for
+        this paper was financially supported by a Comin's Fund Fellowship from the
+        Department of Anthropology, University of Arizona, for the months of June,
+        July, and August 1961, and the Wenner-Gren Foundation for Anthropological
+        Research fellowship awarded in June 1962. I am also indebted to the Bureau
+        of Ethnic Research, Department of Anthropology, University of Arizona, for
+        the appointment as a Research Assistant on their Navajo Project under the
+        auspices of the National Cancer Institute in the months of October 1962 to
+        May 1963. Finally, I wish to thank my wife, Rebecca, whose thoughtful evaluation
+        and insight throughout the original formulation, during the many months of
+        field work, and in the countless hours of first, second, and third rewriting
+        phases of the work has been a constant inspiration throughout the total study.
+        A.W.W. University of Maryland College Park, Maryland 31 July 1967</dc:description>\n<dc:date>2007-05-25T17:38:21Z</dc:date>\n<dc:date>2013-03-14T19:00:52Z</dc:date>\n<dc:date>2007-05-25T17:38:21Z</dc:date>\n<dc:date>2013-03-14T19:00:52Z</dc:date>\n<dc:date>1970-06-25</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 9</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1325</dc:identifier>\n<dc:identifier>113411</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.9.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>40525927
+        bytes</dc:format>\n<dc:format>6317932 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1348</identifier>\n
+        \               <datestamp>2013-03-18T11:08:41Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>An Analysis of
+        Forensic Anthropology Cases Submitted to the Smithsonian Institution by the
+        Federal Bureau of Investigation from 1962 to 1994</dc:title>\n<dc:creator>Grisbaum,
+        Gretchen A.</dc:creator>\n<dc:creator>Ubelaker, Douglas H.</dc:creator>\n<dc:description>For
+        more than 50 years, the Smithsonian Institution has provided scientific expertise
+        in the analysis of forensic anthropology cases submitted to the Institution
+        by the Federal Bureau of Investigation (FBI) in Washington, D.C. This study
+        presents an analysis of the cases submitted from 1962 to 1994 and reported
+        on by two Smithsonian scientists, J. Lawrence Angel and Douglas H. Ubelaker.
+        Analysis revealed wide variation in the types of cases submitted. In addition,
+        the rate of submission varied throughout this period, with the highest rate
+        occurring in the late 1970s. The FBI submissions originated most commonly
+        from western and southern regions of the United States and reflected original
+        discoveries frequently in the months of May and November. The total sample
+        included all major categories of ancestry, sex, and age, but the overall pattern
+        deviated significantly from national homicide statistics. Statistics on taphonomical
+        alterations, trauma, the area of the body associated with trauma, and problems
+        of positive identifications in the FBI sample are discussed. Finally, temporal
+        changes in report writing and information collected are discussed. These differences
+        appear to reflect not only stylistic preferences of the two scientists involved,
+        but also the academic growth of forensic anthropology. The patterns of change
+        detected in the FBI sample relate to the more general expansion of forensic
+        anthropology and the growing numbers of anthropologists involved in this application
+        of physical anthropology.</dc:description>\n<dc:date>2007-05-25T17:42:37Z</dc:date>\n<dc:date>2013-03-14T19:00:55Z</dc:date>\n<dc:date>2007-05-25T17:42:37Z</dc:date>\n<dc:date>2013-03-14T19:00:55Z</dc:date>\n<dc:date>2001-03-23</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 45</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1348</dc:identifier>\n<dc:identifier>113392</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.45.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>7841101
+        bytes</dc:format>\n<dc:format>943622 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1324</identifier>\n
+        \               <datestamp>2013-03-18T10:37:57Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Artist of
+        \"Isleta Paintings\" in Pueblo Society</dc:title>\n<dc:creator>Goldfrank,
+        Ester S.</dc:creator>\n<dc:description>Pueblo society places a very considerable
+        emphasis on knowledge, but it also dictates how this knowledge is to be acquired
+        and used. Joe Lente was a rebel. In a society where, as one anthropologist
+        put it, \"disobedience is a sacrilege and heresy as well as treason\" (White,
+        1932, p. 11), he obviously was not attracted by the Pueblo road to recognition
+        and power--;a priestly vocation--;and this despite his early involvement with
+        \"ceremonial members\" (especially his father and grandfather) and ceremonial
+        activities. Indeed he used his abilities in the very way that from his earliest
+        years he had learned would surely bring dire punishment--;even death: he disclosed
+        the most sacred and secret teachings of his society to an outsider. The wonder
+        is that while he breached a basic principle of his society, that while his
+        anxiety over this action never abated, he nevertheless chose to remain in
+        Isleta, outwardly conforming, except when he was drunk, to its authoritarian
+        mode of life.</dc:description>\n<dc:date>2007-05-25T17:38:15Z</dc:date>\n<dc:date>2013-03-14T19:01:15Z</dc:date>\n<dc:date>2007-05-25T17:38:15Z</dc:date>\n<dc:date>2013-03-14T19:01:15Z</dc:date>\n<dc:date>1967-08-04</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 5</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1324</dc:identifier>\n<dc:identifier>113398</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.5.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>59330760
+        bytes</dc:format>\n<dc:format>14880726 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1323</identifier>\n
+        \               <datestamp>2013-03-18T11:20:36Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Seneca Morphology
+        and Dictionary</dc:title>\n<dc:creator>Chafe, Wallace L.</dc:creator>\n<dc:description>This
+        work is an extended description of the structure of words in the Seneca language.
+        A description of the grammar of Seneca words has already been published in
+        the International Journal of American Linguistics (Chafe, 1960, 1961 a). A
+        major omission from that work, however, was a comprehensive list of the verb
+        roots, noun roots, and particles of the language, with specification of their
+        grammatical peculiarities and examples of their use. The present work is designed
+        to fill that gap. Its chief purpose is to make available a Seneca dictionary,
+        or lexicon. Since, however, the dictionary contains many references to paragraphs
+        in the Seneca Morphology mentioned above, it was thought useful to republish
+        that work as part of this volume. Republication seems all the more useful
+        in view of the fact that the original Seneca Morphology is scattered through
+        eight numbers of two different volumes of the journal. Minor revisions and
+        corrections have been made, but extensive changes, however desirable they
+        might have been, were out of the question because the references in the dictionary
+        were already keyed to paragraph numbers in the original version, as were the
+        references given in the Grammatical Commentary of Seneca Thanksgiving Rituals
+        (Chafe, 1961 b). Seneca is at present the native language of a few thousand
+        persons, most of whom live on the Allegany, Cattaraugus, and Tonawanda Reservations
+        in western New York State and on the Grand River Reserve in Ontario, Canada.
+        There are few if any speakers now under 30 years of age. Seneca is historically
+        important as the language of the Five (now Six) Nations of the Iroquois and
+        as the language of Handsome Lake, the Iroquois prophet (Parker, 1913; for
+        a history of the Seneca see Parker, 1926). Within the Iroquoian language family,
+        Seneca is a member of the Northern Iroquoian subgroup, which includes also
+        Cayuga, Onondaga, Oneida, Mohawk, and Tuscarora among the languages still
+        spoken. Seneca is most closely related to Cayuga, but the two are different
+        enough to be considered separate languages. The dialect differentiation within
+        Seneca itself is minor. Earlier works on Seneca include several brief grammatical
+        sketches (Voegelin and Preston, 1949, and Holmer, 1952, 1953, 1954) and texts
+        (Hewitt, 1903, 1918). A list of still earlier sources is available in Pilling
+        (1888). The material on which this work is based was obtained during four
+        summers of fieldwork, 1956-59, on the three New York reservations. It consists
+        of an extensive corpus of Seneca words and texts, including formal speeches,
+        legends, historical accounts, and conversations. I am deeply grateful for
+        the assistance provided by numerous speakers of Seneca, above all by Solon
+        Jones and Leroy Button of the Cattaraugus Reservation, Lena P. Snow, Tessie
+        Snow, and Edward Curry of the Allegany Reservation, and Corbett Sundown and
+        Betsy Carpenter of the Tonawanda Reservation. Appreciation is also due to
+        William N. Fenton, Floyd G. Lounsbury, the Smithsonian Institution, Yale University,
+        and especially to the New York State Museum and Science Service, under whose
+        auspices the fieldwork was conducted. Both the Smithsonian Institution and
+        the University of California provided support for the completion of the manuscript,
+        and thanks are due to Karlena Glemser, Myra Rothenberg, and Aura Cuevas for
+        their help in this regard. The lexicon of a language is a vast terrain which
+        no one could hope to explore fully during a few scattered field trips. Although
+        grammatical analysis can perhaps lead to a point of diminishing returns after
+        a reasonable period of investigation, I doubt that such a point has even been
+        approached for the vocabularies of any languages except those few which have
+        a long tradition of lexicography. Certainly the experience which I and others
+        have had with American Indian languages refutes the ethnocentric myth that
+        such languages are poor in their means of expression. What is given in the
+        dictionary of this work is simply what I was able to obtain in a period that
+        was totally inadequate for the purpose. In making this lexical material available,
+        I have had several possible uses of it in mind. I should say first that I
+        have not intended that anyone should use it for learning to speak the Seneca
+        language, although I would be very happy if someone were to find it helpful
+        for that purpose. Above all I have wanted to provide data that can be used
+        in comparative Iroquoian studies. Such work is stymied, as it is in most American
+        Indian language families, by the absence of detailed lexical material. This
+        is the first modern dictionary of any Iroquoian language, and I fervently
+        hope that other and better ones will follow. Reconstruction, subgrouping,
+        and the possible establishment of relationships outside the family cannot
+        proceed without them. Second, the listing of roots with examples of their
+        use will serve to elucidate the morphological patterns of the language beyond
+        the few examples provided in the morphology, and to show something of the
+        scope and frequency of constructions mentioned there. I regret the absence
+        of syntactic examples; this compilation is a byproduct of a preoccupation
+        with morphology. Examples of syntactic patterns as well as further morphological
+        examples may be culled from my \"Seneca Thanksgiving Rituals\" and from Hewitt's
+        texts. Finally, this material may prove useful in \"language and culture\"
+        studies of various kinds.</dc:description>\n<dc:date>2007-05-25T17:38:05Z</dc:date>\n<dc:date>2013-03-14T19:01:21Z</dc:date>\n<dc:date>2007-05-25T17:38:05Z</dc:date>\n<dc:date>2013-03-14T19:01:21Z</dc:date>\n<dc:date>1967-06-28</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 4</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1323</dc:identifier>\n<dc:identifier>113391</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.4.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>64516795
+        bytes</dc:format>\n<dc:format>8220343 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1350</identifier>\n
+        \               <datestamp>2013-03-18T11:41:33Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Notes on the
+        History and Material Culture of the Tonkawa Indians</dc:title>\n<dc:creator>Jones,
+        William K.</dc:creator>\n<dc:description>One of the litde-known tribes of
+        central Texas was\nthe Tonkawa. Few objects made and used by the\nTonkawa
+        are preserved in museum collections, and no\ndescription of traditional Tonkawa
+        material culture,\nbased upon a study of actual specimens, has appeared\nin
+        the literature. Nevertheless, a small but unique col\nlection of Tonkawa materials
+        has been a part of the\nethnological collections of the Smithsonian Institution\nfor
+        a century. It is unique, not only because it is the\nearliest known Tonkawa
+        collection, antedating the\nextermination of the bison on the Southern Plains,\nbut
+        also because the time, place, and conditions under\nwhich the collection was
+        made in the field are well\ndocumented. In order to place this collection
+        in a\nmeaningful cultural and chronological context I have\nprefaced my description
+        of the specimens with a brief\nhistorical sketch of the Tonkawa, with particular\nemphasis
+        upon the years immediately preceding the\nacquisition of these materials by
+        Dr. McElderry at\nFort Griffin, Texas, in 1868.\n  Although the Tonkawa call
+        themselves Titskan\nwdtitch, \"the most human people,\" the tribal name is\nderived
+        from the Waco name for these people, Tonka\nweya, meaning \"they all stay
+        together.\" The Co\nmanche and Kiowa, northwestern neighbors and\nlongtime
+        enemies of the Tonkawa, knew them by\nnames which, in translation, meant \"man-eating\nmen\"
+        or \"maneaters.\" The Tonkawan language\napparently was affiliated with Karankawa,
+        Come\ncrudo, and Cotoname through the common Co\nahuiltecan stock, although
+        too litde is known of the\nlanguages of those extinct tribes to establish
+        with\ncertainty the closeness of their relationship to\nTonkawan.\nAvailable
+        data on Tonkawa population, covering a\n\nperiod of nearly 200 years, indicate
+        that the Tonkawa\nwere not a large tribe. A Spanish estimate in 1778\ngives
+        300 warriors. Sibley estimated the Tonkawa at\nbut 200 men in 1805, and the
+        tribal population con\ntinued to decline thereafter. Heavy war losses, epi\ndemics,
+        and loss of tribal identity through marriages\noutside the tribe, as well
+        as other factors, contributed\nto this decline. Of the sixty-two Tonkawa Indians\non
+        the tribal rolls in 1961, only three individuals were\nbelieved to be fullblood
+        Tonkawa. (Swanton, 1952,\np. 327; Hasskarl, 1962, p. 228.)\n  If archeological
+        evidence of the Tonkawa exists,\nit may be represented in the Toyah Focus
+        of the Central Texas Aspect. Dr, Edward B. Jelks states that if\nthe Toyah
+        Focus material excavated at the Kyle Site,\nlocated on the Brazos River just
+        above Whitney Dam\nin Hill County, Texas, can be related to a historic\ngroup,
+        it is probably Tonkawa and/or Jumano. But\nhe also believes that this focus
+        may have come to an\nend in the late prehistoric period and another, yet\nundescribed,
+        group may have taken its place. This\nlater group, represented by triangular
+        arrow points,\nGoliad Plain pottery, and other artifact styles, \"may\nrepresent
+        the archeological remains of the historic\nand protohistoric Tonkawa . . .
+        .\" Radiocarbon dates\nfrom the Toyah Focus at the Kyle Site range from\nA.D.
+        1276 \xB1165 years to A.D. 1561 \xB1130 years.</dc:description>\n<dc:date>2007-05-29T12:51:06Z</dc:date>\n<dc:date>2013-03-14T19:01:24Z</dc:date>\n<dc:date>2007-05-29T12:51:06Z</dc:date>\n<dc:date>2013-03-14T19:01:24Z</dc:date>\n<dc:date>1969-12-31</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 2.5</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1350</dc:identifier>\n<dc:identifier>113383</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.2.5</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>11403344
+        bytes</dc:format>\n<dc:format>2048946 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1322</identifier>\n
+        \               <datestamp>2013-03-18T11:03:40Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>New Zealand Artifacts
+        from the United States \"Transit of Venus Expedition,\" 1874-1875</dc:title>\n<dc:creator>Keyes,
+        Ian W.</dc:creator>\n<dc:description>On Monday, June 8, 1874, just over 90
+        years ago, the U.S. steamer Swatara, under Comdr. Ralph Chandler, U.S. Navy,
+        sailed from New York Harbor--;her destination, the remote sub-Antarctic Crozet
+        and Kerguelen Islands, Tasmania, New Zealand, and the Chatham Islands. Three
+        years previously, in 1871, a committee that had been established under the
+        authorization of the U.S. Congress (U.S. Navy, 1875, p. 16; Newcomb, 1880,
+        p. 9) had completed earlier plans whereby a series of astronomical observatories
+        would be established in various parts of the world during 1874, to conduct
+        scientific observations on the \"transit of Venus\" scheduled to take place
+        during December 9th of that year. Other countries also had formulated plans
+        to send expeditions to suitable localities where that celestial event could
+        most effectively be followed, particularly in the Southern Hemisphere. In
+        addition to the five scientific parties which the U.S. Government planned
+        to send into southern waters, three stations were scheduled for the Northern
+        Hemisphere; at Nagasaki, Peking, and Vladivostok (Newcomb, 1880, p. 12-13).
+        The Swatara, with its complement of 26 astronomers and photographers, comprising
+        the Southern Hemisphere contingent of the \"Transit of Venus Expedition\"
+        along with stores, instruments, and equipment for establishing five observatories,
+        set sail from New York for the 46\xD7 south latitude. The first call was at
+        \"Bahia\" (Salvador, Brazil) on Friday, July 10 (Chandler, MS. a) from which
+        the vessel proceeded to Cape Town where she arrived at Table Bay on Wednesday,
+        August 5th. From here, on August 17th, she rounded the Cape of Good Hope heading
+        east-southeastwards for the Crozet Islands where the first observation party
+        was to be landed. However, the high winds and heavy seas that were encountered
+        on August 31st when the islands were reached, precluded a landing, so the
+        Swatara continued on her easterly course towards the Kerguelen group, the
+        site selected for the next observatory. Three Island Harbor was reached on
+        Monday, September 7th. A camp was established at the northern end of Royal
+        Sound and the scientific party landed, equipped for a long stay both to carry
+        out the astronomical observations and to conduct additional biotic studies
+        of the island (Kidder, 1875, 1876). On September 13th, the Swatara departed
+        and headed for Hobart, Tasmania, where the next observatory was due to be
+        sited. At Hobart, on October 3d, equipment and stores were unloaded for establishing
+        this station and the instruments and personnel of the Crozet party were landed
+        so that an additional observatory might be established at Campbelltown (Newcomb,
+        1880, p. 18). Bluff Harbor, Southland, New Zealand, was reached on Friday,
+        October 16th, and the New Zealand party under Prof. C. H. F. Peters was met
+        by Lieut. E. H. Bass (assistant astronomer to the New Zealand party), who
+        had spent 2 weeks in the country selecting the most suitable site for the
+        Transit observatory. The Swatara sailed from Bluff Harbor on Saturday, October
+        17th, and after a brief stop off the Tairua Heads at the entrance to Port
+        Chalmers, headed for the Chatham Islands. Chatham Island was reached on Monday,
+        October 19th, and the final party of nine under Edwin Smith, the chief astronomer,
+        disembarked at Port Hutt (northwest shore of Petre Bay), where a station was
+        established on rising ground to the west of Whangaroa Bay. The Swatara sailed
+        from Petre Bay on Monday, October 26th, for New Zealand, then to Hobart, where
+        she remained until after the Transit.</dc:description>\n<dc:date>2007-05-25T17:37:56Z</dc:date>\n<dc:date>2013-03-14T19:01:26Z</dc:date>\n<dc:date>2007-05-25T17:37:56Z</dc:date>\n<dc:date>2013-03-14T19:01:26Z</dc:date>\n<dc:date>1967-03-06</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 2.2</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1322</dc:identifier>\n<dc:identifier>113386</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.2.2</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>5447058
+        bytes</dc:format>\n<dc:format>1219907 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1327</identifier>\n
+        \               <datestamp>2013-03-18T11:41:12Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>An Archeological
+        Survey of Southwest Virginia</dc:title>\n<dc:creator>Holland, C. G.</dc:creator>\n<dc:description>Seventeen
+        counties of southwestern Virginia, which are bounded by North Carolina, Tennessee,
+        Kentucky, and West Virginia, were surveyed archeologically in 1963-1964. Aboriginal
+        occupation was found to extend from about 9000-8000 B.C. to A.D. 1700. The
+        sites and occupational debris of pottery, stone, and bone are described, classified,
+        and analyzed to construct an outline of the prehistory of the region and its
+        cultural relationship with surrounding areas.</dc:description>\n<dc:date>2007-05-25T17:38:43Z</dc:date>\n<dc:date>2013-03-14T19:02:03Z</dc:date>\n<dc:date>2007-05-25T17:38:43Z</dc:date>\n<dc:date>2013-03-14T19:02:03Z</dc:date>\n<dc:date>1970-05-27</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 12</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1327</dc:identifier>\n<dc:identifier>113381</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.12.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>82413487
+        bytes</dc:format>\n<dc:format>12519514 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1326</identifier>\n
+        \               <datestamp>2013-03-18T12:17:27Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Native Polity
+        of Ponape</dc:title>\n<dc:creator>Riesenberg, Saul H.</dc:creator>\n<dc:description>The
+        island of Ponape lies at 6\xD754' north latitude and 158\xD714' east longitude,
+        near the eastern end of the archipelago that comprises the Caroline Islands.
+        Ponape and the nearby atolls of Pakin and Ant constitute the Senyavin group.
+        Kusaie, the next major island to the east and last of the Caroline chain,
+        is 307 nautical miles distant; and Truk is 383 miles to the west. Ponape is
+        about midway between Honolulu and Manila, 2,685 and 2,363 miles distant, respectively.
+        The land area of Ponape as usually given is 334 square kilometers (129 square
+        miles). Except for a few coastal plains and lower slopes, most of the island
+        is ruggedly mountainous with several ranges and high peaks, the highest rising
+        to 791 meters (nearly 2,600 feet), the highest peak in the Carolines. The
+        mountain tops are often covered with cloud and mist. The island interior consists
+        largely of basalt, with some andesite and other volcanic rock. The lower slopes
+        and level areas are mostly sand and gravel. Here and there, most spectacularly
+        on Sokehs Island, are high cliffs of columnar basalt, with columnar talus
+        at their bases. Streams and waterfalls abound. The streams are very active
+        after every rainfall and deposit alluvium in great flats. The main island
+        is roughly circular in outline. About 20 square miles of its area consists
+        of coastal mangrove swamp; there are few beaches. Surrounding the island is
+        an encircling reef, distant from the coast about 2 miles on the average and
+        broken here and there by passages between the lagoon and the open sea. Where
+        the reef rises above sea level, some 15 coral islets are formed. The lagoon
+        between the main island and the encircling reef is of varying depth and contains
+        many heads of live coral that may rise close to the water surface. It occupies
+        about 98 square miles of water and includes in it 23 small islands of the
+        same volcanic materials as the main island. Also in the lagoon are a number
+        of alluvial islands lying close to the shore and, in the east, off Temwen
+        Island, some 90 artificial islets are grouped together that contain the well-known
+        archeological ruins of Nan Madol. All of these smaller islands together occupy
+        an area of about 5 square miles. Ponape, like the rest of the Carolines, is
+        in the doldrum belt. This belt swings north May to July and south August to
+        November, accompanied by stormy weather and heavy rain. The trade winds blow
+        from the east December to April and move around more to the south the rest
+        of the year. Typhoons are much less common than in western Micronesia. Relative
+        humidity is high; the monthly averages are 79 to 91 percent and are lowest
+        in March and April. Rainfall is very heavy and is rather uniform throughout
+        the year, though somewhat less in January to March. The annual average precipitation
+        is 178 inches. The monthly temperature means are from 78\xD7 to 82\xD7 F.,
+        the extremes are 68\xD7 and 92\xD7 F. The extensive mangrove swamps that line
+        much of the low shore consist of Sonneratia, Rhizophora, Bruguiera, Lumnitzera,
+        Xylocarpus, Heritiera, and also Nypa palm. Strand vegetation occurs largely
+        on the reef islands and where the land of the main island starts to rise inland
+        of the mangroves. Behind the strand and mangroves is a narrow strip of coastal
+        plain vegetation, originally primary rain forest but now mainly occupied by
+        single dwellings or small clusters of buildings and by cultivated areas. (Very
+        few localities on Ponape can properly be called villages.) The cultivated
+        areas contain coconut groves, banana, breadfruit, citrus, sweet potatoes,
+        manioc, aroids (Cyrtosperma, Alocasia, and Colocasia), and a few other cultivated
+        plants of less importance, as well as such trees as Ficus, Calophyllum, Terminalia,
+        ivory nut palm, Pandanus, Macaranga, Morinda, and Hibiscus, with some grasses
+        and undergrowth. The rain forest is very dense and rich. Ponape has the most
+        extensive native forests in Micronesia. Uninterrupted jungle covers most of
+        the interior and reaches to the coast in a few places. The forest covers most
+        of the steep slopes and summits and some lowlands. The lower primary forests
+        contain large trees, palms, climbers, ferns, orchids, and other epiphytes.
+        On the slopes where rain forest has been destroyed there are mixed coconut
+        and breadfruit groves, also bananas, Alocasia, and some shrubbery. The montane
+        rain forests consist of scrubby, mossy woods on the steep slopes and ridges,
+        where the soil is thin. Tree ferns, Exorrhiza and Ponapea palms, Freycinetia,
+        and many stunted broad-leaved trees bearing epiphytes predominate. On the
+        high open crests are dwarfed shrubs, dwarfed Exorrhiza, tree ferns, dense
+        growths of Pandanus, or open bogs. Grassland is rare. According to Baker (1951)
+        some 39 species of birds occur on Ponape, including sea birds, migratory shore
+        birds, and land and fresh water birds. Among the species are a heron, a duck,
+        seven of the snipe-sandpiper family, six gulls and terns, two doves and a
+        pigeon, a lory, an owl, a kingfisher, two flycatchers, two starlings, three
+        white-eyes, and two weaver finches. Insects are numerous but comprise only
+        a small number of genera. The only land reptiles are a few species of lizard.
+        There were only three mammals, aboriginally: rats, bats, and dogs; pigs were
+        introduced in very early postcontact times, and some are now feral, as are
+        the deer brought in during German times. In contrast, the lagoon is rich in
+        fishes, mollusks, crustacea, and other marine fauna, including two kinds of
+        turtles.</dc:description>\n<dc:date>2007-05-25T17:38:31Z</dc:date>\n<dc:date>2013-03-14T19:02:11Z</dc:date>\n<dc:date>2007-05-25T17:38:31Z</dc:date>\n<dc:date>2013-03-14T19:02:11Z</dc:date>\n<dc:date>1968-12-31</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 10</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1326</dc:identifier>\n<dc:identifier>113396</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.10.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>68365151
+        bytes</dc:format>\n<dc:format>10214438 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/17285</identifier>\n
+        \               <datestamp>2013-03-18T12:04:13Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Artifacts from
+        the Craig Mound at Spiro, Oklahoma</dc:title>\n<dc:creator>Sievert, April
+        K.</dc:creator>\n<dc:creator>Rogers, J. Daniel</dc:creator>\n<dc:creator>Urcid,
+        Javier</dc:creator>\n<dc:subject>Spiro Mounds Archaeological State Park (Okla.)</dc:subject>\n<dc:subject>Indians
+        of North America</dc:subject>\n<dc:subject>Antiquities</dc:subject>\n<dc:subject>Excavations
+        (Archaeology)</dc:subject>\n<dc:description>Sievert, April K., with J. Daniel
+        Rogers and contribution by Javier Urcid. Artifacts from the Craig Mound at
+        Spiro, Oklahoma. Smithsonian Contributions to Anthropology, number 49, xiv
+        + 231 pages, 163 figures, 11 plates, 48 tables, 2011.</dc:description>\n<dc:description>This
+        monograph presents the historical context and detailed descriptions of a remarkable
+        collection of more than 20,000 artifacts from the Craig Mound at the Spiro
+        site in eastern Oklahoma. Spiro is one of the key sites known for the Mississippian
+        Period (ad 900\u20131500) of the eastern United States. Aside from the cultural
+        importance of the site in regional history, the artifacts from Spiro provide
+        an almost unique glimpse into the ceremonial life and artistic innovations
+        of a people who developed an important\nbut poorly known cultural tradition.
+        Between 1933 and 1936 the Spiro site was looted, and artifacts were sold and
+        traded to many collectors. Subsequently, professional archaeological excavations
+        were conducted, and those collections primarily reside at the Sam Noble Oklahoma
+        Museum of Natural History. The Smithsonian Spiro collection is under the care
+        of the Department of\nAnthropology at the National Museum of Natural History.
+        The collection came to the Museum through 14 accessions between 1936 and 1986.
+        The largest portion was acquired from Harry M. Trowbridge in 1958. Of particular
+        note in the collection are marine shells engraved with a wide variety of human
+        and animal images. The collection also includes pigments, basketry, clothing
+        with dyed designs, pipes, weapons, ornaments, containers, and figurines made
+        from several different materials. Many of the artifacts are made from raw
+        materials that were acquired by the Spiro people through an extensive trade
+        network extending from the Atlantic to the Pacific Ocean and from the upper
+        Midwest in the north to central Mexico in the south.</dc:description>\n<dc:date>2011-11-21T21:08:57Z</dc:date>\n<dc:date>2013-03-14T19:02:13Z</dc:date>\n<dc:date>2011-11-21T21:08:57Z</dc:date>\n<dc:date>2013-03-14T19:02:13Z</dc:date>\n<dc:date>2011-11-21</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology, volume 49 : pp. 1-231.</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/17285</dc:identifier>\n<dc:identifier>108113</dc:identifier>\n<dc:identifier>108113</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.49.1</dc:identifier>\n<dc:relation>Smithsonian
+        Contributions to Anthropology; no. 49</dc:relation>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/14802</identifier>\n
+        \               <datestamp>2013-03-18T12:18:39Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>A chronology
+        of middle Missouri Plains village sites</dc:title>\n<dc:creator>Johnson, Craig
+        M.</dc:creator>\n<dc:date>2011-03-29T19:51:56Z</dc:date>\n<dc:date>2013-03-14T19:02:16Z</dc:date>\n<dc:date>2011-03-29T19:51:56Z</dc:date>\n<dc:date>2013-03-14T19:02:16Z</dc:date>\n<dc:date>2007</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; no. 47</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/14802</dc:identifier>\n<dc:identifier>99425</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.47.1</dc:identifier>\n<dc:publisher>Smithsonian
+        Institution Scholarly Press</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n
+        \       <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1375</identifier>\n
+        \               <datestamp>2013-03-18T12:30:24Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Old World
+        Paleolithic and the Development of a National Collection</dc:title>\n<dc:creator>Petraglia,
+        Michael</dc:creator>\n<dc:creator>Potts, Richard</dc:creator>\n<dc:description>Beginning
+        with the first accession of Paleolithic collections in 1869,\nthe Smithsonian
+        Institution and its scientific staff have shown great interest in pursuing\nresearch,
+        education, and exhibition of early human lifeways. During the more than 130-year\nhistory
+        of acquiring objects from the Old World, a total of 22,000 objects has been
+        amassed\nfrom some 332 Lower to Upper Paleolithic localities. Certain objects
+        are rare pieces from clas-\nsic Paleolithic localities, although many others
+        were obtained as representative pieces for com-\nparative purposes and exhibition.
+        Documents and letters of correspondence between Old and\nNew World investigators
+        provide the historical context of collection acquisition and the moti-\nvations
+        of those involved in the international transfer and exchange of artifacts.
+        Synthesis of\nthe documentation shows variability in the tempo of collection
+        acquisition and biases in geo-\ngraphic interests that are tied to patterns
+        of scientific inquiry, world wars, and later, adherence\nto antiquity laws
+        and reorientation of modern paleoanthropological methods and approaches.\nBecause
+        we refer extensively to archived letters and memoranda in the text, Appendix
+        1 pro-\nvides a chronological list of these materials and the specific Smithsonian
+        Institution archive\nwhere they are located.</dc:description>\n<dc:date>2007-05-29T12:57:51Z</dc:date>\n<dc:date>2013-03-14T19:02:33Z</dc:date>\n<dc:date>2007-05-29T12:57:51Z</dc:date>\n<dc:date>2013-03-14T19:02:33Z</dc:date>\n<dc:date>2004</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 48</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1375</dc:identifier>\n<dc:identifier>113413</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.48.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>63565755
+        bytes</dc:format>\n<dc:format>9912725 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1374</identifier>\n
+        \               <datestamp>2013-03-18T12:31:05Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Ossuary of
+        San Francisco Church, Quito, Ecuador: Human Skeletal Biology</dc:title>\n<dc:creator>Ubelaker,
+        Douglas H.</dc:creator>\n<dc:creator>Ripley, Catherine E.</dc:creator>\n<dc:description>As
+        part of the Columbus quincentenary activities,\nthe Instituto Nacional de
+        Patrimonio Cultural del Ecuador (INPCE) and the Agencia Espanola\nde Cooperacion
+        Intemacional (AECI) attempted to study and restore the Convento de San\nFrancisco
+        de Quito, a facility founded in 1535. In 1990, these efforts included excavation
+        of the\ncentral ossuary in the church. This research generated information
+        about the structure of the\nossuary as well as human remains. Detailed analysis
+        of the human remains by the authors\nrevealed the presence of at least 226
+        individuals from five spatial components of the ossuary.\nThe remains likely
+        date from the early history of the church in the sixteenth century to the\ntwentieth
+        century.\n  Analysis of the five ossuary samples revealed information on mortuary
+        customs, ancestry,\ncranial and postcranial morphology, living stature, and
+        bone and dental pathology. Most of the\ndata reported herein fall within ranges
+        previously reported from prehistoric and historic sam-\nples. Exceptions consist
+        of high values of skeletal trauma, carious lesions, and antemortem loss\nof
+        teeth reported for some of the ossuary samples.</dc:description>\n<dc:date>2007-05-29T12:57:42Z</dc:date>\n<dc:date>2013-03-14T19:02:37Z</dc:date>\n<dc:date>2007-05-29T12:57:42Z</dc:date>\n<dc:date>2013-03-14T19:02:37Z</dc:date>\n<dc:date>1999-07-20</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 42</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1374</dc:identifier>\n<dc:identifier>113400</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.42.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>15343201
+        bytes</dc:format>\n<dc:format>2021870 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1337</identifier>\n
+        \               <datestamp>2013-03-18T12:48:57Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Ceremonies of
+        the Pawnee, Part I: The Skiri</dc:title>\n<dc:contributor>Murie, James R.</dc:contributor>\n<dc:contributor>Parks,
+        Douglas R.</dc:contributor>\n<dc:description>In 1910 Murie, James R., an educated
+        Pawnee who had previously worked with various anthropologists (most notably
+        Alice C. Fletcher and George A. Dorsey), was given a grant by the Bureau of
+        American Ethnology to prepare a full account of surviving Pawnee religious
+        ceremonies. Shortly afterward he began work under the direction of Clark Wissler,
+        with whom he planned a comprehensive description of the ritualism of the Skiri
+        band. This monograph, written by Murie in collaboration with Clark Wissler,
+        is the combined result of the two projects, which extended over a decade.
+        It is a detailed presentation of the essential features of Pawnee ceremonialism.
+        The first part presents the annual cycle of Skiri ceremonial life, minutely
+        describing most of the rituals as well as the role and functions of sacred
+        bundles in the culture. The second part includes accounts of three surviving
+        South Band ceremonies that Murie witnessed: the White Beaver Ceremony (or
+        Doctor Dance) of the Chawi band, and the Bear and Buffalo dances of the Pitahawirata
+        band. In each of the accounts the songs of the ceremony are given in both
+        Pawnee and English. Together they constitute one of the most extensive song
+        collections for any North American tribe. For the three South Band ceremonies,
+        the vision stories underlying the songs are also presented. The manuscript,
+        scheduled for publication on several occasions in the 1920s and 1930s, has
+        been in the archives of the Bureau of American Ethnology since 1921. It is
+        here presented in edited form, together with revised linguistic transcriptions
+        and translations, notes, an expanded bibliography, a biography of Murie, and
+        two indexes.</dc:description>\n<dc:date>2007-05-25T17:40:45Z</dc:date>\n<dc:date>2013-03-14T19:02:48Z</dc:date>\n<dc:date>2007-05-25T17:40:45Z</dc:date>\n<dc:date>2013-03-14T19:02:48Z</dc:date>\n<dc:date>1981-10-15</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 27.1</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1337</dc:identifier>\n<dc:identifier>113372</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>77200314
+        bytes</dc:format>\n<dc:format>8168747 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1373</identifier>\n
+        \               <datestamp>2013-03-18T12:50:16Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Skeleltal Biology
+        of Human Remains from La Tolita, Esmeraldas Province, Ecuador</dc:title>\n<dc:creator>Ubelaker,
+        Douglas H.</dc:creator>\n<dc:description>Although much of the archeological
+        site of La Tolita has been\ndestroyed by decades of looting, excavations begun
+        in 1982 by the Banco Central of Quito,\nEcuador, located undisturbed areas
+        and recovered relatively large samples of human remains\nrepresenting both
+        primary and secondary burials from various areas of the site. These generally\ncan
+        be dated within the La Tolita Temprano (600 BC to 200 BC), La Tolita Clasico
+        (200 BC to\n90 AD), and the La Tolita Tardio (90 AD to 400 AD) periods.\n
+        \ Analysis indicated at least 88 individuals to be present: 7 Temprano, 32
+        Clasico, and 49\nTardio. Evidence for limited cranial deformation, flesh removal
+        and dismemberment, and\nmanufacturing artifacts from human bone were detected.
+        The temporal transition from Clasico\nto Tardio involved reduction of trauma,
+        dental caries, the ratio of immatures to adults, the male\nmean age at death,
+        and periosteal lesions, coupled with increases in living stature, porotic\nhyperostosis,
+        congenital disorders, and enamel hypoplasia. Compared to other archeologically\nrecovered
+        samples from early Ecuador, the La Tolita remains indicate a well-nourished,
+        healthy\npopulation who experienced high levels of skeletal trauma.</dc:description>\n<dc:date>2007-05-29T12:57:39Z</dc:date>\n<dc:date>2013-03-14T19:02:54Z</dc:date>\n<dc:date>2007-05-29T12:57:39Z</dc:date>\n<dc:date>2013-03-14T19:02:54Z</dc:date>\n<dc:date>1997-05-15</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 41</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1373</dc:identifier>\n<dc:identifier>113394</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.41.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>21299005
+        bytes</dc:format>\n<dc:format>3950763 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1335</identifier>\n
+        \               <datestamp>2013-03-18T13:03:39Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Lindenmeier,
+        1934-1974: Concluding Report on Investigations</dc:title>\n<dc:creator>Wilmsen,
+        Edwin N.</dc:creator>\n<dc:creator>Roberts, Frank H. H., Jr.</dc:creator>\n<dc:description>The
+        excavation and analysis of Paleo-Indian artifacts from the Lindenmeier site
+        in northern Colorado are described in detail. The site was excavated from
+        1934 to 1940 by Frank H. H. Roberts, Jr.; the history of these excavations
+        is summarized. Roberts died in 1966 without completing an analysis of the
+        excavated materials. In the same year, Wilmsen began work on the collection.
+        The goals and strategies of the original work, as well as methods employed
+        in the field, are reconstructed to the extent permitted by existing archival
+        materials and publications. A detailed discussion of the physiographic features
+        of the site location and of its Recent geologic history is presented. It is
+        suggested that common stream meander processes are responsible for the present
+        appearance of the site and that appeals to climatic change are unnecessary.
+        The floral and faunal composition of the area at the time of Folsom occupation
+        is considered in terms of preserved samples of soil, charcoal, resin, and
+        pollen, along with molluskan and mammalian remains. A new radiocarbon age
+        is reported and compared with an age reported previously by Haynes and Agogino
+        (1960). These two ages are compared according to the method proposed by Long
+        and Rippiteau (1974) and found to be indistinguishable statistically. The
+        bulk of the report is devoted to an analysis of the stone artifacts in the
+        collection. A method for assessing the comparability of measurements of artifacts
+        made by different observers is introduced. This method also yields a basis
+        for estimating the accuracy of observations and for rejecting a statistical
+        result obtained from these observations. The artifacts are analyzed both in
+        terms of sets of technological and functional variables and of their spatial
+        clustering. Technologically, the artifacts are found to conform to the predictions
+        of the wave model proposed by Speth (1972). Five major categories are defined
+        in terms of functional variables. The spatially discrete sets of artifacts
+        are found to be identical technologically and to possess only minor functional
+        differences. These clusters are interpreted to be the debris remains of camps
+        occupied periodically by socially and economically interacting units. Stylistic
+        variation among projectile points is found to be highly significant and spatially
+        discrete. These findings are used to support a hypothesis of social segmentation
+        among the early inhabitants of the site.</dc:description>\n<dc:date>2007-05-25T17:40:25Z</dc:date>\n<dc:date>2013-03-14T19:03:27Z</dc:date>\n<dc:date>2007-05-25T17:40:25Z</dc:date>\n<dc:date>2013-03-14T19:03:27Z</dc:date>\n<dc:date>1978-03-06</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 24</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1335</dc:identifier>\n<dc:identifier>113369</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.24.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>69862828
+        bytes</dc:format>\n<dc:format>11766480 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1336</identifier>\n
+        \               <datestamp>2013-03-18T13:15:53Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Material Culture
+        of the Numa: The John Wesley Powell Collection, 1867-1880</dc:title>\n<dc:creator>Fowler,
+        Don D.</dc:creator>\n<dc:creator>Matley, John F.</dc:creator>\n<dc:description>Between
+        1867 and 1880 John Wesley Powell made collections of material culture items
+        from several Numic-speaking Indian groups in the Great Basin and Colorado
+        Plateau regions of the western United States. The collections were made in
+        conjunction with Powell's ethnographic studies of those groups (Fowler and
+        Fowler, eds., 1971). The USNM (United States National Museum) collections,
+        on deposit in the National Museum of Natural History, Smithsonian Institution,
+        were studied by the authors in 1967-1968. The items described herein represent
+        approximately one-half of the total collections. The remainder were deposited,
+        on an exchange basis, in other major museums in the United States and abroad
+        in the latter portion of the 19th century. Several individual items, or classes
+        of items, from the USNM collections, were described by various authors of
+        comparative studies of American Indian material culture in the late 19th and
+        early 20th centuries. However, the full range of items in the collections
+        has not been described previously. The bulk of the items were collected by
+        Powell from various Southern Paiute or Northern Ute bands; the remainder from
+        the Deep Creek Gosiute, and Goose Creek, Bear River and Wind River Shoshoni.
+        The items reflect cultures in the early stages of acculturation to the intrusive
+        Euroamerican cultures. The value of the collections is enhanced by photographs
+        taken, principally in 1873 and 1874, by John K. (Jack) Hillers, Powell's photographer.
+        The photographs show various items being worn or used by their makers. With
+        the exception of Powell's studies and collections, systematic ethnographic
+        work among Numic-speaking Indian peoples was not undertaken until the 1920s
+        or later. By that time, much knowledge of, and use of, aboriginal crafts had
+        been lost or existed only in the memories of older people. In contrast, the
+        collections described herein reflect still viable lifeways of the \"Numa\"
+        as lived in the 1870s, and add a significant increment to our knowledge of
+        those lifeways.</dc:description>\n<dc:date>2007-05-25T17:40:35Z</dc:date>\n<dc:date>2013-03-14T19:03:39Z</dc:date>\n<dc:date>2007-05-25T17:40:35Z</dc:date>\n<dc:date>2013-03-14T19:03:39Z</dc:date>\n<dc:date>1979-01-18</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 26</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1336</dc:identifier>\n<dc:identifier>113367</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.26.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>63218470
+        bytes</dc:format>\n<dc:format>12311808 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1333</identifier>\n
+        \               <datestamp>2013-03-18T13:33:23Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Walakpa Site,
+        Alaska: Its Place in the Birnirk and Thule Cultures</dc:title>\n<dc:creator>Stanford,
+        Dennis J.</dc:creator>\n<dc:description>An archeological survey directed by
+        the author near Point Barrow, Alaska, during the summer of 1968 resulted in
+        the discovery of Walakpa, a deeply stratified coastal Eskimo site. It contained
+        over 20 occupation levels, showing the development of Eskimo culture from
+        Birnirk to Thule, as well as earlier and later Eskimo occupation levels. On
+        the basis of excavations at Walakpa during 1968 and 1969, previous estimates
+        of Birnirk and Thule origins are reexamined and a new interpretation of the
+        genesis of this Eskimo culture proposed. Specifically, on the basis of the
+        Point Barrow excavations, this monograph (1) examines the development of the
+        Birnirk and Thule Eskimo cultures and (2) provides definitions for the horizon
+        markers for each of the Eskimo stages represented at Walakpa. As a result
+        of this detailed study, the author concludes that (1) Birnirk developed out
+        of Old Bering Sea; (2) Birnirk can be divided into three phases: Early, A.D.
+        500-700, Middle, A.D. 700-800, and Late, A.D. 800-900; (3) Thule Eskimo culture
+        developed directly out of Birnirk; and (4) the development from Birnirk to
+        Thule took place because of over-utilization of seals as the primary food
+        resource and a change to a warmer climatic regime that further depleated the
+        already weak seal resource, resulting in an increased use of whales for food
+        and an expansion of hunting territories to the east.</dc:description>\n<dc:date>2007-05-25T17:39:57Z</dc:date>\n<dc:date>2013-03-14T19:03:55Z</dc:date>\n<dc:date>2007-05-25T17:39:57Z</dc:date>\n<dc:date>2013-03-14T19:03:55Z</dc:date>\n<dc:date>1976-12-01</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 20</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1333</dc:identifier>\n<dc:identifier>92158</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.20.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>75832655
+        bytes</dc:format>\n<dc:format>14160847 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1330</identifier>\n
+        \               <datestamp>2013-03-18T15:11:20Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Biesterfeldt:
+        A Post-Contact Coalescent Site on the Northeastern Plains</dc:title>\n<dc:creator>Wood,
+        W. Raymond</dc:creator>\n<dc:description>Biesterfeldt is a fortified village
+        of about sixty earth lodges on the Sheyenne River in eastern North Dakota.
+        A large central earth lodge faces a central plaza, with dwellings randomly
+        set elsewhere in the village. The site setting, village plan, and structures
+        are like those of historic Mandan and Arikara villages. Pottery attributes
+        are well within the range of sedentary Missouri River groups, and only a few
+        elements distinguish Biesterfeldt pottery from that of the Arikara. The site
+        is dated about 1750 to 1790, when trade goods had displaced many native tools
+        of bone and stone. In the thirty years since W. D. Strong dug the site, new
+        data have accumulated which require revisions in the interpretation of the
+        Biesterfeldt component: the artifact complex conforms to that of Post-Contact
+        Coalescent sites of the Plains Village pattern in the Missouri River trench
+        to the west. The identification of Biesterfeldt as Cheyenne is based on circumstantial
+        evidence; its occupants are uncertain, but the Cheyenne provide the most economical
+        hypothesis. The Cheyenne migration from the Minnesota area was by individual
+        groups, not as a tribal body. Sedentary villages on the Minnesota River and
+        on the Missouri were coeval with the village (or villages) on the Sheyenne
+        River. The latter river valley was occupied after 1700, perhaps by 1724, and
+        was abandoned about 1790. Present data suggest the Sheyenne-James region was
+        a marginal one in the Northeastern Plains sub-area. It was not occupied by
+        groups moving from the Missouri valley; rather, horticultural groups in the
+        Northeastern Plains may have been subjected to cultural processes analogous
+        to those which were responsible for the development of the Coalescent tradition
+        in the Missouri valley. Thus, they participated in the development of the
+        Plains Village pattern in an area well removed from the Missouri River, where
+        the Coalescent tradition reached its fullest expression. The Missouri River
+        was crossed by some Cheyenne in the 1600s, and the last of them abandoned
+        it about 1840, providing about two centuries for the tribe as a whole to abandon
+        a settled horticultural way of life. A review of purported Cheyenne sites
+        along the Missouri River reveals that none of them are clearly identifiable
+        as such. Only three of these village locations are not now flooded by the
+        Oahe Reservoir: one of them is near the Heart River, and two are on the Grand
+        River. The Cheyenne movement onto the High Plains was motivated by settling
+        an area advantageous for trade purposes, rich in bison, and temporarily removed
+        from military pressure by the Dakota.</dc:description>\n<dc:date>2007-05-25T17:39:12Z</dc:date>\n<dc:date>2013-03-14T19:05:29Z</dc:date>\n<dc:date>2007-05-25T17:39:12Z</dc:date>\n<dc:date>2013-03-14T19:05:29Z</dc:date>\n<dc:date>1971-08-17</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 15</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1330</dc:identifier>\n<dc:identifier>113378</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.15.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>40993735
+        bytes</dc:format>\n<dc:format>7044302 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1339</identifier>\n
+        \               <datestamp>2013-03-18T15:34:32Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Plains Indian
+        Studies: A Collection of Essays in Honor of John C. Ewers and Waldo R. Wedel</dc:title>\n<dc:contributor>Ubelaker,
+        Douglas H.</dc:contributor>\n<dc:contributor>Viola, Herman J.</dc:contributor>\n<dc:description>Much
+        of our knowledge of the ethnology, material culture, and prehistory of the
+        Plains of the United States can be linked with the careers and careful research
+        of the Smithsonian's John C. Ewers and Waldo R. Wedel. Following their retirement,
+        the Smithsonian chose to recognize their outstanding contributions to science
+        by sponsoring a two-day symposium in their honor. The essays in this volume
+        result from that symposium and are designed to illuminate both the diversity
+        of their interests and the intensity of their research efforts. Biographical
+        sketches of both men are provided by William N. Fenton and James H. Gunnerson,
+        followed by their complete bibliographies. Smithsonian historical perspective
+        is added by T.D. Stewart. The remaining essays focus on original research
+        that relates to their career interests conducted by individuals whom they
+        have influenced. These authors and their subjects are Parks, Douglas R. on
+        the scalped man character in Arikara and Pawnee folklore, Thomas R. Wessel
+        on problems of adaptation among the Blackfeet Indians, Loretta Fowler on political
+        developments among the Northern Arapahoe and Gros Ventres, Hugh A. Dempsey
+        on the nature of band organization among nonhorticultural Plains Indians,
+        James A. Hanson on the evolution of Plains garments during the years of initial
+        Indian White contact, Mildred Mott Wedel on the historical ethnology of the
+        Wichita-speaking peoples in the southern Central Plains, David Mayer Gradwohl
+        on the use of mussel shells in the removal of corn kernels for drying, Brian
+        Hesse on problems of faunal analysis, John A. Hotopp on the Central Plains
+        tradition in Iowa, George C. Frison on Paleo-Indian winter subsistence strategies,
+        and Dennis J. Stanford on a review of the evidence for the early presence
+        of man in the New World.</dc:description>\n<dc:date>2007-05-25T17:41:09Z</dc:date>\n<dc:date>2013-03-14T19:05:42Z</dc:date>\n<dc:date>2007-05-25T17:41:09Z</dc:date>\n<dc:date>2013-03-14T19:05:42Z</dc:date>\n<dc:date>1982-09-14</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 30</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1339</dc:identifier>\n<dc:identifier>113401</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.30.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>88578853
+        bytes</dc:format>\n<dc:format>9145042 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/19154</identifier>\n
+        \               <datestamp>2013-03-18T16:05:54Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Early Formative
+        Period of Coastal Ecuador: The Valdivia and Machalilla Phases</dc:title>\n<dc:creator>Meggers,
+        Betty J.</dc:creator>\n<dc:creator>Evans, Clifford</dc:creator>\n<dc:creator>Estrada,
+        Emilio</dc:creator>\n<dc:date>2012-10-24T13:59:53Z</dc:date>\n<dc:date>2013-03-14T19:06:26Z</dc:date>\n<dc:date>2012-10-24T13:59:53Z</dc:date>\n<dc:date>2013-03-14T19:06:26Z</dc:date>\n<dc:date>1965</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology, 1 : 1-234.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/19154</dc:identifier>\n<dc:identifier>113397</dc:identifier>\n<dc:identifier>10.5479/si.00810223.1.1</dc:identifier>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1365</identifier>\n
+        \               <datestamp>2013-03-18T17:47:16Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Ayalan Cemetery:
+        A Late Integration Period Burial Site on the South Coast of Ecuador</dc:title>\n<dc:creator>Ubelaker,
+        Douglas H.</dc:creator>\n<dc:description>Excavation of a\nMilagro Phase Integration
+        Period cemetery in 1972 and 1973 on the southern\ncoast of Ecuador yielded
+        54 large funerary urns (AD 730-AD 1730) and 25\nprimary and two secondary
+        burials (500 BC-AD 1155) located outside ofthe\nurns. Radiocarbon dates were
+        obtained from charcoal and bone collagen and\ntheir validity is discussed.
+        The urn burials with inverted urn coverings are\nsimilar to those reported
+        from other Milagro Phase cemetery sites in Guayas\nand Los Rios Provinces.
+        The urns at the Ayalan cemetery contained secondary\nskeletal remains of as
+        many as 25 persons per urn (average of about nine\npersons per urn) along
+        with artifacts, such as ceramic jars, plates and com-\npoteras, beads of shell,
+        stone, and pottery, ear and nose rings of copper, silver,\nand gold, triangular
+        copper plates (axe money), and small spheres of lead\nwith copper inserts.
+        Similar artifacts were found associated with the burials\noutside of the urns.\n
+        \ Detailed data are presented on archeological features, artifacts, and such\nbiological
+        subjects as demography, pathology, cranial measurements, non-\nmetric observations,
+        and cultural practices registered in bone. Cultural differ-\nences between
+        the urn features and the earlier non-urn features are minimal.\nBiological
+        data shared by urn and non-urn samples include cranial deforma-\ntion, reconstructed
+        living stature, and porotic hyperostosis. The urn sample\nshows greater life
+        expectancy at birth, lower infant mortality, greater adult\nlife expectancy
+        (especially in females), higher frequencies of foot bone altera-\ntions (probably
+        indicating kneeling posture), vertebral osteophytosis, arthritic\nlipping
+        at the knee, dental caries, alveolar abscesses, dental hypoplasia, and\nevidence
+        of infectious disease. On the other hand, the urn sample shows fewer\nlines
+        of increased density, fewer healed fractures, a lower frequency of joint\ndegeneration
+        (although more severe examples), and less dental calculus. An\nappendix by
+        Brian Hesse, \"The Association of Animal Bones with Burial\nFeatures,\" examines
+        the faunal remains associated with the burial features.</dc:description>\n<dc:date>2007-05-29T12:55:34Z</dc:date>\n<dc:date>2013-03-14T19:07:36Z</dc:date>\n<dc:date>2007-05-29T12:55:34Z</dc:date>\n<dc:date>2013-03-14T19:07:36Z</dc:date>\n<dc:date>1981-04-07</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 29</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1365</dc:identifier>\n<dc:identifier>113393</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.29.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>58553009
+        bytes</dc:format>\n<dc:format>9781032 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1328</identifier>\n
+        \               <datestamp>2013-03-18T18:19:44Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Sandpaintings
+        of the Navaho Shootingway and The Walcott Collection</dc:title>\n<dc:creator>Wyman,
+        Leland C.</dc:creator>\n<dc:description>A brief account of the Navaho and
+        their ceremonial system (\"religion\") and practice of ritual, with its sanctioning
+        mythology, provides background for the discussion of the sandpaintings of
+        the Shootingway chantway, its Mountain-Shootingway phase, and its Evilway
+        ritual. A short section on the mythology of the male and female branches of
+        Shootingway relates its major mythic motifs to the following account of the
+        symbols and designs of its sandpaintings. Special attention is given to the
+        rarely performed Sun's House phase of male Shootingway and the double sandpainting,
+        Sky-reaching Rock, the most elaborate of all sandpainting designs, which is
+        especially associated with this phase. Finally, there is a detailed descriptive
+        catalog of the 28 reproductions of Navaho sandpaintings in the Mrs. Charles
+        D. Walcott Collection, now in the United States National Museum.</dc:description>\n<dc:date>2007-05-25T17:38:50Z</dc:date>\n<dc:date>2013-03-14T19:08:34Z</dc:date>\n<dc:date>2007-05-25T17:38:50Z</dc:date>\n<dc:date>2013-03-14T19:08:34Z</dc:date>\n<dc:date>1970-06-11</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 13</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1328</dc:identifier>\n<dc:identifier>113380</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.13.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>44489789
+        bytes</dc:format>\n<dc:format>7280158 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repository.si.edu:10088/1372</identifier>\n
+        \               <datestamp>2013-03-18T19:38:48Z</datestamp>\n                <setSpec>com_10088_796</setSpec>\n
+        \               <setSpec>col_10088_1228</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>A Dictionary
+        of Non-Scientific Names of Freshwater Crayfishes (Astacoidea and Parastacoidea),
+        Including Other Words and Phrases Incorporating Crayfish Names</dc:title>\n<dc:creator>Hart,
+        C. W. , Jr.</dc:creator>\n<dc:description>A\ndictionary encompassing 1474
+        non-scientific names (vernacular, common, and fabricated) or\nfreshwater crayfishes,
+        including place-names and slang/argot expressions employing the word\n\"crayfish\"
+        or its synonyms. Citations of most source materials are included, as well
+        as examples\nof uses in literature over time. A Language Index of approximately
+        100 languages and/or dialects\ngives acess to sources and other data in the
+        word list. A Species Index lists the non-scientific\nnames usually associated
+        with discrete crayfish species.</dc:description>\n<dc:date>2007-05-29T12:57:35Z</dc:date>\n<dc:date>2013-03-14T19:09:42Z</dc:date>\n<dc:date>2007-05-29T12:57:35Z</dc:date>\n<dc:date>2013-03-14T19:09:42Z</dc:date>\n<dc:date>1994-04-20</dc:date>\n<dc:identifier>Smithsonian
+        Contributions to Anthropology; 38</dc:identifier>\n<dc:identifier>0081-0223</dc:identifier>\n<dc:identifier>http://hdl.handle.net/10088/1372</dc:identifier>\n<dc:identifier>15932</dc:identifier>\n<dc:identifier>1943-6661</dc:identifier>\n<dc:identifier>10.5479/si.00810223.38.1</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:format>45055251
+        bytes</dc:format>\n<dc:format>5153780 bytes</dc:format>\n<dc:format>application/pdf</dc:format>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n    </ListRecords>\n</OAI-PMH>\n"}
+    headers:
+      connection: [close]
+      content-type: [application/xml]
+      date: ['Mon, 15 Jun 2015 19:42:37 GMT']
+      server: [Apache-Coyote/1.1]
+      transfer-encoding: [chunked]
+    status: {code: 200, message: OK}
+version: 1

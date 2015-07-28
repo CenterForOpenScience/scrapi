@@ -1,12 +1,26 @@
 from __future__ import unicode_literals
 
-import httpretty
+import mock
+import pytest
 from datetime import date
 
+from scrapi import requests
 from scrapi.base import OAIHarvester
 from scrapi.linter import RawDocument
 
 from .utils import TEST_OAI_DOC
+
+
+@pytest.fixture(autouse=True)
+def mock_requests(monkeypatch):
+    mock_req = mock.Mock()
+    monkeypatch.setattr(requests, 'requests', mock_req)
+    return mock_req
+
+
+@pytest.fixture(autouse=True)
+def mock_record_transactions(monkeypatch):
+    monkeypatch.setattr(requests.settings, 'RECORD_HTTP_TRANSACTIONS', True)
 
 
 class TestHarvester(OAIHarvester):
@@ -17,22 +31,23 @@ class TestHarvester(OAIHarvester):
     property_list = ['type', 'source', 'publisher', 'format', 'date']
     verify = True
 
-    @httpretty.activate
-    def harvest(self, start_date=None, end_date=None):
+    def harvest(self, mock_requests, start_date=None, end_date=None):
+        request_url = 'http://validOAI.edu/?sonofaplumber'
+        requests.HarvesterResponse(
+            ok=True,
+            method='get',
+            url=request_url.lower(),
+            content=TEST_OAI_DOC,
+            content_type="application/XML"
+        ).save()
 
-        start_date = date(2015, 03, 14)
-        end_date = date(2015, 03, 16)
-
-        request_url = 'http://validAI.edu/?from={}&to={}'.format(start_date, end_date)
-
-        httpretty.register_uri(httpretty.GET, request_url,
-                               body=TEST_OAI_DOC,
-                               content_type="application/XML")
+        start_date = date(2015, 3, 14)
+        end_date = date(2015, 3, 16)
 
         records = self.get_records(request_url, start_date, end_date)
 
         return [RawDocument({
-            'doc': str(TEST_OAI_DOC),
+            'doc': TEST_OAI_DOC,
             'source': 'test',
             'filetype': 'XML',
             'docID': "1"
@@ -46,7 +61,7 @@ class TestOAIHarvester(object):
 
     def test_normalize(self):
         results = [
-            self.harvester.normalize(record) for record in self.harvester.harvest()
+            self.harvester.normalize(record) for record in self.harvester.harvest(mock_requests)
         ]
 
         for res in results:

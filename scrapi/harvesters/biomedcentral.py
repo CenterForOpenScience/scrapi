@@ -107,7 +107,7 @@ class BiomedCentralHarvester(JSONHarvester):
                     {
                         'doc': json.dumps(record),
                         'source': self.short_name,
-                        'docID': doc_id.decode('utf-8'),
+                        'docID': doc_id,
                         'filetype': 'json'
                     }
                 )
