@@ -14,5 +14,10 @@ class WustlopenscholarshipHarvester(OAIHarvester):
     url = 'http://openscholarship.wustl.edu/do/oai/'
 
     base_url = 'http://openscholarship.wustl.edu/do/oai/'
-    property_list = ['date', 'source', 'identifier', 'type', 'format']
+    property_list = ['date', 'source', 'identifier', 'type', 'format', 'setSpec']
     timezone_granularity = True
+
+    approved_sets = ['cse_research', 'facpubs', 'art_sci_facpubs',
+                     'lib_research', 'artarch_facpubs', 'bio_facpubs', 'brown_facpubs',
+                     'cfh_facpubs', 'engl_facpubs', 'hist_facpubs', 'math_facpubs',
+                     'psych_facpubs', 'lib_present', 'lib_papers', 'wgssprogram']
