@@ -13,6 +13,7 @@ addons:
   postgresql: "9.4"
 
 install:
+  - cp api/api/settings/local-travis.py api/api/settings/local.py
   - pip install -r dev-requirements.txt
   - pip install coveralls
   - cp scrapi/settings/travis-dist.py scrapi/settings/local.py
