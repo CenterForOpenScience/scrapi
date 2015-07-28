@@ -1,4 +1,5 @@
 import vcr
+import pytest
 
 from scrapi.base import helpers
 
@@ -32,8 +33,8 @@ class TestHelpers(object):
 
     def test_oai_extract_url(self):
         identifiers = 'I might be a url but rly I am naaaahhttt'
-        extraction_attempt = helpers.oai_extract_url(identifiers)
-        extraction_attempt
+        with pytest.raises(ValueError):
+            helpers.oai_extract_url(identifiers)
 
     def test_process_contributors(self):
         args = ['Stardust Rhodes', 'Golddust Rhodes', 'Dusty Rhodes']
