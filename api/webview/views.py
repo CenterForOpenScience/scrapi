@@ -9,7 +9,7 @@ from api.webview.serializers import DocumentSerializer
 
 class DocumentList(generics.ListCreateAPIView):
     """
-    List all pushed data, or push to the API
+    List all documents in the SHARE API
     """
     serializer_class = DocumentSerializer
 
@@ -26,7 +26,7 @@ class DocumentList(generics.ListCreateAPIView):
 
 class DocumentsFromSource(generics.ListCreateAPIView):
     """
-    List all documents from a source
+    List all documents from a particular source
     """
     serializer_class = DocumentSerializer
 
@@ -45,7 +45,7 @@ class DocumentsFromSource(generics.ListCreateAPIView):
 @xframe_options_exempt
 def document_detail(request, source, docID):
     """
-    Retrieve a document instance.
+    Retrieve one particular document.
     """
     try:
         all_sources = Document.objects.filter(source=source)
