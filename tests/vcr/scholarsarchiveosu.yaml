@@ -1,0 +1,178 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/13.4.0]
+    method: GET
+    uri: http://ir.library.oregonstate.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2014-12-19T00:00:00Z&until=2014-12-21T00:00:00Z
+  response:
+    body: {string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
+        href=\"static/style.xsl\"?><OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/
+        http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"><responseDate>2015-07-30T12:33:19Z</responseDate>\n
+        \   <request verb=\"ListRecords\" metadataPrefix=\"oai_dc\" from=\"2014-12-19T00:00:00Z\"
+        until=\"2014-12-21T00:00:00Z\">http://ir.library.oregonstate.edu/oai/request</request>\n
+        \   <ListRecords>\n        <record>\n            <header>\n                <identifier>oai:ir.library.oregonstate.edu:1957/49273</identifier>\n
+        \               <datestamp>2014-12-20T01:00:08Z</datestamp>\n                <setSpec>com_1957_88</setSpec>\n
+        \               <setSpec>col_1957_89</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Intravenous
+        regional limb perfusion with tiludronate in horses</dc:title>\n<dc:contributor>Duesterdieck-Zellmer,
+        Katja F.</dc:contributor>\n<dc:contributor>Iwaniec, Urszula</dc:contributor>\n<dc:contributor>Savage,
+        Tom</dc:contributor>\n<dc:contributor>Parker, Jill E.</dc:contributor>\n<dc:subject>Tiludronate</dc:subject>\n<dc:description>Graduation
+        date: 2014</dc:description>\n<dc:description>Access restricted to the OSU
+        Community, at author's request, from June 20, 2014 - Dec. 20, 2014</dc:description>\n<dc:description>Intravenous
+        regional limb perfusion (IVRLP) with tiludronate is a commonly used treatment
+        for distal limb orthopedic disease in horses, but doses and protocols are
+        anecdotal. IVRLP exposes articular cartilage within the perfused area to tiludronate,
+        raising concerns about safety of this treatment, as high tiludronate concentrations
+        (\u226519mg/L) were harmful for cartilage in vitro. This is the first study
+        to evaluate synovial fluid tiludronate concentrations following IVRLP to determine
+        safety for articular cartilage in horses. Synovial fluid cytology variables
+        and tiludronate concentrations were evaluated in the navicular bursa, coffin
+        and fetlock joints following IVRLP of one front limb with low dose (0.5mg,
+        n=6) or high dose (50mg, n=6) tiludronate. The contralateral limb was perfused
+        with saline as a control. Synovial fluid samples were taken 1 week prior and
+        30 minutes following IVRLP from all structures and 24 hours post-perfusion
+        from coffin and fetlock joints. Synovial fluid tiludronate concentrations
+        were lower in&#13;\nlimbs perfused with 0.5mg in all synovial structures (metacarpophalangeal
+        joint = 3.7 \xB1 1.5 mg/L, distal interphalangeal joint = 16.3 \xB1 1.9 mg/L,
+        navicular bursa = 6.0 \xB1 1.9 mg/L) than in limbs perfused with 50 mg (metacarpophalangeal
+        joint = 0.04 \xB1 0.02 mg/L, distal interphalangeal joint = 0.12 \xB1 0.06
+        mg/L, navicular bursa = 0.08 \xB1 0.03 mg/L) at tourniquet release. Only limbs
+        perfused with 50mg had tiludronate detectable in synovial fluid 24 hours post-perfusion.
+        There were no significant differences in synovial fluid cytology variables
+        between samples from limbs perfused with saline vs. tiludronate. Thus, perfusion
+        with tiludronate at doses used did not cause synovial inflammation in comparison
+        to saline control limbs. Cytology variables did increase over time in both
+        treated and control limbs, suggesting that IVRLP and/or synovial fluid sample
+        acquisition stimulates an inflammatory response within synovial structures.
+        Doses of 0.5mg or 50mg of tiludronate given via IVRLP resulted in synovial
+        fluid concentrations that can be considered safe for articular cartilage based
+        on previous in-vitro data. Tiludronate concentrations in bone should be explored
+        to determine safety for bone and possible treatment efficacy for orthopaedic
+        diseases of the distal equine limb.</dc:description>\n<dc:date>2014-06-20T20:40:45Z</dc:date>\n<dc:date>2014-12-20T09:00:08Z</dc:date>\n<dc:date>2014-06-10</dc:date>\n<dc:date>2014-06-10</dc:date>\n<dc:type>Thesis/Dissertation</dc:type>\n<dc:identifier>http://hdl.handle.net/1957/49273</dc:identifier>\n<dc:language>en_US</dc:language>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:ir.library.oregonstate.edu:1957/50452</identifier>\n
+        \               <datestamp>2014-12-19T01:00:08Z</datestamp>\n                <setSpec>com_1957_25639</setSpec>\n
+        \               <setSpec>com_1957_43908</setSpec>\n                <setSpec>col_1957_25640</setSpec>\n
+        \               <setSpec>col_1957_43909</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Novel Nitro-PAH
+        Formation from Heterogeneous Reactions of PAHs with NO\u2082, NO\u2083/N\u2082O\u2085,
+        and OH Radicals: Prediction, Laboratory Studies and Mutagenicity</dc:title>\n<dc:description>This
+        is an author's peer-reviewed final manuscript, as accepted by the publisher.
+        The published article is copyrighted by the American Chemical Society and
+        can be found at: http://pubs.acs.org/journal/esthag.</dc:description>\n<dc:description>The
+        heterogeneous reactions of benzo[a]pyrene-d\u2081\u2082 (BaP-d\u2081\u2082),
+        benzo[k]fluoranthene-d\u2081\u2082 (BkF-d\u2081\u2082), benzo[ghi]perylene-d\u2081\u2082
+        (BghiP-d\u2081\u2082), dibenzo[a,i]pyrene-d\u2081\u2084 (DaiP-d\u2081\u2084),
+        and dibenzo[a,l]pyrene (DalP) with NO\u2082, NO\u2083/N\u2082O\u2085, and
+        OH radicals were investigated at room temperature and atmospheric pressure
+        in an indoor Teflon chamber and novel mono NO\u2082-DaiP, and mono NO\u2082-DalP
+        products were identified. Quartz fiber filters (QFF) were used as a reaction
+        surface and the filter extracts were analyzed by GC/MS for nitrated-PAHs (NPAHs)
+        and tested in the Salmonella mutagenicity assay, using Salmonella typhimurium
+        strain TA98 (with and without metabolic activation). In parallel to the laboratory
+        experiments, a theoretical study was conducted to rationalize the formation
+        of NPAH isomers based on the thermodynamic stability of OH-PAH intermediates,
+        formed from OH-radical-initiated reactions. NO\u2082 and NO\u2083/N\u2082O\u2085
+        were effective oxidizing agents in transforming PAHs to NPAHs, with BaP-d\u2081\u2082
+        being the most readily nitrated. Reaction of BaP-d\u2081\u2082, BkF-d\u2081\u2082
+        and BghiP-d\u2081\u2082 with NO\u2082 and NO\u2083/N\u2082O\u2085 resulted
+        in the formation of more than one mono-nitro isomer product, while the reaction
+        of DaiP-d\u2081\u2084 and DalP resulted in the formation of only one mono-nitro
+        isomer product. The direct-acting mutagenicity increased the most after NO\u2083/N\u2082O\u2085
+        exposure, particularly for BkF-d\u2081\u2082 in which di-NO\u2082-BkF-d\u2081\u2080
+        isomers were measured. The deuterium isotope effect study suggested that substitution
+        of&#13;\ndeuterium for hydrogen lowered both the direct and indirect acting
+        mutagenicity of NPAHs and may result in an underestimation of the mutagenicity
+        of the novel NPAHs identified in this study.</dc:description>\n<dc:date>2014-07-16T00:27:32Z</dc:date>\n<dc:date>2014-12-19T09:00:08Z</dc:date>\n<dc:date>2014-01-07</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Jariyasopit,
+        N., McIntosh, M., Zimmermann, K., Arey, J., Atkinson, R., Cheong, P. H. Y.,
+        ... &amp; Massey Simonich, S. L. (2014). Novel Nitro-PAH Formation from Heterogeneous
+        Reactions of PAHs with NO\u2082, NO\u2083/N\u2082O\u2085, and OH Radicals:
+        Prediction, Laboratory Studies, and Mutagenicity. Environmental Science &amp;
+        Technology, 48(1), 412-419. doi:10.1021/es4043808</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1957/50452</dc:identifier>\n<dc:identifier>10.1021/es4043808</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:relation>Environmental
+        Science &amp; Technology</dc:relation>\n<dc:relation>Vol. 48 no. 1</dc:relation>\n<dc:publisher>American
+        Chemical Society</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n
+        \       <record>\n            <header>\n                <identifier>oai:ir.library.oregonstate.edu:1957/52998</identifier>\n
+        \               <datestamp>2014-12-20T01:00:07Z</datestamp>\n                <setSpec>com_1957_7530</setSpec>\n
+        \               <setSpec>com_1957_43908</setSpec>\n                <setSpec>col_1957_12727</setSpec>\n
+        \               <setSpec>col_1957_43909</setSpec>\n            </header>\n
+        \           <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>EARLY BUD-BREAK
+        1 (EBB1) is a regulator of release from seasonal dormancy in poplar trees</dc:title>\n<dc:subject>Adaptation</dc:subject>\n<dc:subject>Meristem</dc:subject>\n<dc:subject>Populus</dc:subject>\n<dc:subject>Phenology</dc:subject>\n<dc:subject>AP2/ERF</dc:subject>\n<dc:subject>Dormancy</dc:subject>\n<dc:subject>Bud-break</dc:subject>\n<dc:subject>Regeneration</dc:subject>\n<dc:subject>Climate
+        change</dc:subject>\n<dc:description>This is an author's peer-reviewed final
+        manuscript, as accepted by the publisher. The published article is copyrighted
+        by the National Academy of Sciences of the United States of America and can
+        be found at: http://www.pnas.org/.</dc:description>\n<dc:description>Trees
+        from temperate latitudes transition between growth and dormancy to survive
+        dehydration and freezing stress during winter months. We employed activation
+        tagging to isolate a dominant mutation affecting release from dormancy, and
+        identified the corresponding gene EARLY BUD-BREAK 1 (EBB1). We demonstrate
+        through positioning of the tag, expression analysis, and retransformation
+        experiments that EBB1 encodes a putative AP2/ERF transcription factor. Transgenic
+        upregulation of the gene caused early bud-flush, while down-regulation delayed
+        bud-break. Native EBB1 expression was highest in actively-growing apices,
+        undetectable during the dormancy period, but rapidly increased prior to bud-break.
+        The EBB1 transcript was localized in the L1/L2 layers of the shoot meristem
+        and leaf primordia. EBB1-overexpressing transgenic plants displayed enlarged
+        shoot meristems, open and poorly differentiated buds, and a higher rate of
+        cell division in the apex. Transcriptome analyses of the EBB1 transgenics
+        identified 971 differentially-expressed genes whose expression correlated
+        with the EBB1 expression changes in the transgenic plants. Promoter analysis
+        among the differentially expressed genes for presence of a canonical EBB1
+        binding site identified 65 putative target genes indicative of a broad regulatory
+        context of EBB1 function. Our results suggest that EBB1 has a major and integrative
+        role in reactivation of meristem activity after winter dormancy.</dc:description>\n<dc:date>2014-10-16T23:34:55Z</dc:date>\n<dc:date>2014-12-20T09:00:07Z</dc:date>\n<dc:date>2014-07-08</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Yordanov,
+        Y. S., Ma, C., Strauss, S. H., &amp; Busov, V. B. (2014). EARLY BUD-BREAK
+        1 (EBB1) is a regulator of release from seasonal dormancy in poplar trees.
+        Proceedings of the National Academy of Sciences, 111(27), 10001-10006. doi:10.1073/pnas.1405621111</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1957/52998</dc:identifier>\n<dc:identifier>10.1073/pnas.1405621111</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:relation>Proceedings
+        of the National Academy of Sciences</dc:relation>\n<dc:relation>Vol. 111 no.
+        27</dc:relation>\n<dc:publisher>National Academy of Sciences of the United
+        States of America</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n
+        \       <record>\n            <header>\n                <identifier>oai:ir.library.oregonstate.edu:1957/54747</identifier>\n
+        \               <datestamp>2014-12-19T08:19:47Z</datestamp>\n                <setSpec>com_1957_88</setSpec>\n
+        \               <setSpec>col_1957_89</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Oregon
+        industrial and engineering teacher's perceived professional development needs</dc:title>\n<dc:contributor>Stern,
+        Sam</dc:contributor>\n<dc:contributor>Russ-Eft, Darlene</dc:contributor>\n<dc:contributor>Johnson,
+        Joe</dc:contributor>\n<dc:contributor>Thompson, Greg</dc:contributor>\n<dc:contributor>Osei-Kofi,
+        Nana</dc:contributor>\n<dc:subject>Career and Technical Education</dc:subject>\n<dc:subject>Professional
+        Development</dc:subject>\n<dc:subject>CTE</dc:subject>\n<dc:description>Graduation
+        date: 2015</dc:description>\n<dc:description>Professional development is a
+        critical part of education, especially in career and technical education (CTE).
+        CTE programs have rapidly changing technological foundations, and while the
+        CTE teachers' primary focus is to prepare students for entry-level positions
+        in their occupational areas, CTE teachers are also required to embed academics
+        into their curriculum as well. The purpose of this census study was to determine
+        the perceived professional development needs of secondary Oregon industrial
+        and engineering (I &amp; E) teachers (N=193) during the 2013-2014 school year;
+        112 responded for a return rate of 58%.&#13;\nThis study revealed that Oregon's
+        I &amp; E workforce is older than in other content areas in the state, with
+        over half of the respondents over 50 years old and nearing retirement. This
+        study revealed a difference in priorities of the perceived CTE professional
+        development needs between federal and state leaders with those who work in
+        the field. Grant writing and funding opportunities, motivating students to
+        learn, and developing curriculum-based school-to-work and school-to-career
+        activities were the top three professional development needs identified by
+        respondents. This study also found that the sustainability of programs was
+        a major concern for professional development by the respondents.</dc:description>\n<dc:date>2014-12-18T23:48:43Z</dc:date>\n<dc:date>2014-12-18T23:48:43Z</dc:date>\n<dc:date>2014-12-03</dc:date>\n<dc:date>2014-12-03</dc:date>\n<dc:type>Thesis/Dissertation</dc:type>\n<dc:identifier>http://hdl.handle.net/1957/54747</dc:identifier>\n<dc:language>en_US</dc:language>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n    </ListRecords>\n</OAI-PMH>\n"}
+    headers:
+      connection: [close]
+      content-type: [application/xml]
+      date: ['Thu, 30 Jul 2015 19:33:19 GMT']
+      server: [Apache/2.2.15 (CentOS)]
+      transfer-encoding: [chunked]
+    status: {code: 200, message: OK}
+version: 1
