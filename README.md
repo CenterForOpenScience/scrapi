@@ -192,6 +192,7 @@ $ invoke harvester harvester-name --days=5
 
 -To run on the OSF type
 ```bash
+$ inv alias share share_v2
 $ inv provider_map 
 ```
 
