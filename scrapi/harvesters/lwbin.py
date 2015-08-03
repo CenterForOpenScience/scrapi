@@ -65,8 +65,8 @@ def process_contributors(authors, emails):
 
     contributor_list = []
     append_emails = True
-    if len(authors) > len(emails):
-        append_emails = False  # if there are more authors than emails, do no append emails to authors; instead create new authors.
+    if len(authors) > 1 or len(emails) > 1:
+        append_emails = False  # if there are more than one author or eaiil, create new users
 
     for ind, person in enumerate(authors):
         name = HumanName(person)
