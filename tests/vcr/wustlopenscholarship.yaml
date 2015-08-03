@@ -1,0 +1,72 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/13.4.0]
+    method: GET
+    uri: http://openscholarship.wustl.edu/do/oai/?verb=ListRecords&metadataPrefix=oai_dc&from=2014-12-19T00:00:00Z&until=2014-12-21T00:00:00Z
+  response:
+    body:
+      string: !!binary |
+        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
+        d0UHX3BGM46u/PXBmP8shP+EZPJvLODQVHMiAAA=
+    headers:
+      cache-control: [private]
+      connection: [keep-alive]
+      content-encoding: [gzip]
+      content-type: [text/xml; charset=UTF-8]
+      date: ['Tue, 28 Jul 2015 14:08:07 GMT']
+      server: [nginx/1.2.1]
+      set-cookie: [bp_plack_session=0d70e61a85036ab6351bb98da869c8d9e7f88902; path=/;
+          HttpOnly]
+      transfer-encoding: [chunked]
+    status: {code: 200, message: OK}
+version: 1
