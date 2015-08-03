@@ -11,7 +11,7 @@ from scrapi.base import OAIHarvester
 class CyberleninkaHarvester(OAIHarvester):
     short_name = 'cyberleninka'
     long_name = 'CyberLeninka - Russian open access scientific library'
-    url = 'http://cyberleninka.ru/oai'
+    url = 'http://cyberleninka.ru/'
     force_request_update = True
 
     namespaces = {

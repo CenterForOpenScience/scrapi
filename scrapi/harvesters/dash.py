@@ -11,7 +11,7 @@ from scrapi.base import OAIHarvester
 class DashHarvester(OAIHarvester):
     short_name = 'dash'
     long_name = 'Digital Access to Scholarship at Harvard'
-    url = 'http://dash.harvard.edu/oai/request'
+    url = 'http://dash.harvard.edu'
 
     base_url = 'http://dash.harvard.edu/oai/request'
     property_list = ['date', 'relation', 'identifier', 'type', 'rights']

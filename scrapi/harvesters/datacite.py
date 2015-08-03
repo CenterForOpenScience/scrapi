@@ -12,7 +12,7 @@ from scrapi.base.helpers import updated_schema, oai_extract_dois
 class DataciteHarvester(OAIHarvester):
     short_name = 'datacite'
     long_name = 'DataCite MDS'
-    url = 'http://oai.datacite.org/oai'
+    url = 'http://oai.datacite.org/'
 
     base_url = 'http://oai.datacite.org/oai'
     property_list = ['date', 'identifier', 'setSpec', 'description']
