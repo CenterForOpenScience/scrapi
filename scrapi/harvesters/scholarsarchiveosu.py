@@ -12,7 +12,7 @@ from scrapi.base import OAIHarvester
 class ScholarsarchiveosuHarvester(OAIHarvester):
     short_name = 'scholarsarchiveosu'
     long_name = 'ScholarsArchive@OSU'
-    url = 'http://ir.library.oregonstate.edu/oai/request'
+    url = 'http://ir.library.oregonstate.edu/'
 
     base_url = 'http://ir.library.oregonstate.edu/oai/request'
 
