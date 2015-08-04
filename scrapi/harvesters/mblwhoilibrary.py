@@ -12,7 +12,7 @@ from scrapi.base import OAIHarvester
 class MblwhoilibraryHarvester(OAIHarvester):
     short_name = 'mblwhoilibrary'
     long_name = 'WHOAS at MBLWHOI Library'
-    url = 'http://darchive.mblwhoilibrary.org/oai/request'
+    url = 'http://darchive.mblwhoilibrary.org'
 
     @property
     def schema(self):

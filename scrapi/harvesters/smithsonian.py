@@ -14,7 +14,7 @@ from scrapi.base import OAIHarvester
 class SiHarvester(OAIHarvester):
     short_name = 'smithsonian'
     long_name = 'Smithsonian Digital Repository'
-    url = 'http://repository.si.edu/oai/request'
+    url = 'http://repository.si.edu'
 
     @property
     def schema(self):
