@@ -56,3 +56,13 @@ class TestHelpers(object):
         assert records
         assert token
         assert len(records) == 50
+
+    def test_extract_doi_from_text(self):
+        text = ["""
+        Ryder, Z., & Dudley, B. R. (2014). Methods of WOO WOO WOO and D3 comming atcha by a
+        Continuous Flow Microreactor. Crystal Growth & Design, 14(9),
+        4759-4767. doi:10.1021/woowoowoo yep yep yep what he do"""]
+
+        extracted_doi = helpers.extract_doi_from_text(text)
+
+        assert extracted_doi == 'http://dx.doi.org/10.1021/woowoowoo'
