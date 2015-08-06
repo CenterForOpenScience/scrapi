@@ -11,8 +11,8 @@ from nameparser import HumanName
 
 from scrapi import requests
 
-
 URL_REGEX = re.compile(r'(https?://\S*\.\S*)')
+DOI_REGEX = re.compile(r'(doi:10\.\S*)')
 
 ''' Takes a value, returns a function that always returns that value
     Useful inside schemas for defining constants '''
@@ -186,3 +186,13 @@ def oai_get_records_and_token(url, throttle, force, namespaces, verify):
     )
 
     return records, token
+
+
+def extract_doi_from_text(identifiers):
+    identifiers = [identifiers] if not isinstance(identifiers, list) else identifiers
+    for item in identifiers:
+        try:
+            found_url = DOI_REGEX.search(item).group()
+            return 'http://dx.doi.org/{}'.format(found_url.replace('doi:', ''))
+        except AttributeError:
+            continue

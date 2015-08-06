@@ -12,7 +12,7 @@ from scrapi.base import OAIHarvester
 class IcpsrHarvester(OAIHarvester):
     short_name = 'icpsr'
     long_name = 'Inter-University Consortium for Political and Social Research'
-    url = 'http://www.icpsr.umich.edu/icpsrweb/ICPSR/oai/studies'
+    url = 'http://www.icpsr.umich.edu/'
 
     @property
     def schema(self):

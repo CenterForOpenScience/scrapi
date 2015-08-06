@@ -11,7 +11,7 @@ from scrapi.base import OAIHarvester
 class ScholarworksumassHarvester(OAIHarvester):
     short_name = 'scholarworks_umass'
     long_name = 'ScholarWorks@UMass Amherst'
-    url = 'http://scholarworks.umass.edu/do/oai/'
+    url = 'http://scholarworks.umass.edu'
 
     base_url = 'http://scholarworks.umass.edu/do/oai/'
     property_list = ['date', 'source', 'identifier', 'type', 'format']

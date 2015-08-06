@@ -13,7 +13,7 @@ scrapi
 ## Getting started
 
 - To run absolutely everyting, you will need to:
-    - Install requirements.
+    - Install requirements
     - Install Elasticsearch
     - Install Cassandra
     - Install harvesters
@@ -35,20 +35,56 @@ $ pip install -r dev-requirements.txt
 
 This will also install the core requirements like normal.
 
-### Installing Cassandra and Elasticsearch
-_note: JDK 7 must be installed for Cassandra and Elasticsearch to run_
+### Installing Elasticsearch
 
-_note: As long as you don't specify Cassandra or Elasticsearch and set RECORD_HTTP_TRANSACTIONS to ```False``` in your local.py, you shouldn't need to have them installed to get at least basic functionality working_
+Elasticsearch is required only if "elasticsearch" is specified in your settings, or if RECORD_HTTP_TRANSACTIONS is set to ```True```.
+
+_Note: Elasticsearch requires JDK 7._
+
+#### Mac OSX
+
+```bash
+$ brew install elasticsearch
+```
+
+#### Ubuntu
+
+1. Download and install the Public Signing Key.
+   ```bash
+   $ wget -qO - https://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
+   ```
+
+2. Add the ElasticSearch repository to yout /etc/apt/sources.list.
+   ```bash
+   $ sudo add-apt-repository "deb http://packages.elasticsearch.org/elasticsearch/1.4/debian stable main"
+   ```
+
+3. Install the package
+   ```bash
+   $ sudo apt-get update
+   $ sudo apt-get install elasticsearch
+```
+
+#### Running
+
+```bash
+$ elasticsearch
+```
+
+### Installing Cassandra
+
+Cassandra is required only if "cassandra" is specified in your settings, or if RECORD_HTTP_TRANSACTIONS is set to ```True```.
+
+_Note: Cassandra requires JDK 7._
 
 #### Mac OSX
 
 ```bash
 $ brew install cassandra
-$ brew install elasticsearch
 ```
 
 #### Ubuntu
-##### Install Cassandra
+
 1. Check which version of Java is installed by running the following command:
    ```bash
    $ java -version
@@ -71,29 +107,12 @@ $ brew install elasticsearch
    $ sudo apt-get install cassandra
    ```
 
-##### Install ElasticSearch
-1. Download and install the Public Signing Key.
-   ```bash
-   $ wget -qO - https://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
-   ```
+#### Running
 
-2. Add the ElasticSearch repository to yout /etc/apt/sources.list.
-   ```bash
-   $ sudo add-apt-repository "deb http://packages.elasticsearch.org/elasticsearch/1.4/debian stable main"
-   ```
-
-3. Install the package
-   ```bash
-   $ sudo apt-get update
-   $ sudo apt-get install elasticsearch
-```
-
-
-__Now, just run__
 ```bash
 $ cassandra
-$ elasticsearch
 ```
+
 
 Or, if you'd like your cassandra session to be bound to your current session, run:
 ```bash
@@ -179,6 +198,8 @@ or, just one with
 $ invoke harvester harvester-name
 ```
 
+For local development, running the ```mit``` harvester is recommended.
+
 Note: harvester-name is the same as the defined harvester "short name".
 
 Invove a harvester a certain number of days back with the ```--days``` argument. For example, to run a harvester 5 days in the past, run:
@@ -188,11 +209,38 @@ $ invoke harvester harvester-name --days=5
 ```
 
 
-###Working with the OSF
+### Working with the OSF
 
--To run on the OSF type
+To configure scrapi to work in a local OSF dev environment:
+
+1. Ensure `'elasticsearch'` is in the `NORMALIZED_PROCESSING` list in `scrapi/settings/local.py`
+1. Run at least one harvester
+1. Configure the `share_v2` alias
+1. Generate the provider map
+
+#### Aliases
+
+Multiple SHARE indices may be used by the OSF. By default, OSF uses the ```share_v2``` index. Activate this alias by running:
+
 ```bash
+$ inv alias share share_v2
+```
+
+Note that aliases must be activated before the provider map is generated.
+
+#### Provider Map
+
+```bash
+$ inv alias share share_v2
 $ inv provider_map 
+```
+
+#### Delete the Elasticsearch index
+
+To remove both the ```share``` and ```share_v2``` indices from elasticsearch:
+
+```bash
+$ curl -XDELETE 'localhost:9200/share*'
 ```
 
 ### Testing
