@@ -57,7 +57,7 @@ class HarvesterResponse(models.Model):
 
 def _maybe_load_response(method, url):
     try:
-        return HarvesterResponse.get(url=url, method=method)
+        return HarvesterResponse.get(url=url.lower(), method=method)
     except HarvesterResponse.DoesNotExist:
         return None
 
@@ -75,8 +75,7 @@ def record_or_load_response(method, url, throttle=None, force=False, params=None
     else:
         logger.info('Making request to "{}"'.format(url))
 
-    if throttle:
-        time.sleep(throttle)
+    maybe_sleep(throttle)
 
     response = requests.request(method, url, **kwargs)
 
@@ -88,7 +87,7 @@ def record_or_load_response(method, url, throttle=None, force=False, params=None
 
     if not resp:
         return HarvesterResponse(
-            url=url,
+            url=url.lower(),
             method=method,
             ok=response.ok,
             content=response.content,
@@ -108,6 +107,12 @@ def record_or_load_response(method, url, throttle=None, force=False, params=None
     ).save()
 
 
+def maybe_sleep(sleepytime):
+    # exists so that this alone can be mocked in tests
+    if sleepytime:
+        time.sleep(sleepytime)
+
+
 def request(method, url, params=None, **kwargs):
     """Make a recorded request or get a record matching method and url
 
@@ -125,8 +130,7 @@ def request(method, url, params=None, **kwargs):
 
     logger.info('Making request to "{}"'.format(url))
     throttle = kwargs.pop('throttle', 0)
-    if throttle:
-        time.sleep(throttle)
+    maybe_sleep(throttle)
     # Need to prevent force from being passed to real requests module
     kwargs.pop('force', None)
     return requests.request(method, url, **kwargs)

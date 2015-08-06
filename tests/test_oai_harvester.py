@@ -29,13 +29,14 @@ class TestHarvester(OAIHarvester):
     short_name = 'test'
     url = 'test'
     property_list = ['type', 'source', 'publisher', 'format', 'date']
+    verify = True
 
     def harvest(self, mock_requests, start_date=None, end_date=None):
         request_url = 'http://validOAI.edu/?sonofaplumber'
         requests.HarvesterResponse(
             ok=True,
             method='get',
-            url=request_url,
+            url=request_url.lower(),
             content=TEST_OAI_DOC,
             content_type="application/XML"
         ).save()

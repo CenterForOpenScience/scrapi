@@ -11,7 +11,7 @@ from scrapi.base import OAIHarvester
 class HowardHarvester(OAIHarvester):
     short_name = 'digitalhoward'
     long_name = 'Digital Howard @ Howard University'
-    url = 'http://dh.howard.edu/do/oai/'
+    url = 'http://dh.howard.edu'
 
     base_url = 'http://dh.howard.edu/do/oai/'
     property_list = ['date', 'source', 'identifier', 'type', 'rights']

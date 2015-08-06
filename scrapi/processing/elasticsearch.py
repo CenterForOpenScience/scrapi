@@ -1,5 +1,8 @@
 from __future__ import absolute_import
+
 import logging
+
+import six
 
 from elasticsearch import Elasticsearch
 from elasticsearch.exceptions import NotFoundError
@@ -100,14 +103,20 @@ class PreserveOldContributors(JSONTransformer):
 
 
 class PreserveOldSchema(JSONTransformer):
-    schema = {
-        'title': '/title',
-        'description': '/description',
-        'tags': ('/tags', lambda x: x or []),
-        'contributors': ('/contributors', PreserveOldContributors().process_contributors),
-        'dateUpdated': '/providerUpdatedDateTime',
-        'source': '/shareProperties/source',
-        'id': {
-            'url': '/uris/canonicalUri'
+    @property
+    def schema(self):
+        return {
+            'title': '/title',
+            'description': '/description',
+            'tags': ('/tags', lambda x: x or []),
+            'contributors': ('/contributors', PreserveOldContributors().process_contributors),
+            'dateUpdated': '/providerUpdatedDateTime',
+            'source': '/shareProperties/source',
+            'id': {
+                'url': ('/uris/canonicalUri', '/uris/descriptorUri', '/uris/providerUris', '/uris/objectUris', self.process_uris)
+            }
         }
-    }
+
+    def process_uris(self, *uris):
+        for uri in filter(lambda x: x, uris):
+            return uri if isinstance(uri, six.string_types) else uri[0]

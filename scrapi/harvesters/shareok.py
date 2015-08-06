@@ -18,6 +18,7 @@ class ShareOKHarvester(OAIHarvester):
     long_name = 'SHAREOK Repository'
     url = 'https://shareok.org'
     timezone_granularity = True
+    verify = False
 
     base_url = 'https://shareok.org/oai/request'
 
@@ -38,24 +39,24 @@ class ShareOKHarvester(OAIHarvester):
         'com_11244_10460',
         'col_11244_10466',
         'col_11244_10464',
-        'col_11244_10462'
+        'col_11244_10462',
+        'com_11244_15231'
     ]
 
     def normalize(self, raw_doc):
         str_result = raw_doc.get('doc')
         result = etree.XML(str_result)
 
-        if self.approved_sets:
-            set_spec = result.xpath(
-                'ns0:header/ns0:setSpec/node()',
-                namespaces=self.namespaces
-            )
-            # check if all of the sets in the record are in the approved set list.
-            # If all of them aren't, don't normalize.
-            actual = {x.replace('publication:', '') for x in set_spec}
-            if not len(set(self.approved_sets).intersection(actual)) == len(self.approved_sets):
-                logger.info('Series {} not in approved list'.format(set_spec))
-                return None
+        set_spec = result.xpath(
+            'ns0:header/ns0:setSpec/node()',
+            namespaces=self.namespaces
+        )
+        # check if all of the sets in the record are in the approved set list.
+        # If all of them aren't, don't normalize.
+        actual = {x.replace('publication:', '') for x in set_spec}
+        if not len(set(self.approved_sets).intersection(actual)) == len(actual):
+            logger.info('Series {} not in approved list'.format(set_spec))
+            return None
 
         status = result.xpath('ns0:header/@status', namespaces=self.namespaces)
         if status and status[0] == 'deleted':

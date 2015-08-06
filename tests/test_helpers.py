@@ -1,4 +1,5 @@
 import vcr
+import pytest
 
 from scrapi.base import helpers
 
@@ -32,8 +33,8 @@ class TestHelpers(object):
 
     def test_oai_extract_url(self):
         identifiers = 'I might be a url but rly I am naaaahhttt'
-        extraction_attempt = helpers.oai_extract_url(identifiers)
-        extraction_attempt
+        with pytest.raises(ValueError):
+            helpers.oai_extract_url(identifiers)
 
     def test_process_contributors(self):
         args = ['Stardust Rhodes', 'Golddust Rhodes', 'Dusty Rhodes']
@@ -44,13 +45,24 @@ class TestHelpers(object):
     def test_oai_get_records_and_token(self):
         url = 'http://repository.asu.edu/oai-pmh?verb=ListRecords&metadataPrefix=oai_dc&from=2015-03-10&until=2015-03-11'
         force = False
+        verify = True
         throttle = 0.5
         namespaces = {
             'dc': 'http://purl.org/dc/elements/1.1/',
             'ns0': 'http://www.openarchives.org/OAI/2.0/',
             'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
         }
-        records, token = helpers.oai_get_records_and_token(url, throttle, force, namespaces)
+        records, token = helpers.oai_get_records_and_token(url, throttle, force, namespaces, verify)
         assert records
         assert token
         assert len(records) == 50
+
+    def test_extract_doi_from_text(self):
+        text = ["""
+        Ryder, Z., & Dudley, B. R. (2014). Methods of WOO WOO WOO and D3 comming atcha by a
+        Continuous Flow Microreactor. Crystal Growth & Design, 14(9),
+        4759-4767. doi:10.1021/woowoowoo yep yep yep what he do"""]
+
+        extracted_doi = helpers.extract_doi_from_text(text)
+
+        assert extracted_doi == 'http://dx.doi.org/10.1021/woowoowoo'

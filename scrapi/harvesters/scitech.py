@@ -67,8 +67,8 @@ class SciTechHarvester(XMLHarvester):
         while morepages:
             resp = requests.get(self.base_url, params={
                 'page': page,
-                'EntryDateTo': format_date_with_slashes(start_date),
-                'EntryDateFrom': format_date_with_slashes(end_date),
+                'EntryDateTo': format_date_with_slashes(end_date),
+                'EntryDateFrom': format_date_with_slashes(start_date),
             })
 
             xml = etree.XML(resp.content)

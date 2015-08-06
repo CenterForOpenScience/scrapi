@@ -2,6 +2,40 @@
 ChangeLog
 *********
 
+0.8.1 (2015-08-06)
+==================
+- Scitech harvester now uses the correct start and end dates
+
+0.8.0 (2015-07-28)
+==================
+- Add harvesters for Smithsonian Digital Repository, Hacettepe,
+	Harvard Dataverse, Cyberleninka, Howard University, Scholarworks Umass,
+	Inter-University Consortium for Political and Social Research
+- Python 3 support
+- Fix DOI harvesting for OAI harvesters
+- Fix OAI harvesters having their otherProperties overwritten when they
+	defined a new schema.
+- Fix resumption tokens in OAI harvesters
+- Fix date parsing for DOE schema harvesters
+- Stop JSON processor from swallowing exceptions
+- Update harvesters to make their schemas more closely match the spec
+
+0.7.6 (2015-07-10)
+==================
+- Fix language harvesting for DOE and OAI harvesters
+
+0.7.5 (2015-07-10)
+==================
+- Fix shareok harvester (SSL verification failures ignored)
+
+0.7.4 (2015-07-08)
+==================
+- Fix probabilistic test failures
+
+0.7.3 (2015-07-07)
+==================
+- Add Daily SSRN harvester
+
 0.7.2 (2015-06-30)
 ==================
 - Make harvesters run monday-sunday by default
