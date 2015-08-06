@@ -2,6 +2,10 @@
 ChangeLog
 *********
 
+0.8.1 (2015-08-06)
+==================
+- Scitech harvester now uses the correct start and end dates
+
 0.8.0 (2015-07-28)
 ==================
 - Add harvesters for Smithsonian Digital Repository, Hacettepe,
