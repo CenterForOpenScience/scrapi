@@ -6,6 +6,27 @@ from scrapi import registry
 from scrapi.util import json_without_bytes
 
 
+def strip_empty(schema, required):
+    ''' Removes empty fields from the processed schema
+    '''
+    for k, v in schema.items():
+        if k not in required:
+            schema[k] = do_strip_empty(v)
+            if not schema[k]:
+                del schema[k]
+    return schema
+
+
+def do_strip_empty(value):
+    ''' Filters empty values from container types
+    '''
+    return {
+        dict: lambda d: dict([(k, do_strip_empty(v)) for k, v in d.items() if v]),
+        list: lambda l: [do_strip_empty(v) for v in l if v],
+        tuple: lambda l: [do_strip_empty(v) for v in l if v]
+    }.get(type(value), lambda x: x or None)(value)
+
+
 class BaseDocument(object):
 
     """
@@ -18,7 +39,8 @@ class BaseDocument(object):
     def __init__(self, attributes):
         # validate a version of the attributes that are safe to check
         # against the JSON schema
-        jsonschema.validate(json_without_bytes(attributes), self.schema,
+        attributes = json_without_bytes(strip_empty(attributes, self.schema.get('required', [])))
+        jsonschema.validate(attributes, self.schema,
                             format_checker=jsonschema.FormatChecker())
 
         self.attributes = attributes
