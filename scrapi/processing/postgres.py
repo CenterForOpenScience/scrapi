@@ -24,7 +24,7 @@ class PostgresProcessor(BaseProcessor):
 
         modified_doc = copy.deepcopy(raw_doc.attributes)
         if modified_doc.get('versions'):
-            modified_doc['versions'] = str(modified_doc['versions'])
+            modified_doc['versions'] = map(str, modified_doc['versions'])
 
         document.raw = modified_doc
 
