@@ -13,7 +13,6 @@ settings.CELERY_ALWAYS_EAGER = True
 settings.CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
 database._manager.keyspace = 'test'
 
-
 try:
     con = Elasticsearch(settings.ELASTIC_URI, request_timeout=settings.ELASTIC_TIMEOUT)
     con.cluster.health(wait_for_status='yellow')
