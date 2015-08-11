@@ -2,6 +2,10 @@
 ChangeLog
 *********
 
+0.8.2 (2016-08-11)
+==================
+- Add harvester for Washington University Open Scholarship
+
 0.8.1 (2015-08-06)
 ==================
 - Scitech harvester now uses the correct start and end dates
