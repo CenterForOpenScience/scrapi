@@ -58,7 +58,7 @@ archive/*
 .DS_Store
 
 worker_manager/recent_files.txt
-scrapi/settings/local.py
+**/settings/local.py
 celerybeat-schedule.db
 records/
 archive/*

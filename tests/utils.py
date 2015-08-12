@@ -21,6 +21,18 @@ RAW_DOC = {
     'source': 'test'
 }
 
+POSTGRES_RAW_DOC = {
+    'doc': '{}',
+    'docID': 'someID',
+    'timestamps': {
+        'harvestFinished': '2012-11-30T17:05:48+00:00',
+        'harvestStarted': '2012-11-30T17:05:48+00:00',
+        'harvestTaskCreated': '2012-11-30T17:05:48+00:00'
+    },
+    'filetype': 'json',
+    'source': 'test'
+}
+
 NORMALIZED_DOC = {
     'title': 'No',
     'contributors': [{'name': ''}],
