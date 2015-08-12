@@ -1,3 +1,4 @@
+import os
 import base64
 import logging
 import platform
@@ -225,3 +226,8 @@ def provider_map(delete=False):
             refresh=True
         )
     print(es.count('share_providers', body={'query': {'match_all': {}}})['count'])
+
+
+@task
+def apiserver():
+    os.system('python manage.py runserver')
