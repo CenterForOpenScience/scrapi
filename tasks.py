@@ -231,3 +231,8 @@ def provider_map(delete=False):
 @task
 def apiserver():
     os.system('python manage.py runserver')
+
+
+@task
+def apidb():
+    os.system('python manage.py migrate')
