@@ -94,6 +94,7 @@ def test_renormalize():
 
 @pytest.mark.cassandra
 def test_migrate_v2():
+    RAW['doc'] = str(RAW['doc'])
     DocumentModelOld.create(**RAW.attributes).save()
     queryset = DocumentModel.objects(docID=RAW['docID'], source=RAW['source'])
     assert len(queryset) == 0

@@ -19,8 +19,7 @@ class TestValidation(object):
                     "givenName": "Test",
                     "familyName": "Testerson",
                     "additionalName": "",
-                    "ORCID": None,
-                    "email": ""
+                    "sameAs": [],
                 }
             ],
             'title': '',
@@ -46,8 +45,7 @@ class TestValidation(object):
                     "givenName": "Test",
                     "familyName": "Testerson",
                     "additionalName": "",
-                    "ORCID": None,
-                    "email": ""
+                    "sameAs": []
                 }
             ],
             'title': '',
@@ -93,8 +91,7 @@ to_be_validated = {
             "givenName": "Test",
             "familyName": "Testerson",
             "additionalName": "",
-            "ORCID": None,
-            "email": ""
+            "sameAs": [],
         }
     ],
     'title': '',
