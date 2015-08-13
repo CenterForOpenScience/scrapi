@@ -4,6 +4,7 @@ import json
 import logging
 from uuid import uuid4
 
+import six
 from dateutil.parser import parse
 
 from cassandra.cqlengine import columns, models
@@ -32,7 +33,7 @@ class CassandraProcessor(BaseProcessor):
             contributors=copy_to_unicode(json.dumps(normalized['contributors'])),
             description=copy_to_unicode(normalized.get('description')),
             uris=copy_to_unicode(json.dumps(normalized['uris'])),
-            providerUpdatedDateTime=parse(normalized['providerUpdatedDateTime']),
+            providerUpdatedDateTime=parse(normalized['providerUpdatedDateTime']).replace(tzinfo=None),
             freeToRead=copy_to_unicode(json.dumps(normalized.get('freeToRead', {}))),
             languages=normalized.get('language'),
             licenses=copy_to_unicode(json.dumps(normalized.get('licenseRef', []))),
@@ -46,7 +47,13 @@ class CassandraProcessor(BaseProcessor):
 
     @events.logged(events.PROCESSING, 'raw.cassandra')
     def process_raw(self, raw_doc):
-        self.send_to_database(**raw_doc.attributes).save()
+        self.send_to_database(
+            source=raw_doc['source'],
+            docID=raw_doc['docID'],
+            filetype=raw_doc['filetype'],
+            doc=six.binary_type(raw_doc['doc']),
+            timestamps=raw_doc['timestamps']
+        ).save()
 
     def send_to_database(self, docID, source, **kwargs):
         documents = DocumentModel.objects(docID=docID, source=source)
