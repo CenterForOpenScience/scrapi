@@ -52,7 +52,7 @@ class CassandraProcessor(BaseProcessor):
             docID=raw_doc['docID'],
             filetype=raw_doc['filetype'],
             doc=six.binary_type(raw_doc['doc']),
-            timestamps=raw_doc['timestamps']
+            timestamps=raw_doc.get('timestamps', {})
         ).save()
 
     def send_to_database(self, docID, source, **kwargs):
