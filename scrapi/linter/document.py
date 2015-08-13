@@ -1,4 +1,5 @@
 import json
+import copy
 
 import jsonschema
 
@@ -6,25 +7,31 @@ from scrapi import registry
 from scrapi.util import json_without_bytes
 
 
-def strip_empty(schema, required):
+def strip_empty(document, required=tuple()):
     ''' Removes empty fields from the processed schema
     '''
-    for k, v in schema.items():
+    for k, v in document.items():
         if k not in required:
-            schema[k] = do_strip_empty(v)
-            if not schema[k]:
-                del schema[k]
-    return schema
+            document[k] = do_strip_empty(v)
+            if k == 'otherProperties':
+                document[k] = [property for property in document[k] if property.get('properties')]
+            if not document[k]:
+                del document[k]
+    return document
+
+
+def strip_list(l):
+    return filter(lambda x: x, map(do_strip_empty, l))
 
 
 def do_strip_empty(value):
     ''' Filters empty values from container types
     '''
     return {
-        dict: lambda d: dict([(k, do_strip_empty(v)) for k, v in d.items() if v]),
-        list: lambda l: [do_strip_empty(v) for v in l if v],
-        tuple: lambda l: [do_strip_empty(v) for v in l if v]
-    }.get(type(value), lambda x: x or None)(value)
+        dict: strip_empty,
+        list: strip_list,
+        tuple: strip_list
+    }.get(type(value), lambda x: x)(value)
 
 
 class BaseDocument(object):
@@ -35,15 +42,27 @@ class BaseDocument(object):
     """
 
     schema = {}
+    format_checker = jsonschema.FormatChecker()
 
-    def __init__(self, attributes):
+    def __init__(self, attributes, validate=True, clean=False):
+        ''' Initializes a document
+
+            :param dict attributes: the dictionary representation of a document
+            :param bool validate: If true, the object will be validated before creation
+            :param bool clean: If true, optional fields that are null will be deleted
+        '''
         # validate a version of the attributes that are safe to check
         # against the JSON schema
-        attributes = json_without_bytes(strip_empty(attributes, self.schema.get('required', [])))
-        jsonschema.validate(attributes, self.schema,
-                            format_checker=jsonschema.FormatChecker())
 
-        self.attributes = attributes
+        # Allows validation in python3
+        self.attributes = json_without_bytes(copy.deepcopy(attributes))
+        if clean:
+            self.attributes = strip_empty(self.attributes, required=self.schema.get('required', []))
+        if validate:
+            self.validate()
+
+    def validate(self, schema=None):
+        jsonschema.validate(self.attributes, schema or self.schema, format_checker=self.format_checker)
 
     def get(self, attribute, default=None):
         """
