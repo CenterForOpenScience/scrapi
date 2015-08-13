@@ -1,7 +1,5 @@
 from __future__ import unicode_literals
 
-from dateutil.parser import parse
-
 from .helpers import (
     compose,
     format_tags,
@@ -59,7 +57,7 @@ OAISCHEMA = {
         "canonicalUri": ('//dc:identifier/node()', oai_extract_url),
         "objectUris": ('//dc:doi/node()', '//dc:identifier/node()', oai_extract_dois)
     },
-    'providerUpdatedDateTime': ('//ns0:header/ns0:datestamp/node()', lambda x: date_formatter(x[0])), #parse(x[0]).isoformat()),
+    'providerUpdatedDateTime': ('//ns0:header/ns0:datestamp/node()', compose(date_formatter, single_result)),
     'title': ('//dc:title/node()', single_result),
     'description': ('//dc:description/node()', single_result),
     'subjects': ('//dc:subject/node()', format_tags),

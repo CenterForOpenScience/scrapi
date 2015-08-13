@@ -13,7 +13,6 @@ from datetime import date, timedelta
 
 from six.moves import xrange
 from nameparser import HumanName
-from dateutil.parser import parse
 
 from scrapi import requests
 from scrapi import settings
