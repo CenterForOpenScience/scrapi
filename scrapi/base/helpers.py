@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 import re
+import pytz
 import functools
 from copy import deepcopy
 
@@ -8,6 +9,7 @@ import six
 from lxml import etree
 from pycountry import languages
 from nameparser import HumanName
+from dateutil import parser
 
 from scrapi import requests
 
@@ -81,8 +83,6 @@ def default_name_parser(names):
             'givenName': name.first,
             'additionalName': name.middle,
             'familyName': name.last,
-            'email': '',
-            'sameAs': []
         }
         contributor_list.append(contributor)
 
@@ -196,3 +196,10 @@ def extract_doi_from_text(identifiers):
             return 'http://dx.doi.org/{}'.format(found_url.replace('doi:', ''))
         except AttributeError:
             continue
+
+
+def date_formatter(date_string):
+    date_time = parser.parse(date_string)
+    if not date_time.tzinfo:
+        date_time = date_time.replace(tzinfo=pytz.UTC)
+    return date_time.isoformat()
