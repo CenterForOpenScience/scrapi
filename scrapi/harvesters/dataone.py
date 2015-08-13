@@ -10,7 +10,6 @@ import re
 import logging
 from datetime import timedelta, date
 
-import six
 from lxml import etree
 from dateutil.parser import parse
 from xml.etree import ElementTree
@@ -22,7 +21,7 @@ from scrapi import settings
 from scrapi.base import XMLHarvester
 from scrapi.util import copy_to_unicode
 from scrapi.linter.document import RawDocument
-from scrapi.base.helpers import compose, single_result, build_properties
+from scrapi.base.helpers import compose, single_result, build_properties, date_formatter
 
 logger = logging.getLogger(__name__)
 
@@ -87,8 +86,9 @@ def process_contributors(author, submitters, contributors,
                 'givenName': name.first,
                 'additionalName': name.middle,
                 'familyName': name.last,
-                'email': six.text_type(email)
             }
+            if email:
+                contributor_dict['email'] = email
             contributor_list.append(contributor_dict)
         else:
             name = HumanName(contributor)
@@ -150,7 +150,7 @@ class DataOneHarvester(XMLHarvester):
             'objectUri': ("arr[@name='resourceMap']/str/node()", compose(lambda x: x.replace('doi:', 'http://dx.doi.org/'), single_result))
         },
         'tags': ("//arr[@name='keywords']/str/node()", lambda x: x if isinstance(x, list) else [x]),
-        'providerUpdatedDateTime': ("str[@name='dateModified']/node()", compose(lambda x: parse(x).date().isoformat(), single_result)),
+        'providerUpdatedDateTime': ("str[@name='dateModified']/node()", compose(date_formatter, single_result)),
         'title': ("str[@name='title']/node()", single_result),
         'description': ("str[@name='abstract']/node()", single_result)
     }
