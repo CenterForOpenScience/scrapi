@@ -10,14 +10,17 @@ from scrapi.util import json_without_bytes
 def strip_empty(document, required=tuple()):
     ''' Removes empty fields from the processed schema
     '''
+    new_doc = {}
     for k, v in document.items():
-        if k not in required:
-            document[k] = do_strip_empty(v)
+        if k in required:
+            new_doc[k] = v
+        else:
+            new_val = do_strip_empty(v)
             if k == 'otherProperties':
-                document[k] = [property for property in document[k] if property.get('properties')]
-            if not document[k]:
-                del document[k]
-    return document
+                new_val = [property for property in new_val if property.get('properties')]
+            if new_val:
+                new_doc[k] = new_val
+    return new_doc
 
 
 def strip_list(l):
