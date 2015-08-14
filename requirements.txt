@@ -1,6 +1,6 @@
 lxml==3.4.0
 pytz==2014.7
-vcrpy==1.1.1
+vcrpy==1.7.1
 raven==5.0.0
 invoke==0.9.0
 celery==3.1.15
