@@ -4,7 +4,6 @@ import json
 import logging
 from uuid import uuid4
 
-import six
 from dateutil.parser import parse
 
 from cassandra.cqlengine import columns, models
