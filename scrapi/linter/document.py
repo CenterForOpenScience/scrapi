@@ -24,7 +24,7 @@ def strip_empty(document, required=tuple()):
 
 
 def strip_list(l):
-    return filter(lambda x: x, map(do_strip_empty, l))
+    return list(filter(lambda x: x, map(do_strip_empty, l)))
 
 
 def do_strip_empty(value):

@@ -51,7 +51,7 @@ class CassandraProcessor(BaseProcessor):
             source=raw_doc['source'],
             docID=raw_doc['docID'],
             filetype=raw_doc['filetype'],
-            doc=six.binary_type(raw_doc['doc']),
+            doc=raw_doc['doc'].encode('utf-8'),
             timestamps=raw_doc.get('timestamps', {})
         ).save()
 
