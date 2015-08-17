@@ -1,15 +1,15 @@
 from __future__ import unicode_literals
 
 import re
-import pytz
 import functools
 from copy import deepcopy
 
 import six
+import pytz
 from lxml import etree
+from dateutil import parser
 from pycountry import languages
 from nameparser import HumanName
-from dateutil import parser
 
 from scrapi import requests
 
@@ -199,6 +199,9 @@ def extract_doi_from_text(identifiers):
 
 
 def date_formatter(date_string):
+    '''Takes an arbitrary date/time string and parses it, adds time
+    zone information and returns a valid ISO-8601 datetime string
+    '''
     date_time = parser.parse(date_string)
     if not date_time.tzinfo:
         date_time = date_time.replace(tzinfo=pytz.UTC)

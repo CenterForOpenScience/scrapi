@@ -30,10 +30,8 @@ def process_contributor(author, orcid):
         'givenName': name.first,
         'additionalName': name.middle,
         'familyName': name.last,
-        'sameAs': []
+        'sameAs': [orcid] if orcid else []
     }
-    if orcid:
-        ret['sameAs'].append(orcid)
     return ret
 
 
