@@ -7,31 +7,30 @@ interactions:
       Connection: [keep-alive]
       User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
     method: GET
-    uri: https://osf.io:443/api/v1/search/?q=category:registration%20%20AND%20date_created:[2015-04-22%20TO%202015-04-23]%20AND%20NOT%20title=test%20AND%20NOT%20title=%22Test%20Project%22&size=1000
+    uri: https://osf.io:443/api/v1/search/?q=category:registration%20%20AND%20registered_date:[2015-03-04%20TO%202015-03-06]%20AND%20NOT%20title=test%20AND%20NOT%20title=%22Test%20Project%22&size=1000
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAAA+VWTW/bMAz9K4Iuu6yJYydN49uQbcV6GtrsNAyBIjO2GldyJXqZW/S/j5ITNGkS
-        bOj6AXQnyzRNPfKRT7rlqK6ApyzqRPF7xqWpNTp6v+VoUJS0GpLZQq4cWoHKaG+6Ixs2FXwolXDQ
-        +lfWXIJE+sy/tkvHvdsqDJ+ERdjjqjIadHAdr1+Cc+3Aeus3egbDg435+QYQxz0MC64uA+TvtzwD
-        J62qVjD5WDQlNCy3oiocAy1NBgwLYGLms5HI6FFLrC0wM2eCPE1dddikAEdOZAVXgVSiLBtG2DKm
-        NLNQ0Z4EP1TDhzO26bSJabRqVqMh8AFPbX0Fedfmsj/qep95XZZahJITPOXhvfNP9459KtWNmAEW
-        7LPCmxysKDN+98PXUOQhoF9XBEvjFBWWPoimeL6mAiEnHD7sVs3o21It1LRUehGgjGb5QnS9LeBZ
-        x1nX6jTUKnCxwt7+4C3KTTe5m4vSAZkz2nvabgoWsntQ5P+AP6q2/2OVQ7vDKoMQRVqghw/B46g3
-        OIr6R3E86fXTeJQmUac37EdR5Gl/SPW6DOYQA4WDZrDLgKktauLggjrDzsDmbfB17pDNTpqdv85M
-        IbQWbGwKQ/MQ4GzlskkyjYgEdibkwnnfp6azsguo99D5UaDYZLH1ez0Wk0lvmCZx2ht0BiejAyzy
-        LzpTP1VWi5JRj6CSqhIamUK4Yl59NM2B7/aDNGeL6wR3CLtAqIgyBWwsaF6t0sBOjckKWD49IzrB
-        Qu1hhESFEXAJFfr8ZA2UDqO2FzPS0JSd+84PqTo2NzbolMM6a7w0+RelkTRBBtUhmVgCaFYKndci
-        J7HSGROIJA1eojfGt4XzmsRHvbQfp/FJZ5gcHyD+j+P79LzyF+bj7xV6cK2zyz0NdGA4VnMRegaE
-        LEILbXZAG29PB6zU+B/1m3fvW+ygiCcT3wVJGh13el7DHyfi/1MXDHM92yfsj+2CNt4zdsGva5TL
-        IL3P3AVv9Sg/bkbzfYyP6W6yOc+t3x4mX+hCtj7K434n6Q8OzPKbOMrblt69K7/w0bG+jd5P2Ovc
-        xFsR3zrKt66zd78Bo8EIA04OAAA=
+        H4sIAAAAAAAAA81WXW/TMBT9K1aeQOpHkjbtmreBigBRaYLCAzBFXnLTmjh2sJ123bT/zrWTSsnK
+        JBBj8BT3+trX95zj4956hpXgxcQf+YsB8VJZC6Px961npKEcRxMMK9gwbRQ1TAobusOYOVRwzhnV
+        0ORXSn6D1OC0d9EMtWfT2m28tRu4GmUlBQiX+vL4wyXXGpSNfsSvC9wr7L3vHER79hgKdM3dkb/c
+        eik1sJHqYPfoLcVEphMF2ENqIMP5nHINGN6zgiWcicKuGc+vtzfl2MbGzVGFUeyqNhKP4yrUymLi
+        jQ+p2E1cTl5zLqgD0ftEBWhNyYsa0q3AXu4uLQTMcDe93gLZS5WRr3XoB6mCzA0yQkVGRF2CYimp
+        QOVSlVSkEJNzoqDiDPtC5Ak1BsrKEJmTdyzdGhA58GxAVpSBGpAl50yagdvtAgpViwEJfX9Bni2v
+        q5El8u3yw8VzB3TbRtOvjVQgMiY2CZRXVG1kB6E2kmBCkiHAnSlDNw4X2yXi22X2iK9ILJo2y8ck
+        ux5psGoCbN+CggBEQ38y9GfrIIjDMA7no1mI5/a7x2qpa/R33LuiCmWUHPEVyITtpIk2LbYxVxcB
+        x0+/aLQO5vHUj/3pKFhEbVEnlZ7ijaqtWDLQqWJVew08K8BHEF1pIFr8NdG9lFyqZCUN20GX+qbq
+        f0S9JSIcRVHwRNSHa/8sDqM4mI/CaPpvqA/Zvoh+hfrvYnuYn/jNa4qOiV4gGiUeb/XNbgLFSfKS
+        AxVSkRXjaNlOuscFs1Tl0cmCFXoMBU7eiBu0oK3prymy65844GcJ5JVC88Ir3ze/FVoiFUyXmtQi
+        A8UPaDdEA8+HqUSblZygOzOB0a5MG4T+WKZet5DdDd8JkqG3grvMNlDiFZHCPTtMoD3t0Fvs3KOY
+        G/pMGE9Cq/CZP3sKhYdDf7oOFnGAIp+MZouz31T4OcllrYZ7gKLPUhccok2dHUYt1e1rcOsV4J7g
+        E4wzmeIjgX8xcDZwCjxmdsB/MKnHinXjh3a7z3U/8fLuBzTEBzH2CAAA
     headers:
       cache-control: [private]
       connection: [close]
       content-encoding: [gzip]
       content-type: [application/json; charset=utf-8]
-      date: ['Fri, 24 Apr 2015 15:00:32 GMT']
+      date: ['Thu, 13 Aug 2015 15:01:29 GMT']
       server: [nginx/1.4.6 (Ubuntu)]
       set-cookie: [NB_SRVID=srv25533; path=/]
       transfer-encoding: [chunked]
@@ -45,18 +44,20 @@ interactions:
       Connection: [keep-alive]
       User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
     method: GET
-    uri: https://osf.io:443/api/v1/search/?q=category:registration%20%20AND%20date_created:[2015-04-22%20TO%202015-04-23]%20AND%20NOT%20title=test%20AND%20NOT%20title=%22Test%20Project%22&size=1000&from=1000
+    uri: https://osf.io:443/api/v1/search/?q=category:registration%20%20AND%20registered_date:[2015-03-04%20TO%202015-03-06]%20AND%20NOT%20title=test%20AND%20NOT%20title=%22Test%20Project%22&size=1000&from=1000
   response:
-    body: {string: !!python/unicode '{"time": 0.01, "counts": {"total": 7, "registration":
-        7}, "typeAliases": {"project": "Projects", "total": "Total", "component":
+    body: {string: !!python/unicode '{"time": 0.12, "counts": {"total": 3, "registration":
+        3}, "typeAliases": {"project": "Projects", "total": "Total", "component":
         "Components", "user": "Users", "registration": "Registrations"}, "results":
-        [], "tags": []}'}
+        [], "tags": [{"key": "ego depletion", "doc_count": 1}, {"key": "emotions",
+        "doc_count": 1}, {"key": "intervention", "doc_count": 1}, {"key": "self-control",
+        "doc_count": 1}]}'}
     headers:
       cache-control: [private]
       connection: [close]
-      content-length: ['219']
+      content-length: ['378']
       content-type: [application/json; charset=utf-8]
-      date: ['Fri, 24 Apr 2015 15:00:32 GMT']
+      date: ['Thu, 13 Aug 2015 15:01:29 GMT']
       server: [nginx/1.4.6 (Ubuntu)]
       set-cookie: [NB_SRVID=srv25533; path=/]
       x-sentry-id: [None]

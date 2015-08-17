@@ -44,7 +44,11 @@ class HarvesterResponse(models.Model):
     time_made = columns.DateTime(default=datetime.now)
 
     def json(self):
-        return json.loads(self.content)
+        try:
+            content = self.content.decode('utf-8')
+        except AttributeError:  # python 3eeeee!
+            content = self.content
+        return json.loads(content)
 
     @property
     def headers(self):

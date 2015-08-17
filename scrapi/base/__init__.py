@@ -83,7 +83,7 @@ class JSONHarvester(BaseHarvester, JSONTransformer):
         transformed['shareProperties'] = {
             'source': self.short_name
         }
-        return NormalizedDocument(transformed)
+        return NormalizedDocument(transformed, clean=True)
 
 
 class XMLHarvester(BaseHarvester, XMLTransformer):
@@ -94,7 +94,7 @@ class XMLHarvester(BaseHarvester, XMLTransformer):
         transformed['shareProperties'] = {
             'source': self.short_name
         }
-        return NormalizedDocument(transformed)
+        return NormalizedDocument(transformed, clean=True)
 
 
 class OAIHarvester(XMLHarvester):
