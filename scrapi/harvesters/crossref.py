@@ -39,19 +39,17 @@ def process_contributor(author, orcid):
 def process_sponsorships(funder):
     sponsorships = []
     for element in funder:
-        try:
-            award_identifier = 'http://dx.doi.org/{}'.format(element['DOI'])
-        except KeyError:
-            award_identifier = ', '.join(element['award'])
         sponsorship = {
             'sponsor': {
                 'sponsorName': element['name']
             },
             'award': {
-                'awardIdentifier': award_identifier,
                 'awardName': ', '.join(element['award'])
             }
         }
+
+        if element.get('DOI'):
+            sponsorship['award']['awardIdentifier'] = 'http://dx.doi.org/{}'.format(element['DOI'])
 
         sponsorships.append(sponsorship)
 
@@ -102,8 +100,7 @@ class CrossRefHarvester(JSONHarvester):
                 ('volume', '/volume'),
                 ('referenceCount', '/reference-count'),
                 ('updatePolicy', '/update-policy'),
-                ('depositedTimestamp', '/deposited/timestamp'),
-                ('funder', '/funder')
+                ('depositedTimestamp', '/deposited/timestamp')
             )
         }
 
