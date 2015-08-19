@@ -12,13 +12,12 @@ from datetime import date
 from datetime import timedelta
 
 import furl
-from dateutil.parser import parse
 
 from scrapi import requests
 from scrapi import settings
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
-from scrapi.base.helpers import default_name_parser, build_properties
+from scrapi.base.helpers import default_name_parser, build_properties, date_formatter
 
 logger = logging.getLogger(__name__)
 
@@ -45,7 +44,7 @@ class HarvardDataverseHarvester(JSONHarvester):
         'title': '/name',
         'description': '/description',
         'contributors': ('/authors', default_name_parser),
-        'providerUpdatedDateTime': ('/published_at', lambda x: parse(x).replace(tzinfo=None).isoformat()),
+        'providerUpdatedDateTime': ('/published_at', date_formatter),
         'uris': {
             'canonicalUri': '/url',
             'objectUris': [

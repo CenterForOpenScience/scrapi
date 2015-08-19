@@ -1,12 +1,11 @@
 from __future__ import unicode_literals
 
-from dateutil.parser import parse
-
 from .helpers import (
     compose,
     format_tags,
-    language_codes,
     single_result,
+    language_codes,
+    date_formatter,
     oai_extract_url,
     oai_extract_dois,
     build_properties,
@@ -19,7 +18,7 @@ DOESCHEMA = {
     "description": ('//dc:description/node()', compose(lambda x: x.strip(), single_result)),
     "contributors": ('//dc:creator/node()', compose(default_name_parser, lambda x: x.split(';'), single_result)),
     "title": ('//dc:title/node()', compose(lambda x: x.strip(), single_result)),
-    "providerUpdatedDateTime": ('//dc:dateEntry/node()', compose(lambda x: x.isoformat(), parse, lambda x: x.strip(), single_result)),
+    "providerUpdatedDateTime": ('//dc:dateEntry/node()', compose(date_formatter, single_result)),
     "uris": {
         "canonicalUri": ('//dcq:identifier-citation/node()', compose(lambda x: x.strip(), single_result)),
         "objectUris": [('//dc:doi/node()', compose(lambda x: 'http://dx.doi.org/' + x, single_result))]
@@ -58,7 +57,7 @@ OAISCHEMA = {
         "canonicalUri": ('//dc:identifier/node()', oai_extract_url),
         "objectUris": ('//dc:doi/node()', '//dc:identifier/node()', oai_extract_dois)
     },
-    'providerUpdatedDateTime': ('//ns0:header/ns0:datestamp/node()', lambda x: parse(x[0]).replace(tzinfo=None).isoformat()),
+    'providerUpdatedDateTime': ('//ns0:header/ns0:datestamp/node()', compose(date_formatter, single_result)),
     'title': ('//dc:title/node()', single_result),
     'description': ('//dc:description/node()', single_result),
     'subjects': ('//dc:subject/node()', format_tags),

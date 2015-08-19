@@ -1,9 +1,40 @@
 import json
+import copy
 
 import jsonschema
 
 from scrapi import registry
 from scrapi.util import json_without_bytes
+
+
+def strip_empty(document, required=tuple()):
+    ''' Removes empty fields from the processed schema
+    '''
+    new_doc = {}
+    for k, v in document.items():
+        if k in required:
+            new_doc[k] = v
+        else:
+            new_val = do_strip_empty(v)
+            if k == 'otherProperties':
+                new_val = [property for property in new_val if property.get('properties')]
+            if new_val:
+                new_doc[k] = new_val
+    return new_doc
+
+
+def strip_list(l):
+    return list(filter(lambda x: x, map(do_strip_empty, l)))
+
+
+def do_strip_empty(value):
+    ''' Filters empty values from container types
+    '''
+    return {
+        dict: strip_empty,
+        list: strip_list,
+        tuple: strip_list
+    }.get(type(value), lambda x: x)(value)
 
 
 class BaseDocument(object):
@@ -14,14 +45,27 @@ class BaseDocument(object):
     """
 
     schema = {}
+    format_checker = jsonschema.FormatChecker()
 
-    def __init__(self, attributes):
+    def __init__(self, attributes, validate=True, clean=False):
+        ''' Initializes a document
+
+            :param dict attributes: the dictionary representation of a document
+            :param bool validate: If true, the object will be validated before creation
+            :param bool clean: If true, optional fields that are null will be deleted
+        '''
         # validate a version of the attributes that are safe to check
         # against the JSON schema
-        jsonschema.validate(json_without_bytes(attributes), self.schema,
-                            format_checker=jsonschema.FormatChecker())
 
-        self.attributes = attributes
+        # Allows validation in python3
+        self.attributes = json_without_bytes(copy.deepcopy(attributes))
+        if clean:
+            self.attributes = strip_empty(self.attributes, required=self.schema.get('required', []))
+        if validate:
+            self.validate()
+
+    def validate(self, schema=None):
+        jsonschema.validate(self.attributes, schema or self.schema, format_checker=self.format_checker)
 
     def get(self, attribute, default=None):
         """

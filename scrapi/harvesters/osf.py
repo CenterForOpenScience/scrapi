@@ -10,7 +10,6 @@ from __future__ import unicode_literals
 
 import json
 import logging
-from dateutil.parser import parse
 from datetime import date, timedelta
 
 from nameparser import HumanName
@@ -18,7 +17,7 @@ from nameparser import HumanName
 from scrapi import requests
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
-from scrapi.base.helpers import build_properties
+from scrapi.base.helpers import build_properties, date_formatter
 
 logger = logging.getLogger(__name__)
 
@@ -33,8 +32,6 @@ def process_contributors(authors):
             'givenName': name.first,
             'additionalName': name.middle,
             'familyName': name.last,
-            'email': '',
-            'sameAs': [],
         }
         contributor_list.append(contributor)
 
@@ -55,10 +52,6 @@ def process_tags(entry):
         return [entry]
 
 
-def parse_date(entry):
-    return parse(entry).date().isoformat()
-
-
 class OSFHarvester(JSONHarvester):
     short_name = 'osf'
     long_name = 'Open Science Framework'
@@ -67,7 +60,7 @@ class OSFHarvester(JSONHarvester):
 
     # Only registrations that aren't just the word "test" or "test project"
     URL = 'https://osf.io/api/v1/search/?q=category:registration ' +\
-          ' AND date_created:[{} TO {}]' +\
+          ' AND registered_date:[{} TO {}]' +\
           ' AND NOT title=test AND NOT title="Test Project"&size=1000'
 
     @property
@@ -75,7 +68,7 @@ class OSFHarvester(JSONHarvester):
         return {
             'contributors': ('/contributors', process_contributors),
             'title': ('/title', process_null),
-            'providerUpdatedDateTime': ('/date_created', parse_date),
+            'providerUpdatedDateTime': ('/date_registered', date_formatter),
             'description': ('/description', process_null),
             'uris': {
                 'canonicalUri': ('/url', lambda x: 'http://osf.io' + x),

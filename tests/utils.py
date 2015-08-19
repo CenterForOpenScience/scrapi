@@ -37,7 +37,7 @@ NORMALIZED_DOC = {
     'title': 'No',
     'contributors': [{'name': ''}],
     'source': 'test',
-    'providerUpdatedDateTime': '2014-04-04T00:00:00',
+    'providerUpdatedDateTime': '2014-04-04T00:00:00Z',
     'uris': {
         'canonicalUri': 'http://example.com/direct'
     }
@@ -74,7 +74,7 @@ RECORD = {
             the dietary patterns of eight free-ranging vervet monkey\
             (Chlorocebus pygerythrus) groups in South Africa using stable\
             isotope analysis.',
-    'providerUpdatedDateTime': '2015-02-23T00:00:00',
+    'providerUpdatedDateTime': '2015-02-23T00:00:00Z',
     'shareProperties': {
         'source': 'test'
     }
