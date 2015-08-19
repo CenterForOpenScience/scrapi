@@ -1,10 +1,14 @@
 from __future__ import absolute_import
 
+
+import six
 import json
 import logging
 from uuid import uuid4
+from datetime import datetime
 
 from dateutil.parser import parse
+from requests.structures import CaseInsensitiveDict
 
 from cassandra.cqlengine import columns, models
 
@@ -23,6 +27,10 @@ class CassandraProcessor(BaseProcessor):
     Cassandra processor for scrapi. Handles versioning and storing documents in Cassandra
     '''
     NAME = 'cassandra'
+
+    @property
+    def HarvesterResponseModel(self):
+        return HarvesterResponse
 
     @events.logged(events.PROCESSING, 'normalized.cassandra')
     def process_normalized(self, raw_doc, normalized):
@@ -196,3 +204,34 @@ class VersionModel(models.Model):
 
     # Additional metadata
     versions = columns.List(columns.UUID)
+
+
+@database.register_model
+class HarvesterResponse(models.Model):
+    """A parody of requests.response but stored in cassandra
+    Should reflect all methods of a response object
+    Contains an additional field time_made, self-explanitory
+    """
+    __table_name__ = 'responses'
+
+    method = columns.Text(primary_key=True)
+    url = columns.Text(primary_key=True, required=True)
+
+    # Raw request data
+    ok = columns.Boolean()
+    content = columns.Bytes()
+    encoding = columns.Text()
+    headers_str = columns.Text()
+    status_code = columns.Integer()
+    time_made = columns.DateTime(default=datetime.now)
+
+    def json(self):
+        return json.loads(self.content)
+
+    @property
+    def headers(self):
+        return CaseInsensitiveDict(json.loads(self.headers_str))
+
+    @property
+    def text(self):
+        return six.u(self.content)
