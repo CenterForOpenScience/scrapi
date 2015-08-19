@@ -20,7 +20,7 @@ class Document(models.Model):
 class HarvesterResponse(models.Model):
 
     method = models.TextField(primary_key=True)
-    url = models.TextField(primary_key=True, required=True)
+    url = models.TextField(primary_key=True)
 
     # Raw request data
     ok = models.BooleanField()
