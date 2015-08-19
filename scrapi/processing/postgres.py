@@ -9,13 +9,15 @@ import logging
 from scrapi import events
 from scrapi.processing.base import BaseProcessor
 
-from api.webview.models import Document
+from api.webview.models import Document, HarvesterResponse
 
 logger = logging.getLogger(__name__)
 
 
 class PostgresProcessor(BaseProcessor):
     NAME = 'postgres'
+
+    HarvesterResponseModel = HarvesterResponse
 
     @events.logged(events.PROCESSING, 'raw.postgres')
     def process_raw(self, raw_doc):
