@@ -84,7 +84,7 @@ class JSONHarvester(BaseHarvester, JSONTransformer):
             'source': self.short_name,
             'docID': raw_doc['docID']
         }
-        return NormalizedDocument(transformed)
+        return NormalizedDocument(transformed, clean=True)
 
 
 class XMLHarvester(BaseHarvester, XMLTransformer):
@@ -96,7 +96,7 @@ class XMLHarvester(BaseHarvester, XMLTransformer):
             'source': self.short_name,
             'docID': raw_doc['docID']
         }
-        return NormalizedDocument(transformed)
+        return NormalizedDocument(transformed, clean=True)
 
 
 class OAIHarvester(XMLHarvester):

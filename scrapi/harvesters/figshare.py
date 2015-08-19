@@ -13,13 +13,12 @@ import logging
 from datetime import date, timedelta
 
 import six
-from dateutil.parser import parse
 
 from scrapi import requests
 from scrapi import settings
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
-from scrapi.base.helpers import default_name_parser, build_properties
+from scrapi.base.helpers import default_name_parser, build_properties, date_formatter
 
 logger = logging.getLogger(__name__)
 
@@ -35,7 +34,7 @@ class FigshareHarvester(JSONHarvester):
         'title': '/title',
         'description': '/description',
         'contributors': ('/authors', lambda x: default_name_parser([person['author_name'] for person in x])),
-        'providerUpdatedDateTime': ('/modified_date', lambda x: parse(x).date().isoformat()),
+        'providerUpdatedDateTime': ('/modified_date', date_formatter),
         'uris': {
             'canonicalUri': ('/DOI', lambda x: x[0] if isinstance(x, list) else x),
             'providerUris': [
@@ -43,7 +42,7 @@ class FigshareHarvester(JSONHarvester):
             ]
         },
         'otherProperties': build_properties(
-            ('serviceID', ('/article_id', lambda x: str(x))),
+            ('serviceID', ('/article_id', str)),
             ('definedType', '/defined_type'),
             ('type', '/type'),
             ('links', '/links'),

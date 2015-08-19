@@ -32,7 +32,7 @@ class CassandraProcessor(BaseProcessor):
             contributors=copy_to_unicode(json.dumps(normalized['contributors'])),
             description=copy_to_unicode(normalized.get('description')),
             uris=copy_to_unicode(json.dumps(normalized['uris'])),
-            providerUpdatedDateTime=parse(normalized['providerUpdatedDateTime']),
+            providerUpdatedDateTime=parse(normalized['providerUpdatedDateTime']).replace(tzinfo=None),
             freeToRead=copy_to_unicode(json.dumps(normalized.get('freeToRead', {}))),
             languages=normalized.get('language'),
             licenses=copy_to_unicode(json.dumps(normalized.get('licenseRef', []))),
@@ -46,7 +46,13 @@ class CassandraProcessor(BaseProcessor):
 
     @events.logged(events.PROCESSING, 'raw.cassandra')
     def process_raw(self, raw_doc):
-        self.send_to_database(**raw_doc.attributes).save()
+        self.send_to_database(
+            source=raw_doc['source'],
+            docID=raw_doc['docID'],
+            filetype=raw_doc['filetype'],
+            doc=raw_doc['doc'].encode('utf-8'),
+            timestamps=raw_doc.get('timestamps', {})
+        ).save()
 
     def send_to_database(self, docID, source, **kwargs):
         documents = DocumentModel.objects(docID=docID, source=source)

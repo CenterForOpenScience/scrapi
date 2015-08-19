@@ -28,7 +28,7 @@ def raw_doc():
 def raw_docs():
     return [
         RawDocument({
-            'doc': six.binary_type(x),
+            'doc': str(x).encode('utf-8'),
             'docID': six.text_type(x),
             'source': u'test',
             'filetype': u'xml',

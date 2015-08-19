@@ -22,13 +22,12 @@ import logging
 from datetime import date, timedelta
 
 from lxml import etree
-from dateutil.parser import parse
 
 from scrapi import requests
 from scrapi import settings
 from scrapi.base import XMLHarvester
 from scrapi.linter.document import RawDocument
-from scrapi.base.helpers import default_name_parser, build_properties, compose, single_result
+from scrapi.base.helpers import default_name_parser, build_properties, compose, single_result, date_formatter
 
 logger = logging.getLogger(__name__)
 
@@ -101,7 +100,7 @@ class PlosHarvester(XMLHarvester):
             'canonicalUri': ('//str[@name="id"]/node()', compose('http://dx.doi.org/{}'.format, single_result)),
         },
         'contributors': ('//arr[@name="author_display"]/str/node()', default_name_parser),
-        'providerUpdatedDateTime': ('//date[@name="publication_data"]/node()', compose(lambda x: parse(x).date().isoformat(), single_result)),
+        'providerUpdatedDateTime': ('//date[@name="publication_data"]/node()', compose(date_formatter, single_result)),
         'title': ('//str[@name="title_display"]/node()', single_result),
         'description': ('//arr[@name="abstract"]/str/node()', single_result),
         'publisher': {

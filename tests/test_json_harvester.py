@@ -7,7 +7,7 @@ from dateutil.parser import parse
 
 from scrapi.base import JSONHarvester
 from scrapi.linter import RawDocument
-from scrapi.base.helpers import build_properties
+from scrapi.base.helpers import build_properties, date_formatter
 
 expected = {
     "description": "This is a  test",
@@ -17,23 +17,21 @@ expected = {
             "givenName": "Testy",
             "familyName": "Testerson",
             "additionalName": "",
-            "ORCID": None,
-            "email": ""
+            "sameAs": []
         },
         {
             "name": "Test Testerson Jr",
             "givenName": "Test",
             "familyName": "Testerson",
             "additionalName": "",
-            "ORCID": None,
-            "email": ""
+            "sameAs": []
         }
     ],
     "title": "Test",
     'uris': {
         "canonicalUri": "http://example.com"
     },
-    "providerUpdatedDateTime": "2015-02-02T00:00:00",
+    "providerUpdatedDateTime": "2015-02-02T00:00:00+00:00",
     "shareProperties": {
         "source": "test",
         "docID": "1"
@@ -56,18 +54,6 @@ expected = {
             "properties": {
                 "depositedTimestamp": "right now"
             }
-        },
-        {
-            "name": "Empty",
-            "properties": {
-                "Empty": None
-            }
-        },
-        {
-            "name": "Empty2",
-            "properties": {
-                "Empty2": None
-            }
         }
     ]
 }
@@ -80,8 +66,7 @@ def process_contributor(author, orcid):
         'givenName': name.first,
         'additionalName': name.middle,
         'familyName': name.last,
-        'email': '',
-        'ORCID': orcid
+        'sameAs': []
     }
 
 
@@ -99,9 +84,9 @@ class TestHarvester(JSONHarvester):
         return {
             'title': ('/title', lambda x: x[0] if x else ''),
             'description': ('/subtitle', lambda x: x[0] if (isinstance(x, list) and x) else x or ''),
-            'providerUpdatedDateTime': ('/issued/date-parts', lambda x: parse(' '.join(
-                [part for part in x[0]])).isoformat()
-            ),
+            'providerUpdatedDateTime': ('/issued/date-parts', lambda x: date_formatter(' '.join(
+                [part for part in x[0]])
+            )),
             'uris': {
                 'canonicalUri': '/URL'
             },

@@ -1,6 +1,7 @@
 import copy
 import pytest
 import mock
+import six
 
 import scrapi
 from scrapi.linter.document import NormalizedDocument
@@ -95,6 +96,10 @@ def test_renormalize():
 
 @pytest.mark.cassandra
 def test_migrate_v2():
+    try:
+        RAW['doc'] = RAW['doc'].encode('utf-8')
+    except AttributeError:
+        RAW['doc'] = str(RAW['doc'])
     DocumentModelOld.create(**RAW.attributes).save()
     queryset = DocumentModel.objects(docID=RAW['docID'], source=RAW['source'])
     assert len(queryset) == 0
