@@ -2,6 +2,11 @@
 ChangeLog
 *********
 
+0.8.3 (2016-08-19)
+==================
+- Add funding information to the crossref harvester
+
+
 0.8.2 (2016-08-11)
 ==================
 - Add harvester for Washington University Open Scholarship
