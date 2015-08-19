@@ -13,6 +13,7 @@ from datetime import datetime
 import six
 import furl
 import requests
+from cassandra import WriteTimeout
 from cassandra.cqlengine import columns, models
 from requests.structures import CaseInsensitiveDict
 
@@ -90,15 +91,22 @@ def record_or_load_response(method, url, throttle=None, force=False, params=None
         response.content = response.content.encode('utf8')
 
     if not resp:
-        return HarvesterResponse(
-            url=url.lower(),
-            method=method,
-            ok=response.ok,
-            content=response.content,
-            encoding=response.encoding,
-            status_code=response.status_code,
-            headers_str=json.dumps(dict(response.headers))
-        ).save()
+        try:
+            return HarvesterResponse(
+                url=url.lower(),
+                method=method,
+                ok=response.ok,
+                content=response.content,
+                encoding=response.encoding,
+                status_code=response.status_code,
+                headers_str=json.dumps(dict(response.headers))
+            ).save()
+        except WriteTimeout as e:
+            code = e.args[0].split(' ')[0].split('=')[1]
+            if code == '1100':
+                logger.error('This response is too large to cache')
+                return response
+            raise
 
     logger.warning('Skipped recorded response from "{}"'.format(url))
 
