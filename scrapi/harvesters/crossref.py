@@ -60,6 +60,10 @@ class CrossRefHarvester(JSONHarvester):
                     entry.get('ORCID')
                 ]) for entry in x
             ], lambda x: x or [])),
+            'award': {
+                'awardName': '/award/name',
+                'awardIdentifier': ('/award/DOI', lambda x: 'http://dx.doi.org/{}'.format(x))
+            },
             'otherProperties': build_properties(
                 ('journalTitle', '/container-title'),
                 ('volume', '/volume'),
@@ -79,7 +83,8 @@ class CrossRefHarvester(JSONHarvester):
                 ('volume', '/volume'),
                 ('referenceCount', '/reference-count'),
                 ('updatePolicy', '/update-policy'),
-                ('depositedTimestamp', '/deposited/timestamp')
+                ('depositedTimestamp', '/deposited/timestamp'),
+                ('award', '/award')
             )
         }
 
