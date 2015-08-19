@@ -20,9 +20,9 @@ single_string = compose(lambda x: x.title().strip(), single_result)
 
 def parse_contributor(author):
     orgs = {'statistics', 'south', 'africa', 'research', 'organization'}
-    parts = set(author.lower().strip().split(' '))
+    parts = set(author.lower().split(' '))
     if parts.intersection(orgs):
-        return {'name': author.strip()}
+        return {'name': author}
     return default_name_parser([author])
 
 
@@ -41,7 +41,7 @@ class DataFirstHarvester(XMLHarvester):
 
     schema = {
         'title': ('//icpsr:titl/node()', single_string),
-        'contributors': ('//icpsr:AuthEnty/node()', lambda x: map(parse_contributor, x)),
+        'contributors': ('//icpsr:AuthEnty/node()', lambda x: map(parse_contributor, x.strip())),
         'uris': CONSTANT({}),
         'providerUpdatedDateTime': ('//icpsr:prodDate/node()', compose(date_formatter, single_result)),
         'description': ('//icpsr:abstract/node()', single_string),
@@ -52,7 +52,7 @@ class DataFirstHarvester(XMLHarvester):
         end_date = end_date or date.today()
         response = requests.get(self.BASE_URL)
         lines = response.text.strip().split('\n')
-        reader = csv.reader(lines[1:])
+        reader = csv.reader(map(lambda x: x.encode('utf-8'), lines[1:]))
         return [RawDocument({
             'doc': self.harvest_record(line[0]),
             'source': self.short_name,
