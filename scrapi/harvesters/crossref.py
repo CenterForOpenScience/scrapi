@@ -36,6 +36,28 @@ def process_contributor(author, orcid):
     }
 
 
+def process_sponsorships(funder):
+    sponsorships = []
+    for element in funder:
+        try:
+            award_identifier = 'http://dx.doi.org/{}'.format(element['DOI'])
+        except KeyError:
+            award_identifier = ', '.join(element['award'])
+        sponsorship = {
+            'sponsor': {
+                'sponsorName': element['name']
+            },
+            'award': {
+                'awardIdentifier': award_identifier,
+                'awardName': ', '.join(element['award'])
+            }
+        }
+
+        sponsorships.append(sponsorship)
+
+    return sponsorships
+
+
 class CrossRefHarvester(JSONHarvester):
     short_name = 'crossref'
     long_name = 'CrossRef'
@@ -60,10 +82,7 @@ class CrossRefHarvester(JSONHarvester):
                     entry.get('ORCID')
                 ]) for entry in x
             ], lambda x: x or [])),
-            'award': {
-                'awardName': '/award/name',
-                'awardIdentifier': ('/award/DOI', lambda x: 'http://dx.doi.org/{}'.format(x))
-            },
+            'sponsorships': ('/funder', lambda x: process_sponsorships(x) if x else []),
             'otherProperties': build_properties(
                 ('journalTitle', '/container-title'),
                 ('volume', '/volume'),
@@ -84,7 +103,7 @@ class CrossRefHarvester(JSONHarvester):
                 ('referenceCount', '/reference-count'),
                 ('updatePolicy', '/update-policy'),
                 ('depositedTimestamp', '/deposited/timestamp'),
-                ('award', '/award')
+                ('funder', '/funder')
             )
         }
 
