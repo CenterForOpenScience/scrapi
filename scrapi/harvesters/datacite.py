@@ -23,7 +23,7 @@ class DataciteHarvester(OAIHarvester):
         return updated_schema(self._schema, {
             "description": ("//dc:description/node()", get_second_description),
             "uris": {
-                "canonicalUri": ('//dc:identifier/node()', oai_extract_dois),
+                "canonicalUri": ('//dc:identifier/node()', lambda x: oai_extract_dois(x)[0]),
                 "objectUris": ('//dc:identifier/node()', oai_extract_dois)
             }
         })
