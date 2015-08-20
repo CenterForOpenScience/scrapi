@@ -1,0 +1,726 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/13.4.0]
+    method: GET
+    uri: http://oaktrust.library.tamu.edu/dspace-oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2015-08-18T00:00:00Z&until=2015-08-20T00:00:00Z
+  response:
+    body: {string: !!python/unicode "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet
+        type=\"text/xsl\" href=\"static/style.xsl\"?><OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/
+        http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"><responseDate>2015-08-20T21:37:49Z</responseDate><request
+        verb=\"ListRecords\" metadataPrefix=\"oai_dc\" from=\"2015-08-18T00:00:00Z\"
+        until=\"2015-08-20T00:00:00Z\">http://oaktrust.library.tamu.edu/dspace-oai/request</request><ListRecords><record><header><identifier>oai:oaktrust.library.tamu.edu:1969.1/149344</identifier><datestamp>2015-08-18T14:59:00Z</datestamp><setSpec>com_1969.1_1</setSpec><setSpec>com_1969.1_2815</setSpec><setSpec>col_1969.1_2</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Application
+        of Dissolution Dynamic Nuclear Polarization to the Characterization of Reactions
+        Involving Large Molecules</dc:title>\n<dc:creator>Lee, Youngbok</dc:creator>\n<dc:contributor>Hilty,
+        Christian</dc:contributor>\n<dc:contributor>Barondeau, David P.</dc:contributor>\n<dc:contributor>Liu
+        , Wenshe</dc:contributor>\n<dc:contributor>Young, Ryland</dc:contributor>\n<dc:subject>NMR</dc:subject>\n<dc:subject>DNP</dc:subject>\n<dc:description>Nuclear
+        magnetic resonance (NMR) spectroscopy is one of the most important analytical
+        tools for organic and biological chemistry. It provides not only detailed
+        information on the structure of small molecules and macromolecules, but also
+        on molecular interactions. Because of the inherent low sensitivity of NMR,
+        a long signal averaging time or a high spin concentration is often required.
+        A variety of methods have been explored to improve the sensitivity of NMR.
+        Especially, large signal gains can be obtained by hyperpolarization of the
+        nuclear spins. NMR signals of hyperpolarized samples are enhanced by several
+        orders of magnitude. Dissolution Dynamic Nuclear Polarization (D-DNP) is a
+        versatile technique capable of polarizing many different nuclei in the solid
+        state, and subsequently providing a hyperpolarized liquid sample following
+        a dissolution step. The resulting signal enhancement has made it possible
+        to obtain detailed information in research fields as varied as metabolic imaging
+        or enzyme catalysis. This dissertation aims to extend the applicability of
+        D-DNP into new areas of chemistry, which involve the characterization of interactions
+        and reactions involving large molecules.&#xd;\n&#xd;\nIn a first project,
+        fluorine hyperpolarization is exploited to investigate protein-ligand interactions.
+        The enhancement of 19F signal allows for the detection of submicromolar concentrations
+        of fluorinated ligands in the strong-, intermediate-, and weak-binding regimes.
+        Several NMR parameters are utilized to observe ligand binding to the macromolecule,
+        and to determine dissociation constants.&#xd;\n&#xd;\nIn a second project,
+        competitive binding of ligands to the same binding pocket on a protein is
+        investigated. Here, polarization flows from a first ligand hyperpolarized
+        on protons to the protein, and then to the second ligand. The buildup in function
+        of time of the signals due to this relayed nuclear Overhauser effect contains
+        structural information on the binding epitope.&#xd;\n&#xd;\nIn a third project,
+        the aim is to directly detect a larger molecule, a polymer, which has been
+        synthesized starting from hyperpolarized monomers. Using DNP, single scan
+        observation of 13C, a common nucleus with large chemical shift dispersion,
+        is possible. Time resolved 13C NMR spectroscopy in combination with kinetic
+        models permits the description of polymerization reaction of the living anionic
+        polymerization of styrene. In summary, several approaches have been investigated
+        for utilizing a large hyperpolarization initially produced on small molecules,
+        for the benefit of characterizing properties of macromolecules. These developments
+        extend the capabilities of D-DNP and demonstrate the potential for leading
+        to new applications in fields as diverse as drug discovery and polymer science.</dc:description>\n<dc:date>2013-10-03T14:41:47Z</dc:date>\n<dc:date>2015-05-01T05:57:09Z</dc:date>\n<dc:date>2013-05</dc:date>\n<dc:date>2013-03-13</dc:date>\n<dc:date>May
+        2013</dc:date>\n<dc:date>2013-10-03T14:41:47Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>http://hdl.handle.net/1969.1/149344</dc:identifier>\n<dc:language>en</dc:language>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:oaktrust.library.tamu.edu:1969.1/154783</identifier><datestamp>2015-08-18T19:10:12Z</datestamp><setSpec>com_1969.1_1656</setSpec><setSpec>com_1969.1_3364</setSpec><setSpec>col_1969.1_2482</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The
+        Effect of a 90 Degree Elbow on the Accuracy of Liquid Flow Measurement with
+        an Insertion Flowmeter</dc:title>\n<dc:creator>Woo, Seongwoo</dc:creator>\n<dc:description>To
+        quantify the measurement error of slow meters in the developing length, simulation
+        model development, local velocity measurements, flowmeters test, and regression
+        model development were carried out for 10.2 cm, 15.2 cm, and 20.3 cm pipe
+        system. The test facility used was the flow loop at Riverside campus, Texas
+        A&amp;M University.  The test section was made on the basis of ASME guidelines
+        (1971).&#xd;\nSimulation models were developed using Fluent/UNS to estimate
+        the velocity contours in the developing length of 10.2 cm, 15.2 cm and 20.3
+        cm. for evaluation of the standard deviation and the non-dimensional velocity
+        contour data, the developing length of 10.2 cm, 15.2 cm, and 20.3 cm pipe
+        with pressure fitting 9short radius of curvature) was 6 diameters downstream.
+        For 10.2 cm with a long radius of curvature elbow, it was 10 diameters downstream
+        of the elbow. &#xd;\nThe local velocity at 2 and 9 diameters downstream was
+        measured with the help of a five0hole probe. The distorted velocity profile
+        was distorted to the outside of pipe at 2 diameters downstream and 0 degrees.
+        It had a double peak at 90 degrees and 2 diameters downstream. For 10.2 cm
+        with a pressure fitting, the developing length was 6 diameters downstream.
+        On the other hand, it was 9 to 10 diameters for 10.2 cm with the long radius
+        of curvature. For 10.2 cm and 15.2 piping system with pressure fittings, the
+        largest measurement error was -25% and -40% at 2D and 180 degrees. On the
+        other hand, for the 102 cm pipe with R = 11.4 and 16.5cm, the largest measurement
+        error was -15% at 2D and 180 degrees. The measurement error decreases exponentially
+        or quadratically.&#xd;\nFinally, regression models were developed on the basis
+        of the data trends of simulation, five-hole, and flowmeters data. The measurement
+        error of simulation results, five-hole, and flowmeters data decreased quadratically
+        or exponentially in the developing length. Exponential model was well described
+        in the re0developing and fully developing region for 0 and 180 degrees flowmeters
+        orientation. On the other hand, the data at 90 degrees was fluctuating and
+        converging at zero.&#xd;\n.</dc:description>\n<dc:date>2015-08-13T16:05:41Z</dc:date>\n<dc:date>2015-08-13T16:05:41Z</dc:date>\n<dc:date>2000-08</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:identifier>http://hdl.handle.net/1969.1/154783</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:relation>ESL-TH-00-08-02;</dc:relation>\n<dc:publisher>Energy
+        Systems Laboratory</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:oaktrust.library.tamu.edu:1969.1/154784</identifier><datestamp>2015-08-18T19:12:42Z</datestamp><setSpec>com_1969.1_1656</setSpec><setSpec>com_1969.1_3364</setSpec><setSpec>col_1969.1_2482</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Development
+        and Validation of a Computer Model for Energy-Efficient Shaded Fenestration
+        Design</dc:title>\n<dc:creator>Oh, Kie Whan</dc:creator>\n<dc:description>The
+        goal of this study is to develop and validate a computerized model for an
+        energy? efficient  fenestration system that can easily be incorporated into
+        the architectural design process. This model is for the thermal analysis of
+        a shaded fenestration system and considers selected effects of the solar shades.
+        Several simulation programs have been developed for the thermal analysis of
+        a shaded window system.  However, none of the previous programs has incorporated
+        a validated simulation model into a visually effective display such as a sunpath
+        diagram.&#xd;\n&#xd;\nThe proposed methodology concentrates on the development
+        of various new graphical aids tor effectively displaying a shaded design and
+        develops a thermal model for calculating the heat transfer through an unshaded
+        window at any orientation. A computerized simulation model, called the Shaded
+        Fenestration Design (SFD) model, was developed that is capable of calculating
+        \ the amount of solar radiation for a clear day as well as calculating the
+        heat transfer through window glazing. The SFD model also provides new computerized
+        displays of the sunpath diagrams that include the equidistant, orthographic,
+        stereographic, gnomonic, and cylindrical projections, as well as the accompanying
+        shading mask protractors.&#xd;\n&#xd;\nThe program simulates clear sky solar
+        radiation for locations in the U.S. using the methods developed by the ASHRAE
+        Handbook, Duffie and Beckman, and Kreider and Rabl. An&#xd;\nanisotrophic
+        sky model was applied for the calculation of solar radiation on a tilted surface
+        and the transmitted  solar radiation through the single-glazed window.&#xd;\nA
+        highly insulated experimental test box was constructed to measure the total
+        heat gain through the window glazing as well as the amount of solar radiation
+        on the vertical surface. A finite difference model was then developed to provide
+        a comparative validation. The results from the proposed solar simulation model
+        were also compared against the simulated results from the DOE-2 program.&#xd;\n&#xd;\nThe
+        portions of the work that represent new contributions include: l) computerization
+        of the four projection methods (i.e.? orthographic. stereographic. gnomonic.
+        and cylindrical projections)  for the sunpath diagram and the shading mask
+        protractor, 2) display of the hourly intensity of solar data onto the path
+        of the sun for horizontal and vertical orientations at varying&#xd;\noff-south
+        azimuths, 3) use of a moveable viewpoint for the sunpath diagram, and 4) development
+        \ of experimental  test sets of the measured heat gain for various shading
+        configurations.</dc:description>\n<dc:date>2015-08-13T16:15:19Z</dc:date>\n<dc:date>2015-08-13T16:15:19Z</dc:date>\n<dc:date>2000-05</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:identifier>http://hdl.handle.net/1969.1/154784</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:relation>ESL-TH-00-05-01;</dc:relation>\n<dc:publisher>Texas
+        A&amp;M University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:oaktrust.library.tamu.edu:1969.1/154785</identifier><datestamp>2015-08-18T19:14:22Z</datestamp><setSpec>com_1969.1_1656</setSpec><setSpec>com_1969.1_3364</setSpec><setSpec>col_1969.1_2482</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The
+        Research and development of Damage Tolerant Carbon Fiber Composites</dc:title>\n<dc:creator>Miranda,
+        John Armando</dc:creator>\n<dc:description>This record of study takes a firsthand
+        look at corporate research and development efforts to improve the damage tolerance
+        of two unique composite materials used in high performance aerospace applications.
+        The professional internship with The Dow Chemical Company- Dow/United Technologies
+        joint venture describes the intern's involvement in developing patentable
+        process technologies for interleave toughening of high temperature resins
+        and their composites.  The subsequent internship with Hexcel Corporation describes
+        the intern's involvement in developing the damage tolerance of novel existing
+        honeycomb sandwich structure technologies.&#xd;\nThrough the Doctor of Engineering
+        professional internship experience this student exercised fundamental academic
+        understanding and methods toward accomplishing the corporate objectives of
+        the internship sponsors in a resource efficient and cost-effective manner.
+        \ Also, the student gained tremendous autonomy through exceptional training
+        in working in focused team environments with highly trained engineers and
+        scientists in achieving important corporate objectives.</dc:description>\n<dc:date>2015-08-13T18:17:44Z</dc:date>\n<dc:date>2015-08-13T18:17:44Z</dc:date>\n<dc:date>1999-12</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:identifier>http://hdl.handle.net/1969.1/154785</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:relation>ESL-TH-99-12-03;</dc:relation>\n<dc:publisher>Texas
+        A&amp;M University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:oaktrust.library.tamu.edu:1969.1/154787</identifier><datestamp>2015-08-18T19:15:32Z</datestamp><setSpec>com_1969.1_1656</setSpec><setSpec>com_1969.1_3364</setSpec><setSpec>col_1969.1_2482</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>A
+        Real Time Self-Tuning Algorithm for PI Control of the Heating and Cooling
+        Coils in Buildings</dc:title>\n<dc:creator>Zhou, Qianghua</dc:creator>\n<dc:description>Proportional
+        and Integral (PI) controllers are used widely in HVAC applications. It is
+        necessary to choose suitable values for PI gains for PI control of the heating
+        \ and cooling coils in buildings. Consequently, suitable indoor comfort can
+        be maintained; the energy efficiency of the heating and cooling systems will
+        be maximized; and the lifetime of heating and cooling valves will be prolonged.&#xd;\nA
+        self-tuning algorithm is developed in this dissertation to find the good P
+        and I gains.  The  proposed  algorithm  evaluates  the  controller  performance
+        \ by  the  integral square error (ISE) of the coil supply air temperature.
+        The controller operation will be considered as not suitable when the ISE is
+        too big. The P and I gains are required to change at this condition. The algorithm
+        uses the ?iteration' concept to find better values for P and I gains. It first
+        changes the P and I gains to certain values to decrease the ISE. The iteration
+        then will stop if the ISE is small enough; otherwise the change of the P and&#xd;\nI
+        \  gains will continue   until optimal values are found.  Further, the new
+        algorithm determines the iteration direction by observing the spectrum distribution
+        of the ISE. P and I gains will be increased if the low frequency content is
+        the dominant part in the coil supply air temperature; P and I gains will be
+        decreased if high frequency content is the dominant part.&#xd;\n&#xd;\nThe
+        new algorithm can be realized on-line without interrupting the coil normal
+        operation. It functions as a watchdog to be sure the PI controller maintains
+        smooth and rapid tracking properties. The new algorithm only requires about
+        forty lines of program code in the current Direct Digital Control (DOC) systems
+        used for HVAC control. The basic concept of the algorithm will be developed
+        by theoretically analyzing the dynamic behavior and frequency characteristics
+        of the cooling and heating coils in buildings. The whole algorithm is then
+        demonstrated by controlling a coil in a building, thus proving its feasibility.</dc:description>\n<dc:date>2015-08-13T20:18:52Z</dc:date>\n<dc:date>2015-08-13T20:18:52Z</dc:date>\n<dc:date>1999-08</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:identifier>http://hdl.handle.net/1969.1/154787</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:publisher>Texas
+        A&amp;M University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:oaktrust.library.tamu.edu:1969.1/154788</identifier><datestamp>2015-08-18T19:17:19Z</datestamp><setSpec>com_1969.1_1656</setSpec><setSpec>com_1969.1_3364</setSpec><setSpec>col_1969.1_2482</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>An
+        Inverse BIN Methodology to Measure the Savings from Energy Conservation Retrofits
+        in Commercial Buildings</dc:title>\n<dc:creator>Thamilseran, Sabaratnam</dc:creator>\n<dc:description>This
+        \  dissertation  provides   a  simple   yet  powerful  approach,   the  fully
+        \ layered inverse  bin method, to baseline hourly energy  use in commercial
+        \ buildings  and illustrates the application through  carefully  selected
+        \ case  study  buildings.   The eleven  step  inverse bin  procedure  for
+        \ baselining  hourly  energy  use  mainly  comprises  a simple  inverse  bin
+        procedure (steps one through seven) and two improvements through the use of
+        thermal  lag and humidity  sub-binning (steps eight through eleven).&#xd;\nTemperature-based
+        binning  for baselining or modeling  weather  dependent  energy use  (e.g.,
+        \  heating   and  cooling   energy)  and  an  Hour-of-the-Day   binning   tor
+        \ weather independent  energy  use (e.g., electrical   energy  use) have been
+        developed. This procedure addresses  the problem areas suggested  by the previous
+        \ research in the analysis  community while  keeping   the  method  simple
+        \ enough   to  be  usable  by  an  HVAC   engineer.   The inclusion  of multiple
+        change points (i.e., bins)  through  the use of 5?F (-3?C) bins enables fitting
+        \ the  non-linear  variation  of  the  energy  use  and  hence  improves   the
+        \ model's  fit significantly over  the  existing  linear  and  change-point
+        methods.  The additional   use of humidity sub-binning and lagged temperature
+        as independent variables for sub-binning improves the predictions for latent
+        load dominated building loads or buildings with high thermal mass constitution,
+        respectively.</dc:description>\n<dc:date>2015-08-13T20:22:27Z</dc:date>\n<dc:date>2015-08-13T20:22:27Z</dc:date>\n<dc:date>1999-05</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:identifier>http://hdl.handle.net/1969.1/154788</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:relation>ESL-TH-99-05-02;</dc:relation>\n<dc:publisher>Texas
+        A&amp;M University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:oaktrust.library.tamu.edu:1969.1/154818</identifier><datestamp>2015-08-18T05:47:12Z</datestamp><setSpec>com_1969.1_93295</setSpec><setSpec>col_1969.1_93296</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Apps
+        Seeking Theories: Results of a Study on the Use of Health Behavior Change
+        Theories in Cancer Survivorship Mobile Apps</dc:title>\n<dc:creator>Dahlke,
+        Deborah Vollmer</dc:creator>\n<dc:creator>Fair, Kayla</dc:creator>\n<dc:creator>Hong,
+        Y Alicia</dc:creator>\n<dc:creator>Beaudoin, Christopher E</dc:creator>\n<dc:creator>Pulczinski,
+        Jairus</dc:creator>\n<dc:creator>Ory, Marcia G</dc:creator>\n<dc:subject>eHealth</dc:subject>\n<dc:subject>health
+        behavior</dc:subject>\n<dc:subject>health promotion</dc:subject>\n<dc:subject>mobile
+        apps</dc:subject>\n<dc:subject>mobile health</dc:subject>\n<dc:subject>survivorship</dc:subject>\n<dc:description>Background&#xd;\n&#xd;\nThousands
+        of mobile health apps are now available for use on mobile phones for a variety
+        of uses and conditions, including cancer survivorship. Many of these apps
+        appear to deliver health behavior interventions but may fail to consider design
+        considerations based in human computer interface and health behavior change
+        theories.&#xd;\n&#xd;\nObjective&#xd;\n&#xd;\nThis study is designed to assess
+        the presence of and manner in which health behavior change and health communication
+        theories are applied in mobile phone cancer survivorship apps.&#xd;\n&#xd;\nMethods&#xd;\n&#xd;\nThe
+        research team selected a set of criteria-based health apps for mobile phones
+        and assessed each app using qualitative coding methods to assess the application
+        of health behavior change and communication theories. Each app was assessed
+        using a coding derived from the taxonomy of 26 health behavior change techniques
+        by Abraham and Michie with a few important changes based on the characteristics
+        of mHealth apps that are specific to information processing and human computer
+        interaction such as control theory and feedback systems.&#xd;\n&#xd;\nResults&#xd;\n&#xd;\nA
+        total of 68 mobile phone apps and games built on the iOS and Android platforms
+        were coded, with 65 being unique. Using a Cohen?s kappa analysis statistic,
+        the inter-rater reliability for the iOS apps was 86.1 (P&lt;.001) and for
+        the Android apps, 77.4 (P&lt;.001). For the most part, the scores for inclusion
+        of theory-based health behavior change characteristics in the iOS platform
+        cancer survivorship apps were consistently higher than those of the Android
+        platform apps. For personalization and tailoring, 67% of the iOS apps (24/36)
+        had these elements as compared to 38% of the Android apps (12/32). In the
+        area of prompting for intention formation, 67% of the iOS apps (34/36) indicated
+        these elements as compared to 16% (5/32) of the Android apps.&#xd;\n&#xd;\nConclusions&#xd;\n&#xd;\nMobile
+        apps are rapidly emerging as a way to deliver health behavior change interventions
+        that can be tailored or personalized for individuals. As these apps and games
+        continue to evolve and include interactive and adaptive sensors and other
+        forms of dynamic feedback, their content and interventional elements need
+        to be grounded in human computer interface design and health behavior and
+        communication theory and practice.</dc:description>\n<dc:description>The open
+        access fee for this work was funded through the Texas A&amp;M University Open
+        Access to Knowledge (OAK) Fund.</dc:description>\n<dc:date>2015-08-17T15:06:41Z</dc:date>\n<dc:date>2015-08-17T15:06:41Z</dc:date>\n<dc:date>2015-03-27</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Vollmer
+        Dahlke D, Fair K, Hong YA, Beaudoin CE, Pulczinski J, Ory MG. Apps Seeking
+        Theories: Results of a Study on the Use of Health Behavior Change Theories
+        in Cancer Survivorship Mobile Apps. Jethwani K, ed. JMIR mHealth and uHealth.
+        2015;3(1):e31. doi:10.2196/mhealth.3861.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1969.1/154818</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:rights>Attribution
+        3.0 United States</dc:rights>\n<dc:rights>http://creativecommons.org/licenses/by/3.0/us/</dc:rights>\n<dc:publisher>JMIR
+        Publications</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:oaktrust.library.tamu.edu:1969.1/154819</identifier><datestamp>2015-08-18T05:47:15Z</datestamp><setSpec>com_1969.1_93295</setSpec><setSpec>col_1969.1_93296</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>African-American
+        fathers? perspectives on their children?s health education: a qualitative,
+        exploratory study</dc:title>\n<dc:creator>Odum, Mary</dc:creator>\n<dc:creator>Smith,
+        Matthew Lee</dc:creator>\n<dc:creator>McKyer, E. Lisako J.</dc:creator>\n<dc:subject>African-American
+        fathers</dc:subject>\n<dc:subject>paternal perspectives</dc:subject>\n<dc:subject>child
+        health</dc:subject>\n<dc:subject>health education</dc:subject>\n<dc:subject>qualitative</dc:subject>\n<dc:description>Purpose:
+        To investigate African-American fathers? (AAF) perceptions regarding the applicability
+        and need for their involvement as a health connection for their children and
+        describe how participating fathers? behavior was affected by their attitudes,
+        knowledge, and perceptions of their influence on their children?s health.&#xd;\n&#xd;\nMethods:
+        This exploratory study gathered data via semi-structured focus groups (n =
+        3) and thematically analyzed it utilizing a grounded theory approach. Participants
+        included AAF (n = 20) with a mean age of 37 years (SD 11.79), with at least
+        one child between 6 and 18 years old.&#xd;\n&#xd;\nResults: Four major themes
+        were revealed: (1) appropriate health education for participants? children
+        (should first and foremost be delivered by parents); (2) participants? paternal
+        health-related guidance approach (reactive, rather than proactive); (3) participants?
+        perceived influences on health-related communication with their children (gender
+        roles, efficacy constraints); and (4) paternal definitions of health (most
+        often associated with diet).&#xd;\n&#xd;\nConclusion: Understanding AAFs?
+        perceived and desired role in their children?s health edification can inform
+        initiatives that actively engage these men, and nurture their level of involvement,
+        to promote positive health behaviors among their children; this is necessary
+        to realize their potential to actively improve the health of their children,
+        families, and communities.</dc:description>\n<dc:description>The open access
+        fee for this work was funded through the Texas A&amp;M University Open Access
+        to Knowledge (OAK) Fund.</dc:description>\n<dc:date>2015-08-17T15:30:15Z</dc:date>\n<dc:date>2015-08-17T15:30:15Z</dc:date>\n<dc:date>2014-12-08</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Odum
+        M, Smith ML and McKyer ELJ (2014) African-American fathers? perspectives on
+        their children?s health education: a qualitative, exploratory study. Front.
+        Public Health 2:276. doi: 10.3389/fpubh.2014.00276</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1969.1/154819</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:rights>Attribution
+        3.0 United States</dc:rights>\n<dc:rights>http://creativecommons.org/licenses/by/3.0/us/</dc:rights>\n<dc:publisher>Frontiers</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:oaktrust.library.tamu.edu:1969.1/154820</identifier><datestamp>2015-08-18T05:47:10Z</datestamp><setSpec>com_1969.1_93295</setSpec><setSpec>col_1969.1_93296</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Interannual
+        Variation of the Surface Temperature of Tropical Forests from Satellite Observations</dc:title>\n<dc:creator>Gao,
+        Huilin</dc:creator>\n<dc:creator>Zhang, Shuai</dc:creator>\n<dc:creator>Fu,
+        Rong</dc:creator>\n<dc:creator>Li, Wenhong</dc:creator>\n<dc:creator>Dickinson,
+        Robert E.</dc:creator>\n<dc:description>Land surface temperatures (LSTs) within
+        tropical forests contribute to climate variations. However, observational
+        data are very limited in such regions. This study used passive microwave remote
+        sensing data from the Special Sensor Microwave/Imager (SSM/I) and the Special
+        Sensor Microwave Imager Sounder (SSMIS), providing observations under all
+        weather conditions, to investigate the LST over the Amazon and Congo rainforests.
+        The SSM/I and SSMIS data were collected from 1996 to 2012. The morning and
+        afternoon observations from passive microwave remote sensing facilitate the
+        investigation of the interannual changes of LST anomalies on a diurnal basis.
+        As a result of the variability of cloud cover and the corresponding reduction
+        of solar radiation, the afternoon LST anomalies tend to vary more than the
+        morning LST anomalies. The dominant spatial and temporal patterns for interseasonal
+        variations of the LST anomalies over the tropical rainforest were analyzed.
+        The impacts of droughts and El Ni?os on this LST were also investigated. Differences
+        between early morning and late afternoon LST anomalies were identified by
+        the remote sensing product, with the morning LST anomalies controlled by humidity
+        (according to comparisons with the National Centers for Environmental Prediction
+        (NCEP) reanalysis data).</dc:description>\n<dc:description>The open access
+        fee for this work was funded through the Texas A&amp;M University Open Access
+        to Knowledge (OAK) Fund.</dc:description>\n<dc:date>2015-08-17T16:31:19Z</dc:date>\n<dc:date>2015-08-17T16:31:19Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Huilin
+        Gao, Shuai Zhang, Rong Fu, Wenhong Li, and Robert E. Dickinson, ?Interannual
+        Variation of the Surface Temperature of Tropical Forests from Satellite Observations,?
+        Advances in Meteorology, Article ID 564126, in press.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1969.1/154820</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:rights>Attribution
+        3.0 United States</dc:rights>\n<dc:rights>http://creativecommons.org/licenses/by/3.0/us/</dc:rights>\n<dc:publisher>Hindawi
+        Publishing Corporation</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:oaktrust.library.tamu.edu:1969.1/154821</identifier><datestamp>2015-08-18T20:33:25Z</datestamp><setSpec>com_1969.1_93295</setSpec><setSpec>col_1969.1_93296</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Questioning
+        the HIV-AIDS hypothesis: 30 years of dissent</dc:title>\n<dc:creator>Goodson,
+        Patricia</dc:creator>\n<dc:subject>HIV</dc:subject>\n<dc:subject>AIDS</dc:subject>\n<dc:subject>dissent</dc:subject>\n<dc:subject>causation</dc:subject>\n<dc:subject>multifactorial
+        causality</dc:subject>\n<dc:description>Since 1984, when the hypothesis that
+        HIV-causes-AIDS was announced, many scholars have questioned the premise and
+        offered alternative explanations. Thirty years later, competing propositions
+        as well as questioning of the mainstream hypothesis persist, often supported
+        by prominent scientists. This article synthesizes the most salient questions
+        raised, alongside theories proposing non-viral causes for AIDS. The synthesis
+        is organized according to four categories of data believed to support the
+        HIV-AIDS hypothesis: retroviral molecular markers; transmission electron microscopy
+        (EM) images of retroviral particles; efficacy of anti-retroviral drugs; and
+        epidemiological data. Despite three decades of concerted investments in the
+        mainstream hypothesis, the lingering questions and challenges synthesized
+        herein offer public health professionals an opportunity to reflect on their
+        assumptions and practices regarding HIV/AIDS.&#xd;\n&#xd;\n?The HIV/AIDS hypothesis
+        is one hell of a mistake?, wrote Kary Mullis in 1996 [(1), p. 14]. Mullis
+        ? Nobel Laureate in Chemistry, 1993 ? and other distinguished scientists have
+        claimed the HIV-causes-AIDS hypothesis is false, unproductive, and unethical.
+        They have done so since 1984, when the hypothesis was proposed. Thirty years
+        after countless studies, resources, and attempts to cure have been poured
+        into the HIV-AIDS hypothesis, it may be fruitful to ask: What happened to
+        those views and voices that once disagreed? Have the past three decades, with
+        their scientific, technological, and public health developments, been sufficient
+        to convince critics of the hypothesis? value? Have these advances been able
+        to silence the questioning?&#xd;\n&#xd;\nHere, I synthesize the main criticisms
+        aimed at the HIV-AIDS hypothesis, alongside select unorthodox1 theories proposing
+        non-viral cause(s) for AIDS, to argue: far from being condemned to extinction,
+        competing explanations for, and thorough questioning of the mainstream premise
+        persist. Perhaps better known by the lay public than by health professionals,
+        many explanations are, in fact, attracting a growing number of sympathizers.
+        To support the argument, I employ historical research and data synthesis methods.
+        I utilize, as data, trade and professional publications in tandem with authoritative
+        scientific sources.&#xd;\n&#xd;\nIt is important to note that my purpose is
+        not to review the state of the science regarding HIV/AIDS, nor to persuade
+        readers to reject the mainstream hypothesis. Instead, I aim to expose readers
+        to the persisting controversies, and to motivate them to raise questions of
+        their own. Ultimately, then, this article invites the public health workforce
+        to reflect on prevailing assumptions and practices regarding HIV-AIDS. Reflecting
+        on assumptions and practices represents a central task for public health professionals;
+        a vital step to ensure their (our) practice continually grounds itself in
+        the most rigorous ethical standards (3).</dc:description>\n<dc:date>2015-08-17T16:44:27Z</dc:date>\n<dc:date>2015-08-17T16:44:27Z</dc:date>\n<dc:date>2014-09-23</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Goodson
+        P (2014) Questioning the HIV-AIDS hypothesis: 30 years of dissent. Front.
+        Public Health 2:154. doi: 10.3389/fpubh.2014.00154</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1969.1/154821</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:rights>Attribution
+        3.0 United States</dc:rights>\n<dc:rights>http://creativecommons.org/licenses/by/3.0/us/</dc:rights>\n<dc:publisher>Frontiers</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:oaktrust.library.tamu.edu:1969.1/154822</identifier><datestamp>2015-08-19T05:41:54Z</datestamp><setSpec>com_1969.1_1656</setSpec><setSpec>com_1969.1_3364</setSpec><setSpec>col_1969.1_2482</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Effects
+        of Hydrophobic Surface Treatments on Dropwise Condensation and Freezing of
+        Water</dc:title>\n<dc:creator>Bryant, John</dc:creator>\n<dc:description>The
+        effects of hydrophobic coatings on the dropwise condensation process for a
+        flat horizontal copper plate held at a temperature much lower than the surrounding
+        air&#xd;\nwas investigated. Extensive qualitative and quantitative data were
+        taken to describe these&#xd;\n&#xd;\neffects in terms of dropsize distributions,
+        heat and mass transfer coefficients, and digital imaging of the microscopic
+        condensing droplets in terms of various extensive properties.&#xd;\nConditions
+        of the tests were laminar flow (Reynolds numbers of 600 to 1600), condensing
+        surface temperature of -10.0?C, air temperatures of 1.5 to 7.5?C, and relative
+        humidities of 50 to 90%. Digital imaging of the condensation process was done
+        using a medium power microscope coupled to a solid-state camera and a computer-based
+        image capture system. Three different treatments were used on the polished
+        copper condensing surface; no coating, a silicone conformal coating, and a
+        long-chain sulfur based coating. Results for the heat transfer data showed
+        an increase of approximately 33% for condensation over a dry surface for the
+        conditions of the study. The mechanism of condensation appeared consistently
+        to be dropwise. A method to predict the Nusselt number, nucleation time, mean
+        cluster size and the droplet surface density in terms of extensive properties
+        that are known a priori was also developed based on the experimental data.&#xd;\n
+        &#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\nA condensation model was developed based
+        on heat transfer relationships for the condensation process and the psychometric
+        qualities of the ambient air. The inputs to&#xd;\nthe model were the surface
+        temperature of the condensing system, the contact angle of the liquid phase
+        in contact with the surface, the moisture content and temperature of the air
+        stream, and the velocity of the air flowing over the condensing surface. Comparisons
+        were made between the experimental results and those predicted by the model
+        for&#xd;\ndropsize distributions and mass of condensate on the surface. The
+        results from the mode!&#xd;\n&#xd;\nwere within ?25% of the experimental values.&#xd;\n&#xd;\nIt
+        was found that the application of a hydrophobic coating on a surface that
+        is to be operated at a temperature below the freezing point of water will
+        delay the onset of ice nucleation by 15 to 35% over an uncoated surface.</dc:description>\n<dc:date>2015-08-18T18:13:55Z</dc:date>\n<dc:date>2015-08-18T18:13:55Z</dc:date>\n<dc:date>1995-12</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:identifier>http://hdl.handle.net/1969.1/154822</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:relation>ESL-TH-95-12-03;</dc:relation>\n<dc:publisher>Texas
+        A&amp;M University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:oaktrust.library.tamu.edu:1969.1/154823</identifier><datestamp>2015-08-19T05:42:06Z</datestamp><setSpec>com_1969.1_1656</setSpec><setSpec>com_1969.1_3364</setSpec><setSpec>col_1969.1_2482</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Effect
+        of Backfill on the Performance of a Vertical U-Tube Ground Coupled Heat Pump</dc:title>\n<dc:creator>Gu,
+        Yian</dc:creator>\n<dc:description>The present work is concerned with developing
+        a discretized analytical model to investigate the effect of a backfill on
+        the performance of a vertical U-tube ground-coupled heat pump.    This  work
+        \  involves  the  development  of  an  analytical  solution   and  an expression
+        \  for   the  equivalent   diameter,   and   the  experimental   verification
+        \  of   their applications in the system model.&#xd;\nThe   approximate   analytical
+        \  solution   was   developed   to   the   transient   heat? conduction problem
+        in an infinite composite medium composed of a backfill and the soil with an
+        internal cylindrical heat source.    This was intended to improve the prediction
+        of the performance of a U-tube ground   heat exchanger.     The generalized
+        \  orthogonal expansion technique was utilized in deriving this solution.
+        \  Solutions  are  presented  in a wide range of the Fourier number for the
+        non-dimensional temperature as a function of the ratios of thermal conductivities
+        and diffusivities of the backfill and soil  Sensitivities of the  results
+        \ to  assumptions  about  the  sizes  of  the  backfilling region  and  the
+        \ far-field boundary  were also  examined.    To verify the correctness of
+        the solution, comparisons were made between this solution, and the classical
+        homogeneous cylindrical solution and a finite difference solution..&#xd;\nTo
+        improve the equivalent diameter approach to the thermal interference problem
+        between the legs of the U-tube, a general expression for the equivalent diameter
+        was derived under steady state.   The transient analytical solution, developed
+        earlier combined with the superposition method and the conformal mapping technique
+        were used to justify this expression.&#xd;\nA small-scale U-tube test facility
+        was constructed for the experimental validation of the system model of the
+        U-tube heat exchanger using the analytical solution and the equivalent diameter
+        expression.   Two types of backfill materials: bentonite/masonry sand and
+        bentonite/copper powder were chosen for the tests.&#xd;\nFinally, the parametric
+        studies were conducted to characterize the effects of the thermal properties
+        of the backfill, the leg spacing as well as the size of the backfill region.
+        A backfill effectiveness was proposed and discussed.  These studies provide
+        a number of insights into the heat transfer behavior of  the U-tube  heat
+        exchanger  buried  in a non? homogeneous medium.</dc:description>\n<dc:date>2015-08-18T18:36:00Z</dc:date>\n<dc:date>2015-08-18T18:36:00Z</dc:date>\n<dc:date>1995-08</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:identifier>http://hdl.handle.net/1969.1/154823</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:relation>ESL-TH-95-08-04;</dc:relation>\n<dc:publisher>Texas
+        A&amp;M University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:oaktrust.library.tamu.edu:1969.1/154824</identifier><datestamp>2015-08-19T05:42:23Z</datestamp><setSpec>com_1969.1_1656</setSpec><setSpec>com_1969.1_3364</setSpec><setSpec>col_1969.1_2482</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Performance
+        of Energy Management Control Systems (EMCS) in Selected Texas LoanSTAR Buildings</dc:title>\n<dc:creator>Schmode,
+        Michele</dc:creator>\n<dc:description>This report describes an investigation
+        of energy use at various LoanSTAR sites.  The effects of installing Energy
+        Management Control Systems (EMCS) on electricity consumption was studied at
+        four LoanSTAR sites:   Stroman High School, Victoria High school, Sims Elementary
+        School, and Zachry Engineering Center.   In the course of this study, LoanSTAR
+        monitoring data was used to analyze the changes in energy consumption based
+        only on EMCS retrofits. The results will show that the installation ofEMCS
+        was successful in reducing energy consumption and/or changing the hourly energy
+        consumption pattern.</dc:description>\n<dc:date>2015-08-18T18:38:34Z</dc:date>\n<dc:date>2015-08-18T18:38:34Z</dc:date>\n<dc:date>1995-08</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:identifier>http://hdl.handle.net/1969.1/154824</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:relation>ESL-TH-95-08-03;</dc:relation>\n<dc:publisher>Texas
+        A&amp;M University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:oaktrust.library.tamu.edu:1969.1/154825</identifier><datestamp>2015-08-19T05:42:03Z</datestamp><setSpec>com_1969.1_1656</setSpec><setSpec>com_1969.1_3364</setSpec><setSpec>col_1969.1_2482</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Development
+        of Fourier Series and Artificial Neural Network Approaches to Model Hourly
+        Energy Use in Commercial Buildings</dc:title>\n<dc:creator>Dhar, Amitava</dc:creator>\n<dc:description>This
+        dissertation develops Fourier series and Artificial Neural Network (ANN) approaches
+        to model hourly energy use in commercial buildings and illustrates application
+        to data-screening.&#xd;\nThe procedure for modeling hourly energy use has
+        two steps: (i) Day-typing and (ii) Model development.  The mean diurnal energy
+        \ use and the diurnal profile may be different during working weekdays, weekends,
+        holidays and Christmas due to major changes in mode of operation.  The first
+        step, known as day-typing, is important for removing such effects.  The second
+        step is to develop models for each day-type.&#xd;\nFourier series analysis
+        is eminently suitable for modeling strongly periodic data. Energy use in commercial
+        buildings being strongly periodic, is appropriate for Fourier series treatment.
+        \ Generalized Fourier Series (GFS) model equations, developed for both weather
+        independent and weather dependent energy use, give a set of parameters involving
+        time and/or weather variables. Stepwise regression is performed to select
+        the important parameters and a final model for each day-type is developed
+        using the selected parameters.&#xd;\nThere are situations when only temperature
+        data is available. A Temperature based Fourier Series (TFS) equation for modeling
+        heating and cooling energy use has been developed to deal with such cases.
+        Two important advantages of TFS are that it (i)&#xd;\n &#xd;\n&#xd;\n&#xd;\n&#xd;\nrepresents
+        nonlinear variation of energy use in a linearized functional form and (ii)
+        can indirectly account for humidity and solar effect in the cooling energy
+        use.&#xd;\nANNs with back propagation algorithms give high prediction accuracy
+        and has been applied by many researchers to model hourly energy use in commercial
+        buildings. However, the training of Back  Propagation Network (BPN) algorithms
+        is a long, uncertain process.  ANNs with local basis functions require significantly
+        shorter training times than conventional BPNs. A methodology has been developed
+        to model heating and cooling energy use in commercial buildings using a one-hidden-layer
+        ANN with two dimensional wavelet basis functions derived from cubic splines.&#xd;\nA
+        suitable prediction interval can be generated and used to perform data? screening.
+        \ Application of the TFS approach to data-screening is illustrated with monitored
+        data.</dc:description>\n<dc:date>2015-08-18T18:40:40Z</dc:date>\n<dc:date>2015-08-18T18:40:40Z</dc:date>\n<dc:date>1995-05</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:identifier>http://hdl.handle.net/1969.1/154825</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:relation>ESL-TH-95-05-03;</dc:relation>\n<dc:publisher>Texas
+        A&amp;M University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:oaktrust.library.tamu.edu:1969.1/154826</identifier><datestamp>2015-08-19T05:42:12Z</datestamp><setSpec>com_1969.1_1656</setSpec><setSpec>com_1969.1_3364</setSpec><setSpec>col_1969.1_2482</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Aerosol
+        Deposition in Transport Lines</dc:title>\n<dc:creator>Muyshondt, Arnoldo</dc:creator>\n<dc:description>Particle
+        deposition  in  contraction  fittings  with  half-angles of   12 degrees,
+        \ 45 degrees,  and  90 degrees; expansion fittings with half-angles of 3 degrees,
+        6 degrees, 12 degrees, 45 degrees, and 90 degrees; and  large-diameter transport
+        lines   (up   to 102  mm  diameter)  was  measured  experimentally.    Aerosol
+        losses   in the transition fittings were  found  to be a function of three
+        \ parameters; namely, Stokes number, area  ratio,  and  half-angle.  Based
+        \ on  experimental data,  correlations were  developed that allow prediction
+        of  particle  losses  in contraction and  expansion    fittings as a function
+        \ of Stokes  number, area   ratio,  and  half-angle.   A  correlation  was
+        \ also  developed for  large transport tubes  that  allows  prediction of
+        non-dimensional dep0sition velocity as a function&#xd;\nof  non-dimensional
+        \ relaxation time  and flow  Reynolds number.&#xd;\n&#xd;\nFor   a  given
+        \  half-angle,  losses   in  a  contraction  fitting   correlate  well   with
+        \ the parameter Stkc(1-Ao, Ae)  Aerosol  particle  deposition in the contraction
+        fittings was also modelled numerically and  the  numerical  results  show
+        \ good  agreement with  experimental&#xd;\ndata.   In general, losses in a
+        contraction fitting  decrease with decreasing half-angle and area ratio.&#xd;\n
+        &#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\nLosses in expansion  fittings  increase
+        \ with  decreasing  half-angle  down  to an angle of  approximately   12 degrees
+        thereafter,  losses  decrease   with  decreasing  half-angle.          Losses
+        decrease with decreasing area ratio.  A 90 degree expansion half-angle fitting
+        produced the lowest aerosol  losses.&#xd;\nThe  correlation   for  large-diameter
+        \  transport   tubes  shows   good  agreement   with previous  correlations
+        \ for  deposition  in small  diameter  tubes  as well  for the full  range
+        of tube sizes (13 mm to 102 mm diameter)  and Reynolds  numbers  (up to 55,000)
+        tested.  For large tubes, the correlation  shows improved prediction characteristics
+        as compared to earlier models.  For example, penetration  of 20 um aerodynamic
+        diameter aerosol particles through a  I 02  mm diameter  tube  at  a flow
+        \ rate of 2260  L/min was  measured  to  be 59%.   The present model predicts
+        a penetration  of 62%, while two previously  reported  models that do not
+        \ include Reynolds number  effects,  predict 80%  and 82%.&#xd;\nThe correlations
+        \ presented  in this study should  be useful  sub-models  for predicting aerosol
+        losses in transition fittings  and large-diameter  transport  system; in general,
+        models that  are used to evaluate  overall  losses in aerosol  transport  systems.</dc:description>\n<dc:date>2015-08-18T18:45:48Z</dc:date>\n<dc:date>2015-08-18T18:45:48Z</dc:date>\n<dc:date>1995-12</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:identifier>http://hdl.handle.net/1969.1/154826</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:relation>ESL-TH-95-12-02;</dc:relation>\n<dc:publisher>Texas
+        A&amp;M University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:oaktrust.library.tamu.edu:1969.1/154827</identifier><datestamp>2015-08-19T05:42:02Z</datestamp><setSpec>com_1969.1_1656</setSpec><setSpec>com_1969.1_3364</setSpec><setSpec>col_1969.1_2482</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>An
+        Analysis of Grocery Store Energy Use</dc:title>\n<dc:creator>Cox, Raplh Luther,
+        III</dc:creator>\n<dc:description>Approximately 3% of the United States' commercial
+        building energy consumption is attributable to food sales facilities.  Although
+        this is one of the smallest consumption percentages, it is still significant,
+        amounting to about 151 trillion Btu, or $2.17 billion per year.  Food sales
+        facilities ranging from 10,000 to 100,000 sq. ft. use 3 to 5.5 W/ sq. ft.
+        (32 to 60 W/ sq. m.) &#xd;\nof electricity two to three times what&#xd;\n
+        &#xd;\ntypical office buildings of the same size use (EIA 1986).  Identifying
+        potentials for energy savings in food sales facilities is therefore a worth-while
+        pursuit.&#xd;\n&#xd;\nWhy do people study energy consumption?  According to
+        Haberl et al. (1990), there are five different groups of people who can benefit
+        from building energy monitoring and at least seven basic applications of energy
+        monitoring projects.  The five groups of beneficiaries are:  the energy analyst;
+        the energy consumer; governmental agencies; engineers, manufacturers, and
+        contractors; and, utility and fuel suppliers.  The seven basic applications
+        are: energy consumption and load forecasting, evaluation of end-use energy
+        data, the monitoring of energy savings from retrofits, determining system
+        .efficiencies, environmental quality issues, analyzing the human factor, and
+        diagnosing operational and maintenance problems.&#xd;\n&#xd;\nThis thesis
+        is a study of the energy use in supermarkets, which fall into the category
+        of the energy consumer.  This study is of interest to the energy analyst and
+        the manufacturers of grocery store equipment, and to utilities which can use
+        the results of energy consumption modeling procedures developed herein as
+        inputs to load-predicting models.  Many papers and reports have been written
+        about the energy use in grocery stores.  In general, they addressed three
+        major issues:  energy use surveys and market analyses, refrigeration and HVAC
+        system improvements, and energy use modeling methods.  This thesis extends
+        the foregoing work by first performing a general energy use survey of over
+        90 grocery stores, and presenting statistics regarding their energy use characteristics.
+        \ Then, several of the previous methods of energy consumption modeling are
+        adapted and applied to the whole-&#xd;\n &#xd;\n&#xd;\n&#xd;\nbuilding and
+        sub-metered component load data from two case study grocery stores. Two methods
+        of modeling, multiple linear regression and principal component analysis are
+        evaluated.  Finally, a new method is developed and tested that allows for
+        the accurate estimation of sub-metered loads without incurring the expense
+        of collecting many months of hourly, sub-metered data.</dc:description>\n<dc:date>2015-08-18T18:51:21Z</dc:date>\n<dc:date>2015-08-18T18:51:21Z</dc:date>\n<dc:date>1993-12</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:identifier>http://hdl.handle.net/1969.1/154827</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:relation>ESL-TH-93-12-01;</dc:relation>\n<dc:publisher>Texas
+        A&amp;M University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:oaktrust.library.tamu.edu:1969.1/154828</identifier><datestamp>2015-08-19T05:42:11Z</datestamp><setSpec>com_1969.1_1656</setSpec><setSpec>com_1969.1_3364</setSpec><setSpec>col_1969.1_2482</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Energy
+        Conservation Opportunities in Commercial and Industrial Facilities: Energy
+        Utilization Indices (EUI) in Texas LoanSTAR Buildings</dc:title>\n<dc:creator>Phillips,
+        Michael</dc:creator>\n<dc:description>The work described in this report was
+        performed  under the direction of the Energy Analysis and Diagnostic Center
+        (EADC) at Texas A&amp;M University.  The EADC program is managed by University
+        City Science Center under agreement  with the U.S.  Department of Energy,
+        which financially supports the program.&#xd;\nThe objective of the EADC is
+        to identify, evaluate, and recommend--through analyses&#xd;\n&#xd;\nof an
+        industrial plant's operations--opportunities\tto conserve energy and reduce
+        its cost. Our recommendations  are based upon observations and measurements
+        \ we made in your plant; because our time was limited, we do not claim to
+        have complete detail on every aspect of the \tplant's \toperations.\tAt\tall
+        \ttimes\twe   try \tto \toffer\tspecific  and \tquantitative recommendations
+        \ of cost savings and energy conservation  to the plants we serve.   We do
+        not attempt,  however, to prepare  engineering  designs or otherwise  perform
+        \ services you would expect from an engineering firm, a vendor, or a manufacturer's
+        \ representative.\tWhen the  need  for  that  kind of assistance arises,  we
+        urge  you to  consult  them  directly. \tIf, however, you would like to discuss
+        the content of the report or if you have another  question about  energy use,
+        please feel welcome to contact  us at the EADC  at (409) 845-5019.</dc:description>\n<dc:date>2015-08-18T18:53:46Z</dc:date>\n<dc:date>2015-08-18T18:53:46Z</dc:date>\n<dc:date>1993-08</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:identifier>http://hdl.handle.net/1969.1/154828</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:relation>ESL-TH-93-08-01;</dc:relation>\n<dc:publisher>Texas
+        A&amp;M University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:oaktrust.library.tamu.edu:1969.1/154829</identifier><datestamp>2015-08-19T05:42:30Z</datestamp><setSpec>com_1969.1_1656</setSpec><setSpec>com_1969.1_3364</setSpec><setSpec>col_1969.1_2482</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Monitoring
+        the Performance of a Residential Central Air Conditioner under Reduced Evaporator
+        Air Flow on a Test Bench</dc:title>\n<dc:creator>Palani, Manivannan</dc:creator>\n<dc:description>This
+        report presents results from degraded performance measurements of a residential
+        air conditioning system operating under reduced evaporator air flow.  Experiments
+        were conducted using a R-22 three-ton split-type cooling system with a short-tube
+        orifice expansion device. Results are presented here for a series of tests
+        in which the air flow across evaporator was reduced by 25%, 50%, 75%, and
+        90% of normal  amount of air flow as specified by ARI.  Return air temperature
+        \ was maintained at 80 F dry bulb for all the standard and degraded experiments.
+        Experiments were conducted for three different return humidity conditions
+        of20% RH, 45% RH, and 65% RH and three outdoor  conditions of70?F,  85?F,
+        and 100?F dry bulb temperature.&#xd;\nAt present, very little information
+        has been published which quantifies the degraded performance of a residential
+        cooling system operating under reduced evaporator air flow. Degraded performance
+        measurements can provide information which could help electric utilities evaluate
+        the potential impact of system-wide maintenance programs.</dc:description>\n<dc:date>2015-08-18T18:56:01Z</dc:date>\n<dc:date>2015-08-18T18:56:01Z</dc:date>\n<dc:date>1992-11</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:identifier>http://hdl.handle.net/1969.1/154829</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:relation>ESL-TH-92-11-01;</dc:relation>\n<dc:publisher>Texas
+        A&amp;M University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:oaktrust.library.tamu.edu:1969.1/154830</identifier><datestamp>2015-08-19T05:42:09Z</datestamp><setSpec>com_1969.1_1656</setSpec><setSpec>com_1969.1_3364</setSpec><setSpec>col_1969.1_2482</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The
+        Measured Energy Impact of Air Leakage on Frame Wall Systems</dc:title>\n<dc:creator>Bhattacharyya,
+        Souvik</dc:creator>\n<dc:description>Infiltration is customarily assumed to
+        increase the heating and cooling load of a building by an amount equal to
+        the mass flow rate of the infiltration times the enthalpy difference between
+        the inside  and outside air - with the latent portion of the enthalpy difference
+        sometimes neglected.  An experimental and analytical investigation has been
+        conducted on the actual energy impact  of air leakage on frame wall systems.
+        \ Calorimetric  measurements  conducted on a small test cell and on a well
+        characterized stud-cavity wall specimen with measured amounts of air leakage
+        introduced under a variety of controlled conditions and configurations show
+        convincingly  that infiltration can  lead  to  a  much  smaller  change  in
+        \ the energy load than is customarily calculated.   The data also suggest
+        that the phenomenon  occurs  in full-sized houses  as well.&#xd;\n&#xd;\nInfiltration
+        Heat Exchange Effectiveness  {IHEE), ?,   is  introduced  as  a mea? sure
+        \ of the  effectiveness  of a  building  in  'recovering'  heat  otherwise
+        \ lost  {or gained) because  of infiltration.  Measurements  show that ?  increases
+        \ as:&#xd;\na) flow rate decreases;&#xd;\n&#xd;\nb) flow path length increases;&#xd;\n&#xd;\nc)
+        hole/crack  size decreases.&#xd;\n&#xd;\n?  also generally increases  as the
+        pressurization  exponent, n, increases;  so fan&#xd;\n&#xd;\n-&#xd;\n &#xd;\n&#xd;\n&#xd;\npressurization
+        results may be useful in predicting  E     for buildings.  An analytical&#xd;\n?&#xd;\nmodel
+        based  on fundamental heat and mass  transfer principles  has  been  &#xd;\n&#xd;\ndeveloped
+        \ and  all  the predicted  values  of  E     as  a  function of air  flow
+        \ rates  and effective path length for the different stud-cavity wall specimen
+        test configurations were remarkably  consistent with the experimental results.&#xd;\n&#xd;\nSignificant
+        experimental results include:&#xd;\n&#xd;\n&#xd;\na) E  values as high as
+        0.9  and as low as 0.05 for the test cell configurations tested indicate an
+        energy impact of the air leakage as low as 10% of customary values;&#xd;\n&#xd;\nb)
+        E   values in the 0.16-0.7 range in the stud-cavity (vs. theoretical maximum&#xd;\n&#xd;\nof
+        0.5);  and&#xd;\n&#xd;\n?\t\tc) E   values of 0.16  to 0.34  for air exiting
+        the stud-cavity directly across from the entry.&#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n?</dc:description>\n<dc:date>2015-08-18T18:59:09Z</dc:date>\n<dc:date>2015-08-18T18:59:09Z</dc:date>\n<dc:date>1991-05</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:identifier>http://hdl.handle.net/1969.1/154830</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:relation>ESL-TH-91-05-03;</dc:relation>\n<dc:publisher>Texas
+        A&amp;M University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:oaktrust.library.tamu.edu:1969.1/154831</identifier><datestamp>2015-08-19T05:42:27Z</datestamp><setSpec>com_1969.1_1656</setSpec><setSpec>com_1969.1_3364</setSpec><setSpec>col_1969.1_2482</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The
+        Effects of Frost Growth on Finned Tube Heat Exchangers under Laminar Flow</dc:title>\n<dc:creator>Kondepudi,
+        Sekhar</dc:creator>\n<dc:description>A study on the effects of frost growth
+        on the performance of finned tube heat exchangers under laminar flow has been
+        conducted.  The study was both experimental and analytical.&#xd;\n&#xd;\nThe
+        experimental part of the investigation dealt with different fin geometries:
+        louvered,  corrugated,  wavy,  flat  plate  fins  and  also  spine  fin  types.\tThe
+        parameters  which  were  varied  include  the  air  humidity,  air  and  refrigerant
+        temperature, air flow rate and fin density. A new term called the energy transfer
+        coefficient has been defined to account for the combined heat and mass transfer
+        processes occurring during frosting. The variables measured were the amount
+        of frost growth, the energy transfer coefficient, the pressure drop across
+        the coils, the enthalpy drop, and the effectiveness of the coils.  The general
+        trends were found to be consistent with the literature.  It was found that
+        the frost growth increases with humidity, air temperature, velocity and fin
+        density due to an increase in the mass transfer.  The dominant factor was
+        the humidity content of the air.  When the relative humidity was increased
+        from 74%  to 80 %  at an air temperature of&#xd;\n &#xd;\n&#xd;\n&#xd;\n&#xd;\n&#xd;\n32
+        degrees F, the frost growth increased by approximately 22 %.   The energy
+        transfer coefficient initially increases by 10 to 15%  with the onset of frost
+        formation due to increased surface area and surface roughness but then drops
+        off due to the insulating layer of frost. The louvered fin type had the highest
+        energy transfer coefficient in the neighborhood of 50 Btu/hr-F-sq. ft.  as
+        compared to the flat fin type which was in the neighborhood of 38 Btu/hr-sq.
+        ft. ?     However, when these results were normalized with respect to dry
+        co.1ditions, it was found that the flat fin type performed better than the
+        louvered fin type.&#xd;\n&#xd;\nA mathematical model was developed to  simulate
+        the experiments, based on fundamental heat and mass transfer principles.  Due
+        to the complexity of the problem, the model in its present form can  handle
+        flat plate fin types only.   In addition to being able to predict energy transfer
+        and frost growth, the model also performs a non-dimensional analysis on the
+        heat exchanger performance in terms of NTU - Effectiveness, and Fin Performance.
+        Comparisons were made between the experimental results and those predicted
+        by the model for the frost growth, energy transfer coefficient, pressure drop
+        and heat exchanger effectiveness. The results from the model were within 15
+        to 20%  of the experimental values</dc:description>\n<dc:date>2015-08-18T19:02:39Z</dc:date>\n<dc:date>2015-08-18T19:02:39Z</dc:date>\n<dc:date>1988-12</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:identifier>http://hdl.handle.net/1969.1/154831</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:relation>ESL-TH-88-12-02;</dc:relation>\n<dc:publisher>Texas
+        A&amp;M University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:oaktrust.library.tamu.edu:1969.1/154832</identifier><datestamp>2015-08-19T05:42:05Z</datestamp><setSpec>com_1969.1_1656</setSpec><setSpec>com_1969.1_3364</setSpec><setSpec>col_1969.1_2482</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>An
+        Expert System for the Analysis of Building Energy Consumption, Doctoral Disseration</dc:title>\n<dc:creator>Haberl,
+        Jeff</dc:creator>\n<dc:description>This work concludes six years of energy
+        conservation studies performed for the University of Colorado Student Recreation
+        Center.&#xd;\nThe studies began late in 1980 when the University of Colorado
+        Student Administrators asked Dr. John Dow to perform a solar feasibility study.
+        \ Since such a feasibility study had previously been performed by Dr. Dow,
+        as well as other studies (Numark and Bartlett, 1981), a comprehensive energy
+        conservation project was recommended, funded, performed and delivered (Dow,&#xd;\n1981).&#xd;\n&#xd;\nThe
+        second phase of the study began in November 1983, when Dr. Judith Bryant asked
+        that additional energy conservation studies be performed. The building has
+        been under continuous study since.&#xd;\nThe\tthird phase of the study,\tbeginning
+        in the\tsummer\tof&#xd;\n&#xd;\n1985,\trepresents the prelude to this work.
+        It originally focused on providing monthly forecasts of energy consumption.
+        Early attempts to deliver\tsuch\tan\tadministrative\ttool\tfailed\t because\t\tof\tan
+        insufficient\tunderstanding\tof the inter-related \tenergy\tconsuming subsystems.&#xd;\nThis
+        work,\tbeginning in September 1985, finally presented a satisfactory predictor
+        of energy consumption; \tthe results are\tthe regression work described herein.
+        \tThe expert system portion of\tthe work\twas\t developed\t\tto\telectronically\tcapture\tand\tdeliver\t
+        the expertise\tof maintenance personnel at Facilities Management as well as
+        the six years of knowledge gained by the author.\t\tThe work serves&#xd;\n
+        &#xd;\n&#xd;\n&#xd;\nas \tan \tadministrative\twarning \"beacon\" that\tidentifies\tpotential
+        problems, and hence the name BEACON.</dc:description>\n<dc:date>2015-08-18T19:04:38Z</dc:date>\n<dc:date>2015-08-18T19:04:38Z</dc:date>\n<dc:date>1986-07</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:identifier>http://hdl.handle.net/1969.1/154832</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:publisher>University
+        of Colorado</dc:publisher>\n</oai_dc:dc>\n</metadata></record></ListRecords></OAI-PMH>"}
+    headers:
+      connection: [Keep-Alive]
+      content-type: [application/xml;charset=UTF-8]
+      date: ['Thu, 20 Aug 2015 21:37:49 GMT']
+      keep-alive: ['timeout=5, max=100']
+      server: ['']
+      transfer-encoding: [chunked]
+    status: {code: 200, message: OK}
+version: 1
