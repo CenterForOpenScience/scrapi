@@ -1,21 +1,18 @@
 from __future__ import absolute_import
 
-
-import six
 import json
 import logging
 from uuid import uuid4
 from datetime import datetime
 
 from dateutil.parser import parse
-from requests.structures import CaseInsensitiveDict
 
 from cassandra.cqlengine import columns, models
 
 from scrapi import events
 from scrapi import database  # noqa
 from scrapi.util import copy_to_unicode
-from scrapi.processing.base import BaseProcessor
+from scrapi.processing.base import BaseHarvesterResponse, BaseProcessor
 
 
 logger = logging.getLogger(__name__)
@@ -213,11 +210,7 @@ class VersionModel(models.Model):
 
 
 @database.register_model
-class HarvesterResponse(models.Model):
-    """A parody of requests.response but stored in cassandra
-    Should reflect all methods of a response object
-    Contains an additional field time_made, self-explanitory
-    """
+class HarvesterResponse(models.Model, BaseHarvesterResponse):
     __table_name__ = 'responses'
 
     method = columns.Text(primary_key=True)
@@ -230,14 +223,3 @@ class HarvesterResponse(models.Model):
     headers_str = columns.Text()
     status_code = columns.Integer()
     time_made = columns.DateTime(default=datetime.now)
-
-    def json(self):
-        return json.loads(self.content)
-
-    @property
-    def headers(self):
-        return CaseInsensitiveDict(json.loads(self.headers_str))
-
-    @property
-    def text(self):
-        return six.u(self.content)

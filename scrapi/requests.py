@@ -15,12 +15,14 @@ import requests
 
 from scrapi import events
 from scrapi import settings
-from scrapi.processing import HarvesterResponse
+from scrapi.processing import get_harvester_response_model
+
 
 logger = logging.getLogger(__name__)
 
 
 def _maybe_load_response(method, url):
+    HarvesterResponse = get_harvester_response_model()
     try:
         return HarvesterResponse.get(url=url.lower(), method=method)
     except HarvesterResponse.DoesNotExist:
@@ -28,6 +30,7 @@ def _maybe_load_response(method, url):
 
 
 def record_or_load_response(method, url, throttle=None, force=False, params=None, expected=(200,), **kwargs):
+    HarvesterResponse = get_harvester_response_model()
 
     resp = _maybe_load_response(method, url)
 
