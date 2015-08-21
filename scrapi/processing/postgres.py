@@ -6,7 +6,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "api.api.settings")
 import copy
 import logging
 
-from api.webview.models import HarvesterResponse
+from api.webview.models import HarvesterResponse, Document
 
 from scrapi import events
 from scrapi.processing.base import BaseProcessor, BaseHarvesterResponse
@@ -24,8 +24,6 @@ class PostgresProcessor(BaseProcessor):
 
     @events.logged(events.PROCESSING, 'raw.postgres')
     def process_raw(self, raw_doc):
-        from api.webview.models import Document
-
         source, docID = raw_doc['source'], raw_doc['docID']
         document = self._get_by_source_id(Document, source, docID) or Document(source=source, docID=docID)
 
@@ -39,8 +37,6 @@ class PostgresProcessor(BaseProcessor):
 
     @events.logged(events.PROCESSING, 'normalized.postgres')
     def process_normalized(self, raw_doc, normalized):
-        from api.webview.models import Document
-
         source, docID = raw_doc['source'], raw_doc['docID']
         document = self._get_by_source_id(Document, source, docID) or Document(source=source, docID=docID)
 
@@ -50,8 +46,6 @@ class PostgresProcessor(BaseProcessor):
         document.save()
 
     def _get_by_source_id(self, model, source, docID):
-        from api.webview.models import Document
-
         try:
             return Document.objects.filter(source=source, docID=docID)[0]
         except IndexError:
@@ -64,7 +58,7 @@ class HarvesterResponseModel(BaseHarvesterResponse):
 
     def __init__(self, *args, **kwargs):
         if kwargs:
-            self.response = HarvesterResponse(*args, **kwargs)
+            self.response = HarvesterResponse(key=kwargs.get('method') + kwargs.get('url'), *args, **kwargs)
         else:
             self.response = args[0]
 
@@ -78,7 +72,7 @@ class HarvesterResponseModel(BaseHarvesterResponse):
 
     @property
     def ok(self):
-        return str(self.response.ok)
+        return bool(self.response.ok)
 
     @property
     def content(self):
@@ -94,7 +88,7 @@ class HarvesterResponseModel(BaseHarvesterResponse):
 
     @property
     def status_code(self):
-        return str(self.response.status_code)
+        return int(self.response.status_code)
 
     @property
     def time_made(self):
@@ -109,4 +103,7 @@ class HarvesterResponseModel(BaseHarvesterResponse):
 
     @classmethod
     def get(cls, url=None, method=None):
-        return cls(HarvesterResponse.objects.get(url=url, method=method))
+        try:
+            return cls(HarvesterResponse.objects.get(url=url, method=method))
+        except HarvesterResponse.DoesNotExist:
+            raise cls.DoesNotExist
