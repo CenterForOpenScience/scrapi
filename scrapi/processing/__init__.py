@@ -19,8 +19,7 @@ def get_processor(processor_name):
     raise NotImplementedError('No Processor {}'.format(processor_name))
 
 
-def get_harvester_response_model():
-    return get_processor(settings.RESPONSE_PROCESSING).HarvesterResponseModel
+HarvesterResponse = get_processor(settings.RESPONSE_PROCESSING).HarvesterResponseModel
 
 
 def process_normalized(raw_doc, normalized, kwargs):
