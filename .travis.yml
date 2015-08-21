@@ -7,13 +7,21 @@ python:
 services:
   - cassandra
   - elasticsearch
+  - postgres
+
+addons:
+  postgresql: "9.4"
 
 install:
+  - cp api/api/settings/local-travis.py api/api/settings/local.py
   - pip install -r dev-requirements.txt
   - pip install coveralls
   - cp scrapi/settings/travis-dist.py scrapi/settings/local.py
 
-before_script: flake8 .
+before_script:
+  - flake8 .
+  - psql -c "CREATE DATABASE scrapi;" -U postgres
+  - python manage.py migrate
 
 script:
   - invoke provider_map

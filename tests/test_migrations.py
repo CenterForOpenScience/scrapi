@@ -12,14 +12,15 @@ from scrapi.migrations import delete
 from scrapi.migrations import rename
 from scrapi.migrations import renormalize
 from scrapi.migrations import DocumentModelOld
-from scrapi.migrations import document_v2_migration
 
 # Need to force cassandra to ignore set keyspace
 from scrapi.processing.cassandra import CassandraProcessor, DocumentModel
+from scrapi.processing.postgres import PostgresProcessor
 
 from . import utils
 
 test_cass = CassandraProcessor()
+test_postgres = PostgresProcessor()
 
 test_harvester = utils.TestHarvester()
 
