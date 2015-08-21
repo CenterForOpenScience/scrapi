@@ -14,13 +14,15 @@ class Document(models.Model):
 
 class HarvesterResponse(models.Model):
 
+    key = models.TextField(primary_key=True)
+
     method = models.CharField(max_length=8)
     url = models.TextField()
 
     # Raw request data
-    ok = models.BooleanField()
-    content = models.BinaryField()
-    encoding = models.TextField()
-    headers_str = models.TextField()
-    status_code = models.IntegerField()
+    ok = models.NullBooleanField(null=True)
+    content = models.BinaryField(null=True)
+    encoding = models.TextField(null=True)
+    headers_str = models.TextField(null=True)
+    status_code = models.IntegerField(null=True)
     time_made = models.DateTimeField(auto_now=True)
