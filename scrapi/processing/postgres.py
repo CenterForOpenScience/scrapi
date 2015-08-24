@@ -99,7 +99,10 @@ class HarvesterResponseModel(BaseHarvesterResponse):
         return self
 
     def update(self, **kwargs):
-        return self.response.update(**kwargs)
+        for k, v in kwargs.items():
+            setattr(self.response, k, v)
+        self.response.save()
+        return self
 
     @classmethod
     def get(cls, url=None, method=None):
