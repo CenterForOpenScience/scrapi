@@ -3,12 +3,8 @@ import json
 import six
 import mock
 import pytest
-import django
-import django.test
 
 from scrapi import requests
-
-django.setup()
 
 
 @pytest.fixture(autouse=True)
@@ -250,6 +246,7 @@ class TestCassandraIntegration(object):
 @pytest.mark.usefixtures('force_postgres_response')
 class TestPostgresIntegration(object):
 
+    @pytest.mark.django_db
     def test_json_works(self):
         data = {'totally': 'dyle'}
 
@@ -258,18 +255,21 @@ class TestPostgresIntegration(object):
         assert resp.json() == data
         assert resp.content == json.dumps(data)
 
+    @pytest.mark.django_db
     def test_text_works(self):
-        resp = requests.HarvesterResponse(content='probably xml')
+        resp = requests.HarvesterResponse(method='POST', url='dinosaurs.sexy', content='probably xml')
 
         assert resp.text == 'probably xml'
 
+    @pytest.mark.django_db
     def test_text_is_unicode(self):
-        resp = requests.HarvesterResponse(content='probably xml')
+        resp = requests.HarvesterResponse(method='POST', url='dinosaurs.sexy', content='probably xml')
 
         assert isinstance(resp.text, six.text_type)
         assert resp.text == u'probably xml'
 
 
+    @pytest.mark.django_db
     def test_record_or_load_loads(self, mock_requests, monkeypatch):
         requests.HarvesterResponse(ok=True, method='get', url='dinosaurs.sexy',
                                    content=b'rawr', headers_str="{}").save()
@@ -281,6 +281,7 @@ class TestPostgresIntegration(object):
         assert not mock_requests.request.called
         assert isinstance(resp, requests.HarvesterResponse)
 
+    @pytest.mark.django_db
     def test_record_or_load_remakes(self, mock_requests, monkeypatch):
         mock_requests.request.return_value = mock.Mock(encoding='utf-8', content='rawr', status_code=200, headers={'tota': 'dyle'})
         requests.HarvesterResponse(ok=False, method='get', url='dinosaurs.sexy').save()
@@ -304,6 +305,7 @@ class TestPostgresIntegration(object):
         assert model.headers_str == '{"tota": "dyle"}'
         assert isinstance(resp, requests.HarvesterResponse)
 
+    @pytest.mark.django_db
     def test_record_or_load_records(self, mock_requests, monkeypatch):
         mock_requests.request.return_value = mock.Mock(encoding='utf-8', content='rawr', status_code=200, headers={'tota': 'dyle'})
 
@@ -321,12 +323,14 @@ class TestPostgresIntegration(object):
         assert model.headers_str == '{"tota": "dyle"}'
         assert isinstance(resp, requests.HarvesterResponse)
 
+    @pytest.mark.django_db
     def test_force_makes_request(self, mock_requests, monkeypatch):
         mock_requests.request.return_value = mock.Mock(ok=True, encoding='utf-8', content='rawr', status_code=200, headers={'tota': 'dyle'})
 
         requests.get('dinosaurs.sexy', force=True)
         assert mock_requests.request.called is True
 
+    @pytest.mark.django_db
     def test_force_makes_new_request(self, mock_requests, monkeypatch):
         requests.HarvesterResponse(ok=True, method='get', url='dinosaurs.sexy',
                                    content=b'citychicken').save()
@@ -344,6 +348,7 @@ class TestPostgresIntegration(object):
         assert resp.content == b'Snapcity'
         assert mock_requests.request.called is True
 
+    @pytest.mark.django_db
     def test_record_or_load_logs_not_ok(self, mock_requests, monkeypatch):
         mock_log = mock.Mock()
         monkeypatch.setattr(requests.events, 'log_to_sentry', mock_log)
@@ -357,6 +362,7 @@ class TestPostgresIntegration(object):
         assert resp.ok is False
         assert resp.status_code == 400
 
+    @pytest.mark.django_db
     def test_record_or_load_throttle_throttles(self, mock_requests, monkeypatch):
         mock_sleep = mock.Mock()
         monkeypatch.setattr(requests, 'maybe_sleep', mock_sleep)
@@ -368,6 +374,7 @@ class TestPostgresIntegration(object):
         assert mock_requests.request.called is True
         assert isinstance(resp, requests.HarvesterResponse)
 
+    @pytest.mark.django_db
     def test_request_doesnt_throttle_on_load(self, mock_requests, monkeypatch):
         mock_sleep = mock.Mock()
         monkeypatch.setattr(requests, 'maybe_sleep', mock_sleep)
@@ -380,6 +387,7 @@ class TestPostgresIntegration(object):
         assert mock_requests.request.called is False
         assert isinstance(resp, requests.HarvesterResponse)
 
+    @pytest.mark.django_db
     def test_record_or_load_params(self, mock_requests, monkeypatch):
         mock_requests.request.return_value = mock.Mock(encoding='utf-8', content=b'Snapcity',
                                                        status_code=200, headers={'tota': 'dyle'})
