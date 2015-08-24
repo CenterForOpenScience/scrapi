@@ -9,8 +9,9 @@ from scrapi import tasks
 from scrapi import registry
 from scrapi import settings
 from scrapi.database import setup
-from scrapi.linter import RawDocument
 from scrapi.processing.elasticsearch import es
+from scrapi.processing.postgres import PostgresProcessor
+from scrapi.linter import RawDocument, NormalizedDocument
 from scrapi.processing.cassandra import DocumentModel, DocumentModelOld
 
 from api.webview.models import Document
@@ -49,17 +50,19 @@ def rename(docs, target=None, **kwargs):
 def cassandra_to_postgres(docs, **kwargs):
     for doc in docs:
 
-        document = Document(source=doc.source, docID=doc.docID)
+        if not doc.doc:
+            logger.info('Could not migrate document from {} with id {}'.format(doc.source, doc.docID))
+            continue
 
-        # Save the raw
-        document.raw = {
+        # Create the raw
+        raw = RawDocument({
             'doc': doc.doc,
             'docID': doc.docID,
             'source': doc.source,
             'filetype': doc.filetype,
             'timestamps': doc.timestamps,
-            'versions': map(str, doc.versions)
-        }
+            'versions': doc.versions
+        })
 
         # make the new dict actually contain real items
         normed = {}
@@ -83,10 +86,23 @@ def cassandra_to_postgres(docs, **kwargs):
         if normed.get('versions'):
             normed['versions'] = map(str, normed['versions'])
 
-        # Create and save the normalized doc
-        document.providerUpdatedDateTime = doc.providerUpdatedDateTime
-        document.normalized = normed
-        document.save()
+        # No datetime means the document wasn't normalized (probably wasn't on the approved list)
+        if normed.get('providerUpdatedDateTime'):
+            normed['providerUpdatedDateTime'] = normed['providerUpdatedDateTime'].isoformat()
+
+        # Create the normalized
+        # don't validate because it's already been validated once, and this saves a lot of time
+        normalized = NormalizedDocument(normed, validate=False)
+
+        # Process it!
+        postgres = PostgresProcessor()
+        postgres.process_raw(raw)
+
+        try:
+            postgres.process_normalized(raw, normalized)
+        except KeyError:
+            # This means that the document was harvested but wasn't approved to be normalized
+            logger.info('Not storing migrated normalized from {} with id {}, document is not in approved set list.'.format(doc.source, doc.docID))
 
 
 @tasks.task_autoretry(default_retry_delay=1, max_retries=5)
