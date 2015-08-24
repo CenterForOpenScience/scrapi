@@ -12,10 +12,11 @@ from scrapi.migrations import delete
 from scrapi.migrations import rename
 from scrapi.migrations import renormalize
 from scrapi.migrations import DocumentModelOld
+from scrapi.migrations import cassandra_to_postgres
 
 # Need to force cassandra to ignore set keyspace
+from scrapi.processing.postgres import PostgresProcessor, Document
 from scrapi.processing.cassandra import CassandraProcessor, DocumentModel
-from scrapi.processing.postgres import PostgresProcessor
 
 from . import utils
 
@@ -106,3 +107,20 @@ def test_migrate_v2():
     tasks.migrate_to_source_partition(dry=False)
     queryset = DocumentModel.objects(docID=RAW['docID'], source=RAW['source'])
     assert len(queryset) == 1
+
+
+@pytest.mark.cassandra
+def test_cassandra_to_postgres():
+
+    test_cass.process_raw(RAW)
+    test_cass.process_normalized(RAW, NORMALIZED)
+
+    cassandra_queryset = DocumentModel.objects(docID=RAW['docID'], source=RAW['source'])
+    postgres_queryset = Document.objects.filter(source=RAW['source'], docID=RAW['docID'])
+    assert len(cassandra_queryset) == 1
+    assert len(postgres_queryset) == 0
+
+    tasks.migrate(cassandra_to_postgres)
+
+    postgres_queryset = Document.objects.filter(source=RAW['source'], docID=RAW['docID'])
+    assert len(postgres_queryset) == 1
