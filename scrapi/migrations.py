@@ -51,6 +51,7 @@ def cassandra_to_postgres(docs, **kwargs):
     for doc in docs:
 
         if not doc.doc:
+            # corrupted database item has no doc element
             logger.info('Could not migrate document from {} with id {}'.format(doc.source, doc.docID))
             continue
 
