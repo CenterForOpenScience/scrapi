@@ -283,7 +283,7 @@ class TestPostgresIntegration(object):
 
     @pytest.mark.django_db
     def test_record_or_load_remakes(self, mock_requests, monkeypatch):
-        mock_requests.request.return_value = mock.Mock(encoding='utf-8', content='rawr', status_code=200, headers={'tota': 'dyle'})
+        mock_requests.request.return_value = mock.Mock(ok=True, encoding='utf-8', content='rawr', status_code=200, headers={'tota': 'dyle'})
         requests.HarvesterResponse(ok=False, method='get', url='dinosaurs.sexy').save()
 
         model = requests.HarvesterResponse.get(method='get', url='dinosaurs.sexy')
@@ -307,7 +307,7 @@ class TestPostgresIntegration(object):
 
     @pytest.mark.django_db
     def test_record_or_load_records(self, mock_requests, monkeypatch):
-        mock_requests.request.return_value = mock.Mock(encoding='utf-8', content='rawr', status_code=200, headers={'tota': 'dyle'})
+        mock_requests.request.return_value = mock.Mock(ok=True, encoding='utf-8', content='rawr', status_code=200, headers={'tota': 'dyle'})
 
         resp = requests.get('dinosaurs.sexy')
 
@@ -334,7 +334,7 @@ class TestPostgresIntegration(object):
     def test_force_makes_new_request(self, mock_requests, monkeypatch):
         requests.HarvesterResponse(ok=True, method='get', url='dinosaurs.sexy',
                                    content=b'citychicken').save()
-        mock_requests.request.return_value = mock.Mock(encoding='utf-8',
+        mock_requests.request.return_value = mock.Mock(ok=True, encoding='utf-8',
                                                        content=b'Snapcity', status_code=200,
                                                        headers={'tota': 'dyle'})
 
@@ -366,7 +366,7 @@ class TestPostgresIntegration(object):
     def test_record_or_load_throttle_throttles(self, mock_requests, monkeypatch):
         mock_sleep = mock.Mock()
         monkeypatch.setattr(requests, 'maybe_sleep', mock_sleep)
-        mock_requests.request.return_value = mock.Mock(encoding='utf-8', content=b'Snapcity', status_code=200, headers={'tota': 'dyle'})
+        mock_requests.request.return_value = mock.Mock(ok=True, encoding='utf-8', content=b'Snapcity', status_code=200, headers={'tota': 'dyle'})
 
         resp = requests.get('dusty.rhodes', throttle=2)
 
@@ -389,7 +389,7 @@ class TestPostgresIntegration(object):
 
     @pytest.mark.django_db
     def test_record_or_load_params(self, mock_requests, monkeypatch):
-        mock_requests.request.return_value = mock.Mock(encoding='utf-8', content=b'Snapcity',
+        mock_requests.request.return_value = mock.Mock(ok=True, encoding='utf-8', content=b'Snapcity',
                                                        status_code=200, headers={'tota': 'dyle'})
 
         resp = requests.get('dinosaurs.sexy', params={'test': 'foo'})
