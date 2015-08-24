@@ -58,7 +58,7 @@ class HarvesterResponseModel(BaseHarvesterResponse):
 
     def __init__(self, *args, **kwargs):
         if kwargs:
-            self.response = HarvesterResponse(key=kwargs.get('method') + kwargs.get('url'), *args, **kwargs)
+            self.response = HarvesterResponse(key=kwargs['method'].lower() + kwargs['url'].lower(), *args, **kwargs)
         else:
             self.response = args[0]
 
@@ -101,12 +101,12 @@ class HarvesterResponseModel(BaseHarvesterResponse):
     def update(self, **kwargs):
         for k, v in kwargs.items():
             setattr(self.response, k, v)
-        self.response.save()
-        return self
+        return self.save()
 
     @classmethod
     def get(cls, url=None, method=None):
+        key = method.lower() + url.lower()
         try:
-            return cls(HarvesterResponse.objects.get(url=url, method=method))
+            return cls(HarvesterResponse.objects.get(key=key))
         except HarvesterResponse.DoesNotExist:
             raise cls.DoesNotExist
