@@ -1,3 +1,4 @@
+import json
 import time
 import logging
 
@@ -11,6 +12,8 @@ from scrapi.database import setup
 from scrapi.linter import RawDocument
 from scrapi.processing.elasticsearch import es
 from scrapi.processing.cassandra import DocumentModel, DocumentModelOld
+
+from api.webview.models import Document
 
 
 logger = logging.getLogger()
@@ -40,6 +43,50 @@ def rename(docs, target=None, **kwargs):
             es.delete(index='share_v1', doc_type=doc.source, id=raw['docID'], ignore=[404])
 
         logger.info('Deleted document from {} with id {}'.format(doc.source, raw['docID']))
+
+
+@tasks.task_autoretry(default_retry_delay=30, max_retries=5)
+def cassandra_to_postgres(docs, **kwargs):
+    for doc in docs:
+
+        document = Document(source=doc.source, docID=doc.docID)
+
+        # Save the raw
+        document.raw = {
+            'doc': doc.doc,
+            'docID': doc.docID,
+            'source': doc.source,
+            'filetype': doc.filetype,
+            'timestamps': doc.timestamps,
+            'versions': map(str, doc.versions)
+        }
+
+        # make the new dict actually contain real items
+        normed = {}
+        for key, value in dict(doc).iteritems():
+            try:
+                normed[key] = json.loads(value)
+            except (ValueError, TypeError):
+                normed[key] = value
+
+        # Remove empty values and trip down to only normalized fields
+        try:
+            do_not_include = ['docID', 'doc', 'filetype', 'timestamps', 'source']
+            for key in normed.keys():
+                if not normed[key]:
+                    del normed[key]
+                if key in do_not_include:
+                    del normed[key]
+        except KeyError:
+            logger.info('Could not migrate document from {} with id {}'.format(doc.source, doc.docID))
+
+        if normed.get('versions'):
+            normed['versions'] = map(str, normed['versions'])
+
+        # Create and save the normalized doc
+        document.providerUpdatedDateTime = doc.providerUpdatedDateTime
+        document.normalized = normed
+        document.save()
 
 
 @tasks.task_autoretry(default_retry_delay=1, max_retries=5)
@@ -100,6 +147,7 @@ def next_page_source_partition(query, page):
 
 documents_old = ModelIteratorFactory(DocumentModelOld, next_page_old)
 documents = ModelIteratorFactory(DocumentModel, next_page_source_partition, default_args=registry.keys())
+postgres_documents = Document.objects.all()
 
 
 def try_n_times(n, action, *args, **kwargs):
