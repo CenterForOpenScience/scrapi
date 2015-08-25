@@ -49,6 +49,55 @@ def rename(docs, target=None, **kwargs):
 
 
 @tasks.task_autoretry(default_retry_delay=30, max_retries=5)
+def cross_db(docs, **kwargs):
+    """
+    Migration to go between cassandra > postgres, or cassandra > elasticsearch.
+    TODO - make this source db agnostic. Should happen along with larger migration refactor
+    """
+    if not kwargs.get('target_db'):
+        logger.error('Please specify a target db for the migration -- either postgres or elasticsearch')
+        return
+
+    target_db = kwargs['target_db']
+
+    for doc in docs:
+
+        if not doc.doc:
+            # corrupted database item has no doc element
+            logger.info('Could not migrate document from {} with id {}'.format(doc.source, doc.docID))
+            continue
+
+        raw = RawDocument({
+            'doc': doc.doc,
+            'docID': doc.docID,
+            'source': doc.source,
+            'filetype': doc.filetype,
+            'timestamps': doc.timestamps,
+            'versions': doc.versions
+        }, validate=False)
+
+        normed = util.doc_to_normed_dict(doc)
+
+        # Create the normalized, don't validate b/c its been done once already
+        normalized = NormalizedDocument(normed, validate=False)
+
+        if target_db == 'postgres':
+            processor = PostgresProcessor()
+        if target_db == 'elastcsearch':
+            processor = ElasticsearchProcessor()
+        else:
+            logger.error('Invalid targed database - please specify either postgres or elasticsearch')
+
+        processor.process_raw(raw)
+
+        try:
+            processor.process_normalized(raw, normalized)
+        except KeyError:
+            # This means that the document was harvested but wasn't approved to be normalized
+            logger.info('Not storing migrated normalized from {} with id {}, document is not in approved set list.'.format(doc.source, doc.docID))
+
+
+@tasks.task_autoretry(default_retry_delay=30, max_retries=5)
 def cassandra_to_postgres(docs, **kwargs):
     for doc in docs:
 
@@ -64,7 +113,7 @@ def cassandra_to_postgres(docs, **kwargs):
             'filetype': doc.filetype,
             'timestamps': doc.timestamps,
             'versions': doc.versions
-        })
+        }, validate=False)
 
         normed = util.doc_to_normed_dict(doc)
 
@@ -83,8 +132,14 @@ def cassandra_to_postgres(docs, **kwargs):
 
 
 @tasks.task_autoretry(default_retry_delay=1, max_retries=5)
-def postgres_to_elasticsearch(docs, *args, **kwargs):
+def cassandra_to_elasticsearch(docs, *args, **kwargs):
     for doc in docs:
+
+        if not doc.doc:
+            # corrupted database item has no doc element
+            logger.info('Could not migrate document from {} with id {}'.format(doc.source, doc.docID))
+            continue
+
         raw = RawDocument({
             'doc': doc.doc,
             'docID': doc.docID,
@@ -92,9 +147,9 @@ def postgres_to_elasticsearch(docs, *args, **kwargs):
             'filetype': doc.filetype,
             'timestamps': doc.timestamps,
             'versions': doc.versions
-        })
-        normed = util.doc_to_normed_dict(doc)
+        }, validate=False)
 
+        normed = util.doc_to_normed_dict(doc)
         normalized = NormalizedDocument(normed, validate=False)
 
         es_processor = ElasticsearchProcessor()
