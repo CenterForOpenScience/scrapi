@@ -13,15 +13,18 @@ from scrapi.migrations import rename
 from scrapi.migrations import renormalize
 from scrapi.migrations import DocumentModelOld
 from scrapi.migrations import cassandra_to_postgres
+from scrapi.migrations import postgres_to_elasticsearch
 
 # Need to force cassandra to ignore set keyspace
 from scrapi.processing.postgres import PostgresProcessor, Document
 from scrapi.processing.cassandra import CassandraProcessor, DocumentModel
+from scrapi.processing.elasticsearch import ElasticsearchProcessor
 
 from . import utils
 
 test_cass = CassandraProcessor()
 test_postgres = PostgresProcessor()
+test_es = ElasticsearchProcessor()
 
 test_harvester = utils.TestHarvester()
 
@@ -124,3 +127,22 @@ def test_cassandra_to_postgres():
 
     postgres_queryset = Document.objects.filter(source=RAW['source'], docID=RAW['docID'])
     assert len(postgres_queryset) == 1
+
+
+@pytest.mark.elasticsearch
+def test_postgres_to_elasticsearch():
+
+    # Make sure es has nothing in it
+    results = test_es.search(index='test', doc_type=RAW['source'])
+    assert (len(results['hits']['hits']) == 0)
+
+    # create the postgres documents
+    test_postgres.process_raw(RAW)
+    test_postgres.process_normalized(RAW, NORMALIZED)
+
+    # run the migration
+    tasks.migrate(postgres_to_elasticsearch)
+
+    # check the elasticsearch results
+    results = test_es.search(index='test', doc_type=RAW['source'])
+    assert (len(results['hits']['hits']) == 1)
