@@ -5,11 +5,13 @@ import logging
 from six.moves import xrange
 from cassandra.cqlengine.query import Token
 
+from scrapi import util
 from scrapi import tasks
 from scrapi import registry
 from scrapi import settings
 from scrapi.database import setup
 from scrapi.processing.elasticsearch import es
+from scrapi.processing.elasticsearch import ElasticsearchProcessor
 from scrapi.processing.postgres import PostgresProcessor
 from scrapi.linter import RawDocument, NormalizedDocument
 from scrapi.processing.cassandra import DocumentModel, DocumentModelOld
@@ -104,6 +106,25 @@ def cassandra_to_postgres(docs, **kwargs):
         except KeyError:
             # This means that the document was harvested but wasn't approved to be normalized
             logger.info('Not storing migrated normalized from {} with id {}, document is not in approved set list.'.format(doc.source, doc.docID))
+
+
+@tasks.task_autoretry(default_retry_delay=1, max_retries=5)
+def postgres_to_elasticsearch(docs, *args, **kwargs):
+    for doc in docs:
+        raw = RawDocument({
+            'doc': doc.doc,
+            'docID': doc.docID,
+            'source': doc.source,
+            'filetype': doc.filetype,
+            'timestamps': doc.timestamps,
+            'versions': doc.versions
+        })
+        normed = util.doc_to_normed_dict(doc)
+
+        normalized = NormalizedDocument(normed)
+
+        es_processor = ElasticsearchProcessor()
+        es_processor.process_normalized(raw, normalized)
 
 
 @tasks.task_autoretry(default_retry_delay=1, max_retries=5)
