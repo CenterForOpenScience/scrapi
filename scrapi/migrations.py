@@ -57,7 +57,6 @@ def cassandra_to_postgres(docs, **kwargs):
             logger.info('Could not migrate document from {} with id {}'.format(doc.source, doc.docID))
             continue
 
-        # Create the raw
         raw = RawDocument({
             'doc': doc.doc,
             'docID': doc.docID,
@@ -67,34 +66,9 @@ def cassandra_to_postgres(docs, **kwargs):
             'versions': doc.versions
         })
 
-        # make the new dict actually contain real items
-        normed = {}
-        for key, value in dict(doc).iteritems():
-            try:
-                normed[key] = json.loads(value)
-            except (ValueError, TypeError):
-                normed[key] = value
+        normed = util.doc_to_normed_dict(doc)
 
-        # Remove empty values and trip down to only normalized fields
-        try:
-            do_not_include = ['docID', 'doc', 'filetype', 'timestamps', 'source']
-            for key in normed.keys():
-                if not normed[key]:
-                    del normed[key]
-                if key in do_not_include:
-                    del normed[key]
-        except KeyError:
-            logger.info('Could not migrate document from {} with id {}'.format(doc.source, doc.docID))
-
-        if normed.get('versions'):
-            normed['versions'] = map(str, normed['versions'])
-
-        # No datetime means the document wasn't normalized (probably wasn't on the approved list)
-        if normed.get('providerUpdatedDateTime'):
-            normed['providerUpdatedDateTime'] = normed['providerUpdatedDateTime'].isoformat()
-
-        # Create the normalized
-        # don't validate because it's already been validated once, and this saves a lot of time
+        # Create the normalized, don't validate b/c its been done once already
         normalized = NormalizedDocument(normed, validate=False)
 
         # Process it!
@@ -121,10 +95,14 @@ def postgres_to_elasticsearch(docs, *args, **kwargs):
         })
         normed = util.doc_to_normed_dict(doc)
 
-        normalized = NormalizedDocument(normed)
+        normalized = NormalizedDocument(normed, validate=False)
 
         es_processor = ElasticsearchProcessor()
-        es_processor.process_normalized(raw, normalized)
+
+        try:
+            es_processor.process_normalized(raw, normalized)
+        except KeyError:
+            logger.info('Not migrating normalized from {} with id {}, document is not in approved set list.'.format(doc.source, doc.docID))
 
 
 @tasks.task_autoretry(default_retry_delay=1, max_retries=5)
