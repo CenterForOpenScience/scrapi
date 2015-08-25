@@ -83,13 +83,14 @@ def cross_db(docs, target_db=None, **kwargs):
         if target_db == 'elasticsearch':
             processor = ElasticsearchProcessor()
 
-        processor.process_raw(raw)
+        if not kwargs.get('dry'):
+            processor.process_raw(raw)
 
-        try:
-            processor.process_normalized(raw, normalized)
-        except KeyError:
-            # This means that the document was harvested but wasn't approved to be normalized
-            logger.info('Not storing migrated normalized from {} with id {}, document is not in approved set list.'.format(doc.source, doc.docID))
+            try:
+                processor.process_normalized(raw, normalized)
+            except KeyError:
+                # This means that the document was harvested but wasn't approved to be normalized
+                logger.info('Not storing migrated normalized from {} with id {}, document is not in approved set list.'.format(doc.source, doc.docID))
 
 
 @tasks.task_autoretry(default_retry_delay=1, max_retries=5)
