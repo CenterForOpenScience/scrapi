@@ -1,7 +1,11 @@
 from datetime import datetime
 
 import six
+import json
 import pytz
+import logging
+
+logger = logging.getLogger()
 
 
 def timestamp():
@@ -51,3 +55,34 @@ def json_without_bytes(jobj):
         if isinstance(v, six.binary_type):
             jobj[k] = v.decode('utf8')
     return jobj
+
+
+def doc_to_normed_dict(doc):
+    # make the new dict actually contain real items
+    normed = {}
+    for key, value in dict(doc).iteritems():
+        try:
+            normed[key] = json.loads(value)
+        except (ValueError, TypeError):
+            normed[key] = value
+
+    # Remove empty values and strip down to only normalized fields
+    try:
+        do_not_include = ['docID', 'doc', 'filetype', 'timestamps', 'source']
+        for key in normed.keys():
+            if not normed[key]:
+                del normed[key]
+            if key in do_not_include:
+                del normed[key]
+    except KeyError:
+        logger.info('Could not migrate document from {} with id {}'.format(doc.source, doc.docID))
+        return None
+
+    if normed.get('versions'):
+        normed['versions'] = map(str, normed['versions'])
+
+    # No datetime means the document wasn't normalized (probably wasn't on the approved list)
+    if normed.get('providerUpdatedDateTime'):
+        normed['providerUpdatedDateTime'] = normed['providerUpdatedDateTime'].isoformat()
+
+    return normed
