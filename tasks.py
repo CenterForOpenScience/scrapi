@@ -236,3 +236,20 @@ def apiserver():
 @task
 def apidb():
     os.system('python manage.py migrate')
+
+
+@task
+def reset_all():
+    try:
+        input = raw_input
+    except Exception:
+        pass
+    if input('Are you sure? y/N ') != 'y':
+        return
+    os.system('psql -c "DROP DATABASE scrapi;"')
+    os.system('psql -c "CREATE DATABASE scrapi;"')
+    os.system('python manage.py migrate')
+
+    os.system("curl -XDELETE '{}/share*'".format(settings.ELASTIC_URI))
+    os.system("invoke alias share share_v2")
+    os.system("invoke provider_map")
