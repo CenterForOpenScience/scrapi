@@ -1,4 +1,3 @@
-import json
 import time
 import logging
 
@@ -45,7 +44,7 @@ def rename(docs, target=None, **kwargs):
             es.delete(index=settings.ELASTIC_INDEX, doc_type=doc.source, id=raw['docID'], ignore=[404])
             es.delete(index='share_v1', doc_type=doc.source, id=raw['docID'], ignore=[404])
 
-        logger.info('Deleted document from {} with id {}'.format(doc.source, raw['docID']))
+        logger.info('Renamed document from {} to {} with id {}'.format(doc.source, target, raw['docID']))
 
 
 @tasks.task_autoretry(default_retry_delay=30, max_retries=5)
