@@ -2,7 +2,16 @@
 ChangeLog
 *********
 
-0.8.2 (2016-08-11)
+0.8.4 (2015-08-21)
+==================
+- Fix url gathering for datacite harvester
+
+0.8.3 (2015-08-19)
+==================
+- Add funding information to the crossref harvester
+
+
+0.8.2 (2015-08-11)
 ==================
 - Add harvester for Washington University Open Scholarship
 
