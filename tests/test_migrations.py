@@ -86,16 +86,27 @@ def test_delete():
 @pytest.mark.django_db
 @pytest.mark.cassandra
 def test_renormalize():
+    # Set up
     real_es = scrapi.processing.elasticsearch.es
     scrapi.processing.elasticsearch.es = mock.MagicMock()
+
+    # Process raw and normalized with fake docs
     test_cass.process_raw(RAW)
     test_cass.process_normalized(RAW, NORMALIZED)
 
+    # Check to see those docs were processed
     queryset = DocumentModel.objects(docID=RAW['docID'], source=RAW['source'])
     assert len(queryset) == 1
 
-    tasks.migrate(renormalize, source=RAW['source'])
-    queryset = DocumentModel.objects(docID=RAW['docID'], source=RAW['source'])
+    # Create a new doucment to be renormalized
+    new_raw = copy.deepcopy(RAW)
+    new_raw.attributes['docID'] = 'get_the_tables'
+    new_raw.attributes['doc'] = new_raw.attributes['doc'].encode('utf-8')
+    DocumentModel.create(**new_raw.attributes).save()
+
+    tasks.migrate(renormalize, sources=[RAW['source']], dry=False)
+
+    queryset = DocumentModel.objects(docID='get_the_tables', source=RAW['source'])
     assert len(queryset) == 1
     scrapi.processing.elasticsearch.es = real_es
 
@@ -115,6 +126,7 @@ def test_migrate_v2():
     assert len(queryset) == 1
 
 
+@pytest.mark.django_db
 @pytest.mark.cassandra
 def test_cassandra_to_postgres():
 
@@ -125,13 +137,13 @@ def test_cassandra_to_postgres():
     postgres_queryset = Document.objects.filter(source=RAW['source'], docID=RAW['docID'])
     assert len(cassandra_queryset) == 1
     assert len(postgres_queryset) == 0
-
     tasks.migrate(cross_db, target_db='postgres', dry=False)
 
     postgres_queryset = Document.objects.filter(source=RAW['source'], docID=RAW['docID'])
     assert len(postgres_queryset) == 1
 
 
+@pytest.mark.django_db
 @pytest.mark.elasticsearch
 def test_cassandra_to_elasticsearch():
 
@@ -144,7 +156,7 @@ def test_cassandra_to_elasticsearch():
     test_cass.process_normalized(RAW, NORMALIZED)
 
     # run the migration
-    tasks.migrate(cross_db, target_db='elasticsearch')
+    tasks.migrate(cross_db, target_db='elasticsearch', dry=False)
 
     # check the elasticsearch results
     results = test_es.search(index='test', doc_type=RAW['source'])
