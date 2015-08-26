@@ -36,6 +36,7 @@ def harvester():
     pass  # Need to override this
 
 
+@pytest.mark.django_db
 @pytest.mark.cassandra
 def test_rename():
     real_es = scrapi.processing.elasticsearch.es
@@ -65,6 +66,7 @@ def test_rename():
     scrapi.processing.elasticsearch.es = real_es
 
 
+@pytest.mark.django_db
 @pytest.mark.cassandra
 def test_delete():
     real_es = scrapi.processing.elasticsearch.es
@@ -81,6 +83,7 @@ def test_delete():
     scrapi.processing.elasticsearch.es = real_es
 
 
+@pytest.mark.django_db
 @pytest.mark.cassandra
 def test_renormalize():
     real_es = scrapi.processing.elasticsearch.es
@@ -97,6 +100,7 @@ def test_renormalize():
     scrapi.processing.elasticsearch.es = real_es
 
 
+@pytest.mark.django_db
 @pytest.mark.cassandra
 def test_migrate_v2():
     try:

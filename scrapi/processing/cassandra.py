@@ -3,6 +3,7 @@ from __future__ import absolute_import
 import json
 import logging
 from uuid import uuid4
+from datetime import datetime
 
 from dateutil.parser import parse
 
@@ -11,7 +12,7 @@ from cassandra.cqlengine import columns, models
 from scrapi import events
 from scrapi import database  # noqa
 from scrapi.util import copy_to_unicode
-from scrapi.processing.base import BaseProcessor
+from scrapi.processing.base import BaseHarvesterResponse, BaseProcessor
 
 
 logger = logging.getLogger(__name__)
@@ -23,6 +24,10 @@ class CassandraProcessor(BaseProcessor):
     Cassandra processor for scrapi. Handles versioning and storing documents in Cassandra
     '''
     NAME = 'cassandra'
+
+    @property
+    def HarvesterResponseModel(self):
+        return HarvesterResponse
 
     @events.logged(events.PROCESSING, 'normalized.cassandra')
     def process_normalized(self, raw_doc, normalized):
@@ -202,3 +207,19 @@ class VersionModel(models.Model):
 
     # Additional metadata
     versions = columns.List(columns.UUID)
+
+
+@database.register_model
+class HarvesterResponse(models.Model, BaseHarvesterResponse):
+    __table_name__ = 'responses'
+
+    method = columns.Text(primary_key=True)
+    url = columns.Text(primary_key=True, required=True)
+
+    # Raw request data
+    ok = columns.Boolean()
+    content = columns.Bytes()
+    encoding = columns.Text()
+    headers_str = columns.Text()
+    status_code = columns.Integer()
+    time_made = columns.DateTime(default=datetime.now)

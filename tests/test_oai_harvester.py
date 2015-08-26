@@ -11,6 +11,23 @@ from scrapi.linter import RawDocument
 from .utils import TEST_OAI_DOC
 
 
+request_url = 'http://validOAI.edu/?sonofaplumber'
+
+@pytest.fixture(autouse=True)
+def mock_maybe_load_response(monkeypatch):
+    mock_mlr = mock.Mock()
+    mock_mlr.return_value = requests.HarvesterResponse(
+        ok=True,
+        method='get',
+        url=request_url.lower(),
+        content=TEST_OAI_DOC,
+    )
+    mock_save = lambda x: x
+
+    monkeypatch.setattr(requests, '_maybe_load_response', mock_mlr)
+    monkeypatch.setattr(requests.HarvesterResponse, 'save', mock_save)
+
+
 @pytest.fixture(autouse=True)
 def mock_requests(monkeypatch):
     mock_req = mock.Mock()
@@ -31,16 +48,7 @@ class TestHarvester(OAIHarvester):
     property_list = ['type', 'source', 'publisher', 'format', 'date']
     verify = True
 
-    def harvest(self, mock_requests, start_date=None, end_date=None):
-        request_url = 'http://validOAI.edu/?sonofaplumber'
-        requests.HarvesterResponse(
-            ok=True,
-            method='get',
-            url=request_url.lower(),
-            content=TEST_OAI_DOC,
-            content_type="application/XML"
-        ).save()
-
+    def harvest(self, start_date=None, end_date=None):
         start_date = date(2015, 3, 14)
         end_date = date(2015, 3, 16)
 
@@ -61,7 +69,7 @@ class TestOAIHarvester(object):
 
     def test_normalize(self):
         results = [
-            self.harvester.normalize(record) for record in self.harvester.harvest(mock_requests)
+            self.harvester.normalize(record) for record in self.harvester.harvest()
         ]
 
         for res in results:
