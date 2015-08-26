@@ -19,6 +19,9 @@ def get_processor(processor_name):
     raise NotImplementedError('No Processor {}'.format(processor_name))
 
 
+HarvesterResponse = get_processor(settings.RESPONSE_PROCESSING).HarvesterResponseModel
+
+
 def process_normalized(raw_doc, normalized, kwargs):
     ''' kwargs is a dictiorary of kwargs.
         keyed by the processor name

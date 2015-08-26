@@ -6,16 +6,21 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "api.api.settings")
 import copy
 import logging
 
-from scrapi import events
-from scrapi.processing.base import BaseProcessor
+from api.webview.models import HarvesterResponse, Document
 
-from api.webview.models import Document
+from scrapi import events
+from scrapi.processing.base import BaseProcessor, BaseHarvesterResponse
+
 
 logger = logging.getLogger(__name__)
 
 
 class PostgresProcessor(BaseProcessor):
     NAME = 'postgres'
+
+    @property
+    def HarvesterResponseModel(self):
+        return HarvesterResponseModel
 
     @events.logged(events.PROCESSING, 'raw.postgres')
     def process_raw(self, raw_doc):
@@ -45,3 +50,63 @@ class PostgresProcessor(BaseProcessor):
             return Document.objects.filter(source=source, docID=docID)[0]
         except IndexError:
             return None
+
+
+class HarvesterResponseModel(BaseHarvesterResponse):
+
+    response = None
+
+    def __init__(self, *args, **kwargs):
+        if kwargs:
+            self.response = HarvesterResponse(key=kwargs['method'].lower() + kwargs['url'].lower(), *args, **kwargs)
+        else:
+            self.response = args[0]
+
+    @property
+    def method(self):
+        return str(self.response.method)
+
+    @property
+    def url(self):
+        return str(self.response.url)
+
+    @property
+    def ok(self):
+        return bool(self.response.ok)
+
+    @property
+    def content(self):
+        return str(self.response.content)
+
+    @property
+    def encoding(self):
+        return str(self.response.encoding)
+
+    @property
+    def headers_str(self):
+        return str(self.response.headers_str)
+
+    @property
+    def status_code(self):
+        return int(self.response.status_code)
+
+    @property
+    def time_made(self):
+        return str(self.response.time_made)
+
+    def save(self, *args, **kwargs):
+        self.response.save()
+        return self
+
+    def update(self, **kwargs):
+        for k, v in kwargs.items():
+            setattr(self.response, k, v)
+        return self.save()
+
+    @classmethod
+    def get(cls, url=None, method=None):
+        key = method.lower() + url.lower()
+        try:
+            return cls(HarvesterResponse.objects.get(key=key))
+        except HarvesterResponse.DoesNotExist:
+            raise cls.DoesNotExist
