@@ -67,16 +67,14 @@ def doc_to_normed_dict(doc):
             normed[key] = value
 
     # Remove empty values and strip down to only normalized fields
-    try:
-        do_not_include = ['docID', 'doc', 'filetype', 'timestamps', 'source']
-        for key in normed.keys():
-            if not normed[key]:
-                del normed[key]
-            if key in do_not_include:
-                del normed[key]
-    except KeyError:
-        logger.info('Could not migrate document from {} with id {}'.format(doc.source, doc.docID))
-        return None
+    do_not_include = ['docID', 'doc', 'filetype', 'timestamps', 'source']
+    for key in normed.keys():
+        if not normed[key]:
+            del normed[key]
+
+    for key in normed.keys():
+        if key in do_not_include:
+            del normed[key]
 
     if normed.get('versions'):
         normed['versions'] = map(str, normed['versions'])
@@ -84,5 +82,5 @@ def doc_to_normed_dict(doc):
     # No datetime means the document wasn't normalized (probably wasn't on the approved list)
     if normed.get('providerUpdatedDateTime'):
         normed['providerUpdatedDateTime'] = normed['providerUpdatedDateTime'].isoformat()
-
+    # import ipdb; ipdb.set_trace()
     return normed
