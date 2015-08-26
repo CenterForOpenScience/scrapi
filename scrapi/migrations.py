@@ -53,6 +53,7 @@ def cross_db(docs, target_db=None, **kwargs):
     Migration to go between cassandra > postgres, or cassandra > elasticsearch.
     TODO - make this source_db agnostic. Should happen along with larger migration refactor
     """
+    import ipdb; ipdb.set_trace()
     assert target_db, 'Please specify a target db for the migration -- either postgres or elasticsearch'
     assert target_db != 'postgres' or target_db != 'elasticsearch', 'Invalid target database - please specify either postgres or elasticsearch'
 
