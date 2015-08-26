@@ -122,7 +122,7 @@ def test_cassandra_to_postgres():
     assert len(cassandra_queryset) == 1
     assert len(postgres_queryset) == 0
 
-    tasks.migrate(cross_db, target_db='postgres')
+    tasks.migrate(cross_db, target_db='postgres', dry=False)
 
     postgres_queryset = Document.objects.filter(source=RAW['source'], docID=RAW['docID'])
     assert len(postgres_queryset) == 1
