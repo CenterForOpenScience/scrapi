@@ -54,7 +54,7 @@ def cross_db(docs, target_db=None, **kwargs):
     TODO - make this source_db agnostic. Should happen along with larger migration refactor
     """
     assert target_db, 'Please specify a target db for the migration -- either postgres or elasticsearch'
-    assert target_db != 'postgres' or target_db != 'elasticsearch', 'Invalid target database - please specify either postgres or elasticsearch'
+    assert target_db in ['postgres', 'elasticsearch'], 'Invalid target database - please specify either postgres or elasticsearch'
 
     for doc in docs:
 
