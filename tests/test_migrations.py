@@ -64,6 +64,9 @@ def test_rename():
     assert queryset[0].source == 'wwe_news'
     assert len(queryset) == 1
     scrapi.processing.elasticsearch.es = real_es
+    test_harvester.short_name = RAW['source']
+    registry['test'] = test_harvester
+    del registry['wwe_news']
 
 
 @pytest.mark.django_db
@@ -102,6 +105,8 @@ def test_renormalize():
     new_raw = copy.deepcopy(RAW)
     new_raw.attributes['docID'] = 'get_the_tables'
     new_raw.attributes['doc'] = new_raw.attributes['doc'].encode('utf-8')
+
+    # This is basically like running the improved harvester right?
     DocumentModel.create(**new_raw.attributes).save()
 
     tasks.migrate(renormalize, sources=[RAW['source']], dry=False)
@@ -137,7 +142,7 @@ def test_cassandra_to_postgres():
     postgres_queryset = Document.objects.filter(source=RAW['source'], docID=RAW['docID'])
     assert len(cassandra_queryset) == 1
     assert len(postgres_queryset) == 0
-    tasks.migrate(cross_db, target_db='postgres', dry=False)
+    tasks.migrate(cross_db, target_db='postgres', dry=False, sources=['test'])
 
     postgres_queryset = Document.objects.filter(source=RAW['source'], docID=RAW['docID'])
     assert len(postgres_queryset) == 1
