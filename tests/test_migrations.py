@@ -1,7 +1,9 @@
-import copy
-import pytest
-import mock
 import six
+import copy
+import mock
+import pytest
+
+from elasticsearch import TransportError
 
 import scrapi
 from scrapi.linter.document import NormalizedDocument
@@ -15,15 +17,13 @@ from scrapi.migrations import renormalize
 from scrapi.migrations import DocumentModelOld
 
 # Need to force cassandra to ignore set keyspace
-from scrapi.processing.postgres import PostgresProcessor, Document
+from scrapi.processing.postgres import Document
 from scrapi.processing.cassandra import CassandraProcessor, DocumentModel
-from scrapi.processing.elasticsearch import ElasticsearchProcessor
 
 from . import utils
 
 test_cass = CassandraProcessor()
-test_postgres = PostgresProcessor()
-test_es = ElasticsearchProcessor()
+# test_es = ElasticsearchProcessor()
 
 test_harvester = utils.TestHarvester()
 
@@ -119,6 +119,9 @@ def test_renormalize():
 @pytest.mark.django_db
 @pytest.mark.cassandra
 def test_migrate_v2():
+    real_es = scrapi.processing.elasticsearch.es
+    scrapi.processing.elasticsearch.es = mock.MagicMock()
+
     try:
         RAW['doc'] = RAW['doc'].encode('utf-8')
     except AttributeError:
@@ -129,11 +132,14 @@ def test_migrate_v2():
     tasks.migrate_to_source_partition(dry=False)
     queryset = DocumentModel.objects(docID=RAW['docID'], source=RAW['source'])
     assert len(queryset) == 1
+    scrapi.processing.elasticsearch.es = real_es
 
 
 @pytest.mark.django_db
 @pytest.mark.cassandra
 def test_cassandra_to_postgres():
+    real_es = scrapi.processing.elasticsearch.es
+    scrapi.processing.elasticsearch.es = mock.MagicMock()
 
     test_cass.process_raw(RAW)
     test_cass.process_normalized(RAW, NORMALIZED)
@@ -146,23 +152,31 @@ def test_cassandra_to_postgres():
 
     postgres_queryset = Document.objects.filter(source=RAW['source'], docID=RAW['docID'])
     assert len(postgres_queryset) == 1
+    scrapi.processing.elasticsearch.es = real_es
 
 
-@pytest.mark.django_db
+@pytest.mark.cassandra
 @pytest.mark.elasticsearch
 def test_cassandra_to_elasticsearch():
 
-    # Make sure es has nothing in it
-    results = test_es.search(index='test', doc_type=RAW['source'])
+    # This is done to let the test index finish being created before connecting to search
+    while True:
+        try:
+            results = scrapi.processing.elasticsearch.es.search(index='test', doc_type=RAW['source'])
+            break
+        except TransportError:
+            continue
+
     assert (len(results['hits']['hits']) == 0)
 
-    # create the postgres documents
+    # create the cassandra documents
     test_cass.process_raw(RAW)
     test_cass.process_normalized(RAW, NORMALIZED)
 
     # run the migration
-    tasks.migrate(cross_db, target_db='elasticsearch', dry=False)
+    tasks.migrate(cross_db, target_db='elasticsearch', dry=False, sources=['test'], index='test')
 
     # check the elasticsearch results
-    results = test_es.search(index='test', doc_type=RAW['source'])
+    results = scrapi.processing.elasticsearch.es.search(index='test', doc_type=RAW['source'])
+    # import ipdb; ipdb.set_trace()
     assert (len(results['hits']['hits']) == 1)
