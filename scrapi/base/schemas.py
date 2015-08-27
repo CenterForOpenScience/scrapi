@@ -10,7 +10,8 @@ from .helpers import (
     oai_extract_dois,
     build_properties,
     default_name_parser,
-    oai_process_contributors
+    oai_process_contributors,
+    oai_extract_object_uris
 )
 
 
@@ -55,7 +56,7 @@ OAISCHEMA = {
     "contributors": ('//dc:creator/node()', '//dc:contributor/node()', oai_process_contributors),
     "uris": {
         "canonicalUri": ('//dc:identifier/node()', oai_extract_url),
-        "objectUris": ('//dc:doi/node()', '//dc:identifier/node()', oai_extract_dois)
+        "objectUris": ('//dc:doi/node()', '//dc:identifier/node()', oai_extract_object_uris)
     },
     'providerUpdatedDateTime': ('//ns0:header/ns0:datestamp/node()', compose(date_formatter, single_result)),
     'title': ('//dc:title/node()', single_result),
