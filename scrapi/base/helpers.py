@@ -57,7 +57,7 @@ def compose(*functions):
     credit to sloria
     '''
     def inner(func1, func2):
-        return lambda x: func1(func2(x))
+        return lambda x, *y, **z: func1(func2(x, *y, **z))
     return functools.reduce(inner, functions)
 
 
@@ -196,6 +196,23 @@ def extract_doi_from_text(identifiers):
             return 'http://dx.doi.org/{}'.format(found_url.replace('doi:', ''))
         except AttributeError:
             continue
+
+
+def null_on_error(task):
+    '''Decorator that makes a function return None on exception'''
+    def inner(*args, **kwargs):
+        try:
+            return task(*args, **kwargs)
+        except Exception:
+            return None
+    return inner
+
+
+def coerce_to_list(thing):
+    ''' If a value is not already a list or tuple, puts that value in a length 1 list'''
+    if not (isinstance(thing, list) or isinstance(thing, tuple)):
+        return [thing]
+    return thing
 
 
 def date_formatter(date_string):
