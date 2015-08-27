@@ -52,7 +52,7 @@ def single_result(l, default=''):
 def compose(*functions):
     '''
     evaluates functions from right to left.
-    ex. compose(f, g)(x) = f(g(x))
+    ex. compose(f, g)(x, *y, **z) = f(g(x, *y, **z))
 
     credit to sloria
     '''
