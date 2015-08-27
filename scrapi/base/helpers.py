@@ -114,6 +114,8 @@ def oai_return_provider_uris(*args):
             if 'http://' in identifier or 'https://' in identifier:
                 provider_uris.append(arg)
 
+    return provider_uris
+
 
 def oai_extract_dois(*args):
     identifiers = []
