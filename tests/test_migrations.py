@@ -159,13 +159,7 @@ def test_cassandra_to_postgres():
 @pytest.mark.elasticsearch
 def test_cassandra_to_elasticsearch():
 
-    # This is done to let the test index finish being created before connecting to search
-    while True:
-        try:
-            results = scrapi.processing.elasticsearch.es.search(index='test', doc_type=RAW['source'])
-            break
-        except TransportError:
-            continue
+    results = scrapi.processing.elasticsearch.es.search(index='test', doc_type=RAW['source'])
 
     assert (len(results['hits']['hits']) == 0)
 
