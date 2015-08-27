@@ -7,7 +7,6 @@ from .helpers import (
     language_codes,
     date_formatter,
     oai_extract_url,
-    oai_extract_dois,
     build_properties,
     default_name_parser,
     oai_process_contributors,
