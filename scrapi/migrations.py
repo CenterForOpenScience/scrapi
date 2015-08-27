@@ -48,7 +48,7 @@ def rename(docs, target=None, **kwargs):
 
 
 @tasks.task_autoretry(default_retry_delay=30, max_retries=5)
-def cross_db(docs, target_db=None, **kwargs):
+def cross_db(docs, target_db=None, index=None, **kwargs):
     """
     Migration to go between cassandra > postgres, or cassandra > elasticsearch.
     TODO - make this source_db agnostic. Should happen along with larger migration refactor
@@ -86,7 +86,10 @@ def cross_db(docs, target_db=None, **kwargs):
             processor.process_raw(raw)
 
             try:
-                processor.process_normalized(raw, normalized)
+                if target_db == 'elasticsearch':
+                    processor.process_normalized(raw, normalized, index=index)
+                else:
+                    processor.process_normalized(raw, normalized)
             except KeyError:
                 # This means that the document was harvested but wasn't approved to be normalized
                 logger.info('Not storing migrated normalized from {} with id {}, document is not in approved set list.'.format(doc.source, doc.docID))
