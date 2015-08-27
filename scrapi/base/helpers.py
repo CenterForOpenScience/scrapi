@@ -103,6 +103,18 @@ def format_tags(all_tags, sep=','):
     return list(set([six.text_type(tag.lower().strip()) for tag in tags if tag.strip()]))
 
 
+def oai_return_provider_uris(*args):
+    provider_uris = []
+    for arg in args:
+        if isinstance(arg, list):
+            for identifier in arg:
+                if 'http://' in identifier or 'https://' in identifier:
+                    provider_uris.append(identifier)
+        elif arg:
+            if 'http://' in identifier or 'https://' in identifier:
+                provider_uris.append(arg)
+
+
 def oai_extract_dois(*args):
     identifiers = []
     for arg in args:
