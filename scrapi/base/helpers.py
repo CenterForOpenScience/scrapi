@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 import re
+import logging
 import functools
 from copy import deepcopy
 
@@ -12,6 +13,7 @@ from pycountry import languages
 from nameparser import HumanName
 
 from scrapi import requests
+
 
 URL_REGEX = re.compile(r'(https?://\S*\.\S*)')
 DOI_REGEX = re.compile(r'(doi:10\.\S*)')
@@ -52,12 +54,12 @@ def single_result(l, default=''):
 def compose(*functions):
     '''
     evaluates functions from right to left.
-    ex. compose(f, g)(x, *y, **z) = f(g(x, *y, **z))
+    ex. compose(f, g)(*x, **y) = f(g(*x, **y))
 
     credit to sloria
     '''
     def inner(func1, func2):
-        return lambda x, *y, **z: func1(func2(x, *y, **z))
+        return lambda *x, **y: func1(func2(*x, **y))
     return functools.reduce(inner, functions)
 
 
@@ -203,7 +205,9 @@ def null_on_error(task):
     def inner(*args, **kwargs):
         try:
             return task(*args, **kwargs)
-        except Exception:
+        except Exception as e:
+            logger = logging.getLogger('scrapi.base.helpers.null_on_error')
+            logger.warn(e)
             return None
     return inner
 
