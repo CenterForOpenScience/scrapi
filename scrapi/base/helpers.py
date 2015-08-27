@@ -122,6 +122,35 @@ def oai_extract_dois(*args):
     return dois
 
 
+def oai_extract_content_uris(*args):
+    identifiers = []
+    for arg in args:
+        if isinstance(arg, list):
+            for identifier in arg:
+                identifiers.append(identifier)
+        elif arg:
+            identifiers.append(arg)
+    content_uris = []
+    for item in identifiers:
+        if 'viewcontent.cgi' in item.lower():
+            content_uris.append(item)
+    return content_uris
+
+
+def oai_extract_object_uris(*args):
+    identifiers = []
+    for arg in args:
+        if isinstance(arg, list):
+            for identifier in arg:
+                identifiers.append(identifier)
+        elif arg:
+            identifiers.append(arg)
+    content_uris = oai_extract_content_uris(identifiers)
+    dois = oai_extract_dois(identifiers)
+
+    return content_uris + dois
+
+
 def oai_extract_url(identifiers):
     identifiers = [identifiers] if not isinstance(identifiers, list) else identifiers
     for item in identifiers:
