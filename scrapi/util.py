@@ -60,7 +60,7 @@ def json_without_bytes(jobj):
 def doc_to_normed_dict(doc):
     # make the new dict actually contain real items
     normed = {}
-    for key, value in dict(doc).iteritems():
+    for key, value in dict(doc).items():
         try:
             normed[key] = json.loads(value)
         except (ValueError, TypeError):
@@ -68,19 +68,19 @@ def doc_to_normed_dict(doc):
 
     # Remove empty values and strip down to only normalized fields
     do_not_include = ['docID', 'doc', 'filetype', 'timestamps', 'source']
-    for key in normed.keys():
+    for key in list(normed.keys()):
         if not normed[key]:
             del normed[key]
 
-    for key in normed.keys():
+    for key in list(normed.keys()):
         if key in do_not_include:
             del normed[key]
 
     if normed.get('versions'):
-        normed['versions'] = map(str, normed['versions'])
+        normed['versions'] = list(map(str, normed['versions']))
 
     # No datetime means the document wasn't normalized (probably wasn't on the approved list)
     if normed.get('providerUpdatedDateTime'):
         normed['providerUpdatedDateTime'] = normed['providerUpdatedDateTime'].isoformat()
-    # import ipdb; ipdb.set_trace()
+
     return normed
