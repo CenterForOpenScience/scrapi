@@ -137,7 +137,7 @@ def oai_process_uris(*args):
 
     try:
         cannonicalUri = cannonical_candidates[0]
-    except KeyError:
+    except IndexError:
         raise ValueError('No Canonical URI was returned for this record.')
 
     return {
