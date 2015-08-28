@@ -112,16 +112,15 @@ def oai_process_uris(*args):
         elif arg:
             identifiers.append(arg)
 
-    objectUris = []
-    providerUris = []
-    canonical_candidates = []
+    object_uris = []
+    provider_uris = []
     for item in identifiers:
         if 'doi' in item.lower():
             doi = item.replace('doi:', '').replace('DOI:', '').strip()
             if 'http://dx.doi.org/' in doi:
-                objectUris.append(doi)
+                object_uris.append(doi)
             else:
-                objectUris.append('http://dx.doi.org/{}'.format(doi))
+                object_uris.append('http://dx.doi.org/{}'.format(doi))
 
         try:
             found_url = URL_REGEX.search(item).group()
@@ -129,20 +128,19 @@ def oai_process_uris(*args):
             found_url = None
         if found_url:
             if 'viewcontent' in found_url:
-                objectUris.append(found_url)
+                object_uris.append(found_url)
             else:
-                providerUris.append(found_url)
-                canonical_candidates.append(found_url)
+                provider_uris.append(found_url)
 
     try:
-        canonicalUri = canonical_candidates[0]
+        canonicalUri = (provider_uris + object_uris)[0]
     except IndexError:
         raise ValueError('No Canonical URI was returned for this record.')
 
     return {
         'canonicalUri': canonicalUri,
-        'objectUris': objectUris,
-        'providerUris': providerUris
+        'objectUris': object_uris,
+        'providerUris': provider_uris
     }
 
 
