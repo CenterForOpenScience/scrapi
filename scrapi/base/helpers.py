@@ -114,7 +114,7 @@ def oai_process_uris(*args):
 
     objectUris = []
     providerUris = []
-    cannonical_candidates = []
+    canonical_candidates = []
     for item in identifiers:
         if 'doi' in item.lower():
             doi = item.replace('doi:', '').replace('DOI:', '').strip()
@@ -133,15 +133,15 @@ def oai_process_uris(*args):
                 objectUris.append(found_url)
             else:
                 providerUris.append(found_url)
-                cannonical_candidates.append(found_url)
+                canonical_candidates.append(found_url)
 
     try:
-        cannonicalUri = cannonical_candidates[0]
+        canonicalUri = canonical_candidates[0]
     except IndexError:
         raise ValueError('No Canonical URI was returned for this record.')
 
     return {
-        'cannonicalUri': cannonicalUri,
+        'canonicalUri': canonicalUri,
         'objectUris': objectUris,
         'providerUris': providerUris
     }
