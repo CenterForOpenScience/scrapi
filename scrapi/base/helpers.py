@@ -103,18 +103,48 @@ def format_tags(all_tags, sep=','):
     return list(set([six.text_type(tag.lower().strip()) for tag in tags if tag.strip()]))
 
 
-def oai_return_provider_uris(*args):
-    provider_uris = []
+def oai_process_uris(*args):
+    identifiers = []
     for arg in args:
         if isinstance(arg, list):
             for identifier in arg:
-                if 'http://' in identifier or 'https://' in identifier:
-                    provider_uris.append(identifier)
+                identifiers.append(identifier)
         elif arg:
-            if 'http://' in identifier or 'https://' in identifier:
-                provider_uris.append(arg)
+            identifiers.append(arg)
 
-    return provider_uris
+    objectUris = []
+    providerUris = []
+    cannonical_candidates = []
+    for item in identifiers:
+        if 'doi' in item.lower():
+            doi = item.replace('doi:', '').replace('DOI:', '').strip()
+            if 'http://dx.doi.org/' in doi:
+                objectUris.append(doi)
+            else:
+                objectUris.append('http://dx.doi.org/{}'.format(doi))
+
+        found_url = None
+        try:
+            found_url = URL_REGEX.search(item).group()
+        except AttributeError:
+            pass
+        if found_url:
+            if 'viewcontent' in found_url:
+                objectUris.append(found_url)
+            else:
+                providerUris.append(found_url)
+                cannonical_candidates.append(found_url)
+
+    try:
+        cannonicalUri = cannonical_candidates[0]
+    except KeyError:
+        raise ValueError('No Canonical URI was returned for this record.')
+
+    return {
+        'cannonicalUri': cannonicalUri,
+        'objectUris': objectUris,
+        'providerUris': providerUris
+    }
 
 
 def oai_extract_dois(*args):
@@ -134,47 +164,6 @@ def oai_extract_dois(*args):
             else:
                 dois.append('http://dx.doi.org/{}'.format(doi))
     return dois
-
-
-def oai_extract_content_uris(*args):
-    identifiers = []
-    for arg in args:
-        if isinstance(arg, list):
-            for identifier in arg:
-                identifiers.append(identifier)
-        elif arg:
-            identifiers.append(arg)
-    content_uris = []
-    for item in identifiers:
-        if 'viewcontent.cgi' in item.lower():
-            content_uris.append(item)
-    return content_uris
-
-
-def oai_extract_object_uris(*args):
-    identifiers = []
-    for arg in args:
-        if isinstance(arg, list):
-            for identifier in arg:
-                identifiers.append(identifier)
-        elif arg:
-            identifiers.append(arg)
-    content_uris = oai_extract_content_uris(identifiers)
-    dois = oai_extract_dois(identifiers)
-
-    return content_uris + dois
-
-
-def oai_extract_url(identifiers):
-    identifiers = [identifiers] if not isinstance(identifiers, list) else identifiers
-    for item in identifiers:
-        try:
-            found_url = URL_REGEX.search(item).group()
-            if 'viewcontent' not in found_url:
-                return found_url
-        except AttributeError:
-            continue
-    raise ValueError('No Canonical URI was returned for this record.')
 
 
 def oai_process_contributors(*args):
