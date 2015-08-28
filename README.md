@@ -240,11 +240,13 @@ For local development, running the ```mit``` harvester is recommended.
 
 Note: harvester-name is the same as the defined harvester "short name".
 
-Invove a harvester a certain number of days back with the ```--days``` argument. For example, to run a harvester 5 days in the past, run:
+Invoke a harvester a certain number of days back with the ```--days``` argument. For example, to run a harvester 5 days in the past, run:
 
 ```bash
 $ invoke harvester harvester-name --days=5
 ```
+
+Writing a harvester for inclusion with scrAPI?  If the provider makes their metadata available using the OAI-PMH standard, then [autooai](https://github.com/erinspace/autooai) is a utility that will do most of the work for you.
 
 
 ### Working with the OSF
