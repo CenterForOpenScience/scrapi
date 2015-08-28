@@ -5,11 +5,10 @@ Example API call: http://data.nodc.noaa.gov/cgi-bin/oai-pmh?verb=GetRecord&metad
 
 """
 
-
 from __future__ import unicode_literals
 
-from scrapi.base import helpers
 from scrapi.base import OAIHarvester
+
 
 class NODCHarvester(OAIHarvester):
     short_name = 'noaa_nodc'
