@@ -133,12 +133,12 @@ def oai_process_uris(*args):
                 provider_uris.append(found_url)
 
     try:
-        cannonical_uri = (provider_uris + object_uris)[0]
+        canonical_uri = (provider_uris + object_uris)[0]
     except IndexError:
         raise ValueError('No Canonical URI was returned for this record.')
 
     return {
-        'canonicalUri': cannonical_uri,
+        'canonicalUri': canonical_uri,
         'objectUris': object_uris,
         'providerUris': provider_uris
     }
