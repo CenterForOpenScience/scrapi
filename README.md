@@ -208,7 +208,7 @@ Invoke a harvester a certain number of days back with the ```--days``` argument.
 $ invoke harvester harvester-name --days=5
 ```
 
-Writing a harvester for inclusion with scrAPI?  [autooai](https://github.com/erinspace/autooai) is a utility that makes this easy for most cases.
+Writing a harvester for inclusion with scrAPI?  If the provider makes their metadata available using the OAI-PMH standard, then [autooai](https://github.com/erinspace/autooai) is a utility that will do most of the work for you.
 
 
 ### Working with the OSF
