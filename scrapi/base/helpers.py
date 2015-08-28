@@ -123,11 +123,10 @@ def oai_process_uris(*args):
             else:
                 objectUris.append('http://dx.doi.org/{}'.format(doi))
 
-        found_url = None
         try:
             found_url = URL_REGEX.search(item).group()
         except AttributeError:
-            pass
+            found_url = None
         if found_url:
             if 'viewcontent' in found_url:
                 objectUris.append(found_url)
