@@ -43,7 +43,7 @@ class TestHelpers(object):
         uri_dict = helpers.oai_process_uris(identifiers)
 
         assert uri_dict == {
-            'cannonicalUri': 'http://alloutofbubblegum.com',
+            'canonicalUri': 'http://alloutofbubblegum.com',
             'objectUris': ['http://dx.doi.org/10.whateverwhatever', 'http://viewcontent.cgi/iamacoolpdf'],
             'providerUris': ['http://alloutofbubblegum.com', 'http://GETTHETABLES.com']
         }
