@@ -8,7 +8,7 @@ CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
 
 RAW_PROCESSING = ['cassandra', 'postgres']
 NORMALIZED_PROCESSING = ['elasticsearch', 'cassandra', 'postgres']
-RESPONSE_PROCESSING = 'postgres'
+RESPONSE_PROCESSING = 'cassandra'
 
 SENTRY_DSN = None
 
