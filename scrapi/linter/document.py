@@ -118,8 +118,18 @@ class RawDocument(BaseDocument):
             ]
         }
 
+    def __repr__(self):
+        return "RawDocument(source='{source}', docID='{docID}, filetype='{filetype}, ...)".format(**self.attributes)
+
 
 class NormalizedDocument(BaseDocument):
 
     with open('normalized.json') as f:
         schema = json.load(f)
+
+    def __repr__(self):
+        return "NormalizedDocument(source='{}', url='{}', providerUpdatedDateTime='{}', ...)".format(
+            self.attributes['shareProperties']['source'],
+            self.attributes['uris']['canonicalUri'],
+            self.attributes['providerUpdatedDateTime']
+        )

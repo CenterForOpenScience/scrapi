@@ -37,18 +37,21 @@ def process_contributor(author, orcid):
 
 def process_sponsorships(funder):
     sponsorships = []
+
     for element in funder:
-        sponsorship = {
-            'sponsor': {
+        sponsorship = {}
+
+        if element.get('name'):
+            sponsorship['sponsor'] = {
                 'sponsorName': element['name']
-            },
-            'award': {
+            }
+
+        if element.get('award'):
+            sponsorship['award'] = {
                 'awardName': ', '.join(element['award'])
             }
-        }
-
-        if element.get('DOI'):
-            sponsorship['award']['awardIdentifier'] = 'http://dx.doi.org/{}'.format(element['DOI'])
+            if element.get('DOI'):
+                sponsorship['award']['awardIdentifier'] = 'http://dx.doi.org/{}'.format(element['DOI'])
 
         sponsorships.append(sponsorship)
 
