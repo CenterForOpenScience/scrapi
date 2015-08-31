@@ -41,12 +41,12 @@ def process_sponsorships(funder):
     for element in funder:
         sponsorship = {}
 
-        if element['name']:
+        if element.get('name'):
             sponsorship['sponsor'] = {
                 'sponsorName': element['name']
             }
 
-        if element['award']:
+        if element.get('award'):
             sponsorship['award'] = {
                 'awardName': ', '.join(element['award'])
             }
