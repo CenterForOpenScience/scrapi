@@ -76,6 +76,8 @@ class HarvesterResponseModel(BaseHarvesterResponse):
 
     @property
     def content(self):
+        if isinstance(self.response.content, memoryview):
+            return self.response.content.tobytes()
         return str(self.response.content)
 
     @property
