@@ -1,7 +1,13 @@
-"""
-Harvester of National Oceanic and Atmosphere Administration's National Oceanographic Data Center
+"""Harvester of National Oceanic and Atmosphere Administration's National Oceanographic Data Center
 
-Example API call: http://data.nodc.noaa.gov/cgi-bin/oai-pmh?verb=GetRecord&metadataPrefix=oai_dc&identifier=gov.noaa.nodc:0110317
+Example API call: http://data.nodc.noaa.gov/cgi-bin/iso?id=gov.noaa.nodc:00001339;view=xml
+
+NODC provides an OAI-PMH interface at
+http://data.nodc.noaa.gov/cgi-bin/oai-pmh, but it does not contain the
+contributors key mandated by the SHARE-schema spec.  Therefore, we
+have to use the XML interface, which contains much more metadata.
+However, the XML interface is not searchable, so we still use the
+OAI-PMH interface for queries. Fun!
 
 """
 
