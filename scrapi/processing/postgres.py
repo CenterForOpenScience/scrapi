@@ -78,6 +78,8 @@ class HarvesterResponseModel(BaseHarvesterResponse):
     def content(self):
         if isinstance(self.response.content, memoryview):
             return self.response.content.tobytes()
+        if isinstance(self.response.content, bytes):
+            return self.response.content
         return str(self.response.content)
 
     @property
