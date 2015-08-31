@@ -31,7 +31,7 @@ def format_dois_dryad(*args):
 class DryadHarvester(OAIHarvester):
     short_name = 'dryad'
     long_name = 'Dryad Data Repository'
-    url = 'http://www.datadryad.org/oai/request'
+    url = 'http://www.datadryad.org/'
 
     base_url = 'http://www.datadryad.org/oai/request'
     property_list = ['rights', 'format', 'relation', 'date',

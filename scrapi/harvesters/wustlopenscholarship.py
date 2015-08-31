@@ -11,7 +11,7 @@ from scrapi.base import OAIHarvester
 class WustlopenscholarshipHarvester(OAIHarvester):
     short_name = 'wustlopenscholarship'
     long_name = 'Washington University Open Scholarship'
-    url = 'http://openscholarship.wustl.edu/do/oai/'
+    url = 'http://openscholarship.wustl.edu'
 
     base_url = 'http://openscholarship.wustl.edu/do/oai/'
     property_list = ['date', 'source', 'identifier', 'type', 'format', 'setSpec']

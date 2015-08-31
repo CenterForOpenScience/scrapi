@@ -1,11 +1,14 @@
 from __future__ import unicode_literals
 
 import re
+import logging
 import functools
 from copy import deepcopy
 
 import six
+import pytz
 from lxml import etree
+from dateutil import parser
 from pycountry import languages
 from nameparser import HumanName
 
@@ -13,6 +16,7 @@ from scrapi import requests
 
 
 URL_REGEX = re.compile(r'(https?://\S*\.\S*)')
+DOI_REGEX = re.compile(r'(doi:10\.\S*)')
 
 ''' Takes a value, returns a function that always returns that value
     Useful inside schemas for defining constants '''
@@ -50,12 +54,12 @@ def single_result(l, default=''):
 def compose(*functions):
     '''
     evaluates functions from right to left.
-    ex. compose(f, g)(x) = f(g(x))
+    ex. compose(f, g)(*x, **y) = f(g(*x, **y))
 
     credit to sloria
     '''
     def inner(func1, func2):
-        return lambda x: func1(func2(x))
+        return lambda *x, **y: func1(func2(*x, **y))
     return functools.reduce(inner, functions)
 
 
@@ -81,8 +85,6 @@ def default_name_parser(names):
             'givenName': name.first,
             'additionalName': name.middle,
             'familyName': name.last,
-            'email': '',
-            'sameAs': []
         }
         contributor_list.append(contributor)
 
@@ -103,6 +105,47 @@ def format_tags(all_tags, sep=','):
     return list(set([six.text_type(tag.lower().strip()) for tag in tags if tag.strip()]))
 
 
+def oai_process_uris(*args):
+    identifiers = []
+    for arg in args:
+        if isinstance(arg, list):
+            for identifier in arg:
+                identifiers.append(identifier)
+        elif arg:
+            identifiers.append(arg)
+
+    object_uris = []
+    provider_uris = []
+    for item in identifiers:
+        if 'doi' in item.lower():
+            doi = item.replace('doi:', '').replace('DOI:', '').strip()
+            if 'http://dx.doi.org/' in doi:
+                object_uris.append(doi)
+            else:
+                object_uris.append('http://dx.doi.org/{}'.format(doi))
+
+        try:
+            found_url = URL_REGEX.search(item).group()
+        except AttributeError:
+            found_url = None
+        if found_url:
+            if 'viewcontent' in found_url:
+                object_uris.append(found_url)
+            else:
+                provider_uris.append(found_url)
+
+    try:
+        canonical_uri = (provider_uris + object_uris)[0]
+    except IndexError:
+        raise ValueError('No Canonical URI was returned for this record.')
+
+    return {
+        'canonicalUri': canonical_uri,
+        'objectUris': object_uris,
+        'providerUris': provider_uris
+    }
+
+
 def oai_extract_dois(*args):
     identifiers = []
     for arg in args:
@@ -120,18 +163,6 @@ def oai_extract_dois(*args):
             else:
                 dois.append('http://dx.doi.org/{}'.format(doi))
     return dois
-
-
-def oai_extract_url(identifiers):
-    identifiers = [identifiers] if not isinstance(identifiers, list) else identifiers
-    for item in identifiers:
-        try:
-            found_url = URL_REGEX.search(item).group()
-            if 'viewcontent' not in found_url:
-                return found_url
-        except AttributeError:
-            continue
-    raise ValueError('No Canonical URI was returned for this record.')
 
 
 def oai_process_contributors(*args):
@@ -186,3 +217,42 @@ def oai_get_records_and_token(url, throttle, force, namespaces, verify):
     )
 
     return records, token
+
+
+def extract_doi_from_text(identifiers):
+    identifiers = [identifiers] if not isinstance(identifiers, list) else identifiers
+    for item in identifiers:
+        try:
+            found_url = DOI_REGEX.search(item).group()
+            return 'http://dx.doi.org/{}'.format(found_url.replace('doi:', ''))
+        except AttributeError:
+            continue
+
+
+def null_on_error(task):
+    '''Decorator that makes a function return None on exception'''
+    def inner(*args, **kwargs):
+        try:
+            return task(*args, **kwargs)
+        except Exception as e:
+            logger = logging.getLogger('scrapi.base.helpers.null_on_error')
+            logger.warn(e)
+            return None
+    return inner
+
+
+def coerce_to_list(thing):
+    ''' If a value is not already a list or tuple, puts that value in a length 1 list'''
+    if not (isinstance(thing, list) or isinstance(thing, tuple)):
+        return [thing]
+    return thing
+
+
+def date_formatter(date_string):
+    '''Takes an arbitrary date/time string and parses it, adds time
+    zone information and returns a valid ISO-8601 datetime string
+    '''
+    date_time = parser.parse(date_string)
+    if not date_time.tzinfo:
+        date_time = date_time.replace(tzinfo=pytz.UTC)
+    return date_time.isoformat()

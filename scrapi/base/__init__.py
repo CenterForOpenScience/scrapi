@@ -16,7 +16,15 @@ from scrapi import settings
 from scrapi.base.schemas import OAISCHEMA
 from scrapi.linter.document import RawDocument, NormalizedDocument
 from scrapi.base.transformer import XMLTransformer, JSONTransformer
-from scrapi.base.helpers import updated_schema, build_properties, oai_get_records_and_token
+from scrapi.base.helpers import (
+    updated_schema,
+    build_properties,
+    oai_get_records_and_token,
+    compose,
+    date_formatter,
+    null_on_error,
+    coerce_to_list
+)
 
 logging.basicConfig(level=logging.INFO)
 
@@ -83,7 +91,7 @@ class JSONHarvester(BaseHarvester, JSONTransformer):
         transformed['shareProperties'] = {
             'source': self.short_name
         }
-        return NormalizedDocument(transformed)
+        return NormalizedDocument(transformed, clean=True)
 
 
 class XMLHarvester(BaseHarvester, XMLTransformer):
@@ -94,7 +102,7 @@ class XMLHarvester(BaseHarvester, XMLTransformer):
         transformed['shareProperties'] = {
             'source': self.short_name
         }
-        return NormalizedDocument(transformed)
+        return NormalizedDocument(transformed, clean=True)
 
 
 class OAIHarvester(XMLHarvester):
@@ -139,12 +147,19 @@ class OAIHarvester(XMLHarvester):
     @property
     def formatted_properties(self):
         return {
-            'otherProperties': build_properties(*[(item, (
-                '//dc:{}/node()'.format(item),
-                '//ns0:{}/node()'.format(item),
-                self.resolve_property)
-            ) for item in self.property_list])
+            'otherProperties': build_properties(*map(self.format_property, self.property_list))
         }
+
+    def format_property(self, property):
+        if property == 'date':
+            fn = compose(lambda x: map(null_on_error(date_formatter), x), coerce_to_list, self.resolve_property)
+        else:
+            fn = self.resolve_property
+        return (property, (
+            '//dc:{}/node()'.format(property),
+            '//ns0:{}/node()'.format(property),
+            fn)
+        )
 
     def resolve_property(self, dc, ns0):
         ret = dc + ns0

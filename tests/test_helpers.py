@@ -31,10 +31,22 @@ class TestHelpers(object):
             'http://dx.doi.org/thistoook'
         ]
 
-    def test_oai_extract_url(self):
-        identifiers = 'I might be a url but rly I am naaaahhttt'
+    def oai_process_uris(self):
+        identifiers = ['I might be a url but rly I am naaaahhttt']
         with pytest.raises(ValueError):
             helpers.oai_extract_url(identifiers)
+
+    def test_extract_uris(self):
+        identifiers = ['doi:10.whateverwhatever', 'http://alloutofbubblegum.com',
+                       'http://viewcontent.cgi/iamacoolpdf', 'http://GETTHETABLES.com']
+
+        uri_dict = helpers.oai_process_uris(identifiers)
+
+        assert uri_dict == {
+            'canonicalUri': 'http://alloutofbubblegum.com',
+            'objectUris': ['http://dx.doi.org/10.whateverwhatever', 'http://viewcontent.cgi/iamacoolpdf'],
+            'providerUris': ['http://alloutofbubblegum.com', 'http://GETTHETABLES.com']
+        }
 
     def test_process_contributors(self):
         args = ['Stardust Rhodes', 'Golddust Rhodes', 'Dusty Rhodes']
@@ -56,3 +68,13 @@ class TestHelpers(object):
         assert records
         assert token
         assert len(records) == 50
+
+    def test_extract_doi_from_text(self):
+        text = ["""
+        Ryder, Z., & Dudley, B. R. (2014). Methods of WOO WOO WOO and D3 comming atcha by a
+        Continuous Flow Microreactor. Crystal Growth & Design, 14(9),
+        4759-4767. doi:10.1021/woowoowoo yep yep yep what he do"""]
+
+        extracted_doi = helpers.extract_doi_from_text(text)
+
+        assert extracted_doi == 'http://dx.doi.org/10.1021/woowoowoo'

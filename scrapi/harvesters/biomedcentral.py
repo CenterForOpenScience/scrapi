@@ -11,7 +11,6 @@ from __future__ import unicode_literals
 import json
 import logging
 from datetime import date, timedelta
-from dateutil.parser import parse
 
 from nameparser import HumanName
 
@@ -19,7 +18,8 @@ from scrapi import requests
 from scrapi import settings
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
-from scrapi.base.helpers import build_properties
+from scrapi.base.helpers import build_properties, date_formatter
+
 logger = logging.getLogger(__name__)
 
 
@@ -40,7 +40,6 @@ def process_contributors(authors):
             'givenName': name.first,
             'additionalName': name.middle,
             'familyName': name.last,
-            'email': '',
             'sameAs': [],
         }
         contributor_list.append(contributor)
@@ -65,7 +64,7 @@ class BiomedCentralHarvester(JSONHarvester):
                 'objectUris': ('/doi', lambda x: ['http://dx.doi.org/' + x])
             },
             'title': ('/bibliographyTitle', '/blurbTitle', lambda x, y: x or y),
-            'providerUpdatedDateTime': ('/published Date', lambda x: parse(x).isoformat()),
+            'providerUpdatedDateTime': ('/published Date', lambda x: date_formatter(x)),
             'description': '/blurbText',
             'freeToRead': {
                 'startDate': ('/is_free', '/published Date', lambda x, y: y if x else None)

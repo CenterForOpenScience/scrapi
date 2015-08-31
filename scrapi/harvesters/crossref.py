@@ -13,43 +13,45 @@ from datetime import date, timedelta
 
 from six.moves import xrange
 from nameparser import HumanName
-from dateutil.parser import parse
 
 from scrapi import requests
 from scrapi import settings
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
-from scrapi.base.helpers import build_properties, compose
+from scrapi.base.helpers import build_properties, compose, date_formatter
 
 logger = logging.getLogger(__name__)
 
 
 def process_contributor(author, orcid):
     name = HumanName(author)
-    return {
+    ret = {
         'name': author,
         'givenName': name.first,
         'additionalName': name.middle,
         'familyName': name.last,
-        'email': '',
-        'sameAs': [orcid or '']
+        'sameAs': [orcid] if orcid else []
     }
+    return ret
 
 
 def process_sponsorships(funder):
     sponsorships = []
+
     for element in funder:
-        sponsorship = {
-            'sponsor': {
+        sponsorship = {}
+
+        if element.get('name'):
+            sponsorship['sponsor'] = {
                 'sponsorName': element['name']
-            },
-            'award': {
+            }
+
+        if element.get('award'):
+            sponsorship['award'] = {
                 'awardName': ', '.join(element['award'])
             }
-        }
-
-        if element.get('DOI'):
-            sponsorship['award']['awardIdentifier'] = 'http://dx.doi.org/{}'.format(element['DOI'])
+            if element.get('DOI'):
+                sponsorship['award']['awardIdentifier'] = 'http://dx.doi.org/{}'.format(element['DOI'])
 
         sponsorships.append(sponsorship)
 
@@ -70,7 +72,7 @@ class CrossRefHarvester(JSONHarvester):
         return {
             'title': ('/title', lambda x: x[0] if x else ''),
             'description': ('/subtitle', lambda x: x[0] if (isinstance(x, list) and x) else x or ''),
-            'providerUpdatedDateTime': ('/issued/date-parts', lambda x: parse(' '.join([str(part) for part in x[0]])).date().isoformat()),
+            'providerUpdatedDateTime': ('/issued/date-parts', compose(date_formatter, lambda x: ' '.join([str(part) for part in x[0]]))),
             'uris': {
                 'canonicalUri': '/URL'
             },
