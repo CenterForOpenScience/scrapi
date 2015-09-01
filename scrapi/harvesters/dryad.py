@@ -41,9 +41,7 @@ class DryadHarvester(OAIHarvester):
     @property
     def schema(self):
         return helpers.updated_schema(self._schema, {
-            "uris": {
-                "objectUris": ('//dc:relation/node()', '//dc:identifier/node()', format_dois_dryad)
-            }
+            "uris": ('//dc:relation/node()', '//dc:identifier/node()', helpers.oai_process_uris)
         })
 
     def normalize(self, raw_doc):
