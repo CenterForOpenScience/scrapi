@@ -2,6 +2,11 @@
 ChangeLog
 *********
 
+0.9.2 (2015-09-01)
+==================
+- fix specification of canonicalUri requirements in schema
+- update harvesters to reflect change in specification
+
 0.9.1 (2015-09-01)
 ==================
 - Document __repr__ no longer throw exceptions (allowing errors to be reported)

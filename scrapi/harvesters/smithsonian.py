@@ -19,9 +19,7 @@ class SiHarvester(OAIHarvester):
     @property
     def schema(self):
         return helpers.updated_schema(self._schema, {
-            "uris": {
-                "objectUris": [('//dc:identifier/node()', get_doi_from_identifier)]
-            }
+            "uris": ('//dc:identifier/node()', helpers.oai_process_uris)
         })
 
     base_url = 'http://repository.si.edu/oai/request'
