@@ -119,7 +119,11 @@ class RawDocument(BaseDocument):
         }
 
     def __repr__(self):
-        return "RawDocument(source='{source}', docID='{docID}, filetype='{filetype}, ...)".format(**self.attributes)
+        return "RawDocument(source='{source}', docID='{docID}', filetype='{filetype}', ...)".format(
+            source=self.attributes.get('source'),
+            docID=self.attributes.get('docID'),
+            filetype=self.attributes.get('filetype')
+        )
 
 
 class NormalizedDocument(BaseDocument):
