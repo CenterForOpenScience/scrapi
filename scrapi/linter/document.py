@@ -129,7 +129,7 @@ class NormalizedDocument(BaseDocument):
 
     def __repr__(self):
         return "NormalizedDocument(source='{}', url='{}', providerUpdatedDateTime='{}', ...)".format(
-            self.attributes['shareProperties']['source'],
-            self.attributes['uris']['canonicalUri'],
-            self.attributes['providerUpdatedDateTime']
+            self.attributes.get('shareProperties', {}).get('source'),
+            self.attributes.get('uris', {}).get('canonicalUri'),
+            self.attributes.get('providerUpdatedDateTime')
         )
