@@ -36,7 +36,7 @@ def text_only_list(elems):
 
 
 def text_only(elem):
-    etree.strip_tags(elem, "*")
+    etree.strip_tags(elem, '*')
     inner_text = elem.text
     if inner_text:
         return inner_text.strip()
@@ -124,17 +124,17 @@ class NODCHarvester(XMLHarvester):
     canonical_base_url = 'http://data.nodc.noaa.gov/cgi-bin/iso?id={}'
 
     namespaces = {
-        'gco': "http://www.isotc211.org/2005/gco",
-        'gmd': "http://www.isotc211.org/2005/gmd",
-        'gmi': "http://www.isotc211.org/2005/gmi",
-        'gml': "http://www.opengis.net/gml/3.2",
-        'gmx': "http://www.isotc211.org/2005/gmx",
-        'gsr': "http://www.isotc211.org/2005/gsr",
-        'gss': "http://www.isotc211.org/2005/gss",
-        'gts': "http://www.isotc211.org/2005/gts",
-        'srv': "http://www.isotc211.org/2005/srv",
-        'xlink': "http://www.w3.org/1999/xlink",
-        'xsi': "http://www.w3.org/2001/XMLSchema-instance",
+        'gco': 'http://www.isotc211.org/2005/gco',
+        'gmd': 'http://www.isotc211.org/2005/gmd',
+        'gmi': 'http://www.isotc211.org/2005/gmi',
+        'gml': 'http://www.opengis.net/gml/3.2',
+        'gmx': 'http://www.isotc211.org/2005/gmx',
+        'gsr': 'http://www.isotc211.org/2005/gsr',
+        'gss': 'http://www.isotc211.org/2005/gss',
+        'gts': 'http://www.isotc211.org/2005/gts',
+        'srv': 'http://www.isotc211.org/2005/srv',
+        'xlink': 'http://www.w3.org/1999/xlink',
+        'xsi': 'http://www.w3.org/2001/XMLSchema-instance',
         # xsi:schemaLocation="http://www.ngdc.noaa.gov/metadata/published/xsd/schema.xsd",
     }
 
@@ -174,14 +174,13 @@ class NODCHarvester(XMLHarvester):
         search_url = search_base_url + search_url_end
 
         oai_ns = {
-            'oai_dc': "http://www.openarchives.org/OAI/2.0/",
+            'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
             'dc': 'http://purl.org/dc/elements/1.1/',
         }
 
         dataset_ids = []
         while True:
 
-            logger.info("-- beginning:")
             record_list = requests.get(search_url)
             record_list_xml = etree.XML(record_list.content)
             if record_list_xml.xpath('./oai_dc:error', namespaces=oai_ns):
@@ -197,7 +196,7 @@ class NODCHarvester(XMLHarvester):
             search_url = search_base_url + '&resumptionToken=' + token[0]
 
         # grab each of those urls for full content
-        logger.info("There are {} urls to harvest - be patient...".format(len(dataset_ids)))
+        logger.info('There are {} urls to harvest - be patient...'.format(len(dataset_ids)))
         count = 0
         xml_list = []
         xml_base_url = self.canonical_base_url + '&view=xml'
@@ -220,6 +219,6 @@ class NODCHarvester(XMLHarvester):
             }))
             count += 1
             if count % 100 == 0:
-                logger.info("You've requested {} studies, keep going!".format(count))
+                logger.info('You\'ve requested {} studies, keep going!'.format(count))
 
         return xml_list
