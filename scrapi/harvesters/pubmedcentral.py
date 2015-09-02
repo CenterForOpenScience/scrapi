@@ -1,7 +1,7 @@
 """
 Harvester of PubMed Central for the SHARE notification service
 
-Example API call: http://www.pubmedcentral.nih.gov/oai/oai.cgi?verb=ListRecords&metadataPrefix=oai_dc&from=2015-04-13&until=2015-04-14
+Example API call: http://www.ncbi.nlm.nih.gov/pmc/oai/oai.cgi?verb=ListRecords&metadataPrefix=oai_dc&from=2015-04-13&until=2015-04-14
 """
 
 
@@ -29,7 +29,7 @@ class PubMedCentralHarvester(OAIHarvester):
             }
         })
 
-    base_url = 'http://www.pubmedcentral.nih.gov/oai/oai.cgi'
+    base_url = 'http://www.ncbi.nlm.nih.gov/pmc/oai/oai.cgi'
     property_list = [
         'type', 'source', 'rights',
         'format', 'setSpec', 'date', 'identifier'
