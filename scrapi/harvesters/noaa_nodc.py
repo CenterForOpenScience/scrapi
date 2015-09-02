@@ -37,9 +37,9 @@ def text_only_list(elems):
 
 def text_only(elem):
     etree.strip_tags(elem, "*")
-    text = elem.text
-    if text:
-        return text.strip()
+    inner_text = elem.text
+    if inner_text:
+        return inner_text.strip()
     return ''
 
 
