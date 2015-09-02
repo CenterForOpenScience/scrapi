@@ -7,7 +7,6 @@ from celery import Celery
 
 from scrapi import util
 from scrapi import events
-from scrapi import database
 from scrapi import settings
 from scrapi import registry
 from scrapi import processing
@@ -16,7 +15,6 @@ from scrapi.util import timestamp
 app = Celery()
 app.config_from_object(settings)
 
-database.setup()
 logger = logging.getLogger(__name__)
 
 
