@@ -24,25 +24,11 @@ from requests import exceptions
 from scrapi import requests
 from scrapi import settings
 from scrapi.base import XMLHarvester
-from scrapi.base.helpers import compose, single_result, date_formatter, language_codes, coerce_to_list
+from scrapi.base.helpers import compose, single_result, date_formatter, language_codes, coerce_to_list, xml_text_only_list, xml_text_only
 from scrapi.linter.document import RawDocument
 from scrapi.util import copy_to_unicode
 
 logger = logging.getLogger(__name__)
-
-
-def xml_text_only_list(elems):
-    '''Return inner text of all elements in list'''
-    return [xml_text_only(elem) for elem in elems]
-
-
-def xml_text_only(elem):
-    '''Return inner text of element with tags stripped'''
-    etree.strip_tags(elem, '*')
-    inner_text = elem.text
-    if inner_text:
-        return inner_text.strip()
-    return ''
 
 
 def filter_to_publishers(parties):

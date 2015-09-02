@@ -227,3 +227,17 @@ def date_formatter(date_string):
     if not date_time.tzinfo:
         date_time = date_time.replace(tzinfo=pytz.UTC)
     return date_time.isoformat()
+
+
+def xml_text_only_list(elems):
+    '''Return inner text of all elements in list'''
+    return [xml_text_only(elem) for elem in elems]
+
+
+def xml_text_only(elem):
+    '''Return inner text of element with tags stripped'''
+    etree.strip_tags(elem, '*')
+    inner_text = elem.text
+    if inner_text:
+        return inner_text.strip()
+    return ''
