@@ -1,5 +1,7 @@
 import os
 
+from celery.signals import worker_process_init
+
 from scrapi import settings
 from scrapi.processing.base import BaseProcessor
 
@@ -19,9 +21,6 @@ def get_processor(processor_name):
     raise NotImplementedError('No Processor {}'.format(processor_name))
 
 
-HarvesterResponse = get_processor(settings.RESPONSE_PROCESSING).HarvesterResponseModel
-
-
 def process_normalized(raw_doc, normalized, kwargs):
     ''' kwargs is a dictiorary of kwargs.
         keyed by the processor name
@@ -37,3 +36,17 @@ def process_raw(raw_doc, kwargs):
     for p in settings.RAW_PROCESSING:
         extras = kwargs.get(p, {})
         get_processor(p).process_raw(raw_doc, **extras)
+
+
+HarvesterResponse = get_processor(settings.RESPONSE_PROCESSOR).HarvesterResponseModel
+
+all_processors = map(get_processor, list(set(
+    settings.NORMALIZED_PROCESSING +
+    settings.RAW_PROCESSING +
+    [settings.CANONICAL_PROCESSOR] +
+    [settings.RESPONSE_PROCESSOR]
+)))
+
+for processor in all_processors:
+    processor.manager.setup()
+    worker_process_init.connect(processor.manager.celery_setup)

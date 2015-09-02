@@ -15,6 +15,41 @@ class BaseProcessor(object):
         pass  # pragma: no cover
 
 
+class BaseDatabaseManager(object):
+    '''A base class for database managers in the scrapi processing module
+
+        Must handle setup, teardown, and multi-process initialization of database connections
+        All errors should be logged, but not thrown
+    '''
+
+    @abstractmethod
+    def setup(self):
+        '''Sets up the database connection. Returns True if the database connection
+            is successful, False otherwise
+        '''
+        raise NotImplementedError
+
+    @abstractmethod
+    def tear_down(self):
+        '''Tears down the database connection.
+        '''
+        raise NotImplementedError
+
+    @abstractmethod
+    def clear(self, force=False):
+        '''Deletes everything in a table/keyspace etc
+            Should fail if called on the production database
+            for testing purposes only
+        '''
+        raise NotImplementedError
+
+    @abstractmethod
+    def celery_setup(self, *args, **kwargs):
+        '''Performs the necessary operations to allow a new process to connect to the database
+        '''
+        raise NotImplementedError
+
+
 class BaseHarvesterResponse(object):
     """A parody of requests.response but stored in a database for caching
     Should reflect all methods of a response object
