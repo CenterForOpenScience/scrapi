@@ -43,7 +43,8 @@ except ConnectionError:  # pragma: no cover
 class ElasticsearchProcessor(BaseProcessor):
     NAME = 'elasticsearch'
 
-    def process_normalized(self, raw_doc, normalized, index=settings.ELASTIC_INDEX):
+    def process_normalized(self, raw_doc, normalized, index=None):
+        index = index or settings.ELASTIC_INDEX
         data = {
             key: value for key, value in normalized.attributes.items()
             if key in settings.FRONTEND_KEYS

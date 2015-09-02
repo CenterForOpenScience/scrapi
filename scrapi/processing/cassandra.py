@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 
+import six
 import json
 import logging
 from uuid import uuid4
@@ -55,7 +56,7 @@ class CassandraProcessor(BaseProcessor):
             source=raw_doc['source'],
             docID=raw_doc['docID'],
             filetype=raw_doc['filetype'],
-            doc=raw_doc['doc'].encode('utf-8'),
+            doc=six.text_type(raw_doc['doc']).encode('utf-8'),
             timestamps=raw_doc.get('timestamps', {})
         ).save()
 

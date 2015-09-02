@@ -25,7 +25,6 @@ def force_cassandra_response(monkeypatch):
     monkeypatch.setattr(requests, 'HarvesterResponse', HarvesterResponse)
 
 
-
 @pytest.fixture(autouse=False)
 def force_postgres_response(monkeypatch):
     from scrapi.processing.postgres import HarvesterResponseModel
@@ -88,6 +87,7 @@ class TestRequestsApi(object):
 
         mock_request.assert_called_once_with('delete', 'test', tota='dyle')
 
+
 @pytest.mark.usefixtures('force_cassandra_response')
 class TestCassandraIntegration(object):
 
@@ -112,7 +112,6 @@ class TestCassandraIntegration(object):
 
         assert isinstance(resp.text, six.text_type)
         assert resp.text == u'probably xml'
-
 
     @pytest.mark.cassandra
     def test_record_or_load_loads(self, mock_requests, monkeypatch):
@@ -267,7 +266,6 @@ class TestPostgresIntegration(object):
 
         assert isinstance(resp.text, six.text_type)
         assert resp.text == u'probably xml'
-
 
     @pytest.mark.django_db
     def test_record_or_load_loads(self, mock_requests, monkeypatch):

@@ -3,8 +3,8 @@ from django_pgjson.fields import JsonField
 
 
 class Document(models.Model):
-    source = models.CharField(max_length=100)
-    docID = models.CharField(max_length=100)
+    source = models.CharField(max_length=255)
+    docID = models.TextField()
 
     providerUpdatedDateTime = models.DateTimeField(null=True)
 

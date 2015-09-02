@@ -29,7 +29,7 @@ class PostgresProcessor(BaseProcessor):
 
         modified_doc = copy.deepcopy(raw_doc.attributes)
         if modified_doc.get('versions'):
-            modified_doc['versions'] = map(str, modified_doc['versions'])
+            modified_doc['versions'] = list(map(str, modified_doc['versions']))
 
         document.raw = modified_doc
 
@@ -76,6 +76,10 @@ class HarvesterResponseModel(BaseHarvesterResponse):
 
     @property
     def content(self):
+        if isinstance(self.response.content, memoryview):
+            return self.response.content.tobytes()
+        if isinstance(self.response.content, bytes):
+            return self.response.content
         return str(self.response.content)
 
     @property
