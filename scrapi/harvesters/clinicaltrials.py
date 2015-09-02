@@ -83,7 +83,7 @@ class ClinicalTrialsHarvester(XMLHarvester):
             ('enrollment', '//enrollment/node()'),
             ('armGroup', '//arm_group/arm_group_label/node()'),
             ('intervention', '//intervention/intervention_type/node()'),
-            ('eligibility', '//elligibility/node()'),
+            ('eligibility', '//eligibility/node()'),
             ('link', '//link/url/node()'),
             ('responsible_party', '//responsible_party/responsible_party_full_name/node()')
         )
