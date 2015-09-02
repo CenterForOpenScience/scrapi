@@ -7,7 +7,7 @@ interactions:
       Connection: [keep-alive]
       User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
     method: GET
-    uri: http://www.pubmedcentral.nih.gov/oai/oai.cgi?verb=ListRecords&metadataPrefix=oai_dc&from=2014-12-24&until=2014-12-25
+    uri: http://www.ncbi.nlm.nih.gov/pmc/oai/oai.cgi?verb=ListRecords&metadataPrefix=oai_dc&from=2014-12-24&until=2014-12-25
   response:
     body:
       string: !!binary |
@@ -208,7 +208,7 @@ interactions:
       Connection: [keep-alive]
       User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
     method: GET
-    uri: http://www.pubmedcentral.nih.gov/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4078828!2014-12-24!2014-12-25!oai_dc!
+    uri: http://www.ncbi.nlm.nih.gov/pmc/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4078828!2014-12-24!2014-12-25!oai_dc!
   response:
     body:
       string: !!binary |
@@ -655,7 +655,7 @@ interactions:
       Connection: [keep-alive]
       User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
     method: GET
-    uri: http://www.pubmedcentral.nih.gov/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4213981!2014-12-24!2014-12-25!oai_dc!
+    uri: http://www.ncbi.nlm.nih.gov/pmc/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4213981!2014-12-24!2014-12-25!oai_dc!
   response:
     body:
       string: !!binary |
@@ -1226,7 +1226,7 @@ interactions:
       Connection: [keep-alive]
       User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
     method: GET
-    uri: http://www.pubmedcentral.nih.gov/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4261833!2014-12-24!2014-12-25!oai_dc!
+    uri: http://www.ncbi.nlm.nih.gov/pmc/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4261833!2014-12-24!2014-12-25!oai_dc!
   response:
     body:
       string: !!binary |
@@ -1653,7 +1653,7 @@ interactions:
       Connection: [keep-alive]
       User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
     method: GET
-    uri: http://www.pubmedcentral.nih.gov/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4265778!2014-12-24!2014-12-25!oai_dc!
+    uri: http://www.ncbi.nlm.nih.gov/pmc/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4265778!2014-12-24!2014-12-25!oai_dc!
   response:
     body:
       string: !!binary |
@@ -2301,7 +2301,7 @@ interactions:
       Connection: [keep-alive]
       User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
     method: GET
-    uri: http://www.pubmedcentral.nih.gov/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4270036!2014-12-24!2014-12-25!oai_dc!
+    uri: http://www.ncbi.nlm.nih.gov/pmc/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4270036!2014-12-24!2014-12-25!oai_dc!
   response:
     body:
       string: !!binary |
@@ -2885,7 +2885,7 @@ interactions:
       Connection: [keep-alive]
       User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
     method: GET
-    uri: http://www.pubmedcentral.nih.gov/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4270362!2014-12-24!2014-12-25!oai_dc!
+    uri: http://www.ncbi.nlm.nih.gov/pmc/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4270362!2014-12-24!2014-12-25!oai_dc!
   response:
     body:
       string: !!binary |
@@ -3219,7 +3219,7 @@ interactions:
       Connection: [keep-alive]
       User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
     method: GET
-    uri: http://www.pubmedcentral.nih.gov/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4271001!2014-12-24!2014-12-25!oai_dc!
+    uri: http://www.ncbi.nlm.nih.gov/pmc/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4271001!2014-12-24!2014-12-25!oai_dc!
   response:
     body:
       string: !!binary |
@@ -3437,7 +3437,7 @@ interactions:
       Connection: [keep-alive]
       User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
     method: GET
-    uri: http://www.pubmedcentral.nih.gov/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4271406!2014-12-24!2014-12-25!oai_dc!
+    uri: http://www.ncbi.nlm.nih.gov/pmc/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4271406!2014-12-24!2014-12-25!oai_dc!
   response:
     body:
       string: !!binary |
@@ -3987,7 +3987,7 @@ interactions:
       Connection: [keep-alive]
       User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
     method: GET
-    uri: http://www.pubmedcentral.nih.gov/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4273043!2014-12-24!2014-12-25!oai_dc!
+    uri: http://www.ncbi.nlm.nih.gov/pmc/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4273043!2014-12-24!2014-12-25!oai_dc!
   response:
     body:
       string: !!binary |
@@ -4503,7 +4503,7 @@ interactions:
       Connection: [keep-alive]
       User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
     method: GET
-    uri: http://www.pubmedcentral.nih.gov/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4274337!2014-12-24!2014-12-25!oai_dc!
+    uri: http://www.ncbi.nlm.nih.gov/pmc/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4274337!2014-12-24!2014-12-25!oai_dc!
   response:
     body:
       string: !!binary |
@@ -4944,7 +4944,7 @@ interactions:
       Connection: [keep-alive]
       User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
     method: GET
-    uri: http://www.pubmedcentral.nih.gov/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4274696!2014-12-24!2014-12-25!oai_dc!
+    uri: http://www.ncbi.nlm.nih.gov/pmc/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4274696!2014-12-24!2014-12-25!oai_dc!
   response:
     body:
       string: !!binary |
@@ -5205,7 +5205,7 @@ interactions:
       Connection: [keep-alive]
       User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
     method: GET
-    uri: http://www.pubmedcentral.nih.gov/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4275197!2014-12-24!2014-12-25!oai_dc!
+    uri: http://www.ncbi.nlm.nih.gov/pmc/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4275197!2014-12-24!2014-12-25!oai_dc!
   response:
     body:
       string: !!binary |
@@ -5509,7 +5509,7 @@ interactions:
       Connection: [keep-alive]
       User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
     method: GET
-    uri: http://www.pubmedcentral.nih.gov/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4275702!2014-12-24!2014-12-25!oai_dc!
+    uri: http://www.ncbi.nlm.nih.gov/pmc/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4275702!2014-12-24!2014-12-25!oai_dc!
   response:
     body:
       string: !!binary |
@@ -5894,7 +5894,7 @@ interactions:
       Connection: [keep-alive]
       User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
     method: GET
-    uri: http://www.pubmedcentral.nih.gov/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4275952!2014-12-24!2014-12-25!oai_dc!
+    uri: http://www.ncbi.nlm.nih.gov/pmc/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4275952!2014-12-24!2014-12-25!oai_dc!
   response:
     body:
       string: !!binary |
@@ -6179,7 +6179,7 @@ interactions:
       Connection: [keep-alive]
       User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
     method: GET
-    uri: http://www.pubmedcentral.nih.gov/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4276075!2014-12-24!2014-12-25!oai_dc!
+    uri: http://www.ncbi.nlm.nih.gov/pmc/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4276075!2014-12-24!2014-12-25!oai_dc!
   response:
     body:
       string: !!binary |
@@ -6561,7 +6561,7 @@ interactions:
       Connection: [keep-alive]
       User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
     method: GET
-    uri: http://www.pubmedcentral.nih.gov/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4276316!2014-12-24!2014-12-25!oai_dc!
+    uri: http://www.ncbi.nlm.nih.gov/pmc/oai/oai.cgi?verb=ListRecords&resumptionToken=oai%3Apubmedcentral.nih.gov%3A4276316!2014-12-24!2014-12-25!oai_dc!
   response:
     body:
       string: !!binary |
