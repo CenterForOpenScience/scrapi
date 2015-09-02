@@ -1,4 +1,4 @@
-"""Harvester of National Oceanic and Atmosphere Administration's National Oceanographic Data Center
+'''Harvester of National Oceanic and Atmosphere Administration's National Oceanographic Data Center
 
 Example API call: http://data.nodc.noaa.gov/cgi-bin/iso?id=gov.noaa.nodc:00001339;view=xml
 
@@ -9,7 +9,7 @@ have to use the XML interface, which contains much more metadata.
 However, the XML interface is not searchable, so we still use the
 OAI-PMH interface for queries. Fun!
 
-"""
+'''
 
 from __future__ import unicode_literals
 
@@ -31,11 +31,13 @@ from scrapi.util import copy_to_unicode
 logger = logging.getLogger(__name__)
 
 
-def text_only_list(elems):
-    return [text_only(elem) for elem in elems]
+def xml_text_only_list(elems):
+    '''Return inner text of all elements in list'''
+    return [xml_text_only(elem) for elem in elems]
 
 
-def text_only(elem):
+def xml_text_only(elem):
+    '''Return inner text of element with tags stripped'''
     etree.strip_tags(elem, '*')
     inner_text = elem.text
     if inner_text:
@@ -44,18 +46,29 @@ def text_only(elem):
 
 
 def filter_to_publishers(parties):
+    '''Reduce list of ResponsibleParty elements to just publishers'''
     return filter_responsible_parties(parties, ['publisher'])
 
 
 def filter_to_contributors(parties):
+    '''Reduce list of ResponsibleParty elements to just contributors'''
     return filter_responsible_parties(parties, ['resourceProvider'])
 
 
 def filter_responsible_parties(parties, roles):
+    '''Return list of ResponsibleParties whose role is in roles param'''
     return [party for party in parties if party.xpath('./gmd:role/gmd:CI_RoleCode/node()', namespaces=party.nsmap)[0] in roles]
 
 
 def parse_contributors(parties):
+    '''Turn list of gmd:CI_ResponsibleParty elements into
+    SHARE-compliant contributors list
+    '''
+
+    # The NODC schema doesn't explicitly distinguish between
+    # organizations and individuals.  Every party has an
+    # organizationName tag, individuals have an individualName tag as
+    # well.  The email address is tied to the party, so we can
     contributors = []
     for party in parties:
         contributor = {}
@@ -70,15 +83,18 @@ def parse_contributors(parties):
         else:
             raise NotImplementedError
 
+        # the email address is tied to the party, so wait until we know
+        # who the contributor is before extracting
         email = party.xpath('./gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress', namespaces=party.nsmap)
         if len(email) > 0:
-            contributor['email'] = text_only(email[0])
+            contributor['email'] = xml_text_only(email[0])
         contributors.append(contributor)
 
     return contributors
 
 
 def extract_individual(party):
+    '''Return SHARE-compliant person object from a CI_ResponsibleParty element'''
     individual = party.xpath('./gmd:individualName/gmx:Anchor', namespaces=party.nsmap)
     if len(individual) > 0:
         name = HumanName(individual[0].text)
@@ -94,6 +110,7 @@ def extract_individual(party):
 
 
 def extract_organization(party):
+    '''Return SHARE-compliant organization object from a CI_ResponsibleParty element'''
     organization = party.xpath('./gmd:organisationName/gmx:Anchor', namespaces=party.nsmap)
     if len(organization) > 0:
         ns_prefix = party.nsmap['xlink']
@@ -104,7 +121,9 @@ def extract_organization(party):
         }
 
 
-def turn_lots_into_some(keyword_groups):
+def filter_keywords(keyword_groups):
+    '''Filter out the NODC org name from the keywords to reduce noise
+    and flatten nested lists'''
     keywords = []
     for keyword_group in keyword_groups:
         keyword_type = keyword_group.xpath('./gmd:type/gmd:MD_KeywordTypeCode/node()', namespaces=keyword_group.nsmap)
@@ -141,13 +160,13 @@ class NODCHarvester(XMLHarvester):
     id_stanza = './gmd:identificationInfo/gmd:MD_DataIdentification/'
     cite_stanza = id_stanza + 'gmd:citation/gmd:CI_Citation/'
     schema = {
-        'title': (cite_stanza + 'gmd:title', compose(text_only, single_result)),
-        'description': (id_stanza + 'gmd:abstract', compose(text_only, single_result)),
+        'title': (cite_stanza + 'gmd:title', compose(xml_text_only, single_result)),
+        'description': (id_stanza + 'gmd:abstract', compose(xml_text_only, single_result)),
         'contributors': (cite_stanza + 'gmd:citedResponsibleParty/gmd:CI_ResponsibleParty', compose(parse_contributors, filter_to_contributors)),
         'uris': {
             'canonicalUri': (
                 './gmd:fileIdentifier',
-                compose(lambda x: 'http://data.nodc.noaa.gov/cgi-bin/iso?id={}'.format(x), text_only, single_result)
+                compose(lambda x: 'http://data.nodc.noaa.gov/cgi-bin/iso?id={}'.format(x), xml_text_only, single_result)
             ),
         },
         'publisher': (
@@ -155,14 +174,14 @@ class NODCHarvester(XMLHarvester):
             compose(extract_organization, single_result, filter_to_publishers),
         ),
         'providerUpdatedDateTime': ('./gmd:dateStamp/gco:DateTime/node()', compose(date_formatter, single_result)),
-        'languages': ('./gmd:language/gmd:LanguageCode', compose(language_codes, text_only_list, coerce_to_list)),
-        'subjects': (id_stanza + 'gmd:descriptiveKeywords/gmd:MD_Keywords', lambda x: turn_lots_into_some(x)),
+        'languages': ('./gmd:language/gmd:LanguageCode', compose(language_codes, xml_text_only_list, coerce_to_list)),
+        'subjects': (id_stanza + 'gmd:descriptiveKeywords/gmd:MD_Keywords', lambda x: filter_keywords(x)),
     }
 
     def harvest(self, start_date=None, end_date=None):
-        """ First, get a list of all recently updated study urls,
+        ''' First, get a list of all recently updated study urls,
         then get the xml one by one and save it into a list
-        of docs including other information """
+        of docs including other information '''
 
         start_date = (start_date or date.today() - timedelta(settings.DAYS_BACK)).isoformat()
         end_date = (end_date or date.today()).isoformat()
