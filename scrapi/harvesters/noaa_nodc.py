@@ -143,26 +143,28 @@ class NODCHarvester(XMLHarvester):
         # xsi:schemaLocation="http://www.ngdc.noaa.gov/metadata/published/xsd/schema.xsd",
     }
 
-    id_stanza = './gmd:identificationInfo/gmd:MD_DataIdentification/'
-    cite_stanza = id_stanza + 'gmd:citation/gmd:CI_Citation/'
-    schema = {
-        'title': (cite_stanza + 'gmd:title', compose(xml_text_only, single_result)),
-        'description': (id_stanza + 'gmd:abstract', compose(xml_text_only, single_result)),
-        'contributors': (cite_stanza + 'gmd:citedResponsibleParty/gmd:CI_ResponsibleParty', compose(parse_contributors, filter_to_contributors)),
-        'uris': {
-            'canonicalUri': (
-                './gmd:fileIdentifier',
-                compose(lambda x: 'http://data.nodc.noaa.gov/cgi-bin/iso?id={}'.format(x), xml_text_only, single_result)
+    @property
+    def schema(self):
+        id_stanza = './gmd:identificationInfo/gmd:MD_DataIdentification/'
+        cite_stanza = id_stanza + 'gmd:citation/gmd:CI_Citation/'
+        return {
+            'title': (cite_stanza + 'gmd:title', compose(xml_text_only, single_result)),
+            'description': (id_stanza + 'gmd:abstract', compose(xml_text_only, single_result)),
+            'contributors': (cite_stanza + 'gmd:citedResponsibleParty/gmd:CI_ResponsibleParty', compose(parse_contributors, filter_to_contributors)),
+            'uris': {
+                'canonicalUri': (
+                    './gmd:fileIdentifier',
+                    compose(lambda x: str(self.canonical_base_url).format(x), xml_text_only, single_result)
+                ),
+            },
+            'publisher': (
+                cite_stanza + 'gmd:citedResponsibleParty/gmd:CI_ResponsibleParty',
+                compose(extract_organization, single_result, filter_to_publishers),
             ),
-        },
-        'publisher': (
-            cite_stanza + 'gmd:citedResponsibleParty/gmd:CI_ResponsibleParty',
-            compose(extract_organization, single_result, filter_to_publishers),
-        ),
-        'providerUpdatedDateTime': ('./gmd:dateStamp/gco:DateTime/node()', compose(date_formatter, single_result)),
-        'languages': ('./gmd:language/gmd:LanguageCode', compose(language_codes, xml_text_only_list, coerce_to_list)),
-        'subjects': (id_stanza + 'gmd:descriptiveKeywords/gmd:MD_Keywords', lambda x: filter_keywords(x)),
-    }
+            'providerUpdatedDateTime': ('./gmd:dateStamp/gco:DateTime/node()', compose(date_formatter, single_result)),
+            'languages': ('./gmd:language/gmd:LanguageCode', compose(language_codes, xml_text_only_list, coerce_to_list)),
+            'subjects': (id_stanza + 'gmd:descriptiveKeywords/gmd:MD_Keywords', lambda x: filter_keywords(x)),
+        }
 
     def harvest(self, start_date=None, end_date=None):
         ''' First, get a list of all recently updated study urls,
