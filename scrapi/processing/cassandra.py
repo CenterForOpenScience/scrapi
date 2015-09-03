@@ -1,21 +1,91 @@
 from __future__ import absolute_import
 
+import six
 import json
 import logging
 from uuid import uuid4
+from datetime import datetime
 
 from dateutil.parser import parse
 
+from cassandra.cqlengine import connection
+from cassandra.cqlengine import management
+from cassandra.cluster import NoHostAvailable
 from cassandra.cqlengine import columns, models
 
 from scrapi import events
-from scrapi import database  # noqa
+from scrapi import settings
 from scrapi.util import copy_to_unicode
-from scrapi.processing.base import BaseProcessor
+from scrapi.processing.base import BaseHarvesterResponse, BaseProcessor, BaseDatabaseManager
 
 
 logger = logging.getLogger(__name__)
 logging.getLogger('cqlengine.cql').setLevel(logging.WARN)
+
+
+class DatabaseManager(BaseDatabaseManager):
+    _models = set()
+
+    def __init__(self, uri=None, keyspace=None):
+        self._setup = False
+
+        self.uri = uri or settings.CASSANDRA_URI
+        self.keyspace = keyspace or settings.CASSANDRA_KEYSPACE
+        self._models = set(map(self.register_model, self._models))
+
+    def setup(self, force=False, sync=True):
+        if self._setup and not force:
+            return True
+
+        try:
+            connection.setup(self.uri, self.keyspace)
+            if sync:
+                management.create_keyspace(self.keyspace, replication_factor=1, strategy_class='SimpleStrategy')
+                for model in self._models:
+                    model.__keyspace__ = self.keyspace
+                    management.sync_table(model)
+        except NoHostAvailable:
+            logger.error('Could not connect to Cassandra, expect errors.')
+            return False
+
+        # Note: return values are for test skipping
+        self._setup = True
+        return True
+
+    def tear_down(self):
+        if not self._setup:
+            logger.warning('Attempting to tear down a database that was never setup')
+
+        if connection.cluster is not None:
+            connection.cluster.shutdown()
+        if connection.session is not None:
+            connection.session.shutdown()
+
+        self._setup = False
+
+    def clear(self, force=False):
+        assert force, 'clear_keyspace must be called with force'
+        assert self.keyspace != settings.CASSANDRA_KEYSPACE, 'Cannot erase the keyspace in settings'
+
+        management.delete_keyspace(self.keyspace)
+        self.tear_down()
+        return self.setup()
+
+    def register_model(self, model):
+        self._models.add(model)
+        model.__keyspace__ = self.keyspace
+        if self._setup:
+            management.sync_table(model)
+        return model
+
+    def celery_setup(self, *args, **kwargs):
+        self.tear_down()
+        self.setup()
+
+    @classmethod
+    def registered_model(cls, model):
+        cls._models.add(model)
+        return model
 
 
 class CassandraProcessor(BaseProcessor):
@@ -23,6 +93,16 @@ class CassandraProcessor(BaseProcessor):
     Cassandra processor for scrapi. Handles versioning and storing documents in Cassandra
     '''
     NAME = 'cassandra'
+    _manager = None
+
+    @property
+    def manager(self):
+        self._manager = self._manager or DatabaseManager()
+        return self._manager
+
+    @property
+    def HarvesterResponseModel(self):
+        return HarvesterResponse
 
     @events.logged(events.PROCESSING, 'normalized.cassandra')
     def process_normalized(self, raw_doc, normalized):
@@ -50,7 +130,7 @@ class CassandraProcessor(BaseProcessor):
             source=raw_doc['source'],
             docID=raw_doc['docID'],
             filetype=raw_doc['filetype'],
-            doc=raw_doc['doc'].encode('utf-8'),
+            doc=six.text_type(raw_doc['doc']).encode('utf-8'),
             timestamps=raw_doc.get('timestamps', {})
         ).save()
 
@@ -78,7 +158,7 @@ class CassandraProcessor(BaseProcessor):
             return True  # If the document fails to load/compare for some reason, accept a new version
 
 
-@database.register_model
+@DatabaseManager.registered_model
 class DocumentModel(models.Model):
     '''
     Defines the schema for a metadata document in cassandra
@@ -120,7 +200,7 @@ class DocumentModel(models.Model):
     versions = columns.List(columns.UUID)
 
 
-@database.register_model
+@DatabaseManager.registered_model
 class DocumentModelOld(models.Model):
     '''
     Defines the schema for a metadata document in cassandra
@@ -162,7 +242,7 @@ class DocumentModelOld(models.Model):
     versions = columns.List(columns.UUID)
 
 
-@database.register_model
+@DatabaseManager.registered_model
 class VersionModel(models.Model):
     '''
     Defines the schema for a version of a metadata document in Cassandra
@@ -202,3 +282,19 @@ class VersionModel(models.Model):
 
     # Additional metadata
     versions = columns.List(columns.UUID)
+
+
+@DatabaseManager.registered_model
+class HarvesterResponse(models.Model, BaseHarvesterResponse):
+    __table_name__ = 'responses'
+
+    method = columns.Text(primary_key=True)
+    url = columns.Text(primary_key=True, required=True)
+
+    # Raw request data
+    ok = columns.Boolean()
+    content = columns.Bytes()
+    encoding = columns.Text()
+    headers_str = columns.Text()
+    status_code = columns.Integer()
+    time_made = columns.DateTime(default=datetime.now)

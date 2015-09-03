@@ -1,5 +1,7 @@
 import os
 
+from celery.signals import worker_process_init
+
 from scrapi import settings
 from scrapi.processing.base import BaseProcessor
 
@@ -34,3 +36,16 @@ def process_raw(raw_doc, kwargs):
     for p in settings.RAW_PROCESSING:
         extras = kwargs.get(p, {})
         get_processor(p).process_raw(raw_doc, **extras)
+
+
+HarvesterResponse = get_processor(settings.RESPONSE_PROCESSOR).HarvesterResponseModel
+
+all_processors = map(get_processor, list(set(
+    settings.NORMALIZED_PROCESSING +
+    settings.RAW_PROCESSING +
+    [settings.RESPONSE_PROCESSOR]
+)))
+
+for processor in all_processors:
+    processor.manager.setup()
+    worker_process_init.connect(processor.manager.celery_setup)

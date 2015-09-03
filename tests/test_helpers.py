@@ -1,7 +1,18 @@
 import vcr
+import mock
 import pytest
 
+from scrapi import requests
 from scrapi.base import helpers
+
+@pytest.fixture(autouse=True)
+def mock_maybe_load_response(monkeypatch):
+    mock_mlr = mock.Mock()
+    mock_mlr.return_value = None
+    mock_save = lambda x: x
+
+    monkeypatch.setattr(requests, '_maybe_load_response', mock_mlr)
+    monkeypatch.setattr(requests.HarvesterResponse, 'save', mock_save)
 
 
 class TestHelpers(object):

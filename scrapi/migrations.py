@@ -4,13 +4,16 @@ import logging
 from six.moves import xrange
 from cassandra.cqlengine.query import Token
 
+from scrapi import util
 from scrapi import tasks
 from scrapi import registry
 from scrapi import settings
-from scrapi.database import setup
-from scrapi.linter import RawDocument
-from scrapi.processing.elasticsearch import es
+from scrapi.processing.elasticsearch import ElasticsearchProcessor
+from scrapi.processing.postgres import PostgresProcessor
+from scrapi.linter import RawDocument, NormalizedDocument
 from scrapi.processing.cassandra import DocumentModel, DocumentModelOld
+
+from api.webview.models import Document
 
 
 logger = logging.getLogger()
@@ -36,10 +39,58 @@ def rename(docs, target=None, **kwargs):
             tasks.process_normalized(tasks.normalize(raw, raw['source']), raw)
             logger.info('Processed document from {} with id {}'.format(doc.source, raw['docID']))
 
-            es.delete(index=settings.ELASTIC_INDEX, doc_type=doc.source, id=raw['docID'], ignore=[404])
-            es.delete(index='share_v1', doc_type=doc.source, id=raw['docID'], ignore=[404])
+            ElasticsearchProcessor.manager.es.delete(index=settings.ELASTIC_INDEX, doc_type=doc.source, id=raw['docID'], ignore=[404])
+            ElasticsearchProcessor.manager.es.delete(index='share_v1', doc_type=doc.source, id=raw['docID'], ignore=[404])
 
-        logger.info('Deleted document from {} with id {}'.format(doc.source, raw['docID']))
+        logger.info('Renamed document from {} to {} with id {}'.format(doc.source, target, raw['docID']))
+
+
+@tasks.task_autoretry(default_retry_delay=30, max_retries=5)
+def cross_db(docs, target_db=None, index=None, **kwargs):
+    """
+    Migration to go between cassandra > postgres, or cassandra > elasticsearch.
+    TODO - make this source_db agnostic. Should happen along with larger migration refactor
+    """
+    assert target_db, 'Please specify a target db for the migration -- either postgres or elasticsearch'
+    assert target_db in ['postgres', 'elasticsearch'], 'Invalid target database - please specify either postgres or elasticsearch'
+
+    for doc in docs:
+
+        if not doc.doc:
+            # corrupted database item has no doc element
+            logger.info('Could not migrate document from {} with id {}'.format(doc.source, doc.docID))
+            continue
+
+        raw = RawDocument({
+            'doc': doc.doc,
+            'docID': doc.docID,
+            'source': doc.source,
+            'filetype': doc.filetype,
+            'timestamps': doc.timestamps,
+            'versions': doc.versions
+        }, validate=False)
+
+        normed = util.doc_to_normed_dict(doc)
+
+        # Create the normalized, don't validate b/c its been done once already
+        normalized = NormalizedDocument(normed, validate=False)
+
+        if target_db == 'postgres':
+            processor = PostgresProcessor()
+        if target_db == 'elasticsearch':
+            processor = ElasticsearchProcessor()
+
+        if not kwargs.get('dry'):
+            processor.process_raw(raw)
+
+            try:
+                if target_db == 'elasticsearch':
+                    processor.process_normalized(raw, normalized, index=index)
+                else:
+                    processor.process_normalized(raw, normalized)
+            except KeyError:
+                # This means that the document was harvested but wasn't approved to be normalized
+                logger.info('Not storing migrated normalized from {} with id {}, document is not in approved set list.'.format(doc.source, doc.docID))
 
 
 @tasks.task_autoretry(default_retry_delay=1, max_retries=5)
@@ -62,8 +113,8 @@ def delete(docs, sources=None, **kwargs):
     for doc in docs:
         assert sources, "To run this migration you need a source."
         doc.timeout(5).delete()
-        es.delete(index=settings.ELASTIC_INDEX, doc_type=sources, id=doc.docID, ignore=[404])
-        es.delete(index='share_v1', doc_type=sources, id=doc.docID, ignore=[404])
+        ElasticsearchProcessor.manager.es.delete(index=settings.ELASTIC_INDEX, doc_type=sources, id=doc.docID, ignore=[404])
+        ElasticsearchProcessor.manager.es.delete(index='share_v1', doc_type=sources, id=doc.docID, ignore=[404])
 
         logger.info('Deleted document from {} with id {}'.format(sources, doc.docID))
 
@@ -100,6 +151,7 @@ def next_page_source_partition(query, page):
 
 documents_old = ModelIteratorFactory(DocumentModelOld, next_page_old)
 documents = ModelIteratorFactory(DocumentModel, next_page_source_partition, default_args=registry.keys())
+postgres_documents = Document.objects.all()
 
 
 def try_n_times(n, action, *args, **kwargs):
@@ -109,7 +161,5 @@ def try_n_times(n, action, *args, **kwargs):
         except Exception as e:
             logger.exception(e)
             time.sleep(15)
-            connection_open = setup(force=True, sync=False)
-            logger.info("Trying again... Cassandra connection open: {}".format(connection_open))
     if e:
         raise e

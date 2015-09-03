@@ -33,7 +33,8 @@ expected = {
     },
     "providerUpdatedDateTime": "2015-02-02T00:00:00+00:00",
     "shareProperties": {
-        "source": "test"
+        "source": "test",
+        "docID": "1"
     },
     "otherProperties": [
         {

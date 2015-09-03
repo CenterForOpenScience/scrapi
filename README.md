@@ -16,6 +16,7 @@ scrapi
     - Install requirements
     - Install Elasticsearch
     - Install Cassandra
+    - Install Postgres
     - Install harvesters
     - Install rabbitmq (optional)
 - To only run harvesters locally, you do not have to install rabbitmq
@@ -121,8 +122,45 @@ $ cassandra -f
 
 and you should be good to go.
 
-(Note, if you're developing locally, you do not have to run Rabbitmq!)
+
+### Installing Postgres
+
+Postgres is required only if "postgres" is specified in your settings, as a raw or normalized processor.
+
+
+#### MacOSX
+```bash
+$ brew install postgres
+```
+
+#### Ubuntu or Windows
+See the [Postgres wiki](https://wiki.postgresql.org/wiki/Detailed_installation_guides)
+
+
+#### Create the database
+```bash
+$ psql -h localhost scrapi;
+$ create database scrapi;
+$ \q
+```
+
+Start the postgres server locally
+```bash
+$ postgres -D /usr/local/pgsql/scrapi
+```
+
+Setup your local database by creating migrations for your postgres database
+```bash
+$ inv apidb
+```
+
+Run the postgres API Django server
+```bash
+$ inv apiserver
+```
+
 ### Rabbitmq (optional)
+(Note, if you're developing locally, you do not have to run Rabbitmq!)
 
 #### Mac OSX
 
