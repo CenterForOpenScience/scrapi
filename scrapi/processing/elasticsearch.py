@@ -39,6 +39,8 @@ class DatabaseManager(BaseDatabaseManager):
             self.es.cluster.health(wait_for_status='yellow')
             self.es.indices.create(index=self.index, body={}, ignore=400)
             self.es.indices.create(index='share_v1', ignore=400)
+            import time
+            time.sleep(3)
             return True
         except ConnectionError:  # pragma: no cover
             logger.error('Could not connect to Elasticsearch, expect errors.')
