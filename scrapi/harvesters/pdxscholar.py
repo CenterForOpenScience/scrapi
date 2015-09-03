@@ -10,7 +10,7 @@ from scrapi.base import OAIHarvester
 
 class PdxscholarHarvester(OAIHarvester):
     short_name = 'pdxscholar'
-    long_name = 'PDXScholar'
+    long_name = 'PDXScholar Portland State University'
     url = 'http://pdxscholar.library.pdx.edu'
 
     base_url = 'http://pdxscholar.library.pdx.edu/do/oai/'
