@@ -14,6 +14,7 @@ settings.DEBUG = True
 settings.CELERY_ALWAYS_EAGER = True
 settings.CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
 CassandraProcessor.manager = DatabaseManager(keyspace='test')
+database  = CassandraProcessor.manager
 
 try:
     con = Elasticsearch(settings.ELASTIC_URI, request_timeout=settings.ELASTIC_TIMEOUT)
@@ -74,7 +75,7 @@ def pytest_runtest_setup(item):
 def pytest_runtest_teardown(item, nextitem):
     marker = item.get_marker('cassandra')
     if marker is not None:
-        database._manager.clear_keyspace(force=True)
+        database.clear(force=True)
 
     marker = item.get_marker('elasticsearch')
     if marker is not None:
