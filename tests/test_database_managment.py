@@ -11,7 +11,7 @@ class TestCassandraDatabaseManager(object):
         monkeypatch.setattr(cassandra.connection, 'setup', mock_connect)
         monkeypatch.setattr(cassandra.management, 'create_keyspace', mock_create_keyspace)
 
-        manager = DatabaseManager()
+        manager = DatabaseManager(keyspace='test')
         manager.setup()
 
         assert mock_connect.called_once_with(manager.uri, manager.keyspace)
@@ -23,7 +23,7 @@ class TestCassandraDatabaseManager(object):
         monkeypatch.setattr(cassandra.connection, 'setup', mock_connect)
         monkeypatch.setattr(cassandra.management, 'create_keyspace', mock_create_keyspace)
 
-        manager = DatabaseManager()
+        manager = DatabaseManager(keyspace='test')
         manager.setup()
         manager.setup()
         manager.setup()
