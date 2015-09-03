@@ -105,6 +105,47 @@ def format_tags(all_tags, sep=','):
     return list(set([six.text_type(tag.lower().strip()) for tag in tags if tag.strip()]))
 
 
+def oai_process_uris(*args):
+    identifiers = []
+    for arg in args:
+        if isinstance(arg, list):
+            for identifier in arg:
+                identifiers.append(identifier)
+        elif arg:
+            identifiers.append(arg)
+
+    object_uris = []
+    provider_uris = []
+    for item in identifiers:
+        if 'doi' in item.lower():
+            doi = item.replace('doi:', '').replace('DOI:', '').strip()
+            if 'http://dx.doi.org/' in doi:
+                object_uris.append(doi)
+            else:
+                object_uris.append('http://dx.doi.org/{}'.format(doi))
+
+        try:
+            found_url = URL_REGEX.search(item).group()
+        except AttributeError:
+            found_url = None
+        if found_url:
+            if 'viewcontent' in found_url:
+                object_uris.append(found_url)
+            else:
+                provider_uris.append(found_url)
+
+    try:
+        canonical_uri = (provider_uris + object_uris)[0]
+    except IndexError:
+        raise ValueError('No Canonical URI was returned for this record.')
+
+    return {
+        'canonicalUri': canonical_uri,
+        'objectUris': object_uris,
+        'providerUris': provider_uris
+    }
+
+
 def oai_extract_dois(*args):
     identifiers = []
     for arg in args:
@@ -122,18 +163,6 @@ def oai_extract_dois(*args):
             else:
                 dois.append('http://dx.doi.org/{}'.format(doi))
     return dois
-
-
-def oai_extract_url(identifiers):
-    identifiers = [identifiers] if not isinstance(identifiers, list) else identifiers
-    for item in identifiers:
-        try:
-            found_url = URL_REGEX.search(item).group()
-            if 'viewcontent' not in found_url:
-                return found_url
-        except AttributeError:
-            continue
-    raise ValueError('No Canonical URI was returned for this record.')
 
 
 def oai_process_contributors(*args):

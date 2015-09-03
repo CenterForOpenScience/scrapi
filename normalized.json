@@ -241,13 +241,14 @@
         },
         "uris": {
             "type": "object",
+            "required": ["canonicalUri"],
             "properties": {
-                "anyOf": {
-                    "canonicalUri": {
+                "canonicalUri": {
                         "type": "string",
                         "description": "The preferred persistent HTTP URI that represents the research object. This should be repeated in exactly one other field in the uris object.",
                         "format": "uri"
                     },
+                "anyOf": {
                     "providerUris": {
                         "items": {
                             "type": "string",

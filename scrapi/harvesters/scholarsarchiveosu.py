@@ -19,9 +19,7 @@ class ScholarsarchiveosuHarvester(OAIHarvester):
     @property
     def schema(self):
         return helpers.updated_schema(self._schema, {
-            "uris": {
-                "objectUris": [('//dc:identifier/node()', helpers.extract_doi_from_text)]
-            }
+            "uris": ('//dc:identifier/node()', helpers.oai_process_uris)
         })
 
     # TODO - return date once we figure out es parsing errors
