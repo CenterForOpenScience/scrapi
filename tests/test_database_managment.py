@@ -1,14 +1,15 @@
 import mock
 
 from scrapi import settings
+from scrapi.processing import cassandra
 from scrapi.processing.cassandra import DatabaseManager
 
 class TestCassandraDatabaseManager(object):
     def test_setup_calls_setup(self, monkeypatch):
         mock_connect = mock.Mock()
         mock_create_keyspace = mock.Mock()
-        monkeypatch.setattr(database.connection, 'setup', mock_connect)
-        monkeypatch.setattr(database.management, 'create_keyspace', mock_create_keyspace)
+        monkeypatch.setattr(cassandra.connection, 'setup', mock_connect)
+        monkeypatch.setattr(cassandra.management, 'create_keyspace', mock_create_keyspace)
 
         manager = DatabaseManager()
         manager.setup()
@@ -19,8 +20,8 @@ class TestCassandraDatabaseManager(object):
     def test_setup_runs_once(self, monkeypatch):
         mock_connect = mock.Mock()
         mock_create_keyspace = mock.Mock()
-        monkeypatch.setattr(database.connection, 'setup', mock_connect)
-        monkeypatch.setattr(database.management, 'create_keyspace', mock_create_keyspace)
+        monkeypatch.setattr(cassandra.connection, 'setup', mock_connect)
+        monkeypatch.setattr(cassandra.management, 'create_keyspace', mock_create_keyspace)
 
         manager = DatabaseManager()
         manager.setup()
@@ -44,13 +45,15 @@ class TestCassandraDatabaseManager(object):
 
     def test_register_model(self, monkeypatch):
         mock_sync = mock.Mock()
-        monkeypatch.setattr(management, 'sync_table', mock_sync)
+        monkeypatch.setattr(cassandra.management, 'sync_table', mock_sync)
 
         manager = DatabaseManager()
         manager._setup = True
+        manager._models = set()
 
         mock_model = mock.Mock()
+        assert mock_model == manager.registered_model(mock_model)
         assert mock_model == manager.register_model(mock_model)
 
-        assert manager._models == [mock_model]
+        assert manager._models == {mock_model}
         assert mock_sync.called_once_with(mock_model)
