@@ -43,7 +43,6 @@ HarvesterResponse = get_processor(settings.RESPONSE_PROCESSOR).HarvesterResponse
 all_processors = map(get_processor, list(set(
     settings.NORMALIZED_PROCESSING +
     settings.RAW_PROCESSING +
-    [settings.CANONICAL_PROCESSOR] +
     [settings.RESPONSE_PROCESSOR]
 )))
 
