@@ -24,14 +24,14 @@ logging.getLogger('cqlengine.cql').setLevel(logging.WARN)
 
 
 class DatabaseManager(BaseDatabaseManager):
-    _models = []
+    _models = set()
 
     def __init__(self, uri=None, keyspace=None):
         self._setup = False
 
         self.uri = uri or settings.CASSANDRA_URI
         self.keyspace = keyspace or settings.CASSANDRA_KEYSPACE
-        self._models = map(self.register_model, self._models)
+        self._models = set(map(self.register_model, self._models))
 
     def setup(self, force=False, sync=True):
         if self._setup and not force:
@@ -72,6 +72,7 @@ class DatabaseManager(BaseDatabaseManager):
         return self.setup()
 
     def register_model(self, model):
+        self._models.add(model)
         model.__keyspace__ = self.keyspace
         if self._setup:
             management.sync_table(model)
@@ -83,7 +84,8 @@ class DatabaseManager(BaseDatabaseManager):
 
     @classmethod
     def registered_model(cls, model):
-        cls._models.append(model)
+        cls._models.add(model)
+        return model
 
 
 class CassandraProcessor(BaseProcessor):
