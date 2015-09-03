@@ -42,10 +42,22 @@ class TestHelpers(object):
             'http://dx.doi.org/thistoook'
         ]
 
-    def test_oai_extract_url(self):
-        identifiers = 'I might be a url but rly I am naaaahhttt'
+    def oai_process_uris(self):
+        identifiers = ['I might be a url but rly I am naaaahhttt']
         with pytest.raises(ValueError):
             helpers.oai_extract_url(identifiers)
+
+    def test_extract_uris(self):
+        identifiers = ['doi:10.whateverwhatever', 'http://alloutofbubblegum.com',
+                       'http://viewcontent.cgi/iamacoolpdf', 'http://GETTHETABLES.com']
+
+        uri_dict = helpers.oai_process_uris(identifiers)
+
+        assert uri_dict == {
+            'canonicalUri': 'http://alloutofbubblegum.com',
+            'objectUris': ['http://dx.doi.org/10.whateverwhatever', 'http://viewcontent.cgi/iamacoolpdf'],
+            'providerUris': ['http://alloutofbubblegum.com', 'http://GETTHETABLES.com']
+        }
 
     def test_process_contributors(self):
         args = ['Stardust Rhodes', 'Golddust Rhodes', 'Dusty Rhodes']

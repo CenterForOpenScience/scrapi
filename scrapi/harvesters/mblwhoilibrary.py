@@ -17,9 +17,7 @@ class MblwhoilibraryHarvester(OAIHarvester):
     @property
     def schema(self):
         return helpers.updated_schema(self._schema, {
-            "uris": {
-                "objectUris": ('//dc:relation/node()', helpers.oai_extract_dois)
-            }
+            "uris": ('//dc:identifier/node()', '//dc:relation/node()', helpers.oai_process_uris)
         })
 
     base_url = 'http://darchive.mblwhoilibrary.org/oai/request'

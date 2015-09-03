@@ -2,6 +2,32 @@
 ChangeLog
 *********
 
+0.9.2 (2015-09-01)
+==================
+- fix specification of canonicalUri requirements in schema
+- update harvesters to reflect change in specification
+
+0.9.1 (2015-09-01)
+==================
+- Document __repr__ no longer throw exceptions (allowing errors to be reported)
+
+0.9.0 (2015-08-27)
+==================
+- Update setup documentation
+- add harvesters:
+	- WHOAS at MBLWHOI Library
+	- The OAKTrust Digital Repository at Texas A&M
+	- DigitalCommons@PCOM
+	- PDXScholar
+	- ScholarsArchive@OSU
+- stricter date/time, email, uri validation
+- automated data cleaning (strip out optional values with no semantic information)
+- extraction of PDF links for OAI harvesters
+- more consistent date formatting
+- more consistent DOI extraction
+- fix URLs for auto generated OAI harvesters
+- OSF harvester now sorts by correct date
+
 0.8.4 (2015-08-21)
 ==================
 - Fix url gathering for datacite harvester
