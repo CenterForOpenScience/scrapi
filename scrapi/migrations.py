@@ -8,8 +8,6 @@ from scrapi import util
 from scrapi import tasks
 from scrapi import registry
 from scrapi import settings
-from scrapi.database import setup
-from scrapi.processing.elasticsearch import es
 from scrapi.processing.elasticsearch import ElasticsearchProcessor
 from scrapi.processing.postgres import PostgresProcessor
 from scrapi.linter import RawDocument, NormalizedDocument
@@ -41,8 +39,8 @@ def rename(docs, target=None, **kwargs):
             tasks.process_normalized(tasks.normalize(raw, raw['source']), raw)
             logger.info('Processed document from {} with id {}'.format(doc.source, raw['docID']))
 
-            es.delete(index=settings.ELASTIC_INDEX, doc_type=doc.source, id=raw['docID'], ignore=[404])
-            es.delete(index='share_v1', doc_type=doc.source, id=raw['docID'], ignore=[404])
+            ElasticsearchProcessor.manager.es.delete(index=settings.ELASTIC_INDEX, doc_type=doc.source, id=raw['docID'], ignore=[404])
+            ElasticsearchProcessor.manager.es.delete(index='share_v1', doc_type=doc.source, id=raw['docID'], ignore=[404])
 
         logger.info('Renamed document from {} to {} with id {}'.format(doc.source, target, raw['docID']))
 
@@ -115,8 +113,8 @@ def delete(docs, sources=None, **kwargs):
     for doc in docs:
         assert sources, "To run this migration you need a source."
         doc.timeout(5).delete()
-        es.delete(index=settings.ELASTIC_INDEX, doc_type=sources, id=doc.docID, ignore=[404])
-        es.delete(index='share_v1', doc_type=sources, id=doc.docID, ignore=[404])
+        ElasticsearchProcessor.manager.es.delete(index=settings.ELASTIC_INDEX, doc_type=sources, id=doc.docID, ignore=[404])
+        ElasticsearchProcessor.manager.es.delete(index='share_v1', doc_type=sources, id=doc.docID, ignore=[404])
 
         logger.info('Deleted document from {} with id {}'.format(sources, doc.docID))
 
@@ -163,7 +161,5 @@ def try_n_times(n, action, *args, **kwargs):
         except Exception as e:
             logger.exception(e)
             time.sleep(15)
-            connection_open = setup(force=True, sync=False)
-            logger.info("Trying again... Cassandra connection open: {}".format(connection_open))
     if e:
         raise e

@@ -9,14 +9,32 @@ import logging
 from api.webview.models import HarvesterResponse, Document
 
 from scrapi import events
-from scrapi.processing.base import BaseProcessor, BaseHarvesterResponse
+from scrapi.processing.base import BaseProcessor, BaseHarvesterResponse, BaseDatabaseManager
 
 
 logger = logging.getLogger(__name__)
 
 
+class DatabaseManager(BaseDatabaseManager):
+    '''All database management is performed by django'''
+
+    def setup(self):
+        return True
+
+    def tear_down(self):
+        pass
+
+    def clear(self, force=False):
+        pass
+
+    def celery_setup(self, *args, **kwargs):
+        pass
+
+
 class PostgresProcessor(BaseProcessor):
     NAME = 'postgres'
+
+    manager = DatabaseManager()
 
     @property
     def HarvesterResponseModel(self):

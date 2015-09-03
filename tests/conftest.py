@@ -4,15 +4,17 @@ import pytest
 from elasticsearch import Elasticsearch
 from elasticsearch.exceptions import ConnectionError, TransportError
 
+from scrapi.processing.cassandra import CassandraProcessor, DatabaseManager
+
 import scrapi
 from scrapi import settings
-from scrapi import database
 
 
 settings.DEBUG = True
 settings.CELERY_ALWAYS_EAGER = True
 settings.CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
-database._manager.keyspace = 'test'
+CassandraProcessor.manager = DatabaseManager(keyspace='test')
+database  = CassandraProcessor.manager
 
 try:
     con = Elasticsearch(settings.ELASTIC_URI, request_timeout=settings.ELASTIC_TIMEOUT)
@@ -64,7 +66,7 @@ def pytest_runtest_setup(item):
         # This is done to let the test index finish being created before connecting to search
         while True:
             try:
-                scrapi.processing.elasticsearch.es.search(index='test')
+                scrapi.processing.elasticsearch.ElasticsearchProcessor.manager.es.search(index='test')
                 break
             except TransportError:
                 continue
@@ -73,7 +75,7 @@ def pytest_runtest_setup(item):
 def pytest_runtest_teardown(item, nextitem):
     marker = item.get_marker('cassandra')
     if marker is not None:
-        database._manager.clear_keyspace(force=True)
+        database.clear(force=True)
 
     marker = item.get_marker('elasticsearch')
     if marker is not None:

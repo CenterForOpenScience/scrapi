@@ -23,7 +23,6 @@ from scrapi.processing.cassandra import CassandraProcessor, DocumentModel
 from . import utils
 
 test_cass = CassandraProcessor()
-# test_es = ElasticsearchProcessor()
 
 test_harvester = utils.TestHarvester()
 
@@ -39,7 +38,7 @@ def harvester():
 @pytest.mark.django_db
 @pytest.mark.cassandra
 def test_rename():
-    real_es = scrapi.processing.elasticsearch.es
+    real_es = scrapi.processing.elasticsearch.ElasticsearchProcessor.manager.es
     scrapi.processing.elasticsearch.es = mock.MagicMock()
     test_cass.process_raw(RAW)
     test_cass.process_normalized(RAW, NORMALIZED)
@@ -63,7 +62,7 @@ def test_rename():
     queryset = DocumentModel.objects(docID=RAW['docID'], source='wwe_news')
     assert queryset[0].source == 'wwe_news'
     assert len(queryset) == 1
-    scrapi.processing.elasticsearch.es = real_es
+    scrapi.processing.elasticsearch.ElasticsearchProcessor.manager.es = real_es
     test_harvester.short_name = RAW['source']
     registry['test'] = test_harvester
     del registry['wwe_news']
@@ -72,7 +71,7 @@ def test_rename():
 @pytest.mark.django_db
 @pytest.mark.cassandra
 def test_delete():
-    real_es = scrapi.processing.elasticsearch.es
+    real_es = scrapi.processing.elasticsearch.ElasticsearchProcessor.manager.es
     scrapi.processing.elasticsearch.es = mock.MagicMock()
     test_cass.process_raw(RAW)
     test_cass.process_normalized(RAW, NORMALIZED)
@@ -83,7 +82,7 @@ def test_delete():
     tasks.migrate(delete, sources=[RAW['source']], dry=False)
     queryset = DocumentModel.objects(docID=RAW['docID'], source=RAW['source'])
     assert len(queryset) == 0
-    scrapi.processing.elasticsearch.es = real_es
+    scrapi.processing.elasticsearch.ElasticsearchProcessor.manager.es = real_es
 
 
 @pytest.mark.django_db
@@ -159,7 +158,7 @@ def test_cassandra_to_postgres():
 @pytest.mark.elasticsearch
 def test_cassandra_to_elasticsearch():
 
-    results = scrapi.processing.elasticsearch.es.search(index='test', doc_type=RAW['source'])
+    results = scrapi.processing.elasticsearch.ElasticsearchProcessor.manager.es.search(index='test', doc_type=RAW['source'])
 
     assert (len(results['hits']['hits']) == 0)
 
@@ -171,6 +170,6 @@ def test_cassandra_to_elasticsearch():
     tasks.migrate(cross_db, target_db='elasticsearch', dry=False, sources=['test'], index='test')
 
     # check the elasticsearch results
-    results = scrapi.processing.elasticsearch.es.search(index='test', doc_type=RAW['source'])
+    results = scrapi.processing.elasticsearch.ElasticsearchProcessor.manager.es.search(index='test', doc_type=RAW['source'])
     # import ipdb; ipdb.set_trace()
     assert (len(results['hits']['hits']) == 1)
