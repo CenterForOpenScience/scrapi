@@ -166,6 +166,32 @@ class NODCHarvester(XMLHarvester):
             'subjects': (id_stanza + 'gmd:descriptiveKeywords/gmd:MD_Keywords', lambda x: filter_keywords(x)),
         }
 
+    search_base_url = 'http://data.nodc.noaa.gov/cgi-bin/oai-pmh?verb=ListRecords'
+    oai_ns = {
+        'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
+        'dc': 'http://purl.org/dc/elements/1.1/',
+    }
+
+    def query_by_date(self, start_date, end_date):
+        '''Use OAI-PMH interface to get a list of dataset ids for the given date range'''
+        search_url_end = '&metadataPrefix=oai_dc&from=' + start_date + '&until=' + end_date
+        search_url = self.search_base_url + search_url_end
+
+        while True:
+            record_list = requests.get(search_url)
+            record_list_xml = etree.XML(record_list.content)
+            if record_list_xml.xpath('./oai_dc:error', namespaces=self.oai_ns):
+                break
+
+            for dataset in record_list_xml.xpath('./oai_dc:ListRecords/oai_dc:record', namespaces=self.oai_ns):
+                yield dataset.xpath('./oai_dc:header/oai_dc:identifier/node()', namespaces=self.oai_ns)[0]
+
+            token = record_list_xml.xpath('./oai_dc:ListRecords/oai_dc:resumptionToken/node()', namespaces=self.oai_ns)
+            if not token:
+                break
+
+            search_url = self.search_base_url + '&resumptionToken=' + token[0]
+
     def harvest(self, start_date=None, end_date=None):
         ''' First, get a list of all recently updated study urls,
         then get the xml one by one and save it into a list
@@ -176,38 +202,10 @@ class NODCHarvester(XMLHarvester):
         start_date += 'T00:00:00Z'
         end_date += 'T00:00:00Z'
 
-        search_base_url = 'http://data.nodc.noaa.gov/cgi-bin/oai-pmh?verb=ListRecords'
-        search_url_end = '&metadataPrefix=oai_dc&from=' + start_date + '&until=' + end_date
-        search_url = search_base_url + search_url_end
-
-        oai_ns = {
-            'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
-            'dc': 'http://purl.org/dc/elements/1.1/',
-        }
-
-        dataset_ids = []
-        while True:
-
-            record_list = requests.get(search_url)
-            record_list_xml = etree.XML(record_list.content)
-            if record_list_xml.xpath('./oai_dc:error', namespaces=oai_ns):
-                break
-
-            for dataset in record_list_xml.xpath('./oai_dc:ListRecords/oai_dc:record', namespaces=oai_ns):
-                dataset_ids.append(dataset.xpath('./oai_dc:header/oai_dc:identifier/node()', namespaces=oai_ns)[0])
-
-            token = record_list_xml.xpath('./oai_dc:ListRecords/oai_dc:resumptionToken/node()', namespaces=oai_ns)
-            if not token:
-                break
-
-            search_url = search_base_url + '&resumptionToken=' + token[0]
-
         # grab each of those urls for full content
-        logger.info('There are {} urls to harvest - be patient...'.format(len(dataset_ids)))
-        count = 0
         xml_list = []
         xml_base_url = self.canonical_base_url + '&view=xml'
-        for dataset_id in dataset_ids:
+        for dataset_id in self.query_by_date(start_date, end_date):
             try:
                 item_url = str(xml_base_url).format(dataset_id)
                 content = requests.get(item_url)
@@ -224,8 +222,5 @@ class NODCHarvester(XMLHarvester):
                 'docID': copy_to_unicode(dataset_id),
                 'filetype': 'xml',
             }))
-            count += 1
-            if count % 100 == 0:
-                logger.info('You\'ve requested {} studies, keep going!'.format(count))
 
         return xml_list
