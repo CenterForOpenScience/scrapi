@@ -241,6 +241,7 @@ class DocumentModelOld(models.Model):
     # Additional metadata
     versions = columns.List(columns.UUID)
 
+
 @DatabaseManager.registered_model
 class VersionModel(models.Model):
     '''
