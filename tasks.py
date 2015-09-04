@@ -12,8 +12,6 @@ import scrapi.harvesters  # noqa
 from scrapi import linter
 from scrapi import registry
 from scrapi import settings
-from scrapi.database import setup
-setup()
 
 from scrapi.processing.elasticsearch import es
 

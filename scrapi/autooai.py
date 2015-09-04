@@ -77,7 +77,7 @@ def push_request_boundaries(shortname, prop_base, startdate, enddate):
 def perform_request(shortname, prop_base):
     with vcr.use_cassette('tests/vcr/{}.yaml'.format(shortname), record_mode='all'):
             logger.info('requesting {}'.format(prop_base.url))
-            prop_data_request = requests.get(prop_base.url)
+            prop_data_request = requests.requests.get(prop_base.url)
     all_prop_content = etree.XML(prop_data_request.content)
     try:
         return all_prop_content.xpath('//ns0:metadata', namespaces=NAMESPACES)[0].getchildren()[0].getchildren()
@@ -92,7 +92,7 @@ def formatted_oai(ex_call, class_name, shortname, longname, normal_url, oai_url,
 
 def get_id_props(baseurl):
     identify_url = baseurl + '?verb=Identify'
-    id_data_request = requests.get(identify_url)
+    id_data_request = requests.requests.get(identify_url)
     id_content = etree.XML(id_data_request.content)
     return id_content.xpath('//ns0:repositoryName/node()', namespaces=NAMESPACES)[0], id_content.xpath('//ns0:granularity/node()', namespaces=NAMESPACES)[0]
 
