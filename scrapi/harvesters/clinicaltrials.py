@@ -83,7 +83,7 @@ class ClinicalTrialsHarvester(XMLHarvester):
             ('enrollment', '//enrollment/node()'),
             ('armGroup', '//arm_group/arm_group_label/node()'),
             ('intervention', '//intervention/intervention_type/node()'),
-            ('eligibility', '//elligibility/node()'),
+            ('eligibility', '//eligibility/node()'),
             ('link', '//link/url/node()'),
             ('responsible_party', '//responsible_party/responsible_party_full_name/node()')
         )
@@ -110,7 +110,7 @@ class ClinicalTrialsHarvester(XMLHarvester):
         start_year = start_date.strftime('%Y')
 
         base_url = 'http://clinicaltrials.gov/ct2/results?lup_s='
-        url_end = '{}%2F{}%2F{}%2F&lup_e={}%2F{}%2F{}&displayxml=true'.\
+        url_end = '{}%2F{}%2F{}&lup_e={}%2F{}%2F{}&displayxml=true'.\
             format(start_month, start_day, start_year, end_month, end_day, end_year)
 
         url = base_url + url_end
