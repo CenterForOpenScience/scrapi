@@ -21,7 +21,9 @@ logger = logging.getLogger()
 @task
 def reindex(src, dest):
     from scrapi.processing.elasticsearch import DatabaseManager
-    es = DatabaseManager().es
+    dm = DatabaseManager()
+    dm.setup()
+    es = dm.es
     helpers.reindex(es, src, dest)
     es.indices.delete(src)
 
@@ -29,7 +31,9 @@ def reindex(src, dest):
 @task
 def alias(alias, index):
     from scrapi.processing.elasticsearch import DatabaseManager
-    es = DatabaseManager().es
+    dm = DatabaseManager()
+    dm.setup()
+    es = dm.es
     es.indices.delete_alias(index=alias, name='_all', ignore=404)
     es.indices.put_alias(alias, index)
 
@@ -208,7 +212,9 @@ def lint(name):
 @task
 def provider_map(delete=False):
     from scrapi.processing.elasticsearch import DatabaseManager
-    es = DatabaseManager().es
+    dm = DatabaseManager()
+    dm.setup()
+    es = dm.es
     if delete:
         es.indices.delete(index='share_providers', ignore=[404])
 
