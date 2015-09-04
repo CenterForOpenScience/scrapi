@@ -228,5 +228,5 @@ def provider_map(delete=False):
 
 @task
 def autooai(shortname, baseurl=None, daterange=None, favicon=False):
-    from scrapi.autooai import generate_oai_harvester
+    from autooai import generate_oai_harvester
     generate_oai_harvester(shortname, baseurl, daterange, favicon)
