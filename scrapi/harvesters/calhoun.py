@@ -1,7 +1,7 @@
 """
 A harvester for Calhoun: The NPS Institutional Archive for the SHARE project
 
-An example API call: http://repository.stcloudstate.edu/do/oai/?verb=ListRecords&metadataPrefix=oai_dc&from=2014-09-26T00:00:00Z
+An example API call: http://calhoun.nps.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc
 """
 
 
