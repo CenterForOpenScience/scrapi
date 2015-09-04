@@ -12,6 +12,8 @@ import scrapi.harvesters  # noqa
 from scrapi import linter
 from scrapi import registry
 from scrapi import settings
+from scrapi.database import setup
+setup()
 
 from scrapi.processing.elasticsearch import es
 
@@ -224,3 +226,9 @@ def provider_map(delete=False):
             refresh=True
         )
     print(es.count('share_providers', body={'query': {'match_all': {}}})['count'])
+
+
+@task
+def autooai(shortname, baseurl=None, daterange=None, favicon=False):
+    from scrapi.autooai import generate_oai_harvester
+    generate_oai_harvester(shortname, baseurl, daterange, favicon)
