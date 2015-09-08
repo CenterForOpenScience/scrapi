@@ -4,7 +4,7 @@ scrapi
 ```master``` build status: [![Build Status](https://travis-ci.org/centerforopenscience/scrapi.svg?branch=master)](https://travis-ci.org/centerforopenscience/scrapi)
 
 
-```develop``` build status: [![Build Status](https://travis-ci.org/centerforopenscience/scrapi.svg?branch=develop)](https://travis-ci.org/fabianvf/centerforopenscience)
+```develop``` build status: [![Build Status](https://travis-ci.org/centerforopenscience/scrapi.svg?branch=develop)](https://travis-ci.org/centerforopenscience/scrapi)
 
 
 [![Coverage Status](https://coveralls.io/repos/centerforopenscience/scrapi/badge.svg?branch=develop)](https://coveralls.io/r/centerforopenscience/scrapi?branch=develop)
