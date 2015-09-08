@@ -1,13 +1,10 @@
 import re
 import shutil
 import logging
-from datetime import date
-from datetime import timedelta
 
 import vcr
 import furl
 from lxml import etree
-from dateutil.parser import parse
 
 from scrapi import requests
 
@@ -42,7 +39,7 @@ class {2}Harvester(OAIHarvester):
 logger = logging.getLogger(__name__)
 
 
-def get_oai_properties(base_url, shortname, start_date, end_date):
+def get_oai_properties(base_url, shortname):
     """ Makes a request to the provided base URL for the list of properties
         returns a dict with list of properties
     """
@@ -52,7 +49,13 @@ def get_oai_properties(base_url, shortname, start_date, end_date):
         prop_base.args['verb'] = 'ListRecords'
         prop_base.args['metadataPrefix'] = 'oai_dc'
 
-        pre_names = push_request_boundaries(shortname, prop_base, start_date, end_date)
+        prop_data_request = perform_request(shortname, prop_base)
+        all_prop_content = etree.XML(prop_data_request.content)
+        try:
+            pre_names = all_prop_content.xpath('//ns0:metadata', namespaces=NAMESPACES)[0].getchildren()[0].getchildren()
+        except IndexError:
+            pre_names = None
+
         all_names = [name.tag.replace('{' + NAMESPACES['dc'] + '}', '') for name in pre_names]
         return list({name for name in all_names if name not in BASE_SCHEMA}) + ['setSpec']
 
@@ -61,32 +64,13 @@ def get_oai_properties(base_url, shortname, start_date, end_date):
         raise ValueError('OAI Processing Error - {}'.format(e))
 
 
-def push_request_boundaries(shortname, prop_base, startdate, enddate):
-    step = 2
-    prop_base.args['from'] = startdate
-    prop_base.args['until'] = enddate
-    results = perform_request(shortname, prop_base)
-    while not results and step <= 365:
-        startdate = startdate - timedelta(step)
-        step *= 2
-        prop_base.args['from'] = startdate
-        results = perform_request(shortname, prop_base)
-    return results
-
-
 def perform_request(shortname, prop_base):
     with vcr.use_cassette('tests/vcr/{}.yaml'.format(shortname), record_mode='all'):
             logger.info('requesting {}'.format(prop_base.url))
-            prop_data_request = requests.requests.get(prop_base.url)
-    all_prop_content = etree.XML(prop_data_request.content)
-    try:
-        return all_prop_content.xpath('//ns0:metadata', namespaces=NAMESPACES)[0].getchildren()[0].getchildren()
-    except IndexError:
-        return None
+            return requests.requests.get(prop_base.url)
 
 
 def formatted_oai(ex_call, class_name, shortname, longname, normal_url, oai_url, prop_list, tz_gran):
-
     return OAI_TEMPLATE.format(longname, ex_call, class_name, shortname, longname, normal_url, oai_url, prop_list, tz_gran)
 
 
@@ -105,8 +89,8 @@ def get_favicon(baseurl, shortname):
             shutil.copyfileobj(r.raw, f)
 
 
-def generate_oai(baseurl, shortname, start_date, end_date):
-    prop_list = get_oai_properties(baseurl, shortname, start_date, end_date)
+def generate_oai(baseurl, shortname):
+    prop_list = get_oai_properties(baseurl, shortname)
     ex_call = baseurl + '?verb=ListRecords&metadataPrefix=oai_dc'
 
     class_name = shortname.capitalize()
@@ -123,17 +107,9 @@ def generate_oai(baseurl, shortname, start_date, end_date):
     return formatted_oai(ex_call, class_name, shortname, longname, found_url, baseurl, prop_list, tz_gran)
 
 
-def generate_oai_harvester(shortname, baseurl=None, daterange=None, favicon=False):
-
-    if not daterange:
-        startdate = (date.today() - timedelta(2))
-        enddate = date.today()
-    else:
-        startdate, enddate = daterange.split(':')
-        startdate, enddate = parse(startdate), parse(enddate)
-
+def generate_oai_harvester(shortname, baseurl=None, favicon=False):
     if baseurl:
-        text = generate_oai(baseurl, shortname, startdate, enddate)
+        text = generate_oai(baseurl, shortname)
 
         with open('scrapi/harvesters/{}.py'.format(shortname), 'w') as outfile:
             outfile.write(text)
