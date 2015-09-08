@@ -273,3 +273,22 @@ To fix:
 - reinstall requirements as usual
 
 Answer found in [this stack overflow question and answer](http://stackoverflow.com/questions/23172384/lxml-runtime-error-reason-incompatible-library-version-etree-so-requires-vers)
+
+
+AutoOAI
+------
+
+Autooai is a utility script that is included in scrAPI to help generate OAI harvesters.
+
+To use it, just
+```bash
+inv autooai <shortname> <baseurl> [-f, --favicon]
+```
+
+This will generate a new harvester (in the scrapi/harvesters directory), a new test harvester VCR (in the tests/vcr directory), and, if the ```-f``` option is provided, a new favicon (in the img/favicons/ directory).
+
+You can test this harvester by running
+
+```bash
+py.test tests/test_harvesters.py::test_harvester\[<shortname>\]
+```

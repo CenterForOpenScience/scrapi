@@ -227,6 +227,6 @@ def provider_map(delete=False):
 
 
 @task
-def autooai(shortname, baseurl=None, favicon=False):
+def autooai(shortname, baseurl, favicon=False):
     from autooai import generate_oai_harvester
     generate_oai_harvester(shortname, baseurl, favicon)
