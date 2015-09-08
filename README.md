@@ -1,14 +1,14 @@
 scrapi
 ======
 
-```master``` build status: [![Build Status](https://travis-ci.org/fabianvf/scrapi.svg?branch=master)](https://travis-ci.org/fabianvf/scrapi)
+```master``` build status: [![Build Status](https://travis-ci.org/centerforopenscience/scrapi.svg?branch=master)](https://travis-ci.org/centerforopenscience/scrapi)
 
 
-```develop``` build status: [![Build Status](https://travis-ci.org/fabianvf/scrapi.svg?branch=develop)](https://travis-ci.org/fabianvf/scrapi)
+```develop``` build status: [![Build Status](https://travis-ci.org/centerforopenscience/scrapi.svg?branch=develop)](https://travis-ci.org/fabianvf/centerforopenscience)
 
 
-[![Coverage Status](https://coveralls.io/repos/fabianvf/scrapi/badge.svg?branch=develop)](https://coveralls.io/r/fabianvf/scrapi?branch=develop)
-[![Code Climate](https://codeclimate.com/github/fabianvf/scrapi/badges/gpa.svg)](https://codeclimate.com/github/fabianvf/scrapi)
+[![Coverage Status](https://coveralls.io/repos/centerforopenscience/scrapi/badge.svg?branch=develop)](https://coveralls.io/r/centerforopenscience/scrapi?branch=develop)
+[![Code Climate](https://codeclimate.com/github/centerforopenscience/scrapi/badges/gpa.svg)](https://codeclimate.com/github/centerforopenscience/scrapi)
 
 ## Getting started
 
