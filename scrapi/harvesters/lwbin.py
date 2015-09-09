@@ -65,8 +65,8 @@ def process_contributors(authors, emails):
 
     contributor_list = []
     append_emails = True
-    if len(authors) > 1 or len(emails) > 1:
-        append_emails = False  # if there are more than one author or eaiil, create new users
+    if len(authors) != 1 or len(emails) != 1:
+        append_emails = False  # append the email to the author only when 1 record is observed
 
     for ind, person in enumerate(authors):
         name = HumanName(person)
