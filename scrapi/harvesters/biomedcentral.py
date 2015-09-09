@@ -10,7 +10,7 @@ from __future__ import unicode_literals
 
 import json
 import logging
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 
 from nameparser import HumanName
 
@@ -115,6 +115,7 @@ class BiomedCentralHarvester(JSONHarvester):
         return record_list
 
     def get_records(self, search_url):
+        now = datetime.now()
         records = requests.get(search_url + "#{}".format(date.today()))
         page = 1
 
@@ -124,6 +125,10 @@ class BiomedCentralHarvester(JSONHarvester):
             record_list = records.json()['entries']
 
             for record in record_list:
+                # Check to see if this is from the future, don't grab if so
+                published_date = record.get('published Date')
+                if datetime.strptime(published_date, '%Y-%m-%d') >= now:
+                    break
                 all_records.append(record)
 
             page += 1
