@@ -47,6 +47,10 @@ def process_contributors(authors):
     return contributor_list
 
 
+def join_uris(*args):
+    return [arg for arg in args]
+
+
 class BiomedCentralHarvester(JSONHarvester):
     short_name = 'biomedcentral'
     long_name = 'BioMed Central'
@@ -61,7 +65,8 @@ class BiomedCentralHarvester(JSONHarvester):
             'contributors': ('/authorNames', process_contributors),
             'uris': {
                 'canonicalUri': '/articleFullUrl',
-                'objectUris': ('/doi', lambda x: ['http://dx.doi.org/' + x])
+                'objectUris': ('/doi', lambda x: ['http://dx.doi.org/' + x]),
+                'providerUris': ('/articleFullUrl', '/abstractPath', join_uris)
             },
             'title': ('/bibliographyTitle', '/blurbTitle', lambda x, y: x or y),
             'providerUpdatedDateTime': ('/published Date', lambda x: date_formatter(x)),
