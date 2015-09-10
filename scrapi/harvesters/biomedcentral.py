@@ -61,8 +61,8 @@ class BiomedCentralHarvester(JSONHarvester):
             'contributors': ('/authorNames', process_contributors),
             'uris': {
                 'canonicalUri': '/articleFullUrl',
-                'objectUris': ('/doi', lambda x: ['http://dx.doi.org/' + x]),
-                'providerUris': ('/articleFullUrl', '/abstractPath', lambda x, y: [x] + [y])
+                'objectUris': ('/doi', 'http://dx.doi.org/{}'.format),
+                'providerUris': ('/articleFullUrl', '/abstractPath', lambda x, y: [x, y])
             },
             'title': ('/bibliographyTitle', '/blurbTitle', lambda x, y: x or y),
             'providerUpdatedDateTime': ('/published Date', date_formatter),
