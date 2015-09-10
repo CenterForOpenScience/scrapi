@@ -13,8 +13,6 @@ import logging
 from furl import furl
 from datetime import date, timedelta
 
-from nameparser import HumanName
-
 from scrapi import requests
 from scrapi import settings
 from scrapi.base import JSONHarvester
@@ -22,22 +20,6 @@ from scrapi.linter.document import RawDocument
 from scrapi.base.helpers import build_properties, date_formatter, compose, default_name_parser
 
 logger = logging.getLogger(__name__)
-
-
-def process_contributors(authors):
-
-    contributor_list = []
-    for person in authors:
-        name = HumanName(person['creator'])
-        contributor = {
-            'name': person['creator'],
-            'givenName': name.first,
-            'additionalName': name.middle,
-            'familyName': name.last
-        }
-        contributor_list.append(contributor)
-
-    return contributor_list
 
 
 def process_urls(urls):
