@@ -230,3 +230,4 @@ def provider_map(delete=False):
 def autooai(shortname, baseurl, favicon=False):
     from autooai import generate_oai_harvester
     generate_oai_harvester(shortname, baseurl, favicon)
+    run('py.test tests/test_harvesters.py::test_harvester\[{}\] -s'.format(shortname))
