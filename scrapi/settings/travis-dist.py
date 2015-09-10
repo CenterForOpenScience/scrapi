@@ -35,3 +35,5 @@ FRONTEND_KEYS = [
     u'source',
     u'dateUpdated'
 ]
+
+TEST_RECORD_MODE = 'none'
