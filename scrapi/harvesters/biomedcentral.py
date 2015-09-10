@@ -47,10 +47,6 @@ def process_contributors(authors):
     return contributor_list
 
 
-def join_uris(*args):
-    return [arg for arg in args]
-
-
 class BiomedCentralHarvester(JSONHarvester):
     short_name = 'biomedcentral'
     long_name = 'BioMed Central'
@@ -66,10 +62,10 @@ class BiomedCentralHarvester(JSONHarvester):
             'uris': {
                 'canonicalUri': '/articleFullUrl',
                 'objectUris': ('/doi', lambda x: ['http://dx.doi.org/' + x]),
-                'providerUris': ('/articleFullUrl', '/abstractPath', join_uris)
+                'providerUris': ('/articleFullUrl', '/abstractPath', lambda x, y: [x] + [y])
             },
             'title': ('/bibliographyTitle', '/blurbTitle', lambda x, y: x or y),
-            'providerUpdatedDateTime': ('/published Date', lambda x: date_formatter(x)),
+            'providerUpdatedDateTime': ('/published Date', date_formatter),
             'description': '/blurbText',
             'freeToRead': {
                 'startDate': ('/is_free', '/published Date', lambda x, y: y if x else None)
@@ -133,7 +129,7 @@ class BiomedCentralHarvester(JSONHarvester):
                 # Check to see if this is from the future, don't grab if so
                 published_date = record.get('published Date')
                 if datetime.strptime(published_date, '%Y-%m-%d') >= now:
-                    break
+                    continue
                 all_records.append(record)
 
             page += 1
