@@ -19,7 +19,7 @@ from scrapi import requests
 from scrapi import settings
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
-from scrapi.base.helpers import build_properties, date_formatter
+from scrapi.base.helpers import build_properties, date_formatter, compose, default_name_parser
 
 logger = logging.getLogger(__name__)
 
@@ -72,7 +72,13 @@ class SpringerlHarvester(JSONHarvester):
     @property
     def schema(self):
         return {
-            'contributors': ('/creators', process_contributors),
+            'contributors': (
+                '/creators',
+                compose(
+                    default_name_parser,
+                    lambda authors: [author['creator'] for author in authors]
+                )
+            ),
             'uris': ('/url', process_urls),
             'title': '/title',
             'providerUpdatedDateTime': ('/publicationDate', date_formatter),
@@ -83,6 +89,7 @@ class SpringerlHarvester(JSONHarvester):
             'publisher': {
                 'name': '/publisher'
             },
+            'subjects': ('/genre', lambda x: [x] if x else []),
             'otherProperties': build_properties(
                 ('url', '/url'),
                 ('doi', '/doi'),
@@ -93,7 +100,6 @@ class SpringerlHarvester(JSONHarvester):
                 ('number', '/number'),
                 ('startingPage', '/startingPage'),
                 ('copyright', '/copyright'),
-                ('genre', '/genre'),
                 ('identifier', '/identifier')
             )
         }
@@ -118,22 +124,14 @@ class SpringerlHarvester(JSONHarvester):
 
         records = self.get_records(search_urls)
 
-        record_list = []
-        for record in records:
-            doc_id = record['identifier']
-
-            record_list.append(
-                RawDocument(
-                    {
-                        'doc': json.dumps(record),
-                        'source': self.short_name,
-                        'docID': doc_id,
-                        'filetype': 'json'
-                    }
-                )
-            )
-
-        return record_list
+        return [
+            RawDocument({
+                'doc': json.dumps(record),
+                'source': self.short_name,
+                'docID': record['identifier'],
+                'filetype': 'json'
+            }) for record in records
+        ]
 
     def get_records(self, search_urls):
         all_records_from_all_days = []
