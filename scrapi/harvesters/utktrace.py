@@ -7,8 +7,8 @@ from __future__ import unicode_literals
 from scrapi.base import OAIHarvester
 
 
-class UtnknoxvilleHarvester(OAIHarvester):
-    short_name = 'utnknoxville'
+class UtkTraceHarvester(OAIHarvester):
+    short_name = 'utktrace'
     long_name = 'Trace: Tennessee Research and Creative Exchange'
     url = 'http://trace.tennessee.edu'
 
