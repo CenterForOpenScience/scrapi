@@ -2,7 +2,6 @@ import re
 import shutil
 import logging
 
-import vcr
 import furl
 from lxml import etree
 
@@ -49,7 +48,7 @@ def get_oai_properties(base_url, shortname):
         prop_base.args['verb'] = 'ListRecords'
         prop_base.args['metadataPrefix'] = 'oai_dc'
 
-        prop_data_request = perform_request(shortname, prop_base)
+        prop_data_request = requests.requests.get(prop_base.url)
         all_prop_content = etree.XML(prop_data_request.content)
         try:
             pre_names = all_prop_content.xpath('//ns0:metadata', namespaces=NAMESPACES)[0].getchildren()[0].getchildren()
@@ -62,12 +61,6 @@ def get_oai_properties(base_url, shortname):
     # If anything at all goes wrong, just render a blank form...
     except Exception as e:
         raise ValueError('OAI Processing Error - {}'.format(e))
-
-
-def perform_request(shortname, prop_base):
-    with vcr.use_cassette('tests/vcr/{}.yaml'.format(shortname), record_mode='all'):
-            logger.info('requesting {}'.format(prop_base.url))
-            return requests.requests.get(prop_base.url)
 
 
 def formatted_oai(ex_call, class_name, shortname, longname, normal_url, oai_url, prop_list, tz_gran):
