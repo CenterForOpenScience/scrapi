@@ -45,11 +45,9 @@ class SpringerlHarvester(JSONHarvester):
     count = 0
 
     base_url = 'http://api.springer.com/meta/v1/json'
-    arged_url = furl(base_url)
-    arged_url.args['api_key'] = settings.SPRINGER_KEY
-    arged_url.args['p'] = 100
-
-    URL = arged_url.url
+    URL = furl(base_url)
+    URL.args['api_key'] = settings.SPRINGER_KEY
+    URL.args['p'] = 100
 
     @property
     def schema(self):
@@ -99,10 +97,9 @@ class SpringerlHarvester(JSONHarvester):
 
         search_urls = []
         for adate in date_strings:
-            furled = furl(self.URL)
-            furled.args['q'] = 'date:{}'.format(adate)
+            self.URL.args['q'] = 'date:{}'.format(adate)
 
-            search_urls.append(furled.url)
+            search_urls.append(self.URL.url)
 
         records = self.get_records(search_urls)
 
