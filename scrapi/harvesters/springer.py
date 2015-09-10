@@ -1,0 +1,153 @@
+"""
+BioMed Central harvester of public projects for the SHARE Notification Service
+Note: At the moment, this harvester only harvests basic data on each article, and does
+not make a seperate request for additional metadata for each record.
+
+Example API query: http://api.springer.com/meta/v1/json?api_key=yourapikey&q=*&s=1&p=200
+"""
+
+from __future__ import unicode_literals
+
+import json
+import logging
+from furl import furl
+from datetime import date, timedelta
+
+from nameparser import HumanName
+
+from scrapi import requests
+from scrapi import settings
+from scrapi.base import JSONHarvester
+from scrapi.linter.document import RawDocument
+from scrapi.base.helpers import build_properties, date_formatter
+
+logger = logging.getLogger(__name__)
+
+
+def process_contributors(authors):
+
+    contributor_list = []
+    for person in authors:
+        name = HumanName(person['creator'])
+        contributor = {
+            'name': person['creator'],
+            'givenName': name.first,
+            'additionalName': name.middle,
+            'familyName': name.last
+        }
+        contributor_list.append(contributor)
+
+    return contributor_list
+
+
+def process_urls(urls):
+    all_uris = [url['value'] for url in urls]
+
+    processed_uris = {
+        'canonicalUri': all_uris[0],
+        'objectUris': [],
+        'providerUris': all_uris
+    }
+
+    for url in all_uris:
+        if 'dx.doi.org' in url:
+            processed_uris['objectUris'].append(url)
+
+    return processed_uris
+
+
+class SpringerlHarvester(JSONHarvester):
+    short_name = 'springer'
+    long_name = 'Springer'
+    url = 'http://www.springer.com/us/'
+    count = 0
+
+    base_url = 'http://api.springer.com/meta/v1/json'
+    arged_url = furl(base_url)
+    arged_url.args['api_key'] = settings.SPRINGER_KEY
+    arged_url.args['p'] = 100
+
+    URL = arged_url.url
+
+    @property
+    def schema(self):
+        return {
+            'contributors': ('/creators', process_contributors),
+            'uris': ('/url', process_urls),
+            'title': '/title',
+            'providerUpdatedDateTime': ('/publicationDate', date_formatter),
+            'description': '/abstract',
+            'freeToRead': {
+                'startDate': ('/openaccess', '/publicationDate', lambda x, y: y if x == 'true' else None)
+            },
+            'publisher': {
+                'name': '/publisher'
+            },
+            'otherProperties': build_properties(
+                ('url', '/url'),
+                ('doi', '/doi'),
+                ('isbn', '/isbn'),
+                ('printIsbn', '/printIsbn'),
+                ('electronicIsbn', '/electronicIsbn'),
+                ('volume', '/volume'),
+                ('number', '/number'),
+                ('startingPage', '/startingPage'),
+                ('copyright', '/copyright'),
+                ('genre', '/genre'),
+                ('identifier', '/identifier')
+            )
+        }
+
+    def harvest(self, start_date=None, end_date=None):
+
+        start_date = start_date or date.today() - timedelta(settings.DAYS_BACK)
+        end_date = end_date or date.today()
+
+        delta = end_date - start_date
+
+        date_strings = []
+        for i in range(delta.days + 1):
+            date_strings.append(start_date + timedelta(days=i))
+
+        search_urls = []
+        for adate in date_strings:
+            furled = furl(self.URL)
+            furled.args['q'] = 'date:{}'.format(adate)
+
+            search_urls.append(furled.url)
+
+        records = self.get_records(search_urls)
+
+        record_list = []
+        for record in records:
+            doc_id = record['identifier']
+
+            record_list.append(
+                RawDocument(
+                    {
+                        'doc': json.dumps(record),
+                        'source': self.short_name,
+                        'docID': doc_id,
+                        'filetype': 'json'
+                    }
+                )
+            )
+
+        return record_list
+
+    def get_records(self, search_urls):
+        all_records_from_all_days = []
+        for search_url in search_urls:
+            records = requests.get(search_url).json()
+            index = 1
+            total_records = int(records['result'][0]['total'])
+
+            all_records = []
+            while len(all_records) < total_records:
+                record_list = records['records']
+                all_records += record_list
+                index += 100
+                records = requests.get(search_url + '&s={}'.format(str(index), throttle=10)).json()
+            all_records_from_all_days = all_records_from_all_days + all_records
+
+        return all_records_from_all_days
