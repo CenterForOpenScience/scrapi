@@ -152,7 +152,7 @@ class LWBINHarvester(JSONHarvester):
         return {
             'title': ('/title', lambda x: x if x else ''),
             'description': ('/notes', lambda x: x[0] if (isinstance(x, list) and x) else x or ''),
-            'providerUpdatedDateTime': ('/metadata_modified', lambda x: parse(x).isoformat()),
+            'providerUpdatedDateTime': ('/metadata_modified', lambda x: parse(x).isoformat("-")),
             'uris': {
                 'canonicalUri': ('/name', lambda x: construct_url(self.url, self.dataset_path, x)),  # Construct new urls directing to LWBIN
                 'objectUris': ('/url', '/extras', process_object_uris)  # Default urls from the metadata directing to source pages
@@ -161,14 +161,14 @@ class LWBINHarvester(JSONHarvester):
             'licenses': ('/license_title', '/license_url', '/license_id', process_licenses),
             'tags': ('/tags', lambda x: [tag['name'].lower() for tag in (x or [])]),
             'freeToRead': {
-                'startDate': ('/isopen', '/metadata_created', lambda x, y: parse(y).date().isoformat() if x else None)
+                'startDate': ('/isopen', '/metadata_created', lambda x, y: parse(y).date().isoformat("-") if x else None)
             },
             'otherProperties': build_properties(
                 ('maintainer', '/maintainer'),
                 ('maintainerEmail', '/maintainer_email'),
-                ('revisionTimestamp', ('/revision_timestamp', lambda x: parse(x).isoformat())),
+                ('revisionTimestamp', ('/revision_timestamp', lambda x: parse(x).isoformat("-"))),
                 ('id', '/id'),
-                ('metadataCreated', ('/metadata_created', lambda x: parse(x).isoformat())),
+                ('metadataCreated', ('/metadata_created', lambda x: parse(x).isoformat("-"))),
                 ('state', '/state'),
                 ('version', '/version'),
                 ('creatorUserId', '/creator_user_id'),
