@@ -75,9 +75,10 @@ def process_contributors(authors, emails):
             'givenName': name.first,
             'additionalName': name.middle,
             'familyName': name.last,
-            'email': emails[ind] if append_emails else '',
-            'sameAs': [],
+            'sameAs': []
         }
+        if append_emails:
+            contributor['email'] = emails[ind]
         contributor_list.append(contributor)
 
     if not append_emails:
