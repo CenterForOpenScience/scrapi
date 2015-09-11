@@ -2,6 +2,16 @@
 ChangeLog
 *********
 
+0.9.4 (2015-09-10)
+==================
+- Biomedcentral harvester now filters out results from the future
+
+0.9.3 (2015-09-01)
+==================
+- Capture more uris from pubmedcentral harvester
+- Update favicons so that all favicons are .icos (fixes IE display bug)
+- Fix longname for Portland State University harvester
+
 0.9.2 (2015-09-01)
 ==================
 - fix specification of canonicalUri requirements in schema

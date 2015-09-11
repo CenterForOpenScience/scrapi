@@ -22,6 +22,7 @@ ELASTIC_INDEX = 'share'
 
 PLOS_API_KEY = 'fakekey'
 HARVARD_DATAVERSE_API_KEY = 'anotherfakekey'
+SPRINGER_KEY = 'thisistotallyfakealso'
 
 disabled = ['stepic', 'shareok']
 

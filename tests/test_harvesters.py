@@ -2,13 +2,10 @@ import logging
 
 import vcr
 import pytest
-from freezegun import freeze_time
-from dateutil.parser import parse
 
 from scrapi import base
 from scrapi import settings
 from scrapi import registry, requests
-from scrapi.base.helpers import compose
 
 logger = logging.getLogger(__name__)
 
