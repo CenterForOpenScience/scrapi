@@ -224,3 +224,10 @@ def provider_map(delete=False):
             refresh=True
         )
     print(es.count('share_providers', body={'query': {'match_all': {}}})['count'])
+
+
+@task
+def autooai(shortname, baseurl, favicon=False):
+    from autooai import generate_oai_harvester
+    generate_oai_harvester(shortname, baseurl, favicon)
+    run('py.test tests/test_harvesters.py::test_harvester\[{}\] -s'.format(shortname))
