@@ -26,6 +26,13 @@ from scrapi.base.helpers import compose, single_result, build_properties, date_f
 logger = logging.getLogger(__name__)
 
 
+element_to_dict = compose(xmltodict.parse, etree.tostring)
+
+
+def non_string(item):
+    return not isinstance(item, str)
+
+
 class ClinicalTrialsHarvester(XMLHarvester):
 
     short_name = 'clinicaltrials'
@@ -85,9 +92,8 @@ class ClinicalTrialsHarvester(XMLHarvester):
             ('armGroup', '//arm_group/arm_group_label/node()'),
             ('intervention', '//intervention/intervention_type/node()'),
             ('eligibility', ('//eligibility/node()', compose(
-                lambda x: map(xmltodict.parse, x),
-                lambda x: map(etree.tostring, x),
-                lambda x: filter(lambda y: not isinstance(y, str), x)
+                lambda x: map(element_to_dict, x),
+                lambda x: filter(non_string, x)
             ))),
             ('link', '//link/url/node()'),
             ('responsible_party', '//responsible_party/responsible_party_full_name/node()')
