@@ -12,6 +12,7 @@ import time
 import logging
 from datetime import date, timedelta
 
+import xmltodict
 from lxml import etree
 
 from scrapi import requests
@@ -23,6 +24,13 @@ from scrapi.base.schemas import default_name_parser
 from scrapi.base.helpers import compose, single_result, build_properties, date_formatter
 
 logger = logging.getLogger(__name__)
+
+
+element_to_dict = compose(xmltodict.parse, etree.tostring)
+
+
+def non_string(item):
+    return not isinstance(item, str)
 
 
 class ClinicalTrialsHarvester(XMLHarvester):
@@ -83,7 +91,10 @@ class ClinicalTrialsHarvester(XMLHarvester):
             ('enrollment', '//enrollment/node()'),
             ('armGroup', '//arm_group/arm_group_label/node()'),
             ('intervention', '//intervention/intervention_type/node()'),
-            ('eligibility', '//eligibility/node()'),
+            ('eligibility', ('//eligibility/node()', compose(
+                lambda x: map(element_to_dict, x),
+                lambda x: filter(non_string, x)
+            ))),
             ('link', '//link/url/node()'),
             ('responsible_party', '//responsible_party/responsible_party_full_name/node()')
         )
