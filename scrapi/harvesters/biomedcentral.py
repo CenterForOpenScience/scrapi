@@ -10,8 +10,7 @@ from __future__ import unicode_literals
 
 import json
 import logging
-from datetime import date, timedelta
-from dateutil.parser import parse
+from datetime import date, timedelta, datetime
 
 from nameparser import HumanName
 
@@ -19,7 +18,8 @@ from scrapi import requests
 from scrapi import settings
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
-from scrapi.base.helpers import build_properties
+from scrapi.base.helpers import build_properties, date_formatter
+
 logger = logging.getLogger(__name__)
 
 
@@ -40,7 +40,6 @@ def process_contributors(authors):
             'givenName': name.first,
             'additionalName': name.middle,
             'familyName': name.last,
-            'email': '',
             'sameAs': [],
         }
         contributor_list.append(contributor)
@@ -62,10 +61,11 @@ class BiomedCentralHarvester(JSONHarvester):
             'contributors': ('/authorNames', process_contributors),
             'uris': {
                 'canonicalUri': '/articleFullUrl',
-                'objectUris': ('/doi', lambda x: ['http://dx.doi.org/' + x])
+                'objectUris': ('/doi', 'http://dx.doi.org/{}'.format),
+                'providerUris': ('/articleFullUrl', '/abstractPath', lambda x, y: [x, y])
             },
             'title': ('/bibliographyTitle', '/blurbTitle', lambda x, y: x or y),
-            'providerUpdatedDateTime': ('/published Date', lambda x: parse(x).isoformat()),
+            'providerUpdatedDateTime': ('/published Date', date_formatter),
             'description': '/blurbText',
             'freeToRead': {
                 'startDate': ('/is_free', '/published Date', lambda x, y: y if x else None)
@@ -116,6 +116,7 @@ class BiomedCentralHarvester(JSONHarvester):
         return record_list
 
     def get_records(self, search_url):
+        now = datetime.now()
         records = requests.get(search_url + "#{}".format(date.today()))
         page = 1
 
@@ -125,6 +126,10 @@ class BiomedCentralHarvester(JSONHarvester):
             record_list = records.json()['entries']
 
             for record in record_list:
+                # Check to see if this is from the future, don't grab if so
+                published_date = record.get('published Date')
+                if datetime.strptime(published_date, '%Y-%m-%d') >= now:
+                    continue
                 all_records.append(record)
 
             page += 1

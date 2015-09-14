@@ -1,0 +1,103 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/13.4.0]
+    method: GET
+    uri: http://darchive.mblwhoilibrary.org/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2014-12-19T00:00:00Z&until=2014-12-21T00:00:00Z
+  response:
+    body: {string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
+        href=\"static/style.xsl\"?><OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/
+        http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"><responseDate>2015-07-31T13:42:49Z</responseDate>\n
+        \   <request verb=\"ListRecords\" metadataPrefix=\"oai_dc\" from=\"2014-12-19T00:00:00Z\"
+        until=\"2014-12-21T00:00:00Z\">http://darchive.mblwhoilibrary.org/oai/request</request>\n
+        \   <ListRecords>\n        <record>\n            <header>\n                <identifier>oai:localhost:1912/6030</identifier>\n
+        \               <datestamp>2014-12-19T19:02:41Z</datestamp>\n                <setSpec>com_1912_4</setSpec>\n
+        \               <setSpec>col_1912_5</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Clicking
+        in shallow rivers : short-range echolocation of Irrawaddy and Ganges River
+        dolphins in a shallow, acoustically complex habitat</dc:title>\n<dc:creator>Jensen,
+        Frants H.</dc:creator>\n<dc:creator>Rocco, Alice</dc:creator>\n<dc:creator>Mansur,
+        Rubaiyat M.</dc:creator>\n<dc:creator>Smith, Brian D.</dc:creator>\n<dc:creator>Janik,
+        Vincent M.</dc:creator>\n<dc:creator>Madsen, Peter T.</dc:creator>\n<dc:description>\xA9
+        The Author(s),  2013. This article is distributed under the terms of the Creative
+        Commons Attribution License. The definitive version was published in PLoS
+        ONE 8 (2013):  e59284, doi:10.1371/journal.pone.0059284.</dc:description>\n<dc:description>Toothed
+        whales (Cetacea, odontoceti) use biosonar to navigate their environment and
+        to find and catch prey. All studied toothed whale species have evolved highly
+        directional, high-amplitude ultrasonic clicks suited for long-range echolocation
+        of prey in open water. Little is known about the biosonar signals of toothed
+        whale species inhabiting freshwater habitats such as endangered river dolphins.
+        To address the evolutionary pressures shaping the echolocation signal parameters
+        of non-marine toothed whales, we investigated the biosonar source parameters
+        of Ganges river dolphins (Platanista gangetica gangetica) and Irrawaddy dolphins
+        (Orcaella brevirostris) within the river systems of the Sundarban mangrove
+        forest. Both Ganges and Irrawaddy dolphins produced echolocation clicks with
+        a high repetition rate and low source level compared to marine species. Irrawaddy
+        dolphins, inhabiting coastal and riverine habitats, produced a mean source
+        level of 195 dB (max 203 dB) re 1 \xB5Papp whereas Ganges river dolphins,
+        living exclusively upriver, produced a mean source level of 184 dB (max 191)
+        re 1 \xB5Papp. These source levels are 1\u20132 orders of magnitude lower
+        than those of similar sized marine delphinids and may reflect an adaptation
+        to a shallow, acoustically complex freshwater habitat with high reverberation
+        and acoustic clutter. The centroid frequency of Ganges river dolphin clicks
+        are an octave lower than predicted from scaling, but with an estimated beamwidth
+        comparable to that of porpoises. The unique bony maxillary crests found in
+        the Platanista forehead may help achieve a higher directionality than expected
+        using clicks nearly an octave lower than similar sized odontocetes.</dc:description>\n<dc:description>This
+        study was made possible through the logistical and field support of the Bangladesh
+        Cetacean Diversity Project of the Wildlife Conservation&#13;\nSociety, and
+        funded by frame grants from the Danish Natural Science Foundation to PTM.
+        FHJ was supported by the PhD School of Aquatic Sciences, Denmark,&#13;\nand
+        is currently funded by a postdoctoral fellowship from the Danish Council for
+        Independent Research | Natural Sciences. VMJ was supported by a fellowship
+        of&#13;\nthe Wissenschaftskolleg Berlin. PTM was supported by frame grants
+        from the Danish Natural Science Foundation.</dc:description>\n<dc:date>2013-07-02T14:56:29Z</dc:date>\n<dc:date>2013-07-02T14:56:29Z</dc:date>\n<dc:date>2013-04-03</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>PLoS
+        ONE 8 (2013):  e59284</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1912/6030</dc:identifier>\n<dc:identifier>10.1371/journal.pone.0059284</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:relation>http://dx.doi.org/10.1371/journal.pone.0059284</dc:relation>\n<dc:rights>http://creativecommons.org/licenses/by/3.0/</dc:rights>\n<dc:format>application/pdf</dc:format>\n<dc:publisher>Public
+        Library of Science</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n
+        \       <record>\n            <header>\n                <identifier>oai:localhost:1912/7003</identifier>\n
+        \               <datestamp>2014-12-19T09:59:16Z</datestamp>\n                <setSpec>com_1912_4</setSpec>\n
+        \               <setSpec>col_1912_8</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Ocean
+        acidification not likely to affect the survival and fitness of two temperate
+        benthic foraminiferal species : results from culture experiments</dc:title>\n<dc:creator>McIntyre-Wressnig,
+        Anna</dc:creator>\n<dc:creator>Bernhard, Joan M.</dc:creator>\n<dc:creator>Wit,
+        Johannes C.</dc:creator>\n<dc:creator>McCorkle, Daniel C.</dc:creator>\n<dc:description>Author
+        Posting. \xA9 The Author(s), 2014.  This is the author's version of the work.
+        It is posted here by permission of Cushman Foundation for Foraminiferal Research
+        for personal use, not for redistribution.  The definitive version was published
+        in Journal of Foraminiferal Research 44 (2014): 341-351.</dc:description>\n<dc:description>Specimens
+        of Bolivina argentea and Bulimina marginata, two widely distributed temperate
+        benthic foraminiferal species, were cultured at constant temperature and controlled
+        pCO2 (ambient, 1000 ppmv, and 2000 ppmv) for six weeks to assess the effect
+        of elevated atmospheric CO2 concentrations on survival and fitness using Adenosine
+        Triphosphate (ATP) analyses and on shell microfabric using high-resolution
+        SEM and image analysis. To characterize the carbonate chemistry of the incubation
+        seawater, total alkalinity and dissolved inorganic carbon were measured approximately
+        every two weeks. Survival and fitness were not directly affected by elevated
+        pCO2 and the concomitant decrease in seawater pH and calcite saturation states
+        (\u03A9c), even when seawater was undersaturated with respect to calcite.
+        These results differ from some previous observations that ocean acidification
+        can cause a variety of effects on benthic foraminifera, including test dissolution,
+        decreased growth, and mottling (loss of symbiont color in symbiont-bearing
+        species), suggesting that the benthic foraminiferal response to ocean acidification
+        may be species specific. If so, this implies that ocean acidification may
+        lead to ecological winners and losers even within the same taxonomic group.</dc:description>\n<dc:description>This
+        research was supported by NSF grants OCE-0647899 to DCM and JMB, OCE-0725966
+        to JMB and DCM, and OA-1219948 to JMB.</dc:description>\n<dc:description>2015-10-01</dc:description>\n<dc:date>2014-12-18T17:20:29Z</dc:date>\n<dc:date>2014-10</dc:date>\n<dc:type>Preprint</dc:type>\n<dc:identifier>http://hdl.handle.net/1912/7003</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:relation>http://jfr.geoscienceworld.org/content/44/4/341.short</dc:relation>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n    </ListRecords>\n</OAI-PMH>\n"}
+    headers:
+      connection: [close]
+      content-type: [application/xml]
+      date: ['Fri, 31 Jul 2015 17:42:49 GMT']
+      transfer-encoding: [chunked]
+    status: {code: 200, message: OK}
+version: 1

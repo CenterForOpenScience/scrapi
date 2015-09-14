@@ -44,7 +44,11 @@ class HarvesterResponse(models.Model):
     time_made = columns.DateTime(default=datetime.now)
 
     def json(self):
-        return json.loads(self.content)
+        try:
+            content = self.content.decode('utf-8')
+        except AttributeError:  # python 3eeeee!
+            content = self.content
+        return json.loads(content)
 
     @property
     def headers(self):
@@ -57,7 +61,7 @@ class HarvesterResponse(models.Model):
 
 def _maybe_load_response(method, url):
     try:
-        return HarvesterResponse.get(url=url, method=method)
+        return HarvesterResponse.get(url=url.lower(), method=method)
     except HarvesterResponse.DoesNotExist:
         return None
 
@@ -87,7 +91,7 @@ def record_or_load_response(method, url, throttle=None, force=False, params=None
 
     if not resp:
         return HarvesterResponse(
-            url=url,
+            url=url.lower(),
             method=method,
             ok=response.ok,
             content=response.content,
@@ -133,7 +137,6 @@ def request(method, url, params=None, **kwargs):
     maybe_sleep(throttle)
     # Need to prevent force from being passed to real requests module
     kwargs.pop('force', None)
-
     return requests.request(method, url, **kwargs)
 
 

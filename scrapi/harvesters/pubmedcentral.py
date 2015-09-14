@@ -1,7 +1,7 @@
 """
 Harvester of PubMed Central for the SHARE notification service
 
-Example API call: http://www.pubmedcentral.nih.gov/oai/oai.cgi?verb=ListRecords&metadataPrefix=oai_dc&from=2015-04-13&until=2015-04-14
+Example API call: http://www.ncbi.nlm.nih.gov/pmc/oai/oai.cgi?verb=ListRecords&metadataPrefix=oai_dc&from=2015-04-13&until=2015-04-14
 """
 
 
@@ -11,9 +11,18 @@ from scrapi.base import helpers
 from scrapi.base import OAIHarvester
 
 
-def oai_extract_url_pubmedcentral(header):
-    PMC_ID = header.replace('oai:pubmedcentral.nih.gov:', '')
-    return 'http://www.ncbi.nlm.nih.gov/pmc/articles/PMC' + PMC_ID
+def format_uris_pubmedcentral(*args):
+    uris = helpers.oai_process_uris(*args)
+
+    for arg in args:
+        try:
+            if 'oai:pubmedcentral.nih.gov:' in arg[0]:
+                PMC_ID = arg[0].replace('oai:pubmedcentral.nih.gov:', '')
+                uris['canonicalUri'] = 'http://www.ncbi.nlm.nih.gov/pmc/articles/PMC' + PMC_ID
+        except IndexError:
+            pass
+
+    return uris
 
 
 class PubMedCentralHarvester(OAIHarvester):
@@ -24,12 +33,10 @@ class PubMedCentralHarvester(OAIHarvester):
     @property
     def schema(self):
         return helpers.updated_schema(self._schema, {
-            "uris": {
-                "canonicalUri": ('//ns0:header/ns0:identifier/node()', helpers.compose(oai_extract_url_pubmedcentral, helpers.single_result))
-            }
+            "uris": ('//ns0:header/ns0:identifier/node()', '//dc:identifier/node()', format_uris_pubmedcentral)
         })
 
-    base_url = 'http://www.pubmedcentral.nih.gov/oai/oai.cgi'
+    base_url = 'http://www.ncbi.nlm.nih.gov/pmc/oai/oai.cgi'
     property_list = [
         'type', 'source', 'rights',
         'format', 'setSpec', 'date', 'identifier'

@@ -31,7 +31,7 @@ def format_dois_dryad(*args):
 class DryadHarvester(OAIHarvester):
     short_name = 'dryad'
     long_name = 'Dryad Data Repository'
-    url = 'http://www.datadryad.org/oai/request'
+    url = 'http://www.datadryad.org/'
 
     base_url = 'http://www.datadryad.org/oai/request'
     property_list = ['rights', 'format', 'relation', 'date',
@@ -41,9 +41,7 @@ class DryadHarvester(OAIHarvester):
     @property
     def schema(self):
         return helpers.updated_schema(self._schema, {
-            "uris": {
-                "objectUris": ('//dc:relation/node()', '//dc:identifier/node()', format_dois_dryad)
-            }
+            "uris": ('//dc:relation/node()', '//dc:identifier/node()', helpers.oai_process_uris)
         })
 
     def normalize(self, raw_doc):

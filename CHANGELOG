@@ -2,6 +2,73 @@
 ChangeLog
 *********
 
+0.9.4 (2015-09-10)
+==================
+- Biomedcentral harvester now filters out results from the future
+
+0.9.3 (2015-09-01)
+==================
+- Capture more uris from pubmedcentral harvester
+- Update favicons so that all favicons are .icos (fixes IE display bug)
+- Fix longname for Portland State University harvester
+
+0.9.2 (2015-09-01)
+==================
+- fix specification of canonicalUri requirements in schema
+- update harvesters to reflect change in specification
+
+0.9.1 (2015-09-01)
+==================
+- Document __repr__ no longer throw exceptions (allowing errors to be reported)
+
+0.9.0 (2015-08-27)
+==================
+- Update setup documentation
+- add harvesters:
+	- WHOAS at MBLWHOI Library
+	- The OAKTrust Digital Repository at Texas A&M
+	- DigitalCommons@PCOM
+	- PDXScholar
+	- ScholarsArchive@OSU
+- stricter date/time, email, uri validation
+- automated data cleaning (strip out optional values with no semantic information)
+- extraction of PDF links for OAI harvesters
+- more consistent date formatting
+- more consistent DOI extraction
+- fix URLs for auto generated OAI harvesters
+- OSF harvester now sorts by correct date
+
+0.8.4 (2015-08-21)
+==================
+- Fix url gathering for datacite harvester
+
+0.8.3 (2015-08-19)
+==================
+- Add funding information to the crossref harvester
+
+
+0.8.2 (2015-08-11)
+==================
+- Add harvester for Washington University Open Scholarship
+
+0.8.1 (2015-08-06)
+==================
+- Scitech harvester now uses the correct start and end dates
+
+0.8.0 (2015-07-28)
+==================
+- Add harvesters for Smithsonian Digital Repository, Hacettepe,
+	Harvard Dataverse, Cyberleninka, Howard University, Scholarworks Umass,
+	Inter-University Consortium for Political and Social Research
+- Python 3 support
+- Fix DOI harvesting for OAI harvesters
+- Fix OAI harvesters having their otherProperties overwritten when they
+	defined a new schema.
+- Fix resumption tokens in OAI harvesters
+- Fix date parsing for DOE schema harvesters
+- Stop JSON processor from swallowing exceptions
+- Update harvesters to make their schemas more closely match the spec
+
 0.7.6 (2015-07-10)
 ==================
 - Fix language harvesting for DOE and OAI harvesters

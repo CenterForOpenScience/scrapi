@@ -11,7 +11,7 @@ from scrapi.base import OAIHarvester
 class IowaresearchHarvester(OAIHarvester):
     short_name = 'iowaresearch'
     long_name = 'Iowa Research Online'
-    url = 'http://ir.uiowa.edu/do/oai/'
+    url = 'http://ir.uiowa.edu'
 
     base_url = 'http://ir.uiowa.edu/do/oai/'
     property_list = ['date', 'source', 'identifier', 'type']

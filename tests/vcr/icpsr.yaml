@@ -1,0 +1,202 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/13.4.0]
+    method: GET
+    uri: http://www.icpsr.umich.edu/icpsrweb/ICPSR/oai/studies?verb=ListRecords&metadataPrefix=oai_dc&from=2007-12-19&until=2007-12-21
+  response:
+    body: {string: !!python/unicode "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<OAI-PMH
+        xmlns=\"http://www.openarchives.org/OAI/2.0/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\">\n
+        \ <responseDate>2015-07-17T15:50:41.109-04:00</responseDate>\n  <request verb=\"ListRecords\">http://www.icpsr.umich.edu/icpsrweb/ICPSR/oai/studies</request>\n
+        \ <ListRecords>\n    <record>\n      <header>\n        <identifier>2492</identifier>\n
+        \       <datestamp>2007-12-20T01:01:01Z</datestamp>\n      </header>\n      <metadata>\n
+        \       <oai_dc:dc xmlns=\"\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n          <dc:title>ABC
+        News/Washington Post Race and Crime Poll, June 1997</dc:title>\n          <dc:creator>ABC
+        News</dc:creator>\n          <dc:creator>The Washington Post</dc:creator>\n
+        \         <dc:subject>Clinton Administration (1993-2001)</dc:subject>\n          <dc:subject>Clinton,
+        Bill</dc:subject>\n          <dc:subject>colleges</dc:subject>\n          <dc:subject>crime</dc:subject>\n
+        \         <dc:subject>crime rates</dc:subject>\n          <dc:subject>discrimination</dc:subject>\n
+        \         <dc:subject>entertainment industry</dc:subject>\n          <dc:subject>fear
+        of crime</dc:subject>\n          <dc:subject>minorities</dc:subject>\n          <dc:subject>presidency</dc:subject>\n
+        \         <dc:subject>presidential performance</dc:subject>\n          <dc:subject>public
+        opinion</dc:subject>\n          <dc:subject>public safety</dc:subject>\n          <dc:subject>race
+        relations</dc:subject>\n          <dc:description>This special topic poll
+        sought respondents' views on the presidency, crime in the United States, and
+        race relations. Respondents were asked for their opinions on President Bill
+        Clinton and his handling of the presidency and race relations, whether he
+        had a clear vision for the country, whether he was honest and in possession
+        of moral and ethical standards, whether he was innovative and committed to
+        his beliefs, and whether he understood the needs of the American people. Those
+        queried were asked what they felt were the greatest problems facing the United
+        States today, specifically with respect to crime. Respondents were asked to
+        assess the rate of crime in the country and in their communities, their personal
+        safety, their fear of becoming a victim of violent crime, and their personal
+        experiences with crime. On the topic of race relations, respondents were asked
+        for their opinions on the past and future trends of the Clinton administration
+        in handling race issues. They were asked to assess race relations in the United
+        States, and to comment on whether they believed that Blacks were still discriminated
+        against, and whether preferences in college admissions for minorities should
+        still exist. A series of questions covered the role of race in network entertainment
+        programs. Topics covered the impact of programs whose main characters were
+        primarily of one race, the frequency of such programs, and the impact of programs
+        in which the cast was a mix of people of different races. Finally, respondents
+        were asked if they had close friends of another race, and whether they had
+        either brought that friend to their home or been a guest at the friend's home.
+        Background information on respondents includes age, race, sex, ethnicity,
+        education, political party, political orientation, family income, and demographics
+        of area of residence.</dc:description>\n          <dc:identifier>2492</dc:identifier>\n
+        \         <dc:identifier>10.3886/ICPSR02492.v2</dc:identifier>\n          <dc:date>12-20-2007</dc:date>\n
+        \         <dc:coverage>United States</dc:coverage>\n        </oai_dc:dc>\n
+        \     </metadata>\n    </record>\n    <record>\n      <header>\n        <identifier>4614</identifier>\n
+        \       <datestamp>2007-12-20T01:01:01Z</datestamp>\n      </header>\n      <metadata>\n
+        \       <oai_dc:dc xmlns=\"\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n          <dc:title>CBS
+        News Monthly Poll #1, April 2006</dc:title>\n          <dc:creator>CBS News</dc:creator>\n
+        \         <dc:subject>abortion</dc:subject>\n          <dc:subject>amnesty</dc:subject>\n
+        \         <dc:subject>Bible</dc:subject>\n          <dc:subject>Bush Administration
+        (George W., 2001-2009)</dc:subject>\n          <dc:subject>Bush, George W.</dc:subject>\n
+        \         <dc:subject>Catholic Church</dc:subject>\n          <dc:subject>Catholicism</dc:subject>\n
+        \         <dc:subject>clergy</dc:subject>\n          <dc:subject>Creationism</dc:subject>\n
+        \         <dc:subject>Democratic Party (USA)</dc:subject>\n          <dc:subject>immigrants</dc:subject>\n
+        \         <dc:subject>immigration</dc:subject>\n          <dc:subject>income
+        tax</dc:subject>\n          <dc:subject>Iraq War</dc:subject>\n          <dc:subject>Islam</dc:subject>\n
+        \         <dc:subject>Kerry, John</dc:subject>\n          <dc:subject>Nader,
+        Ralph</dc:subject>\n          <dc:subject>national economy</dc:subject>\n
+        \         <dc:subject>Pope Benedict XVI</dc:subject>\n          <dc:subject>presidential
+        performance</dc:subject>\n          <dc:subject>religious behavior</dc:subject>\n
+        \         <dc:subject>religious beliefs</dc:subject>\n          <dc:subject>religious
+        denominations</dc:subject>\n          <dc:subject>Republican Party (USA)</dc:subject>\n
+        \         <dc:subject>television news</dc:subject>\n          <dc:subject>terrorism</dc:subject>\n
+        \         <dc:subject>United States Congress</dc:subject>\n          <dc:subject>United
+        States House of Representatives</dc:subject>\n          <dc:subject>voting
+        behavior</dc:subject>\n          <dc:description>This poll, conducted April
+        6-9, 2006, is part of a continuing series of monthly surveys that solicit
+        public opinion on the presidency and on a range of other political and social
+        issues. Respondents were asked to give their opinions on the current direction
+        of the country, the most important problem the country is facing, the national
+        economy, and to rate the job performance of the United States Congress. Respondents
+        were also asked about the way George W. Bush was handling certain issues,
+        such as the economy, immigration, the war in Iraq, and terrorism, whether
+        or not they approved of his overall job performance, and whether or not he
+        and his policies would affect the way they would vote in Congressional elections.
+        The next section of the survey addressed immigration, legal and illegal immigrants,
+        amnesty, and a security fence between the United States and Mexico. The survey
+        also contained questions about Pope Benedict XVI, the Catholic clergy, various
+        religious groups, Creationism, the Bible, and the respondent's religious background,
+        beliefs, and practices. Respondents were then asked for their opinions on
+        the Republican and Democratic parties, and the war in and the future of Iraq.
+        Additional questions solicited information on whether or not the respondents
+        or someone they knew had served in Iraq, as well as the respondents' television
+        news viewing habits. Background information on respondents includes military
+        service, voter registration status, party identification, marital status,
+        sex, religious preference, education record, age, ethnicity, and income.</dc:description>\n
+        \         <dc:identifier>4614</dc:identifier>\n          <dc:identifier>10.3886/ICPSR04614.v1</dc:identifier>\n
+        \         <dc:date>12-20-2007</dc:date>\n          <dc:type>survey</dc:type>\n
+        \         <dc:coverage>United States</dc:coverage>\n          <dc:coverage>2006-04</dc:coverage>\n
+        \       </oai_dc:dc>\n      </metadata>\n    </record>\n    <record>\n      <header>\n
+        \       <identifier>4709</identifier>\n        <datestamp>2007-12-20T01:01:01Z</datestamp>\n
+        \     </header>\n      <metadata>\n        <oai_dc:dc xmlns=\"\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n          <dc:title>American
+        Time Use Survey, 2005</dc:title>\n          <dc:creator>United States Bureau
+        of Labor Statistics</dc:creator>\n          <dc:creator>United States Census
+        Bureau</dc:creator>\n          <dc:subject>child care</dc:subject>\n          <dc:subject>domestic
+        responsibilities</dc:subject>\n          <dc:subject>family life</dc:subject>\n
+        \         <dc:subject>family work relationship</dc:subject>\n          <dc:subject>housework</dc:subject>\n
+        \         <dc:subject>leisure</dc:subject>\n          <dc:subject>lifestyles</dc:subject>\n
+        \         <dc:subject>quality of life</dc:subject>\n          <dc:subject>recreation</dc:subject>\n
+        \         <dc:subject>social interaction</dc:subject>\n          <dc:subject>social
+        life</dc:subject>\n          <dc:subject>time utilization</dc:subject>\n          <dc:subject>work</dc:subject>\n
+        \         <dc:subject>working hours</dc:subject>\n          <dc:description>The
+        American Time Use Survey (ATUS) collects information on how people living
+        in the United States spend their time. Data collected in this study measured
+        the amount of time that people spent doing various activities in 2005, such
+        as paid work, child care, religious activities, volunteering, and socializing.
+        Respondents were randomly selected from households that had completed their
+        final month of the Current Population Survey (CPS), and were interviewed two
+        to five months after their household's last CPS interview. Respondents were
+        interviewed only once and reported their activities for the 24-hour period
+        from 4 a.m. on the day before the interview until 4 a.m. on the day of the
+        interview. Respondents indicated the total number of minutes spent on each
+        activity, including where they were and whom they were with. Except for secondary
+        child care, data on activities done simultaneously with primary activities
+        were not collected. Part 1, Respondent and Activity Summary File, contains
+        demographic information about respondents and a summary of the total amount
+        of time they spent doing each activity that day. Part 2, Roster File, contains
+        information about household members and nonhousehold children under the age
+        of 18. Part 3, Activity File, includes additional information on activities
+        in which respondents participated, including the location of each activity
+        and the total time spent on secondary child care. Part 4, Who File, includes
+        data on who was present during each activity. Part 5, ATUS-CPS 2005 File,
+        contains data on respondents and members of their household collected two
+        to five months prior to the ATUS interviews during their participation in
+        the Current Population Survey (CPS). Parts 6-10 contain supplemental data
+        files that can be used for further analysis of the data. Part 6, Case History
+        File, contains information about the interview process, such as identifiers
+        and interview outcome codes. Part 7, Call History File, gives information
+        about each call attempt, including the call date and outcome. Part 8, Trips
+        File, provides information about the number, duration, and purpose of overnight
+        trips away from home for two or more nights in a row. Part 9, Replicate Weights
+        File I, contains base weights, replicated base weights, and replicate final
+        weights for each case that was selected to be interviewed for ATUS, while
+        Part 10, Replicate Weights File II, contains replicate weights that were generated
+        using the 2006 weighting method. Demographic variables include sex, age, race,
+        ethnicity, education level, income, employment status, occupation, citizenship
+        status, country of origin, relationship to household members, and the ages
+        and number of children in the household.</dc:description>\n          <dc:identifier>4709</dc:identifier>\n
+        \         <dc:identifier>10.3886/ICPSR04709.v1</dc:identifier>\n          <dc:date>12-20-2007</dc:date>\n
+        \         <dc:type>survey data</dc:type>\n          <dc:coverage>United States</dc:coverage>\n
+        \         <dc:coverage>2005</dc:coverage>\n        </oai_dc:dc>\n      </metadata>\n
+        \   </record>\n    <record>\n      <header>\n        <identifier>20623</identifier>\n
+        \       <datestamp>2007-12-20T01:01:01Z</datestamp>\n      </header>\n      <metadata>\n
+        \       <oai_dc:dc xmlns=\"\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/
+        http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n          <dc:title>Multiple
+        Cause of Death Public Use Files, 2004</dc:title>\n          <dc:creator>United
+        States Department of Health and Human Services. National Center for Health
+        Statistics</dc:creator>\n          <dc:subject>age</dc:subject>\n          <dc:subject>causes
+        of death</dc:subject>\n          <dc:subject>death</dc:subject>\n          <dc:subject>death
+        records</dc:subject>\n          <dc:subject>ethnicity</dc:subject>\n          <dc:subject>fatalities</dc:subject>\n
+        \         <dc:subject>gender</dc:subject>\n          <dc:subject>marital status</dc:subject>\n
+        \         <dc:subject>mortality rates</dc:subject>\n          <dc:subject>race</dc:subject>\n
+        \         <dc:description>This data collection includes information about
+        the cause of all recorded deaths occurring in the United States, American
+        Samoa, Guam, Northern Marianas, Puerto Rico and the Virgin Islands during
+        2004. Data are provided concerning underlying causes of death, multiple conditions
+        that caused the death, place of death, residence of the deceased (e.g., region,
+        division, state, county), whether an autopsy was performed, and the month
+        and day of the week of the death. In addition, data are supplied on the sex,
+        race, age, marital status, education, usual occupation, and origin or descent
+        of the deceased. Along with to the combined Territory Public-Use file, a subset
+        based on state of occurrence has been created for American Samoa, Guam, Northern
+        Marianas, Puerto Rico and the Virgin Islands. The multiple cause of death
+        fields were coded from the MANUAL OF THE INTERNATIONAL STATISTICAL CLASSIFICATION
+        OF DISEASES AND RELATED HEALTH PROBLEMS, TENTH REVISION (ICD-10).</dc:description>\n
+        \         <dc:identifier>20623</dc:identifier>\n          <dc:identifier>10.3886/ICPSR20623.v1</dc:identifier>\n
+        \         <dc:date>12-20-2007</dc:date>\n          <dc:type>administrative
+        records data</dc:type>\n          <dc:source>United States Standard Certificate
+        of Death</dc:source>\n          <dc:coverage>American Samoa</dc:coverage>\n
+        \         <dc:coverage>Guam</dc:coverage>\n          <dc:coverage>Northern
+        Mariana Islands</dc:coverage>\n          <dc:coverage>Puerto Rico</dc:coverage>\n
+        \         <dc:coverage>United States</dc:coverage>\n          <dc:coverage>Virgin
+        Islands of the United States</dc:coverage>\n          <dc:coverage>Global</dc:coverage>\n
+        \         <dc:coverage>2004</dc:coverage>\n        </oai_dc:dc>\n      </metadata>\n
+        \   </record>\n  </ListRecords>\n</OAI-PMH>\n"}
+    headers:
+      connection: [Keep-Alive]
+      content-type: [application/xml]
+      date: ['Fri, 17 Jul 2015 19:50:41 GMT']
+      keep-alive: ['timeout=5, max=100']
+      set-cookie: [JSESSIONID=AE7C21086125A754497B39BD996FE9F4; Path=/; HttpOnly]
+      transfer-encoding: [chunked]
+      x-ua-compatible: [IE=Edge]
+    status: {code: 200, message: OK}
+version: 1

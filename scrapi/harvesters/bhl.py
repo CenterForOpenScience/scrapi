@@ -12,7 +12,6 @@ def institution_name_parser(names):
     for inst in names:
         contributor = {
             'name': inst,
-            'email': '',
             'sameAs': []
         }
         contributor_list.append(contributor)
