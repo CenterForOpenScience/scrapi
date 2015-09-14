@@ -12,6 +12,7 @@ import time
 import logging
 from datetime import date, timedelta
 
+import xmltodict
 from lxml import etree
 
 from scrapi import requests
@@ -83,7 +84,11 @@ class ClinicalTrialsHarvester(XMLHarvester):
             ('enrollment', '//enrollment/node()'),
             ('armGroup', '//arm_group/arm_group_label/node()'),
             ('intervention', '//intervention/intervention_type/node()'),
-            ('eligibility', '//eligibility/node()'),
+            ('eligibility', ('//eligibility/node()', compose(
+                lambda x: map(xmltodict.parse, x),
+                lambda x: map(etree.tostring, x),
+                lambda x: filter(lambda y: not isinstance(y, str), x)
+            ))),
             ('link', '//link/url/node()'),
             ('responsible_party', '//responsible_party/responsible_party_full_name/node()')
         )
