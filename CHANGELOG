@@ -2,6 +2,12 @@
 ChangeLog
 *********
 
+0.9.5 (2015-09-14)
+==================
+- Clinical Trials harvester now dumps lxml elements to dicionaries in
+	the otherProperties field
+
+
 0.9.4 (2015-09-10)
 ==================
 - Biomedcentral harvester now filters out results from the future
