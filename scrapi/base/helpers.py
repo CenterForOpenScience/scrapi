@@ -71,11 +71,23 @@ def single_result(l, default=''):
 
 
 def compose(*functions):
-    '''
-    evaluates functions from right to left.
-    ex. compose(f, g)(*x, **y) = f(g(*x, **y))
+    ''' evaluates functions from right to left.
 
-    credit to sloria
+        >>> add = lambda x, y: x + y
+        >>> add3 = lambda x: x + 3
+        >>> divide2 = lambda x: x/2
+        >>> subtract4 = lambda x: x - 4
+        >>> subtract1 = compose(add3, subtract4)
+        >>> subtract1(1)
+        0
+        >>> compose(subtract1, add3)(4)
+        6
+        >>> compose(add3, add3, divide2)(4)
+        8
+        >>> compose(divide2, add3, add3)(4)
+        5
+        >>> compose(divide2, compose(add3, add3), add)(7, 3)
+        8
     '''
     def inner(func1, func2):
         return lambda *x, **y: func1(func2(*x, **y))
@@ -84,8 +96,13 @@ def compose(*functions):
 
 def updated_schema(old, new):
     ''' Creates a dictionary resulting from adding all keys/values of the second to the first
+        The second dictionary will overwrite the first.
 
-    The second dictionary will overwrite the first.'''
+        >>> old, new = {'name': 'ric', 'job': None}, {'name': 'Rick'}
+        >>> updated = updated_schema(old, new)
+        >>> sorted(updated.items(), key=updated.get)  # Dicts are unsorted, need to sort to test
+        [(u'job', None), (u'name', u'Rick')]
+    '''
     d = deepcopy(old)
     for key, value in new.items():
         if isinstance(value, dict) and old.get(key) and isinstance(old[key], dict):
@@ -96,18 +113,28 @@ def updated_schema(old, new):
 
 
 def default_name_parser(names):
-    contributor_list = []
-    for person in names:
-        name = HumanName(person)
-        contributor = {
-            'name': person,
-            'givenName': name.first,
-            'additionalName': name.middle,
-            'familyName': name.last,
-        }
-        contributor_list.append(contributor)
+    ''' Takes a list of names, and attempts to parse them
+    '''
+    return map(maybe_parse_name, names)
 
-    return contributor_list
+
+def maybe_parse_name(name):
+    ''' Tries to parse a name. If the parsing fails, returns a dictionary
+        with just the unparsed name (as per the SHARE schema)
+    '''
+    return null_on_error(parse_name(name)) or {'name': name}
+
+
+def parse_name(name):
+    ''' Takes a human name, parses it into given/middle/last names
+    '''
+    person = HumanName(name)
+    return {
+        'name': name,
+        'givenName': person.first,
+        'additionalName': person.middle,
+        'familyName': person.last
+    }
 
 
 def format_tags(all_tags, sep=','):
@@ -261,7 +288,15 @@ def null_on_error(task):
 
 
 def coerce_to_list(thing):
-    ''' If a value is not already a list or tuple, puts that value in a length 1 list'''
+    ''' If a value is not already a list or tuple, puts that value in a length 1 list
+
+        >>> coerce_to_list('hello')
+        [u'hello']
+        >>> coerce_to_list(['hello'])
+        [u'hello']
+        >>> coerce_to_list(('hello', 'goodbye'))
+        (u'hello', u'goodbye')
+    '''
     if not (isinstance(thing, list) or isinstance(thing, tuple)):
         return [thing]
     return thing
