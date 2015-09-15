@@ -18,9 +18,19 @@ from scrapi import requests
 URL_REGEX = re.compile(r'(https?://\S*\.\S*)')
 DOI_REGEX = re.compile(r'(doi:10\.\S*)')
 
-''' Takes a value, returns a function that always returns that value
-    Useful inside schemas for defining constants '''
-CONSTANT = lambda x: lambda *_, **__: x
+
+def CONSTANT(x):
+    ''' Takes a value, returns a function that always returns that value
+        Useful inside schemas for defining constants
+
+        >>> CONSTANT('hello')('my', 'name', verb='is')
+        u'hello'
+        >>> CONSTANT(['example', 'values'])()
+        [u'example', u'values']
+    '''
+    def inner(*y, **z):
+        return x
+    return inner
 
 
 def build_properties(*args):
@@ -48,6 +58,15 @@ def build_property(name, expr, description=None, uri=None):
 
 
 def single_result(l, default=''):
+    ''' A function that will return the first element of a list if it exists
+
+        >>> single_result(['hello', None])
+        u'hello'
+        >>> single_result([], default='hello')
+        u'hello'
+        >>> single_result([])
+        u''
+    '''
     return l[0] if l else default
 
 
