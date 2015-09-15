@@ -112,7 +112,7 @@ def elasticsearch():
 
 
 @task
-def test(cov=True, verbose=False, debug=False, doctests=True):
+def test(cov=True, doctests=True, verbose=False, debug=False, pdb=False):
     """
     Runs all tests in the 'tests/' directory
     """
@@ -125,6 +125,8 @@ def test(cov=True, verbose=False, debug=False, doctests=True):
         cmd += ' -s'
     if cov:
         cmd += ' --cov-report term-missing --cov-config .coveragerc --cov scrapi'
+    if pdb:
+        cmd += ' --pdb'
 
     run(cmd, pty=True)
 
