@@ -122,7 +122,7 @@ def maybe_parse_name(name):
     ''' Tries to parse a name. If the parsing fails, returns a dictionary
         with just the unparsed name (as per the SHARE schema)
     '''
-    return null_on_error(parse_name(name)) or {'name': name}
+    return null_on_error(parse_name)(name) or {'name': name}
 
 
 def parse_name(name):
@@ -302,11 +302,11 @@ def coerce_to_list(thing):
     return thing
 
 
-def date_formatter(date_string):
+def datetime_formatter(datetime_string):
     '''Takes an arbitrary date/time string and parses it, adds time
     zone information and returns a valid ISO-8601 datetime string
     '''
-    date_time = parser.parse(date_string)
+    date_time = parser.parse(datetime_string)
     if not date_time.tzinfo:
         date_time = date_time.replace(tzinfo=pytz.UTC)
     return date_time.isoformat()
