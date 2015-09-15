@@ -3,6 +3,10 @@ import sys
 
 class _Registry(dict):
 
+    __file__ = __file__
+
+    __name__ = __name__
+
     def __init__(self):
         dict.__init__(self)
 
