@@ -112,11 +112,13 @@ def elasticsearch():
 
 
 @task
-def test(cov=True, verbose=False, debug=False):
+def test(cov=True, verbose=False, debug=False, doctests=True):
     """
     Runs all tests in the 'tests/' directory
     """
-    cmd = 'py.test tests'
+    cmd = 'py.test scrapi tests'
+    if doctests:
+        cmd += ' --doctest-modules'
     if verbose:
         cmd += ' -v'
     if debug:
