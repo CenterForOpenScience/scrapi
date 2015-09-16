@@ -15,7 +15,7 @@ from nameparser import HumanName
 from scrapi import requests
 
 
-URL_REGEX = re.compile(r'(https?://\S*\.\S*)')
+URL_REGEX = re.compile(r'(https?:\/\/\S*\.[^\s\[\]\<\>\}\{\^]*)')
 DOI_REGEX = re.compile(r'(doi:10\.\S*)')
 
 ''' Takes a value, returns a function that always returns that value
@@ -118,11 +118,15 @@ def oai_process_uris(*args):
     provider_uris = []
     for item in identifiers:
         if 'doi' in item.lower():
-            doi = item.replace('doi:', '').replace('DOI:', '').strip()
-            if 'http://dx.doi.org/' in doi:
-                object_uris.append(doi)
-            else:
-                object_uris.append('http://dx.doi.org/{}'.format(doi))
+            try:
+                found_url_doi = URL_REGEX.search(item).group()
+                object_uris.append(found_url_doi)
+            except AttributeError:
+                try:
+                    just_doi = DOI_REGEX.search(item).group()
+                    object_uris.append('http://dx.doi.org/{}'.format(just_doi.replace('doi:', '').replace('DOI:', '').strip()))
+                except AttributeError:
+                    pass
 
         try:
             found_url = URL_REGEX.search(item).group()
@@ -132,7 +136,8 @@ def oai_process_uris(*args):
             if 'viewcontent' in found_url:
                 object_uris.append(found_url)
             else:
-                provider_uris.append(found_url)
+                if 'dx.doi.org' not in found_url:
+                    provider_uris.append(found_url)
 
     try:
         canonical_uri = (provider_uris + object_uris)[0]
