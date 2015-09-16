@@ -23,10 +23,10 @@ def CONSTANT(x):
     ''' Takes a value, returns a function that always returns that value
         Useful inside schemas for defining constants
 
-        >>> CONSTANT('hello')('my', 'name', verb='is')
-        u'hello'
-        >>> CONSTANT(['example', 'values'])()
-        [u'example', u'values']
+        >>> print(CONSTANT('hello')('my', 'name', verb='is'))
+        hello
+        >>> print(CONSTANT(['example', 'values'])())
+        ['example', 'values']
     '''
     def inner(*y, **z):
         return x
@@ -60,12 +60,13 @@ def build_property(name, expr, description=None, uri=None):
 def single_result(l, default=''):
     ''' A function that will return the first element of a list if it exists
 
-        >>> single_result(['hello', None])
-        u'hello'
-        >>> single_result([], default='hello')
-        u'hello'
-        >>> single_result([])
-        u''
+        >>> print(single_result(['hello', None]))
+        hello
+        >>> print(single_result([], default='hello'))
+        hello
+        >>> print(single_result([]))
+        <BLANKLINE>
+
     '''
     return l[0] if l else default
 
@@ -82,11 +83,11 @@ def compose(*functions):
         0
         >>> compose(subtract1, add3)(4)
         6
-        >>> compose(add3, add3, divide2)(4)
+        >>> compose(int, add3, add3, divide2)(4)
         8
-        >>> compose(divide2, add3, add3)(4)
+        >>> compose(int, divide2, add3, add3)(4)
         5
-        >>> compose(divide2, compose(add3, add3), add)(7, 3)
+        >>> compose(int, divide2, compose(add3, add3), add)(7, 3)
         8
     '''
     def inner(func1, func2):
@@ -100,8 +101,8 @@ def updated_schema(old, new):
 
         >>> old, new = {'name': 'ric', 'job': None}, {'name': 'Rick'}
         >>> updated = updated_schema(old, new)
-        >>> sorted(updated.items(), key=updated.get)  # Dicts are unsorted, need to sort to test
-        [(u'job', None), (u'name', u'Rick')]
+        >>> print(sorted(updated.items()))  # Dicts are unsorted, need to sort to test
+        [('job', None), ('name', 'Rick')]
     '''
     d = deepcopy(old)
     for key, value in new.items():
@@ -115,7 +116,7 @@ def updated_schema(old, new):
 def default_name_parser(names):
     ''' Takes a list of names, and attempts to parse them
     '''
-    return map(maybe_parse_name, names)
+    return list(map(maybe_parse_name, names))
 
 
 def maybe_parse_name(name):
@@ -290,16 +291,16 @@ def null_on_error(task):
 def coerce_to_list(thing):
     ''' If a value is not already a list or tuple, puts that value in a length 1 list
 
-        >>> coerce_to_list('hello')
-        [u'hello']
-        >>> coerce_to_list(['hello'])
-        [u'hello']
-        >>> coerce_to_list(('hello', 'goodbye'))
-        (u'hello', u'goodbye')
+        >>> print(coerce_to_list('hello'))
+        ['hello']
+        >>> print(coerce_to_list(['hello']))
+        ['hello']
+        >>> print(coerce_to_list(('hello', 'goodbye')))
+        ['hello', 'goodbye']
     '''
     if not (isinstance(thing, list) or isinstance(thing, tuple)):
         return [thing]
-    return thing
+    return list(thing)
 
 
 def datetime_formatter(datetime_string):
