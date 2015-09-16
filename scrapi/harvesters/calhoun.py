@@ -14,6 +14,7 @@ class CalhounHarvester(OAIHarvester):
     short_name = 'calhoun'
     long_name = 'Calhoun: Institutional Archive of the Naval Postgraduate School'
     url = 'http://calhoun.nps.edu'
+    verify = False
 
     base_url = 'http://calhoun.nps.edu/oai/request'
     property_list = [
