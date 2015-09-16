@@ -38,13 +38,18 @@ class TestHelpers(object):
 
     def test_extract_uris(self):
         identifiers = ['doi:10.whateverwhatever', 'http://alloutofbubblegum.com',
-                       'http://viewcontent.cgi/iamacoolpdf', 'http://GETTHETABLES.com']
+                       'http://viewcontent.cgi/iamacoolpdf', 'http://GETTHETABLES.com',
+                       'Vahedifard, F. et al. (2013). G??otechnique 63, No. 6, 451???462 [http://dx.doi.org/10.1680/geot.11.P.130] ',
+                       'I am a bunch of text but I also have a doi:10.10.thisisarealdoi']
 
         uri_dict = helpers.oai_process_uris(identifiers)
 
         assert uri_dict == {
             'canonicalUri': 'http://alloutofbubblegum.com',
-            'objectUris': ['http://dx.doi.org/10.whateverwhatever', 'http://viewcontent.cgi/iamacoolpdf'],
+            'objectUris': ['http://dx.doi.org/10.whateverwhatever',
+                           'http://viewcontent.cgi/iamacoolpdf',
+                           'http://dx.doi.org/10.1680/geot.11.P.130',
+                           'http://dx.doi.org/10.10.thisisarealdoi'],
             'providerUris': ['http://alloutofbubblegum.com', 'http://GETTHETABLES.com']
         }
 
