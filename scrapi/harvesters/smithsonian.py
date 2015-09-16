@@ -5,8 +5,6 @@ Example API call: http://repository.si.edu/oai/request?verb=ListRecords&metadata
 '''
 from __future__ import unicode_literals
 
-import re
-
 from scrapi.base import helpers
 from scrapi.base import OAIHarvester
 

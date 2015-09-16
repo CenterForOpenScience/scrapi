@@ -5,8 +5,6 @@ Example query: https://cn.dataone.org/cn/v1/query/solr/?q=dateModified:[NOW-5DAY
 
 from __future__ import unicode_literals
 
-import re
-
 import logging
 from datetime import timedelta, date
 
