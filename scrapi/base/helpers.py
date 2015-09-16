@@ -23,10 +23,10 @@ def CONSTANT(x):
     ''' Takes a value, returns a function that always returns that value
         Useful inside schemas for defining constants
 
-        >>> print(CONSTANT('hello')('my', 'name', verb='is'))
-        hello
-        >>> print(CONSTANT(['example', 'values'])())
-        ['example', 'values']
+        >>> CONSTANT(7)('my', 'name', verb='is')
+        7
+        >>> CONSTANT([123, 456])()
+        [123, 456]
     '''
     def inner(*y, **z):
         return x
@@ -101,8 +101,13 @@ def updated_schema(old, new):
 
         >>> old, new = {'name': 'ric', 'job': None}, {'name': 'Rick'}
         >>> updated = updated_schema(old, new)
-        >>> print(sorted(updated.items()))  # Dicts are unsorted, need to sort to test
-        [('job', None), ('name', 'Rick')]
+        >>> len(updated.keys())
+        2
+        >>> print(updated['name'])
+        Rick
+        >>> updated['job'] is None
+        True
+
     '''
     d = deepcopy(old)
     for key, value in new.items():
@@ -291,12 +296,21 @@ def null_on_error(task):
 def coerce_to_list(thing):
     ''' If a value is not already a list or tuple, puts that value in a length 1 list
 
-        >>> print(coerce_to_list('hello'))
-        ['hello']
-        >>> print(coerce_to_list(['hello']))
-        ['hello']
-        >>> print(coerce_to_list(('hello', 'goodbye')))
-        ['hello', 'goodbye']
+        >>> niceties = coerce_to_list('hello')
+        >>> len(niceties)
+        1
+        >>> print(niceties[0])
+        hello
+        >>> niceties2 = coerce_to_list(['hello'])
+        >>> niceties2 == niceties
+        True
+        >>> niceties3 = (coerce_to_list(('hello', 'goodbye')))
+        >>> len(niceties3)
+        2
+        >>> print(niceties3[0])
+        hello
+        >>> print(niceties3[1])
+        goodbye
     '''
     if not (isinstance(thing, list) or isinstance(thing, tuple)):
         return [thing]
