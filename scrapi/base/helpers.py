@@ -151,13 +151,19 @@ def seperate_provider_object_uris(identifiers):
     return provider_uris, object_uris
 
 
-def oai_process_uris(*args):
-    identifiers = gather_identifiers(args)
+def oai_process_uris(*args, **kwargs):
+    use_doi = kwargs.get('use_doi', False)
 
+    identifiers = gather_identifiers(args)
     provider_uris, object_uris = seperate_provider_object_uris(identifiers)
 
     try:
-        canonical_uri = (provider_uris + object_uris)[0]
+        if use_doi:
+            for uri in object_uris:
+                if 'dx.doi.org' in uri:
+                    canonical_uri = uri
+        else:
+            canonical_uri = (provider_uris + object_uris)[0]
     except IndexError:
         raise ValueError('No Canonical URI was returned for this record.')
 
