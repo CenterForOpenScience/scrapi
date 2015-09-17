@@ -122,14 +122,21 @@ def gather_identifiers(args):
     return identifiers
 
 
+def maybe_group(match):
+    '''
+    evaluates an regular expression match object, returns the group or none
+    '''
+    return match.group() if match else None
+
+
 def gather_object_uris(identifiers):
     object_uris = []
     for item in identifiers:
         if 'doi' in item.lower():
             url_doi, just_doi = URL_REGEX.search(item), DOI_REGEX.search(item)
-            url_doi = url_doi.group() if url_doi else None
-            just_doi = format_doi_as_url(just_doi.group()) if just_doi else None
-            object_uris.append(url_doi or just_doi)
+            url_doi = maybe_group(url_doi)
+            just_doi = maybe_group(just_doi)
+            object_uris.append(url_doi or format_doi_as_url(just_doi))
 
     return object_uris
 
@@ -139,8 +146,7 @@ def seperate_provider_object_uris(identifiers):
     provider_uris = []
     for item in identifiers:
 
-        found_url = URL_REGEX.search(item)
-        found_url = found_url.group() if found_url else None
+        found_url = maybe_group(URL_REGEX.search(item))
 
         if found_url:
             if 'viewcontent' in found_url:
