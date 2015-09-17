@@ -210,8 +210,12 @@ For example, to run a harvester between the dates of March 14th and March 16th 2
 $ invoke harvester harvester-name --start 2015-03-14 --end 2015-03-16
 ```
 
-Either --start or --end can also be used on their own. Not supplying arguments will default to starting the number of days specified in ```settings.DAYS_BACK``` and ending on the current date.
+Either --start (-s) or --end (-e) can also be used on their own. Not supplying arguments will default to starting the number of days specified in ```settings.DAYS_BACK``` and ending on the current date.
 
+If --end is given with no --start, start will default to the number of days specified in ```settings.DAYS_BACK``` before the given end date.
+
+
+### Automated OAI PMH Harvester Creation
 Writing a harvester for inclusion with scrAPI?  If the provider makes their metadata available using the OAI-PMH standard, then [autooai](https://github.com/erinspace/autooai) is a utility that will do most of the work for you.
 
 
