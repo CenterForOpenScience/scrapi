@@ -158,23 +158,8 @@ def harvester(harvester_name, async=False, start=None, end=None):
     if not registry.get(harvester_name):
         raise ValueError('No such harvesters {}'.format(harvester_name))
 
-    if end:
-        if parse(end).date() > date.today():
-            logger.info('End date is in the future, deafaulting to today!')
-            end = date.today()
-        else:
-            end = parse(end).date()
-    else:
-        end = date.today()
-
-    if start:
-        if parse(start).date() > end:
-            logger.info('Start date is after end date, defaulting to standard start')
-            start = end - timedelta(settings.DAYS_BACK)
-        else:
-            start = parse(start).date()
-    else:
-        start = end - timedelta(settings.DAYS_BACK)
+    end = parse(end).date() if end else date.today()
+    start = parse(start).date() if start else end - timedelta(settings.DAYS_BACK)
 
     run_harvester.delay(harvester_name, start_date=start, end_date=end)
 
