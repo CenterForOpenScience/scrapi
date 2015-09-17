@@ -15,7 +15,7 @@ from nameparser import HumanName
 from scrapi import requests
 
 
-URL_REGEX = re.compile(r'(https?://\S*\.\S*)')
+URL_REGEX = re.compile(r'(https?:\/\/\S*\.[^\s\[\]\<\>\}\{\^]*)')
 DOI_REGEX = re.compile(r'(doi:10\.\S*)')
 
 ''' Takes a value, returns a function that always returns that value
@@ -105,7 +105,13 @@ def format_tags(all_tags, sep=','):
     return list(set([six.text_type(tag.lower().strip()) for tag in tags if tag.strip()]))
 
 
-def oai_process_uris(*args):
+def format_doi_as_url(doi):
+    if doi:
+        plain_doi = doi.replace('doi:', '').replace('DOI:', '').strip()
+        return 'http://dx.doi.org/{}'.format(plain_doi)
+
+
+def gather_identifiers(args):
     identifiers = []
     for arg in args:
         if isinstance(arg, list):
@@ -114,28 +120,58 @@ def oai_process_uris(*args):
         elif arg:
             identifiers.append(arg)
 
+    return identifiers
+
+
+def maybe_group(match):
+    '''
+    evaluates an regular expression match object, returns the group or none
+    '''
+    return match.group() if match else None
+
+
+def gather_object_uris(identifiers):
     object_uris = []
-    provider_uris = []
     for item in identifiers:
         if 'doi' in item.lower():
-            doi = item.replace('doi:', '').replace('DOI:', '').strip()
-            if 'http://dx.doi.org/' in doi:
-                object_uris.append(doi)
-            else:
-                object_uris.append('http://dx.doi.org/{}'.format(doi))
+            url_doi, just_doi = URL_REGEX.search(item), DOI_REGEX.search(item)
+            url_doi = maybe_group(url_doi)
+            just_doi = maybe_group(just_doi)
+            object_uris.append(url_doi or format_doi_as_url(just_doi))
 
-        try:
-            found_url = URL_REGEX.search(item).group()
-        except AttributeError:
-            found_url = None
+    return object_uris
+
+
+def seperate_provider_object_uris(identifiers):
+    object_uris = gather_object_uris(identifiers)
+    provider_uris = []
+    for item in identifiers:
+
+        found_url = maybe_group(URL_REGEX.search(item))
+
         if found_url:
             if 'viewcontent' in found_url:
                 object_uris.append(found_url)
             else:
-                provider_uris.append(found_url)
+                if 'dx.doi.org' not in found_url:
+                    provider_uris.append(found_url)
+
+    return provider_uris, object_uris
+
+
+def oai_process_uris(*args, **kwargs):
+    use_doi = kwargs.get('use_doi', False)
+
+    identifiers = gather_identifiers(args)
+    provider_uris, object_uris = seperate_provider_object_uris(identifiers)
 
     try:
-        canonical_uri = (provider_uris + object_uris)[0]
+        if use_doi:
+            for uri in object_uris:
+                if 'dx.doi.org' in uri:
+                    canonical_uri = uri
+        else:
+            canonical_uri = (provider_uris + object_uris)[0]
     except IndexError:
         raise ValueError('No Canonical URI was returned for this record.')
 

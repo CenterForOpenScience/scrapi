@@ -65,3 +65,5 @@ archive/*
 
 # Emacs edited files:
 *.*~
+
+*.sublime*
