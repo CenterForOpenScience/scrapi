@@ -126,3 +126,10 @@ class TestHelpers(object):
 
         assert provider_uris == ['http://get_the_tables.net']
         assert object_uris == ['http://dx.doi.org/10.whateverwhatever', 'http://cgi.viewcontent.apdf.pdf']
+
+    def test_format_doi_as_url(self):
+        doi1 = ' doi:10.dudleyzrule '
+        doi2 = 'DOI:10.getthetables '
+
+        assert helpers.format_doi_as_url(doi1) == 'http://dx.doi.org/10.dudleyzrule'
+        assert helpers.format_doi_as_url(doi2) == 'http://dx.doi.org/10.getthetables'
