@@ -105,6 +105,11 @@ def format_tags(all_tags, sep=','):
     return list(set([six.text_type(tag.lower().strip()) for tag in tags if tag.strip()]))
 
 
+def format_doi_as_url(doi):
+    plain_doi = doi.replace('doi:', '').replace('DOI:', '').strip()
+    return 'http://dx.doi.org/{}'.format(plain_doi)
+
+
 def gather_identifiers(args):
     identifiers = []
     for arg in args:
@@ -121,15 +126,11 @@ def gather_object_uris(identifiers):
     object_uris = []
     for item in identifiers:
         if 'doi' in item.lower():
-            try:
-                found_url_doi = URL_REGEX.search(item).group()
-                object_uris.append(found_url_doi)
-            except AttributeError:
-                try:
-                    just_doi = DOI_REGEX.search(item).group()
-                    object_uris.append('http://dx.doi.org/{}'.format(just_doi.replace('doi:', '').replace('DOI:', '').strip()))
-                except AttributeError:
-                    pass
+            url_doi, just_doi = URL_REGEX.search(item), DOI_REGEX.search(item)
+            url_doi = url_doi.group() if url_doi else None
+            just_doi = format_doi_as_url(just_doi.group()) if just_doi else None
+            object_uris.append(url_doi or just_doi)
+
     return object_uris
 
 
@@ -137,10 +138,10 @@ def seperate_provider_object_uris(identifiers):
     object_uris = gather_object_uris(identifiers)
     provider_uris = []
     for item in identifiers:
-        try:
-            found_url = URL_REGEX.search(item).group()
-        except AttributeError:
-            found_url = None
+
+        found_url = URL_REGEX.search(item)
+        found_url = found_url.group() if found_url else None
+
         if found_url:
             if 'viewcontent' in found_url:
                 object_uris.append(found_url)
