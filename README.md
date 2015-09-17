@@ -202,7 +202,7 @@ For local development, running the ```mit``` harvester is recommended.
 
 Note: harvester-name is the same as the defined harvester "short name".
 
-Invoke a harvester for a certain start date with the ```--start``` argument. Invole a harvester for a certain end date with the ```--end``` argument.
+Invoke a harvester for a certain start date with the ```--start``` or ```-s```argument. Invoke a harvester for a certain end date with the ```--end``` or ```-e```argument.
 
 For example, to run a harvester between the dates of March 14th and March 16th 2015, run:
 
@@ -210,7 +210,7 @@ For example, to run a harvester between the dates of March 14th and March 16th 2
 $ invoke harvester harvester-name --start 2015-03-14 --end 2015-03-16
 ```
 
-Either --start (-s) or --end (-e) can also be used on their own. Not supplying arguments will default to starting the number of days specified in ```settings.DAYS_BACK``` and ending on the current date.
+Either --start or --end can also be used on their own. Not supplying arguments will default to starting the number of days specified in ```settings.DAYS_BACK``` and ending on the current date.
 
 If --end is given with no --start, start will default to the number of days specified in ```settings.DAYS_BACK``` before the given end date.
 
