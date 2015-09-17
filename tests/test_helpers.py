@@ -47,9 +47,9 @@ class TestHelpers(object):
         assert uri_dict == {
             'canonicalUri': 'http://alloutofbubblegum.com',
             'objectUris': ['http://dx.doi.org/10.whateverwhatever',
-                           'http://viewcontent.cgi/iamacoolpdf',
                            'http://dx.doi.org/10.1680/geot.11.P.130',
-                           'http://dx.doi.org/10.10.thisisarealdoi'],
+                           'http://dx.doi.org/10.10.thisisarealdoi',
+                           'http://viewcontent.cgi/iamacoolpdf'],
             'providerUris': ['http://alloutofbubblegum.com', 'http://GETTHETABLES.com']
         }
 
