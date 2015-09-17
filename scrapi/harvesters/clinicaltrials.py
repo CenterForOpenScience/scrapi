@@ -21,7 +21,7 @@ from scrapi.base import XMLHarvester
 from scrapi.util import copy_to_unicode
 from scrapi.linter.document import RawDocument
 from scrapi.base.schemas import default_name_parser
-from scrapi.base.helpers import compose, single_result, build_properties, date_formatter
+from scrapi.base.helpers import compose, single_result, build_properties, datetime_formatter
 
 logger = logging.getLogger(__name__)
 
@@ -49,7 +49,7 @@ class ClinicalTrialsHarvester(XMLHarvester):
         "uris": {
             "canonicalUri": ("//required_header/url/node()", single_result)
         },
-        "providerUpdatedDateTime": ("lastchanged_date/node()", compose(date_formatter, single_result)),
+        "providerUpdatedDateTime": ("lastchanged_date/node()", compose(datetime_formatter, single_result)),
         "title": ('//official_title/node()', '//brief_title/node()', lambda x, y: single_result(x) or single_result(y)),
         "description": ('//brief_summary/textblock/node()', '//brief_summary/textblock/node()', lambda x, y: single_result(x) or single_result(y)),
         "tags": ("//keyword/node()", lambda tags: [tag.lower() for tag in tags]),

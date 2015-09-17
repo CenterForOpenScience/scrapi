@@ -18,7 +18,7 @@ from scrapi import requests
 from scrapi import settings
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
-from scrapi.base.helpers import default_name_parser, build_properties, date_formatter
+from scrapi.base.helpers import default_name_parser, build_properties, datetime_formatter
 
 logger = logging.getLogger(__name__)
 
@@ -34,7 +34,7 @@ class FigshareHarvester(JSONHarvester):
         'title': '/title',
         'description': '/description',
         'contributors': ('/authors', lambda x: default_name_parser([person['author_name'] for person in x])),
-        'providerUpdatedDateTime': ('/modified_date', date_formatter),
+        'providerUpdatedDateTime': ('/modified_date', datetime_formatter),
         'uris': {
             'canonicalUri': ('/DOI', lambda x: x[0] if isinstance(x, list) else x),
             'providerUris': [

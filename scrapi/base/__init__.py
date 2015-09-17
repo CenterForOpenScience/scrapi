@@ -21,7 +21,7 @@ from scrapi.base.helpers import (
     build_properties,
     oai_get_records_and_token,
     compose,
-    date_formatter,
+    datetime_formatter,
     null_on_error,
     coerce_to_list
 )
@@ -152,7 +152,7 @@ class OAIHarvester(XMLHarvester):
 
     def format_property(self, property):
         if property == 'date':
-            fn = compose(lambda x: map(null_on_error(date_formatter), x), coerce_to_list, self.resolve_property)
+            fn = compose(lambda x: map(null_on_error(datetime_formatter), x), coerce_to_list, self.resolve_property)
         else:
             fn = self.resolve_property
         return (property, (

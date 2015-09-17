@@ -17,14 +17,14 @@ from scrapi import requests
 from scrapi import settings
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
-from scrapi.base.helpers import default_name_parser, build_properties, date_formatter
+from scrapi.base.helpers import default_name_parser, build_properties, datetime_formatter
 
 logger = logging.getLogger(__name__)
 
 
 try:
     from scrapi.settings import HARVARD_DATAVERSE_API_KEY
-except ImportError:
+except ImportError:  # pragma: no cover
     HARVARD_DATAVERSE_API_KEY = None
     logger.error('No HARVARD_DATAVERSE_API_KEY found, Harvard Dataverse will always return []')
 
@@ -44,7 +44,7 @@ class HarvardDataverseHarvester(JSONHarvester):
         'title': '/name',
         'description': '/description',
         'contributors': ('/authors', default_name_parser),
-        'providerUpdatedDateTime': ('/published_at', date_formatter),
+        'providerUpdatedDateTime': ('/published_at', datetime_formatter),
         'uris': {
             'canonicalUri': '/url',
             'objectUris': [

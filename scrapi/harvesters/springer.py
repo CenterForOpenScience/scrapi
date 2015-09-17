@@ -17,7 +17,7 @@ from scrapi import requests
 from scrapi import settings
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
-from scrapi.base.helpers import build_properties, date_formatter, compose, default_name_parser
+from scrapi.base.helpers import build_properties, datetime_formatter, compose, default_name_parser
 
 logger = logging.getLogger(__name__)
 
@@ -61,7 +61,7 @@ class SpringerlHarvester(JSONHarvester):
             ),
             'uris': ('/url', process_urls),
             'title': '/title',
-            'providerUpdatedDateTime': ('/publicationDate', date_formatter),
+            'providerUpdatedDateTime': ('/publicationDate', datetime_formatter),
             'description': '/abstract',
             'freeToRead': {
                 'startDate': ('/openaccess', '/publicationDate', lambda x, y: y if x == 'true' else None)

@@ -12,44 +12,31 @@ import json
 import logging
 from datetime import date, timedelta
 
-from nameparser import HumanName
-
 from scrapi import requests
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
-from scrapi.base.helpers import build_properties, date_formatter
+from scrapi.base.helpers import (
+    compose,
+    parse_name,
+    coerce_to_list,
+    build_properties,
+    datetime_formatter
+)
 
 logger = logging.getLogger(__name__)
+
+url_from_guid = 'https://osf.io{}'.format
 
 
 def process_contributors(authors):
 
     contributor_list = []
     for person in authors:
-        name = HumanName(person['fullname'])
-        contributor = {
-            'name': person['fullname'],
-            'givenName': name.first,
-            'additionalName': name.middle,
-            'familyName': name.last,
-        }
+        contributor = parse_name(person['fullname'])
+        contributor['sameAs'] = [url_from_guid(person['url'])]
         contributor_list.append(contributor)
 
     return contributor_list
-
-
-def process_null(entry):
-    if entry is None:
-        return ''
-    else:
-        return entry
-
-
-def process_tags(entry):
-    if isinstance(entry, list):
-        return entry
-    else:
-        return [entry]
 
 
 class OSFHarvester(JSONHarvester):
@@ -67,13 +54,14 @@ class OSFHarvester(JSONHarvester):
     def schema(self):
         return {
             'contributors': ('/contributors', process_contributors),
-            'title': ('/title', process_null),
-            'providerUpdatedDateTime': ('/date_registered', date_formatter),
-            'description': ('/description', process_null),
+            'title': ('/title', lambda x: x or ''),
+            'providerUpdatedDateTime': ('/date_registered', datetime_formatter),
+            'description': '/description',
             'uris': {
-                'canonicalUri': ('/url', lambda x: 'http://osf.io' + x),
+                'canonicalUri': ('/url', url_from_guid),
+                'providerUris': ('/url', compose(coerce_to_list, url_from_guid))
             },
-            'tags': ('/tags', process_tags),
+            'tags': '/tags',
             'otherProperties': build_properties(
                 ('parent_title', '/parent_title'),
                 ('category', '/category'),
@@ -114,10 +102,7 @@ class OSFHarvester(JSONHarvester):
     def get_records(self, search_url):
         records = requests.get(search_url)
 
-        try:
-            total = int(records.json()['counts']['registration'])
-        except KeyError:
-            return []
+        total = int(records.json()['counts']['registration'])
 
         from_arg = 0
         all_records = []
