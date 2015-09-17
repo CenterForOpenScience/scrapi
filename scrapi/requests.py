@@ -13,6 +13,7 @@ from datetime import datetime
 import six
 import furl
 import requests
+from requests import exceptions  # noqa
 from cassandra.cqlengine import columns, models
 from requests.structures import CaseInsensitiveDict
 
