@@ -83,3 +83,46 @@ class TestHelpers(object):
         extracted_doi = helpers.extract_doi_from_text(text)
 
         assert extracted_doi == 'http://dx.doi.org/10.1021/woowoowoo'
+
+    def test_gather_identifiers(self):
+        identifiers = [['doi:10.whateverwhatever',
+                       'http://viewcontent.cgi/iamacoolpdf'],
+                       '451???462 [http://dx.doi.org/10.1680/geot.11.P.130]',
+                       'I am a bunch of text but I also have a doi:10.10.thisisarealdoi',
+                       ['http://bubbaray.com', 'http://devon.net']]
+
+        gathered = helpers.gather_identifiers(identifiers)
+
+        assert gathered == ['doi:10.whateverwhatever',
+                            'http://viewcontent.cgi/iamacoolpdf',
+                            '451???462 [http://dx.doi.org/10.1680/geot.11.P.130]',
+                            'I am a bunch of text but I also have a doi:10.10.thisisarealdoi',
+                            'http://bubbaray.com',
+                            'http://devon.net']
+
+    def test_gather_object_uris(self):
+        identifiers = ['doi:10.whateverwhatever',
+                       'http://viewcontent.cgi/iamacoolpdf',
+                       '451???462 [http://dx.doi.org/10.1680/geot.11.P.130]',
+                       'I am a bunch of text but I also have a doi:10.10.thisisarealdoi',
+                       'http://bubbaray.com',
+                       'http://devon.net']
+        object_uris = helpers.gather_object_uris(identifiers)
+
+        assert object_uris == [
+            'http://dx.doi.org/10.whateverwhatever',
+            'http://dx.doi.org/10.1680/geot.11.P.130',
+            'http://dx.doi.org/10.10.thisisarealdoi'
+        ]
+
+    def test_seperate_provider_object_uris(self):
+        identifiers = [
+            'http://dx.doi.org/10.whateverwhatever',
+            'http://cgi.viewcontent.apdf.pdf',
+            'http://get_the_tables.net'
+        ]
+
+        provider_uris, object_uris = helpers.seperate_provider_object_uris(identifiers)
+
+        assert provider_uris == ['http://get_the_tables.net']
+        assert object_uris == ['http://dx.doi.org/10.whateverwhatever', 'http://cgi.viewcontent.apdf.pdf']
