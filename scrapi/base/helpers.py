@@ -106,8 +106,9 @@ def format_tags(all_tags, sep=','):
 
 
 def format_doi_as_url(doi):
-    plain_doi = doi.replace('doi:', '').replace('DOI:', '').strip()
-    return 'http://dx.doi.org/{}'.format(plain_doi)
+    if doi:
+        plain_doi = doi.replace('doi:', '').replace('DOI:', '').strip()
+        return 'http://dx.doi.org/{}'.format(plain_doi)
 
 
 def gather_identifiers(args):
