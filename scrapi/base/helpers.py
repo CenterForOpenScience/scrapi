@@ -105,7 +105,7 @@ def format_tags(all_tags, sep=','):
     return list(set([six.text_type(tag.lower().strip()) for tag in tags if tag.strip()]))
 
 
-def oai_process_uris(*args):
+def gather_identifiers(args):
     identifiers = []
     for arg in args:
         if isinstance(arg, list):
@@ -114,8 +114,11 @@ def oai_process_uris(*args):
         elif arg:
             identifiers.append(arg)
 
+    return identifiers
+
+
+def gather_object_uris(identifiers):
     object_uris = []
-    provider_uris = []
     for item in identifiers:
         if 'doi' in item.lower():
             try:
@@ -127,7 +130,13 @@ def oai_process_uris(*args):
                     object_uris.append('http://dx.doi.org/{}'.format(just_doi.replace('doi:', '').replace('DOI:', '').strip()))
                 except AttributeError:
                     pass
+    return object_uris
 
+
+def seperate_provider_object_uris(identifiers):
+    object_uris = gather_object_uris(identifiers)
+    provider_uris = []
+    for item in identifiers:
         try:
             found_url = URL_REGEX.search(item).group()
         except AttributeError:
@@ -138,6 +147,14 @@ def oai_process_uris(*args):
             else:
                 if 'dx.doi.org' not in found_url:
                     provider_uris.append(found_url)
+
+    return provider_uris, object_uris
+
+
+def oai_process_uris(*args):
+    identifiers = gather_identifiers(args)
+
+    provider_uris, object_uris = seperate_provider_object_uris(identifiers)
 
     try:
         canonical_uri = (provider_uris + object_uris)[0]
