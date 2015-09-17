@@ -10,7 +10,6 @@ import six
 from furl import furl
 from lxml import etree
 
-from scrapi import util
 from scrapi import registry
 from scrapi import settings
 from scrapi.base.schemas import OAISCHEMA
