@@ -27,15 +27,14 @@ from dateutil.parser import parse
 from scrapi import requests
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
-from scrapi.base.helpers import build_properties, date_formatter
+from scrapi.base.helpers import build_properties, date_formatter, single_result
 
 
 logger = logging.getLogger(__name__)
 
 ORGANIZATIONS = (
-    "organization", "Organization", "fund", "Fund", "canada", "Canada", "agriculture", "Agriculture", "commitee",
-    "Commitee", "international", "International", "council", "Council", "office", "Office", "of", "Of",
-    "observation", "Observation", "LWBIN", "CoCoRaHS", "USGS", "NSIDC"
+    "organization", "fund", "canada", "agriculture", "commitee", "international", "council", "office", "of",
+    "observation", "lwbin", "cocorahs", "usgs", "nsidc"
 )
 
 
@@ -43,7 +42,7 @@ def is_organization(name):
     """Return a boolean to indicate if the name passed to the function is an organization
     """
     words = name.split(' ')
-    return any(word.strip(";") in ORGANIZATIONS for word in words)
+    return any(word.strip(";").lower() in ORGANIZATIONS for word in words)
 
 
 def process_contributors(authors, emails):
@@ -68,26 +67,29 @@ def process_contributors(authors, emails):
     if len(authors) != 1 or len(emails) != 1 or emails[0] == u'':
         append_emails = False  # append the email to the author only when 1 record is observed
 
-    for ind, person in enumerate(authors):
-        name = HumanName(person)
-        contributor = {
-            'name': person,
-            'givenName': name.first,
-            'additionalName': name.middle,
-            'familyName': name.last,
-            'sameAs': []
-        }
+    for i, author in enumerate(authors):
+        if is_organization(author):
+            contributor = {
+                'name': author,
+                'sameAs': []
+            }
+        else:
+            name = HumanName(author)
+            contributor = {
+                'name': author,
+                'givenName': name.first,
+                'additionalName': name.middle,
+                'familyName': name.last,
+                'sameAs': []
+            }
         if append_emails:
-            contributor['email'] = emails[ind]
+            contributor['email'] = emails[i]
         contributor_list.append(contributor)
 
     if not append_emails and emails[0] != u'':
         for email in emails:
             contributor = {
                 'name': '',
-                'givenName': '',
-                'additionalName': '',
-                'familyName': '',
                 'email': email,
                 'sameAs': [],
             }
@@ -97,7 +99,7 @@ def process_contributors(authors, emails):
 
 
 def process_licenses(license_title, license_url, license_id):
-    """Process licenses to comply with the noormalized schema
+    """Process licenses to comply with the normalized schema
     """
 
     if not license_url:
@@ -114,7 +116,7 @@ def process_licenses(license_title, license_url, license_id):
 def construct_url(url, dataset_path, end_point):
     """Return a url that directs back to the page on LBWIN Data Hub instead of the source page.
 
-    Keyword arguments:
+    Arguments:
     url -- host url
     dataset_path -- parent path of all datasets
     end_point -- name of datasets
@@ -124,7 +126,7 @@ def construct_url(url, dataset_path, end_point):
 
 
 def process_object_uris(url, extras):
-    """Extract doi from /extras, and return a list or object uris including /url and doi if it exists.
+    """Extract doi from /extras, and return a list of object uris including /url and doi if it exists.
     """
     doi = ""
     for d in extras:
@@ -150,8 +152,8 @@ class LWBINHarvester(JSONHarvester):
     @property
     def schema(self):
         return {
-            'title': ('/title', lambda x: x if x else ''),
-            'description': ('/notes', lambda x: x[0] if (isinstance(x, list) and x) else x or ''),
+            'title': ('/title', lambda x: x or ''),
+            'description': ('/notes', lambda x: single_result(x, x) or ''),
             'providerUpdatedDateTime': ('/metadata_modified', date_formatter),
             'uris': {
                 'canonicalUri': ('/name', lambda x: construct_url(self.url, self.dataset_path, x)),  # Construct new urls directing to LWBIN
@@ -187,18 +189,15 @@ class LWBINHarvester(JSONHarvester):
 
         base_url = 'http://130.179.67.140/api/3/action/current_package_list_with_resources'
 
-        doc_list = []
         records = requests.get(base_url).json()['result']
         total = len(records)  # Total number of documents
         logger.info('{} documents to be harvested'.format(total))
 
-        for record in records:
-            doc_id = record['id']
-            doc_list.append(RawDocument({
+        return [
+            RawDocument({
                 'doc': json.dumps(record),
                 'source': self.short_name,
-                'docID': doc_id,
+                'docID': record['id'],
                 'filetype': 'json'
-            }))
-
-        return doc_list
+            }) for record in records
+        ]
