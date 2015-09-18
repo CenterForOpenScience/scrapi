@@ -131,13 +131,23 @@ def maybe_group(match):
 
 
 def gather_object_uris(identifiers):
+    '''
+    Gathers object URIs if there are any
+    >>> gathered = gather_object_uris(['nopenope', 'doi:10.10.gettables', 'http://dx.doi.org/yep'])
+    >>> print(gathered[0])
+    http://dx.doi.org/10.10.gettables
+    >>> print(gathered[1])
+    http://dx.doi.org/yep
+    '''
     object_uris = []
     for item in identifiers:
         if 'doi' in item.lower():
             url_doi, just_doi = URL_REGEX.search(item), DOI_REGEX.search(item)
             url_doi = maybe_group(url_doi)
             just_doi = maybe_group(just_doi)
-            object_uris.append(url_doi or format_doi_as_url(just_doi))
+
+            if url_doi or just_doi:
+                object_uris.append(url_doi or format_doi_as_url(just_doi))
 
     return object_uris
 
@@ -165,13 +175,13 @@ def oai_process_uris(*args, **kwargs):
     identifiers = gather_identifiers(args)
     provider_uris, object_uris = seperate_provider_object_uris(identifiers)
 
+    potential_uris = (provider_uris + object_uris)
+    if use_doi:
+        for uri in object_uris:
+            if 'dx.doi.org' in uri:
+                potential_uris = [uri]
     try:
-        if use_doi:
-            for uri in object_uris:
-                if 'dx.doi.org' in uri:
-                    canonical_uri = uri
-        else:
-            canonical_uri = (provider_uris + object_uris)[0]
+        canonical_uri = potential_uris[0]
     except IndexError:
         raise ValueError('No Canonical URI was returned for this record.')
 
@@ -183,13 +193,7 @@ def oai_process_uris(*args, **kwargs):
 
 
 def oai_extract_dois(*args):
-    identifiers = []
-    for arg in args:
-        if isinstance(arg, list):
-            for identifier in arg:
-                identifiers.append(identifier)
-        elif arg:
-            identifiers.append(arg)
+    identifiers = gather_identifiers(args)
     dois = []
     for item in identifiers:
         if 'doi' in item.lower():
@@ -202,13 +206,7 @@ def oai_extract_dois(*args):
 
 
 def oai_process_contributors(*args):
-    names = []
-    for arg in args:
-        if isinstance(arg, list):
-            for name in arg:
-                names.append(name)
-        elif arg:
-            names.append(arg)
+    names = gather_identifiers(args)
     return default_name_parser(names)
 
 

@@ -53,6 +53,23 @@ class TestHelpers(object):
             'providerUris': ['http://alloutofbubblegum.com', 'http://GETTHETABLES.com']
         }
 
+    def test_extract_uris_use_doi(self):
+        identifiers = ['doi:10.whateverwhatever', 'http://alloutofbubblegum.com',
+                       'http://viewcontent.cgi/iamacoolpdf', 'http://GETTHETABLES.com',
+                       'Vahedifard, F. et al. (2013). G??otechnique 63, No. 6, 451???462 [http://dx.doi.org/10.1680/geot.11.P.130] ',
+                       'I am a bunch of text but I also have a doi:10.10.thisisarealdoi']
+
+        uri_dict = helpers.oai_process_uris(identifiers, use_doi=True)
+
+        assert uri_dict == {
+            'canonicalUri': 'http://dx.doi.org/10.10.thisisarealdoi',
+            'objectUris': ['http://dx.doi.org/10.whateverwhatever',
+                           'http://dx.doi.org/10.1680/geot.11.P.130',
+                           'http://dx.doi.org/10.10.thisisarealdoi',
+                           'http://viewcontent.cgi/iamacoolpdf'],
+            'providerUris': ['http://alloutofbubblegum.com', 'http://GETTHETABLES.com']
+        }
+
     def test_process_contributors(self):
         args = ['Stardust Rhodes', 'Golddust Rhodes', 'Dusty Rhodes']
         response = helpers.oai_process_contributors(args)
