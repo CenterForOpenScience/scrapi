@@ -5,13 +5,11 @@ import logging
 from six.moves import xrange
 from cassandra.cqlengine.query import Token
 
-from scrapi import util
 from scrapi import tasks
 from scrapi import registry
 from scrapi import settings
+from scrapi.events import log_to_sentry
 from scrapi.processing import get_processor
-# from scrapi.processing.elasticsearch import ElasticsearchProcessor
-# from scrapi.processing.postgres import PostgresProcessor
 from scrapi.linter import RawDocument, NormalizedDocument
 from scrapi.processing.cassandra import DocumentModel, DocumentModelOld
 
@@ -61,7 +59,9 @@ def cross_db(docs, target_db=None, index=None, **kwargs):
 
         if not doc.doc:
             # corrupted database item has no doc element
-            logger.info('Could not migrate document from {} with id {}'.format(doc.source, doc.docID))
+            message = 'Could not migrate document from {} with id {}'.format(doc.source, doc.docID)
+            log_to_sentry(message)
+            logger.info(message)
             continue
 
         raw = RawDocument({
