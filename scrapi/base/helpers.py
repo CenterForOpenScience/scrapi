@@ -133,8 +133,11 @@ def maybe_group(match):
 def gather_object_uris(identifiers):
     '''
     Gathers object URIs if there are any
-    >>> gather_object_uris(['nopenope', 'doi:10.10.gettables', 'http://dx.doi.org/yep'])
-    [u'http://dx.doi.org/10.10.gettables', u'http://dx.doi.org/yep']
+    >>> gathered = gather_object_uris(['nopenope', 'doi:10.10.gettables', 'http://dx.doi.org/yep'])
+    >>> print(gathered[0])
+    http://dx.doi.org/10.10.gettables
+    >>> print(gathered[1])
+    http://dx.doi.org/yep
     '''
     object_uris = []
     for item in identifiers:
