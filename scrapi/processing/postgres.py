@@ -76,7 +76,8 @@ class HarvesterResponseModel(BaseHarvesterResponse):
 
     def __init__(self, *args, **kwargs):
         if kwargs:
-            self.response = HarvesterResponse(key=kwargs['method'].lower() + kwargs['url'].lower(), *args, **kwargs)
+            key = kwargs['method'].lower() + kwargs['url'].lower()
+            self.response = HarvesterResponse(key=key, *args, **kwargs)
         else:
             self.response = args[0]
 
