@@ -49,6 +49,5 @@ def document_detail(request, source, docID):
     except Document.DoesNotExist:
         return Response(status=404)
 
-    if request.method == 'GET':
-        serializer = DocumentSerializer(document)
-        return Response(serializer.data)
+    serializer = DocumentSerializer(document)
+    return Response(serializer.data)
