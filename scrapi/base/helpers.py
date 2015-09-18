@@ -193,13 +193,7 @@ def oai_process_uris(*args, **kwargs):
 
 
 def oai_extract_dois(*args):
-    identifiers = []
-    for arg in args:
-        if isinstance(arg, list):
-            for identifier in arg:
-                identifiers.append(identifier)
-        elif arg:
-            identifiers.append(arg)
+    identifiers = gather_identifiers(args)
     dois = []
     for item in identifiers:
         if 'doi' in item.lower():
@@ -212,13 +206,7 @@ def oai_extract_dois(*args):
 
 
 def oai_process_contributors(*args):
-    names = []
-    for arg in args:
-        if isinstance(arg, list):
-            for name in arg:
-                names.append(name)
-        elif arg:
-            names.append(arg)
+    names = gather_identifiers(args)
     return default_name_parser(names)
 
 
