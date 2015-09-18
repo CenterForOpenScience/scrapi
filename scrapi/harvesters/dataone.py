@@ -5,12 +5,11 @@ Example query: https://cn.dataone.org/cn/v1/query/solr/?q=dateModified:[NOW-5DAY
 
 from __future__ import unicode_literals
 
-import re
-
 import logging
 from datetime import timedelta, date
 
 from lxml import etree
+from functools import partial
 from dateutil.parser import parse
 from xml.etree import ElementTree
 
@@ -18,28 +17,16 @@ from nameparser import HumanName
 
 from scrapi import requests
 from scrapi import settings
+from scrapi.base import helpers
 from scrapi.base import XMLHarvester
 from scrapi.util import copy_to_unicode
 from scrapi.linter.document import RawDocument
-from scrapi.base.helpers import compose, single_result, build_properties, date_formatter
+from scrapi.base.helpers import compose, single_result, build_properties, datetime_formatter
 
 logger = logging.getLogger(__name__)
 
 DEFAULT_ENCODING = 'UTF-8'
 DATAONE_SOLR_ENDPOINT = 'https://cn.dataone.org/cn/v1/query/solr/'
-
-
-def process_doi(service_id, doc_doi):
-    doi_re = '10\\.\\d{4}/\\w*\\.\\w*(/\\w*)?'
-
-    doi_list = map(lambda x: x.replace('doi', ''), doc_doi) if isinstance(doc_doi, list) else [doc_doi.replace('doi', '')]
-
-    for item in [service_id] + doi_list:
-        try:
-            return re.search(doi_re, item).group(0)
-        except AttributeError:
-            continue
-    return ''
 
 
 def process_contributors(author, submitters, contributors,
@@ -145,12 +132,9 @@ class DataOneHarvester(XMLHarvester):
             'startDate': ("bool[@name='isPublic']/node()", "date[@name='dateModified']/node()", lambda x, y: parse(y[0]).date().isoformat() if x else None)
         },
         'contributors': ("str[@name='author']/node()", "str[@name='submitter']/node()", "arr[@name='origin']/str/node()", "arr[@name='investigator']/str/node()", process_contributors),
-        'uris': {
-            'canonicalUri': ("str[@name='id']/node()", "//str[@name='dataUrl']/node()", lambda x, y: y[0] if 'http' in single_result(y) else x[0] if 'http' in single_result(x) else ''),
-            'objectUri': ("arr[@name='resourceMap']/str/node()", compose(lambda x: x.replace('doi:', 'http://dx.doi.org/'), single_result))
-        },
+        'uris': ("str[@name='id']/node()", "//str[@name='dataUrl']/node()", "arr[@name='resourceMap']/str/node()", partial(helpers.oai_process_uris, use_doi=True)),
         'tags': ("//arr[@name='keywords']/str/node()", lambda x: x if isinstance(x, list) else [x]),
-        'providerUpdatedDateTime': ("str[@name='dateModified']/node()", compose(date_formatter, single_result)),
+        'providerUpdatedDateTime': ("str[@name='dateModified']/node()", compose(datetime_formatter, single_result)),
         'title': ("str[@name='title']/node()", single_result),
         'description': ("str[@name='abstract']/node()", single_result)
     }

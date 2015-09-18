@@ -27,13 +27,13 @@ from scrapi import requests
 from scrapi import settings
 from scrapi.base import XMLHarvester
 from scrapi.linter.document import RawDocument
-from scrapi.base.helpers import default_name_parser, build_properties, compose, single_result, date_formatter
+from scrapi.base.helpers import default_name_parser, build_properties, compose, single_result, datetime_formatter
 
 logger = logging.getLogger(__name__)
 
 try:
     from scrapi.settings import PLOS_API_KEY
-except ImportError:
+except ImportError:  # pragma: no cover
     PLOS_API_KEY = None
     logger.error('No PLOS_API_KEY found, PLoS will always return []')
 
@@ -79,7 +79,7 @@ class PlosHarvester(XMLHarvester):
         start_date = start_date or date.today() - timedelta(settings.DAYS_BACK)
         end_date = end_date or date.today()
 
-        if not PLOS_API_KEY:
+        if not PLOS_API_KEY:  # pragma: no cover
             return []
 
         return [
@@ -100,7 +100,7 @@ class PlosHarvester(XMLHarvester):
             'canonicalUri': ('//str[@name="id"]/node()', compose('http://dx.doi.org/{}'.format, single_result)),
         },
         'contributors': ('//arr[@name="author_display"]/str/node()', default_name_parser),
-        'providerUpdatedDateTime': ('//date[@name="publication_data"]/node()', compose(date_formatter, single_result)),
+        'providerUpdatedDateTime': ('//date[@name="publication_data"]/node()', compose(datetime_formatter, single_result)),
         'title': ('//str[@name="title_display"]/node()', single_result),
         'description': ('//arr[@name="abstract"]/str/node()', single_result),
         'publisher': {

@@ -22,11 +22,15 @@ logging.getLogger('elasticsearch.trace').setLevel(logging.FATAL)
 
 class DatabaseManager(BaseDatabaseManager):
 
-    def __init__(self, uri=None, timeout=None, index=None):
+    def __init__(self, uri=None, timeout=None, index=None, **kwargs):
         self.uri = uri or settings.ELASTIC_URI
-        self.timeout = timeout or settings.ELASTIC_TIMEOUT
         self.index = index or settings.ELASTIC_INDEX
         self.es = None
+        self.kwargs = {
+            'timeout': timeout or settings.ELASTIC_TIMEOUT,
+            'retry_on_timeout': True
+        }
+        self.kwargs.update(kwargs)
 
     def setup(self):
         '''Sets up the database connection. Returns True if the database connection
@@ -34,7 +38,7 @@ class DatabaseManager(BaseDatabaseManager):
         '''
         try:
             # If we cant connect to elastic search dont define this class
-            self.es = Elasticsearch(self.uri, request_timeout=self.timeout)
+            self.es = Elasticsearch(self.uri, **self.kwargs)
 
             self.es.cluster.health(wait_for_status='yellow')
             self.es.indices.create(index=self.index, body={}, ignore=400)
