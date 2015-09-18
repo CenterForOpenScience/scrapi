@@ -144,6 +144,11 @@ $ create database scrapi;
 $ \q
 ```
 
+#### Copy the settings locally
+```bash
+$ cp api/api/settings/local-dist.py api/api/settings/local.py
+```
+
 Start the postgres server locally
 ```bash
 $ postgres -D /usr/local/pgsql/scrapi
