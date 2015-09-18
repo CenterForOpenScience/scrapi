@@ -1,5 +1,5 @@
 mock==1.0.1
-pytest==2.6.3
+pytest==2.7.3
 httpretty==0.8.4
 pytest-cov==1.8.1
 ipdb==0.8
