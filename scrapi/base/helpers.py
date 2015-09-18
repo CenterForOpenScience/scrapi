@@ -137,7 +137,9 @@ def gather_object_uris(identifiers):
             url_doi, just_doi = URL_REGEX.search(item), DOI_REGEX.search(item)
             url_doi = maybe_group(url_doi)
             just_doi = maybe_group(just_doi)
-            object_uris.append(url_doi or format_doi_as_url(just_doi))
+
+            if url_doi or just_doi:
+                object_uris.append(url_doi or format_doi_as_url(just_doi))
 
     return object_uris
 
@@ -168,8 +170,12 @@ def oai_process_uris(*args, **kwargs):
     try:
         if use_doi:
             for uri in object_uris:
-                if 'dx.doi.org' in uri:
-                    canonical_uri = uri
+                try:
+                    if 'dx.doi.org' in uri:
+                        canonical_uri = uri
+                except Exception:
+                    pass
+                    # import ipdb; ipdb.set_trace()
         else:
             canonical_uri = (provider_uris + object_uris)[0]
     except IndexError:
