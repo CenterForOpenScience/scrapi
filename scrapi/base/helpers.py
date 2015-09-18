@@ -175,13 +175,13 @@ def oai_process_uris(*args, **kwargs):
     identifiers = gather_identifiers(args)
     provider_uris, object_uris = seperate_provider_object_uris(identifiers)
 
-    potential_uri = (provider_uris + object_uris)
+    potential_uris = (provider_uris + object_uris)
     if use_doi:
         for uri in object_uris:
             if 'dx.doi.org' in uri:
-                potential_uri = [uri]
+                potential_uris = [uri]
     try:
-        canonical_uri = potential_uri[0]
+        canonical_uri = potential_uris[0]
     except IndexError:
         raise ValueError('No Canonical URI was returned for this record.')
 
