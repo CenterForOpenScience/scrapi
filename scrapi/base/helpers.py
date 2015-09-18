@@ -172,17 +172,13 @@ def oai_process_uris(*args, **kwargs):
     identifiers = gather_identifiers(args)
     provider_uris, object_uris = seperate_provider_object_uris(identifiers)
 
+    canonical_uri = (provider_uris + object_uris)
+    if use_doi:
+        for uri in object_uris:
+            if 'dx.doi.org' in uri:
+                canonical_uri = [uri]
     try:
-        if use_doi:
-            for uri in object_uris:
-                try:
-                    if 'dx.doi.org' in uri:
-                        canonical_uri = uri
-                except Exception:
-                    pass
-                    # import ipdb; ipdb.set_trace()
-        else:
-            canonical_uri = (provider_uris + object_uris)[0]
+        canonical_uri = canonical_uri[0]
     except IndexError:
         raise ValueError('No Canonical URI was returned for this record.')
 
