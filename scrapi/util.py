@@ -1,7 +1,6 @@
 from datetime import datetime
 
 import six
-import json
 import pytz
 import logging
 
