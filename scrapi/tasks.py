@@ -125,7 +125,8 @@ def process_normalized(normalized_doc, raw_doc, **kwargs):
 
 @app.task
 def migrate(migration, sources=tuple(), async=False, dry=True, group_size=1000, **kwargs):
-    from scrapi.migrations import documents
+
+    documents = processing.get_processor(settings.CANONICAL_PROCESSOR).documents
 
     docs = documents(*sources)
     if async:
@@ -141,18 +142,3 @@ def migrate(migration, sources=tuple(), async=False, dry=True, group_size=1000, 
         logger.info('Dry run complete')
 
     logger.info('Documents processed for migration {}'.format(str(migration)))
-
-
-@app.task
-def migrate_to_source_partition(dry=True, async=False):
-    from scrapi import migrations
-    count = 0
-    for doc in migrations.documents_old():
-        count += 1
-        if async:
-            migrations.document_v2_migration.s(doc, dry=dry).apply_async()
-        else:
-            migrations.document_v2_migration(doc, dry=dry)
-    if dry:
-        logger.info('Dry run complete')
-    logger.info('{} documents processed for migration {}'.format(count, str(migrations.document_v2_migration)))
