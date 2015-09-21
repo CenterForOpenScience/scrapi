@@ -18,7 +18,7 @@ from scrapi import requests
 from scrapi import settings
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
-from scrapi.base.helpers import build_properties, date_formatter
+from scrapi.base.helpers import build_properties, datetime_formatter
 
 logger = logging.getLogger(__name__)
 
@@ -65,7 +65,7 @@ class BiomedCentralHarvester(JSONHarvester):
                 'providerUris': ('/articleFullUrl', '/abstractPath', lambda x, y: [x, y])
             },
             'title': ('/bibliographyTitle', '/blurbTitle', lambda x, y: x or y),
-            'providerUpdatedDateTime': ('/published Date', date_formatter),
+            'providerUpdatedDateTime': ('/published Date', datetime_formatter),
             'description': '/blurbText',
             'freeToRead': {
                 'startDate': ('/is_free', '/published Date', lambda x, y: y if x else None)

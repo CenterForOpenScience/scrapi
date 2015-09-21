@@ -38,13 +38,35 @@ class TestHelpers(object):
 
     def test_extract_uris(self):
         identifiers = ['doi:10.whateverwhatever', 'http://alloutofbubblegum.com',
-                       'http://viewcontent.cgi/iamacoolpdf', 'http://GETTHETABLES.com']
+                       'http://viewcontent.cgi/iamacoolpdf', 'http://GETTHETABLES.com',
+                       'Vahedifard, F. et al. (2013). G??otechnique 63, No. 6, 451???462 [http://dx.doi.org/10.1680/geot.11.P.130] ',
+                       'I am a bunch of text but I also have a doi:10.10.thisisarealdoi']
 
         uri_dict = helpers.oai_process_uris(identifiers)
 
         assert uri_dict == {
             'canonicalUri': 'http://alloutofbubblegum.com',
-            'objectUris': ['http://dx.doi.org/10.whateverwhatever', 'http://viewcontent.cgi/iamacoolpdf'],
+            'objectUris': ['http://dx.doi.org/10.whateverwhatever',
+                           'http://dx.doi.org/10.1680/geot.11.P.130',
+                           'http://dx.doi.org/10.10.thisisarealdoi',
+                           'http://viewcontent.cgi/iamacoolpdf'],
+            'providerUris': ['http://alloutofbubblegum.com', 'http://GETTHETABLES.com']
+        }
+
+    def test_extract_uris_use_doi(self):
+        identifiers = ['doi:10.whateverwhatever', 'http://alloutofbubblegum.com',
+                       'http://viewcontent.cgi/iamacoolpdf', 'http://GETTHETABLES.com',
+                       'Vahedifard, F. et al. (2013). G??otechnique 63, No. 6, 451???462 [http://dx.doi.org/10.1680/geot.11.P.130] ',
+                       'I am a bunch of text but I also have a doi:10.10.thisisarealdoi']
+
+        uri_dict = helpers.oai_process_uris(identifiers, use_doi=True)
+
+        assert uri_dict == {
+            'canonicalUri': 'http://dx.doi.org/10.10.thisisarealdoi',
+            'objectUris': ['http://dx.doi.org/10.whateverwhatever',
+                           'http://dx.doi.org/10.1680/geot.11.P.130',
+                           'http://dx.doi.org/10.10.thisisarealdoi',
+                           'http://viewcontent.cgi/iamacoolpdf'],
             'providerUris': ['http://alloutofbubblegum.com', 'http://GETTHETABLES.com']
         }
 
@@ -78,3 +100,53 @@ class TestHelpers(object):
         extracted_doi = helpers.extract_doi_from_text(text)
 
         assert extracted_doi == 'http://dx.doi.org/10.1021/woowoowoo'
+
+    def test_gather_identifiers(self):
+        identifiers = [['doi:10.whateverwhatever',
+                       'http://viewcontent.cgi/iamacoolpdf'],
+                       '451???462 [http://dx.doi.org/10.1680/geot.11.P.130]',
+                       'I am a bunch of text but I also have a doi:10.10.thisisarealdoi',
+                       ['http://bubbaray.com', 'http://devon.net']]
+
+        gathered = helpers.gather_identifiers(identifiers)
+
+        assert gathered == ['doi:10.whateverwhatever',
+                            'http://viewcontent.cgi/iamacoolpdf',
+                            '451???462 [http://dx.doi.org/10.1680/geot.11.P.130]',
+                            'I am a bunch of text but I also have a doi:10.10.thisisarealdoi',
+                            'http://bubbaray.com',
+                            'http://devon.net']
+
+    def test_gather_object_uris(self):
+        identifiers = ['doi:10.whateverwhatever',
+                       'http://viewcontent.cgi/iamacoolpdf',
+                       '451???462 [http://dx.doi.org/10.1680/geot.11.P.130]',
+                       'I am a bunch of text but I also have a doi:10.10.thisisarealdoi',
+                       'http://bubbaray.com',
+                       'http://devon.net']
+        object_uris = helpers.gather_object_uris(identifiers)
+
+        assert object_uris == [
+            'http://dx.doi.org/10.whateverwhatever',
+            'http://dx.doi.org/10.1680/geot.11.P.130',
+            'http://dx.doi.org/10.10.thisisarealdoi'
+        ]
+
+    def test_seperate_provider_object_uris(self):
+        identifiers = [
+            'http://dx.doi.org/10.whateverwhatever',
+            'http://cgi.viewcontent.apdf.pdf',
+            'http://get_the_tables.net'
+        ]
+
+        provider_uris, object_uris = helpers.seperate_provider_object_uris(identifiers)
+
+        assert provider_uris == ['http://get_the_tables.net']
+        assert object_uris == ['http://dx.doi.org/10.whateverwhatever', 'http://cgi.viewcontent.apdf.pdf']
+
+    def test_format_doi_as_url(self):
+        doi1 = ' doi:10.dudleyzrule '
+        doi2 = 'DOI:10.getthetables '
+
+        assert helpers.format_doi_as_url(doi1) == 'http://dx.doi.org/10.dudleyzrule'
+        assert helpers.format_doi_as_url(doi2) == 'http://dx.doi.org/10.getthetables'

@@ -15,12 +15,9 @@ def format_uris_pubmedcentral(*args):
     uris = helpers.oai_process_uris(*args)
 
     for arg in args:
-        try:
-            if 'oai:pubmedcentral.nih.gov:' in arg[0]:
-                PMC_ID = arg[0].replace('oai:pubmedcentral.nih.gov:', '')
-                uris['canonicalUri'] = 'http://www.ncbi.nlm.nih.gov/pmc/articles/PMC' + PMC_ID
-        except IndexError:
-            pass
+        if arg and 'oai:pubmedcentral.nih.gov:' in arg[0]:
+            PMC_ID = arg[0].replace('oai:pubmedcentral.nih.gov:', '')
+            uris['canonicalUri'] = 'http://www.ncbi.nlm.nih.gov/pmc/articles/PMC' + PMC_ID
 
     return uris
 

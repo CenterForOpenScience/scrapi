@@ -5,7 +5,7 @@ from .helpers import (
     format_tags,
     single_result,
     language_codes,
-    date_formatter,
+    datetime_formatter,
     oai_process_uris,
     build_properties,
     default_name_parser,
@@ -17,7 +17,7 @@ DOESCHEMA = {
     "description": ('//dc:description/node()', compose(lambda x: x.strip(), single_result)),
     "contributors": ('//dc:creator/node()', compose(default_name_parser, lambda x: x.split(';'), single_result)),
     "title": ('//dc:title/node()', compose(lambda x: x.strip(), single_result)),
-    "providerUpdatedDateTime": ('//dc:dateEntry/node()', compose(date_formatter, single_result)),
+    "providerUpdatedDateTime": ('//dc:dateEntry/node()', compose(datetime_formatter, single_result)),
     "uris": {
         "canonicalUri": ('//dcq:identifier-citation/node()', compose(lambda x: x.strip(), single_result)),
         "objectUris": [('//dc:doi/node()', compose(lambda x: 'http://dx.doi.org/' + x, single_result))]
@@ -53,7 +53,7 @@ DOESCHEMA = {
 OAISCHEMA = {
     "contributors": ('//dc:creator/node()', '//dc:contributor/node()', oai_process_contributors),
     "uris": ('//dc:doi/node()', '//dc:identifier/node()', oai_process_uris),
-    'providerUpdatedDateTime': ('//ns0:header/ns0:datestamp/node()', compose(date_formatter, single_result)),
+    'providerUpdatedDateTime': ('//ns0:header/ns0:datestamp/node()', compose(datetime_formatter, single_result)),
     'title': ('//dc:title/node()', single_result),
     'description': ('//dc:description/node()', single_result),
     'subjects': ('//dc:subject/node()', format_tags),

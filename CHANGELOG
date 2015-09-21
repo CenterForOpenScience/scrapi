@@ -2,6 +2,26 @@
 ChangeLog
 *********
 
+0.9.7 (2015-09-18)
+==================
+- Bugfixes for OAI url gathering
+
+0.9.6 (2015-09-17)
+==================
+- Elasticsearch now retries requests after connection errors
+- Calhoun harvester now ignores that the SSL cert is invalid
+- OAI url parser now terminates the regex capture after finding an invalid DOI
+character
+- harvester invoke task now puts the default start date as settings.DAYS_BACK
+days before the end date
+- scrapi.requests now exposes the requests.exceptions module
+- Update README.md with updated date information
+
+0.9.5 (2015-09-14)
+==================
+- Clinical Trials harvester now dumps lxml elements to dicionaries in
+	the otherProperties field
+
 0.9.4 (2015-09-10)
 ==================
 - Biomedcentral harvester now filters out results from the future
