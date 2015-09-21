@@ -67,6 +67,9 @@ class ElasticsearchProcessor(BaseProcessor):
 
     manager = DatabaseManager()
 
+    def documents(self, *sources):
+        pass
+
     def process_normalized(self, raw_doc, normalized, index=None):
         index = index or settings.ELASTIC_INDEX
         data = {
