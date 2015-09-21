@@ -16,6 +16,7 @@ from cassandra.cqlengine import columns, models
 from scrapi import events
 from scrapi import settings
 from scrapi.util import copy_to_unicode
+from scrapi.util import try_n_times
 from scrapi.processing.base import BaseHarvesterResponse, BaseProcessor, BaseDatabaseManager
 
 
@@ -156,6 +157,20 @@ class CassandraProcessor(BaseProcessor):
             return not all([new[key] == old[key] or (not new[key] and not old[key]) for key in new.keys() if key != 'timestamps'])
         except Exception:
             return True  # If the document fails to load/compare for some reason, accept a new version
+
+    def documents(self, *sources):
+        sources = sources
+        q = DocumentModel.objects.timeout(500).allow_filtering().all().limit(1000)
+        querysets = (q.filter(source=source) for source in sources) if sources else [q]
+        for query in querysets:
+            page = try_n_times(5, list, query)
+            while len(page) > 0:
+                for doc in page:
+                    yield doc
+                page = try_n_times(5, self.next_page, query, page)
+
+    def next_page(self, query, page):
+        return list(query.filter(docID__gt=page[-1].docID))
 
 
 @DatabaseManager.registered_model
