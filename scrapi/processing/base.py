@@ -14,6 +14,13 @@ class BaseProcessor(object):
     def process_normalized(self, raw_doc, normalized, **kwargs):
         pass  # pragma: no cover
 
+    @abstractmethod
+    def documents(self, *sources):
+        '''
+        an iterator that will return documents
+        '''
+        raise NotImplementedError
+
 
 class BaseDatabaseManager(object):
     '''A base class for database managers in the scrapi processing module
