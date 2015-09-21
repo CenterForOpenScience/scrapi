@@ -36,6 +36,9 @@ class PostgresProcessor(BaseProcessor):
 
     manager = DatabaseManager()
 
+    def documents(self, *sources):
+        return Document.objects.all()
+
     @property
     def HarvesterResponseModel(self):
         return HarvesterResponseModel
