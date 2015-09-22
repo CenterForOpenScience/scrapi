@@ -10,7 +10,6 @@ import six
 from furl import furl
 from lxml import etree
 
-from scrapi import util
 from scrapi import registry
 from scrapi import settings
 from scrapi.base.schemas import OAISCHEMA
@@ -186,21 +185,16 @@ class OAIHarvester(XMLHarvester):
 
         records = self.get_records(url.url, start_date, end_date)
 
-        rawdoc_list = []
-        for record in records:
-            doc_id = record.xpath(
-                'ns0:header/ns0:identifier', namespaces=self.namespaces)[0].text
-            record = etree.tostring(record, encoding=self.record_encoding)
-            rawdoc_list.append(RawDocument({
-                'doc': record,
-                'source': util.copy_to_unicode(self.short_name),
-                'docID': util.copy_to_unicode(doc_id),
+        return [
+            RawDocument({
+                'doc': etree.tostring(record, encoding=self.record_encoding),
+                'source': self.short_name,
+                'docID': record.xpath('ns0:header/ns0:identifier', namespaces=self.namespaces)[0].text,
                 'filetype': 'xml'
-            }))
+            }) for record in records
+        ]
 
-        return rawdoc_list
-
-    def get_records(self, url, start_date, end_date):
+    def get_records(self, url, start_date, end_date=None):
         url = furl(url)
         all_records, token = oai_get_records_and_token(url.url, self.timeout, self.force_request_update, self.namespaces, self.verify)
 
