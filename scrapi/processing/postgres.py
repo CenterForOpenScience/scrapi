@@ -9,6 +9,7 @@ import logging
 from api.webview.models import HarvesterResponse, Document
 
 from scrapi import events
+from scrapi.linter import RawDocument
 from scrapi.processing.base import BaseProcessor, BaseHarvesterResponse, BaseDatabaseManager
 
 
@@ -37,7 +38,8 @@ class PostgresProcessor(BaseProcessor):
     manager = DatabaseManager()
 
     def documents(self, *sources):
-        return Document.objects.all()
+        for doc in Document.objects.all():
+            yield RawDocument(doc.raw, clean=False, validate=False)
 
     @property
     def HarvesterResponseModel(self):
