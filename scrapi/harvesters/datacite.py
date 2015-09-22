@@ -34,4 +34,4 @@ def get_second_description(descriptions):
     a longer kind of abstract. If there are two options, pick the second one which
     is almost always the longer abstract
     '''
-    return descriptions[len(descriptions) - 1] if descriptions else None
+    return descriptions[-1] if descriptions else None
