@@ -25,7 +25,7 @@ PLOS_API_KEY = 'fakekey'
 HARVARD_DATAVERSE_API_KEY = 'anotherfakekey'
 SPRINGER_KEY = 'thisistotallyfakealso'
 
-disabled = ['stepic', 'shareok']
+disabled = ['stepic']
 
 FRONTEND_KEYS = [
     u'description',
