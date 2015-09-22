@@ -1,15 +1,15 @@
+import json
 import time
 import logging
 
 from six.moves import xrange
 from cassandra.cqlengine.query import Token
 
-from scrapi import util
 from scrapi import tasks
 from scrapi import registry
 from scrapi import settings
-from scrapi.processing.elasticsearch import ElasticsearchProcessor
-from scrapi.processing.postgres import PostgresProcessor
+from scrapi.events import log_to_sentry
+from scrapi.processing import get_processor
 from scrapi.linter import RawDocument, NormalizedDocument
 from scrapi.processing.cassandra import DocumentModel, DocumentModelOld
 
@@ -39,8 +39,9 @@ def rename(docs, target=None, **kwargs):
             tasks.process_normalized(tasks.normalize(raw, raw['source']), raw)
             logger.info('Processed document from {} with id {}'.format(doc.source, raw['docID']))
 
-            ElasticsearchProcessor.manager.es.delete(index=settings.ELASTIC_INDEX, doc_type=doc.source, id=raw['docID'], ignore=[404])
-            ElasticsearchProcessor.manager.es.delete(index='share_v1', doc_type=doc.source, id=raw['docID'], ignore=[404])
+            es_processor = get_processor('elasticsearch')
+            es_processor.manager.es.delete(index=settings.ELASTIC_INDEX, doc_type=doc.source, id=raw['docID'], ignore=[404])
+            es_processor.manager.es.delete(index='share_v1', doc_type=doc.source, id=raw['docID'], ignore=[404])
 
         logger.info('Renamed document from {} to {} with id {}'.format(doc.source, target, raw['docID']))
 
@@ -58,7 +59,9 @@ def cross_db(docs, target_db=None, index=None, **kwargs):
 
         if not doc.doc:
             # corrupted database item has no doc element
-            logger.info('Could not migrate document from {} with id {}'.format(doc.source, doc.docID))
+            message = 'Could not migrate document from {} with id {}'.format(doc.source, doc.docID)
+            log_to_sentry(message)
+            logger.info(message)
             continue
 
         raw = RawDocument({
@@ -70,15 +73,12 @@ def cross_db(docs, target_db=None, index=None, **kwargs):
             'versions': doc.versions
         }, validate=False)
 
-        normed = util.doc_to_normed_dict(doc)
+        normed = doc_to_normed_dict(doc)
 
         # Create the normalized, don't validate b/c its been done once already
         normalized = NormalizedDocument(normed, validate=False)
 
-        if target_db == 'postgres':
-            processor = PostgresProcessor()
-        if target_db == 'elasticsearch':
-            processor = ElasticsearchProcessor()
+        processor = get_processor(target_db)
 
         if not kwargs.get('dry'):
             processor.process_raw(raw)
@@ -113,8 +113,9 @@ def delete(docs, sources=None, **kwargs):
     for doc in docs:
         assert sources, "To run this migration you need a source."
         doc.timeout(5).delete()
-        ElasticsearchProcessor.manager.es.delete(index=settings.ELASTIC_INDEX, doc_type=sources, id=doc.docID, ignore=[404])
-        ElasticsearchProcessor.manager.es.delete(index='share_v1', doc_type=sources, id=doc.docID, ignore=[404])
+        es_processor = get_processor('elasticsearch')
+        es_processor.manager.es.delete(index=settings.ELASTIC_INDEX, doc_type=sources, id=doc.docID, ignore=[404])
+        es_processor.manager.es.delete(index='share_v1', doc_type=sources, id=doc.docID, ignore=[404])
 
         logger.info('Deleted document from {} with id {}'.format(sources, doc.docID))
 
@@ -163,3 +164,32 @@ def try_n_times(n, action, *args, **kwargs):
             time.sleep(15)
     if e:
         raise e
+
+
+def doc_to_normed_dict(doc):
+    # make the new dict actually contain real items
+    normed = {}
+    for key, value in dict(doc).items():
+        try:
+            normed[key] = json.loads(value)
+        except (ValueError, TypeError):
+            normed[key] = value
+
+    # Remove empty values and strip down to only normalized fields
+    do_not_include = ['docID', 'doc', 'filetype', 'timestamps', 'source']
+    for key in list(normed.keys()):
+        if not normed[key]:
+            del normed[key]
+
+    for key in list(normed.keys()):
+        if key in do_not_include:
+            del normed[key]
+
+    if normed.get('versions'):
+        normed['versions'] = list(map(str, normed['versions']))
+
+    # No datetime means the document wasn't normalized (probably wasn't on the approved list)
+    if normed.get('providerUpdatedDateTime'):
+        normed['providerUpdatedDateTime'] = normed['providerUpdatedDateTime'].isoformat()
+
+    return normed

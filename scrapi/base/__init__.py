@@ -89,7 +89,8 @@ class JSONHarvester(BaseHarvester, JSONTransformer):
         transformed = self.transform(json.loads(raw_doc['doc']), fail=settings.RAISE_IN_TRANSFORMER)
         transformed['shareProperties'] = {
             'source': self.short_name,
-            'docID': raw_doc['docID']
+            'docID': raw_doc['docID'],
+            'filetype': raw_doc['filetype']
         }
         return NormalizedDocument(transformed, clean=True)
 
@@ -101,7 +102,8 @@ class XMLHarvester(BaseHarvester, XMLTransformer):
         transformed = self.transform(etree.XML(raw_doc['doc']), fail=settings.RAISE_IN_TRANSFORMER)
         transformed['shareProperties'] = {
             'source': self.short_name,
-            'docID': raw_doc['docID']
+            'docID': raw_doc['docID'],
+            'filetype': raw_doc['filetype']
         }
         return NormalizedDocument(transformed, clean=True)
 
