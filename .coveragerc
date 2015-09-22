@@ -1,6 +1,7 @@
 [run]
 omit =
     scrapi/settings/*
+    api/api/settings/*
     scripts/*
     scrapi/harvesters/stepic.py
 
@@ -14,3 +15,4 @@ omit =
     scrapi/settings/*
     scripts/*
     scrapi/harvesters/stepic.py
+    api/api/settings/*
