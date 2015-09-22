@@ -8,39 +8,20 @@ from scrapi.base.helpers import updated_schema, default_name_parser
 
 def institution_name_parser(names):
     ''' Parse institution names '''
-    contributor_list = []
-    for inst in names:
-        contributor = {
-            'name': inst,
-            'sameAs': []
-        }
-        contributor_list.append(contributor)
-
-    return contributor_list
+    return [{
+        'name': inst
+    } for inst in names]
 
 
-def aoi_process_contributors_bhl(*args):
+def process_contributors(*args):
     ''' Parse people name for BHL'''
-    names = []
-    for arg in args:
-        if isinstance(arg, list):
-            for name in arg:
-                names.append(name)
-        elif arg:
-            names.append(arg)
+    names = [name for sublist in args for name in sublist]
     # Filter people names and clean dates and extra spaces.
     people = [re.sub(r'\d+-(\d+)?', r'', n).strip() for n in filter(lambda x: ', ' in x, names)] or []
     # Filter institution names and clean tabs.
-    inst = [re.sub(r'\\t', r'', n).strip() for n in filter(lambda x: ', ' not in x, names) or []]
+    inst = [re.sub(r'\\t', r'', n).strip() for n in filter(lambda x: ', ' not in x, names)] or []
     # Parse names differently if they're people's or institutions' names.
-    if len(people) > 0 and len(inst) > 0:
-        return default_name_parser(people) + institution_name_parser(inst)
-    elif len(inst) > 0:
-        return institution_name_parser(inst)
-    if len(people) > 0:
-        return default_name_parser(people)
-    else:
-        return ''
+    return (default_name_parser(people) + institution_name_parser(inst)) or [{'name': ''}]
 
 
 class BHLHarvester(OAIHarvester):
@@ -53,7 +34,7 @@ class BHLHarvester(OAIHarvester):
     @property
     def schema(self):
         return updated_schema(self._schema, {
-            'contributors': ('//dc:creator/node()', '//dc:contributor/node()', aoi_process_contributors_bhl)
+            'contributors': ('//dc:creator/node()', '//dc:contributor/node()', process_contributors)
         })
 
     property_list = [
