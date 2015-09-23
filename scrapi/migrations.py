@@ -14,28 +14,23 @@ logger = logging.getLogger()
 @tasks.task_autoretry(default_retry_delay=30, max_retries=5)
 def rename(docs, target=None, **kwargs):
     assert target, "To run this migration you need a target."
-    for doc in docs:
-        raw = RawDocument({
-            'doc': doc.doc,
-            'docID': doc.docID,
-            'source': target,
-            'filetype': doc.filetype,
-            'timestamps': doc.timestamps,
-            'versions': doc.versions
-        })
 
-        assert doc.source != target, "Can't rename {} to {}, names are the same.".format(doc.source, target)
+    for doc in docs:
+
+        raw = doc
+
+        assert doc.attributes['source'] != target, "Can't rename {} to {}, names are the same.".format(doc['source'], target)
 
         if not kwargs.get('dry'):
             tasks.process_raw(raw)
             tasks.process_normalized(tasks.normalize(raw, raw['source']), raw)
-            logger.info('Processed document from {} with id {}'.format(doc.source, raw['docID']))
+            logger.info('Processed document from {} with id {}'.format(doc.attributes['source'], raw['docID']))
 
             es_processor = get_processor('elasticsearch')
-            es_processor.manager.es.delete(index=settings.ELASTIC_INDEX, doc_type=doc.source, id=raw['docID'], ignore=[404])
-            es_processor.manager.es.delete(index='share_v1', doc_type=doc.source, id=raw['docID'], ignore=[404])
+            es_processor.manager.es.delete(index=settings.ELASTIC_INDEX, doc_type=doc.attributes['source'], id=raw['docID'], ignore=[404])
+            es_processor.manager.es.delete(index='share_v1', doc_type=doc.attributes['source'], id=raw['docID'], ignore=[404])
 
-        logger.info('Renamed document from {} to {} with id {}'.format(doc.source, target, raw['docID']))
+        logger.info('Renamed document from {} to {} with id {}'.format(doc.attributes['source'], target, raw['docID']))
 
 
 @tasks.task_autoretry(default_retry_delay=30, max_retries=5)
@@ -45,7 +40,7 @@ def cross_db(docs, target_db=None, index=None, **kwargs):
     TODO - make this source_db agnostic. Should happen along with larger migration refactor
     """
     assert target_db, 'Please specify a target db for the migration -- either postgres or elasticsearch'
-    assert target_db in ['postgres', 'elasticsearch'], 'Invalid target database - please specify either postgres or elasticsearch'
+    # assert target_db in ['postgres', 'elasticsearch'], 'Invalid target database - please specify either postgres or elasticsearch'
 
     for doc in docs:
 
