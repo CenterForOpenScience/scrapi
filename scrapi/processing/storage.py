@@ -36,3 +36,6 @@ class StorageProcessor(BaseProcessor):
 
         with open(filename, 'w') as f:
             f.write(json.dumps(json_without_bytes(normalized.attributes), indent=4))
+
+    def documents(self,  *sources):
+        pass
