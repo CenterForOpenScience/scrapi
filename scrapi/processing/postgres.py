@@ -38,8 +38,9 @@ class PostgresProcessor(BaseProcessor):
     manager = DatabaseManager()
 
     def documents(self, *sources):
-        for doc in Document.objects.all():
-            yield RawDocument(doc.raw, clean=False, validate=False)
+        for source in sources:
+            for doc in Document.objects.filter(source=source):
+                yield RawDocument(doc.raw, clean=False, validate=False)
 
     @property
     def HarvesterResponseModel(self):
