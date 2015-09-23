@@ -5,11 +5,12 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "api.api.settings")
 
 import copy
 import logging
+from collections import namedtuple
 
 from api.webview.models import HarvesterResponse, Document
 
 from scrapi import events
-from scrapi.linter import RawDocument
+from scrapi.linter import RawDocument, NormalizedDocument
 from scrapi.processing.base import BaseProcessor, BaseHarvesterResponse, BaseDatabaseManager
 
 
@@ -41,6 +42,16 @@ class PostgresProcessor(BaseProcessor):
         for source in sources:
             for doc in Document.objects.filter(source=source):
                 yield RawDocument(doc.raw, clean=False, validate=False)
+
+    def document_query(self, source, docID):
+        document = Document.objects.get(source=source, docID=docID)
+
+        DocumentTuple = namedtuple('Document', ['raw', 'normalized'])
+
+        raw = RawDocument(document.raw, clean=False, validate=False)
+        normalized = NormalizedDocument(document.normalized, validate=False)
+
+        return DocumentTuple(raw, normalized)
 
     @property
     def HarvesterResponseModel(self):
