@@ -21,7 +21,6 @@ from __future__ import unicode_literals
 import json
 import logging
 
-from nameparser import HumanName
 from dateutil.parser import parse
 
 from scrapi import requests
