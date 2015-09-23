@@ -27,14 +27,14 @@ from dateutil.parser import parse
 from scrapi import requests
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
-from scrapi.base.helpers import build_properties, date_formatter, single_result
+from scrapi.base.helpers import build_properties, datetime_formatter, parse_name, single_result
 
 
 logger = logging.getLogger(__name__)
 
 ORGANIZATIONS = (
     "organization", "fund", "canada", "agriculture", "commitee", "international", "council", "office", "of",
-    "observation", "lwbin", "cocorahs", "usgs", "nsidc"
+    "observation", "institute", "lwbin", "cocorahs", "usgs", "nsidc"
 )
 
 
@@ -45,43 +45,42 @@ def is_organization(name):
     return any(word.strip(";").lower() in ORGANIZATIONS for word in words)
 
 
+def clean_authors(authors):
+    """Cleam authors list.
+    """
+    authors = authors.strip().replace('<span class="author-names">', '').replace('</span>', '')
+    authors = authors.split(',')
+
+    new_authors = []
+    for author in authors:
+        if is_organization(author):
+            new_authors.append(author)
+        else:
+            if ' and ' in author or ' <em>et al.</em>' in author:
+                split_name = author.replace(' <em>et al.</em>', '').split(' and ')
+                new_authors.extend(split_name)
+            else:
+                new_authors.append(author)
+    return new_authors
+
+
 def process_contributors(authors, emails):
     """Process authors and add author emails
     If multiple authors and one email, put email in a new author
     """
-
-    authors = authors.strip().replace('<span class="author-names">', '').replace('</span>', '')
-    authors = authors.split(',')
     emails = emails.split(',')
-
-    for author in authors:
-        if is_organization(author):
-            break
-    else:
-        if ' and ' in authors[-1] or ' <em>et al.</em>' in authors[-1]:
-            split_name = authors.pop(-1).replace(' <em>et al.</em>', '').split(' and ')
-            authors.extend(split_name)
-
+    authors = clean_authors(authors)
     contributor_list = []
-    append_emails = True
-    if len(authors) != 1 or len(emails) != 1 or emails[0] == u'':
-        append_emails = False  # append the email to the author only when 1 record is observed
+    append_emails = len(authors) == 1 and len(emails) == 1 and not emails[0] == u''  # append the email to the author only when 1 record is observed
 
     for i, author in enumerate(authors):
         if is_organization(author):
             contributor = {
-                'name': author,
-                'sameAs': []
+                'name': author
             }
         else:
-            name = HumanName(author)
-            contributor = {
-                'name': author,
-                'givenName': name.first,
-                'additionalName': name.middle,
-                'familyName': name.last,
-                'sameAs': []
-            }
+            contributor = parse_name(author)
+
         if append_emails:
             contributor['email'] = emails[i]
         contributor_list.append(contributor)
@@ -90,8 +89,7 @@ def process_contributors(authors, emails):
         for email in emails:
             contributor = {
                 'name': '',
-                'email': email,
-                'sameAs': [],
+                'email': email
             }
             contributor_list.append(contributor)
 
@@ -114,12 +112,11 @@ def process_licenses(license_title, license_url, license_id):
 
 
 def construct_url(url, dataset_path, end_point):
-    """Return a url that directs back to the page on LBWIN Data Hub instead of the source page.
-
-    Arguments:
-    url -- host url
-    dataset_path -- parent path of all datasets
-    end_point -- name of datasets
+    """
+    :return: a url that directs back to the page on LBWIN Data Hub instead of the source page.
+    :param url: host url
+    :param dataset_path: parent path of all datasets
+    :param end_point: name of datasets
     """
 
     return "/".join([url, dataset_path, end_point])
@@ -128,15 +125,14 @@ def construct_url(url, dataset_path, end_point):
 def process_object_uris(url, extras):
     """Extract doi from /extras, and return a list of object uris including /url and doi if it exists.
     """
-    doi = ""
+    doi = []
     for d in extras:
         if d['key'] == "DOI" or d['key'] == "DOI:":
-            doi = d['value']
-            break
-    if doi == "":
+            doi.append(d['value'])
+    if doi == []:
         return [url]
     else:
-        return [url, doi]
+        return [url].extend(doi)
 
 
 class LWBINHarvester(JSONHarvester):
@@ -154,7 +150,7 @@ class LWBINHarvester(JSONHarvester):
         return {
             'title': ('/title', lambda x: x or ''),
             'description': ('/notes', lambda x: single_result(x, x) or ''),
-            'providerUpdatedDateTime': ('/metadata_modified', date_formatter),
+            'providerUpdatedDateTime': ('/metadata_modified', datetime_formatter),
             'uris': {
                 'canonicalUri': ('/name', lambda x: construct_url(self.url, self.dataset_path, x)),  # Construct new urls directing to LWBIN
                 'objectUris': ('/url', '/extras', process_object_uris)  # Default urls from the metadata directing to source pages
@@ -168,9 +164,9 @@ class LWBINHarvester(JSONHarvester):
             'otherProperties': build_properties(
                 ('maintainer', '/maintainer'),
                 ('maintainerEmail', '/maintainer_email'),
-                ('revisionTimestamp', ('/revision_timestamp', date_formatter)),
+                ('revisionTimestamp', ('/revision_timestamp', datetime_formatter)),
                 ('id', '/id'),
-                ('metadataCreated', ('/metadata_created', date_formatter)),
+                ('metadataCreated', ('/metadata_created', datetime_formatter)),
                 ('state', '/state'),
                 ('version', '/version'),
                 ('creatorUserId', '/creator_user_id'),

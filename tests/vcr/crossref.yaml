@@ -125,7 +125,8 @@ interactions:
         Science + Business Media","indexed":{"date-parts":[[2015,2,10]],"timestamp":1423566838996},"volume":"42","member":"http:\/\/id.crossref.org\/member\/297"},{"subtitle":[],"subject":["Condensed
         Matter Physics","Chemistry(all)","Surfaces, Coatings and Films","Chemical
         Engineering(all)"],"issued":{"date-parts":[[2010,12,25]]},"score":1.0,"prefix":"http:\/\/id.crossref.org\/prefix\/10.1007","author":[{"family":"Suttikul","given":"Thitiporn"},{"family":"Sreethawong","given":"Thammanoon"},{"family":"Sekiguchi","given":"Hidetoshi"},{"family":"Chavadej","given":"Sumaeth"}],"container-title":["Plasma
-        Chem Plasma Process","Plasma Chemistry and Plasma Processing"],"reference-count":31,"page":"273-290","deposited":{"date-parts":[[2013,4,3]],"timestamp":1364947200000},"issue":"2","title":["Ethylene
+      Chem Plasma Process","Plasma Chemistry and Plasma Processing"],"reference-count":31,"page":"273-290","deposited":{"date-parts":[[2013,4,3]],"timestamp":1364947200000},"issue":"2", "funder":[{"award":["31471917"],"name": "National Natural Science Foundation of China","DOI": "10.13039/501100001809"},
+      {"award":["12541859"],"name": "Science and Technology Research Project of Heilongjiang Province Department of Education, China"}],"title":["Ethylene
         Epoxidation over Alumina- and Silica-Supported Silver Catalysts in Low-Temperature
         AC Dielectric Barrier Discharge"],"type":"journal-article","DOI":"10.1007\/s11090-010-9280-1","ISSN":["0272-4324","1572-8986"],"URL":"http:\/\/dx.doi.org\/10.1007\/s11090-010-9280-1","source":"CrossRef","publisher":"Springer
         Science + Business Media","indexed":{"date-parts":[[2015,2,10]],"timestamp":1423566839122},"volume":"31","member":"http:\/\/id.crossref.org\/member\/297"},{"subtitle":[],"subject":["Water
