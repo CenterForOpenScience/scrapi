@@ -5,6 +5,7 @@ import json
 import logging
 from uuid import uuid4
 from datetime import datetime
+from collections import namedtuple
 
 from dateutil.parser import parse
 
@@ -15,8 +16,9 @@ from cassandra.cqlengine import columns, models
 
 from scrapi import events
 from scrapi import settings
-from scrapi.util import copy_to_unicode
 from scrapi.util import try_n_times
+from scrapi.util import copy_to_unicode
+from scrapi.linter import RawDocument, NormalizedDocument
 from scrapi.processing.base import BaseHarvesterResponse, BaseProcessor, BaseDatabaseManager
 
 
@@ -166,11 +168,62 @@ class CassandraProcessor(BaseProcessor):
             page = try_n_times(5, list, query)
             while len(page) > 0:
                 for doc in page:
-                    yield doc
+                    yield self.doc_to_raw_document(doc)
                 page = try_n_times(5, self.next_page, query, page)
 
     def next_page(self, query, page):
         return list(query.filter(docID__gt=page[-1].docID))
+
+    def doc_to_raw_document(self, doc):
+
+        doc_items = dict(doc)['doc']
+
+        return RawDocument({
+            'doc': doc_items['doc'],
+            'doc_itemsID': doc_items['docID'],
+            'source': doc_items['source'],
+            'filetype': doc_items['filetype'],
+            'timestamps': doc_items['timestamps'],
+            'versions': doc_items['versions']
+        }, validate=False)
+
+    def doc_to_normalized_document(self, doc):
+        # make the new dict actually contain real items
+        normed = {}
+        for key, value in dict(doc).items():
+            try:
+                normed[key] = json.loads(value)
+            except (ValueError, TypeError):
+                normed[key] = value
+
+        # Remove empty values and strip down to only normalized fields
+        do_not_include = ['docID', 'doc', 'filetype', 'timestamps', 'source']
+        for key in list(normed.keys()):
+            if not normed[key]:
+                del normed[key]
+
+        for key in list(normed.keys()):
+            if key in do_not_include:
+                del normed[key]
+
+        if normed.get('versions'):
+            normed['versions'] = list(map(str, normed['versions']))
+
+        # No datetime means the document wasn't normalized (probably wasn't on the approved list)
+        if normed.get('providerUpdatedDateTime'):
+            normed['providerUpdatedDateTime'] = normed['providerUpdatedDateTime'].isoformat()
+
+        return NormalizedDocument(normed, validate=False)
+
+    def document_query(self, source, docID):
+        documents = DocumentModel.objects(source=source, docID=docID)
+        DocumentTuple = namedtuple('Document', ['raw', 'normalized'])
+
+        doc = documents[0]
+        raw = self.doc_to_raw_document(doc)
+        normalized = self.doc_to_normalized_document(doc)
+
+        return DocumentTuple(raw, normalized)
 
 
 @DatabaseManager.registered_model
