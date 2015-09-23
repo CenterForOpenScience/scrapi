@@ -1,5 +1,6 @@
 import json
 import logging
+import copy
 
 from scrapi import tasks
 from scrapi import settings
@@ -16,8 +17,10 @@ def rename(docs, target=None, **kwargs):
     assert target, "To run this migration you need a target."
 
     for doc in docs:
+        new_doc = copy.copy(doc.attributes)
+        new_doc['source'] = target
 
-        raw = doc
+        raw = RawDocument(new_doc, validate=False)
 
         assert doc.attributes['source'] != target, "Can't rename {} to {}, names are the same.".format(doc['source'], target)
 
