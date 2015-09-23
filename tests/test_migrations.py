@@ -39,8 +39,7 @@ def harvester():
 
 @pytest.mark.django_db
 @pytest.mark.cassandra
-# @pytest.mark.parametrize('processor_name', ['postgres', 'cassandra'])
-@pytest.mark.parametrize('processor_name', ['postgres'])
+@pytest.mark.parametrize('processor_name', ['postgres', 'cassandra'])
 def test_rename(processor_name, monkeypatch):
     real_es = scrapi.processing.elasticsearch.ElasticsearchProcessor.manager.es
     scrapi.processing.elasticsearch.es = mock.MagicMock()
@@ -65,7 +64,7 @@ def test_rename(processor_name, monkeypatch):
 
     queryset = processor.document_query(source='wwe_news', docID=RAW['docID'])
 
-    assert queryset.normalized.attributes['source'] == 'wwe_news'
+    assert queryset.normalized.attributes['shareProperties']['source'] == 'wwe_news'
 
     scrapi.processing.elasticsearch.ElasticsearchProcessor.manager.es = real_es
     test_harvester.short_name = RAW['source']
