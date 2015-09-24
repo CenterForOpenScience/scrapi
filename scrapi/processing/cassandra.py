@@ -233,6 +233,9 @@ class CassandraProcessor(BaseProcessor):
         document = DocumentModel.objects(source=source, docID=docID)
         document.timeout(5).delete()
 
+    def document_create(self, attributes):
+        DocumentModel.create(**attributes).save()
+
 
 @DatabaseManager.registered_model
 class DocumentModel(models.Model):
