@@ -7,13 +7,15 @@ import copy
 import logging
 from collections import namedtuple
 
+import django
+
 from api.webview.models import HarvesterResponse, Document
 
 from scrapi import events
 from scrapi.linter import RawDocument, NormalizedDocument
 from scrapi.processing.base import BaseProcessor, BaseHarvesterResponse, BaseDatabaseManager
 
-
+django.setup()
 logger = logging.getLogger(__name__)
 
 
@@ -44,7 +46,10 @@ class PostgresProcessor(BaseProcessor):
                 yield RawDocument(doc.raw, clean=False, validate=False)
 
     def document_query(self, source, docID):
-        document = Document.objects.get(source=source, docID=docID)
+        try:
+            document = Document.objects.get(source=source, docID=docID)
+        except Document.DoesNotExist:
+            return None
 
         DocumentTuple = namedtuple('Document', ['raw', 'normalized'])
 
@@ -52,6 +57,10 @@ class PostgresProcessor(BaseProcessor):
         normalized = NormalizedDocument(document.normalized, validate=False)
 
         return DocumentTuple(raw, normalized)
+
+    def document_delete(self, source, docID):
+        doc = Document.objects.get(source=source, docID=docID)
+        doc.delete()
 
     @property
     def HarvesterResponseModel(self):
