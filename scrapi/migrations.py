@@ -17,23 +17,24 @@ def rename(docs, target=None, **kwargs):
     assert target, "To run this migration you need a target."
 
     for doc in docs:
-        new_doc = copy.copy(doc.attributes)
+        raw_doc = doc.raw
+        new_doc = copy.copy(raw_doc.attributes)
         new_doc['source'] = target
 
         raw = RawDocument(new_doc, validate=False)
 
-        assert doc.attributes['source'] != target, "Can't rename {} to {}, names are the same.".format(doc['source'], target)
+        assert raw_doc.attributes['source'] != target, "Can't rename {} to {}, names are the same.".format(raw_doc['source'], target)
 
         if not kwargs.get('dry'):
             tasks.process_raw(raw)
             tasks.process_normalized(tasks.normalize(raw, raw['source']), raw)
-            logger.info('Processed document from {} with id {}'.format(doc.attributes['source'], raw['docID']))
+            logger.info('Processed document from {} with id {}'.format(raw_doc.attributes['source'], raw['docID']))
 
             es_processor = get_processor('elasticsearch')
-            es_processor.manager.es.delete(index=settings.ELASTIC_INDEX, doc_type=doc.attributes['source'], id=raw['docID'], ignore=[404])
-            es_processor.manager.es.delete(index='share_v1', doc_type=doc.attributes['source'], id=raw['docID'], ignore=[404])
+            es_processor.manager.es.delete(index=settings.ELASTIC_INDEX, doc_type=raw_doc.attributes['source'], id=raw['docID'], ignore=[404])
+            es_processor.manager.es.delete(index='share_v1', doc_type=raw_doc.attributes['source'], id=raw['docID'], ignore=[404])
 
-        logger.info('Renamed document from {} to {} with id {}'.format(doc.attributes['source'], target, raw['docID']))
+        logger.info('Renamed document from {} to {} with id {}'.format(raw_doc.attributes['source'], target, raw['docID']))
 
 
 @tasks.task_autoretry(default_retry_delay=30, max_retries=5)
@@ -96,7 +97,7 @@ def delete(docs, sources=None, **kwargs):
         assert sources, "To run this migration you need a source."
 
         processor = get_processor(settings.CANONICAL_PROCESSOR)
-        processor.document_delete(source=doc.attributes['source'], docID=doc.attributes['docID'])
+        processor.delete(source=doc.attributes['source'], docID=doc.attributes['docID'])
 
         es_processor = get_processor('elasticsearch')
         es_processor.manager.es.delete(index=settings.ELASTIC_INDEX, doc_type=sources, id=doc.attributes['docID'], ignore=[404])
