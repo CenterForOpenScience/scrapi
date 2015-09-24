@@ -86,16 +86,8 @@ def cross_db(docs, target_db=None, index=None, **kwargs):
 @tasks.task_autoretry(default_retry_delay=1, max_retries=5)
 def renormalize(docs, *args, **kwargs):
     for doc in docs:
-        raw = RawDocument({
-            'doc': doc.doc,
-            'docID': doc.docID,
-            'source': doc.source,
-            'filetype': doc.filetype,
-            'timestamps': doc.timestamps,
-            'versions': doc.versions
-        })
         if not kwargs.get('dry'):
-            tasks.process_normalized(tasks.normalize(raw, raw['source']), raw)
+            tasks.process_normalized(tasks.normalize(doc, doc['source']), doc)
 
 
 @tasks.task_autoretry(default_retry_delay=30, max_retries=5)
