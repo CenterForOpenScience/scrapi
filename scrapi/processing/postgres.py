@@ -62,6 +62,15 @@ class PostgresProcessor(BaseProcessor):
         doc = Document.objects.get(source=source, docID=docID)
         doc.delete()
 
+    def document_create(self, attributes):
+        Document.objects.create(
+            source=attributes['source'],
+            docID=attributes['docID'],
+            providerUpdatedDateTime=None,
+            raw=attributes,
+            normalized=None
+        ).save()
+
     @property
     def HarvesterResponseModel(self):
         return HarvesterResponseModel
