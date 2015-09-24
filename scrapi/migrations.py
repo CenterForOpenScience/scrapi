@@ -94,16 +94,17 @@ def renormalize(docs, *args, **kwargs):
 @tasks.task_autoretry(default_retry_delay=30, max_retries=5)
 def delete(docs, sources=None, **kwargs):
     for doc in docs:
+        raw_doc = doc.raw
         assert sources, "To run this migration you need a source."
 
         processor = get_processor(settings.CANONICAL_PROCESSOR)
-        processor.delete(source=doc.attributes['source'], docID=doc.attributes['docID'])
+        processor.delete(source=raw_doc.attributes['source'], docID=raw_doc.attributes['docID'])
 
         es_processor = get_processor('elasticsearch')
-        es_processor.manager.es.delete(index=settings.ELASTIC_INDEX, doc_type=sources, id=doc.attributes['docID'], ignore=[404])
-        es_processor.manager.es.delete(index='share_v1', doc_type=sources, id=doc.attributes['docID'], ignore=[404])
+        es_processor.manager.es.delete(index=settings.ELASTIC_INDEX, doc_type=sources, id=raw_doc.attributes['docID'], ignore=[404])
+        es_processor.manager.es.delete(index='share_v1', doc_type=sources, id=raw_doc.attributes['docID'], ignore=[404])
 
-        logger.info('Deleted document from {} with id {}'.format(sources, doc.attributes['docID']))
+        logger.info('Deleted document from {} with id {}'.format(sources, raw_doc.attributes['docID']))
 
 
 def doc_to_normed_dict(doc):
