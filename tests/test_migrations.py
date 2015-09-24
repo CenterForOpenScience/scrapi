@@ -67,7 +67,7 @@ def test_rename(processor_name, monkeypatch):
 
 @pytest.mark.django_db
 @pytest.mark.cassandra
-@pytest.mark.parametrize('processor_name', ['cassandra', 'postgres'])
+@pytest.mark.parametrize('processor_name', ['postgres', 'cassandra'])
 def test_delete(processor_name, monkeypatch):
     real_es = scrapi.processing.elasticsearch.ElasticsearchProcessor.manager.es
     scrapi.processing.elasticsearch.es = mock.MagicMock()
@@ -90,11 +90,14 @@ def test_delete(processor_name, monkeypatch):
 
 @pytest.mark.django_db
 @pytest.mark.cassandra
-@pytest.mark.parametrize('processor_name', ['postgres'])
-def test_renormalize(processor_name):
+@pytest.mark.parametrize('processor_name', ['postgres', 'cassandra'])
+def test_renormalize(processor_name, monkeypatch):
     # Set up
-    real_es = scrapi.processing.elasticsearch.es
+    # real_es = scrapi.processing.elasticsearch.es
+    real_es = scrapi.processing.elasticsearch.ElasticsearchProcessor.manager.es
+
     scrapi.processing.elasticsearch.es = mock.MagicMock()
+    monkeypatch.setattr('scrapi.settings.CANONICAL_PROCESSOR', processor_name)
 
     # Process raw and normalized with fake docs
     processor = get_processor(processor_name)
@@ -111,13 +114,14 @@ def test_renormalize(processor_name):
     new_raw.attributes['doc'] = new_raw.attributes['doc'].encode('utf-8')
 
     # This is basically like running the improved harvester right?
-    DocumentModel.create(**new_raw.attributes).save()
+    processor.document_create(new_raw.attributes)
 
     tasks.migrate(renormalize, sources=[RAW['source']], dry=False)
 
     queryset = processor.document_query(docID='get_the_tables', source=RAW['source'])
-    assert len(queryset) == 1
+    assert queryset
     scrapi.processing.elasticsearch.es = real_es
+    processor.document_delete(docID='get_the_tables', source=RAW['source'])
 
 
 @pytest.mark.django_db
