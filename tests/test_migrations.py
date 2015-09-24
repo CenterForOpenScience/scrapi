@@ -1,26 +1,18 @@
-import six
 import copy
 import mock
 import pytest
-
-from elasticsearch import TransportError
 
 import scrapi
 from scrapi.linter.document import NormalizedDocument
 
 from scrapi import tasks
 from scrapi import registry
-from scrapi import settings
 from scrapi.migrations import delete
 from scrapi.migrations import rename
 from scrapi.migrations import cross_db
 from scrapi.migrations import renormalize
 
 from scrapi.processing import get_processor
-
-# Need to force cassandra to ignore set keyspace
-# from scrapi.processing.postgres import Document
-# from scrapi.processing.cassandra import CassandraProcessor, DocumentModel
 
 from . import utils
 
@@ -43,6 +35,7 @@ def harvester():
 def test_rename(processor_name, monkeypatch):
     real_es = scrapi.processing.elasticsearch.ElasticsearchProcessor.manager.es
     scrapi.processing.elasticsearch.es = mock.MagicMock()
+    monkeypatch.setattr('scrapi.settings.CANONICAL_PROCESSOR', processor_name)
 
     processor = get_processor(processor_name)
     processor.process_raw(RAW)
@@ -74,21 +67,24 @@ def test_rename(processor_name, monkeypatch):
 
 @pytest.mark.django_db
 @pytest.mark.cassandra
-@pytest.mark.parametrize('processor_name', ['postgres'])
-def test_delete(processor_name):
+@pytest.mark.parametrize('processor_name', ['cassandra', 'postgres'])
+def test_delete(processor_name, monkeypatch):
     real_es = scrapi.processing.elasticsearch.ElasticsearchProcessor.manager.es
     scrapi.processing.elasticsearch.es = mock.MagicMock()
 
+    monkeypatch.setattr('scrapi.settings.CANONICAL_PROCESSOR', processor_name)
+
+    print('Canonical Processor is {}'.format(scrapi.settings.CANONICAL_PROCESSOR))
     processor = get_processor(processor_name)
     processor.process_raw(RAW)
     processor.process_normalized(RAW, NORMALIZED)
 
     queryset = processor.document_query(docID=RAW['docID'], source=RAW['source'])
-    # assert len(queryset) == 1
+    assert queryset
 
     tasks.migrate(delete, sources=[RAW['source']], dry=False)
     queryset = processor.document_query(docID=RAW['docID'], source=RAW['source'])
-    assert len(queryset) == 0
+    assert not queryset
     scrapi.processing.elasticsearch.ElasticsearchProcessor.manager.es = real_es
 
 
@@ -107,7 +103,7 @@ def test_renormalize(processor_name):
 
     # Check to see those docs were processed
     queryset = processor.document_query(docID=RAW['docID'], source=RAW['source'])
-    # assert len(queryset) == 1
+    assert queryset
 
     # Create a new doucment to be renormalized
     new_raw = copy.deepcopy(RAW)
