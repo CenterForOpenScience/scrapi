@@ -181,7 +181,7 @@ class CassandraProcessor(BaseProcessor):
 
         return RawDocument({
             'doc': doc_items['doc'],
-            'doc_itemsID': doc_items['docID'],
+            'docID': doc_items['docID'],
             'source': doc_items['source'],
             'filetype': doc_items['filetype'],
             'timestamps': doc_items['timestamps'],
@@ -220,11 +220,18 @@ class CassandraProcessor(BaseProcessor):
         documents = DocumentModel.objects(source=source, docID=docID)
         DocumentTuple = namedtuple('Document', ['raw', 'normalized'])
 
-        doc = documents[0]
+        try:
+            doc = documents[0]
+        except IndexError:
+            return None
         raw = self.doc_to_raw_document(doc)
         normalized = self.doc_to_normalized_document(doc)
 
         return DocumentTuple(raw, normalized)
+
+    def document_delete(self, source, docID):
+        document = DocumentModel.objects(source=source, docID=docID)
+        document.timeout(5).delete()
 
 
 @DatabaseManager.registered_model
