@@ -125,7 +125,7 @@ class ElasticsearchProcessor(BaseProcessor):
         doc = results['hits']['hits']
 
         if len(doc) > 0:
-            normalized = NormalizedDocument(doc, validate=False, clean=False)
+            normalized = NormalizedDocument(doc[0], validate=False, clean=False)
         else:
             normalized = None
 
