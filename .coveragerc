@@ -1,7 +1,9 @@
 [run]
 omit =
     scrapi/settings/*
+    api/api/settings/*
     scripts/*
+    scrapi/harvesters/stepic.py
 
 [report]
 exclude_lines =
@@ -12,3 +14,5 @@ exclude_lines =
 omit =
     scrapi/settings/*
     scripts/*
+    scrapi/harvesters/stepic.py
+    api/api/settings/*
