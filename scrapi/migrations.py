@@ -4,9 +4,9 @@ import copy
 
 from scrapi import tasks
 from scrapi import settings
+from scrapi.linter import RawDocument
 from scrapi.events import log_to_sentry
 from scrapi.processing import get_processor
-from scrapi.linter import RawDocument, NormalizedDocument
 
 
 logger = logging.getLogger()
