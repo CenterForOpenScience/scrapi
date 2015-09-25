@@ -1,6 +1,5 @@
-import json
-import logging
 import copy
+import logging
 
 from scrapi import tasks
 from scrapi import settings
