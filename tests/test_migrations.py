@@ -16,7 +16,6 @@ from scrapi.processing import get_processor
 
 from . import utils
 
-# test_cass = CassandraProcessor()
 
 test_harvester = utils.TestHarvester()
 
@@ -41,7 +40,7 @@ def test_rename(processor_name, monkeypatch):
     processor.process_raw(RAW)
     processor.process_normalized(RAW, NORMALIZED)
 
-    queryset = processor.document_query(source=RAW['source'], docID=RAW['docID'])
+    queryset = processor.get(source=RAW['source'], docID=RAW['docID'])
 
     old_source = NORMALIZED['shareProperties']['source']
 
@@ -55,7 +54,7 @@ def test_rename(processor_name, monkeypatch):
 
     tasks.migrate(rename, sources=[old_source], target='wwe_news', dry=False)
 
-    queryset = processor.document_query(source='wwe_news', docID=RAW['docID'])
+    queryset = processor.get(source='wwe_news', docID=RAW['docID'])
 
     assert queryset.normalized.attributes['shareProperties']['source'] == 'wwe_news'
 
@@ -79,11 +78,11 @@ def test_delete(processor_name, monkeypatch):
     processor.process_raw(RAW)
     processor.process_normalized(RAW, NORMALIZED)
 
-    queryset = processor.document_query(docID=RAW['docID'], source=RAW['source'])
+    queryset = processor.get(docID=RAW['docID'], source=RAW['source'])
     assert queryset
 
     tasks.migrate(delete, sources=[RAW['source']], dry=False)
-    queryset = processor.document_query(docID=RAW['docID'], source=RAW['source'])
+    queryset = processor.get(docID=RAW['docID'], source=RAW['source'])
     assert not queryset
     scrapi.processing.elasticsearch.ElasticsearchProcessor.manager.es = real_es
 
@@ -105,7 +104,7 @@ def test_renormalize(processor_name, monkeypatch):
     processor.process_normalized(RAW, NORMALIZED)
 
     # Check to see those docs were processed
-    queryset = processor.document_query(docID=RAW['docID'], source=RAW['source'])
+    queryset = processor.get(docID=RAW['docID'], source=RAW['source'])
     assert queryset
 
     # Create a new doucment to be renormalized
@@ -114,45 +113,77 @@ def test_renormalize(processor_name, monkeypatch):
     new_raw.attributes['doc'] = new_raw.attributes['doc'].encode('utf-8')
 
     # This is basically like running the improved harvester right?
-    processor.document_create(new_raw.attributes)
+    processor.create(new_raw.attributes)
 
     tasks.migrate(renormalize, sources=[RAW['source']], dry=False)
 
-    queryset = processor.document_query(docID='get_the_tables', source=RAW['source'])
+    queryset = processor.get(docID='get_the_tables', source=RAW['source'])
     assert queryset
     scrapi.processing.elasticsearch.es = real_es
-    processor.document_delete(docID='get_the_tables', source=RAW['source'])
+    processor.delete(docID='get_the_tables', source=RAW['source'])
 
 
 @pytest.mark.django_db
 @pytest.mark.cassandra
-@pytest.mark.parametrize('processor_name', ['postgres'])
-def test_cassandra_to_postgres(processor_name):
-    real_es = scrapi.processing.elasticsearch.es
-    scrapi.processing.elasticsearch.es = mock.MagicMock()
+@pytest.mark.elasticsearch
+@pytest.mark.parametrize('canonical', ['postgres', 'cassandra'])
+@pytest.mark.parametrize('destination', ['elasticsearch'])
+def test_cross_db(canonical, destination, monkeypatch):
 
-    processor = get_processor(processor_name)
-    processor.process_raw(RAW)
-    processor.process_normalized(RAW, NORMALIZED)
+    if canonical == destination:
+        return
 
-    cassandra_queryset = processor.document_query(docID=RAW['docID'], source=RAW['source'])
-    postgres_queryset = processor.document_query(source=RAW['source'], docID=RAW['docID'])
+    monkeypatch.setattr('scrapi.settings.CANONICAL_PROCESSOR', canonical)
 
-    assert len(cassandra_queryset) == 1
-    assert len(postgres_queryset) == 0
-    tasks.migrate(cross_db, target_db='postgres', dry=False, sources=['test'])
+    if destination != 'elasticsearch':
+        real_es = scrapi.processing.elasticsearch.ElasticsearchProcessor.manager.es
+        scrapi.processing.elasticsearch.es = mock.MagicMock()
 
-    postgres_queryset = processor.document_query(source=RAW['source'], docID=RAW['docID'])
-    assert len(postgres_queryset) == 1
-    scrapi.processing.elasticsearch.es = real_es
+    # Get the test documents into the caonical processor
+    canonical_processor = get_processor(canonical)
+    canonical_processor.process_raw(RAW)
+    canonical_processor.process_normalized(RAW, NORMALIZED)
+
+    destination_processor = get_processor(destination)
+
+    # Check to see canonical_processor is there, and destination is not
+    canonical_doc = canonical_processor.get(docID=RAW['docID'], source=RAW['source'])
+    assert canonical_doc
+
+    if destination != 'elasticsearch':
+        destination_doc = destination_processor.get(docID=RAW['docID'], source=RAW['source'])
+        assert not destination_doc
+    else:
+        destination_doc = destination_processor.get(index='test', source=RAW['source'])
+        normed = destination_doc.normalized
+        assert not normed
+
+    # Migrate from the canonical to the destination
+    tasks.migrate(cross_db, target_db=destination, dry=False, sources=['test'])
+
+    # Check to see if the document made it to the destinaton, and is still in the canonical
+    if destination != 'elasticsearch':
+        destination_doc = destination_processor.get(docID=RAW['docID'], source=RAW['source'])
+        assert destination_doc
+    else:
+        destination_doc = destination_processor.get(index='test', source=RAW['source'])
+        normed = destination_doc.normalized
+        assert normed
+
+    canonical_doc = canonical_processor.get(docID=RAW['docID'], source=RAW['source'])
+    assert canonical_doc
+
+    if destination_processor != 'elasticsearch':
+        scrapi.processing.elasticsearch.es = real_es
 
 
 @pytest.mark.cassandra
 @pytest.mark.elasticsearch
 @pytest.mark.parametrize('processor_name', ['postgres'])
-def test_cassandra_to_elasticsearch(processor_name):
+def test_cassandra_to_elasticsearch(processor_name, monkeypatch):
 
     results = scrapi.processing.elasticsearch.ElasticsearchProcessor.manager.es.search(index='test', doc_type=RAW['source'])
+    monkeypatch.setattr('scrapi.settings.CANONICAL_PROCESSOR', processor_name)
 
     assert (len(results['hits']['hits']) == 0)
 
