@@ -5,7 +5,6 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "api.api.settings")
 
 import copy
 import logging
-from collections import namedtuple
 
 import django
 
