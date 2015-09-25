@@ -99,32 +99,3 @@ def delete(docs, sources=None, **kwargs):
         es_processor.manager.es.delete(index='share_v1', doc_type=sources, id=raw_doc.attributes['docID'], ignore=[404])
 
         logger.info('Deleted document from {} with id {}'.format(sources, raw_doc.attributes['docID']))
-
-
-def doc_to_normed_dict(doc):
-    # make the new dict actually contain real items
-    normed = {}
-    for key, value in dict(doc).items():
-        try:
-            normed[key] = json.loads(value)
-        except (ValueError, TypeError):
-            normed[key] = value
-
-    # Remove empty values and strip down to only normalized fields
-    do_not_include = ['docID', 'doc', 'filetype', 'timestamps', 'source']
-    for key in list(normed.keys()):
-        if not normed[key]:
-            del normed[key]
-
-    for key in list(normed.keys()):
-        if key in do_not_include:
-            del normed[key]
-
-    if normed.get('versions'):
-        normed['versions'] = list(map(str, normed['versions']))
-
-    # No datetime means the document wasn't normalized (probably wasn't on the approved list)
-    if normed.get('providerUpdatedDateTime'):
-        normed['providerUpdatedDateTime'] = normed['providerUpdatedDateTime'].isoformat()
-
-    return normed
