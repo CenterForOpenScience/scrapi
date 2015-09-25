@@ -9,8 +9,10 @@ from elasticsearch.exceptions import NotFoundError
 from elasticsearch.exceptions import ConnectionError
 
 from scrapi import settings
-from scrapi.processing.base import BaseProcessor, BaseDatabaseManager
 from scrapi.base.transformer import JSONTransformer
+from scrapi.processing import DocumentTuple
+from scrapi.processing.base import BaseProcessor, BaseDatabaseManager
+from scrapi.linter import NormalizedDocument
 
 
 logger = logging.getLogger(__name__)
@@ -117,6 +119,18 @@ class ElasticsearchProcessor(BaseProcessor):
             id=raw_doc['docID']
         )
 
+    def get(self, index, source):
+        results = self.manager.es.search(index=index, doc_type=source)
+
+        doc = results['hits']['hits']
+
+        if len(doc) > 0:
+            normalized = NormalizedDocument(doc, validate=False, clean=False)
+        else:
+            normalized = None
+
+        return DocumentTuple(None, normalized)
+
 
 class PreserveOldContributors(JSONTransformer):
     schema = {
@@ -127,7 +141,8 @@ class PreserveOldContributors(JSONTransformer):
     }
 
     def process_contributors(self, contributors):
-        return [self.transform(contributor) for contributor in contributors]
+        if contributors:
+            return [self.transform(contributor) for contributor in contributors]
 
 
 class PreserveOldSchema(JSONTransformer):
