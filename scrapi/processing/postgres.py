@@ -11,6 +11,7 @@ import django
 from api.webview.models import HarvesterResponse, Document
 
 from scrapi import events
+from scrapi.util import json_without_bytes
 from scrapi.linter import RawDocument, NormalizedDocument
 from scrapi.processing import DocumentTuple
 from scrapi.processing.base import BaseProcessor, BaseHarvesterResponse, BaseDatabaseManager
@@ -70,6 +71,7 @@ class PostgresProcessor(BaseProcessor):
         doc.delete()
 
     def create(self, attributes):
+        attributes = json_without_bytes(attributes)
         Document.objects.create(
             source=attributes['source'],
             docID=attributes['docID'],
