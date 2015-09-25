@@ -40,55 +40,49 @@ def rename(docs, target=None, **kwargs):
 @tasks.task_autoretry(default_retry_delay=30, max_retries=5)
 def cross_db(docs, target_db=None, index=None, **kwargs):
     """
-    Migration to go between cassandra > postgres, or cassandra > elasticsearch.
-    TODO - make this source_db agnostic. Should happen along with larger migration refactor
+    Migration to go between
+        cassandra > postgres
+        postgres > cassandra
+        cassandra > elasticsearch
+        postgres > elasticsearch
+
+    source db will be set to the CANONICAL_PROCESSOR specified in settings
+    target_db will be specified when the task is called
     """
     assert target_db, 'Please specify a target db for the migration -- either postgres or elasticsearch'
-    # assert target_db in ['postgres', 'elasticsearch'], 'Invalid target database - please specify either postgres or elasticsearch'
-
+    assert target_db in ['postgres', 'cassandra', 'elasticsearch'], 'Invalid target database - please specify either postgres, cassandra or elasticsearch'
     for doc in docs:
-
-        if not doc.doc:
+        if not doc.raw.attributes['doc']:
             # corrupted database item has no doc element
-            message = 'Could not migrate document from {} with id {}'.format(doc.source, doc.docID)
+            message = 'Could not migrate document from {} with id {}'.format(doc.raw.attributes['source'], doc.raw.attributes['docID'])
             log_to_sentry(message)
             logger.info(message)
             continue
 
-        raw = RawDocument({
-            'doc': doc.doc,
-            'docID': doc.docID,
-            'source': doc.source,
-            'filetype': doc.filetype,
-            'timestamps': doc.timestamps,
-            'versions': doc.versions
-        }, validate=False)
+        raw = doc.raw
+        normalized = doc.normalized
 
-        normed = doc_to_normed_dict(doc)
-
-        # Create the normalized, don't validate b/c its been done once already
-        normalized = NormalizedDocument(normed, validate=False)
-
-        processor = get_processor(target_db)
+        target_processor = get_processor(target_db)
 
         if not kwargs.get('dry'):
-            processor.process_raw(raw)
+            target_processor.process_raw(raw)
 
             try:
                 if target_db == 'elasticsearch':
-                    processor.process_normalized(raw, normalized, index=index)
+                    target_processor.process_normalized(raw, normalized, index=index)
                 else:
-                    processor.process_normalized(raw, normalized)
-            except KeyError:
+                    target_processor.process_normalized(raw, normalized)
+            except AttributeError:
                 # This means that the document was harvested but wasn't approved to be normalized
-                logger.info('Not storing migrated normalized from {} with id {}, document is not in approved set list.'.format(doc.source, doc.docID))
+                logger.info('Not storing migrated normalized from {} with id {}, document is not in approved set list.'.format(raw.attributes['source'], raw.attributes['docID']))
 
 
 @tasks.task_autoretry(default_retry_delay=1, max_retries=5)
 def renormalize(docs, *args, **kwargs):
     for doc in docs:
+        raw_doc = doc.raw
         if not kwargs.get('dry'):
-            tasks.process_normalized(tasks.normalize(doc, doc['source']), doc)
+            tasks.process_normalized(tasks.normalize(raw_doc, raw_doc['source']), raw_doc)
 
 
 @tasks.task_autoretry(default_retry_delay=30, max_retries=5)
