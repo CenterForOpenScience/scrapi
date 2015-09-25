@@ -7,6 +7,8 @@ import logging
 
 logger = logging.getLogger()
 
+xrange = six.moves.xrange
+
 
 def timestamp():
     return pytz.utc.localize(datetime.utcnow()).isoformat()
