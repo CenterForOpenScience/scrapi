@@ -11,11 +11,21 @@ class _Registry(dict):
     def __init__(self):
         dict.__init__(self)
 
+    def __hash__(self):
+        return hash(self.freeze(self))
+
     def __getitem__(self, key):
         try:
             return dict.__getitem__(self, key)
         except KeyError:
             raise KeyError('No harvester named "{}"'.format(key))
+
+    def freeze(self, o):
+        if isinstance(o, dict):
+            return frozenset({k: self.freeze(v) for k, v in o.items()}.items())
+        elif isinstance(o, list):
+            return tuple(map(self.freeze, o))
+        return o
 
     @property
     def beat_schedule(self):
