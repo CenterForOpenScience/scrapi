@@ -127,8 +127,8 @@ def test_renormalize(processor_name, monkeypatch):
 @pytest.mark.cassandra
 @pytest.mark.elasticsearch
 @pytest.mark.parametrize('canonical', ['postgres', 'cassandra'])
-@pytest.mark.parametrize('destination', ['elasticsearch'])
-def test_cross_db(canonical, destination, monkeypatch):
+@pytest.mark.parametrize('destination', ['postgres', 'cassandra', 'elasticsearch'])
+def test_cross_db(canonical, destination, monkeypatch, index='test'):
 
     if canonical == destination:
         return
@@ -154,49 +154,24 @@ def test_cross_db(canonical, destination, monkeypatch):
         destination_doc = destination_processor.get(docID=RAW['docID'], source=RAW['source'])
         assert not destination_doc
     else:
-        destination_doc = destination_processor.get(index='test', source=RAW['source'])
+        destination_doc = destination_processor.get(index=index, source=RAW['source'])
         normed = destination_doc.normalized
         assert not normed
 
     # Migrate from the canonical to the destination
-    tasks.migrate(cross_db, target_db=destination, dry=False, sources=['test'])
+    tasks.migrate(cross_db, target_db=destination, dry=False, sources=['test'], index=index)
 
     # Check to see if the document made it to the destinaton, and is still in the canonical
     if destination != 'elasticsearch':
         destination_doc = destination_processor.get(docID=RAW['docID'], source=RAW['source'])
         assert destination_doc
     else:
-        destination_doc = destination_processor.get(index='test', source=RAW['source'])
+        destination_doc = destination_processor.get(index=index, source=RAW['source'])
         normed = destination_doc.normalized
         assert normed
 
     canonical_doc = canonical_processor.get(docID=RAW['docID'], source=RAW['source'])
     assert canonical_doc
 
-    if destination_processor != 'elasticsearch':
+    if destination != 'elasticsearch':
         scrapi.processing.elasticsearch.es = real_es
-
-
-@pytest.mark.cassandra
-@pytest.mark.elasticsearch
-@pytest.mark.parametrize('processor_name', ['postgres'])
-def test_cassandra_to_elasticsearch(processor_name, monkeypatch):
-
-    results = scrapi.processing.elasticsearch.ElasticsearchProcessor.manager.es.search(index='test', doc_type=RAW['source'])
-    monkeypatch.setattr('scrapi.settings.CANONICAL_PROCESSOR', processor_name)
-
-    assert (len(results['hits']['hits']) == 0)
-
-    processor = get_processor(processor_name)
-
-    # create the cassandra documents
-    processor.process_raw(RAW)
-    processor.process_normalized(RAW, NORMALIZED)
-
-    # run the migration
-    tasks.migrate(cross_db, target_db='elasticsearch', dry=False, sources=['test'], index='test')
-
-    # check the elasticsearch results
-    results = scrapi.processing.elasticsearch.ElasticsearchProcessor.manager.es.search(index='test', doc_type=RAW['source'])
-    # import ipdb; ipdb.set_trace()
-    assert (len(results['hits']['hits']) == 1)
