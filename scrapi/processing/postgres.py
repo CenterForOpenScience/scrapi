@@ -13,6 +13,7 @@ from api.webview.models import HarvesterResponse, Document
 
 from scrapi import events
 from scrapi.linter import RawDocument, NormalizedDocument
+from scrapi.processing import DocumentTuple
 from scrapi.processing.base import BaseProcessor, BaseHarvesterResponse, BaseDatabaseManager
 
 django.setup()
@@ -41,28 +42,35 @@ class PostgresProcessor(BaseProcessor):
     manager = DatabaseManager()
 
     def documents(self, *sources):
-        for source in sources:
-            for doc in Document.objects.filter(source=source):
-                yield RawDocument(doc.raw, clean=False, validate=False)
+        sources = sources
+        q = Document.objects.all()
+        querysets = (q.filter(source=source) for source in sources) if sources else [q]
+        for query in querysets:
+            for doc in query:
+                try:
+                    raw = RawDocument(doc.raw, clean=False, validate=False)
+                except AttributeError as e:
+                    logger.info('{}  -- Malformed rawdoc in database, skipping'.format(e))
+                    raw = None
+                    continue
+                normalized = NormalizedDocument(doc.normalized, validate=False, clean=False) if doc.normalized else None
+                yield DocumentTuple(raw, normalized)
 
-    def document_query(self, source, docID):
+    def get(self, source, docID):
         try:
             document = Document.objects.get(source=source, docID=docID)
         except Document.DoesNotExist:
             return None
-
-        DocumentTuple = namedtuple('Document', ['raw', 'normalized'])
-
         raw = RawDocument(document.raw, clean=False, validate=False)
-        normalized = NormalizedDocument(document.normalized, validate=False)
+        normalized = NormalizedDocument(document.normalized, validate=False, clean=False)
 
         return DocumentTuple(raw, normalized)
 
-    def document_delete(self, source, docID):
+    def delete(self, source, docID):
         doc = Document.objects.get(source=source, docID=docID)
         doc.delete()
 
-    def document_create(self, attributes):
+    def create(self, attributes):
         Document.objects.create(
             source=attributes['source'],
             docID=attributes['docID'],
