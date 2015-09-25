@@ -5,7 +5,6 @@ import json
 import logging
 from uuid import uuid4
 from datetime import datetime
-from collections import namedtuple
 
 from dateutil.parser import parse
 
@@ -19,6 +18,7 @@ from scrapi import settings
 from scrapi.util import try_n_times
 from scrapi.util import copy_to_unicode
 from scrapi.linter import RawDocument, NormalizedDocument
+from scrapi.processing import DocumentTuple
 from scrapi.processing.base import BaseHarvesterResponse, BaseProcessor, BaseDatabaseManager
 
 
@@ -169,13 +169,13 @@ class CassandraProcessor(BaseProcessor):
             page = try_n_times(5, list, query)
             while len(page) > 0:
                 for doc in page:
-                    yield self.doc_to_raw_document(doc)
+                    yield DocumentTuple(self.to_raw(doc), self.to_normalized(doc))
                 page = try_n_times(5, self.next_page, query, page)
 
     def next_page(self, query, page):
         return list(query.filter(docID__gt=page[-1].docID))
 
-    def doc_to_raw_document(self, doc):
+    def to_raw(self, doc):
 
         doc_items = dict(doc)
 
@@ -186,9 +186,9 @@ class CassandraProcessor(BaseProcessor):
             'filetype': doc_items['filetype'],
             'timestamps': doc_items['timestamps'],
             'versions': doc_items['versions']
-        }, validate=False)
+        }, validate=False, clean=False)
 
-    def doc_to_normalized_document(self, doc):
+    def to_normalized(self, doc):
         # make the new dict actually contain real items
         normed = {}
         for key, value in dict(doc).items():
@@ -214,26 +214,26 @@ class CassandraProcessor(BaseProcessor):
         if normed.get('providerUpdatedDateTime'):
             normed['providerUpdatedDateTime'] = normed['providerUpdatedDateTime'].isoformat()
 
-        return NormalizedDocument(normed, validate=False)
+        return NormalizedDocument(normed, validate=False, clean=False)
 
-    def document_query(self, source, docID):
+    def get(self, source, docID):
+
         documents = DocumentModel.objects(source=source, docID=docID)
-        DocumentTuple = namedtuple('Document', ['raw', 'normalized'])
 
         try:
             doc = documents[0]
         except IndexError:
             return None
-        raw = self.doc_to_raw_document(doc)
-        normalized = self.doc_to_normalized_document(doc)
+        raw = self.to_raw(doc)
+        normalized = self.to_normalized(doc)
 
         return DocumentTuple(raw, normalized)
 
-    def document_delete(self, source, docID):
+    def delete(self, source, docID):
         document = DocumentModel.objects(source=source, docID=docID)
         document.timeout(5).delete()
 
-    def document_create(self, attributes):
+    def create(self, attributes):
         DocumentModel.create(**attributes).save()
 
 
