@@ -53,13 +53,12 @@ def cross_db(docs, target_db=None, index=None, **kwargs):
     for doc in docs:
         if not doc.raw.attributes['doc']:
             # corrupted database item has no doc element
-            message = 'Could not migrate document from {} with id {}'.format(doc.raw.attributes['source'], doc.raw.attributes['docID'])
+            message = 'No doc element in raw doc -- could not migrate document from {} with id {}'.format(doc.raw.attributes['source'], doc.raw.attributes['docID'])
             log_to_sentry(message)
             logger.info(message)
             continue
 
-        raw = doc.raw
-        normalized = doc.normalized
+        raw, normalized = doc.raw, doc.normalized
 
         target_processor = get_processor(target_db)
 
