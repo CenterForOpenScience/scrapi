@@ -17,7 +17,7 @@ def rename(docs, target=None, **kwargs):
 
     for doc in docs:
         raw_doc = doc.raw
-        new_doc = copy.copy(raw_doc.attributes)
+        new_doc = copy.deepcopy(raw_doc.attributes)
         new_doc['source'] = target
 
         raw = RawDocument(new_doc, validate=False)
