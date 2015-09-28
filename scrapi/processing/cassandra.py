@@ -129,7 +129,6 @@ class CassandraProcessor(BaseProcessor):
 
     @events.logged(events.PROCESSING, 'raw.cassandra')
     def process_raw(self, raw_doc):
-        print('PROCSSING RAW inside CASSANDRA')
         self.send_to_database(
             source=raw_doc['source'],
             docID=raw_doc['docID'],
