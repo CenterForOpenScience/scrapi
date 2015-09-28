@@ -66,10 +66,7 @@ def cross_db(docs, target_db=None, index=None, **kwargs):
             target_processor.process_raw(raw)
 
             try:
-                if target_db == 'elasticsearch':
-                    target_processor.process_normalized(raw, normalized, index=index)
-                else:
-                    target_processor.process_normalized(raw, normalized)
+                target_processor.process_normalized(raw, normalized)
             except AttributeError:
                 # This means that the document was harvested but wasn't approved to be normalized
                 logger.info('Not storing migrated normalized from {} with id {}, document is not in approved set list.'.format(raw.attributes['source'], raw.attributes['docID']))

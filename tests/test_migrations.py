@@ -138,6 +138,8 @@ def test_cross_db(canonical, destination, monkeypatch, index='test'):
     if destination != 'elasticsearch':
         real_es = scrapi.processing.elasticsearch.ElasticsearchProcessor.manager.es
         scrapi.processing.elasticsearch.es = mock.MagicMock()
+    else:
+        monkeypatch.setattr('scrapi.settings.ELASTIC_INDEX', 'test')
 
     # Get the test documents into the caonical processor
     canonical_processor = get_processor(canonical)
