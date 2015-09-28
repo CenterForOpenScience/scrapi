@@ -45,7 +45,7 @@ def cross_db(docs, target_db=None, index=None, **kwargs):
         cassandra > elasticsearch
         postgres > elasticsearch
 
-    source db will be set to the CANONICAL_PROCESSOR specified in settings
+    source db can be passed in to the migrate task, and will default to the CANONICAL_PROCESSOR specified in settings
     target_db will be specified when the task is called
     """
     assert target_db, 'Please specify a target db for the migration -- either postgres or elasticsearch'
