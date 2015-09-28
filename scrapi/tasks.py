@@ -124,9 +124,10 @@ def process_normalized(normalized_doc, raw_doc, **kwargs):
 
 
 @app.task
-def migrate(migration, sources=tuple(), async=False, dry=True, group_size=1000, **kwargs):
+def migrate(migration, source_db=None, sources=tuple(), async=False, dry=True, group_size=1000, **kwargs):
 
-    documents = processing.get_processor(settings.CANONICAL_PROCESSOR).documents
+    source_db = source_db or settings.CANONICAL_PROCESSOR
+    documents = processing.get_processor(source_db).documents
 
     docs = documents(*sources)
     if async:
