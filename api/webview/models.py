@@ -9,7 +9,7 @@ class Document(models.Model):
     providerUpdatedDateTime = models.DateTimeField(null=True)
 
     raw = JsonField()
-    normalized = JsonField()
+    normalized = JsonField(null=True)
 
 
 class HarvesterResponse(models.Model):
