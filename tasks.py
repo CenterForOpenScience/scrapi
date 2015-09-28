@@ -112,17 +112,21 @@ def elasticsearch():
 
 
 @task
-def test(cov=True, verbose=False, debug=False):
+def test(cov=True, doctests=True, verbose=False, debug=False, pdb=False):
     """
     Runs all tests in the 'tests/' directory
     """
-    cmd = 'py.test tests'
+    cmd = 'py.test scrapi tests'
+    if doctests:
+        cmd += ' --doctest-modules'
     if verbose:
         cmd += ' -v'
     if debug:
         cmd += ' -s'
     if cov:
         cmd += ' --cov-report term-missing --cov-config .coveragerc --cov scrapi'
+    if pdb:
+        cmd += ' --pdb'
 
     run(cmd, pty=True)
 
@@ -158,8 +162,8 @@ def harvester(harvester_name, async=False, start=None, end=None):
     if not registry.get(harvester_name):
         raise ValueError('No such harvesters {}'.format(harvester_name))
 
-    start = parse(start).date() if start else date.today() - timedelta(settings.DAYS_BACK)
     end = parse(end).date() if end else date.today()
+    start = parse(start).date() if start else end - timedelta(settings.DAYS_BACK)
 
     run_harvester.delay(harvester_name, start_date=start, end_date=end)
 

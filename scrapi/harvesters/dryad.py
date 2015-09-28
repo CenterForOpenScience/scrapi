@@ -14,20 +14,6 @@ from scrapi.base import OAIHarvester
 logger = logging.getLogger(__name__)
 
 
-def format_dois_dryad(*args):
-    prefix = 'http://dx.doi.org/{}'
-    urls = []
-    for arg in args:
-        if isinstance(arg, list):
-            for url in arg:
-                if 'doi:' in url:
-                    urls.append(prefix.format(url.replace('doi:', '')))
-        elif arg:
-            if 'doi:' in arg:
-                urls.append(prefix.format(arg.replace('doi:', '')))
-    return urls
-
-
 class DryadHarvester(OAIHarvester):
     short_name = 'dryad'
     long_name = 'Dryad Data Repository'

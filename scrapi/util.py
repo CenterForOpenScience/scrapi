@@ -14,18 +14,18 @@ def copy_to_unicode(element):
     necessary for linting """
 
     if isinstance(element, dict):
-        for key, val in element.items():
-            element[key] = copy_to_unicode(val)
+        return {
+            key: copy_to_unicode(val)
+            for key, val in element.items()
+        }
     elif isinstance(element, list):
-        for idx, item in enumerate(element):
-            element[idx] = copy_to_unicode(item)
+        return list(map(copy_to_unicode, element))
     else:
         try:
             # A dirty way to convert to unicode in python 2 + 3.3+
-            element = u''.join(element)
+            return u''.join(element)
         except TypeError:
-            pass
-    return element
+            return element
 
 
 def stamp_from_raw(raw_doc, **kwargs):

@@ -22,7 +22,7 @@ logging.getLogger('elasticsearch.trace').setLevel(logging.FATAL)
 
 try:
     # If we cant connect to elastic search dont define this class
-    es = Elasticsearch(settings.ELASTIC_URI, request_timeout=settings.ELASTIC_TIMEOUT)
+    es = Elasticsearch(settings.ELASTIC_URI, request_timeout=settings.ELASTIC_TIMEOUT, retry_on_timeout=True)
 
     # body = {
     #     'mappings': {
@@ -46,7 +46,7 @@ class ElasticsearchProcessor(BaseProcessor):
     def process_normalized(self, raw_doc, normalized, index=settings.ELASTIC_INDEX):
         data = {
             key: value for key, value in normalized.attributes.items()
-            if key in settings.FRONTEND_KEYS
+            if key in (settings.FRONTEND_KEYS or normalized.attributes.keys())
         }
         data['providerUpdatedDateTime'] = self.version(raw_doc, normalized)
 
