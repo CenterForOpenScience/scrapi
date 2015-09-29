@@ -177,3 +177,41 @@ def test_cross_db(canonical, destination, monkeypatch, index='test'):
 
     if destination != 'elasticsearch':
         scrapi.processing.elasticsearch.es = real_es
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize('destination', ['postgres', 'cassandra'])
+def test_no_doc_element_cross_db(destination, monkeypatch, index='test'):
+
+    if scrapi.settings.CANONICAL_PROCESSOR == destination:
+        return
+
+    real_es = scrapi.processing.elasticsearch.ElasticsearchProcessor.manager.es
+    scrapi.processing.elasticsearch.es = mock.MagicMock()
+
+    # Get the test documents into the caonical processor, but don't process normalized
+    canonical_processor = get_processor(scrapi.settings.CANONICAL_PROCESSOR)
+    canonical_processor.process_raw(RAW)
+    # canonical_processor.process_normalized(RAW, NORMALIZED)
+
+    destination_processor = get_processor(destination)
+
+    # Check to see canonical_processor raw is there, and destination is not
+    canonical_doc = canonical_processor.get(docID=RAW['docID'], source=RAW['source'])
+    assert canonical_doc.raw
+    assert not canonical_doc.normalized
+
+    destination_doc = destination_processor.get(docID=RAW['docID'], source=RAW['source'])
+    assert not destination_doc
+
+    # # Migrate from the canonical to the destination
+    tasks.migrate(cross_db, target_db=destination, dry=False, sources=['test'], index=index)
+
+    # Check to see if the document didn't make made it to the destinaton, and is still in the canonical
+    destination_doc = destination_processor.get(docID=RAW['docID'], source=RAW['source'])
+    assert not destination_doc.normalized
+
+    canonical_doc = canonical_processor.get(docID=RAW['docID'], source=RAW['source'])
+    assert canonical_doc
+
+    scrapi.processing.elasticsearch.es = real_es
