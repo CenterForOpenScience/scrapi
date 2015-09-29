@@ -140,8 +140,14 @@ $ sudo apt-get install rabbitmq-server
 
 You will need to have a local copy of the settings. Copy local-dist.py into your own version of local.py -
 
-```
+```bash
 cp scrapi/settings/local-dist.py scrapi/settings/local.py
+```
+
+Copy over the api settings
+
+```bash
+cp api/api/settings/local-dist.py api/api/settings/local.py
 ```
 
 If you installed Cassandra, Postgres and Elasticsearch earlier, you will want add something like the following configuration to your local.py, based on the databases you have:
