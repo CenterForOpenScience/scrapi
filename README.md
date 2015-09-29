@@ -143,7 +143,7 @@ You will need to have a local copy of the settings. Copy local-dist.py into your
 cp scrapi/settings/local-dist.py scrapi/settings/local.py
 ```
 
-If you installed Cassandra and Elasticsearch earlier, you will want add the following configuration to your local.py:
+If you installed Cassandra and Elasticsearch earlier, you will want to replace the following existing blank configurations for ```RECORD_HTTP_TRANSACTIONS```,  ```NORMALIZED_PROCESSING``` and ```RAW_PROCESSING``` in your local.py:
 ```python
 RECORD_HTTP_TRANSACTIONS = True  # Only if cassandra is installed
 
