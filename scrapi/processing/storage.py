@@ -37,4 +37,4 @@ class StorageProcessor(BaseProcessor):
             f.write(json.dumps(json_without_bytes(content), indent=4))
 
     def documents(self, *sources):
-        pass
+        raise NotImplementedError
