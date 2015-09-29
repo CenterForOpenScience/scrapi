@@ -149,7 +149,7 @@ class CassandraProcessor(BaseProcessor):
                 versions.append(version.key)
                 return document.update(versions=versions, **kwargs)
             else:
-                raise events.Skip("No changees detected for document with ID {0} and source {1}.".format(docID, source))
+                raise events.Skip("No changes detected for document with ID {0} and source {1}.".format(docID, source))
         else:
             # create document
             return DocumentModel.create(docID=docID, source=source, **kwargs)
@@ -212,6 +212,8 @@ class CassandraProcessor(BaseProcessor):
         # No datetime means the document wasn't normalized (probably wasn't on the approved list)
         if normed.get('providerUpdatedDateTime'):
             normed['providerUpdatedDateTime'] = normed['providerUpdatedDateTime'].isoformat()
+        else:
+            return None
 
         return NormalizedDocument(normed, validate=False, clean=False)
 
