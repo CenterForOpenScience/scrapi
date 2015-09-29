@@ -181,7 +181,7 @@ def test_cross_db(canonical, destination, monkeypatch, index='test'):
 
 @pytest.mark.django_db
 @pytest.mark.parametrize('destination', ['postgres', 'cassandra'])
-def test_no_doc_element_cross_db(destination, monkeypatch, index='test'):
+def test_no_normed_cross_db(destination, index='test'):
 
     if scrapi.settings.CANONICAL_PROCESSOR == destination:
         return
