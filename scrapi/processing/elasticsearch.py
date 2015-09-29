@@ -100,7 +100,7 @@ class ElasticsearchProcessor(BaseProcessor):
             # Normally I don't like exception-driven logic,
             # but this was the best way to handle missing
             # types, indices and documents together
-            date = normalized['providerUpdatedDateTime']
+            date = normalized.get('providerUpdatedDateTime', None)
         else:
             date = old_doc.get('providerUpdatedDateTime') or normalized['providerUpdatedDateTime']
 
