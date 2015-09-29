@@ -103,7 +103,7 @@ class PostgresProcessor(BaseProcessor):
         document = self._get_by_source_id(Document, source, docID) or Document(source=source, docID=docID)
 
         document.normalized = normalized.attributes
-        document.providerUpdatedDateTime = normalized['providerUpdatedDateTime']
+        document.providerUpdatedDateTime = normalized.get('providerUpdatedDateTime', None)
 
         document.save()
 
