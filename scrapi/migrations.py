@@ -66,7 +66,7 @@ def cross_db(docs, target_db=None, index=None, **kwargs):
 
             try:
                 target_processor.process_normalized(raw, normalized)
-            except AttributeError:
+            except KeyError:
                 # This means that the document was harvested but wasn't approved to be normalized
                 logger.info('Not storing migrated normalized from {} with id {}, document is not in approved set list.'.format(raw.attributes['source'], raw.attributes['docID']))
 
