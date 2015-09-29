@@ -62,7 +62,7 @@ class PostgresProcessor(BaseProcessor):
         except Document.DoesNotExist:
             return None
         raw = RawDocument(document.raw, clean=False, validate=False)
-        normalized = NormalizedDocument(document.normalized, validate=False, clean=False)
+        normalized = NormalizedDocument(document.normalized, validate=False, clean=False) if document.normalized else None
 
         return DocumentTuple(raw, normalized)
 
