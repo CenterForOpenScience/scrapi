@@ -50,7 +50,7 @@ def cross_db(docs, target_db=None, index=None, **kwargs):
     assert target_db, 'Please specify a target db for the migration -- either postgres or elasticsearch'
     assert target_db in ['postgres', 'cassandra', 'elasticsearch'], 'Invalid target database - please specify either postgres, cassandra or elasticsearch'
     for doc in docs:
-        if not doc.raw.attributes['doc']:
+        if not doc.raw['doc']:
             # corrupted database item has no doc element
             message = 'No doc element in raw doc -- could not migrate document from {} with id {}'.format(doc.raw.attributes['source'], doc.raw.attributes['docID'])
             log_to_sentry(message)
