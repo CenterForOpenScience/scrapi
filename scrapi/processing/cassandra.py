@@ -175,16 +175,13 @@ class CassandraProcessor(BaseProcessor):
         return list(query.filter(docID__gt=page[-1].docID))
 
     def to_raw(self, doc):
-
-        doc_items = dict(doc)
-
         return RawDocument({
-            'doc': doc_items['doc'],
-            'docID': doc_items['docID'],
-            'source': doc_items['source'],
-            'filetype': doc_items['filetype'],
-            'timestamps': doc_items['timestamps'],
-            'versions': doc_items['versions']
+            'doc': doc.doc,
+            'docID': doc.docID,
+            'source': doc.source,
+            'filetype': doc.filetype,
+            'timestamps': doc.timestamps,
+            'versions': doc.versions
         }, validate=False, clean=False)
 
     def to_normalized(self, doc):
