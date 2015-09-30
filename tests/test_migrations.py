@@ -11,7 +11,6 @@ from scrapi.migrations import delete
 from scrapi.migrations import rename
 from scrapi.migrations import cross_db
 from scrapi.migrations import renormalize
-
 from scrapi.processing import get_processor
 
 from . import utils
@@ -156,9 +155,8 @@ def test_cross_db(canonical, destination, monkeypatch, index='test'):
         destination_doc = destination_processor.get(docID=RAW['docID'], source=RAW['source'])
         assert not destination_doc
     else:
-        destination_doc = destination_processor.get(index=index, source=RAW['source'])
-        normed = destination_doc.normalized
-        assert not normed
+        destination_doc = destination_processor.get(docID=RAW['docID'], index=index, source=RAW['source'])
+        assert not destination_doc
 
     # Migrate from the canonical to the destination
     tasks.migrate(cross_db, target_db=destination, dry=False, sources=['test'], index=index)
@@ -168,9 +166,8 @@ def test_cross_db(canonical, destination, monkeypatch, index='test'):
         destination_doc = destination_processor.get(docID=RAW['docID'], source=RAW['source'])
         assert destination_doc
     else:
-        destination_doc = destination_processor.get(index=index, source=RAW['source'])
-        normed = destination_doc.normalized
-        assert normed
+        destination_doc = destination_processor.get(docID=RAW['docID'], index=index, source=RAW['source'])
+        assert destination_doc.normalized
 
     canonical_doc = canonical_processor.get(docID=RAW['docID'], source=RAW['source'])
     assert canonical_doc

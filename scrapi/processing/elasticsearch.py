@@ -70,7 +70,7 @@ class ElasticsearchProcessor(BaseProcessor):
     manager = DatabaseManager()
 
     def documents(self, *sources):
-        pass
+        raise NotImplementedError
 
     def process_normalized(self, raw_doc, normalized, index=None):
         index = index or settings.ELASTIC_INDEX
@@ -119,17 +119,17 @@ class ElasticsearchProcessor(BaseProcessor):
             id=raw_doc['docID']
         )
 
-    def get(self, index, source):
-        results = self.manager.es.search(index=index, doc_type=source)
+    def get(self, docID, index, source):
+        try:
+            results = self.manager.es.get_source(
+                index=index,
+                doc_type=source,
+                id=docID
+            )
+        except NotFoundError:
+            return None
 
-        doc = results['hits']['hits']
-
-        if len(doc) > 0:
-            normalized = NormalizedDocument(doc[0], validate=False, clean=False)
-        else:
-            normalized = None
-
-        return DocumentTuple(None, normalized)
+        return DocumentTuple(None, NormalizedDocument(results, validate=False, clean=False))
 
 
 class PreserveOldContributors(JSONTransformer):
