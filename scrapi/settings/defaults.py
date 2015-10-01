@@ -12,6 +12,8 @@ disabled = []
 RAW_PROCESSING = []
 NORMALIZED_PROCESSING = []
 
+FRONTEND_KEYS = None
+
 SENTRY_DSN = None
 
 USE_FLUENTD = False

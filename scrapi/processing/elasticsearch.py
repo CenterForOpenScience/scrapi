@@ -76,7 +76,7 @@ class ElasticsearchProcessor(BaseProcessor):
         index = index or settings.ELASTIC_INDEX
         data = {
             key: value for key, value in normalized.attributes.items()
-            if key in settings.FRONTEND_KEYS
+            if key in (settings.FRONTEND_KEYS or normalized.attributes.keys())
         }
         data['providerUpdatedDateTime'] = self.version(raw_doc, normalized)
 
