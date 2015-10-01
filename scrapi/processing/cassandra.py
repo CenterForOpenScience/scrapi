@@ -187,28 +187,22 @@ class CassandraProcessor(BaseProcessor):
     def to_normalized(self, doc):
         # make the new dict actually contain real items
         normed = {}
-        for key, value in dict(doc).items():
-            try:
-                normed[key] = json.loads(value)
-            except (ValueError, TypeError):
-                normed[key] = value
-
-        # Remove empty values and strip down to only normalized fields
         do_not_include = ['docID', 'doc', 'filetype', 'timestamps', 'source']
-        for key in list(normed.keys()):
-            if not normed[key]:
-                del normed[key]
-
-        for key in list(normed.keys()):
-            if key in do_not_include:
-                del normed[key]
+        for key, value in dict(doc).items():
+            if value and key not in do_not_include:
+                try:
+                    normed[key] = json.loads(value)
+                except (ValueError, TypeError):
+                    normed[key] = value
 
         if normed.get('versions'):
             normed['versions'] = list(map(str, normed['versions']))
 
         # No datetime means the document wasn't normalized (probably wasn't on the approved list)
+        # TODO - fix odd circular import that makes us import this here
+        from scrapi.base.helpers import datetime_formatter
         if normed.get('providerUpdatedDateTime'):
-            normed['providerUpdatedDateTime'] = normed['providerUpdatedDateTime'].isoformat()
+            normed['providerUpdatedDateTime'] = datetime_formatter(normed['providerUpdatedDateTime'].isoformat())
         else:
             return None
 
