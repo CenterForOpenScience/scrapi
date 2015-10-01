@@ -2,9 +2,10 @@ import pytest
 from . import utils
 
 from scrapi.linter.document import NormalizedDocument, RawDocument
-from scrapi.processing.elasticsearch import es, ElasticsearchProcessor
+from scrapi.processing.elasticsearch import ElasticsearchProcessor
 
 test_db = ElasticsearchProcessor()
+es = test_db.manager.es
 
 RAW = RawDocument(utils.RAW_DOC)
 NORMALIZED = NormalizedDocument(utils.RECORD)

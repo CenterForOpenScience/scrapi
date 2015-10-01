@@ -9,8 +9,10 @@ from elasticsearch.exceptions import NotFoundError
 from elasticsearch.exceptions import ConnectionError
 
 from scrapi import settings
-from scrapi.processing.base import BaseProcessor
 from scrapi.base.transformer import JSONTransformer
+from scrapi.processing import DocumentTuple
+from scrapi.processing.base import BaseProcessor, BaseDatabaseManager
+from scrapi.linter import NormalizedDocument
 
 
 logger = logging.getLogger(__name__)
@@ -20,37 +22,65 @@ logging.getLogger('elasticsearch').setLevel(logging.FATAL)
 logging.getLogger('elasticsearch.trace').setLevel(logging.FATAL)
 
 
-try:
-    # If we cant connect to elastic search dont define this class
-    es = Elasticsearch(settings.ELASTIC_URI, request_timeout=settings.ELASTIC_TIMEOUT, retry_on_timeout=True)
+class DatabaseManager(BaseDatabaseManager):
 
-    # body = {
-    #     'mappings': {
-    #         harvester: settings.ES_SEARCH_MAPPING
-    #         for harvester in registry.keys()
-    #     }
-    # }
+    def __init__(self, uri=None, timeout=None, index=None, **kwargs):
+        self.uri = uri or settings.ELASTIC_URI
+        self.index = index or settings.ELASTIC_INDEX
+        self.es = None
+        self.kwargs = {
+            'timeout': timeout or settings.ELASTIC_TIMEOUT,
+            'retry_on_timeout': True
+        }
+        self.kwargs.update(kwargs)
 
-    es.cluster.health(wait_for_status='yellow')
-    es.indices.create(index=settings.ELASTIC_INDEX, body={}, ignore=400)
-    es.indices.create(index='share_v1', ignore=400)
-except ConnectionError:  # pragma: no cover
-    logger.error('Could not connect to Elasticsearch, expect errors.')
-    if 'elasticsearch' in settings.NORMALIZED_PROCESSING or 'elasticsearch' in settings.RAW_PROCESSING:
-        raise
+    def setup(self):
+        '''Sets up the database connection. Returns True if the database connection
+            is successful, False otherwise
+        '''
+        try:
+            # If we cant connect to elastic search dont define this class
+            self.es = Elasticsearch(self.uri, **self.kwargs)
+
+            self.es.cluster.health(wait_for_status='yellow')
+            self.es.indices.create(index=self.index, body={}, ignore=400)
+            self.es.indices.create(index='share_v1', ignore=400)
+            return True
+        except ConnectionError:  # pragma: no cover
+            logger.error('Could not connect to Elasticsearch, expect errors.')
+            return False
+
+    def tear_down(self):
+        '''since it's just http, doesn't do much
+        '''
+        pass
+
+    def clear(self, force=False):
+        assert force, 'Force must be called to clear the database'
+        assert self.index != settings.ELASTIC_INDEX, 'Cannot erase the production database'
+        self.es.indices.delete(index=self.index, ignore=[400, 404])
+
+    def celery_setup(self, *args, **kwargs):
+        pass
 
 
 class ElasticsearchProcessor(BaseProcessor):
     NAME = 'elasticsearch'
 
-    def process_normalized(self, raw_doc, normalized, index=settings.ELASTIC_INDEX):
+    manager = DatabaseManager()
+
+    def documents(self, *sources):
+        raise NotImplementedError
+
+    def process_normalized(self, raw_doc, normalized, index=None):
+        index = index or settings.ELASTIC_INDEX
         data = {
             key: value for key, value in normalized.attributes.items()
             if key in (settings.FRONTEND_KEYS or normalized.attributes.keys())
         }
         data['providerUpdatedDateTime'] = self.version(raw_doc, normalized)
 
-        es.index(
+        self.manager.es.index(
             body=data,
             refresh=True,
             index=index,
@@ -61,7 +91,7 @@ class ElasticsearchProcessor(BaseProcessor):
 
     def version(self, raw, normalized):
         try:
-            old_doc = es.get_source(
+            old_doc = self.manager.es.get_source(
                 index=settings.ELASTIC_INDEX,
                 doc_type=raw['source'],
                 id=raw['docID']
@@ -81,13 +111,25 @@ class ElasticsearchProcessor(BaseProcessor):
         transformer = PreserveOldSchema()
         data = transformer.transform(normalized.attributes)
         data['providerUpdatedDateTime'] = date
-        es.index(
+        self.manager.es.index(
             body=data,
             refresh=True,
             index=index,
             doc_type=raw_doc['source'],
             id=raw_doc['docID']
         )
+
+    def get(self, docID, index, source):
+        try:
+            results = self.manager.es.get_source(
+                index=index,
+                doc_type=source,
+                id=docID
+            )
+        except NotFoundError:
+            return None
+
+        return DocumentTuple(None, NormalizedDocument(results, validate=False, clean=False))
 
 
 class PreserveOldContributors(JSONTransformer):
@@ -99,7 +141,8 @@ class PreserveOldContributors(JSONTransformer):
     }
 
     def process_contributors(self, contributors):
-        return [self.transform(contributor) for contributor in contributors]
+        if contributors:
+            return [self.transform(contributor) for contributor in contributors]
 
 
 class PreserveOldSchema(JSONTransformer):

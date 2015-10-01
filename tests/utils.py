@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-import six
+import copy
 from six.moves import xrange
 
 from scrapi.base import XMLHarvester
@@ -20,6 +20,9 @@ RAW_DOC = {
     'filetype': 'json',
     'source': 'test'
 }
+
+POSTGRES_RAW_DOC = copy.copy(RAW_DOC)
+POSTGRES_RAW_DOC['doc'] = '{}'
 
 NORMALIZED_DOC = {
     'title': 'No',
@@ -202,5 +205,10 @@ class TestHarvester(XMLHarvester):
             'doc': TEST_XML_DOC,
             'source': 'test',
             'filetype': 'XML',
-            'docID': "1"
+            'docID': "1",
+            'timestamps': {
+                'harvestFinished': '2015-03-14T17:05:48+00:00',
+                'harvestStarted': '2015-03-14T17:05:48+00:00',
+                'harvestTaskCreated': '2015-03-16T17:05:48+00:00'
+            }
         }) for _ in xrange(days_back)]

@@ -35,3 +35,6 @@ class StorageProcessor(BaseProcessor):
 
         with open(filepath, 'w') as f:
             f.write(json.dumps(json_without_bytes(content), indent=4))
+
+    def documents(self, *sources):
+        raise NotImplementedError
