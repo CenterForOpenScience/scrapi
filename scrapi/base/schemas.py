@@ -10,6 +10,7 @@ from .helpers import (
     build_properties,
     default_name_parser,
     oai_process_contributors,
+    dif_process_contributors
 )
 
 
@@ -61,4 +62,18 @@ OAISCHEMA = {
         'name': ('//dc:publisher/node()', single_result)
     },
     'languages': ('//dc:language/text()', language_codes)
+}
+
+DIFSCHEMA = {
+    "abstract": ('//Summary/Abstract/node()', single_result),
+    "uris": ('//Related_URL/URL/node()', oai_process_uris),
+    'providerUpdatedDateTime': ('//header/datestamp/node()', compose(datetime_formatter, single_result)),
+    "contributors": ('//Personel/First_Name/node()', '//Personel/Last_Name/node()', dif_process_contributors),
+    "otherProperties": build_properties(
+        ('dataCenter', '//Data_Center/node()'),
+        ('relatedUrl', '//Related_URL/node()'),
+        ('metadataName', '//Metadata_Name/node()'),
+        ('metadataVersion', '//Metadata_Version/node()'),
+        ('lastDIFRevisionDate', '//Last_DIF_Revision_Date/node()'),
+    )
 }
