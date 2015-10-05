@@ -262,6 +262,14 @@ def oai_process_contributors(*args):
     return default_name_parser(names)
 
 
+def dif_process_contributors(first_names, last_names):
+    raw_names = zip(first_names, last_names)
+
+    return [{'name': name.join(' '),
+            'givenName': name[0],
+            'familyName': name[1]} for name in raw_names]
+
+
 def pack(*args, **kwargs):
     return args, kwargs
 
