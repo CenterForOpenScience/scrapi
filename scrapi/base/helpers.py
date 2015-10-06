@@ -7,6 +7,7 @@ from copy import deepcopy
 
 import six
 import pytz
+import xmltodict
 from lxml import etree
 from dateutil import parser
 from pycountry import languages
@@ -93,6 +94,13 @@ def compose(*functions):
     def inner(func1, func2):
         return lambda *x, **y: func1(func2(*x, **y))
     return functools.reduce(inner, functions)
+
+
+element_to_dict = compose(xmltodict.parse, etree.tostring)
+
+
+def non_string(item):
+    return not isinstance(item, str)
 
 
 def updated_schema(old, new):
@@ -268,6 +276,11 @@ def dif_process_contributors(first_names, last_names):
     return [{'name': ' '.join(map(str, name)),
             'givenName': name[0],
             'familyName': name[1]} for name in raw_names]
+
+
+
+def non_string(item):
+    return not isinstance(item, str)
 
 
 def pack(*args, **kwargs):
