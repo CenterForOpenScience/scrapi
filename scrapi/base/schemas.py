@@ -2,12 +2,14 @@ from __future__ import unicode_literals
 
 from .helpers import (
     compose,
+    non_string,
     format_tags,
     single_result,
     language_codes,
-    datetime_formatter,
+    element_to_dict,
     oai_process_uris,
     build_properties,
+    datetime_formatter,
     default_name_parser,
     oai_process_contributors,
     dif_process_contributors
@@ -64,16 +66,24 @@ OAISCHEMA = {
     'languages': ('//dc:language/text()', language_codes)
 }
 
+
 DIFSCHEMA = {
-    "abstract": ('//Summary/Abstract/node()', single_result),
-    "uris": ('//Related_URL/URL/node()', oai_process_uris),
-    'providerUpdatedDateTime': ('//header/datestamp/node()', compose(datetime_formatter, single_result)),
-    "contributors": ('//Personel/First_Name/node()', '//Personel/Last_Name/node()', dif_process_contributors),
+    "abstract": ('//dif:Summary/dif:Abstract/node()', single_result),
+    "uris": ('//dif:URL/node()', oai_process_uris),
+    "title": ('//dif:Entry_Title/node()', single_result),
+    'providerUpdatedDateTime': ('//OAI-PMH:header/OAI-PMH:datestamp/node()', compose(datetime_formatter, single_result)),
+    "contributors": ('//dif:Personnel/dif:First_Name/node()', '//dif:Personnel/dif:Last_Name/node()', dif_process_contributors),
     "otherProperties": build_properties(
-        ('dataCenter', '//Data_Center/node()'),
-        ('relatedUrl', '//Related_URL/node()'),
-        ('metadataName', '//Metadata_Name/node()'),
-        ('metadataVersion', '//Metadata_Version/node()'),
-        ('lastDIFRevisionDate', '//Last_DIF_Revision_Date/node()'),
+        ('metadataName', '//dif:Metadata_Name/node()'),
+        ('metadataVersion', '//dif:Metadata_Version/node()'),
+        ('lastDIFRevisionDate', '//dif:Last_DIF_Revision_Date/node()'),
+        ('dataCenter', ('//dif:Data_Center/node()', compose(
+            lambda x: map(element_to_dict, x),
+            lambda x: filter(non_string, x)
+        ))),
+        ('relatedUrl', ('//dif:Related_URL/node()', compose(
+            lambda x: map(element_to_dict, x),
+            lambda x: filter(non_string, x)
+        ))),
     )
 }
