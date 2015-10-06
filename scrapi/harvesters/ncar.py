@@ -14,6 +14,7 @@ from scrapi.base.schemas import DIFSCHEMA
 
 class NCARHarvester(XMLHarvester):
     short_name = 'ncar'
+    record_encoding = 'ISO-8859-1'
     long_name = 'Earth System Grid at NCAR'
     url = 'https://www.earthsystemgrid.org/home.html'
 
@@ -23,8 +24,6 @@ class NCARHarvester(XMLHarvester):
     }
 
     schema = DIFSCHEMA
-
-    record_encoding = 'ISO-8859-1'
 
     def harvest(self, start_date=None, end_date=None):
 
