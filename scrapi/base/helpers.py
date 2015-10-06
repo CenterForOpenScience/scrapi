@@ -265,7 +265,7 @@ def oai_process_contributors(*args):
 def dif_process_contributors(first_names, last_names):
     raw_names = zip(first_names, last_names)
 
-    return [{'name': name.join(' '),
+    return [{'name': ' '.join(map(str, name)),
             'givenName': name[0],
             'familyName': name[1]} for name in raw_names]
 
