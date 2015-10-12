@@ -177,7 +177,7 @@ This will save all harvested/normalized files to the directory ```archive/<sourc
 
 _note: Be careful with this, as if you harvest too many documents with the storage module enabled, you could start experiencing inode errors_
 
-If you'd like to be able to run all harvesters, you'll need to [register for a PLOS API key](http://api.plos.org/registration/), a [Harvard Dataverse API Key(https://dataverse.harvard.edu/dataverseuser.xhtml?editMode=CREATE&redirectPage=%2Fdataverse.xhtml), and a [Springer API Key](https://dev.springer.com/signup).
+If you'd like to be able to run all harvesters, you'll need to [register for a PLOS API key](http://api.plos.org/registration/), a [Harvard Dataverse API Key](https://dataverse.harvard.edu/dataverseuser.xhtml?editMode=CREATE&redirectPage=%2Fdataverse.xhtml), and a [Springer API Key](https://dev.springer.com/signup).
 
 Add your API keys to the following line to your local.py file:
 ```
