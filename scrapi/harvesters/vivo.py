@@ -1,8 +1,8 @@
 """
 A VIVO harvester for the SHARE project
 
-This harvester makes a SPARQL query to the VIVO SPARQL endpoint,
-the information to access to a VIVO endpoint must be provided in the local.py file.
+This harvester makes several SPARQL queries to a VIVO SPARQL endpoint,
+the information to access the VIVO endpoint must be provided in the local.py file.
 There is also a Map to the SPARQL queries made to harvest documents
 from the VIVO endpoint in the sparql_mapping.py file.
 """
