@@ -1,4 +1,4 @@
-SPARQL_MAPPING = [
+DOCUMENT_MAPPING = [
     {
         'name': 'title',
         'pattern': '<{}> dc:title|rdfs:label ?title .',
@@ -105,3 +105,29 @@ SPARQL_MAPPING = [
         'type': 'dict'
     }
 ]
+
+AUTHOR_MAPPING = {
+    'email': {
+        'name': 'email',
+        'pattern': """<{}> obo:ARG_2000028 ?vcard .
+                      ?vcard vcard:hasEmail ?emailUri .
+                      ?emailUri vcard:email ?email .""",
+        'type': 'string'
+    },
+    'affiliation': {
+        'name': 'affiliation',
+        'fields': ['name'],
+        'pattern': """?role obo:RO_0000052 <{}> .
+                      ?role vivo:roleContributesTo ?organization .
+                      ?organization rdfs:label ?name .
+                      ?role vivo:dateTimeInterval ?interval .
+                      FILTER NOT EXISTS {{ ?interval vivo:end ?end }}""",
+        'type': 'dict'
+    },
+    'orcidId': {
+        'name': 'orcidId',
+        'pattern': """<{}> vivo:orcidId ?orcidId .
+                      FILTER isURI(?orcidId)""",
+        'type': 'string'
+    }
+}

@@ -2,7 +2,9 @@
 A VIVO harvester for the SHARE project
 
 This harvester makes a SPARQL query to the VIVO SPARQL endpoint,
-the information to acces to a VIVO endpoint must be provided in the local.py file.
+the information to access to a VIVO endpoint must be provided in the local.py file.
+There is also a Map to the SPARQL queries made to harvest documents
+from the VIVO endpoint in the sparql_mapping.py file.
 """
 
 from __future__ import unicode_literals
@@ -16,7 +18,7 @@ from six.moves import xrange
 from SPARQLWrapper import SPARQLWrapper, JSON
 
 from scrapi import settings
-from scrapi.settings.sparql_mapping import *
+from scrapi.settings import sparql_mapping as mapping
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
 from scrapi.base.helpers import build_properties
@@ -48,21 +50,43 @@ class VIVOHarvester(JSONHarvester):
 
     DEFAULT_ENCODING = 'UTF-8'
     QUERY_TEMPLATE = """
-                       PREFIX vivo:  <http://vivoweb.org/ontology/core#>
-                       PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
-                       PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
-                       PREFIX bibo:  <http://purl.org/ontology/bibo/>
-                       PREFIX foaf:  <http://xmlns.com/foaf/0.1/>
+                       PREFIX vivo: <http://vivoweb.org/ontology/core#>
+                       PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+                       PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+                       PREFIX bibo: <http://purl.org/ontology/bibo/>
+                       PREFIX foaf: <http://xmlns.com/foaf/0.1/>
                        PREFIX vitro: <http://vitro.mannlib.cornell.edu/ns/vitro/0.7#>
                        PREFIX dc: <http://purl.org/dc/terms/>
                        PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
-                       PREFIX obo:   <http://purl.obolibrary.org/obo/>
+                       PREFIX obo: <http://purl.obolibrary.org/obo/>
 
                        SELECT {}
                        {{
                             {}
                         }}
                      """
+    GET_TOTAL_QUERY = """
+                       PREFIX vivo:  <http://vivoweb.org/ontology/core#>
+                       PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
+
+                       SELECT (COUNT(*) AS ?total)
+                       {{
+                            ?s vivo:dateTimeValue ?dateURI .
+                            ?dateURI vivo:dateTime ?date .
+                            FILTER (strdt(?date, xsd:date) >= "{}"^^xsd:date && strdt(?date, xsd:date) <= "{}"^^xsd:date)
+                        }}
+                        """
+    GET_URIS_QUERY = """
+                        PREFIX vivo:  <http://vivoweb.org/ontology/core#>
+                        PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
+
+                        SELECT ?uri
+                        {{
+                            ?uri vivo:dateTimeValue ?dateUri .
+                            ?dateUri vivo:dateTime ?date .
+                            FILTER (strdt(?date, xsd:date) >= "{}"^^xsd:date && strdt(?date, xsd:date) <= "{}"^^xsd:date)
+                        }}  LIMIT {} OFFSET {}
+                    """
 
     record_encoding = None
 
@@ -73,7 +97,7 @@ class VIVOHarvester(JSONHarvester):
         self.sparql_wrapper.setQuery(sparql_query)
         result = self.sparql_wrapper.query()
         result = result.convert()
-        if len(result['results']['bindings']) > 0:
+        if result['results']['bindings']:
             return result['results']['bindings'][0][variable]['value']
         else:
             return ''
@@ -85,10 +109,7 @@ class VIVOHarvester(JSONHarvester):
         self.sparql_wrapper.setQuery(sparql_query)
         results = self.sparql_wrapper.query()
         results = results.convert()
-        ret = []
-        for result in results['results']['bindings']:
-            ret.append(result[variable]['value'])
-        return ret
+        return [result[variable]['value'] for result in results['results']['bindings']]
 
     def get_dict(self, uri, sparql_map):
         variables = ''
@@ -107,12 +128,12 @@ class VIVOHarvester(JSONHarvester):
             ret.append(item)
         return ret
 
-    def get_records(self, uris):
+    def get_records(self, uris, sparql_mapping):
         records = []
         for uri in uris:
             record = {}
             record['uri'] = uri
-            for sparql_map in SPARQL_MAPPING:
+            for sparql_map in sparql_mapping:
                 if sparql_map['type'] == 'string':
                     record[sparql_map['name']] = self.get_string(uri, sparql_map)
                 if sparql_map['type'] == 'array':
@@ -123,61 +144,28 @@ class VIVOHarvester(JSONHarvester):
         return records
 
     def get_total(self, start_date, end_date):
-        query_str = """PREFIX vivo:  <http://vivoweb.org/ontology/core#>
-                       PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
-                       SELECT (COUNT(*) AS ?total)
-                       {{
-                            ?s vivo:dateTimeValue ?dateURI .
-                            ?dateURI vivo:dateTime ?date .
-                            FILTER (strdt(?date, xsd:date) >= "{}"^^xsd:date && strdt(?date, xsd:date) <= "{}"^^xsd:date)
-                        }}"""
-        query_str = query_str.format(start_date.isoformat(), end_date.isoformat())
+        query_str = self.GET_TOTAL_QUERY.format(start_date.isoformat(), end_date.isoformat())
         self.sparql_wrapper.setQuery(query_str)
         result = self.sparql_wrapper.query()
         result = result.convert()
         return int(result['results']['bindings'][0]['total']['value'])
 
     def get_uris(self, start_date, end_date, limit, offset):
-        uris = []
-        query_str = """ PREFIX vivo:  <http://vivoweb.org/ontology/core#>
-                        PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
-
-                        SELECT ?uri
-                        {{
-                            ?uri vivo:dateTimeValue ?dateUri .
-                            ?dateUri vivo:dateTime ?date .
-                            FILTER (strdt(?date, xsd:date) >= "{}"^^xsd:date && strdt(?date, xsd:date) <= "{}"^^xsd:date)
-                        }}  LIMIT {} OFFSET {}
-                    """
-        query_str = query_str.format(start_date.isoformat(), end_date.isoformat(), limit, offset)
+        query_str = self.GET_URIS_QUERY.format(start_date.isoformat(), end_date.isoformat(), limit, offset)
         self.sparql_wrapper.setQuery(query_str)
         results = self.sparql_wrapper.query()
         results = results.convert()
-        for result in results['results']['bindings']:
-            uris.append(result['uri']['value'])
-        return uris
+        return [result['uri']['value'] for result in results['results']['bindings']]
 
     def complete_authors(self, authors):
         for author in authors:
-            pattern = """ <{}> obo:ARG_2000028 ?vcard .
-                          ?vcard vcard:hasEmail ?emailUri .
-                          ?emailUri vcard:email ?email ."""
-            email = self.get_string(author['sameAs'], {'name': 'email', 'pattern': pattern, 'type': 'string'})
+            email = self.get_string(author['sameAs'], mapping.AUTHOR_MAPPING['email'])
             if email:
                 author['email'] = email
-
-            pattern = """?role obo:RO_0000052 <{}> .
-                         ?role vivo:roleContributesTo ?organization .
-                         ?organization rdfs:label ?name .
-                         ?role vivo:dateTimeInterval ?interval .
-                        FILTER NOT EXISTS {{ ?interval vivo:end ?end }}"""
-            affiliation = self.get_dict(author['sameAs'], {'name': 'affiliation', 'fields': ['name'], 'pattern': pattern, 'type': 'dict'})
+            affiliation = self.get_dict(author['sameAs'], mapping.AUTHOR_MAPPING['affiliation'])
             if affiliation:
                 author['affiliation'] = affiliation
-
-            pattern = """<{}> vivo:orcidId ?orcidId .
-                        FILTER isURI(?orcidId)"""
-            orcidId = self.get_string(author['sameAs'], {'name': 'orcidId', 'pattern': pattern, 'type': 'string'})
+            orcidId = self.get_string(author['sameAs'], mapping.AUTHOR_MAPPING['orcidId'])
             author['sameAs'] = [author['sameAs']]
             if orcidId:
                 author['sameAs'].append(orcidId)
@@ -190,10 +178,10 @@ class VIVOHarvester(JSONHarvester):
             'providerUpdatedDateTime': ('/date', lambda x: datetime.strptime(x, "%Y-%m-%d").strftime("%Y-%m-%dT%H:%M:%S%Z") + '+00:00'),
             'uris': {
                 'canonicalUri': '/uri',
-                'providerUris': ['/uri'],
-                'objectUris': ('/pmid', '/doi', lambda x, y: process_object_uris(x, y))
+                'providerUris': ('/uri', lambda x: [x]),
+                'objectUris': ('/pmid', '/doi', process_object_uris)
             },
-            'contributors': ('/authors', lambda x: self.complete_authors(x)),
+            'contributors': ('/authors', self.complete_authors),
             'subjects': '/subjects',
             'tags': '/keywords',
             'publisher': ('/publisher', lambda x: {'name': x} if x else ''),
@@ -215,12 +203,12 @@ class VIVOHarvester(JSONHarvester):
         end_date = end_date or date.today()
 
         total = self.get_total(start_date, end_date)
-        logger.info(' {} documents to be harvested'.format(total))
+        logger.info('{} documents to be harvested'.format(total))
 
         doc_list = []
         for i in xrange(0, total, 1000):
             uris = self.get_uris(start_date, end_date, 1000, i)
-            records = self.get_records(uris)
+            records = self.get_records(uris, mapping.DOCUMENT_MAPPING)
             logger.info('Harvested {} documents'.format(i + len(records)))
 
             for record in records:
