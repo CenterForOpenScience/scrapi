@@ -1,0 +1,1223 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A++%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+++%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A%0A+++++++++++++++++++++++SELECT+%28COUNT%28%2A%29+AS+%3Ftotal%29%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Fs+vivo%3AdateTimeValue+%3FdateURI+.%0A++++++++++++++++++++++++++++%3FdateURI+vivo%3AdateTime+%3Fdate+.%0A++++++++++++++++++++++++++++FILTER+%28strdt%28%3Fdate%2C+xsd%3Adate%29+%3E%3D+%222015-10-13%22%5E%5Exsd%3Adate+%26%26+strdt%28%3Fdate%2C+xsd%3Adate%29+%3C%3D+%222015-10-15%22%5E%5Exsd%3Adate%29%0A++++++++++++++++++++++++%7D%0A++++++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"total\" ]\n\
+        \  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"total\"\
+        : { \"datatype\": \"http://www.w3.org/2001/XMLSchema#integer\" , \"type\"\
+        : \"typed-literal\" , \"value\": \"3\" }\n      }\n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['222']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:00:41 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=02934BE330567114D2DA4B36476A045C; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A++++++++++++++++++++++++PREFIX+vivo%3A++%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A++++++++++++++++++++++++PREFIX+xsd%3A+++%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A%0A++++++++++++++++++++++++SELECT+%3Furi%0A++++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Furi+vivo%3AdateTimeValue+%3FdateUri+.%0A++++++++++++++++++++++++++++%3FdateUri+vivo%3AdateTime+%3Fdate+.%0A++++++++++++++++++++++++++++FILTER+%28strdt%28%3Fdate%2C+xsd%3Adate%29+%3E%3D+%222015-10-13%22%5E%5Exsd%3Adate+%26%26+strdt%28%3Fdate%2C+xsd%3Adate%29+%3C%3D+%222015-10-15%22%5E%5Exsd%3Adate%29%0A++++++++++++++++++++++++%7D++LIMIT+1000+OFFSET+0%0A++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"uri\" ]\n\
+        \  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"uri\": {\
+        \ \"type\": \"uri\" , \"value\": \"http://vivo.ufl.edu/individual/n6246534820\"\
+        \ }\n      } ,\n      {\n        \"uri\": { \"type\": \"uri\" , \"value\"\
+        : \"http://vivo.ufl.edu/individual/n9820692594\" }\n      } ,\n      {\n \
+        \       \"uri\": { \"type\": \"uri\" , \"value\": \"http://vivo.ufl.edu/individual/n2136798515\"\
+        \ }\n      }\n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['406']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:04:58 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=52A6BD18752612FBDFDE81F5FA5725FE; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Ftitle%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n6246534820%3E+dc%3Atitle%7Crdfs%3Alabel+%3Ftitle+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"title\" ]\n\
+        \  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"title\"\
+        : { \"type\": \"literal\" , \"value\": \"Estimating Value in Baltimore, Maryland:\
+        \ An Attractions Network Analysis\" }\n      }\n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['230']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:17 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=ABD86E0B042B69E01F1B0A6CBC12F569; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3FjournalTitle%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Fjournal+vivo%3ApublicationVenueFor+%3Chttp%3A//vivo.ufl.edu/individual/n6246534820%3E+%3B%0A+++++++++++++++++++++++++++++++++rdfs%3Alabel+%3FjournalTitle+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"journalTitle\"\
+        \ ]\n  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"journalTitle\"\
+        : { \"type\": \"literal\" , \"value\": \"Tourism Management\" }\n      }\n\
+        \    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['190']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:18 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=88AB0AB83B25435CD74BDDCCADA4E5B1; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fdoi%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n6246534820%3E+bibo%3Adoi+%3Fdoi+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"doi\" ]\n\
+        \  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"doi\": {\
+        \ \"type\": \"literal\" , \"value\": \"10.1016/j.tourman.2015.01.031\" }\n\
+        \      }\n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['183']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:18 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=757B3917CDDD6DB78AF016A129512F24; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fissn%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Fjournal+vivo%3ApublicationVenueFor+%3Chttp%3A//vivo.ufl.edu/individual/n6246534820%3E+%3B%0A+++++++++++++++++++++++++++++++bibo%3Aissn+%3Fissn+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"issn\" ]\n\
+        \  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"issn\":\
+        \ { \"type\": \"literal\" , \"value\": \"0261-5177\" }\n      }\n    ]\n \
+        \ }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['165']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:18 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=62DB287B9542B6DE0F2FCAD34063E762; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fisbn%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Fjournal+vivo%3ApublicationVenueFor+%3Chttp%3A//vivo.ufl.edu/individual/n6246534820%3E+%3B%0A+++++++++++++++++++++++++++++++bibo%3Aisbn+%3Fisbn+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"isbn\" ]\n\
+        \  } ,\n  \"results\": {\n    \"bindings\": [\n      \n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['95']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:18 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=85C06082A556F5767360CA2D0CCBD200; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fdate%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n6246534820%3E++vivo%3AdateTimeValue+%3FdateURI+.%0A++++++++++++++++++++++%3FdateURI+vivo%3AdateTime+%3Fdate+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"date\" ]\n\
+        \  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"date\":\
+        \ { \"type\": \"literal\" , \"value\": \"2015-10-13\" }\n      }\n    ]\n\
+        \  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['166']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:19 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=92E992D5FA4A8573B67187C7CC0CDCE2; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fvolume%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n6246534820%3E+bibo%3Avolume+%3Fvolume+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"volume\"\
+        \ ]\n  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"volume\"\
+        : { \"type\": \"literal\" , \"value\": \"50\" }\n      }\n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['162']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:19 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=D0493CDA3E5D8F2B8C470040140BD143; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fnumber%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n6246534820%3E+bibo%3Anumber+%3Fnumber+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"number\"\
+        \ ]\n  } ,\n  \"results\": {\n    \"bindings\": [\n      \n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['97']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:19 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=97BC18C545E8BAE503D31BF93C5CAE3F; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3FstartPage%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n6246534820%3E+bibo%3ApageStart+%3FstartPage+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"startPage\"\
+        \ ]\n  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"startPage\"\
+        : { \"type\": \"literal\" , \"value\": \"238\" }\n      }\n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['169']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:20 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=3B0785C704421947BA0ED1CFEC9839F9; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3FendPage%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n6246534820%3E+bibo%3ApageEnd+%3FendPage+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"endPage\"\
+        \ ]\n  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"endPage\"\
+        : { \"type\": \"literal\" , \"value\": \"252\" }\n      }\n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['165']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:20 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=2BE6D5DB4248DF489B74D735B166B0B3; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fpmid%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n6246534820%3E+bibo%3Apmid+%3Fpmid+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"pmid\" ]\n\
+        \  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"pmid\":\
+        \ { \"type\": \"literal\" , \"value\": \"25904163\" }\n      }\n    ]\n  }\n\
+        }\n"}
+    headers:
+      connection: [close]
+      content-length: ['164']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:20 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=2FBA7EE4969FB733F21A6B6283815735; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fpublisher%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Fjournal+vivo%3ApublicationVenueFor+%3Chttp%3A//vivo.ufl.edu/individual/n6246534820%3E+.%0A++++++++++++++++++++++%3FpublisherURI+vivo%3ApublisherOf+%3Fjournal+%3B%0A++++++++++++++++++++++++++++++++++++rdfs%3Alabel+%3Fpublisher+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"publisher\"\
+        \ ]\n  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"publisher\"\
+        : { \"datatype\": \"http://www.w3.org/2001/XMLSchema#string\" , \"type\":\
+        \ \"typed-literal\" , \"value\": \"Elsevier Science Ltd\" }\n      }\n   \
+        \ ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['248']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:20 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=3DF28F053E46A920C8FE755731EF859C; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fsubject%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3FsubjectURI+vivo%3AsubjectAreaOf+%3Chttp%3A//vivo.ufl.edu/individual/n6246534820%3E+%3B%0A++++++++++++++++++++++++++++++++++rdfs%3Alabel+%3Fsubject+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"subject\"\
+        \ ]\n  } ,\n  \"results\": {\n    \"bindings\": [\n      \n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['98']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:21 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=30DC2D1200ACD8E78E0A9EAC4CF52083; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fabstract%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n6246534820%3E+bibo%3Aabstract+%3Fabstract+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: "{\n  \"head\": {\n    \"vars\": [ \"abstract\" ]\n  } ,\n  \"\
+        results\": {\n    \"bindings\": [\n      {\n        \"abstract\": { \"type\"\
+        : \"literal\" , \"value\": \"Prohibitins (PHBs) are a highly conserved class\
+        \ of proteins first discovered as inhibitors of cellular proliferation. Since\
+        \ then PHBs have been found to have a significant role in transcription, nuclear\
+        \ signaling, mitochondrial structural integrity, cell division, and cellular\
+        \ membrane metabolism, placing these proteins among the key regulators of\
+        \ pathologies such as cancer, neuromuscular degeneration, and other metabolic\
+        \ diseases. The human genome encodes two PHB proteins, prohibitin 1 (PHB1)\
+        \ and prohibitin 2 (PHB2), which function not only as a heterodimeric complex,\
+        \ but also independently. While many previous reviews have focused on the\
+        \ better characterized prohibitin, PHB1, this review focuses on PHB2 and new\
+        \ data concerning its cellular functions both in complex with PHB1 and independent\
+        \ of PHB1. \xA9 2015 IUBMB Life, 67(4):239-254, 2015.\" }\n      }\n    ]\n\
+        \  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['1017']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:21 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=539CFCFF4C744A4B305E06DCCCFF5C34; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fkeyword%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n6246534820%3E+vivo%3AfreetextKeyword+%3Fkeyword+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"keyword\"\
+        \ ]\n  } ,\n  \"results\": {\n    \"bindings\": [\n      \n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['98']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:21 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=16757310ED0C54B85C8BCD82E7ACEF88; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Ftype%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n6246534820%3E+vitro%3AmostSpecificType+%3FtypeURI+.%0A++++++++++++++++++++++%3FtypeURI+rdfs%3Alabel+%3Ftype+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"type\" ]\n\
+        \  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"type\":\
+        \ { \"type\": \"literal\" , \"xml:lang\": \"en-US\" , \"value\": \"Academic\
+        \ Article\" }\n      }\n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['194']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:21 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=46F998BA31C6F1662E1B084B70C1A036; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3FsameAs+%3Fname+%3FgivenName+%3FfamilyName+%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Fauthorship+a+vivo%3AAuthorship+.%0A++++++++++++++++++++++%3Fauthorship+vivo%3Arelates+%3Chttp%3A//vivo.ufl.edu/individual/n6246534820%3E+.%0A++++++++++++++++++++++%3FsameAs+vivo%3ArelatedBy+%3Fauthorship+.%0A++++++++++++++++++++++%3FsameAs+a+foaf%3APerson+.%0A++++++++++++++++++++++%3FsameAs+rdfs%3Alabel+%3Fname+.%0A++++++++++++++++++++++%3FsameAs+obo%3AARG_2000028+%3Fvcard+.%0A++++++++++++++++++++++%3Fvcard+vcard%3AhasName+%3FnameUri+.%0A++++++++++++++++++++++%3FnameUri+vcard%3AfamilyName+%3FfamilyName+.%0A++++++++++++++++++++++%3FnameUri+vcard%3AgivenName+%3FgivenName+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"sameAs\"\
+        \ , \"name\" , \"givenName\" , \"familyName\" ]\n  } ,\n  \"results\": {\n\
+        \    \"bindings\": [\n      {\n        \"sameAs\": { \"type\": \"uri\" , \"\
+        value\": \"http://vivo.ufl.edu/individual/n494335820\" } ,\n        \"name\"\
+        : { \"type\": \"literal\" , \"value\": \"Stienmetz, Jason L.\" } ,\n     \
+        \   \"givenName\": { \"type\": \"literal\" , \"value\": \"Jason\" } ,\n  \
+        \      \"familyName\": { \"type\": \"literal\" , \"value\": \"Stienmetz\"\
+        \ }\n      } ,\n      {\n        \"sameAs\": { \"type\": \"uri\" , \"value\"\
+        : \"http://vivo.ufl.edu/individual/n66518\" } ,\n        \"name\": { \"type\"\
+        : \"literal\" , \"value\": \"Fesenmaier, Daniel R\" } ,\n        \"givenName\"\
+        : { \"type\": \"literal\" , \"value\": \"Daniel\" } ,\n        \"familyName\"\
+        : { \"type\": \"literal\" , \"value\": \"Fesenmaier\" }\n      }\n    ]\n\
+        \  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['755']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:22 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=9424AC069FE001FB4CBE73E0DE8513A9; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Ftitle%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n9820692594%3E+dc%3Atitle%7Crdfs%3Alabel+%3Ftitle+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"title\" ]\n\
+        \  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"title\"\
+        : { \"type\": \"literal\" , \"value\": \"Convergence of a Fixed-Point Algorithm\
+        \ Under Maximum Correntropy Criterion\" }\n      }\n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['232']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:22 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=BD9C5832DC9F45676BA0707FA1BC0481; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3FjournalTitle%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Fjournal+vivo%3ApublicationVenueFor+%3Chttp%3A//vivo.ufl.edu/individual/n9820692594%3E+%3B%0A+++++++++++++++++++++++++++++++++rdfs%3Alabel+%3FjournalTitle+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"journalTitle\"\
+        \ ]\n  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"journalTitle\"\
+        : { \"type\": \"literal\" , \"value\": \"IEEE Signal Processing Letters\"\
+        \ }\n      }\n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['202']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:23 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=ADDB4675920937B4A117657B70347F85; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fdoi%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n9820692594%3E+bibo%3Adoi+%3Fdoi+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"doi\" ]\n\
+        \  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"doi\": {\
+        \ \"type\": \"literal\" , \"value\": \"10.1109/LSP.2015.2428713\" }\n    \
+        \  }\n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['178']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:23 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=B8C3CAA783255AD826120DFAD427481E; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fissn%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Fjournal+vivo%3ApublicationVenueFor+%3Chttp%3A//vivo.ufl.edu/individual/n9820692594%3E+%3B%0A+++++++++++++++++++++++++++++++bibo%3Aissn+%3Fissn+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"issn\" ]\n\
+        \  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"issn\":\
+        \ { \"type\": \"literal\" , \"value\": \"1070-9908\" }\n      }\n    ]\n \
+        \ }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['165']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:23 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=CEB3FA03A1DBBC0891FAD24BFC0B3AFF; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fisbn%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Fjournal+vivo%3ApublicationVenueFor+%3Chttp%3A//vivo.ufl.edu/individual/n9820692594%3E+%3B%0A+++++++++++++++++++++++++++++++bibo%3Aisbn+%3Fisbn+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"isbn\" ]\n\
+        \  } ,\n  \"results\": {\n    \"bindings\": [\n      \n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['95']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:23 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=38D0DB3E019BE579AE22D79CBD67503B; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fdate%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n9820692594%3E++vivo%3AdateTimeValue+%3FdateURI+.%0A++++++++++++++++++++++%3FdateURI+vivo%3AdateTime+%3Fdate+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"date\" ]\n\
+        \  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"date\":\
+        \ { \"type\": \"literal\" , \"value\": \"2015-10-13\" }\n      }\n    ]\n\
+        \  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['166']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:23 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=EA8F0B4099F16DA1F1E313A6CAB47828; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fvolume%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n9820692594%3E+bibo%3Avolume+%3Fvolume+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"volume\"\
+        \ ]\n  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"volume\"\
+        : { \"type\": \"literal\" , \"value\": \"22\" }\n      }\n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['162']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:24 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=1455AC4F44BD4458A16CC24155BF0AF8; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fnumber%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n9820692594%3E+bibo%3Anumber+%3Fnumber+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"number\"\
+        \ ]\n  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"number\"\
+        : { \"type\": \"literal\" , \"value\": \"10\" }\n      }\n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['162']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:24 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=DDA0637D676BDB857B146082656E1E7A; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3FstartPage%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n9820692594%3E+bibo%3ApageStart+%3FstartPage+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"startPage\"\
+        \ ]\n  } ,\n  \"results\": {\n    \"bindings\": [\n      \n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['100']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:24 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=728F183F91C4C02E2F450785D53D13E1; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3FendPage%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n9820692594%3E+bibo%3ApageEnd+%3FendPage+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"endPage\"\
+        \ ]\n  } ,\n  \"results\": {\n    \"bindings\": [\n      \n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['98']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:24 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=7FDE01D9E53DD7C135D26FCC9C8F1906; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fpmid%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n9820692594%3E+bibo%3Apmid+%3Fpmid+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"pmid\" ]\n\
+        \  } ,\n  \"results\": {\n    \"bindings\": [\n      \n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['95']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:25 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=DB1D85C761BF7BB44F355239618A548D; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fpublisher%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Fjournal+vivo%3ApublicationVenueFor+%3Chttp%3A//vivo.ufl.edu/individual/n9820692594%3E+.%0A++++++++++++++++++++++%3FpublisherURI+vivo%3ApublisherOf+%3Fjournal+%3B%0A++++++++++++++++++++++++++++++++++++rdfs%3Alabel+%3Fpublisher+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"publisher\"\
+        \ ]\n  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"publisher\"\
+        : { \"type\": \"literal\" , \"value\": \"Institute of Electrical and Electronics\
+        \ Engineers\" }\n      }\n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['215']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:25 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=B2133B3043BF2636107E5E4B9AD77028; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fsubject%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3FsubjectURI+vivo%3AsubjectAreaOf+%3Chttp%3A//vivo.ufl.edu/individual/n9820692594%3E+%3B%0A++++++++++++++++++++++++++++++++++rdfs%3Alabel+%3Fsubject+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"subject\"\
+        \ ]\n  } ,\n  \"results\": {\n    \"bindings\": [\n      \n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['98']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:25 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=74CE4F03D5AEE2EC0C225CF682C1B52C; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fabstract%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n9820692594%3E+bibo%3Aabstract+%3Fabstract+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"abstract\"\
+        \ ]\n  } ,\n  \"results\": {\n    \"bindings\": [\n      \n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['99']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:25 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=ED102320A37F5B252326BAA8D1447CC2; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fkeyword%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n9820692594%3E+vivo%3AfreetextKeyword+%3Fkeyword+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"keyword\"\
+        \ ]\n  } ,\n  \"results\": {\n    \"bindings\": [\n      \n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['98']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:26 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=7CFF0AE52B4643D95ADB360C05A84E54; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Ftype%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n9820692594%3E+vitro%3AmostSpecificType+%3FtypeURI+.%0A++++++++++++++++++++++%3FtypeURI+rdfs%3Alabel+%3Ftype+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"type\" ]\n\
+        \  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"type\":\
+        \ { \"type\": \"literal\" , \"xml:lang\": \"en-US\" , \"value\": \"Academic\
+        \ Article\" }\n      }\n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['194']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:26 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=789DF8F624FC6410EEF00418D726C12F; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3FsameAs+%3Fname+%3FgivenName+%3FfamilyName+%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Fauthorship+a+vivo%3AAuthorship+.%0A++++++++++++++++++++++%3Fauthorship+vivo%3Arelates+%3Chttp%3A//vivo.ufl.edu/individual/n9820692594%3E+.%0A++++++++++++++++++++++%3FsameAs+vivo%3ArelatedBy+%3Fauthorship+.%0A++++++++++++++++++++++%3FsameAs+a+foaf%3APerson+.%0A++++++++++++++++++++++%3FsameAs+rdfs%3Alabel+%3Fname+.%0A++++++++++++++++++++++%3FsameAs+obo%3AARG_2000028+%3Fvcard+.%0A++++++++++++++++++++++%3Fvcard+vcard%3AhasName+%3FnameUri+.%0A++++++++++++++++++++++%3FnameUri+vcard%3AfamilyName+%3FfamilyName+.%0A++++++++++++++++++++++%3FnameUri+vcard%3AgivenName+%3FgivenName+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"sameAs\"\
+        \ , \"name\" , \"givenName\" , \"familyName\" ]\n  } ,\n  \"results\": {\n\
+        \    \"bindings\": [\n      {\n        \"sameAs\": { \"type\": \"uri\" , \"\
+        value\": \"http://vivo.ufl.edu/individual/n1525703544\" } ,\n        \"name\"\
+        : { \"type\": \"literal\" , \"value\": \"Chen, Badong\" } ,\n        \"givenName\"\
+        : { \"type\": \"literal\" , \"value\": \"Badong\" } ,\n        \"familyName\"\
+        : { \"type\": \"literal\" , \"value\": \"Chen\" }\n      } ,\n      {\n  \
+        \      \"sameAs\": { \"type\": \"uri\" , \"value\": \"http://vivo.ufl.edu/individual/n9530265165\"\
+        \ } ,\n        \"name\": { \"type\": \"literal\" , \"value\": \"Zheng, Nanning\"\
+        \ } ,\n        \"givenName\": { \"type\": \"literal\" , \"value\": \"Nanning\"\
+        \ } ,\n        \"familyName\": { \"type\": \"literal\" , \"value\": \"Zheng\"\
+        \ }\n      } ,\n      {\n        \"sameAs\": { \"type\": \"uri\" , \"value\"\
+        : \"http://vivo.ufl.edu/individual/n2612196246\" } ,\n        \"name\": {\
+        \ \"type\": \"literal\" , \"value\": \"Prncipe, Jose C.\" } ,\n        \"\
+        givenName\": { \"type\": \"literal\" , \"value\": \"Jose\" } ,\n        \"\
+        familyName\": { \"type\": \"literal\" , \"value\": \"Prncipe\" }\n      }\
+        \ ,\n      {\n        \"sameAs\": { \"type\": \"uri\" , \"value\": \"http://vivo.ufl.edu/individual/n7056948854\"\
+        \ } ,\n        \"name\": { \"type\": \"literal\" , \"value\": \"Wang, Jianji\"\
+        \ } ,\n        \"givenName\": { \"type\": \"literal\" , \"value\": \"Jianji\"\
+        \ } ,\n        \"familyName\": { \"type\": \"literal\" , \"value\": \"Wang\"\
+        \ }\n      } ,\n      {\n        \"sameAs\": { \"type\": \"uri\" , \"value\"\
+        : \"http://vivo.ufl.edu/individual/n4905183408\" } ,\n        \"name\": {\
+        \ \"type\": \"literal\" , \"value\": \"Zhao, Haiquan\" } ,\n        \"givenName\"\
+        : { \"type\": \"literal\" , \"value\": \"Haiquan\" } ,\n        \"familyName\"\
+        : { \"type\": \"literal\" , \"value\": \"Zhao\" }\n      }\n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['1662']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:26 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=A2561C58857A8A3E1003DC07DD14914A; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Ftitle%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n2136798515%3E+dc%3Atitle%7Crdfs%3Alabel+%3Ftitle+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"title\" ]\n\
+        \  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"title\"\
+        : { \"type\": \"literal\" , \"value\": \"Historical Distribution and Host-Vector\
+        \ Diversity of Francisella Tularensis, the Causative Agent of Tularemia, in\
+        \ Ukraine\" }\n      }\n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['279']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:27 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=8B76EEB77D9347EA2DEABE0DC32F5BAF; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3FjournalTitle%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Fjournal+vivo%3ApublicationVenueFor+%3Chttp%3A//vivo.ufl.edu/individual/n2136798515%3E+%3B%0A+++++++++++++++++++++++++++++++++rdfs%3Alabel+%3FjournalTitle+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"journalTitle\"\
+        \ ]\n  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"journalTitle\"\
+        : { \"type\": \"literal\" , \"value\": \"Parasites and Vectors\" }\n     \
+        \ }\n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['193']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:27 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=3E40B9A113E631B3967050C3E14D50F3; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fdoi%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n2136798515%3E+bibo%3Adoi+%3Fdoi+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"doi\" ]\n\
+        \  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"doi\": {\
+        \ \"type\": \"literal\" , \"value\": \"10.1186/s13071-014-0453-2\" }\n   \
+        \   }\n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['179']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:27 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=E08B9116939DD173D6F483E8B224EFA3; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fissn%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Fjournal+vivo%3ApublicationVenueFor+%3Chttp%3A//vivo.ufl.edu/individual/n2136798515%3E+%3B%0A+++++++++++++++++++++++++++++++bibo%3Aissn+%3Fissn+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"issn\" ]\n\
+        \  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"issn\":\
+        \ { \"type\": \"literal\" , \"value\": \"1756-3305\" }\n      }\n    ]\n \
+        \ }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['165']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:27 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=714D9033B9B195C8AE672320C5CF2B22; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fisbn%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Fjournal+vivo%3ApublicationVenueFor+%3Chttp%3A//vivo.ufl.edu/individual/n2136798515%3E+%3B%0A+++++++++++++++++++++++++++++++bibo%3Aisbn+%3Fisbn+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"isbn\" ]\n\
+        \  } ,\n  \"results\": {\n    \"bindings\": [\n      \n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['95']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:28 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=3285B262150D718BB9BF3DCA4D1B2FE6; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fdate%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n2136798515%3E++vivo%3AdateTimeValue+%3FdateURI+.%0A++++++++++++++++++++++%3FdateURI+vivo%3AdateTime+%3Fdate+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"date\" ]\n\
+        \  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"date\":\
+        \ { \"type\": \"literal\" , \"value\": \"2015-10-13\" }\n      }\n    ]\n\
+        \  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['166']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:28 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=70A139D5F0F7DF9C7204D60DD599DAB3; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fvolume%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n2136798515%3E+bibo%3Avolume+%3Fvolume+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"volume\"\
+        \ ]\n  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"volume\"\
+        : { \"type\": \"literal\" , \"value\": \"7\" }\n      }\n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['161']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:28 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=C3ECE398D5DA2A3D5A0CEFB262F79110; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fnumber%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n2136798515%3E+bibo%3Anumber+%3Fnumber+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"number\"\
+        \ ]\n  } ,\n  \"results\": {\n    \"bindings\": [\n      \n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['97']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:28 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=CE9250F79BE3D9CD934D111F32DAA0DA; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3FstartPage%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n2136798515%3E+bibo%3ApageStart+%3FstartPage+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"startPage\"\
+        \ ]\n  } ,\n  \"results\": {\n    \"bindings\": [\n      \n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['100']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:28 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=13A901D25B0B84353EBF61C6DE26185A; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3FendPage%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n2136798515%3E+bibo%3ApageEnd+%3FendPage+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"endPage\"\
+        \ ]\n  } ,\n  \"results\": {\n    \"bindings\": [\n      \n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['98']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:29 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=9728F99D3C200EFFF99CD851E107F435; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fpmid%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n2136798515%3E+bibo%3Apmid+%3Fpmid+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"pmid\" ]\n\
+        \  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"pmid\":\
+        \ { \"type\": \"literal\" , \"value\": \"25318562\" }\n      }\n    ]\n  }\n\
+        }\n"}
+    headers:
+      connection: [close]
+      content-length: ['164']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:29 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=CB7582DCFD31C6CC4068EC3E78080161; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fpublisher%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Fjournal+vivo%3ApublicationVenueFor+%3Chttp%3A//vivo.ufl.edu/individual/n2136798515%3E+.%0A++++++++++++++++++++++%3FpublisherURI+vivo%3ApublisherOf+%3Fjournal+%3B%0A++++++++++++++++++++++++++++++++++++rdfs%3Alabel+%3Fpublisher+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"publisher\"\
+        \ ]\n  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"publisher\"\
+        : { \"type\": \"literal\" , \"value\": \"Biomed Central Ltd\" }\n      }\n\
+        \    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['184']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:29 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=3F28CADE5DFA9508A74CFCAE413D6CEE; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fsubject%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3FsubjectURI+vivo%3AsubjectAreaOf+%3Chttp%3A//vivo.ufl.edu/individual/n2136798515%3E+%3B%0A++++++++++++++++++++++++++++++++++rdfs%3Alabel+%3Fsubject+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"subject\"\
+        \ ]\n  } ,\n  \"results\": {\n    \"bindings\": [\n      \n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['98']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:29 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=805F329A86AF23596CF346D1B9358EB1; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fabstract%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n2136798515%3E+bibo%3Aabstract+%3Fabstract+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: "{\n  \"head\": {\n    \"vars\": [ \"abstract\" ]\n  } ,\n  \"\
+        results\": {\n    \"bindings\": [\n      {\n        \"abstract\": { \"type\"\
+        : \"literal\" , \"value\": \"Background Francisella tularensis, the causative\
+        \ agent of tularemia, is a zoonotic agent that remains across much of the\
+        \ northern hemisphere, where it exists in enzootic cycles. In Ukraine, tularemia\
+        \ has a long history that suggests a need for sustained surveillance in natural\
+        \ foci. To better characterize the host-vector diversity and spatial distribution\
+        \ of tularemia, we analyzed historical data from field collections carried\
+        \ out from 1941 to 2008.FindingsWe analyzed the spatial-temporal distribution\
+        \ of bacterial isolates collected from field samples. Isolates were characterized\
+        \ by source and dominant land cover type. To identify environmental persistence\
+        \ and spatial variation in the source of isolation, we used the space-time\
+        \ permutation and multinomial models in SaTScan. A total of 3,086 positive\
+        \ isolates were taken from 1,084 geographic locations. Isolation of F. tularensis\
+        \ was more frequent among arthropods [n\xBF=\xBF2,045 (66.3%)] followed by\
+        \ mammals [n\xBF=\xBF619 (20.1%)], water [n\xBF=\xBF393 (12.7%)], and farm\
+        \ produce [n\xBF=\xBF29 (0.94%)], respectively. Four areas of persistent bacterial\
+        \ isolation were identified. Water and farm produce as sources of bacterial\
+        \ isolation were clustered.ConclusionsOur findings confirm the presence of\
+        \ long-standing natural foci of F. tularensis in Ukraine. Given the history\
+        \ of tularemia as well as its environmental persistence there exists a possibility\
+        \ of (re)emergence in human populations. Heterogeneity in the distribution\
+        \ of tularemia isolate recovery related to land cover type supports the theory\
+        \ of natural nidality and clusters identify areas to target potential sources\
+        \ of the pathogen and improve surveillance.\" }\n      }\n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['1835']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:30 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=707CEEAA553733F30BEE8EAD3D299A88; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Fkeyword%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n2136798515%3E+vivo%3AfreetextKeyword+%3Fkeyword+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"keyword\"\
+        \ ]\n  } ,\n  \"results\": {\n    \"bindings\": [\n      \n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['98']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:30 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=891615AAA994C1DD6A1A8EA867E9B3D3; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3Ftype%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Chttp%3A//vivo.ufl.edu/individual/n2136798515%3E+vitro%3AmostSpecificType+%3FtypeURI+.%0A++++++++++++++++++++++%3FtypeURI+rdfs%3Alabel+%3Ftype+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"type\" ]\n\
+        \  } ,\n  \"results\": {\n    \"bindings\": [\n      {\n        \"type\":\
+        \ { \"type\": \"literal\" , \"xml:lang\": \"en-US\" , \"value\": \"Academic\
+        \ Article\" }\n      }\n    ]\n  }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['194']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:30 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=7333966DA6C7C19DAB6E6315BB399CE9; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['application/sparql-results+json,text/javascript,application/json']
+      Connection: [close]
+      Host: [dev.vivo.ufl.edu]
+      User-Agent: [sparqlwrapper 1.6.4 (rdflib.github.io/sparqlwrapper)]
+    method: GET
+    uri: http://dev.vivo.ufl.edu/vivo/api/sparqlQuery?format=json&results=json&output=json&query=%0A+++++++++++++++++++++++PREFIX+vivo%3A+%3Chttp%3A//vivoweb.org/ontology/core%23%3E%0A+++++++++++++++++++++++PREFIX+xsd%3A+%3Chttp%3A//www.w3.org/2001/XMLSchema%23%3E%0A+++++++++++++++++++++++PREFIX+rdfs%3A+%3Chttp%3A//www.w3.org/2000/01/rdf-schema%23%3E%0A+++++++++++++++++++++++PREFIX+bibo%3A+%3Chttp%3A//purl.org/ontology/bibo/%3E%0A+++++++++++++++++++++++PREFIX+foaf%3A+%3Chttp%3A//xmlns.com/foaf/0.1/%3E%0A+++++++++++++++++++++++PREFIX+vitro%3A+%3Chttp%3A//vitro.mannlib.cornell.edu/ns/vitro/0.7%23%3E%0A+++++++++++++++++++++++PREFIX+dc%3A+%3Chttp%3A//purl.org/dc/terms/%3E%0A+++++++++++++++++++++++PREFIX+vcard%3A+%3Chttp%3A//www.w3.org/2006/vcard/ns%23%3E%0A+++++++++++++++++++++++PREFIX+obo%3A+%3Chttp%3A//purl.obolibrary.org/obo/%3E%0A%0A+++++++++++++++++++++++SELECT+%3FsameAs+%3Fname+%3FgivenName+%3FfamilyName+%0A+++++++++++++++++++++++%7B%0A++++++++++++++++++++++++++++%3Fauthorship+a+vivo%3AAuthorship+.%0A++++++++++++++++++++++%3Fauthorship+vivo%3Arelates+%3Chttp%3A//vivo.ufl.edu/individual/n2136798515%3E+.%0A++++++++++++++++++++++%3FsameAs+vivo%3ArelatedBy+%3Fauthorship+.%0A++++++++++++++++++++++%3FsameAs+a+foaf%3APerson+.%0A++++++++++++++++++++++%3FsameAs+rdfs%3Alabel+%3Fname+.%0A++++++++++++++++++++++%3FsameAs+obo%3AARG_2000028+%3Fvcard+.%0A++++++++++++++++++++++%3Fvcard+vcard%3AhasName+%3FnameUri+.%0A++++++++++++++++++++++%3FnameUri+vcard%3AfamilyName+%3FfamilyName+.%0A++++++++++++++++++++++%3FnameUri+vcard%3AgivenName+%3FgivenName+.%0A++++++++++++++++++++++++%7D%0A+++++++++++++++++++++&password=fakepassword&email=fake_user%40ufl.edu
+  response:
+    body: {string: !!python/unicode "{\n  \"head\": {\n    \"vars\": [ \"sameAs\"\
+        \ , \"name\" , \"givenName\" , \"familyName\" ]\n  } ,\n  \"results\": {\n\
+        \    \"bindings\": [\n      {\n        \"sameAs\": { \"type\": \"uri\" , \"\
+        value\": \"http://vivo.ufl.edu/individual/n2087239988\" } ,\n        \"name\"\
+        : { \"type\": \"literal\" , \"value\": \"Hightower, Jake M\" } ,\n       \
+        \ \"givenName\": { \"type\": \"literal\" , \"value\": \"Jake\" } ,\n     \
+        \   \"familyName\": { \"type\": \"literal\" , \"value\": \"Hightower\" }\n\
+        \      } ,\n      {\n        \"sameAs\": { \"type\": \"uri\" , \"value\":\
+        \ \"http://vivo.ufl.edu/individual/n5588620204\" } ,\n        \"name\": {\
+        \ \"type\": \"literal\" , \"value\": \"Vydayko, Nataliya\" } ,\n        \"\
+        givenName\": { \"type\": \"literal\" , \"value\": \"Nataliya\" } ,\n     \
+        \   \"familyName\": { \"type\": \"literal\" , \"value\": \"Vydayko\" }\n \
+        \     } ,\n      {\n        \"sameAs\": { \"type\": \"uri\" , \"value\": \"\
+        http://vivo.ufl.edu/individual/n434816625\" } ,\n        \"name\": { \"type\"\
+        : \"literal\" , \"value\": \"Glass, Gregory\" } ,\n        \"givenName\":\
+        \ { \"type\": \"literal\" , \"value\": \"Gregory\" } ,\n        \"familyName\"\
+        : { \"type\": \"literal\" , \"value\": \"Glass\" }\n      } ,\n      {\n \
+        \       \"sameAs\": { \"type\": \"uri\" , \"value\": \"http://vivo.ufl.edu/individual/n25723\"\
+        \ } ,\n        \"name\": { \"type\": \"literal\" , \"value\": \"Kracalik,\
+        \ Ian T\" } ,\n        \"givenName\": { \"type\": \"literal\" , \"value\"\
+        : \"Ian\" } ,\n        \"familyName\": { \"type\": \"literal\" , \"value\"\
+        : \"Kracalik\" }\n      } ,\n      {\n        \"sameAs\": { \"type\": \"uri\"\
+        \ , \"value\": \"http://vivo.ufl.edu/individual/n5763760017\" } ,\n      \
+        \  \"name\": { \"type\": \"literal\" , \"value\": \"Goodin, Douglas\" } ,\n\
+        \        \"givenName\": { \"type\": \"literal\" , \"value\": \"Douglas\" }\
+        \ ,\n        \"familyName\": { \"type\": \"literal\" , \"value\": \"Goodin\"\
+        \ }\n      } ,\n      {\n        \"sameAs\": { \"type\": \"uri\" , \"value\"\
+        : \"http://vivo.ufl.edu/individual/n27485\" } ,\n        \"name\": { \"type\"\
+        : \"literal\" , \"value\": \"Blackburn, Jason K\" } ,\n        \"givenName\"\
+        : { \"type\": \"literal\" , \"value\": \"Jason\" } ,\n        \"familyName\"\
+        : { \"type\": \"literal\" , \"value\": \"Blackburn\" }\n      }\n    ]\n \
+        \ }\n}\n"}
+    headers:
+      connection: [close]
+      content-length: ['1987']
+      content-type: [application/sparql-results+json;charset=UTF-8]
+      date: ['Thu, 15 Oct 2015 17:08:30 GMT']
+      server: [Apache/2.2.22 (Debian)]
+      set-cookie: [JSESSIONID=E2425E48524EE568F80B2429A53D7FB6; Path=/vivo/; HttpOnly]
+    status: {code: 200, message: OK}
+version: 1
