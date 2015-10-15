@@ -1,16 +1,11 @@
-import time
+import copy
 import logging
 
-from six.moves import xrange
-from cassandra.cqlengine.query import Token
-
 from scrapi import tasks
-from scrapi import registry
 from scrapi import settings
-from scrapi.database import setup
 from scrapi.linter import RawDocument
-from scrapi.processing.elasticsearch import es
-from scrapi.processing.cassandra import DocumentModel, DocumentModelOld
+from scrapi.events import log_to_sentry
+from scrapi.processing import get_processor
 
 
 logger = logging.getLogger()
@@ -19,97 +14,81 @@ logger = logging.getLogger()
 @tasks.task_autoretry(default_retry_delay=30, max_retries=5)
 def rename(docs, target=None, **kwargs):
     assert target, "To run this migration you need a target."
-    for doc in docs:
-        raw = RawDocument({
-            'doc': doc.doc,
-            'docID': doc.docID,
-            'source': target,
-            'filetype': doc.filetype,
-            'timestamps': doc.timestamps,
-            'versions': doc.versions
-        })
 
-        assert doc.source != target, "Can't rename {} to {}, names are the same.".format(doc.source, target)
+    for doc in docs:
+        new_doc = copy.deepcopy(doc.raw.attributes)
+        new_doc['source'] = target
+
+        raw = RawDocument(new_doc, validate=False)
+
+        assert doc.raw.attributes['source'] != target, "Can't rename {} to {}, names are the same.".format(doc.raw['source'], target)
 
         if not kwargs.get('dry'):
             tasks.process_raw(raw)
             tasks.process_normalized(tasks.normalize(raw, raw['source']), raw)
-            logger.info('Processed document from {} with id {}'.format(doc.source, raw['docID']))
+            logger.info('Processed document from {} with id {}'.format(doc.raw.attributes['source'], raw['docID']))
 
-            es.delete(index=settings.ELASTIC_INDEX, doc_type=doc.source, id=raw['docID'], ignore=[404])
-            es.delete(index='share_v1', doc_type=doc.source, id=raw['docID'], ignore=[404])
+            es_processor = get_processor('elasticsearch')
+            es_processor.manager.es.delete(index=settings.ELASTIC_INDEX, doc_type=doc.raw.attributes['source'], id=raw['docID'], ignore=[404])
+            es_processor.manager.es.delete(index='share_v1', doc_type=doc.raw.attributes['source'], id=raw['docID'], ignore=[404])
 
-        logger.info('Deleted document from {} with id {}'.format(doc.source, raw['docID']))
+        logger.info('Renamed document from {} to {} with id {}'.format(doc.raw.attributes['source'], target, raw['docID']))
+
+
+@tasks.task_autoretry(default_retry_delay=30, max_retries=5)
+def cross_db(docs, target_db=None, index=None, **kwargs):
+    """
+    Migration to go between
+        cassandra > postgres
+        postgres > cassandra
+        cassandra > elasticsearch
+        postgres > elasticsearch
+
+    source db can be passed in to the migrate task, and will default to the CANONICAL_PROCESSOR specified in settings
+    target_db will be specified when the task is called
+    """
+    assert target_db, 'Please specify a target db for the migration -- either postgres or elasticsearch'
+    assert target_db in ['postgres', 'cassandra', 'elasticsearch'], 'Invalid target database - please specify either postgres, cassandra or elasticsearch'
+    for doc in docs:
+        if not doc.raw['doc']:
+            # corrupted database item has no doc element
+            message = 'No doc element in raw doc -- could not migrate document from {} with id {}'.format(doc.raw.attributes['source'], doc.raw.attributes['docID'])
+            log_to_sentry(message)
+            logger.info(message)
+            continue
+
+        raw, normalized = doc.raw, doc.normalized
+
+        target_processor = get_processor(target_db)
+
+        if not kwargs.get('dry'):
+            target_processor.process_raw(raw)
+
+            try:
+                target_processor.process_normalized(raw, normalized)
+            except (KeyError, TypeError):
+                # This means that the document was harvested but wasn't approved to be normalized
+                # Key error for Postgres, TypeError for Cassandra
+                logger.info('Not storing migrated normalized from {} with id {}, document is not in approved set list.'.format(raw.attributes['source'], raw.attributes['docID']))
 
 
 @tasks.task_autoretry(default_retry_delay=1, max_retries=5)
 def renormalize(docs, *args, **kwargs):
     for doc in docs:
-        raw = RawDocument({
-            'doc': doc.doc,
-            'docID': doc.docID,
-            'source': doc.source,
-            'filetype': doc.filetype,
-            'timestamps': doc.timestamps,
-            'versions': doc.versions
-        })
         if not kwargs.get('dry'):
-            tasks.process_normalized(tasks.normalize(raw, raw['source']), raw)
+            tasks.process_normalized(tasks.normalize(doc.raw, doc.raw['source']), doc.raw)
 
 
 @tasks.task_autoretry(default_retry_delay=30, max_retries=5)
 def delete(docs, sources=None, **kwargs):
     for doc in docs:
         assert sources, "To run this migration you need a source."
-        doc.timeout(5).delete()
-        es.delete(index=settings.ELASTIC_INDEX, doc_type=sources, id=doc.docID, ignore=[404])
-        es.delete(index='share_v1', doc_type=sources, id=doc.docID, ignore=[404])
 
-        logger.info('Deleted document from {} with id {}'.format(sources, doc.docID))
+        processor = get_processor(settings.CANONICAL_PROCESSOR)
+        processor.delete(source=doc.raw.attributes['source'], docID=doc.raw.attributes['docID'])
 
+        es_processor = get_processor('elasticsearch')
+        es_processor.manager.es.delete(index=settings.ELASTIC_INDEX, doc_type=sources, id=doc.raw.attributes['docID'], ignore=[404])
+        es_processor.manager.es.delete(index='share_v1', doc_type=sources, id=doc.raw.attributes['docID'], ignore=[404])
 
-@tasks.task_autoretry(default_retry_delay=30, max_retries=5)
-def document_v2_migration(doc, dry=True):
-    logger.warning(
-        'This function has been deprecated, and will be removed in future versions of scrapi'
-    )
-    if not dry:
-        try_n_times(5, DocumentModel.create, **dict(doc)).save()
-
-
-def ModelIteratorFactory(model, next_page, default_args=None):
-    def model_iterator(*sources):
-        sources = sources or default_args
-        q = model.objects.timeout(500).allow_filtering().all().limit(1000)
-        querysets = (q.filter(source=source) for source in sources) if sources else [q]
-        for query in querysets:
-            page = try_n_times(5, list, query)
-            while len(page) > 0:
-                for doc in page:
-                    yield doc
-                page = try_n_times(5, next_page, query, page)
-    return model_iterator
-
-
-def next_page_old(query, page):
-    return list(query.filter(pk__token__gt=Token(page[-1].pk)))
-
-
-def next_page_source_partition(query, page):
-    return list(query.filter(docID__gt=page[-1].docID))
-
-documents_old = ModelIteratorFactory(DocumentModelOld, next_page_old)
-documents = ModelIteratorFactory(DocumentModel, next_page_source_partition, default_args=registry.keys())
-
-
-def try_n_times(n, action, *args, **kwargs):
-    for _ in xrange(n):
-        try:
-            return action(*args, **kwargs)
-        except Exception as e:
-            logger.exception(e)
-            time.sleep(15)
-            connection_open = setup(force=True, sync=False)
-            logger.info("Trying again... Cassandra connection open: {}".format(connection_open))
-    if e:
-        raise e
+        logger.info('Deleted document from {} with id {}'.format(sources, doc.raw.attributes['docID']))
