@@ -140,6 +140,7 @@ class VIVOHarvester(JSONHarvester):
                     record[sparql_map['name']] = self.get_array(uri, sparql_map)
                 if sparql_map['type'] == 'dict':
                     record[sparql_map['name']] = self.get_dict(uri, sparql_map)
+            record['authors'] = self.complete_authors(record['authors'])
             records.append(record)
         return records
 
@@ -181,7 +182,7 @@ class VIVOHarvester(JSONHarvester):
                 'providerUris': ('/uri', lambda x: [x]),
                 'objectUris': ('/pmid', '/doi', process_object_uris)
             },
-            'contributors': ('/authors', self.complete_authors),
+            'contributors': '/authors',
             'subjects': '/subjects',
             'tags': '/keywords',
             'publisher': ('/publisher', lambda x: {'name': x} if x else ''),
