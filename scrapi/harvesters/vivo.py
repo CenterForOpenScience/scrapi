@@ -12,7 +12,7 @@ from __future__ import unicode_literals
 import json
 import logging
 
-from datetime import date, timedelta, datetime
+from datetime import date, timedelta
 
 from six.moves import xrange
 from SPARQLWrapper import SPARQLWrapper, JSON
@@ -21,7 +21,7 @@ from scrapi import settings
 from scrapi.settings import sparql_mapping as mapping
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
-from scrapi.base.helpers import build_properties
+from scrapi.base.helpers import build_properties, datetime_formatter
 
 logger = logging.getLogger(__name__)
 
@@ -176,7 +176,7 @@ class VIVOHarvester(JSONHarvester):
     def schema(self):
         return {
             'title': ('/title', lambda x: x if x else ''),
-            'providerUpdatedDateTime': ('/date', lambda x: datetime.strptime(x, "%Y-%m-%d").strftime("%Y-%m-%dT%H:%M:%S%Z") + '+00:00'),
+            'providerUpdatedDateTime': ('/date', datetime_formatter),
             'uris': {
                 'canonicalUri': '/uri',
                 'providerUris': ('/uri', lambda x: [x]),
