@@ -4,8 +4,6 @@ RAISE_IN_TRANSFORMER = True
 
 BROKER_URL = 'amqp://guest@localhost'
 
-CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
-
 RECORD_HTTP_TRANSACTIONS = False
 
 disabled = []
@@ -16,7 +14,7 @@ SENTRY_DSN = None
 
 USE_FLUENTD = False
 FLUENTD_ARGS = {
-    'tag': 'app.scrapi'
+    'tag': 'app.scrapi',
 }
 
 DAYS_BACK = 2
@@ -24,3 +22,31 @@ DAYS_BACK = 2
 # Retrying Celery tasks
 CELERY_RETRY_DELAY = 30
 CELERY_MAX_RETRIES = 5
+CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
+
+ELASTIC_TIMEOUT = 10
+ELASTIC_INDEX = 'share_v2'
+ELASTIC_URI = 'localhost:9200'
+
+CASSANDRA_URI = ['127.0.0.1']
+CASSANDRA_KEYSPACE = 'scrapi'
+
+FRONTEND_KEYS = [
+    "uris",
+    "contributors",
+    "providerUpdatedDateTime",
+    "description",
+    "title",
+    "freeToRead",
+    "languages",
+    "licenses",
+    "publisher",
+    "subjects",
+    "tags",
+    "sponsorships",
+    "otherProperties",
+    "shareProperties"
+]
+
+PLOS_API_KEY = None
+HARVARD_DATAVERSE_API_KEY = None
