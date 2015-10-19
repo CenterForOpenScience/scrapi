@@ -25,6 +25,12 @@ ELASTIC_INDEX = 'share'
 PLOS_API_KEY = 'fakekey'
 HARVARD_DATAVERSE_API_KEY = 'anotherfakekey'
 SPRINGER_KEY = 'thisistotallyfakealso'
+VIVO_ACCESS = {
+    'url': 'http://dev.vivo.ufl.edu/',
+    'query_endpoint': 'http://dev.vivo.ufl.edu/api/sparqlQuery',
+    'username': 'fake_user@ufl.edu',
+    'password': 'fakepassword'
+}
 
 disabled = ['stepic']
 

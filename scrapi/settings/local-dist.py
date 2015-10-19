@@ -47,3 +47,9 @@ FRONTEND_KEYS = [
 PLOS_API_KEY = None
 HARVARD_DATAVERSE_API_KEY = None
 SPRINGER_KEY = None
+VIVO_ACCESS = {
+    'url': '',
+    'query_endpoint': '',
+    'username': '',
+    'password': ''
+}
