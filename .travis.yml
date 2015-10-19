@@ -8,12 +8,21 @@ services:
   - cassandra
   - elasticsearch
 
+cache:
+  directories:
+    - $HOME/wheelhouse
+
+env:
+  - WHEELHOUSE=$HOME/wheelhouse
+
 install:
-  - pip install -r dev-requirements.txt
-  - pip install coveralls
+  - travis_retry pip install invoke coveralls
+  - travis_retry invoke wheelhouse --develop
+  - travis_retry invoke install --develop
   - cp scrapi/settings/travis-dist.py scrapi/settings/local.py
 
-before_script: flake8 .
+before_script:
+  - flake8 .
 
 script:
   - invoke provider_map
@@ -21,3 +30,6 @@ script:
 
 after_success:
   coveralls
+
+notifications:
+  flowdock: df4d2322a6b6ec2c086c8b6b22f4abed
