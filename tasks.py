@@ -13,7 +13,7 @@ WHEELHOUSE_PATH = os.environ.get('WHEELHOUSE')
 
 @task
 def reindex(src, dest):
-    from elasticsearch import helpers, exceptions
+    from elasticsearch import helpers
     from scrapi.processing.elasticsearch import es
     helpers.reindex(es, src, dest)
     es.indices.delete(src)
