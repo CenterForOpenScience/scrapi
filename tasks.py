@@ -81,7 +81,7 @@ def migrate(migration, sources=None, kwargs_string=None, dry=True, async=False, 
     kwargs['dry'] = dry
     kwargs['async'] = async
     kwargs['group_size'] = group_size
-    kwargs['sources'] = map(lambda x: x.strip(), sources.split(','))
+    kwargs['sources'] = list(map(lambda x: x.strip(), sources.split(',')))
 
     if kwargs['sources'] == ['']:
         kwargs.pop('sources')

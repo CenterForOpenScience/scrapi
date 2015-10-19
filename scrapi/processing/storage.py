@@ -20,7 +20,7 @@ class StorageProcessor(BaseProcessor):
     def process_raw(self, raw):
         new_attrs = copy.deepcopy(raw.attributes)
         if new_attrs.get('versions'):
-            new_attrs['versions'] = map(str, new_attrs['versions'])
+            new_attrs['versions'] = list(map(str, new_attrs['versions']))
 
         self.write(raw['source'], raw['docID'], 'raw', new_attrs)
 

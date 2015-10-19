@@ -92,8 +92,8 @@ class ClinicalTrialsHarvester(XMLHarvester):
             ('armGroup', '//arm_group/arm_group_label/node()'),
             ('intervention', '//intervention/intervention_type/node()'),
             ('eligibility', ('//eligibility/node()', compose(
-                lambda x: map(element_to_dict, x),
-                lambda x: filter(non_string, x)
+                lambda x: list(map(element_to_dict, x)),
+                lambda x: list(filter(non_string, x))
             ))),
             ('link', '//link/url/node()'),
             ('responsible_party', '//responsible_party/responsible_party_full_name/node()')

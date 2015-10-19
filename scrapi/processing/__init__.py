@@ -43,11 +43,11 @@ def process_raw(raw_doc, kwargs):
 
 HarvesterResponse = get_processor(settings.RESPONSE_PROCESSOR).HarvesterResponseModel
 
-all_processors = map(get_processor, list(set(
+all_processors = list(map(get_processor, list(set(
     settings.NORMALIZED_PROCESSING +
     settings.RAW_PROCESSING +
     [settings.RESPONSE_PROCESSOR]
-)))
+))))
 
 for processor in all_processors:
     processor.manager.setup()
