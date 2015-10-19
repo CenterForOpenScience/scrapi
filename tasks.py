@@ -1,31 +1,27 @@
+import os
 import base64
 import logging
 import platform
 from datetime import date, timedelta
 
 from invoke import run, task
-from elasticsearch import helpers
-from dateutil.parser import parse
-from six.moves.urllib import parse as urllib_parse
-
-import scrapi.harvesters  # noqa
-from scrapi import linter
-from scrapi import registry
-from scrapi import settings
-
-from scrapi.processing.elasticsearch import es
 
 logger = logging.getLogger()
+
+WHEELHOUSE_PATH = os.environ.get('WHEELHOUSE')
 
 
 @task
 def reindex(src, dest):
+    from elasticsearch import helpers
+    from scrapi.processing.elasticsearch import es
     helpers.reindex(es, src, dest)
     es.indices.delete(src)
 
 
 @task
 def alias(alias, index):
+    from scrapi.processing.elasticsearch import es
     es.indices.delete_alias(index=alias, name='_all', ignore=404)
     es.indices.put_alias(alias, index)
 
@@ -128,12 +124,27 @@ def test(cov=True, verbose=False, debug=False):
 
 
 @task
-def requirements():
-    run('pip install -r requirements.txt')
+def wheelhouse(develop=False):
+    req_file = 'dev-requirements.txt' if develop else 'requirements.txt'
+    cmd = 'pip wheel --find-links={} -r {} --wheel-dir={}'.format(WHEELHOUSE_PATH, req_file, WHEELHOUSE_PATH)
+    run(cmd, pty=True)
+
+
+@task
+def requirements(develop=False, upgrade=False):
+    req_file = 'dev-requirements.txt' if develop else 'requirements.txt'
+    cmd = 'pip install -r {}'.format(req_file)
+
+    if upgrade:
+        cmd += ' --upgrade'
+    if WHEELHOUSE_PATH:
+        cmd += ' --no-index --find-links={}'.format(WHEELHOUSE_PATH)
+    run(cmd, pty=True)
 
 
 @task
 def beat():
+    from scrapi import registry
     from scrapi.tasks import app
     app.conf['CELERYBEAT_SCHEDULE'] = registry.beat_schedule
     app.Beat().run()
@@ -152,8 +163,11 @@ def worker(loglevel='INFO', hostname='%h'):
 
 @task
 def harvester(harvester_name, async=False, start=None, end=None):
+    from scrapi import settings
     settings.CELERY_ALWAYS_EAGER = not async
+    from scrapi import registry
     from scrapi.tasks import run_harvester
+    from dateutil.parser import parse
 
     if not registry.get(harvester_name):
         raise ValueError('No such harvesters {}'.format(harvester_name))
@@ -166,8 +180,11 @@ def harvester(harvester_name, async=False, start=None, end=None):
 
 @task
 def harvesters(async=False, start=None, end=None):
+    from scrapi import settings
     settings.CELERY_ALWAYS_EAGER = not async
+    from scrapi import registry
     from scrapi.tasks import run_harvester
+    from dateutil.parser import parse
 
     start = parse(start).date() if start else date.today() - timedelta(settings.DAYS_BACK)
     end = parse(end).date() if end else date.today()
@@ -187,12 +204,15 @@ def harvesters(async=False, start=None, end=None):
 
 @task
 def lint_all():
+    from scrapi import registry
     for name in registry.keys():
         lint(name)
 
 
 @task
 def lint(name):
+    from scrapi import linter
+    from scrapi import registry
     harvester = registry[name]
     try:
         linter.lint(harvester.harvest, harvester.normalize)
@@ -203,6 +223,8 @@ def lint(name):
 
 @task
 def provider_map(delete=False):
+    from six.moves.urllib import parse as urllib_parse
+    from scrapi import registry
     from scrapi.processing.elasticsearch import es
     if delete:
         es.indices.delete(index='share_providers', ignore=[404])
