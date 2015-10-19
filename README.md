@@ -10,8 +10,6 @@ scrapi
 [![Coverage Status](https://coveralls.io/repos/CenterForOpenScience/scrapi/badge.svg?branch=develop)](https://coveralls.io/r/CenterForOpenScience/scrapi?branch=develop)
 [![Code Climate](https://codeclimate.com/github/CenterForOpenScience/scrapi/badges/gpa.svg)](https://codeclimate.com/github/CenterForOpenScience/scrapi)
 
-[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/CenterForOpenScience/scrapi.svg)](http://isitmaintained.com/project/CenterForOpenScience/scrapi "Average time to resolve an issue")  [![Percentage of issues still open](http://isitmaintained.com/badge/open/CenterForOpenScience/scrapi.svg)](http://isitmaintained.com/project/CenterForOpenScience/scrapi "Percentage of issues still open")
-
 ## Getting started
 
 - To run absolutely everyting, you will need to:
