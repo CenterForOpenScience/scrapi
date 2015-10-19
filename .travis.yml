@@ -18,7 +18,7 @@ env:
 install:
   - travis_retry pip install invoke coveralls
   - travis_retry invoke wheelhouse --develop
-  - travis_retry invoke install --develop
+  - travis_retry invoke requirements --develop
   - cp scrapi/settings/travis-dist.py scrapi/settings/local.py
 
 before_script:
