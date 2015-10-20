@@ -1,4 +1,5 @@
 from rest_framework import generics
+from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.views.decorators.clickjacking import xframe_options_exempt
@@ -7,11 +8,12 @@ from api.webview.models import Document
 from api.webview.serializers import DocumentSerializer
 
 
-class DocumentList(generics.ListCreateAPIView):
+class DocumentList(generics.ListAPIView):
     """
     List all documents in the SHARE API
     """
     serializer_class = DocumentSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def perform_create(self, serializer):
         serializer.save(source=self.request.user)
@@ -22,11 +24,12 @@ class DocumentList(generics.ListCreateAPIView):
         return Document.objects.all()
 
 
-class DocumentsFromSource(generics.ListCreateAPIView):
+class DocumentsFromSource(generics.ListAPIView):
     """
     List all documents from a particular source
     """
     serializer_class = DocumentSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def perform_create(self, serializer):
         serializer.save(source=self.request.user)
