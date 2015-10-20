@@ -30,12 +30,14 @@ def process_normalized(raw_doc, normalized, kwargs):
         Exists so that when we run check archive we
         specifiy that it's ok to overrite certain files
     '''
+    assert (raw_doc and normalized), 'Raw and normalized documents must be provided to process_normalized'
     for p in settings.NORMALIZED_PROCESSING:
         extras = kwargs.get(p, {})
         get_processor(p).process_normalized(raw_doc, normalized, **extras)
 
 
 def process_raw(raw_doc, kwargs):
+    assert raw_doc, 'A raw document must be provided to process_raw'
     for p in settings.RAW_PROCESSING:
         extras = kwargs.get(p, {})
         get_processor(p).process_raw(raw_doc, **extras)
