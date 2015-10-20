@@ -43,7 +43,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'api.webview',
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
+    'robots'
 )
 
 SITE_ID = 1
