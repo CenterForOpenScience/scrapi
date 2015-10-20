@@ -161,9 +161,13 @@ def requirements(develop=False, upgrade=False):
 
 
 @task
-def beat():
+def beat(setup=True):
     from scrapi import registry
     from scrapi.tasks import app
+    # Set up the provider map for elasticsearch
+    if setup:
+        provider_map(delete=True)
+
     app.conf['CELERYBEAT_SCHEDULE'] = registry.beat_schedule
     app.Beat().run()
 
