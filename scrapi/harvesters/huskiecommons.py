@@ -10,7 +10,7 @@ from scrapi.base import OAIHarvester
 
 class HuskiecommonsHarvester(OAIHarvester):
     short_name = 'huskiecommons'
-    long_name = 'Huskie Commons'
+    long_name = 'Huskie Commons @ Northern Illinois University'
     url = 'http://commons.lib.niu.edu'
 
     base_url = 'http://commons.lib.niu.edu/oai/request'
