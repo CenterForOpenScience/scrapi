@@ -1,0 +1,672 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.10 Darwin/13.4.0]
+    method: GET
+    uri: http://commons.lib.niu.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2015-08-02T00:00:00Z&until=2015-08-04T00:00:00Z
+  response:
+    body: {string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
+        href=\"static/style.xsl\"?><OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/
+        http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"><responseDate>2015-10-20T18:22:39.000Z</responseDate><request
+        verb=\"ListRecords\" metadataPrefix=\"oai_dc\" from=\"2015-08-02T00:00:00Z\"
+        until=\"2015-08-04T00:00:00Z\">http://commons.lib.niu.edu/oai/request</request><ListRecords><record><header><identifier>oai:commons.lib.niu.edu:10843/13671</identifier><datestamp>2015-08-03T16:10:30Z</datestamp><setSpec>com_10843_13612</setSpec><setSpec>col_10843_13613</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Preliminary
+        Survey of Northern Illinois Small-Scale Farmers</dc:title>\n<dc:creator>Knetsch,
+        Emily</dc:creator>\n<dc:contributor>McKee, Emily</dc:contributor>\n<dc:contributor>School
+        of Allied Health and Communicative Disorders</dc:contributor>\n<dc:subject>Northern
+        Illinois</dc:subject>\n<dc:subject>small scale farmers</dc:subject>\n<dc:subject>financial
+        stability</dc:subject>\n<dc:description>The study, a preliminary survey of
+        northern Illinois small-scale farmers, directed by Dr. Emily McKee aims to
+        create a profile of farmers in the region. The profile will serve as the preliminary
+        stage of developing a larger ethnographic research project of self-described
+        \u201Csmall-scale\u201D and \u201Calternative farmers:\u201D in northern Illinois.
+        Using an inductive approach, the current study gathers and examines information
+        about the methods of agriculture that are being used, and the social profile
+        the farmers use to describe themselves. To gather information, the research
+        assistant, Emily Knetsch, has collected data about farmers from the internet
+        and compiled a list of over 400 farmers in the northern Illinois area; from
+        that list, farmers have been contacted by phone and surveyed using an open
+        ended questionnaire. Internet research, and phone surveys have gathered information
+        such as the number of acres farmed, types of crops produced, and the generation
+        of farmer. These data are being condensed, sorted and analyzed for cross-variable
+        correlations. The poster presentation for URAD will described the research
+        design and procedures, as well as preliminary analysis.</dc:description>\n<dc:description>B.S.
+        (Bachelor of Science)</dc:description>\n<dc:date>2015-05-12T00:52:29Z</dc:date>\n<dc:date>2015-05-12T00:52:29Z</dc:date>\n<dc:date>2015-04-12</dc:date>\n<dc:type>Image</dc:type>\n<dc:type>Text</dc:type>\n<dc:type>Conference
+        Poster</dc:type>\n<dc:identifier>http://hdl.handle.net/10843/13671</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:rights>NIU
+        theses are protected by copyright. They may be viewed from Huskie Commons
+        for any purpose, but reproduction or distribution in any format is prohibited
+        without the written permission of the authors.</dc:rights>\n<dc:format>1 Poster</dc:format>\n<dc:publisher>Northern
+        Illinois University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:commons.lib.niu.edu:10843/13706</identifier><datestamp>2015-08-03T16:10:30Z</datestamp><setSpec>com_10843_13612</setSpec><setSpec>col_10843_13613</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Family
+        Matters: The Effects of CEO Parental Status in Family Firms</dc:title>\n<dc:creator>Anglin,
+        Lauren</dc:creator>\n<dc:contributor>Yore, Adam</dc:contributor>\n<dc:contributor>Nicolosi,
+        Gina</dc:contributor>\n<dc:contributor>Department of Finance</dc:contributor>\n<dc:subject>CEO</dc:subject>\n<dc:subject>parental
+        status</dc:subject>\n<dc:subject>family firms</dc:subject>\n<dc:description>The
+        purpose of this study is to examine whether the personal characteristics of
+        the CEO influence corporate policies. Specifically, how does the CEO\u2019s
+        familial status affect the allocation of scarce financial capital to research
+        and development and what is the resultant impact on profitability and firm
+        value? Financial data for 14,650 firm-year observations of the S&amp;P 500
+        firms from the years 1992 to 2012 is gathered from corporate proxy statements
+        and 10Ks, and then it is analyzed using regressions. While previous research
+        shows that family firms and founder firms result in a higher level of firm
+        performance, our study shows that it is the presence of children of the CEOs
+        of these family and founder firms that show this result. Return on assets
+        and Tobin\u2019s Q are higher when founder firm and family firm CEOs have
+        children, which means these firms are more profitable and are valued higher.
+        This can be explained by the lower overhead expenditures and higher R&amp;D
+        and advertising for firms with children. This is likely due to founder and
+        family CEOs having a desire to invest in the future of the firm because they
+        are developing a legacy for their children</dc:description>\n<dc:description>B.A.
+        (Bachelor of Arts)</dc:description>\n<dc:date>2015-06-10T21:04:42Z</dc:date>\n<dc:date>2015-06-10T21:04:42Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:type>Text</dc:type>\n<dc:type>Conference
+        Poster</dc:type>\n<dc:identifier>http://commons.lib.niu.edu/handle/10843/13706</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:rights>NIU
+        theses are protected by copyright. They may be viewed from Huskie Commons
+        for any purpose, but reproduction or distribution in any format is prohibited
+        without the written permission of the authors.</dc:rights>\n<dc:publisher>Northern
+        Illinois University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:commons.lib.niu.edu:10843/13707</identifier><datestamp>2015-08-03T16:10:30Z</datestamp><setSpec>com_10843_13612</setSpec><setSpec>col_10843_13613</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Gustav
+        Klimt's Athena</dc:title>\n<dc:creator>Antos, Ashley</dc:creator>\n<dc:contributor>Houze,
+        Rebecca</dc:contributor>\n<dc:contributor>School of Art</dc:contributor>\n<dc:subject>Gustav
+        Klimt</dc:subject>\n<dc:subject>Athena</dc:subject>\n<dc:description>Women
+        are the predominate subject of Gustav Klimt\u2019s oeuvre, from his beautiful
+        portraits of women patrons and acquaintances, to his murals for the Old Burgtheater,
+        University, and Kunsthistorisches Museum.   One woman who appears multiple
+        times in Klimt\u2019s work is the goddess Athena.  Athena is the goddess of
+        wisdom, military victory, reason, intelligent activity, and arts and literature.
+        \ With these attributes in mind we begin to take a closer look at the works
+        of art that Klimt included Athena in, the context that the figures are placed
+        in, and for what purpose they were made.  Did Klimt portray Athena in a certain
+        way to highlight one of her attributes?  Why was Athena a recurring figure
+        for Klimt?  I will focus mainly on three of Gustav Klimt\u2019s works that
+        include Athena and look at the different ways he portrayed the goddess in
+        each piece, including: the mural on the wall of the Kunsthistorisches museum
+        in Vienna, the poster for the first Secession Exhibition, and his painting
+        titled Pallas Athena.  While there are a few other representations of Athena
+        by Klimt, I will focus on these three, which are the most prominent and well
+        known.  I will also look at other representations of Athena found throughout
+        the city of Vienna.  In particular I will consider the fountain in front of
+        the Parliament building, the mosaic at the Austrian Museum of Applied Arts,
+        and the owls, a symbol of Athena, on the Secession building, to gain further
+        insight into the importance of the goddess within the city of Vienna.</dc:description>\n<dc:description>B.A.
+        (Bachelor of Arts)</dc:description>\n<dc:date>2015-06-10T21:04:55Z</dc:date>\n<dc:date>2015-06-10T21:04:55Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:type>Text</dc:type>\n<dc:type>Conference
+        Poster</dc:type>\n<dc:identifier>http://commons.lib.niu.edu/handle/10843/13707</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:rights>NIU
+        theses are protected by copyright. They may be viewed from Huskie Commons
+        for any purpose, but reproduction or distribution in any format is prohibited
+        without the written permission of the authors.</dc:rights>\n<dc:publisher>Northern
+        Illinois University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:commons.lib.niu.edu:10843/13708</identifier><datestamp>2015-08-03T16:10:30Z</datestamp><setSpec>com_10843_13612</setSpec><setSpec>col_10843_13613</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Family
+        Involvement in Postsecondary Settings for Students with Autism Spectrum Disorder</dc:title>\n<dc:creator>Ashmore,
+        Alyssa</dc:creator>\n<dc:creator>Mitchell, Susan</dc:creator>\n<dc:contributor>Dallas,
+        Bryan</dc:contributor>\n<dc:contributor>Ramisch, Julie</dc:contributor>\n<dc:contributor>School
+        of Allied Health and Communicative Disorders</dc:contributor>\n<dc:subject>Autism
+        Spectrum Disorder</dc:subject>\n<dc:subject>postsecondary</dc:subject>\n<dc:subject>students</dc:subject>\n<dc:description>The
+        goal of our study is to investigate family member roles within postsecondary
+        settings for students with Autism Spectrum Disorder. There is a paucity of
+        research so this study will add knowledge to the topic. We interviewed 8 disability
+        resource center staff members at community colleges in the northern Illinois
+        region. The main goal of the interview was to find out staff\u2019s viewpoint
+        on family involvement. Some examples of questions asked in the interview are,
+        \u201CDo you have any experiences interacting with family members of students
+        with ASD?\u201D and \u201CDo you offer specific services or programming that
+        includes family members of students with ASD?\u201D The interviews were reviewed
+        and general findings were grouped into themes. Results of the study indicate
+        that staff members generally have positive experiences with family members
+        and thought that involvement supported students\u2019 academic and social
+        transitions into college, as well as their success. The consensus of the study
+        was that family involvement benefitted students with Autism Spectrum Disorder
+        and promoted success in postsecondary settings. These results and the themes
+        will be explained further in the presentation.</dc:description>\n<dc:description>B.A.
+        (Bachelor of Arts)</dc:description>\n<dc:date>2015-06-10T21:05:12Z</dc:date>\n<dc:date>2015-06-10T21:05:12Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:type>Text</dc:type>\n<dc:type>Conference
+        Poster</dc:type>\n<dc:identifier>http://commons.lib.niu.edu/handle/10843/13708</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:rights>NIU
+        theses are protected by copyright. They may be viewed from Huskie Commons
+        for any purpose, but reproduction or distribution in any format is prohibited
+        without the written permission of the authors.</dc:rights>\n<dc:publisher>Northern
+        Illinois University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:commons.lib.niu.edu:10843/13709</identifier><datestamp>2015-08-03T16:10:30Z</datestamp><setSpec>com_10843_13612</setSpec><setSpec>col_10843_13613</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Visualization
+        of latent Fingerprints using metal thin-films</dc:title>\n<dc:creator>Aziz,
+        Namra</dc:creator>\n<dc:contributor>Kocanda, Martin</dc:contributor>\n<dc:contributor>Department
+        of Biomedical Engineering</dc:contributor>\n<dc:subject>latent fingerprints</dc:subject>\n<dc:subject>silver</dc:subject>\n<dc:subject>physical
+        vapor deposition</dc:subject>\n<dc:description>The commonly used detection
+        and preservation of latent fingerprints methods employ dry powders or wet
+        chemistry principles to visualize the samples in the field and also for laboratory
+        analysis. This research examines a rarely-used technique to visualize latent
+        fingerprints with a secondary purpose of preservation as the sample fingerprints
+        may be exposed to extreme conditions. The method employs physical vapor deposition
+        of silver deposited on glass, plastic, paper and metal substrates. Varying
+        thicknesses of silver ranging from 1.0 nm to 10.0 nm are deposited on substrates
+        and examined for optimal spectral, transmittance and reflectance signals.
+        Subsequent analysis repeats the spectral examination of latent fingerprints
+        contained on the surfaces after the vapor deposition and addresses the optical
+        properties and visualization methods of fresh and weathered latent prints.</dc:description>\n<dc:description>B.A.
+        (Bachelor of Arts)</dc:description>\n<dc:date>2015-06-10T21:05:35Z</dc:date>\n<dc:date>2015-06-10T21:05:35Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:type>Text</dc:type>\n<dc:type>Conference
+        Poster</dc:type>\n<dc:identifier>http://commons.lib.niu.edu/handle/10843/13709</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:rights>NIU
+        theses are protected by copyright. They may be viewed from Huskie Commons
+        for any purpose, but reproduction or distribution in any format is prohibited
+        without the written permission of the authors.</dc:rights>\n<dc:publisher>Northern
+        Illinois University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:commons.lib.niu.edu:10843/13710</identifier><datestamp>2015-08-03T16:10:30Z</datestamp><setSpec>com_10843_13612</setSpec><setSpec>col_10843_13613</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Vergangenheitsbew\xE4ltigung:
+        Representing and Confronting the Nazi Past in Postwar German Film, 1945-1961</dc:title>\n<dc:creator>Cincotta,
+        Natalie</dc:creator>\n<dc:contributor>Stu\u0308bing, Freidmann</dc:contributor>\n<dc:contributor>Department
+        of Foreign Languages and Literatures</dc:contributor>\n<dc:subject>post-war
+        Germany</dc:subject>\n<dc:subject>film industry</dc:subject>\n<dc:subject>DEFA</dc:subject>\n<dc:subject>German
+        films 1946-1961</dc:subject>\n<dc:description>When Germany surrendered in
+        May 1945, cultural life found itself at a standstill. In the west, the Allies
+        took immediate control of the film industry, including the reeducation and
+        denazification of German citizens, while the Soviets and German film personalities
+        in the east began to rebuild the film industry with the establishment of the
+        film studio DEFA in 1946. The aim of this research is to examine the role
+        of German films produced between 1946 and 1961 in addressing and confronting
+        the German experiences of the Nazi period and wartime. Films produced between
+        1945 and 1961 attempted to address and confront the immediate past through
+        representations of psychological trauma, criticisms of ordinary Germans and
+        accountability, and the definition of gendered experiences of war and postwar
+        society. Studying German postwar cinema is useful in understanding the ways
+        that the Germans understood their immediate past, especially considering that
+        the same questions relating to guilt and responsibility would reemerge in
+        scholarly and public debate in the 1990s.</dc:description>\n<dc:description>B.A.
+        (Bachelor of Arts)</dc:description>\n<dc:date>2015-06-10T21:18:38Z</dc:date>\n<dc:date>2015-06-10T21:18:38Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:type>Text</dc:type>\n<dc:type>Conference
+        Poster</dc:type>\n<dc:identifier>http://commons.lib.niu.edu/handle/10843/13710</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:rights>NIU
+        theses are protected by copyright. They may be viewed from Huskie Commons
+        for any purpose, but reproduction or distribution in any format is prohibited
+        without the written permission of the authors.</dc:rights>\n<dc:publisher>Northern
+        Illinois University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:commons.lib.niu.edu:10843/13711</identifier><datestamp>2015-08-03T16:10:30Z</datestamp><setSpec>com_10843_13612</setSpec><setSpec>col_10843_13613</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Carbon
+        Dynamics of Prairie Ecosystems</dc:title>\n<dc:creator>Farrell, Rachel</dc:creator>\n<dc:creator>Goldblum,
+        David</dc:creator>\n<dc:contributor>Goldblum, David</dc:contributor>\n<dc:contributor>Department
+        of Environmental Studies</dc:contributor>\n<dc:subject>carbon sequestration</dc:subject>\n<dc:subject>carbon
+        cycle processes</dc:subject>\n<dc:subject>prairie environments</dc:subject>\n<dc:description>This
+        study analyzes carbon cycle processes in prairie environments, with the goal
+        of determining carbon sequestration (containment) capacity of prairies of
+        varying quality.  Results of the study will be used to aid in recommendations
+        to land managers regarding ideal landscapes for prairie restoration and conservation,
+        in order to mitigate atmospheric greenhouse gas concentrations. We incorporate
+        scientific fieldwork, lab procedures, and data entry and analysis.  Our research
+        team analyzed soil respiration gas samples, soil samples, and above- and belowground
+        biomass samples to quantify carbon emissions and retention.  Additionally,
+        terrain analyses are being conducted based on topographic and GPS measurements
+        to determine optimal spatial orientation (i.e., slope, elevation, and exposure).
+        &#xd;\nField research is conducted at Nachusa Grasslands, and in order to
+        compare the carbon processes of prairies in two development stages, we chose
+        one plot which was well-established and of high quality and one which was
+        more recently restored and of poorer quality. We installed PVC rings in a
+        grid-like formation across each plot, and used these to collect soil respiration
+        gas samples for carbon dioxide, methane, and nitrogen analysis. Additional
+        data collection included extraction of soil cores from the immediate vicinity
+        of each PVC ring for belowground biomass and soil bulk density analyses; and
+        collection of vegetation in close proximity to each ring for aboveground biomass
+        analysis.  All the data is currently being input into a GIS and analyzed in
+        combination to determine optimal prairie conditions for carbon sequestration.</dc:description>\n<dc:description>B.A.
+        (Bachelor of Arts)</dc:description>\n<dc:date>2015-06-10T21:18:45Z</dc:date>\n<dc:date>2015-06-10T21:18:45Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:type>Text</dc:type>\n<dc:type>Conference
+        Poster</dc:type>\n<dc:identifier>http://commons.lib.niu.edu/handle/10843/13711</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:rights>NIU
+        theses are protected by copyright. They may be viewed from Huskie Commons
+        for any purpose, but reproduction or distribution in any format is prohibited
+        without the written permission of the authors.</dc:rights>\n<dc:publisher>Northern
+        Illinois University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:commons.lib.niu.edu:10843/13714</identifier><datestamp>2015-08-03T16:10:30Z</datestamp><setSpec>com_10843_13612</setSpec><setSpec>col_10843_13613</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>NIU
+        Latino Oral History Project</dc:title>\n<dc:creator>Gonz\xE1lez, Sandra</dc:creator>\n<dc:contributor>Huffine,
+        Kristin</dc:contributor>\n<dc:contributor>Center for Latino and Latin American
+        Studies</dc:contributor>\n<dc:subject>Latino</dc:subject>\n<dc:subject>oral
+        history</dc:subject>\n<dc:subject>Chicago</dc:subject>\n<dc:subject>Northern
+        Illinois</dc:subject>\n<dc:subject>migration</dc:subject>\n<dc:description>As
+        part of an effort to explore the Latino community and its history, the Latino
+        Oral History Project looks to collect the oral histories of the descendents
+        of families to learn more about migration patterns to the Chicagoland area
+        and Northern Illinois alike. More specifically, observing how various ties
+        to an area can impact the flow of migration to underdeveloped communities
+        and how those ties have lead to the established Latino communities we see
+        today. In conjunction with the Oral History 495 class, this project helps
+        facilitate the research of students by archiving existing data on Latino studies
+        such as migrant programs, schooling, housing discrimination, politics, etc.
+        By creating these bibliographies, the students in turn add on the growing
+        efforts to collect these stories. Ultimately, we look to archive, transcribe,
+        and observe how these ties have led to the success of Latinos to thrive as
+        we continue to see movement for more representation of this group of minorities.</dc:description>\n<dc:description>B.A.
+        (Bachelor of Arts)</dc:description>\n<dc:date>2015-06-10T21:36:47Z</dc:date>\n<dc:date>2015-06-10T21:36:47Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:type>Text</dc:type>\n<dc:type>Conference
+        Poster</dc:type>\n<dc:identifier>http://commons.lib.niu.edu/handle/10843/13714</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:rights>NIU
+        theses are protected by copyright. They may be viewed from Huskie Commons
+        for any purpose, but reproduction or distribution in any format is prohibited
+        without the written permission of the authors.</dc:rights>\n<dc:publisher>Northern
+        Illinois University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:commons.lib.niu.edu:10843/13712</identifier><datestamp>2015-08-03T16:10:30Z</datestamp><setSpec>com_10843_13612</setSpec><setSpec>col_10843_13613</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The
+        Effect of Calculus-Based TLC Physics Students\u2019 Performance on the Force
+        Concept Inventory</dc:title>\n<dc:creator>Hashimoto, Wataru</dc:creator>\n<dc:contributor>Eads,
+        Michael</dc:contributor>\n<dc:contributor>Department of Physics</dc:contributor>\n<dc:subject>Themed
+        Learning Community</dc:subject>\n<dc:subject>Force Concept Inventory</dc:subject>\n<dc:subject>physics</dc:subject>\n<dc:description>The
+        current study will focus on the impact of a calculus and physics Themed Learning
+        Community (TLC) in order to compare to non-TLC sections on the Force Concept
+        Inventory (FCI), which tests student\u2019s conceptual understanding of physics.
+        TLCs offer classes with the same major, smaller size, and in conjunction with
+        two or three related classes. For example, TLC calculus and TLC physics will
+        have same students to create the connection. The focus of this study is on
+        the physics program in the TLC.  The demographic data, such as ACT score,
+        age, major and academic year, will be collected from fall 2014 General Physics
+        I. This research will compare the FCI result for every freshman who is majoring
+        in Engineering in TLC and non-TLC to see if the TLC has a significant impact
+        on the students\u2019 learning of physics. The experiment will be performed
+        as follows: I will choose the comparison group, who are freshmen, engineering
+        majors, from both TLC and non-TLC students. Choosing those students are a
+        necessary step because only engineering major freshman can join the TLC; it
+        will also prevent any bias due to different ages and majors. The next step
+        will be to investigate the pre- and post-test of FCI from both TLC and non-TLC
+        students. The final step is to normalize the data and plot the point to see
+        the distribution of FCI score. As a result the normalized score showed that
+        TLC students performed significantly better than Non-TLC students.</dc:description>\n<dc:description>B.A.
+        (Bachelor of Arts)</dc:description>\n<dc:date>2015-06-10T21:36:24Z</dc:date>\n<dc:date>2015-06-10T21:36:24Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:type>Text</dc:type>\n<dc:type>Conference
+        Poster</dc:type>\n<dc:identifier>http://commons.lib.niu.edu/handle/10843/13712</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:rights>NIU
+        theses are protected by copyright. They may be viewed from Huskie Commons
+        for any purpose, but reproduction or distribution in any format is prohibited
+        without the written permission of the authors.</dc:rights>\n<dc:publisher>Northern
+        Illinois University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:commons.lib.niu.edu:10843/13713</identifier><datestamp>2015-08-03T16:10:30Z</datestamp><setSpec>com_10843_13612</setSpec><setSpec>col_10843_13613</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The
+        Pregnancy Discrimination Act of 1978</dc:title>\n<dc:creator>Jacob, Rachel</dc:creator>\n<dc:contributor>Hoffman,
+        Beatrix Rebecca</dc:contributor>\n<dc:contributor>Department of History</dc:contributor>\n<dc:subject>Pregnancy
+        Discrimination Act of 1978</dc:subject>\n<dc:subject>equal employment opportunity
+        law</dc:subject>\n<dc:description>This project focuses on the Pregnancy Discrimination
+        Act of 1978 and its role in the history of equal employment opportunity law
+        in the United States. Although Title VII of the Civil Rights Act of 1964 outlawed
+        discrimination based on sex, many women continued to experience discrimination
+        in hiring and on the job. A series of legal cases were filed between 1965
+        and 1978 that challenged employer discrimination against pregnant women in
+        particular. Court victories and lobbying by women\u2019s rights groups led
+        Congress to take action in 1978 and pass the Pregnancy Discrimination Act.
+        The Pregnancy Discrimination Act created specific rights for pregnant women
+        to guarantee equal and fair treatment in the workplace and in health insurance.
+        The importance of the Pregnancy Discrimination Act is still evident today
+        as the U.S. Supreme Court is hearing a pregnancy discrimination case, Young
+        v. United Parcel Service.</dc:description>\n<dc:description>B.A. (Bachelor
+        of Arts)</dc:description>\n<dc:date>2015-06-10T21:36:33Z</dc:date>\n<dc:date>2015-06-10T21:36:33Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:type>Text</dc:type>\n<dc:type>Conference
+        Poster</dc:type>\n<dc:identifier>http://commons.lib.niu.edu/handle/10843/13713</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:rights>NIU
+        theses are protected by copyright. They may be viewed from Huskie Commons
+        for any purpose, but reproduction or distribution in any format is prohibited
+        without the written permission of the authors.</dc:rights>\n<dc:publisher>Northern
+        Illinois University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:commons.lib.niu.edu:10843/13715</identifier><datestamp>2015-08-03T16:10:30Z</datestamp><setSpec>com_10843_13612</setSpec><setSpec>col_10843_13613</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Should
+        the U.S. Expand its Use of Geothermal Resources?  Lessons from Iceland</dc:title>\n<dc:creator>Root,
+        Larissa</dc:creator>\n<dc:contributor>Martin, Kevin</dc:contributor>\n<dc:contributor>The
+        Institute for the Study of the Environment, Sustainability, and Energy</dc:contributor>\n<dc:subject>geothermal
+        energy</dc:subject>\n<dc:subject>Iceland</dc:subject>\n<dc:subject>United</dc:subject>\n<dc:subject>electricity
+        production</dc:subject>\n<dc:description>In this capstone project, geothermal
+        energy is investigated both in its role in the United States, as well as in
+        Iceland.  The feasibility of geothermal energy for electricity production
+        will be analyzed within a framework of technical, economic, environmental,
+        and political implementation.  Key background information about geothermal
+        energy as a resource, as well as technology used to capture this energy are
+        explored initially.  The United States and Iceland\u2019s resource base differs,
+        and does their approaches to utilize this renewable resource.  This analysis
+        is demonstrative of the challenges any energy resource faces.  An assessment
+        of the geothermal market at this time will lead to a general advisement on
+        resource potential in the United States.  Iceland has made an amazing transformation
+        from one of the poorest countries in Europe dependent upon peat and coal for
+        its energy needs to becoming a global leader in renewable energy, creating
+        an industry profiting from abundant power, and increasing the quality of life
+        among its citizens.  The United States is currently the world leader in both
+        geothermal electrical generation and deployment of geothermal heat pumps (Tester
+        and Horne, 2014).  The question is, how many sites are truly suitable for
+        Enhanced Geothermal Systems expansion?  With the highest grade reservoirs
+        already discovered, are we able to, and should we, engineer more reservoirs
+        to produce electricity?</dc:description>\n<dc:description>B.A. (Bachelor of
+        Arts)</dc:description>\n<dc:date>2015-06-10T21:36:58Z</dc:date>\n<dc:date>2015-06-10T21:36:58Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:type>Text</dc:type>\n<dc:type>Conference
+        Poster</dc:type>\n<dc:identifier>http://commons.lib.niu.edu/handle/10843/13715</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:rights>NIU
+        theses are protected by copyright. They may be viewed from Huskie Commons
+        for any purpose, but reproduction or distribution in any format is prohibited
+        without the written permission of the authors.</dc:rights>\n<dc:publisher>Northern
+        Illinois University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:commons.lib.niu.edu:10843/13716</identifier><datestamp>2015-08-03T16:10:30Z</datestamp><setSpec>com_10843_13612</setSpec><setSpec>col_10843_13613</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Improving
+        Article Summaries: Can a Brief Tutorial Help College Students Write More Effective
+        Research Article Summaries?</dc:title>\n<dc:creator>Rosinski, Leanna</dc:creator>\n<dc:contributor>Wallace,
+        Patricia</dc:contributor>\n<dc:contributor>Britt, M. Anne</dc:contributor>\n<dc:subject>research
+        article summary</dc:subject>\n<dc:subject>tutorial</dc:subject>\n<dc:description>The
+        ability to understand and condense research articles is crucial for success
+        as an undergraduate psychology student; however, this does not come naturally
+        to many students. Sommer et al. (2014) found that students tend to focus on
+        operational definitions rather than constructs in their summaries even after
+        a summary writing tutorial. The tutorial has been modified to focus on the
+        relationship between constructs and operational definitions in research. The
+        current study investigates the effectiveness of the summary writing tutorial
+        in improving students\u2019 essays. Participants were twenty-six upper-level
+        undergraduate psychology students enrolled in a psychology lab course who
+        completed a digital tutorial and three article summaries as part of an in-class
+        assignment. All students were assigned to read two psychology research articles
+        in preparation for class. One class section was randomly assigned to the experimental
+        group, in which participants individually completed a thirty-slide PowerPoint
+        tutorial designed to help students focus on the most important and relevant
+        details of a research article. They were then instructed to type summaries
+        of the two previously assigned articles. Students in the other class section,
+        which served as the control group, wrote their article summaries first and
+        were then directed to complete the summary-writing tutorial. Participants\u2019
+        summaries will be evaluated based on the presence of constructs (mention of
+        the study\u2019s hypotheses) and operational definitions (mention of the study\u2019s
+        methods and results). Summarizing performance of the experimental and control
+        groups will be compared. Implications for intervention strategies, as well
+        as suggestions for future research, will be discussed.</dc:description>\n<dc:description>B.A.
+        (Bachelor of Arts)</dc:description>\n<dc:date>2015-06-10T21:43:41Z</dc:date>\n<dc:date>2015-06-10T21:43:41Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:type>Text</dc:type>\n<dc:type>Conference
+        Poster</dc:type>\n<dc:identifier>http://commons.lib.niu.edu/handle/10843/13716</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:rights>NIU
+        theses are protected by copyright. They may be viewed from Huskie Commons
+        for any purpose, but reproduction or distribution in any format is prohibited
+        without the written permission of the authors.</dc:rights>\n<dc:publisher>Northern
+        Illinois University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:commons.lib.niu.edu:10843/13717</identifier><datestamp>2015-08-03T16:13:44Z</datestamp><setSpec>com_10843_13612</setSpec><setSpec>col_10843_13613</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Adding
+        Technology Boundary Management to the Sleep Treatment Education Program for
+        Students: Effects on Sleep, Technology Use, and Burnout</dc:title>\n<dc:creator>Senf,
+        Maria</dc:creator>\n<dc:contributor>Barber, Larissa K.</dc:contributor>\n<dc:contributor>Department
+        of Psychology</dc:contributor>\n<dc:subject>sleep habits</dc:subject>\n<dc:subject>academic
+        performance</dc:subject>\n<dc:subject>technology use</dc:subject>\n<dc:subject>Sleep
+        Treatment Education Program for Students (STEPS)</dc:subject>\n<dc:description>Compared
+        to the general population, college students have poorer sleep habits, which
+        also tend to negatively affect their academic performance. Research suggests
+        that part of this issue is due to technology use patterns among students.
+        Given this context, it is important for students to manage the use of technology
+        in order to protect their sleep time. The purpose of this study is to determine
+        whether sleep and technology management training can increase positive behavioral
+        outcomes in students. This study examines the efficacy of an educational training
+        session that adds information pertaining to boundary creation around technology
+        use around bedtime to the Sleep Treatment Education Program for Students (STEPS).
+        By comparing the results of the enhanced training session (STEPS-TECH; n =
+        30) to the original STEPS program (n = 30) and a control group (n = 30) using
+        an experimental design, my goal is it to determine if making people aware
+        of their technology use around sleep time can improve their sleep habits,
+        technology boundary management, and academic/social burnout.</dc:description>\n<dc:description>B.A.
+        (Bachelor of Arts)</dc:description>\n<dc:date>2015-06-11T14:28:10Z</dc:date>\n<dc:date>2015-06-11T14:28:10Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:type>Text</dc:type>\n<dc:type>Conference
+        Poster</dc:type>\n<dc:identifier>http://commons.lib.niu.edu/handle/10843/13717</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:rights>NIU
+        theses are protected by copyright. They may be viewed from Huskie Commons
+        for any purpose, but reproduction or distribution in any format is prohibited
+        without the written permission of the authors.</dc:rights>\n<dc:publisher>Northern
+        Illinois University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:commons.lib.niu.edu:10843/13718</identifier><datestamp>2015-08-03T16:13:44Z</datestamp><setSpec>com_10843_13612</setSpec><setSpec>col_10843_13613</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Digital
+        Design with Field Programmable Gate Array (FPGA) Prototyping</dc:title>\n<dc:creator>Shiau,
+        Jayson</dc:creator>\n<dc:contributor>Hashemian, Reza</dc:contributor>\n<dc:contributor>Department
+        of Electrical Engineering</dc:contributor>\n<dc:subject>Nexys 4 digital board</dc:subject>\n<dc:subject>Verilog
+        Hardware Design language</dc:subject>\n<dc:subject>Digital Design with FPGA</dc:subject>\n<dc:description>The
+        Digital Design with FPGA prototyping being undertaken with Dr. Reza Hashemian
+        involves using a Nexys 4 digital board created by Xilinx and manipulating
+        it through a hardware design language to be able to incorporate in all sorts
+        of technological devices. Some of the challenging components of this project
+        are the slow learning process as progress is made, the Verilog Hardware Design
+        language, the application of the digital board and FPGAs, and designing the
+        technological component to be used in application. The most probable application
+        I originally intended for this project was to develop a robotic vision system
+        to get a map of whatever room the it is set up in and to target a certain
+        object in that room. Things that needed to be considered were the comparison
+        of robotics vision to the eyes of a human and that the vision the robot uses
+        has two fixed points that would read two different distances when looking
+        at a single point in space. After this, calculations would need to be made
+        for the angle between these two lines to come up with a good estimate of how
+        far that object is. Continuation of this project will allow for the advancement
+        of the vision system development and a mobile robot component to be able to
+        pick up any object it detects and bring it back to the user.</dc:description>\n<dc:description>B.A.
+        (Bachelor of Arts)</dc:description>\n<dc:date>2015-06-11T14:28:16Z</dc:date>\n<dc:date>2015-06-11T14:28:16Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:type>Text</dc:type>\n<dc:type>Conference
+        Poster</dc:type>\n<dc:identifier>http://commons.lib.niu.edu/handle/10843/13718</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:rights>NIU
+        theses are protected by copyright. They may be viewed from Huskie Commons
+        for any purpose, but reproduction or distribution in any format is prohibited
+        without the written permission of the authors.</dc:rights>\n<dc:publisher>Northern
+        Illinois University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:commons.lib.niu.edu:10843/13719</identifier><datestamp>2015-08-03T16:13:44Z</datestamp><setSpec>com_10843_13612</setSpec><setSpec>col_10843_13613</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The
+        Differing Representations of Imperial Women by Plutarch and Tacitus</dc:title>\n<dc:creator>Striegel,
+        Markie</dc:creator>\n<dc:contributor>Bruno, Andrew</dc:contributor>\n<dc:contributor>Department
+        of History</dc:contributor>\n<dc:subject>imperial women</dc:subject>\n<dc:subject>Plutarch</dc:subject>\n<dc:subject>Tacitus</dc:subject>\n<dc:subject>Roman
+        Empire</dc:subject>\n<dc:subject>60-117 C.E.</dc:subject>\n<dc:description>This
+        research examines the different representations of imperial women by two ancient
+        Roman historians, Plutarch and Tacitus. While both historians wrote during
+        the period from 60-117 C.E., their different positions within Roman imperial
+        life affected their views of the empire and its people. I will argue that
+        their individual ideas about morality and the Roman Empire contributed to
+        their divergent depictions and descriptions. By analyzing each historian\u2019s
+        own ideals, the historical context in which they wrote, and the varied scholarship
+        regarding Roman imperial women, I hope to contribute a significant and original
+        argument to this discussion. This comparative approach of two of Roman history\u2019s
+        most influential writers will be integral to understanding more about imperial
+        women during the Roman Empire.</dc:description>\n<dc:description>B.A. (Bachelor
+        of Arts)</dc:description>\n<dc:date>2015-06-11T14:28:27Z</dc:date>\n<dc:date>2015-06-11T14:28:27Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:type>Text</dc:type>\n<dc:type>Conference
+        Poster</dc:type>\n<dc:identifier>http://commons.lib.niu.edu/handle/10843/13719</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:rights>NIU
+        theses are protected by copyright. They may be viewed from Huskie Commons
+        for any purpose, but reproduction or distribution in any format is prohibited
+        without the written permission of the authors.</dc:rights>\n<dc:publisher>Northern
+        Illinois University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:commons.lib.niu.edu:10843/13720</identifier><datestamp>2015-08-03T16:13:44Z</datestamp><setSpec>com_10843_13612</setSpec><setSpec>col_10843_13613</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Characterization
+        of a CCD camera for x-ray visibility spectroscopy</dc:title>\n<dc:creator>Stringer,
+        Tyler</dc:creator>\n<dc:contributor>Lurio, Laurence</dc:contributor>\n<dc:contributor>Department
+        of Physics</dc:contributor>\n<dc:subject>x-ray diffraction patterns</dc:subject>\n<dc:subject>charge-coupled
+        device (CCD) camera</dc:subject>\n<dc:subject>Gaea</dc:subject>\n<dc:description>We
+        expect to analyze data compiled from many snapshots of x-ray diffraction patterns.
+        These snapshots will be taken with a charge-coupled device (CCD) camera, and
+        these data will be processed by using NIU\u2019s supercomputer, Gaea. By looking
+        at the differences of these images, we can seek a working method for detecting
+        the motion of small objects, such as molecules, with x-rays and a CCD camera.</dc:description>\n<dc:description>B.A.
+        (Bachelor of Arts)</dc:description>\n<dc:date>2015-06-11T14:28:44Z</dc:date>\n<dc:date>2015-06-11T14:28:44Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:type>Text</dc:type>\n<dc:type>Conference
+        Poster</dc:type>\n<dc:identifier>http://commons.lib.niu.edu/handle/10843/13720</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:rights>NIU
+        theses are protected by copyright. They may be viewed from Huskie Commons
+        for any purpose, but reproduction or distribution in any format is prohibited
+        without the written permission of the authors.</dc:rights>\n<dc:publisher>Northern
+        Illinois University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:commons.lib.niu.edu:10843/13721</identifier><datestamp>2015-08-03T16:13:44Z</datestamp><setSpec>com_10843_13612</setSpec><setSpec>col_10843_13613</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Sex
+        Differences in Jealousy</dc:title>\n<dc:creator>Valles, Dakota</dc:creator>\n<dc:contributor>Sagarin,
+        Brad</dc:contributor>\n<dc:contributor>Department of Psychology</dc:contributor>\n<dc:subject>Evolutionary
+        psychology</dc:subject>\n<dc:subject>sex differences</dc:subject>\n<dc:subject>jealousy</dc:subject>\n<dc:subject>sexual
+        infidelity</dc:subject>\n<dc:subject>emotional infidelity</dc:subject>\n<dc:description>Evolutionary
+        psychologists theorizes that humans, as a species, have established sex differences
+        in jealousy due to the male\u2019s fear of paternal uncertainty, and a female\u2019s
+        desire for paternal caregiving that stem from our evolutionary past. This
+        suggests a male is likely to be in more distress over sexual infidelity, while
+        a female is more likely to be more distressed over emotional infidelity. Recently,
+        new findings have suggested that these differences might be due to the male\u2019s
+        ability to visualize sexually explicit images more vividly. A study will be
+        done which has men and women answer a forced-choice infidelity dilemma, either
+        with standard instructions or with instructions encouraging vivid imagery.
+        Competing predictions will be tested, with the results supporting the evolutionary
+        psychology theory or the recent challenge to it.</dc:description>\n<dc:description>B.A.
+        (Bachelor of Arts)</dc:description>\n<dc:date>2015-06-11T14:28:52Z</dc:date>\n<dc:date>2015-06-11T14:28:52Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:type>Text</dc:type>\n<dc:type>Conference
+        Poster</dc:type>\n<dc:identifier>http://commons.lib.niu.edu/handle/10843/13721</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:rights>NIU
+        theses are protected by copyright. They may be viewed from Huskie Commons
+        for any purpose, but reproduction or distribution in any format is prohibited
+        without the written permission of the authors.</dc:rights>\n<dc:publisher>Northern
+        Illinois University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:commons.lib.niu.edu:10843/13722</identifier><datestamp>2015-08-03T16:13:44Z</datestamp><setSpec>com_10843_13612</setSpec><setSpec>col_10843_13613</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Use
+        of Stable Isotopes in Quantifying Seabird Influence on Island Nutrient Dynamics</dc:title>\n<dc:creator>Weston,
+        Maria</dc:creator>\n<dc:creator>Kong, Stephanie</dc:creator>\n<dc:contributor>Jones,
+        Holly</dc:contributor>\n<dc:contributor>Department of Biological Sciences</dc:contributor>\n<dc:subject>seabird
+        influence</dc:subject>\n<dc:subject>New Zealand</dc:subject>\n<dc:subject>island
+        ecosystems</dc:subject>\n<dc:subject>stable isotope analysis</dc:subject>\n<dc:description>Seabird
+        colonies can have significant effects on island trophic structure by infusing
+        massive amounts of guano fertilizer into terrestrial zones (Jones, 2010).
+        These nutrients are important for driving soil chemical cycling and biotic
+        communities including both plants and invertebrates. However, introduced invasive
+        rats (Rattus spp.) threaten seabird populations globally by preying upon every
+        life stage of nesting seabirds. The objective of this research is to quantify
+        seabird influence on New Zealand island ecosystems using stable isotope analysis.
+        We will take advantage of the fact that marine nitrogen and carbon are enriched
+        in 15N and 13C compared to terrestrial nitrogen and carbon to track seabird
+        influence through island food webs. By looking at stable isotopic forms of
+        nitrogen and carbon (\u03B415N and \u03B413C) in soil, plant leaves, and spiders,
+        we will quantify the amount of seabird-derived nutrient cycling throughout
+        multiple trophic levels. We expect to find greater concentrations of marine-derived
+        carbon and nitrogen in soils, leaves, and spiders in seabird colonies and
+        lesser concentrations farther away from seabird colonies. Our research will
+        provide managers with the means to measure progress towards restoration on
+        the >1100 islands recovering from invasive predators with a single soil sample,
+        and demonstrate the important roles seabirds play on islands ecosystems.</dc:description>\n<dc:description>B.A.
+        (Bachelor of Arts)</dc:description>\n<dc:date>2015-06-11T14:29:01Z</dc:date>\n<dc:date>2015-06-11T14:29:01Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:type>Text</dc:type>\n<dc:type>Conference
+        Poster</dc:type>\n<dc:identifier>http://commons.lib.niu.edu/handle/10843/13722</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:rights>NIU
+        theses are protected by copyright. They may be viewed from Huskie Commons
+        for any purpose, but reproduction or distribution in any format is prohibited
+        without the written permission of the authors.</dc:rights>\n<dc:publisher>Northern
+        Illinois University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:commons.lib.niu.edu:10843/13723</identifier><datestamp>2015-08-03T16:13:44Z</datestamp><setSpec>com_10843_13612</setSpec><setSpec>col_10843_13613</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Assessing
+        Pre-Service Helping Professionals' Attitudes Toward Disability and Age</dc:title>\n<dc:creator>Williams,
+        Lexie</dc:creator>\n<dc:contributor>Castle, Nancy</dc:contributor>\n<dc:contributor>School
+        of Nursing and Health Studies</dc:contributor>\n<dc:subject>health care professionals</dc:subject>\n<dc:subject>baby
+        boomers</dc:subject>\n<dc:subject>elderly people</dc:subject>\n<dc:subject>people
+        with disabilities</dc:subject>\n<dc:subject>Implicit Association Test (IAT)</dc:subject>\n<dc:subject>training
+        needs</dc:subject>\n<dc:description>It is clear that health care professionals
+        training  now for their careers will be working with a  decidedly older population,
+        as \u201Cbaby boomers\u201D age.  In addition, there are approximately one
+        billion people across the globe with some form of disability,  around 15%
+        of the world\u2019s population. How  prepared are healthcare workers of the
+        future to  work with elderly people or people with disabilities?  What preconceived
+        notions, or attitudes, do they  have that can help or hinder their success
+        in working  with these populations? The best time to assess these  attitudes
+        is while they are training to become those  healthcare workers, i.e., the
+        pre-service period.  This study uses an approach to assessing  innermost feelings
+        that people have about age and  disability, asking pre-service health care
+        \ professionals (NIU students) to complete a sorting  exercise that measures
+        truthful opinions toward  disabled/abled persons and young/old persons. The
+        \ Implicit Association Test (IAT) accomplishes that  honesty by providing
+        the participants with images  that correlate with abled/disabled and young/old
+        \ persons and asking them to sort the items, along with  positively or negatively
+        connoted words  (evaluations/stereotypes). The theory is that it is  easier
+        (and thereby faster) to make a response when  the items that are more closely
+        related share the  same response key (disabled and good, old and bad,  etc.).
+        Results of this study may point to training needs  in areas identified by
+        negative associations with  either disability or age.</dc:description>\n<dc:description>B.A.
+        (Bachelor of Arts)</dc:description>\n<dc:date>2015-06-11T14:29:07Z</dc:date>\n<dc:date>2015-06-11T14:29:07Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:type>Text</dc:type>\n<dc:type>Conference
+        Poster</dc:type>\n<dc:identifier>http://commons.lib.niu.edu/handle/10843/13723</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:rights>NIU
+        theses are protected by copyright. They may be viewed from Huskie Commons
+        for any purpose, but reproduction or distribution in any format is prohibited
+        without the written permission of the authors.</dc:rights>\n<dc:publisher>Northern
+        Illinois University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:commons.lib.niu.edu:10843/13724</identifier><datestamp>2015-08-03T16:13:44Z</datestamp><setSpec>com_10843_13612</setSpec><setSpec>col_10843_13613</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Evaluating
+        Colors and Concepts</dc:title>\n<dc:creator>Wittke, Emily</dc:creator>\n<dc:contributor>Buck,
+        Todd</dc:contributor>\n<dc:contributor>School of Art</dc:contributor>\n<dc:subject>warm
+        colors</dc:subject>\n<dc:subject>cool colors</dc:subject>\n<dc:subject>color
+        neutral</dc:subject>\n<dc:subject>emotion</dc:subject>\n<dc:subject>psychological
+        feelings</dc:subject>\n<dc:description>The purpose of this study is to determine
+        whether the use of different extremes of the color wheel can change the intended
+        concept of a work of art. Specifically, what happens to the significance of
+        the message of the piece if it is only colored using warm colors versus cool
+        colors? How does the emotion created by the piece change when the color schemes
+        change?&#xd;\nPrevious research has shown a connection exists between meanings
+        and colors. Colors can often be used for symbolism and can be used to evoke
+        psychological feelings within the viewer. For example, red often creates a
+        sense of passion, energy, and intensity, whereas blue is often associated
+        with calmness, security, and trust.&#xd;\nThis study is an art project exploring
+        the significance color plays in concept in pastel drawings using warm colors,
+        cool colors, and a color neutral line drawing.</dc:description>\n<dc:description>B.A.
+        (Bachelor of Arts)</dc:description>\n<dc:date>2015-06-11T14:29:12Z</dc:date>\n<dc:date>2015-06-11T14:29:12Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:type>Text</dc:type>\n<dc:type>Conference
+        Poster</dc:type>\n<dc:identifier>http://commons.lib.niu.edu/handle/10843/13724</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:rights>NIU
+        theses are protected by copyright. They may be viewed from Huskie Commons
+        for any purpose, but reproduction or distribution in any format is prohibited
+        without the written permission of the authors.</dc:rights>\n<dc:publisher>Northern
+        Illinois University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:commons.lib.niu.edu:10843/13725</identifier><datestamp>2015-08-03T16:13:44Z</datestamp><setSpec>com_10843_13612</setSpec><setSpec>col_10843_13613</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Docking
+        of MetAP 1 for Inhibitor Candidacy</dc:title>\n<dc:creator>Wong, Aida Yukie</dc:creator>\n<dc:contributor>Hagen,
+        Timothy</dc:contributor>\n<dc:contributor>Department of Chemistry and Biochemistry</dc:contributor>\n<dc:subject>MetAP
+        1</dc:subject>\n<dc:subject>Rickettsia prowazekii</dc:subject>\n<dc:subject>inhibitor</dc:subject>\n<dc:description>MetAP
+        1 is a widespread enzyme found in Rickettsia prowazekii, a gram-negative bacteria
+        that causes typhus and other diseases.  As such, it is critical to find active
+        sites of MetAP 1 on Rickettsia prowazekii in order to find inhibitors through
+        protein-ligand binding for antibiotic drug candidacy and development.  The
+        program DockBlaster uses docking as a molecular modelling technique in order
+        to predict the orientation of a ligand when binding to a protein. The PBD
+        code for MetAP 1 (2B3H) from the RCSB database along with the corresponding
+        ligand, glycerol (GOL), is submitted into DockBlaster.  After virtual screening,
+        it was determined that MetAP 1 has six pockets into which an inhibitor ligand
+        can bind.  In a future study, in vitro enzymatic assays for MetAP 1-inhibitor
+        interactions will be conducted in order to screen for possible antibacterial
+        activity</dc:description>\n<dc:description>B.A. (Bachelor of Arts)</dc:description>\n<dc:date>2015-06-11T14:29:18Z</dc:date>\n<dc:date>2015-06-11T14:29:18Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:type>Text</dc:type>\n<dc:type>Conference
+        Poster</dc:type>\n<dc:identifier>http://commons.lib.niu.edu/handle/10843/13725</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:rights>NIU
+        theses are protected by copyright. They may be viewed from Huskie Commons
+        for any purpose, but reproduction or distribution in any format is prohibited
+        without the written permission of the authors.</dc:rights>\n<dc:publisher>Northern
+        Illinois University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:commons.lib.niu.edu:10843/13726</identifier><datestamp>2015-08-03T16:13:44Z</datestamp><setSpec>com_10843_13612</setSpec><setSpec>col_10843_13613</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Visualizing
+        Chiropractic Motion Palpation Techniques</dc:title>\n<dc:creator>Woodall,
+        Melissa</dc:creator>\n<dc:contributor>Martens, Kim</dc:contributor>\n<dc:contributor>Korzen,
+        Erik</dc:contributor>\n<dc:contributor>School of Art</dc:contributor>\n<dc:subject>motion
+        palpation</dc:subject>\n<dc:subject>illustrations</dc:subject>\n<dc:subject>chiropractic</dc:subject>\n<dc:description>My
+        research and artistry project involved the creation of two educational posters
+        showing different manipulations that are involved with motion palpation, a
+        chiropractic technique used to diagnose and treat patients. The posters I
+        created are designed to be displayed in a chiropractor's office to be used
+        as an educational tool and visually inform patients about this technique.
+        To conduct my research, I analyzed literature, consulted with a chiropractor,
+        and took my own references of each adjustment. After gathering information
+        and references, I drew my illustrations and designed my posters. As a result,
+        I have created two visual aids to help educate patients and promote conversation
+        between chiropractors and their patients.</dc:description>\n<dc:description>B.A.
+        (Bachelor of Arts)</dc:description>\n<dc:date>2015-06-11T14:29:24Z</dc:date>\n<dc:date>2015-06-11T14:29:24Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:type>Text</dc:type>\n<dc:type>Conference
+        Poster</dc:type>\n<dc:identifier>http://commons.lib.niu.edu/handle/10843/13726</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:rights>NIU
+        theses are protected by copyright. They may be viewed from Huskie Commons
+        for any purpose, but reproduction or distribution in any format is prohibited
+        without the written permission of the authors.</dc:rights>\n<dc:publisher>Northern
+        Illinois University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:commons.lib.niu.edu:10843/13727</identifier><datestamp>2015-08-03T16:13:44Z</datestamp><setSpec>com_10843_13612</setSpec><setSpec>col_10843_13613</setSpec></header><metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Vision
+        System for Round Ground Metals</dc:title>\n<dc:creator>Woodall, Matthew</dc:creator>\n<dc:contributor>Mirman,
+        Cliff</dc:contributor>\n<dc:contributor>Department of Technology</dc:contributor>\n<dc:subject>Round
+        Ground Metals</dc:subject>\n<dc:subject>quality control vision system</dc:subject>\n<dc:description>This
+        project consists of the design and development of a quality control vision
+        system. Round Ground Metals produces small diameter Swiss screw machine quality
+        stainless steel bars that will acquire various defects on them during production.
+        The project consists of replicating the factory process of the steel bars
+        rotating/moving along the factory line and implementing a system consisting
+        of a Cognex In-Sight 7000 series industrial grade camera working with the
+        In-Sight Explorer 4.9.1 software to detect any defect along the steel bars.
+        Along with the detection, this project will have the ability to mark the defect
+        on the bar and display all of the data gathered from the Cognex into a visual
+        display screen that lets the user know the distance from the end of the bar
+        that the defect is at, the size of the defect, and whether or not the diameter
+        of the steel bar falls into the provided thresholds. After design is completed
+        and prototype testing has been sufficiently done in the lab, the final design
+        will then be transferred to Round Ground Metals for them to fabricate and
+        eventually implement into their factory line.</dc:description>\n<dc:description>B.A.
+        (Bachelor of Arts)</dc:description>\n<dc:date>2015-06-11T14:29:29Z</dc:date>\n<dc:date>2015-06-11T14:29:29Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:type>Text</dc:type>\n<dc:type>Conference
+        Poster</dc:type>\n<dc:identifier>http://commons.lib.niu.edu/handle/10843/13727</dc:identifier>\n<dc:language>en_US</dc:language>\n<dc:rights>NIU
+        theses are protected by copyright. They may be viewed from Huskie Commons
+        for any purpose, but reproduction or distribution in any format is prohibited
+        without the written permission of the authors.</dc:rights>\n<dc:publisher>Northern
+        Illinois University</dc:publisher>\n</oai_dc:dc>\n</metadata></record></ListRecords></OAI-PMH>"}
+    headers:
+      content-type: [application/xml;charset=UTF-8]
+      date: ['Tue, 20 Oct 2015 18:22:38 GMT']
+      server: [Apache-Coyote/1.1]
+    status: {code: 200, message: OK}
+version: 1
