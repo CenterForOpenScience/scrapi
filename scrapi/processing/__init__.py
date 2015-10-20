@@ -6,7 +6,7 @@ from celery.signals import worker_process_init
 from scrapi import settings
 from scrapi.processing.base import BaseProcessor
 
-DocumentTuple = namedtuple('Document', ['raw', 'normalized'])
+DocumentTuple = Document = namedtuple('Document', ['raw', 'normalized'])
 
 __all__ = []
 for mod in os.listdir(os.path.dirname(__file__)):
