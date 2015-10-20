@@ -10,7 +10,7 @@ from scrapi.base import OAIHarvester
 
 class UkyHarvester(OAIHarvester):
     short_name = 'uky'
-    long_name = 'UKnowledge'
+    long_name = 'UKnowledge @ University of Kentucky'
     url = 'http://uknowledge.uky.edu'
 
     base_url = 'http://uknowledge.uky.edu/do/oai/'
