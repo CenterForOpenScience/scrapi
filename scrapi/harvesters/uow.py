@@ -1,5 +1,5 @@
 '''
-Harvester for the Research Online for the SHARE project
+Harvester for Research Online @ University of Wollongong for the SHARE project
 
 Example API call: http://ro.uow.edu.au/do/oai/?verb=ListRecords&metadataPrefix=oai_dc
 '''
@@ -10,7 +10,7 @@ from scrapi.base import OAIHarvester
 
 class UowHarvester(OAIHarvester):
     short_name = 'uow'
-    long_name = 'University of Wollongong Research Online'
+    long_name = 'Research Online @ University of Wollongong'
     url = 'http://ro.uow.edu.au'
 
     base_url = 'http://ro.uow.edu.au/do/oai/'
