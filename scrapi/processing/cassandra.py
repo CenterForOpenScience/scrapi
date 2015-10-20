@@ -13,8 +13,8 @@ from cassandra.cqlengine import management
 from cassandra.cluster import NoHostAvailable
 from cassandra.cqlengine import columns, models
 
-from scrapi import events
 from scrapi import settings
+from scrapi import events, registry
 from scrapi.util import try_n_times
 from scrapi.util import copy_to_unicode
 from scrapi.linter import RawDocument, NormalizedDocument
@@ -161,7 +161,7 @@ class CassandraProcessor(BaseProcessor):
             return True  # If the document fails to load/compare for some reason, accept a new version
 
     def documents(self, *sources):
-        sources = sources
+        sources = sources or registry.keys()
         q = DocumentModel.objects.timeout(500).allow_filtering().all().limit(1000)
         querysets = (q.filter(source=source) for source in sources) if sources else [q]
         for query in querysets:
