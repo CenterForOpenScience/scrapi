@@ -1,4 +1,4 @@
-mport copy
+import copy
 import logging
 
 from scrapi import tasks
