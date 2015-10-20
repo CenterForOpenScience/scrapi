@@ -8,7 +8,7 @@ from api.webview.models import Document
 from api.webview.serializers import DocumentSerializer
 
 
-class DocumentList(generics.ListCreateAPIView):
+class DocumentList(generics.ListAPIView):
     """
     List all documents in the SHARE API
     """
@@ -24,7 +24,7 @@ class DocumentList(generics.ListCreateAPIView):
         return Document.objects.all()
 
 
-class DocumentsFromSource(generics.ListCreateAPIView):
+class DocumentsFromSource(generics.ListAPIView):
     """
     List all documents from a particular source
     """
