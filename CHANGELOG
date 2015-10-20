@@ -2,6 +2,10 @@
 ChangeLog
 *********
 
+0.9.8 (2015-10-20)
+==================
+- Fix url-gathering for pubmedcentral (after they had a schema change)
+
 0.9.7 (2015-09-18)
 ==================
 - Bugfixes for OAI url gathering
