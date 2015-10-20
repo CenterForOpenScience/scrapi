@@ -60,11 +60,13 @@ def json_without_bytes(jobj):
 
 
 def try_n_times(n, action, *args, **kwargs):
+    exc = None
     for _ in xrange(n):
         try:
             return action(*args, **kwargs)
         except Exception as e:
+            exc = e
             logger.exception(e)
             time.sleep(15)
-    if e:
-        raise e
+    if exc:
+        raise exc
