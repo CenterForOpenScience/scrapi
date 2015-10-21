@@ -8,7 +8,6 @@ from .helpers import (
     datetime_formatter,
     oai_process_uris,
     build_properties,
-    default_name_parser,
     oai_process_contributors,
     doe_process_contributors,
 )
