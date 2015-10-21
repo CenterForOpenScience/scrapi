@@ -21,10 +21,10 @@ from scrapi.base import XMLHarvester
 from scrapi.util import copy_to_unicode
 from scrapi.linter.document import RawDocument
 from scrapi.base.helpers import (
-    compose, 
-    single_result, 
-    build_properties, 
-    datetime_formatter, 
+    compose,
+    single_result,
+    build_properties,
+    datetime_formatter,
     default_name_parser
 )
 
