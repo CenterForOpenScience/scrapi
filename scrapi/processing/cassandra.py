@@ -163,12 +163,13 @@ class CassandraProcessor(BaseProcessor):
     def documents(self, *sources):
         sources = sources or registry.keys()
         q = DocumentModel.objects.timeout(500).allow_filtering().all().limit(1000)
-        querysets = (q.filter(source=source) for source in sources) if sources else [q]
+        querysets = (q.filter(source=source, migrated=False) for source in sources) if sources else [q]
         for query in querysets:
             page = try_n_times(5, list, query)
             while len(page) > 0:
                 for doc in page:
                     yield DocumentTuple(self.to_raw(doc), self.to_normalized(doc))
+                logger.info('yielded 1000 pages')
                 page = try_n_times(5, self.next_page, query, page)
 
     def next_page(self, query, page):
@@ -269,6 +270,9 @@ class DocumentModel(models.Model):
 
     # Additional metadata
     versions = columns.List(columns.UUID)
+
+    # Temporary
+    migrated = columns.Bool(index=True)
 
 
 @DatabaseManager.registered_model
