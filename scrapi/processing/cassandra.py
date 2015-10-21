@@ -168,6 +168,8 @@ class CassandraProcessor(BaseProcessor):
             page = try_n_times(5, list, query)
             while len(page) > 0:
                 for doc in page:
+                    doc.migrated = True
+                    doc.save()
                     yield DocumentTuple(self.to_raw(doc), self.to_normalized(doc))
                 logger.info('yielded 1000 pages')
                 page = try_n_times(5, self.next_page, query, page)
