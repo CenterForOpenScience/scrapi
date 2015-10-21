@@ -10,12 +10,13 @@ from .helpers import (
     build_properties,
     default_name_parser,
     oai_process_contributors,
+    doe_process_contributors,
 )
 
 
 DOESCHEMA = {
     "description": ('//dc:description/node()', compose(lambda x: x.strip(), single_result)),
-    "contributors": ('//dc:creator/node()', compose(default_name_parser, lambda x: x.split(';'), single_result)),
+    "contributors": ('//dc:creator/node()', compose(doe_process_contributors, lambda x: x.split(';'), single_result)),
     "title": ('//dc:title/node()', compose(lambda x: x.strip(), single_result)),
     "providerUpdatedDateTime": ('//dc:dateEntry/node()', compose(datetime_formatter, single_result)),
     "uris": {

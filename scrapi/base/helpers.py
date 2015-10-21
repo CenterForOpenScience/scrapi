@@ -17,6 +17,7 @@ from scrapi import requests
 
 URL_REGEX = re.compile(r'(https?:\/\/\S*\.[^\s\[\]\<\>\}\{\^]*)')
 DOI_REGEX = re.compile(r'(doi:10\.\S*)')
+DOE_AFFILIATIONS = re.compile(r'\[(.*)\]')
 
 
 def CONSTANT(x):
@@ -359,3 +360,22 @@ def datetime_formatter(datetime_string):
     if not date_time.tzinfo:
         date_time = date_time.replace(tzinfo=pytz.UTC)
     return date_time.isoformat()
+
+
+def doe_name_parser(name):
+    if name == 'None':
+        return {'name': ''}
+    affiliations = DOE_AFFILIATIONS.findall(name)
+    for affiliation in affiliations:
+        name = name.replace('[{}]'.format(affiliation), '')
+    parsed_name = maybe_parse_name(name)
+    parsed_name['affiliation'] = list(map(doe_parse_affiliation, affiliations))
+    return parsed_name
+
+
+def doe_parse_affiliation(affiliation):
+    return {'name': affiliation}  # TODO: Maybe parse out address?
+
+
+def doe_process_contributors(names):
+    return list(map(doe_name_parser, names))
