@@ -272,7 +272,7 @@ class DocumentModel(models.Model):
     versions = columns.List(columns.UUID)
 
     # Temporary
-    migrated = columns.Bool(index=True)
+    migrated = columns.Boolean(index=True)
 
 
 @DatabaseManager.registered_model
