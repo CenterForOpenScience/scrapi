@@ -161,7 +161,7 @@ class CassandraProcessor(BaseProcessor):
             return True  # If the document fails to load/compare for some reason, accept a new version
 
     def documents(self, *sources):
-        q = DocumentModel.objects.timeout(500).allow_filtering().all().limit(1000)
+        q = DocumentModel.objects.timeout(500).allow_filtering().all().limit(100)
         querysets = (q.filter(source=source) for source in sources) if sources else [q]
         for query in querysets:
             page = try_n_times(5, list, query)
