@@ -42,7 +42,6 @@ class PostgresProcessor(BaseProcessor):
     manager = DatabaseManager()
 
     def documents(self, *sources):
-        sources = sources
         q = Document.objects.all()
         querysets = (q.filter(source=source) for source in sources) if sources else [q]
         for query in querysets:
