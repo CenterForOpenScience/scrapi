@@ -65,10 +65,14 @@ class NeuroVaultHarvester(JSONHarvester):
                         {
                             'doc': json.dumps(record),
                             'source': self.short_name,
-                            'docID': record['id'],
+                            'docID': str(record['id']),
                             'filetype': 'json'
                         }
                     )
                 )
+
+            api_url = records['next']
+            if api_url is None:
+                break
 
         return record_list
