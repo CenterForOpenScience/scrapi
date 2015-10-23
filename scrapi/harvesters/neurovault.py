@@ -23,6 +23,8 @@ logger = logging.getLogger(__name__)
 
 def process_contributors(authors):
 
+    if authors is None:
+        return []
     authors = re.split(',\s|\sand\s', authors)
     return default_name_parser([a for a in authors])
 
@@ -39,7 +41,6 @@ class NeuroVaultHarvester(JSONHarvester):
             'contributors': ('/authors', process_contributors),
             'uris': {
                 'canonicalUri': '/url',
-                'objectUri': '/paper_url'
             },
             'title': '/name',
             'providerUpdatedDateTime': ('/modify_date', datetime_formatter),
