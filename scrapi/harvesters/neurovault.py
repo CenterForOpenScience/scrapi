@@ -1,8 +1,8 @@
 """
-NeuroVault (neurovault.org) harvester of public images and collections for the
+NeuroVault (neurovault.org) harvester of public collections for the
 SHARE Notification Service.
 
-Example API query: http://neurovault.org/api/images/1263/?format=json
+Example API query: http://neurovault.org/api/collections/?format=json
 """
 
 from __future__ import unicode_literals
