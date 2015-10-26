@@ -173,13 +173,15 @@ def beat(setup=True):
 
 
 @task
-def worker(loglevel='INFO', hostname='%h'):
+def worker(loglevel='INFO', hostname='%h', autoreload=False):
     from scrapi.tasks import app
     command = ['worker']
     if loglevel:
         command.extend(['--loglevel', loglevel])
     if hostname:
         command.extend(['--hostname', hostname])
+    if autoreload:
+        command.extend(['--autoreload'])
     app.worker_main(command)
 
 
