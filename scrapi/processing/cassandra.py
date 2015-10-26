@@ -47,9 +47,9 @@ class CassandraProcessor(BaseProcessor):
     @events.logged(events.PROCESSING, 'raw.cassandra')
     def process_raw(self, raw_doc):
         self.send_to_database(
-            source=raw_doc['source'],
-            docID=raw_doc['docID'],
-            filetype=raw_doc['filetype'],
+            source=copy_to_unicode(raw_doc['source']),
+            docID=copy_to_unicode(raw_doc['docID']),
+            filetype=copy_to_unicode(raw_doc['filetype']),
             doc=raw_doc['doc'].encode('utf-8'),
             timestamps=raw_doc.get('timestamps', {})
         ).save()
