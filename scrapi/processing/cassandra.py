@@ -13,8 +13,8 @@ from cassandra.cqlengine import management
 from cassandra.cluster import NoHostAvailable
 from cassandra.cqlengine import columns, models
 
+from scrapi import events
 from scrapi import settings
-from scrapi import events, registry
 from scrapi.util import try_n_times
 from scrapi.util import copy_to_unicode
 from scrapi.linter import RawDocument, NormalizedDocument
@@ -161,14 +161,12 @@ class CassandraProcessor(BaseProcessor):
             return True  # If the document fails to load/compare for some reason, accept a new version
 
     def documents(self, *sources):
-        sources = sources or registry.keys()
-        q = DocumentModel.objects.timeout(500).allow_filtering().all().limit(1000)
-        querysets = (q.filter(source=source, migrated=False) for source in sources) if sources else [q]
+        q = DocumentModel.objects.timeout(500).allow_filtering().all().limit(100)
+        querysets = (q.filter(source=source) for source in sources) if sources else [q]
         for query in querysets:
             page = try_n_times(5, list, query)
             while len(page) > 0:
                 for doc in page:
-                    doc.migrated = True
                     doc.save()
                     yield DocumentTuple(self.to_raw(doc), self.to_normalized(doc))
                 logger.info('yielded 1000 pages')
@@ -272,9 +270,6 @@ class DocumentModel(models.Model):
 
     # Additional metadata
     versions = columns.List(columns.UUID)
-
-    # Temporary
-    migrated = columns.Boolean(index=True)
 
 
 @DatabaseManager.registered_model
