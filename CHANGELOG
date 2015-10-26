@@ -2,6 +2,10 @@
 ChangeLog
 *********
 
+0.9.9 (2015-10-26)
+==================
+- Scitech documents will now process again
+
 0.9.8 (2015-10-20)
 ==================
 - Fix url-gathering for pubmedcentral (after they had a schema change)
