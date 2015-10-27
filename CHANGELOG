@@ -2,6 +2,11 @@
 ChangeLog
 *********
 
+0.9.10 (2015-10-26)
+==================
+- Fix incorrect map serialization in OAI harvesters
+
+
 0.9.9 (2015-10-26)
 ==================
 - Scitech documents will now process again

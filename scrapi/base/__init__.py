@@ -152,7 +152,7 @@ class OAIHarvester(XMLHarvester):
 
     def format_property(self, property):
         if property == 'date':
-            fn = compose(lambda x: map(null_on_error(date_formatter), x), coerce_to_list, self.resolve_property)
+            fn = compose(lambda x: list(map(null_on_error(date_formatter), x)), coerce_to_list, self.resolve_property)
         else:
             fn = self.resolve_property
         return (property, (
