@@ -3,6 +3,7 @@ from django_pgjson.fields import JsonField
 
 
 class Document(models.Model):
+    key = models.TextField(primary_key=True)
     source = models.CharField(max_length=255)
     docID = models.TextField()
 
@@ -10,6 +11,15 @@ class Document(models.Model):
 
     raw = JsonField()
     normalized = JsonField(null=True)
+
+    def save(self, *args, **kwargs):
+        if not self.key:
+            self.key = self._make_key(self.source, self.docID)
+        return super(Document, self).save(*args, **kwargs)
+
+    @classmethod
+    def _make_key(cls, source, docID):
+        return '|'.join((source, docID))
 
 
 class HarvesterResponse(models.Model):
