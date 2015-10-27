@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Document',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('key', models.TextField(primary_key=True, serialize=False)),
                 ('source', models.CharField(max_length=255)),
                 ('docID', models.TextField()),
                 ('providerUpdatedDateTime', models.DateTimeField(null=True)),
@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='HarvesterResponse',
             fields=[
-                ('key', models.TextField(serialize=False, primary_key=True)),
+                ('key', models.TextField(primary_key=True, serialize=False)),
                 ('method', models.CharField(max_length=8)),
                 ('url', models.TextField()),
                 ('ok', models.NullBooleanField()),
