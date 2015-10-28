@@ -10,7 +10,7 @@ from scrapi.base import OAIHarvester
 
 class CiteseerxHarvester(OAIHarvester):
     short_name = 'citeseerx'
-    long_name = '"CiteSeerX Scientific Literature Digital Library and Search Engine"'
+    long_name = 'CiteSeerX Scientific Literature Digital Library and Search Engine'
     url = 'http://citeseerx.ist.psu.edu'
 
     base_url = 'http://citeseerx.ist.psu.edu/oai2'
