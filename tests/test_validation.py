@@ -29,7 +29,8 @@ class TestValidation(object):
             },
             "providerUpdatedDateTime": "2015-02-02T00:00:00Z",
             "shareProperties": {
-                "source": "test"
+                "source": "test",
+                "docID": "1"
             }
         }
         doc = NormalizedDocument(to_be_validated, clean=True)
@@ -56,7 +57,8 @@ class TestValidation(object):
             },
             "providerUpdatedDateTime": "2015-02-02T00:00:00Z",
             "shareProperties": {
-                "source": "test"
+                "source": "test",
+                "docID": "1"
             },
             "otherProperties": [
                 {
@@ -102,7 +104,8 @@ to_be_validated = {
     },
     "providerUpdatedDateTime": "2015-02-02T00:00:00Z",
     "shareProperties": {
-        "source": "test"
+        "source": "test",
+        "docID": "1"
     },
     "otherProperties": [
         {
