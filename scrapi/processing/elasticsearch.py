@@ -4,12 +4,13 @@ import logging
 
 import six
 
+from schema_transformer.transformer import JSONTransformer
+
 from elasticsearch import Elasticsearch
 from elasticsearch.exceptions import NotFoundError
 from elasticsearch.exceptions import ConnectionError
 
 from scrapi import settings
-from scrapi.base.transformer import JSONTransformer
 from scrapi.processing import DocumentTuple
 from scrapi.processing.base import BaseProcessor, BaseDatabaseManager
 from scrapi.linter import NormalizedDocument

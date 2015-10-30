@@ -14,7 +14,7 @@ from scrapi import registry
 from scrapi import settings
 from scrapi.base.schemas import OAISCHEMA
 from scrapi.linter.document import RawDocument, NormalizedDocument
-from scrapi.base.transformer import XMLTransformer, JSONTransformer
+from schema_transformer.transformer import XMLTransformer, JSONTransformer
 from scrapi.base.helpers import (
     updated_schema,
     build_properties,
@@ -65,13 +65,26 @@ class BaseHarvester(object):
     def file_format(self):
         raise NotImplementedError
 
+    @abc.abstractproperty
+    def schema(self):
+        raise NotImplementedError
+
     @abc.abstractmethod
     def harvest(self, start_date=None, end_date=None):
         raise NotImplementedError
 
-    @abc.abstractmethod
-    def normalize(self, raw_doc):
+    @abc.abstractproperty
+    def transformer(self, raw_doc):
         raise NotImplementedError
+
+    def normalize(self, raw_doc):
+        transformed = self.transformer.transform(raw_doc['doc'], fail=settings.RAISE_IN_TRANSFORMER)
+        transformed['shareProperties'] = {
+            'source': self.short_name,
+            'docID': raw_doc['docID'],
+            'filetype': raw_doc['filetype']
+        }
+        return NormalizedDocument(transformed, clean=True)
 
     @property
     def run_at(self):
@@ -82,30 +95,26 @@ class BaseHarvester(object):
         }
 
 
-class JSONHarvester(BaseHarvester, JSONTransformer):
+class JSONHarvester(BaseHarvester):
     file_format = 'json'
 
-    def normalize(self, raw_doc):
-        transformed = self.transform(json.loads(raw_doc['doc']), fail=settings.RAISE_IN_TRANSFORMER)
-        transformed['shareProperties'] = {
-            'source': self.short_name,
-            'docID': raw_doc['docID'],
-            'filetype': raw_doc['filetype']
-        }
-        return NormalizedDocument(transformed, clean=True)
+    transformer = None
+
+    @property
+    def transformer(self):
+        if not self._transformer:
+            self._transformer = JSONTransformer(self.schema)
+        return self._transformer
 
 
-class XMLHarvester(BaseHarvester, XMLTransformer):
+class XMLHarvester(BaseHarvester):
     file_format = 'xml'
 
-    def normalize(self, raw_doc):
-        transformed = self.transform(etree.XML(raw_doc['doc']), fail=settings.RAISE_IN_TRANSFORMER)
-        transformed['shareProperties'] = {
-            'source': self.short_name,
-            'docID': raw_doc['docID'],
-            'filetype': raw_doc['filetype']
-        }
-        return NormalizedDocument(transformed, clean=True)
+    @property
+    def transformer(self):
+        if not self._transformer:
+            self._transformer = XMLTransformer(self.schema, namespaces=self.namespaces)
+        return self._transformer
 
 
 class OAIHarvester(XMLHarvester):
