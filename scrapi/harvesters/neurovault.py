@@ -16,7 +16,7 @@ from scrapi import requests
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
 from scrapi.base.helpers import (build_properties, datetime_formatter,
-                                 default_name_parser)
+                                 default_name_parser, compose)
 
 logger = logging.getLogger(__name__)
 
@@ -29,6 +29,10 @@ def process_contributors(authors):
     return default_name_parser(authors)
 
 
+def filter_none(l):
+    return list(filter(lambda x: x, l))
+
+
 class NeuroVaultHarvester(JSONHarvester):
     short_name = 'neurovault'
     long_name = 'NeuroVault.org'
@@ -39,8 +43,8 @@ class NeuroVaultHarvester(JSONHarvester):
         return {
             'contributors': ('/authors', process_contributors),
             'uris': {
-                'objectUris': ('/url', lambda x: [x]),
-                'descriptorUris': ('/DOI', lambda x: ['http://dx.doi.org/{}'.format(x)] if x else []),
+                'objectUris': ('/url', '/full_dataset_url', compose(filter_none, lambda x, y: [x, y])),
+                'descriptorUris': ('/DOI', '/paper_url', compose(filter_none, lambda x, y: [('http://dx.doi.org/{}'.format(x) if x else None), y])),
                 'canonicalUri': '/url',
             },
             'title': '/name',
@@ -48,9 +52,6 @@ class NeuroVaultHarvester(JSONHarvester):
             'description': '/description',
             'otherProperties': build_properties(
                 ('owner_name', '/owner_name'),
-                ('doi', '/DOI'),
-                # ('paper_url', 'paper_url'),
-                # ('full_dataset_url', 'full_dataset_url')
             )
         }
 
