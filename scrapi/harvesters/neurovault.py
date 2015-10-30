@@ -39,7 +39,8 @@ class NeuroVaultHarvester(JSONHarvester):
         return {
             'contributors': ('/authors', process_contributors),
             'uris': {
-                'objectUris': '/url',
+                'objectUris': ('/url', lambda x: [x]),
+                'descriptorUris': ('/DOI', lambda x: ['http://dx.doi.org/{}'.format(x)] if x else []),
                 'canonicalUri': '/url',
             },
             'title': '/name',
@@ -48,8 +49,8 @@ class NeuroVaultHarvester(JSONHarvester):
             'otherProperties': build_properties(
                 ('owner_name', '/owner_name'),
                 ('doi', '/DOI'),
-                ('paper_url', 'paper_url'),
-                ('full_dataset_url', 'full_dataset_url')
+                # ('paper_url', 'paper_url'),
+                # ('full_dataset_url', 'full_dataset_url')
             )
         }
 
