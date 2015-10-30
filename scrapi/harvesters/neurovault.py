@@ -49,8 +49,8 @@ class NeuroVaultHarvester(JSONHarvester):
             'otherProperties': build_properties(
                 ('owner_name', '/owner_name'),
                 ('doi', '/DOI'),
-                # ('paper_url', 'paper_url'),
-                # ('full_dataset_url', 'full_dataset_url')
+                ('paper_url', '/paper_url'),
+                ('full_dataset_url', '/full_dataset_url')
             )
         }
 
