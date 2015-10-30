@@ -26,20 +26,20 @@ def process_contributors(authors):
     if authors is None:
         return []
     authors = re.split(',\s|\sand\s', authors)
-    return default_name_parser([a for a in authors])
+    return default_name_parser(authors)
 
 
 class NeuroVaultHarvester(JSONHarvester):
     short_name = 'neurovault'
     long_name = 'NeuroVault.org'
     url = 'http://www.neurovault.org/'
-    count = 0
 
     @property
     def schema(self):
         return {
             'contributors': ('/authors', process_contributors),
             'uris': {
+                'objectUris': '/url',
                 'canonicalUri': '/url',
             },
             'title': '/name',
@@ -57,7 +57,7 @@ class NeuroVaultHarvester(JSONHarvester):
 
         record_list = []
 
-        while True:
+        while api_url:
 
             records = requests.get(api_url).json()
             for record in records['results']:
@@ -73,7 +73,5 @@ class NeuroVaultHarvester(JSONHarvester):
                 )
 
             api_url = records['next']
-            if api_url is None:
-                break
 
         return record_list
