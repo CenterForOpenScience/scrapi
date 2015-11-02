@@ -8,19 +8,15 @@ An example file: http://exporter.nih.gov/XMLData/final/RePORTER_PRJ_X_FY2015_035
 from __future__ import unicode_literals
 
 
-import io
-import sys
-import time
 import logging
 import re
 
 from bs4 import BeautifulSoup
-
 from datetime import date, timedelta
-
-from lxml import etree
 from dateutil.parser import parse
-
+from io import BytesIO
+from lxml import etree
+from zipfile import ZipFile
 
 from scrapi import requests
 from scrapi import settings
@@ -30,11 +26,8 @@ from scrapi.linter.document import RawDocument
 from scrapi.base.schemas import default_name_parser
 from scrapi.base.helpers import compose, single_result, build_properties, datetime_formatter
 
-from zipfile import ZipFile
-
 
 logger = logging.getLogger(__name__)
-BytesIO = io.BytesIO
 
 
 def daterange(start_date, end_date):
@@ -141,10 +134,6 @@ def xml_records(files):
             yield record
 
 
-def construct_project_url(project_base_url, application_id):
-    return "".join([project_base_url, application_id])
-
-
 def add_affiliation(name, org_name):
     name['affiliation'] = [{'name': org_name.text}]
     return name
@@ -163,7 +152,8 @@ class NIHHarvesters(XMLHarvester):
     short_name = 'nih'
     long_name = 'NIH Research Portal Online Reporting Tools'
     url = 'http://exporter.nih.gov/ExPORTER_Catalog.aspx/'
-    project_base_url = 'https://projectreporter.nih.gov/project_info_description.cfm?aid='
+    project_base_url = 'https://projectreporter.nih.gov/project_info_description.cfm?aid={}'
+    foa_base_url = 'http://grants.nih.gov/grants/guide/pa-files/{}.html'
     DEFAULT_ENCODING = 'UTF-8'
     record_encoding = None
 
@@ -172,7 +162,9 @@ class NIHHarvesters(XMLHarvester):
         return {
             "contributors": ('//PIS/PI/PI_NAME/node()', '//ORG_NAME', nih_name_parser),
             "uris": {
-                "canonicalUri": ("//APPLICATION_ID/node()", lambda x: construct_project_url(self.project_base_url, x[0]))
+                "canonicalUri": ("//APPLICATION_ID/node()", compose(self.construct_project_url, single_result)),
+                "descriptorUris": ("//APPLICATION_ID/node()", "//FOA_NUMBER/node()",
+                                   self.construct_descriptor_uris)
             },
             "providerUpdatedDateTime": ("AWARD_NOTICE_DATE/node()", compose(datetime_formatter, single_result)),
             "title": ('//PROJECT_TITLE/node()', single_result),
@@ -219,9 +211,16 @@ class NIHHarvesters(XMLHarvester):
             )
         }
 
-    @property
-    def namespaces(self):
-        return {'xsi': "http://www.w3.org/2001/XMLSchema-instance"}
+    def construct_project_url(self, application_id):
+        return self.project_base_url.format(application_id)
+
+    def construct_descriptor_uris(self, application_id, foa_number):
+        return [
+            self.project_base_url.format(application_id[0]) if application_id else None,
+            self.foa_base_url.format(foa_number[0] if foa_number else None)
+        ]
+
+    namespaces = {'xsi': "http://www.w3.org/2001/XMLSchema-instance"}
 
     def harvest(self, start_date=None, end_date=None):
         """
@@ -240,22 +239,11 @@ class NIHHarvesters(XMLHarvester):
         rows = table.find_all('tr', class_="row_bg")
         urls = [i for i in construct_urls(base_url, start_date, end_date, rows)]
 
-        xml_list = []
-        for record in xml_records(get_xml_files(urls)):
-            doc_id = record.xpath('.//APPLICATION_ID/node()', namespaces=self.namespaces)[0]
-            record = etree.tostring(record, encoding=self.DEFAULT_ENCODING)
-            xml_list.append(RawDocument({
-                'doc': record,
+        return [
+            RawDocument({
+                'doc': etree.tostring(record, encoding=self.DEFAULT_ENCODING),
                 'source': self.short_name,
-                'docID': copy_to_unicode(doc_id),
+                'docID': copy_to_unicode(record.xpath('.//APPLICATION_ID/node()', namespaces=self.namespaces)[0]),
                 'filetype': 'xml'
-            }))
-        return xml_list
-
-
-def debug(func):
-    def inner(*args, **kwargs):
-        import ipdb
-        with ipdb.launch_ipdb_on_exception():
-            return func(*args, **kwargs)
-    return inner
+            }) for record in xml_records(get_xml_files(urls))
+        ]
