@@ -3,6 +3,10 @@ Harvester for NIH.gov Research Portal Online Reporting Tools (RePORTER) for the 
 
 Getting weekly summary from ExPORTER on nih.gov, parse XML and normalize the data
 An example file: http://exporter.nih.gov/XMLData/final/RePORTER_PRJ_X_FY2015_035.zip
+
+Note: This harvester assigns incorrect dates to some xml files due to an inconsistency in the numbering of week of the
+month in the project file names. It is guaranteed that all data are harvested in a sufficiently long time frame
+(>1 month).
 """
 
 from __future__ import unicode_literals
@@ -53,7 +57,7 @@ def get_days_of_week(start_date, end_date, day_of_week):
 
 def get_fiscal_year(mydate=date.today()):
     """
-    Return the current fiscal year. Each fiscal year starts on October 1.
+    Return the current fiscal year. Each fiscal year starts on October 1
     """
     if mydate.month < 10:
         return mydate.year
@@ -71,7 +75,7 @@ def get_fiscal_years(dates):
 def parse_month_column(month_column, day_of_week):
     """
     Given a month column string, return the date of a day (Monday by default) of that week
-    An eample of a month column string: September, 2015 - WEEK 1
+    An example of a month column string: September, 2015 - WEEK 1
     """
     month_year, week = iter(map(lambda x: x.strip(), month_column.split('-')))
     first_day = parse('1 ' + month_year)
@@ -224,7 +228,7 @@ class NIHHarvesters(XMLHarvester):
 
     def harvest(self, start_date=None, end_date=None):
         """
-        Retun a list of RawDocuments
+        Return a list of RawDocuments
         """
         start_date = start_date or date.today() - timedelta(settings.DAYS_BACK)
         end_date = end_date or date.today()
