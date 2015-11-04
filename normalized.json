@@ -223,7 +223,18 @@
         },
         "shareProperties": {
             "type": "object",
-            "description": "Properties that are generated and/or organized by the SHARE system (e.g., timestamps of when SHARE processes data). These properities are used internally and are not guaranteed to remain consistent."
+            "description": "Properties that are generated and/or organized by the SHARE system (e.g., timestamps of when SHARE processes data). These properities are used internally and are not guaranteed to remain consistent.",
+            "required": ["source", "docID"],
+            "properties": {
+                "source": {
+                    "type": "string",
+                    "description": "The source of the data in the document"
+                },
+                "docID": {
+                    "type": "string",
+                    "description": "A service-unique identifier for the document"
+                }
+            }
         },
         "otherProperties": {
             "items": {

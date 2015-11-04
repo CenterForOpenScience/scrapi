@@ -2,11 +2,15 @@ language: python
 sudo: false
 python:
     - "2.7"
-    - "3.4"
+    - "3.5"
 
 services:
   - cassandra
   - elasticsearch
+  - postgres
+
+addons:
+  postgresql: "9.4"
 
 cache:
   directories:
@@ -16,13 +20,15 @@ env:
   - WHEELHOUSE=$HOME/wheelhouse
 
 install:
-  - travis_retry pip install invoke coveralls
+  - travis_retry pip install -U invoke coveralls
   - travis_retry invoke wheelhouse --develop
   - travis_retry invoke requirements --develop
   - cp scrapi/settings/travis-dist.py scrapi/settings/local.py
 
 before_script:
   - flake8 .
+  - psql -c "CREATE DATABASE scrapi;" -U postgres
+  - python manage.py migrate
 
 script:
   - invoke provider_map

@@ -1,24 +1,25 @@
 scrapi
 ======
 
-```master``` build status: [![Build Status](https://travis-ci.org/fabianvf/scrapi.svg?branch=master)](https://travis-ci.org/fabianvf/scrapi)
+```master``` build status: [![Build Status](https://travis-ci.org/CenterForOpenScience/scrapi.svg?branch=master)](https://travis-ci.org/CenterForOpenScience/scrapi)
 
 
-```develop``` build status: [![Build Status](https://travis-ci.org/fabianvf/scrapi.svg?branch=develop)](https://travis-ci.org/fabianvf/scrapi)
+```develop``` build status: [![Build Status](https://travis-ci.org/CenterForOpenScience/scrapi.svg?branch=develop)](https://travis-ci.org/CenterForOpenScience/scrapi)
 
 
-[![Coverage Status](https://coveralls.io/repos/fabianvf/scrapi/badge.svg?branch=develop)](https://coveralls.io/r/fabianvf/scrapi?branch=develop)
-[![Code Climate](https://codeclimate.com/github/fabianvf/scrapi/badges/gpa.svg)](https://codeclimate.com/github/fabianvf/scrapi)
+[![Coverage Status](https://coveralls.io/repos/CenterForOpenScience/scrapi/badge.svg?branch=develop)](https://coveralls.io/r/CenterForOpenScience/scrapi?branch=develop)
+[![Code Climate](https://codeclimate.com/github/CenterForOpenScience/scrapi/badges/gpa.svg)](https://codeclimate.com/github/CenterForOpenScience/scrapi)
 
 ## Getting started
 
 - To run absolutely everyting, you will need to:
     - Install requirements
     - Install Elasticsearch
-    - Install Cassandra
     - Install harvesters
+    - Install Cassandra, or Postgres, or both (optional)
     - Install rabbitmq (optional)
-- To only run harvesters locally, you do not have to install rabbitmq
+- To only run harvesters locally, you do not have to install 
+- Both Cassandra and Postgres aren't really necessary, you can choose which one you'd like, or use both. If you install neither, you can use local storage instead. In your settings, you'll specify a CANONICAL_PROCESSOR, just make sure that one is installed.
 
 
 ### Requirements
@@ -139,18 +140,33 @@ $ sudo apt-get install rabbitmq-server
 
 You will need to have a local copy of the settings. Copy local-dist.py into your own version of local.py -
 
-```
+```bash
 cp scrapi/settings/local-dist.py scrapi/settings/local.py
 ```
 
-If you installed Cassandra and Elasticsearch earlier, you will want add the following configuration to your local.py:
-```python
-RECORD_HTTP_TRANSACTIONS = True  # Only if cassandra is installed
+Copy over the api settings
 
-NORMALIZED_PROCESSING = ['cassandra', 'elasticsearch']
-RAW_PROCESSING = ['cassandra']
+```bash
+cp api/api/settings/local-dist.py api/api/settings/local.py
 ```
-Otherwise, you will want to make sure your local.py has the following configuration:
+
+If you installed Cassandra, Postgres and Elasticsearch earlier, you will want add something like the following configuration to your local.py, based on the databases you have:
+```python
+RECORD_HTTP_TRANSACTIONS = True  # Only if cassandra or postgres are installed
+
+RAW_PROCESSING = ['cassandra', 'postgres']
+NORMALIZED_PROCESSING = ['cassandra', 'postgres', 'elasticsearch']
+CANONICAL_PROCESSOR = 'postgres'
+RESPONSE_PROCESSOR = 'postgres'
+
+```
+For raw and normalized processing, add the databases you have installed. Only add elasticsearch to normalized processing, as it does not have a raw processing module.
+
+```RAW_PROCESSING``` and ```NORMALIZED_PROCESSING``` are both lists, so you can add as many processors as you wish. CANONICAL_PROCESSOR and RESPONSE_PROCESSOR both are single processors only.
+
+_note: Cassandra processing will soon be phased out, so we reccomend using postgres for your processing needs. Either one will work for now!
+
+If you'd like to use local storage, you will want to make sure your local.py has the following configuration:
 ```python
 RECORD_HTTP_TRANSACTIONS = False
 
@@ -161,11 +177,13 @@ This will save all harvested/normalized files to the directory ```archive/<sourc
 
 _note: Be careful with this, as if you harvest too many documents with the storage module enabled, you could start experiencing inode errors_
 
-If you'd like to be able to run all harvesters, you'll need to [register for a PLOS API key](http://api.plos.org/registration/).
+If you'd like to be able to run all harvesters, you'll need to [register for a PLOS API key](http://api.plos.org/registration/), a [Harvard Dataverse API Key](https://dataverse.harvard.edu/dataverseuser.xhtml?editMode=CREATE&redirectPage=%2Fdataverse.xhtml), and a [Springer API Key](https://dev.springer.com/signup).
 
-Add the following line to your local.py file:
+Add your API keys to the following line to your local.py file:
 ```
 PLOS_API_KEY = 'your-api-key-here'
+HARVARD_DATAVERSE_API_KEY = 'your-api-key-here'
+SPRINGER_KEY = 'your-api-key-here'
 ```
 
 ### Running the scheduler (optional)
@@ -198,7 +216,7 @@ or, just one with
 $ invoke harvester harvester-name
 ```
 
-For local development, running the ```mit``` harvester is recommended.
+For testing local development, running the ```mit``` harvester is recommended.
 
 Note: harvester-name is the same as the defined harvester "short name".
 

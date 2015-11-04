@@ -18,9 +18,19 @@ from scrapi import requests
 URL_REGEX = re.compile(r'(https?:\/\/\S*\.[^\s\[\]\<\>\}\{\^]*)')
 DOI_REGEX = re.compile(r'(doi:10\.\S*)')
 
-''' Takes a value, returns a function that always returns that value
-    Useful inside schemas for defining constants '''
-CONSTANT = lambda x: lambda *_, **__: x
+
+def CONSTANT(x):
+    ''' Takes a value, returns a function that always returns that value
+        Useful inside schemas for defining constants
+
+        >>> CONSTANT(7)('my', 'name', verb='is')
+        7
+        >>> CONSTANT([123, 456])()
+        [123, 456]
+    '''
+    def inner(*y, **z):
+        return x
+    return inner
 
 
 def build_properties(*args):
@@ -48,15 +58,37 @@ def build_property(name, expr, description=None, uri=None):
 
 
 def single_result(l, default=''):
+    ''' A function that will return the first element of a list if it exists
+
+        >>> print(single_result(['hello', None]))
+        hello
+        >>> print(single_result([], default='hello'))
+        hello
+        >>> print(single_result([]))
+        <BLANKLINE>
+
+    '''
     return l[0] if l else default
 
 
 def compose(*functions):
-    '''
-    evaluates functions from right to left.
-    ex. compose(f, g)(*x, **y) = f(g(*x, **y))
+    ''' evaluates functions from right to left.
 
-    credit to sloria
+        >>> add = lambda x, y: x + y
+        >>> add3 = lambda x: x + 3
+        >>> divide2 = lambda x: x/2
+        >>> subtract4 = lambda x: x - 4
+        >>> subtract1 = compose(add3, subtract4)
+        >>> subtract1(1)
+        0
+        >>> compose(subtract1, add3)(4)
+        6
+        >>> compose(int, add3, add3, divide2)(4)
+        8
+        >>> compose(int, divide2, add3, add3)(4)
+        5
+        >>> compose(int, divide2, compose(add3, add3), add)(7, 3)
+        8
     '''
     def inner(func1, func2):
         return lambda *x, **y: func1(func2(*x, **y))
@@ -65,8 +97,18 @@ def compose(*functions):
 
 def updated_schema(old, new):
     ''' Creates a dictionary resulting from adding all keys/values of the second to the first
+        The second dictionary will overwrite the first.
 
-    The second dictionary will overwrite the first.'''
+        >>> old, new = {'name': 'ric', 'job': None}, {'name': 'Rick'}
+        >>> updated = updated_schema(old, new)
+        >>> len(updated.keys())
+        2
+        >>> print(updated['name'])
+        Rick
+        >>> updated['job'] is None
+        True
+
+    '''
     d = deepcopy(old)
     for key, value in new.items():
         if isinstance(value, dict) and old.get(key) and isinstance(old[key], dict):
@@ -77,18 +119,28 @@ def updated_schema(old, new):
 
 
 def default_name_parser(names):
-    contributor_list = []
-    for person in names:
-        name = HumanName(person)
-        contributor = {
-            'name': person,
-            'givenName': name.first,
-            'additionalName': name.middle,
-            'familyName': name.last,
-        }
-        contributor_list.append(contributor)
+    ''' Takes a list of names, and attempts to parse them
+    '''
+    return list(map(maybe_parse_name, names))
 
-    return contributor_list
+
+def maybe_parse_name(name):
+    ''' Tries to parse a name. If the parsing fails, returns a dictionary
+        with just the unparsed name (as per the SHARE schema)
+    '''
+    return null_on_error(parse_name)(name) or {'name': name}
+
+
+def parse_name(name):
+    ''' Takes a human name, parses it into given/middle/last names
+    '''
+    person = HumanName(name)
+    return {
+        'name': name,
+        'givenName': person.first,
+        'additionalName': person.middle,
+        'familyName': person.last
+    }
 
 
 def format_tags(all_tags, sep=','):
@@ -276,17 +328,34 @@ def null_on_error(task):
 
 
 def coerce_to_list(thing):
-    ''' If a value is not already a list or tuple, puts that value in a length 1 list'''
+    ''' If a value is not already a list or tuple, puts that value in a length 1 list
+
+        >>> niceties = coerce_to_list('hello')
+        >>> len(niceties)
+        1
+        >>> print(niceties[0])
+        hello
+        >>> niceties2 = coerce_to_list(['hello'])
+        >>> niceties2 == niceties
+        True
+        >>> niceties3 = (coerce_to_list(('hello', 'goodbye')))
+        >>> len(niceties3)
+        2
+        >>> print(niceties3[0])
+        hello
+        >>> print(niceties3[1])
+        goodbye
+    '''
     if not (isinstance(thing, list) or isinstance(thing, tuple)):
         return [thing]
-    return thing
+    return list(thing)
 
 
-def date_formatter(date_string):
+def datetime_formatter(datetime_string):
     '''Takes an arbitrary date/time string and parses it, adds time
     zone information and returns a valid ISO-8601 datetime string
     '''
-    date_time = parser.parse(date_string)
+    date_time = parser.parse(datetime_string)
     if not date_time.tzinfo:
         date_time = date_time.replace(tzinfo=pytz.UTC)
     return date_time.isoformat()

@@ -5,6 +5,15 @@ import platform
 from datetime import date, timedelta
 
 from invoke import run, task
+# from elasticsearch import helpers
+# from dateutil.parser import parse
+# from six.moves.urllib import parse as urllib_parse
+
+# import scrapi.harvesters  # noqa
+# from scrapi import linter
+# from scrapi import registry
+# from scrapi import settings
+
 
 logger = logging.getLogger()
 
@@ -14,16 +23,21 @@ WHEELHOUSE_PATH = os.environ.get('WHEELHOUSE')
 @task
 def reindex(src, dest):
     from elasticsearch import helpers
-    from scrapi.processing.elasticsearch import es
-    helpers.reindex(es, src, dest)
-    es.indices.delete(src)
+    from scrapi.processing.elasticsearch import DatabaseManager
+    dm = DatabaseManager()
+    dm.setup()
+
+    helpers.reindex(dm.es, src, dest)
+    dm.es.indices.delete(src)
 
 
 @task
 def alias(alias, index):
-    from scrapi.processing.elasticsearch import es
-    es.indices.delete_alias(index=alias, name='_all', ignore=404)
-    es.indices.put_alias(alias, index)
+    from scrapi.processing.elasticsearch import DatabaseManager
+    dm = DatabaseManager()
+    dm.setup()
+    dm.es.indices.delete_alias(index=alias, name='_all', ignore=404)
+    dm.es.indices.put_alias(alias, index)
 
 
 @task
@@ -67,7 +81,7 @@ def migrate(migration, sources=None, kwargs_string=None, dry=True, async=False, 
     kwargs['dry'] = dry
     kwargs['async'] = async
     kwargs['group_size'] = group_size
-    kwargs['sources'] = map(lambda x: x.strip(), sources.split(','))
+    kwargs['sources'] = list(map(lambda x: x.strip(), sources.split(',')))
 
     if kwargs['sources'] == ['']:
         kwargs.pop('sources')
@@ -108,17 +122,21 @@ def elasticsearch():
 
 
 @task
-def test(cov=True, verbose=False, debug=False):
+def test(cov=True, doctests=True, verbose=False, debug=False, pdb=False):
     """
     Runs all tests in the 'tests/' directory
     """
-    cmd = 'py.test tests'
+    cmd = 'py.test scrapi tests'
+    if doctests:
+        cmd += ' --doctest-modules'
     if verbose:
         cmd += ' -v'
     if debug:
         cmd += ' -s'
     if cov:
-        cmd += ' --cov-report term-missing --cov-config .coveragerc --cov scrapi'
+        cmd += ' --cov-report term-missing --cov-config .coveragerc --cov scrapi --cov api'
+    if pdb:
+        cmd += ' --pdb'
 
     run(cmd, pty=True)
 
@@ -143,21 +161,27 @@ def requirements(develop=False, upgrade=False):
 
 
 @task
-def beat():
+def beat(setup=True):
     from scrapi import registry
     from scrapi.tasks import app
+    # Set up the provider map for elasticsearch
+    if setup:
+        provider_map(delete=True)
+
     app.conf['CELERYBEAT_SCHEDULE'] = registry.beat_schedule
     app.Beat().run()
 
 
 @task
-def worker(loglevel='INFO', hostname='%h'):
+def worker(loglevel='INFO', hostname='%h', autoreload=False):
     from scrapi.tasks import app
     command = ['worker']
     if loglevel:
         command.extend(['--loglevel', loglevel])
     if hostname:
         command.extend(['--hostname', hostname])
+    if autoreload:
+        command.extend(['--autoreload'])
     app.worker_main(command)
 
 
@@ -225,7 +249,10 @@ def lint(name):
 def provider_map(delete=False):
     from six.moves.urllib import parse as urllib_parse
     from scrapi import registry
-    from scrapi.processing.elasticsearch import es
+    from scrapi.processing.elasticsearch import DatabaseManager
+    dm = DatabaseManager()
+    dm.setup()
+    es = dm.es
     if delete:
         es.indices.delete(index='share_providers', ignore=[404])
 
@@ -246,3 +273,32 @@ def provider_map(delete=False):
             refresh=True
         )
     print(es.count('share_providers', body={'query': {'match_all': {}}})['count'])
+
+
+@task
+def apiserver():
+    os.system('python manage.py runserver')
+
+
+@task
+def apidb():
+    os.system('python manage.py migrate')
+
+
+@task
+def reset_all():
+    import sys
+    from scrapi import settings
+
+    if sys.version[0] == "3":
+        raw_input = input
+
+    if raw_input('Are you sure? y/N ') != 'y':
+        return
+    os.system('psql -c "DROP DATABASE scrapi;"')
+    os.system('psql -c "CREATE DATABASE scrapi;"')
+    os.system('python manage.py migrate')
+
+    os.system("curl -XDELETE '{}/share*'".format(settings.ELASTIC_URI))
+    os.system("invoke alias share share_v2")
+    os.system("invoke provider_map")

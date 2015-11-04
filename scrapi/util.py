@@ -2,6 +2,12 @@ from datetime import datetime
 
 import six
 import pytz
+import time
+import logging
+
+logger = logging.getLogger()
+
+xrange = six.moves.xrange
 
 
 def timestamp():
@@ -14,18 +20,18 @@ def copy_to_unicode(element):
     necessary for linting """
 
     if isinstance(element, dict):
-        for key, val in element.items():
-            element[key] = copy_to_unicode(val)
+        return {
+            key: copy_to_unicode(val)
+            for key, val in element.items()
+        }
     elif isinstance(element, list):
-        for idx, item in enumerate(element):
-            element[idx] = copy_to_unicode(item)
+        return list(map(copy_to_unicode, element))
     else:
         try:
             # A dirty way to convert to unicode in python 2 + 3.3+
-            element = u''.join(element)
+            return u''.join(element)
         except TypeError:
-            pass
-    return element
+            return element
 
 
 def stamp_from_raw(raw_doc, **kwargs):
@@ -51,3 +57,16 @@ def json_without_bytes(jobj):
         if isinstance(v, six.binary_type):
             jobj[k] = v.decode('utf8')
     return jobj
+
+
+def try_n_times(n, action, *args, **kwargs):
+    exc = None
+    for _ in xrange(n):
+        try:
+            return action(*args, **kwargs)
+        except Exception as e:
+            exc = e
+            logger.exception(e)
+            time.sleep(15)
+    if exc:
+        raise exc

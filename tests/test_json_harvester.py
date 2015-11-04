@@ -7,7 +7,7 @@ from dateutil.parser import parse
 
 from scrapi.base import JSONHarvester
 from scrapi.linter import RawDocument
-from scrapi.base.helpers import build_properties, date_formatter
+from scrapi.base.helpers import build_properties, datetime_formatter
 
 expected = {
     "description": "This is a  test",
@@ -33,7 +33,9 @@ expected = {
     },
     "providerUpdatedDateTime": "2015-02-02T00:00:00+00:00",
     "shareProperties": {
-        "source": "test"
+        "source": "test",
+        "docID": "1",
+        "filetype": "json"
     },
     "otherProperties": [
         {
@@ -83,7 +85,7 @@ class TestHarvester(JSONHarvester):
         return {
             'title': ('/title', lambda x: x[0] if x else ''),
             'description': ('/subtitle', lambda x: x[0] if (isinstance(x, list) and x) else x or ''),
-            'providerUpdatedDateTime': ('/issued/date-parts', lambda x: date_formatter(' '.join(
+            'providerUpdatedDateTime': ('/issued/date-parts', lambda x: datetime_formatter(' '.join(
                 [part for part in x[0]])
             )),
             'uris': {

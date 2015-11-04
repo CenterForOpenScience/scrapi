@@ -1,12 +1,23 @@
 import logging
 
 import vcr
+import mock
 import pytest
 
 from scrapi import base
 from scrapi import registry, requests
 
 logger = logging.getLogger(__name__)
+
+
+@pytest.fixture(autouse=True)
+def mock_maybe_load_response(monkeypatch):
+    mock_mlr = mock.Mock()
+    mock_mlr.return_value = None
+    mock_save = lambda x: x
+
+    monkeypatch.setattr(requests, '_maybe_load_response', mock_mlr)
+    monkeypatch.setattr(requests.HarvesterResponse, 'save', mock_save)
 
 
 @pytest.mark.parametrize('harvester_name', filter(lambda x: x != 'test', sorted(map(str, registry.keys()))))

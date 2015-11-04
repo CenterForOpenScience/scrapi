@@ -7,7 +7,6 @@ from celery import Celery
 
 from scrapi import util
 from scrapi import events
-from scrapi import database
 from scrapi import settings
 from scrapi import registry
 from scrapi import processing
@@ -16,7 +15,6 @@ from scrapi.util import timestamp
 app = Celery()
 app.config_from_object(settings)
 
-database.setup()
 logger = logging.getLogger(__name__)
 
 
@@ -126,10 +124,13 @@ def process_normalized(normalized_doc, raw_doc, **kwargs):
 
 
 @app.task
-def migrate(migration, sources=tuple(), async=False, dry=True, group_size=1000, **kwargs):
-    from scrapi.migrations import documents
+def migrate(migration, source_db=None, sources=tuple(), async=False, dry=True, group_size=1000, **kwargs):
 
-    docs = documents(*sources)
+    source_db = source_db or settings.CANONICAL_PROCESSOR
+    documents = processing.get_processor(source_db).documents
+
+    doc_sources = sources or registry.keys()
+    docs = documents(*doc_sources)
     if async:
         segment = list(islice(docs, group_size))
         while segment:
@@ -143,18 +144,3 @@ def migrate(migration, sources=tuple(), async=False, dry=True, group_size=1000, 
         logger.info('Dry run complete')
 
     logger.info('Documents processed for migration {}'.format(str(migration)))
-
-
-@app.task
-def migrate_to_source_partition(dry=True, async=False):
-    from scrapi import migrations
-    count = 0
-    for doc in migrations.documents_old():
-        count += 1
-        if async:
-            migrations.document_v2_migration.s(doc, dry=dry).apply_async()
-        else:
-            migrations.document_v2_migration(doc, dry=dry)
-    if dry:
-        logger.info('Dry run complete')
-    logger.info('{} documents processed for migration {}'.format(count, str(migrations.document_v2_migration)))
