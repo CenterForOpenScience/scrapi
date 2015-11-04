@@ -7,4 +7,4 @@ class DocumentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Document
-        fields = ('id', 'providerUpdatedDateTime', 'source', 'docID', 'raw', 'normalized')
+        fields = ('key', 'providerUpdatedDateTime', 'source', 'docID', 'raw', 'normalized')
