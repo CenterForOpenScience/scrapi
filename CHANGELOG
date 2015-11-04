@@ -2,6 +2,35 @@
 ChangeLog
 *********
 
+0.10.0 (2015-11-04)
+==================
+- Add harvesters:
+	- Portland State University
+	- Philadelphia College of Osteopathic
+	- University of Tennessee Knoxville
+	- Springer Link
+	- Kent State
+	- Lake Winnipeg Basin Information Network Data Hub
+	- VIVO
+	- Research Online @ University of Wollongong
+	- University of Cambridge
+	- CiteSeerX
+	- UKY
+	- University of Illinois
+	- Chapman
+	- Neurovault
+	- NIH
+- Add Django REST API for raw and normalized documents, as well as
+	a postgres backend for scrAPI
+- Prevent mapper parsing exceptions in elasticsearch from preventing a
+	document from being indexed when it is a date field that breaks
+- Make pubmedcentral API endpoint point to the correct place
+- Add support for running doctests
+- Various other testing and test coverage improvements
+- FRONTEND_KEYS is no longer a required setting, and will default to allowing
+	all fields
+- Various documentation fixes
+
 0.9.10 (2015-10-26)
 ==================
 - Fix incorrect map serialization in OAI harvesters
