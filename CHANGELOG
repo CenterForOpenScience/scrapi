@@ -2,6 +2,10 @@
 ChangeLog
 *********
 
+0.10.2 (2015-11-05)
+==================
+- Log single failed documents on the cross_db migration, but don't halt it
+
 0.10.1 (2015-11-05)
 ==================
 - Fix invalid database serialization declaration
