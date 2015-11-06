@@ -2,6 +2,10 @@
 ChangeLog
 *********
 
+0.10.4 (2015-11-06)
+==================
+- Prevent Django from executing a count query for pagination
+
 0.10.3 (2015-11-05)
 ==================
 - Prevent unicode decode errors when stripping bytes out of json blobs
