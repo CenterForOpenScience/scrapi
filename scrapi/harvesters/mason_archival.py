@@ -3,7 +3,6 @@ Harvester for Mason Archival Repository Service for the SHARE NS
 """
 
 from __future__ import unicode_literals
-
 from scrapi.base import OAIHarvester
 
 
