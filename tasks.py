@@ -302,3 +302,18 @@ def reset_all():
     os.system("curl -XDELETE '{}/share*'".format(settings.ELASTIC_URI))
     os.system("invoke alias share share_v2")
     os.system("invoke provider_map")
+
+@task
+def institutions():
+    grid()
+    ipeds()
+
+def grid():
+    from institutions import institutions, grid
+    institutions.main()
+    grid.populate()
+
+def ipeds():
+    from institutions import institutions, ipeds
+    institutions.main()
+    ipeds.populate()
