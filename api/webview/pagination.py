@@ -2,7 +2,7 @@ import six
 from collections import OrderedDict
 
 from django.core.paginator import Paginator as DjangoPaginator
-from django.core.paginator import InvalidPage, PageNotAnInteger
+from django.core.paginator import InvalidPage, PageNotAnInteger, EmptyPage
 
 from rest_framework.response import Response
 from rest_framework.exceptions import NotFound
