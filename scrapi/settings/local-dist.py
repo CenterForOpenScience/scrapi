@@ -1,2 +1,4 @@
-RAW_PROCESSING = ['cassandra']		+RECORD_HTTP_TRANSACTIONS = False
+RECORD_HTTP_TRANSACTIONS = False
+
+RAW_PROCESSING = ['cassandra']
 NORMALIZED_PROCESSING = ['elasticsearch', 'cassandra']
