@@ -311,9 +311,9 @@ def institutions():
 def grid():
     from institutions import institutions, grid
     institutions.main()
-    grid.populate()
+    grid.populate('institutions/grid_2015_10_09.json')
 
 def ipeds():
     from institutions import institutions, ipeds
     institutions.main()
-    ipeds.populate()
+    ipeds.populate('institutions/hd2013.csv')
