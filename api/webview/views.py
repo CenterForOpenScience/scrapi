@@ -48,7 +48,7 @@ def document_detail(request, source, docID):
     Retrieve one particular document.
     """
     try:
-        document = Document.objects.get(source=source, docID=docID)
+        document = Document.objects.get(key=Document._make_key(source, docID))
     except Document.DoesNotExist:
         return Response(status=404)
 
