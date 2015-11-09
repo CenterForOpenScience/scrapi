@@ -2,6 +2,11 @@
 ChangeLog
 *********
 
+0.10.5 (2015-11-09)
+==================
+- Make single document query much faster for apiserver
+- Add status route, so the status can be checked without being super slow
+
 0.10.4 (2015-11-06)
 ==================
 - Prevent Django from executing a count query for pagination
