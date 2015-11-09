@@ -1,4 +1,5 @@
-from django.shortcuts import render
+import json
+from django.http import HttpResponse
 from rest_framework import generics
 from rest_framework import permissions
 from rest_framework.response import Response
@@ -62,4 +63,4 @@ def status(request):
     """
     Show the status of the API
     """
-    return render(request, 'status.html', {'status': 'OK'})
+    return HttpResponse(json.dumps({'status': 'ok'}), content_type='application/json', status=200)
