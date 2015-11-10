@@ -2,6 +2,10 @@
 ChangeLog
 *********
 
+0.10.6 (2015-11-10)
+==================
+- Fix springer API key name
+
 0.10.5 (2015-11-09)
 ==================
 - Make single document query much faster for apiserver
