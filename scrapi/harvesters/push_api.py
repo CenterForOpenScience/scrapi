@@ -5,20 +5,47 @@ from datetime import timedelta
 
 from scrapi import requests
 from scrapi import settings
-from scrapi.base import BaseHarvester
-from scrapi.base import HarvesterMeta
+from scrapi.base import BaseHarvester, HarvesterMeta, helpers
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
 
 def gen_harvesters():
-    sources = requests.get('{}/sources'.format(settings.SHARE_REG_URL), force=True).json()
     return {
         source['short_name']: gen_harvester(**source)
-        for source in sources
+        for source in get_sources()
     }
 
 
-def gen_harvester(short_name=None, long_name=None, url=None):
+def get_sources():
+    response = helpers.null_on_error(requests.get('{}/provider_list'.format(settings.SHARE_REG_URL), force=True).json)()
+    while True:
+        if (not response) or (not response.get('results')):
+            break
+        for source in response['results']:
+            yield source
+        response = helpers.null_on_error(requests.get(response['next']).json)()
+
+
+def gen_harvester(short_name=None, long_name=None, url=None, favicon_dataurl=None, **kwargs):
+    assert short_name and long_name and url and favicon_dataurl
+
+    from scrapi.processing.elasticsearch import DatabaseManager
+    dm = DatabaseManager()
+    dm.setup()
+    es = dm.es
+
+    es.index(
+        'share_providers',
+        short_name,
+        body={
+            'favicon': favicon_dataurl,
+            'short_name': short_name,
+            'long_name': long_name,
+            'url': url
+        },
+        id=short_name,
+        refresh=True
+    )
     return type(
         '{}Harvester'.format(short_name.lower().capitalize()),
         (PushApiHarvester, ),
