@@ -2,6 +2,23 @@
 ChangeLog
 *********
 
+0.10.6 (2015-11-10)
+==================
+- Fix springer API key name
+
+0.10.5 (2015-11-09)
+==================
+- Make single document query much faster for apiserver
+- Add status route, so the status can be checked without being super slow
+
+0.10.4 (2015-11-06)
+==================
+- Prevent Django from executing a count query for pagination
+
+0.10.3 (2015-11-05)
+==================
+- Prevent unicode decode errors when stripping bytes out of json blobs
+
 0.10.2 (2015-11-05)
 ==================
 - Log single failed documents on the cross_db migration, but don't halt it
