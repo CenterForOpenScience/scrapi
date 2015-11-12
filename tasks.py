@@ -256,6 +256,8 @@ def provider_map(delete=False):
     es = dm.es
     if delete:
         es.indices.delete(index='share_providers', ignore=[404])
+    from scrapi.harvesters.push_api import gen_harvesters
+    gen_harvesters()
 
     for harvester_name, harvester in registry.items():
         if not null_on_error(es.get)(index='share_providers', doc_type=harvester_name, id=harvester_name):

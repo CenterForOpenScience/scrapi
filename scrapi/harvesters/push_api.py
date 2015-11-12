@@ -3,31 +3,33 @@ from datetime import date
 import json
 from datetime import timedelta
 
-from scrapi import requests
+import requests
+
 from scrapi import settings
-from scrapi.base import BaseHarvester, HarvesterMeta, helpers
+from scrapi.base import BaseHarvester, HarvesterMeta
 from scrapi.linter.document import RawDocument, NormalizedDocument
 
 
 def gen_harvesters():
     return {
-        source['short_name']: gen_harvester(**source)
+        source['shortname']: gen_harvester(**source)
         for source in get_sources()
     }
 
 
 def get_sources():
-    response = helpers.null_on_error(requests.get('{}/provider_list'.format(settings.SHARE_REG_URL), force=True).json)()
+    response = requests.get('{}/provider_list'.format(settings.SHARE_REG_URL)).json()
     while True:
-        if (not response) or (not response.get('results')):
-            break
         for source in response['results']:
             yield source
-        response = helpers.null_on_error(requests.get(response['next']).json)()
+        if response['next']:
+            response = requests.get(response['next']).json()
+        else:
+            break
 
 
-def gen_harvester(short_name=None, long_name=None, url=None, favicon_dataurl=None, **kwargs):
-    assert short_name and long_name and url and favicon_dataurl
+def gen_harvester(shortname=None, longname=None, url=None, favicon_dataurl=None, **kwargs):
+    assert shortname and longname and url and favicon_dataurl
 
     from scrapi.processing.elasticsearch import DatabaseManager
     dm = DatabaseManager()
@@ -36,20 +38,20 @@ def gen_harvester(short_name=None, long_name=None, url=None, favicon_dataurl=Non
 
     es.index(
         'share_providers',
-        short_name,
+        shortname,
         body={
             'favicon': favicon_dataurl,
-            'short_name': short_name,
-            'long_name': long_name,
+            'short_name': shortname,
+            'long_name': longname,
             'url': url
         },
-        id=short_name,
+        id=shortname,
         refresh=True
     )
     return type(
-        '{}Harvester'.format(short_name.lower().capitalize()),
+        '{}Harvester'.format(shortname.lower().capitalize()),
         (PushApiHarvester, ),
-        dict(short_name=short_name, long_name=long_name, url=url)
+        dict(short_name=shortname, long_name=longname, url=url)
     )
 
 
@@ -70,9 +72,11 @@ class PushApiHarvester(BaseHarvester):
             }) for record in self.get_records()
         ]
 
-    def get_records(self, start_date, end_date):
+    def get_records(self, start_date=None, end_date=None):
+        end_date = end_date or date.today()
+        start_date = start_date or date.today() - timedelta(2)
         response = requests.get(
-            '{}/established'.format('settings.SHARE_REG_URL'),
+            '{}/established'.format(settings.SHARE_REG_URL),
             params={'from': start_date.isoformat(), 'to': end_date.isoformat()}
         ).json()
         for record in response['results']:
