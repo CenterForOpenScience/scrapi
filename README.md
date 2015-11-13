@@ -10,7 +10,7 @@ scrapi
 [![Coverage Status](https://coveralls.io/repos/CenterForOpenScience/scrapi/badge.svg?branch=develop)](https://coveralls.io/r/CenterForOpenScience/scrapi?branch=develop)
 [![Code Climate](https://codeclimate.com/github/CenterForOpenScience/scrapi/badges/gpa.svg)](https://codeclimate.com/github/CenterForOpenScience/scrapi)
 
-## Getting started 
+## Getting started
 
 - To run absolutely everyting, you will need to:
     - Install requirements
