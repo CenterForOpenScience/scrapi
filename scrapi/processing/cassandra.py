@@ -229,7 +229,7 @@ class CassandraProcessor(BaseProcessor):
             return
         for uuid in doc.versions:
             try:
-                version = VersionModel.get(uuid)
+                version = VersionModel.get(key=uuid)
             except VersionModel.DoesNotExist:
                 continue
             yield DocumentTuple(self.to_raw(version), self.to_normalized(version))
