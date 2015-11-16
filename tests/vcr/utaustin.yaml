@@ -5,578 +5,1230 @@ interactions:
       Accept: ['*/*']
       Accept-Encoding: ['gzip, deflate']
       Connection: [keep-alive]
-      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/14.0.0]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.10 Darwin/13.4.0]
     method: GET
-    uri: http://repositories.lib.utexas.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2015-04-27&until=2015-04-28
+    uri: https://repositories.lib.utexas.edu/utexas-oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2015-09-29&until=2015-10-01
   response:
-    body:
-      string: !!binary |
-        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
-        6Yc//Rc3w8CLriACAA==
+    body: {string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
+        href=\"static/style.xsl\"?><OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/
+        http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"><responseDate>2015-11-12T08:33:42Z</responseDate>\n
+        \   <request verb=\"ListRecords\" metadataPrefix=\"oai_dc\" from=\"2015-09-29\"
+        until=\"2015-10-01\">https://repositories.lib.utexas.edu/utexas-oai/request</request>\n
+        \   <ListRecords>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31430</identifier>\n
+        \               <datestamp>2015-09-29T15:27:14Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>In
+        different voices : form, identity, and the twentieth-century American persona
+        poem</dc:title>\n<dc:creator>Frye, Elizabeth Bradford</dc:creator>\n<dc:contributor>Bremen,
+        Brian A.</dc:contributor>\n<dc:contributor>Bennett, Chad</dc:contributor>\n<dc:contributor>Kevorkian,
+        Martin W</dc:contributor>\n<dc:contributor>Lesser, Wayne</dc:contributor>\n<dc:contributor>Wheeler,
+        Lesley</dc:contributor>\n<dc:subject>American poetry</dc:subject>\n<dc:subject>Persona</dc:subject>\n<dc:subject>Persona
+        poetry</dc:subject>\n<dc:subject>Dramatic poetry</dc:subject>\n<dc:subject>Twentieth-century
+        American poetry</dc:subject>\n<dc:subject>Langston Hughes</dc:subject>\n<dc:subject>Gwendolyn
+        Brooks</dc:subject>\n<dc:subject>John Berryman</dc:subject>\n<dc:subject>Robert
+        Hayden</dc:subject>\n<dc:subject>Robert Lowell</dc:subject>\n<dc:subject>Sylvia
+        Plath</dc:subject>\n<dc:subject>Natasha Trethewey</dc:subject>\n<dc:subject>Elizabeth
+        Alexander</dc:subject>\n<dc:subject>Paul Laurence Dunbar</dc:subject>\n<dc:description>In
+        arguing for the persona poem as a viable tradition in American literature,
+        Elizabeth Frye reconstructs a lineage of dramatic poetry that spans the entire
+        twentieth century. Through comparative studies of canonical poets predominately
+        working in the aftermath of high modernism, she examines several significant
+        performances and contends that the genre persists as a site of necessary and
+        complicated cross-identifications. Chapter One elucidates the profound connection
+        between Langston Hughes\u2019s and Gwendolyn Brooks\u2019s use of the persona
+        poem and the Great Migration. Frye understands the blues-inflected utterances
+        of Hughes\u2019s collection Fine Clothes to the Jew as deeply invested in
+        formal itinerancy and geographic indeterminacy. Similarly, she suggests that
+        Brooks\u2019s dramatic projections of American soldiers in the aftermath of
+        World War II betray the poets\u2019 dual obsessions with large-scale migration
+        and polyvocality. Chapter Two continues to treat the persona poem as a socially
+        invested phenomenon. Frye reads the gendered vulnerability in scenes of nascent
+        national development in John Berryman\u2019s \u201CHomage to Mistress Bradstreet\u201D
+        and Robert Hayden\u2019s \u201CA Letter from Phillis Wheatley\u201D as a response
+        to the horrors of World War II and the transatlantic slave trade. Chapter
+        Three scrutinizes the \u201Cconfessional\u201D paradigm by revisiting the
+        other voices and other selves that recurrently interrupt Robert Lowell\u2019s
+        Life Studies and Sylvia Plath\u2019s Ariel. By insisting on the importance
+        of dramatic poetry in these collections, Frye further complicates the frequently
+        invoked conflict between impersonality and personality. Finally, a coda recognizes
+        the work of Natasha Trethewey and Elizabeth Alexander as indicative of the
+        contemporary gravitation toward the persona poem. She positions Trethewey
+        and Alexander as the heirs to several poets whose poems are discussed in this
+        study. In detecting a sense of bereavement in these poets\u2019 willfully
+        incomplete projects of recovery, Frye proposes that the persona poem is not
+        only a powerful tool of historical engagement, but a means of critically examining
+        the limits of both literary community and communion with the past.</dc:description>\n<dc:description>English</dc:description>\n<dc:date>2015-09-29T15:26:46Z</dc:date>\n<dc:date>2015-09-29T15:26:46Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:date>2015-05-22</dc:date>\n<dc:date>May
+        2015</dc:date>\n<dc:date>2015-09-29T15:26:46Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T2KK53</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31430</dc:identifier>\n<dc:language>en</dc:language>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31431</identifier>\n
+        \               <datestamp>2015-09-29T15:35:59Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Eating
+        and repeating : mimesis in food rhetorics</dc:title>\n<dc:creator>Burdette,
+        William Thomas</dc:creator>\n<dc:contributor>Davis, D. Diane (Debra Diane),
+        1963-</dc:contributor>\n<dc:contributor>Syverson, Margaret A</dc:contributor>\n<dc:contributor>Boyle,
+        Casey</dc:contributor>\n<dc:contributor>Rice, Jenny</dc:contributor>\n<dc:contributor>Engelhardt,
+        Elizabeth</dc:contributor>\n<dc:subject>Rhetoric</dc:subject>\n<dc:subject>Food</dc:subject>\n<dc:subject>Compostmodern</dc:subject>\n<dc:subject>Micro(be)politics</dc:subject>\n<dc:description>There
+        is emerging, in the discipline of rhetoric and composition, a rhetoric of
+        food. In this dissertation, I map the various approaches to food rhetorics,
+        and I look at three different foods: burritos, kale, and kombucha. Using these
+        foods as commonplaces, I explore the social and rhetorical discourse around
+        them. I use \u201Ca cultural biography of things\u201D methodology to describe
+        the history of the burrito and use that history to contextualize Chipotle
+        Mexican Grill\u2019s new media strategies. Throughout the cultural biography
+        of the burrito and the analysis of Chipotle\u2019s marketing, I highlight
+        a theatrical mimesis that blurs the lines between imitation and reality. I
+        suggest that kale can be associated the books of Michael Pollan, whose work,
+        I argue, constitutes a genre that establishes a set of conventions for how
+        we think and communicate about food. I begin by looking at how Chipotle builds
+        its corporate ethos by citing Michael Pollan\u2019s books on its website.
+        Then I approach Pollan\u2019s body of work as a genre, showing how it establishes
+        certain conventions in food discourse. We see transmissions of these conventions
+        throughout food networks. I look at how fermented foods, like kombucha, travel
+        through alternative food networks, like groups of \u201Cfermentos\u201D led
+        by Sandor Katz, until they have proliferated to the point of becoming mainstream.
+        I show how Michael Pollan engages with the world of countercultural food movements
+        like fermentos and argue that Pollan\u2019s engagement with fermentos signals
+        a move into posthuman rhetorics. Building on the idea of micropolitics, I
+        posit a compostmodern micro(be)politics that re-articulates the human not
+        as an agentive individual governed by autonomy, but as an ecology itself,
+        situated within other ecologies. I conclude by reading \u201Cnobody cares
+        what you ate for lunch\u201D memes as a response to and provocation to an
+        abundance of online food talk. We can read these memes as evidence of the
+        significance of online food discourse. Instead of taking the memes at face
+        value, we can ask, \u201Cwho does care about food in online networks?\u201D</dc:description>\n<dc:description>English</dc:description>\n<dc:date>2015-09-29T15:35:31Z</dc:date>\n<dc:date>2015-09-29T15:35:31Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:date>2015-05-04</dc:date>\n<dc:date>May
+        2015</dc:date>\n<dc:date>2015-09-29T15:35:31Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T2FW2T</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31431</dc:identifier>\n<dc:language>en</dc:language>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31432</identifier>\n
+        \               <datestamp>2015-09-29T15:45:29Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Legal
+        and literary discourse on the jury in the Victorian period</dc:title>\n<dc:creator>Shapley,
+        Kathleen Adelaide</dc:creator>\n<dc:contributor>MacKay, Carol Hanbery</dc:contributor>\n<dc:contributor>Christian,
+        George (George Scott)</dc:contributor>\n<dc:contributor>MacDuffie, Edward
+        \ A</dc:contributor>\n<dc:contributor>Hoad, Neville</dc:contributor>\n<dc:contributor>Ferreira-Buckley,
+        Linda</dc:contributor>\n<dc:subject>Jury</dc:subject>\n<dc:subject>Trollope</dc:subject>\n<dc:subject>Dickens</dc:subject>\n<dc:description>This
+        dissertation critically examines representations of the jury in Victorian
+        novels.  I argue that studying the jury, as a concept and in practice, offers
+        a unique window to both the social and literary vision of Victorian novelists.
+        \ The second half of the nineteenth century saw a decline in the use and cultural
+        perception of the jury, and the controversy surrounding the jury\u2019s competency
+        to administer justice implicated broad social questions of education and class
+        that shaped the formation of British identity.  The Victorian debate over
+        the future of the jury was a public conversation occurring in legal treatises,
+        the press, and in literature.  By engaging in the debate over the future of
+        the institution of the jury, Victorian novelists forge their own \u201Cjuryman\u2019s
+        guidebook\u201D to educate the readers, the potential jurors of England.  In
+        addition to social questions, I examine how the novel uses features of the
+        jury\u2014the jury\u2019s role as a \u201Cfinder of fact\u201D and the jury\u2019s
+        narrative silence\u2014as narrative techniques.  Novelists explore the jury\u2019s
+        role as a \u201Cfinder of fact\u201D while negotiating their own role as \u201Cfinder
+        of fact\u201D by balancing legal realism with legal imagination in fictional
+        legal narratives.  Additionally, examining the jury\u2019s narrative silence
+        is essential to understanding each author\u2019s legal imagination.  By analyzing
+        the narrative techniques and descriptive strategies surrounding the jury in
+        the works of Anthony Trollope, Charles Dickens, Wilkie Collins, M.E. Braddon
+        and Henry Rider Haggard, this project demonstrates how the Victorian cultural
+        anxiety over the future of the jury is captured in literature across genres.
+        \ The responses of these authors to the jury debate range from ambivalence
+        to concrete visions for legal reform; however, each of these authors, through
+        serious engagement with a legal controversy, writes the law.</dc:description>\n<dc:description>English</dc:description>\n<dc:date>2015-09-29T15:44:27Z</dc:date>\n<dc:date>2015-09-29T15:44:27Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:date>2015-05-12</dc:date>\n<dc:date>May
+        2015</dc:date>\n<dc:date>2015-09-29T15:44:27Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T2B599</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31432</dc:identifier>\n<dc:language>en</dc:language>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31433</identifier>\n
+        \               <datestamp>2015-09-29T16:01:22Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Disciplining
+        the muse : evaluating creative writing studies\u2019 effort to establish itself
+        as an academic discipline</dc:title>\n<dc:creator>Hedengren, Mary Leah, Ph.
+        D.</dc:creator>\n<dc:contributor>Charney, Davida</dc:contributor>\n<dc:contributor>Walker,
+        Jeffrey</dc:contributor>\n<dc:contributor>Roberts-Miller, Patricia</dc:contributor>\n<dc:contributor>Longaker,
+        Mark</dc:contributor>\n<dc:contributor>Hesse, Doug</dc:contributor>\n<dc:subject>Disciplinarity</dc:subject>\n<dc:subject>Creative
+        writing</dc:subject>\n<dc:subject>Composition</dc:subject>\n<dc:subject>Writing
+        in the disciplines</dc:subject>\n<dc:description>Disciplinarity in the humanities
+        has long been neglected by writing-in-the-disciplines (WID) scholars in favor
+        of science and business writing. Disciplining the Muse argues that there is
+        much for WID scholars to learn by investigating non-traditional fields that
+        make claims for disciplinarity; additionally, emerging and contested disciplines
+        offer insight into the nature of disciplinarity itself. My work bridges WID
+        issues of disciplinary definition and development by looking at one extreme
+        case within English Studies: creative writing studies (CWS). CWS rhetorically
+        disidentifies with literature, composition and traditional creative writing
+        while inspiring cohesion within their own field. Complicating this project,
+        long-held ambivalence towards disciplinarity within creative writing creates
+        a riff between the vanguard and many practitioners.  The CWS vanguard declares
+        disciplinary criteria of research, pedagogy and institutional sanction in
+        order to bolster their claims. Instead of using outsider definitions of disciplinarity,
+        in this dissertation I employ qualitative and quantitative research methods
+        to evaluate the gap between the vanguard\u2019s disciplinary claims and practices.
+        The material and cultural implications of being a discipline can be high,
+        and WID scholars should seek for the insider view for new disciplines\u2014how
+        well developing disciplines live up to their own stated standards and aspirations.</dc:description>\n<dc:description>English</dc:description>\n<dc:date>2015-09-29T16:00:47Z</dc:date>\n<dc:date>2015-09-29T16:00:47Z</dc:date>\n<dc:date>2015-08</dc:date>\n<dc:date>2015-09-14</dc:date>\n<dc:date>August
+        2015</dc:date>\n<dc:date>2015-09-29T16:00:48Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T26C7C</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31433</dc:identifier>\n<dc:language>en</dc:language>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31434</identifier>\n
+        \               <datestamp>2015-09-29T16:08:27Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Shakespeare's
+        first Hamlet : the 1602 Spanish Tragedy additions</dc:title>\n<dc:creator>Thompson,
+        Maley Holmes</dc:creator>\n<dc:contributor>Bruster, Douglas</dc:contributor>\n<dc:contributor>Loehlin,
+        James</dc:contributor>\n<dc:contributor>Mallin, Eric</dc:contributor>\n<dc:contributor>Marcus,
+        Leah</dc:contributor>\n<dc:contributor>Wojciehowski, Hannah</dc:contributor>\n<dc:subject>Shakespeare</dc:subject>\n<dc:subject>Kyd</dc:subject>\n<dc:subject>Spanish
+        Tragedy</dc:subject>\n<dc:subject>Attribution</dc:subject>\n<dc:subject>Hamlet</dc:subject>\n<dc:subject>Burbage</dc:subject>\n<dc:subject>Alleyn</dc:subject>\n<dc:subject>Jonson</dc:subject>\n<dc:subject>Hieronimo</dc:subject>\n<dc:subject>Revision</dc:subject>\n<dc:description>While
+        scholars have argued that Shakespeare\u2019s Hamlet was modeled after two
+        earlier plays by Thomas Kyd\u2014the so-called Ur-Hamlet and The Spanish Tragedy\u2014this
+        dissertation finds a middle step in this trajectory of influence: the systematic
+        character revision of the role of Hieronimo in the 320 anonymous lines added
+        to the 1602 Spanish Tragedy quarto. The increasingly persuasive arguments
+        for Shakespeare\u2019s hand in these Additions offer an opportunity to explore
+        the implications of this specific emendation, which is represented here as
+        a small-scale exercise for Shakespeare and Richard Burbage to attempt and
+        rehearse more modern, philosophical personations of grief and madness before
+        their great undertaking of Hamlet. This dissertation reads the Shakespearean
+        Additions to The Spanish Tragedy alongside Hamlet to trace Shakespeare\u2019s
+        developing style and to demonstrate how the Additions may be seen as Hamlet\u2019s
+        verbal and thematic precursor. In its introduction and six chapters, this
+        project provides several reinterpretations of primary records relevant to
+        Shakespeare\u2019s theatrical career in a roughly chronological narrative
+        of The Spanish Tragedy\u2019s stage history, ultimately viewing the play\u2019s
+        multiple revisions and revivals as a creative point of departure between competitive
+        companies and players.</dc:description>\n<dc:description>English</dc:description>\n<dc:date>2015-09-29T16:08:02Z</dc:date>\n<dc:date>2015-09-29T16:08:02Z</dc:date>\n<dc:date>2015-08</dc:date>\n<dc:date>2015-08-11</dc:date>\n<dc:date>August
+        2015</dc:date>\n<dc:date>2015-09-29T16:08:02Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T22P43</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31434</dc:identifier>\n<dc:language>en</dc:language>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31435</identifier>\n
+        \               <datestamp>2015-09-29T16:14:58Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Penitential
+        experience in Renaissance romance</dc:title>\n<dc:creator>Saylor, Sara Rives</dc:creator>\n<dc:contributor>Whigham,
+        Frank</dc:contributor>\n<dc:contributor>Mallin, Eric</dc:contributor>\n<dc:contributor>Barret,
+        Jennifer-Kate</dc:contributor>\n<dc:contributor>Rebhorn, Wayne</dc:contributor>\n<dc:contributor>Wojciehowski,
+        Hannah</dc:contributor>\n<dc:subject>Renaissance</dc:subject>\n<dc:subject>Literature</dc:subject>\n<dc:subject>Religion</dc:subject>\n<dc:description>This
+        dissertation analyzes English Renaissance representations of penitential experience:
+        the emotions of guilt, shame, remorse, and regret, and the practices by which
+        people respond to those emotions. I consider penitential episodes in Philip
+        Sidney\u2019s Arcadia (1590), Edmund Spenser\u2019s The Faerie Queene (1590
+        and 1596), and William Shakespeare\u2019s The Winter\u2019s Tale (1611) alongside
+        works of practical divinity that popularized Protestant penitential doctrines
+        for lay readers, including sermons, treatises, and devotional handbooks. Penitence
+        is traditionally understood as a means to an end: divine forgiveness, renewal
+        as a better self, or reconciliation with those we have harmed. But my dissertation
+        highlights episodes of frustrated, failed, and endless penitence, in which
+        characters feel genuine remorse for their past wrongdoing and struggle to
+        make amends for it but fear that their efforts can never be sufficient to
+        reach the endpoints they seek. The romance texts in my study reveal the emotional
+        strain and uncertainty wrought by the sixteenth-century Protestant Reformation,
+        which radically altered traditional approaches to penitence. Reformers redefined
+        penitence not as satisfaction for the debt of sin, but as a radical self-transformation
+        that only God could initiate. Historians have long recognized this shift as
+        a crucial center of controversy in the period, but critics have only recently
+        begun to consider how imaginative literature responded to it. I demonstrate
+        that Sidney, Spenser and Shakespeare confront the painful emotional consequences
+        of Protestant doctrine and imagine alternative, more livable forms of penitence
+        for secular life. They do so in part by staging penitential narratives in
+        fictive pagan settings, where characters must confront their guilt without
+        the aid of Christian ritual structures and consolations. Against the grain
+        of a culture that valued divine salvation above all else and shifted responsibility
+        for that salvation into the hands of an unknowable God, these authors restore
+        attention to the practical and social dimensions of penitence as a lived experience
+        within this world.</dc:description>\n<dc:description>English</dc:description>\n<dc:date>2015-09-29T16:14:28Z</dc:date>\n<dc:date>2015-09-29T16:14:28Z</dc:date>\n<dc:date>2015-08</dc:date>\n<dc:date>2015-08-13</dc:date>\n<dc:date>August
+        2015</dc:date>\n<dc:date>2015-09-29T16:14:28Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T2XW25</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31435</dc:identifier>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31436</identifier>\n
+        \               <datestamp>2015-09-29T16:20:50Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Essays
+        on mortgage finance and housing markets</dc:title>\n<dc:creator>Maturana,
+        Gonzalo Eduardo</dc:creator>\n<dc:contributor>Griffin, John M. (John Meredith),
+        1970-</dc:contributor>\n<dc:contributor>Carvalho, Carlos</dc:contributor>\n<dc:contributor>Fracassi,
+        Cesare</dc:contributor>\n<dc:contributor>Hartzell, Jay</dc:contributor>\n<dc:contributor>Starks,
+        Laura</dc:contributor>\n<dc:subject>Housing bubbles</dc:subject>\n<dc:subject>Loan
+        modification</dc:subject>\n<dc:subject>Mortgages</dc:subject>\n<dc:subject>Securitization</dc:subject>\n<dc:description>I
+        first study the effects of additional loan modifications on loan losses during
+        the recent financial crisis. Despite loan modification being widely discussed
+        as an alternative to foreclosure, little research has focused on quantifying
+        its effect on loan performance. By exploiting plausible exogenous variation
+        in the incentives to modify securitized non-agency loans, I find that an additional
+        modification reduces loan losses by 34.5% relative to the average loss. Consistent
+        with theory, modifications are especially beneficial when borrowers are less
+        likely to return to a current status without help and when foreclosure losses
+        are higher. Modification types that grant greater concessions to borrowers
+        are the most effective for minimizing losses. Overall, additional modifications
+        prevent borrower foreclosure while simultaneously benefiting investors. I
+        then study the relation between originators that misreported mortgages and
+        house price movements. ZIP codes with high concentrations of misreporting
+        originators experienced a 75% larger relative increase in house prices from
+        2003 to 2006 and a 90% larger relative decrease from 2007 to 2012 compared
+        to other ZIPs. Six causality related tests suggest that high fractions of
+        bad originators in a ZIP result in larger price swings. In areas of elastic
+        land supply, ZIPs with bad originators are associated with a building boom
+        and a subsequent price bust that is much more severe than in similar ZIPs
+        without bad originators. Originators with high misreporting seemed to have
+        both given credit to borrowers of a higher stated risk and further understated
+        the borrowers' true risk. Overall, the findings suggest that there are settings
+        where questionable business practices can lead to large distortionary effects.</dc:description>\n<dc:description>Finance</dc:description>\n<dc:date>2015-09-29T16:20:24Z</dc:date>\n<dc:date>2015-09-29T16:20:24Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:date>2015-05-01</dc:date>\n<dc:date>May
+        2015</dc:date>\n<dc:date>2015-09-29T16:20:24Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T2T59N</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31436</dc:identifier>\n<dc:language>en</dc:language>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31437</identifier>\n
+        \               <datestamp>2015-09-29T16:32:46Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Investment
+        skill of hedge funds : a holdings-based evaluation</dc:title>\n<dc:creator>Maslennikov,
+        Sergey Nikolaevich</dc:creator>\n<dc:contributor>Johnson, Travis L.</dc:contributor>\n<dc:contributor>Titman,
+        Sheridan</dc:contributor>\n<dc:contributor>Sialm, Clemens</dc:contributor>\n<dc:contributor>Schneider,
+        Jan</dc:contributor>\n<dc:contributor>Tompaidis, Efstathios</dc:contributor>\n<dc:subject>Hedge
+        fund</dc:subject>\n<dc:subject>Holdings</dc:subject>\n<dc:subject>13F</dc:subject>\n<dc:subject>Performance</dc:subject>\n<dc:subject>Skill</dc:subject>\n<dc:subject>Options</dc:subject>\n<dc:subject>Market
+        timing</dc:subject>\n<dc:description>In Chapter 1, I provide new compelling
+        evidence that hedge funds possess investment skill. Using the longest-in-literature
+        hedge fund sample with fewer biases, I show that large holdings of past winners
+        earn 7% annual benchmark-adjusted return. This remarkable performance is consistent
+        with the notion that large holdings represent managers' best ideas.  My sample
+        goes back to 1980 and does not miss non-surviving hedge funds, or those that
+        do not voluntarily report to commercial databases.  It consists of all investment
+        managers that must report to the SEC, except those that I identify as managers
+        other than hedge funds.  While publicly available data is not sufficient to
+        identify hedge funds directly, my \"reverse identification\" method achieves
+        both high sensitivity and specificity. I also find weaker yet significant
+        evidence of investment skill in standard indicators such as average fund performance
+        and performance persistence. Additionally, I study the announcement effect
+        of 13F holdings disclosure on the disclosed stock return and trading volume.
+        In Chapter 2, I provide new evidence on market timing by studying ETF option
+        holdings of hedge funds. I find that market option holdings are economically
+        significant in terms of their impact on the market exposure of the funds.
+        Further, I find significant time variation in market option holdings, which
+        could be due to market timing activity. I find that market option holdings
+        are associated with such fund characteristics as active share and market exposure
+        of the fund due to its stock holdings; this evidence is consistent with options
+        being used for hedging. Increases in aggregate hedge fund industry holdings
+        of market put options predict low market returns. In the cross-section of
+        hedge funds, the top 5% group has market volatility timing skill that is distinguished
+        from luck with a bootstrapping test. Additionally, I measure market timing
+        ability as the average risk-adjusted return on market option holdings, which,
+        due to data limitations, requires additional assumptions about option prices.
+        I find that this market timing ability is close to zero for the average fund
+        but it is negative for heavy option users.</dc:description>\n<dc:description>Finance</dc:description>\n<dc:date>2015-09-29T16:32:11Z</dc:date>\n<dc:date>2015-09-29T16:32:11Z</dc:date>\n<dc:date>2015-08</dc:date>\n<dc:date>2015-08-14</dc:date>\n<dc:date>August
+        2015</dc:date>\n<dc:date>2015-09-29T16:32:11Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T2PC7Q</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31437</dc:identifier>\n<dc:language>en</dc:language>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31438</identifier>\n
+        \               <datestamp>2015-09-29T16:38:01Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Exploring
+        the interdependence of second language skills for middle school students studying
+        English in Korea : effects of extensive reading and extensive writing on reading,
+        writing, grammar, and attitude measures</dc:title>\n<dc:creator>Lee, Juhee</dc:creator>\n<dc:contributor>Schallert,
+        Diane L.</dc:contributor>\n<dc:contributor>Horwitz, Elaine K</dc:contributor>\n<dc:contributor>Worthy,
+        Mary J</dc:contributor>\n<dc:contributor>Crane, Corinne P</dc:contributor>\n<dc:contributor>Sardegna,
+        Veronica G</dc:contributor>\n<dc:subject>Reading-writing connections</dc:subject>\n<dc:subject>Second
+        language</dc:subject>\n<dc:description>Despite the growing recognition of
+        the reading-writing connection both in first language and second/foreign language
+        acquisition, few studies have empirically investigated whether reading improves
+        writing, or vice versa. Taking a step further from the existing correlation
+        studies, the current experimental study examined the effects of extensive
+        reading, extensive writing, and regular instruction (serving as a control)
+        on reading comprehension, writing performance, knowledge of grammar, and attitudes
+        of Korean middle school students learning English as a foreign language. Randomly
+        assigned to one of three instructional types, the participants (N = 306) received
+        treatment instruction, once a week for two semesters, as part of their English
+        curricula. At the beginning and end of the treatment, the study administered
+        language measures of reading, writing, and grammar as well as attitude questionnaires
+        toward their treatment and toward reading and writing in English. Results
+        indicated that both extensive reading and extensive writing had positive effects
+        on the development of reading comprehension, writing performance, and grammar
+        knowledge. The results reveal particular support for the reading-writing connections.
+        For example, the extensive-reading group, but not the control group, made
+        significant gains in writing, though neither group engaged in writing practice
+        in English. The extensive-writing group, moreover, improved significantly
+        in reading comprehension despite only practicing writing. Also, the contributions
+        of treatment instruction to knowledge of grammar did not significantly differ
+        among the three groups. Nevertheless, exploratory post hoc analyses suggest
+        that extensive reading may have a more positive impact on general grammar,
+        articles, and prepositions. In terms of students\u2019 attitudes, the extensive-writing
+        group did not indicate their willingness to continue to write, despite the
+        significantly higher levels of enjoyment and engagement in the activity. In
+        contrast, the extensive-reading group revealed a significantly stronger willingness
+        to sustain reading books as well as a significant decrease in reading apprehension,
+        particularly among students at the lowest proficiency level. The predominant
+        status of reading over writing in English curricula as well as exams seems
+        to influence students\u2019 attitudes toward reading and writing. Findings
+        are used to propose theoretical, practical, and pedagogical implications.</dc:description>\n<dc:description>Foreign
+        Language Education</dc:description>\n<dc:date>2015-09-29T16:37:34Z</dc:date>\n<dc:date>2015-09-29T16:37:34Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:date>2015-05-01</dc:date>\n<dc:date>May
+        2015</dc:date>\n<dc:date>2015-09-29T16:37:34Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T2JP4F</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31438</dc:identifier>\n<dc:language>en</dc:language>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31439</identifier>\n
+        \               <datestamp>2015-09-29T16:45:23Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Silenzio
+        in sala : parla il cinema italiano! new linguistic tendencies and the language
+        of contemporary comedy</dc:title>\n<dc:creator>Marchetti, Ettore, Ph. D.</dc:creator>\n<dc:contributor>Russi,
+        Cinzia, 1966-</dc:contributor>\n<dc:contributor>Bini Carter, Daniela</dc:contributor>\n<dc:contributor>Bonifazio,
+        Paola</dc:contributor>\n<dc:contributor>Picherit, Herve'</dc:contributor>\n<dc:contributor>Rossi,
+        Fabio</dc:contributor>\n<dc:subject>Neo-standard Italian</dc:subject>\n<dc:subject>Film
+        dialogues</dc:subject>\n<dc:subject>Comedy</dc:subject>\n<dc:description>This
+        dissertation investigates the language used in contemporary Italian cinema,
+        with particular focus on popular comedy through the analysis of ten films
+        released in a 30-year span period, from 1980 to 2010. My work argues that
+        comedy dialogues may serve linguistic descriptive purposes since they use
+        the complete spectrum of contemporary trends. The project analyzes how cinema
+        uses common language and how film dialogues record linguistic changes in Italian,
+        proving to be a useful and powerful medium for describing contemporary language.
+        A subsequent question that my work addresses is how comedy\u2019s film dialogues
+        represent a changing society. A detailed analysis of the four linguistic levels:
+        phonology, morphology, syntax, and lexicon is conducted in the dialogues of
+        the films selected. Through the observation of the occurrences of the new
+        linguistic tendencies I establish which variables trigger their use, what
+        are the differences among the characters\u2019 speeches, and whether and how
+        the language used differs from standard language. Also, the comparison with
+        contemporary Italian reveals the degree of sociolinguistic reliability of
+        the dialogue of popular comedy. A further type of comparison is the one between
+        the written screenplays and the final version of the films, which reveals
+        some of the linguistic dynamics behind the trajectory from a written to a
+        spoken version of the text. The data I collected show an overall reliable
+        reproduction by most films of the new linguistic trends, and a reliable representation
+        of the sociolinguistic complexity of contemporary Italian. This attempt to
+        imitate reality shows, in my opinion, the scarce inclination to linguistic
+        experimentalism of Italian comedy. On the other hand, what film dialogues
+        fail to reflect in a realistic way are the traits intrinsically related to
+        oral discourse such as interruptions, reformulations, and drawbacks. What
+        my work ultimately highlights is the value of the close analysis of film dialogues
+        as an interdisciplinary method that can contribute to linguistic accounts
+        as well as to explain specific choices in language related to the cinematic
+        genre.</dc:description>\n<dc:description>French and Italian</dc:description>\n<dc:date>2015-09-29T16:44:57Z</dc:date>\n<dc:date>2015-09-29T16:44:57Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:date>2015-05-04</dc:date>\n<dc:date>May
+        2015</dc:date>\n<dc:date>2015-09-29T16:44:57Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T2DW2H</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31439</dc:identifier>\n<dc:language>en</dc:language>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31440</identifier>\n
+        \               <datestamp>2015-09-29T16:52:13Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The
+        impact of social factors on the use of Arabic-French code-switching in speech
+        and IM in Morocco</dc:title>\n<dc:creator>Post, Rebekah Elizabeth</dc:creator>\n<dc:contributor>Bullock,
+        Barbara E.</dc:contributor>\n<dc:contributor>Blyth, Carl</dc:contributor>\n<dc:contributor>Wettlaufer,
+        Alexandra K</dc:contributor>\n<dc:contributor>Brustad, Kristen</dc:contributor>\n<dc:contributor>Toribio,
+        Almeida Jacqueline</dc:contributor>\n<dc:subject>Code-switching</dc:subject>\n<dc:subject>Language
+        contact</dc:subject>\n<dc:subject>French</dc:subject>\n<dc:subject>Moroccan
+        Arabic</dc:subject>\n<dc:subject>Sociolinguistics</dc:subject>\n<dc:description>The
+        use of French in code-switching (CS) with Moroccan Colloquial Arabic (MCA)
+        has been explored qualitatively in a number of studies, but quantitative methods
+        have rarely been applied to CS in this language pair. Research on CS patterns
+        as a function of extra-linguistic factors has similarly received little attention,
+        despite the implication in many studies that these factors are significant
+        in the use of CS. This dissertation seeks to address these gaps in the literature
+        by quantitatively examining the use of Arabic-French CS by young adult speakers
+        of MCA in spoken and written information communication. This study examines
+        three extra-linguistic factors in speech and Instant Messaging (IM): Sex,
+        French Proficiency, and Language Attitude. The analysis reveals that male
+        speakers are significantly more French in written IM. Positive attitude toward
+        French and MCA-French CS has a highly significant impact on the rate of French
+        employed in spoken conversation. Meaningful results are also found for the
+        French constituents employed in CS with regard to each of the extra-linguistic
+        factors. Notable differences are found between sexes in the types of French
+        constituents used in both communication modes, as well as for speakers of
+        different French proficiency levels. The categorization of French-origin nouns
+        as instances of CS or borrowing is also explored by considering multiple aspects
+        of use of these lexical items. A number of French-origin nouns, absent from
+        dictionaries of MCA, are proposed to now be borrowed into the dialect. The
+        analysis also reveals a number of French-origin words that are used by a number
+        of speakers, but remain instances of CS. The results of this investigation
+        highlight the importance of quantification in studies of CS and provide data
+        for comparison with other corpora from this and other language pairs. The
+        differences identified in CS by communication mode indicate that there is
+        a need for a model of written CS that accounts for the unique characteristics
+        of this mode. Finally, little work has been published on the relationship
+        between extra-linguistic factors and structural patterns in CS, but the current
+        results suggest that the impact of social factors should not be ignored when
+        considering structural aspects of CS.</dc:description>\n<dc:description>French
+        and Italian</dc:description>\n<dc:date>2015-09-29T16:51:47Z</dc:date>\n<dc:date>2015-09-29T16:51:47Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:date>2015-06-17</dc:date>\n<dc:date>May
+        2015</dc:date>\n<dc:date>2015-09-29T16:51:47Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T29590</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31440</dc:identifier>\n<dc:language>en</dc:language>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31441</identifier>\n
+        \               <datestamp>2015-09-29T16:59:08Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The
+        language attitudes of second-generation North Africans in France : the effects
+        of religiosity and national identity</dc:title>\n<dc:creator>Oprea, Megan
+        Grace</dc:creator>\n<dc:contributor>Bullock, Barbara E.</dc:contributor>\n<dc:contributor>Blyth,
+        Carl</dc:contributor>\n<dc:contributor>Wettlaufer, Alexandra</dc:contributor>\n<dc:contributor>Toribio,
+        Almeida Jacqueline</dc:contributor>\n<dc:contributor>Brower, Benjamin</dc:contributor>\n<dc:subject>Language
+        attitudes</dc:subject>\n<dc:subject>Language and religion</dc:subject>\n<dc:subject>North
+        Africa</dc:subject>\n<dc:subject>North African immigration</dc:subject>\n<dc:subject>France</dc:subject>\n<dc:subject>French
+        language ideology</dc:subject>\n<dc:subject>National identity</dc:subject>\n<dc:subject>Religiosity</dc:subject>\n<dc:description>This
+        dissertation explores the language attitudes (LAs) of second-generation North
+        African immigrants in France toward Arabic and French, focusing primarily
+        on women. I explore how these attitudes are correlated with religiosity, national
+        identity and proficiency. Although numerous LA studies have been done in the
+        Maghreb, none have examined the attitudes of the highly marginalized North
+        African community in France. Previous research in LAs and in sociolinguistics
+        has also neglected religion as a variable, a gap in the literature that this
+        dissertation addresses. French and Arabic have powerful language ideologies
+        making them an ideal language pairing to study. Muslims believe Arabic is
+        the only language through which the true message of the Qur\u2019an can be
+        transmitted (Suleiman, 2003). Previous LA studies in the Maghreb indicate
+        that people there strongly associate Islam with Arabic (Benrabah 2007; Chakrani,
+        2010). It is also the national language of most Muslim majority countries
+        and is linked with both national and pan-Arab identity (Dawisha, 2003). The
+        French language is seen as the vehicle of French culture and is an important
+        symbol of national identity that is used as a tool for the assimilation of
+        immigrants (Weil, 2010). There is evidence to suggest that LAs are stronger
+        in a diaspora context (Garrett, Bishop &amp; Coupland, 2009). Language attitudes
+        may be especially potent for the North African diaspora because of the colonial
+        history between France and the Maghreb, and the strained relationship between
+        France and its immigrant population. Given that language can act as a symbol
+        of culture (Choi, 2003), participants who more closely identify with their
+        North African cultural and religious heritage will express more positive attitudes
+        toward Arabic. In order to explore these topics, I constructed an anonymous
+        language attitudes survey that was distributed online to second-generation
+        North Africans in France, ages 18 to 30. The survey included questions concerning
+        attitudes toward religious and national identity. The results indicate positive
+        attitudes toward Arabic, Islam and North Africa, while expressing relatively
+        neutral attitudes toward French, and negative attitudes toward France. Correlations
+        did emerge that suggest a relationship between religiosity, national identity,
+        and language attitudes for this population.</dc:description>\n<dc:description>French
+        and Italian</dc:description>\n<dc:date>2015-09-29T16:58:44Z</dc:date>\n<dc:date>2015-09-29T16:58:44Z</dc:date>\n<dc:date>2015-08</dc:date>\n<dc:date>2015-08-13</dc:date>\n<dc:date>August
+        2015</dc:date>\n<dc:date>2015-09-29T16:58:45Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T25C72</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31441</dc:identifier>\n<dc:language>en</dc:language>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31442</identifier>\n
+        \               <datestamp>2015-09-29T17:13:28Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Squatters
+        and the right to the city : waiting for eviction in Buenos Aires, Argentina</dc:title>\n<dc:creator>Munoz,
+        Isabel Solange</dc:creator>\n<dc:contributor>Zonn, Leo</dc:contributor>\n<dc:contributor>Sletto,
+        Bjorn</dc:contributor>\n<dc:contributor>Ali, Kamran</dc:contributor>\n<dc:contributor>Auyero,
+        Javier</dc:contributor>\n<dc:contributor>Knapp, Gregory</dc:contributor>\n<dc:contributor>Torres,
+        Rebecca</dc:contributor>\n<dc:subject>Buenos Aires</dc:subject>\n<dc:subject>Housing</dc:subject>\n<dc:description>Poor
+        Latin American migrants arriving to Buenos Aires are usually able to find
+        work and access urban resources, but struggle to secure stable housing inside
+        the city.  Faced with this dilemma, they often scramble to find somewhere
+        to live among the city\u2019s informal housing options.  Some move into casas
+        tomadas, crowded, run-down boarding houses and informal hotels where multiple
+        families live together. Inside, residents must constantly negotiate their
+        presence and their access to shared spaces and amenities, all the while waiting
+        to be evicted.  In Argentina, the eviction process can take anywhere from
+        a few months to a few years as the case makes its way through the courts.
+        Despite the tenuous conditions, residents benefit from these spaces, which
+        are often centrally located, close to jobs, schools and public transportation.
+        Using a multi-scale, ethnographic approach, this dissertation explores how
+        residents of casas tomadas cope with housing instability and struggle to stay
+        in the city amidst the threat of eviction. Focus is on residents\u2019 routine
+        practices inside casas tomadas, their alliances with housing organizations,
+        and their reliance on the city government housing subsidy.  My findings show
+        that structural and temporal conditions at these different scales limit and
+        destabilize residents and advocates\u2019 struggle for housing and the right
+        to the city.  Building upon literature on the right to the city, critical
+        urban studies and political ecology, this dissertation seeks to broaden and
+        deepen our understanding of the routine and everyday ways the poor experience
+        urban instability and marginalization. In this research housing and home are
+        understood as a primary resource from which people can access other important
+        urban resources. As such, this dissertation argues that house and home are
+        a fundamental and central element in any struggle for the right to the city.</dc:description>\n<dc:description>Geography
+        and the Environment</dc:description>\n<dc:date>2015-09-29T17:13:03Z</dc:date>\n<dc:date>2015-09-29T17:13:03Z</dc:date>\n<dc:date>2014-05</dc:date>\n<dc:date>2014-06-25</dc:date>\n<dc:date>May
+        2014</dc:date>\n<dc:date>2015-09-29T17:13:03Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T21P4S</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31442</dc:identifier>\n<dc:language>en</dc:language>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31443</identifier>\n
+        \               <datestamp>2015-09-29T17:20:55Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Payment
+        for environmental services in Costa Rica's Osa peninsula : a feminist political
+        ecology perspective</dc:title>\n<dc:creator>Schwartz, Gregory James</dc:creator>\n<dc:contributor>Knapp,
+        Gregory W.</dc:contributor>\n<dc:contributor>Butzer, Karl W.</dc:contributor>\n<dc:contributor>Torres,
+        Rebecca M</dc:contributor>\n<dc:contributor>Arima, Eugenio</dc:contributor>\n<dc:contributor>Hindman,
+        Heather</dc:contributor>\n<dc:subject>Payment for environmental services</dc:subject>\n<dc:subject>Costa
+        Rica</dc:subject>\n<dc:subject>Women</dc:subject>\n<dc:subject>Gender</dc:subject>\n<dc:subject>Land
+        tenure</dc:subject>\n<dc:subject>Political ecology</dc:subject>\n<dc:subject>Deforestation</dc:subject>\n<dc:description>This
+        dissertation investigates payment for environmental services (PES) programs
+        on the Osa peninsula in southwestern Costa Rica. Three aspects of life in
+        Osa Costa Rica are found to critically affect PES implementation: the unique
+        geographical and cultural setting of Osa, a history of murky land tenure in
+        the region, and the often underemphasized role of women. Osa\u2019s mountainous
+        forested terrain makes enforcement of logging bans very difficult without
+        the help of in-situ \u201Cguardaparques\u201D(forest rangers) in the form
+        of PES-participating landowners themselves. However, the agency in charge
+        of enforcing environmental protection (MINAE) is indispensable, despite its
+        bouts with corruption and abuse of power. Broadly, though specific flaws in
+        the PES program are identified herein, the program is, nonetheless, found
+        to be a beneficial and core part of the ideological and financial evolution
+        of the region. The related issue of nebulous land tenure in the region began
+        in the 1960s and 70s when squatters were encouraged to settle and develop
+        land on the peninsula. A stark shift came with the passage of National Forestry
+        Law 7575 of 1996 which claimed all non-privately-owned forest for the state
+        of Costa Rica, essentially ceasing the process of granting formal land title
+        to squatters. This thrust hundreds of squatters into a state of legal and
+        financial limbo, affecting their ability both to participate in PES and to
+        sell their land. Gender is also central to this investigation as only approximately
+        ten percent of PES-participating properties in the Osa region are owned by
+        women (nearly twenty percent if married couples are included), yet a greater
+        prevalence of pro-environment and pro-conservation attitudes is exhibited
+        by women in interviews than by men. For instance, women more often mention
+        \u201Cmore time with family\u201D and \u201Chelping the environment\u201D
+        compared to men when asked what are their personal benefits of PES participation.
+        Also, a much larger percentage of women than men see protecting the environment
+        as the responsibility of the landowner.  The concluding chapter lauds the
+        philosophical foundation and the overall potential of payment for environmental
+        services and also proffers several recommendations as remedies for specific
+        foibles of the PES system.</dc:description>\n<dc:description>Geography and
+        the Environment</dc:description>\n<dc:date>2015-09-29T17:20:22Z</dc:date>\n<dc:date>2015-09-29T17:20:22Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:date>2015-05-06</dc:date>\n<dc:date>May
+        2015</dc:date>\n<dc:date>2015-09-29T17:20:22Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T2WW2V</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31443</dc:identifier>\n<dc:language>en</dc:language>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31444</identifier>\n
+        \               <datestamp>2015-09-29T17:34:13Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Semantic
+        role alignment in metaphor : a frame semantic approach to metaphoric meaning</dc:title>\n<dc:creator>Gemmell,
+        Maggie Sue</dc:creator>\n<dc:contributor>Boas, Hans Christian, 1971-</dc:contributor>\n<dc:contributor>Pierce,
+        Marc</dc:contributor>\n<dc:contributor>Urlaub, Per</dc:contributor>\n<dc:contributor>Beavers,
+        John</dc:contributor>\n<dc:contributor>Streeck, J\xFCrgen</dc:contributor>\n<dc:subject>Metaphor</dc:subject>\n<dc:subject>Metaphoric
+        meaning transfer</dc:subject>\n<dc:subject>Metaphor mapping</dc:subject>\n<dc:subject>Conceptual
+        metaphor</dc:subject>\n<dc:subject>Frame semantics</dc:subject>\n<dc:subject>Semantic
+        roles</dc:subject>\n<dc:subject>Conceptual integration</dc:subject>\n<dc:subject>Mental
+        spaces</dc:subject>\n<dc:subject>Frame blending</dc:subject>\n<dc:subject>FrameNet</dc:subject>\n<dc:subject>SALSA</dc:subject>\n<dc:description>Metaphor
+        occurs when a word or phrase is used in a way that conflicts with its usual
+        (literal) meaning, so that part of its meaning is applied to a different semantic
+        domain. For example, time is construed as money in \u201CThis gadget will
+        save you hours\u201D (Lakoff and Johnson 1980). There is a link between the
+        concepts time and money that underlies many expressions in English; this is
+        therefore considered a conceptual metaphor. Conceptual Metaphor Theory (CMT)
+        has dominated metaphor research since Lakoff and Johnson (1980), but researchers
+        (e.g. Croft 2009, Sullivan 2013) are turning to other cognitive linguistic
+        theories such as Frame Semantics (Fillmore 1982) and Cognitive Grammar (Langacker
+        1987) to rectify the problems inherent in that approach. CMT does not provide
+        tools for systematically defining metaphoric concepts and their components,
+        which prevents the analysis of metaphor\u2019s internal meaning. It views
+        metaphor as a superimposition of meaning from one domain (e.g. money above)
+        onto another (e.g. time). Corpus data has improved metaphor research methods,
+        but sounder methodology is needed to choose which metaphors to study. This
+        dissertation takes a novel approach to metaphor in that the data are taken
+        from a semantically annotated corpus where their semantic domains are already
+        assigned. The main dataset is comprised of a naturally occurring group of
+        related metaphors that construe awareness as perception. Using the notion
+        of frame from Frame Semantics (Fillmore 1982) as implemented in the lexicographic
+        database FrameNet (Atkins et al. 2003) to define semantic domains and their
+        internal components (frame elements; similar to semantic roles), this dissertation
+        analyzes metaphors from the frame-semantically annotated database of German,
+        SALSA (Burchardt et al. 2006, 2009), to investigate how meaning elements (semantic
+        roles) from the metaphor\u2019s two semantic domains align. I show that semantic
+        roles align consistently, although not every semantic role has a counterpart
+        in the other domain. I argue that the use of semantic and syntactic information
+        that is associated with one domain but not the other allows emergent meaning
+        to be created in metaphor. The analysis supports the view of metaphor as a
+        blended space, independent of either semantic domain, as described by Fauconnier
+        and Turner (2002).</dc:description>\n<dc:description>Germanic Studies</dc:description>\n<dc:date>2015-09-29T17:33:40Z</dc:date>\n<dc:date>2015-09-29T17:33:40Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:date>2015-05-04</dc:date>\n<dc:date>May
+        2015</dc:date>\n<dc:date>2015-09-29T17:33:40Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T2S59B</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31444</dc:identifier>\n<dc:language>en</dc:language>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31445</identifier>\n
+        \               <datestamp>2015-09-29T17:42:28Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Translating
+        the discipline : on the institutional memory of German Volkskunde, 1945 to
+        present</dc:title>\n<dc:creator>Randall, Amanda Ziemba</dc:creator>\n<dc:contributor>Arens,
+        Katherine, 1953-</dc:contributor>\n<dc:contributor>Hake, Sabine</dc:contributor>\n<dc:contributor>Hoberman,
+        John</dc:contributor>\n<dc:contributor>Pierce, Marc</dc:contributor>\n<dc:contributor>Nonaka,
+        Angela</dc:contributor>\n<dc:subject>Volkskunde</dc:subject>\n<dc:subject>Germany</dc:subject>\n<dc:subject>Historiography</dc:subject>\n<dc:subject>Institutional
+        memory</dc:subject>\n<dc:subject>Twentieth century</dc:subject>\n<dc:description>This
+        study examines how Europeanist ethnologists (Volkskundler / Europ\xE4ische
+        Ethnologen) in Germany (East, West, and reunified) have reconstructed their
+        discipline\u2019s history from the end of World War II to the present. In
+        this treatment, historiography is understood not simply as a discourse, but
+        as a narrative performance by and for parties invested in the discipline.
+        These performances, it will be shown, have real implications for the field\u2019s
+        organizational and epistemic structuring, and vice versa\u2014a symbiosis
+        referred to here as \u201Cinstitutional memory.\u201D The project\u2019s goal
+        is not to produce another history of the discipline, but rather to trace how
+        institutional memory is rewritten or translated (in Andr\xE9 Lefevere\u2019s
+        sense) across historical ruptures and in conversation with other social fields
+        (in Pierre Bourdieu\u2019s sense). By mapping the disciplinary identities
+        performed by the field\u2019s authorized parties in monographs, articles,
+        programmatic statements, and interviews conducted with three generations of
+        Volkskundler / Europ\xE4ische Ethnologen, the analysis reveals to what extent
+        the field\u2019s institutional memory aligns with postwar Germany\u2019s ongoing
+        struggle to connect its past with its current national and global identities.
+        Part I considers how the trope of Vergangenheitsbew\xE4ltigung (overcoming
+        the past) came to dominate institutional memory in West German and post-reunification
+        Volkskunde / Europ\xE4ische Ethnologie. Parts II and III then consider latent
+        and emergent boundary issues that had been eclipsed by the long shadow of
+        the National Socialist past. Part II examines the dynamics of East German
+        Volkskunde\u2019s institutional memory and the challenge of gathering the
+        two national traditions into a unified institutional memory after national
+        reunification in 1989/90. Part III considers patterns of interdisciplinary
+        and international boundary-crossing and -reinforcement shown to be both latent
+        across the field\u2019s postwar institutional memory and emergent as the field
+        continues to translate its identity in confronting new external pressures.
+        By considering narrative performances of boundary problems as sites of institutional
+        memory in their own right, the final analysis reveals how the preoccupation
+        with the effects of the Nazi era is in fact only one of several possible,
+        concurrent translations of a centuries-old anxiety over the field\u2019s legitimacy
+        as an independent and institutionalized scientific discipline.</dc:description>\n<dc:description>Germanic
+        Studies</dc:description>\n<dc:date>2015-09-29T17:41:59Z</dc:date>\n<dc:date>2015-09-29T17:41:59Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:date>2015-05-20</dc:date>\n<dc:date>May
+        2015</dc:date>\n<dc:date>2015-09-29T17:41:59Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T2NC7D</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31445</dc:identifier>\n<dc:language>en</dc:language>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31446</identifier>\n
+        \               <datestamp>2015-09-29T17:51:16Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Denizen
+        politics :  a comparative analysis of opposition to immigration  in the European
+        Union</dc:title>\n<dc:creator>Mohanty, Peter Cushner</dc:creator>\n<dc:contributor>Gregg,
+        Benjamin Greenwood, 1954-</dc:contributor>\n<dc:contributor>Givens, Terri
+        E., 1964-</dc:contributor>\n<dc:contributor>Luskin, Robert C.</dc:contributor>\n<dc:contributor>Jessee,
+        Stephen</dc:contributor>\n<dc:contributor>Murer, Jeffrey</dc:contributor>\n<dc:subject>Immigration</dc:subject>\n<dc:subject>European
+        Union</dc:subject>\n<dc:subject>Public opinion</dc:subject>\n<dc:subject>Exclusionism</dc:subject>\n<dc:subject>Hierarchical
+        models</dc:subject>\n<dc:description>This dissertation presents a series of
+        observational studies of opposition to immigration (OI) in the European Union.
+        A substantial portion of the public seems to prefer a more exclusionary form
+        of democracy, but how large, how vocal, and how organized that portion is
+        varies considerably. I investigate exclusionism, a dimension of individual
+        belief about how extensive political membership should be that tends to reflect
+        how denizens prioritize political and cultural aspects of membership. In situating
+        exclusionism, I shed light on three puzzles: Which of an individual\u2019s
+        concerns are the strongest determinants of OI? Which national developments
+        are the strongest determinants of an individual\u2019s OI? How are the effects
+        of an individual\u2019s concerns shaped by national context? Exclusionism
+        predicts OI in more countries in the EU than do ideology or religion. Post-9/11
+        conflicts increase OI but not as dramatically as do increases in the Muslim
+        population (suggesting perhaps that Islamophobia outpaces security risks).
+        OI is highest in new countries of immigration, but polarization is most pronounced
+        in older countries of immigration, where ongoing national developments have
+        created unusually large generational gaps, religious differences, and disagreements
+        about exclusionism. Political interest is key for explaining large differences
+        in opinion, too. Exclusionism increases OI, even in low-immigration countries,
+        among individuals with little interest in politics but only slightly; at high
+        levels of individual interest and immigration, exclusionism\u2019s effects
+        are substantial. My findings reveal major challenges to integration policy
+        in high-immigration countries: migrants and natives are unlikely to see eye-to-eye
+        at any level of political interest, and there is near complete disagreement
+        on immigration policy between politically-interested Muslims and politically-interested
+        Christians. Methodologically, I introduce techniques to analyze polarization,
+        and my findings have implications for best practices in cross-national survey
+        research.</dc:description>\n<dc:description>Government</dc:description>\n<dc:date>2015-09-29T17:50:51Z</dc:date>\n<dc:date>2015-09-29T17:50:51Z</dc:date>\n<dc:date>2014-08</dc:date>\n<dc:date>2014-09-08</dc:date>\n<dc:date>August
+        2014</dc:date>\n<dc:date>2015-09-29T17:50:52Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T2HP44</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31446</dc:identifier>\n<dc:language>en</dc:language>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31447</identifier>\n
+        \               <datestamp>2015-09-29T18:02:28Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Global
+        gatekeeping : how Great Powers respond to rising states</dc:title>\n<dc:creator>Harris,
+        Peter, Ph. D.</dc:creator>\n<dc:contributor>Buchanan, Bruce, 1945-</dc:contributor>\n<dc:contributor>Trubowitz,
+        Peter</dc:contributor>\n<dc:contributor>Boone, Catherine</dc:contributor>\n<dc:contributor>Chapman,
+        Terrence</dc:contributor>\n<dc:contributor>McDonald, Patrick</dc:contributor>\n<dc:contributor>Suri,
+        Jeremi</dc:contributor>\n<dc:subject>International relations</dc:subject>\n<dc:subject>Power-transition
+        theory</dc:subject>\n<dc:subject>Foreign policy</dc:subject>\n<dc:description>Why
+        do some shifts in power between states pass off peacefully while others result
+        in conflict?  Scholars have debated the implications of international power
+        transitions at least since Thucydides in his History of the Peloponnesian
+        War documented the rise of Athens and the fear that this aroused in Sparta.
+        \ Must the rise in power of a potential challenger lead to jealousy, enmity
+        and conflict as Thucydides claims was the case in antiquity?  Or can established
+        and rising powers find common ground on the world stage?  Most attempts to
+        answer these questions have focused on the decision-making calculus of rising
+        states or else have modeled abstract dyadic relations between two rational
+        actors under conditions of shifting power.  In this dissertation, I shift
+        the analytic focus onto the decision-making of established Great Powers, examining
+        the international and domestic-political circumstances under which states
+        will acquiesce to or promote the rise of another state and when they will
+        instead seek to stymie the rise of a potential rival. The dissertation advances
+        the notion that established Great Powers act as critical \u201Cgatekeepers\u201D
+        of world order.  In the context of shifting power, established Great Powers
+        are by definition materially stronger than their rising challengers\u2014at
+        least during the initial phases of a power transition.  As such, established
+        Great Powers are able to apply their preponderant power\u2014military, economic,
+        political and diplomatic\u2014in ways that shape the opportunity structures
+        available to would-be challengers.  I provide an argument to explain when
+        and why an established state will see discharge this gatekeeping function
+        in a way that is conciliatory towards a rising state and when its leaders
+        will, instead, opt for a strategy of containment.  The model has implications
+        for reading international history; International Relations theory on grand
+        strategy, security studies and international order; and for contemporary public
+        policy debates surrounding the rise of China and the other so-called BRICS
+        nations.  Evidence is drawn from a comparative historical analysis of British
+        and American responses to rising states, 1890-1990.</dc:description>\n<dc:description>Government</dc:description>\n<dc:date>2015-09-29T18:02:03Z</dc:date>\n<dc:date>2015-09-29T18:02:03Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:date>2015-05-18</dc:date>\n<dc:date>May
+        2015</dc:date>\n<dc:date>2015-09-29T18:02:03Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T2D015</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31447</dc:identifier>\n<dc:language>en</dc:language>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31448</identifier>\n
+        \               <datestamp>2015-09-29T18:09:59Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Proliferating
+        Security? : explaining U.S. policy towards nuclear weapon aspirants</dc:title>\n<dc:creator>Krishnan,
+        Sarat</dc:creator>\n<dc:contributor>Jones, Bryan D.</dc:contributor>\n<dc:contributor>Trubowitz,
+        Peter</dc:contributor>\n<dc:contributor>Gavin, Francis</dc:contributor>\n<dc:contributor>Newberg,
+        Paula</dc:contributor>\n<dc:contributor>Tulis, Jeffrey</dc:contributor>\n<dc:contributor>Wolford,
+        Scott</dc:contributor>\n<dc:contributor>Workman, Samuel</dc:contributor>\n<dc:subject>Nuclear
+        proliferation</dc:subject>\n<dc:subject>American foreign policy</dc:subject>\n<dc:description>The
+        proliferation of nuclear weapons has been a critical concern of the United
+        States since World War II. While limiting the spread of nuclear weapons was
+        a uniform goal of American administrations, in actual practice, there was
+        significant variability in approaches to states as they approached the threshold
+        of weaponization or crossed it. Against allied South Korea, America used the
+        threat of military abandonment and technology denial to force the country
+        to curtail its nuclear ambitions. In the case of a hostile China in the 1960s,
+        military threats were the tool of choice. Policy variability cut across the
+        ally/opponent divide, encompassing an ambivalent acceptance of non-aligned
+        India\u2019s nuclear capabilities by Ford in the 1970s and an acquiescence
+        with China\u2019s by Reagan in the 1980s. I argue that explanations based
+        purely on the International Structure or Domestic Politics do not sufficiently
+        explain these outcomes. I propose a causal mechanism that shapes the U.S.
+        response to nuclear proliferation based on two independent variables, \u2018Strategic
+        Liability\u2019 and \u2018Commercial Value\u2019. Strategic Liability is rooted
+        in the International System, while Commercial Value is rooted in the domestic
+        political economy of the U.S. Strategic liability is the Executive\u2019s
+        perception of risk from the nuclear program of a particular state, whereas
+        Commercial value is the Executive\u2019s estimation of the economic importance
+        of that state. I show how these variables act on the American Executive, privileging
+        its role in shaping the United States\u2019 response to a state\u2019s attempts
+        to develop nuclear weapon capabilities. I posit four policy outcomes based
+        on the combination of these independent variables, which take a high or low
+        value. I test my argument by analyzing the U.S. response to the four major
+        cases noted above, each corresponding to a unique combination of strategic
+        liability and commercial value.</dc:description>\n<dc:description>Government</dc:description>\n<dc:date>2015-09-29T18:09:34Z</dc:date>\n<dc:date>2015-09-29T18:09:34Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:date>2015-06-29</dc:date>\n<dc:date>May
+        2015</dc:date>\n<dc:date>2015-09-29T18:09:34Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T2859P</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31448</dc:identifier>\n<dc:language>en</dc:language>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31449</identifier>\n
+        \               <datestamp>2015-09-29T18:16:18Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Political
+        ambition and Socratic philosophy : Plato's presentation of Socrates and Alcibiades</dc:title>\n<dc:creator>Helfer,
+        Ariel Oscar</dc:creator>\n<dc:contributor>Pangle, Thomas L.</dc:contributor>\n<dc:contributor>Pangle,
+        Lorraine S</dc:contributor>\n<dc:contributor>Stauffer, Devin</dc:contributor>\n<dc:contributor>Saxonhouse,
+        Arlene</dc:contributor>\n<dc:contributor>Ahrensdorf, Peter</dc:contributor>\n<dc:subject>Political
+        ambition</dc:subject>\n<dc:subject>Socrates</dc:subject>\n<dc:subject>Alcibiades</dc:subject>\n<dc:subject>Corruption</dc:subject>\n<dc:description>This
+        dissertation examines and interprets Plato\u2019s three major presentations
+        of the infamous Athenian general and Socratic pupil Alcibiades as a paragon
+        of political ambition: the Alcibiades, the Second Alcibiades, and Plato\u2019s
+        Symposium.  These texts are, for the first time, treated as authentic Platonic
+        works and presumed to present a coherent though incomplete narrative of the
+        relationship between Socrates and Alcibiades.  The dynamic Platonic portrait
+        of Alcibiades\u2019 changing disposition toward democracy, law, virtue, and
+        piety offers insight into the corruptibility of political ambition.  By studying
+        it, we can recover a valuable classical point of view on the nature of political
+        ambition, especially in its relation to civic-spiritedness on one hand, and
+        to the self-serving pursuit of private or political goods on the other.  This
+        point of view can in turn be brought to bear upon our own political situation
+        as citizens of liberal democracy, with its complex tradition of distrust of
+        the political ambitious.  Finally, the question of Socrates\u2019 corruption
+        of Alcibiades itself provides invaluable insight into the matter of Socrates\u2019
+        own enigmatic philosophic project, which brought him into fatal conflict with
+        the city of Athens.</dc:description>\n<dc:description>Government</dc:description>\n<dc:date>2015-09-29T18:15:52Z</dc:date>\n<dc:date>2015-09-29T18:15:52Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:date>2015-05-12</dc:date>\n<dc:date>May
+        2015</dc:date>\n<dc:date>2015-09-29T18:15:52Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T24G6D</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31449</dc:identifier>\n<dc:language>en</dc:language>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31450</identifier>\n
+        \               <datestamp>2015-09-29T18:25:23Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>High-end
+        demand : markets for legal services and pressure for judicial autonomy in
+        urban China</dc:title>\n<dc:creator>Kinkel, Jonathan Josef</dc:creator>\n<dc:contributor>Brinks,
+        Daniel M., 1961-</dc:contributor>\n<dc:contributor>Hurst, William, 1975-</dc:contributor>\n<dc:contributor>Elkins,
+        Zachary</dc:contributor>\n<dc:contributor>Maclachlan, Patricia</dc:contributor>\n<dc:contributor>Perry,
+        H.W.</dc:contributor>\n<dc:subject>Judicial politics</dc:subject>\n<dc:subject>Judicial
+        behavior</dc:subject>\n<dc:subject>Chinese politics</dc:subject>\n<dc:subject>Bureaucratic
+        politics</dc:subject>\n<dc:subject>Socialist legality</dc:subject>\n<dc:description>Most
+        scholars of comparative judicial politics suggest that judicial autonomy emerges
+        from various forms of democratic competition or from a need to assuage the
+        concerns of those investing capital in countries controlled by authoritarian
+        regimes.  In an authoritarian political system where the Party-State has historically
+        sought to monopolize control over judicial selection and promotion, how can
+        we explain reforms that increase the degree of merit-based competition, the
+        statutory basis of written judicial opinions, the level of court transparency,
+        and overall judicial autonomy in courts?  Challenging prevailing theories
+        regarding the relationship between economic development and rule of law, I
+        argue that the particular patterns of local variation in judicial autonomy
+        across urban China can be traced in part to differences in local markets for
+        professional legal services: if qualified, mid-ranking judges can easily quit
+        their jobs and find lucrative local employment as lawyers, court leaders are
+        more likely to strategically reform promotion mechanisms in an attempt to
+        retain these young\u2014yet nonetheless, experienced\u2014judges.  These findings
+        are based on nearly 15 months of in-country fieldwork, conducted between 2012-2014,
+        that included 49 interviews with judges across 3 different case study cities:
+        Shanghai, Shenzhen, and Chengdu.  Employing the subnational comparative method,
+        this article not only builds theory regarding the emergence of rule of law
+        in authoritarian states, it also offers new empirical detail regarding the
+        promotion, performance evaluation, and behavior of judges in urban China.</dc:description>\n<dc:description>Government</dc:description>\n<dc:date>2015-09-29T18:24:52Z</dc:date>\n<dc:date>2015-09-29T18:24:52Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:date>2015-06-03</dc:date>\n<dc:date>May
+        2015</dc:date>\n<dc:date>2015-09-29T18:24:52Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T20P4G</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31450</dc:identifier>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31451</identifier>\n
+        \               <datestamp>2015-09-29T18:56:54Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The
+        military pension promise : autonomous policy subsystems, blue ribbon defense
+        commissions, and the twenty-first century all-volunteer force</dc:title>\n<dc:creator>Archuleta,
+        Brandon Jason</dc:creator>\n<dc:contributor>Jones, Bryan D.</dc:contributor>\n<dc:contributor>Buchanan,
+        Bruce</dc:contributor>\n<dc:contributor>Dorn, Edwin</dc:contributor>\n<dc:contributor>Sparrow,
+        Bartholomew H</dc:contributor>\n<dc:contributor>Suri, Jeremi</dc:contributor>\n<dc:contributor>Theriault,
+        Sean M</dc:contributor>\n<dc:subject>Policy subsystems</dc:subject>\n<dc:subject>Military
+        pension policy</dc:subject>\n<dc:subject>Blue ribbon commissions</dc:subject>\n<dc:description>Drawing
+        from previous scholarship, contemporary policy debates, historical records,
+        and 53 interviews with policymaking elites, this dissertation project takes
+        a qualitative, field-based approach to expose the internal dynamics of autonomous
+        policy subsystems. I contend that these subsystems are characterized by insular,
+        expert-based channels of information, specialized media attention, parochial
+        interest groups, a politically inactive \u2013 yet advantaged \u2013 target
+        population, and an inherent lack of policy conflict. The military personnel
+        policy subsystem operationalizes this renewed theory of autonomous policy
+        subsystems. From the American Revolution and the Civil War through the first
+        and second World Wars and beyond, this dissertation traces the American political
+        development of military pension policy though the lens of the policy subsystem,
+        documenting the subsystem\u2019s formation, evolution, and ultimate transformation
+        into the autonomous military personnel policy subsystem. Through field-based
+        interviews of contemporary policy elites, I offer five key findings that contribute
+        to the policy subsystems literature. First, high rates of congressional and
+        bureaucratic turnover on the military personnel subcommittees and within the
+        Pentagon are detrimental to the subsystem\u2019s institutional memory. Second,
+        the Pentagon marginalizes itself by stove piping expert information through
+        bureaucratic hierarchies leaving it unresponsive to the subsystem\u2019s demands
+        for timely information. Third, subsystem actors see a clear distinction between
+        power and influence within the subsystem as the congressional subcommittees
+        on military personnel wield power and prominent Veterans\u2019 Service Organizations
+        wield influence. Fourth, subsystem actors search for and prioritize interinstitutional
+        signals from policy elites. Finally, issues surrounding military social policy
+        attract a whole new set of competing actors and institutions into the subsystem\u2019s
+        policymaking process. Though powerful, autonomous policy subsystems of this
+        sort are still susceptible to breakdown and policy change. Beyond exogenous
+        shocks and policy entrepreneurs, I contend autonomous policy subsystems are
+        particularly vulnerable to jurisdictional threats from blue ribbon commissions
+        chartered to gather new information, reframe policy images, alter issue definitions,
+        and make policy recommendations. As institutional venues for policy change,
+        blue ribbon defense commissions are well-positioned to breakdown autonomous
+        policy subsystems and bring about meaningful policy change. The dissertation
+        concludes with a broad set of recommendations along with ideas for future
+        research agendas.</dc:description>\n<dc:description>Government</dc:description>\n<dc:date>2015-09-29T18:56:27Z</dc:date>\n<dc:date>2015-09-29T18:56:27Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:date>2015-06-29</dc:date>\n<dc:date>May
+        2015</dc:date>\n<dc:date>2015-09-29T18:56:27Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T2W01H</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31451</dc:identifier>\n<dc:language>en</dc:language>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31452</identifier>\n
+        \               <datestamp>2015-09-29T19:03:46Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Contagious
+        agendas : the spread of issue attention in the policy process</dc:title>\n<dc:creator>Thomas,
+        Herschel Fred III</dc:creator>\n<dc:contributor>Jones, Bryan D.</dc:contributor>\n<dc:contributor>Baumgartner,
+        Frank R</dc:contributor>\n<dc:contributor>Wlezien, Chris</dc:contributor>\n<dc:contributor>Roberts,
+        Brian E</dc:contributor>\n<dc:contributor>Theriault, Sean M</dc:contributor>\n<dc:subject>Agenda-setting</dc:subject>\n<dc:subject>Contagion</dc:subject>\n<dc:subject>Cue-taking</dc:subject>\n<dc:subject>Policy
+        process</dc:subject>\n<dc:description>This dissertation is a study of contagion
+        effects in policymaking.  The policy process behaves in many ways like a complex
+        system, which is characterized by communication among actors, dynamic interaction,
+        and evolution in behavior over time.  As a result, the attention of policy
+        elites rapidly jumps from issue to issue as they struggle to address an array
+        of pressing issues and problems simultaneously.  I argue that a process of
+        issue contagion explains these rapid changes as policy elites are highly interdependent
+        actors who are subject to cognitive limits, have incentives to closely monitor
+        the political environment, and frequently mimic the behavior of their peers.
+        \ Drawing on the methods of computational social science, I build a simulation
+        model of agenda-setting behavior and examine issue contagion through an experimental
+        research design.  I test the empirical implications of the model by applying
+        it to real-world datasets\u2014from the disclosed lobbying activity of organized
+        interests to the bill introductions of members of Congress.  The core contribution
+        of the project is that patterns in attention to policy issues are a function
+        of a contagion process generated by cue-taking behavior among elites.</dc:description>\n<dc:description>Government</dc:description>\n<dc:date>2015-09-29T19:03:20Z</dc:date>\n<dc:date>2015-09-29T19:03:20Z</dc:date>\n<dc:date>2015-08</dc:date>\n<dc:date>2015-07-10</dc:date>\n<dc:date>August
+        2015</dc:date>\n<dc:date>2015-09-29T19:03:21Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T2R591</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31452</dc:identifier>\n<dc:language>en</dc:language>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31453</identifier>\n
+        \               <datestamp>2015-09-29T19:10:13Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>A
+        global struggle :  Namibian nationalism and South African imperialism at the
+        United Nations, 1945-1960</dc:title>\n<dc:creator>Morgan, Jason Matthew</dc:creator>\n<dc:contributor>Falola,
+        Toyin</dc:contributor>\n<dc:contributor>Lawrence, Mark</dc:contributor>\n<dc:contributor>Suri,
+        Jeremi</dc:contributor>\n<dc:contributor>Louis, Wm. Roger</dc:contributor>\n<dc:contributor>Harlow,
+        Barbara</dc:contributor>\n<dc:subject>Namibia</dc:subject>\n<dc:subject>South
+        Africa</dc:subject>\n<dc:subject>United Nations</dc:subject>\n<dc:subject>Decolonization</dc:subject>\n<dc:subject>Fourth
+        committee</dc:subject>\n<dc:subject>International history</dc:subject>\n<dc:subject>Diplomatic
+        history</dc:subject>\n<dc:description>\u201CA Global Struggle,\u201D examines
+        the role that diplomacy, particularly at the United Nations, played in Namibian
+        nationalist and South African imperial policy in the decades following the
+        Second World War. My work is based on extensive archival research in Namibia,
+        South Africa, the United Kingdom, Switzerland, and the United States.  I argue
+        that the creation of the United Nations out of the ashes of the League of
+        Nations gave both Namibians and South Africans hope that they could shape
+        Namibia into what they wanted it to be.  Namibians wanted to end the League
+        of Nations Mandate that had allowed South Africa to rule their country since
+        1920, and the South African government hoped to annex Namibia as the fifth
+        province of the Union of South Africa. Namibian nationalists worked with the
+        United Nations and other nations to prevent South Africa from gaining legal
+        control of Namibia.  Representatives of Namibian nationalists as early as
+        1947 began transforming the United Nations away from an institution concerned
+        with maintaining empires into a burgeoning anti-colonial force that would
+        hasten decolonization.  South Africa, facing decreasing support from the United
+        States and Great Britain, desperately tried to reverse the rising tide of
+        anti-colonial sentiment that was building at the United Nations.   Both South
+        Africans and Namibians viewed the United Nations as the center of the struggle
+        over the future of Namibia.  My project examines the strategies and actions
+        of both groups as they tried to manipulate world opinion in their favor.</dc:description>\n<dc:description>History</dc:description>\n<dc:date>2015-09-29T19:09:39Z</dc:date>\n<dc:date>2015-09-29T19:09:39Z</dc:date>\n<dc:date>2014-05</dc:date>\n<dc:date>May
+        2014</dc:date>\n<dc:date>2015-09-29T19:09:39Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T2MG6R</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31453</dc:identifier>\n<dc:language>en</dc:language>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31454</identifier>\n
+        \               <datestamp>2015-09-29T19:19:38Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The
+        multi-sensory object : jazz, the modern media, and the history of the senses
+        in Germany</dc:title>\n<dc:creator>Schmidt, Michael James</dc:creator>\n<dc:contributor>Crew,
+        David F., 1946-</dc:contributor>\n<dc:contributor>Coffin, Judith  G.</dc:contributor>\n<dc:contributor>Miller,
+        Karl H.</dc:contributor>\n<dc:contributor>Hake, Sabine</dc:contributor>\n<dc:contributor>Matysik,
+        Tracie</dc:contributor>\n<dc:subject>Jazz</dc:subject>\n<dc:subject>Germany</dc:subject>\n<dc:subject>The
+        history of the senses</dc:subject>\n<dc:subject>Music</dc:subject>\n<dc:subject>Perception</dc:subject>\n<dc:subject>Multi-sensory</dc:subject>\n<dc:subject>Media</dc:subject>\n<dc:subject>Synaesthesia</dc:subject>\n<dc:subject>Cultural
+        history</dc:subject>\n<dc:description>This dissertation traces the perceptual
+        history of jazz in Germany between 1918 and 1960. It argues that jazz was
+        a multi-sensory cultural object: jazz was never just sound but was fundamentally
+        composed of many different media and their respective combinations of sensory
+        address. This work follows the major transformations of the perception of
+        jazz. During the 1920s, it argues, jazz was primarily a visual and textual
+        phenomenon; by 1960, its audience considered sound to be its most important
+        attribute and its consumption involved a well-developed hermeneutics of listening.
+        As an intersection point for multiple media\u2014it was a subject in newspaper
+        articles, books, street advertisements, film, radio, and sound recordings\u2014jazz
+        opens a window onto the larger history of media and perception in Germany.
+        During the twentieth century, Germany witnessed a shift in its dominant media
+        regime. Before the rise of sound film, Germans public communication was dominated
+        by images and text; between 1929 and 1940, German society became inundated
+        with sound. These media regimes shaped both the contours of perception and
+        the form and presence of cultural objects.</dc:description>\n<dc:description>History</dc:description>\n<dc:date>2015-09-29T19:19:12Z</dc:date>\n<dc:date>2015-09-29T19:19:12Z</dc:date>\n<dc:date>2014-08</dc:date>\n<dc:date>2014-09-09</dc:date>\n<dc:date>August
+        2014</dc:date>\n<dc:date>2015-09-29T19:19:12Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T2GP4T</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31454</dc:identifier>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31455</identifier>\n
+        \               <datestamp>2015-09-29T19:25:52Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The
+        boundaries of art : Soviet photography from 1956 to 1970</dc:title>\n<dc:creator>Werneke,
+        Jessica Marie</dc:creator>\n<dc:contributor>Neuberger, Joan, 1953-</dc:contributor>\n<dc:contributor>Neuberger,
+        Joan</dc:contributor>\n<dc:contributor>Wynn, Charters</dc:contributor>\n<dc:contributor>Crew,
+        David</dc:contributor>\n<dc:contributor>Neuburger, Mary</dc:contributor>\n<dc:contributor>Charlesworth,
+        Michael</dc:contributor>\n<dc:subject>Soviet history</dc:subject>\n<dc:subject>European
+        visual culture</dc:subject>\n<dc:description>In January 1957, the Soviet Ministry
+        of Culture, assisted by the Union of Journalists, resumed publication of the
+        premiere photography journal of the Soviet Union, Sovetskoe Foto after a sixteen
+        year hiatus. The relative openness of the Khrushchev period, also known as
+        the cultural Thaw, fostered a climate of enthusiasm for photojournalists and
+        amateur photographers, who sought to establish photography as an officially
+        recognized art form. My dissertation argues that between 1957 and 1962, this
+        project seemed achievable; the relative openness of the period offered photojournalists
+        the opportunity to discuss their craft and reconceptualize their work in ways
+        that had been impossible in previous decades. In response to Khrushchev\u2019s
+        denunciation of Stalin in 1956, it is my assertion that the boundaries of
+        viable visual representation were shifting, and that a previously outcast
+        artistic movement could be reexamined as a way for photojournalists and amateur
+        photographers to demonstrate photography\u2019s aesthetic properties. My dissertation
+        examines the connections between documentary and aesthetic arguments made
+        by Soviet photographers and photojournalists, which complicated the relationship
+        between art photography and photojournalism. In the mid-1950s and early 1960s,
+        professional photographers returned to these discussions in order to elevate
+        their work, make a case for the creation of a union specifically for photographers.
+        This occurred at the same time that mass media began to incorporate 1920s
+        and 1930s avant-garde aesthetics in press and illustrated magazine photographs,
+        making them more accessible to Soviet citizens. The reorientation of Soviet
+        life, towards more private contributions to building socialism, as well as
+        the government and Party\u2019s interest in expanding and galvanizing the
+        press, meant that illustrated magazines were reaching a wider soviet audience.
+        After 1962, however, professional and amateur photographers confronted the
+        realization that their designs for a photography union and higher education
+        were not gaining official support. Photojournalists and theorists at began
+        arguing not for photography as an art form, but rather something in between
+        art and document. Some amateurs, who had originally desired close correspondence
+        with official photographers and photography clubs, began to turn towards unofficial
+        and nonconformist photography, severing their ties with the official community.</dc:description>\n<dc:description>History</dc:description>\n<dc:date>2015-09-29T19:25:23Z</dc:date>\n<dc:date>2015-09-29T19:25:23Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:date>2015-04-22</dc:date>\n<dc:date>May
+        2015</dc:date>\n<dc:date>2015-09-29T19:25:24Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T2C01V</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31455</dc:identifier>\n<dc:language>en</dc:language>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31456</identifier>\n
+        \               <datestamp>2015-09-29T19:49:43Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>\u201CCoping
+        with this scourge\u201D : the state, leprosy, and the politics of public health
+        in colonial Ghana, 1900-mid 1950s</dc:title>\n<dc:creator>Gundona, Sylvester</dc:creator>\n<dc:contributor>Falola,
+        Toyin</dc:contributor>\n<dc:contributor>Walker, Juliet E. K.</dc:contributor>\n<dc:contributor>Zamora,
+        Emilio</dc:contributor>\n<dc:contributor>Denbow, James R.</dc:contributor>\n<dc:contributor>Ogbomo,
+        Onaiwu W.</dc:contributor>\n<dc:subject>Public health</dc:subject>\n<dc:subject>Leprosy</dc:subject>\n<dc:subject>Colonial
+        Ghana</dc:subject>\n<dc:subject>Leprosy patients</dc:subject>\n<dc:subject>Leprosy
+        settlements</dc:subject>\n<dc:subject>Disease re-conceptualization</dc:subject>\n<dc:subject>Pharmacopeia</dc:subject>\n<dc:subject>Visual
+        education</dc:subject>\n<dc:subject>Christian missions</dc:subject>\n<dc:subject>Pharmaceutical
+        research</dc:subject>\n<dc:subject>Trial medications</dc:subject>\n<dc:subject>Colonial
+        economy</dc:subject>\n<dc:description>The dissertation explores the politics
+        of aspects of public health policy in colonial Ghana from 1900 to the mid-1950s.
+        It explains why leprosy a highly debilitating disease condition, did not receive
+        any serious attention by the Gold Coast colonial and medical authorities,
+        but diseases like yaws and trypanosomiasis (sleeping sickness) did, although
+        the three diseases generally afflicted people of the same geographical location,
+        and did not wreck any havoc on the European population. I implicitly challenge
+        the interpretations of scholars who frame the argument, based on the notion
+        of conceptualizing Africa\u2019s disease environment as an anathema to European
+        imperialism and colonization, that colonial public health policy was driven
+        by how the African disease environment affected the lives of both official
+        and non-official Europeans in the colonies.  I argue that the thinking of
+        the Gold Coast colonial and medical authorities on the disease environment
+        was not a static one. By the mid-1930s the disease was conceptualized as an
+        exploitable resource.  Medical and pharmaceutical research became important,
+        as were markets for pharmaceutical products.  The welfare of the colonial
+        economy, which was labor driven was at play and so was the cultural image
+        of the superiority of anything European. Leprosy was not an appropriate disease
+        for experiment purposes and because the healing process of lepers who were
+        treated by European medication was not spontaneous it challenged the notions
+        of cultural and material superiority being bandied around. Leprosy did not
+        also affect the labor pool of the cocoa and mineral industries.  Leprosy was
+        essentially abandoned for trypanosomiasis (sleeping sickness) and yaws which
+        threatened not just the numbers, but also the quality of labor pool for the
+        cocoa and mineral industries.  The two disease offered appropriate avenues
+        for extensive medical and pharmaceutical research. The trial medications deployed
+        showed spontaneous improvement on patients and that bolstered both the notions
+        of medical and cultural superiority and the urge for western pharmacopeia.
+        To ensure the full exploitation of this emerging pharmaceutical market, colonial
+        government was relentless in suffocating the professions of African herbal
+        practitioners.</dc:description>\n<dc:description>History</dc:description>\n<dc:date>2015-09-29T19:49:14Z</dc:date>\n<dc:date>2015-09-29T19:49:14Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:date>2015-05-05</dc:date>\n<dc:date>May
+        2015</dc:date>\n<dc:date>2015-09-29T19:49:14Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T2759C</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31456</dc:identifier>\n<dc:language>en</dc:language>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31457</identifier>\n
+        \               <datestamp>2015-09-29T19:55:24Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Sports
+        and the modernity of leisure in Nigeria : stadium space and the symbolisms
+        of expressions, 1930-1980</dc:title>\n<dc:creator>Obasa, Olusegun</dc:creator>\n<dc:contributor>Falola,
+        Toyin</dc:contributor>\n<dc:contributor>Walker, Juliet E.</dc:contributor>\n<dc:contributor>Denbow,
+        James R.</dc:contributor>\n<dc:contributor>Jones, Joni L.</dc:contributor>\n<dc:contributor>Moore,
+        Leonard M.</dc:contributor>\n<dc:contributor>Dasylva, Ademola 0.</dc:contributor>\n<dc:subject>Stadium</dc:subject>\n<dc:subject>Modernity</dc:subject>\n<dc:description>It
+        is well-documented that sports appropriation is universal, though the degree
+        varies from place to place.  The emergence of sports in Nigeria provides insights
+        into evolving construction of ethnicity, class, and gender, while simultaneously
+        speaking to local ideas about identity and modernity. For many in Africa,
+        sports clearly represent a passion and pleasure.  Two overarching questions
+        guide this dissertation: why were Western sports introduced to Nigeria by
+        the colonial government and missionaries? What role did sports play in processes
+        of identity creation, urban development and modernization in Nigeria? These
+        questions establish the human agency involved within the creation of sporting
+        activities and allow room for the motivations of actors. I answer these questions
+        by examining the broad significance of sports in Nigeria through the stadium.
+        The debates over stadium construction in advance of Nigeria\u2019s independence
+        revealed the ways in which sports critically shaped the conceptions of urban
+        planning and national health in the nation. Although fifty years will be covered
+        here, I focus more on the 1960 to 1980 period in accordance with this dissertation\u2019s
+        emphasis on stadium space and the modernity of leisure. This work shows how
+        spectators used the stadium to construct patronage networks and alliances,
+        and how the government used the stadium as a mobilizing force to legitimize
+        their activities at the grassroots and national levels. In this dissertation,
+        I read the stadium as a representation of power, authority and discipline\u2014the
+        work of architects, politicians, bureaucrats, journalists, and sports officials\u2014and
+        as a venue of lived experiences of spectators, who redefined the stadium in
+        terms that, while not always their own choosing, demonstrated the incorporation
+        of the stadium into everyday life and processes of identity formation in Nigeria.
+        I argue that sports, and the spaces in which they unfolded, dramatically shaped
+        society, politics and culture in Nigeria. I argue that through sport competitions,
+        Nigeria became fixed in the national consciousness as modern.</dc:description>\n<dc:description>History</dc:description>\n<dc:date>2015-09-29T19:54:57Z</dc:date>\n<dc:date>2015-09-29T19:54:57Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:date>2015-06-24</dc:date>\n<dc:date>May
+        2015</dc:date>\n<dc:date>2015-09-29T19:54:57Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T23G63</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31457</dc:identifier>\n<dc:language>en</dc:language>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31458</identifier>\n
+        \               <datestamp>2015-09-29T20:01:42Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>River
+        sands/urban spaces : Changsha in modern Chinese history</dc:title>\n<dc:creator>Hudson,
+        James Joshua</dc:creator>\n<dc:contributor>Li, Huaiyin</dc:contributor>\n<dc:contributor>Metzler,
+        Mark</dc:contributor>\n<dc:contributor>Neuburger, Mary</dc:contributor>\n<dc:contributor>Hurst,
+        William</dc:contributor>\n<dc:contributor>Sena, David</dc:contributor>\n<dc:subject>China</dc:subject>\n<dc:subject>Changsha</dc:subject>\n<dc:description>This
+        work is a modern history of Changsha, the capital city of Hunan province,
+        from the late nineteenth to mid twentieth centuries.  The story begins by
+        discussing a battle that occurred in the city during the Taiping Rebellion
+        (1850-1864), a civil war that erupted in China during the mid nineteenth century.
+        \ The events of this battle, but especially its memorialization in local temples
+        in the years following the rebellion, established a local identity of resistance
+        to Christianity and western imperialism.  By the 1890\u2019s this culture
+        of resistance contributed to a series of riots that erupted in south China,
+        related to the distribution of anti-Christian tracts and placards from publishing
+        houses in Changsha.  During these years a local gentry named Ye Dehui (1864-1927)
+        emerged as a prominent businessman, grain merchant, and community leader.
+        \ When a massive urban riot erupted in April 1910, Ye and other gentry were
+        accused of withholding grain from starving peasants and other disgruntled
+        locals.  At the end of the same decade, in 1919 the Treaty of Versailles ended
+        the war in Europe but awarded German owned territory in north China to Japan.
+        \ Students and activists erupted in protest in cities throughout China, especially
+        in Changsha.  The climate of urban activism that emerged by the 1920\u2019s
+        inaugurated an age of civic identity in the city.  Activists embraced certain
+        ideas associated with western modernity\u2014such as Marxism\u2014in order
+        to overcome western imperialism.  Among the voices of dissent were young activists
+        such as Mao Zedong (1893-1976).  Students from foreign missionary schools
+        even joined the protests.  This new generation of activists published articles
+        in the local press and other journals denouncing the West\u2019s influence
+        not only in Changsha, but also in communities throughout China. I also discuss
+        the history of women in Changsha, most notably the experiences of an activist
+        named Zhu Tierong (1915-2009).  During World War II she worked with the local
+        chapter of the YMCA to care for refugees.  The war also brought intense carnage
+        to Changsha, as much of the city was destroyed by a fire in 1938.</dc:description>\n<dc:description>History</dc:description>\n<dc:date>2015-09-29T20:01:15Z</dc:date>\n<dc:date>2015-09-29T20:01:15Z</dc:date>\n<dc:date>2015-05</dc:date>\n<dc:date>2015-05-20</dc:date>\n<dc:date>May
+        2015</dc:date>\n<dc:date>2015-09-29T20:01:15Z</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T2ZP45</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31458</dc:identifier>\n<dc:language>en</dc:language>\n<dc:format>application/pdf</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31459</identifier>\n
+        \               <datestamp>2015-09-29T20:49:12Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Religious
+        vitality among the mainline</dc:title>\n<dc:creator>March, Jennifer Anne</dc:creator>\n<dc:contributor>Sjoberg,
+        Gideon</dc:contributor>\n<dc:subject>Protestantism in the United States</dc:subject>\n<dc:subject>Religious
+        participation</dc:subject>\n<dc:subject>Church attendance</dc:subject>\n<dc:description>Beginning
+        in the 1960's, mainline Protestantism saw rates of participation begin to
+        slip. As this trend has continued to follow a downward slope over recent decades,
+        social scientific researchers on religion have been interested in this pattern
+        of decline. As such, research has examined many diverse factors contributing
+        to this pattern of mainline decline, including cultural, ecological, and demographic.
+        However, amidst all the literature on \"mainline decline,\" rarely have researchers
+        considered the factors that have allowed the mainline to subsist. These factors
+        are most likely neither demographic nor macro-level cultural forces. Instead,
+        they are local elements of the church's organization and culture which are
+        forged on a congregational level. As mainline churches confront dwindling
+        participating rates and resources, they must learn to work within the contemporary
+        context of religious pluralism and individualism to find ways of reinjecting
+        the religious experience with salient meaning. This study looks at a Presbyterian
+        church in-decline as it does just this, reinventing its identity and rearranging
+        its organization to meet the needs of its members.</dc:description>\n<dc:description>Sociology</dc:description>\n<dc:date>2015-09-29T20:47:18Z</dc:date>\n<dc:date>2015-09-29T20:47:18Z</dc:date>\n<dc:date>2006-05</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T2V016</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31459</dc:identifier>\n<dc:language>eng</dc:language>\n<dc:relation>UT
+        Electronic Theses and Dissertations</dc:relation>\n<dc:rights>Copyright \xA9
+        is held by the author. Presentation of this material on the Libraries' web
+        site by University Libraries, The University of Texas at Austin was made possible
+        under a limited license grant from the author who has retained all copyrights
+        in the works.</dc:rights>\n<dc:rights>Restricted</dc:rights>\n<dc:format>electronic</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n        <record>\n            <header>\n                <identifier>oai:repositories.lib.utexas.edu:2152/31460</identifier>\n
+        \               <datestamp>2015-09-29T21:09:10Z</datestamp>\n                <setSpec>com_2152_4</setSpec>\n
+        \               <setSpec>col_2152_11</setSpec>\n            </header>\n            <metadata><oai_dc:dc
+        xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"http://www.lyncode.com/xoai\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>An
+        investigation of postmodernism research vs. practice</dc:title>\n<dc:creator>Maher,
+        Caitlin Elizabeth</dc:creator>\n<dc:contributor>Bolin, Paul Erik, 1954-</dc:contributor>\n<dc:subject>Postmodernism</dc:subject>\n<dc:subject>Art
+        education</dc:subject>\n<dc:subject>Art teachers</dc:subject>\n<dc:description>This
+        descriptive research study examines the connection and communication between
+        art education researchers and practicing art teachers regarding the current
+        trend of postmodernism in art education. It was established in this study
+        that the world of art and consequently art education has experienced a shift
+        in trends from modernism to postmodernism. The intent of this study was to
+        discern what art education researchers are suggesting for a postmodern curriculum
+        design, and further to learn through interviews and observations what and
+        how public school art teachers understand, interpret and implement postmodern
+        curriculum content in the art classroom. The researcher unearthed a great
+        discontinuity between art education theorists and practicing art teachers
+        and concludes this is a subject of study that needs to be rectified if art
+        education is to establish itself as a meaningful part of schooling and students'
+        lives.</dc:description>\n<dc:description>Art Education</dc:description>\n<dc:date>2015-09-29T21:06:50Z</dc:date>\n<dc:date>2015-09-29T21:06:50Z</dc:date>\n<dc:date>2006-05</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:type>Thesis</dc:type>\n<dc:type>text</dc:type>\n<dc:identifier>doi:10.15781/T2Q59Q</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2152/31460</dc:identifier>\n<dc:language>eng</dc:language>\n<dc:relation>UT
+        Electronic Theses and Dissertations</dc:relation>\n<dc:rights>Copyright \xA9
+        is held by the author. Presentation of this material on the Libraries' web
+        site by University Libraries, The University of Texas at Austin was made possible
+        under a limited license grant from the author who has retained all copyrights
+        in the works.</dc:rights>\n<dc:rights>Restricted</dc:rights>\n<dc:format>electronic</dc:format>\n</oai_dc:dc>\n</metadata>\n
+        \       </record>\n    </ListRecords>\n</OAI-PMH>\n"}
     headers:
-      content-encoding: [gzip]
-      content-type: [text/xml;charset=UTF-8]
-      date: ['Fri, 08 May 2015 17:58:39 GMT']
-      server: [Apache-Coyote/1.1]
-      transfer-encoding: [chunked]
+      connection: [close]
+      content-type: [application/xml]
+      date: ['Thu, 12 Nov 2015 14:33:42 GMT']
     status: {code: 200, message: OK}
 version: 1
