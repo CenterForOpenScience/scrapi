@@ -226,7 +226,7 @@ class CassandraProcessor(BaseProcessor):
         try:
             doc = DocumentModel.get(source=source, docID=docID)
         except DocumentModel.DoesNotExist:
-            return []
+            return
         for uuid in doc.versions:
             try:
                 version = VersionModel.get(uuid)
