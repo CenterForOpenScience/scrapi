@@ -54,6 +54,7 @@ class BaseDocument(object):
             :param bool validate: If true, the object will be validated before creation
             :param bool clean: If true, optional fields that are null will be deleted
         '''
+        attributes = attributes or {}
         # validate a version of the attributes that are safe to check
         # against the JSON schema
 
