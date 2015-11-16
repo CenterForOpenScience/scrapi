@@ -69,7 +69,7 @@ def cross_db(docs, source_db=None, target_db=None, index=None, versions=False, *
                         if normalized:
                             target_processor.process_normalized(raw_version, norm_version)
                         else:
-                            logger.info('Not storing migrated normalized version with uuid {} from {} with id {}, document is not in approved set list.'.format(raw.attributes['source'], raw.attributes['docID']))
+                            logger.info('Not storing migrated normalized version from {} with id {}, document is not in approved set list.'.format(raw.attributes['source'], raw.attributes['docID']))
                 else:
                     target_processor.process_raw(raw)
                     if normalized:
