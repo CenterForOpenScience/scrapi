@@ -163,7 +163,6 @@ class CassandraProcessor(BaseProcessor):
                 for doc in page:
                     doc.save()
                     yield DocumentTuple(self.to_raw(doc), self.to_normalized(doc))
-                logger.info('yielded 1000 pages')
                 page = try_n_times(5, self.next_page, query, page)
 
     def next_page(self, query, page):
@@ -181,7 +180,7 @@ class CassandraProcessor(BaseProcessor):
     def to_normalized(self, doc):
         # make the new dict actually contain real items
         normed = {}
-        do_not_include = ['docID', 'doc', 'filetype', 'timestamps', 'source']
+        do_not_include = ['docID', 'doc', 'filetype', 'timestamps', 'source', 'versions', 'key']
         for key, value in dict(doc).items():
             if value and key not in do_not_include:
                 try:
