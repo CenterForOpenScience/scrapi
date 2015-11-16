@@ -36,6 +36,12 @@ class DatabaseManager(BaseDatabaseManager):
         pass
 
 
+def paginated(query, page_size=10):
+    for offset in range(0, query.count(), page_size):
+        for doc in query[offset:offset + page_size]:
+            yield doc
+
+
 class PostgresProcessor(BaseProcessor):
     NAME = 'postgres'
 
@@ -45,7 +51,7 @@ class PostgresProcessor(BaseProcessor):
         q = Document.objects.all()
         querysets = (q.filter(source=source) for source in sources) if sources else [q]
         for query in querysets:
-            for doc in query:
+            for doc in paginated(query):
                 try:
                     raw = RawDocument(doc.raw, clean=False, validate=False)
                 except AttributeError as e:
@@ -134,8 +140,16 @@ class PostgresProcessor(BaseProcessor):
             return Document(source=raw['source'], docID=raw['docID'])
 
     def get_versions(self, source, docID):
-        # import ipdb; ipdb.set_trace()
-        pass
+        doc = self._get_by_source_id(source, docID)
+        for version in paginated(doc.version_set.all()):
+            yield DocumentTuple(
+                RawDocument(version.raw, clean=False, validate=False),
+                NormalizedDocument(version.normalized, clean=False, validate=False)
+            )
+        yield DocumentTuple(
+            RawDocument(doc.raw, clean=False, validate=False),
+            NormalizedDocument(doc.normalized, clean=False, validate=False)
+        )
 
 
 class HarvesterResponseModel(BaseHarvesterResponse):
