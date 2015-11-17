@@ -1,4 +1,7 @@
+from __future__ import unicode_literals
+import six
 import csv
+import codecs
 import logging
 
 from schema_transformer.transformer import CSVTransformer
@@ -10,7 +13,10 @@ logger = logging.getLogger(__name__)
 class IpedsTransformer(CSVTransformer):
     def _transform_string(self, val, doc):
         val = super(IpedsTransformer, self)._transform_string(val, doc)
-        return val.decode('Windows-1252').encode('utf-8')
+        #try:
+         #   return val.encode('utf-8')
+        #except AttributeError:
+        return six.u(val)
 
     def load(self, doc):
         return doc
@@ -31,15 +37,13 @@ schema = {
 }
 
 def populate(ipeds_file):
-    with open(ipeds_file) as f:
+    with codecs.open(ipeds_file, encoding='Windows-1252', errors='replace') as f:
         reader = csv.reader(f)
 
         transformer = IpedsTransformer(schema, next(reader))
-
         for row in reader:
             transformed = transformer.transform(row)
             logger.info('Adding {0}.'.format(transformed['name']))
-            
+
             inst = Institution(country='United States', **transformed)
             inst.save()
-

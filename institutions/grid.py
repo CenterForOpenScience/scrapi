@@ -38,8 +38,6 @@ def populate(grid_file):
     transformer = GridTransformer(schema)
     for doc in get_jsons(grid_file):
         transformed = transformer.transform(doc, load=False)
-        try:
-            inst = Institution(**transformed)
-            inst.save()
-        except UnicodeDecodeError:
-            print (transformed)
+        logger.info('Adding {0}.'.format(transformed['name']))
+        inst = Institution(**transformed)
+        inst.save()
