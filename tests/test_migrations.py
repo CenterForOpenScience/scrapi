@@ -124,6 +124,52 @@ def test_renormalize(processor_name, monkeypatch):
 
 @pytest.mark.django_db
 @pytest.mark.cassandra
+@pytest.mark.parametrize('canonical', ['postgres', 'cassandra'])
+@pytest.mark.parametrize('destination', ['postgres', 'cassandra'])
+def test_cross_db_with_versions(canonical, destination, monkeypatch, index='test'):
+    new_title = 'How to be really good at Zoo Tycoon: The Definitive Guide'
+
+    if canonical == destination:
+        return
+
+    monkeypatch.setattr('scrapi.settings.CANONICAL_PROCESSOR', canonical)
+
+    # Get the test documents into the canonical processor
+    canonical_processor = get_processor(canonical)
+    canonical_processor.process_raw(RAW)
+    canonical_processor.process_normalized(RAW, NORMALIZED)
+
+    # Get a version in there too
+    new_normalized = copy.deepcopy(NORMALIZED.attributes)
+    new_normalized['title'] = new_title
+    canonical_processor.process_normalized(RAW, NormalizedDocument(new_normalized))
+
+    destination_processor = get_processor(destination)
+
+    # Check to see canonical_processor versions are there, and destination are not
+    canonical_versions = list(canonical_processor.get_versions(docID=RAW['docID'], source=RAW['source']))
+    assert len(canonical_versions) == 3
+    assert canonical_versions[1].normalized['title'] == NORMALIZED['title']
+    assert canonical_versions[2].normalized['title'] == new_title
+
+    destination_doc = destination_processor.get(docID=RAW['docID'], source=RAW['source'])
+    assert not destination_doc
+
+    # Migrate from the canonical to the destination
+    tasks.migrate(cross_db, target_db=destination, dry=False, sources=['test'], index=index, versions=True)
+
+    # Check to see if the document made it to the destinaton, and is still in the canonical
+    destination_versions = list(destination_processor.get_versions(docID=RAW['docID'], source=RAW['source']))
+    assert len(destination_versions) == 3
+    assert destination_versions[1].normalized['title'] == NORMALIZED['title']
+    assert destination_versions[2].normalized['title'] == new_title
+
+    canonical_doc = canonical_processor.get(docID=RAW['docID'], source=RAW['source'])
+    assert canonical_doc
+
+
+@pytest.mark.django_db
+@pytest.mark.cassandra
 @pytest.mark.elasticsearch
 @pytest.mark.parametrize('canonical', ['postgres', 'cassandra'])
 @pytest.mark.parametrize('destination', ['postgres', 'cassandra', 'elasticsearch'])
