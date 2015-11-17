@@ -84,6 +84,11 @@ class BaseDocument(object):
     def __delitem__(self, attr):
         del self.attributes[attr]
 
+    def __bool__(self):
+        return bool(self.attributes)
+
+    __nonzero__ = __bool__
+
 
 class RawDocument(BaseDocument):
 
