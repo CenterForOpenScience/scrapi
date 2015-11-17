@@ -1,3 +1,5 @@
+import json
+from django.http import HttpResponse
 from rest_framework import generics
 from rest_framework import permissions
 from rest_framework.response import Response
@@ -47,10 +49,18 @@ def document_detail(request, source, docID):
     Retrieve one particular document.
     """
     try:
-        all_sources = Document.objects.filter(source=source)
-        document = all_sources.get(docID=docID)
+        document = Document.objects.get(key=Document._make_key(source, docID))
     except Document.DoesNotExist:
         return Response(status=404)
 
     serializer = DocumentSerializer(document)
     return Response(serializer.data)
+
+
+@api_view(['GET'])
+@xframe_options_exempt
+def status(request):
+    """
+    Show the status of the API
+    """
+    return HttpResponse(json.dumps({'status': 'ok'}), content_type='application/json', status=200)

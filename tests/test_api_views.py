@@ -5,7 +5,7 @@ import django
 from django.test import TestCase
 from rest_framework.test import APIRequestFactory
 
-from api.webview.views import DocumentList
+from api.webview.views import DocumentList, status
 
 django.setup()
 
@@ -37,6 +37,15 @@ class APIViewTests(TestCase):
         view = DocumentList.as_view()
         request = self.factory.get(
             '/documents/dudley_weekly/dudley1'
+        )
+        response = view(request)
+
+        self.assertEqual(response.status_code, 200)
+
+    def test_status(self):
+        view = status
+        request = self.factory.get(
+            '/status'
         )
         response = view(request)
 

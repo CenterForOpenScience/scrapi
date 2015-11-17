@@ -46,7 +46,7 @@ class SpringerlHarvester(JSONHarvester):
 
     base_url = 'http://api.springer.com/meta/v1/json'
     URL = furl(base_url)
-    URL.args['api_key'] = settings.SPRINGER_KEY
+    URL.args['api_key'] = settings.SPRINGER_API_KEY
     URL.args['p'] = 100
 
     @property
