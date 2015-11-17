@@ -141,7 +141,7 @@ class PostgresProcessor(BaseProcessor):
 
     def get_versions(self, source, docID):
         doc = self._get_by_source_id(source, docID)
-        for version in paginated(doc.version_set.all()):
+        for version in doc.version_set.all().order_by('id'):
             yield DocumentTuple(
                 RawDocument(version.raw, clean=False, validate=False),
                 NormalizedDocument(version.normalized, clean=False, validate=False)
