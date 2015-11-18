@@ -365,7 +365,7 @@ def datetime_formatter(datetime_string):
 
 
 def doe_name_parser(name):
-    if name == 'None':
+    if name.strip() == 'None':
         return {'name': ''}
     name, orcid = extract_and_replace_one(name, DOE_ORCID_REGEX)
     name, email = extract_and_replace_one(name, DOE_EMAIL_REGEX)
@@ -375,7 +375,7 @@ def doe_name_parser(name):
     if affiliations:
         parsed_name['affiliation'] = list(map(doe_parse_affiliation, affiliations))
     if orcid:
-        parsed_name['sameAs'] = [orcid]
+        parsed_name['sameAs'] = ['https://orcid.org/{}'.format(orcid)]
     if email:
         parsed_name['email'] = email
     return parsed_name
