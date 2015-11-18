@@ -260,7 +260,7 @@ def provider_map(delete=False):
     gen_harvesters()
 
     for harvester_name, harvester in registry.items():
-        if not null_on_error(es.get)(index='share_providers', doc_type=harvester_name, id=harvester_name):
+        if not null_on_error(es.get, log=False)(index='share_providers', doc_type=harvester_name, id=harvester_name):
             with open("img/favicons/{}_favicon.ico".format(harvester.short_name), "rb") as f:
                 favicon = urllib_parse.quote(base64.encodestring(f.read()))
 
