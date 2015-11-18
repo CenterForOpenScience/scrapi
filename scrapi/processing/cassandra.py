@@ -154,12 +154,6 @@ class CassandraProcessor(BaseProcessor):
             # create document
             return DocumentModel.create(docID=docID, source=source, **kwargs)
 
-    def different(self, old, new):
-        try:
-            return not all([new[key] == old[key] or (not new[key] and not old[key]) for key in new.keys() if key != 'timestamps'])
-        except Exception:
-            return True  # If the document fails to load/compare for some reason, accept a new version
-
     def documents(self, *sources):
         q = DocumentModel.objects.timeout(500).allow_filtering().all().limit(100)
         querysets = (q.filter(source=source) for source in sources) if sources else [q]
@@ -169,7 +163,6 @@ class CassandraProcessor(BaseProcessor):
                 for doc in page:
                     doc.save()
                     yield DocumentTuple(self.to_raw(doc), self.to_normalized(doc))
-                logger.info('yielded 1000 pages')
                 page = try_n_times(5, self.next_page, query, page)
 
     def next_page(self, query, page):
@@ -181,14 +174,13 @@ class CassandraProcessor(BaseProcessor):
             'docID': doc.docID,
             'source': doc.source,
             'filetype': doc.filetype,
-            'timestamps': doc.timestamps,
-            'versions': doc.versions
+            'timestamps': doc.timestamps
         }, validate=False, clean=False)
 
     def to_normalized(self, doc):
         # make the new dict actually contain real items
         normed = {}
-        do_not_include = ['docID', 'doc', 'filetype', 'timestamps', 'source']
+        do_not_include = ['docID', 'doc', 'filetype', 'timestamps', 'source', 'versions', 'key']
         for key, value in dict(doc).items():
             if value and key not in do_not_include:
                 try:
@@ -228,6 +220,19 @@ class CassandraProcessor(BaseProcessor):
 
     def create(self, attributes):
         DocumentModel.create(**attributes).save()
+
+    def get_versions(self, source, docID):
+        try:
+            doc = DocumentModel.get(source=source, docID=docID)
+        except DocumentModel.DoesNotExist:
+            return
+        for uuid in doc.versions:
+            try:
+                version = VersionModel.get(key=uuid)
+            except VersionModel.DoesNotExist:
+                continue
+            yield DocumentTuple(self.to_raw(version), self.to_normalized(version))
+        yield DocumentTuple(self.to_raw(doc), self.to_normalized(doc))
 
 
 @DatabaseManager.registered_model
