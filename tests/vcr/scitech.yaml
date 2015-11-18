@@ -14,7 +14,7 @@ interactions:
         \ xmlns:dcq=\"http://purl.org/dc/terms/\"><records count=\"123\" morepages=\"\
         true\" start=\"1\" end=\"100\"><record rownumber=\"1\"><dc:title>Capacity\
         \ Specification for Hybrid Energy Storage System to Accommodate Fast PV Fluctuations</dc:title><dc:creator>Wang\
-        \ X.; Yue, M</dc:creator><dc:subject>25 ENERGY STORAGE</dc:subject><dc:subjectRelated/><dc:description>N/A</dc:description><dcq:publisher/><dcq:publisherAvailability/><dcq:publisherResearch>Brookhaven\
+        \ X.; Yue, E-mail: Yue@gmail.com, (ORCID: 12313123) [The streets] M</dc:creator><dc:subject>25 ENERGY STORAGE</dc:subject><dc:subjectRelated/><dc:description>N/A</dc:description><dcq:publisher/><dcq:publisherAvailability/><dcq:publisherResearch>Brookhaven\
         \ National Laboratory (BNL)</dcq:publisherResearch><dcq:publisherSponsor>USDOE\
         \ SC OFFICE OF SCIENCE (SC)</dcq:publisherSponsor><dcq:publisherCountry>United\
         \ States</dcq:publisherCountry><dc:date>2015-07-26</dc:date><dc:language>English</dc:language><dc:type>Conference</dc:type><dcq:typeQualifier/><dc:relation>Conference:\
@@ -75,7 +75,7 @@ interactions:
         \ ED</dc:format><dc:identifier>OSTI ID: 1165046, Legacy ID: OSTI ID: 1165046</dc:identifier><dc:identifierReport>DOE-UCSC-46232</dc:identifierReport><dcq:identifierDOEcontract>FG02-05ER46232</dcq:identifierDOEcontract><dc:identifierOther/><dc:doi>10.2172/1165046</dc:doi><dc:rights/><dc:dateEntry>2014-12-25</dc:dateEntry><dc:dateAdded>2014-12-24</dc:dateAdded><dc:ostiId>1165046</dc:ostiId><dcq:identifier-purl\
         \ type=\"application/pdf\">http://www.osti.gov/scitech/servlets/purl/1165046</dcq:identifier-purl><dcq:identifier-citation>http://www.osti.gov/scitech/biblio/1165046</dcq:identifier-citation></record><record\
         \ rownumber=\"5\"><dc:title>Soft X-ray Self-Seeding simulation methods and\
-        \ their application for the LCLS</dc:title><dc:creator>Serkez, Svitozar; /DESY;\
+        \ their application for the LCLS</dc:title><dc:creator>None; /DESY;\
         \ Krzywinski, Jacek; Ding, Yuantao; Huang, Zhirong; /SLAC; , </dc:creator><dc:subject>ACCPHY,\
         \ XFEL</dc:subject><dc:subjectRelated>ACCPHY, XFEL</dc:subjectRelated><dc:description>Abstract\
         \ Not Provided</dc:description><dcq:publisher/><dcq:publisherAvailability>http://www-public.slac.stanford.edu/SciDoc/docMeta.aspx?slacPubNumber=slac-pub-16163</dcq:publisherAvailability><dcq:publisherResearch>SLAC\
