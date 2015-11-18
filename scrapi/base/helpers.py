@@ -372,9 +372,12 @@ def doe_name_parser(name):
     name, affiliations = doe_extract_affiliations(name)
 
     parsed_name = maybe_parse_name(name)
-    parsed_name['affiliation'] = list(map(doe_parse_affiliation, affiliations))
-    parsed_name['sameAs'] = [orcid] if orcid else []
-    parsed_name['email'] = email
+    if affiliations:
+        parsed_name['affiliation'] = list(map(doe_parse_affiliation, affiliations))
+    if orcid:
+        parsed_name['sameAs'] = [orcid]
+    if email:
+        parsed_name['email'] = email
     return parsed_name
 
 
