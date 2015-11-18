@@ -2,8 +2,67 @@
 ChangeLog
 *********
 
+0.10.7 (2015-11-16)
+===================
+- Update Cambridge long name
+- Update UTAustin url and approved sets
+
+0.10.6 (2015-11-10)
+===================
+- Fix springer API key name
+
+0.10.5 (2015-11-09)
+===================
+- Make single document query much faster for apiserver
+- Add status route, so the status can be checked without being super slow
+
+0.10.4 (2015-11-06)
+===================
+- Prevent Django from executing a count query for pagination
+
+0.10.3 (2015-11-05)
+===================
+- Prevent unicode decode errors when stripping bytes out of json blobs
+
+0.10.2 (2015-11-05)
+===================
+- Log single failed documents on the cross_db migration, but don't halt it
+
+0.10.1 (2015-11-05)
+===================
+- Fix invalid database serialization declaration
+
+0.10.0 (2015-11-04)
+===================
+- Add harvesters:
+	- Portland State University
+	- Philadelphia College of Osteopathic
+	- University of Tennessee Knoxville
+	- Springer Link
+	- Kent State
+	- Lake Winnipeg Basin Information Network Data Hub
+	- VIVO
+	- Research Online @ University of Wollongong
+	- University of Cambridge
+	- CiteSeerX
+	- UKY
+	- University of Illinois
+	- Chapman
+	- Neurovault
+	- NIH
+- Add Django REST API for raw and normalized documents, as well as
+	a postgres backend for scrAPI
+- Prevent mapper parsing exceptions in elasticsearch from preventing a
+	document from being indexed when it is a date field that breaks
+- Make pubmedcentral API endpoint point to the correct place
+- Add support for running doctests
+- Various other testing and test coverage improvements
+- FRONTEND_KEYS is no longer a required setting, and will default to allowing
+	all fields
+- Various documentation fixes
+
 0.9.10 (2015-10-26)
-==================
+===================
 - Fix incorrect map serialization in OAI harvesters
 
 

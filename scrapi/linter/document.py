@@ -54,6 +54,7 @@ class BaseDocument(object):
             :param bool validate: If true, the object will be validated before creation
             :param bool clean: If true, optional fields that are null will be deleted
         '''
+        attributes = attributes or {}
         # validate a version of the attributes that are safe to check
         # against the JSON schema
 
@@ -82,6 +83,11 @@ class BaseDocument(object):
 
     def __delitem__(self, attr):
         del self.attributes[attr]
+
+    def __bool__(self):
+        return bool(self.attributes)
+
+    __nonzero__ = __bool__
 
 
 class RawDocument(BaseDocument):

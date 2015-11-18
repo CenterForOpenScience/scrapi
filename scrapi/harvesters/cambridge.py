@@ -10,7 +10,7 @@ from scrapi.base import OAIHarvester
 
 class CambridgeHarvester(OAIHarvester):
     short_name = 'cambridge'
-    long_name = 'DSpace at Cambridge (production)'
+    long_name = 'Apollo @ University of Cambridge'
     url = 'https://www.repository.cam.ac.uk'
 
     base_url = 'https://www.repository.cam.ac.uk/oai/request'
