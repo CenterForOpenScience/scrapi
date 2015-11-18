@@ -1,12 +1,14 @@
-from elasticsearch_dsl import DocType, String, Date, Boolean, Integer
+from elasticsearch_dsl import DocType, String, Boolean, Integer
 from elasticsearch_dsl.connections import connections
 
 from scrapi.settings import ELASTIC_URI, ELASTIC_INST_INDEX
 
 connections.create_connection(hosts=[ELASTIC_URI])
 
+
 def main():
     Institution.init()
+
 
 class Institution(DocType):
     name = String()

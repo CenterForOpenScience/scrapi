@@ -303,15 +303,18 @@ def reset_all():
     os.system("invoke alias share share_v2")
     os.system("invoke provider_map")
 
+
 @task
 def institutions():
     grid()
     ipeds()
 
+
 def grid():
     from institutions import institutions, grid
     institutions.main()
     grid.populate('institutions/grid_2015_10_09.json')
+
 
 def ipeds():
     from institutions import institutions, ipeds

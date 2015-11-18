@@ -11,6 +11,7 @@ from .institutions import Institution
 
 logger = logging.getLogger(__name__)
 
+
 class IpedsTransformer(CSVTransformer):
     def _transform_string(self, val, doc):
         val = super(IpedsTransformer, self)._transform_string(val, doc)
@@ -18,6 +19,7 @@ class IpedsTransformer(CSVTransformer):
 
     def load(self, doc):
         return doc
+
 
 schema = {
     'name': 'INSTNM',
@@ -34,6 +36,7 @@ schema = {
     'degree': ('UGOFFER', lambda x: int(x) == 1)
 }
 
+
 def populate(ipeds_file):
     with codecs.open(ipeds_file, encoding='Windows-1252', errors='replace') if six.PY3 else open(ipeds_file) as f:
         reader = csv.reader(f)
@@ -42,8 +45,8 @@ def populate(ipeds_file):
         for row in reader:
             transformed = transformer.transform(row)
             try:
+                # Prevent logger output encoding errors from stopping script
                 logger.info('Adding {0}.'.format(transformed['name']))
-                #Prevent logger output encoding errors from stopping script
             except:
                 pass
             inst = Institution(country='United States', **transformed)

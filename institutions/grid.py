@@ -21,9 +21,10 @@ schema = {
     'other_names': ('/aliases', '/acronyms', lambda x, y: x + y if x and y else x if x else y if y else None)
 }
 
+
 def get_jsons(grid_file):
     with open(grid_file) as f:
-        f.readline() # Pop off the top
+        f.readline()  # Pop off the top
         f.readline()
         for line in f:
             try:
@@ -32,13 +33,14 @@ def get_jsons(grid_file):
                 yield json.loads(line)
                 break
 
+
 def populate(grid_file):
     transformer = JSONTransformer(schema)
     for doc in get_jsons(grid_file):
         transformed = transformer.transform(doc, load=False)
         try:
+            # Prevent logger output encoding errors from stopping script
             logger.info('Adding {0}.'.format(transformed['name']))
-            #Prevent logger output encoding errors from stopping script
         except:
             pass
         for key, val in six.iteritems(transformed):
