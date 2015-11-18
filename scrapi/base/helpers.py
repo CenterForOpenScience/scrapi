@@ -17,7 +17,9 @@ from scrapi import requests
 
 URL_REGEX = re.compile(r'(https?:\/\/\S*\.[^\s\[\]\<\>\}\{\^]*)')
 DOI_REGEX = re.compile(r'(doi:10\.\S*)')
-DOE_AFFILIATIONS = re.compile(r'\[(.*)\]')
+DOE_AFFILIATIONS_REGEX = re.compile(r'\s*\[(.*?)\]')
+DOE_EMAIL_REGEX = re.compile(r'((?:,? (?:Email|email|E-mail|e-mail):\s*)?(\S*@\S*))')
+DOE_ORCID_REGEX = re.compile(r'(\(ORCID:\s*(\S*)\))')
 
 
 def CONSTANT(x):
@@ -365,12 +367,49 @@ def datetime_formatter(datetime_string):
 def doe_name_parser(name):
     if name == 'None':
         return {'name': ''}
-    affiliations = DOE_AFFILIATIONS.findall(name)
-    for affiliation in affiliations:
-        name = name.replace('[{}]'.format(affiliation), '')
+    name, orcid = extract_and_replace_one(name, DOE_ORCID_REGEX)
+    name, email = extract_and_replace_one(name, DOE_EMAIL_REGEX)
+    name, affiliations = doe_extract_affiliations(name)
+
     parsed_name = maybe_parse_name(name)
     parsed_name['affiliation'] = list(map(doe_parse_affiliation, affiliations))
+    parsed_name['sameAs'] = [orcid] if orcid else []
+    parsed_name['email'] = email
     return parsed_name
+
+
+def extract_and_replace_one(text, pattern):
+    ''' Works with regexes with two matches, where the text of the first match
+        is replaced and the text of the second is returned
+
+        In the case where there is a match:
+        >>> text = 'I feelvery happy'
+        >>> pattern = re.compile(r'.*(very\s*(\S*)).*')
+        >>> modified_text, match = extract_and_replace_one(text, pattern)
+        >>> print(modified_text)
+        I feel
+        >>> print(match)
+        happy
+
+        In the case where there is not a match:
+        >>> text = 'I feel happy'
+        >>> modified_text, match = extract_and_replace_one(text, pattern)
+        >>> modified_text == text
+        True
+        >>> match is None
+        True
+    '''
+    matches = pattern.findall(text)
+    if matches and len(matches) == 1:
+        return text.replace(matches[0][0], ''), matches[0][1]
+    return text, None
+
+
+def doe_extract_affiliations(name):
+    affiliations = DOE_AFFILIATIONS_REGEX.findall(name)
+    for affiliation in affiliations:
+        name = name.replace('[{}]'.format(affiliation), '')
+    return name, affiliations
 
 
 def doe_parse_affiliation(affiliation):
