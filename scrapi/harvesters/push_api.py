@@ -14,10 +14,15 @@ logger = logging.getLogger(__name__)
 
 
 def gen_harvesters():
-    return {
-        source['shortname']: gen_harvester(**source)
-        for source in get_sources()
-    }
+    try:
+        return {
+            source['shortname']: gen_harvester(**source)
+            for source in get_sources()
+        }
+    except Exception as e:
+        logger.warn('Could not generate harvesters from push api')
+        if settings.DEBUG:
+            logger.exception(e)
 
 
 def get_sources():
@@ -100,8 +105,4 @@ class PushApiHarvester(BaseHarvester):
         }
 
 
-try:
-    harvesters = gen_harvesters()
-except Exception as e:
-    logger.error('Could not generate harvesters from push api')
-    logger.exception(e)
+harvesters = gen_harvesters()
