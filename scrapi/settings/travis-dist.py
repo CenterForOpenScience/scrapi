@@ -32,7 +32,7 @@ VIVO_ACCESS = {
     'password': 'fakepassword'
 }
 
-disabled = ['stepic']
+disabled = ['stepic', 'nih']
 
 FRONTEND_KEYS = [
     u'description',

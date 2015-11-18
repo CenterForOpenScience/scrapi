@@ -1,0 +1,484 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.10 Darwin/14.1.0]
+    method: GET
+    uri: http://mars.gmu.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2015-10-30T00:00:00Z&until=2015-11-01T00:00:00Z
+  response:
+    body: {string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"\
+        text/xsl\" href=\"static/style.xsl\"?><OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"\
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
+        http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"\
+        ><responseDate>2015-11-09T17:52:37.000Z</responseDate><request verb=\"ListRecords\"\
+        \ metadataPrefix=\"oai_dc\" from=\"2015-10-30T00:00:00Z\" until=\"2015-11-01T00:00:00Z\"\
+        >http://mars.gmu.edu/oai/request</request><ListRecords><record><header><identifier>oai:mars.gmu.edu:1920/9993</identifier><datestamp>2015-10-30T04:23:01Z</datestamp><setSpec>com_1920_8737</setSpec><setSpec>com_1920_229</setSpec><setSpec>com_1920_1</setSpec><setSpec>com_1920_7520</setSpec><setSpec>col_1920_9242</setSpec><setSpec>col_1920_8738</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Employment\
+        \ Growth through Labor Flow Networks</dc:title>\n<dc:creator>Guerrero, Omar\
+        \ A.</dc:creator>\n<dc:creator>Axtell, Robert L.</dc:creator>\n<dc:subject>employment</dc:subject>\n\
+        <dc:subject>labor economics</dc:subject>\n<dc:subject>agent-based modeling</dc:subject>\n\
+        <dc:subject>Finland</dc:subject>\n<dc:subject>jobs</dc:subject>\n<dc:subject>Mexico</dc:subject>\n\
+        <dc:subject>economics</dc:subject>\n<dc:subject>graphs</dc:subject>\n<dc:description>It\
+        \ is conventional in labor economics to treat all workers who are seeking\
+        \ new jobs as belonging to a labor pool, and all firms that have job vacancies\
+        \ as an employer pool, and then match workers to jobs. Here we develop a new\
+        \ approach to study labor and firm dynamics. By combining the emerging science\
+        \ of networks with newly available employment micro-data, comprehensive at\
+        \ the level of whole countries, we are able to broadly characterize the process\
+        \ through which workers move between firms. Specifically, for each firm in\
+        \ an economy as a node in a graph, we draw edges between firms if a worker\
+        \ has migrated between them, possibly with a spell of unemployment in between.\
+        \ An economy's overall graph of firm-worker interactions is an object we call\
+        \ the labor flow network (LFN). This is the first study that characterizes\
+        \ a LFN for an entire economy. We explore the properties of this network,\
+        \ including its topology, its community structure, and its relationship to\
+        \ economic variables. It is shown that LFNs can be useful in identifying firms\
+        \ with high growth potential. We relate LFNs to other notions of high performance\
+        \ firms. Specifically, it is shown that fewer than 10% of firms account for\
+        \ nearly 90% of all employment growth. We conclude with a model in which empirically-salient\
+        \ LFNs emerge from the interaction of heterogeneous adaptive agents in a decentralized\
+        \ labor market.</dc:description>\n<dc:description>Publication of this article\
+        \ was funded in part by the George Mason University Libraries Open Access\
+        \ Publishing Fund.</dc:description>\n<dc:date>2015-10-29T15:49:06Z</dc:date>\n\
+        <dc:date>2015-10-29T15:49:06Z</dc:date>\n<dc:date>2013-05-02</dc:date>\n<dc:type>Article</dc:type>\n\
+        <dc:identifier>Guerrero OA, Axtell RL (2013) Employment Growth through Labor\
+        \ Flow Networks. PLoS ONE 8(5): e60808.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1920/9993</dc:identifier>\n\
+        <dc:identifier>http://dx.doi.org/10.1371/journal.pone.0060808</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:rights>Attribution 3.0 United States</dc:rights>\n\
+        <dc:rights>http://creativecommons.org/licenses/by/3.0/us/</dc:rights>\n<dc:publisher>Public\
+        \ Library of Science</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:mars.gmu.edu:1920/9994</identifier><datestamp>2015-10-30T04:23:03Z</datestamp><setSpec>com_1920_2869</setSpec><setSpec>com_1920_8737</setSpec><setSpec>com_1920_229</setSpec><setSpec>com_1920_1</setSpec><setSpec>com_1920_7520</setSpec><setSpec>col_1920_8040</setSpec><setSpec>col_1920_9242</setSpec><setSpec>col_1920_8738</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Functional\
+        \ Genomic Analyses of Two Morphologically Distinct Classes of Drosophila Sensory\
+        \ Neurons: Post-Mitotic Roles of Transcription Factors in Dendritic Patterning</dc:title>\n\
+        <dc:creator>Iyer, Eswar Prasad R.</dc:creator>\n<dc:creator>Iyer, Srividya\
+        \ Chandramouli</dc:creator>\n<dc:creator>Sullivan, Luis</dc:creator>\n<dc:creator>Wang,\
+        \ Dennis</dc:creator>\n<dc:creator>Meduri, Ramakrishna</dc:creator>\n<dc:creator>Graybeal,\
+        \ Lacey L.</dc:creator>\n<dc:creator>Cox, Daniel N.</dc:creator>\n<dc:subject>neuronal\
+        \ dendrites</dc:subject>\n<dc:subject>neurons</dc:subject>\n<dc:subject>RNA\
+        \ interference</dc:subject>\n<dc:subject>microarrays</dc:subject>\n<dc:subject>neuronal\
+        \ morphology</dc:subject>\n<dc:subject>gene expression</dc:subject>\n<dc:subject>gene\
+        \ regulation</dc:subject>\n<dc:description>Background&#xd;\n&#xd;\nNeurons\
+        \ are one of the most structurally and functionally diverse cell types found\
+        \ in nature, owing in large part to their unique class specific dendritic\
+        \ architectures. Dendrites, being highly specialized in receiving and processing\
+        \ neuronal signals, play a key role in the formation of functional neural\
+        \ circuits. Hence, in order to understand the emergence and assembly of a\
+        \ complex nervous system, it is critical to understand the molecular mechanisms\
+        \ that direct class specific dendritogenesis.&#xd;\n&#xd;\nMethodology/Principal\
+        \ Findings&#xd;\n&#xd;\nWe have used the Drosophila dendritic arborization\
+        \ (da) neurons to gain systems-level insight into dendritogenesis by a comparative\
+        \ study of the morphologically distinct Class-I (C-I) and Class-IV (C-IV)\
+        \ da neurons. We have used a combination of cell-type specific transcriptional\
+        \ expression profiling coupled to a targeted and systematic in vivo RNAi functional\
+        \ validation screen. Our comparative transcriptomic analyses have revealed\
+        \ a large number of differentially enriched/depleted gene-sets between C-I\
+        \ and C-IV neurons, including a broad range of molecular factors and biological\
+        \ processes such as proteolytic and metabolic pathways. Further, using this\
+        \ data, we have identified and validated the role of 37 transcription factors\
+        \ in regulating class specific dendrite development using in vivo class-specific\
+        \ RNAi knockdowns followed by rigorous and quantitative neurometric analysis.&#xd;\n\
+        &#xd;\nConclusions/Significance&#xd;\n&#xd;\nThis study reports the first\
+        \ global gene-expression profiles from purified Drosophila C-I and C-IV da\
+        \ neurons. We also report the first large-scale semi-automated reconstruction\
+        \ of over 4,900 da neurons, which were used to quantitatively validate the\
+        \ RNAi screen phenotypes. Overall, these analyses shed global and unbiased\
+        \ novel insights into the molecular differences that underlie the morphological\
+        \ diversity of distinct neuronal cell-types. Furthermore, our class-specific\
+        \ gene expression datasets should prove a valuable community resource in guiding\
+        \ further investigations designed to explore the molecular mechanisms underlying\
+        \ class specific neuronal patterning.</dc:description>\n<dc:description>The\
+        \ authors acknowledge the National Institutes of Health (MH086928-02) (http://www.nimh.nih.gov)\
+        \ and the Thomas F. and Kate Miller Jeffress Memorial Trust for support of\
+        \ this research. The funders had no role in study design, data collection\
+        \ and analysis, decision to publish, or preparation of the manuscript. Publication\
+        \ of this article was funded in part by the George Mason University Libraries\
+        \ Open Access Publishing Fund.</dc:description>\n<dc:date>2015-10-29T15:51:20Z</dc:date>\n\
+        <dc:date>2015-10-29T15:51:20Z</dc:date>\n<dc:date>2013-08-15</dc:date>\n<dc:type>Article</dc:type>\n\
+        <dc:identifier>Iyer EPR, Iyer SC, Sullivan L, Wang D, Meduri R, et al. (2013)\
+        \ Functional Genomic Analyses of Two Morphologically Distinct Classes of Drosophila\
+        \ Sensory Neurons: Post-Mitotic Roles of Transcription Factors in Dendritic\
+        \ Patterning. PLoS ONE 8(8): e72434.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1920/9994</dc:identifier>\n\
+        <dc:identifier>http://dx.doi.org/10.1371/journal.pone.0072434</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:rights>Attribution 3.0 United States</dc:rights>\n\
+        <dc:rights>http://creativecommons.org/licenses/by/3.0/us/</dc:rights>\n<dc:publisher>Public\
+        \ Library of Science</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:mars.gmu.edu:1920/9995</identifier><datestamp>2015-10-30T04:23:06Z</datestamp><setSpec>com_1920_8737</setSpec><setSpec>com_1920_229</setSpec><setSpec>com_1920_1</setSpec><setSpec>com_1920_10002</setSpec><setSpec>com_1920_3011</setSpec><setSpec>col_1920_8738</setSpec><setSpec>col_1920_10003</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The socio-cultural\
+        \ importance of Mauritia flexuosa palm swamps (aguajales) and implications\
+        \ for multi-use management in two Maijuna communities of the Peruvian Amazon</dc:title>\n\
+        <dc:creator>Gilmore, Michael P.</dc:creator>\n<dc:creator>Endress, Bryan A.</dc:creator>\n\
+        <dc:creator>Horn, Christa M.</dc:creator>\n<dc:subject>Ethnoecology</dc:subject>\n\
+        <dc:subject>Multi-use management</dc:subject>\n<dc:subject>Forest resources</dc:subject>\n\
+        <dc:subject>Maijuna</dc:subject>\n<dc:subject>Peruvian Amazon</dc:subject>\n\
+        <dc:subject>Mauritia flexuosa</dc:subject>\n<dc:description>Background&#xd;\n\
+        &#xd;\nFruit from the palm Mauritia flexuosa (aguaje) is harvested throughout\
+        \ the Peruvian Amazon for subsistence and commercial purposes. Recent estimates\
+        \ suggest that residents of Iquitos, the largest city in the region, consume\
+        \ approximately 148.8 metric tons of aguaje fruit per month, the vast majority\
+        \ of which is harvested by felling and killing adult female trees. In this\
+        \ study, we sought to better understand and document the importance of M.\
+        \ flexuosa palm swamps (aguajales) in two Maijuna indigenous communities to\
+        \ inform the sustainable management of this habitat and species.&#xd;\n&#xd;\n\
+        Methods&#xd;\n&#xd;\nSemi-structured interviews, focus groups, and household\
+        \ surveys were carried out to assess the significance of aguajales and their\
+        \ associated plant and animal resources as well as to determine how the relationship\
+        \ that the Maijuna have with aguajales has changed over time.&#xd;\n&#xd;\n\
+        Results&#xd;\n&#xd;\nAguajales and their associated resources are culturally\
+        \ significant and useful to the Maijuna in a wide variety of ways. In addition\
+        \ to M. flexuosa, the Maijuna use over 60 different species of plants from\
+        \ aguajales. When M. flexuosa is in fruit, aguajales are important hunting\
+        \ areas with a total of 20 different animal species hunted. The Maijuna also\
+        \ have traditional beliefs about aguajales, believing that malevolent supernatural\
+        \ beings reside in them. Notably, the relationship that the Maijuna have with\
+        \ aguajales has changed considerably over the years as aguaje fruit went from\
+        \ a subsistence item collected opportunistically from the ground to a market\
+        \ good destructively harvested beginning in the early 1990s. The Maijuna are\
+        \ concerned not only about how this has affected the future commercial harvest\
+        \ of aguaje but also about its effects on game animals given the importance\
+        \ of hunting to Maijuna cultural identity, subsistence, and income generation.&#xd;\n\
+        &#xd;\nConclusions&#xd;\n&#xd;\nIn order to meet the multiple socio-cultural\
+        \ and economic needs of the Maijuna, sustainable management efforts must be\
+        \ expanded to not only focus on the commercial harvest of aguaje but also\
+        \ other facets of their relationship with this habitat. Our study suggests\
+        \ that the research and development of multi-use forest management plans must\
+        \ not be restricted to commercial forest products and ecosystem services given\
+        \ that many communities rely on tropical forests for a wide range of non-market\
+        \ cultural, economic, and subsistence goods and services.</dc:description>\n\
+        <dc:description>George Mason University, Lakeside Foundation, and San Diego\
+        \ Zoo Global provided financial support. Publication of this article was funded\
+        \ in part by the George Mason University Libraries Open Access Publishing\
+        \ Fund.</dc:description>\n<dc:date>2015-10-29T15:53:48Z</dc:date>\n<dc:date>2015-10-29T15:53:48Z</dc:date>\n\
+        <dc:date>2013-04-22</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Gilmore\
+        \ et al.: The socio-cultural importance of Mauritia flexuosa palm swamps (aguajales)\
+        \ and implications for multiuse management in two Maijuna communities of the\
+        \ Peruvian Amazon. Journal of Ethnobiology and Ethnomedicine 2013 9:29.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1920/9995</dc:identifier>\n<dc:identifier>http://dx.doi.org/10.1186/1746-4269-9-29</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:rights>Attribution 3.0 United States</dc:rights>\n\
+        <dc:rights>http://creativecommons.org/licenses/by/3.0/us/</dc:rights>\n<dc:publisher>BioMed\
+        \ Central</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:mars.gmu.edu:1920/9996</identifier><datestamp>2015-10-30T04:23:07Z</datestamp><setSpec>com_1920_2869</setSpec><setSpec>com_1920_8737</setSpec><setSpec>com_1920_229</setSpec><setSpec>com_1920_1</setSpec><setSpec>com_1920_7520</setSpec><setSpec>col_1920_9242</setSpec><setSpec>col_1920_2871</setSpec><setSpec>col_1920_8738</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Controlling\
+        \ Seizure-Like Events by Perturbing Ion Concentration Dynamics with Periodic\
+        \ Stimulation</dc:title>\n<dc:creator>Owen, Jeremy A.</dc:creator>\n<dc:creator>Barreto,\
+        \ Ernest</dc:creator>\n<dc:creator>Cressman, John R.</dc:creator>\n<dc:subject>neurons</dc:subject>\n\
+        <dc:subject>action potentials</dc:subject>\n<dc:subject>epilepsy</dc:subject>\n\
+        <dc:subject>tetanus</dc:subject>\n<dc:subject>membrane potential</dc:subject>\n\
+        <dc:subject>electrical stimulation</dc:subject>\n<dc:subject>potassium</dc:subject>\n\
+        <dc:subject>intracellular membranes</dc:subject>\n<dc:description>We investigate\
+        \ the effects of adding periodic stimulation to a generic, conductance-based\
+        \ neuron model that includes ion concentration dynamics of sodium and potassium.\
+        \ Under conditions of high extracellular potassium, the model exhibits repeating,\
+        \ spontaneous, seizure-like bursting events associated with slow modulation\
+        \ of the ion concentrations local to the neuron. We show that for a range\
+        \ of parameter values, depolarizing and hyperpolarizing periodic stimulation\
+        \ pulses (including frequencies lower than 4 Hz) can stop the spontaneous\
+        \ bursting by interacting with the ion concentration dynamics. Stimulation\
+        \ can also control the magnitude of evoked responses to modeled physiological\
+        \ inputs. We develop an understanding of the nonlinear dynamics of this system\
+        \ by a timescale separation procedure that identifies effective nullclines\
+        \ in the ion concentration parameter space. Our results suggest that the manipulation\
+        \ of ion concentration dynamics via external or endogenous stimulation may\
+        \ play an important role in neuronal excitability, seizure dynamics, and control.</dc:description>\n\
+        <dc:description>Publication of this article was funded in part by the George\
+        \ Mason University Libraries Open Access Publishing Fund, JRC Start up funds,\
+        \ and EB NIH CRCNS R01-MH079502 (National Institutes of Health Collaborative\
+        \ Research in Computational Neuroscience.</dc:description>\n<dc:date>2015-10-29T15:58:12Z</dc:date>\n\
+        <dc:date>2015-10-29T15:58:12Z</dc:date>\n<dc:date>2013-09-16</dc:date>\n<dc:type>Article</dc:type>\n\
+        <dc:identifier>Owen JA, Barreto E, Cressman JR (2013) Controlling Seizure-Like\
+        \ Events by Perturbing Ion Concentration Dynamics with Periodic Stimulation.\
+        \ PLoS ONE 8(9): e73820. doi:10.1371/journal.pone.0073820</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1920/9996</dc:identifier>\n<dc:identifier>http://dx.doi.org/10.1371/journal.pone.0073820</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:rights>Attribution 3.0 United States</dc:rights>\n\
+        <dc:rights>http://creativecommons.org/licenses/by/3.0/us/</dc:rights>\n<dc:publisher>Public\
+        \ Library of Science</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:mars.gmu.edu:1920/9997</identifier><datestamp>2015-10-30T04:23:08Z</datestamp><setSpec>com_1920_8737</setSpec><setSpec>com_1920_229</setSpec><setSpec>com_1920_1</setSpec><setSpec>com_1920_7520</setSpec><setSpec>col_1920_9242</setSpec><setSpec>col_1920_8738</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Not so cool?\
+        \ Menthol\u2019s discovered actions on the nicotinic receptor and its implications\
+        \ for nicotine addiction</dc:title>\n<dc:creator>Kabbani, Nadine</dc:creator>\n\
+        <dc:subject>menthol</dc:subject>\n<dc:subject>addiction research</dc:subject>\n\
+        <dc:subject>African Americans</dc:subject>\n<dc:subject>nicotinic receptors</dc:subject>\n\
+        <dc:subject>tobacco</dc:subject>\n<dc:description>Nicotine cigarette smoke\
+        \ is a large public health burden worldwide, contributing to various types\
+        \ of disease. Anti-tobacco media campaigns and control programs have significantly\
+        \ reduced smoking in the United States, yet trends for menthol cigarette smoking\
+        \ have not been as promising. Menthol cigarette smoking is particularly prevalent\
+        \ among young adults and African Americans, with implications for long-term\
+        \ impacts on health care. Continuing high rates of menthol cigarette addiction\
+        \ call into question the role of menthol in nicotine addiction. To date, a\
+        \ biological basis for the high rate of addiction and relapse among menthol\
+        \ cigarette smokers has not been defined. Studies have demonstrated a role\
+        \ for menthol in the metabolism of nicotine in the body. More recent findings\
+        \ now reveal an interaction between menthol and the nicotinic acetylcholine\
+        \ (nACh) receptor in cells. This receptor is central to the actions of nicotine\
+        \ in the brain, and plays an important role in nicotine addiction. The newly\
+        \ discovered effect of menthol on nACh receptors may begin to explain the\
+        \ unique addictive properties of menthol cigarettes.</dc:description>\n<dc:description>This\
+        \ work is supported by a VYTP Grant Award on Research on the Causes and Prevention\
+        \ of Youth Tobacco to Nadine Kabbani. Publication of this article was funded\
+        \ in part by the George Mason University Libraries Open Access Publishing\
+        \ Fund.</dc:description>\n<dc:date>2015-10-29T16:00:09Z</dc:date>\n<dc:date>2015-10-29T16:00:09Z</dc:date>\n\
+        <dc:date>2013-07-23</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Kabbani\
+        \ N (2013) Not so cool? Menthol\u2019s discovered actions on the nicotinic\
+        \ receptor and its implications for nicotine addiction. Front. Pharmacol.\
+        \ 4:95. doi: 10.3389/fphar.2013.00095</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1920/9997</dc:identifier>\n\
+        <dc:identifier>http://dx.doi.org/10.3389/fphar.2013.00095</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:rights>Attribution 3.0 United States</dc:rights>\n\
+        <dc:rights>http://creativecommons.org/licenses/by/3.0/us/</dc:rights>\n<dc:publisher>Frontiers</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:mars.gmu.edu:1920/9998</identifier><datestamp>2015-10-30T04:23:09Z</datestamp><setSpec>com_1920_8737</setSpec><setSpec>com_1920_229</setSpec><setSpec>com_1920_1</setSpec><setSpec>com_1920_7520</setSpec><setSpec>col_1920_9242</setSpec><setSpec>col_1920_8738</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Environmental\
+        \ influences on neural systems of relational complexity</dc:title>\n<dc:creator>Kalbfleisch,\
+        \ M. Layne</dc:creator>\n<dc:creator>deBettencourt, Megan T.</dc:creator>\n\
+        <dc:creator>Kopperman, Rebecca</dc:creator>\n<dc:creator>Banasiak, Meredith</dc:creator>\n\
+        <dc:creator>Roberts, Joshua M.</dc:creator>\n<dc:creator>Halavi, Maryam</dc:creator>\n\
+        <dc:subject>event-related fMRI</dc:subject>\n<dc:subject>heuristic processing</dc:subject>\n\
+        <dc:subject>prefrontal cortex</dc:subject>\n<dc:subject>reasoning</dc:subject>\n\
+        <dc:subject>color perception</dc:subject>\n<dc:subject>relational complexity</dc:subject>\n\
+        <dc:subject>visual contrast</dc:subject>\n<dc:subject>constructivist learning</dc:subject>\n\
+        <dc:description>Constructivist learning theory contends that we construct\
+        \ knowledge by experience and that environmental context influences learning.\
+        \ To explore this principle, we examined the cognitive process relational\
+        \ complexity (RC), defined as the number of visual dimensions considered during\
+        \ problem solving on a matrix reasoning task and a well-documented measure\
+        \ of mature reasoning capacity. We sought to determine how the visual environment\
+        \ influences RC by examining the influence of color and visual contrast on\
+        \ RC in a neuroimaging task. To specify the contributions of sensory demand\
+        \ and relational integration to reasoning, our participants performed a non-verbal\
+        \ matrix task comprised of color, no-color line, or black-white visual contrast\
+        \ conditions parametrically varied by complexity (relations 0, 1, 2). The\
+        \ use of matrix reasoning is ecologically valid for its psychometric relevance\
+        \ and for its potential to link the processing of psychophysically specific\
+        \ visual properties with various levels of RC during reasoning. The role of\
+        \ these elements is important because matrix tests assess intellectual aptitude\
+        \ based on these seemingly context-less exercises. This experiment is a first\
+        \ step toward examining the psychophysical underpinnings of performance on\
+        \ these types of problems. The importance of this is increased in light of\
+        \ recent evidence that intelligence can be linked to visual discrimination.\
+        \ We submit three main findings. First, color and black-white visual contrast\
+        \ (BWVC) add demand at a basic sensory level, but contributions from color\
+        \ and from BWVC are dissociable in cortex such that color engages a \u201C\
+        reasoning heuristic\u201D and BWVC engages a \u201Csensory heuristic.\u201D\
+        \ Second, color supports contextual sense-making by boosting salience resulting\
+        \ in faster problem solving. Lastly, when visual complexity reaches 2-relations,\
+        \ color and visual contrast relinquish salience to other dimensions of problem\
+        \ solving.</dc:description>\n<dc:description>Salary support for M. Layne Kalbfleisch\
+        \ was provided by Leonard and Virginia Pomata. Salary support for M. Banasiak\
+        \ was provided by the Academy of Neuroscience for Architecture (ANFA). Publication\
+        \ of this article was funded in part by the George Mason University Libraries\
+        \ Open Access Publishing Fund.</dc:description>\n<dc:date>2015-10-29T16:02:53Z</dc:date>\n\
+        <dc:date>2015-10-29T16:02:53Z</dc:date>\n<dc:date>2013-09-26</dc:date>\n<dc:type>Article</dc:type>\n\
+        <dc:identifier>Kalbfleisch ML, deBettencourt MT, Kopperman R, Banasiak M,\
+        \ Roberts JM and Halavi M (2013) Environmental influences on neural systems\
+        \ of relational complexity. Front. Psychol. 4:631. doi: 10.3389/fpsyg.2013.00631</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1920/9998</dc:identifier>\n<dc:identifier>http://dx.doi.org/10.3389/fpsyg.2013.00631</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:rights>Attribution 3.0 United States</dc:rights>\n\
+        <dc:rights>http://creativecommons.org/licenses/by/3.0/us/</dc:rights>\n<dc:publisher>Frontiers</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:mars.gmu.edu:1920/9999</identifier><datestamp>2015-10-30T04:23:11Z</datestamp><setSpec>com_1920_2869</setSpec><setSpec>com_1920_8737</setSpec><setSpec>com_1920_229</setSpec><setSpec>com_1920_1</setSpec><setSpec>col_1920_8040</setSpec><setSpec>col_1920_8738</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Sequence and\
+        \ structure based models of HIV-1 protease and reverse transcriptase drug\
+        \ resistance</dc:title>\n<dc:creator>Masso, Majid</dc:creator>\n<dc:creator>Vaisman,\
+        \ Iosif I.</dc:creator>\n<dc:subject>HIV-1</dc:subject>\n<dc:subject>protease</dc:subject>\n\
+        <dc:subject>reverse transcriptase</dc:subject>\n<dc:subject>protein mutational\
+        \ patterns</dc:subject>\n<dc:subject>sequence-based models</dc:subject>\n\
+        <dc:subject>structure-based models</dc:subject>\n<dc:description>Background&#xd;\n\
+        Successful management of chronic human immunodeficiency virus type 1 (HIV-1)\
+        \ infection with a cocktail of antiretroviral medications can be negatively\
+        \ affected by the presence of drug resistant mutations in the viral targets.\
+        \ These targets include the HIV-1 protease (PR) and reverse transcriptase\
+        \ (RT) proteins, for which a number of inhibitors are available on the market\
+        \ and routinely prescribed. Protein mutational patterns are associated with\
+        \ varying degrees of resistance to their respective inhibitors, with extremes\
+        \ that can range from continued susceptibility to cross-resistance across\
+        \ all drugs.&#xd;\n&#xd;\nResults&#xd;\nHere we implement statistical learning\
+        \ algorithms to develop structure- and sequence-based models for systematically\
+        \ predicting the effects of mutations in the PR and RT proteins on resistance\
+        \ to each of eight and eleven inhibitors, respectively. Employing a four-body\
+        \ statistical potential, mutant proteins are represented as feature vectors\
+        \ whose components quantify relative environmental perturbations at amino\
+        \ acid residue positions in the respective target structures upon mutation.\
+        \ Two approaches are implemented in developing sequence-based models, based\
+        \ on use of either relative frequencies or counts of n-grams, to generate\
+        \ vectors for representing mutant proteins. To the best of our knowledge,\
+        \ this is the first reported study on structure- and sequence-based predictive\
+        \ models of HIV-1 PR and RT drug resistance developed by implementing a four-body\
+        \ statistical potential and n-grams, respectively, to generate mutant attribute\
+        \ vectors. Performance of the learning methods is evaluated on the basis of\
+        \ tenfold cross-validation, using previously assayed and publicly available\
+        \ in vitro data relating mutational patterns in the targets to quantified\
+        \ inhibitor susceptibility changes.&#xd;\n&#xd;\nConclusion&#xd;\nOverall\
+        \ performance results are competitive with those of a previously published\
+        \ study utilizing a sequence-based strategy, while our structure- and sequence-based\
+        \ models provide orthogonal and complementary prediction methodologies, respectively.\
+        \ In a novel application, we describe a technique for identifying every possible\
+        \ pair of RT inhibitors as either potentially effective together as part of\
+        \ a cocktail, or a combination that is to be avoided.</dc:description>\n<dc:description>Publication\
+        \ of this article was funded in part by the George Mason University Libraries\
+        \ Open Access Publishing Fund.</dc:description>\n<dc:date>2015-10-29T16:12:04Z</dc:date>\n\
+        <dc:date>2015-10-29T16:12:04Z</dc:date>\n<dc:date>2013-10-01</dc:date>\n<dc:type>Article</dc:type>\n\
+        <dc:identifier>Masso and Vaisman: Sequence and structure based models of HIV-1\
+        \ protease and reverse transcriptase drug resistance. BMC Genomics 2013 14(Suppl\
+        \ 4):S3.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1920/9999</dc:identifier>\n\
+        <dc:identifier>http://dx.doi.org/10.1186/1471-2164-14-S4-S3</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:rights>Attribution 3.0 United States</dc:rights>\n\
+        <dc:rights>http://creativecommons.org/licenses/by/3.0/us/</dc:rights>\n<dc:publisher>BioMed\
+        \ Central</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:mars.gmu.edu:1920/10000</identifier><datestamp>2015-10-30T04:23:13Z</datestamp><setSpec>com_1920_2869</setSpec><setSpec>com_1920_8737</setSpec><setSpec>com_1920_229</setSpec><setSpec>com_1920_1</setSpec><setSpec>com_1920_7520</setSpec><setSpec>col_1920_9242</setSpec><setSpec>col_1920_2871</setSpec><setSpec>col_1920_8738</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Dynamical structure\
+        \ underlying inverse stochastic resonance and its implications</dc:title>\n\
+        <dc:creator>Uzuntarla, Muhammet</dc:creator>\n<dc:creator>Cressman, John R.</dc:creator>\n\
+        <dc:creator>Ozer, Mahmut</dc:creator>\n<dc:creator>Barreto, Ernest</dc:creator>\n\
+        <dc:subject>inverse stochastic resonance</dc:subject>\n<dc:subject>Hodgkin-Huxley\
+        \ model neuron</dc:subject>\n<dc:description>We investigate inverse stochastic\
+        \ resonance (ISR), a recently reported phenomenon in which the spiking activity\
+        \ of a Hodgkin-Huxley model neuron subject to external noise exhibits a pronounced\
+        \ minimum as the noise intensity increases.We clarify the mechanism that underlies\
+        \ ISR and show that its most surprising features are a consequence of the\
+        \ dynamical structure of the model. Furthermore, we show that the ISR effect\
+        \ depends strongly on the procedures used to measure it. Our results are important\
+        \ for the experimentalist who seeks to observe the ISR phenomenon.</dc:description>\n\
+        <dc:description>M.U. acknowledges support from Grant No. 13643-49840 from\
+        \ the Turkish Council of Higher Education (Y\xD6K) and the hospitality of\
+        \ the Krasnow Institute for Advanced Study at George Mason University. Publication\
+        \ of this article was funded in part by the George Mason University Libraries\
+        \ Open Access Publishing Fund and Bulent Ecevit University.</dc:description>\n\
+        <dc:date>2015-10-29T16:17:38Z</dc:date>\n<dc:date>2015-10-29T16:17:38Z</dc:date>\n\
+        <dc:date>2013-10-31</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Uzuntarla,\
+        \ M., Cressman, J. R., Ozer, M., &amp; Barreto, E. (2013). Dynamical structure\
+        \ underlying inverse stochastic resonance and its implications. Physical Review\
+        \ E, 88(4), 042712. http://doi.org/10.1103/PhysRevE.88.042712</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1920/10000</dc:identifier>\n<dc:identifier>http://dx.doi.org/10.1103/PhysRevE.88.042712</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:rights>Attribution 3.0 United States</dc:rights>\n\
+        <dc:rights>http://creativecommons.org/licenses/by/3.0/us/</dc:rights>\n<dc:publisher>American\
+        \ Physical Society</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:mars.gmu.edu:1920/10001</identifier><datestamp>2015-10-30T04:23:13Z</datestamp><setSpec>com_1920_2869</setSpec><setSpec>com_1920_8737</setSpec><setSpec>com_1920_229</setSpec><setSpec>com_1920_1</setSpec><setSpec>col_1920_4535</setSpec><setSpec>col_1920_8738</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Approach\
+        \ to Sample Acquisition and Its Impact on the Derived Human Fecal Microbiome\
+        \ and VOC Metabolome</dc:title>\n<dc:creator>Couch, Robin D.</dc:creator>\n\
+        <dc:creator>Navarro, Karl</dc:creator>\n<dc:creator>Sikaroodi, Masoumeh</dc:creator>\n\
+        <dc:creator>Gillevet, Pat</dc:creator>\n<dc:creator>Forsyth, Christopher B.</dc:creator>\n\
+        <dc:creator>Mutlu, Ece</dc:creator>\n<dc:creator>Engen, Phillip A.</dc:creator>\n\
+        <dc:creator>Keshavarzian, Ali</dc:creator>\n<dc:subject>metabolomics</dc:subject>\n\
+        <dc:subject>metabolites</dc:subject>\n<dc:subject>endoscopy</dc:subject>\n\
+        <dc:subject>microbiome</dc:subject>\n<dc:subject>volatile organic compounds</dc:subject>\n\
+        <dc:subject>esters</dc:subject>\n<dc:subject>gastrointestinal tract</dc:subject>\n\
+        <dc:subject>drug metabolism</dc:subject>\n<dc:description>Recent studies have\
+        \ illustrated the importance of the microbiota in maintaining a healthy state,\
+        \ as well as promoting disease states. The intestinal microbiota exerts its\
+        \ effects primarily through its metabolites, and metabolomics investigations\
+        \ have begun to evaluate the diagnostic and health implications of volatile\
+        \ organic compounds (VOCs) isolated from human feces, enabled by specialized\
+        \ sampling methods such as headspace solid-phase microextraction (hSPME).\
+        \ The approach to stool sample collection is an important consideration that\
+        \ could potentially introduce bias and affect the outcome of a fecal metagenomic\
+        \ and metabolomic investigation. To address this concern, a comparison of\
+        \ endoscopically collected (in vivo) and home collected (ex vivo) fecal samples\
+        \ was performed, revealing slight variability in the derived microbiomes.\
+        \ In contrast, the VOC metabolomes differ widely between the home collected\
+        \ and endoscopy collected samples. Additionally, as the VOC extraction profile\
+        \ is hyperbolic, with short extraction durations more vulnerable to variation\
+        \ than extractions continued to equilibrium, a second goal of our investigation\
+        \ was to ascertain if hSPME-based fecal metabolomics studies might be biased\
+        \ by the extraction duration employed. As anticipated, prolonged extraction\
+        \ (18 hours) results in the identification of considerably more metabolites\
+        \ than short (20 minute) extractions. A comparison of the metabolomes reveals\
+        \ several analytes deemed unique to a cohort with the 20 minute extraction,\
+        \ but found common to both cohorts when the VOC extraction was performed for\
+        \ 18 hours. Moreover, numerous analytes perceived to have significant fold\
+        \ change with a 20 minute extraction were found insignificant in fold change\
+        \ with the prolonged extraction, underscoring the potential for bias associated\
+        \ with a 20 minute hSPME.</dc:description>\n<dc:description>This study was\
+        \ supported by NIH grant 1RC2AA019405. Publication of this article was funded\
+        \ in part by the George Mason University Libraries Open Access Publishing\
+        \ Fund.</dc:description>\n<dc:date>2015-10-29T16:20:26Z</dc:date>\n<dc:date>2015-10-29T16:20:26Z</dc:date>\n\
+        <dc:date>2013-11-18</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Couch\
+        \ RD, Navarro K, Sikaroodi M, Gillevet P, Forsyth CB, et al. (2013) The Approach\
+        \ to Sample Acquisition and Its Impact on the Derived Human Fecal Microbiome\
+        \ and VOC Metabolome. PLoS ONE 8(11): e81163. doi:10.1371/journal.pone.0081163</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1920/10001</dc:identifier>\n<dc:identifier>http://dx.doi.org/10.1371/journal.pone.0081163</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:rights>Attribution 3.0 United States</dc:rights>\n\
+        <dc:rights>http://creativecommons.org/licenses/by/3.0/us/</dc:rights>\n<dc:publisher>Public\
+        \ Library of Science</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:mars.gmu.edu:1920/10010</identifier><datestamp>2015-10-30T04:23:10Z</datestamp><setSpec>com_1920_2869</setSpec><setSpec>com_1920_8737</setSpec><setSpec>com_1920_229</setSpec><setSpec>com_1920_1</setSpec><setSpec>col_1920_8040</setSpec><setSpec>col_1920_8738</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Knowledge-based\
+        \ compact disease models identify new molecular players contributing to early-stage\
+        \ Alzheimer\u2019s disease</dc:title>\n<dc:creator>Mayburd, Anatoly</dc:creator>\n\
+        <dc:creator>Baranova, Ancha</dc:creator>\n<dc:subject>Signature</dc:subject>\n\
+        <dc:subject>Network</dc:subject>\n<dc:subject>Knowledge-based algorithms</dc:subject>\n\
+        <dc:subject>Alzheimer\u2019s</dc:subject>\n<dc:subject>Protein traffic vesicles</dc:subject>\n\
+        <dc:subject>Affymetrix</dc:subject>\n<dc:subject>Illumina</dc:subject>\n<dc:subject>Antihypertensive\
+        \ drugs</dc:subject>\n<dc:description>Background&#xd;\nHigh-throughput profiling\
+        \ of human tissues typically yield as results the gene lists comprised of\
+        \ a mix of relevant molecular entities with multiple false positives that\
+        \ obstruct the translation of such results into mechanistic hypotheses. From\
+        \ general probabilistic considerations, gene lists distilled for the mechanistically\
+        \ relevant components can be far more useful for subsequent experimental design\
+        \ or data interpretation.&#xd;\n&#xd;\nResults&#xd;\nThe input candidate gene\
+        \ lists were processed into different tiers of evidence consistency established\
+        \ by enrichment analysis across subsets of the same experiments and across\
+        \ different experiments and platforms. The cut-offs were established empirically\
+        \ through ontological and semantic enrichment; resultant shortened gene list\
+        \ was re-expanded by Ingenuity Pathway Assistant tool. The resulting sub-networks\
+        \ provided the basis for generating mechanistic hypotheses that were partially\
+        \ validated by literature search. This approach differs from previous consistency-based\
+        \ studies in that the cut-off on the Receiver Operating Characteristic of\
+        \ the true-false separation process is optimized by flexible selection of\
+        \ the consistency building procedure. The gene list distilled by this analytic\
+        \ technique and its network representation were termed Compact Disease Model\
+        \ (CDM). Here we present the CDM signature for the study of early-stage Alzheimer\u2019\
+        s disease. The integrated analysis of this gene signature allowed us to identify\
+        \ the protein traffic vesicles as prominent players in the pathogenesis of\
+        \ Alzheimer\u2019s. Considering the distances and complexity of protein trafficking\
+        \ in neurons, it is plausible that spontaneous protein misfolding along with\
+        \ a shortage of growth stimulation result in neurodegeneration. Several potentially\
+        \ overlapping scenarios of early-stage Alzheimer pathogenesis have been discussed,\
+        \ with an emphasis on the protective effects of AT-1 mediated antihypertensive\
+        \ response on cytoskeleton remodeling, along with neuronal activation of oncogenes,\
+        \ luteinizing hormone signaling and insulin-related growth regulation, forming\
+        \ a pleiotropic model of its early stages. Alignment with emerging literature\
+        \ confirmed many predictions derived from early-stage Alzheimer\u2019s disease\u2019\
+        \ CDM.&#xd;\n&#xd;\nConclusions&#xd;\nA flexible approach for high-throughput\
+        \ data analysis, the Compact Disease Model generation, allows extraction of\
+        \ meaningful, mechanism-centered gene sets compatible with instant translation\
+        \ of the results into testable hypotheses.</dc:description>\n<dc:description>Publication\
+        \ of this article was funded in part by the George Mason University Libraries\
+        \ Open Access Publishing Fund.</dc:description>\n<dc:date>2015-10-29T19:47:54Z</dc:date>\n\
+        <dc:date>2015-10-29T19:47:54Z</dc:date>\n<dc:date>2013-11-07</dc:date>\n<dc:type>Article</dc:type>\n\
+        <dc:identifier>Mayburd and Baranova: Knowledge-based compact disease models\
+        \ identify new molecular players contributing to early-stage Alzheimer\u2019\
+        s disease. BMC Systems Biology 2013 7:121.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1920/10010</dc:identifier>\n\
+        <dc:identifier>http://dx.doi.org/10.1186/1752-0509-7-121</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:rights>Attribution 3.0 United States</dc:rights>\n\
+        <dc:rights>http://creativecommons.org/licenses/by/3.0/us/</dc:rights>\n<dc:publisher>BioMed\
+        \ Central</dc:publisher>\n</oai_dc:dc>\n</metadata></record></ListRecords></OAI-PMH>"}
+    headers:
+      content-type: [application/xml;charset=UTF-8]
+      date: ['Mon, 09 Nov 2015 17:52:36 GMT']
+      server: [Apache-Coyote/1.1]
+    status: {code: 200, message: OK}
+version: 1

@@ -55,7 +55,7 @@ def json_without_bytes(jobj):
     jobj = jobj.copy()
     for k, v in jobj.items():
         if isinstance(v, six.binary_type):
-            jobj[k] = v.decode('utf8')
+            jobj[k] = v.decode('utf8', 'replace')
     return jobj
 
 
