@@ -1,3 +1,4 @@
+import six
 import json
 import logging
 from schema_transformer.transformer import JSONTransformer
@@ -5,9 +6,6 @@ from schema_transformer.transformer import JSONTransformer
 from .institutions import Institution
 
 logger = logging.getLogger(__name__)
-
-class GridTransformer(JSONTransformer):
-    pass
 
 schema = {
     'name': ('/name', lambda x: x.encode('utf8') if x else None),
@@ -35,9 +33,17 @@ def get_jsons(grid_file):
                 break
 
 def populate(grid_file):
-    transformer = GridTransformer(schema)
+    transformer = JSONTransformer(schema)
     for doc in get_jsons(grid_file):
         transformed = transformer.transform(doc, load=False)
-        logger.info('Adding {0}.'.format(transformed['name']))
+        try:
+            logger.info('Adding {0}.'.format(transformed['name']))
+            #Prevent logger output encoding errors from stopping script
+        except:
+            pass
+        for key, val in six.iteritems(transformed):
+            if type(val) is bytes:
+                transformed[key] = str(val)
         inst = Institution(**transformed)
+
         inst.save()

@@ -305,7 +305,7 @@ def reset_all():
 
 @task
 def institutions():
-    #grid()
+    grid()
     ipeds()
 
 def grid():
