@@ -1,6 +1,7 @@
 import six
-from datetime import date
 import json
+import logging
+from datetime import date
 from datetime import timedelta
 
 import requests
@@ -8,6 +9,8 @@ import requests
 from scrapi import settings
 from scrapi.base import BaseHarvester, HarvesterMeta
 from scrapi.linter.document import RawDocument, NormalizedDocument
+
+logger = logging.getLogger(__name__)
 
 
 def gen_harvesters():
@@ -30,6 +33,7 @@ def get_sources():
 
 def gen_harvester(shortname=None, longname=None, url=None, favicon_dataurl=None, **kwargs):
     assert shortname and longname and url and favicon_dataurl
+    logger.info('Generating harvester {}'.format(shortname))
 
     from scrapi.processing.elasticsearch import DatabaseManager
     dm = DatabaseManager()
@@ -96,4 +100,8 @@ class PushApiHarvester(BaseHarvester):
         }
 
 
-harvesters = gen_harvesters()
+try:
+    harvesters = gen_harvesters()
+except Exception as e:
+    logger.error('Could not generate harvesters from push api')
+    logger.exception(e)
