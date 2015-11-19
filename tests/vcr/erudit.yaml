@@ -1,0 +1,979 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/2.7.10 Darwin/14.1.0]
+    method: GET
+    uri: http://oai.erudit.org/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2015-10-27T00:00:00Z&until=2015-10-29T00:00:00Z
+  response:
+    body: {string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<OAI-PMH xmlns=\"\
+        http://www.openarchives.org/OAI/2.0/\"\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n         xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/\n   \
+        \                          http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"\
+        >\n  <responseDate>2015-11-17T15:24:14Z</responseDate>\n  <request verb=\"\
+        ListRecords\" from=\"2015-10-27T00:00:00Z\" until=\"2015-10-29T00:00:00Z\"\
+        \ metadataPrefix=\"oai_dc\">http://oai.erudit.org/oaiproviderpublic/request</request>\n\
+        <ListRecords>\n<record>\n  <header>\n    <identifier>oai:erudit.org:1033512ar</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>erudit.revue.cuizine</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>The Urban\
+        \ Homesteading Cookbook. Michelle Catherine Nelson, Douglas &amp; McIntyre,\
+        \ 2015, 256 p. </dc:title>\n   <dc:creator>B\xE9gin, Luna</dc:creator>\n \
+        \  <dc:date>2015</dc:date>\n   <dc:relation>Cuizine : The Journal of Canadian\
+        \ Food Cultures ; vol. 6 no. 2 (2015)</dc:relation>\n   <dc:publisher>McGill\
+        \ University Library</dc:publisher>\n   <dc:publisher>\xC9rudit</dc:publisher>\n\
+        \   <dc:identifier>http://id.erudit.org/iderudit/1033512ar</dc:identifier>\n\
+        \   <dc:identifier>doi:10.7202/1033512ar</dc:identifier>\n   <dc:language>fr</dc:language>\n\
+        \   <dc:type>text</dc:type>\n   <dc:rights>All Rights Reserved \xA9 Cuizine:\
+        \ The Journal of Canadian Food Cultures / Cuizine : revue des cultures culinaires\
+        \ au Canada, 2015</dc:rights>\n</oai_dc:dc>\n  </metadata>\n</record>\n<record>\n\
+        \  <header>\n    <identifier>oai:erudit.org:1033633ar</identifier>\n    <datestamp>2015-10-27T23:42:02Z</datestamp>\n\
+        \    <setSpec>erudit.revue.haf</setSpec>\n  </header>\n  <metadata>\n<oai_dc:dc\
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n           xmlns:oai_dc=\"\
+        http://www.openarchives.org/OAI/2.0/oai_dc/\"\n           xmlns:sch=\"http://www.erudit.org/xsd/article\"\
+        \n           xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"\
+        http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\"\
+        >\n   <dc:title>Introduction. Territoire et environnement</dc:title>\n   <dc:creator>Castonguay,\
+        \ St\xE9phane</dc:creator>\n   <dc:creator>Foug\xE8res, Dany</dc:creator>\n\
+        \   <dc:date>2015</dc:date>\n   <dc:relation>Revue d\u2019histoire de l\u2019\
+        Am\xE9rique fran\xE7aise ; vol. 68 no. 3-4 (2015)</dc:relation>\n   <dc:publisher>Institut\
+        \ d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise</dc:publisher>\n   <dc:publisher>\xC9\
+        rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/1033633ar</dc:identifier>\n\
+        \   <dc:identifier>doi:10.7202/1033633ar</dc:identifier>\n   <dc:language>fr</dc:language>\n\
+        \   <dc:type>text</dc:type>\n   <dc:rights>Tous droits r\xE9serv\xE9s \xA9\
+        \ Institut d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise, 2015</dc:rights>\n\
+        </oai_dc:dc>\n  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:1033634ar</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>erudit.revue.haf</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>\xAB\_Les\
+        \ bois engendrent les frimas et les gel\xE9es\_\xBB\_: comprendre le climat\
+        \ en Nouvelle-France</dc:title>\n   <dc:creator>Coates, Colin</dc:creator>\n\
+        \   <dc:creator>Degroot, Dagomar</dc:creator>\n   <dc:date>2015</dc:date>\n\
+        \   <dc:relation>Revue d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise\
+        \ ; vol. 68 no. 3-4 (2015)</dc:relation>\n   <dc:description xml:lang=\"fr\"\
+        >Cet article juxtapose les reconstructions r\xE9centes de l\u2019histoire\
+        \ du climat avec les interpr\xE9tations de l\u2019\xE9poque de la Nouvelle-France.\
+        \ Des auteurs coloniaux ont essay\xE9 d\u2019expliquer les hivers beaucoup\
+        \ plus froids que dans la m\xE8re patrie. \xC0 l\u2019\xE9poque des Petits\
+        \ \xC2ges glaciaires, ces auteurs se servent des diff\xE9rences environnementales\
+        \ pour comprendre le climat colonial. Les grandes for\xEAts expliqueraient\
+        \ la longueur et la s\xE9v\xE9rit\xE9 hivernales, et les auteurs pr\xE9disent\
+        \ que le d\xE9frichement des terres allait rapprocher colonie et m\xE8re patrie\
+        \ du point de vue du climat. Le r\xE9chauffement au cours du XVIIIe si\xE8\
+        cle a convaincu certains que l\u2019activit\xE9 humaine avait am\xE9lior\xE9\
+        \ le climat.</dc:description>\n   <dc:description xml:lang=\"en\">This article\
+        \ juxtaposes current reconstructions of climate history with interpretations\
+        \ from the New France era. During the Little Ice Age, colonial authors attempted\
+        \ to account for winters much colder in the colony than in the mother country,\
+        \ using environmental differences to explain the colonial climate. The authors\
+        \ believed that the expansive forests were probably the source for the length\
+        \ and severity of the winters, and they predicted that large-scale clearings\
+        \ would bring positive climatic changes. The warming trend of the eighteenth\
+        \ century convinced some of them that human activity had in fact contributed\
+        \ to the improvement of the climate.</dc:description>\n   <dc:publisher>Institut\
+        \ d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise</dc:publisher>\n   <dc:publisher>\xC9\
+        rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/1033634ar</dc:identifier>\n\
+        \   <dc:identifier>doi:10.7202/1033634ar</dc:identifier>\n   <dc:language>fr</dc:language>\n\
+        \   <dc:type>text</dc:type>\n   <dc:rights>Tous droits r\xE9serv\xE9s \xA9\
+        \ Institut d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise, 2015</dc:rights>\n\
+        </oai_dc:dc>\n  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:1033635ar</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>erudit.revue.haf</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>Pont de\
+        \ glace, navigation et inondation : Enjeux de l\u2019am\xE9nagement du fleuve\
+        \ Saint-Laurent dans le secteur de Trois-Rivi\xE8res (1845-1865)</dc:title>\n\
+        \   <dc:creator>Antaya, Fran\xE7ois</dc:creator>\n   <dc:date>2015</dc:date>\n\
+        \   <dc:relation>Revue d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise\
+        \ ; vol. 68 no. 3-4 (2015)</dc:relation>\n   <dc:description xml:lang=\"fr\"\
+        >Au milieu du XIXe si\xE8cle, des citoyens de Trois-Rivi\xE8res et des environs\
+        \ r\xE9clament aux autorit\xE9s gouvernementales l\u2019\xE9rection de piliers\
+        \ ou de jet\xE9es dans le fleuve Saint-Laurent pour favoriser la formation\
+        \ du pont de glace face \xE0 la ville. Le pont de glace trifluvien se heurte\
+        \ toutefois \xE0 la voie navigable du Saint-Laurent et l\u2019in\xE9galit\xE9\
+        \ du rapport de force entre les deux projets d\u2019am\xE9nagement contribue\
+        \ largement \xE0 son \xE9chec. L\u2019\xE9tude de cet antagonisme, qui ouvre\
+        \ une fen\xEAtre sur des territoires ancr\xE9s dans des usages et des repr\xE9\
+        sentations diff\xE9renci\xE9es du Saint-Laurent, vise ici \xE0 approfondir\
+        \ notre connaissance des rapports \xE0 l\u2019espace fluvial.</dc:description>\n\
+        \   <dc:description xml:lang=\"en\">In the mid-nineteenth century, citizens\
+        \ of Three-Rivers and its surrounding area asked the Government to erect piers\
+        \ or jetties in the St.\_Lawrence River to favor the formation of an ice bridge\
+        \ opposite the town. However, the Three-Rivers ice bridge was competing with\
+        \ the St.\_Lawrence waterway and the power imbalance between both projects\
+        \ became a major factor in its failure. Opening a window on territories rooted\
+        \ in differentiated uses and representations of the St.\_Lawrence, this study\
+        \ of antagonism aims to deepen our knowledge of the relationships to river\
+        \ spaces.</dc:description>\n   <dc:publisher>Institut d\u2019histoire de l\u2019\
+        Am\xE9rique fran\xE7aise</dc:publisher>\n   <dc:publisher>\xC9rudit</dc:publisher>\n\
+        \   <dc:identifier>http://id.erudit.org/iderudit/1033635ar</dc:identifier>\n\
+        \   <dc:identifier>doi:10.7202/1033635ar</dc:identifier>\n   <dc:language>fr</dc:language>\n\
+        \   <dc:type>text</dc:type>\n   <dc:rights>Tous droits r\xE9serv\xE9s \xA9\
+        \ Institut d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise, 2015</dc:rights>\n\
+        </oai_dc:dc>\n  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:1033636ar</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>erudit.revue.haf</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>Industries,\
+        \ nuisances et d\xE9finition de l\u2019espace urbain. L\u2019industrie papeti\xE8\
+        re \xE0 Trois-Rivi\xE8res (1910-1925)</dc:title>\n   <dc:creator>Payen, Carole</dc:creator>\n\
+        \   <dc:date>2015</dc:date>\n   <dc:relation>Revue d\u2019histoire de l\u2019\
+        Am\xE9rique fran\xE7aise ; vol. 68 no. 3-4 (2015)</dc:relation>\n   <dc:description\
+        \ xml:lang=\"fr\">Trois-Rivi\xE8res connut, gr\xE2ce aux industries papeti\xE8\
+        res, une croissance fulgurante au d\xE9but du XXe si\xE8cle. Cependant, ces\
+        \ industries furent g\xE9n\xE9ratrices de nombreuses nuisances et firent na\xEE\
+        tre la controverse. Celle-ci, qui s\u2019exprime dans de multiples sources,\
+        \ administratives, judiciaires, m\xE9diatiques, industrielles, offre la possibilit\xE9\
+        \ d\u2019\xE9tudier les discours li\xE9s \xE0 la ville, et notamment les questions\
+        \ d\u2019arbitrage et de d\xE9finition de l\u2019int\xE9r\xEAt g\xE9n\xE9\
+        ral (croissance \xE9conomique vs salubrit\xE9), mais \xE9galement de percevoir\
+        \ des discours sur le territoire, l\u2019espace urbain, ses limites, et le(s)\
+        \ \xAB\_territoire(s) acceptable(s)\_\xBB de la pollution industrielle au\
+        \ d\xE9but du XXe si\xE8cle.</dc:description>\n   <dc:description xml:lang=\"\
+        en\">At the onset of the 20th century, Three-Rivers witnessed the rapid growth\
+        \ of its urban center due to the establishment of a paper industry. However,\
+        \ this industry caused nuisance and pollution, which in turn triggered a controversy\
+        \ that was documented in multiple sources, i.e. legal, administrative and\
+        \ industrial archives as well as newspapers. These sources provide an opportunity\
+        \ to study discourses about the city, in particular questions of arbitration\
+        \ and the definition of common good (economic growth vs. public health), and\
+        \ discourses on territory, urban space, boundaries, and \u201Cterritories\
+        \ deemed acceptable\u201D for industrial pollution in the early 20th century.</dc:description>\n\
+        \   <dc:publisher>Institut d\u2019histoire de l\u2019Am\xE9rique fran\xE7\
+        aise</dc:publisher>\n   <dc:publisher>\xC9rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/1033636ar</dc:identifier>\n\
+        \   <dc:identifier>doi:10.7202/1033636ar</dc:identifier>\n   <dc:language>fr</dc:language>\n\
+        \   <dc:type>text</dc:type>\n   <dc:rights>Tous droits r\xE9serv\xE9s \xA9\
+        \ Institut d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise, 2015</dc:rights>\n\
+        </oai_dc:dc>\n  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:1033637ar</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>erudit.revue.haf</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>\xC0 travers\
+        \ le pare-brise\_: la cr\xE9ation des territoires touristiques au Qu\xE9bec\
+        \ et en Ontario (1920-1945)</dc:title>\n   <dc:creator>Lambert, Maude-Emmanuelle</dc:creator>\n\
+        \   <dc:date>2015</dc:date>\n   <dc:relation>Revue d\u2019histoire de l\u2019\
+        Am\xE9rique fran\xE7aise ; vol. 68 no. 3-4 (2015)</dc:relation>\n   <dc:description\
+        \ xml:lang=\"fr\">Cet article l\xE8ve le voile sur les diff\xE9rentes mani\xE8\
+        res dont, historiquement, le territoire a \xE9t\xE9 per\xE7u, con\xE7u et\
+        \ v\xE9cu \xE0 travers l\u2019exp\xE9rience et l\u2019essor de la mobilit\xE9\
+        . \xC0 partir des ann\xE9es 1920, l\u2019automobilit\xE9 a occup\xE9 un r\xF4\
+        le central dans la r\xE9flexion des acteurs du tourisme et dans la cr\xE9\
+        ation des territoires touristiques. En comparant l\u2019exp\xE9rience de deux\
+        \ provinces, le Qu\xE9bec et l\u2019Ontario, par le biais d\u2019une analyse\
+        \ iconographique et discursive des guides touristiques et des r\xE9cits de\
+        \ voyage, ce texte montre en quoi deux territoires, ayant des caract\xE9ristiques\
+        \ biog\xE9ophysiques semblables, d\xE9veloppent des repr\xE9sentations touristiques\
+        \ diff\xE9rentes en fonction de facteurs culturels.</dc:description>\n   <dc:description\
+        \ xml:lang=\"en\">This article explores the different ways in which territory\
+        \ has historically been perceived, conceived and practiced through the experience\
+        \ and growth of mobility. Since the 1920s, automobility has been seen as a\
+        \ major factor by the various players of the tourism industry and in the creation\
+        \ of touristic regions. Building on an iconographic and discursive analysis\
+        \ of tourist guides and travel accounts, this article compares the experience\
+        \ of two provinces, Quebec and Ontario, and shows how two territories with\
+        \ similar bio-geo-physical characteristics developed different tourist representations\
+        \ based on cultural factors.</dc:description>\n   <dc:publisher>Institut d\u2019\
+        histoire de l\u2019Am\xE9rique fran\xE7aise</dc:publisher>\n   <dc:publisher>\xC9\
+        rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/1033637ar</dc:identifier>\n\
+        \   <dc:identifier>doi:10.7202/1033637ar</dc:identifier>\n   <dc:language>fr</dc:language>\n\
+        \   <dc:type>text</dc:type>\n   <dc:rights>Tous droits r\xE9serv\xE9s \xA9\
+        \ Institut d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise, 2015</dc:rights>\n\
+        </oai_dc:dc>\n  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:1033638ar</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>erudit.revue.haf</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>\xAB\_L\u2019\
+        homme en face d\u2019une nature qui le repousse\_\xBB\_: for\xEAt et territoire\
+        \ dans la litt\xE9rature de la premi\xE8re moiti\xE9 du XXe si\xE8cle</dc:title>\n\
+        \   <dc:creator>Flamand-Hubert, Maude</dc:creator>\n   <dc:date>2015</dc:date>\n\
+        \   <dc:relation>Revue d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise\
+        \ ; vol. 68 no. 3-4 (2015)</dc:relation>\n   <dc:description xml:lang=\"fr\"\
+        >Dans cet article, nous proposons une incursion dans l\u2019univers des sensibilit\xE9\
+        s entretenues \xE0 l\u2019\xE9gard du territoire, en nous attardant aux repr\xE9\
+        sentations v\xE9hicul\xE9es par les discours tenus sur la for\xEAt dans les\
+        \ oeuvres litt\xE9raires produites au cours de la premi\xE8re moiti\xE9 du\
+        \ XXe si\xE8cle. Le travail men\xE9 ici propose une lecture des oeuvres litt\xE9\
+        raires comme discours articul\xE9 au contexte social, culturel, politique\
+        \ et \xE9conomique d\u2019expansion territoriale et se veut une premi\xE8\
+        re esquisse des possibilit\xE9s de d\xE9cloisonner ces univers interd\xE9\
+        pendants. Dans un environnement intellectuel o\xF9 la for\xEAt semble immobilis\xE9\
+        e entre la domination d\u2019une id\xE9ologie tourn\xE9e vers la terre et\
+        \ l\u2019essor des sciences, en introduisant la for\xEAt dans leurs oeuvres,\
+        \ les auteurs engagent un dialogue collectif sur la place qu\u2019occupe celle-ci\
+        \ dans la soci\xE9t\xE9, et par extension plus largement sur les rapports\
+        \ sociaux entretenus au territoire. Les oeuvres litt\xE9raires permettent\
+        \ de saisir qu\u2019\xE0 l\u2019instar des actions men\xE9es par l\u2019\xC9\
+        tat, l\u2019appropriation du territoire se pr\xE9sente comme un geste collectif\
+        \ multidimensionnel.</dc:description>\n   <dc:description xml:lang=\"en\"\
+        >In this paper, we propose exploring the sensibilities as regard the territory\
+        \ of Quebec by focussing on representations of the forest in literary discourses\
+        \ during the first half of the twentieth century. Our research focuses on\
+        \ literary works as discourses on the social, cultural, political and economic\
+        \ context surrounding territorial expansion and is a first step in de-compartmentalizing\
+        \ interdependent universes. In an intellectual environment where the image\
+        \ of the forest seemed caught between two ideologies -the agricultural past\
+        \ versus the surge of sciences- these authors initiated a collective dialogue\
+        \ about the symbolic space occupied by forests in society and, by extension,\
+        \ the larger issue of the social relationships to the territory. These literary\
+        \ works show that, amidst the State\u2019s actions, the appropriation of the\
+        \ territory was proposed as a collective and multidimensional act.</dc:description>\n\
+        \   <dc:publisher>Institut d\u2019histoire de l\u2019Am\xE9rique fran\xE7\
+        aise</dc:publisher>\n   <dc:publisher>\xC9rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/1033638ar</dc:identifier>\n\
+        \   <dc:identifier>doi:10.7202/1033638ar</dc:identifier>\n   <dc:language>fr</dc:language>\n\
+        \   <dc:type>text</dc:type>\n   <dc:rights>Tous droits r\xE9serv\xE9s \xA9\
+        \ Institut d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise, 2015</dc:rights>\n\
+        </oai_dc:dc>\n  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:1033639ar</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>erudit.revue.haf</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>La mine\
+        \ qui \xAB\_commence \xE0 grignoter le village\_\xBB\_: expansion mini\xE8\
+        re territoriale \xE0 Asbestos</dc:title>\n   <dc:creator>van Horssen, Jessica</dc:creator>\n\
+        \   <dc:date>2015</dc:date>\n   <dc:relation>Revue d\u2019histoire de l\u2019\
+        Am\xE9rique fran\xE7aise ; vol. 68 no. 3-4 (2015)</dc:relation>\n   <dc:description\
+        \ xml:lang=\"fr\">La ville d\u2019Asbestos est le foyer de ce qui \xE9tait\
+        \ autrefois la plus grande mine d\u2019amiante \xE0 ciel ouvert dans le monde,\
+        \ la mine Jeffrey. La majorit\xE9 de son histoire a \xE9t\xE9 domin\xE9e par\
+        \ l\u2019exploitation de la ressource qui lui donna son nom, et aussi la compagnie\
+        \ am\xE9ricaine propri\xE9taire de la mine, la Johns-Manville Company, qui\
+        \ op\xE9ra un style agressif de gestion du territoire. En proc\xE9dant \xE0\
+        \ l\u2019\xE9largissement des limites de la mine dans la communaut\xE9 afin\
+        \ de r\xE9pondre \xE0 une demande mondiale croissante pour l\u2019amiante,\
+        \ la Johns Manville provoqua des transformations radicales de l\u2019environnement\
+        \ et du paysage local. Face \xE0 l\u2019effondrement de l\u2019industrie mondiale\
+        \ de l\u2019amiante, la Johns-Manville intensifia ses plans d\u2019expansion,\
+        \ au grand d\xE9triment de la communaut\xE9 locale. Celle-ci, cependant, n\u2019\
+        est pas demeur\xE9e muette lors de ces transformations, et cet article examine\
+        \ la fa\xE7on dont elle a n\xE9goci\xE9 un \xE9quilibre entre le progr\xE8\
+        s et l\u2019\xE9picentre de cette industrie mini\xE8re.</dc:description>\n\
+        \   <dc:description xml:lang=\"en\">The town of Asbestos is home to what was\
+        \ once the largest opencast asbestos mine in the world, the Jeffrey Mine.\
+        \ Most of the town\u2019s history has been dominated by the resource industry\
+        \ that gave it its name and by the American Johns-Manville Company, which\
+        \ owned the mine and carried out an aggressive style of land management. When\
+        \ it expanded the edges of the mine into the community in order to meet rising\
+        \ global demand for asbestos, the company brought radical changes to the local\
+        \ environment and landscape. As the global asbestos industry began to collapse,\
+        \ Johns-Manville stepped up its expansion plans, much to the detriment of\
+        \ a local community that, however, did not remain voiceless in this process.\
+        \ This paper examines how the community negotiated a balance between progress\
+        \ and place at the epicentre of this mining industry.</dc:description>\n \
+        \  <dc:publisher>Institut d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise</dc:publisher>\n\
+        \   <dc:publisher>\xC9rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/1033639ar</dc:identifier>\n\
+        \   <dc:identifier>doi:10.7202/1033639ar</dc:identifier>\n   <dc:language>fr</dc:language>\n\
+        \   <dc:type>text</dc:type>\n   <dc:rights>Tous droits r\xE9serv\xE9s \xA9\
+        \ Institut d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise, 2015</dc:rights>\n\
+        </oai_dc:dc>\n  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:1033640ar</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>erudit.revue.haf</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>L\u2019\
+        agronome, le forestier et l\u2019urbaniste de la R\xE9volution tranquille\
+        \ : L\u2019expertise en commission parlementaire, 1971-1973</dc:title>\n \
+        \  <dc:creator>Prud\u2019homme, Julien</dc:creator>\n   <dc:date>2015</dc:date>\n\
+        \   <dc:relation>Revue d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise\
+        \ ; vol. 68 no. 3-4 (2015)</dc:relation>\n   <dc:description xml:lang=\"fr\"\
+        >La R\xE9volution tranquille renouvelle le personnage de l\u2019\xAB\_expert\_\
+        \xBB, du d\xE9tenteur d\u2019un savoir non partag\xE9, \xE0 qui est attribu\xE9\
+        \ un pouvoir croissant. Or, les politiques du territoire contribuent largement,\
+        \ au d\xE9but des ann\xE9es 1970, au d\xE9bat public sur le r\xF4le social\
+        \ de l\u2019expertise, dont les divers visages sont alors en construction.\
+        \ L\u2019\xE9tude d\u2019un \xE9pisode m\xE9connu mais important de ce d\xE9\
+        bat, la Commission parlementaire sp\xE9ciale sur les professions tenue en\
+        \ 1972, t\xE9moigne des d\xE9finitions de l\u2019expert que proposent alors\
+        \ les associations professionnelles int\xE9ress\xE9es \xE0 l\u2019am\xE9nagement\
+        \ du territoire. Ce coup de sonde offre des balises provisoires mais utiles\
+        \ tant \xE0 l\u2019historiographie du territoire qu\u2019\xE0 une future histoire\
+        \ de l\u2019expertise au Qu\xE9bec, dont les d\xE9bats sur l\u2019am\xE9nagement\
+        \ de l\u2019espace constituent un jalon important.</dc:description>\n   <dc:description\
+        \ xml:lang=\"en\">Quebec\u2019s Quiet Revolution altered the character of\
+        \ the \u201Cexperts,\u201D those who know but do not share their knowledge,\
+        \ as they were given increased power. Yet, in the 1970s, territory development\
+        \ policies largely contributed to the public debate on the social role of\
+        \ \u201Cexpertise\u201D whose many facets were being constructed. The study\
+        \ of a little known but nonetheless important episode in this debate, namely\
+        \ the 1972 Commission parlementaire sp\xE9ciale sur les professions (Special\
+        \ Parliamentary Committee on Professions), provides insights on the definitions\
+        \ of \u201Cexperts\u201D put forward by professional associations with an\
+        \ interest in land-use planning. The initial definitions provide useful, although\
+        \ provisional, milestones to the historiography of the territory and to a\
+        \ future history of expertise in Quebec, in which debates on territorial planning\
+        \ will play an important role.</dc:description>\n   <dc:publisher>Institut\
+        \ d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise</dc:publisher>\n   <dc:publisher>\xC9\
+        rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/1033640ar</dc:identifier>\n\
+        \   <dc:identifier>doi:10.7202/1033640ar</dc:identifier>\n   <dc:language>fr</dc:language>\n\
+        \   <dc:type>text</dc:type>\n   <dc:rights>Tous droits r\xE9serv\xE9s \xA9\
+        \ Institut d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise, 2015</dc:rights>\n\
+        </oai_dc:dc>\n  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:1033641ar</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>erudit.revue.haf</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>Harmonie,\
+        \ \xE9cologie et nationalisme\_: la mise en parc de Forillon (1970-2012)</dc:title>\n\
+        \   <dc:creator>Blanc, Guillaume</dc:creator>\n   <dc:date>2015</dc:date>\n\
+        \   <dc:relation>Revue d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise\
+        \ ; vol. 68 no. 3-4 (2015)</dc:relation>\n   <dc:description xml:lang=\"fr\"\
+        >L\u2019histoire du parc national Forillon d\xE9bute en 1970 par l\u2019expropriation\
+        \ des populations et la destruction par le feu de leurs habitations. S\u2019\
+        ensuivent alors quarante ann\xE9es de naturalisation de l\u2019espace. Pelouses\
+        \ restaur\xE9es, montagnes rebois\xE9es et populations animales r\xE9introduites\
+        \ deviennent les marqueurs d\u2019un territoire d\xE9sormais symbole de l\u2019\
+        une des 39 r\xE9gions naturelles d\xE9finies par Parcs Canada, laquelle s\u2019\
+        efforce, sans cesse, de faire voir et de faire croire \xE0 une nation naturellement\
+        \ canadienne. Cependant, ce r\xE9cit naturel achoppe depuis peu sur l\u2019\
+        impossibilit\xE9 de concilier une territorialit\xE9 locale pr\xE9sentiste\
+        \ et concr\xE8te avec une territorialit\xE9 f\xE9d\xE9rale naturaliste et\
+        \ nationaliste vraisemblablement trop incoh\xE9rente pour faire sens.</dc:description>\n\
+        \   <dc:description xml:lang=\"en\">The story of the Forillon National Park\
+        \ began in 1970 with the expropriation of populations and the destruction\
+        \ by fire of their homes. The next forty years were devoted to the task of\
+        \ naturalizing the territory as lawns were restored, mountains reforested\
+        \ and animal populations reintroduced. These were the markers of a territory\
+        \ rebranded as one of the symbols of the 39\_natural regions defined by Parks\
+        \ Canada, whose continuing intention was to present and make believable the\
+        \ notion of a naturally Canadian nation. However, this natural narrative recently\
+        \ got bogged down on the impossible task of merging a contemporary, concrete\
+        \ and local territoriality with a naturalist and nationalist federal territoriality\
+        \ seemingly too inconsistent to provide meaning.</dc:description>\n   <dc:publisher>Institut\
+        \ d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise</dc:publisher>\n   <dc:publisher>\xC9\
+        rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/1033641ar</dc:identifier>\n\
+        \   <dc:identifier>doi:10.7202/1033641ar</dc:identifier>\n   <dc:language>fr</dc:language>\n\
+        \   <dc:type>text</dc:type>\n   <dc:rights>Tous droits r\xE9serv\xE9s \xA9\
+        \ Institut d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise, 2015</dc:rights>\n\
+        </oai_dc:dc>\n  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:79220ac</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>??</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>Bribes hivernales</dc:title>\n\
+        \   <dc:creator>Letarte, Genevi\xE8ve</dc:creator>\n   <dc:date>2015</dc:date>\n\
+        \   <dc:relation>L\u2019Inconv\xE9nient ;  no. 60 (2015)</dc:relation>\n \
+        \  <dc:publisher>L\u2019Inconv\xE9nient</dc:publisher>\n   <dc:publisher>\xC9\
+        rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/79220ac</dc:identifier>\n\
+        \   <dc:language>fr</dc:language>\n   <dc:type>text</dc:type>\n   <dc:rights>Tous\
+        \ droits r\xE9serv\xE9s \xA9 L\u2019inconv\xE9nient2015</dc:rights>\n</oai_dc:dc>\n\
+        \  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:79221ac</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>??</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>Le roman\
+        \ qu\xE9b\xE9cois \xE0 l\u2019\xE9chelle du grand contexte</dc:title>\n  \
+        \ <dc:creator>Biron, Michel</dc:creator>\n   <dc:date>2015</dc:date>\n   <dc:relation>L\u2019\
+        Inconv\xE9nient ;  no. 60 (2015)</dc:relation>\n   <dc:publisher>L\u2019Inconv\xE9\
+        nient</dc:publisher>\n   <dc:publisher>\xC9rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/79221ac</dc:identifier>\n\
+        \   <dc:language>fr</dc:language>\n   <dc:type>text</dc:type>\n   <dc:rights>Tous\
+        \ droits r\xE9serv\xE9s \xA9 L\u2019inconv\xE9nient2015</dc:rights>\n</oai_dc:dc>\n\
+        \  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:79222ac</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>??</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>L\u2019\xEE\
+        le en soi</dc:title>\n   <dc:creator>Lamontagne, Marie-Andr\xE9e</dc:creator>\n\
+        \   <dc:date>2015</dc:date>\n   <dc:relation>L\u2019Inconv\xE9nient ;  no.\
+        \ 60 (2015)</dc:relation>\n   <dc:publisher>L\u2019Inconv\xE9nient</dc:publisher>\n\
+        \   <dc:publisher>\xC9rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/79222ac</dc:identifier>\n\
+        \   <dc:language>fr</dc:language>\n   <dc:type>text</dc:type>\n   <dc:rights>Tous\
+        \ droits r\xE9serv\xE9s \xA9 L\u2019inconv\xE9nient2015</dc:rights>\n</oai_dc:dc>\n\
+        \  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:79223ac</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>??</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>La jeune\
+        \ fille et la mort</dc:title>\n   <dc:creator>Dorais, David</dc:creator>\n\
+        \   <dc:date>2015</dc:date>\n   <dc:relation>L\u2019Inconv\xE9nient ;  no.\
+        \ 60 (2015)</dc:relation>\n   <dc:publisher>L\u2019Inconv\xE9nient</dc:publisher>\n\
+        \   <dc:publisher>\xC9rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/79223ac</dc:identifier>\n\
+        \   <dc:language>fr</dc:language>\n   <dc:type>text</dc:type>\n   <dc:rights>Tous\
+        \ droits r\xE9serv\xE9s \xA9 L\u2019inconv\xE9nient2015</dc:rights>\n</oai_dc:dc>\n\
+        \  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:79224ac</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>??</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>Tr\xE9sors\
+        \ de la morte-saison</dc:title>\n   <dc:creator>Privet, Georges</dc:creator>\n\
+        \   <dc:date>2015</dc:date>\n   <dc:relation>L\u2019Inconv\xE9nient ;  no.\
+        \ 60 (2015)</dc:relation>\n   <dc:publisher>L\u2019Inconv\xE9nient</dc:publisher>\n\
+        \   <dc:publisher>\xC9rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/79224ac</dc:identifier>\n\
+        \   <dc:language>fr</dc:language>\n   <dc:type>text</dc:type>\n   <dc:rights>Tous\
+        \ droits r\xE9serv\xE9s \xA9 L\u2019inconv\xE9nient2015</dc:rights>\n</oai_dc:dc>\n\
+        \  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:79225ac</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>??</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>Trois Holmes\
+        \ dans un bateau</dc:title>\n   <dc:creator>Winckler, Martin</dc:creator>\n\
+        \   <dc:date>2015</dc:date>\n   <dc:relation>L\u2019Inconv\xE9nient ;  no.\
+        \ 60 (2015)</dc:relation>\n   <dc:publisher>L\u2019Inconv\xE9nient</dc:publisher>\n\
+        \   <dc:publisher>\xC9rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/79225ac</dc:identifier>\n\
+        \   <dc:language>fr</dc:language>\n   <dc:type>text</dc:type>\n   <dc:rights>Tous\
+        \ droits r\xE9serv\xE9s \xA9 L\u2019inconv\xE9nient2015</dc:rights>\n</oai_dc:dc>\n\
+        \  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:79226ac</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>??</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>Les sp\xE9\
+        cialistes</dc:title>\n   <dc:creator>Nicol, Patrick</dc:creator>\n   <dc:date>2015</dc:date>\n\
+        \   <dc:relation>L\u2019Inconv\xE9nient ;  no. 60 (2015)</dc:relation>\n \
+        \  <dc:publisher>L\u2019Inconv\xE9nient</dc:publisher>\n   <dc:publisher>\xC9\
+        rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/79226ac</dc:identifier>\n\
+        \   <dc:language>fr</dc:language>\n   <dc:type>text</dc:type>\n   <dc:rights>Tous\
+        \ droits r\xE9serv\xE9s \xA9 L\u2019inconv\xE9nient2015</dc:rights>\n</oai_dc:dc>\n\
+        \  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:79227ac</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>??</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>Nous sommes\
+        \ les d\xE9phas\xE9s</dc:title>\n   <dc:creator>Martel, Jean-Philippe</dc:creator>\n\
+        \   <dc:date>2015</dc:date>\n   <dc:relation>L\u2019Inconv\xE9nient ;  no.\
+        \ 60 (2015)</dc:relation>\n   <dc:publisher>L\u2019Inconv\xE9nient</dc:publisher>\n\
+        \   <dc:publisher>\xC9rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/79227ac</dc:identifier>\n\
+        \   <dc:language>fr</dc:language>\n   <dc:type>text</dc:type>\n   <dc:rights>Tous\
+        \ droits r\xE9serv\xE9s \xA9 L\u2019inconv\xE9nient2015</dc:rights>\n</oai_dc:dc>\n\
+        \  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:1033642ar</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>erudit.revue.haf</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>Bellavance,\
+        \ Claude, Yvan Rousseau et Jean Roy, Histoire du Centre-du-Qu\xE9bec (Qu\xE9\
+        bec, Les Presses de l\u2019Universit\xE9 Laval, 2013), 1030 p. </dc:title>\n\
+        \   <dc:creator>Pratt, Michel</dc:creator>\n   <dc:date>2015</dc:date>\n \
+        \  <dc:relation>Revue d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise ;\
+        \ vol. 68 no. 3-4 (2015)</dc:relation>\n   <dc:publisher>Institut d\u2019\
+        histoire de l\u2019Am\xE9rique fran\xE7aise</dc:publisher>\n   <dc:publisher>\xC9\
+        rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/1033642ar</dc:identifier>\n\
+        \   <dc:identifier>doi:10.7202/1033642ar</dc:identifier>\n   <dc:language>fr</dc:language>\n\
+        \   <dc:type>text</dc:type>\n   <dc:rights>Tous droits r\xE9serv\xE9s \xA9\
+        \ Institut d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise, 2015</dc:rights>\n\
+        </oai_dc:dc>\n  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:1033643ar</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>erudit.revue.haf</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>Cardinal,\
+        \ Linda, Jolivet, Simon et Isabelle Matte (dir.), Le Qu\xE9bec et l\u2019\
+        Irlande. Culture, Histoire, Identit\xE9 (Qu\xE9bec, Septentrion, 2014), 291\
+        \ p. </dc:title>\n   <dc:creator>Guyot, Julie</dc:creator>\n   <dc:date>2015</dc:date>\n\
+        \   <dc:relation>Revue d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise\
+        \ ; vol. 68 no. 3-4 (2015)</dc:relation>\n   <dc:publisher>Institut d\u2019\
+        histoire de l\u2019Am\xE9rique fran\xE7aise</dc:publisher>\n   <dc:publisher>\xC9\
+        rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/1033643ar</dc:identifier>\n\
+        \   <dc:identifier>doi:10.7202/1033643ar</dc:identifier>\n   <dc:language>fr</dc:language>\n\
+        \   <dc:type>text</dc:type>\n   <dc:rights>Tous droits r\xE9serv\xE9s \xA9\
+        \ Institut d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise, 2015</dc:rights>\n\
+        </oai_dc:dc>\n  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:1033644ar</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>erudit.revue.haf</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>C\xF4t\xE9\
+        , Olivier, Construire la nation au petit \xE9cran. Le Canada, une histoire\
+        \ populaire de CBC/Radio-Canada (1995-2002) (Qu\xE9bec, Septentrion, 2014),\
+        \ 402\_p. </dc:title>\n   <dc:creator>Goyette, Julien</dc:creator>\n   <dc:date>2015</dc:date>\n\
+        \   <dc:relation>Revue d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise\
+        \ ; vol. 68 no. 3-4 (2015)</dc:relation>\n   <dc:publisher>Institut d\u2019\
+        histoire de l\u2019Am\xE9rique fran\xE7aise</dc:publisher>\n   <dc:publisher>\xC9\
+        rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/1033644ar</dc:identifier>\n\
+        \   <dc:identifier>doi:10.7202/1033644ar</dc:identifier>\n   <dc:language>fr</dc:language>\n\
+        \   <dc:type>text</dc:type>\n   <dc:rights>Tous droits r\xE9serv\xE9s \xA9\
+        \ Institut d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise, 2015</dc:rights>\n\
+        </oai_dc:dc>\n  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:1033645ar</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>erudit.revue.haf</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>Forget,\
+        \ Nicolle, Th\xE9r\xE8se Casgrain. La gauchiste en collier de perles (Montr\xE9\
+        al, Fides, 2013), 552 p. </dc:title>\n   <dc:creator>Bienvenue, Louise</dc:creator>\n\
+        \   <dc:date>2015</dc:date>\n   <dc:relation>Revue d\u2019histoire de l\u2019\
+        Am\xE9rique fran\xE7aise ; vol. 68 no. 3-4 (2015)</dc:relation>\n   <dc:publisher>Institut\
+        \ d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise</dc:publisher>\n   <dc:publisher>\xC9\
+        rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/1033645ar</dc:identifier>\n\
+        \   <dc:identifier>doi:10.7202/1033645ar</dc:identifier>\n   <dc:language>fr</dc:language>\n\
+        \   <dc:type>text</dc:type>\n   <dc:rights>Tous droits r\xE9serv\xE9s \xA9\
+        \ Institut d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise, 2015</dc:rights>\n\
+        </oai_dc:dc>\n  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:1033646ar</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>erudit.revue.haf</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>L\xE9tourneau,\
+        \ Jocelyn, Je me souviens\_? Le pass\xE9 du Qu\xE9bec dans la conscience de\
+        \ sa jeunesse (Montr\xE9al, Fides, 2014), 256 p. </dc:title>\n   <dc:creator>Poyet,\
+        \ Julia</dc:creator>\n   <dc:date>2015</dc:date>\n   <dc:relation>Revue d\u2019\
+        histoire de l\u2019Am\xE9rique fran\xE7aise ; vol. 68 no. 3-4 (2015)</dc:relation>\n\
+        \   <dc:publisher>Institut d\u2019histoire de l\u2019Am\xE9rique fran\xE7\
+        aise</dc:publisher>\n   <dc:publisher>\xC9rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/1033646ar</dc:identifier>\n\
+        \   <dc:identifier>doi:10.7202/1033646ar</dc:identifier>\n   <dc:language>fr</dc:language>\n\
+        \   <dc:type>text</dc:type>\n   <dc:rights>Tous droits r\xE9serv\xE9s \xA9\
+        \ Institut d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise, 2015</dc:rights>\n\
+        </oai_dc:dc>\n  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:1033647ar</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>erudit.revue.haf</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>L\xFCsebrink,\
+        \ Hans-Jurgen, \xAB\_Le livre aim\xE9 du peuple\_\xBB. Les almanachs qu\xE9\
+        b\xE9cois de 1777 \xE0 nos jours (Qu\xE9bec, Les Presses de l\u2019Universit\xE9\
+        \ Laval, 2014), 500 p. </dc:title>\n   <dc:creator>Rioux, Philippe</dc:creator>\n\
+        \   <dc:date>2015</dc:date>\n   <dc:relation>Revue d\u2019histoire de l\u2019\
+        Am\xE9rique fran\xE7aise ; vol. 68 no. 3-4 (2015)</dc:relation>\n   <dc:publisher>Institut\
+        \ d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise</dc:publisher>\n   <dc:publisher>\xC9\
+        rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/1033647ar</dc:identifier>\n\
+        \   <dc:identifier>doi:10.7202/1033647ar</dc:identifier>\n   <dc:language>fr</dc:language>\n\
+        \   <dc:type>text</dc:type>\n   <dc:rights>Tous droits r\xE9serv\xE9s \xA9\
+        \ Institut d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise, 2015</dc:rights>\n\
+        </oai_dc:dc>\n  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:1033648ar</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>erudit.revue.haf</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>Mackey,\
+        \ Frank, L\u2019esclavage et les Noirs \xE0 Montr\xE9al, 1760-1840 (Montr\xE9\
+        al, Hurtubise, 2013), 662 p. </dc:title>\n   <dc:creator>Beaugrand-Champagne,\
+        \ Denyse</dc:creator>\n   <dc:date>2015</dc:date>\n   <dc:relation>Revue d\u2019\
+        histoire de l\u2019Am\xE9rique fran\xE7aise ; vol. 68 no. 3-4 (2015)</dc:relation>\n\
+        \   <dc:publisher>Institut d\u2019histoire de l\u2019Am\xE9rique fran\xE7\
+        aise</dc:publisher>\n   <dc:publisher>\xC9rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/1033648ar</dc:identifier>\n\
+        \   <dc:identifier>doi:10.7202/1033648ar</dc:identifier>\n   <dc:language>fr</dc:language>\n\
+        \   <dc:type>text</dc:type>\n   <dc:rights>Tous droits r\xE9serv\xE9s \xA9\
+        \ Institut d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise, 2015</dc:rights>\n\
+        </oai_dc:dc>\n  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:1033649ar</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>erudit.revue.haf</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>Marsan,\
+        \ Benoit, \xAB\_Battez-vous, ne vous laissez pas affamer\_!\_\xBB. Les communistes\
+        \ et la lutte des sans-emploi pendant la Grande D\xE9pression (Saint-Joseph-du-Lac,\
+        \ M \xE9diteur, 2014), 126 p. </dc:title>\n   <dc:creator>Dionne, Bernard</dc:creator>\n\
+        \   <dc:date>2015</dc:date>\n   <dc:relation>Revue d\u2019histoire de l\u2019\
+        Am\xE9rique fran\xE7aise ; vol. 68 no. 3-4 (2015)</dc:relation>\n   <dc:publisher>Institut\
+        \ d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise</dc:publisher>\n   <dc:publisher>\xC9\
+        rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/1033649ar</dc:identifier>\n\
+        \   <dc:identifier>doi:10.7202/1033649ar</dc:identifier>\n   <dc:language>fr</dc:language>\n\
+        \   <dc:type>text</dc:type>\n   <dc:rights>Tous droits r\xE9serv\xE9s \xA9\
+        \ Institut d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise, 2015</dc:rights>\n\
+        </oai_dc:dc>\n  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:1033650ar</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>erudit.revue.haf</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>Bibliographie\
+        \ sur l\u2019histoire de l\u2019Am\xE9rique fran\xE7aise</dc:title>\n   <dc:creator>Dumont,\
+        \ Mikael</dc:creator>\n   <dc:creator>Larochelle, Catherine</dc:creator>\n\
+        \   <dc:creator>Mauduit, Julien</dc:creator>\n   <dc:creator>Poirier, Val\xE9\
+        rie</dc:creator>\n   <dc:creator>Rainville, Paul-\xC9tienne</dc:creator>\n\
+        \   <dc:date>2015</dc:date>\n   <dc:relation>Revue d\u2019histoire de l\u2019\
+        Am\xE9rique fran\xE7aise ; vol. 68 no. 3-4 (2015)</dc:relation>\n   <dc:publisher>Institut\
+        \ d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise</dc:publisher>\n   <dc:publisher>\xC9\
+        rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/1033650ar</dc:identifier>\n\
+        \   <dc:identifier>doi:10.7202/1033650ar</dc:identifier>\n   <dc:language>fr</dc:language>\n\
+        \   <dc:type>text</dc:type>\n   <dc:rights>Tous droits r\xE9serv\xE9s \xA9\
+        \ Institut d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise, 2015</dc:rights>\n\
+        </oai_dc:dc>\n  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:1033651ar</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>erudit.revue.haf</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>Chronique\
+        \ d\u2019archives</dc:title>\n   <dc:creator>Tremblay, David</dc:creator>\n\
+        \   <dc:date>2015</dc:date>\n   <dc:relation>Revue d\u2019histoire de l\u2019\
+        Am\xE9rique fran\xE7aise ; vol. 68 no. 3-4 (2015)</dc:relation>\n   <dc:publisher>Institut\
+        \ d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise</dc:publisher>\n   <dc:publisher>\xC9\
+        rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/1033651ar</dc:identifier>\n\
+        \   <dc:identifier>doi:10.7202/1033651ar</dc:identifier>\n   <dc:language>fr</dc:language>\n\
+        \   <dc:type>text</dc:type>\n   <dc:rights>Tous droits r\xE9serv\xE9s \xA9\
+        \ Institut d\u2019histoire de l\u2019Am\xE9rique fran\xE7aise, 2015</dc:rights>\n\
+        </oai_dc:dc>\n  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:79210ac</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>??</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>Pour la\
+        \ d\xE9colonisation de nos arts narratifs</dc:title>\n   <dc:creator>Roy,\
+        \ Alain</dc:creator>\n   <dc:date>2015</dc:date>\n   <dc:relation>L\u2019\
+        Inconv\xE9nient ;  no. 60 (2015)</dc:relation>\n   <dc:publisher>L\u2019Inconv\xE9\
+        nient</dc:publisher>\n   <dc:publisher>\xC9rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/79210ac</dc:identifier>\n\
+        \   <dc:language>fr</dc:language>\n   <dc:type>text</dc:type>\n   <dc:rights>Tous\
+        \ droits r\xE9serv\xE9s \xA9 L\u2019inconv\xE9nient2015</dc:rights>\n</oai_dc:dc>\n\
+        \  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:79211ac</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>??</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>D\xE9s\xE9\
+        quilibres instables</dc:title>\n   <dc:creator>Maillart, Olivier</dc:creator>\n\
+        \   <dc:date>2015</dc:date>\n   <dc:relation>L\u2019Inconv\xE9nient ;  no.\
+        \ 60 (2015)</dc:relation>\n   <dc:publisher>L\u2019Inconv\xE9nient</dc:publisher>\n\
+        \   <dc:publisher>\xC9rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/79211ac</dc:identifier>\n\
+        \   <dc:language>fr</dc:language>\n   <dc:type>text</dc:type>\n   <dc:rights>Tous\
+        \ droits r\xE9serv\xE9s \xA9 L\u2019inconv\xE9nient2015</dc:rights>\n</oai_dc:dc>\n\
+        \  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:79212ac</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>??</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>Faribault,\
+        \ Minnesota</dc:title>\n   <dc:creator>Bouchard, Serge</dc:creator>\n   <dc:date>2015</dc:date>\n\
+        \   <dc:relation>L\u2019Inconv\xE9nient ;  no. 60 (2015)</dc:relation>\n \
+        \  <dc:publisher>L\u2019Inconv\xE9nient</dc:publisher>\n   <dc:publisher>\xC9\
+        rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/79212ac</dc:identifier>\n\
+        \   <dc:language>fr</dc:language>\n   <dc:type>text</dc:type>\n   <dc:rights>Tous\
+        \ droits r\xE9serv\xE9s \xA9 L\u2019inconv\xE9nient2015</dc:rights>\n</oai_dc:dc>\n\
+        \  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:79213ac</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>??</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>LaFontaine,\
+        \ Papineau et le pouvoir</dc:title>\n   <dc:creator>B\xE9dard, \xC9ric</dc:creator>\n\
+        \   <dc:date>2015</dc:date>\n   <dc:relation>L\u2019Inconv\xE9nient ;  no.\
+        \ 60 (2015)</dc:relation>\n   <dc:publisher>L\u2019Inconv\xE9nient</dc:publisher>\n\
+        \   <dc:publisher>\xC9rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/79213ac</dc:identifier>\n\
+        \   <dc:language>fr</dc:language>\n   <dc:type>text</dc:type>\n   <dc:rights>Tous\
+        \ droits r\xE9serv\xE9s \xA9 L\u2019inconv\xE9nient2015</dc:rights>\n</oai_dc:dc>\n\
+        \  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:79214ac</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>??</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>La fatigue\
+        \ politique du Qu\xE9bec contemporain : Entretien avec Daniel D. Jacques</dc:title>\n\
+        \   <dc:creator>B\xE9lisle, Mathieu</dc:creator>\n   <dc:date>2015</dc:date>\n\
+        \   <dc:relation>L\u2019Inconv\xE9nient ;  no. 60 (2015)</dc:relation>\n \
+        \  <dc:publisher>L\u2019Inconv\xE9nient</dc:publisher>\n   <dc:publisher>\xC9\
+        rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/79214ac</dc:identifier>\n\
+        \   <dc:language>fr</dc:language>\n   <dc:type>text</dc:type>\n   <dc:rights>Tous\
+        \ droits r\xE9serv\xE9s \xA9 L\u2019inconv\xE9nient2015</dc:rights>\n</oai_dc:dc>\n\
+        \  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:79215ac</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>??</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>Le bestiaire\
+        \ de PKP</dc:title>\n   <dc:creator>Segura, Mauricio</dc:creator>\n   <dc:date>2015</dc:date>\n\
+        \   <dc:relation>L\u2019Inconv\xE9nient ;  no. 60 (2015)</dc:relation>\n \
+        \  <dc:publisher>L\u2019Inconv\xE9nient</dc:publisher>\n   <dc:publisher>\xC9\
+        rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/79215ac</dc:identifier>\n\
+        \   <dc:language>fr</dc:language>\n   <dc:type>text</dc:type>\n   <dc:rights>Tous\
+        \ droits r\xE9serv\xE9s \xA9 L\u2019inconv\xE9nient2015</dc:rights>\n</oai_dc:dc>\n\
+        \  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:79216ac</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>??</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>Giuseppe\
+        \ Tomasi di Lampedusa : De l\u2019aristocratie comme principe spirituel</dc:title>\n\
+        \   <dc:creator>Bergeron, Carl</dc:creator>\n   <dc:date>2015</dc:date>\n\
+        \   <dc:relation>L\u2019Inconv\xE9nient ;  no. 60 (2015)</dc:relation>\n \
+        \  <dc:publisher>L\u2019Inconv\xE9nient</dc:publisher>\n   <dc:publisher>\xC9\
+        rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/79216ac</dc:identifier>\n\
+        \   <dc:language>fr</dc:language>\n   <dc:type>text</dc:type>\n   <dc:rights>Tous\
+        \ droits r\xE9serv\xE9s \xA9 L\u2019inconv\xE9nient2015</dc:rights>\n</oai_dc:dc>\n\
+        \  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:79217ac</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>??</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>Mich\xE8\
+        le Drouin : le pouvoir de la couleur</dc:title>\n   <dc:creator>Letarte, Marie-Anne</dc:creator>\n\
+        \   <dc:date>2015</dc:date>\n   <dc:relation>L\u2019Inconv\xE9nient ;  no.\
+        \ 60 (2015)</dc:relation>\n   <dc:publisher>L\u2019Inconv\xE9nient</dc:publisher>\n\
+        \   <dc:publisher>\xC9rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/79217ac</dc:identifier>\n\
+        \   <dc:language>fr</dc:language>\n   <dc:type>text</dc:type>\n   <dc:rights>Tous\
+        \ droits r\xE9serv\xE9s \xA9 L\u2019inconv\xE9nient2015</dc:rights>\n</oai_dc:dc>\n\
+        \  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:79218ac</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>??</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>Des lames\
+        \ de pierre</dc:title>\n   <dc:creator>Raymond Bock, Maxime</dc:creator>\n\
+        \   <dc:date>2015</dc:date>\n   <dc:relation>L\u2019Inconv\xE9nient ;  no.\
+        \ 60 (2015)</dc:relation>\n   <dc:publisher>L\u2019Inconv\xE9nient</dc:publisher>\n\
+        \   <dc:publisher>\xC9rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/79218ac</dc:identifier>\n\
+        \   <dc:language>fr</dc:language>\n   <dc:type>text</dc:type>\n   <dc:rights>Tous\
+        \ droits r\xE9serv\xE9s \xA9 L\u2019inconv\xE9nient2015</dc:rights>\n</oai_dc:dc>\n\
+        \  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:79219ac</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:02Z</datestamp>\n    <setSpec>??</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>Fen\xEA\
+        tres sur la nuit</dc:title>\n   <dc:creator>Vyleta, Dan</dc:creator>\n   <dc:date>2015</dc:date>\n\
+        \   <dc:relation>L\u2019Inconv\xE9nient ;  no. 60 (2015)</dc:relation>\n \
+        \  <dc:publisher>L\u2019Inconv\xE9nient</dc:publisher>\n   <dc:publisher>\xC9\
+        rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/79219ac</dc:identifier>\n\
+        \   <dc:language>fr</dc:language>\n   <dc:type>text</dc:type>\n   <dc:rights>Tous\
+        \ droits r\xE9serv\xE9s \xA9 L\u2019inconv\xE9nient2015</dc:rights>\n</oai_dc:dc>\n\
+        \  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:3539ac</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:03Z</datestamp>\n    <setSpec>erudit.culture.xyz</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>Nouvelles\
+        \ nouvelles d\u2019ici</dc:title>\n   <dc:date>1991</dc:date>\n   <dc:relation>XYZ.\
+        \ La revue de la nouvelle ;  no. 27 (1991)</dc:relation>\n   <dc:publisher>Publications\
+        \ Ga\xEBtan L\xE9vesque</dc:publisher>\n   <dc:publisher>\xC9rudit</dc:publisher>\n\
+        \   <dc:identifier>http://id.erudit.org/iderudit/3539ac</dc:identifier>\n\
+        \   <dc:language>fr</dc:language>\n   <dc:type>text</dc:type>\n   <dc:rights>Tous\
+        \ droits r\xE9serv\xE9s \xA9 Publications Ga\xEBtan L\xE9vesque, 1991</dc:rights>\n\
+        </oai_dc:dc>\n  </metadata>\n</record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:1033504ar</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:03Z</datestamp>\n    <setSpec>erudit.revue.cuizine</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>Editor's\
+        \ Introduction</dc:title>\n   <dc:creator>Cooke, Nathalie</dc:creator>\n \
+        \  <dc:date>2015</dc:date>\n   <dc:relation>Cuizine : The Journal of Canadian\
+        \ Food Cultures ; vol. 6 no. 2 (2015)</dc:relation>\n   <dc:publisher>McGill\
+        \ University Library</dc:publisher>\n   <dc:publisher>\xC9rudit</dc:publisher>\n\
+        \   <dc:identifier>http://id.erudit.org/iderudit/1033504ar</dc:identifier>\n\
+        \   <dc:identifier>doi:10.7202/1033504ar</dc:identifier>\n   <dc:language>en\
+        \ fr</dc:language>\n   <dc:type>text</dc:type>\n   <dc:rights>All Rights Reserved\
+        \ \xA9 Cuizine: The Journal of Canadian Food Cultures / Cuizine : revue des\
+        \ cultures culinaires au Canada, 2015</dc:rights>\n</oai_dc:dc>\n  </metadata>\n\
+        </record>\n<record>\n  <header>\n    <identifier>oai:erudit.org:1033506ar</identifier>\n\
+        \    <datestamp>2015-10-27T23:42:03Z</datestamp>\n    <setSpec>erudit.revue.cuizine</setSpec>\n\
+        \  </header>\n  <metadata>\n<oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n           xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n\
+        \           xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>'Our Strength\
+        \ comes from the Land': \_the Hybrid Culinary Traditions of the Six Nations\
+        \ of Grand River in the Early Twentieth Century</dc:title>\n   <dc:creator>Norman,\
+        \ Alison</dc:creator>\n   <dc:date>2015</dc:date>\n   <dc:relation>Cuizine\
+        \ : The Journal of Canadian Food Cultures ; vol. 6 no. 2 (2015)</dc:relation>\n\
+        \   <dc:description xml:lang=\"en\">This article examines the evolution of\
+        \ culinary traditions among the Haudenosaunee (Iroquois) in southern Ontario\
+        \ into the mid-twentieth century, and particularly the diets of the Christian\
+        \ community in the early twentieth century. It looks at the impact of the\
+        \ schools (especially the Mohawk Institute residential school) and churches\
+        \ on the reserve, and how voluntary organizations were at the forefront of\
+        \ promoting an Anglo-Canadian diet in the community. It considers the role\
+        \ that food and cooking played in the lives of Christian Six Nations women\
+        \ and suggest that despite the colonial challenges they faced, these women\
+        \ continued to use food as a way to care for their community.</dc:description>\n\
+        \   <dc:description xml:lang=\"fr\">Cet article trace l\u2019\xE9volution\
+        \ des traditions culinaires de la culture haudenosaunee (Iroquois) au d\xE9\
+        but du 20e si\xE8cle dans le sud de l\u2019Ontario, avec un int\xE9r\xEAt\
+        \ marqu\xE9 pour les habitudes alimentaires des collectivit\xE9s chr\xE9tiennes\
+        \ \xE0 la m\xEAme \xE9poque. Nous examinons l\u2019impact des \xE9coles (en\
+        \ particulier le pensionnat Mohawk Institute) et de l\u2019\xC9glise sur la\
+        \ r\xE9serve, ainsi que le r\xF4le d\u2019organisme s b\xE9n\xE9vole dans\
+        \ la promotion d\u2019habitudes alimentaires anglo-saxonnes au sein de la\
+        \ collectivit\xE9. Nous concluons que la nourriture et la cuisine constituaient\
+        \ pour les femmes Six Nations de foi chr\xE9tienne une mani\xE8re de faire\
+        \ face \xE0 certains d\xE9fis et \xE0 pourvoir aux besoins de la collectivit\xE9\
+        .</dc:description>\n   <dc:publisher>McGill University Library</dc:publisher>\n\
+        \   <dc:publisher>\xC9rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/1033506ar</dc:identifier>\n\
+        \   <dc:identifier>doi:10.7202/1033506ar</dc:identifier>\n   <dc:language>en</dc:language>\n\
+        \   <dc:type>text</dc:type>\n   <dc:rights>All Rights Reserved \xA9 Cuizine:\
+        \ The Journal of Canadian Food Cultures / Cuizine : revue des cultures culinaires\
+        \ au Canada, 2015</dc:rights>\n</oai_dc:dc>\n  </metadata>\n</record>\n<record>\n\
+        \  <header>\n    <identifier>oai:erudit.org:1033507ar</identifier>\n    <datestamp>2015-10-27T23:42:03Z</datestamp>\n\
+        \    <setSpec>erudit.revue.cuizine</setSpec>\n  </header>\n  <metadata>\n\
+        <oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n     \
+        \      xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n    \
+        \       xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>\u2018How\
+        \ to Keep a Husband on Packaged Foods\u2019 and Other Lessons: Gendered Education\
+        \ in the Canadian National Exhibition\u2019s Women\u2019s Division during\
+        \ the Kate Aitken Era, 1920s-1950s </dc:title>\n   <dc:creator>Zankowicz,\
+        \ Kate</dc:creator>\n   <dc:date>2015</dc:date>\n   <dc:relation>Cuizine :\
+        \ The Journal of Canadian Food Cultures ; vol. 6 no. 2 (2015)</dc:relation>\n\
+        \   <dc:description xml:lang=\"en\">Kate Aitken (1891-1971), perhaps best\
+        \ known as a broadcasting pioneer in Canadian history, was the first director\
+        \ of \u201CWomen\u2019s Activities\u201D at the Women\u2019s Division of the\
+        \ Canadian National Exhibition (CNE) in Toronto. It was a position she officially\
+        \ took on in 1938 until her retirement in 1952. Aitken\u2019s kitchen demonstration\
+        \ development, and her overwhelming success as an educator at the CNE offers\
+        \ a lens through which to examine the gendered education of food preparation,\
+        \ at a time when what constituted as \u2018women\u2019s work\u2019 was itself\
+        \ being re-worked.This paper will investigate women\u2019s programming at\
+        \ the CNE, and how it helped to support and construct women\u2019s accepted\
+        \ roles as part of a wider discourse about women\u2019s place both within\
+        \ and outside the home. Food played an intensely important part in this process.\
+        \ While the pedagogical purpose of many of the activities at the Women\u2019\
+        s Building were described as the \u201Ccapture, care and feeding of husbands,\u201D\
+        \ Aitken\u2019s use of food programming fulfilled multiple functions: as a\
+        \ tool for community organizing in her massive \u2018ladies luncheons\u2019\
+        \ and her work with Women\u2019s Institutes; as a gendered pedagogy in her\
+        \ restaurants, table-setting and cooking demonstrations and competitions;\
+        \ and as a means of teaching children and young people the skill of feeding\
+        \ themselves. As a woman whose work sat at the intersection of the \u2018\
+        modern\u2019 and the \u2018traditional\u2019 kitchen she also communicated\
+        \ important messages about shifting gender roles in the early to mid-twentieth\
+        \ century in Canada.</dc:description>\n   <dc:description xml:lang=\"fr\"\
+        >Kate Aitken (1891 \xE0 1971), une journaliste canadienne de renom, fut la\
+        \ premi\xE8re directrice du volet \u2018activit\xE9s pour les femmes\u2019\
+        \ lors de l\u2019Exposition canadienne nationale \xE0 Toronto. Elle a accept\xE9\
+        \ le poste en 1938 et l\u2019a occup\xE9 jusqu\u2019en 1952, au moment de\
+        \ sa retraite. Les d\xE9monstrations culinaires de Mme Aitken \xE0 l\u2019\
+        ECN ont connu un franc succ\xE8s et sont m\xE9ritoires d\u2019analyses plus\
+        \ pouss\xE9es. Plus pr\xE9cis\xE9ment, nous argumentons que ces d\xE9monstrations\
+        \ ont contribu\xE9 de mani\xE8re significative \xE0 l\u2019\xE9tablissement\
+        \ des r\xF4les des genres, notamment en lien avec les activit\xE9s li\xE9\
+        es \xE0 la cuisine, et ce, \xE0 un moment o\xF9 le r\xF4le plus large des\
+        \ femmes au sein de la soci\xE9t\xE9 se red\xE9finissait.Cet article examine\
+        \ le programme de l\u2019ECN destin\xE9 aux femmes et comment celui-ci a contribu\xE9\
+        \ \xE0 l\u2019\xE9tablissement de discours sur le es r\xF4les et comportements\
+        \ acceptables pour les femmes \xE0 domicile et \xE0 l\u2019ext\xE9rieur. La\
+        \ nourriture et la cuisine ont grandement contribu\xE9 dans la construction\
+        \ de ces discours. M\xEAme si le but premier des activit\xE9s propos\xE9es\
+        \ aux femmes dans le cadre de l\u2019ECN \xE9tait de \u2018trouver, marier\
+        \ et fid\xE9liser\u2019 un mari, les d\xE9monstrations d\u2019Aitken proposaient\
+        \ une vocation plus \xE9largie\_: la cuisine \xE9tait un moyen de rassembler,\
+        \ d\u2019aider les organismes pour les femmes, d\u2019offrir une formation\
+        \ en restauration, d\u2019enseigner les jeunes \xE0 cuisiner et \xE0 subsister\
+        \ \xE0 leurs besoins, etc. Le travail de Mme Aitken se trouvait au carrefour\
+        \ du traditionalisme et de la modernit\xE9; on lui doit \xE9norm\xE9ment pour\
+        \ le r\xF4le qu\u2019elle a jou\xE9 dans la diffusion de messages importants\
+        \ portant sur l\u2019\xE9volution des r\xF4les traditionnels au cours de la\
+        \ premi\xE8re moiti\xE9 du 20e si\xE8cle au Canada.</dc:description>\n   <dc:publisher>McGill\
+        \ University Library</dc:publisher>\n   <dc:publisher>\xC9rudit</dc:publisher>\n\
+        \   <dc:identifier>http://id.erudit.org/iderudit/1033507ar</dc:identifier>\n\
+        \   <dc:identifier>doi:10.7202/1033507ar</dc:identifier>\n   <dc:language>en</dc:language>\n\
+        \   <dc:type>text</dc:type>\n   <dc:rights>All Rights Reserved \xA9 Cuizine:\
+        \ The Journal of Canadian Food Cultures / Cuizine : revue des cultures culinaires\
+        \ au Canada, 2015</dc:rights>\n</oai_dc:dc>\n  </metadata>\n</record>\n<record>\n\
+        \  <header>\n    <identifier>oai:erudit.org:1033508ar</identifier>\n    <datestamp>2015-10-27T23:42:03Z</datestamp>\n\
+        \    <setSpec>erudit.revue.cuizine</setSpec>\n  </header>\n  <metadata>\n\
+        <oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n     \
+        \      xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n    \
+        \       xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>The Female\
+        \ Emigrant\u2019s Guide and Hints on Canadian Housekeeping by Catharine Parr\
+        \ Traill. Toronto: McClear and Company, 1854 </dc:title>\n   <dc:date>2015</dc:date>\n\
+        \   <dc:relation>Cuizine : The Journal of Canadian Food Cultures ; vol. 6\
+        \ no. 2 (2015)</dc:relation>\n   <dc:publisher>McGill University Library</dc:publisher>\n\
+        \   <dc:publisher>\xC9rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/1033508ar</dc:identifier>\n\
+        \   <dc:identifier>doi:10.7202/1033508ar</dc:identifier>\n   <dc:language>en</dc:language>\n\
+        \   <dc:type>text</dc:type>\n   <dc:rights>All Rights Reserved \xA9 Cuizine:\
+        \ The Journal of Canadian Food Cultures / Cuizine : revue des cultures culinaires\
+        \ au Canada, 2015</dc:rights>\n</oai_dc:dc>\n  </metadata>\n</record>\n<record>\n\
+        \  <header>\n    <identifier>oai:erudit.org:1033509ar</identifier>\n    <datestamp>2015-10-27T23:42:03Z</datestamp>\n\
+        \    <setSpec>erudit.revue.cuizine</setSpec>\n  </header>\n  <metadata>\n\
+        <oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n     \
+        \      xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n    \
+        \       xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>#foodcrisis:\
+        \ A graphic novel about global food security, Evan D. G. Fraser (writer),\
+        \ Scott Mooney (artist), John Perlock (inks, pencils), Rocco Commisso (pencils),\
+        \ 2014, 140\_p. </dc:title>\n   <dc:creator>Phillips, Ryan</dc:creator>\n\
+        \   <dc:date>2015</dc:date>\n   <dc:relation>Cuizine : The Journal of Canadian\
+        \ Food Cultures ; vol. 6 no. 2 (2015)</dc:relation>\n   <dc:publisher>McGill\
+        \ University Library</dc:publisher>\n   <dc:publisher>\xC9rudit</dc:publisher>\n\
+        \   <dc:identifier>http://id.erudit.org/iderudit/1033509ar</dc:identifier>\n\
+        \   <dc:identifier>doi:10.7202/1033509ar</dc:identifier>\n   <dc:language>en</dc:language>\n\
+        \   <dc:type>text</dc:type>\n   <dc:rights>All Rights Reserved \xA9 Cuizine:\
+        \ The Journal of Canadian Food Cultures / Cuizine : revue des cultures culinaires\
+        \ au Canada, 2015</dc:rights>\n</oai_dc:dc>\n  </metadata>\n</record>\n<record>\n\
+        \  <header>\n    <identifier>oai:erudit.org:1033510ar</identifier>\n    <datestamp>2015-10-27T23:42:03Z</datestamp>\n\
+        \    <setSpec>erudit.revue.cuizine</setSpec>\n  </header>\n  <metadata>\n\
+        <oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n     \
+        \      xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n    \
+        \       xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>Nourrir\
+        \ la machine humaine\_: Nutrition et alimentation au Qu\xE9bec, 1860 \u2013\
+        \ 1945. Durand, Caroline. McGill-Queen\u2019s University Press, 2015, 302\
+        \ pages. </dc:title>\n   <dc:creator>Desjardins, Ren\xE9e</dc:creator>\n \
+        \  <dc:date>2015</dc:date>\n   <dc:relation>Cuizine : The Journal of Canadian\
+        \ Food Cultures ; vol. 6 no. 2 (2015)</dc:relation>\n   <dc:publisher>McGill\
+        \ University Library</dc:publisher>\n   <dc:publisher>\xC9rudit</dc:publisher>\n\
+        \   <dc:identifier>http://id.erudit.org/iderudit/1033510ar</dc:identifier>\n\
+        \   <dc:identifier>doi:10.7202/1033510ar</dc:identifier>\n   <dc:language>fr</dc:language>\n\
+        \   <dc:type>text</dc:type>\n   <dc:rights>All Rights Reserved \xA9 Cuizine:\
+        \ The Journal of Canadian Food Cultures / Cuizine : revue des cultures culinaires\
+        \ au Canada, 2015</dc:rights>\n</oai_dc:dc>\n  </metadata>\n</record>\n<record>\n\
+        \  <header>\n    <identifier>oai:erudit.org:1033511ar</identifier>\n    <datestamp>2015-10-27T23:42:03Z</datestamp>\n\
+        \    <setSpec>erudit.revue.cuizine</setSpec>\n  </header>\n  <metadata>\n\
+        <oai_dc:dc xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n     \
+        \      xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\n    \
+        \       xmlns:sch=\"http://www.erudit.org/xsd/article\"\n           xmlns:dc=\"\
+        http://purl.org/dc/elements/1.1/\"\n           xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n   <dc:title>Growing\
+        \ Resistance: Canadian Farmers and the Politics of Genetically Modified Wheat,\
+        \ Emily Eaton, University of Manitoba Press, 2013, 187\_p. </dc:title>\n \
+        \  <dc:creator>Clarke, Robyn L.</dc:creator>\n   <dc:date>2015</dc:date>\n\
+        \   <dc:relation>Cuizine : The Journal of Canadian Food Cultures ; vol. 6\
+        \ no. 2 (2015)</dc:relation>\n   <dc:publisher>McGill University Library</dc:publisher>\n\
+        \   <dc:publisher>\xC9rudit</dc:publisher>\n   <dc:identifier>http://id.erudit.org/iderudit/1033511ar</dc:identifier>\n\
+        \   <dc:identifier>doi:10.7202/1033511ar</dc:identifier>\n   <dc:language>en</dc:language>\n\
+        \   <dc:type>text</dc:type>\n   <dc:rights>All Rights Reserved \xA9 Cuizine:\
+        \ The Journal of Canadian Food Cultures / Cuizine : revue des cultures culinaires\
+        \ au Canada, 2015</dc:rights>\n</oai_dc:dc>\n  </metadata>\n</record>\n</ListRecords>\n\
+        </OAI-PMH>\n"}
+    headers:
+      connection: [Keep-Alive]
+      content-type: [text/xml;charset=UTF-8]
+      date: ['Tue, 17 Nov 2015 15:24:15 GMT']
+      keep-alive: ['timeout=15, max=100']
+      server: [Apache-Coyote/1.1]
+    status: {code: 200, message: OK}
+version: 1

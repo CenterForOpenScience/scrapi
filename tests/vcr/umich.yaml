@@ -1,0 +1,565 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/2.7.10 Darwin/14.1.0]
+    method: GET
+    uri: http://deepblue.lib.umich.edu/dspace-oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2015-11-11T00:00:00Z&until=2015-11-13T00:00:00Z
+  response:
+    body: {string: !!python/unicode "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet\
+        \ type=\"text/xsl\" href=\"static/style.xsl\"?><OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"\
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
+        http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"\
+        ><responseDate>2015-11-13T14:35:24Z</responseDate>\n    <request verb=\"ListRecords\"\
+        \ metadataPrefix=\"oai_dc\" from=\"2015-11-11T00:00:00Z\" until=\"2015-11-13T00:00:00Z\"\
+        >http://deepblue.lib.umich.edu/dspace-oai/request</request>\n    <ListRecords>\n\
+        \        <record>\n            <header>\n                <identifier>oai:deepblue.lib.umich.edu:2027.42/115888</identifier>\n\
+        \                <datestamp>2015-11-11T08:28:22Z</datestamp>\n           \
+        \     <setSpec>com_2027.42_13913</setSpec>\n                <setSpec>col_2027.42_49331</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Social Security\
+        \ Contributions and Return Migration among Older Male Mexican Immigrants</dc:title>\n\
+        <dc:creator>Aguila, Emma</dc:creator>\n<dc:creator>Vega, Alma</dc:creator>\n\
+        <dc:contributor>University of Southern California</dc:contributor>\n<dc:contributor>University\
+        \ of Pennsylvania</dc:contributor>\n<dc:contributor>Ann Arbor</dc:contributor>\n\
+        <dc:subject>Social Security, Mexican, immigration</dc:subject>\n<dc:description>For\
+        \ decades scholars have attempted to understand the effects of immigration\
+        \ on the U.S. Social Security system. To date, this research has been primarily\
+        \ limited to migrants in the U.S. and does not consider those who return to\
+        \ their countries of origin. Immigrants often pay OASDI taxes using illegitimate\
+        \ Social Security numbers and may return to their home countries without collecting\
+        \ U.S. Social Security benefits. In this study, we analyze the socioeconomic\
+        \ and labor characteristics, health, migration histories, and transitions\
+        \ to retirement of male Mexican return migrants who contributed to the U.S.\
+        \ Social Security system. Using the 2003 and 2012 Mexican Health and Aging\
+        \ Study (MHAS), we find that in 2012, 32 percent of male return migrants reported\
+        \ having contributed to the U.S. Social Security system but only five percent\
+        \ of those who contributed, received or expected to receive benefits. Those\
+        \ who reported having contributed were more likely to have completed college,\
+        \ spent more years in the U.S., and were more likely to be U.S. citizens or\
+        \ legal permanent residents than those who did not contribute. We also find\
+        \ that return migrants who spent one to nine years in the U.S. had a lower\
+        \ probability of transitioning to retirement between 2003 and 2012 than those\
+        \ had never been to the U.S. In contrast, those who spent 20 or more years\
+        \ in the U.S. had a higher probability of transitioning to retirement.</dc:description>\n\
+        <dc:date>2015-11-10T14:34:24Z</dc:date>\n<dc:date>2015-11-10T14:34:24Z</dc:date>\n\
+        <dc:date>2015-09</dc:date>\n<dc:type>Working Paper</dc:type>\n<dc:identifier>Aguila,\
+        \ Emma, and Alma Vega. 2015. \"Social Security Contributions and Return Migration\
+        \ among Older Male Mexican Immigrants.\" Ann Arbor, MI. University of Michigan\
+        \ Retirement Research Center (MRRC) Working Paper, WP 2015-324. http://www.mrrc.isr.umich.edu/publications/papers/pdf/wp324.pdf</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/2027.42/115888</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:relation>WP 2015-324</dc:relation>\n<dc:publisher>Michigan Retirement\
+        \ Research Center, University of Michigan, P.O. Box 1248, Ann Arbor, MI 48104</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:deepblue.lib.umich.edu:2027.42/115889</identifier>\n\
+        \                <datestamp>2015-11-11T08:28:27Z</datestamp>\n           \
+        \     <setSpec>com_2027.42_13913</setSpec>\n                <setSpec>col_2027.42_49331</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Does Eliminating\
+        \ the Earnings Test Increase the Incidence of Low Income among Older Women?</dc:title>\n\
+        <dc:creator>Figinski, Theodore</dc:creator>\n<dc:creator>Neumark, David</dc:creator>\n\
+        <dc:contributor>U.S. Department of the Treasury</dc:contributor>\n<dc:contributor>University\
+        \ of California???Irvine, National Bureau of Economic Research, Institute\
+        \ for the Study of Labor</dc:contributor>\n<dc:contributor>Ann Arbor</dc:contributor>\n\
+        <dc:subject>Social Security, RET, poverty, older women</dc:subject>\n<dc:description>Reductions\
+        \ in the implicit taxation of Social Security benefits from reducing or eliminating\
+        \ the Retirement Earnings Test (RET) are an appealing ??? and in many cases\
+        \ successful ??? means of encouraging labor supply of older individuals receiving\
+        \ benefits. The downside, however, is that the same policy reforms can encourage\
+        \ earlier claiming of Social Security benefits, which permanently lowers benefits\
+        \ paid in the future. Depending on the magnitude of the effects on earnings\
+        \ and how households or individuals adjust their consumption and savings decisions,\
+        \ the net effect can be lower incomes at much older ages well beyond when\
+        \ people have retired. We explore the consequences of the 2000 reforms eliminating\
+        \ the RET from the Full Retirement Age to age 69 for the longer-run evolution\
+        \ of income, focusing in particular on the incidence of low income among older\
+        \ women, who are more likely to have become dependent mainly on income from\
+        \ their Social Security benefits.  We find that the elimination of the RET\
+        \ increased the likelihood of having low incomes among women in their mid-70s\
+        \ and older ??? ages at which the lower benefits from claiming earlier outweigh\
+        \ possibly higher income in the period when women or their husbands increased\
+        \ their labor supply.</dc:description>\n<dc:date>2015-11-10T14:39:11Z</dc:date>\n\
+        <dc:date>2015-11-10T14:39:11Z</dc:date>\n<dc:date>2015-09</dc:date>\n<dc:type>Working\
+        \ Paper</dc:type>\n<dc:identifier>Figinski, Theodore, and David Neumark. 2015.\
+        \ \"Does Eliminating the Earnings Test Increase the Incidence of Low Income\
+        \ among Older Women?\" Ann Arbor, MI. University of Michigan Retirement Research\
+        \ Center (MRRC) Working Paper, WP 2015-325. http://www.mrrc.isr.umich.edu/publications/papers/pdf/wp325.pdf</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/2027.42/115889</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:relation>WP 2015-325</dc:relation>\n<dc:publisher>Michigan Retirement\
+        \ Research Center, University of Michigan, P.O. Box 1248, Ann Arbor, MI 48104</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:deepblue.lib.umich.edu:2027.42/115890</identifier>\n\
+        \                <datestamp>2015-11-12T13:26:07Z</datestamp>\n           \
+        \     <setSpec>com_2027.42_13913</setSpec>\n                <setSpec>col_2027.42_49331</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Declining Wealth\
+        \ and Work among Male Veterans in the Health and Retirement Study</dc:title>\n\
+        <dc:creator>Gustman, Alan</dc:creator>\n<dc:creator>Steinmeier, Thomas</dc:creator>\n\
+        <dc:creator>Tabatabai, Nahid</dc:creator>\n<dc:contributor>Dartmouth College</dc:contributor>\n\
+        <dc:contributor>Texas Tech University</dc:contributor>\n<dc:contributor>Dartmouth\
+        \ College</dc:contributor>\n<dc:contributor>Ann Arbor</dc:contributor>\n<dc:subject>Veterans,\
+        \ retirement, declining wealth, HRS,</dc:subject>\n<dc:description>The composition,\
+        \ wealth, and employment of male veterans and nonveterans are analyzed for\
+        \ four cohorts from the Health and Retirement Study, ages 51 to 56 in 1992,\
+        \ 1998, 2004, and 2010. Half of the two oldest cohorts served in the military.\
+        \ Only 16 percent of the youngest cohort, the only cohort subject to the all-volunteer\
+        \ military, served. One-fifth to one-third of the members of each cohort who\
+        \ served saw combat, mainly in Vietnam and in the Gulf War. Among those 51\
+        \ to 56 in 1992, veterans were better educated, healthier, wealthier, and\
+        \ more likely to be working than nonveterans. By 2010, 51- to 56-year-old\
+        \ veterans had lost their educational advantage, were less healthy, less wealthy,\
+        \ and less likely to be working than nonveterans. After standardizing in multiple\
+        \ regressions for the influence of major observable characteristics, for the\
+        \ original 1992 HRS cohort, the wealth of veterans is no longer higher than\
+        \ the wealth of nonveterans. In contrast, the wealth of veterans from the\
+        \ youngest cohort, those 51 to 56 in 2010, remains about 10 to 13 percent\
+        \ below the wealth of nonveterans from that cohort. There also is a decline\
+        \ from older to younger cohorts of veterans compared to nonveterans in the\
+        \ probability of being not retired, of working more than 35 hours per week,\
+        \ and in the likelihood of holding a job for more than 10 years. Comparisons\
+        \ are made within the group of veterans by years of service, officer rank\
+        \ and other covariates.</dc:description>\n<dc:date>2015-11-12T13:26:07Z</dc:date>\n\
+        <dc:date>2015-11-12T13:26:07Z</dc:date>\n<dc:date>2015-09</dc:date>\n<dc:type>Working\
+        \ Paper</dc:type>\n<dc:identifier>Gustman, Alan L., Thomas Steinmeier, and\
+        \ Nahid Tabatabai. 2015 \"Declining Wealth and Work among Male Veterans in\
+        \ the Health and Retirement Study.\" Ann Arbor, MI. University of Michigan\
+        \ Retirement Research Center (MRRC) Working Paper, WP 2015-323. http://www.mrrc.isr.umich.edu/publications/papers/pdf/wp323.pdf</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/2027.42/115890</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:relation>WP 2015-323</dc:relation>\n<dc:publisher>Michigan Retirement\
+        \ Research Center, University of Michigan, P.O. Box 1248, Ann Arbor, MI 48104</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:deepblue.lib.umich.edu:2027.42/115891</identifier>\n\
+        \                <datestamp>2015-11-12T18:01:05Z</datestamp>\n           \
+        \     <setSpec>com_2027.42_13913</setSpec>\n                <setSpec>col_2027.42_49331</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Comprehensive\
+        \ Wealth of Immigrants and Natives</dc:title>\n<dc:creator>Love, David</dc:creator>\n\
+        <dc:creator>Schmidt, Lucie</dc:creator>\n<dc:contributor>Williams College</dc:contributor>\n\
+        <dc:contributor>Williams College</dc:contributor>\n<dc:contributor>Ann Arbor</dc:contributor>\n\
+        <dc:subject>Immigration; housing; comprehensive wealth; precautionary saving</dc:subject>\n\
+        <dc:description>The 1965 Immigration and Nationality Act had a profound impact\
+        \ on the demographic and skill composition of immigrants arriving in the U.S.\
+        \ A large literature has investigated the relative earnings of immigrants\
+        \ and natives, but much less is known about relative wealth accumulation and\
+        \ the preparation of immigrants for retirement.  This paper compares the retirement\
+        \ preparation of older immigrants to that of native-born households using\
+        \ an annualized comprehensive measure of available resources. We find that\
+        \ immigrants have less wealth overall, but that they appear to be drawing\
+        \ down resources at a slower rate.  We attempt to make sense of the trends\
+        \ in annualized wealth with the help of a lifecycle framework that incorporates\
+        \ uncertain longevity, bequests, risk in retirement resources, as well as\
+        \ endogenous housing wealth. Simulations from the model indicate that it is\
+        \ difficult to match the observed patterns in annualized wealth without the\
+        \ combination of both an explicit bequest motive and an explicit treatment\
+        \ of housing choice.  These patterns mask a good deal of heterogeneity, however,\
+        \ in terms of socioeconomic and demographic characteristics. Some of the largest\
+        \ differences within immigrants occur along the margins of race and ethnicity,\
+        \ as well as the number of years since arrival. The evidence suggests that\
+        \ the typical immigrant is relatively well situated in retirement, but that\
+        \ more recent immigrants have low levels of total resources and are likely\
+        \ to have difficulty maintaining adequate levels of spending in retirement.</dc:description>\n\
+        <dc:date>2015-11-12T18:01:05Z</dc:date>\n<dc:date>2015-11-12T18:01:05Z</dc:date>\n\
+        <dc:date>2015-09</dc:date>\n<dc:type>Working Paper</dc:type>\n<dc:identifier>Love,\
+        \ David, and Lucie Schmidt. 2015. \"Comprehensive Wealth of Immigrants and\
+        \ Natives.\" Ann Arbor, MI. University of Michigan Retirement Research Center\
+        \ (MRRC) Working Paper, WP 2015-328. http://www.mrrc.isr.umich.edu/publications/papers/pdf/wp328.pdf</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/2027.42/115891</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:relation>WP 2015-328</dc:relation>\n<dc:publisher>Michigan Retirement\
+        \ Research Center, University of Michigan, P.O. Box 1248, Ann Arbor, MI 48104</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:deepblue.lib.umich.edu:2027.42/115892</identifier>\n\
+        \                <datestamp>2015-11-12T18:03:57Z</datestamp>\n           \
+        \     <setSpec>com_2027.42_13913</setSpec>\n                <setSpec>col_2027.42_49331</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Do Payroll\
+        \ Taxes in the United States Create Bunching at Kink Points?</dc:title>\n\
+        <dc:creator>Powell, David</dc:creator>\n<dc:contributor>RAND Corporation</dc:contributor>\n\
+        <dc:contributor>Ann Arbor</dc:contributor>\n<dc:subject>Payroll Taxes, Tax\
+        \ Salience, Making Work Pay Tax Credit, Bunching, Labor Supply</dc:subject>\n\
+        <dc:description>Much of the literature on labor supply responsiveness to taxes\
+        \ studies the effects of payroll and income taxes together, usually using\
+        \ income tax changes to identify effects.  There is less research on how individuals\
+        \ respond to payroll taxes specifically.  Given the salience of the payroll\
+        \ tax relative to other income taxes, it is possible that taxpayers respond\
+        \ differentially than income tax elasticities may suggest.  Using data from\
+        \ the Social Security Administration, I exploit two recent short-term changes\
+        \ in payroll taxes to study whether labor earnings responded. The Making Work\
+        \ Pay Tax Credit reduced the payroll tax by 6.2 percentage points up to $6,451\
+        \ ($12,903 for couples) of earnings in 2009 and 2010. I test for bunching\
+        \ at this kink.  In 2011, payroll taxes were reduced by 2 percentage points,\
+        \ changing the incentives to bunch at the taxable earnings maximum.  While\
+        \ many papers on bunching must make assumptions on the distribution of earnings\
+        \ in the absence of taxes, an advantage of studying changes in payroll taxes\
+        \ is that it is possible to observe the distribution in different years under\
+        \ different tax regimes.  I find evidence of bunching induced by the payroll\
+        \ tax changes.  I estimate a tax elasticity of labor earnings of 0.08 at the\
+        \ taxable earnings maximum, suggests that policy proposals to raise or eliminate\
+        \ the payroll tax cap should consider labor supply behavioral responses to\
+        \ this policy.  I also estimate larger responsiveness to the Making Work Pay\
+        \ Tax Credit.</dc:description>\n<dc:date>2015-11-12T18:03:57Z</dc:date>\n\
+        <dc:date>2015-11-12T18:03:57Z</dc:date>\n<dc:date>2015-09</dc:date>\n<dc:type>Working\
+        \ Paper</dc:type>\n<dc:identifier>Powell, David. 2015. \"Do Payroll Taxes\
+        \ in the United States Create Bunching at Kink Points?.\" Ann Arbor, MI. University\
+        \ of Michigan Retirement Research Center (MRRC) Working Paper, WP 2015-327.\
+        \ http://www.mrrc.isr.umich.edu/publications/papers/pdf/wp327.pdf</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/2027.42/115892</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:relation>WP 2015-327</dc:relation>\n<dc:publisher>Michigan Retirement\
+        \ Research Center, University of Michigan, P.O. Box 1248, Ann Arbor, MI 48104</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:deepblue.lib.umich.edu:2027.42/115893</identifier>\n\
+        \                <datestamp>2015-11-12T18:09:24Z</datestamp>\n           \
+        \     <setSpec>com_2027.42_13913</setSpec>\n                <setSpec>col_2027.42_49331</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Nonmonetary\
+        \ Job Characteristics and Employment Transitions at Older Ages</dc:title>\n\
+        <dc:creator>Angrisani, Marco</dc:creator>\n<dc:creator>Kapteyn, Arie</dc:creator>\n\
+        <dc:creator>Meijer, Erik</dc:creator>\n<dc:contributor>University of Southern\
+        \ California</dc:contributor>\n<dc:contributor>University of Southern California</dc:contributor>\n\
+        <dc:contributor>University of Southern California</dc:contributor>\n<dc:contributor>Ann\
+        \ Arbor</dc:contributor>\n<dc:subject>labor-force withdrawal, nonmonetary\
+        \ job characteristics, retirement</dc:subject>\n<dc:description>This paper\
+        \ studies to what extent job characteristics such as physical and cognitive\
+        \ demands, use of technologies, responsibility, difficulty, stress, peer pressure,\
+        \ and relations with co-workers are related to full or partial retirement.\
+        \ We study employment transitions and retirement expectations of older workers\
+        \ by exploiting the wealth of information  about individuals older than age\
+        \ 50 in the Health and Retirement Study (HRS), and characteristics of different\
+        \ occupations provided by the Occupation Information Network  (O*NET) database.\
+        \ Controlling for basic demographics, wages, benefits, health, cognitive ability,\
+        \ personality, and other personal characteristics, we find strong and statistically\
+        \ significant relationships between labor force transitions and job characteristics.\
+        \ These relationships are typically more pronounced and more precisely estimated\
+        \ when we use  objective job attributes taken from the O*NET than when we\
+        \ use self-reported job characteristics taken from the HRS, but self-reported\
+        \ characteristics are more strongly related to  moves from full-time to part-time\
+        \ employment. Using expected retirement age or subjective probabilities of\
+        \ working full-time at older ages gives similar results to using actual labor\
+        \ force transitions as the dependent variable. The estimated effects of job\
+        \ characteristics are again stronger and more robust to alternative specifications\
+        \ when measures of job attributes are taken from the O*NET than from the HRS.\
+        \ Our findings suggest that nonmonetary job characteristics are important\
+        \ determinants of labor supply decisions at older  ages, but our analysis\
+        \ is still preliminary in its attempt to uncover causal relationships: Unobservable\
+        \ individual characteristics responsible for sorting into specific  occupations\
+        \ may also shape retirement decisions.</dc:description>\n<dc:date>2015-11-12T18:09:24Z</dc:date>\n\
+        <dc:date>2015-11-12T18:09:24Z</dc:date>\n<dc:date>2015-09</dc:date>\n<dc:type>Working\
+        \ Paper</dc:type>\n<dc:identifier>Angrisani, Marco, Arie Kapteyn, and Erik\
+        \ Meijer. 2015. \"Nonmonetary Job Characteristics and Employment Transitions\
+        \ at Older Ages.\" Ann Arbor, MI. University of Michigan Retirement Research\
+        \ Center (MRRC) Working Paper, WP 2015-326. http://www.mrrc.isr.umich.edu/publications/papers/pdf/wp326.pdf</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/2027.42/115893</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:relation>WP 2015-326</dc:relation>\n<dc:publisher>Michigan Retirement\
+        \ Research Center, University of Michigan, P.O. Box 1248, Ann Arbor, MI 48104</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:deepblue.lib.umich.edu:2027.42/115906</identifier>\n\
+        \                <datestamp>2015-11-12T21:03:40Z</datestamp>\n           \
+        \     <setSpec>com_2027.42_13913</setSpec>\n                <setSpec>col_2027.42_21621</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Asymmetric\
+        \ Price Movements and Borrowing Constraints: A Rational Expectations Equilibrium\
+        \ Model of Crises, Contagion, and Confusion</dc:title>\n<dc:creator>Yuan,\
+        \ Kathy</dc:creator>\n<dc:contributor>1University of Michigan</dc:contributor>\n\
+        <dc:description>This study proposes a rational expectations equilibrium model\
+        \ of crises and contagion in an economy with information asymmetry and borrowing\
+        \ constraints. Consistent with empirical observations, the model finds: (1)\
+        \ Crises can be caused by small shocks to fundamentals; (2) market return\
+        \ distributions are asymmetric; and (3) correlations among asset returns tend\
+        \ to increase during crashes. The model also predicts: (1) Crises and contagion\
+        \ are likely to occur after small shocks in the intermediate price region;\
+        \ (2) the skewness of asset price distributions increases with information\
+        \ asymmetry and borrowing constraints; and (3) crises can spread through investor\
+        \ borrowing constraints.</dc:description>\n<dc:date>2015-11-12T21:03:40Z</dc:date>\n\
+        <dc:date>2015-11-12T21:03:40Z</dc:date>\n<dc:date>2005-02</dc:date>\n<dc:identifier>Yuan,\
+        \ Kathy  (2005). \"Asymmetric Price Movements and Borrowing Constraints: A\
+        \ Rational Expectations Equilibrium Model of Crises, Contagion, and Confusion.\"\
+        \ The Journal of Finance 60(1).</dc:identifier>\n<dc:identifier>0022-1082</dc:identifier>\n\
+        <dc:identifier>1540-6261</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2027.42/115906</dc:identifier>\n\
+        <dc:identifier>10.1111/j.1540-6261.2005.00733.x</dc:identifier>\n<dc:identifier>The\
+        \ Journal of Finance</dc:identifier>\n<dc:identifier>Longin, Fran??ois, and\
+        \ Bruno Solnik, 2001, Extreme correlation of international equity markets,\
+        \ Journal of Finance 56, 649 ??? 676.</dc:identifier>\n<dc:identifier>Karolyi,\
+        \ Andrew, and Rene Stulz, 1996, Why do markets move together? An investigation\
+        \ of U.S.???Japan stock return co???movements, Journal of Finance 51, 951\
+        \ ??? 986.</dc:identifier>\n<dc:identifier>King, Mervyn, and Sushil Wadhwani,\
+        \ 2000, Transmission of volatility between stock markets, Review of Financial\
+        \ Studies 3, 5 ??? 33.</dc:identifier>\n<dc:identifier>Kiyotaki, Nobuhiro,\
+        \ and John Moore, 1997, Credit cycles, Journal of Political Economy 105, 211\
+        \ ??? 248.</dc:identifier>\n<dc:identifier>Kodres, Laura E., and Matthew Pritsker,\
+        \ 2002, A rational expectations model of financial contagion, Journal of Finance\
+        \ 57, 769 ??? 800.</dc:identifier>\n<dc:identifier>Korn, Granino A., and Theresa\
+        \ M. Korn, 1968, Mathematical Handbook for Scientists and Engineers ( McGraw???Hill:\
+        \ New York, NY ).</dc:identifier>\n<dc:identifier>Krugman, Paul, 1998, Balance\
+        \ sheets, the transfer problem, and financial crises, Working paper prepared\
+        \ for the festschrift volume in honor of Robert Flood Federal Reserve Bank\
+        \ of Minneapolis Research Department, Princeton University.</dc:identifier>\n\
+        <dc:identifier>Kyle, Albert S., and Wei Xiong, 2001, Contagion as a wealth\
+        \ effect, Journal of Finance 51, 1401 ??? 1440.</dc:identifier>\n<dc:identifier>Maddala,\
+        \ G. S., 1986, Limited???Dependent and Qualitative Variables in Econometrics\
+        \ ( Cambridge University Press: Cambridge, UK).</dc:identifier>\n<dc:identifier>Milgrom,\
+        \ Paul, and Nancy Stokey, 1982, Information, trade and common knowledge, Journal\
+        \ of Economic Theory 26, 17 ??? 27.</dc:identifier>\n<dc:identifier>Pindyck,\
+        \ Robert S., 1984, Risk, inflation, and the stock market, American Economic\
+        \ Review 74, 334 ??? 351.</dc:identifier>\n<dc:identifier>Romer, David, 1993,\
+        \ Rational asset???price movements without news, American Economic Review\
+        \ 83, 1112 ??? 1130.</dc:identifier>\n<dc:identifier>Stein, Jeremy C., 1995,\
+        \ Prices and trading volume in the housing market: A model with down???payment\
+        \ effects, Quarterly Journal of Economics 105, 353 ??? 379.</dc:identifier>\n\
+        <dc:identifier>Wang, Jiang, 1994, A model of competitive stock trading volume,\
+        \ Journal of Political Economy 112, 127 ??? 168.</dc:identifier>\n<dc:identifier>Xiong,\
+        \ Wei, 2001, Convergence trading with wealth effects: An amplification mechanism\
+        \ in financial markets, Journal of Financial Economics 62, 247 ??? 292.</dc:identifier>\n\
+        <dc:identifier>Yuan, Kathy, 2003, Security trading under asymmetric information\
+        \ and trading constraints, Working paper, University of Michigan.</dc:identifier>\n\
+        <dc:identifier>Admati, Anat R., 1985, A noisy rational expectations equilibrium\
+        \ for multi???asset securities markets, Econometrica 53, 629 ??? 657.</dc:identifier>\n\
+        <dc:identifier>Aghion, Philippe, Philippe Bacchetta, and Abhijet Banerjee,\
+        \ 1998, Capital markets and instability of open economies, Working paper,\
+        \ Harvard University.</dc:identifier>\n<dc:identifier>Ang, Andrew, and Joseph\
+        \ Chen, 2002, Asymmetric correlations of equity portfolios, Journal of Financial\
+        \ Economics 63, 443 ??? 494.DOI: 10.1016/S0304-405X(02)00068-5</dc:identifier>\n\
+        <dc:identifier>Barlevy, Gadi, and Pietro Veronesi, 2003, Rational panics and\
+        \ stock market crashes, Journal of Economic Theory 110, 234 ??? 263.</dc:identifier>\n\
+        <dc:identifier>Bekaert, Geert, and Guojun Wu, 2000, Asymmetric volatility\
+        \ and risk in equity markets, Review of Financial Studies 13, 1 ??? 42.</dc:identifier>\n\
+        <dc:identifier>Boyer, Brian, Tomomi Kumagai, and Kathy Yuan, 2002, Are investors\
+        \ responsible for stock market contagions, Working paper, University of Michigan.</dc:identifier>\n\
+        <dc:identifier>Boyer, Brain H., and Lu Zheng, 1998, Who moves the market?\
+        \ A study of stock prices and investment cashflows, Working paper, University\
+        \ of Michigan.</dc:identifier>\n<dc:identifier>Calvo, Guilermo A., and Enrique\
+        \ G. Mendoza, 1999, Regional contagion and the globalization of securities\
+        \ markets, NBER Working Paper 7153, University of Maryland.</dc:identifier>\n\
+        <dc:identifier>Connolly, Robert, and Albet Wang, 1998, On stock market return\
+        \ co???movements: Macroeconomic news, dispersion of beliefs, and contagion,\
+        \ Working paper, Rice University.</dc:identifier>\n<dc:identifier>Connolly,\
+        \ Robert, and Albet Wang, 2003, International equity market comovements: Economic\
+        \ fundamentals or contagion? Pacific-Basin Finance Journal 11, 23 ??? 43.</dc:identifier>\n\
+        <dc:identifier>Culter, David M., James M. Poterba, and Lawrence H. Summers,\
+        \ 1989, What moves stock prices, Journal of Portfolio Management 15, 4 ???\
+        \ 12.</dc:identifier>\n<dc:identifier>DeGroot, Morris H., 1986, Probability\
+        \ and Statistics ( Addison???Wesley: Cambridge, MA).</dc:identifier>\n<dc:identifier>Drazen,\
+        \ Allan, 1999, Political contagion in currency crises, NBER Working Paper\
+        \ 7211, University of Maryland.</dc:identifier>\n<dc:identifier>French, Kenneth\
+        \ R., William G. Schwert, and Robert Stambaugh, 1987, Expected stock returns\
+        \ and volatility, Journal of Financial Economics 19, 3 ??? 29.DOI: 10.1016/0304-405X(87)90026-2</dc:identifier>\n\
+        <dc:identifier>Gennotte, Gerard, and Hayes Leland, 1990, Market liquidity,\
+        \ hedging and crashes, American Economic Review 80, 999 ??? 1021.</dc:identifier>\n\
+        <dc:identifier>Greene, William H., 1990, Econometric Analysis ( Prentice Hall:\
+        \ New York, NY ).</dc:identifier>\n<dc:identifier>Gromb, Denis, and Dimitri\
+        \ Vayanos, 2002, Equilibrium and welfare in markets with financially constrained\
+        \ arbitrageurs, Journal of Financial Economics 66, 361 ??? 407.DOI: 10.1016/S0304-405X(02)00228-3</dc:identifier>\n\
+        <dc:identifier>Grossman, Sanford J., 1976, On the efficiency of competitive\
+        \ stock markets when traders have diverse information, Journal of Finance\
+        \ 31, 573 ??? 585.</dc:identifier>\n<dc:identifier>Grossman, Sanford J., and\
+        \ Joseph E. Stiglitz, 1980, On the impossibility of informationally efficient\
+        \ markets, American Economic Review 70, 393 ??? 408.</dc:identifier>\n<dc:identifier>Hellwig,\
+        \ Martin F., 1980, On the aggregation of information in competitive markets,\
+        \ Journal of Economic Theory 22, 477 ??? 498.DOI: 10.1016/0022-0531(80)90056-3</dc:identifier>\n\
+        <dc:identifier>Hong, Harrison, and Jeremy C. Stein, 2003, Differences of opinion,\
+        \ short???sales constraints, and market crashes, Review of Financial Studies\
+        \ 16, 487 ??? 525.DOI: 10.1093/rfs/hhg006</dc:identifier>\n<dc:identifier>Johnson,\
+        \ Norman L., and Samuel Kotz, 1974, Distribution in Statistics???Continuous\
+        \ Multivariate Distributions ( Wiley: New York, NY ).</dc:identifier>\n<dc:rights>IndexNoFollow</dc:rights>\n\
+        <dc:publisher>Wiley Periodicals, Inc.</dc:publisher>\n<dc:publisher>Blackwell\
+        \ Publishing, Inc.</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n\
+        \        <record>\n            <header>\n                <identifier>oai:deepblue.lib.umich.edu:2027.42/115930</identifier>\n\
+        \                <datestamp>2015-11-12T21:03:57Z</datestamp>\n           \
+        \     <setSpec>com_2027.42_13913</setSpec>\n                <setSpec>col_2027.42_21621</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Do Behavioral\
+        \ Biases Affect Prices?</dc:title>\n<dc:creator>Coval, Joshua D.</dc:creator>\n\
+        <dc:creator>Shumway, Tyler</dc:creator>\n<dc:contributor>2University of Michigan\
+        \ Business School</dc:contributor>\n<dc:contributor>1Harvard Business School</dc:contributor>\n\
+        <dc:description>This paper documents strong evidence for behavioral biases\
+        \ among Chicago Board of Trade proprietary traders and investigates the effect\
+        \ these biases have on prices. Our traders appear highly loss???averse, regularly\
+        \ assuming above???average afternoon risk to recover from morning losses.\
+        \ This behavior has important short???term consequences for afternoon prices,\
+        \ as losing traders actively purchase contracts at higher prices and sell\
+        \ contracts at lower prices than those that prevailed previously. However,\
+        \ the market appears to distinguish these risk???seeking trades from informed\
+        \ trading. Prices set by loss???averse traders are reversed significantly\
+        \ more quickly than those set by unbiased traders.</dc:description>\n<dc:date>2015-11-12T21:03:57Z</dc:date>\n\
+        <dc:date>2015-11-12T21:03:57Z</dc:date>\n<dc:date>2005-02</dc:date>\n<dc:identifier>Coval,\
+        \ Joshua D. ; Shumway, Tyler  (2005). \"Do Behavioral Biases Affect Prices?.\"\
+        \ The Journal of Finance 60(1).</dc:identifier>\n<dc:identifier>0022-1082</dc:identifier>\n\
+        <dc:identifier>1540-6261</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2027.42/115930</dc:identifier>\n\
+        <dc:identifier>10.1111/j.1540-6261.2005.00723.x</dc:identifier>\n<dc:identifier>The\
+        \ Journal of Finance</dc:identifier>\n<dc:identifier>Miller, Dale T., and\
+        \ Mike Ross, 1975, Self???serving bias in attribution of causality: Fact or\
+        \ fiction? Psychological Bulletin 82, 213 ??? 225.</dc:identifier>\n<dc:identifier>Kahneman,\
+        \ Daniel, and Amos Tversky, 1979, Prospect theory: An analysis of decision\
+        \ under risk, Econometrica 47, 236 ??? 291.</dc:identifier>\n<dc:identifier>Kahneman,\
+        \ Daniel, and Amos Tversky, 1992, Advances in prospect theory: Cumulative\
+        \ representation of uncertainty, Journal of Risk and Uncertainty 5, 297 ???\
+        \ 323.DOI: 10.1007/BF00122574</dc:identifier>\n<dc:identifier>Kolb, Robert\
+        \ W., 1991, Understanding Futures Markets ( Kolb Publishing, Miami).</dc:identifier>\n\
+        <dc:identifier>Kuserk, Gregory J., and Peter R. Locke, 1993, Scalper behavior\
+        \ in futures markets???An empirical examination, Journal of Futures Markets\
+        \ 13, 409 ??? 431.</dc:identifier>\n<dc:identifier>Langer, Ellen J., and Jane\
+        \ Roth, 1975, Heads I win, tails it's chance: The illusion of control as a\
+        \ function of the sequence of outcomes in a purely chance task, Journal of\
+        \ Personality and Social Psychology 32, 951 ??? 955.DOI: 10.1037//0022-3514.32.6.951</dc:identifier>\n\
+        <dc:identifier>Locke, Peter R., and Steven C. Mann, 1999, Do professional\
+        \ traders exhibit loss realization aversion? Working paper, Texas Christian\
+        \ University.</dc:identifier>\n<dc:identifier>Manaster, Steven, and Steven\
+        \ C. Mann, 1996, Life in the pits: Competitive market making and inventory\
+        \ control, Review of Financial Studies 9, 953 ??? 975.DOI: 10.1093/rfs/9.3.953</dc:identifier>\n\
+        <dc:identifier>Odean, Terrance, 1998a, Are investors reluctant to realize\
+        \ their losses? Journal of Finance 53, 1775 ??? 1798.DOI: 10.1111/0022-1082.00072</dc:identifier>\n\
+        <dc:identifier>Odean, Terrance, 1998b, Volume, volatility, price, and profit\
+        \ when all traders are above average, Journal of Finance 53, 1887 ??? 1934.DOI:\
+        \ 10.1111/0022-1082.00078</dc:identifier>\n<dc:identifier>Odean, Terrance,\
+        \ 1999, Do investors trade too much? American Economic Review 89, 1279 ???\
+        \ 1298.</dc:identifier>\n<dc:identifier>Shefrin, Hersh, and Meir Statman,\
+        \ 1985, The disposition to sell winners too early and ride losers too long:\
+        \ Theory and evidence, Journal of Finance 40, 777 ??? 790.</dc:identifier>\n\
+        <dc:identifier>Shiller, Robert J., 1981, Do stock prices move too much to\
+        \ be justified by subsequent changes in dividends? American Economic Review\
+        \ 71, 421 ??? 436.</dc:identifier>\n<dc:identifier>Shiller, Robert J., 1989,\
+        \ Market Volatility ( MIT Press, Cambridge ).</dc:identifier>\n<dc:identifier>Shumway,\
+        \ Tyler, 1998, Explaining returns with loss aversion, Working paper, University\
+        \ of Michigan Business School.</dc:identifier>\n<dc:identifier>Thaler, Richard\
+        \ H., and Eric J. Johnson, 1990, Gambling with the house money and trying\
+        \ to break even: The effects of prior outcomes on risky choice, Management\
+        \ Science 36, 643 ??? 660.</dc:identifier>\n<dc:identifier>Tversky, Amos,\
+        \ and Daniel Kahneman, 1971, Belief in the law of small numbers, Psychological\
+        \ Bulletin 76, 105 ??? 110.</dc:identifier>\n<dc:identifier>Tversky, Amos,\
+        \ and Daniel Kahneman, 1974, Judgment under uncertainty: Heuristics and biases,\
+        \ Science 185, 1124 ??? 1131.</dc:identifier>\n<dc:identifier>Allen, Franklin,\
+        \ 2001, Do financial institutions matter? Journal of Finance 56, 1165 ???\
+        \ 1175.DOI: 10.1111/0022-1082.00361</dc:identifier>\n<dc:identifier>Barberis,\
+        \ Nicholas C., and Ming Huang, 2001, Mental accounting, loss aversion, and\
+        \ individual stock returns, Journal of Finance 56, 1247 ??? 1292.</dc:identifier>\n\
+        <dc:identifier>Barberis, Nicholas C., Ming Huang, and Tano Santos, 2001, Prospect\
+        \ theory and asset prices, The Quarterly Journal of Economics 116, 1 ??? 53.</dc:identifier>\n\
+        <dc:identifier>Barberis, Nicholas C., Andrei Shleifer, and Robert W. Vishny,\
+        \ 1998, A model of investor sentiment, Journal of Financial Economics 49,\
+        \ 309 ??? 343.</dc:identifier>\n<dc:identifier>Barberis, Nicholas C., and\
+        \ Richard Thaler, 2003, A survey of behavioral finance, in George Constantinides,\
+        \ Milton Harris, Rene Stulz, eds. Handbook of the Economics of Finance ( North???Holland\
+        \ ).</dc:identifier>\n<dc:identifier>Benartzi, Shlomo, and Richard H. Thaler,\
+        \ 1995, Myopic loss aversion and the equity premium puzzle, Quarterly Journal\
+        \ of Economics 110, 73 ??? 92.</dc:identifier>\n<dc:identifier>Camerer, Colin,\
+        \ Linda Babcock, George Loewenstein, and Richard Thaler, 1997, Labor supply\
+        \ of New York City cabdrivers: One day at a time, Quarterly Journal of Economics\
+        \ 112, 407 ??? 441.</dc:identifier>\n<dc:identifier>Campbell, John, 2000,\
+        \ Asset pricing at the millennium, Journal of Finance 55, 1515 ??? 1567.</dc:identifier>\n\
+        <dc:identifier>Chevalier, Judith, and Glenn Ellison, 1997, Risk taking by\
+        \ mutual funds as a response to incentives, Journal of Political Economy 105,\
+        \ 1167 ??? 1200.</dc:identifier>\n<dc:identifier>Coval, Joshua D., and Tyler\
+        \ Shumway, 2001, Is sound just noise? Journal of Finance 56, 1887 ??? 1910.</dc:identifier>\n\
+        <dc:identifier>Daniel, Kent, David Hirshleifer, and Avanidhar Subrahmanyam,\
+        \ 1998, Investor psychology and security market under??? and overreactions,\
+        \ Journal of Finance 53, 1839 ??? 1885.DOI: 10.1111/0022-1082.00077</dc:identifier>\n\
+        <dc:identifier>De Long, J. Bradford, Andrei Shleifer, Lawrence H. Summers,\
+        \ and Robert J. Waldmann, 1990, Noise trader risk in financial markets, Journal\
+        \ of Political Economy 98, 703 ??? 738.DOI: 10.1086/261703</dc:identifier>\n\
+        <dc:identifier>Fama, Eugene F., 1965, The behavior of stock market prices,\
+        \ Journal of Business 38, 34 ??? 105.DOI: 10.1086/294743</dc:identifier>\n\
+        <dc:identifier>Fama, Eugene F., and James D. MacBeth, 1973, Risk, return,\
+        \ and equilibrium: Empirical tests, Journal of Political Economy 71, 753 ???\
+        \ 755.</dc:identifier>\n<dc:identifier>Friedman, Milton, 1953, The case for\
+        \ flexible exchange rates, in Essays in Positive Economics ( University of\
+        \ Chicago Press, Chicago).</dc:identifier>\n<dc:identifier>Gervais, Simon,\
+        \ and Terrance Odean, 2001, Learning to be overconfident, Review of Financial\
+        \ Studies 14, 1 ??? 27.DOI: 10.1093/rfs/14.1.1</dc:identifier>\n<dc:identifier>Grinblatt,\
+        \ Mark, and Bing Han, 2002, The disposition effect and momentum, Working paper,\
+        \ Anderson School at UCLA.</dc:identifier>\n<dc:identifier>Hirshleifer, David,\
+        \ 2002, Investor psychology and asset pricing, Journal of Finance 56, 1533\
+        \ ??? 1598.DOI: 10.1111/0022-1082.00379</dc:identifier>\n<dc:identifier>Kahneman,\
+        \ Daniel, and Amos Tversky, 1973, On the psychology of prediction, Psychological\
+        \ Review 80, 237 ??? 25l.</dc:identifier>\n<dc:rights>IndexNoFollow</dc:rights>\n\
+        <dc:publisher>Blackwell Publishing, Inc.</dc:publisher>\n<dc:publisher>Wiley\
+        \ Periodicals, Inc.</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n\
+        \        <record>\n            <header>\n                <identifier>oai:deepblue.lib.umich.edu:2027.42/115935</identifier>\n\
+        \                <datestamp>2015-11-12T21:04:00Z</datestamp>\n           \
+        \     <setSpec>com_2027.42_13913</setSpec>\n                <setSpec>col_2027.42_21621</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Three???periodic\
+        \ nets and tilings: regular and quasiregular nets</dc:title>\n<dc:creator>Delgado\
+        \ Friedrichs, Olaf</dc:creator>\n<dc:creator>O'Keeffe, Michael</dc:creator>\n\
+        <dc:creator>Yaghi, Omar M.</dc:creator>\n<dc:contributor>Department of Chemistry,\
+        \ University of Michigan, Ann Arbor, MI 48109, USA</dc:contributor>\n<dc:contributor>Department\
+        \ of Chemistry, Arizona State University, Tempe, AZ 85287, USA</dc:contributor>\n\
+        <dc:date>2015-11-12T21:04:00Z</dc:date>\n<dc:date>2015-11-12T21:04:00Z</dc:date>\n\
+        <dc:date>2003-01</dc:date>\n<dc:identifier>Delgado Friedrichs, Olaf; O'Keeffe,\
+        \ Michael; Yaghi, Omar M. (2003). \"Three???periodic nets and tilings: regular\
+        \ and quasiregular nets.\" Acta Crystallographica Section A 59(1).</dc:identifier>\n\
+        <dc:identifier>0108-7673</dc:identifier>\n<dc:identifier>1600-5724</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/2027.42/115935</dc:identifier>\n<dc:identifier>10.1107/S0108767302018494</dc:identifier>\n\
+        <dc:identifier>Acta Crystallographica Section A</dc:identifier>\n<dc:rights>IndexNoFollow</dc:rights>\n\
+        <dc:publisher>Munksgaard International Publishers</dc:publisher>\n<dc:publisher>Wiley\
+        \ Periodicals, Inc.</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n\
+        \        <record>\n            <header>\n                <identifier>oai:deepblue.lib.umich.edu:2027.42/115982</identifier>\n\
+        \                <datestamp>2015-11-12T21:04:30Z</datestamp>\n           \
+        \     <setSpec>com_2027.42_13913</setSpec>\n                <setSpec>col_2027.42_21621</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Three???periodic\
+        \ nets and tilings: semiregular nets</dc:title>\n<dc:creator>Delgado Friedrichs,\
+        \ Olaf</dc:creator>\n<dc:creator>O'Keeffe, Michael</dc:creator>\n<dc:creator>Yaghi,\
+        \ Omar M.</dc:creator>\n<dc:contributor>Department of Chemistry, University\
+        \ of Michigan, Ann Arbor, MI 48109, USA</dc:contributor>\n<dc:contributor>Department\
+        \ of Chemistry, Arizona State University, Tempe, AZ 85287, USA</dc:contributor>\n\
+        <dc:contributor>Department of Computer Science, University of T??bingen, D???72076\
+        \ T??bingen, Germany</dc:contributor>\n<dc:date>2015-11-12T21:04:30Z</dc:date>\n\
+        <dc:date>2015-11-12T21:04:30Z</dc:date>\n<dc:date>2003-10</dc:date>\n<dc:identifier>Delgado\
+        \ Friedrichs, Olaf; O'Keeffe, Michael; Yaghi, Omar M. (2003). \"Three???periodic\
+        \ nets and tilings: semiregular nets.\" Acta Crystallographica Section A 59(6).</dc:identifier>\n\
+        <dc:identifier>0108-7673</dc:identifier>\n<dc:identifier>1600-5724</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/2027.42/115982</dc:identifier>\n<dc:identifier>10.1107/S0108767303017100</dc:identifier>\n\
+        <dc:identifier>Acta Crystallographica Section A</dc:identifier>\n<dc:rights>IndexNoFollow</dc:rights>\n\
+        <dc:publisher>Munksgaard International Publishers</dc:publisher>\n<dc:publisher>Wiley\
+        \ Periodicals, Inc.</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n\
+        \        <record>\n            <header>\n                <identifier>oai:deepblue.lib.umich.edu:2027.42/116005</identifier>\n\
+        \                <datestamp>2015-11-12T21:04:46Z</datestamp>\n           \
+        \     <setSpec>com_2027.42_13913</setSpec>\n                <setSpec>col_2027.42_21621</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Three???periodic\
+        \ nets and tilings: minimal nets</dc:title>\n<dc:creator>Bonneau, Charlotte</dc:creator>\n\
+        <dc:creator>Delgado???friedrichs, Olaf</dc:creator>\n<dc:creator>O'Keeffe,\
+        \ Michael</dc:creator>\n<dc:creator>Yaghi, Omar M.</dc:creator>\n<dc:contributor>Department\
+        \ of Chemistry, University of Michigan, Ann Arbor, MI 48109, USA</dc:contributor>\n\
+        <dc:contributor>Department of Chemistry, Arizona State University, Tempe,\
+        \ AZ 85287, USA</dc:contributor>\n<dc:contributor>Department of Computer Science,\
+        \ University of T??bingen, D???72072 T??bingen, Germany</dc:contributor>\n\
+        <dc:date>2015-11-12T21:04:46Z</dc:date>\n<dc:date>2015-11-12T21:04:46Z</dc:date>\n\
+        <dc:date>2004-11</dc:date>\n<dc:identifier>Bonneau, Charlotte; Delgado???friedrichs,\
+        \ Olaf ; O'Keeffe, Michael; Yaghi, Omar M. (2004). \"Three??  periodic nets\
+        \ and tilings: minimal nets.\" Acta Crystallographica Section A 60(6).</dc:identifier>\n\
+        <dc:identifier>0108-7673</dc:identifier>\n<dc:identifier>1600-5724</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/2027.42/116005</dc:identifier>\n<dc:identifier>10.1107/S0108767304015442</dc:identifier>\n\
+        <dc:identifier>Acta Crystallographica Section A</dc:identifier>\n<dc:rights>IndexNoFollow</dc:rights>\n\
+        <dc:publisher>Munksgaard International Publishers</dc:publisher>\n<dc:publisher>Wiley\
+        \ Periodicals, Inc.</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n\
+        \    </ListRecords>\n</OAI-PMH>\n"}
+    headers:
+      content-type: [application/xml]
+      date: ['Fri, 13 Nov 2015 19:35:24 GMT']
+      server: [Apache-Coyote/1.1]
+    status: {code: 200, message: OK}
+version: 1
