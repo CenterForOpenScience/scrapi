@@ -72,7 +72,7 @@ def status(request):
 
 
 @api_view(['POST'])
-def institution_detail(request):
+def institutions(request):
     if not es:
         return HttpResponse('No connection to elastic search', status=503)
     query = request.data.get('query') or {}
