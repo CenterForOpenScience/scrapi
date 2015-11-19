@@ -372,4 +372,4 @@ def xml_text_only(elem):
     inner_text = elem.text
     if inner_text:
         return inner_text.strip()
-    return ''
+    return None
