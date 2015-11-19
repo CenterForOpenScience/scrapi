@@ -8,7 +8,7 @@ from django.views.decorators.clickjacking import xframe_options_exempt
 
 from elasticsearch import Elasticsearch
 
-from api.api import settings
+from scrapi import settings
 from api.webview.models import Document
 from api.webview.serializers import DocumentSerializer
 
@@ -79,7 +79,6 @@ def institutions(request):
     res = es.search(index=settings.ELASTIC_INST_INDEX, body=query)
     # validate query and grab whats wanted
     try:
-        # to be changed dependent on the osf use case or how general this needs to be
         res = {
             'results': [val['_source'] for val in res['hits']['hits']],
             'aggregations': res.get('aggregations') or res.get('aggs'),

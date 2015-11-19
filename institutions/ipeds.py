@@ -51,7 +51,6 @@ def populate(ipeds_file):
                 # Prevent logger output encoding errors from stopping script
                 logger.info('Adding {0}.'.format(transformed['name']))
             except Exception:
-                import ipdb; ipdb.set_trace()
                 pass
             inst = Institution(country='United States', **transformed)
             inst.save()
