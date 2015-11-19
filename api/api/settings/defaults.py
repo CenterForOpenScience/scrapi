@@ -43,10 +43,12 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'api.webview',
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
+    'robots'
 )
 
 SITE_ID = 1
+ROBOTS_USE_SITEMAP = False
 
 ACCOUNT_ACTIVATION_DAYS = 7
 
@@ -108,6 +110,7 @@ TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
 REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
+    'DEFAULT_PAGINATION_CLASS': 'api.webview.pagination.PageNumberPaginationWithoutCount',
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',

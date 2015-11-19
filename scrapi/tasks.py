@@ -129,7 +129,8 @@ def migrate(migration, source_db=None, sources=tuple(), async=False, dry=True, g
     source_db = source_db or settings.CANONICAL_PROCESSOR
     documents = processing.get_processor(source_db).documents
 
-    docs = documents(*sources)
+    doc_sources = sources or registry.keys()
+    docs = documents(*doc_sources)
     if async:
         segment = list(islice(docs, group_size))
         while segment:

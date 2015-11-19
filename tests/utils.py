@@ -67,7 +67,8 @@ RECORD = {
             isotope analysis.',
     'providerUpdatedDateTime': '2015-02-23T00:00:00Z',
     'shareProperties': {
-        'source': 'test'
+        'source': 'test',
+        'docID': 'test1'
     }
 }
 

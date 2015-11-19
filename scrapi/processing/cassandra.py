@@ -130,10 +130,10 @@ class CassandraProcessor(BaseProcessor):
     @events.logged(events.PROCESSING, 'raw.cassandra')
     def process_raw(self, raw_doc):
         self.send_to_database(
-            source=raw_doc['source'],
-            docID=raw_doc['docID'],
-            filetype=raw_doc['filetype'],
+            source=copy_to_unicode(raw_doc['source']),
+            docID=copy_to_unicode(raw_doc['docID']),
             doc=six.text_type(raw_doc['doc']).encode('utf-8'),
+            filetype=copy_to_unicode(raw_doc['filetype']),
             timestamps=raw_doc.get('timestamps', {})
         ).save()
 
@@ -161,14 +161,15 @@ class CassandraProcessor(BaseProcessor):
             return True  # If the document fails to load/compare for some reason, accept a new version
 
     def documents(self, *sources):
-        sources = sources
-        q = DocumentModel.objects.timeout(500).allow_filtering().all().limit(1000)
+        q = DocumentModel.objects.timeout(500).allow_filtering().all().limit(100)
         querysets = (q.filter(source=source) for source in sources) if sources else [q]
         for query in querysets:
             page = try_n_times(5, list, query)
             while len(page) > 0:
                 for doc in page:
+                    doc.save()
                     yield DocumentTuple(self.to_raw(doc), self.to_normalized(doc))
+                logger.info('yielded 1000 pages')
                 page = try_n_times(5, self.next_page, query, page)
 
     def next_page(self, query, page):

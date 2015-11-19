@@ -20,8 +20,13 @@ from scrapi import settings
 from scrapi.base import XMLHarvester
 from scrapi.util import copy_to_unicode
 from scrapi.linter.document import RawDocument
-from scrapi.base.schemas import default_name_parser
-from scrapi.base.helpers import compose, single_result, build_properties, datetime_formatter
+from scrapi.base.helpers import (
+    compose,
+    single_result,
+    build_properties,
+    datetime_formatter,
+    default_name_parser
+)
 
 logger = logging.getLogger(__name__)
 
@@ -92,8 +97,8 @@ class ClinicalTrialsHarvester(XMLHarvester):
             ('armGroup', '//arm_group/arm_group_label/node()'),
             ('intervention', '//intervention/intervention_type/node()'),
             ('eligibility', ('//eligibility/node()', compose(
-                lambda x: map(element_to_dict, x),
-                lambda x: filter(non_string, x)
+                lambda x: list(map(element_to_dict, x)),
+                lambda x: list(filter(non_string, x))
             ))),
             ('link', '//link/url/node()'),
             ('responsible_party', '//responsible_party/responsible_party_full_name/node()')

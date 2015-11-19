@@ -55,16 +55,18 @@ def json_without_bytes(jobj):
     jobj = jobj.copy()
     for k, v in jobj.items():
         if isinstance(v, six.binary_type):
-            jobj[k] = v.decode('utf8')
+            jobj[k] = v.decode('utf8', 'replace')
     return jobj
 
 
 def try_n_times(n, action, *args, **kwargs):
+    exc = None
     for _ in xrange(n):
         try:
             return action(*args, **kwargs)
         except Exception as e:
+            exc = e
             logger.exception(e)
             time.sleep(15)
-    if e:
-        raise e
+    if exc:
+        raise exc

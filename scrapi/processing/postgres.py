@@ -42,7 +42,6 @@ class PostgresProcessor(BaseProcessor):
     manager = DatabaseManager()
 
     def documents(self, *sources):
-        sources = sources
         q = Document.objects.all()
         querysets = (q.filter(source=source) for source in sources) if sources else [q]
         for query in querysets:
@@ -87,7 +86,7 @@ class PostgresProcessor(BaseProcessor):
     @events.logged(events.PROCESSING, 'raw.postgres')
     def process_raw(self, raw_doc):
         source, docID = raw_doc['source'], raw_doc['docID']
-        document = self._get_by_source_id(Document, source, docID) or Document(source=source, docID=docID)
+        document = self._get_by_source_id(source, docID) or Document(source=source, docID=docID)
 
         modified_doc = copy.deepcopy(raw_doc.attributes)
         if modified_doc.get('versions'):
@@ -100,17 +99,17 @@ class PostgresProcessor(BaseProcessor):
     @events.logged(events.PROCESSING, 'normalized.postgres')
     def process_normalized(self, raw_doc, normalized):
         source, docID = raw_doc['source'], raw_doc['docID']
-        document = self._get_by_source_id(Document, source, docID) or Document(source=source, docID=docID)
+        document = self._get_by_source_id(source, docID) or Document(source=source, docID=docID)
 
         document.normalized = normalized.attributes
         document.providerUpdatedDateTime = normalized['providerUpdatedDateTime']
 
         document.save()
 
-    def _get_by_source_id(self, model, source, docID):
+    def _get_by_source_id(self, source, docID):
         try:
-            return Document.objects.filter(source=source, docID=docID)[0]
-        except IndexError:
+            return Document.objects.get(key=Document._make_key(source, docID))
+        except Document.DoesNotExist:
             return None
 
 

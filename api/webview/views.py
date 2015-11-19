@@ -1,4 +1,7 @@
+import json
+from django.http import HttpResponse
 from rest_framework import generics
+from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.views.decorators.clickjacking import xframe_options_exempt
@@ -7,11 +10,12 @@ from api.webview.models import Document
 from api.webview.serializers import DocumentSerializer
 
 
-class DocumentList(generics.ListCreateAPIView):
+class DocumentList(generics.ListAPIView):
     """
     List all documents in the SHARE API
     """
     serializer_class = DocumentSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def perform_create(self, serializer):
         serializer.save(source=self.request.user)
@@ -22,11 +26,12 @@ class DocumentList(generics.ListCreateAPIView):
         return Document.objects.all()
 
 
-class DocumentsFromSource(generics.ListCreateAPIView):
+class DocumentsFromSource(generics.ListAPIView):
     """
     List all documents from a particular source
     """
     serializer_class = DocumentSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def perform_create(self, serializer):
         serializer.save(source=self.request.user)
@@ -44,10 +49,18 @@ def document_detail(request, source, docID):
     Retrieve one particular document.
     """
     try:
-        all_sources = Document.objects.filter(source=source)
-        document = all_sources.get(docID=docID)
+        document = Document.objects.get(key=Document._make_key(source, docID))
     except Document.DoesNotExist:
         return Response(status=404)
 
     serializer = DocumentSerializer(document)
     return Response(serializer.data)
+
+
+@api_view(['GET'])
+@xframe_options_exempt
+def status(request):
+    """
+    Show the status of the API
+    """
+    return HttpResponse(json.dumps({'status': 'ok'}), content_type='application/json', status=200)

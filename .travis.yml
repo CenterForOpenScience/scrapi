@@ -2,7 +2,6 @@ language: python
 sudo: false
 python:
     - "2.7"
-    - "3.4"
     - "3.5"
 
 services:
@@ -13,10 +12,17 @@ services:
 addons:
   postgresql: "9.4"
 
+cache:
+  directories:
+    - $HOME/wheelhouse
+
+env:
+  - WHEELHOUSE=$HOME/wheelhouse
+
 install:
-  - cp api/api/settings/local-travis.py api/api/settings/local.py
-  - pip install -r dev-requirements.txt
-  - pip install coveralls
+  - travis_retry pip install -U invoke coveralls
+  - travis_retry invoke wheelhouse --develop
+  - travis_retry invoke requirements --develop
   - cp scrapi/settings/travis-dist.py scrapi/settings/local.py
 
 before_script:
@@ -30,3 +36,6 @@ script:
 
 after_success:
   coveralls
+
+notifications:
+  flowdock: df4d2322a6b6ec2c086c8b6b22f4abed

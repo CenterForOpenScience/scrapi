@@ -50,26 +50,27 @@ def cross_db(docs, target_db=None, index=None, **kwargs):
     assert target_db, 'Please specify a target db for the migration -- either postgres or elasticsearch'
     assert target_db in ['postgres', 'cassandra', 'elasticsearch'], 'Invalid target database - please specify either postgres, cassandra or elasticsearch'
     for doc in docs:
-        if not doc.raw['doc']:
-            # corrupted database item has no doc element
-            message = 'No doc element in raw doc -- could not migrate document from {} with id {}'.format(doc.raw.attributes['source'], doc.raw.attributes['docID'])
-            log_to_sentry(message)
-            logger.info(message)
-            continue
+        try:
+            if not doc.raw['doc']:
+                # corrupted database item has no doc element
+                message = 'No doc element in raw doc -- could not migrate document from {} with id {}'.format(doc.raw.attributes['source'], doc.raw.attributes['docID'])
+                log_to_sentry(message)
+                logger.info(message)
+                continue
 
-        raw, normalized = doc.raw, doc.normalized
+            raw, normalized = doc.raw, doc.normalized
 
-        target_processor = get_processor(target_db)
+            target_processor = get_processor(target_db)
 
-        if not kwargs.get('dry'):
-            target_processor.process_raw(raw)
-
-            try:
-                target_processor.process_normalized(raw, normalized)
-            except (KeyError, TypeError):
-                # This means that the document was harvested but wasn't approved to be normalized
-                # Key error for Postgres, TypeError for Cassandra
-                logger.info('Not storing migrated normalized from {} with id {}, document is not in approved set list.'.format(raw.attributes['source'], raw.attributes['docID']))
+            if not kwargs.get('dry'):
+                target_processor.process_raw(raw)
+                if normalized:
+                    target_processor.process_normalized(raw, normalized)
+                else:
+                    logger.info('Not storing migrated normalized from {} with id {}, document is not in approved set list.'.format(raw.attributes['source'], raw.attributes['docID']))
+        except Exception as e:
+            logger.exception(e)
+            log_to_sentry(e)
 
 
 @tasks.task_autoretry(default_retry_delay=1, max_retries=5)

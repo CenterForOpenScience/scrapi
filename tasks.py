@@ -5,27 +5,30 @@ import platform
 from datetime import date, timedelta
 
 from invoke import run, task
-from elasticsearch import helpers
-from dateutil.parser import parse
-from six.moves.urllib import parse as urllib_parse
+# from elasticsearch import helpers
+# from dateutil.parser import parse
+# from six.moves.urllib import parse as urllib_parse
 
-import scrapi.harvesters  # noqa
-from scrapi import linter
-from scrapi import registry
-from scrapi import settings
+# import scrapi.harvesters  # noqa
+# from scrapi import linter
+# from scrapi import registry
+# from scrapi import settings
 
 
 logger = logging.getLogger()
 
+WHEELHOUSE_PATH = os.environ.get('WHEELHOUSE')
+
 
 @task
 def reindex(src, dest):
+    from elasticsearch import helpers
     from scrapi.processing.elasticsearch import DatabaseManager
     dm = DatabaseManager()
     dm.setup()
-    es = dm.es
-    helpers.reindex(es, src, dest)
-    es.indices.delete(src)
+
+    helpers.reindex(dm.es, src, dest)
+    dm.es.indices.delete(src)
 
 
 @task
@@ -33,9 +36,8 @@ def alias(alias, index):
     from scrapi.processing.elasticsearch import DatabaseManager
     dm = DatabaseManager()
     dm.setup()
-    es = dm.es
-    es.indices.delete_alias(index=alias, name='_all', ignore=404)
-    es.indices.put_alias(alias, index)
+    dm.es.indices.delete_alias(index=alias, name='_all', ignore=404)
+    dm.es.indices.put_alias(alias, index)
 
 
 @task
@@ -79,7 +81,7 @@ def migrate(migration, sources=None, kwargs_string=None, dry=True, async=False, 
     kwargs['dry'] = dry
     kwargs['async'] = async
     kwargs['group_size'] = group_size
-    kwargs['sources'] = map(lambda x: x.strip(), sources.split(','))
+    kwargs['sources'] = list(map(lambda x: x.strip(), sources.split(',')))
 
     if kwargs['sources'] == ['']:
         kwargs.pop('sources')
@@ -140,32 +142,56 @@ def test(cov=True, doctests=True, verbose=False, debug=False, pdb=False):
 
 
 @task
-def requirements():
-    run('pip install -r requirements.txt')
+def wheelhouse(develop=False):
+    req_file = 'dev-requirements.txt' if develop else 'requirements.txt'
+    cmd = 'pip wheel --find-links={} -r {} --wheel-dir={}'.format(WHEELHOUSE_PATH, req_file, WHEELHOUSE_PATH)
+    run(cmd, pty=True)
 
 
 @task
-def beat():
+def requirements(develop=False, upgrade=False):
+    req_file = 'dev-requirements.txt' if develop else 'requirements.txt'
+    cmd = 'pip install -r {}'.format(req_file)
+
+    if upgrade:
+        cmd += ' --upgrade'
+    if WHEELHOUSE_PATH:
+        cmd += ' --no-index --find-links={}'.format(WHEELHOUSE_PATH)
+    run(cmd, pty=True)
+
+
+@task
+def beat(setup=True):
+    from scrapi import registry
     from scrapi.tasks import app
+    # Set up the provider map for elasticsearch
+    if setup:
+        provider_map(delete=True)
+
     app.conf['CELERYBEAT_SCHEDULE'] = registry.beat_schedule
     app.Beat().run()
 
 
 @task
-def worker(loglevel='INFO', hostname='%h'):
+def worker(loglevel='INFO', hostname='%h', autoreload=False):
     from scrapi.tasks import app
     command = ['worker']
     if loglevel:
         command.extend(['--loglevel', loglevel])
     if hostname:
         command.extend(['--hostname', hostname])
+    if autoreload:
+        command.extend(['--autoreload'])
     app.worker_main(command)
 
 
 @task
 def harvester(harvester_name, async=False, start=None, end=None):
+    from scrapi import settings
     settings.CELERY_ALWAYS_EAGER = not async
+    from scrapi import registry
     from scrapi.tasks import run_harvester
+    from dateutil.parser import parse
 
     if not registry.get(harvester_name):
         raise ValueError('No such harvesters {}'.format(harvester_name))
@@ -178,8 +204,11 @@ def harvester(harvester_name, async=False, start=None, end=None):
 
 @task
 def harvesters(async=False, start=None, end=None):
+    from scrapi import settings
     settings.CELERY_ALWAYS_EAGER = not async
+    from scrapi import registry
     from scrapi.tasks import run_harvester
+    from dateutil.parser import parse
 
     start = parse(start).date() if start else date.today() - timedelta(settings.DAYS_BACK)
     end = parse(end).date() if end else date.today()
@@ -199,12 +228,15 @@ def harvesters(async=False, start=None, end=None):
 
 @task
 def lint_all():
+    from scrapi import registry
     for name in registry.keys():
         lint(name)
 
 
 @task
 def lint(name):
+    from scrapi import linter
+    from scrapi import registry
     harvester = registry[name]
     try:
         linter.lint(harvester.harvest, harvester.normalize)
@@ -215,6 +247,8 @@ def lint(name):
 
 @task
 def provider_map(delete=False):
+    from six.moves.urllib import parse as urllib_parse
+    from scrapi import registry
     from scrapi.processing.elasticsearch import DatabaseManager
     dm = DatabaseManager()
     dm.setup()
@@ -254,6 +288,7 @@ def apidb():
 @task
 def reset_all():
     import sys
+    from scrapi import settings
 
     if sys.version[0] == "3":
         raw_input = input

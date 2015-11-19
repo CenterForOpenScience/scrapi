@@ -15,10 +15,9 @@ scrapi
 - To run absolutely everyting, you will need to:
     - Install requirements
     - Install Elasticsearch
-    - Install harvesters
     - Install Cassandra, or Postgres, or both (optional)
-    - Install rabbitmq (optional)
-- To only run harvesters locally, you do not have to install 
+    - Install RabbitMQ (optional)
+- You do not have to install RabbitMQ if you're only running the harvesters locally.
 - Both Cassandra and Postgres aren't really necessary, you can choose which one you'd like, or use both. If you install neither, you can use local storage instead. In your settings, you'll specify a CANONICAL_PROCESSOR, just make sure that one is installed.
 
 
@@ -38,14 +37,12 @@ This will also install the core requirements like normal.
 
 ### Installing Elasticsearch
 
-Elasticsearch is required only if "elasticsearch" is specified in your settings, or if RECORD_HTTP_TRANSACTIONS is set to ```True```.
-
 _Note: Elasticsearch requires JDK 7._
 
 #### Mac OSX
 
 ```bash
-$ brew install elasticsearch
+$ brew install homebrew/versions/elasticsearch17
 ```
 
 #### Ubuntu
@@ -71,6 +68,37 @@ $ brew install elasticsearch
 ```bash
 $ elasticsearch
 ```
+
+
+### Installing Postgres
+
+Postgres is required only if "postgres" is specified in your settings, or if RECORD_HTTP_TRANSACTIONS is set to ```True```.
+
+#### Mac OSX
+
+```bash
+$ brew install postgresql
+$ ln -sfv /usr/local/homebrew/opt/postgresql/*.plist ~/Library/LaunchAgents
+$ launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+```
+
+#### Ubuntu
+
+```bash
+$ sudo apt-get update
+$ sudo apt-get install postgresql
+$ service postgresql start
+```
+
+#### Running
+
+Inside your scrapi checkout:
+
+```bash
+$ createdb scrapi
+$ invoke apidb
+```
+
 
 ### Installing Cassandra
 
@@ -122,8 +150,10 @@ $ cassandra -f
 
 and you should be good to go.
 
-(Note, if you're developing locally, you do not have to run Rabbitmq!)
-### Rabbitmq (optional)
+
+### RabbitMQ (optional)
+
+_Note, if you're developing locally, you do not have to run RabbitMQ!_
 
 #### Mac OSX
 
@@ -136,21 +166,24 @@ $ brew install rabbitmq
 ```bash
 $ sudo apt-get install rabbitmq-server
 ```
+
+
 ### Settings
 
-You will need to have a local copy of the settings. Copy local-dist.py into your own version of local.py -
+You will need to have a local copy of the settings. Copy local-dist.py into your own version of local.py:
 
 ```bash
 cp scrapi/settings/local-dist.py scrapi/settings/local.py
 ```
 
-Copy over the api settings
+Copy over the api settings:
 
 ```bash
 cp api/api/settings/local-dist.py api/api/settings/local.py
 ```
 
-If you installed Cassandra, Postgres and Elasticsearch earlier, you will want add something like the following configuration to your local.py, based on the databases you have:
+If you installed Cassandra, Postgres, and Elasticsearch earlier, you will want add something like the following configuration to your local.py, based on the databases you have:
+
 ```python
 RECORD_HTTP_TRANSACTIONS = True  # Only if cassandra or postgres are installed
 
@@ -158,26 +191,28 @@ RAW_PROCESSING = ['cassandra', 'postgres']
 NORMALIZED_PROCESSING = ['cassandra', 'postgres', 'elasticsearch']
 CANONICAL_PROCESSOR = 'postgres'
 RESPONSE_PROCESSOR = 'postgres'
-
 ```
+
 For raw and normalized processing, add the databases you have installed. Only add elasticsearch to normalized processing, as it does not have a raw processing module.
 
-```RAW_PROCESSING``` and ```NORMALIZED_PROCESSING``` are both lists, so you can add as many processors as you wish. CANONICAL_PROCESSOR and RESPONSE_PROCESSOR both are single processors only.
+```RAW_PROCESSING``` and ```NORMALIZED_PROCESSING``` are both lists, so you can add as many processors as you wish. ```CANONICAL_PROCESSOR``` and ```RESPONSE_PROCESSOR``` both are single processors only.
 
-_note: Cassandra processing will soon be phased out, so we reccomend using postgres for your processing needs. Either one will work for now!
+_note: Cassandra processing will soon be phased out, so we recommend using Postgres for your processing needs. Either one will work for now!_
 
 If you'd like to use local storage, you will want to make sure your local.py has the following configuration:
+
 ```python
 RECORD_HTTP_TRANSACTIONS = False
 
 NORMALIZED_PROCESSING = ['storage']
 RAW_PROCESSING = ['storage']
 ```
+
 This will save all harvested/normalized files to the directory ```archive/<source>/<document identifier>```
 
 _note: Be careful with this, as if you harvest too many documents with the storage module enabled, you could start experiencing inode errors_
 
-If you'd like to be able to run all harvesters, you'll need to [register for a PLOS API key](http://api.plos.org/registration/), a [Harvard Dataverse API Key(https://dataverse.harvard.edu/dataverseuser.xhtml?editMode=CREATE&redirectPage=%2Fdataverse.xhtml), and a [Springer API Key](https://dev.springer.com/signup).
+If you'd like to be able to run all harvesters, you'll need to [register for a PLOS API key](http://api.plos.org/registration/), a [Harvard Dataverse API Key](https://dataverse.harvard.edu/dataverseuser.xhtml?editMode=CREATE&redirectPage=%2Fdataverse.xhtml), and a [Springer API Key](https://dev.springer.com/signup).
 
 Add your API keys to the following line to your local.py file:
 ```
