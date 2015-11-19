@@ -24,7 +24,15 @@ from requests import exceptions
 from scrapi import requests
 from scrapi import settings
 from scrapi.base import XMLHarvester
-from scrapi.base.helpers import compose, single_result, date_formatter, language_codes, coerce_to_list, xml_text_only_list, xml_text_only
+from scrapi.base.helpers import (
+    compose,
+    single_result,
+    datetime_formatter,
+    language_codes,
+    coerce_to_list,
+    xml_text_only_list,
+    xml_text_only
+)
 from scrapi.linter.document import RawDocument
 from scrapi.util import copy_to_unicode
 
@@ -43,7 +51,9 @@ def filter_to_contributors(parties):
 
 def filter_responsible_parties(parties, roles):
     '''Return list of ResponsibleParties whose role is in roles param'''
-    return [party for party in parties if party.xpath('./gmd:role/gmd:CI_RoleCode/node()', namespaces=party.nsmap)[0] in roles]
+    return [party for party in parties if party.xpath(
+        './gmd:role/gmd:CI_RoleCode/node()', namespaces=party.nsmap
+    )[0] in roles]
 
 
 def parse_contributors(parties):
@@ -53,8 +63,7 @@ def parse_contributors(parties):
 
     # The NODC schema doesn't explicitly distinguish between
     # organizations and individuals.  Every party has an
-    # organizationName tag, individuals have an individualName tag as
-    # well.  The email address is tied to the party, so we can
+    # organizationName tag, individuals have an individualName tag as well.
     contributors = []
     for party in parties:
         contributor = {}
@@ -66,13 +75,11 @@ def parse_contributors(parties):
                 contributor['affiliation'] = [organization]
         elif organization:
             contributor = organization
-        else:
-            raise NotImplementedError
 
         # the email address is tied to the party, so wait until we know
         # who the contributor is before extracting
         email = party.xpath('./gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress', namespaces=party.nsmap)
-        if len(email) > 0:
+        if email:
             contributor['email'] = xml_text_only(email[0])
         contributors.append(contributor)
 
@@ -82,29 +89,39 @@ def parse_contributors(parties):
 def extract_individual(party):
     '''Return SHARE-compliant person object from a CI_ResponsibleParty element'''
     individual = party.xpath('./gmd:individualName/gmx:Anchor', namespaces=party.nsmap)
-    if len(individual) > 0:
+    if individual:
         name = HumanName(individual[0].text)
         ns_prefix = party.nsmap['xlink']
         sameAs = individual[0].get('{' + ns_prefix + '}href')
-        return {
+
+        individual = {
             'name': individual[0].text,
             'givenName': name.first,
             'additionalName': name.middle,
-            'familyName': name.last,
-            'sameAs': [sameAs],
+            'familyName': name.last
         }
+
+        if sameAs:
+            individual['sameAs'] = [sameAs]
+
+        return individual
 
 
 def extract_organization(party):
     '''Return SHARE-compliant organization object from a CI_ResponsibleParty element'''
     organization = party.xpath('./gmd:organisationName/gmx:Anchor', namespaces=party.nsmap)
-    if len(organization) > 0:
+    if organization:
         ns_prefix = party.nsmap['xlink']
         sameAs = organization[0].get('{' + ns_prefix + '}href')
-        return {
-            'name': organization[0].text,
-            'sameAs': [sameAs],
+
+        organization = {
+            'name': organization[0].text
         }
+
+        if sameAs:
+            organization['smaeAs'] = sameAs
+
+        return organization
 
 
 def filter_keywords(keyword_groups):
@@ -113,7 +130,7 @@ def filter_keywords(keyword_groups):
     keywords = []
     for keyword_group in keyword_groups:
         keyword_type = keyword_group.xpath('./gmd:type/gmd:MD_KeywordTypeCode/node()', namespaces=keyword_group.nsmap)
-        if len(keyword_type) > 0 and keyword_type[0] != 'datacenter':
+        if keyword_type and keyword_type[0] != 'datacenter':
             keywords.extend(keyword_group.xpath('./gmd:keyword/gmx:Anchor/node()', namespaces=keyword_group.nsmap))
     return keywords
 
@@ -128,6 +145,12 @@ class NODCHarvester(XMLHarvester):
 
     canonical_base_url = 'http://data.nodc.noaa.gov/cgi-bin/iso?id={}'
 
+    search_base_url = 'http://data.nodc.noaa.gov/cgi-bin/oai-pmh?verb=ListRecords'
+    oai_ns = {
+        'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
+        'dc': 'http://purl.org/dc/elements/1.1/',
+    }
+
     namespaces = {
         'gco': 'http://www.isotc211.org/2005/gco',
         'gmd': 'http://www.isotc211.org/2005/gmd',
@@ -139,8 +162,7 @@ class NODCHarvester(XMLHarvester):
         'gts': 'http://www.isotc211.org/2005/gts',
         'srv': 'http://www.isotc211.org/2005/srv',
         'xlink': 'http://www.w3.org/1999/xlink',
-        'xsi': 'http://www.w3.org/2001/XMLSchema-instance',
-        # xsi:schemaLocation="http://www.ngdc.noaa.gov/metadata/published/xsd/schema.xsd",
+        'xsi': 'http://www.w3.org/2001/XMLSchema-instance'
     }
 
     @property
@@ -161,20 +183,14 @@ class NODCHarvester(XMLHarvester):
                 cite_stanza + 'gmd:citedResponsibleParty/gmd:CI_ResponsibleParty',
                 compose(extract_organization, single_result, filter_to_publishers),
             ),
-            'providerUpdatedDateTime': ('./gmd:dateStamp/gco:DateTime/node()', compose(date_formatter, single_result)),
+            'providerUpdatedDateTime': ('./gmd:dateStamp/gco:DateTime/node()', compose(datetime_formatter, single_result)),
             'languages': ('./gmd:language/gmd:LanguageCode', compose(language_codes, xml_text_only_list, coerce_to_list)),
             'subjects': (id_stanza + 'gmd:descriptiveKeywords/gmd:MD_Keywords', lambda x: filter_keywords(x)),
         }
 
-    search_base_url = 'http://data.nodc.noaa.gov/cgi-bin/oai-pmh?verb=ListRecords'
-    oai_ns = {
-        'oai_dc': 'http://www.openarchives.org/OAI/2.0/',
-        'dc': 'http://purl.org/dc/elements/1.1/',
-    }
-
     def query_by_date(self, start_date, end_date):
         '''Use OAI-PMH interface to get a list of dataset ids for the given date range'''
-        search_url_end = '&metadataPrefix=oai_dc&from=' + start_date + '&until=' + end_date
+        search_url_end = '&metadataPrefix=oai_dc&from={}&until={}'.format(start_date, end_date)
         search_url = self.search_base_url + search_url_end
 
         while True:
@@ -208,11 +224,11 @@ class NODCHarvester(XMLHarvester):
         for dataset_id in self.query_by_date(start_date, end_date):
             try:
                 item_url = str(xml_base_url).format(dataset_id)
-                content = requests.get(item_url)
+                content = requests.get(item_url, throttle=2)
             except exceptions.ConnectionError as e:
                 logger.info('Connection error: {}, wait a bit...'.format(e))
                 time.sleep(30)
-                continue
+                content = requests.get(item_url)
             doc = etree.XML(content.content)
 
             record = etree.tostring(doc, encoding=self.DEFAULT_ENCODING)
