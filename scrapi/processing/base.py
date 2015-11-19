@@ -21,6 +21,16 @@ class BaseProcessor(object):
         '''
         raise NotImplementedError
 
+    @abstractmethod
+    def get_versions(self, source, docID):
+        raise NotImplementedError
+
+    def different(self, old, new):
+        try:
+            return not all([new[key] == old[key] or (not new[key] and not old[key]) for key in new.keys() if key != 'timestamps'])
+        except Exception:
+            return True  # If the document fails to load/compare for some reason, accept a new version
+
 
 class BaseDatabaseManager(object):
     '''A base class for database managers in the scrapi processing module

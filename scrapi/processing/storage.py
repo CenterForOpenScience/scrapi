@@ -7,7 +7,6 @@ To use add this to settings.local:
 """
 
 import os
-import copy
 import json
 
 from scrapi.util import json_without_bytes
@@ -18,11 +17,7 @@ class StorageProcessor(BaseProcessor):
     NAME = 'storage'
 
     def process_raw(self, raw):
-        new_attrs = copy.deepcopy(raw.attributes)
-        if new_attrs.get('versions'):
-            new_attrs['versions'] = list(map(str, new_attrs['versions']))
-
-        self.write(raw['source'], raw['docID'], 'raw', new_attrs)
+        self.write(raw['source'], raw['docID'], 'raw', raw.attributes)
 
     def process_normalized(self, raw, normalized):
         self.write(raw['source'], raw['docID'], 'normalized', normalized.attributes)
@@ -37,4 +32,7 @@ class StorageProcessor(BaseProcessor):
             f.write(json.dumps(json_without_bytes(content), indent=4))
 
     def documents(self, *sources):
+        raise NotImplementedError
+
+    def get_versions(self, source, docID):
         raise NotImplementedError

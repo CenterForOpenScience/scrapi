@@ -8,7 +8,7 @@ import logging
 
 import django
 
-from api.webview.models import HarvesterResponse, Document
+from api.webview.models import HarvesterResponse, Document, Version
 
 from scrapi import events
 from scrapi.util import json_without_bytes
@@ -36,6 +36,12 @@ class DatabaseManager(BaseDatabaseManager):
         pass
 
 
+def paginated(query, page_size=10):
+    for offset in range(0, query.count(), page_size):
+        for doc in query[offset:offset + page_size]:
+            yield doc
+
+
 class PostgresProcessor(BaseProcessor):
     NAME = 'postgres'
 
@@ -45,7 +51,7 @@ class PostgresProcessor(BaseProcessor):
         q = Document.objects.all()
         querysets = (q.filter(source=source) for source in sources) if sources else [q]
         for query in querysets:
-            for doc in query:
+            for doc in paginated(query):
                 try:
                     raw = RawDocument(doc.raw, clean=False, validate=False)
                 except AttributeError as e:
@@ -85,22 +91,22 @@ class PostgresProcessor(BaseProcessor):
 
     @events.logged(events.PROCESSING, 'raw.postgres')
     def process_raw(self, raw_doc):
-        source, docID = raw_doc['source'], raw_doc['docID']
-        document = self._get_by_source_id(source, docID) or Document(source=source, docID=docID)
-
+        document = self.version(raw=raw_doc)
+        timestamps = raw_doc.get('timestamps')
         modified_doc = copy.deepcopy(raw_doc.attributes)
-        if modified_doc.get('versions'):
-            modified_doc['versions'] = list(map(str, modified_doc['versions']))
 
         document.raw = modified_doc
+        document.timestamps = timestamps
 
         document.save()
 
     @events.logged(events.PROCESSING, 'normalized.postgres')
     def process_normalized(self, raw_doc, normalized):
-        source, docID = raw_doc['source'], raw_doc['docID']
-        document = self._get_by_source_id(source, docID) or Document(source=source, docID=docID)
+        document = self.version(raw=raw_doc, normalized=normalized)
+        timestamps = raw_doc.get('timestamps') or normalized.get('timestamps')
 
+        document.raw = raw_doc.attributes
+        document.timestamps = timestamps
         document.normalized = normalized.attributes
         document.providerUpdatedDateTime = normalized['providerUpdatedDateTime']
 
@@ -111,6 +117,39 @@ class PostgresProcessor(BaseProcessor):
             return Document.objects.get(key=Document._make_key(source, docID))
         except Document.DoesNotExist:
             return None
+
+    def version(self, raw=None, normalized=None):
+        old_doc = self._get_by_source_id(raw['source'], raw['docID'])
+        if old_doc:
+            raw_changed = raw and self.different(raw.attributes, old_doc.raw)
+            norm_changed = normalized and self.different(normalized.attributes, old_doc.normalized)
+            version = Version(
+                key=old_doc,
+                source=old_doc.source,
+                docID=old_doc.docID,
+                providerUpdatedDateTime=old_doc.providerUpdatedDateTime,
+                raw=old_doc.raw,
+                normalized=old_doc.normalized,
+                status=old_doc.status,
+                timestamps=old_doc.timestamps
+            )
+            if raw_changed or norm_changed:
+                version.save()
+            return old_doc
+        else:
+            return Document(source=raw['source'], docID=raw['docID'])
+
+    def get_versions(self, source, docID):
+        doc = self._get_by_source_id(source, docID)
+        for version in doc.version_set.all().order_by('id'):
+            yield DocumentTuple(
+                RawDocument(version.raw, clean=False, validate=False),
+                NormalizedDocument(version.normalized, clean=False, validate=False)
+            )
+        yield DocumentTuple(
+            RawDocument(doc.raw, clean=False, validate=False),
+            NormalizedDocument(doc.normalized, clean=False, validate=False)
+        )
 
 
 class HarvesterResponseModel(BaseHarvesterResponse):
