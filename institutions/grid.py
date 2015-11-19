@@ -1,6 +1,7 @@
 import six
 import json
 import logging
+
 from schema_transformer.transformer import JSONTransformer
 
 from .institutions import Institution
@@ -41,7 +42,7 @@ def populate(grid_file):
         try:
             # Prevent logger output encoding errors from stopping script
             logger.info('Adding {0}.'.format(transformed['name']))
-        except:
+        except Exception:
             pass
         for key, val in six.iteritems(transformed):
             if type(val) is bytes:

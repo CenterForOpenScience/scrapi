@@ -6,7 +6,7 @@ from scrapi.settings import ELASTIC_URI, ELASTIC_INST_INDEX
 connections.create_connection(hosts=[ELASTIC_URI])
 
 
-def main():
+def setup():
     Institution.init()
 
 
@@ -24,7 +24,7 @@ class Institution(DocType):
     id_ = String()
     public = Boolean()
     for_profit = Boolean()
-    degree = Boolean()
+    offers_degree = Boolean()
     other_names = String()
 
     def save(self, **kwargs):

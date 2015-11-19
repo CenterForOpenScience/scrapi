@@ -1,25 +1,19 @@
 from __future__ import unicode_literals
 
-import six
 import csv
 import codecs
 import logging
 
+import six
 from schema_transformer.transformer import CSVTransformer
 
 from .institutions import Institution
 
 logger = logging.getLogger(__name__)
 
-
-class IpedsTransformer(CSVTransformer):
-    def _transform_string(self, val, doc):
-        val = super(IpedsTransformer, self)._transform_string(val, doc)
-        return six.u(val)
-
-    def load(self, doc):
-        return doc
-
+IS_PUBLIC_INDEX = 2
+FOR_PROFIT_INDEX = 3
+OFFERS_DEGREE_INDEX = 1
 
 schema = {
     'name': 'INSTNM',
@@ -31,10 +25,19 @@ schema = {
     },
     'web_url': 'WEBADDR',
     'id_': 'UNITID',
-    'public': ('CONTROL', lambda x: int(x) == 2),
-    'for_profit': ('CONTROL', lambda x: int(x) == 3),
-    'degree': ('UGOFFER', lambda x: int(x) == 1)
+    'public': ('CONTROL', lambda x: int(x) == IS_PUBLIC_INDEX),
+    'for_profit': ('CONTROL', lambda x: int(x) == FOR_PROFIT_INDEX),
+    'offers_degree': ('UGOFFER', lambda x: int(x) == OFFERS_DEGREE_INDEX)
 }
+
+
+class IpedsTransformer(CSVTransformer):
+    def _transform_string(self, val, doc):
+        val = super(IpedsTransformer, self)._transform_string(val, doc)
+        return six.u(val)
+
+    def load(self, doc):
+        return doc
 
 
 def populate(ipeds_file):
@@ -47,7 +50,8 @@ def populate(ipeds_file):
             try:
                 # Prevent logger output encoding errors from stopping script
                 logger.info('Adding {0}.'.format(transformed['name']))
-            except:
+            except Exception:
+                import ipdb; ipdb.set_trace()
                 pass
             inst = Institution(country='United States', **transformed)
             inst.save()

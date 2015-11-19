@@ -8,11 +8,11 @@ from django.views.decorators.clickjacking import xframe_options_exempt
 
 from elasticsearch import Elasticsearch
 
-from scrapi import settings
+from api.api import settings
 from api.webview.models import Document
 from api.webview.serializers import DocumentSerializer
 
-es = Elasticsearch(settings.ELASTIC_URI)
+es = Elasticsearch(settings.ELASTIC_URI, request_timeout=settings.ELASTIC_TIMEOUT)
 
 
 class DocumentList(generics.ListAPIView):
@@ -74,13 +74,17 @@ def status(request):
 @api_view(['POST'])
 def institution_detail(request):
     if not es:
-        return HttpResponse('No connection to elastic search', status=500)
-    query = request.data.get('query')
-    res = es.search(index=settings.ELASTIC_INST_INDEX, body=query or {})
+        return HttpResponse('No connection to elastic search', status=503)
+    query = request.data.get('query') or {}
+    res = es.search(index=settings.ELASTIC_INST_INDEX, body=query)
     # validate query and grab whats wanted
     try:
         # to be changed dependent on the osf use case or how general this needs to be
-        res = [val['_source']['name'] for val in res.get('hits').get('hits')]
+        res = {
+            'results': [val['_source'] for val in res['hits']['hits']],
+            'aggregations': res.get('aggregations') or res.get('aggs'),
+            'count': res['hits']['total']
+        }
     except IndexError:
         return Response('Invalid query', status=400)
     return Response(json.dumps(res), status=200)
