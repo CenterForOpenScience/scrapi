@@ -2,6 +2,22 @@
 ChangeLog
 *********
 
+0.11.0 (2015-11-19)
+===================
+- Improved documentation
+- Add versioning to Postgres backend
+- Add migrations for versions
+- Fix some bugs with migrations from Postgres to other backends
+- Add harvesters:
+	- Duke University Libraries
+	- Erudit
+	- Ghent University
+	- London School of Hygiene and Tropical Medicine Research Online
+	- Mason Archival Repository Service
+	- Deep Blue University of Michigan
+	- Earth System Grid at NCAR
+	- National Oceanographic Data Center
+
 0.10.7 (2015-11-16)
 ===================
 - Update Cambridge long name
