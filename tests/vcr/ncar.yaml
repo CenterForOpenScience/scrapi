@@ -1,0 +1,57 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.9 Darwin/13.4.0]
+    method: GET
+    uri: https://www.earthsystemgrid.org/oai/repository?verb=ListRecords&metadataPrefix=dif&from=2015-10-04T00:00:00Z&until=2015-10-06T00:00:00Z
+  response:
+    body: {string: !!python/unicode "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<OAI-PMH
+        xmlns=\"http://www.openarchives.org/OAI/2.0/\"\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n
+        \        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/\n         http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\">\n\n
+        \ <responseDate>2015-10-06T14:24:14Z</responseDate>\n  <request verb=\"ListRecords\"
+        from=\"2015-10-04T06:00:00Z}\" until=\"2015-10-06T06:00:00Z\"  metadataPrefix=\"dif\">\n
+        \   https://www.earthsystemgrid.org/oai/repository\n  </request>\n\n  <ListRecords>\n
+        \   <record>\n      <header  >\n        <identifier>oai:ESG-NCAR:701c2719-481e-11e5-861f-00c0f03d5b7c</identifier>\n
+        \       <datestamp>2015-10-05T19:04:53Z</datestamp>\n        <setSpec>e95b0bb0-a5e8-11e2-9e96-0800200c9a66</setSpec>\n
+        \     </header>\n      <metadata>\n        <DIF xmlns=\"http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/
+        http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/dif_v9.8.4.xsd\">\n          <Entry_ID>701c2719-481e-11e5-861f-00c0f03d5b7c</Entry_ID>\n
+        \         <Entry_Title>CCSM run b30.232mgch data</Entry_Title>\n\n\n\n\n          <Data_Center>\n
+        \           <Data_Center_Name>\n              <Short_Name>ESG</Short_Name>\n
+        \             <Long_Name>Earth System Grid</Long_Name>\n            </Data_Center_Name>\n
+        \           <Data_Center_URL>http://www.earthsystemgrid.org/</Data_Center_URL>\n
+        \           <Personnel>\n              <Role>DATA CENTER CONTACT</Role>\n
+        \             <First_Name>ESG</First_Name>\n              <Last_Name>User
+        Services</Last_Name>\n              <Contact_Address>\n                <Address>NCAR/CISL</Address>\n
+        \               <Address>P.O. Box 3000</Address>\n                <City>Boulder</City>\n
+        \               <Province_or_State>CO</Province_or_State>\n                <Postal_Code>80307</Postal_Code>\n
+        \               <Country>USA</Country>\n              </Contact_Address>\n
+        \           </Personnel>\n          </Data_Center>\n          <Summary>\n
+        \           <Abstract>CCSM3 mid-glacial freshwater forcing simulation, closed
+        Bering Strait</Abstract>\n          </Summary>\n          <Related_URL>\n
+        \           <URL_Content_Type>\n              <Type>GET DATA</Type>\n            </URL_Content_Type>\n
+        \           <URL>http://www.earthsystemgrid.org/dataset/id/701c2719-481e-11e5-861f-00c0f03d5b7c.html</URL>\n
+        \           <Description>Data Center top-level access page for this resource</Description>\n
+        \         </Related_URL>\n\n          <Metadata_Name>ACADIS IDN DIF</Metadata_Name>\n
+        \         <Metadata_Version>9.8.4</Metadata_Version>\n          <Last_DIF_Revision_Date>2015-10-05</Last_DIF_Revision_Date>\n
+        \       </DIF>\n      </metadata>\n    </record>\n\n    <resumptionToken></resumptionToken>\n
+        \ </ListRecords>\n\n</OAI-PMH>\n"}
+    headers:
+      cache-control: ['no-cache, no-store, max-age=0, must-revalidate']
+      connection: [close]
+      content-language: [en-US]
+      content-type: [text/html;charset=ISO-8859-1]
+      date: ['Tue, 06 Oct 2015 14:24:14 GMT']
+      expires: ['0']
+      pragma: [no-cache]
+      set-cookie: [JSESSIONID=6A155D9ADED6F3F1ED831C18E505EE17; Path=/; Secure; HttpOnly]
+      strict-transport-security: [max-age=31536000 ; includeSubDomains]
+      x-content-type-options: [nosniff]
+      x-frame-options: [DENY]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1
