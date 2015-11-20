@@ -10,7 +10,7 @@ from scrapi.base import OAIHarvester
 
 class UmichHarvester(OAIHarvester):
     short_name = 'umich'
-    long_name = 'Deep Blue University of Michigan'
+    long_name = 'Deep Blue @ University of Michigan'
     url = 'http://deepblue.lib.umich.edu'
 
     base_url = 'http://deepblue.lib.umich.edu/dspace-oai/request'
