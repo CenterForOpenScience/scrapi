@@ -2,10 +2,13 @@
 ChangeLog
 *********
 
+0.11.2 (2015-11-20)
+===================
+- Fix description parsing for lwbin
+
 0.11.1 (2015-11-20)
 ===================
 - Change some harvester long names
-
 
 0.11.0 (2015-11-19)
 ===================
