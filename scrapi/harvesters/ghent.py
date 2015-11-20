@@ -9,7 +9,7 @@ from scrapi.base import OAIHarvester
 
 class GhentUniversity(OAIHarvester):
     short_name = 'ghent'
-    long_name = 'Ghent University'
+    long_name = 'Ghent University Academic Bibliography'
     url = 'https://biblio.ugent.be/'
 
     base_url = 'https://biblio.ugent.be/oai'

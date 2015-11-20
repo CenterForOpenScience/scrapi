@@ -10,7 +10,7 @@ from scrapi.base import OAIHarvester
 
 class EruditHarvester(OAIHarvester):
     short_name = 'erudit'
-    long_name = 'Erudit'
+    long_name = 'Érudit'
     url = 'http://oai.erudit.org'
 
     base_url = 'http://oai.erudit.org/oai/request'
