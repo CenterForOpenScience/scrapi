@@ -11,7 +11,7 @@ from scrapi.base import OAIHarvester
 class EruditHarvester(OAIHarvester):
     short_name = 'erudit'
     long_name = 'Érudit'
-    url = 'http://oai.erudit.org'
+    url = 'http://erudit.org'
 
     base_url = 'http://oai.erudit.org/oai/request'
     property_list = ['date', 'type', 'identifier', 'relation', 'rights', 'setSpec']
