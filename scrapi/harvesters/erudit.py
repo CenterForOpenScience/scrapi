@@ -1,3 +1,4 @@
+# coding=utf-8
 '''
 Harvester for the Erudit for the SHARE project
 
