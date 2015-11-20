@@ -26,7 +26,7 @@ from dateutil.parser import parse
 from scrapi import requests
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
-from scrapi.base.helpers import build_properties, datetime_formatter, parse_name, single_result
+from scrapi.base.helpers import build_properties, datetime_formatter, parse_name
 
 
 logger = logging.getLogger(__name__)
@@ -148,7 +148,7 @@ class LWBINHarvester(JSONHarvester):
     def schema(self):
         return {
             'title': ('/title', lambda x: x or ''),
-            'description': ('/notes', lambda x: single_result(x, x) or ''),
+            'description': ('/notes'),
             'providerUpdatedDateTime': ('/metadata_modified', datetime_formatter),
             'uris': {
                 'canonicalUri': ('/name', lambda x: construct_url(self.url, self.dataset_path, x)),  # Construct new urls directing to LWBIN
