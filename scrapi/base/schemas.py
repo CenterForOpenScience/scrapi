@@ -78,10 +78,12 @@ DIFSCHEMA = {
         ('metadataVersion', '//dif:Metadata_Version/node()'),
         ('lastDIFRevisionDate', '//dif:Last_DIF_Revision_Date/node()'),
         ('dataCenter', ('//dif:Data_Center/node()', compose(
+            list,
             lambda x: map(element_to_dict, x),
             lambda x: filter(non_string, x)
         ))),
         ('relatedUrl', ('//dif:Related_URL/node()', compose(
+            list,
             lambda x: map(element_to_dict, x),
             lambda x: filter(non_string, x)
         ))),
