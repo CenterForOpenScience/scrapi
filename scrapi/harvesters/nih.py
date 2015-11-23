@@ -27,8 +27,13 @@ from scrapi import settings
 from scrapi.base import XMLHarvester
 from scrapi.util import copy_to_unicode
 from scrapi.linter.document import RawDocument
-from scrapi.base.schemas import default_name_parser
-from scrapi.base.helpers import compose, single_result, build_properties, datetime_formatter
+from scrapi.base.helpers import (
+    compose,
+    single_result,
+    build_properties,
+    datetime_formatter,
+    default_name_parser
+)
 
 
 logger = logging.getLogger(__name__)
