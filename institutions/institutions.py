@@ -10,9 +10,11 @@ connections.create_connection(hosts=[ELASTIC_URI])
 def setup():
     Institution.init()
 
+
 def remove():
     es = Elasticsearch(ELASTIC_URI, request_timeout=ELASTIC_TIMEOUT)
     es.indices.delete(ELASTIC_INST_INDEX)
+
 
 class Institution(DocType):
     name = String()
