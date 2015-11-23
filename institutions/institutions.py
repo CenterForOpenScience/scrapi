@@ -1,7 +1,8 @@
+from elasticsearch import Elasticsearch
 from elasticsearch_dsl import DocType, String, Boolean, Integer
 from elasticsearch_dsl.connections import connections
 
-from scrapi.settings import ELASTIC_URI, ELASTIC_INST_INDEX
+from scrapi.settings import ELASTIC_URI, ELASTIC_INST_INDEX, ELASTIC_TIMEOUT
 
 connections.create_connection(hosts=[ELASTIC_URI])
 
@@ -9,6 +10,9 @@ connections.create_connection(hosts=[ELASTIC_URI])
 def setup():
     Institution.init()
 
+def remove():
+    es = Elasticsearch(ELASTIC_URI, request_timeout=ELASTIC_TIMEOUT)
+    es.indices.delete(ELASTIC_INST_INDEX)
 
 class Institution(DocType):
     name = String()
