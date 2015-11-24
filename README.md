@@ -337,7 +337,7 @@ Answer found in [this stack overflow question and answer](http://stackoverflow.c
 
 ### Institutions!
 Scrapi supports the addition of institutions in a separate index (` institutions `). Unlike data stored in the ` share ` indices, institution's metadata is updated
-much less frequently, meaning that simple parsers can be used to manually load data from providers instead of using scheduled harversters.
+much less frequently, meaning that simple parsers can be used to manually load data from providers instead of using scheduled harvesters.
 
 Currently, data from [GRID](https://grid.ac/) and [IPEDS](https://nces.ed.gov/ipeds/) is supported:
 - GRID: Provides data on international research facilities. The currently used dataset is ` grid_2015_10_09.json `, which can be found [here](https://grid.ac/downloads). To use this dataset

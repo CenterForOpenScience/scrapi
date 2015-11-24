@@ -312,8 +312,8 @@ def institutions(grid_file='institutions/grid_2015_10_09.json', ipeds_file='inst
 
 
 @task
-def remove_institutions(skip=False):
-    if not skip:
+def remove_institutions(force=False):
+    if not force:
         resp = six.moves.input('You are about to delete the institutions index. Are you sure? (y, n)\n')
         if resp not in ('y', 'Y', 'Yes', 'yes'):
             print('Remove institutions stopped.')
@@ -322,13 +322,13 @@ def remove_institutions(skip=False):
     remove()
 
 
-def grid(grid_file):
+def grid(filepath):
     from institutions import institutions, grid
     institutions.setup()
-    grid.populate(grid_file)
+    grid.populate(filepath)
 
 
-def ipeds(ipeds_file):
+def ipeds(filepath):
     from institutions import institutions, ipeds
     institutions.setup()
-    ipeds.populate(ipeds_file)
+    ipeds.populate(filepath)

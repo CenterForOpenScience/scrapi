@@ -45,7 +45,7 @@ def populate(grid_file):
         except Exception:
             pass
         for key, val in six.iteritems(transformed):
-            if type(val) is bytes:
+            if isinstance(val, six.binary_type):
                 transformed[key] = str(val)
         inst = Institution(**transformed)
 
