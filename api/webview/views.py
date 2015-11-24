@@ -6,8 +6,13 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.views.decorators.clickjacking import xframe_options_exempt
 
+from elasticsearch import Elasticsearch
+
+from scrapi import settings
 from api.webview.models import Document
 from api.webview.serializers import DocumentSerializer
+
+es = Elasticsearch(settings.ELASTIC_URI, request_timeout=settings.ELASTIC_TIMEOUT)
 
 
 class DocumentList(generics.ListAPIView):
@@ -64,3 +69,22 @@ def status(request):
     Show the status of the API
     """
     return HttpResponse(json.dumps({'status': 'ok'}), content_type='application/json', status=200)
+
+
+@api_view(['POST'])
+def institutions(request):
+    if not es:
+        return HttpResponse('No connection to elastic search', status=503)
+    query = request.data.get('query') or {}
+    es.indices.create(index='institutions', ignore=400)
+    res = es.search(index=settings.ELASTIC_INST_INDEX, body=query)
+    # validate query and grab whats wanted
+    try:
+        res = {
+            'results': [val['_source'] for val in res['hits']['hits']],
+            'aggregations': res.get('aggregations') or res.get('aggs'),
+            'count': res['hits']['total']
+        }
+    except IndexError:
+        return Response('Invalid query', status=400)
+    return Response(json.dumps(res), status=200)
