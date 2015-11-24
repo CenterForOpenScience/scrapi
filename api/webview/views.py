@@ -76,6 +76,7 @@ def institutions(request):
     if not es:
         return HttpResponse('No connection to elastic search', status=503)
     query = request.data.get('query') or {}
+    es.indices.create(index='institutions', ignore=400)
     res = es.search(index=settings.ELASTIC_INST_INDEX, body=query)
     # validate query and grab whats wanted
     try:
