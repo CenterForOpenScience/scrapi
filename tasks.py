@@ -1,5 +1,4 @@
 import os
-import six
 import base64
 import logging
 import platform
@@ -313,6 +312,7 @@ def institutions(grid_file='institutions/grid_2015_10_09.json', ipeds_file='inst
 
 @task
 def remove_institutions(force=False):
+    import six
     if not force:
         resp = six.moves.input('You are about to delete the institutions index. Are you sure? (y, n)\n')
         if resp not in ('y', 'Y', 'Yes', 'yes'):
