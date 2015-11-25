@@ -71,11 +71,25 @@ def status(request):
     return HttpResponse(json.dumps({'status': 'ok'}), content_type='application/json', status=200)
 
 
-@api_view(['POST'])
+@api_view(['GET', 'POST'])
 def institutions(request):
     if not es:
         return HttpResponse('No connection to elastic search', status=503)
-    query = request.data.get('query') or {}
+    if request.data.get('query') or request.query_params.get('q'):
+        query = request.data.get('query') or {
+            'query': {
+                'query_string': {
+                    'query': request.query_params.get('q')
+                }
+            }
+        }
+    else:
+        query = {
+            'query': {
+                'match_all': {}
+            }
+        }
+
     es.indices.create(index='institutions', ignore=400)
     res = es.search(index=settings.ELASTIC_INST_INDEX, body=query)
     # validate query and grab whats wanted
@@ -87,4 +101,4 @@ def institutions(request):
         }
     except IndexError:
         return Response('Invalid query', status=400)
-    return Response(json.dumps(res), status=200)
+    return Response(res, status=200)
