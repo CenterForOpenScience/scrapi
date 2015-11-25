@@ -9,7 +9,7 @@ from .institutions import Institution
 logger = logging.getLogger(__name__)
 
 schema = {
-    'name': ('/name', lambda x: x.encode('utf8') if x else None),
+    'name': ('/name'),
     'location': {
         'street_address': ('/addresses', lambda x: x[0]['line_1'] if x else None),
         'city': ('/addresses', lambda x: x[0]['city'] if x else None),
@@ -19,7 +19,7 @@ schema = {
     },
     'web_url': ('/links', lambda x: x[0] if x else None),
     'id_': '/id',
-    'other_names': ('/aliases', '/acronyms', lambda x, y: x + y if x and y else x if x else y if y else None)
+    'other_names': ('/aliases', '/acronyms', lambda x, y: (x or []) + (y or []))
 }
 
 
