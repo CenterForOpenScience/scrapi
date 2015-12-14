@@ -75,15 +75,13 @@ class PushApiHarvester(BaseHarvester):
         return [
             RawDocument({
                 'doc': json.dumps(record),
-                'source': self.short_name,
-                'docID': record['shareProperties']['docID'],
+                'source': record['source'],
+                'docID': record['docID'],
                 'filetype': 'json'
-            }) for record in self.get_records()
+            }) for record in self.get_records(start_date, end_date)
         ]
 
-    def get_records(self, start_date=None, end_date=None):
-        end_date = end_date or date.today()
-        start_date = start_date or date.today() - timedelta(2)
+    def get_records(self, start_date, end_date):
         response = requests.get(
             '{}/established'.format(settings.SHARE_REG_URL),
             params={'from': start_date.isoformat(), 'to': end_date.isoformat()}
@@ -92,12 +90,12 @@ class PushApiHarvester(BaseHarvester):
             yield record
 
         while response.get('next'):
-            response = requests.get(response['next'])
+            response = requests.get(response['next']).json()
             for record in response['results']:
                 yield record
 
     def normalize(self, raw):
-        return NormalizedDocument(json.loads(raw['doc']))
+        return NormalizedDocument(json.loads(json.loads(raw['doc'])['jsonData']))
 
     def run_at(self):
         return {
