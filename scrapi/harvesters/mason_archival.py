@@ -31,5 +31,6 @@ class MasonArchival(OAIHarvester):
         'com_1920_7520',
         'com_1920_8132',
         'com_1920_8138',
-        'col_1920_13'
+        'col_1920_13',
+        'com_1920_2811'
     ]
