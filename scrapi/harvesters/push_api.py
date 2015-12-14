@@ -97,6 +97,7 @@ class PushApiHarvester(BaseHarvester):
     def normalize(self, raw):
         return NormalizedDocument(json.loads(json.loads(raw['doc'])['jsonData']))
 
+    @property
     def run_at(self):
         return {
             'minute': '*/15'
