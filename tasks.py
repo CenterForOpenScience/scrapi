@@ -249,29 +249,33 @@ def lint(name):
 def provider_map(delete=False):
     from six.moves.urllib import parse as urllib_parse
     from scrapi import registry
+    from scrapi.base.helpers import null_on_error
     from scrapi.processing.elasticsearch import DatabaseManager
     dm = DatabaseManager()
     dm.setup()
     es = dm.es
     if delete:
         es.indices.delete(index='share_providers', ignore=[404])
+    from scrapi.harvesters.push_api import gen_harvesters
+    gen_harvesters()
 
     for harvester_name, harvester in registry.items():
-        with open("img/favicons/{}_favicon.ico".format(harvester.short_name), "rb") as f:
-            favicon = urllib_parse.quote(base64.encodestring(f.read()))
+        if not null_on_error(es.get, log=False)(index='share_providers', doc_type=harvester_name, id=harvester_name):
+            with open("img/favicons/{}_favicon.ico".format(harvester.short_name), "rb") as f:
+                favicon = urllib_parse.quote(base64.encodestring(f.read()))
 
-        es.index(
-            'share_providers',
-            harvester.short_name,
-            body={
-                'favicon': 'data:image/png;base64,' + favicon,
-                'short_name': harvester.short_name,
-                'long_name': harvester.long_name,
-                'url': harvester.url
-            },
-            id=harvester.short_name,
-            refresh=True
-        )
+            es.index(
+                'share_providers',
+                harvester.short_name,
+                body={
+                    'favicon': 'data:image/png;base64,' + favicon,
+                    'short_name': harvester.short_name,
+                    'long_name': harvester.long_name,
+                    'url': harvester.url
+                },
+                id=harvester.short_name,
+                refresh=True
+            )
     print(es.count('share_providers', body={'query': {'match_all': {}}})['count'])
 
 

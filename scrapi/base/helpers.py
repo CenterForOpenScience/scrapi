@@ -334,14 +334,15 @@ def extract_doi_from_text(identifiers):
             continue
 
 
-def null_on_error(task):
+def null_on_error(task, log=True):
     '''Decorator that makes a function return None on exception'''
     def inner(*args, **kwargs):
         try:
             return task(*args, **kwargs)
         except Exception as e:
-            logger = logging.getLogger('scrapi.base.helpers.null_on_error')
-            logger.warn(e)
+            if log:
+                logger = logging.getLogger('scrapi.base.helpers.null_on_error')
+                logger.warn(e)
             return None
     return inner
 
