@@ -1,0 +1,73 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.5.1 Darwin/14.0.0]
+    method: GET
+    uri: http://lib.dr.iastate.edu/do/oai/?verb=ListRecords&metadataPrefix=oai_dc&from=2015-12-12T00:00:00Z&until=2015-12-14T00:00:00Z
+  response:
+    body:
+      string: !!binary |
+        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
+    headers:
+      Cache-Control: [private]
+      Content-Encoding: [gzip]
+      Content-Type: [text/xml; charset=UTF-8]
+      Date: ['Mon, 14 Dec 2015 15:09:19 GMT']
+      Server: [nginx/1.2.1]
+      Set-Cookie: [bp_plack_session=1ec7d4c4074437a77d52d3b05241a3af3210bb61; path=/;
+          HttpOnly, SERVERID=athena_nginx; path=/]
+    status: {code: 200, message: OK}
+version: 1
