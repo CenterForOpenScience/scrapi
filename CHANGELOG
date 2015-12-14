@@ -2,6 +2,11 @@
 ChangeLog
 *********
 
+0.11.5 (2015-12-14)
+===================
+- Add Iowa State harvester
+- Add VCU harvester
+
 0.11.4 (2015-12-07)
 ===================
 - Add EngagedScholarship@CSU to harvesters
