@@ -10,7 +10,7 @@ from scrapi.base import OAIHarvester
 
 class CsuohioHarvester(OAIHarvester):
     short_name = 'csuohio'
-    long_name = 'Cleveland State University’s EngagedScholarship@CSU'
+    long_name = 'Cleveland State University\'s EngagedScholarship@CSU'
     url = 'http://engagedscholarship.csuohio.edu'
 
     base_url = 'http://engagedscholarship.csuohio.edu/do/oai/'
