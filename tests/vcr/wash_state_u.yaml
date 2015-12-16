@@ -13,7 +13,7 @@ interactions:
         text/xsl\" href=\"static/style.xsl\"?><OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"\
         \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
         http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"\
-        ><responseDate>2015-12-16T19:57:22Z</responseDate><request verb=\"ListRecords\"\
+        ><responseDate>2015-12-16T21:10:16Z</responseDate><request verb=\"ListRecords\"\
         \ metadataPrefix=\"oai_dc\" from=\"2015-12-14T00:00:00Z\" until=\"2015-12-16T00:00:00Z\"\
         >http://research.wsulibs.wsu.edu:8080/oai/request</request><ListRecords><record><header><identifier>oai:research.libraries.wsu.edu:2376/5730</identifier><datestamp>2015-12-14T00:26:20Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5729</setSpec></header><metadata><oai_dc:dc\
         \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
@@ -1049,7 +1049,7 @@ interactions:
         </oai_dc:dc>\n</metadata></record></ListRecords></OAI-PMH>"}
     headers:
       Content-Type: [application/xml;charset=UTF-8]
-      Date: ['Wed, 16 Dec 2015 19:57:22 GMT']
+      Date: ['Wed, 16 Dec 2015 21:10:16 GMT']
       Server: [Apache-Coyote/1.1]
     status: {code: 200, message: OK}
 version: 1
