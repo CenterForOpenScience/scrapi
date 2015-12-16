@@ -1,0 +1,1055 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/3.4.3 Linux/3.19.0-33-generic]
+    method: GET
+    uri: http://research.wsulibs.wsu.edu:8080/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2015-12-14T00:00:00Z&until=2015-12-16T00:00:00Z
+  response:
+    body: {string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"\
+        text/xsl\" href=\"static/style.xsl\"?><OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"\
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
+        http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"\
+        ><responseDate>2015-12-16T19:57:22Z</responseDate><request verb=\"ListRecords\"\
+        \ metadataPrefix=\"oai_dc\" from=\"2015-12-14T00:00:00Z\" until=\"2015-12-16T00:00:00Z\"\
+        >http://research.wsulibs.wsu.edu:8080/oai/request</request><ListRecords><record><header><identifier>oai:research.libraries.wsu.edu:2376/5730</identifier><datestamp>2015-12-14T00:26:20Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5729</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Malosi: An\
+        \ Exploration of the Mead/Freeman Controversy and of Samoan Aggression</dc:title>\n\
+        <dc:creator>Mageo, Jeannette Marie</dc:creator>\n<dc:subject>Samoa</dc:subject>\n\
+        <dc:subject>Psychological anthropology</dc:subject>\n<dc:subject>Aggressiveness--Social\
+        \ aspects</dc:subject>\n<dc:description>This article's intent is to take a\
+        \ step toward clarifying the nature and the place of aggression in Samoan\
+        \ social life. Aggression has always had a focal place in Samoan culture.\
+        \ In pre-Christian times, Nafanua was the only divinity who was worshiped\
+        \ throughout the Samoan islands (Stair 1897:220). Nafanua was a war goddess.</dc:description>\n\
+        <dc:date>2015-12-14T00:25:31Z</dc:date>\n<dc:date>2015-12-14T00:25:31Z</dc:date>\n\
+        <dc:date>1988</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Mageo,\
+        \ Jeannette Marie. \u201CMalosi: An Exploration of the Mead/Freeman Controversy\
+        \ and of Samoan Aggression.\u201D (1988). Pacific Studies 11(2):25-65.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/2376/5730</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:publisher>Pacific Studies</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5731</identifier><datestamp>2015-12-14T00:35:35Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5729</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Inhibitions\
+        \ and Compensations: A Study of the Effects of Negative Sanctions in Three\
+        \ Pacific Cultures</dc:title>\n<dc:creator>Mageo, Jeannette Marie</dc:creator>\n\
+        <dc:subject>Childbearing</dc:subject>\n<dc:subject>Cultural sanctions</dc:subject>\n\
+        <dc:subject>Pacific Islands</dc:subject>\n<dc:subject>Psychological anthropology</dc:subject>\n\
+        <dc:description>Oedipus is named after his injured feet because he represents\
+        \ that part of ourselves lamed by the social sanctions. The fact that sanctions\
+        \ used to control children have consequences for character is well documented\
+        \ in psychological studies (see, for example, Aronson [1972] 1984:216). Ethnographers,\
+        \ however, have difficulty documenting how cultures contribute to these consequences\
+        \ (see Devos and Hippler 1969; Inkeles and Levinson 1969; Shweder 1979). This\
+        \ study offers a solution to the problems that arise in the cross-cultural\
+        \ study of socialization by focusing upon certain relations between cultural\
+        \ ideology, language, and social institutions.</dc:description>\n<dc:date>2015-12-14T00:34:48Z</dc:date>\n\
+        <dc:date>2015-12-14T00:34:48Z</dc:date>\n<dc:date>1991</dc:date>\n<dc:type>Article</dc:type>\n\
+        <dc:identifier>Mageo, Jeannette Marie. \u201CInhibitions and Compensations:\
+        \ A Study of the Effects of Negative Sanctions in Three Pacific Cultures.\u201D\
+        \ (1991). Pacific Studies 14:1-40.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2376/5731</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Pacific Studies</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5732</identifier><datestamp>2015-12-14T00:47:03Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5729</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Hairdos and\
+        \ Don\u2019ts: Hair Symbolism and Sexual History in Samoa</dc:title>\n<dc:creator>Mageo,\
+        \ Jeannette Marie</dc:creator>\n<dc:subject>Samoa</dc:subject>\n<dc:subject>Ethnography</dc:subject>\n\
+        <dc:subject>Psychological anthropology</dc:subject>\n<dc:description>Hair\
+        \ is one of the classical foci of scholarly musing about the body, attaining\
+        \ this focal status through the seminal essay of Edmund Leach, \"Magical Hair.\"\
+        \ My intention is to draw the strands of this debate into a coherent conversation\
+        \ and to contribute to the colloquy by exploring transformations of feminine\
+        \ sex roles in Samoa from contact to the present. I do so by viewing changes\
+        \ in hair styles as indices of changes in these roles, arguing that the rules\
+        \ for hairdos that pertained to young women in precontact Samoa paralleled\
+        \ \"dos and don'ts\" for their sexual behavior and that changes in the former\
+        \ and the latter coincided. I use historical and ethnographic sources to document\
+        \ their changes, as well as data collected during my own eight-year residence\
+        \ in Samoa from 1981 to 1989.</dc:description>\n<dc:date>2015-12-14T00:46:36Z</dc:date>\n\
+        <dc:date>2015-12-14T00:46:36Z</dc:date>\n<dc:date>1994</dc:date>\n<dc:type>Article</dc:type>\n\
+        <dc:identifier>Mageo, Jeannette Marie. \"Hairdos and Don\u2019ts: Hair Symbolism\
+        \ and Sexual History in Samoa.\" (1994). Man 29:407-432.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/2376/5732</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:publisher>Man</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5733</identifier><datestamp>2015-12-14T00:56:45Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5729</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Toward Historicizing\
+        \ Gender in Polynesia: On Vilsoni Hereniko\u2019s Woven Gods and Regional\
+        \ Patterns</dc:title>\n<dc:creator>Mageo, Jeannette Marie</dc:creator>\n<dc:subject>Polynesia--History</dc:subject>\n\
+        <dc:subject>Samoa</dc:subject>\n<dc:subject>Sexuality &amp; culture</dc:subject>\n\
+        <dc:description>This article considers possible parallels between Rotuman\
+        \ and Samoan gender history through Vilsoni Hereniko's book Woven Gods. Hereniko\
+        \ draws upon the work of Victor Turner to analyze his Rotuman data, arguing\
+        \ that wedding clowns reverse normative social structures. Wedding clowns\
+        \ are expert female practitioners of Rotuman joking discourse. This discourse\
+        \ is not only ritualized on special occasions but is also an everyday informal\
+        \ discourse and, I argue, is in this sense normative; it counterbalances respect\
+        \ discourse, which is likewise practiced in ritual (ceremonial contexts but\
+        \ also in everyday polite contexts). In the Samoan precolonial sex-gender\
+        \ system, males and females had difference discursive specialties---males\
+        \ in politesse, females in joking. Joking was often sexual in nature and indexed\
+        \ practices at odds with contemporary virginal ideals for girls. Rotuman wedding\
+        \ clowns may represent traces of precolonial feminine gender practices that\
+        \ resemble precolonial Samoan practices. Further, they offer a running commentary\
+        \ on sex-gender colonialism.</dc:description>\n<dc:date>2015-12-14T00:54:14Z</dc:date>\n\
+        <dc:date>2015-12-14T00:54:14Z</dc:date>\n<dc:date>2000</dc:date>\n<dc:type>Article</dc:type>\n\
+        <dc:identifier>Mageo, Jeannette Marie. (2000). \u201CToward Historicizing\
+        \ Gender in Polynesia: On Vilsoni Hereniko\u2019s Woven Gods and Regional\
+        \ Patterns.\u201D Pacific Studies 22:93-121.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2376/5733</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Pacific Studies</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5734</identifier><datestamp>2015-12-14T01:03:09Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5729</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Cultural Psychodynamics:\
+        \ The Audit, the Mirror, and the \"American Dream\"</dc:title>\n<dc:creator>Mageo,\
+        \ Jeannette Marie</dc:creator>\n<dc:subject>Psychological anthropology</dc:subject>\n\
+        <dc:subject>Middle class--United States</dc:subject>\n<dc:subject>Childrearing</dc:subject>\n\
+        <dc:description>Based on dream and life-history data and research on American\
+        \ families in the US Northwest, this article argues that a contemporary US\
+        \ middle-class model that I call the Close Family prescribes child-rearing\
+        \ practices that alternate between adulation and audit. Adulation and auditing\
+        \ are forms of social mirroring that make what Lacan calls \u201Cthe mirror\
+        \ phase\u201D an enduring feature of American cultural psychology and produce\
+        \ feelings of porosity and dependence that compel defensive assertions of\
+        \ independence. Because these assertions are therefore common, they too take\
+        \ the form of a cultural model\u2014the bounded person intrinsically separate\
+        \ from social context that Geertz and others associate with the West\u2014\
+        yet this individualistic model is secondary, helping people deny and dissociate\
+        \ a more primary reaction. Models and defenses together, I argue, constitute\
+        \ cultural psychodynamics. The case study of a young woman I call Ruby further\
+        \ suggests that for aspirants to class mobility, what is a balance between\
+        \ adulation and audit in the middle class tips toward audit, magnifying feelings\
+        \ of shame and inadequacy and imposing one of the most formidable barriers\
+        \ such aspirants must overcome.</dc:description>\n<dc:date>2015-12-14T01:02:37Z</dc:date>\n\
+        <dc:date>2015-12-14T01:02:37Z</dc:date>\n<dc:date>2015</dc:date>\n<dc:type>Article</dc:type>\n\
+        <dc:identifier>Mageo, Jeannette Marie. (2015). \u201CCultural Psychodynamics:\
+        \ The Audit, the Mirror, and the \u2018American Dream.\u2019\u201D Current\
+        \ Anthropology, 56(6).</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2376/5734</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Current Anthropology</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5736</identifier><datestamp>2015-12-14T04:18:20Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5735</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Obesity and\
+        \ Diabetes. In State Policy Action Plan to Eliminate Health Disparities</dc:title>\n\
+        <dc:creator>Governor\u2019s Interagency Council on Health Disparities (WA)</dc:creator>\n\
+        <dc:subject>Obesity--United States</dc:subject>\n<dc:subject>Diabetes--United\
+        \ States</dc:subject>\n<dc:description>The Council develops recommendations\
+        \ to eliminate health disparities by race, ethnicity, and gender. The Council\
+        \ prioritizes health conditions and social detriments of health to identify\
+        \ important topics for its Action Plans and update reports to the Legislature\
+        \ and Governor. The Council submitted its inaugural State Policy Action Plan\
+        \ to Eliminate Health Disparities in June 2010. The report included recommendations\
+        \ on education, health insurance coverage, healthcare workforce diversity,\
+        \ obesity, and diabetes. Marsha Quinlan participated in the creation of this\
+        \ plan as a member of the Obesity and Diabetes Advisory Committee.</dc:description>\n\
+        <dc:date>2015-12-14T04:17:03Z</dc:date>\n<dc:date>2015-12-14T04:17:03Z</dc:date>\n\
+        <dc:date>2010-06</dc:date>\n<dc:type>Other</dc:type>\n<dc:identifier>http://hdl.handle.net/2376/5736</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5737</identifier><datestamp>2015-12-14T04:25:19Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5735</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Local Resource\
+        \ Enhancement and Sex-biased Breastfeeding in a Caribbean Community</dc:title>\n\
+        <dc:creator>Quinlan, Robert J.</dc:creator>\n<dc:creator>Quinlan, Marsha B.</dc:creator>\n\
+        <dc:creator>Flinn, Mark V.</dc:creator>\n<dc:subject>Dominica</dc:subject>\n\
+        <dc:subject>Breastfeeding</dc:subject>\n<dc:subject>Cross-cultural studies</dc:subject>\n\
+        <dc:description>Parents often treat sons and daughters differently. Boys are\
+        \ favored in some societies (Messer 1997), but in others girls receive preferential\
+        \ treatment including better medical care and more frequent breastfeeding\
+        \ (Cronk 2000). Cross-culturally, breastfeeding is a major component of early\
+        \ parental care that directly affects child health. Here we examine female-biased\
+        \ breastfeeding in Bwa Mawego, a horticultural community in the Commonwealth\
+        \ of Dominica, and test hypotheses from parental investment theory about the\
+        \ reasons for such bias (reviewed in CluttonBrock and Godfray 1991). Multiple\
+        \ linear regression suggests that sex differences in children's time allocation\
+        \ to productive activity account for female-biased breastfeeding in this community.\
+        \ Ethnographic data from Bwa Mawego suggest that female-biased maternal care\
+        \ results from male socioeconomic marginality and its effects on sex-specific\
+        \ risks of parental investment.</dc:description>\n<dc:date>2015-12-14T04:24:38Z</dc:date>\n\
+        <dc:date>2015-12-14T04:24:38Z</dc:date>\n<dc:date>2005</dc:date>\n<dc:type>Article</dc:type>\n\
+        <dc:identifier>Quinlan, Robert J., Marsha B. Quinlan, and Mark V. Flinn. (2005)\
+        \ Local Resource Enhancement and Sex-biased Breastfeeding in a Caribbean Community.\
+        \ Current Anthropology, 46(3):471-480.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2376/5737</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Current Anthropology</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5738</identifier><datestamp>2015-12-14T04:34:03Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5735</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Ethnomedicine\
+        \ and Ethnobotany of Fright, a Caribbean Culture-bound Psychiatric Syndrome</dc:title>\n\
+        <dc:creator>Quinlan, Marsha B.</dc:creator>\n<dc:subject>Traditional medicine</dc:subject>\n\
+        <dc:subject>Cross-cultural studies</dc:subject>\n<dc:description>\"Fright\"\
+        \ is an English-speaking Caribbean idiom for an illness, or ethnomedical syndrome,\
+        \ of persistent distress. A parallel ethnopsychiatric idiom exists in the\
+        \ French Antilles as s\xE9sisma. Fright is distinct from susto among Hispanics,\
+        \ though both develop in the wake of traumatic events. West Indian ethnophysiology\
+        \ (ethnoanatomy) theorizes that an overload of stressful emotions (fear, panic,\
+        \ anguish or worry) causes a cold humoral state in which blood coagulates\
+        \ causing prolonged distress and increased risks of other humorally cold illnesses.\
+        \ Qualitative data on local explanatory models and treatment of fright were\
+        \ collected using participant-observation, informal key informant interviews\
+        \ and a village health survey. Ethnobotanical and epidemiological data come\
+        \ from freelist (or \"free-list\") tasks, analyzed for salience, with nearly\
+        \ all adults (N = 112) of an eastern village in Dominica, and a village survey\
+        \ on medicinal plant recognition and use (N = 106).</dc:description>\n<dc:date>2015-12-14T04:31:55Z</dc:date>\n\
+        <dc:date>2015-12-14T04:31:55Z</dc:date>\n<dc:date>2010</dc:date>\n<dc:type>Article</dc:type>\n\
+        <dc:identifier>Quinlan, Marsha B. (2010) Ethnomedicine and Ethnobotany of\
+        \ Fright, a Caribbean Culture-bound Psychiatric Syndrome. Journal of Ethnobiology\
+        \ and Ethnomedicine 6:9.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2376/5738</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:rights>Creative Commons Attribution\
+        \ 4.0 International</dc:rights>\n<dc:rights>https://creativecommons.org/licenses/by/4.0/</dc:rights>\n\
+        <dc:publisher>Journal of Ethnobiology and Ethnomedicine</dc:publisher>\n</oai_dc:dc>\n\
+        </metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5739</identifier><datestamp>2015-12-14T04:40:40Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5735</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Sidama Agro-Pastoralism\
+        \ and Ethnobiological Classification of its Primary Plant, Enset (Ensete ventricosum)</dc:title>\n\
+        <dc:creator>Quinlan, Marsha B.</dc:creator>\n<dc:creator>Quinlan, Robert J.</dc:creator>\n\
+        <dc:creator>Dira, S.J.</dc:creator>\n<dc:subject>East Africa</dc:subject>\n\
+        <dc:subject>Linguistic ethnobiology</dc:subject>\n<dc:subject>Musaceae</dc:subject>\n\
+        <dc:subject>Ethnobotany</dc:subject>\n<dc:subject>Pastoralism</dc:subject>\n\
+        <dc:description>Enset is an essential plant for the Ethiopian Sidama system\
+        \ of agropastoralism. Sidama agropastoralism and the folk taxonomy of enset\
+        \ is presented here in ethnographic context. One of several societies of Ethiopia\u2019\
+        s enset complex, the highland Sidama are among the most wholly reliant on\
+        \ enset and maintain more enset varieties in their gardens than other groups.\
+        \ Sidama agro-pastoral systems revolve around human-enset-cattle interaction:\
+        \ Sidama eat low-protein parts of enset; cattle eat high-protein parts of\
+        \ enset; Sidama get protein from dairy; Sidama fertilize enset with cattle\
+        \ manure. In the Sidama language, enset offers an example of Hunn\u2019s generic\
+        \ elevation within the framework of Berlinian perceptual-taxonomic theory.\
+        \ Weesho (enset) may serve both as a folk generic taxon and a life-form taxon\
+        \ depending on the frame of reference. Such expansion allows for an intermediate\
+        \ taxa translating to \u201Cmale\u201D or \u201Cfemale\u201D ensets, followed\
+        \ by generic and specific taxa for kinds or \u201Cbreeds\u201D of enset. Generic\
+        \ elevation offers descriptive magnification of nomenclature for enset, a\
+        \ most salient species among Sidama people.</dc:description>\n<dc:date>2015-12-14T04:39:47Z</dc:date>\n\
+        <dc:date>2015-12-14T04:39:47Z</dc:date>\n<dc:date>2014</dc:date>\n<dc:type>Article</dc:type>\n\
+        <dc:identifier>Quinlan, MB; Quinlan, RJ and Dira, SJ. (2014). Sidama Agro-Pastoralism\
+        \ and Ethnobiological Classification of its Primary Plant, Enset (Ensete ventricosum).\
+        \ Ethnobiology Letters 5:116-125.  DOI: 10.14237/ebl.5.2014.222.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/2376/5739</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:publisher>Ethnobiology Letters</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5741</identifier><datestamp>2015-12-14T16:38:45Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5740</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Long-term Anasazi\
+        \ Land-Use Patterns and Forest Reduction: A Case Study from Southwest Colorado</dc:title>\n\
+        <dc:creator>Kohler, Timothy A.</dc:creator>\n<dc:creator>Matthews, Meredith\
+        \ H.</dc:creator>\n<dc:subject>Ancestral Pueblo culture</dc:subject>\n<dc:subject>Environmental\
+        \ impact analysis</dc:subject>\n<dc:subject>Archaeology</dc:subject>\n<dc:description>Species\
+        \ of wood used for fuel changed significantly through time at a large Anasazi\
+        \ village in southwestern&#xd;\nColorado occupied from about A.D. 750 to 900.\
+        \ Changes also occurred in other records of plant use from this&#xd;\nsite,\
+        \ in the fauna utilized, and in the proportional representation of hafted\
+        \ tools. These and corroborating data&#xd;\nfrom nearby sites suggest that\
+        \ the Anasazi occupation of the Dolores River valley and vicinity resulted\
+        \ in significant&#xd;\nlocal deforestation. Anasazi settlement and mobility\
+        \ practices were affected by climate, human impact on the&#xd;\nenvironment\
+        \ and regional population densities.</dc:description>\n<dc:date>2015-12-14T16:38:12Z</dc:date>\n\
+        <dc:date>2015-12-14T16:38:12Z</dc:date>\n<dc:date>1988</dc:date>\n<dc:type>Article</dc:type>\n\
+        <dc:identifier>Kohler, Timothy, Meredith Matthews. (1988). Long-term Anasazi\
+        \ Land-Use Patterns and Forest Reduction: A Case Study from Southwest Colorado.\
+        \ American Antiquity 53:537\u2013564.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2376/5741</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>American Antiquity</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5742</identifier><datestamp>2015-12-14T16:49:58Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5740</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Fieldhouses,\
+        \ Villages, and the Tragedy of the Commons in the Early Northern Anasazi Southwest</dc:title>\n\
+        <dc:creator>Kohler, Timothy A.</dc:creator>\n<dc:subject>Ancestral Pueblo\
+        \ culture</dc:subject>\n<dc:subject>Land use</dc:subject>\n<dc:subject>Agriculture--Southwestern\
+        \ States</dc:subject>\n<dc:description>The appearance of field houses and\
+        \ villages in the early northern Anasazi Southwest is interpreted as containing\
+        \ information concerning inclusiveness of land ownership or control. Early\
+        \ northern Anasazi villages probably practiced patterns of resource control\
+        \ much like those documented historically in many pueblos, where agricultural\
+        \ lands were frequently controlled at an atomistic level (by individuals or\
+        \ households) so long as fields were in use, but remained communal property\
+        \ in theory and could be reallocated to other members of the community. The\
+        \ appearance of field houses may he an attempt to limit access to previously\
+        \ free and unregulated lands and the resources thereon.</dc:description>\n\
+        <dc:date>2015-12-14T16:49:25Z</dc:date>\n<dc:date>2015-12-14T16:49:25Z</dc:date>\n\
+        <dc:date>1992</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Kohler,\
+        \ Timothy A. (1992 ). Fieldhouses, Villages, and the Tragedy of the Commons\
+        \ in the Early Northern Anasazi Southwest. American Antiquity 57:617\u2013\
+        635.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2376/5742</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>American Antiquity</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5743</identifier><datestamp>2015-12-14T17:22:52Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5740</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Sunk-Cost Effects\
+        \ Made Ancient Societies Vulnerable to Collapse</dc:title>\n<dc:creator>Janssen,\
+        \ Marco A</dc:creator>\n<dc:creator>Kohler, Timothy A.</dc:creator>\n<dc:creator>Scheffer,\
+        \ Marten</dc:creator>\n<dc:subject>Environmental degradation</dc:subject>\n\
+        <dc:subject>Adaptation</dc:subject>\n<dc:subject>Rational choice theory</dc:subject>\n\
+        <dc:description>In this report we seek to unite these two explanations in\
+        \ a model that suggests why and under what conditions societies faced with\
+        \ resource degradation might \u201Cfail to adapt.\u201D We are not peddling\
+        \ a new universal theory for societal collapse; we do hope to insert into\
+        \ the anthropological conversation on collapse a mechanism\u2014little noticed\
+        \ to date\u2014making some societies more vulnerable to collapse under certain\
+        \ conditions. Our model, which we illustrate with a simple mathematical characterization,\
+        \ is based on a well\u2010documented systematic deviation from rational decision\
+        \ making known as the \u201Csunk\u2010cost effect\u201D (Arkes and Ayton 1999).\
+        \ Rational\u2010choice theory tells us that one\u2019s choice between options\
+        \ should be influenced not by prior investment but only by the expected future\
+        \ costs and benefits of those options. Of course, prior investment may affect\
+        \ the knowledge and experience of the decision maker, but such effects can\
+        \ be included in the rational\u2010choice theory explanation of decision making.\
+        \ Numerous studies (Arkes and Blumer 1985, Arkes and Ayton 1999, Teger 1980)\
+        \ nevertheless demonstrate that humans do consider prior investment in deciding\
+        \ what course of action to take.</dc:description>\n<dc:date>2015-12-14T17:16:25Z</dc:date>\n\
+        <dc:date>2015-12-14T17:16:25Z</dc:date>\n<dc:date>2003</dc:date>\n<dc:type>Article</dc:type>\n\
+        <dc:identifier>Janssen, Marco A., Timothy A. Kohler, and Marten Scheffer.\
+        \ (2003). Sunk-Cost Effects Made Ancient Societies Vulnerable to Collapse.\
+        \ Current Anthropology 44:722-728. (Preprinted as SFI 02-02-007.)</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/2376/5743</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:rights>Copyright: University of Chicago Press</dc:rights>\n<dc:publisher>Current\
+        \ Anthropology</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5744</identifier><datestamp>2015-12-14T18:10:03Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5740</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Raiding for\
+        \ Women in the Prehispanic Northern Pueblo Southwest? A Pilot Examination</dc:title>\n\
+        <dc:creator>Kohler, Timothy A.</dc:creator>\n<dc:creator>Turner, Kathryn Kramer</dc:creator>\n\
+        <dc:subject>Ancestral Pueblo culture</dc:subject>\n<dc:subject>Chaco Canyon\
+        \ (N.M.)</dc:subject>\n<dc:description>Spatial data on sex ratios through\
+        \ time from archaeological sites in the late pre-Hispanic northern U.S. Southwest\
+        \ reveal significant regional and subregional departures from the expected\
+        \ values. In the eleventh century AD, Chaco Canyon and its subregion contain\
+        \ more women (or, possibly, fewer men) than expected, as does Aztec and its\
+        \ subregion in the thirteenth century AD. At Aztec the female bias is coupled\
+        \ with a contemporaneous male bias in the Mesa Verde subregion to the northwest.\
+        \ Consideration of possible explanations for these discrepancies suggests\
+        \ that there is strong evidence for raiding for women in the thirteenth-century\
+        \ northern Southwest. This is also a possible explanation for the eleventh-century\
+        \ Chacoan discrepancies, though in this case other explanations cannot be\
+        \ ruled out.</dc:description>\n<dc:date>2015-12-14T18:08:45Z</dc:date>\n<dc:date>2015-12-14T18:08:45Z</dc:date>\n\
+        <dc:date>2006</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Kohler,\
+        \ Timothy and Kathryn Kramer Turner. (2006). Raiding for Women in the Prehispanic\
+        \ Northern Pueblo Southwest? A Pilot Examination. Current Anthropology 47:1035-1045.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/2376/5744</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:rights>Copyright: University of Chicago Press</dc:rights>\n<dc:publisher>Current\
+        \ Anthropology</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5745</identifier><datestamp>2015-12-14T18:25:49Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5740</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Historical\
+        \ Ecology in the Mesa Verde Region: Results From The Village Project</dc:title>\n\
+        <dc:creator>Varien, Mark D.</dc:creator>\n<dc:creator>Ortman, Scott G.</dc:creator>\n\
+        <dc:creator>Kohler, Timothy A.</dc:creator>\n<dc:creator>Glowacki, Donna M.</dc:creator>\n\
+        <dc:creator>Johnson, C. David</dc:creator>\n<dc:subject>Ancestral Pueblo culture</dc:subject>\n\
+        <dc:subject>Land use</dc:subject>\n<dc:subject>Mesa Verde</dc:subject>\n<dc:subject>Agriculture--History</dc:subject>\n\
+        <dc:description>Using the occupation histories of 3,176 habitation sites,\
+        \ new estimates of maize-agriculture productivity, and an analysis of over\
+        \ 1,700 construction timbers, we examine the historical ecology of Pueblo\
+        \ peoples during their seven-century occupation (A.D. 600-1300) of a densely\
+        \ settled portion of the Mesa Verde archaeological region. We identify two\
+        \ cycles of population growth and decline, the earlier and smaller peaking\
+        \ in the late-A.D. 800s, the later and larger in the mid-A.D. 1200s. We also\
+        \ identify several episodes of immigration. Formation of aggregated settlements,\
+        \ which we term community centers, is positively correlated with increasing\
+        \ population and the time elapsed in each settlement cycle, and it persists\
+        \ during periods of regional population decline, but it does not correlate\
+        \ with climatic variation averaged over periods. Architectural and land-use\
+        \ practices depleted piny on-juniper woodlands during the first cycle, but\
+        \ more stable field systems and greater recycling of construction timber resulted\
+        \ in more sustainable management of wood resources during the second cycle,\
+        \ despite much higher population densities. Our estimates for maize production\
+        \ are lower than previous estimates, especially for the A.D. 1200s, when population\
+        \ reached its peak in the study area. Even so, considerable potential agricultural\
+        \ production remained unused in the decades that immediately preceded the\
+        \ complete depopulation of our study area.</dc:description>\n<dc:date>2015-12-14T18:25:19Z</dc:date>\n\
+        <dc:date>2015-12-14T18:25:19Z</dc:date>\n<dc:date>2007</dc:date>\n<dc:type>Article</dc:type>\n\
+        <dc:identifier>Varien, Mark D., Scott G. Ortman, Timothy Kohler, Donna M.\
+        \ Glowacki, and C. David Johnson. (2007). Historical Ecology in the Mesa Verde\
+        \ Region: Results From The Village Project. American Antiquity 72:273-299.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/2376/5745</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:publisher>American Antiquity</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5746</identifier><datestamp>2015-12-14T18:41:50Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5740</setSpec><setSpec>col_2376_5752</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Neolithic\
+        \ Demographic Transition in the U.S. Southwest</dc:title>\n<dc:creator>Kohler,\
+        \ Timothy A.</dc:creator>\n<dc:creator>Glaude, Matt Pier</dc:creator>\n<dc:creator>Bocquet-Appel,\
+        \ Jean-Pierre</dc:creator>\n<dc:creator>Kemp, Brian M.</dc:creator>\n<dc:subject>Archaeology</dc:subject>\n\
+        <dc:subject>Demography</dc:subject>\n<dc:subject>Ancestral Pueblo culture</dc:subject>\n\
+        <dc:description>Maize agriculture was practiced in the U.S. Southwest slightly\
+        \ before 2000 B.C., but had a negligible impact on population growth rates\
+        \ until the development or introduction of more productive land races; the\
+        \ ability to successfully cultivate maize under a greater variety of conditions,\
+        \ with dry farming especially important; the addition of beans, squash, and\
+        \ eventually turkey to the diet; increased sedentism; and what we infer to\
+        \ be the remapping of exchange networks and the development of efficient exchange\
+        \ strategies in first-millennium-A.D. villages. Our estimates of birthrates\
+        \ and growth rates are derived from the proportions of immature individuals\
+        \ among human remains. These proportions are somewhat affected by warfare\
+        \ in our region, and perhaps also by climate. Nevertheless, there is a strong\
+        \ identifiable Neolithic Demographic Transition signal in the U.S. Southwest\
+        \ in about the mid-first-millennium A.D. in most subregions, visible a few\
+        \ hundred years after the introduction of well-fired ceramic containers, and\
+        \ more or less contemporaneous with the first appearance of villages. Independent\
+        \ genetic data derived from the mitochondrial genomes of present-day indigenous\
+        \ populations of the Southwest are also consistent with the hypothesis that\
+        \ a major demographic expansion occurred 1,500-2000 years ago in the Southwest.</dc:description>\n\
+        <dc:date>2015-12-14T18:40:57Z</dc:date>\n<dc:date>2015-12-14T18:40:57Z</dc:date>\n\
+        <dc:date>2008</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Kohler,\
+        \ Timothy, Matt Pier Glaude, Jean-Pierre Bocquet-Appel, and Brian M. Kemp.\
+        \ (2008). The Neolithic Demographic Transition in the U.S. Southwest. American\
+        \ Antiquity 73:645-669 (also SFI Working Paper 08-05-022).</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/2376/5746</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:publisher>American Antiquity</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5747</identifier><datestamp>2015-12-14T18:53:04Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5740</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Research on\
+        \ Coupled Human and Natural Systems (CHANS): Approach, Challenges, and Strategies</dc:title>\n\
+        <dc:creator>McConnell, William J.</dc:creator>\n<dc:creator>Millington, James\
+        \ D. A.</dc:creator>\n<dc:creator>Reo, Nicholas J.</dc:creator>\n<dc:creator>Alberti,\
+        \ Marina</dc:creator>\n<dc:creator>Asbjornsen, Heidi</dc:creator>\n<dc:creator>Baker,\
+        \ Lawrence A.</dc:creator>\n<dc:creator>Brozovi\u0107, Nicholas</dc:creator>\n\
+        <dc:creator>Drinkwater, Laurie E.</dc:creator>\n<dc:creator>Drzyzga, Scott\
+        \ A.</dc:creator>\n<dc:creator>Fragoso, Jos\xE9</dc:creator>\n<dc:creator>Holland,\
+        \ Daniel S.</dc:creator>\n<dc:creator>Jantz, Claire A.</dc:creator>\n<dc:creator>Kohler,\
+        \ Timothy A.</dc:creator>\n<dc:creator>Maschner, Herbert D. G.</dc:creator>\n\
+        <dc:creator>Monticino, Michael</dc:creator>\n<dc:creator>Podest\xE1, Guillermo</dc:creator>\n\
+        <dc:creator>Pontius, Robert Gilmore, Jr.</dc:creator>\n<dc:creator>Redman,\
+        \ Charles L.</dc:creator>\n<dc:creator>Sailor, David</dc:creator>\n<dc:creator>Urquhart,\
+        \ Gerald</dc:creator>\n<dc:creator>Liu, Jianguo</dc:creator>\n<dc:subject>Coupled\
+        \ Human and Natural Systems</dc:subject>\n<dc:subject>Human\u2013nature interactions</dc:subject>\n\
+        <dc:description>Understanding the complexity of human\u2013nature interactions\
+        \ is central to the quest for both human well-being and global sustainability.\
+        \ To build an understanding of these interactions, scientists, planners, resource\
+        \ managers, policy makers, and communities increasingly are collaborating\
+        \ across wide-ranging disciplines and knowledge domains. Scientists and others\
+        \ are generating new integrated knowledge on top of their requisite specialized\
+        \ knowledge to understand complex systems in order to solve pressing environmental\
+        \ and social problems (e.g., Carpenter et al. 2009). One approach to this\
+        \ sort of integration, bringing together detailed knowledge of various disciplines\
+        \ (e.g., social, economic, biological, and geophysical), has become known\
+        \ as the study of Coupled Human and Natural Systems, or CHANS (Liu et al.\
+        \ 2007a, b).   Read More: http://www.esajournals.org/doi/full/10.1890/0012-9623-92.2.218</dc:description>\n\
+        <dc:date>2015-12-14T18:51:50Z</dc:date>\n<dc:date>2015-12-14T18:51:50Z</dc:date>\n\
+        <dc:date>2011</dc:date>\n<dc:type>Other</dc:type>\n<dc:identifier>William\
+        \ J. McConnell, James D. A. Millington, Nicholas J. Reo, Marina Alberti, Heidi\
+        \ Asbjornsen, Lawrence A. Baker, Nicholas Brozovi\u0107, Laurie E. Drinkwater,\
+        \ Scott A. Drzyzga, Jos\xE9 Fragoso, Daniel S. Holland, Claire A. Jantz, Timothy\
+        \ Kohler, Herbert D. G. Maschner, Michael Monticino, Guillermo Podest\xE1\
+        , Robert Gilmore Pontius, Jr., Charles L. Redman, David Sailor, Gerald Urquhart,\
+        \ and Jianguo Liu. (2011). Research on Coupled Human and Natural Systems (CHANS):\
+        \ Approach, Challenges, and Strategies. Bulletin of the Ecological Society\
+        \ of America April: 218-228.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2376/5747</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bulletin of the Ecological\
+        \ Society of America</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5748</identifier><datestamp>2015-12-14T19:33:23Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5740</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Better\
+        \ Angels of Their Nature: Declining Violence Through Time among Prehispanic\
+        \ Farmers of the Pueblo Southwest</dc:title>\n<dc:creator>Kohler, Timothy\
+        \ A.</dc:creator>\n<dc:creator>Ortman, Scott G.</dc:creator>\n<dc:creator>Grundtisch,\
+        \ Katie E.</dc:creator>\n<dc:creator>Fitzpatrick, Carly M.</dc:creator>\n\
+        <dc:creator>Cole, Sarah M.</dc:creator>\n<dc:subject>Ancestral Pueblo culture</dc:subject>\n\
+        <dc:subject>Violence</dc:subject>\n<dc:subject>Mesa Verde</dc:subject>\n<dc:description>The\
+        \ central Mesa Verde and the northern Rio Grande regions housed two of the\
+        \ densest populations of pre-hispanic Pueblo peoples in the North American\
+        \ Southwest. We plot incidence of violent trauma on human bone through time\
+        \ in each region. Such violence peaked in the mid-A.D. 1100s in the central\
+        \ Mesa Verde, and in general was higher through time there than in the northern\
+        \ Rio Grande region. In the central Mesa Verde, but not in the northern Rio\
+        \ Grande, there is a tendency for violence to be greater in periods of low\
+        \ potential maize production per capita and high variance in maize production,\
+        \ though these structural tendencies were on occasion overridden by historical\
+        \ factors such as the expansion and demise of the Chacoan polity and the regional\
+        \ depopulation. Violence generally declined through time in the northern Rio\
+        \ Grande until the arrival of the Spanish, even as populations increased.\
+        \ We propose that this decline was due to the combination of increased social\
+        \ span of polities, the importance of inter-Pueblo sodalities, the nature\
+        \ of religious practice, \u201Cgentle commerce,\u201D and increased adherence\
+        \ to a set of nonviolent norms.</dc:description>\n<dc:date>2015-12-14T19:32:55Z</dc:date>\n\
+        <dc:date>2015-12-14T19:32:55Z</dc:date>\n<dc:date>2014</dc:date>\n<dc:type>Article</dc:type>\n\
+        <dc:identifier>Kohler, Timothy, Scott G. Ortman, Katie E. Grundtisch, Carly\
+        \ M. Fitzpatrick, and Sarah M. Cole. (2014). The Better Angels of Their Nature:\
+        \ Declining Violence Through Time among Prehispanic Farmers of the Pueblo\
+        \ Southwest. American Antiquity 79(3): 444\u2013464.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2376/5748</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>American Antiquity</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5749</identifier><datestamp>2015-12-14T19:55:41Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5740</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>A 2,000-year\
+        \ reconstruction of the rain-fed maize agricultural niche in the US Southwest</dc:title>\n\
+        <dc:creator>Bocinsky, R. Kyle</dc:creator>\n<dc:creator>Kohler, Timothy A.</dc:creator>\n\
+        <dc:subject>Paleoclimate research</dc:subject>\n<dc:subject>Ancestral Pueblo\
+        \ culture</dc:subject>\n<dc:subject>Agriculture--History</dc:subject>\n<dc:description>Humans\
+        \ experience, adapt to and influence climate at local scales. Paleoclimate\
+        \ research, however, tends to focus on continental, hemispheric or global\
+        \ scales, making it difficult for archaeologists and paleoecologists to study\
+        \ local effects. Here we introduce a method for high-frequency, local climate-field\
+        \ reconstruction from tree-rings. We reconstruct the rain-fed maize agricultural\
+        \ niche in two regions of the southwestern United States with dense populations\
+        \ of prehispanic farmers. Niche size and stability are highly variable within\
+        \ and between the regions. Prehispanic rain-fed maize farmers tended to live\
+        \ in agricultural refugia\u2014areas most reliably in the niche. The timing\
+        \ and trajectory of the famous thirteenth century Pueblo migration can be\
+        \ understood in terms of relative niche size and stability. Local reconstructions\
+        \ like these illuminate the spectrum of strategies past humans used to adapt\
+        \ to climate change by recasting climate into the distributions of resources\
+        \ on which they depended.</dc:description>\n<dc:date>2015-12-14T19:53:12Z</dc:date>\n\
+        <dc:date>2015-12-14T19:53:12Z</dc:date>\n<dc:date>2014</dc:date>\n<dc:type>Article</dc:type>\n\
+        <dc:identifier>R. Kyle Bocinsky, Timothy Kohler. (2014). A 2,000-year reconstruction\
+        \ of the rain-fed maize agricultural niche in the US Southwest. Nature Communications\_\
+        5:5618. DOI:\_10.1038/ncomms6618.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2376/5749</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:rights>Creative Commons Attribution\
+        \ License 4.0 International</dc:rights>\n<dc:rights>https://creativecommons.org/licenses/by/4.0/</dc:rights>\n\
+        <dc:publisher>Nature Communications</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5750</identifier><datestamp>2015-12-14T20:19:24Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5740</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Cultural Dynamics,\
+        \ Deep Time, and Data: Planning Cyberinfrastructure Investments for Archaeology</dc:title>\n\
+        <dc:creator>Kintigh, Keith</dc:creator>\n<dc:creator>Altschul, Jeffrey H.</dc:creator>\n\
+        <dc:creator>Kinzig, Ann P.</dc:creator>\n<dc:creator>Kohler, Timothy A.</dc:creator>\n\
+        <dc:creator>Limp, W. Fredrick</dc:creator>\n<dc:creator>Michener, William\
+        \ K.</dc:creator>\n<dc:creator>Sabloff, Jeremy A.</dc:creator>\n<dc:creator>Hackett,\
+        \ Edward J.</dc:creator>\n<dc:creator>Lud\xE4scher, Bertram</dc:creator>\n\
+        <dc:creator>Lynch, Clifford A.</dc:creator>\n<dc:subject>Computational infrastructure</dc:subject>\n\
+        <dc:subject>Data management</dc:subject>\n<dc:subject>Archaeology</dc:subject>\n\
+        <dc:description>Archaeological data and research results are essential to\
+        \ addressing such fundamental questions as the origins of human culture; the\
+        \ origin, waxing, and waning of civilizations and cities; the response of\
+        \ societies to long-term climate changes; and the systemic relationships implicated\
+        \ in human-induced changes in the environment. However, we lack the capacity\
+        \ for acquiring, managing, analyzing, and synthesizing the large data sets\
+        \ needed to address these fundamental questions. We propose investments in\
+        \ computational infrastructure that would transform archaeology\u2019s ability\
+        \ to advance research on the field\u2019s most compelling questions with an\
+        \ evidential base and inferential rigor that have heretofore been impossible.\
+        \ At the same time, new infrastructure would make key archaeological data\
+        \ accessible to interested researchers in other disciplines. We offer recommendations\
+        \ regarding improved data management and availability, cyberinfrastructure\
+        \ tool building, and social and cultural changes in the discipline. We propose\
+        \ funding synthetic case studies that would demonstrate archaeology\u2019\
+        s ability to contribute to transdisciplinary research on long-term social\
+        \ dynamics and serve as a context to develop and test computational tools\
+        \ and the analytical workflows that will be necessary to attack these questions.\
+        \ The case studies would explore how emerging research in computer science\
+        \ could empower this research and would simultaneously provide productive\
+        \ challenges for computer science research.</dc:description>\n<dc:date>2015-12-14T20:17:20Z</dc:date>\n\
+        <dc:date>2015-12-14T20:17:20Z</dc:date>\n<dc:date>2015</dc:date>\n<dc:type>Article</dc:type>\n\
+        <dc:identifier>Keith Kintigh, Jeffrey H. Altschul, Ann P. Kinzig, Timothy\
+        \ Kohler, W. Fredrick Limp, William K. Michener, Jeremy A. Sabloff, Edward\
+        \ J. Hackett, Bertram Lud\xE4scher, and Clifford A. Lynch. (2015). Cultural\
+        \ Dynamics, Deep Time, and Data: Planning Cyberinfrastructure Investments\
+        \ for Archaeology. Advances in Archaeological Practice 3(1): 1-15. DOI: 10.7183/2326-3768.3.1.1</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/2376/5750</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:publisher>Advances in Archaeological Practice</dc:publisher>\n</oai_dc:dc>\n\
+        </metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5753</identifier><datestamp>2015-12-15T02:31:01Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5752</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Sex identification\
+        \ of infants sacrificed to the ancient Aztec raingods in Tlatelolco, Mexico</dc:title>\n\
+        <dc:creator>De la Cruz, Isabel</dc:creator>\n<dc:creator>Gonz\xE1lez-Oliver,\
+        \ Ang\xE9lica</dc:creator>\n<dc:creator>Kemp, Brian M.</dc:creator>\n<dc:creator>Rom\xE1\
+        n, Juan A.</dc:creator>\n<dc:creator>Smith, David Glenn</dc:creator>\n<dc:creator>Torre-Blanco,\
+        \ Alfonso</dc:creator>\n<dc:subject>Aztecs--Religion</dc:subject>\n<dc:subject>Human\
+        \ sacrifice--Mexico--Mexico City</dc:subject>\n<dc:subject>Morphometrics</dc:subject>\n\
+        <dc:description>Recent excavations of Temple R, dedicated to the Aztec god\
+        \ of wind and rain, Ehecatl-Quetzalcoatl, at the archaeological site of Tlatelolco,\
+        \ Mexico City, recovered the sacrificial remains of 37 subadults and 6 adults.\
+        \ It is believed that this ceremonial complex was the site of an extraordinary\
+        \ ceremony carried out during the great drought and famine of AD 1454\u2013\
+        57, a date consistent with the founding of this temple. The ages of 31 subadults\
+        \ and 1 adult were estimated by standard morphometrics analysis of the skeletal\
+        \ remains. Most of the subadults (66%) were children up to 3 years old. Through\
+        \ the extraction of ancient DNA from these remains, it was possible to use\
+        \ molecular techniques to determine the sex of the skeletal remains where\
+        \ in many cases (subadults and fragmentary remains) morphometrics analyses\
+        \ failed. Most, if not all, of these sacrificial victims were males. This\
+        \ remarkable gender bias is consistent with the notion that the victims chosen\
+        \ for sacrifice were a living impersonation of the god to whom they were offered.</dc:description>\n\
+        <dc:date>2015-12-15T02:27:29Z</dc:date>\n<dc:date>2015-12-15T02:27:29Z</dc:date>\n\
+        <dc:date>2008</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>2008\_\
+        \ De la Cruz I, Gonz\xE1lez-Oliver A, Kemp BM, Rom\xE1n JA, Smith DG and Torre-Blanco\
+        \ A.\_ \u201CSex identification of infants sacrificed to the ancient Aztec\
+        \ raingods in Tlatelolco, Mexico.\u201D Current Anthropology 46: 519-526.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/2376/5753</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:rights>Copyright: University of Chicago Press</dc:rights>\n<dc:publisher>Current\
+        \ Anthropology</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5754</identifier><datestamp>2015-12-15T03:05:04Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5752</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Mitochondrial\
+        \ DNA of Protohistoric Remains of an Arikara Population from South Dakota\
+        \ (USA): Implications for the Macro-Siouan Language Hypothesis</dc:title>\n\
+        <dc:creator>Lawrence, Diana M.</dc:creator>\n<dc:creator>Kemp, Brian M.</dc:creator>\n\
+        <dc:creator>Eshleman, Jason</dc:creator>\n<dc:creator>Jantz, Richard L.</dc:creator>\n\
+        <dc:creator>Snow, Meradeth</dc:creator>\n<dc:creator>George, Debra</dc:creator>\n\
+        <dc:creator>Smith, David Glenn</dc:creator>\n<dc:subject>Human Population\
+        \ Genetics -- South Dakota</dc:subject>\n<dc:subject>Siouan Languages -- South\
+        \ Dakota</dc:subject>\n<dc:subject>Arikara Indians -- South Dakota -- Origin</dc:subject>\n\
+        <dc:description>This is an article accepted for publication in Human Biology,\
+        \ volume 82, 2010, following peer review. The definitive publisher-authenticated\
+        \ version is available from Wayne State University Press.</dc:description>\n\
+        <dc:description>Mitochondrial DNA (mtDNA) was extracted from skeletal remains\
+        \ excavated from three Arikara sites in South Dakota occupied between AD 1600\
+        \ and 1832. The diagnostic markers of four mtDNA haplogroups to which most\
+        \ Native Americans belong (A, B, C, and D) were successfully identified in\
+        \ the extracts of 55 (87%) of the 63 samples studied. The frequencies of the\
+        \ four haplogroups were 42%, 29%, 22%, and 7%, respectively, and principal\
+        \ coordinates analysis and Fisher\u2019s exact tests were conducted to compare\
+        \ these haplogroup frequencies with those from other populations. Both analyses\
+        \ showed closer similarity among the Mohawk, Arikara, and Sioux populations\
+        \ than between any of these three and any other of the comparison populations.\
+        \ Portions of the first hypervariable segment (HVSI) of the mitochondrial\
+        \ genome were successfully amplified and sequenced for 42 of these 55 samples,\
+        \ and haplotype networks were constructed for two of the four haplogroups.\
+        \ The sharing of highly derived lineages suggests that some recent admixture\
+        \ of the Arikara with Algonquian-speaking and Siouanspeaking groups has occurred.\
+        \ The Arikara shared more ancient lineages with both Siouan and Cherokee populations\
+        \ than with any other population, consistent with the Macro-Siouan language\
+        \ hypothesis that Iroquoian, Siouan, and Caddoan languages share a relatively\
+        \ recent common ancestry.</dc:description>\n<dc:date>2015-12-15T02:48:15Z</dc:date>\n\
+        <dc:date>2015-12-15T02:48:15Z</dc:date>\n<dc:date>2010</dc:date>\n<dc:type>Article</dc:type>\n\
+        <dc:identifier>2010\_ Lawrence DM, Kemp BM, Eshleman J, Jantz RL, Snow M,\
+        \ George D, and Smith DG. \u201CMitochondrial DNA of Protohistoric Remains\
+        \ of an Arikara Population from South Dakota (USA): Implications for the Macro-Siouan\
+        \ Language Hypothesis.\u201D Human Biology 82:157-178. doi: 10.3378/027.082.0203.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/2376/5754</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:publisher>Human Biology</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5755</identifier><datestamp>2015-12-15T03:16:52Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5752</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Letter to the\
+        \ Editor, Ancient DNA Methodology: Thoughts from Brian M. Kemp and David Glenn\
+        \ Smith on \"Mitochondrial DNA of Protohistoric Remains of an Arikara Population\
+        \ from South Dakota\"</dc:title>\n<dc:creator>Kemp, Brian M.</dc:creator>\n\
+        <dc:creator>Smith, David Glenn</dc:creator>\n<dc:subject>Mitochondrial DNA</dc:subject>\n\
+        <dc:subject>Prehistoric Archaeology -- Research</dc:subject>\n<dc:subject>Genomics\
+        \ -- Research</dc:subject>\n<dc:description>This is an article accepted for\
+        \ publication in Human Biology, volume 82, 2010, following peer review. The\
+        \ definitive publisher-authenticated version is available from Wayne State\
+        \ University Press.</dc:description>\n<dc:description>Our paper \u201CMitochondrial\
+        \ DNA of Protohistoric Remains of an Arikara Population from South Dakota:\
+        \ Implications for the Macro-Siouan Language Hypothesis\u201D [Lawrence et\
+        \ al. 2010 (this issue)] has been reviewed by two scholars, and although we\
+        \ agree with the comments of the second reviewer, we object to the first reviewer\u2019\
+        s statement that \"the Authors do not use currently accepted methods in ancient\
+        \ DNA studies. the Authors have not followed the now classical stringent standards\
+        \ for the authentications of ancient DNA. Unfortunately, Authors did not do\
+        \ [the following]: (i) test to quantify the preservations of macromolecules\
+        \ (amino acid or collagen), (ii) quantifications of macromolecules, (iii)\
+        \ detections of long amplificates, (iv) amplifications of associated remains\
+        \ (if any), (v) cloning, (vi) independent replications. Further, in this study\
+        \ there is another fundamental question: the impossibility to track down modern\
+        \ DNA human contaminations (see Sampietro et al. 2006) so the results, even\
+        \ though interesting, are not supported by a strong scientific methodology.\"\
+        \ We believe that the review was unfair and reflects viewpoints that are potentially\
+        \ stifling to future discoveries and progression of the ancient DNA (aDNA)\
+        \ field as a whole.</dc:description>\n<dc:date>2015-12-15T03:15:42Z</dc:date>\n\
+        <dc:date>2015-12-15T03:15:42Z</dc:date>\n<dc:date>2010</dc:date>\n<dc:type>Other</dc:type>\n\
+        <dc:identifier>2010\_ Kemp BM and Smith DG.\_ Letter to the Editor.\_\_ \u201C\
+        Ancient DNA Methodology: \u2018Thoughts from Brian M. Kemp and David Glenn\
+        \ Smith on \"Mitochondrial DNA of Protohistoric Remains of an Arikara Population\
+        \ from South Dakota\u2019\u201D. Human Biology 82:227-238. Available at: http://digitalcommons.wayne.edu/humbiol/vol82/iss2/7.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/2376/5755</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:rights>Copyright: Wayne State University</dc:rights>\n<dc:publisher>Human\
+        \ Biology</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5756</identifier><datestamp>2015-12-15T03:30:29Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5752</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>To clone or\
+        \ not to clone: Method analysis for retrieving consensus sequences in ancient\
+        \ DNA samples</dc:title>\n<dc:creator>Winters, Misa</dc:creator>\n<dc:creator>Barta,\
+        \ Jodi Lynn</dc:creator>\n<dc:creator>Monroe, Cara</dc:creator>\n<dc:creator>Kemp,\
+        \ Brian M.</dc:creator>\n<dc:subject>Ancient DNA</dc:subject>\n<dc:subject>Social\
+        \ And Behavioral Sciences</dc:subject>\n<dc:subject>DNA testing protocol</dc:subject>\n\
+        <dc:description>The challenges associated with the retrieval and authentication\
+        \ of ancient DNA (aDNA) evidence are principally due to postmortem damage\
+        \ which makes ancient samples particularly prone to contamination from \u2018\
+        \u2018modern\u2019\u2019 DNA sources. The necessity for authentication of\
+        \ results has led many aDNA researchers to adopt methods considered to be\
+        \ \u2018\u2018gold standards\u2019\u2019 in the field, including cloning aDNA\
+        \ amplicons as opposed to directly sequencing them. However, no standardized\
+        \ protocol has emerged regarding the necessary number of clones to sequence,\
+        \ how a consensus sequence is most appropriately derived, or how results should\
+        \ be reported in the literature. In addition, there has been no systematic\
+        \ demonstration of the degree to which direct sequences are affected by damage\
+        \ or whether direct sequencing would provide disparate results from a consensus\
+        \ of clones. To address this issue, a comparative study was designed to examine\
+        \ both cloned and direct sequences amplified from ,3,500 year-old ancient\
+        \ northern fur seal DNA extracts. Majority rules and the Consensus Confidence\
+        \ Program were used to generate consensus sequences for each individual from\
+        \ the cloned sequences, which exhibited damage at 31 of 139 base pairs across\
+        \ all clones. In no instance did the consensus of clones differ from the direct\
+        \ sequence. This study demonstrates that, when appropriate, cloning need not\
+        \ be the default method, but instead, should be used as a measure of authentication\
+        \ on a case-by-case basis, especially when this practice adds time and cost\
+        \ to studies where it may be superfluous.</dc:description>\n<dc:date>2015-12-15T03:28:45Z</dc:date>\n\
+        <dc:date>2015-12-15T03:28:45Z</dc:date>\n<dc:date>2011</dc:date>\n<dc:type>Article</dc:type>\n\
+        <dc:identifier>2011\_ Winters M, Barta JL, Monroe C, and Kemp BM \u201CTo\
+        \ clone or not to clone: Method analysis for retrieving consensus sequences\
+        \ in ancient DNA samples.\u201D\_ PLoS One 6(6): e21247. DOI: 10.1371/journal.pone.0021247.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/2376/5756</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:rights>Creative Commons Attribution License 4.0 International</dc:rights>\n\
+        <dc:rights>https://creativecommons.org/licenses/by/4.0/</dc:rights>\n<dc:publisher>Public\
+        \ Library of Science</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5757</identifier><datestamp>2015-12-15T03:40:30Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5752</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Ancient DNA\
+        \ analysis of mid-Holocene individuals from the Northwest Coast of North America\
+        \ reveals different evolutionary paths for mitogenomes</dc:title>\n<dc:creator>Cui,\
+        \ Yinqiu</dc:creator>\n<dc:creator>Lindo, John</dc:creator>\n<dc:creator>Hughes,\
+        \ Cris E.</dc:creator>\n<dc:creator>Johnson, Jesse W.</dc:creator>\n<dc:creator>Hernandez,\
+        \ Alvaro G.</dc:creator>\n<dc:creator>Kemp, Brian M.</dc:creator>\n<dc:creator>Ma,\
+        \ Jian</dc:creator>\n<dc:creator>Cunningham, Ryan</dc:creator>\n<dc:creator>Petzelt,\
+        \ Barbara</dc:creator>\n<dc:creator>Mitchell, Joycellyn</dc:creator>\n<dc:creator>Archer,\
+        \ David</dc:creator>\n<dc:creator>Cybulski, Jerome S.</dc:creator>\n<dc:creator>Malhi,\
+        \ Ripan S.</dc:creator>\n<dc:subject>Evolution, Molecular</dc:subject>\n<dc:subject>Genome,\
+        \ Mitochondrial</dc:subject>\n<dc:subject>Indians, North American -- Genetics</dc:subject>\n\
+        <dc:description>To gain a better understanding of North American population\
+        \ history, complete mitochondrial genomes (mitogenomes) were generated from\
+        \ four ancient and three living individuals of the northern Northwest Coast\
+        \ of North America, specifically the north coast of British Columbia, Canada,\
+        \ current home to the indigenous Tsimshian, Haida, and Nisga\u2019a. The mitogenomes\
+        \ of all individuals were previously unknown and assigned to new sub-haplogroup\
+        \ designations D4h3a7, A2ag and A2ah. The analysis of mitogenomes allows for\
+        \ more detailed analyses of presumed ancestor\u2013descendant relationships\
+        \ than sequencing only the HVSI region of the mitochondrial genome, a more\
+        \ traditional approach in local population studies. The results of this study\
+        \ provide contrasting examples of the evolution of Native American mitogenomes.\
+        \ Those belonging to sub-haplogroups A2ag and A2ah exhibit temporal continuity\
+        \ in this region for 5000 years up until the present day. Of possible associative\
+        \ significance is that archaeologically identified house structures in this\
+        \ region maintain similar characteristics for this same period of time, demonstrating\
+        \ cultural continuity in residence patterns. The individual dated to 6000\
+        \ years before present (BP) exhibited a mitogenome belonging to sub-haplogroup\
+        \ D4h3a. This sub-haplogroup was earlier identified in the same general area\
+        \ at 10300 years BP on Prince of Wales Island, Alaska, and may have gone extinct,\
+        \ as it has not been observed in any living individuals of the Northwest Coast.\
+        \ The presented case studies demonstrate the different evolutionary paths\
+        \ of mitogenomes over time on the Northwest Coast.</dc:description>\n<dc:date>2015-12-15T03:39:26Z</dc:date>\n\
+        <dc:date>2015-12-15T03:39:26Z</dc:date>\n<dc:date>2013</dc:date>\n<dc:type>Article</dc:type>\n\
+        <dc:identifier>2013 Cui Y, Lindo J, Hughes CE, Johnson JW, Hernandez A, Kemp\
+        \ BM, Ma J, Cunningham R, Petzelt B, Mitchell J, Archer D, Cybulski JS, and\
+        \ Malhi RS. \"Ancient DNA analysis of mid-Holocene individuals from the Northwest\
+        \ Coast of North America reveals different evolutionary paths for mitogenomes\"\
+        . PLoS One 8:e66948. DOI: 10.1371/journal.pone.0066948.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/2376/5757</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:rights>Creative Commons Attribution License 4.0 International</dc:rights>\n\
+        <dc:rights>https://creativecommons.org/licenses/by/4.0/</dc:rights>\n<dc:publisher>Public\
+        \ Library of Science</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5758</identifier><datestamp>2015-12-15T03:55:31Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5752</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Patterns of\
+        \ Admixture and Population Structure in Native Populations of Northwest North\
+        \ America</dc:title>\n<dc:creator>Verdu, Paul</dc:creator>\n<dc:creator>Pemberton,\
+        \ Trevor J.</dc:creator>\n<dc:creator>Laurent, Romain</dc:creator>\n<dc:creator>Kemp,\
+        \ Brian M.</dc:creator>\n<dc:creator>Gonzalez-Oliver, Angelica</dc:creator>\n\
+        <dc:creator>Gorodezky, Clara</dc:creator>\n<dc:creator>Hughes, Cris E.</dc:creator>\n\
+        <dc:creator>Shattuck, Milena R.</dc:creator>\n<dc:creator>Petzelt, Barbara</dc:creator>\n\
+        <dc:creator>Mitchell, Joycelynn</dc:creator>\n<dc:creator>Harry, Harold</dc:creator>\n\
+        <dc:creator>William, Theresa</dc:creator>\n<dc:creator>Worl, Rosita</dc:creator>\n\
+        <dc:creator>Cybulski, Jerome S.</dc:creator>\n<dc:creator>Rosenberg, Noah\
+        \ A.</dc:creator>\n<dc:creator>Malhi, Ripan S.</dc:creator>\n<dc:subject>Genomics\
+        \ -- Research</dc:subject>\n<dc:subject>Pacific Northwest</dc:subject>\n<dc:subject>Indigenous\
+        \ DNA</dc:subject>\n<dc:subject>Admixture</dc:subject>\n<dc:subject>Colonization</dc:subject>\n\
+        <dc:description>The initial contact of European populations with indigenous\
+        \ populations of the Americas produced diverse admixture processes across\
+        \ North, Central, and South America. Recent studies have examined the genetic\
+        \ structure of indigenous populations of Latin America and the Caribbean and\
+        \ their admixed descendants, reporting on the genomic impact of the history\
+        \ of admixture with colonizing populations of European and African ancestry.\
+        \ However, relatively little genomic research has been conducted on admixture\
+        \ in indigenous North American populations. In this study, we analyze genomic\
+        \ data at 475,109 single-nucleotide polymorphisms sampled in indigenous peoples\
+        \ of the Pacific Northwest in British Columbia and Southeast Alaska, populations\
+        \ with a well-documented history of contact with European and Asian traders,\
+        \ fishermen, and contract laborers. We find that the indigenous populations\
+        \ of the Pacific Northwest have higher gene diversity than Latin American\
+        \ indigenous populations. Among the Pacific Northwest populations, interior\
+        \ groups provide more evidence for East Asian admixture, whereas coastal groups\
+        \ have higher levels of European admixture. In contrast with many Latin American\
+        \ indigenous populations, the variance of admixture is high in each of the\
+        \ Pacific Northwest indigenous populations, as expected for recent and ongoing\
+        \ admixture processes. The results reveal some similarities but notable differences\
+        \ between admixture patterns in the Pacific Northwest and those in Latin America,\
+        \ contributing to a more detailed understanding of the genomic consequences\
+        \ of European colonization events throughout the Americas.</dc:description>\n\
+        <dc:date>2015-12-15T03:54:24Z</dc:date>\n<dc:date>2015-12-15T03:54:24Z</dc:date>\n\
+        <dc:date>2014</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Verdu\
+        \ P, Pemberton TJ, Laurent R, Kemp BM, Gonzalez-Oliver A, Gorodezky C, Hughes\
+        \ CE, Shattuck MR, Petzelt B, Mitchell J, Harry H, William T, Worl R, Cybulski\
+        \ JS, Rosenberg NA, and Malhi RS.\_2014. \u201CPatterns of Admixture and Population\
+        \ Structure in Native Populations of Northwest North America.\u201D \_PLoS\
+        \ Genet 10:e1004530. DOI: 10.1371/journal.pgen.1004530.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/2376/5758</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:rights>Creative Commons Attribution 4.0 International</dc:rights>\n<dc:rights>https://creativecommons.org/licenses/by/4.0/</dc:rights>\n\
+        <dc:publisher>Public Library of Science</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5759</identifier><datestamp>2015-12-15T04:06:40Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5752</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>How Much DNA\
+        \ is Lost? Measuring DNA Loss of Short-Tandem-Repeat Length Fragments Targeted\
+        \ by the PowerPlex 16\xAE System Using the Qiagen MinElute Purification Kit</dc:title>\n\
+        <dc:creator>Kemp, Brian M.</dc:creator>\n<dc:creator>Winters, Misa</dc:creator>\n\
+        <dc:creator>Monroe, Cara</dc:creator>\n<dc:creator>Barta, Jodi Lynn</dc:creator>\n\
+        <dc:subject>DNA fingerprinting</dc:subject>\n<dc:subject>DNA Microarrays</dc:subject>\n\
+        <dc:subject>Genetics</dc:subject>\n<dc:description>This is an article accepted\
+        \ for publication in Human Biology, 86 (4), 2014, following peer review. The\
+        \ definitive publisher-authenticated version is available from Wayne State\
+        \ University Press.</dc:description>\n<dc:description>The success in recovering\
+        \ genetic profiles from aged and degraded biological samples is diminished\
+        \ by fundamental aspects of DNA extraction, as well as its long-term preservation,\
+        \ that are not well understood. While numerous studies have been conducted\
+        \ to determine whether one extraction method was superior to others, nearly\
+        \ all of them were initiated with no knowledge of the actual starting DNA\
+        \ quantity in the samples prior to extraction, so they ultimately compared\
+        \ the outcome of all methods relative to the best. Using quantitative PCR\
+        \ to estimate the copy count of synthetic standards before (i.e., \u201Ccopies\
+        \ in\u201D) and after (i.e., \u201Ccopies out\u201D) purification by the Qiagen\
+        \ MinElute PCR Purification Kit, we documented DNA loss within a pool of 16\
+        \ diffferent-sized fragments ranging from 106 to 409 bp in length, corresponding\
+        \ to those targeted by the PowerPlex 16 System (Promega, Madison, WI). Across\
+        \ all standards from 104 to 107 copies/\u03BCL, loss averaged between 21.75%\
+        \ and 60.56% (mean, 39.03%), which is not congruent with Qiagen\u2019s claim\
+        \ that 80% of 70 bp to 4 kb fragments are retained using this product (i.e.,\
+        \ 20% loss). Our study also found no clear relationship either between DNA\
+        \ strand length and retention or between starting copy number and retention.\
+        \ This suggests that there is no molecule bias across the MinElute column\
+        \ membrane and highlights the need for manufacturers to clearly and accurately\
+        \ describe on what their claims are based, and should also encourage researchers\
+        \ to document DNA retention efficiencies of their own methods and protocols.\
+        \ Understanding how and where to reduce loss of molecules during extraction\
+        \ and purification will serve to generate clearer and more accurate data,\
+        \ which will enhance the utility of ancient and low-copy-number DNA as a tool\
+        \ for closing forensic cases or in reconstructing the evolutionary history\
+        \ of humans and other organisms.</dc:description>\n<dc:date>2015-12-15T04:05:50Z</dc:date>\n\
+        <dc:date>2015-12-15T04:05:50Z</dc:date>\n<dc:date>2014</dc:date>\n<dc:type>Article</dc:type>\n\
+        <dc:identifier>Kemp BM, Winters M, Monroe C, and Barta JL.\_(2014). \u201C\
+        How Much DNA is Lost? Measuring DNA Loss of Short-Tandem-Repeat Length Fragments\
+        \ Targeted by the PowerPlex 16\xAE System Using the Qiagen MinElute Purification\
+        \ Kit. Human Biology 86:313-329.\u201D Human Biology 86 (4). Available at\
+        \ http://digitalcommons.wayne.edu/humbiol/vol86/iss4/6.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/2376/5759</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:rights>Copyright: Wayne State University Press</dc:rights>\n<dc:publisher>Human\
+        \ Biology</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5760</identifier><datestamp>2015-12-15T16:20:43Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5740</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Forum: Grand\
+        \ Challenges for Archaeology</dc:title>\n<dc:creator>Kintigh, Keith W.</dc:creator>\n\
+        <dc:creator>Altschul, Jeffrey H.</dc:creator>\n<dc:creator>Beaudry, Mary C.</dc:creator>\n\
+        <dc:creator>Drennan, Robert D.</dc:creator>\n<dc:creator>Kinzig, Ann P.</dc:creator>\n\
+        <dc:creator>Kohler, Timothy A.</dc:creator>\n<dc:creator>Limp, W. Fredrick</dc:creator>\n\
+        <dc:creator>Maschner, Herbert D.G.</dc:creator>\n<dc:creator>Michener, William\
+        \ K.</dc:creator>\n<dc:creator>Pauketat, Timothy R.</dc:creator>\n<dc:creator>Peregrine,\
+        \ Peter</dc:creator>\n<dc:creator>Sabloff, Jeremy A.</dc:creator>\n<dc:creator>Wilkinson,\
+        \ Tony J.</dc:creator>\n<dc:creator>Wright, Henry T.</dc:creator>\n<dc:creator>Zeder,\
+        \ Melinda A.</dc:creator>\n<dc:subject>Archaeology</dc:subject>\n<dc:subject>Infrastructure\
+        \ investments</dc:subject>\n<dc:description>This article represents a systematic\
+        \ effort to answer the question, What are archaeology\u2019s most important\
+        \ scientific challenges? Starting with a crowd-sourced query directed broadly\
+        \ to the professional community of archaeologists, the authors augmented,\
+        \ prioritized, and refined the responses during a two-day workshop focused\
+        \ specifically on this question. The resulting 25 \u201Cgrand challenges\u201D\
+        \ focus on dynamic cultural processes and the operation of coupled human and\
+        \ natural systems. We organize these challenges into five topics: (1) emergence,\
+        \ communities, and complexity; (2) resilience, persistence, transformation,\
+        \ and collapse; (3) movement, mobility, and migration; (4) cognition, behavior,\
+        \ and identity; and (5) human-environment interactions. A discussion and a\
+        \ brief list of references accompany each question. An important goal in identifying\
+        \ these challenges is to inform decisions on infrastructure investments for\
+        \ archaeology. Our premise is that the highest priority investments should\
+        \ enable us to address the most important questions. Addressing many of these\
+        \ challenges will require both sophisticated modeling and large-scale synthetic\
+        \ research that are only now becoming possible. Although new archaeological\
+        \ fieldwork will be essential, the greatest payoff will derive from investments\
+        \ that provide sophisticated research access to the explosion in systematically\
+        \ collected archaeological data that has occurred over the last several decades.</dc:description>\n\
+        <dc:date>2015-12-15T16:18:44Z</dc:date>\n<dc:date>2015-12-15T16:18:44Z</dc:date>\n\
+        <dc:date>2014</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Keith\
+        \ W. Kintigh, Jeffrey H. Altschul, Mary C. Beaudry, Robert D. Drennan, Ann\
+        \ P. Kinzig, Timothy Kohler, W. Fredrick Limp, Herbert D.G. Maschner, William\
+        \ K. Michener, Timothy R. Pauketat, Peter Peregrine, Jeremy A. Sabloff, Tony\
+        \ J. Wilkinson, Henry T. Wright, and Melinda A. Zeder. (2014). Forum: Grand\
+        \ Challenges for Archaeology. American Antiquity 79(1):5-24.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/2376/5760</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:publisher>American Antiquity</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5761</identifier><datestamp>2015-12-15T16:39:25Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5725</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Zooarchaeological\
+        \ Habitat Analysis of Ancient Maya Landscape Changes</dc:title>\n<dc:creator>Emery,\
+        \ Kitty F</dc:creator>\n<dc:creator>Thornton, Erin Kennedy</dc:creator>\n\
+        <dc:subject>Zooarchaeology</dc:subject>\n<dc:subject>Animal habitat</dc:subject>\n\
+        <dc:subject>Landscape change</dc:subject>\n<dc:subject>Maya collapse</dc:subject>\n\
+        <dc:subject>Late Classic Maya</dc:subject>\n<dc:description>Consensus has\
+        \ not yet been reached regarding the role of human-caused environmental change\
+        \ in the history of Classic Maya civilization. On one side of the debate,\
+        \ researchers argue that growing populations and agricultural expansion resulted\
+        \ in environmental over-exploitation that contributed to societal collapse.\
+        \ Researchers on the other side of the debate propose more gradual environmental\
+        \ change resulting from intentional and sustainable landscape management practices.\
+        \ In this study, we use zooarchaeological data from 23 archaeological sites\
+        \ in 11 inland drainage systems to evaluate the hypothesis of reduction of\
+        \ forest cover due to anthropogenic activities across the temporal and spatial\
+        \ span of the ancient Maya world. Habitat fidelity statistics derived from\
+        \ zooarchaeological data are presented as a proxy for the abundance of various\
+        \ habitat types across the landscape. The results of this analysis do not\
+        \ support a model of extensive land clearance and instead suggest considerable\
+        \ chronological and regional stability in the presence of animals from both\
+        \ mature and secondary forest habitats. Despite relative stability, some chronological\
+        \ variation in land cover was observed, but the variation does not fit expected\
+        \ patterns of increased forest disturbance during periods of greatest population\
+        \ expansion. These findings indicate a complex relationship between the ancient\
+        \ Maya and the forested landscape.</dc:description>\n<dc:date>2015-12-15T16:39:01Z</dc:date>\n\
+        <dc:date>2015-12-15T16:39:01Z</dc:date>\n<dc:date>2008</dc:date>\n<dc:type>Article</dc:type>\n\
+        <dc:identifier>Emery, Kitty F. and Erin Kennedy Thornton. 2008a Zooarchaeological\
+        \ Habitat Analysis of Ancient Maya Landscape Changes. Journal of Ethnobiology\
+        \ 28(2): 154-178.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2376/5761</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Journal of Ethnobiology</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5763</identifier><datestamp>2015-12-15T20:37:36Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5762</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Detection of\
+        \ Cytosine Methylation in Ancient DNA from Five Native American Populations\
+        \ Using Bisulfite Sequencing</dc:title>\n<dc:creator>Smith, Rick W.A.</dc:creator>\n\
+        <dc:creator>Monroe, Cara</dc:creator>\n<dc:creator>Bolnick, Deborah A.</dc:creator>\n\
+        <dc:subject>Ancient DNA</dc:subject>\n<dc:subject>Cytosine methylation</dc:subject>\n\
+        <dc:subject>Genetics</dc:subject>\n<dc:description>While cytosine methylation\
+        \ has been widely studied in extant populations, relatively few studies have\
+        \ analyzed methylation in ancient DNA. Most existing studies of epigenetic\
+        \ marks in ancient DNA have inferred patterns of methylation in highly degraded\
+        \ samples using post-mortem damage to cytosines as a proxy for cytosine methylation\
+        \ levels. However, this approach limits the inference of methylation compared\
+        \ with direct bisulfite sequencing, the current gold standard for analyzing\
+        \ cytosine methylation at single nucleotide resolution. In this study, we\
+        \ used direct bisulfite sequencing to assess cytosine methylation in ancient\
+        \ DNA from the skeletal remains of 30 Native Americans ranging in age from\
+        \ approximately 230 to 4500 years before present. Unmethylated cytosines were\
+        \ converted to uracils by treatment with sodium bisulfite, bisulfite products\
+        \ of a CpG-rich retrotransposon were pyrosequenced, and C-to-T ratios were\
+        \ quantified for a single CpG position. We found that cytosine methylation\
+        \ is readily recoverable from most samples, given adequate preservation of\
+        \ endogenous nuclear DNA. In addition, our results indicate that the precision\
+        \ of cytosine methylation estimates is inversely correlated with aDNA preservation,\
+        \ such that samples of low DNA concentration show higher variability in measures\
+        \ of percent methylation than samples of high DNA concentration. In particular,\
+        \ samples in this study with a DNA concentration above 0.015 ng/\u03BCL generated\
+        \ the most consistent measures of cytosine methylation. This study presents\
+        \ evidence of cytosine methylation in a large collection of ancient human\
+        \ remains, and indicates that it is possible to analyze epigenetic patterns\
+        \ in ancient populations using direct bisulfite sequencing approaches.</dc:description>\n\
+        <dc:date>2015-12-15T20:35:16Z</dc:date>\n<dc:date>2015-12-15T20:35:16Z</dc:date>\n\
+        <dc:date>2015</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>2015.\
+        \ Smith RWA, Monroe C, Bolnick D. Detection of Cytosine Methylation in Ancient\
+        \ DNA from Five Native American Populations Using Bisulfite Sequencing. PLoS\
+        \ ONE 10 (5). DOI: 10.1371/journal.pone.0125344.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2376/5763</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:rights>Creative Commons Attribution\
+        \ 4.0 International</dc:rights>\n<dc:rights>https://creativecommons.org/licenses/by/4.0/</dc:rights>\n\
+        <dc:publisher>Public Library of Science</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5765</identifier><datestamp>2015-12-15T22:37:06Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5764</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Why Foragers\
+        \ Choose Acorns Before Salmon: Modeling Back-loaded Resources vs. Front-Loaded\
+        \ Resources</dc:title>\n<dc:creator>Tushingham, Shannon</dc:creator>\n<dc:creator>Bettinger,\
+        \ Robert L.</dc:creator>\n<dc:subject>Archaeology</dc:subject>\n<dc:subject>Human\
+        \ Behavioral Ecology</dc:subject>\n<dc:subject>Environmental Archaeology</dc:subject>\n\
+        <dc:subject>Hunting and gathering societies</dc:subject>\n<dc:description>Salmon\
+        \ and acorns were the most important terrestrial foods in the diet of contact\
+        \ period groups in northwestern California. Throughout the ethnography salmon\
+        \ is said to be the primary staple, while acorns come in a close second. Salmon\
+        \ are traditionally viewed as a low cost (high ranking) resource, while acorns\
+        \ are viewed as a high cost (low ranking) food. If correct, why are salmon\
+        \ not taken and stored en masse earlier?</dc:description>\n<dc:date>2015-12-15T22:36:36Z</dc:date>\n\
+        <dc:date>2015-12-15T22:36:36Z</dc:date>\n<dc:date>2010</dc:date>\n<dc:type>Other</dc:type>\n\
+        <dc:identifier>Tushingham, Shannon and Robert L. Bettinger. 2010. Why Foragers\
+        \ Choose Acorns Before Salmon: Modeling Back-loaded Resources vs. Front-Loaded\
+        \ Resources. Proceedings of the Society for California Archaeology 24.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/2376/5765</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:publisher>Proceedings of the Society for California Archaeology</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5766</identifier><datestamp>2015-12-15T22:43:41Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5764</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>GC-MS Analysis\
+        \ of Residues Reveals Nicotine in Two Late Prehistoric Pipes from CA-ALA-554</dc:title>\n\
+        <dc:creator>Eerkens, Jelmer</dc:creator>\n<dc:creator>Tushingham, Shannon</dc:creator>\n\
+        <dc:creator>Lentz, Kari</dc:creator>\n<dc:creator>Blake, Jennifer</dc:creator>\n\
+        <dc:creator>Ardura, Dominique</dc:creator>\n<dc:creator>Palazoglu, Mine</dc:creator>\n\
+        <dc:creator>Fiehn, Oliver</dc:creator>\n<dc:subject>Prehistoric Archaeology</dc:subject>\n\
+        <dc:subject>Plant ecology</dc:subject>\n<dc:subject>Tobacco</dc:subject>\n\
+        <dc:subject>Archaeology--North America</dc:subject>\n<dc:description>Three\
+        \ pipes were recovered during excavations at CA-ALA-554. Ethnographically,\
+        \ Native Californians smoked a range of plants, the most common of which is\
+        \ tobacco, in pipes. In order to determine the specific uses of these pipes,\
+        \ we extracted organic residues from the pipes and identified compounds using\
+        \ Gas Chromatography-Mass Spectrometry. Results show that the pipes have strong\
+        \ nicotine signatures, indicating they were used to smoke tobacco. Biomarkers\
+        \ for other plants are not present. Although tobacco use was introduced to\
+        \ California in ancient times, the precise date is unknown. The presence of\
+        \ nicotine in these pipes has implications for the timing of when tobacco\
+        \ entered California, and for indigenous horticultural practices.</dc:description>\n\
+        <dc:date>2015-12-15T22:43:05Z</dc:date>\n<dc:date>2015-12-15T22:43:05Z</dc:date>\n\
+        <dc:date>2012</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Eerkens,\
+        \ Jelmer, Shannon Tushingham, Kari Lentz, Jennifer Blake, Dominique Ardura,\
+        \ Mine Palazoglu, and Oliver Fiehn (2012). GC-MS Analysis of Residues Reveals\
+        \ Nicotine in Two Late Prehistoric Pipes from CA-ALA-554. Proceedings of the\
+        \ Society for California Archaeology 26:212-219.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/2376/5766</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Proceedings of the Society\
+        \ for California Archaeology</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:research.libraries.wsu.edu:2376/5767</identifier><datestamp>2015-12-15T22:47:55Z</datestamp><setSpec>com_2376_5655</setSpec><setSpec>com_2376_606</setSpec><setSpec>col_2376_5764</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Exploring the\
+        \ Future of Archaeology on the Plateau: The 2014 Washington State University\
+        \ Museum of Anthropology Plateau Conference</dc:title>\n<dc:creator>Collins,\
+        \ Mary</dc:creator>\n<dc:creator>Tushingham, Shannon</dc:creator>\n<dc:subject>Archaeology--North\
+        \ America</dc:subject>\n<dc:description>The Intermontane Plateau region of\
+        \ North America has an incredibly rich and unique environmental and cultural\
+        \ history with amazing research potential. It is also home to a number of\
+        \ thriving American Indian Tribes who are taking an active role in identifying\
+        \ and protecting cultural resources. The potential to do interesting, important,\
+        \ and meaningful work in an atmosphere of respectful collaboration is too\
+        \ good to miss. Despite these opportunities, archaeological interest in the\
+        \ region has not been as great as we think is warranted. There has not been\
+        \ any significant exploration of contemporary theoretical topics or even cultural\
+        \ historical synthesis or interpretation for a number of decades. The outside\
+        \ world\u2019s awareness of the region has in large part been centered on\
+        \ the archaeo-politics of the East Wenatchee Clovis find and the Ancient One\
+        \ known as Kennewick Man.</dc:description>\n<dc:date>2015-12-15T22:47:27Z</dc:date>\n\
+        <dc:date>2015-12-15T22:47:27Z</dc:date>\n<dc:date>2014</dc:date>\n<dc:type>Article</dc:type>\n\
+        <dc:identifier>Collins, Mary and Shannon Tushingham. (2014). Exploring the\
+        \ Future of Archaeology on the Plateau: The 2014 Washington State University\
+        \ Museum of Anthropology Plateau Conference. SAA Record 14(5):26-31. http://onlinedigeditions.com/publication/?i=232900&amp;p=28.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/2376/5767</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:publisher>Society for American Archaeology, SAA Record</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record></ListRecords></OAI-PMH>"}
+    headers:
+      Content-Type: [application/xml;charset=UTF-8]
+      Date: ['Wed, 16 Dec 2015 19:57:22 GMT']
+      Server: [Apache-Coyote/1.1]
+    status: {code: 200, message: OK}
+version: 1
