@@ -9,7 +9,7 @@ from scrapi.base import OAIHarvester
 
 
 class UnlHarvester(OAIHarvester):
-    short_name = 'unl'
+    short_name = 'unl_digitalcommons'
     long_name = 'DigitalCommons@University of Nebraska - Lincoln'
     url = 'http://digitalcommons.unl.edu'
 
