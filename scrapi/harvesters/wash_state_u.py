@@ -11,7 +11,7 @@ from scrapi.base import OAIHarvester
 class WashuHarvester(OAIHarvester):
     short_name = 'wash_state_u'
     long_name = 'Washington State University Research Exchange'
-    url = 'http://research.wsulibs.wsu.edu:8080'
+    url = 'http://research.wsulibs.wsu.edu/xmlui/'
 
     base_url = 'http://research.wsulibs.wsu.edu:8080/oai/request'
     property_list = ['identifier', 'date', 'format', 'type', 'setSpec']
