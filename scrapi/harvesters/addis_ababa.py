@@ -9,7 +9,7 @@ from scrapi.base import OAIHarvester
 
 
 class AauHarvester(OAIHarvester):
-    short_name = 'aau'
+    short_name = 'addis_ababa'
     long_name = 'Addis Ababa University Institutional Repository'
     url = 'http://etd.aau.edu.et'
 
