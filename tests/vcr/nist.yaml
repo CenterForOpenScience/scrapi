@@ -1,0 +1,1323 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/3.4.3 Linux/3.19.0-33-generic]
+    method: GET
+    uri: https://materialsdata.nist.gov/dspace/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2015-10-22T00:00:00Z&until=2015-10-24T00:00:00Z
+  response:
+    body: {string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"\
+        text/xsl\" href=\"static/style.xsl\"?><OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"\
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
+        http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"\
+        ><responseDate>2015-12-15T19:35:19Z</responseDate><request verb=\"ListRecords\"\
+        \ metadataPrefix=\"oai_dc\" from=\"2015-10-22T00:00:00Z\" until=\"2015-10-24T00:00:00Z\"\
+        >https://materialsdata.nist.gov/dspace/oai/request</request><ListRecords><record><header><identifier>oai:materialsdata.nist.gov:11256/444</identifier><datestamp>2015-10-22T17:01:25Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>BIOVIA Materials\
+        \ Studio</dc:title>\n<dc:contributor />\n<dc:subject>modeling</dc:subject>\n\
+        <dc:subject>morphology</dc:subject>\n<dc:subject>simulation</dc:subject>\n\
+        <dc:subject>material science</dc:subject>\n<dc:description>The Materials Studio\
+        \ modeling environment supports predictions and investigations of materials'\
+        \ structure-property relationships. The modeling environment includes solution\
+        \ methods for quantum, atomistic, mesoscale, and statistical methods for evaluating\
+        \ various particle sizes and time scales. Crystal structure and growth evaluations\
+        \ are also supported.</dc:description>\n<dc:date>2015-10-21T22:51:19Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:19Z</dc:date>\n<dc:type>Multiple</dc:type>\n<dc:identifier>http://hdl.handle.net/11256/444</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation>5.5.2</dc:relation>\n<dc:rights>Copyright\
+        \ Dassault Syst\xE8mes</dc:rights>\n<dc:publisher>Dassault Syst\xE8mes</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/445</identifier><datestamp>2015-10-23T01:00:45Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>ABINIT</dc:title>\n\
+        <dc:subject>materials science</dc:subject>\n<dc:description>http://www.abinit.org/doc</dc:description>\n\
+        <dc:description>ABINIT is a package whose main program allows one to find\
+        \ the total energy, charge density and electronic structure of systems made\
+        \ of electrons and nuclei (molecules and periodic solids) within Density Functional\
+        \ Theory (DFT), using pseudopotentials and a planewave or wavelet basis. ABINIT\
+        \ also includes options to optimize the geometry according to the DFT forces\
+        \ and stresses, or to perform molecular dynamics simulations using these forces,\
+        \ or to generate dynamical matrices, Born effective charges, and dielectric\
+        \ tensors, based on Density-Functional Perturbation Theory, and many more\
+        \ properties. Excited states can be computed within the Many-Body Perturbation\
+        \ Theory (the GW approximation and the Bethe-Salpeter equation), and Time-Dependent\
+        \ Density Functional Theory (for molecules). In addition to the main ABINIT\
+        \ code, different utility programs are provided.</dc:description>\n<dc:date>2015-10-21T22:51:21Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:21Z</dc:date>\n<dc:type>DFT</dc:type>\n<dc:identifier>http://hdl.handle.net/11256/445</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation>7.1</dc:relation>\n<dc:relation>ABINIT\
+        \ : first-principles approach to material and nanosystem properties X. Gonze,\
+        \ B. Amadon, P.M. Anglade, J.-M. Beuken, F. Bottin, P. Boulanger, F. Bruneval,\
+        \ D. Caliste, R. Caracas, M. Cote, T. Deutsch, L. Genovese, Ph. Ghosez, M.\
+        \ Giantomassi, S. Goedecker, D. Hamann, P. Hermet, F. Jollet, G. Jomard, S.\
+        \ Leroux, M. Mancini, S. Mazevet, M.J.T. Oliveira, G. Onida, Y. Pouillon,\
+        \ T. Rangel, G.-M. Rignanese, D. Sangalli, R. Shaltaf, M. Torrent, M.J. Verstraete,\
+        \ G. Z\xE9rah, J.W. Zwanziger. Computer Physics Communications 180, 2582-2615\
+        \ (2009). A version of this paper, that is not formatted for Computer Phys.\
+        \ Comm. is available at http://www.abinit.org/about/ABINIT_CPC_v10.pdf</dc:relation>\n\
+        <dc:relation>A brief introduction to the ABINIT software package, X. Gonze,\
+        \ G.-M. Rignanese, M. Verstraete, J.-M. Beuken, Y. Pouillon, R. Caracas, F.\
+        \ Jollet, M. Torrent, G. Zerah, M. Mikami, Ph. Ghosez, M. Veithen, J.-Y. Raty,\
+        \ V. Olevano, F. Bruneval, L. Reining, R. Godby, G. Onida, D.R. Hamann, and\
+        \ D.C. Allan. Zeit. Kristallogr. 220, 558-562 (2005).</dc:relation>\n<dc:relation>First-principles\
+        \ computation of material properties : the ABINIT software project. X. Gonze,\
+        \ J.-M. Beuken, R. Caracas, F. Detraux, M. Fuchs, G.-M. Rignanese, L. Sindic,\
+        \ M. Verstraete, G. Zerah, F. Jollet, M. Torrent, A. Roy, M. Mikami, Ph. Ghosez,\
+        \ J.-Y. Raty, D.C. Allan. Computational Materials Science 25, 478-492 (2002).</dc:relation>\n\
+        <dc:rights>Copyright The ABINIT Group</dc:rights>\n<dc:publisher>The ABINIT\
+        \ Group</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/446</identifier><datestamp>2015-10-23T01:04:26Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>ADF - molecular\
+        \ modeling suite</dc:title>\n<dc:subject>modeling</dc:subject>\n<dc:subject>actinides</dc:subject>\n\
+        <dc:subject>petrochemistry</dc:subject>\n<dc:subject>nanomaterials</dc:subject>\n\
+        <dc:subject>organic electronics</dc:subject>\n<dc:subject>photovoltaics</dc:subject>\n\
+        <dc:subject>spectroscopic properties</dc:subject>\n<dc:subject>materials science</dc:subject>\n\
+        <dc:description>http://www.scm.com/Doc/Doc2014/</dc:description>\n<dc:description>Model\
+        \ molecules, surfaces and bulk with fast &amp; accurate DFT or semi-empirical\
+        \ (MOPAC, DFTB) methods and study the reactivity in large, complex systems\
+        \ (ReaxFF) with the ADF modeling suite. A single integrated GUI ensures facile\
+        \ set up and analysis of electronic and atomistic simulations across the range\
+        \ of methods and sizes.</dc:description>\n<dc:date>2015-10-21T22:51:21Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:21Z</dc:date>\n<dc:type>DFT</dc:type>\n<dc:identifier>http://hdl.handle.net/11256/446</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation>adf2014.08</dc:relation>\n<dc:rights>Copyright\
+        \ SCM</dc:rights>\n<dc:publisher>SCM - Scientific Computing &amp; Modelling</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/447</identifier><datestamp>2015-10-23T00:56:01Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>AIMPRO</dc:title>\n\
+        <dc:subject>modeling</dc:subject>\n<dc:subject>materials science</dc:subject>\n\
+        <dc:description>AIMPRO is \"a modelling technique for calculating the structural,\
+        \ electrical, optical and mechanical properties of molecules. Techniques such\
+        \ as AIMPRO are used to study Defect Engineering, which relates to the use\
+        \ of quantum-chemical methods to analyse dopants and other defects in crystalline\
+        \ materials to predict their optical, electronic and other properties.\" (from\
+        \ http://www.ncl.ac.uk/eee/research/groups/etm/etm-comp.htm)</dc:description>\n\
+        <dc:date>2015-10-21T22:51:22Z</dc:date>\n<dc:date>2015-10-21T22:51:22Z</dc:date>\n\
+        <dc:type>DFT</dc:type>\n<dc:identifier>http://hdl.handle.net/11256/447</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation>2.1.4</dc:relation>\n<dc:relation>http://aimpro.ncl.ac.uk/publications/aimpro_references.html</dc:relation>\n\
+        <dc:rights>Copyright University of Newcastle upon Tyne, UK</dc:rights>\n<dc:publisher>New\
+        \ Castle University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/448</identifier><datestamp>2015-10-23T00:58:50Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>AnyCasting</dc:title>\n\
+        <dc:subject>simulation</dc:subject>\n<dc:subject>materials science</dc:subject>\n\
+        <dc:description>http://anycastsoftware.com/eng/customer/faq_list.asp?bbs_code=14</dc:description>\n\
+        <dc:description>\"AnyCasting is an analysis program designed exclusively for\
+        \ casting processes.\" The program predicts filling times, solidification\
+        \ patterns, casting defects, etc. with speed and accuracy. AnyCasting also\
+        \ predicts final microstructure and mechanical properties.</dc:description>\n\
+        <dc:date>2015-10-21T22:51:22Z</dc:date>\n<dc:date>2015-10-21T22:51:22Z</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/11256/448</dc:identifier>\n<dc:language>Eng</dc:language>\n\
+        <dc:language>Jpn</dc:language>\n<dc:language>Kor</dc:language>\n<dc:language>Chi</dc:language>\n\
+        <dc:relation>6.1</dc:relation>\n<dc:rights>COPYRIGHT (C)ANYCASTING.CO.,LTD.\
+        \ ALL RIGHTS RESERVED</dc:rights>\n<dc:publisher>AnyCasting.CO LTD</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/449</identifier><datestamp>2015-10-23T00:57:43Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Atomic Pseudopotentials\
+        \ Engine</dc:title>\n<dc:subject>materials science</dc:subject>\n<dc:description>APE\
+        \ (Atomic Pseudopotential Engine) is a tool for generating atomic pseudopotentials\
+        \ within a Density-Functional Theory framework. It is distributed under the\
+        \ GPL and it produces pseudopotential files suitable for use with SIESTA,\
+        \ OCTOPUS, ABINIT,  and PWscf.</dc:description>\n<dc:date>2015-10-21T22:51:22Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:22Z</dc:date>\n<dc:type>DFT</dc:type>\n<dc:identifier>http://hdl.handle.net/11256/449</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation>2.2.1</dc:relation>\n<dc:relation>M.\
+        \ Oliveira and F. Nogueira, Comput. Phys. Comm. 178, 524 (2008). doi:10.1016/j.cpc.2007.11.003</dc:relation>\n\
+        <dc:rights>None stated</dc:rights>\n<dc:publisher>Centro de F\xEDsica Computacional\
+        \ Universidade de Coimbra</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/450</identifier><datestamp>2015-10-23T00:54:00Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>ATOMPAW</dc:title>\n\
+        <dc:subject>materials science</dc:subject>\n<dc:description>\"The computer\
+        \ program atompaw generates projector and basis functions which are needed\
+        \ for performing electronic structure calculations based on the Projector\
+        \ Augmented Wave (PAW) method. The program is applicable to materials throughout\
+        \ the periodic table. For each element, the user inputs the atomic number,\
+        \ the electronic configuration, a choice of basis functions, and an augmentation\
+        \ radius. The program produces an output file containing the projector and\
+        \ basis functions and the corresponding matrix elements in a form which can\
+        \ be read be the pwpaw PAW code. Additional data files are also produced which\
+        \ can be used to help evaluate the accuracy and efficiency of the generated\
+        \ functions.\" from: http://dx.doi.org/10.1016/S0010-4655(00)00244-7</dc:description>\n\
+        <dc:date>2015-10-21T22:51:22Z</dc:date>\n<dc:date>2015-10-21T22:51:22Z</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/11256/450</dc:identifier>\n<dc:language>Eng</dc:language>\n\
+        <dc:relation>4.0.0.12</dc:relation>\n<dc:relation>A Projector Augmented Wave\
+        \ (PAW) code for electronic structure calculations, Part I: atompaw for generating\
+        \ atom-centered functions Computer Physics Communications 135 329-347 (2001)\
+        \ doi:10.1016/S0010-4655(00)00244-7</dc:relation>\n<dc:rights>none stated</dc:rights>\n\
+        <dc:publisher>Wake Forrest University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/451</identifier><datestamp>2015-10-23T00:50:39Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Avizo 3D Software</dc:title>\n\
+        <dc:subject>visualization</dc:subject>\n<dc:subject>materials science</dc:subject>\n\
+        <dc:description>http://www.fei.com/software/avizo-3d-user-guide.pdf</dc:description>\n\
+        <dc:description>Avizo is a 3D analysis software for scientific and industrial\
+        \ data. Wherever three-dimensional imaging data sets need to be processed,\
+        \ in materials science, geosciences or engineering applications, Avizo offers\
+        \ abundant state-of-the-art image data processing, exploration and analysis\
+        \ features within an intuitive workflow and easy-to-use graphical user interface.</dc:description>\n\
+        <dc:date>2015-10-21T22:51:23Z</dc:date>\n<dc:date>2015-10-21T22:51:23Z</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/11256/451</dc:identifier>\n<dc:language>Eng</dc:language>\n\
+        <dc:relation>9</dc:relation>\n<dc:rights>Copyright FEI</dc:rights>\n<dc:publisher>FEI</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/452</identifier><datestamp>2015-10-23T00:39:15Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>BigDFT</dc:title>\n\
+        <dc:subject>materials science</dc:subject>\n<dc:description>http://bigdft.org/Wiki/index.php?title=BigDFT_manual</dc:description>\n\
+        <dc:description>BigDFT is an ab initio code based on Daubechies wavelets.</dc:description>\n\
+        <dc:date>2015-10-21T22:51:23Z</dc:date>\n<dc:date>2015-10-21T22:51:23Z</dc:date>\n\
+        <dc:type>DFT</dc:type>\n<dc:identifier>http://hdl.handle.net/11256/452</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation>1.7.7</dc:relation>\n<dc:relation>Journal\
+        \ of Chemical Physics, 129 014109 (2008), L. Genovese, A. Neelov, S. Goedecker,\
+        \ T. Deutsch, S. A. Ghasemi, A. Willand, D. Caliste, O. Zilberberg, M. Rayson,\
+        \ A. Bergman and R. Schneider, \"Daubechies wavelets as a basis set for density\
+        \ functional pseudopotential calculations\". Journal of Chemical Physics,\
+        \ 140 204110 (2014), S. Mohr, L. E. Ratcliff, P. Boulanger, L. Genovese, D.\
+        \ Caliste, T. Deutsch, and S. Goedecker, \"Daubechies wavelets for linear\
+        \ scaling density functional theory\".</dc:relation>\n<dc:rights>CC Attribution</dc:rights>\n\
+        <dc:publisher>None listed</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/453</identifier><datestamp>2015-10-23T00:52:26Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Cambridge Analytic\
+        \ Derivatives Package (CADPAC)</dc:title>\n<dc:subject>Category</dc:subject>\n\
+        <dc:description>http://www-theor.ch.cam.ac.uk/software/caddoc.html</dc:description>\n\
+        <dc:description>CADPAC, the Cambridge Analytic Derivatives Package, is a suite\
+        \ of programs for ab initio computational chemistry calculations. *This software\
+        \ is no longer supported.*</dc:description>\n<dc:date>2015-10-21T22:51:23Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:23Z</dc:date>\n<dc:type>DFT</dc:type>\n<dc:type>Hartree\
+        \ Fock Method</dc:type>\n<dc:identifier>http://hdl.handle.net/11256/453</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation>6</dc:relation>\n<dc:rights>None\
+        \ stated</dc:rights>\n<dc:publisher>Cambridge University</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/454</identifier><datestamp>2015-10-23T00:49:36Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>EKKcapcast</dc:title>\n\
+        <dc:subject>casting</dc:subject>\n<dc:subject>simulation</dc:subject>\n<dc:subject>materials\
+        \ science</dc:subject>\n<dc:description>EKK\uFFFDs Finite Element Method (FEM)\
+        \ based EKKcapcast software includes Solidification, Thermal , Fluid flow,\
+        \ Stress and Porosity analysis tools which can accurately identify your casting\
+        \ defects and help you optimize your casting process. A complete casting simulation\
+        \ software package that includes autiomated finite element mesh generation,\
+        \ fluid flow, solidification, stress and porosity processing capabilities\
+        \ to optimize the casting process.</dc:description>\n<dc:date>2015-10-21T22:51:23Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:23Z</dc:date>\n<dc:type>FEM</dc:type>\n<dc:identifier>http://hdl.handle.net/11256/454</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:language>Jpn</dc:language>\n<dc:relation\
+        \ />\n<dc:rights>Copyright EKK, Inc.</dc:rights>\n<dc:publisher>EKK Inc</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/455</identifier><datestamp>2015-10-23T00:48:17Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>CASTEP</dc:title>\n\
+        <dc:subject>materials science</dc:subject>\n<dc:description>http://www.castep.org/CASTEP/ForUsers</dc:description>\n\
+        <dc:description>CASTEP is a full-featured materials modelling code based on\
+        \ a first-principles quantum mechanical description of electrons and nuclei.\
+        \ It uses the robust methods of a plane-wave basis set and pseudopotentials.</dc:description>\n\
+        <dc:date>2015-10-21T22:51:23Z</dc:date>\n<dc:date>2015-10-21T22:51:23Z</dc:date>\n\
+        <dc:type>DFT</dc:type>\n<dc:identifier>http://hdl.handle.net/11256/455</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation>8</dc:relation>\n<dc:relation>\"\
+        First principles methods using CASTEP\", Zeitschrift fuer Kristallographie\
+        \ 220(5-6) pp. 567-570 (2005) S. J. Clark, M. D. Segall, C. J. Pickard, P.\
+        \ J. Hasnip, M. J. Probert, K. Refson, M. C. Payne</dc:relation>\n<dc:rights>None\
+        \ stated</dc:rights>\n<dc:publisher>Matthew Segall</dc:publisher>\n</oai_dc:dc>\n\
+        </metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/456</identifier><datestamp>2015-10-23T00:34:14Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>CATIA</dc:title>\n\
+        <dc:subject>materials science</dc:subject>\n<dc:description>http://www.3ds.com/products-services/catia#communities</dc:description>\n\
+        <dc:description>CATIA offers, through a multidisciplinary approach, a full\
+        \ spectrum of design capabilities that enables efficient collaboration to\
+        \ encourage innovation across the extended enterprise. The CATIA product suite\
+        \ includes: CATIA Systems Architecture, CATIA Design, CATIA Engineering, CATIA\
+        \ Systems Engineering, and CATIA Product Experience.</dc:description>\n<dc:date>2015-10-21T22:51:24Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:24Z</dc:date>\n<dc:identifier>http://hdl.handle.net/11256/456</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation>None stated</dc:relation>\n<dc:rights>Copyright\
+        \ Dassault Syst\xE8mes</dc:rights>\n<dc:publisher>Dassault Syst\xE8mes</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/457</identifier><datestamp>2015-10-23T00:37:59Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>COMPRO Simulation\
+        \ Software</dc:title>\n<dc:subject>simulation</dc:subject>\n<dc:subject>materials\
+        \ science</dc:subject>\n<dc:description>COMPRO facilitates the analysis of\
+        \ complex composite structures and allow: prediction of deformations and recommendations\
+        \ for tool compensation, calculation of residual stresses in composite structures,\
+        \ simulation of hybrid composite behavior, and simulation of composite reactions\
+        \ to processing.</dc:description>\n<dc:date>2015-10-21T22:51:24Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:24Z</dc:date>\n<dc:type>FEM</dc:type>\n<dc:identifier>http://hdl.handle.net/11256/457</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation />\n<dc:rights>Copyright  Convergent\
+        \ Manufacturing Technologies Inc</dc:rights>\n<dc:publisher>Convergent Manufacturing\
+        \ Technologies Inc</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/458</identifier><datestamp>2015-10-23T00:35:50Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>CP2K</dc:title>\n\
+        <dc:subject>molecular dynamics</dc:subject>\n<dc:subject>metadynamics</dc:subject>\n\
+        <dc:subject>Quantum Monte Carlo</dc:subject>\n<dc:subject>Ehrenfest dynamics</dc:subject>\n\
+        <dc:subject>vibrational analysis</dc:subject>\n<dc:subject>core level spectroscopy</dc:subject>\n\
+        <dc:subject>energy minimization</dc:subject>\n<dc:subject>materials science</dc:subject>\n\
+        <dc:description>http://www.cp2k.org/</dc:description>\n<dc:description>CP2K\
+        \ is a quantum chemistry and solid state physics software package that can\
+        \ perform atomistic simulations of solid state, liquid, molecular, periodic,\
+        \ material, crystal, and biological systems. CP2K provides a general framework\
+        \ for different modeling methods such as DFT using the mixed Gaussian and\
+        \ plane waves approaches GPW and GAPW. Supported theory levels include DFTB,\
+        \ LDA, GGA, MP2, RPA, semi-empirical methods (AM1, PM3, PM6, RM1, MNDO, \u2026\
+        ), and classical force fields (AMBER, CHARMM, \u2026). CP2K can do simulations\
+        \ of molecular dynamics, metadynamics, Quantum Monte Carlo, Ehrenfest dynamics,\
+        \ vibrational analysis, core level spectroscopy, energy minimization, and\
+        \ transition state optimization using NEB or dimer method. CP2K is written\
+        \ in Fortran 2003 and can be run efficiently in parallel using a combination\
+        \ of multi-threading, MPI, and CUDA. It is freely available under the GPL\
+        \ license. It is therefore easy to give the code a try, and to make modifications\
+        \ as needed.</dc:description>\n<dc:date>2015-10-21T22:51:24Z</dc:date>\n<dc:date>2015-10-21T22:51:24Z</dc:date>\n\
+        <dc:type>DFT</dc:type>\n<dc:identifier>http://hdl.handle.net/11256/458</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation>2.6</dc:relation>\n<dc:relation>http://manual.cp2k.org/trunk/references.html</dc:relation>\n\
+        <dc:rights>None stated</dc:rights>\n<dc:publisher>CP2K</dc:publisher>\n</oai_dc:dc>\n\
+        </metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/459</identifier><datestamp>2015-10-23T00:24:14Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>CPMD</dc:title>\n\
+        <dc:subject>materials science</dc:subject>\n<dc:description>http://cpmd.org/documentation</dc:description>\n\
+        <dc:description>The CPMD code is a parallelized plane wave / pseudopotential\
+        \ implementation of Density Functional Theory, particularly designed for ab-initio\
+        \ molecular dynamics.</dc:description>\n<dc:date>2015-10-21T22:51:25Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:25Z</dc:date>\n<dc:type>DFT</dc:type>\n<dc:identifier>http://hdl.handle.net/11256/459</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation>4.1</dc:relation>\n<dc:rights>Copyright\
+        \ IBM Corporation and Max-Planck Institut, Stuttgart.</dc:rights>\n<dc:publisher>CPMD\
+        \ Consortium</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/460</identifier><datestamp>2015-10-22T18:15:41Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>DL Visualize</dc:title>\n\
+        <dc:subject>Category</dc:subject>\n<dc:description>http://www.cse.clrc.ac.uk/cmg/DLV/v3/doc/index.html</dc:description>\n\
+        <dc:description>The current release features an interface to the ab-initio\
+        \ periodic Hartree-Fock/DFT software package, CRYSTAL, the EXAFS analysis\
+        \ program DL_EXCURV, GULP v3 and the SXRD package ROD. DLV provides the ability\
+        \ to construct and visualize crystals, surfaces and molecules. The graphical\
+        \ user interface to CRYSTAL provides a simply and intuitive method of setting\
+        \ up input decks, and provides a powerful method of analysing the wavefunctions\
+        \ generated by CRYSTAL and hence of calculating associated properties. The\
+        \ code also provides a simple method of generating LEED patterns from complex\
+        \ surfaces and can provide both single domain and multiple domain patterns.</dc:description>\n\
+        <dc:date>2015-10-21T22:51:25Z</dc:date>\n<dc:date>2015-10-21T22:51:25Z</dc:date>\n\
+        <dc:type>DFT</dc:type>\n<dc:type>Hartree Fock Method</dc:type>\n<dc:identifier>http://hdl.handle.net/11256/460</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation>3.3</dc:relation>\n<dc:relation>B.G.\
+        \ Searle, Computer Physics Communications, 137, p. 25 (2001)</dc:relation>\n\
+        <dc:rights>Copyright Daresbury Laboratory</dc:rights>\n<dc:publisher>None\
+        \ listed</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/461</identifier><datestamp>2015-10-22T18:16:31Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>DACAPO</dc:title>\n\
+        <dc:subject />\n<dc:description>https://wiki.fysik.dtu.dk/dacapo/Manual</dc:description>\n\
+        <dc:description>This tool performs calculations for Local Density Approximation\
+        \ (LDA) and Generalized Gradient Approximation (GGA) exchange-correlations\
+        \ potentials as well as various molecular dynamics calculations.  Dacapo is\
+        \ a total energy program based on density functional theory. It uses a plane\
+        \ wave basis for the valence electronic states and describes the core-electron\
+        \ interactions with Vanderbilt ultrasoft pseudo-potentials. Calculations using\
+        \ dacapo are done using the Atomic Simulation Environment (ASE). &lt;&lt;https://wiki.fysik.dtu.dk/ase/>></dc:description>\n\
+        <dc:date>2015-10-21T22:51:25Z</dc:date>\n<dc:date>2015-10-21T22:51:25Z</dc:date>\n\
+        <dc:type>DFT</dc:type>\n<dc:identifier>http://hdl.handle.net/11256/461</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation>None stated</dc:relation>\n<dc:rights>None\
+        \ stated</dc:rights>\n<dc:publisher>DTU Technical University of Denmark</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/462</identifier><datestamp>2015-10-23T00:32:53Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Dante</dc:title>\n\
+        <dc:subject>materials science</dc:subject>\n<dc:description>DANTE enables\
+        \ predition of the effects of chemistry and process variables on hardness,\
+        \ residual stress state, metallurgical phase distribution, and dimensions.</dc:description>\n\
+        <dc:date>2015-10-21T22:51:25Z</dc:date>\n<dc:date>2015-10-21T22:51:25Z</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/11256/462</dc:identifier>\n<dc:language>Eng</dc:language>\n\
+        <dc:relation>None stated</dc:relation>\n<dc:rights>Copyright DANTE Solutions</dc:rights>\n\
+        <dc:publisher>DANTE Solutions</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/463</identifier><datestamp>2015-10-22T18:17:03Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>UltraSoft PseudoPotential</dc:title>\n\
+        <dc:subject />\n<dc:description>http://www.physics.rutgers.edu/~dhv/uspp/</dc:description>\n\
+        <dc:description>A DFT atomic pseudopotential code developed by David Vanderbilt\
+        \ at Rutgers University.</dc:description>\n<dc:date>2015-10-21T22:51:25Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:25Z</dc:date>\n<dc:type>DFT</dc:type>\n<dc:identifier>http://hdl.handle.net/11256/463</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation>7.3.6</dc:relation>\n<dc:relation>David\
+        \ Vanderbilt, ``Soft Self-Consistent Pseudopotentials in a Generalized Eigenvalue\
+        \ Formalism,'' Phys. Rev. B 41 (Rapid Communications), 7892 (1990).</dc:relation>\n\
+        <dc:relation>Kari Laasonen, Roberto Car, Changyol Lee, and David Vanderbilt,\
+        \ ``Implementation of Ultra-Soft Pseudopotentials in Ab-initio Molecular Dynamics,''\
+        \ Phys. Rev. B 43 (Rapid Communications), 6796 (1991).</dc:relation>\n<dc:relation>Kari\
+        \ Laasonen, Alfredo Pasquarello, Changyol Lee, Roberto Car, and David Vanderbilt,\
+        \ ``Car-Parrinello Molecular Dynamics with Vanderbilt's Ultrasoft Pseudopotentials,''\
+        \ Phys. Rev. B 47, 10142 (1993).</dc:relation>\n<dc:rights>None stated</dc:rights>\n\
+        <dc:publisher>Rutgers University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/464</identifier><datestamp>2015-10-23T00:31:34Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>DEFORM</dc:title>\n\
+        <dc:subject>materials science</dc:subject>\n<dc:description>DEFORM is a suite\
+        \ of programs designed to analyze metal forming, heat treatment, machining\
+        \ and mechanical joining processes.</dc:description>\n<dc:date>2015-10-21T22:51:25Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:25Z</dc:date>\n<dc:identifier>http://hdl.handle.net/11256/464</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation>None stated</dc:relation>\n<dc:rights>Copyright\
+        \ Scientific Forming Technologies Corporation</dc:rights>\n<dc:publisher>Scientific\
+        \ Forming Technologies Corporation</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/465</identifier><datestamp>2015-10-22T18:11:30Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>deMon</dc:title>\n\
+        <dc:subject />\n<dc:description>http://www.demon-software.com/public_html/support.html#manual</dc:description>\n\
+        <dc:description>deMon (density of Montr\xE9al) is a software package for density\
+        \ functional theory (DFT) calculations. It uses the linear combination of\
+        \ Gaussian-type orbital (LCGTO) approach for the self-consistent solution\
+        \ of the Kohn-Sham (KS) DFT equations. The calculation of the four-center\
+        \ electron repulsion integrals is avoided by introducing an auxiliary function\
+        \ basis for the variational fitting of the Coulomb potential.</dc:description>\n\
+        <dc:date>2015-10-21T22:51:26Z</dc:date>\n<dc:date>2015-10-21T22:51:26Z</dc:date>\n\
+        <dc:type>DFT</dc:type>\n<dc:identifier>http://hdl.handle.net/11256/465</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation>3.0.6</dc:relation>\n<dc:relation>A.M.\
+        \ Koster, G. Geudtner, P. Calaminici, M.E. Casida, V.D. Dominguez, R. Flores-Moreno,\
+        \ G.U. Gamboa, A. Goursot, T. Heine, A. Ipatov, F. Janetzko, J.M. del Campo,\
+        \ J. U. Reveles, A. Vela, B. Zuniga-Gutierrez and D.R. Salahub, deMon2k, Version\
+        \ 3, The deMon developers, Cinvestav, Mexico City (2011).</dc:relation>\n\
+        <dc:rights>None stated</dc:rights>\n<dc:publisher>None listed</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/466</identifier><datestamp>2015-10-22T18:12:53Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>DICTRA</dc:title>\n\
+        <dc:subject>CALPHAD</dc:subject>\n<dc:subject />\n<dc:description>http://www.thermocalc.com/support/documentation/</dc:description>\n\
+        <dc:description>DICTRA is an add-on module to Thermo-Calc for the accurate\
+        \ simulation of diffusion controlled reactions in multicomponent alloy systems.\
+        \ DICTRA is based on the numerical solution of the multicomponent diffusion\
+        \ equations and the CALPHAD approach.</dc:description>\n<dc:date>2015-10-21T22:51:26Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:26Z</dc:date>\n<dc:identifier>http://hdl.handle.net/11256/466</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation>2015a</dc:relation>\n<dc:relation>http://www.thermocalc.com/media/30975/dictra_references_20150609.pdf</dc:relation>\n\
+        <dc:rights>Copyright Thermo-Calc Software</dc:rights>\n<dc:publisher>Thermo-Calc\
+        \ Software AB</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/467</identifier><datestamp>2015-10-22T18:10:56Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>DREAM.3D</dc:title>\n\
+        <dc:subject>Electron back-scatter diffraction</dc:subject>\n<dc:subject>Synthetic\
+        \ microstructure; HDF5</dc:subject>\n<dc:subject>3D Microstructure reconstruction</dc:subject>\n\
+        <dc:subject>Programming library</dc:subject>\n<dc:subject>Open-source</dc:subject>\n\
+        <dc:subject />\n<dc:description>DREAM3D allows users to reconstruct and analyze\
+        \ 3D microstructures from a variety of sources including EBSD data (TSL &amp;\
+        \ Oxford Instruments) and synthetically generated sources. In addition, the\
+        \ program allows the user to create statistically equivalent microstructures\
+        \ using data from real world materials or through user generated statistics.</dc:description>\n\
+        <dc:date>2015-10-21T22:51:26Z</dc:date>\n<dc:date>2015-10-21T22:51:26Z</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/11256/467</dc:identifier>\n<dc:language>Eng</dc:language>\n\
+        <dc:relation>6.1.77</dc:relation>\n<dc:rights>Copryight DREAM.3D</dc:rights>\n\
+        <dc:publisher>DREAM.3D</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/468</identifier><datestamp>2015-10-22T18:12:14Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>ELK</dc:title>\n\
+        <dc:subject>Category</dc:subject>\n<dc:description>http://elk.sourceforge.net/#documentation</dc:description>\n\
+        <dc:description>ELK is an all-electron full-potential linearised augmented-plane\
+        \ wave (FP-LAPW) code with many advanced features. Written originally at Karl-Franzens-Universit\xE4\
+        t Graz as a milestone of the EXCITING EU Research and Training Network, the\
+        \ code is designed to be as simple as possible so that new developments in\
+        \ the field of density functional theory (DFT) can be added quickly and reliably.</dc:description>\n\
+        <dc:date>2015-10-21T22:51:26Z</dc:date>\n<dc:date>2015-10-21T22:51:26Z</dc:date>\n\
+        <dc:type>DFT</dc:type>\n<dc:identifier>http://hdl.handle.net/11256/468</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation>3.1.12</dc:relation>\n<dc:rights>None\
+        \ stated</dc:rights>\n<dc:publisher>Max Plank Institute</dc:publisher>\n</oai_dc:dc>\n\
+        </metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/469</identifier><datestamp>2015-10-22T18:09:56Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Engineering\
+        \ Virtual Organization for CyberDesign</dc:title>\n<dc:contributor />\n<dc:subject>cyberinfrastructure</dc:subject>\n\
+        <dc:subject>data portals</dc:subject>\n<dc:subject />\n<dc:description>\"\
+        The Engineering Virtual Organization for CyberDesign (EVOCD, https://icme.hpc.msstate.edu)\
+        \ is dedicated to the accumulation of the \u201Cintellectual capital\u201D\
+        \ pertaining to ICME. In fact, it is the organization\u2019s capital that\
+        \ attracts community participation. There are three critical aspects to the\
+        \ process of accumulating capital in order to create a relevant organization:\
+        \ (1) protection of intellectual property, (2) quality assurance of information,\
+        \ and (3) the management of complexity. In a competitive environment in which\
+        \ materials research and development is performed, protection of the intellectual\
+        \ property is imperative. While the information meant for public consumption\
+        \ must be clearly attributed to its creators, the innovative research may\
+        \ require a restriction of information (e.g., pre-publication or proprietary\
+        \ data) exchange to only a narrow group of collaborators. The VO must support\
+        \ the former and enforce the latter. Quality assurance of the information\
+        \ must include its pedigree and then its validation, followed with approval\
+        \ by either a curator or a peer-review process. The management of complexity\
+        \ implies that the information must be easily navigable through intuitive\
+        \ interfaces, yet all complexity of the underlying infrastructure must be\
+        \ hidden from the end user. Furthermore, the information must be understandable\
+        \ to students and directly and efficiently accessible to practitioners.\"\
+        \ https://icme.hpc.msstate.edu/mediawiki/index.php/About_EVOCD This is a catalog\
+        \ of data and software related to materials research at every scale.</dc:description>\n\
+        <dc:date>2015-10-21T22:51:26Z</dc:date>\n<dc:date>2015-10-21T22:51:26Z</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/11256/469</dc:identifier>\n<dc:language>Eng</dc:language>\n\
+        <dc:relation>N/A</dc:relation>\n<dc:rights>Copyright Mississippi State University</dc:rights>\n\
+        <dc:publisher>Center for Advanced Vehicular Systems (CAVS) at Mississippi\
+        \ State University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/470</identifier><datestamp>2015-10-22T18:03:46Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>exciting</dc:title>\n\
+        <dc:subject>https://aimsclub.fhi-berlin.mpg.de/index.php</dc:subject>\n<dc:description>http://exciting-code.org/</dc:description>\n\
+        <dc:description>exciting is a full-potential all-electron density-functional-theory\
+        \ package implementing the families of linearized augmented planewave methods.\
+        \ It can be applied to all kinds of materials, irrespective of the atomic\
+        \ species involved, and also allows for exploring the physics of core electrons.\
+        \ A particular focus are excited states within many-body perturbation theory.</dc:description>\n\
+        <dc:date>2015-10-21T22:51:27Z</dc:date>\n<dc:date>2015-10-21T22:51:27Z</dc:date>\n\
+        <dc:type>DFT</dc:type>\n<dc:identifier>http://hdl.handle.net/11256/470</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation>Boron</dc:relation>\n<dc:relation>A.\
+        \ Gulans, S. Kontur, C. Meisenbichler, D. Nabok, P. Pavone, S. Rigamonti,\
+        \ S. Sagmeister, U. Werner, and C. Draxl, \"exciting \u2014 a full-potential\
+        \ all-electron package implementing density-functional theory and many-body\
+        \ perturbation theory'', J. Phys.: Condens. Matter 26, 363202 (2014)</dc:relation>\n\
+        <dc:rights>None stated</dc:rights>\n<dc:publisher>Department of Physics, Humboldt-Universit\xE4\
+        t zu Berlin</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/471</identifier><datestamp>2015-10-22T18:04:40Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>FactSage</dc:title>\n\
+        <dc:subject />\n<dc:description>http://www.crct.polymtl.ca/fact/documentation/</dc:description>\n\
+        <dc:description>FactSage\xA9, one of the largest fully integrated database\
+        \ computing systems in chemical thermodynamics in the world, was introduced\
+        \ in 2001 and is the fusion of the FACT-Win/F*A*C*T and ChemSage/SOLGASMIX\
+        \ thermochemical packages.</dc:description>\n<dc:date>2015-10-21T22:51:27Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:27Z</dc:date>\n<dc:identifier>http://hdl.handle.net/11256/471</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation>7.02</dc:relation>\n<dc:rights>Copyright\
+        \ Thermfact/CRCT &amp; GTT-Technologies</dc:rights>\n<dc:publisher>Thermfact/CRCT\
+        \ &amp; GTT-Technologies</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/472</identifier><datestamp>2015-10-22T18:00:35Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>fhi98PP</dc:title>\n\
+        <dc:subject>pseudopotentials</dc:subject>\n<dc:subject>materials science</dc:subject>\n\
+        <dc:description>http://th.fhi-berlin.mpg.de/th/fhi98md/fhi98PP/tutorial.ps</dc:description>\n\
+        <dc:description>\"The package fhi98PP [1] in the present update of 27-06-03\
+        \ allows one to: Generate norm-conserving pseudopotentials of the Hammann\
+        \ [2] and Troullier-Martins [3] types, employing common parameterizations\
+        \ of the local-density approximation and generalized gradient approximations\
+        \ for exchange and correlation.; Check the transferability of one's pseudopotentials,\
+        \ in particular to search for unphysical ghost states of their fully separable\
+        \ (Kleinman-Bylander) representation [4]; Spin-polarized atoms can be calculated,\
+        \ and pseudopotentials for exact Kohn-Sham exchange calculations can be produced.\
+        \ These features are at a developmental stage and require care; A database\
+        \ of generic input data files for most elements is part of this package. General\
+        \ background about pseudopotentials and practical considerations for generating\
+        \ them may be found in [1]. A hands-on tutorial and worked-out examples are\
+        \ available as well. Unix c-shell scripts serve as command-line interfaces\
+        \ to facilitate the above tasks. Their pseudopotential output is compatible\
+        \ with the input format of the fhimd program [5] and can be readily adjusted\
+        \ to fit other codes. For visual inspection of results, these scripts provide\
+        \ graphics files to be viewed with the public domain plotting tool XMGRACE.\"\
+        \ - http://th.fhi-berlin.mpg.de/th/fhi98md/fhi98PP/</dc:description>\n<dc:date>2015-10-21T22:51:27Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:27Z</dc:date>\n<dc:identifier>http://hdl.handle.net/11256/472</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation>Not listed</dc:relation>\n<dc:rights>None\
+        \ stated</dc:rights>\n<dc:publisher>Fritz Haber Institute of the Max Planck\
+        \ Society</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/473</identifier><datestamp>2015-10-22T18:02:40Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>FHI-aims</dc:title>\n\
+        <dc:contributor />\n<dc:subject>materials science</dc:subject>\n<dc:description>\"\
+        FHI-aims is an accurate all-electron, full-potential electronic structure\
+        \ code package for computational materials science, offering: Density functional\
+        \ theory (LDA, GGAs) for isolated molecules and periodic systems (solids,\
+        \ surfaces, ...); Preconstructed hierarchical basis sets across the periodic\
+        \ table (elements 1-102) -from fast qualitative up to meV-converged accuracy\
+        \ Hartree-Fock and hybrid functionals (B3LYP, PBE0/PBEh, HSE); Approaches\
+        \ to van der Waals (Tkatchenko-Scheffler, vdW-DF); Many-body perturbation\
+        \ methods (currently non-periodic, for single-point geometries): MP2, RPA,\
+        \ renormalized second-order perturbation theory, G0W0, self-consistent GW,\
+        \ doubly-hybrid functionals, and more under development. Structure optimization,\
+        \ ab initio molecular dynamics, infrastructure for vibrations and phonons,\
+        \ ...Molecular transport (including \"aitranss\" maintained by Evers group\
+        \ at KIT) Seamlessly parallel from one up to (currently) (ten)thousands of\
+        \ CPUs\" https://aimsclub.fhi-berlin.mpg.de/index.php</dc:description>\n<dc:date>2015-10-21T22:51:27Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:27Z</dc:date>\n<dc:type>DFT</dc:type>\n<dc:identifier>http://hdl.handle.net/11256/473</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation>Not listed</dc:relation>\n<dc:rights>None\
+        \ stated</dc:rights>\n<dc:publisher>Fritz-Haber-Institut der Max-Planck-Gesellschaft</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/474</identifier><datestamp>2015-10-22T18:09:25Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Flow-3D</dc:title>\n\
+        <dc:contributor />\n<dc:subject>computational fluid dynamics</dc:subject>\n\
+        <dc:subject />\n<dc:description>FLOW-3D is a powerful and highly-accurate\
+        \ CFD software that facilitates the simulation and analysis of many physical\
+        \ flow processes.</dc:description>\n<dc:date>2015-10-21T22:51:27Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:27Z</dc:date>\n<dc:identifier>http://hdl.handle.net/11256/474</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation>11</dc:relation>\n<dc:rights>Copyright\
+        \ Flow Science Inc.</dc:rights>\n<dc:publisher>Flow Science Inc.</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/475</identifier><datestamp>2015-10-22T18:08:09Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>FLEUR</dc:title>\n\
+        <dc:contributor />\n<dc:subject />\n<dc:description>\"This is the homepage\
+        \ of FLEUR, a feature-full, freely available FLAPW (full potential linearized\
+        \ augmented planewave) code, based on density-functional theory. The FLAPW-Method\
+        \ (Full Potential Linearized Augmented Plane Wave Method) is an all-electron\
+        \ method which within density functional theory is universally applicable\
+        \ to all atoms of the periodic table and to systems with compact as well as\
+        \ open structures. It is widely considered to be the most precise electronic\
+        \ structure method in solid state physics.\" - http://www.flapw.de/pm/index.php</dc:description>\n\
+        <dc:date>2015-10-21T22:51:27Z</dc:date>\n<dc:date>2015-10-21T22:51:27Z</dc:date>\n\
+        <dc:type>DFT</dc:type>\n<dc:identifier>http://hdl.handle.net/11256/475</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation>0.26</dc:relation>\n<dc:rights>None\
+        \ stated</dc:rights>\n<dc:publisher>Julich Forschungszentrum</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/476</identifier><datestamp>2015-10-22T18:08:46Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>FORGE NxT</dc:title>\n\
+        <dc:contributor />\n<dc:subject />\n<dc:description>This software can simulate\
+        \ hot, warm, and cold forging of both 3D parts and 2D geometry parts, using\
+        \ different process settings and/or different die designs. Accurate predictions\
+        \ are then made for the dies (wear, damage, stress) and the workpiece (dimensions,\
+        \ shrinkage, grain flow/distribution, etc.)</dc:description>\n<dc:date>2015-10-21T22:51:27Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:27Z</dc:date>\n<dc:identifier>http://hdl.handle.net/11256/476</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation>1</dc:relation>\n<dc:rights>Copyright\
+        \ Transvalor</dc:rights>\n<dc:publisher>Transvalor</dc:publisher>\n</oai_dc:dc>\n\
+        </metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/477</identifier><datestamp>2015-10-22T18:05:28Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>FPLO</dc:title>\n\
+        <dc:subject />\n<dc:description>\"The FPLO package is a full-potential local-orbital\
+        \ minimum-basis code [1] [2] to solve the Kohn-Sham equations on a regular\
+        \ lattice [6]. The situation of a chemically disordered structure is covered\
+        \ by a CPA solver [3], relativistic effects can be treated in a related 4-component\
+        \ code [4], and the LSDA+U formalism is implemented [5].Much effort has been\
+        \ spent to achieve a level of numerical accuracy which is comparable to advanced\
+        \ full-potential LAPW implementations, though the basis set is considerably\
+        \ smaller. This makes highly accurate full-potential calculations for elementary\
+        \ cells of up to 100 atoms feasible on single-CPU machines and is a good starting\
+        \ point for approaches beyond standard DFT.\" - http://www.fplo.de/</dc:description>\n\
+        <dc:date>2015-10-21T22:51:27Z</dc:date>\n<dc:date>2015-10-21T22:51:27Z</dc:date>\n\
+        <dc:type>DFT</dc:type>\n<dc:identifier>http://hdl.handle.net/11256/477</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation>14</dc:relation>\n<dc:rights>None\
+        \ stated</dc:rights>\n<dc:publisher>IFW Dresden</dc:publisher>\n</oai_dc:dc>\n\
+        </metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/478</identifier><datestamp>2015-10-22T17:54:50Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>GAMESS</dc:title>\n\
+        <dc:subject>quantum chemistry</dc:subject>\n<dc:subject>materials science</dc:subject>\n\
+        <dc:description>http://www.msg.ameslab.gov/gamess/documentation.html</dc:description>\n\
+        <dc:description>\"GAMESS is a program for ab initio molecular quantum chemistry.\
+        \ Briefly, GAMESS can compute SCF wavefunctions ranging from RHF, ROHF, UHF,\
+        \ GVB, and MCSCF. Correlation corrections to these SCF wavefunctions include\
+        \ Configuration Interaction, second order perturbation Theory, and Coupled-Cluster\
+        \ approaches, as well as the Density Functional Theory approximation. Excited\
+        \ states can be computed by CI, EOM, or TD-DFT procedures. Nuclear gradients\
+        \ are available, for automatic geometry optimization, transition state searches,\
+        \ or reaction path following. Computation of the energy hessian permits prediction\
+        \ of vibrational frequencies, with IR or Raman intensities. Solvent effects\
+        \ may be modeled by the discrete Effective Fragment potentials, or continuum\
+        \ models such as the Polarizable Continuum Model. Numerous relativistic computations\
+        \ are available, including infinite order two component scalar relativity\
+        \ corrections, with various spin-orbit coupling options. The Fragment Molecular\
+        \ Orbital method permits use of many of these sophisticated treatments to\
+        \ be used on very large systems, by dividing the computation into small fragments.\
+        \ Nuclear wavefunctions can also be computed, in VSCF, or with explicit treatment\
+        \ of nuclear orbitals by the NEO code.\" - http://www.msg.ameslab.gov/gamess/capabilities.html</dc:description>\n\
+        <dc:date>2015-10-21T22:51:28Z</dc:date>\n<dc:date>2015-10-21T22:51:28Z</dc:date>\n\
+        <dc:type>DFT</dc:type>\n<dc:identifier>http://hdl.handle.net/11256/478</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation>20141205</dc:relation>\n<dc:relation>\"\
+        General Atomic and Molecular Electronic Structure System\" M.W.Schmidt, K.K.Baldridge,\
+        \ J.A.Boatz, S.T.Elbert, M.S.Gordon, J.H.Jensen, S.Koseki, N.Matsunaga, K.A.Nguyen,\
+        \ S.Su, T.L.Windus, M.Dupuis, J.A.Montgomery J. Comput. Chem., 14, 1347-1363(1993).</dc:relation>\n\
+        <dc:relation>\"Advances in electronic structure theory: GAMESS a decade later\"\
+        \ M.S.Gordon, M.W.Schmidt pp. 1167-1189, in \"Theory and Applications of Computational\
+        \ Chemistry: the first forty years\" C.E.Dykstra, G.Frenking, K.S.Kim, G.E.Scuseria\
+        \ (editors), Elsevier, Amsterdam, 2005.</dc:relation>\n<dc:rights>None stated</dc:rights>\n\
+        <dc:publisher>Gordon Research Group Ames Laboratory/Iowa State University</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/479</identifier><datestamp>2015-10-22T17:58:19Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>GAMESS-UK</dc:title>\n\
+        <dc:subject>materials science</dc:subject>\n<dc:description>http://www.cfs.dl.ac.uk/docs/index.shtml</dc:description>\n\
+        <dc:description>\"GAMESS-UK is the general purpose ab initio molecular electronic\
+        \ structure program for performing SCF-, DFT- and MCSCF-gradient calculations,\
+        \ together with a variety of techniques for post Hartree Fock calculations.\
+        \ More information on the features and capabilities of the code can be found\
+        \ on the features page or by clicking on the relevant links on the navigation\
+        \ bar to the left.\" - http://www.cfs.dl.ac.uk/</dc:description>\n<dc:date>2015-10-21T22:51:28Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:28Z</dc:date>\n<dc:type>DFT</dc:type>\n<dc:type>Hartree\
+        \ Fock Method</dc:type>\n<dc:identifier>http://hdl.handle.net/11256/479</dc:identifier>\n\
+        <dc:language>Eng</dc:language>\n<dc:relation>7</dc:relation>\n<dc:rights>Copyright\
+        \ CFS</dc:rights>\n<dc:publisher>CFS Ltd.</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/480</identifier><datestamp>2015-10-22T17:57:09Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Gaussian</dc:title>\n\
+        <dc:subject>quantum mechanics</dc:subject>\n<dc:subject>materials science</dc:subject>\n\
+        <dc:description>http://www.gaussian.com/g_tech/g09ur.htm</dc:description>\n\
+        <dc:description>\"Gaussian 09 is the latest version of the Gaussian\xAE series\
+        \ of electronic structure programs, used by chemists, chemical engineers,\
+        \ biochemists, physicists and other scientists worldwide. Starting from the\
+        \ fundamental laws of quantum mechanics, Gaussian 09 predicts the energies,\
+        \ molecular structures, vibrational frequencies and molecular properties of\
+        \ molecules and reactions in a wide variety of chemical environments. Gaussian\
+        \ 09\u2019s models can be applied to both stable species and compounds which\
+        \ are difficult or impossible to observe experimentally (e.g., short-lived\
+        \ intermediates and transition structures).\" - http://www.gaussian.com/g_prod/g09b.htm</dc:description>\n\
+        <dc:date>2015-10-21T22:51:28Z</dc:date>\n<dc:date>2015-10-21T22:51:28Z</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/11256/480</dc:identifier>\n<dc:language>Eng</dc:language>\n\
+        <dc:relation>9</dc:relation>\n<dc:rights>Copyright Gaussian Inc.</dc:rights>\n\
+        <dc:publisher>Gaussian Inc.</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/481</identifier><datestamp>2015-10-22T17:56:31Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>OOF: Finite\
+        \ Element Analysis of Microstructures</dc:title>\n<dc:subject>Finite element\
+        \ modeling</dc:subject>\n<dc:subject>materials science</dc:subject>\n<dc:description>http://www.ctcms.nist.gov/~langer/oof2man/</dc:description>\n\
+        <dc:description>OOF is designed to help materials scientists calculate macroscopic\
+        \ properties from images of real or simulated microstructures. It reads an\
+        \ image, assigns material properties to features in the image, and conducts\
+        \ virtual experiments to determine the macroscopic properties of the microstructure.</dc:description>\n\
+        <dc:date>2015-10-21T22:51:28Z</dc:date>\n<dc:date>2015-10-21T22:51:28Z</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/11256/481</dc:identifier>\n<dc:language>English</dc:language>\n\
+        <dc:relation>2.1.9</dc:relation>\n<dc:rights>In public domain</dc:rights>\n\
+        <dc:publisher>NIST</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/482</identifier><datestamp>2015-10-22T17:55:42Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>FiPy: A Finite\
+        \ Volume PDE Solver Using Python</dc:title>\n<dc:subject>PDE</dc:subject>\n\
+        <dc:subject>Finite Volume</dc:subject>\n<dc:subject>Python</dc:subject>\n\
+        <dc:subject>materials science</dc:subject>\n<dc:description>http://www.ctcms.nist.gov/fipy/index.html</dc:description>\n\
+        <dc:description>The FiPy framework includes terms for transient diffusion,\
+        \ convection and standard sources, enabling the solution of arbitrary combinations\
+        \ of coupled elliptic, hyperbolic and parabolic PDEs. Currently implemented\
+        \ models include phase field treatments of polycrystalline, dendritic, and\
+        \ electrochemical phase transformations, as well as drug eluting stents, reactive\
+        \ wetting, photovoltaics and a level set treatment of the electrodeposition\
+        \ process.</dc:description>\n<dc:date>2015-10-21T22:51:28Z</dc:date>\n<dc:date>2015-10-21T22:51:28Z</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/11256/482</dc:identifier>\n<dc:language>English</dc:language>\n\
+        <dc:relation>3.1</dc:relation>\n<dc:rights>Public Domain</dc:rights>\n<dc:publisher>NIST</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/483</identifier><datestamp>2015-10-22T17:59:18Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>ABAQUS</dc:title>\n\
+        <dc:contributor />\n<dc:subject>materials science</dc:subject>\n<dc:description>http://www.3ds.com/support/documentation/users-guide/</dc:description>\n\
+        <dc:description>ABAQUS sold as part of the SIMULIA package. SIMULIA delivers\
+        \ a scalable suite of unified analysis products that allow all users, regardless\
+        \ of their simulation expertise or domain focus, to collaborate and seamlessly\
+        \ share simulation data and approved methods without loss of information fidelity.The\
+        \ Abaqus Unified FEA product suite offers powerful and complete solutions\
+        \ for both routine and sophisticated engineering problems covering a vast\
+        \ spectrum of industrial applications. In the automotive industry engineering\
+        \ work groups are able to consider full vehicle loads, dynamic vibration,\
+        \ multibody systems, impact/crash, nonlinear static, thermal coupling, and\
+        \ acoustic-structural coupling using a common model data structure and integrated\
+        \ solver technology. Best-in-class companies are taking advantage of Abaqus\
+        \ Unified FEA to consolidate their processes and tools, reduce costs and inefficiencies,\
+        \ and gain a competitive advantage.</dc:description>\n<dc:date>2015-10-21T22:51:28Z</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/11256/483</dc:identifier>\n<dc:language>English</dc:language>\n\
+        <dc:language>Multiple</dc:language>\n<dc:relation>Abaqus 6.13-AP</dc:relation>\n\
+        <dc:rights>Dassault Systems; http://www.3ds.com/legal-information/</dc:rights>\n\
+        <dc:publisher>Dassault Systemes</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/484</identifier><datestamp>2015-10-22T18:00:05Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>ANSYS</dc:title>\n\
+        <dc:subject>materials science</dc:subject>\n<dc:description>http://ansys.com/Resource+Library</dc:description>\n\
+        <dc:description>Finite element analysis software for structural physics that\
+        \ can simulate static, dynamic and heat transfer \_problems. ANSYS now markets\
+        \ a variety of software programs that serve simulation and modeling needs.\_\
+        </dc:description>\n<dc:date>2015-10-21T22:51:28Z</dc:date>\n<dc:date>2015-10-21T22:51:28Z</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/11256/484</dc:identifier>\n<dc:language>English</dc:language>\n\
+        <dc:rights>ANSYS, Inc.</dc:rights>\n<dc:publisher>ANSYS, Inc.</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/485</identifier><datestamp>2015-10-22T17:49:28Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>LAMMPS Molecular\
+        \ Dynamics Simulator</dc:title>\n<dc:subject>materials science</dc:subject>\n\
+        <dc:description>http://lammps.sandia.gov/manual.html</dc:description>\n<dc:description>LAMMPS\
+        \ is a classical molecular dynamics code, and an acronym for Large-scale Atomic/Molecular\
+        \ Massively Parallel Simulator. LAMMPS has potentials for solid-state materials\
+        \ (metals, semiconductors) and soft matter (biomolecules, polymers) and coarse-grained\
+        \ or mesoscopic systems. It can be used to model atoms or, more generically,\
+        \ as a parallel particle simulator at the atomic, meso, or continuum scale.\
+        \ LAMMPS runs on single processors or in parallel using message-passing techniques\
+        \ and a spatial-decomposition of the simulation domain. The code is designed\
+        \ to be easy to modify or extend with new functionality.</dc:description>\n\
+        <dc:date>2015-10-21T22:51:29Z</dc:date>\n<dc:date>2015-10-21T22:51:29Z</dc:date>\n\
+        <dc:type>molecular dynamics</dc:type>\n<dc:identifier>http://hdl.handle.net/11256/485</dc:identifier>\n\
+        <dc:language>English</dc:language>\n<dc:rights>Public Domain</dc:rights>\n\
+        <dc:publisher>Sandia National Labs: Department of Energy</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/486</identifier><datestamp>2015-10-22T17:52:19Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Visco Plastic\
+        \ Self-Consistent (VPSC)</dc:title>\n<dc:subject>materials science</dc:subject>\n\
+        <dc:description>No documentation</dc:description>\n<dc:description>The Visco-Plastic\
+        \ Self-Consistent code computes stress-strain data for various loading conditions\
+        \ for polycrystalline samples with specified slip behavior and orientations.\
+        \  Individual grains are treated as being immersed in a medium with the average\
+        \ properties of the sample as a whole.</dc:description>\n<dc:date>2015-10-21T22:51:29Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:29Z</dc:date>\n<dc:identifier>http://hdl.handle.net/11256/486</dc:identifier>\n\
+        <dc:language>English</dc:language>\n<dc:rights>Public\_Domain</dc:rights>\n\
+        <dc:publisher>R.A. Lebensohn, LANL</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/487</identifier><datestamp>2015-10-22T17:52:51Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>iPython</dc:title>\n\
+        <dc:subject />\n<dc:description>IPython is a notebook-based interface to interactive\
+        \ computing, including powerful shells, a browser-based notebook interface\
+        \ with  support for code, rich text, mathematical expressions, inline plots,\
+        \ and other rich media, support for interactive data visualization, flexible,\
+        \ embeddable interpreters, and easy-to-use, high-performance tools for parallel\
+        \ computing. Focused on Python, the architecture is designed to be language-agnostic,\
+        \ to facilitate interactive computing in any language.</dc:description>\n\
+        <dc:date>2015-10-21T22:51:29Z</dc:date>\n<dc:date>2015-10-21T22:51:29Z</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/11256/487</dc:identifier>\n</oai_dc:dc>\n\
+        </metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/488</identifier><datestamp>2015-10-22T17:53:43Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>SciPy</dc:title>\n\
+        <dc:subject />\n<dc:description>SciPy is a Python-based ecosystem of open-source\
+        \ software for  mathematics, science, and engineering.  Core packages include\
+        \ NumPy for arrays, the SciPy core scientific libraries, the MatPlotLib 2D\
+        \ visualization tool, the iPython interactive console, SymPy for symbolic\
+        \ mathematics, and the Pandas library for data structures and analysis.</dc:description>\n\
+        <dc:date>2015-10-21T22:51:29Z</dc:date>\n<dc:date>2015-10-21T22:51:29Z</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/11256/488</dc:identifier>\n</oai_dc:dc>\n\
+        </metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/489</identifier><datestamp>2015-10-22T17:50:29Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>DMol</dc:title>\n\
+        <dc:subject>materials science</dc:subject>\n<dc:description>DMol3 is a modeling\
+        \ program, and comes as part of Simulia's Materials Studio, that uses density\
+        \ functional theory (DFT) to simulate chemical processes and predict properties\
+        \ of materials both rapidly and accurately. Because DMol3 can predict processes\
+        \ in gas phase, solution, and solid environments, it is broadly applicable\
+        \ to research problems in chemistry, pharmaceuticals, materials science, and\
+        \ chemical engineering, as well as solid state physics. Researchers can use\
+        \ the program to investigate the nature and origin of the chemical, electronic,\
+        \ and structural properties of a system without the need for any experimental\
+        \ input. Use DMol3 to perform virtual experiments, leading to tremendous savings\
+        \ in costly experiments and shorter developmental cycles. [Better description\
+        \ available:\_http://www.ifm.liu.se/compchem/msi/doc/life/insight2K/dmol/1_Intro.html]\_\
+        </dc:description>\n<dc:date>2015-10-21T22:51:29Z</dc:date>\n<dc:date>2015-10-21T22:51:29Z</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/11256/489</dc:identifier>\n<dc:language>English</dc:language>\n\
+        <dc:relation>7</dc:relation>\n<dc:rights>Copyright Accelrys Software Inc.</dc:rights>\n\
+        <dc:publisher>Accelrys Software Inc.</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/490</identifier><datestamp>2015-10-22T17:51:07Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>ATK</dc:title>\n\
+        <dc:subject>materials science</dc:subject>\n<dc:description>http://quantumwise.com/manuals</dc:description>\n\
+        <dc:description>Atomistix ToolKit (ATK) is a software package that offers\
+        \ unique capabilities for simulating nanostructures on the atomic scale. Users\
+        \ can work with either the Virtual NanoLab GUI or using Python scripts.\_\
+        </dc:description>\n<dc:date>2015-10-21T22:51:29Z</dc:date>\n<dc:date>2015-10-21T22:51:29Z</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/11256/490</dc:identifier>\n<dc:language>English</dc:language>\n\
+        <dc:language>Multiple</dc:language>\n<dc:relation>13.8.1</dc:relation>\n<dc:rights>QuantumWise\
+        \ A/S</dc:rights>\n<dc:publisher>Quantum Wise</dc:publisher>\n</oai_dc:dc>\n\
+        </metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/491</identifier><datestamp>2015-10-22T17:46:25Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Vienna Ab-Initio\
+        \ Simulation Package (VASP)</dc:title>\n<dc:subject>materials science</dc:subject>\n\
+        <dc:description>http://www.vasp.at/index.php/documentation;\_http://cms.mpi.univie.ac.at/vasp-workshop/slides/documentation.htm</dc:description>\n\
+        <dc:description>The Vienna Ab initio Simulation Package (VASP) is a computer\
+        \ program for atomic scale materials modelling, e.g. electronic structure\
+        \ calculations and quantum-mechanical molecular dynamics, from first principles.\
+        \ VASP computes an approximate solution to the many-body Schr\xF6dinger equation,\
+        \ either within density functional theory (DFT), solving the Kohn-Sham equations,\
+        \ or within the Hartree-Fock (HF) approximation, solving the Roothaan equations.\
+        \ Hybrid functionals that mix the Hartree-Fock approach with density functional\
+        \ theory are implemented as well. Furthermore, Green's functions methods (GW\
+        \ quasiparticles, and ACFDT-RPA) and many-body perturbation theory (2nd-order\
+        \ M\xF8ller-Plesset) are available in VASP.\_ In VASP, central quantities,\
+        \ like the one-electron orbitals, the electronic charge density, and the local\
+        \ potential are expressed in plane wave basis sets. The interactions between\
+        \ the electrons and ions are described using norm-conserving or ultrasoft\
+        \ pseudopotentials, or the projector-augmented-wave method.\_To determine\
+        \ the electronic groundstate, VASP makes use of efficient iterative matrix\
+        \ diagonalisation techniques, like the residual minimisation method with direct\
+        \ inversion of the iterative subspace (RMM-DIIS) or blocked Davidson algorithms.\
+        \ These are coupled to highly efficient Broyden and Pulay density mixing schemes\
+        \ to speed up the self-consistency cycle.</dc:description>\n<dc:date>2015-10-21T22:51:29Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:29Z</dc:date>\n<dc:identifier>http://hdl.handle.net/11256/491</dc:identifier>\n\
+        <dc:language>English</dc:language>\n<dc:relation>5.X</dc:relation>\n<dc:rights>University\
+        \ of Vienna, Austria</dc:rights>\n<dc:publisher>University of Vienna</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/492</identifier><datestamp>2015-10-22T17:53:18Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Thermo-Calc</dc:title>\n\
+        <dc:subject>materials science</dc:subject>\n<dc:description>http://www.thermocalc.com/support/documentation/</dc:description>\n\
+        <dc:description>Thermo-Calc Software performs thermodynamic calculations including:\
+        \ stable and meta-stable heterogeneous phase equilibria, amounts of phases\
+        \ and their compositions, thermochemical data such as enthalpies, heat capacity\
+        \ and activities, transformation temperatures, driving force for phase transformations,\
+        \ phase diagrams (binary, ternary and multi-component), solidification applying\
+        \ the Scheil-Gulliver model and thermodynamic properties of chemical reactions.</dc:description>\n\
+        <dc:date>2015-10-21T22:51:29Z</dc:date>\n<dc:date>2015-10-21T22:51:29Z</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/11256/492</dc:identifier>\n<dc:language>English</dc:language>\n\
+        <dc:relation>3.1</dc:relation>\n<dc:rights>Thermo-Calc Software Inc.</dc:rights>\n\
+        <dc:publisher>Thermo-Calc Software, Inc.</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/493</identifier><datestamp>2015-10-22T17:38:16Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>MTEX: A MATLAB\
+        \ Toolbox for Quantitative Texture Analysis</dc:title>\n<dc:subject>texture</dc:subject>\n\
+        <dc:subject>MATLAB</dc:subject>\n<dc:subject>polefigure</dc:subject>\n<dc:subject>odf</dc:subject>\n\
+        <dc:subject>diffraction</dc:subject>\n<dc:subject>ebsd</dc:subject>\n<dc:subject>software</dc:subject>\n\
+        <dc:subject>orientation</dc:subject>\n<dc:subject>crystal</dc:subject>\n<dc:subject>materials\
+        \ science</dc:subject>\n<dc:description>https://code.google.com/p/mtex/</dc:description>\n\
+        <dc:description>MTEX is a MATLAB toolbox that allows to solve a wide range\
+        \ of problems in quantitative texture analysis. This includes: crystal geometry,\
+        \ ODF modeling, textrue calculations, pole figure diffraction data, pole fiture\
+        \ to ODF inversion, EBSD data, grain detection, orientation density estimation\
+        \ from EBSD data, material tensors, and elasticity tensors. In addition it\
+        \ features tools to create publication ready plots, process multiple data\
+        \ sets and an exhaustive documentation list.</dc:description>\n<dc:date>2015-10-21T22:51:30Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:30Z</dc:date>\n<dc:identifier>http://hdl.handle.net/11256/493</dc:identifier>\n\
+        <dc:language>English</dc:language>\n<dc:relation>4.0.alpha1</dc:relation>\n\
+        <dc:publisher>Technische Universitat Chemnitz</dc:publisher>\n</oai_dc:dc>\n\
+        </metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/494</identifier><datestamp>2015-10-22T17:32:49Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>SIESTA</dc:title>\n\
+        <dc:subject>materials science</dc:subject>\n<dc:description>http://departments.icmab.es/leem/siesta/Documentation/index.html</dc:description>\n\
+        <dc:description>\_One DFT code that can handle (at least) principally thousands\
+        \ of atoms. Basis functions are atomic orbitals. /\_SIESTA is both a method\
+        \ and its computer program implementation, to perform efficient electronic\
+        \ structure calculations and ab initio molecular dynamics simulations of molecules\
+        \ and solids. SIESTA's efficiency stems from the use of strictly localized\
+        \ basis sets and from the implementation of linear-scaling algorithms which\
+        \ can be applied to suitable systems. A very important feature of the code\
+        \ is that its accuracy and cost can be tuned in a wide range, from quick exploratory\
+        \ calculations to highly accurate simulations matching the quality of other\
+        \ approaches, such as plane-wave and all-electron methods. The possibility\
+        \ of treating large systems with some first-principles electronic-structure\
+        \ methods has opened up new opportunities in many disciplines. The SIESTA\
+        \ program is distributed freely to academics and has become quite popular,\
+        \ being increasingly used by researchers in geosciences, biology, and engineering\
+        \ (apart from those in its natural habitat of materials physics and chemistry).\
+        \ Currently there are several thousand users all over the world, and the paper\
+        \ describing the method (J. Phys. Cond. Matt. 14, 2745 (2002)) has had more\
+        \ than 4000 citations.</dc:description>\n<dc:date>2015-10-21T22:51:30Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:30Z</dc:date>\n<dc:identifier>http://hdl.handle.net/11256/494</dc:identifier>\n\
+        <dc:language>English</dc:language>\n<dc:relation>3.2</dc:relation>\n<dc:publisher>ICMAB\
+        \ (Insitut de ciencia de Materiales)</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/495</identifier><datestamp>2015-10-22T17:45:15Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Poseidon</dc:title>\n\
+        <dc:subject>materials science</dc:subject>\n<dc:description>A concurrent multi-scale\
+        \ simulation program using molecular dynamic simulation and density functional\
+        \ theory calculation. Research version is available to CAVS (Mississippi State\
+        \ University) researchers only.</dc:description>\n<dc:date>2015-10-21T22:51:30Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:30Z</dc:date>\n<dc:identifier>http://hdl.handle.net/11256/495</dc:identifier>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/496</identifier><datestamp>2015-10-22T17:40:35Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Atomistic Stress\
+        \ Simulator (WARP)</dc:title>\n<dc:subject>materials science</dc:subject>\n\
+        <dc:description>https://icme.hpc.msstate.edu/mediawiki/images/d/d6/WARP-Overwiev.pdf</dc:description>\n\
+        <dc:description>https://icme.hpc.msstate.edu/mediawiki/index.php/Code:_WARP</dc:description>\n\
+        <dc:description>WARP is a parallel molecular dynamics simulation code for\
+        \ modeling stress and strain in materials using embedded atom method (EAM)\
+        \ and Lennard-Jones (LJ) potentials. It is written in F90 and performs message-passing\
+        \ via MPI calls. This code is copyrighted property of Sandia National Laboratories.\
+        \ Please contact the author(s) for a copy of the source code or further information.</dc:description>\n\
+        <dc:date>2015-10-21T22:51:30Z</dc:date>\n<dc:date>2015-10-21T22:51:30Z</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/11256/496</dc:identifier>\n<dc:language>English</dc:language>\n\
+        <dc:rights>Copyright Sandia National Labs</dc:rights>\n<dc:publisher>Sandia\
+        \ National Laboratory</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/497</identifier><datestamp>2015-10-22T17:35:54Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>CALCULIX</dc:title>\n\
+        <dc:subject>materials science</dc:subject>\n<dc:description>http://www.dhondt.de/</dc:description>\n\
+        <dc:description>CalculiX is a free finite element analysis software. \"With\
+        \ CalculiX Finite Element Models can be build, calculated and post-processed.\
+        \ The pre- and post-processor is an interactive 3D-tool using the openGL API.\
+        \ The solver is able to do linear and non-linear calculations. Static, dynamic\
+        \ and thermal solutions are available. Both programs can be used independently.\
+        \ Because the solver makes use of the abaqus input format it is possible to\
+        \ use commercial pre-processors as well. In turn the pre-processor is able\
+        \ to write mesh related data for nastran, abaqus, ansys, code-aster and for\
+        \ the free-cfd codes dolfyn, duns, ISAAC and OpenFOAM. A simple step reader\
+        \ is included. In addition external CAD interfaces like vda_to_fbd are available.\
+        \ The program is designed to run on Unix platforms like Linux and Irix computers\
+        \ but also on MS-Windows.\"</dc:description>\n<dc:date>2015-10-21T22:51:30Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:30Z</dc:date>\n<dc:type>FEM (Finite Element Model)</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/11256/497</dc:identifier>\n<dc:language>English</dc:language>\n\
+        <dc:relation>2.7</dc:relation>\n<dc:rights>Copyright (C) 1998 Guido Dhondt\
+        \ and Klaus Wittig</dc:rights>\n<dc:publisher>Guido Dhondt, Klaus Wittig</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/498</identifier><datestamp>2015-10-22T17:43:08Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>COMSOL</dc:title>\n\
+        <dc:subject>materials science</dc:subject>\n<dc:description>http://www.comsol.com/support</dc:description>\n\
+        <dc:description>The COMSOL Multiphysics simulation software environment facilitates\
+        \ all steps in the modeling process \u2212 defining your geometry, meshing,\
+        \ specifying your physics, solving, and then visualizing your results.</dc:description>\n\
+        <dc:date>2015-10-21T22:51:30Z</dc:date>\n<dc:date>2015-10-21T22:51:30Z</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/11256/498</dc:identifier>\n<dc:language>English</dc:language>\n\
+        <dc:relation>4.4</dc:relation>\n<dc:rights>\xA9 2014 by COMSOL Inc</dc:rights>\n\
+        <dc:publisher>COMSOL Inc</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/499</identifier><datestamp>2015-10-22T17:30:04Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>MSU ISV Plasticity-Damage\
+        \ Model</dc:title>\n<dc:subject>materials science</dc:subject>\n<dc:description>https://icme.hpc.msstate.edu/viewvc/CMD%20Codes%20Repository/DMG/trunk/doc/MSU.CAVS.CMD.2009-R0010.pdf</dc:description>\n\
+        <dc:description>\"The Mississippi State University Internal State Variable\
+        \ (ISV) plasticity-damage model (DMG) production version 1.0 is being released\
+        \ along with its model calibration tool (DMGfit). The model equations and\
+        \ material model fits are explained in CAVS Technical Report (https://icme.hpc.msstate.edu/viewvc/CMD%20Codes%20Repository/DMG/trunk/doc/MSU.CAVS.CMD.2009-R0010.pdf).\
+        \ This model is based upon Bammann, DJ, Chiesa, ML, Horstemeyer, MF, Weingarten,\
+        \ LI, \"Failure in Ductile Materials Using Finite Element Methods,\" Structural\
+        \ Crashworthiness and Failure, eds. Wierzbicki and Jones, Elsevier Applied\
+        \ Science, The Universities Press (Belfast) Ltd, 1993 and Horstemeyer, MF,\
+        \ Lathrop, J, Gokhale, AM, and Dighe, M, \"Modeling Stress State Dependent\
+        \ Damage Evolution in a Cast Al-Si-Mg Aluminum Alloy,\" Theoretical and Applied\
+        \ Mech., Vol. 33, pp. 31-47, 2000. This model will predict the plasticity\
+        \ and failure in a metal alloy. It can be initialized to have different heterogeneous\
+        \ microstructures within the finite element mesh. The DMG model is implemented\
+        \ as an ABAQUS user material (UMAT and VUMAT) subroutines for production run\
+        \ finite element simulations. For consistency, the same UMAT is utilized for\
+        \ model calibration (determining the material constants) by the DMGfit tool.\
+        \ The calibrated model constants can be directly merged by DMGfit into the\
+        \ \"USER MATERIAL, CONSTANTS\" section an existing ABAQUS input deck. The\
+        \ DMG model in the UMAT and VUMAT codes as well as a stand-alone DMGfit tool\
+        \ are available from the CAVS Code Repository: https://icme.hpc.msstate.edu/mediawiki/index.php/Code:_DMG\
+        \ . A user guide for the DMGfit tool based on the updated DMG model (55p-v1p1)\
+        \ may be found here: https://icme.hpc.msstate.edu/mediawiki/index.php/DMGfit_55p_v1p1\
+        \ .\"</dc:description>\n<dc:date>2015-10-21T22:51:30Z</dc:date>\n<dc:date>2015-10-21T22:51:30Z</dc:date>\n\
+        <dc:identifier>http://hdl.handle.net/11256/499</dc:identifier>\n<dc:language>English</dc:language>\n\
+        <dc:relation>1</dc:relation>\n<dc:publisher>The Mississippi State University</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/500</identifier><datestamp>2015-10-22T17:44:19Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>DYNAMO</dc:title>\n\
+        <dc:subject>materials science</dc:subject>\n<dc:description>DYNAMO is commonly\
+        \ used for MEAM (modified embedded atom method) interatomic potential generation.\
+        \ Alternative to LAMMPS.</dc:description>\n<dc:date>2015-10-21T22:51:30Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:30Z</dc:date>\n<dc:type>molecular dynamics</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/11256/500</dc:identifier>\n<dc:language>English</dc:language>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/501</identifier><datestamp>2015-10-22T17:27:20Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Dislostructures</dc:title>\n\
+        <dc:subject>materials science</dc:subject>\n<dc:description>Dislocation.f90\
+        \ is a short program that generates edge/screw dislocations in different different\
+        \ crystal structures, FCC, HCP and BCC. The dislocations can be introduced\
+        \ in the form of a periodic array or a single infinite dislocation in a cylinder.\
+        \ Available to CAVS reasearchers only.</dc:description>\n<dc:date>2015-10-21T22:51:31Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:31Z</dc:date>\n<dc:identifier>http://hdl.handle.net/11256/501</dc:identifier>\n\
+        <dc:language>English</dc:language>\n<dc:relation>1</dc:relation>\n<dc:publisher>The\
+        \ Mississippi State University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/502</identifier><datestamp>2015-10-22T17:26:49Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Elmer</dc:title>\n\
+        <dc:subject>materials science</dc:subject>\n<dc:description>http://www.csc.fi/english/pages/elmer/documentation</dc:description>\n\
+        <dc:description>Elmer is an open source multi-physics FEA code capable of\
+        \ complex coupled simulations. There are several examples including fluid-structure\
+        \ interactions, magnetic induction, Soret thermal-induced diffusion, thermal\
+        \ buoyancy flows, etc. Elmer's FORTRAN 90 solvers scale to thousands of cores.\
+        \ Its code is compact and not hard to edit and extend. Its new GUI has been\
+        \ in development for a couple of years, it is written in C++ using the Qt\
+        \ widget set and XML interface definitions for each physics module.</dc:description>\n\
+        <dc:date>2015-10-21T22:51:31Z</dc:date>\n<dc:date>2015-10-21T22:51:31Z</dc:date>\n\
+        <dc:type>FEM</dc:type>\n<dc:identifier>None</dc:identifier>\n<dc:identifier>http://hdl.handle.net/11256/502</dc:identifier>\n\
+        <dc:language>English</dc:language>\n<dc:language>Finish</dc:language>\n<dc:relation>7</dc:relation>\n\
+        <dc:publisher>CSC - IT Center for Science</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/503</identifier><datestamp>2015-10-22T17:28:05Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>General Stacking\
+        \ Fault (GSF)</dc:title>\n<dc:subject>materials science</dc:subject>\n<dc:description>Scripts\
+        \ to calculate General Stacking Fault curves for different crystal structures.\
+        \ Research version is only available to CAVS researchers.</dc:description>\n\
+        <dc:date>2015-10-21T22:51:31Z</dc:date>\n<dc:date>2015-10-21T22:51:31Z</dc:date>\n\
+        <dc:identifier>None</dc:identifier>\n<dc:identifier>http://hdl.handle.net/11256/503</dc:identifier>\n\
+        <dc:language>English</dc:language>\n<dc:relation>1</dc:relation>\n<dc:publisher>The\
+        \ Mississippi State University</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/504</identifier><datestamp>2015-10-22T17:26:06Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>HYPERMESH</dc:title>\n\
+        <dc:subject>materials science</dc:subject>\n<dc:description>Altair HyperMesh\
+        \ is a high-performance finite element pre-processor to prepare even the largest\
+        \ models, starting from import of CAD geometry to exporting an analysis run\
+        \ for various disciplines. HyperMesh enables engineers to receive high quality\
+        \ meshes with maximum accuracy in the shortest time possible. A complete set\
+        \ of geometry editing tools helps to efficiently prepare CAD models for the\
+        \ meshing process. Meshing algorithms for shell and solid elements provide\
+        \ full level of control, or can be used in automatic mode. Altair\u2019s BatchMeshing\
+        \ technology meshes hundreds of files precisely in the background to match\
+        \ user-defined standards. HyperMesh offers the biggest variety of solid meshing\
+        \ capabilities in the market, including domain specific methods such as SPH,\
+        \ NVH or CFD meshing. A long list of CAD formats ensures a high level of CAD\
+        \ interoperability. Altair\u2019s connector technology automatically assembles\
+        \ individual parts with their Finite Element representation. HyperMesh is\
+        \ entirely customizable. A extensive API library can be used to automate repeating\
+        \ tasks or do complicated math operations for model generation.</dc:description>\n\
+        <dc:date>2015-10-21T22:51:31Z</dc:date>\n<dc:date>2015-10-21T22:51:31Z</dc:date>\n\
+        <dc:identifier>None</dc:identifier>\n<dc:identifier>http://hdl.handle.net/11256/504</dc:identifier>\n\
+        <dc:language>English</dc:language>\n<dc:relation>12</dc:relation>\n<dc:rights>2014\
+        \ Altair Engineering, Inc.</dc:rights>\n<dc:publisher>Altair Engineering,\
+        \ Inc.</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/505</identifier><datestamp>2015-10-22T17:18:45Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>LS-DYNA</dc:title>\n\
+        <dc:contributor />\n<dc:subject>materials science</dc:subject>\n<dc:description>http://www.lstc.com/support/resources</dc:description>\n\
+        <dc:description>LS-DYNA is a general-purpose finite element program capable\
+        \ of simulating complex real world problems. It is used by the automobile,\
+        \ aerospace, construction, military, manufacturing, and bioengineering industries.\
+        \ LS-DYNA is optimized for shared and distributed memory Unix, Linux, and\
+        \ Windows based, platforms, and it is fully QA'd by LSTC. The code's origins\
+        \ lie in highly nonlinear, transient dynamic finite element analysis using\
+        \ explicit time integration. LS-DYNA consists of a single executable file\
+        \ and is entirely command line driven. Therefore all that is required to run\
+        \ LS-DYNA is a command shell, the executable, an input file, and enough free\
+        \ disk space to run the calculation. All input files are in simple ASCII format\
+        \ and thus can be prepared using any text editor. Input files can also be\
+        \ prepared with the aid of a graphical preprocessor. There are many third\
+        \ party software products available for preprocessing LS-DYNA input files.\
+        \ LSTC also develops its own preprocessor, LS-PrePost, which is freely distributed\
+        \ and runs without a license. Licensees of LS-DYNA automatically have access\
+        \ to all of the program's capabilities, from simple linear static mechanical\
+        \ analysis up to advanced thermal and flow solving methods. Furthermore, they\
+        \ have full use of LS-OPT, a standalone design optimization and probabilistic\
+        \ analysis package with an interface to LS-DYNA.</dc:description>\n<dc:date>2015-10-21T22:51:31Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:31Z</dc:date>\n<dc:type>FEM</dc:type>\n<dc:identifier>None</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/11256/505</dc:identifier>\n<dc:language>English</dc:language>\n\
+        <dc:rights>2011 LSTC</dc:rights>\n<dc:publisher>LSTC</dc:publisher>\n</oai_dc:dc>\n\
+        </metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/506</identifier><datestamp>2015-10-22T17:19:25Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Multiphysics\
+        \ Object-Oriented Simulation Environment (MOOSE)</dc:title>\n<dc:contributor\
+        \ />\n<dc:subject>materials science</dc:subject>\n<dc:description>http://mooseframework.org/documentation/</dc:description>\n\
+        <dc:description>The Multiphysics Object-Oriented Simulation Environment (MOOSE)\
+        \ is a finite-element, multiphysics framework primarily developed by Idaho\
+        \ National Laboratory. It provides a high-level interface to some of the most\
+        \ sophisticated nonlinear solver technology on the planet. MOOSE presents\
+        \ a straightforward API that aligns well with the real-world problems scientists\
+        \ and engineers need to tackle. Every detail about how an engineer interacts\
+        \ with MOOSE has been thought through, from the installation process through\
+        \ running your simulation on state of the art supercomputers, the MOOSE system\
+        \ will accelerate your research.</dc:description>\n<dc:date>2015-10-21T22:51:31Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:31Z</dc:date>\n<dc:identifier>None</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/11256/506</dc:identifier>\n<dc:language>English</dc:language>\n\
+        <dc:rights>Idaho National Laboratory, \xA9 2010 Battelle Energy Alliance,\
+        \ LLC</dc:rights>\n<dc:publisher>Idaho National Laboratory</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/507</identifier><datestamp>2015-10-22T16:59:02Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>MSC Nastran</dc:title>\n\
+        <dc:contributor />\n<dc:subject>material science</dc:subject>\n<dc:description>MSC\
+        \ Nastran is a multidisciplinary structural analysis application used by engineers\
+        \ to perform static, dynamic, and thermal analysis across the linear and nonlinear\
+        \ domains, complemented with automated structural optimization and award winning\
+        \ embedded fatigue analysis technologies, all enabled by high performance\
+        \ computing. Engineers use MSC Nastran to ensure structural systems have the\
+        \ necessary strength, stiffness, and life to preclude failure (excess stresses,\
+        \ resonance, buckling, or detrimental deformations) that may compromise structural\
+        \ function and safety. MSC Nastran is also used to improve the economy and\
+        \ passenger comfort of structural designs. Manufacturers leverage MSC Nastran\u2019\
+        s unique multidisciplinary approach to structural analysis at various points\
+        \ in the product development process. MSC Nastran may be used to: Virtually\
+        \ prototype early in the design process, saving costs traditionally associated\
+        \ with physical prototyping. Remedy structural issues that may occur during\
+        \ a product\u2019s service, reducing downtime and costs. Optimize the performance\
+        \ of existing designs or develop unique product differentiators, leading to\
+        \ industry advantages over competitors. MSC Nastran is based on sophisticated\
+        \ numerical methods, the most prominent being the Finite Element Method. Nonlinear\
+        \ FE problems may be solved either with built-in implicit or explicit numerical\
+        \ techniques. A number of optimization algorithms are available, including\
+        \ MSCADS and IPOPT. The fatigue capability in MSC Nastran has been developed\
+        \ jointly by nCode International Ltd. and MSC Software.</dc:description>\n\
+        <dc:date>2015-10-21T22:51:31Z</dc:date>\n<dc:date>2015-10-21T22:51:31Z</dc:date>\n\
+        <dc:type>Analytical Software</dc:type>\n<dc:identifier>None</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/11256/507</dc:identifier>\n<dc:language>English</dc:language>\n\
+        <dc:rights>2014 MSC Software Corporation</dc:rights>\n<dc:publisher>MSC Software\
+        \ Corporation</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/508</identifier><datestamp>2015-10-22T17:21:07Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>PAM-CRASH</dc:title>\n\
+        <dc:contributor />\n<dc:subject>materials science</dc:subject>\n<dc:description>Pam-Crash\
+        \ is a software package from ESI Group used for crash simulation and the design\
+        \ of occupant safety systems, primarily in the automotive industry. The software\
+        \ enables automotive engineers to simulate the performance of a proposed vehicle\
+        \ design and evaluate the potential for injury to occupants in multiple crash\
+        \ scenarios. Seems to be superceeded by VSP (Virtual Performance Solution)</dc:description>\n\
+        <dc:date>2015-10-21T22:51:31Z</dc:date>\n<dc:date>2015-10-21T22:51:31Z</dc:date>\n\
+        <dc:type>FEM</dc:type>\n<dc:identifier>None</dc:identifier>\n<dc:identifier>http://hdl.handle.net/11256/508</dc:identifier>\n\
+        <dc:language>English</dc:language>\n<dc:rights>Copyright ESI Group</dc:rights>\n\
+        <dc:publisher>ESI Group</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/509</identifier><datestamp>2015-10-22T17:22:15Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Virtual Performance\
+        \ Solution</dc:title>\n<dc:contributor />\n<dc:subject>materials science</dc:subject>\n\
+        <dc:description>Virtual Performance Solution (VPS) is a global solution for\
+        \ Virtual Product Engineering, which has its origins in PAM-CRASH, and takes\
+        \ into account multiple domains. One of the top commercial products for crash\
+        \ simulations and other automotive engineering challenges.</dc:description>\n\
+        <dc:date>2015-10-21T22:51:31Z</dc:date>\n<dc:date>2015-10-21T22:51:31Z</dc:date>\n\
+        <dc:type>FEM</dc:type>\n<dc:identifier>None</dc:identifier>\n<dc:identifier>http://hdl.handle.net/11256/509</dc:identifier>\n\
+        <dc:language>English</dc:language>\n<dc:rights>Copyright ESI Group</dc:rights>\n\
+        <dc:publisher>ESI Group</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/510</identifier><datestamp>2015-10-22T17:24:51Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>SYSWELD</dc:title>\n\
+        <dc:subject>materials science</dc:subject>\n<dc:subject>Category</dc:subject>\n\
+        <dc:description>Explicit Finite Element Code used for Dynamic and Shock Problems.</dc:description>\n\
+        <dc:date>2015-10-21T22:51:31Z</dc:date>\n<dc:date>2015-10-21T22:51:31Z</dc:date>\n\
+        <dc:type>FEM</dc:type>\n<dc:identifier>None</dc:identifier>\n<dc:identifier>http://hdl.handle.net/11256/510</dc:identifier>\n\
+        <dc:language>English</dc:language>\n<dc:rights>ESI Group</dc:rights>\n<dc:publisher>ESI\
+        \ Group</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/511</identifier><datestamp>2015-10-22T16:45:31Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Virtual Welding\
+        \ and Assembly Suite</dc:title>\n<dc:contributor />\n<dc:subject>materials\
+        \ science</dc:subject>\n<dc:subject>Category</dc:subject>\n<dc:description>https://www.esi-group.com/support/resource-center?field_related_trade_tid=41</dc:description>\n\
+        <dc:description>With simulation-based weld quality and residual stress engineering,\
+        \ you can: Check if the weld will perform as well as the parent material and\
+        \ will not affect the ability of the parent material to perform as stated\
+        \ in its material specification; Choose the best possible material; Determine\
+        \ the best possible micro-structure after welding; Evaluate material exposure;\
+        \ Control residual stresses; Minimize tensile stresses to avoid buckling.</dc:description>\n\
+        <dc:date>2015-10-21T22:51:32Z</dc:date>\n<dc:date>2015-10-21T22:51:32Z</dc:date>\n\
+        <dc:type>FEM</dc:type>\n<dc:identifier>None</dc:identifier>\n<dc:identifier>http://hdl.handle.net/11256/511</dc:identifier>\n\
+        <dc:language>English</dc:language>\n<dc:rights>ESI Group</dc:rights>\n<dc:publisher>ESI\
+        \ Group</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/512</identifier><datestamp>2015-10-22T16:46:03Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Tahoe</dc:title>\n\
+        <dc:contributor />\n<dc:subject>materials science</dc:subject>\n<dc:subject>Category</dc:subject>\n\
+        <dc:description>http://tahoe.cvs.sourceforge.net/viewvc/tahoe/guide.user/</dc:description>\n\
+        <dc:description>http://tahoe.sourceforge.net/bb/</dc:description>\n<dc:description>http://tahoe.sourceforge.net/wiki/index.php/Main_Page</dc:description>\n\
+        <dc:description>Tahoe is a research-oriented platform for the development\
+        \ of numerical methods and material models. The goal of the work surrounding\
+        \ Tahoe is the simulation of stresses and deformations for situations that\
+        \ cannot be treated by standard continuum simulation techniques. These situations\
+        \ include material fracture or failure, interfacial adhesion and debonding,\
+        \ shear banding, length-scale dependent elasticity and plasticity, and deformation\
+        \ in small-scale structures. Aside from a collection of standard finite elements,\
+        \ Tahoe includes meshfree simulation capability and particle methods. Tahoe\
+        \ includes a number of \"cohesive\" approaches for modeling fracture. These\
+        \ include both surface and bulk constitutive models that incorporate cohesive\
+        \ behavior. Tahoe is capable of performing static and transient dynamic coupled-physics\
+        \ analysis in two and three dimensions. Many capabilities support parallel\
+        \ execution.</dc:description>\n<dc:date>2015-10-21T22:51:32Z</dc:date>\n<dc:date>2015-10-21T22:51:32Z</dc:date>\n\
+        <dc:identifier />\n<dc:identifier>http://hdl.handle.net/11256/512</dc:identifier>\n\
+        <dc:language>English</dc:language>\n<dc:relation>2.1</dc:relation>\n</oai_dc:dc>\n\
+        </metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/513</identifier><datestamp>2015-10-22T16:49:46Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Ternary</dc:title>\n\
+        <dc:contributor />\n<dc:subject>materials science</dc:subject>\n<dc:description>Ternary\
+        \ is a free energy visualization tool. Inspired by Craig Carter's Mathematica\
+        \ scripts for binary mixtures, it uses qhull to calculate the convex hull\
+        \ of the free energy curve, and visualizes the result including two-phase\
+        \ tie lines and three-phase triangles. For multiple phases, such as the situation\
+        \ to the right, visualizing their intersection is tricky, but the principle\
+        \ is the same: the convex hull gives the minimum energy surface. This consists\
+        \ of two libraries: libfreenergy and libgibbs, two example C-codes: ternary\
+        \ (output shown) and square, and a graphical user interface (GUI) called Ternary.\
+        \ The libfreenergy library computes free energies and their derivatives, and\
+        \ can be shared with phase field software, which uses free energies as a starting\
+        \ point. The RheoPlast project's ternary Cahn-Hilliard module uses libfreenergy\
+        \ to share free energy functions with Ternary. The libgibbs library includes\
+        \ the rest of the phase diagram isotherm calculation infrastructure.</dc:description>\n\
+        <dc:date>2015-10-21T22:51:32Z</dc:date>\n<dc:date>2015-10-21T22:51:32Z</dc:date>\n\
+        <dc:identifier>None</dc:identifier>\n<dc:identifier>http://hdl.handle.net/11256/513</dc:identifier>\n\
+        <dc:language>English</dc:language>\n<dc:relation>0.5</dc:relation>\n<dc:publisher>MATDL\
+        \ - Materials Digital Library Pathway</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/514</identifier><datestamp>2015-10-22T16:52:11Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>microMegas\
+        \ (mM)</dc:title>\n<dc:contributor />\n<dc:subject>materials science</dc:subject>\n\
+        <dc:description>http://zig.onera.fr/mm_home_page/doc/Article_mM_2011.pdf</dc:description>\n\
+        <dc:description>https://icme.hpc.msstate.edu/mediawiki/index.php/Code:_microMegas</dc:description>\n\
+        <dc:description>MicroMegas is a 3-D DDD (Discrete Dislocation Dynamics) simulation.\
+        \ MicroMegas (also known as 'mM') is an open source program for DD (Dislocation\
+        \ Dynamics) simulations originally developed at the 'Laboratoire d'Etude des\
+        \ Microstructures', CNRS-ONERA, France. mM is a free software under the terms\
+        \ of the GNU General Public License as published by the Free Software Foundation.\
+        \ Discrete dislocation dynamics (DDD) is a numerical tool used to model the\
+        \ plastic behavior of crystalline materials using the elastic theory of dislocations.\
+        \ DDD is the computational counterpart to in site TEM tests. MicroMegas is\
+        \ a legacy simulation code used to study the plasticity of mono-crystalline\
+        \ metals, based on the elasticity theory that models the dislocation interactions\
+        \ into an elastic continuum. In crystalline materials, plastic deformation\
+        \ may be explained by (i) twinning, (ii) martensic transformation or/and (iii)\
+        \ dislocation interactions.</dc:description>\n<dc:date>2015-10-21T22:51:32Z</dc:date>\n\
+        <dc:date>2015-10-21T22:51:32Z</dc:date>\n<dc:identifier>None</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/11256/514</dc:identifier>\n<dc:language>English</dc:language>\n\
+        <dc:relation>4.2</dc:relation>\n<dc:rights>Copyright (C) 1993, 1996, 2000,\
+        \ 2002, 2004, 2011 : B. Devincre, L. Kubin, M. Condat, C. Lemarchand, R. Madec,\
+        \ S. Groh, G. Monnet, J. Durinck, P. Carrez, C. de Sansal, M-G. Tagorti, S.\
+        \ Queyreau., S. Naamane, A. Roos, A. Vattre, R. Gatti, J. Amodeo, F. Feyel,\
+        \ G. Daveau</dc:rights>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:materialsdata.nist.gov:11256/515</identifier><datestamp>2015-10-22T16:52:58Z</datestamp><setSpec>com_11256_103</setSpec><setSpec>col_11256_104</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>CRYMPS: Crystal\
+        \ Material Point Simulator</dc:title>\n<dc:contributor />\n<dc:subject>materials\
+        \ science</dc:subject>\n<dc:date>2015-10-21T22:51:32Z</dc:date>\n<dc:date>2015-10-21T22:51:32Z</dc:date>\n\
+        <dc:identifier>None</dc:identifier>\n<dc:identifier>http://hdl.handle.net/11256/515</dc:identifier>\n\
+        <dc:language>English</dc:language>\n<dc:publisher>Mississippi State University</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record></ListRecords></OAI-PMH>"}
+    headers:
+      Connection: [Keep-Alive]
+      Content-Type: [application/xml;charset=UTF-8]
+      Date: ['Tue, 15 Dec 2015 19:35:19 GMT']
+      Keep-Alive: ['timeout=15, max=100']
+      Server: [Apache]
+      X-Frame-Options: [SAMEORIGIN]
+    status: {code: 200, message: OK}
+version: 1
