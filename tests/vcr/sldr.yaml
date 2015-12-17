@@ -1,0 +1,250 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/3.4.3 Linux/3.19.0-33-generic]
+    method: GET
+    uri: http://sldr.org/oai-pmh.php?verb=ListRecords&metadataPrefix=oai_dc&from=2015-12-15&until=2015-12-17
+  response:
+    body: {string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<OAI-PMH xmlns=\"\
+        http://www.openarchives.org/OAI/2.0/\"\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \n         xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/\n   \
+        \      http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\">\n<responseDate>2015-12-17T15:31:02Z</responseDate>\n\
+        <request verb=\"ListRecords\" metadataPrefix=\"oai_dc\" from=\"2015-12-15\"\
+        \ until=\"2015-12-17\">http://sldr.org/oai-pmh.php</request>\n<ListRecords>\n\
+        <record>\n<header>\n<identifier>oai:sldr.org:sldr000766</identifier>\n<datestamp>2015-12-15</datestamp>\n\
+        <setSpec>ortolang</setSpec>\n<setSpec>archive:long-term</setSpec>\n</header>\n\
+        <metadata>\n<oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dcterms=\"http://purl.org/dc/terms/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd http://purl.org/dc/elements/1.1/\
+        \ http://dublincore.org/schemas/xmls/qdc/2006/01/06/dc.xsd http://purl.org/dc/terms/\
+        \ http://dublincore.org/schemas/xmls/qdc/2006/01/06/dcterms.xsd\">\n<dc:title\
+        \ xml:lang=\"fr\">Chantelouve - corpus</dc:title>\n<dcterms:bibliographicCitation\
+        \ xml:lang=\"en\">Chantelouve - corpus (Albert Faure). Primary data (corpus).\
+        \ Laboratoire parole et langage - UMR 7309 (LPL, Aix-en-Provence FR), D\xE9\
+        partement de linguistique et phon\xE9tique g\xE9n\xE9rales, Universit\xE9\
+        \ d'Aix-Marseille (Aix-en-Provence FR). Created 2011-02-14. Speech and Language\
+        \ Data Repository (SLDR/ORTOLANG). Identifier hdl:11041/sldr000766 - Archived\
+        \ ark:/87895/1.4-184954</dcterms:bibliographicCitation>\n<dcterms:bibliographicCitation\
+        \ xml:lang=\"es\">Chantelouve - corpus (Albert Faure). Datos primarios (corpus).\
+        \ Laboratoire parole et langage - UMR 7309 (LPL, Aix-en-Provence FR), D\xE9\
+        partement de linguistique et phon\xE9tique g\xE9n\xE9rales, Universit\xE9\
+        \ d'Aix-Marseille (Aix-en-Provence FR). Creaci\xF3n 2011-02-14. Banco de datos\
+        \ de habla y lenguaje (SLDR/ORTOLANG). Identificador hdl:11041/sldr000766\
+        \ - Archived ark:/87895/1.4-184954</dcterms:bibliographicCitation>\n<dcterms:bibliographicCitation\
+        \ xml:lang=\"fr\">Chantelouve - corpus (Albert Faure). Donn\xE9es primaires\
+        \ (corpus). Laboratoire parole et langage - UMR 7309 (LPL, Aix-en-Provence\
+        \ FR), D\xE9partement de linguistique et phon\xE9tique g\xE9n\xE9rales, Universit\xE9\
+        \ d'Aix-Marseille (Aix-en-Provence FR). Cr\xE9ation 2011-02-14. Banque de\
+        \ donn\xE9es parole et langage (SLDR/ORTOLANG). Identifiant hdl:11041/sldr000766\
+        \ - Archived ark:/87895/1.4-184954</dcterms:bibliographicCitation>\n<dcterms:bibliographicCitation\
+        \ xml:lang=\"zh\">Chantelouve - corpus (Albert Faure). \u8BED\u97F3\u5E93\
+        . Laboratoire parole et langage - UMR 7309 (LPL, Aix-en-Provence FR), D\xE9\
+        partement de linguistique et phon\xE9tique g\xE9n\xE9rales, Universit\xE9\
+        \ d'Aix-Marseille (Aix-en-Provence FR). \u521B\u5EFA 2011-02-14. Speech and\
+        \ Language Data Repository (SLDR/ORTOLANG). \u6807\u8BC6\u7B26 hdl:11041/sldr000766\
+        \ - Archived ark:/87895/1.4-184954</dcterms:bibliographicCitation>\n<dc:publisher>Laboratoire\
+        \ parole et langage - UMR 7309 (LPL, Aix-en-Provence FR)</dc:publisher>\n\
+        <dc:publisher xsi:type=\"dcterms:URI\">http://lpl-aix.fr</dc:publisher>\n\
+        <dc:publisher>D\xE9partement de linguistique et phon\xE9tique g\xE9n\xE9rales,\
+        \ Universit\xE9 d'Aix-Marseille (Aix-en-Provence FR)</dc:publisher>\n<dc:publisher\
+        \ xsi:type=\"dcterms:URI\">http://gsite.univ-provence.fr/document.php?pagendx=5712&amp;amp;project=up</dc:publisher>\n\
+        <dc:contributor>Bois, Robert (speaker)</dc:contributor>\n<dc:contributor>Faure,\
+        \ Albert (speaker)</dc:contributor>\n<dc:contributor>Bel, Bernard (recorder)</dc:contributor>\n\
+        <dc:contributor>Faure, Albert (author)</dc:contributor>\n<dc:contributor>Gasquet-Cyrus,\
+        \ M\xE9d\xE9ric (interviewer)</dc:contributor>\n<dc:contributor>Bel, Andr\xE9\
+        ine (photographer)</dc:contributor>\n<dc:contributor>D\xE9l\xE9gation g\xE9\
+        n\xE9rale \xE0 la langue fran\xE7aise et aux langues de France (DGLFLF) (sponsor)</dc:contributor>\n\
+        <dc:contributor>Bel, Bernard (depositor)</dc:contributor>\n<dc:creator>Faure,\
+        \ Albert</dc:creator>\n<dc:contributor>Laboratoire parole et langage - UMR\
+        \ 7309 (LPL, Aix-en-Provence FR) (publisher)</dc:contributor>\n<dc:contributor\
+        \ xsi:type=\"dcterms:URI\">http://lpl-aix.fr</dc:contributor>\n<dc:contributor>D\xE9\
+        partement de linguistique et phon\xE9tique g\xE9n\xE9rales, Universit\xE9\
+        \ d'Aix-Marseille (Aix-en-Provence FR) (publisher)</dc:contributor>\n<dc:contributor\
+        \ xsi:type=\"dcterms:URI\">http://gsite.univ-provence.fr/document.php?pagendx=5712&amp;project=up</dc:contributor>\n\
+        <dc:type>info:eu-repo/semantics/dataset</dc:type>\n<dc:rights>info:eu-repo/date/submitted/2011-02-14</dc:rights>\n\
+        <dc:rights>info:eu-repo/semantics/embargoedAccess</dc:rights>\n<dc:rights>info:eu-repo/date/embargoEnd/2061-02-14</dc:rights>\n\
+        <dcterms:accessRights xml:lang=\"en\">SLDR licence + Producer's licence; rightsHolder\
+        \ = Faure, Albert</dcterms:accessRights>\n<dcterms:accessRights xml:lang=\"\
+        en\">Access granted: scholars</dcterms:accessRights>\n<dcterms:accessRights\
+        \ xml:lang=\"en\">Privileged user (editing): TOLENTINO, Priscilla</dcterms:accessRights>\n\
+        <dcterms:accessRights xml:lang=\"en\">Privileged user (editing): GASQUET-CYRUS,\
+        \ M\xE9d\xE9ric</dcterms:accessRights>\n<dcterms:accessRights xml:lang=\"\
+        en\">Privileged user (downloading): GIRARD, Cl\xE9ment</dcterms:accessRights>\n\
+        <dcterms:accessRights xml:lang=\"en\">Permission: Albert Faure.pdf</dcterms:accessRights>\n\
+        <dcterms:license xsi:type=\"dcterms:URI\">http://sldr.org/licence_v1/en</dcterms:license>\n\
+        <dcterms:license xsi:type=\"dcterms:URI\">http://sldr.org/licence_v1/es</dcterms:license>\n\
+        <dcterms:license xsi:type=\"dcterms:URI\">http://sldr.org/licence_v1/fr</dcterms:license>\n\
+        <dcterms:license xsi:type=\"dcterms:URI\">http://sldr.org/licence_v1/zh</dcterms:license>\n\
+        <dc:source xml:lang=\"en\">long-term preservation</dc:source>\n<dc:source\
+        \ xml:lang=\"es\">conservaci\xF3n a largo plazo</dc:source>\n<dc:source xml:lang=\"\
+        fr\">archive p\xE9renne</dc:source>\n<dc:source xml:lang=\"zh\">long-term\
+        \ preservation</dc:source>\n<dcterms:accessRights xml:lang=\"fr\">Restriction\
+        \ AR048 (50 ans \xE0 partir de 2011-02-14) - Documents dont la communication\
+        \ porte atteinte \xE0 la protection de la vie priv\xE9e ou portant appr\xE9\
+        ciation ou jugement de valeur sur une personne physique nomm\xE9ment d\xE9\
+        sign\xE9e, ou facilement identifiable, ou qui font appara\xEEtre le comportement\
+        \ d'une personne dans des conditions susceptibles de lui porter pr\xE9judice.\
+        \ (Code du Patrimoine, art. L. 213-2, I, 3) </dcterms:accessRights>\n<dcterms:accessRights\
+        \ xml:lang=\"en\">Restriction AR048 (50 years from 2011-02-14) - Documents\
+        \ disclosure of which undermines the protection of privacy or for appreciation\
+        \ or value judgments about a person named or easily identifiable, or which\
+        \ reveal the behavior of a person under circumstances which might cause him/her\
+        \ prejudice. (Code du Patrimoine, art. L. 213-2, I, 3) </dcterms:accessRights>\n\
+        <dcterms:accessRights xml:lang=\"zh\">\u5236\u7EA6 AR048 (\u4ECE2011-02-14\u51C6\
+        \u5165\u9650\u5236\u7EC450\u5E74) - \u63D0\u4F9B\u7834\u574F\u9690\u79C1\u4FDD\
+        \u62A4\u6216\u6B23\u8D4F\u6216\u5173\u4E8E\u5BB9\u6613\u8FA8\u8BA4\u7684\u4EBA\
+        \u7684\u4EF7\u503C\u5224\u65AD\u7684\u547D\u540D\u6216, \u6216\u8005\u5728\
+        \u60C5\u51B5\u4E5F\u8BB8\u5E26\u6765\u4ED6\u6216\u5979\u7684\u4F24\u5BB3\u4E0B\
+        \u663E\u9732\u4EBA\u884C\u4E3A\u7684\u900F\u9732\u3002 (Code du Patrimoine,\
+        \ \u827A\u672F\u3002 L. 213-2,  I,  3)</dcterms:accessRights>\n<dcterms:accessRights\
+        \ xml:lang=\"es\">Restriccion AR048 (50 years from 2011-02-14) - Documentos\
+        \ de divulgaci\xF3n de lo que perjudica la protecci\xF3n de la intimidad o\
+        \ de los juicios de valor acerca de apreciaci\xF3n o una persona con nombre\
+        \ o f\xE1cilmente identificables, o que revelan el comportamiento de una persona\
+        \ en circunstancias que podr\xEDan llevarle lesi\xF3n. (Code du Patrimoine,\
+        \ art. L. 213-2, I, 3)</dcterms:accessRights>\n<dcterms:accessRights xml:lang=\"\
+        en\">Access granted from 2011-02-14</dcterms:accessRights>\n<dcterms:extent>4660803778</dcterms:extent>\n\
+        <dcterms:temporal xsi:type=\"dcterms:W3CDTF\">2011-02-12</dcterms:temporal>\n\
+        <dcterms:temporal xsi:type=\"dcterms:Period\">start=2011; end=2011</dcterms:temporal>\n\
+        <dcterms:spatial xsi:type=\"dcterms:ISO3166\">FR</dcterms:spatial>\n<dcterms:spatial\
+        \ xsi:type=\"dcterms:Point\">name=Chantelouve; east=5.969; north=44.986</dcterms:spatial>\n\
+        <dcterms:spatial xsi:type=\"dcterms:TGN\">1035966</dcterms:spatial>\n<dc:subject>linguistic\
+        \ field: sociolinguistics</dc:subject>\n<dc:subject>linguistic field: language_documentation</dc:subject>\n\
+        <dc:subject>linguistic field: sociolinguistics</dc:subject>\n<dc:subject>linguistic\
+        \ field: language_documentation</dc:subject>\n<dc:subject>linguistic field:\
+        \ lexicography</dc:subject>\n<dc:subject xml:lang=\"en\">patois</dc:subject>\n\
+        <dc:subject xml:lang=\"en\">dialect</dc:subject>\n<dc:subject xml:lang=\"\
+        en\">Chantelouve</dc:subject>\n<dc:subject xml:lang=\"es\">dialecto</dc:subject>\n\
+        <dc:subject xml:lang=\"es\">Chantelouve</dc:subject>\n<dc:subject xml:lang=\"\
+        fr\">patois</dc:subject>\n<dc:subject xml:lang=\"fr\">dialecte</dc:subject>\n\
+        <dc:subject xml:lang=\"fr\">Chantelouve</dc:subject>\n<dc:subject xml:lang=\"\
+        en\">Alpine Proven\xE7al or North-Occitan / Occitan (post 1500)</dc:subject>\n\
+        <dc:subject xml:lang=\"es\">Alpine Provenzal o el norte-occitano / Occitan\
+        \ (post 1500)</dc:subject>\n<dc:subject xml:lang=\"fr\">proven\xE7al alpin\
+        \ ou nord-occitan / occitan (post 1500)</dc:subject>\n<dc:subject xml:lang=\"\
+        zh\">\u666E\u7F57\u65FA\u65AF\u963F\u5C14\u5351\u65AF\u5C71\u6216\u5317\u5965\
+        \u514B / \u5967\u514B\u8A9E\uFF08\u5F8C 1500)</dc:subject>\n\n<dc:language\
+        \ xml:lang=\"en\">Alpine Proven\xE7al or North-Occitan / Occitan (post 1500)</dc:language>\n\
+        <dc:language xml:lang=\"es\">Alpine Provenzal o el norte-occitano / Occitan\
+        \ (post 1500)</dc:language>\n<dc:language xml:lang=\"fr\">proven\xE7al alpin\
+        \ ou nord-occitan / occitan (post 1500)</dc:language>\n<dc:language xml:lang=\"\
+        zh\">\u666E\u7F57\u65FA\u65AF\u963F\u5C14\u5351\u65AF\u5C71\u6216\u5317\u5965\
+        \u514B / \u5967\u514B\u8A9E\uFF08\u5F8C 1500)</dc:language>\n<dc:language>oci</dc:language>\n\
+        \n<dc:language xml:lang=\"en\">Occitan (post 1500)</dc:language>\n<dc:language\
+        \ xml:lang=\"es\">Occitan (post 1500)</dc:language>\n<dc:language xml:lang=\"\
+        fr\">occitan (post 1500)</dc:language>\n<dc:language xml:lang=\"zh\">\u5967\
+        \u514B\u8A9E\uFF08\u5F8C 1500)</dc:language>\n<dc:language>oci</dc:language>\n\
+        \n<dc:language xml:lang=\"en\">Valbonnais dialect / Occitan (post 1500)</dc:language>\n\
+        <dc:language xml:lang=\"es\">dialecto de Valbonnais / Occitan (post 1500)</dc:language>\n\
+        <dc:language xml:lang=\"fr\">patois de Valbonnais / occitan (post 1500)</dc:language>\n\
+        <dc:language xml:lang=\"zh\">Valbonnais \u65B9\u8A00 / \u5967\u514B\u8A9E\uFF08\
+        \u5F8C 1500)</dc:language>\n<dc:language>oci</dc:language>\n\n<dc:description\
+        \ xml:lang=\"en\">Recordings of Chantelouve patois in Is\xE8re (38)</dc:description>\n\
+        <dc:description xml:lang=\"es\">Grabaciones de Chantelouve dialecto (38)</dc:description>\n\
+        <dc:description xml:lang=\"fr\">Enregistrements de patois de Chantelouve (38)</dc:description>\n\
+        <dcterms:isPartOf xsi:type=\"dcterms:URI\">http://hdl.handle.net/11041/sldr000762</dcterms:isPartOf>\n\
+        <dcterms:isPartOf xsi:type=\"dcterms:URI\">http://hdl.handle.net/11041/valjouffrey-000007</dcterms:isPartOf>\n\
+        <dcterms:abstract xml:lang=\"en\">P61-63, V35, V36: 12 February 2011 at the\
+        \ home of Mr Albert FAURE in Chantelouve, with the participation of Robert\
+        \ BOIS (stereo audio + video 2 hours 23 mn)</dcterms:abstract>\n<dcterms:abstract\
+        \ xml:lang=\"fr\">P61-63, V35, V36 : le 12 f\xE9vier 2011, chez M. Albert\
+        \ FAURE \xE0 Chantelouve, avec la participation de Robert BOIS (audio st\xE9\
+        r\xE9o + vid\xE9o, 2 heures 23 mn)</dcterms:abstract>\n<dcterms:tableOfContents>[1]\
+        \ P63.wav (233 Mb)  2011-02-14 12:57:07 audio/x-wav&lt;br /&gt;&lt;br /&gt;PHOTOS&lt;br\
+        \ /&gt;[3] CIMG2495.JPG (1 Mb)  2011-02-14 09:30:23 image/jpeg&lt;br /&gt;[4]\
+        \ CIMG2496.JPG (2 Mb)  2011-02-14 09:30:25 image/jpeg&lt;br /&gt;[5] CIMG2497.JPG\
+        \ (1 Mb)  2011-02-14 09:30:27 image/jpeg&lt;br /&gt;[6] CIMG2498.JPG (1 Mb)\
+        \  2011-02-14 09:32:42 image/jpeg&lt;br /&gt;[7] CIMG2499.JPG (0.770 Mb) \
+        \ 2011-02-14 09:42:15 image/jpeg&lt;br /&gt;[8] CIMG2500.JPG (2 Mb)  2011-02-14\
+        \ 09:30:33 image/jpeg&lt;br /&gt;[9] CIMG2501.JPG (1 Mb)  2011-02-14 09:30:35\
+        \ image/jpeg&lt;br /&gt;[10] CIMG2502.JPG (1 Mb)  2011-02-14 09:30:37 image/jpeg&lt;br\
+        \ /&gt;&lt;br /&gt;TEXTES&lt;br /&gt;[12] File0001.pdf (1 Mb) public   2011-02-23\
+        \ 18:25:32 application/pdf&lt;br /&gt;[13] File0002.pdf (1 Mb) public   2011-02-23\
+        \ 18:25:01 application/pdf&lt;br /&gt;[14] File0003.pdf (1 Mb) public   2011-02-23\
+        \ 18:24:13 application/pdf&lt;br /&gt;[15] File0004.pdf (1 Mb) public   2011-02-23\
+        \ 18:23:40 application/pdf&lt;br /&gt;[16] File0005.pdf (1 Mb) public   2011-02-23\
+        \ 18:23:02 application/pdf&lt;br /&gt;[17] File0006.pdf (1 Mb) public   2011-02-23\
+        \ 18:22:31 application/pdf&lt;br /&gt;[18] File0007.pdf (1 Mb) public   2011-02-23\
+        \ 18:21:57 application/pdf&lt;br /&gt;[19] File0008.pdf (1 Mb) public   2011-02-23\
+        \ 18:21:25 application/pdf&lt;br /&gt;&lt;br /&gt;VIDEO&lt;br /&gt;[21] V35.m4v\
+        \ (1748 Mb) public   2011-02-23 14:24:52 video/mpeg&lt;br /&gt;[22] V36.m4v\
+        \ (1473 Mb) public   2011-02-23 15:55:29 video/mpeg&lt;br /&gt;&lt;br /&gt;SON&lt;br\
+        \ /&gt;[26] P61.wav (798 Mb)  2011-02-14 12:55:29 audio/x-wav&lt;br /&gt;[27]\
+        \ P62.wav (378 Mb)  2011-02-14 12:56:30 audio/x-wav&lt;br /&gt;&lt;br /&gt;\xA7\
+        preview&lt;br /&gt;wikiPicts&lt;br /&gt;[30] CIMG2499-small.jpg (0.050 Mb)\
+        \ public   2011-02-23 18:38:12 image/jpeg&lt;br /&gt;&lt;br /&gt;[31] picto-large.jpg\
+        \ (0.176 Mb) public   2011-02-23 18:34:54 image/jpeg&lt;br /&gt;[32] picto-large2.jpg\
+        \ (0.292 Mb) public   2011-02-23 18:36:05 image/jpeg&lt;br /&gt;[33] picto.jpg\
+        \ (0.027 Mb) public   2011-02-25 12:16:14 image/jpeg&lt;br /&gt;[34] picto2.jpg\
+        \ (0.032 Mb) public   2011-02-25 12:14:01 image/jpeg&lt;br /&gt;&lt;br /&gt;\xA7\
+        autorisations&lt;br /&gt;[35] Albert Faure.pdf (2 Mb)  2011-04-29 10:01:51\
+        \ application/pdf&lt;br /&gt;&lt;br /&gt;\xA7licence&lt;br /&gt;[37] CreativeCommons.html\
+        \ (0.000 Mb)  2014-01-21 09:15:04 text/plain&lt;br /&gt;[38] LicenceChantelouve.doc\
+        \ (0.031 Mb)  2011-04-01 13:10:45 application/msword&lt;br /&gt;[39] LicenceChantelouve.pdf\
+        \ (0.057 Mb)  2011-04-12 15:05:15 application/pdf&lt;br /&gt;&lt;br /&gt;\xA7\
+        meta&lt;br /&gt;[41] olac.xml (0.015 Mb) public   2014-03-27 15:50:08 application/xml&lt;br\
+        \ /&gt;[42] oai_dc.xml (0.013 Mb) public   2014-03-27 15:50:08 application/xml&lt;br\
+        \ /&gt;[43] rdf.html (0.007 Mb) public   2014-03-27 15:50:09 text/plain&lt;br\
+        \ /&gt;&lt;br /&gt;</dcterms:tableOfContents>\n<dc:identifier xsi:type=\"\
+        dcterms:URI\">http://hdl.handle.net/11041/sldr000766</dc:identifier>\n<dc:identifier\
+        \ xsi:type=\"dcterms:URI\">http://hdl.handle.net/11041/sldr000766?urlappend=/preview/picto.jpg</dc:identifier>\n\
+        <dc:identifier xsi:type=\"dcterms:URI\">http://hdl.handle.net/11041/sldr000766?urlappend=/toc</dc:identifier>\n\
+        <dc:identifier xsi:type=\"dcterms:URI\">http://sldr.org/ark:/87895/1.4-184954</dc:identifier>\n\
+        <dc:identifier xsi:type=\"dcterms:URI\">http://hdl.handle.net/11041/sldr000766/olac.xml</dc:identifier>\n\
+        <dc:format xsi:type=\"dcterms:IMT\">application/xml</dc:format>\n<dc:identifier\
+        \ xsi:type=\"dcterms:URI\">http://hdl.handle.net/11041/sldr000766/oai_dc.xml</dc:identifier>\n\
+        <dc:format xsi:type=\"dcterms:IMT\">application/xml</dc:format>\n<dc:identifier\
+        \ xsi:type=\"dcterms:URI\">http://hdl.handle.net/11041/sldr000766/rdf.html</dc:identifier>\n\
+        <dc:format xsi:type=\"dcterms:IMT\">application/xml</dc:format>\n<dc:identifier\
+        \ xsi:type=\"dcterms:URI\">http://hdl.handle.net/11041/sldr000766/File0001.pdf</dc:identifier>\n\
+        <dc:format xsi:type=\"dcterms:IMT\">application/pdf</dc:format>\n<dc:identifier\
+        \ xsi:type=\"dcterms:URI\">http://hdl.handle.net/11041/sldr000766/File0002.pdf</dc:identifier>\n\
+        <dc:format xsi:type=\"dcterms:IMT\">application/pdf</dc:format>\n<dc:identifier\
+        \ xsi:type=\"dcterms:URI\">http://hdl.handle.net/11041/sldr000766/File0003.pdf</dc:identifier>\n\
+        <dc:format xsi:type=\"dcterms:IMT\">application/pdf</dc:format>\n<dc:identifier\
+        \ xsi:type=\"dcterms:URI\">http://hdl.handle.net/11041/sldr000766/File0004.pdf</dc:identifier>\n\
+        <dc:format xsi:type=\"dcterms:IMT\">application/pdf</dc:format>\n<dc:identifier\
+        \ xsi:type=\"dcterms:URI\">http://hdl.handle.net/11041/sldr000766/File0005.pdf</dc:identifier>\n\
+        <dc:format xsi:type=\"dcterms:IMT\">application/pdf</dc:format>\n<dc:identifier\
+        \ xsi:type=\"dcterms:URI\">http://hdl.handle.net/11041/sldr000766/File0006.pdf</dc:identifier>\n\
+        <dc:format xsi:type=\"dcterms:IMT\">application/pdf</dc:format>\n<dc:identifier\
+        \ xsi:type=\"dcterms:URI\">http://hdl.handle.net/11041/sldr000766/File0007.pdf</dc:identifier>\n\
+        <dc:format xsi:type=\"dcterms:IMT\">application/pdf</dc:format>\n<dc:identifier\
+        \ xsi:type=\"dcterms:URI\">http://hdl.handle.net/11041/sldr000766/File0008.pdf</dc:identifier>\n\
+        <dc:format xsi:type=\"dcterms:IMT\">application/pdf</dc:format>\n<dc:identifier\
+        \ xsi:type=\"dcterms:URI\">http://hdl.handle.net/11041/sldr000766/V35.m4v</dc:identifier>\n\
+        <dc:format xsi:type=\"dcterms:IMT\">video/mpeg</dc:format>\n<dc:identifier\
+        \ xsi:type=\"dcterms:URI\">http://hdl.handle.net/11041/sldr000766/V36.m4v</dc:identifier>\n\
+        <dc:format xsi:type=\"dcterms:IMT\">video/mpeg</dc:format>\n<dc:identifier\
+        \ xsi:type=\"dcterms:URI\">http://hdl.handle.net/11041/sldr000766/LicenceChantelouve.doc</dc:identifier>\n\
+        <dc:format xsi:type=\"dcterms:IMT\">application/msword</dc:format>\n<dc:identifier\
+        \ xsi:type=\"dcterms:URI\">http://hdl.handle.net/11041/sldr000766/LicenceChantelouve.pdf</dc:identifier>\n\
+        <dc:format xsi:type=\"dcterms:IMT\">application/pdf</dc:format>\n<dc:identifier\
+        \ xsi:type=\"dcterms:URI\">http://hdl.handle.net/11041/sldr000766/CIMG2499-small.jpg</dc:identifier>\n\
+        <dc:format xsi:type=\"dcterms:IMT\">image/jpeg</dc:format>\n<dc:date xsi:type=\"\
+        dcterms:W3CDTF\">2011-02-14</dc:date>\n<dcterms:created xsi:type=\"dcterms:W3CDTF\"\
+        >2011-02-14</dcterms:created>\n<dcterms:modified xsi:type=\"dcterms:W3CDTF\"\
+        >2011-02-14</dcterms:modified>\n<dc:type>linguistic-type: primary_text</dc:type>\n\
+        <dc:type>discourse-type: narrative</dc:type>\n<dc:type xsi:type=\"dcterms:DCMIType\"\
+        >Sound</dc:type>\n<dc:format xsi:type=\"dcterms:IMT\">audio/x-wav</dc:format>\n\
+        <dc:format xsi:type=\"dcterms:IMT\">video/mpeg</dc:format>\n</oai_dc:dc>\n\
+        \n</metadata>\n</record>\n</ListRecords>\n</OAI-PMH>\n"}
+    headers:
+      Cache-Control: ['no-store, no-cache, must-revalidate, post-check=0, pre-check=0']
+      Connection: [Keep-Alive]
+      Content-Type: [text/xml]
+      Date: ['Thu, 17 Dec 2015 15:31:02 GMT']
+      Expires: ['Thu, 19 Nov 1981 08:52:00 GMT']
+      Keep-Alive: ['timeout=15, max=1000']
+      Pragma: [no-cache]
+      Server: [Apache/2.2.12 (Linux/SUSE)]
+      Set-Cookie: [PHPSESSID=598hvcjgm1od37iv0s4oqa9v5bvfr9qcbrn0dtb42lndds05fed0;
+          path=/]
+      X-Powered-By: [PHP/5.3.17]
+    status: {code: 200, message: OK}
+version: 1
