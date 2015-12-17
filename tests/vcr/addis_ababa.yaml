@@ -1,0 +1,346 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/3.4.3 Linux/3.19.0-33-generic]
+    method: GET
+    uri: http://etd.aau.edu.et/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2015-10-22T00:00:00Z&until=2015-10-24T00:00:00Z
+  response:
+    body: {string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"\
+        text/xsl\" href=\"static/style.xsl\"?><OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"\
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
+        http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"\
+        ><responseDate>2015-12-15T17:09:07Z</responseDate>\n    <request verb=\"ListRecords\"\
+        \ metadataPrefix=\"oai_dc\" from=\"2015-10-22T00:00:00Z\" until=\"2015-10-24T00:00:00Z\"\
+        >http://etd.aau.edu.et/oai/request</request>\n    <ListRecords>\n        <record>\n\
+        \            <header>\n                <identifier>oai:10.6.20.92:123456789/8007</identifier>\n\
+        \                <datestamp>2015-10-22T08:04:27Z</datestamp>\n           \
+        \     <setSpec>com_123456789_3370</setSpec>\n                <setSpec>col_123456789_6034</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Rural women\
+        \ land rights in Africa: comparative analysis of Ethiopia with selected African\
+        \ countries</dc:title>\n<dc:creator>Bertukan, Tegegn</dc:creator>\n<dc:contributor>Prof.\
+        \ Wani Lokitari</dc:contributor>\n<dc:subject>Rural women, Land right</dc:subject>\n\
+        <dc:description>This study conducted with the aim of showing status of rural\
+        \ women land right in Africa in general with special focus in Ethiopia. It\
+        \ addressed the case of Ethiopian rural women by taking the case of rural\
+        \ women in Mojana Wodera Woreda, Amhara Regional National State. Thus it posed\
+        \ four basic research questions\u1361 how do current Ethiopian land laws positively\
+        \ or negatively affect rural women\u201Fs land rights? What land rights do\
+        \ rural women enjoy in Ethiopia compared with those enjoyed by rural women\
+        \ in Nigeria, Uganda, Rwanda and Mozambique? What are the challenges faced\
+        \ by rural women within the remit of their land rights? What is the role of\
+        \ customary land laws and the interplay with modern/statutory land laws? In\
+        \ order to answer these questions, data was collected from oral and written\
+        \ sources. The analysis of these data show rural women in Ethiopia have enjoyed\
+        \ legal equality regarding their land rights but there exist implementation\
+        \ gaps. In practice rural women are not benefiting at most pertaining to societal\
+        \ and institutional failures. It is also true for other African fellows. African\
+        \ women share a marginalized and secondary land rights. There are undeniable\
+        \ positive way outs like land registration and titling which have brought\
+        \ reforms in rural women status with some unwanted drawbacks. Therefore, the\
+        \ study recommended abolition of illiteracy, community awareness raising,\
+        \ promotion and enforcement of women land right and strengthening government\
+        \ task forces.</dc:description>\n<dc:date>2015-10-22T08:04:27Z</dc:date>\n\
+        <dc:date>2015-10-22T08:04:27Z</dc:date>\n<dc:date>2015-06</dc:date>\n<dc:type>Thesis</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/123456789/8007</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:publisher>AAU</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n\
+        \        <record>\n            <header>\n                <identifier>oai:10.6.20.92:123456789/8008</identifier>\n\
+        \                <datestamp>2015-10-22T08:21:34Z</datestamp>\n           \
+        \     <setSpec>com_123456789_3370</setSpec>\n                <setSpec>col_123456789_6034</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>\"The Role\
+        \ of Internal and External Actors in Reshaping the African Nation States:\
+        \ the Case of Somalia    \"</dc:title>\n<dc:creator>Nasir, Mohamed</dc:creator>\n\
+        <dc:contributor>Mohammed Hassen (PhD)</dc:contributor>\n<dc:subject>Ethnic\
+        \ contention, Political dynamics</dc:subject>\n<dc:description>Africa has\
+        \ been in a state of crises since independence, primarily linked to external\
+        \ influences which have social, cultural, economic, and political dimensions.\
+        \ The African states, not all, suffered the extreme consequences from unviable\
+        \ forms of political rule which criminalized both the state and the economy\
+        \ and produced ethnic contention and deeply divided society. The external\
+        \ actors are not the only chief architects of the Africa\u201Fs lingering\
+        \ conflicts and state failures, but also their local actors in the post-colonial\
+        \ age are partially responsible for the political and economic troubles, and\
+        \ the frequent state collapse. Somalia, for example, became a victim of internal\
+        \ and external actors; while the post-state collapse actors are the tragic,\
+        \ violent outcome of gradually deteriorating political dynamics since 1991.\
+        \ From the rubble and ruins of the state, self-appointed warlords who struggled\
+        \ to rule the country from the barrels of guns, business groups and, later,\
+        \ Islamists aspire to power with the influence of external actors, both from\
+        \ the region and beyond exacerbated the political instability and economic\
+        \ shortcomings which impacted both on the state and the lives of the ordinary\
+        \ Somali citizens.&#13;\nIn fact, numerous peacebuilding efforts and attempts\
+        \ at building a centralized Somali national government have failed due to\
+        \ extensive involvement of diverse external actors. Without exception, Somalia\
+        \ neighbors, Arab and Western states have been involved in Somalia\u201Fs\
+        \ conflict for political and economic reasons. This study, therefore, dismisses\
+        \ that the external actors, both from the region and beyond will bring peace\
+        \ and stability to Somalia. Therefore, the issue should be considered as a\
+        \ Somali issue that has an economic, social, and political impact on the Somalis\
+        \ at large, and according to this suggestion, any resolution to the Somalia\
+        \ conflict needs indigenous efforts since it affects the internal peace and\
+        \ security of the Somali citizens as well as their destiny. Without a unified\
+        \ grassroots involvement, it is difficult to foresee a sustainable peace and\
+        \ stability in Somalia.</dc:description>\n<dc:date>2015-10-22T08:21:34Z</dc:date>\n\
+        <dc:date>2015-10-22T08:21:34Z</dc:date>\n<dc:date>2015-06</dc:date>\n<dc:type>Thesis</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/123456789/8008</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:publisher>AAU</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n\
+        \        <record>\n            <header>\n                <identifier>oai:10.6.20.92:123456789/8009</identifier>\n\
+        \                <datestamp>2015-10-22T09:15:27Z</datestamp>\n           \
+        \     <setSpec>com_123456789_3370</setSpec>\n                <setSpec>col_123456789_6034</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The challenges\
+        \ and prospects of building a developmental state in Africa: a comparative\
+        \ study of Botswana and Ethiopia</dc:title>\n<dc:creator>Mesgna, Gebretensae</dc:creator>\n\
+        <dc:contributor>Tesfaye Tafesse(PhD)</dc:contributor>\n<dc:subject>Developmental\
+        \ state, Colonial African</dc:subject>\n<dc:description>Like most human institutions\
+        \ \u2013 the family, the village, the city, the state, customs, laws, the\
+        \ \u2013 nation \u2013 developmental state was born long before anybody thought\
+        \ of naming it.However, it is the success of South East Asian countries in\
+        \ the 1970s and 1980s that became its reference point. There has been a wide\
+        \ spread skepticism about the prospect for the emergence of viable develop\
+        \ mental states on Africa. While acknowledging the multi-dimensional capacity\
+        \ weakness of the post-colonial African states as a major source of the continent\u2019\
+        s current under development, proponents argue that there is enough reason\
+        \ to adopt a developmental state model. Of those countries outside of Asia\
+        \ that have recorded phenomenal levels of economic growth, it has been the\
+        \ so-called developmental state of Botswana that have performed well. However\
+        \ in the Ethiopian contextthe term is increasingly being used only in recent\
+        \ times. The interest in constructing a developmental state has its own challenges\
+        \ and lack of committed leadership, absence of autono mous and effective bureaucracy,\
+        \ ineffective national development planning and social policy and institutional\
+        \ capacity deficiency are the major ones in Africa. In Ethiopia, there are\
+        \ notable changes brought about by the developmental state model. However,\
+        \ when compared to Botswana; a success story in Africa since the 1970s, the\
+        \ Ethiopian developmental state encounters many challenges and can draw lessons\
+        \ from Botswana. This study explores the challenges and prospects of building\
+        \ a developmental state in Africa by comparing Botswana and Ethiopia. was\
+        \ born long before anybody thought of naming it.However, it is the success\
+        \ of South East Asian countries in the 1970s and 1980s that became its reference\
+        \ point. There has been a wide spread skepticism about the prospect for the\
+        \ emergence of viable develop mental states on Africa. While acknowledging\
+        \ the multi-dimensional capacity weakness of the post-colonial African states\
+        \ as a major source of the continent\u2019s current under development, proponents\
+        \ argue that there is enough reason to adopt a developmental state model.\
+        \ Of those countries outside of Asia that have recorded phenomenal levels\
+        \ of economic growth, it has been the so-called developmental state of Botswana\
+        \ that have performed well. However in the Ethiopian contextthe term is increasingly\
+        \ being used only in recent times. The interest in constructing a developmental\
+        \ state has its own challenges and lack of committed leadership, absence of\
+        \ autono mous and effective bureaucracy, ineffective national development\
+        \ planning and social policy and institutional capacity deficiency are the\
+        \ major ones in Africa. In Ethiopia, there are notable changes brought about\
+        \ by the developmental state model. However, when compared to Botswana; a\
+        \ success story in Africa since the 1970s, the Ethiopian developmental state\
+        \ encounters many challenges and can draw lessons from Botswana. This study\
+        \ explores the challenges and prospects of building a developmental state\
+        \ in Africa by comparing Botswana and Ethiopia.</dc:description>\n<dc:date>2015-10-22T09:15:27Z</dc:date>\n\
+        <dc:date>2015-10-22T09:15:27Z</dc:date>\n<dc:date>2015-06</dc:date>\n<dc:type>Thesis</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/123456789/8009</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:publisher>AAU</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n\
+        \        <record>\n            <header>\n                <identifier>oai:10.6.20.92:123456789/8010</identifier>\n\
+        \                <datestamp>2015-10-22T09:28:43Z</datestamp>\n           \
+        \     <setSpec>com_123456789_3370</setSpec>\n                <setSpec>col_123456789_6034</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The security\
+        \ implication of south sudans secession for the horn of africa</dc:title>\n\
+        <dc:creator>Ibrahim, Kedir</dc:creator>\n<dc:contributor>Yasin Mohammed(PhD)</dc:contributor>\n\
+        <dc:subject>Civil war, Horn of Africa</dc:subject>\n<dc:description>South\
+        \ Sudan, after more than two decades of civil war, got its independence in\
+        \ July 2011. Even though South Sudan seceded from its mother state, its relation\
+        \ with the north is yet to be resolved. Today, relations between Khartoum\
+        \ and Juba are heavily influenced by the outstanding issues in the 2005 Comprehensive\
+        \ Peace Agreement (CPA) which have created obstacles to progress in both the\
+        \ Sudan and South Sudan. Important unresolved CPA issues include fair and\
+        \ equitable oil revenue-sharing between Sudan and South Sudan, conflict in\
+        \ South Kordofan and Blue Niles, and the status of Abyei. Hence, in order\
+        \ to maintain peace and security in the region, normalizations of relations\
+        \ between the two Sudan is of fundamental importance. The contention of this\
+        \ thesis is that the South Sudan secession has several security implications\
+        \ for the countries of the Horn of African region. Source of inspiration for\
+        \ other would be states (those in demand of secession), an influx of refugees,\
+        \ spillover nature of conflicts and renewed bilateral relations are among\
+        \ the implications. Through data analysis of primary and secondary sources\
+        \ the paper will provide the rationale of the thesis.</dc:description>\n<dc:date>2015-10-22T09:28:43Z</dc:date>\n\
+        <dc:date>2015-10-22T09:28:43Z</dc:date>\n<dc:date>2015-06</dc:date>\n<dc:type>Thesis</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/123456789/8010</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:publisher>AAU</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n\
+        \        <record>\n            <header>\n                <identifier>oai:10.6.20.92:123456789/8011</identifier>\n\
+        \                <datestamp>2015-10-22T09:40:00Z</datestamp>\n           \
+        \     <setSpec>com_123456789_3370</setSpec>\n                <setSpec>col_123456789_6034</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The AU Human\
+        \ Right  Monitoring  Capacity :In The Case of  African Peer review Mechanism</dc:title>\n\
+        <dc:creator>Meseret, Assefa</dc:creator>\n<dc:contributor>Prof. Wani Tombe\
+        \ Lako</dc:contributor>\n<dc:subject>Human rights, Pre-colonial</dc:subject>\n\
+        <dc:description>This thesis assesses the human rights monitoring capacity\
+        \ of the AU and the role APRM can play in it. It argues that, in Africa, historical\
+        \ evidence suggests a continuing pattern of human rights violations have continued\
+        \ by unchecked dictatorial regime. It also seeks to demonstrate that for various\
+        \ reasons, the AU has been weak in monitoring of human rights violations.\
+        \ This attributes to two main reasons. One, the relative dignity and human\
+        \ value enjoyed by African in pre-colonial era became negatively impacted\
+        \ by colonialism as an aspect of foreign intervention in Africa. This impact\
+        \ has remains with the African leaders. The leaders become ruling the continent\
+        \ after colonialism has been characterized as dictators and military leaders\
+        \ which apply similar system of their previous colonial masters in violating\
+        \ human rights. None of the Heads of State and Government was freely and fairly\
+        \ elected. It was virtually the same club of dictators who adopted the African\
+        \ Human rights Charter in 1981.&#13;\nSecond, the African commission and the\
+        \ court are often ineffective because they lack resources and political commitments\
+        \ of member states for the protection of human rights. Even at the level of\
+        \ the assembly of heads of state, the reports of the African Commission do\
+        \ not receive adequate attention or consideration but are often simply adopted\
+        \ without due regard to the issues raised. Hitherto, the African system of\
+        \ human rights has evolved against the experience of colonialism, dictatorships,\
+        \ the failure of administering justice, and reluctance. Africa is still facing\
+        \ the long road to promotion and protection of human rights for all Africans.\
+        \ Yet within this setting the APRM had anticipated as an opportunity to hold\
+        \ African leaders accountable and conceived as it can add value to human rights\
+        \ monitoring capacity of African commission. Hence, this assessment is done\
+        \ in relation to the work that is being done by APRM and the challenges that\
+        \ it has confronted over the years. In assessing the role of the APRM in human\
+        \ rights monitoring, this study discharges the importance of peer review and\
+        \ investigates the challenges facing it in the field of human rights.</dc:description>\n\
+        <dc:date>2015-10-22T09:40:00Z</dc:date>\n<dc:date>2015-10-22T09:40:00Z</dc:date>\n\
+        <dc:date>2015-06</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:identifier>http://hdl.handle.net/123456789/8011</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>AAU</dc:publisher>\n</oai_dc:dc>\n\
+        </metadata>\n        </record>\n        <record>\n            <header>\n \
+        \               <identifier>oai:10.6.20.92:123456789/8012</identifier>\n \
+        \               <datestamp>2015-10-22T09:53:01Z</datestamp>\n            \
+        \    <setSpec>com_123456789_3370</setSpec>\n                <setSpec>col_123456789_3395</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>\" Reconstructing\
+        \ Food Systems from the Late Holocene Context of Mochena Borrego Rock shelter,\
+        \ Wolayta, Southern Ethiopia     \"</dc:title>\n<dc:creator>Medhanit, Tamerat</dc:creator>\n\
+        <dc:contributor>Alemseged Beldados (PhD)</dc:contributor>\n<dc:subject>Cultural\
+        \ sequence, Ecological history</dc:subject>\n<dc:description>Mochena Borago\
+        \ rock shelter is a very rich archaeological site with one of the most&#13;\n\
+        complete late Pleistocene cultural sequence in the Horn of Africa. Despite\
+        \ the rich&#13;\ncultural sequence, the pre-history and historic period of\
+        \ human and plant interaction and&#13;\necological history of this site are\
+        \ poorly documented and reconstructed. The objective of&#13;\nthis study was\
+        \ to reconstruct food systems of the ancient inhabitants of Mochena Borago&#13;\n\
+        rock shelter in the Late Holocene period. Archaeobotanical investigation was\
+        \ conducted&#13;\non a 27 soil sample bags of 2000 and 2001 French Field seasons\
+        \ at the Laboratory of the&#13;\nARCCH (Authority for Research and Conservation\
+        \ of Cultural Heritage).For the better&#13;\ninterpretation of the archaeaobotanical\
+        \ materials and data, ethnoarcheological studies&#13;\nwere undertaken in\
+        \ the five Kebeles of Sodo Zurea Woreda. Based on this, a total of 64&#13;\n\
+        plant spices were documented and 112 seeds and fruit stones were identified\
+        \ by the&#13;\nArchaeobotanical investigation which included Sapindaceae cf.\
+        \ Deinbollia type (n=55),&#13;\nMyrtaceae cf. Syzigium guineense type (n=33),\
+        \ Plectranthus edulis (n=9),&#13;\nEuphorbiaceae Croton sp. (n=7), Cordia\
+        \ cf. africana (n=2), Ebenaceae cf. Diospyros&#13;\n(n=1), Olea europaea sub\
+        \ sp. cuspidate (n=1) and the rest four were unidentified. The&#13;\nethnobotanical\
+        \ documentation reveled that five plant types that were used as food,&#13;\n\
+        medicine and raw materials to be similar with the plants recovered by Archaeobotanical&#13;\n\
+        investigation. Among the identified botanical remains, Plectranthus edulis\
+        \ which is an&#13;\nindigenous crop for the study area, Cordia cf.africana\
+        \ and Olea europaea sub sp.&#13;\ncusipdata are reported for the first time\
+        \ in archaeobotanical context in the whole region&#13;\nof Ethiopia.</dc:description>\n\
+        <dc:date>2015-10-22T09:53:01Z</dc:date>\n<dc:date>2015-10-22T09:53:01Z</dc:date>\n\
+        <dc:date>2015-06</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:identifier>http://hdl.handle.net/123456789/8012</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>AAU</dc:publisher>\n</oai_dc:dc>\n\
+        </metadata>\n        </record>\n        <record>\n            <header>\n \
+        \               <identifier>oai:10.6.20.92:123456789/8013</identifier>\n \
+        \               <datestamp>2015-10-22T10:05:09Z</datestamp>\n            \
+        \    <setSpec>com_123456789_3370</setSpec>\n                <setSpec>col_123456789_3395</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>\" Techno-Typological\
+        \ Analysis of \u201CDeveloped Old wan\u201D/Early Acheulean Assemblages from\
+        \ Garb IV Levels C and D, Melaka Kunture (Upper Awash), Ethiopia. \"</dc:title>\n\
+        <dc:creator>Niguss, Gitaw</dc:creator>\n<dc:contributor>Alemseged Beldados\
+        \ (Ph.D)</dc:contributor>\n<dc:subject>Stone Age, Developed Oldowan</dc:subject>\n\
+        <dc:description>This thesis conceives of an analysis of Early Stone Age collections\
+        \ from Melka Kunture,&#13;\nparticularly at Garba IV levels C and D. They\
+        \ were excavated between 1972 to 1985 and are&#13;\ntoday stored at the Authority\
+        \ for Research and Conservation of Cultural Heritage. In spite of&#13;\nongoing\
+        \ researches conducted at these localities, raw material influence on the\
+        \ knapping process&#13;\nof the knappers and the technological features of\
+        \ the previously nominated artifact traditions&#13;\ncalled \u201CDeveloped\
+        \ Oldowan\u201D is poorly understood. Methodologies like typological&#13;\n\
+        classification, measurement of the technological axis, width, depth and so\
+        \ forth, identification of&#13;\nraw material, understanding of thickness\
+        \ evennes along the technological line of artifacts were&#13;\nemployed to\
+        \ address the problem. The production techniques were influenced by the type\
+        \ of raw&#13;\nmaterial. Although large flake productions are not large in\
+        \ number, their appearance is an&#13;\nessential indicator about the emergence\
+        \ of the Acheulean. The low number of Large Cutting&#13;\nTools is determined\
+        \ by the original size of the unworked material. On account of this, not only&#13;\n\
+        frequency of Large Cutting Tools, but also understanding various technological\
+        \ innovations of&#13;\nan artifact has been found to be important in characterizing\
+        \ Early Acheulean site. Therefore, the&#13;\nartifact tradition called \u201C\
+        Developed Oldowan\u201D was not understood to be independet&#13;\ntechnologicaly.\
+        \ It, rather, bears an evidence of technological similarities with the Early&#13;\n\
+        Acheulean.</dc:description>\n<dc:date>2015-10-22T10:05:09Z</dc:date>\n<dc:date>2015-10-22T10:05:09Z</dc:date>\n\
+        <dc:date>2015-06</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:identifier>http://hdl.handle.net/123456789/8013</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>AAU</dc:publisher>\n</oai_dc:dc>\n\
+        </metadata>\n        </record>\n        <record>\n            <header>\n \
+        \               <identifier>oai:10.6.20.92:123456789/8014</identifier>\n \
+        \               <datestamp>2015-10-22T10:19:10Z</datestamp>\n            \
+        \    <setSpec>com_123456789_3370</setSpec>\n                <setSpec>col_123456789_3667</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>\"  The Role\
+        \ of Agricultural Cooperatives in Building Sustainable Livelihood for Rural\
+        \ Women: A Case Study of Women Members of Garagodo &amp; Hembecho Cooperatives,\
+        \ Bolloso Sore Woreda, Wolaita Zone, SNNPR \"</dc:title>\n<dc:creator>Muluken,\
+        \ Tamirat</dc:creator>\n<dc:contributor>Taye Nigussie (PhD)</dc:contributor>\n\
+        <dc:subject>Rural women, Livelihood</dc:subject>\n<dc:description>The study\
+        \ on the Role of Agricultural Marketing Cooperative in Building Sustainable\
+        \ Livelihood for rural women in the case of Garagodo and Hembecho primary\
+        \ agricultural cooperative attempted to analyse the contribution of primary\
+        \ agricultural cooperative in enabling women to build sustainable livelihood\
+        \ which is capable of coping with and recover from vulnerability.&#13;\nThe\
+        \ main objective of the study was to assess the role of primary agricultural\
+        \ cooperatives in enabling women to cope with stresses and shocks through\
+        \ building sustainable livelihood. By using the sustainable livelihood framework\
+        \ adopted from DFID (199), the study tried to illustrate how the cooperatives\
+        \ as transforming structure enabled women to build sustainable livelihood\
+        \ by accessing livelihood capitals.&#13;\nThe study employed approximating\
+        \ longitudinal survey as research design. It also employed both quantitative\
+        \ and qualitative methods of data collection and analysis. The quantitative\
+        \ method of data collection employed survey method and the qualitative method\
+        \ of data collection employed in-depth interview, FGD, and observation methods.\
+        \ Using the methods, primary data was collected from sample members of the\
+        \ cooperatives, centrally placed officials from marketing and cooperative\
+        \ development offices and managerial bodies of the cooperative enterprises.\
+        \ Simple random sampling technique was employed so as to select sample respondents\
+        \ of the study.&#13;\nThe finding of the study has revealed that the cooperatives\
+        \ provided women with various services including supply of agricultural inputs,\
+        \ credit services, marketing of agricultural input and output. Access to these\
+        \ services in turn enabled women to improve their productivity, augment their\
+        \ income, and build livelihood assets which are capable of withstanding risks\
+        \ and shocks. Despite these benefits it yielded to women, the cooperative\
+        \ encountered various problems that hampered the potential benefit of women,\
+        \ which calls for the due attention of concerned bodies.</dc:description>\n\
+        <dc:date>2015-10-22T10:19:10Z</dc:date>\n<dc:date>2015-10-22T10:19:10Z</dc:date>\n\
+        <dc:date>2015-06</dc:date>\n<dc:type>Thesis</dc:type>\n<dc:identifier>http://hdl.handle.net/123456789/8014</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>AAU</dc:publisher>\n</oai_dc:dc>\n\
+        </metadata>\n        </record>\n    </ListRecords>\n</OAI-PMH>\n"}
+    headers:
+      Content-Type: [application/xml]
+      Date: ['Tue, 15 Dec 2015 22:09:07 GMT']
+      Server: [Apache-Coyote/1.1]
+    status: {code: 200, message: OK}
+version: 1
