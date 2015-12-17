@@ -22,6 +22,7 @@ WHEELHOUSE_PATH = os.environ.get('WHEELHOUSE')
 
 @task
 def reindex(src, dest):
+    ''' Reindexes documents from index {src} to index {dest}'''
     from elasticsearch import helpers
     from scrapi.processing.elasticsearch import DatabaseManager
     dm = DatabaseManager()
@@ -33,6 +34,7 @@ def reindex(src, dest):
 
 @task
 def alias(alias, index):
+    ''' Creates an Elasticsearch index alias '''
     from scrapi.processing.elasticsearch import DatabaseManager
     dm = DatabaseManager()
     dm.setup()
@@ -92,13 +94,8 @@ def migrate(migration, sources=None, kwargs_string=None, dry=True, async=False, 
 
 
 @task
-def migrate_to_source_partition(dry=True, async=False):
-    from scrapi.tasks import migrate_to_source_partition
-    migrate_to_source_partition(dry=dry, async=async)
-
-
-@task
 def reset_search():
+    ''' Restarts Elasticsearch '''
     run("curl -XPOST 'http://localhost:9200/_shutdown'")
     if platform.linux_distribution()[0] == 'Ubuntu':
         run("sudo service elasticsearch restart")
@@ -124,7 +121,7 @@ def elasticsearch():
 @task
 def test(cov=True, doctests=True, verbose=False, debug=False, pdb=False):
     """
-    Runs all tests in the 'tests/' directory
+    Runs all tests in the 'tests/' directory, and all doctests in the scrAPI directory
     """
     cmd = 'py.test scrapi tests'
     if doctests:
@@ -143,6 +140,7 @@ def test(cov=True, doctests=True, verbose=False, debug=False, pdb=False):
 
 @task
 def wheelhouse(develop=False):
+    ''' Sets up the wheelhouse for requirements '''
     req_file = 'dev-requirements.txt' if develop else 'requirements.txt'
     cmd = 'pip wheel --find-links={} -r {} --wheel-dir={}'.format(WHEELHOUSE_PATH, req_file, WHEELHOUSE_PATH)
     run(cmd, pty=True)
@@ -150,6 +148,7 @@ def wheelhouse(develop=False):
 
 @task
 def requirements(develop=False, upgrade=False):
+    ''' Installs all Python dependencies '''
     req_file = 'dev-requirements.txt' if develop else 'requirements.txt'
     cmd = 'pip install -r {}'.format(req_file)
 
@@ -162,6 +161,7 @@ def requirements(develop=False, upgrade=False):
 
 @task
 def beat(setup=True):
+    ''' Runs the Celery Beat service '''
     from scrapi import registry
     from scrapi.tasks import app
     # Set up the provider map for elasticsearch
@@ -174,6 +174,7 @@ def beat(setup=True):
 
 @task
 def worker(loglevel='INFO', hostname='%h', autoreload=False):
+    ''' Runs the Celery worker service '''
     from scrapi.tasks import app
     command = ['worker']
     if loglevel:
@@ -187,6 +188,7 @@ def worker(loglevel='INFO', hostname='%h', autoreload=False):
 
 @task
 def harvester(harvester_name, async=False, start=None, end=None):
+    ''' Runs a specific harvester '''
     from scrapi import settings
     settings.CELERY_ALWAYS_EAGER = not async
     from scrapi import registry
@@ -204,6 +206,7 @@ def harvester(harvester_name, async=False, start=None, end=None):
 
 @task
 def harvesters(async=False, start=None, end=None):
+    ''' Runs all harvesters '''
     from scrapi import settings
     settings.CELERY_ALWAYS_EAGER = not async
     from scrapi import registry
@@ -227,26 +230,8 @@ def harvesters(async=False, start=None, end=None):
 
 
 @task
-def lint_all():
-    from scrapi import registry
-    for name in registry.keys():
-        lint(name)
-
-
-@task
-def lint(name):
-    from scrapi import linter
-    from scrapi import registry
-    harvester = registry[name]
-    try:
-        linter.lint(harvester.harvest, harvester.normalize)
-    except Exception as e:
-        print('Harvester {} raise the following exception'.format(harvester.short_name))
-        print(e)
-
-
-@task
 def provider_map(delete=False):
+    ''' Adds favicons and metadata for harvesters to Elasticsearch '''
     from six.moves.urllib import parse as urllib_parse
     from scrapi import registry
     from scrapi.processing.elasticsearch import DatabaseManager
@@ -277,16 +262,19 @@ def provider_map(delete=False):
 
 @task
 def apiserver():
+    ''' Runs the Django apiserver '''
     os.system('python manage.py runserver')
 
 
 @task
 def apidb():
+    ''' Runs the Django migrations '''
     os.system('python manage.py migrate')
 
 
 @task
 def reset_all():
+    ''' WARNING: Nukes all databases and sets them back up. Only run in development '''
     import sys
     from scrapi import settings
 
@@ -302,3 +290,9 @@ def reset_all():
     os.system("curl -XDELETE '{}/share*'".format(settings.ELASTIC_URI))
     os.system("invoke alias share share_v2")
     os.system("invoke provider_map")
+
+
+@task(default=True)
+def usage():
+    ''' Lists the available commands '''
+    run('invoke --list')
