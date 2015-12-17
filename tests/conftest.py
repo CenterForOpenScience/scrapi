@@ -57,21 +57,25 @@ def pytest_configure(config):
 
 def pytest_runtest_setup(item):
     TIMEOUT = 20
+
     marker = item.get_marker('cassandra')
     if marker is not None:
+        from scrapi.processing.cassandra import DocumentModel
         if not database.setup():
             pytest.skip('No connection to Cassandra')
 
         start = time.time()
         while True:
             try:
-                scrapi.processing.cassandra.CassandraProcessor.manager.setup()
+                DocumentModel.all().limit(1).get()
                 break
             except NoHostAvailable as e:
                 now = time.time()
                 if (now - start) > TIMEOUT:
                     raise e
                 continue
+            except Exception:
+                break
 
 
     marker = item.get_marker('elasticsearch')
