@@ -16,8 +16,8 @@ class SldrHarvester(OAIHarvester):
     base_url = 'http://sldr.org/oai-pmh.php'
     property_list = ['source', 'type', 'rights', 'modified', 'temporal', 'extent', 'spatial', 'identifier', 'abstract', 'date', 'created', 'license', 'bibliographicCitation', 'isPartOf', 'tableOfContents', 'accessRights', 'setSpec']
     approved_sets = ['publisher',
-                      'date',
-                      'language',
+                     'date',
+                     'language',
                      'rights',
                      'license',
                      'format',
@@ -34,6 +34,5 @@ class SldrHarvester(OAIHarvester):
                      'type',
                      'tableOfContents',
                      'ortolang',
-                     'archive:long-term'
-    ]
+                     'archive:long-term']
     timezone_granularity = False
