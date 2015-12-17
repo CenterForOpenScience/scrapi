@@ -2,6 +2,15 @@
 ChangeLog
 *********
 
+0.11.6 (2015-12-17)
+===================
+- Add harvesters:
+	 - Addis Ababa University Institutional Repository
+	 - NIST MaterialsData
+	 - Speech and Language Data Repository (SLDR/ORTOLANG)
+	 - DigitalCommons@University of Nebraska - Lincoln
+	 - Washington State University Research Exchange
+
 0.11.5 (2015-12-14)
 ===================
 - Add Iowa State harvester
