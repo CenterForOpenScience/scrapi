@@ -69,7 +69,7 @@ def pytest_runtest_setup(item):
                 break
             except NoHostAvailable as e:
                 now = time.time()
-                if (end - start) > TIMEOUT:
+                if (now - start) > TIMEOUT:
                     raise e
                 continue
 
@@ -88,7 +88,7 @@ def pytest_runtest_setup(item):
                 break
             except TransportError as e:
                 now = time.time()
-                if (end - start) > TIMEOUT:
+                if (now - start) > TIMEOUT:
                     raise e
                 continue
 
