@@ -12,7 +12,6 @@ from scrapi.base import helpers
 def format_uris_addis_ababa(*args):
     identifiers = helpers.gather_identifiers(args)
     provider_uris, object_uris = helpers.seperate_provider_object_uris(identifiers)
-    print(provider_uris)
 
     for arg in args:
         if arg and 'http://hdl.handle.net/123456789/' in arg[0]:
