@@ -16,16 +16,19 @@ def oai_process_uris_addis_ababa(*args):
 
     potential_uris = (provider_uris + object_uris)
 
-    for uri in potential_uris:
+    for i, uri in enumerate(potential_uris):
         if 'http://hdl.handle.net/123456789/' in uri:
-            ind = potential_uris.index(uri)
-            doc_id = potential_uris[ind].replace('http://hdl.handle.net/123456789/', '')
-            potential_uris[ind] = 'http://etd.aau.edu.et/handle/123456789/' + doc_id
+            doc_id = potential_uris[i].replace('http://hdl.handle.net/123456789/', '')
+            potential_uris[i] = 'http://etd.aau.edu.et/handle/123456789/' + doc_id
 
     try:
         canonical_uri = potential_uris[0]
     except IndexError:
         raise ValueError('No Canonical URI was returned for this record.')
+
+    provider_uris = potential_uris[0:len(provider_uris)]
+
+    object_uris = potential_uris[(len(provider_uris) + 1):len(potential_uris)]
 
     return {
         'canonicalUri': canonical_uri,
