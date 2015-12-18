@@ -2,6 +2,10 @@
 ChangeLog
 *********
 
+0.11.7 (2015-12-18)
+===================
+- Fix Addis Ababa URL gathering
+
 0.11.6 (2015-12-17)
 ===================
 - Add harvesters:
