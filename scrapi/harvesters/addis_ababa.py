@@ -17,9 +17,7 @@ def oai_process_uris_addis_ababa(*args):
     potential_uris = (provider_uris + object_uris)
 
     for i, uri in enumerate(potential_uris):
-        if 'http://hdl.handle.net/123456789/' in uri:
-            doc_id = potential_uris[i].replace('http://hdl.handle.net/123456789/', '')
-            potential_uris[i] = 'http://etd.aau.edu.et/handle/123456789/' + doc_id
+        potential_uris[i].replace('http://handle.net/123456789/', 'http://etd.aa.edu.et/handle/123456789')
 
     try:
         canonical_uri = potential_uris[0]
