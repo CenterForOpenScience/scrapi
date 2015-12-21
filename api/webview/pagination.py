@@ -15,7 +15,7 @@ class PageNumberPaginationWithoutCount(PageNumberPagination):
 
     def get_paginated_response(self, data):
         return Response(OrderedDict([
-            ('next', self.get_next_link()),
+            ('next', self.get_next_link() if data else None),
             ('previous', self.get_previous_link()),
             ('results', data)
         ]))
