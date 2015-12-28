@@ -13,7 +13,6 @@ def oai_process_pcurio(*args):
 
     identifiers = helpers.gather_identifiers(args)
     provider_uris, object_uris = helpers.seperate_provider_object_uris(identifiers)
-    print(provider_uris)
 
     for i, uri in enumerate(provider_uris):
        if 'resultadon' in uri:
