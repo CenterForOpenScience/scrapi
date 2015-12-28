@@ -21,8 +21,22 @@ from scrapi.base.helpers import default_name_parser, build_properties, compose, 
 
 logger = logging.getLogger(__name__)
 
-#articles = github3.repository('elifesciences', 'elife-articles')
-#articles.archive('zipball')
+#gather commits, each commit has a date associated with it, note max 100 per page and 3 pages pages
+#https://api.github.com/repos/elifesciences/elife-articles/commits?page=1&per_page=100
+
+#go to commit url
+
+#go to files, scrape xml file names
+
+#grab files from https://raw.githubusercontent.com/elifesciences/elife-articles/master/[xml file name]
+
+#apply xml scraper
+#<pub-date publication-format> </pub-date>
+
+#for a specific article - you can reach the full journal article at http://dx.doi.org/10.7554/eLife.00181
+#where e00181 is the elocation-id
+
+
 
 class ELifeHarvester(XMLHarvester):
     short_name = 'elife'
