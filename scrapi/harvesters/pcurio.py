@@ -15,13 +15,13 @@ def oai_process_pcurio(*args):
     provider_uris, object_uris = helpers.seperate_provider_object_uris(identifiers)
 
     for i, uri in enumerate(provider_uris):
-       if 'resultadon' in uri:
+        if 'resultadon' in uri:
             doc_id = provider_uris[i].replace('http://www.maxwell.vrac.puc-rio.br/Busca_etds.php?strSecao=resultadonrSeq=', '')
             provider_uris[i] = 'http://www.maxwell.vrac.puc-rio.br/Busca_etds.php?strSecao=resultado&nrSeq=' + doc_id
 
     for i, uri in enumerate(object_uris):
-       if 'resultadon' in uri:
-            doc_id = provider_uris[i].replace('http://www.maxwell.vrac.puc-rio.br/Busca_etds.php?strSecao=resultadonrSeq=', '')
+        if 'resultadon' in uri:
+            doc_id = object_uris[i].replace('http://www.maxwell.vrac.puc-rio.br/Busca_etds.php?strSecao=resultadonrSeq=', '')
             object_uris[i] = 'http://www.maxwell.vrac.puc-rio.br/Busca_etds.php?strSecao=resultado&nrSeq=' + doc_id
 
     potential_uris = (provider_uris + object_uris)
@@ -36,6 +36,7 @@ def oai_process_pcurio(*args):
         'objectUris': object_uris,
         'providerUris': provider_uris
     }
+
 
 class PcurioHarvester(OAIHarvester):
     short_name = 'pcurio'
