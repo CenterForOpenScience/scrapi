@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 '''
 Harvester for the RCAAP - Repositório Científico de Acesso Aberto de Portugal for the SHARE project
 
