@@ -1,0 +1,81 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.8.1]
+    method: GET
+    uri: http://purr.purdue.edu/oaipmh?verb=ListRecords&metadataPrefix=oai_dc&from=2015-11-30T00:00:00Z&until=2015-12-02T00:00:00Z
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA8ooKSkoKC0q0gMSKaWpeqkppfo2ii7+ziGRAa4KGSW5OXYAAAAA//8DAM0SUxYj
+        AAAA
+    headers:
+      cache-control: [no-cache]
+      connection: [close]
+      content-encoding: [gzip]
+      content-type: [text/html]
+      date: ['Tue, 22 Dec 2015 15:30:10 GMT']
+      location: ['https://purr.purdue.edu/oaipmh?from=2015-11-30T00%3A00%3A00Z&metadataPrefix=oai_dc&until=2015-12-02T00%3A00%3A00Z&verb=ListRecords']
+      server: [Apache]
+      set-cookie: [cddedbcb59207f67f74996053d2a78a5=2095540d0d9d1e75ea53ca881e6992d6;
+          path=/; secure; HttpOnly, cddedbcb59207f67f74996053d2a78a5=2e6aa49daad52d64072b34ae2fded392;
+          path=/; secure; HttpOnly]
+      vary: [Accept-Encoding]
+      x-content-type-options: [nosniff]
+      x-frame-options: [sameorigin]
+      x-permitted-cross-domain-policies: [master-only]
+      x-xss-protection: [1; mode=block]
+    status: {code: 302, message: Found}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Cookie: [cddedbcb59207f67f74996053d2a78a5=2e6aa49daad52d64072b34ae2fded392]
+      User-Agent: [python-requests/2.8.1]
+    method: GET
+    uri: https://purr.purdue.edu/oaipmh?from=2015-11-30T00%3A00%3A00Z&metadataPrefix=oai_dc&until=2015-12-02T00%3A00%3A00Z&verb=ListRecords
+  response:
+    body: {string: !!python/unicode "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<?xml-stylesheet
+        type=\"text/xsl\" href=\"https://purr.purdue.edu/oaipmh/stylesheet?metadataPrefix=oai_dc\"?>\n<OAI-PMH
+        xmlns=\"http://www.openarchives.org/OAI/2.0/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\">\n
+        \ <responseDate>2015-12-22T15:30:11+00:00</responseDate>\n  <request verb=\"ListRecords\">purr.purdue.edu/oaipmh</request>\n
+        \ <ListRecords>\n    <record>\n      <header>\n        <identifier>http://dx.doi.org/10.4231/R7TQ5ZG3</identifier>\n
+        \       <datestamp>2015-12-01T09:16:00Z</datestamp>\n        <setSpec>publications:dataset</setSpec>\n
+        \     </header>\n      <metadata>\n        <oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"
+        xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
+        xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n
+        \         <dc:title>PRICLE community composition and soil moisture 2012-2013
+        [version 1.0]</dc:title>\n          <dc:subject>Agriculture</dc:subject>\n
+        \         <dc:subject>botany</dc:subject>\n          <dc:subject>climate</dc:subject>\n
+        \         <dc:subject>environmental manipulation</dc:subject>\n          <dc:subject>plant
+        community</dc:subject>\n          <dc:subject>plant diversity</dc:subject>\n
+        \         <dc:subject>soil water content</dc:subject>\n          <dc:subject>soils</dc:subject>\n
+        \         <dc:date>2015-12-01T09:16:00Z</dc:date>\n          <dc:identifier>http://dx.doi.org/10.4231/R7TQ5ZG3</dc:identifier>\n
+        \         <dc:description>These data correspond to a paper entitled &amp;quot;Rainfall
+        variability and nitrogen addition synergistically reduce plant diversity in
+        a restored tallgrass prairie&amp;quot; by Smith, Schuster, and Dukes published
+        in the Journal of Applied Ecology.</dc:description>\n          <dc:type>publications:dataset</dc:type>\n
+        \       </oai_dc:dc>\n      </metadata>\n    </record>\n  </ListRecords>\n</OAI-PMH>\n"}
+    headers:
+      cache-control: [no-cache]
+      connection: [close]
+      content-disposition: [inline; filename="hubzero.xml"]
+      content-length: ['2058']
+      content-type: [application/xml; charset=utf-8]
+      date: ['Tue, 22 Dec 2015 15:30:11 GMT']
+      p3p: [CP="NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM"]
+      server: [Apache]
+      strict-transport-security: [max-age=31536000; includeSubDomains]
+      x-content-type-options: [nosniff]
+      x-frame-options: [sameorigin]
+      x-permitted-cross-domain-policies: [master-only]
+      x-xss-protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1
