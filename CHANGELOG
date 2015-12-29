@@ -2,6 +2,13 @@
 ChangeLog
 *********
 
+0.11.8 (2015-12-29)
+===================
+- Add harvesters:
+  - Pontifical Catholic University of Rio de Janeiro
+	- PURR - Purdue University Research Repository
+	- RCAAP - Repositório Científico de Acesso Aberto de Portugal
+
 0.11.7 (2015-12-18)
 ===================
 - Fix Addis Ababa URL gathering

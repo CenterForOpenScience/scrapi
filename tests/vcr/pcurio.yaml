@@ -1,0 +1,197 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/3.4.3 Linux/3.19.0-33-generic]
+    method: GET
+    uri: http://www.maxwell.vrac.puc-rio.br/DC_Todos.php?verb=ListRecords&metadataPrefix=oai_dc&from=2015-03-14&until=2015-03-16
+  response:
+    body: {string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"\
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
+        http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"\
+        ><responseDate>2015-12-28T12:55:51Z</responseDate><request verb=\"ListRecords\"\
+        \  from=\"2015-03-14\" until=\"2015-03-16\" metadataPrefix=\"oai_dc\">http://www.maxwell.vrac.puc-rio.br/DC_Todos.php</request><ListRecords><record><header><identifier>oai:MAXWELL.puc-rio.br:24182</identifier><datestamp>2015-03-16</datestamp></header><metadata><oaidc:dc\
+        \ xmlns=\"http://purl.org/dc/elements/1.1/\" xmlns:oaidc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
+        http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\"\
+        ><title>[pt] APERFEI\xC7OAMENTO DE TAC\xD4METRO MAGN\xC9TICO PARA COLUNAS\
+        \ DE PERFURA\xC7\xC3O </title><creator>DIOGO SPAZZAFUMO REINOSO</creator><subject>[pt]\
+        \ PERFURACAO</subject><subject>[pt] TACOMETRO</subject><subject>[pt] GMR -\
+        \ MAGNETORRESISTENCIA GIGANTE</subject><description>[pt] No Projeto Final\
+        \ do aluno Jean Philippe Dines Labarrere, finalizado em dezembro/2013, desenvolveu-se\
+        \ um prot\xF3tipo preliminar de tac\xF4metro magn\xE9tico para bloco de perfura\xE7\
+        \xE3o, para o qual foram necess\xE1rias algumas simplifica\xE7\xF5es, como\
+        \ a utiliza\xE7\xE3o de um tubo de PVC com \xEDm\xE3s acoplados para simular\
+        \ a coluna de perfura\xE7\xE3o. Em uma segunda vers\xE3o do tac\xF4metro,\
+        \ em Projeto Final finalizado pelo aluno Luis Philipe Baptista e Silva Resano\
+        \ em julho/2014, realizaram-se modifica\xE7\xF5es no prot\xF3tipo prim\xE1\
+        rio, inicialmente trocando o tubo de PVC por um tubo de a\xE7o e em seguida\
+        \ realizando melhorias no algoritmo de aquisi\xE7\xE3o e processamento de\
+        \ dados. Neste projeto, aprimorou-se o prot\xF3tipo j\xE1 existente para que\
+        \ se aproximasse ainda mais da realidade. O primeiro passo foi substituir\
+        \ o magnet\xF4metro fluxgate por um sensor menor e mais barato, conhecido\
+        \ como GMR (magnetorresist\xEAncia gigante). Para os passos seguintes, foi\
+        \ realizado o acoplamento de um motor CC ao Tubo de a\xE7o carbono, para se\
+        \ possuir um melhor controle da velocidade e, al\xE9m disso, integrou-se o\
+        \ sistema em malha fechada, permitindo ao usu\xE1rio definir a velocidade\
+        \ desejada em uma interface desenvolvida no ambiente LabView, controlando\
+        \ a tens\xE3o de alimenta\xE7\xE3o do motor para que o mesmo atinja a esta\
+        \ velocidade.</description><publisher>MAXWELL</publisher><contributor>CARLOS\
+        \ ROBERTO HALL BARBOSA</contributor><date>2015-03-03</date><type>TEXTO</type><identifier>http://www.maxwell.vrac.puc-rio.br/Busca_etds.php?strSecao=resultado&amp;nrSeq=24182@1</identifier><language>pt</language></oaidc:dc></metadata></record><record><header><identifier>oai:MAXWELL.puc-rio.br:24183</identifier><datestamp>2015-03-16</datestamp></header><metadata><oaidc:dc\
+        \ xmlns=\"http://purl.org/dc/elements/1.1/\" xmlns:oaidc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
+        http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\"\
+        ><title>[en] ADIMENSIONAL ANALYSIS OF FLOWS IN WELL PLUGGING PROCESSES </title><title>[pt]\
+        \ AN\xC1LISE DIMENSIONAL DO ESCOAMENTO NO TAMPONAMENTO DE PO\xC7OS </title><creator>EDUARDO\
+        \ DE MONTENEGRO TRINDADE</creator><subject>[pt] SIMULACAO</subject><subject>[en]\
+        \ SIMULATION</subject><subject>[pt] REOLOGIA</subject><subject>[en] RHEOLOGY</subject><subject>[pt]\
+        \ TAMPONAMENTO</subject><subject>[en] TAMPONAMENTO</subject><subject>[pt]\
+        \ POCOS</subject><subject>[en] WELLS</subject><description>[pt] O tamponamento\
+        \ de po\xE7os consiste na inje\xE7\xE3o de um fluido, chamado tamp\xE3o, sobre\
+        \ outro de densidade inferior. Na cen\xE1rio mais comum da ind\xFAstria petrol\xED\
+        fera, o cimento tem papel de tamp\xE3o, sendo injetado sobre o fluido de perfura\xE7\
+        \xE3o, cuja densidade \xE9 menor, com o objetivo de selar o\r\npo\xE7o, permanente\
+        \ ou temporariamente. O objetivo desse estudo \xE9 relacionar a velocidade\
+        \ de invers\xE3o dos fluidos com suas diferen\xE7as de viscosidade e densidade\
+        \ por meio de simula\xE7\xF5es num\xE9ricas realizadas com o software Fluent\
+        \ (Ansys Inc.) e criar um modelo facilmente utiliz\xE1vel na ind\xFAstria.</description><description>[en]\
+        \ Well plugging consists in injecting a fluid, called plug, over another,\r\
+        \nless dense, fluid. The most common scenario in the oil and gas industry\r\
+        \nis that with a cement plug injected over drilling fluid with the purpose\
+        \ of\r\nsealing off\v the well permanently or temporarily. The objective of\
+        \ this study\r\nis to relate the velocity of the fluids during the inversion\
+        \ process and their\r\ndifferences of density and viscosity by means of numeric\
+        \ simulations done\r\nwith Ansys Inc. Fluent software and to create a model\
+        \ thats can be easily\r\nused in the Industry.</description><publisher>MAXWELL</publisher><contributor>ALINE\
+        \ ABDU</contributor><contributor>MONICA FEIJO NACCACHE</contributor><contributor>PAULO\
+        \ ROBERTO DE SOUZA MENDES</contributor><date>2015-03-03</date><type>TEXTO</type><identifier>http://www.maxwell.vrac.puc-rio.br/Busca_etds.php?strSecao=resultado&amp;nrSeq=24183@1</identifier><identifier>http://www.maxwell.vrac.puc-rio.br/Busca_etds.php?strSecao=resultado&amp;nrSeq=24183@2</identifier><language>pt</language></oaidc:dc></metadata></record><record><header><identifier>oai:MAXWELL.puc-rio.br:24253</identifier><datestamp>2015-03-16</datestamp></header><metadata><oaidc:dc\
+        \ xmlns=\"http://purl.org/dc/elements/1.1/\" xmlns:oaidc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
+        http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\"\
+        ><title>[en] CELESTE MODAS AND THE BOUTIQUES IN COPACABANA IN THE 1950S: DISTINCTION,\
+        \ MODERNITY AND THE PRODUCTION OF PR\xCAT \xC0 PORTER</title><title>[pt] A\
+        \ CELESTE MODAS E AS BUTIQUES DE COPACABANA NOS ANOS 1950: DISTIN\xC7\xC3\
+        O, MODERNIDADE E PRODU\xC7\xC3O DO PR\xCAT \xC0 PORTER</title><creator>ANA\
+        \ CLAUDIA LOURENCO FERREIRA LOPES</creator><subject>[pt] PRET-A-PORTER</subject><subject>[en]\
+        \ PRET-A-PORTER</subject><subject>[pt] COPACABANA</subject><subject>[en] COPACABANA</subject><subject>[pt]\
+        \ BUTIQUES</subject><subject>[en] BOUTIQUES</subject><subject>[pt] SOCIEDADE\
+        \ CARIOCA NOS ANOS 1950</subject><subject>[en] RIO DE JANEIRO S SOCIETY IN\
+        \ THE 1950S</subject><subject>[pt] DISTINCAO</subject><subject>[en] DISTINCTION</subject><subject>[pt]\
+        \ PRODUCAO DE MODA</subject><subject>[en] GARMENT PRODUCTION</subject><subject>[pt]\
+        \ CELESTE MODAS</subject><subject>[en] CELESTE MODAS</subject><description>[pt]\
+        \ Esse trabalho tem por objetivo jogar luz sobre o com\xE9rcio de moda feminina\
+        \ em Copacabana no final dos anos 1940 e anos 1950, dando enfoque principalmente\
+        \ \xE0 Celeste Modas. A partir de entrevistas com pessoas que trabalharam\
+        \ com moda nessas d\xE9cadas; da pesquisa em jornais e na revista Rio Magazine;\
+        \ e de fotos antigas das lojas mais renomadas do Centro da Cidade, ent\xE3\
+        o principal com\xE9rcio de moda feminina no Rio de Janeiro, buscou-se entender\
+        \ o quanto as casas que surgiram em Copacabana no per\xEDodo se basearam no\
+        \ modelo f\xEDsico e na forma de produ\xE7\xE3o de vestu\xE1rio estabelecidas\
+        \ pelas distintas lojas do Centro; e o quanto elas se adaptaram ao imagin\xE1\
+        rio simb\xF3lico de Copacabana e \xE0s ideias de modernidade e distin\xE7\xE3\
+        o do per\xEDodo.</description><description>[en] This work aims to enlighten\
+        \ about the womenswear retail businesses in Copacabana in the late 1940s and\
+        \ 1950s, in particular about Celeste Modas. Drawing from interviews with professionals\
+        \ who worked in fashion at the time; going through newspapers from the period\
+        \ and Rio Magazine; and using antique photos of Rio s most renowned shops\
+        \ in the city Centre (the main shopping area at the time), it aimed to understand\
+        \ to which extent the Copacabana boutiques relied on the retail and production\
+        \ model already in place in the Centre, and how much they adapted their retail\
+        \ businesses to fit into the symbolic conception of Copacabana and the ideas\
+        \ of modern and luxury of the period.</description><publisher>MAXWELL</publisher><contributor>ANTONIO\
+        \ EDMILSON MARTINS RODRIGUES</contributor><date>2015-03-11</date><type>TEXTO</type><identifier>http://www.maxwell.vrac.puc-rio.br/Busca_etds.php?strSecao=resultado&amp;nrSeq=24253@1</identifier><identifier>http://www.maxwell.vrac.puc-rio.br/Busca_etds.php?strSecao=resultado&amp;nrSeq=24253@2</identifier><language>pt</language></oaidc:dc></metadata></record><record><header><identifier>oai:MAXWELL.puc-rio.br:24269</identifier><datestamp>2015-03-16</datestamp></header><metadata><oaidc:dc\
+        \ xmlns=\"http://purl.org/dc/elements/1.1/\" xmlns:oaidc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
+        http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\"\
+        ><title>[en] CONVERGENCES AND DIVERGENCES: THE POLITICAL REPUBLICAN LANGUAGE\
+        \ DURING THE CAMPANHA CIVILISTA</title><title>[pt] CONVERG\xCANCIAS E DIVERG\xCA\
+        NCIAS: A LINGUAGEM POL\xCDTICA REPUBLICANA NA CAMPANHA CIVILISTA</title><creator>ERICA\
+        \ SANTOS SZABO</creator><subject>[pt] DISCURSO POLITICO</subject><subject>[en]\
+        \ POLITICAL DISCOURSE</subject><subject>[pt] PRIMEIRA REPUBLICA</subject><subject>[en]\
+        \ FIRST REPUBLIC</subject><subject>[pt] RUI BARBOSA</subject><subject>[en]\
+        \ RUI BARBOSA</subject><subject>[pt] CAMPANHA CIVILISTA</subject><subject>[en]\
+        \ CAMPANHA CIVILISSTA</subject><subject>[pt] HERMES DA FONSECA</subject><subject>[en]\
+        \ HERMES DA FONSECA</subject><subject>[pt] POLITICA DAS OLIGARQUIAS ESTADUAIS</subject><subject>[en]\
+        \ OLIGARCHIC POLITICS</subject><subject>[pt] COMUNIDADE LINGUISTICA</subject><subject>[en]\
+        \ LINGUISTIC COMMUNITY</subject><description>[pt] O presente trabalho analisa\
+        \ a linguagem pol\xEDtica republicana atrav\xE9s de textos produzidos por\
+        \ Hermes da Fonseca, Rui Barbosa e seus correligion\xE1rios no contexto da\
+        \ Campanha Civilista. Ao contr\xE1rio da historiografia mais tradicional,\
+        \ buscaremos mostrar como os dois candidatos tinham ideias mais convergentes\
+        \ do que divergentes a respeito da rep\xFAblica brasileira, apesar de suas\
+        \ forma\xE7\xF5es profissionais distintas. Tal proximidade entre as ideias\
+        \ se deve ao fato de ambos participarem de uma mesma comunidade lingu\xED\
+        stica (no sentido empregado por Pocock), onde tanto a pol\xEDtica republicana\
+        \ como a na\xE7\xE3o vinham apresentadas de maneira bastante semelhantes.\
+        \ Foram as distintas inser\xE7\xF5es e as alian\xE7as que cada um estabeleceu\
+        \ com os grupos pol\xEDticos regionais, ent\xE3o em embate, que continuaram\
+        \ sendo as principais respons\xE1veis pela demarca\xE7\xE3o das suas diferen\xE7\
+        as durante a disputa presidencial.</description><description>[en] In this\
+        \ dissertation I analyze the republican political language through the texts\
+        \ produced by Hermes da Fonseca, Rui Barbosa, and their followers during the\
+        \ so-called Campanha Civilista. Unlike the traditional historiography, I will\
+        \ try to demonstrate that the ideas of both candidates about the Brazilian\
+        \ Republic were more convergent than divergent, despite their different professional\
+        \ backgrounds. Such similarity is due to the fact that both shared a same\
+        \ linguistic community (in the sense Pocock understands it) wherethe concept\
+        \ of republican politics and that one of nation appear in a very similar way.\
+        \ Their distinctalliances ans insertions among the regional political groups\
+        \ remained being responsible for the main differences they presented during\
+        \ this presidential campaign.</description><publisher>MAXWELL</publisher><contributor>MARCO\
+        \ ANTONIO VILLELA PAMPLONA</contributor><date>2015-03-12</date><type>TEXTO</type><identifier>http://www.maxwell.vrac.puc-rio.br/Busca_etds.php?strSecao=resultado&amp;nrSeq=24269@1</identifier><identifier>http://www.maxwell.vrac.puc-rio.br/Busca_etds.php?strSecao=resultado&amp;nrSeq=24269@2</identifier><language>pt</language></oaidc:dc></metadata></record><record><header><identifier>oai:MAXWELL.puc-rio.br:24274</identifier><datestamp>2015-03-16</datestamp></header><metadata><oaidc:dc\
+        \ xmlns=\"http://purl.org/dc/elements/1.1/\" xmlns:oaidc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
+        http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\"\
+        ><title>[en] MANAGING FOREIGN EXCHANCE RISKS: A CASE STUDY APPLYING COPELAND\
+        \ AND COPELAND MODEL (1999) FOR EXPORT COMPANIES</title><title>[pt] ADMINISTRA\xC7\
+        \xC3O DE RISCOS CAMBIAIS: UM ESTUDO DE CASO ATRAV\xC9S DA APLICA\xC7\xC3O\
+        \ DO MODELO COPELAND E COPELAND (1999) EM EMPRESAS EXPORTADORAS</title><creator>DANIEL\
+        \ DE ARAUJO GON\xC7ALVES</creator><subject>[pt] RISCO CAMBIAL</subject><subject>[en]\
+        \ CURRENCY RISK</subject><subject>[pt] FLUXO DE CAIXA</subject><subject>[en]\
+        \ CASH FLOW</subject><subject>[pt] HEDGE</subject><subject>[pt] EMPRESAS EXPORTADORAS</subject><subject>[en]\
+        \ EXPORTER COMPANIES</subject><description>[pt] A globaliza\xE7\xE3o mudou\
+        \ a forma como as empresas fazem neg\xF3cio.\r\nTransformou investimentos,\
+        \ mercados consumidores, importa\xE7\xF5es e exporta\xE7\xF5es\r\nde produtos\
+        \ e servi\xE7os de escala local para a planet\xE1ria. Como \xF4nus, as empresas\r\
+        \npassaram a lidar com o risco cambial \u2013 valoriza\xE7\xE3o ou desvaloriza\xE7\
+        \xE3o de sua\r\nmoeda. Instrumentos financeiros foram criados com o objetivo\
+        \ de reduzir a\r\nvari\xE2ncia causada no fluxo de caixa, embora n\xE3o seja\
+        \ o \xFAnico fator a ser\r\nconsiderado quando da decis\xE3o de se contratar\
+        \ uma prote\xE7\xE3o cambial (hedge). O\r\nestudo tem por objetivo fazer uma\
+        \ an\xE1lise de sensibilidade da chance de\r\nocorr\xEAncia de um encontro\
+        \ entre as curvas de entradas e sa\xEDdas de caixa de uma\r\nempresa exportadora,\
+        \ utilizando o modelo Copeland e Copeland (1999), em\r\nsitua\xE7\xF5es antes\
+        \ e ap\xF3s a contrata\xE7\xE3o de um hedge. Com os resultados, \xE9 poss\xED\
+        vel\r\nmedir os benef\xEDcios (ou n\xE3o) da contrata\xE7\xE3o desses instrumentos,\
+        \ por meio da\r\nredu\xE7\xE3o (aumento) na probabilidade de ocorr\xEAncia\
+        \ de dificuldades financeiras nos\r\ndois momentos.</description><description>[en]\
+        \ Globalization has changed the way companies do business. It took\r\ninvestments,\
+        \ consumer markets, imports and exports of goods and services from a\r\nlocal\
+        \ to a global scale. With this, companies began to deal with foreign exchange\r\
+        \nrisk - currency fluctuations. Financial instruments were created to reduce\
+        \ variance\r\nin the cash flow, although this is not the only aspect to consider\
+        \ when companies\r\ndecide to adopt a foreign exchange hedge. The purpose\
+        \ of this study is to carry out\r\na sensitivity analysis of the probability\
+        \ of export company s cash in flow and out\r\nflow curves meeting, using the\
+        \ Copeland and Copeland (1999) model, before and\r\nafter contracting a hedge.\
+        \ With the results, it is possible to measure the benefits\r\n(or otherwise)\
+        \ of contracting these instruments by means of reducing or increasing\r\n\
+        the probability of financial difficulties occurring in both cases.</description><publisher>MAXWELL</publisher><contributor>ANTONIO\
+        \ CARLOS FIGUEIREDO PINTO</contributor><date>2015-03-12</date><type>TEXTO</type><identifier>http://www.maxwell.vrac.puc-rio.br/Busca_etds.php?strSecao=resultado&amp;nrSeq=24274@1</identifier><identifier>http://www.maxwell.vrac.puc-rio.br/Busca_etds.php?strSecao=resultado&amp;nrSeq=24274@2</identifier><language>pt</language></oaidc:dc></metadata></record><resumptionToken\
+        \ cursor=\"0\" completeListSize=\"5\"></resumptionToken></ListRecords></OAI-PMH>"}
+    headers:
+      Cache-Control: ['no-store, no-cache, must-revalidate, post-check=0, pre-check=0']
+      Connection: [Keep-Alive]
+      Content-Type: [text/xml; charset=utf-8]
+      Date: ['Mon, 28 Dec 2015 14:55:51 GMT']
+      Expires: ['Thu, 19 Nov 1981 08:52:00 GMT']
+      Keep-Alive: ['timeout=5, max=100']
+      Pragma: [no-cache]
+      Server: [Apache]
+      Set-Cookie: [PHPSESSID=b0n3b3n7dbm4vnhbkqep43p9l6; path=/, MAXWELLRID=.2; path=/]
+      X-Powered-By: [PHP/5.1.6]
+    status: {code: 200, message: OK}
+version: 1
