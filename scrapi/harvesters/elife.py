@@ -36,7 +36,7 @@ logger = logging.getLogger(__name__)
 #for a specific article - you can reach the full journal article at http://dx.doi.org/10.7554/eLife.00181
 #where e00181 is the elocation-id
 
-
+#example: https://raw.githubusercontent.com/elifesciences/elife-articles/master/elife06011.xml
 
 class ELifeHarvester(XMLHarvester):
     short_name = 'elife'
@@ -48,7 +48,7 @@ class ELifeHarvester(XMLHarvester):
     namespaces = {}
 
     MAX_ROWS_PER_REQUEST = 999
-    BASE_URL = 'https://github.com/elifesciences/elife-articles'
+    BASE_URL = 'https://api.github.com/repos/elifesciences/elife-articles/'
 '''
     def fetch_rows(self, start_date, end_date):
         query = 'publication_date:[{}T00:00:00Z TO {}T00:00:00Z]'.format(start_date, end_date)
