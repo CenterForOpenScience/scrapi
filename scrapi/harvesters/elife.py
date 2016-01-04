@@ -10,8 +10,7 @@ import logging
 from datetime import date, timedelta
 
 from lxml import etree
-
-import github3
+import json
 
 from scrapi import requests
 from scrapi import settings
@@ -23,6 +22,7 @@ logger = logging.getLogger(__name__)
 
 #gather commits, each commit has a date associated with it, note max 100 per page and 3 pages pages
 #https://api.github.com/repos/elifesciences/elife-articles/commits?page=1&per_page=100
+#https://api.github.com/repos/elifesciences/elife-articles/commits?page=1&per_page=100&since=2014-01-01&until=2014-01-04
 
 #go to commit url
 
@@ -34,7 +34,7 @@ logger = logging.getLogger(__name__)
 #<pub-date publication-format> </pub-date>
 
 #for a specific article - you can reach the full journal article at http://dx.doi.org/10.7554/eLife.00181
-#where e00181 is the elocation-id
+#where 00181 is the elocation-id
 
 #example: https://raw.githubusercontent.com/elifesciences/elife-articles/master/elife06011.xml
 
@@ -48,41 +48,55 @@ class ELifeHarvester(XMLHarvester):
     namespaces = {}
 
     MAX_ROWS_PER_REQUEST = 999
-    BASE_URL = 'https://api.github.com/repos/elifesciences/elife-articles/'
-'''
-    def fetch_rows(self, start_date, end_date):
-        query = 'publication_date:[{}T00:00:00Z TO {}T00:00:00Z]'.format(start_date, end_date)
+    BASE_URL = 'https://api.github.com/repos/elifesciences/elife-articles/commits?'
+    BASE_COMMIT_URL = 'https://api.github.com/repos/elifesciences/elife-articles/git/commits/{}'
+    #BASE_DATA_URL = 'https://raw.githubusercontent.com/elifesciences/elife-articles/master/{}'
+    #BASE_PROJECT_URL = 'http://dx.doi.org/10.7554/eLife.{}'
+
+    def fetch_commits(self, start_date, end_date):
 
         resp = requests.get(self.BASE_URL, params={
-            'q': query,
-            'rows': '0',
-            'api_key': PLOS_API_KEY,
+            'since': start_date,
+            'until': end_date,
+            'page': '1',
+            'per_page': 100,
         })
 
-        total_rows = etree.XML(resp.content).xpath('//result/@numFound')
-        total_rows = int(total_rows[0]) if total_rows else 0
+        jsonstr = resp.content.decode('utf-8')
+        jsonstr = jsonstr.replace('},{','}\\n{')
+        jsonstr = jsonstr[1:-1]
+        jsonarr = jsonstr.split('\\n')
 
-        current_row = 0
-        while current_row < total_rows:
-            response = requests.get(self.BASE_URL, throttle=5, params={
-                'q': query,
-                'start': current_row,
-                'api_key': PLOS_API_KEY,
-                'rows': self.MAX_ROWS_PER_REQUEST,
-            })
+        shas = []
+        for jsonstr in jsonarr:
+            jsonobj = json.loads(jsonstr)
+            shas.append(jsonobj['sha'])
 
-            for doc in etree.XML(response.content).xpath('//doc'):
-                yield doc
+    def fetch_file_names(self, sha):
 
-            current_row += self.MAX_ROWS_PER_REQUEST
+        files = requests.get(self.BASE_COMMIT_URL('f7f18ca1b3d0ea18694ce913e0d56e7e99b26007'))
+        print(files.content.decode('utf-8'))
+
+        #decoder = json.JSONDecoder(strict=False)
+        #text = resp.content.decode('utf-8')
+        #json_files = decoder.raw_decode(text)
+        #print(text)
+        #commits = json.dumps(json_files)
+        #commits_json = json.loads(text)
+        #print(commits_json[0])
+        #print(type(commits_json))
+        #print(type(commits_json))
+
+        #t = etree.XML(text)
+        #print(t)
+        #t = etree.parse(resp.content, parser)
+        #commits = t.findall('sha')
+        #print(commits)
 
     def harvest(self, start_date=None, end_date=None):
 
         start_date = start_date or date.today() - timedelta(settings.DAYS_BACK)
         end_date = end_date or date.today()
-
-        if not PLOS_API_KEY:  # pragma: no cover
-            return []
 
         return [
             RawDocument({
@@ -92,7 +106,7 @@ class ELifeHarvester(XMLHarvester):
                 'docID': row.xpath("str[@name='id']")[0].text,
             })
             for row in
-            self.fetch_rows(start_date.isoformat(), end_date.isoformat())
+            self.fetch_commits(start_date.isoformat(), end_date.isoformat())
             if row.xpath("arr[@name='abstract']")
             or row.xpath("str[@name='author_display']")
         ]
@@ -114,4 +128,3 @@ class ELifeHarvester(XMLHarvester):
             ('score', '//float[@name="score"]/node()')
         )
     }
-'''
