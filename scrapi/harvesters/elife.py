@@ -38,6 +38,7 @@ logger = logging.getLogger(__name__)
 
 #example: https://raw.githubusercontent.com/elifesciences/elife-articles/master/elife06011.xml
 
+
 class ELifeHarvester(XMLHarvester):
     short_name = 'elife'
     long_name = 'eLife Sciences'
@@ -63,7 +64,7 @@ class ELifeHarvester(XMLHarvester):
         })
 
         jsonstr = resp.content.decode('utf-8')
-        jsonstr = jsonstr.replace('},{','}\\n{')
+        jsonstr = jsonstr.replace('},{', '}\\n{')
         jsonstr = jsonstr[1:-1]
         jsonarr = jsonstr.split('\\n')
 
