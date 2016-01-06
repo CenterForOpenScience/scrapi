@@ -39,6 +39,20 @@ logger = logging.getLogger(__name__)
 #example: https://raw.githubusercontent.com/elifesciences/elife-articles/master/elife06011.xml
 
 
+single_string = compose(lambda x: x.title().strip(), single_result)
+
+
+def concat_title(list):
+    new_title = ''.join(list)
+    return new_title
+
+
+def concat_description(list):
+    del list[-3:]
+    new_description = ''.join(list)
+    return new_description
+
+
 def fetch_commits(base_url, start_date, end_date):
     resp = requests.get(base_url, params={
         'since': start_date,
@@ -93,7 +107,7 @@ class ELifeHarvester(XMLHarvester):
     BASE_URL = 'https://api.github.com/repos/elifesciences/elife-articles/commits?'
     BASE_COMMIT_URL = 'https://api.github.com/repos/elifesciences/elife-articles/commits/{}'
     BASE_DATA_URL = 'https://raw.githubusercontent.com/elifesciences/elife-articles/master/{}'
-    #BASE_PROJECT_URL = 'http://dx.doi.org/10.7554/eLife.{}'
+
 
     def harvest(self, start_date=None, end_date=None):
 
@@ -111,16 +125,16 @@ class ELifeHarvester(XMLHarvester):
         for file in files:
             xml_records.append(fetch_xml(self.BASE_DATA_URL, file))
 
-        test = xml_records[0]
+        #test = xml_records[0]
         #print(etree.tostring(test))
-        #print(test.xpath('//abstract/p')[0].text)
+        #print(test.xpath('//article-meta/title-group/article-title/*')[0].text)
 
         return [
             RawDocument({
                 'filetype': 'xml',
                 'source': self.short_name,
                 'doc': etree.tostring(record),
-                'docID': record.xpath('//article-id')[1].text,
+                'docID': record.xpath('//article-id[@*]')[0].text,
             }) for record in xml_records
         ]
 
@@ -128,10 +142,10 @@ class ELifeHarvester(XMLHarvester):
         'uris': {
             'canonicalUri': ('//article-id/node()', compose('http://dx.doi.org/10.7554/eLife.{}'.format, single_result)),
         },
-        'contributors': ('//contrib[@contrib-type="author"]/node()', default_name_parser), #need to do custom
+        'contributors': ('//arr[@name="author_display"]/str/node()', default_name_parser), #need to do custom
         'providerUpdatedDateTime': ('//pub-date/month/node()', compose(datetime_formatter, single_result)), #need to do custom
-        'title': ('//article-title/node()'), #need to remove bold and italics from titles
-        'description': ('//abstract/node()', single_result), #need to deal with bold and italics
+        'title': ('//article-meta/title-group/article-title//text()', concat_title),
+        'description': ('//abstract[not(@abstract-type="executive-summary")]/p//text()', concat_description),
         'publisher': {
             'name': ('//publisher-name/node()', single_result)
         },
