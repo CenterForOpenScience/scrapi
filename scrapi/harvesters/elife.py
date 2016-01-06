@@ -39,10 +39,51 @@ logger = logging.getLogger(__name__)
 #example: https://raw.githubusercontent.com/elifesciences/elife-articles/master/elife06011.xml
 
 
+def fetch_commits(base_url, start_date, end_date):
+    resp = requests.get(base_url, params={
+        'since': start_date,
+        'until': end_date,
+        'page': '1', #will need to update this to pull from multiple pages
+        'per_page': 100,
+    })
+
+    jsonstr = resp.content.decode('utf-8')
+    jsonstr = jsonstr.replace('},{', '}\\n{')
+    jsonstr = jsonstr[1:-1]
+    jsonarr = jsonstr.split('\\n')
+
+    shas = []
+    for jsonstr in jsonarr:
+        jsonobj = json.loads(jsonstr)
+        shas.append(jsonobj['sha'])
+    return shas
+
+
+def fetch_file_names(commit_url, sha):
+    resp = requests.get(commit_url.format(sha))
+
+    jsonstr = resp.content.decode('utf-8')
+    jsonobj = json.loads(jsonstr)
+
+    files = [d['filename'] for d in jsonobj['files']]
+    return files
+
+
+def fetch_xml(xml_url, filename):
+    xml_text = requests.get(xml_url.format(filename)).content
+    xml = etree.fromstring(xml_text)
+    return xml
+
+
+def clean_title(title):
+    new_title = title.encode('utf-8')
+    return new_title
+
+
 class ELifeHarvester(XMLHarvester):
     short_name = 'elife'
     long_name = 'eLife Sciences'
-    url = 'https://github.com/elifesciences'
+    url = 'http://elifesciences.org/'
     DEFAULT_ENCODING = 'UTF-8'
     record_encoding = None
 
@@ -50,78 +91,49 @@ class ELifeHarvester(XMLHarvester):
 
     MAX_ROWS_PER_REQUEST = 999
     BASE_URL = 'https://api.github.com/repos/elifesciences/elife-articles/commits?'
-    BASE_COMMIT_URL = 'https://api.github.com/repos/elifesciences/elife-articles/git/commits/{}'
-    #BASE_DATA_URL = 'https://raw.githubusercontent.com/elifesciences/elife-articles/master/{}'
+    BASE_COMMIT_URL = 'https://api.github.com/repos/elifesciences/elife-articles/commits/{}'
+    BASE_DATA_URL = 'https://raw.githubusercontent.com/elifesciences/elife-articles/master/{}'
     #BASE_PROJECT_URL = 'http://dx.doi.org/10.7554/eLife.{}'
-
-    def fetch_commits(self, start_date, end_date):
-
-        resp = requests.get(self.BASE_URL, params={
-            'since': start_date,
-            'until': end_date,
-            'page': '1',
-            'per_page': 100,
-        })
-
-        jsonstr = resp.content.decode('utf-8')
-        jsonstr = jsonstr.replace('},{', '}\\n{')
-        jsonstr = jsonstr[1:-1]
-        jsonarr = jsonstr.split('\\n')
-
-        shas = []
-        for jsonstr in jsonarr:
-            jsonobj = json.loads(jsonstr)
-            shas.append(jsonobj['sha'])
-
-    def fetch_file_names(self, sha):
-
-        files = requests.get(self.BASE_COMMIT_URL('f7f18ca1b3d0ea18694ce913e0d56e7e99b26007'))
-        print(files.content.decode('utf-8'))
-
-        #decoder = json.JSONDecoder(strict=False)
-        #text = resp.content.decode('utf-8')
-        #json_files = decoder.raw_decode(text)
-        #print(text)
-        #commits = json.dumps(json_files)
-        #commits_json = json.loads(text)
-        #print(commits_json[0])
-        #print(type(commits_json))
-        #print(type(commits_json))
-
-        #t = etree.XML(text)
-        #print(t)
-        #t = etree.parse(resp.content, parser)
-        #commits = t.findall('sha')
-        #print(commits)
 
     def harvest(self, start_date=None, end_date=None):
 
         start_date = start_date or date.today() - timedelta(settings.DAYS_BACK)
         end_date = end_date or date.today()
 
+        shas = fetch_commits(self.BASE_URL, start_date.isoformat(), end_date.isoformat())
+
+        files = []
+        for sha in shas:
+            files = files + fetch_file_names(self.BASE_COMMIT_URL, sha)
+            files = list(set(files))
+
+        xml_records = []
+        for file in files:
+            xml_records.append(fetch_xml(self.BASE_DATA_URL, file))
+
+        test = xml_records[0]
+        #print(etree.tostring(test))
+        #print(test.xpath('//abstract/p')[0].text)
+
         return [
             RawDocument({
                 'filetype': 'xml',
                 'source': self.short_name,
-                'doc': etree.tostring(row),
-                'docID': row.xpath("str[@name='id']")[0].text,
-            })
-            for row in
-            self.fetch_commits(start_date.isoformat(), end_date.isoformat())
-            if row.xpath("arr[@name='abstract']")
-            or row.xpath("str[@name='author_display']")
+                'doc': etree.tostring(record),
+                'docID': record.xpath('//article-id')[1].text,
+            }) for record in xml_records
         ]
 
     schema = {
         'uris': {
-            'canonicalUri': ('//str[@name="id"]/node()', compose('http://dx.doi.org/{}'.format, single_result)),
+            'canonicalUri': ('//article-id/node()', compose('http://dx.doi.org/10.7554/eLife.{}'.format, single_result)),
         },
-        'contributors': ('//arr[@name="author_display"]/str/node()', default_name_parser),
-        'providerUpdatedDateTime': ('//date[@name="publication_data"]/node()', compose(datetime_formatter, single_result)),
-        'title': ('//str[@name="title_display"]/node()', single_result),
-        'description': ('//arr[@name="abstract"]/str/node()', single_result),
+        'contributors': ('//contrib[@contrib-type="author"]/node()', default_name_parser), #need to do custom
+        'providerUpdatedDateTime': ('//pub-date/month/node()', compose(datetime_formatter, single_result)), #need to do custom
+        'title': ('//article-title/node()'), #need to remove bold and italics from titles
+        'description': ('//abstract/node()', single_result), #need to deal with bold and italics
         'publisher': {
-            'name': ('//str[@name="journal"]/node()', single_result)
+            'name': ('//publisher-name/node()', single_result)
         },
         'otherProperties': build_properties(
             ('eissn', '//str[@name="eissn"]/node()'),
