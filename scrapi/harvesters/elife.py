@@ -39,16 +39,17 @@ logger = logging.getLogger(__name__)
 #example: https://raw.githubusercontent.com/elifesciences/elife-articles/master/elife06011.xml
 
 
-single_string = compose(lambda x: x.title().strip(), single_result)
-
-
-def concat_title(list):
+def title_parser(list):
     new_title = ''.join(list)
     return new_title
 
 
-def concat_description(list):
-    del list[-3:]
+def description_parser(list):
+    try:
+        if "DOI:" in list[-3]:
+            del list[-3:]
+    except:
+        pass
     new_description = ''.join(list)
     return new_description
 
@@ -110,7 +111,6 @@ class ELifeHarvester(XMLHarvester):
 
 
     def harvest(self, start_date=None, end_date=None):
-
         start_date = start_date or date.today() - timedelta(settings.DAYS_BACK)
         end_date = end_date or date.today()
 
@@ -124,10 +124,6 @@ class ELifeHarvester(XMLHarvester):
         xml_records = []
         for file in files:
             xml_records.append(fetch_xml(self.BASE_DATA_URL, file))
-
-        #test = xml_records[0]
-        #print(etree.tostring(test))
-        #print(test.xpath('//article-meta/title-group/article-title/*')[0].text)
 
         return [
             RawDocument({
@@ -144,8 +140,8 @@ class ELifeHarvester(XMLHarvester):
         },
         'contributors': ('//arr[@name="author_display"]/str/node()', default_name_parser), #need to do custom
         'providerUpdatedDateTime': ('//pub-date/month/node()', compose(datetime_formatter, single_result)), #need to do custom
-        'title': ('//article-meta/title-group/article-title//text()', concat_title),
-        'description': ('//abstract[not(@abstract-type="executive-summary")]/p//text()', concat_description),
+        'title': ('//article-meta/title-group/article-title//text()', title_parser),
+        'description': ('//abstract[not(@abstract-type="executive-summary")]/p//text()', description_parser),
         'publisher': {
             'name': ('//publisher-name/node()', single_result)
         },
