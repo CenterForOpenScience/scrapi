@@ -36,19 +36,6 @@ def description_parser(description):
     return parsed_description
 
 
-def license_parser(license):
-    print(type(license))
-    return(license)
-    #license_dict = {
-    #    'uri': license[0],
-    #}
-
-    #property_dict = {
-    #    'properties': license_dict,
-    #}
-    #return property_dict
-
-
 def elife_name_parser(names):
     contributors = []
     for i in range(0, len(names), 2):
@@ -150,9 +137,6 @@ class ELifeHarvester(XMLHarvester):
         for file in files:
             xml_records.append(fetch_xml(self.BASE_DATA_URL, file))
 
-        test = xml_records[0]
-        print(test.xpath('//kwd/text()'))
-
         return [
             RawDocument({
                 'filetype': 'xml',
@@ -176,9 +160,6 @@ class ELifeHarvester(XMLHarvester):
             'name': ('//publisher-name/node()', single_result)
         },
         'subjects': '//article-meta/article-categories/descendant::text()',
-        'licenses': {
-            'description': ('//permissions/license/license-p/ext-link/node()')
-        },
         'freeToRead': {
             'startDate': ('//article-meta/pub-date[@publication-format="electronic"]/*/node()',
                           elife_date_parser)
