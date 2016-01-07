@@ -54,6 +54,35 @@ def description_parser(list):
     return new_description
 
 
+def elife_name_parser(names):
+    just_names = names[1::2]
+
+    contributors = []
+    for i in range(0, len(just_names), 2):
+        chunk = just_names[i:i + 2]
+        contributors.append(chunk)
+
+    #    [i.split(' ')[0] for i in contributor]
+    #need to account for middle initials
+
+    parsed_contributors = []
+    for contributor in contributors:
+        contributor_dict = {
+            'name': str(contributor[1] + " " + contributor[0]),
+            'givenName': contributor[0],
+            'additionalName': [],
+            'familyName': contributor[1],
+        }
+        parsed_contributors.append(contributor_dict)
+
+    return parsed_contributors
+
+
+def elife_date_parser(date):
+    just_date = date[1::2]
+    return str(just_date[2] + "-" + just_date[1] + "-" + just_date[0] + "T00:00:00+00:00")
+
+
 def fetch_commits(base_url, start_date, end_date):
     resp = requests.get(base_url, params={
         'since': start_date,
@@ -125,6 +154,9 @@ class ELifeHarvester(XMLHarvester):
         for file in files:
             xml_records.append(fetch_xml(self.BASE_DATA_URL, file))
 
+        test = xml_records[0]
+        print(test.xpath('//article-meta/pub-date[@publication-format="electronic"]/descendant::node()'))
+
         return [
             RawDocument({
                 'filetype': 'xml',
@@ -138,8 +170,8 @@ class ELifeHarvester(XMLHarvester):
         'uris': {
             'canonicalUri': ('//article-id/node()', compose('http://dx.doi.org/10.7554/eLife.{}'.format, single_result)),
         },
-        'contributors': ('//arr[@name="author_display"]/str/node()', default_name_parser), #need to do custom
-        'providerUpdatedDateTime': ('//pub-date/month/node()', compose(datetime_formatter, single_result)), #need to do custom
+        'contributors': ('//article-meta/contrib-group/contrib/name/descendant::node()', elife_name_parser), #need to do custom
+        'providerUpdatedDateTime': ('//article-meta/pub-date[@publication-format="electronic"]/descendant::node()', elife_date_parser), #need to do custom
         'title': ('//article-meta/title-group/article-title//text()', title_parser),
         'description': ('//abstract[not(@abstract-type="executive-summary")]/p//text()', description_parser),
         'publisher': {
