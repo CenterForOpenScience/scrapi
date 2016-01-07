@@ -21,19 +21,9 @@ from scrapi.base.helpers import build_properties, compose, single_result, dateti
 logger = logging.getLogger(__name__)
 
 
-def title_parser(title):
-    parsed_title = ''.join(title)
-    return parsed_title
-
-
-def description_parser(description):
-    try:
-        if "DOI:" in description[-3]:
-            del description[-3:]
-    except:
-        pass
-    parsed_description = ''.join(description)
-    return parsed_description
+def collapse_list(list_of_strings):
+    text = ''.join(list_of_strings)
+    return text
 
 
 def elife_name_parser(names):
@@ -133,9 +123,10 @@ class ELifeHarvester(XMLHarvester):
             files = files + fetch_file_names(self.BASE_COMMIT_URL, sha)
             files = list(set(files))
 
-        xml_records = []
-        for file in files:
-            xml_records.append(fetch_xml(self.BASE_DATA_URL, file))
+        xml_records = [
+            fetch_xml(self.BASE_DATA_URL, filename)
+            for filename in files
+        ]
 
         return [
             RawDocument({
@@ -154,8 +145,8 @@ class ELifeHarvester(XMLHarvester):
         'contributors': ('//article-meta/contrib-group/contrib/name/*[not(self::suffix)]/node()', elife_name_parser),
         'providerUpdatedDateTime': ('//article-meta/pub-date[@publication-format="electronic"]/*/node()',
                                     compose(datetime_formatter, elife_date_parser)),
-        'title': ('//article-meta/title-group/article-title//text()', title_parser),
-        'description': ('//abstract[not(@abstract-type="executive-summary")]/p//text()', description_parser),
+        'title': ('//article-meta/title-group/article-title//text()', collapse_list),
+        'description': ('//abstract[not(@abstract-type="executive-summary")]/p[1]//text()', collapse_list),
         'publisher': {
             'name': ('//publisher-name/node()', single_result)
         },
