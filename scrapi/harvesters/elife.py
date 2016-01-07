@@ -1,13 +1,13 @@
 """
 A harvester for metadata from eLife on Github for the SHARE project
 
-Sample API call:
+Sample API call:https://api.github.com/repos/elifesciences/elife-articles/commits?since=2015-12-22&until=2015-12-31&page=1&per_page=100
 """
 
 from __future__ import unicode_literals
 
 import logging
-from datetime import date, timedelta
+import datetime
 
 from lxml import etree
 import json
@@ -16,78 +16,80 @@ from scrapi import requests
 from scrapi import settings
 from scrapi.base import XMLHarvester
 from scrapi.linter.document import RawDocument
-from scrapi.base.helpers import default_name_parser, build_properties, compose, single_result, datetime_formatter
+from scrapi.base.helpers import build_properties, compose, single_result, datetime_formatter
 
 logger = logging.getLogger(__name__)
 
-#gather commits, each commit has a date associated with it, note max 100 per page and 3 pages pages
-#https://api.github.com/repos/elifesciences/elife-articles/commits?page=1&per_page=100
-#https://api.github.com/repos/elifesciences/elife-articles/commits?page=1&per_page=100&since=2014-01-01&until=2014-01-04
 
-#go to commit url
-
-#go to files, scrape xml file names
-
-#grab files from https://raw.githubusercontent.com/elifesciences/elife-articles/master/[xml file name]
-
-#apply xml scraper
-#<pub-date publication-format> </pub-date>
-
-#for a specific article - you can reach the full journal article at http://dx.doi.org/10.7554/eLife.00181
-#where 00181 is the elocation-id
-
-#example: https://raw.githubusercontent.com/elifesciences/elife-articles/master/elife06011.xml
+def title_parser(title):
+    parsed_title = ''.join(title)
+    return parsed_title
 
 
-def title_parser(list):
-    new_title = ''.join(list)
-    return new_title
-
-
-def description_parser(list):
+def description_parser(description):
     try:
-        if "DOI:" in list[-3]:
-            del list[-3:]
+        if "DOI:" in description[-3]:
+            del description[-3:]
     except:
         pass
-    new_description = ''.join(list)
-    return new_description
+    parsed_description = ''.join(description)
+    return parsed_description
+
+
+def license_parser(license):
+    print(type(license))
+    return(license)
+    #license_dict = {
+    #    'uri': license[0],
+    #}
+
+    #property_dict = {
+    #    'properties': license_dict,
+    #}
+    #return property_dict
 
 
 def elife_name_parser(names):
-    just_names = names[1::2]
-
     contributors = []
-    for i in range(0, len(just_names), 2):
-        chunk = just_names[i:i + 2]
-        contributors.append(chunk)
-
-    #    [i.split(' ')[0] for i in contributor]
-    #need to account for middle initials
+    for i in range(0, len(names), 2):
+        chunka = names[i:i + 2]
+        chunkb = chunka[1].split(" ")
+        name = (chunka + chunkb)
+        del name[1]
+        contributors.append(name)
 
     parsed_contributors = []
     for contributor in contributors:
-        contributor_dict = {
-            'name': str(contributor[1] + " " + contributor[0]),
-            'givenName': contributor[0],
-            'additionalName': [],
-            'familyName': contributor[1],
-        }
+        if len(contributor) == 3:
+            contributor_dict = {
+                'name': str(contributor[1] + " " + contributor[2] + " " + contributor[0]),
+                'givenName': contributor[1],
+                'additionalName': contributor[2],
+                'familyName': contributor[0],
+            }
+        else:
+            contributor_dict = {
+                'name': str(contributor[1] + " " + contributor[0]),
+                'givenName': contributor[1],
+                'additionalName': "",
+                'familyName': contributor[0],
+            }
         parsed_contributors.append(contributor_dict)
 
     return parsed_contributors
 
 
 def elife_date_parser(date):
-    just_date = date[1::2]
-    return str(just_date[2] + "-" + just_date[1] + "-" + just_date[0] + "T00:00:00+00:00")
+    date_form = datetime.datetime(int(date[2]), int(date[1]), int(date[0]), 0, 0)
+    return date_form.date().isoformat()
 
 
+# will need to update this to pull from multiple pages (right now there are 3 total)
 def fetch_commits(base_url, start_date, end_date):
     resp = requests.get(base_url, params={
         'since': start_date,
         'until': end_date,
-        'page': '1', #will need to update this to pull from multiple pages
+        'page': '1',
         'per_page': 100,
     })
 
@@ -119,11 +121,6 @@ def fetch_xml(xml_url, filename):
     return xml
 
 
-def clean_title(title):
-    new_title = title.encode('utf-8')
-    return new_title
-
-
 class ELifeHarvester(XMLHarvester):
     short_name = 'elife'
     long_name = 'eLife Sciences'
@@ -138,10 +135,9 @@ class ELifeHarvester(XMLHarvester):
     BASE_COMMIT_URL = 'https://api.github.com/repos/elifesciences/elife-articles/commits/{}'
     BASE_DATA_URL = 'https://raw.githubusercontent.com/elifesciences/elife-articles/master/{}'
 
-
     def harvest(self, start_date=None, end_date=None):
-        start_date = start_date or date.today() - timedelta(settings.DAYS_BACK)
-        end_date = end_date or date.today()
+        start_date = start_date or datetime.date.today() - datetime.timedelta(settings.DAYS_BACK)
+        end_date = end_date or datetime.date.today()
 
         shas = fetch_commits(self.BASE_URL, start_date.isoformat(), end_date.isoformat())
 
@@ -155,7 +151,7 @@ class ELifeHarvester(XMLHarvester):
             xml_records.append(fetch_xml(self.BASE_DATA_URL, file))
 
         test = xml_records[0]
-        print(test.xpath('//article-meta/pub-date[@publication-format="electronic"]/descendant::node()'))
+        print(test.xpath('//kwd/text()'))
 
         return [
             RawDocument({
@@ -168,18 +164,27 @@ class ELifeHarvester(XMLHarvester):
 
     schema = {
         'uris': {
-            'canonicalUri': ('//article-id/node()', compose('http://dx.doi.org/10.7554/eLife.{}'.format, single_result)),
+            'canonicalUri': ('//article-id/node()', compose('http://dx.doi.org/10.7554/eLife.{}'.format,
+                                                            single_result)),
         },
-        'contributors': ('//article-meta/contrib-group/contrib/name/descendant::node()', elife_name_parser), #need to do custom
-        'providerUpdatedDateTime': ('//article-meta/pub-date[@publication-format="electronic"]/descendant::node()', elife_date_parser), #need to do custom
+        'contributors': ('//article-meta/contrib-group/contrib/name/*[not(self::suffix)]/node()', elife_name_parser),
+        'providerUpdatedDateTime': ('//article-meta/pub-date[@publication-format="electronic"]/*/node()',
+                                    compose(datetime_formatter, elife_date_parser)),
         'title': ('//article-meta/title-group/article-title//text()', title_parser),
         'description': ('//abstract[not(@abstract-type="executive-summary")]/p//text()', description_parser),
         'publisher': {
             'name': ('//publisher-name/node()', single_result)
         },
+        'subjects': '//article-meta/article-categories/descendant::text()',
+        'licenses': {
+            'description': ('//permissions/license/license-p/ext-link/node()')
+        },
+        'freeToRead': {
+            'startDate': ('//article-meta/pub-date[@publication-format="electronic"]/*/node()',
+                          elife_date_parser)
+        },
+        'tags': '//kwd/text()',
         'otherProperties': build_properties(
-            ('eissn', '//str[@name="eissn"]/node()'),
-            ('articleType', '//str[@name="article_type"]/node()'),
-            ('score', '//float[@name="score"]/node()')
+                ('license', ('//permissions/license/license-p/ext-link/text()', single_result))
         )
     }
