@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*- t
 """
 A harvester for metadata from eLife on Github for the SHARE project
 
@@ -6,11 +7,15 @@ Sample API call:https://api.github.com/repos/elifesciences/elife-articles/commit
 
 from __future__ import unicode_literals
 
+import sys
+
 import logging
 import datetime
 
 from lxml import etree
 import json
+
+from itertools import chain
 
 from scrapi import requests
 from scrapi import settings
@@ -37,20 +42,28 @@ def elife_name_parser(names):
 
     parsed_contributors = []
     for contributor in contributors:
+        if sys.version_info < (3,):
+            contributor = map(lambda x: x.encode('utf-8'), contributor)
+
         if len(contributor) == 3:
-            contributor_dict = {
-                'name': str(contributor[1] + " " + contributor[2] + " " + contributor[0]),
-                'givenName': contributor[1],
-                'additionalName': contributor[2],
-                'familyName': contributor[0],
-            }
+            full_name = contributor[1] + str(" ") + contributor[2] + str(" ") + contributor[0]
+            first_name = contributor[1]
+            middle_name = contributor[2]
+            last_name = contributor[0]
+
         else:
-            contributor_dict = {
-                'name': str(contributor[1] + " " + contributor[0]),
-                'givenName': contributor[1],
-                'additionalName': "",
-                'familyName': contributor[0],
-            }
+            full_name = contributor[1] + str(" ") + contributor[0]
+            first_name = contributor[1]
+            middle_name = ""
+            last_name = contributor[0]
+
+        contributor_dict = {
+            'name': full_name,
+            'givenName': first_name,
+            'additionalName': middle_name,
+            'familyName': last_name
+        }
+
         parsed_contributors.append(contributor_dict)
 
     return parsed_contributors
@@ -61,7 +74,7 @@ def elife_date_parser(date):
     return date_form.date().isoformat()
 
 
-# will need to update this to pull from multiple pages (right now there are 3 total)
+# will need to update this to pull from multiple pages
 def fetch_commits(base_url, start_date, end_date):
     resp = requests.get(base_url, params={
         'since': start_date,
@@ -118,10 +131,9 @@ class ELifeHarvester(XMLHarvester):
 
         shas = fetch_commits(self.BASE_URL, start_date.isoformat(), end_date.isoformat())
 
-        files = []
-        for sha in shas:
-            files = files + fetch_file_names(self.BASE_COMMIT_URL, sha)
-            files = list(set(files))
+        files = list(set(chain.from_iterable([
+            fetch_file_names(self.BASE_COMMIT_URL, sha)
+            for sha in shas])))
 
         xml_records = [
             fetch_xml(self.BASE_DATA_URL, filename)
@@ -141,6 +153,7 @@ class ELifeHarvester(XMLHarvester):
         'uris': {
             'canonicalUri': ('//article-id/node()', compose('http://dx.doi.org/10.7554/eLife.{}'.format,
                                                             single_result)),
+            'objectUri': ('//article-id/node()', compose('http://dx.doi.org/10.7554/eLife.{}'.format, single_result))
         },
         'contributors': ('//article-meta/contrib-group/contrib/name/*[not(self::suffix)]/node()', elife_name_parser),
         'providerUpdatedDateTime': ('//article-meta/pub-date[@publication-format="electronic"]/*/node()',
@@ -157,6 +170,6 @@ class ELifeHarvester(XMLHarvester):
         },
         'tags': '//kwd/text()',
         'otherProperties': build_properties(
-                ('license', ('//permissions/license/license-p/ext-link/text()', single_result))
+                ('rights', ('//permissions/license/license-p/ext-link/text()', single_result))
         )
     }
