@@ -3,25 +3,24 @@
 A harvester for metadata from eLife on Github for the SHARE project
 
 Sample API call:https://api.github.com/repos/elifesciences/elife-articles/commits?since=2015-12-22&until=2015-12-31&page=1&per_page=100
+Will need to set up Personal access token
 """
 
 from __future__ import unicode_literals
 
-import sys
-
-import logging
 import datetime
+import json
+import logging
+import sys
+from itertools import chain
 
 from lxml import etree
-import json
-
-from itertools import chain
 
 from scrapi import requests
 from scrapi import settings
 from scrapi.base import XMLHarvester
-from scrapi.linter.document import RawDocument
 from scrapi.base.helpers import build_properties, compose, single_result, datetime_formatter
+from scrapi.linter.document import RawDocument
 
 logger = logging.getLogger(__name__)
 
@@ -74,23 +73,32 @@ def elife_date_parser(date):
     return date_form.date().isoformat()
 
 
-# will need to update this to pull from multiple pages
 def fetch_commits(base_url, start_date, end_date):
-    resp = requests.get(base_url, params={
-        'since': start_date,
-        'until': end_date,
-        'page': '1',
-        'per_page': 100,
-    })
 
-    jsonstr = resp.content.decode('utf-8')
-    jsonstr = jsonstr.replace('},{', '}\\n{')
-    jsonstr = jsonstr[1:-1]
-    jsonarr = jsonstr.split('\\n')
+    jsonstr = ""
+    i = 1
+    while True:
+        resp = requests.get(base_url, params={
+            'since': start_date,
+            'until': end_date,
+            'page': i,
+            'per_page': 100,
+        })
+
+        jsonchunk = resp.content.decode('utf-8')
+        if len(jsonchunk) <= 2:
+            break
+        i += 1
+
+        jsonchunk = jsonchunk.replace('},{', '}\\n{')
+        jsonchunk = jsonchunk[1:-1]
+        jsonstr = jsonstr + "\\n" + jsonchunk
+
+    jsonarr = jsonstr.split('\\n')[1:]
 
     shas = []
-    for jsonstr in jsonarr:
-        jsonobj = json.loads(jsonstr)
+    for jsonstring in jsonarr:
+        jsonobj = json.loads(jsonstring)
         shas.append(jsonobj['sha'])
     return shas
 
@@ -134,6 +142,8 @@ class ELifeHarvester(XMLHarvester):
         files = list(set(chain.from_iterable([
             fetch_file_names(self.BASE_COMMIT_URL, sha)
             for sha in shas])))
+
+        files = filter(lambda filename: filename.endswith('.xml'), files)
 
         xml_records = [
             fetch_xml(self.BASE_DATA_URL, filename)
