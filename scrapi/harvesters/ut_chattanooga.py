@@ -19,11 +19,6 @@ class Ut_chattanoogaHarvester(OAIHarvester):
     approved_sets = [
         u'honors-theses',
         u'theses',
-        u'student-research',
-        u'ebm-symposium',
-        u'conferences',
-        u'journals',
-        u'jafh'
     ]
 
     timezone_granularity = True
