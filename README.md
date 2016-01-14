@@ -218,7 +218,7 @@ Add your API keys to the following line to your local.py file:
 ```
 PLOS_API_KEY = 'your-api-key-here'
 HARVARD_DATAVERSE_API_KEY = 'your-api-key-here'
-SPRINGER_KEY = 'your-api-key-here'
+SPRINGER_API_KEY = 'your-api-key-here'
 ```
 
 ### Running the scheduler (optional)
