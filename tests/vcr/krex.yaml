@@ -1,0 +1,824 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/3.4.3 Linux/3.19.0-42-generic]
+    method: GET
+    uri: http://krex.k-state.edu/dspace-oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2016-01-18T00:00:00Z&until=2016-01-20T00:00:00Z
+  response:
+    body: {string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"\
+        text/xsl\" href=\"static/style.xsl\"?><OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"\
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
+        http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"\
+        ><responseDate>2016-01-20T14:19:04Z</responseDate>\n    <request verb=\"ListRecords\"\
+        \ metadataPrefix=\"oai_dc\" from=\"2016-01-18T00:00:00Z\" until=\"2016-01-20T00:00:00Z\"\
+        >http://krex.k-state.edu/dspace-oai/request</request>\n    <ListRecords>\n\
+        \        <record>\n            <header>\n                <identifier>oai:krex.k-state.edu:2097/27637</identifier>\n\
+        \                <datestamp>2016-01-19T22:37:34Z</datestamp>\n           \
+        \     <setSpec>com_2097_1063</setSpec>\n                <setSpec>com_2097_14697</setSpec>\n\
+        \                <setSpec>col_2097_1064</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Policy in the\
+        \ Making: Establishing Public Policy for Complex Animal Diseases</dc:title>\n\
+        <dc:creator>Beilke, Elizabeth M.</dc:creator>\n<dc:subject>Policy</dc:subject>\n\
+        <dc:subject>Health</dc:subject>\n<dc:subject>Emerging</dc:subject>\n<dc:subject>Infectious</dc:subject>\n\
+        <dc:subject>Veterinary</dc:subject>\n<dc:subject>Disease</dc:subject>\n<dc:subject>Public\
+        \ Health (0573)</dc:subject>\n<dc:description>Master of Public Health</dc:description>\n\
+        <dc:description>Public Health Interdepartmental Program</dc:description>\n\
+        <dc:description>Tiruvoor G. Nagaraja</dc:description>\n<dc:description>The\
+        \ goal of this review is to provide an overview of the process by which policy\
+        \ is developed for complex animal diseases. There is no one size fits all\
+        \ approach to policy. Policy making for a disease is complex, often a bit\
+        \ disorderly, and like medicine not an exact science. The current mission\
+        \ behind the United States Department of Agriculture, Animal and Plant Health\
+        \ Inspection Service, Veterinary Services (USDA, APHIS-VS) and its role in\
+        \ the One Health partnership is to adequately contribute to the animal health\
+        \ component. One Health is a crucial component behind the response to any\
+        \ emerging disease because of the interrelatedness of animal, human, and environmental\
+        \ health. The following document strives to further support the advancement\
+        \ of the One Health concept as it relates to complex animal diseases. &#13;\n\
+        &#13;\n\tThis review also illustrates just what can happen when a student\
+        \ becomes an integrated part of One Health and public policy. Throughout the\
+        \ development of this paper, I found myself diving right into the very concepts\
+        \ that I had previously only seen and heard in the classroom. This paper serves\
+        \ not only as an APHIS training document, but as substantial evidence of how\
+        \ a field experience can turn an array of concepts into a workable puzzle\
+        \ by which one builds a career dedicated to One Health.</dc:description>\n\
+        <dc:date>2016-01-19T22:37:34Z</dc:date>\n<dc:date>2016-01-19T22:37:34Z</dc:date>\n\
+        <dc:date>2015</dc:date>\n<dc:date>December</dc:date>\n<dc:type>Report</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/2097/27637</dc:identifier>\n</oai_dc:dc>\n\
+        </metadata>\n        </record>\n        <record>\n            <header>\n \
+        \               <identifier>oai:krex.k-state.edu:2097/27638</identifier>\n\
+        \                <datestamp>2016-01-19T22:38:10Z</datestamp>\n           \
+        \     <setSpec>com_2097_1063</setSpec>\n                <setSpec>com_2097_14697</setSpec>\n\
+        \                <setSpec>col_2097_1064</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>DEVELOPMENT\
+        \ OF A FOUNDATION FOR A KANSAS AGRICULTURAL EMERGENCY RESPONSE CORPS (KAERC)</dc:title>\n\
+        <dc:creator>De Los Santos, Priscilla Rose</dc:creator>\n<dc:subject>One Health</dc:subject>\n\
+        <dc:subject>Agricultural Emergency</dc:subject>\n<dc:subject>Response Team</dc:subject>\n\
+        <dc:subject>KAERC</dc:subject>\n<dc:subject>Public Health (0573)</dc:subject>\n\
+        <dc:description>Master of Public Health</dc:description>\n<dc:description>Public\
+        \ Health Interdepartmental Program</dc:description>\n<dc:description>Beth\
+        \ A. Montelone</dc:description>\n<dc:description>The safety, health and well-being\
+        \ of animals are critical to the safety, health and well-being of humans.\
+        \  Public health emergencies can range from unpredictable and uncontrollable\
+        \ natural disasters, to man-made bioterrorism threats.  Public health emergencies\
+        \ also include livestock disease outbreaks resulting in the loss of large\
+        \ numbers of livestock and agricultural products, a decrease in food quality\
+        \ and security and potentially result in devastating human health consequences.\
+        \  For these reasons, it is important to implement an Agricultural Emergency\
+        \ Response Corps to limit the detrimental effects to both humans and animals\
+        \ that can potentially occur from these emergencies, particularly those involving\
+        \ the emergence of a foreign animal disease (FAD).  &#13;\nCurrently, there\
+        \ are many active state animal emergency response teams across the country.\
+        \  They are strictly volunteer-based and focus almost solely on veterinary\
+        \ participation.  This project is the foundation for development of a well-rounded\
+        \ team of individuals who will be trained to respond quickly and efficiently\
+        \ to an emergency.  The goal of the Kansas Agricultural Emergency Response\
+        \ Corps (KAERC) is to create an all-encompassing unit with a wide range of\
+        \ expertise to cover all the facets of a public health emergency relating\
+        \ to animals, as well as overall human health.  &#13;\nThe final product is\
+        \ a draft of a white paper to be submitted for government approval along with\
+        \ a tentative list of detailed position descriptions and roles that would\
+        \ best benefit the initial framework of the corps.  The KAERC will fall under\
+        \ the Kansas Department of Agriculture.</dc:description>\n<dc:date>2016-01-19T22:38:10Z</dc:date>\n\
+        <dc:date>2016-01-19T22:38:10Z</dc:date>\n<dc:date>2015</dc:date>\n<dc:date>August</dc:date>\n\
+        <dc:type>Report</dc:type>\n<dc:identifier>http://hdl.handle.net/2097/27638</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n</oai_dc:dc>\n</metadata>\n        </record>\n\
+        \        <record>\n            <header>\n                <identifier>oai:krex.k-state.edu:2097/27639</identifier>\n\
+        \                <datestamp>2016-01-19T22:38:41Z</datestamp>\n           \
+        \     <setSpec>com_2097_1063</setSpec>\n                <setSpec>com_2097_14697</setSpec>\n\
+        \                <setSpec>col_2097_1064</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>BIOSECURITY\
+        \ AND ZOONOTIC DISEASE CHALLENGES AT THE KANSAS STATE FAIR</dc:title>\n<dc:creator>Lawrence,\
+        \ John Ervin</dc:creator>\n<dc:subject>Biosecurity</dc:subject>\n<dc:subject>State\
+        \ Fair</dc:subject>\n<dc:subject>Zoonotic disease</dc:subject>\n<dc:subject>Hand\
+        \ washing</dc:subject>\n<dc:subject>Public Health (0573)</dc:subject>\n<dc:description>Master\
+        \ of Public Health</dc:description>\n<dc:description>Public Health Interdepartmental\
+        \ Program</dc:description>\n<dc:description>Michael W. Sanderson</dc:description>\n\
+        <dc:description>The author carried out his field experience in the Kansas\
+        \ Department of Agriculture, Division of Animal Health in Manhattan, Kansas\
+        \ from August 2014 to May 2015.  The Kansas Department of Agriculture is the\
+        \ oldest agriculture department in the United States. It has as its responsibility,\
+        \ the overall support of agriculture in Kansas. The Kansas Department of Agriculture\
+        \ (KDA) is divided into a number of divisions and programs to carry out its\
+        \ mission. The Division of Animal Health was created in 1969 from a consolidation\
+        \ of the Livestock Sanitary Commission and the State Brand Commission. The\
+        \ Division of Animal Health joined the Kansas Department of Agriculture in\
+        \ 2011. It is comprised of three programs: animal disease control, livestock\
+        \ brands and animal facilities inspection. The Kansas Board of Veterinary\
+        \ Examiners also operates under the Division of Animal Health. The Division\
+        \ of Animal Health\u2019s objectives include the securing of public health\
+        \ and safety of the citizens of Kansas through the prevention, control and\
+        \ eradication of infectious diseases and conditions affecting the health of\
+        \ livestock and domestic animals in the state. &#13;\n&#13;\nThe author was\
+        \ involved in several different projects and activities. These included: &#13;\n\
+        &#13;\n1)\tBiosecurity recommendations for the Kansas State Fair&#13;\n&#13;\n\
+        2)\tEbola virus disease table top exercises for state agencies in Kansas,&#13;\n\
+        &#13;\n3)\tForeign animal disease (FAD) outbreak: Foot and Mouth Disease table-top\
+        \      exercises&#13;\n&#13;\n4)\tLow pathogenic avian influenza outbreak\
+        \ table-top exercise &#13;\n&#13;\n5)\tOne Health Collaboration Gap Analysis.\
+        \ &#13;\n&#13;\nThe author completed a lengthy project (culminating experience)\
+        \ in the development of biosecurity recommendations for the Kansas State Fair.\
+        \ These recommendations dealt with several facets of biosecurity including\
+        \ animal-to-human disease prevention (zoonotic diseases) as well as animal-to-animal\
+        \ disease prevention. The challenge of having large numbers of people at the\
+        \ fair in crowded spaces, combined with thousands of head of livestock and\
+        \ poultry while at the same time encouraging people to consume food and drink,\
+        \ sets up the potential for large outbreaks of zoonotic and/or food borne\
+        \ diseases.  In preparing these recommendations, several factors weigh heavily\
+        \ into making practical, science based recommendations to protect the public.\
+        \ These factors include, the positive name of Kansas agriculture (which is\
+        \ show-cased at the fair), aging fair facilities and limited financial budgets.\
+        \ Human behavior also plays a large roll in reducing or increasing the risks\
+        \ of zoonotic disease at the fair or petting zoo. Education of fair visitors\
+        \ is vital to raising awareness that apparently healthy animals can be a source\
+        \ of disease. Facilities for hand washing or hand sanitizing along with promoting\
+        \ the use of these hand hygiene techniques is necessary to reduce the occurrence\
+        \ of zoonotic disease at the fair. &#13;\nThe biosecurity documents were constructed\
+        \ as three different levels of biosecurity: gold (highest), silver (medium)\
+        \ and bronze (lowest level). The intention was that the Kansas State Fair\
+        \ management not be overwhelmed at the prospect of trying to achieve too many\
+        \ changes in a single year of operation. The gold level may not be financially\
+        \ possible the first or second year of improvement and the management could\
+        \ opt for attempting a lower level as opposed to making no biosecurity improvements.\
+        \ These three separate documents appear in their entirety in the Appendix\
+        \ section of this report.</dc:description>\n<dc:date>2016-01-19T22:38:41Z</dc:date>\n\
+        <dc:date>2016-01-19T22:38:41Z</dc:date>\n<dc:date>2015</dc:date>\n<dc:date>August</dc:date>\n\
+        <dc:type>Report</dc:type>\n<dc:identifier>http://hdl.handle.net/2097/27639</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n</oai_dc:dc>\n</metadata>\n        </record>\n\
+        \        <record>\n            <header>\n                <identifier>oai:krex.k-state.edu:2097/27640</identifier>\n\
+        \                <datestamp>2016-01-19T22:39:41Z</datestamp>\n           \
+        \     <setSpec>com_2097_1063</setSpec>\n                <setSpec>com_2097_14697</setSpec>\n\
+        \                <setSpec>col_2097_1064</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>HEALTH AND\
+        \ WELLNESS FIELD EXPERIENCE AT RILEY COUNTY RESEARCH AND EXTENSION</dc:title>\n\
+        <dc:creator>Updyke, Natalie</dc:creator>\n<dc:subject>Youth nutrition education</dc:subject>\n\
+        <dc:subject>Diet Free</dc:subject>\n<dc:subject>Health and Wellness Promotion</dc:subject>\n\
+        <dc:subject>Flint Hills Wellness Coalition</dc:subject>\n<dc:subject>Public\
+        \ Health (0573)</dc:subject>\n<dc:description>Master of Public Health</dc:description>\n\
+        <dc:description>Public Health Interdepartmental Program</dc:description>\n\
+        <dc:description>Richard R. Rosenkranz</dc:description>\n<dc:description>My\
+        \ time at research and extension began on January 7, 2015 and lasted until\
+        \ April 15, 2015. During this time I completed my required one hundred and\
+        \ eighty hours of experience at the courthouse office as well as other program\
+        \ locations: schools and public buildings in the city of Manhattan. Throughout\
+        \ my time at Riley County Research and Extension, I was supervised by Virginia\
+        \ (Ginny) Barnard, MPH. Ginny, a former Kansas State MPH alumnus, is currently\
+        \ a Riley County Extension agent in Family and Consumer Sciences. As a Family\
+        \ and Consumer Sciences agent she is responsible for developing and implementing\
+        \ educational programs on family issues relevant to nutrition, food safety,\
+        \ parenting, financial management, health and safety, and family and personal\
+        \ relationships (Riley County, 2015b). Ginny has many responsibilities as\
+        \ a member of various coalitions and committees as well as the director of\
+        \ many health and wellness programs, and she allowed me to attend and work\
+        \ on some of these projects throughout my field experience. I was assigned\
+        \ to two major programs and several secondary programs to work on while at\
+        \ Extension; DIET FREE, a healthful lifestyle adoption program, and Manhattan\
+        \ Parks and Recreation youth basketball sports nutrition education programs\
+        \ were my two major programs. My secondary roles were to assist Ginny in youth\
+        \ yoga sessions, to guest lecture at the county employee \u201CLunch and Learn\u201D\
+        \ series, and to attend monthly Flint Hills Wellness Coalition meetings.</dc:description>\n\
+        <dc:date>2016-01-19T22:39:41Z</dc:date>\n<dc:date>2016-01-19T22:39:41Z</dc:date>\n\
+        <dc:date>2015</dc:date>\n<dc:date>August</dc:date>\n<dc:type>Report</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/2097/27640</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:krex.k-state.edu:2097/27641</identifier>\n\
+        \                <datestamp>2016-01-19T22:40:44Z</datestamp>\n           \
+        \     <setSpec>com_2097_1063</setSpec>\n                <setSpec>com_2097_14697</setSpec>\n\
+        \                <setSpec>col_2097_1064</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>FOOD WASTE\
+        \ IN MANHATTAN, KANSAS ELEMENTARY SCHOOL LUNCH</dc:title>\n<dc:creator>Schlechter,\
+        \ Chelsey R.</dc:creator>\n<dc:subject>Food waste</dc:subject>\n<dc:subject>School\
+        \ lunch</dc:subject>\n<dc:subject>Public Health (0573)</dc:subject>\n<dc:description>Master\
+        \ of Public Health</dc:description>\n<dc:description>Security Studies Interdepartmental\
+        \ Program</dc:description>\n<dc:description>David A. Dzewaltowski</dc:description>\n\
+        <dc:description>In the United States (US) 133 billion pounds of food was wasted\
+        \ at the consumer and retail level in 2010, resulting in a total loss of 161.6\
+        \ billion dollars (Buzby, Wells, &amp; Hyman, 2014).  This translates into\
+        \ 387 billion calories per day being wasted, of which 96% ends up in landfills\
+        \ (Buzby et al., 2014).  Moreover, decomposing food waste in landfills emits\
+        \ methane, a potent greenhouse gas, that accounts for 20% of all methane emissions\
+        \ (EPA, 2014).&#13;\n\tFood waste can come from a variety of sources, including\
+        \ at the farm level (e.g., food lost to a unfavorable environment conditions),\
+        \ the farm to retail level (e.g., foods that do not meet food safety regulations;\
+        \ are misshapen or blemished), the retail level (e.g., dented cans; damaged\
+        \ packaging), and the consumer level (e.g., plate waste; food that spoils\
+        \ before consumption) (Buzby et al., 2014).  In 2013 the United States Department\
+        \ of Agriculture (USDA) and Environmental Protection Agency (EPA) launched\
+        \ the U.S Food Waste Challenge in an attempt to reduce, recover, and recycle\
+        \ food waste in the United States (USDA OCE, n.d.).  One of the major commitments\
+        \ of the project was to minimize waste in school meal programs, where studies\
+        \ have shown plate waste to be 29-43% of food taken (Cohen, Richardson, Parker,\
+        \ Catalano, &amp; Rimm, 2014).</dc:description>\n<dc:date>2016-01-19T22:40:44Z</dc:date>\n\
+        <dc:date>2016-01-19T22:40:44Z</dc:date>\n<dc:date>2015</dc:date>\n<dc:date>August</dc:date>\n\
+        <dc:type>Report</dc:type>\n<dc:identifier>http://hdl.handle.net/2097/27641</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n</oai_dc:dc>\n</metadata>\n        </record>\n\
+        \        <record>\n            <header>\n                <identifier>oai:krex.k-state.edu:2097/20589</identifier>\n\
+        \                <datestamp>2016-01-19T17:13:55Z</datestamp>\n           \
+        \     <setSpec>com_2097_1</setSpec>\n                <setSpec>col_2097_4</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Membrane contact\
+        \ reactors for three-phase catalytic reactions</dc:title>\n<dc:creator>Wales,\
+        \ Michael Dean</dc:creator>\n<dc:subject>Membrane reactor</dc:subject>\n<dc:subject>Three-phase\
+        \ reactions</dc:subject>\n<dc:subject>Catalyst</dc:subject>\n<dc:subject>Partial\
+        \ hydrogenation of soybean oil</dc:subject>\n<dc:subject>Lactic acid</dc:subject>\n\
+        <dc:subject>Mass transfer resistance</dc:subject>\n<dc:subject>Chemical Engineering\
+        \ (0542)</dc:subject>\n<dc:subject>Materials Science (0794)</dc:subject>\n\
+        <dc:subject>Polymer Chemistry (0495)</dc:subject>\n<dc:description>Doctor\
+        \ of Philosophy</dc:description>\n<dc:description>Chemical Engineering</dc:description>\n\
+        <dc:description>Mary E. Rezac</dc:description>\n<dc:description>Membrane contact\
+        \ reactors (MCRs) have been evaluated for the selective hydro-treating of\
+        \ model reactions; the partial hydrogenation of soybean oil (PHSO), and the\
+        \ conversion of lactic acid into commodity chemicals.   Membranes were rendered\
+        \ catalytically active by depositing metal catalyst onto the polymer \"skin\"\
+        \ of an asymmetric membrane.  Hydrogen was supplied to the support side of\
+        \ the membrane and permeated from the support side to the skin side, where\
+        \ it adsorbed directly onto the metal surface.  Liquid reactant was circulated\
+        \ over the membrane, allowing the liquid to come into direct contact with\
+        \ the metal coated surface of the membrane, where the reaction occurred. \
+        \ Our membrane contact reactor approach replaces traditional three-phase batch\
+        \ slurry reactors.  These traditional reactors possess inherent mass transfer\
+        \ limitations due to low hydrogen solubility in liquid and slow diffusion\
+        \ to the catalyst surface. This causes hydrogen starvation at the catalyst\
+        \ surface, resulting in undesirable side reactions and/or extreme operating\
+        \ pressures of 100 atmospheres or more.  By using membrane reactors, we were\
+        \ able to rapidly supply hydrogen to the catalyst surface.    &#13;\nWhen\
+        \ the PHSO is performed in a traditional slurry reactor, the aforementioned\
+        \ hydrogen starvation leads to a high amounts of trans-fats.  Using a MCR,\
+        \ we were able to reduce trans-fats by over 50% for equal levels of hydrogenation.\
+        \  It was further demonstrated that an increase in temperature had minimal\
+        \ effects on trans-fat formation, while significantly increasing hydrogenation\
+        \ rates; allowing the system to capture higher reaction rates without adversely\
+        \ affecting product quality.  Additionally, high temperatures favors the hydrogenation\
+        \ of polyenes over monoenes, leading to low amounts of saturated fats.  MCRs\
+        \ were shown to operator at high temperatures and: (1) capture high reaction\
+        \ rates, (2) minimize saturated fats, and (3) minimize trans-fats. &#13;\n\
+        We also demonstrated lactic acid conversion into commodity chemicals using\
+        \ MCRs.  Our results show that all MCR experiments had faster reaction rate\
+        \ than all of our controls, indicating that MCRs have high levels of hydrogen\
+        \ coverage at the catalyst.  It was also demonstrated that changing reaction\
+        \ conditions (pressure and temperature) changed the product selectivities;\
+        \ giving the potential for MCRs to manipulate product selectivity.</dc:description>\n\
+        <dc:date>2015-12-11T20:14:59Z</dc:date>\n<dc:date>2015-12-11T20:14:59Z</dc:date>\n\
+        <dc:date>2016</dc:date>\n<dc:date>May</dc:date>\n<dc:type>Dissertation</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/2097/20589</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:publisher>Kansas State University</dc:publisher>\n</oai_dc:dc>\n</metadata>\n\
+        \        </record>\n        <record>\n            <header>\n             \
+        \   <identifier>oai:krex.k-state.edu:2097/20591</identifier>\n           \
+        \     <datestamp>2016-01-19T17:04:44Z</datestamp>\n                <setSpec>com_2097_1</setSpec>\n\
+        \                <setSpec>col_2097_4</setSpec>\n            </header>\n  \
+        \          <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Reservoir analysis\
+        \ of the compartmentalized Mississippian ages Spivey-Grabs field, south central\
+        \ Kansas</dc:title>\n<dc:creator>Stevens, Logan</dc:creator>\n<dc:subject>Compartmenalization</dc:subject>\n\
+        <dc:subject>Reservoir</dc:subject>\n<dc:subject>Mississippian chert</dc:subject>\n\
+        <dc:subject>Petroleum</dc:subject>\n<dc:subject>Spivey-Grabs</dc:subject>\n\
+        <dc:subject>Petroleum Geology (0583)</dc:subject>\n<dc:description>Master\
+        \ of Science</dc:description>\n<dc:description>Geology</dc:description>\n\
+        <dc:description>Matthew W. Totten</dc:description>\n<dc:description>Mississippian\
+        \ chert reservoirs, also known as chat reservoirs among the mid-continent\
+        \ in Kansas and northern Oklahoma, produce an abundant amount of hydrocarbons.\
+        \ Since the 1920s, chat reservoirs in Kansas have yielded over 380 million\
+        \ bbl of oil and 2.3 tcf of natural gas. The largest Mississippian field in\
+        \ south-central Kansas is the Spivey-Grabs, which spans Kingman and Harper\
+        \ Counties. Development of the Spivey-Grabs Mississippian reservoir, and continued\
+        \ production within the field, has been compromised by compartmentalization\
+        \ within the field, resulting in unpredictable producing rates. Previous research\
+        \ has investigated the differences of the fluids within the separate compartments\
+        \ (Evans, 2011; Kwasny, 2015), and identified the existence of at least two\
+        \ oil types of differing viscosity (Kwasny, 2015). The objective of this research\
+        \ was to determine whether the compartmentalization of the reservoir is controlled\
+        \ by the different lithologic characteristics between the various compartments.\
+        \ This was accomplished by examining drill cuttings under binocular microscope,\
+        \ under a petrographic microscope using digital imaging software, and under\
+        \ the high magnification of a scanning electron microscope.&#13;\nCalculated\
+        \ rock porosity from ImageJ software showed variation among the wells selected\
+        \ for this study; but the porosity variation does not correlate with differences\
+        \ in fluid viscosity that was previously observed, i.e. heavy and light viscosity\
+        \ oils (Kwasny, 2015). Heavy oils were seen in wells that had both higher\
+        \ and lower porosity values, and the same is true for the distribution of\
+        \ light oils. This suggested that fluid viscosity is the major controlling\
+        \ factor in compartmentalization in the Spivey-Grabs and not rock properties.</dc:description>\n\
+        <dc:date>2015-12-14T21:22:23Z</dc:date>\n<dc:date>2015-12-14T21:22:23Z</dc:date>\n\
+        <dc:date>2016</dc:date>\n<dc:date>May</dc:date>\n<dc:type>Thesis</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/2097/20591</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:publisher>Kansas State University</dc:publisher>\n</oai_dc:dc>\n</metadata>\n\
+        \        </record>\n        <record>\n            <header>\n             \
+        \   <identifier>oai:krex.k-state.edu:2097/20593</identifier>\n           \
+        \     <datestamp>2016-01-19T17:00:37Z</datestamp>\n                <setSpec>com_2097_1</setSpec>\n\
+        \                <setSpec>col_2097_4</setSpec>\n            </header>\n  \
+        \          <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Titanium dioxide/\
+        \ silicon oxycarbide hybrid polymer derived ceramic as high energy &amp; power\
+        \ lithium ion battery anode material</dc:title>\n<dc:creator>Pahwa, Saksham</dc:creator>\n\
+        <dc:subject>Lithium ion batteries</dc:subject>\n<dc:subject>Automobile batteries</dc:subject>\n\
+        <dc:subject>Polymer derived ceramics</dc:subject>\n<dc:subject>Silicon oxy\
+        \ carbide</dc:subject>\n<dc:subject>Titanium di oxide nanoparticles</dc:subject>\n\
+        <dc:subject>Battery anode materials</dc:subject>\n<dc:subject>Materials Science\
+        \ (0794)</dc:subject>\n<dc:subject>Mechanical Engineering (0548)</dc:subject>\n\
+        <dc:subject>Nanotechnology (0652)</dc:subject>\n<dc:description>Master of\
+        \ Science</dc:description>\n<dc:description>Mechanical and Nuclear Engineering</dc:description>\n\
+        <dc:description>Kevin B. Lease</dc:description>\n<dc:description>Gurpreet\
+        \ Singh</dc:description>\n<dc:description>Energy has always been one of the\
+        \ most important factors in any type of human or industrial endeavor.  Clean\
+        \ energy and alternative energy sources are slowly but steadily replacing\
+        \ fossil fuels, the over-dependence on which have led to many environmental\
+        \ and economic troubles over the past century. The main challenge that needs\
+        \ to be addressed in switching to clean energy is storing it for use in the\
+        \ electrical grid and transportation systems. Lithium ion batteries are currently\
+        \ one of the most promising energy storage devices and tremendous amount of\
+        \ research is being done in high capacity anode and cathode materials, and\
+        \ better electrolytes and battery packs as well, leading to overall high efficiency\
+        \ and capacity energy storage systems. Polymer derived ceramics (PDCs) are\
+        \ a special class of ceramics, usually used in high temperature applications,\
+        \ but some silicon based PDCs have demonstrated good electrochemical properties\
+        \ in lithium ion batteries. The goal of this research is to explore a special\
+        \ hybrid ceramic of titanium dioxide (TiO\u2082) and silicon oxy carbide (SiOC)\
+        \ ceramic derived from 1,3,5,7 \u2013 tetravinyl \u2013 1,3,5,7 -  tetramethylcyclotetrasiloxane\
+        \ (TTCS) polymer for use in lithium ion batteries and investigate the source\
+        \ of its properties which might make the ceramic particularly useful in some\
+        \ highly specialized energy storage applications.</dc:description>\n<dc:date>2015-12-15T21:48:35Z</dc:date>\n\
+        <dc:date>2015-12-15T21:48:35Z</dc:date>\n<dc:date>2016</dc:date>\n<dc:date>May</dc:date>\n\
+        <dc:type>Thesis</dc:type>\n<dc:identifier>http://hdl.handle.net/2097/20593</dc:identifier>\n\
+        <dc:language>en</dc:language>\n<dc:publisher>Kansas State University</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:krex.k-state.edu:2097/20590</identifier>\n\
+        \                <datestamp>2016-01-19T17:12:02Z</datestamp>\n           \
+        \     <setSpec>com_2097_1</setSpec>\n                <setSpec>col_2097_4</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Meaningful\
+        \ community engagement in public-private partnerships: a case study of Manhattan\u2019\
+        s downtown redevelopment project</dc:title>\n<dc:creator>Khaleghi Kerahroodi,\
+        \ Mehraz</dc:creator>\n<dc:subject>Public-Private Partnerships</dc:subject>\n\
+        <dc:subject>Meaningful community engagement</dc:subject>\n<dc:subject>Urban\
+        \ re/development</dc:subject>\n<dc:subject>Transparency</dc:subject>\n<dc:subject>Public\
+        \ Participation</dc:subject>\n<dc:subject>Public Administration (0617)</dc:subject>\n\
+        <dc:subject>Urban Planning (0999)</dc:subject>\n<dc:description>Doctor of\
+        \ Philosophy</dc:description>\n<dc:description>Environmental Design and Planning\
+        \ Program</dc:description>\n<dc:description>John W. Keller</dc:description>\n\
+        <dc:description>Public-private partnerships (PPPs) have become a vehicle to\
+        \ deliver products and services internationally. It is a favored strategy\
+        \ widely adopted for implementing complex urban developments in the United\
+        \ States. However, the complex nature of such partnerships raises serious\
+        \ concerns about meaningful community engagement. Meaningful community engagement\
+        \ is a result of the presence and quality of transparency and public participation\
+        \ elements that are strongly correlated. &#13;\n The following research describes\
+        \ how the community was involved and contributed to an urban development PPP\
+        \ project in Manhattan, Kansas. The research goal is to understand the mechanism\
+        \ of the community engagement in a PPP project and to evaluate the quality\
+        \ of the process at the local level from a planning perspective. With an in-depth\
+        \ case study and an understanding of meaningful community engagement processes,\
+        \ this research will contribute to the body of knowledge in the area of PPPs\
+        \ and meaningful community engagement at the local level and evaluate local\
+        \ PPP policies and practices.&#13;\n The first objective is to evaluate the\
+        \ participation opportunities with a developed Community Engagement Attribute\
+        \ Evaluation System (CEAES) based on the recognized metrics of quality practices.\
+        \ Attributes are drawn from the identified characteristics of quality transparency\
+        \ and quality public participation of meaningful practices. The second goal\
+        \ is to interview the key stakeholders of the project from the public sector,\
+        \ the private sector, and the community and add depth to the findings that\
+        \ complements the overall evaluation. &#13;\n Through both technical evaluation\
+        \ and open-ended personal interview, this study attempts to describe the design\
+        \ and the process of public participation practices. Analysis will show whether\
+        \ or not the community was meaningfully engaged and if the technical aspects\
+        \ of a quality community engagement practice were present. Finally, this study\
+        \ aims to inform future similar planning practices. The result serves two\
+        \ local purposes of planning governance and policy. For the former, it will\
+        \ help those with no record of PPP to better design and implement the engagement\
+        \ process; and for the ones with PPPs\u2019 experience, it will contribute\
+        \ to the quality of the future partnerships. For the latter, it will guide\
+        \ the local governments and policy makers to better address PPPs\u2019 ongoing\
+        \ issue of community engagement.</dc:description>\n<dc:date>2015-12-14T20:54:14Z</dc:date>\n\
+        <dc:date>2015-12-14T20:54:14Z</dc:date>\n<dc:date>2016</dc:date>\n<dc:date>May</dc:date>\n\
+        <dc:type>Dissertation</dc:type>\n<dc:identifier>http://hdl.handle.net/2097/20590</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Kansas State University</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:krex.k-state.edu:2097/20592</identifier>\n\
+        \                <datestamp>2016-01-19T17:02:38Z</datestamp>\n           \
+        \     <setSpec>com_2097_1</setSpec>\n                <setSpec>col_2097_4</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Hydrological\
+        \ transitions: a story of Kansas watershed districts</dc:title>\n<dc:creator>Jean,\
+        \ Christy Roberts</dc:creator>\n<dc:subject>Watershed management</dc:subject>\n\
+        <dc:subject>Watersheds</dc:subject>\n<dc:subject>Kansas watershed districts</dc:subject>\n\
+        <dc:subject>Sociohydrology</dc:subject>\n<dc:subject>Geography (0366)</dc:subject>\n\
+        <dc:description>Master of Arts</dc:description>\n<dc:description>Geography</dc:description>\n\
+        <dc:description>John A. Harrington Jr</dc:description>\n<dc:description>Kansas\
+        \ watershed projects have been responsible for reducing floodwater damage\
+        \ across the state since the formation of watershed districts, following the\
+        \ Kansas Watershed District Act of 1953. A total of 80 organized watershed\
+        \ districts now take on the responsibilities associated with watershed management\
+        \ and protecting the land uses within them. Today, Kansas watershed districts\
+        \ face challenges in completing nearly half of the 3,000 structures proposed\
+        \ since 1953. Insufficient funding, burdensome policy changes, and a declining\
+        \ interest from local board members and landowners are key challenges boards\
+        \ must overcome in addition to managing rapidly aging infrastructure and dealing\
+        \ with projects that have exceeded their life expectancy.&#13;\nResearch methods\
+        \ used for this report include content analysis of general work plans, relevant\
+        \ federal and state policies, and interviews with local stakeholders. In order\
+        \ to understand the economic, political, social and geographic impacts of\
+        \ watershed development, the following issues are addressed: cost-benefit\
+        \ ratios using monetary and non-monetary benefits, differences between federal\
+        \ and state funding in regards to rehabilitation and best management practices,\
+        \ local perceptions of watershed development, and spatial factors that exist\
+        \ among watershed districts. This study found that watershed projects have\
+        \ the potential to provide up to $115 million each year in monetary and flood\
+        \ damage reduction benefits in Kansas protecting over 35,000 miles of transportation\
+        \ routes while providing recreation opportunities and enhancing environmental\
+        \ conservation efforts. Political and social impacts were identified through\
+        \ in-person interviews with 21 local stakeholders that include landowners,\
+        \ board members and state representatives, representing 21 different watershed\
+        \ districts. Perceptions of political and social issues indicate that when\
+        \ government assistance is available, watershed districts are more willing\
+        \ to deal with increased regulations. However, a lack of financial support\
+        \ that has existed in Kansas watershed districts over the last eight years\
+        \ has contributed to a general opposition of increased federal regulations\
+        \ and reluctance to continue building watershed structures. Spatial factors\
+        \ among watershed districts illustrate the spatial and temporal differences\
+        \ in district development, watershed structure construction, and precipitation\
+        \ gradients that influence land use and ecoregions between western and eastern\
+        \ Kansas.</dc:description>\n<dc:date>2015-12-15T14:58:44Z</dc:date>\n<dc:date>2015-12-15T14:58:44Z</dc:date>\n\
+        <dc:date>2016</dc:date>\n<dc:date>May</dc:date>\n<dc:type>Thesis</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/2097/20592</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:publisher>Kansas State University</dc:publisher>\n</oai_dc:dc>\n</metadata>\n\
+        \        </record>\n        <record>\n            <header>\n             \
+        \   <identifier>oai:krex.k-state.edu:2097/20595</identifier>\n           \
+        \     <datestamp>2016-01-19T16:37:12Z</datestamp>\n                <setSpec>com_2097_1</setSpec>\n\
+        \                <setSpec>col_2097_4</setSpec>\n            </header>\n  \
+        \          <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Distribution\
+        \ and source rock potential of the Chattanooga shale in Kansas</dc:title>\n\
+        <dc:creator>McColloch, Austin</dc:creator>\n<dc:subject>Geology</dc:subject>\n\
+        <dc:subject>Chattanooga Shale</dc:subject>\n<dc:subject>Total Organic Carbon</dc:subject>\n\
+        <dc:subject>Handheld X-Ray Fluorescence</dc:subject>\n<dc:subject>Geochemistry\
+        \ (0996)</dc:subject>\n<dc:subject>Geology (0372)</dc:subject>\n<dc:subject>Petroleum\
+        \ Geology (0583)</dc:subject>\n<dc:description>Master of Science</dc:description>\n\
+        <dc:description>Geology</dc:description>\n<dc:description>Matthew W. Totten</dc:description>\n\
+        <dc:description>Organic-rich shales were deposited over a large part of what\
+        \ is now North America during the Late Devonian. North America in the late\
+        \ Devonian was located in the tropics (Woodrow et al., 1973), possibly in\
+        \ low southerly latitudes (Heckel and Witzke, 1979; Witzke and Heckel, 1988;\
+        \ Streel et al., 1990). This environment creates an organic-rich environment\
+        \ that resulted in thick, black shales. The Devonian-Mississippian Chattanooga\
+        \ (Woodford) shale is known to be an important petroleum source rock in many\
+        \ intracratonic basins of the Midcontinent (Lambert, 1993).&#13;\nGeochemical\
+        \ analysis of the Chattanooga shale, using various techniques, provides additional\
+        \ information on oil-source rock potential. Handheld XRF analysis was conducted\
+        \ on well cuttings samples, Loss on Ignition (LOI) was performed on a subset\
+        \ of those samples and mapping of the organic matter results of the two methods\
+        \ was completed.&#13;\nHandheld XRF still has the prospect for providing quick\
+        \ analysis to infer organic matter content to be used as a determination of\
+        \ the quality of source rock. Although slightly reduced correlation has been\
+        \ found within this study compared to Willey (2015), the method has still\
+        \ proven viable for fracking targets to be determined on site and in a more\
+        \ efficient manner. Loss on Ignition results have correlated with TOC data\
+        \ better then XRF results, making this method the better option for evaluating\
+        \ source rock potential. Mapping of these results provide the first known\
+        \ source rock potential map across Kansas and can be used by the industry\
+        \ for future exploration.</dc:description>\n<dc:date>2015-12-16T20:34:49Z</dc:date>\n\
+        <dc:date>2015-12-16T20:34:49Z</dc:date>\n<dc:date>2016</dc:date>\n<dc:date>May</dc:date>\n\
+        <dc:type>Thesis</dc:type>\n<dc:identifier>http://hdl.handle.net/2097/20595</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Kansas State University</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:krex.k-state.edu:2097/20596</identifier>\n\
+        \                <datestamp>2016-01-19T16:27:04Z</datestamp>\n           \
+        \     <setSpec>com_2097_1</setSpec>\n                <setSpec>col_2097_4</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Overview of\
+        \ plant-based natural antioxidants and effect of thermal decomposition</dc:title>\n\
+        <dc:creator>Maheshwari, Neha</dc:creator>\n<dc:subject>Natural antioxidants</dc:subject>\n\
+        <dc:subject>Antioxidant activity</dc:subject>\n<dc:subject>Heat treatment</dc:subject>\n\
+        <dc:subject>Herbs and spices</dc:subject>\n<dc:subject>Maillard reaction products</dc:subject>\n\
+        <dc:subject>Thermal decomposition</dc:subject>\n<dc:subject>Chemistry (0485)</dc:subject>\n\
+        <dc:subject>Food Science (0359)</dc:subject>\n<dc:subject>Nutrition (0570)</dc:subject>\n\
+        <dc:description>Master of Science</dc:description>\n<dc:description>Food Science\
+        \ Institute - Animal Sciences and Industry</dc:description>\n<dc:description>J.\
+        \ Scott Smith</dc:description>\n<dc:description>The popularity of convenience\
+        \ foods and consumer awareness have indirectly increased the demand for novel\
+        \ and naturally occurring compounds that can delay oxidative deterioration\
+        \ and maintain nutritional quality of foods. Natural antioxidants from certain\
+        \ herbs and spices such as rosmarinic acid from rosemary, thymol from oregano,\
+        \ eugenol from clove, curcumin from turmeric are rich in polyphenolic compounds\
+        \ that provide long term oxidative stability as well as offer additional health\
+        \ benefits. High antioxidative capacity of herbs and spices phenolics could\
+        \ potentially substitute synthetic antioxidants such as butylated hydroxytoluene\
+        \ (BHT), butylated hydroxyanisole (BHA), propyl gallate (PG), octyl gallate,\
+        \ and tert-butylated hydroquinone (TBHQ) in the food system. Synthetic antioxidants\
+        \ such as butylated hydroxytoluene (BHT) and butylated hydroxyanisole (BHA)\
+        \ are thermally unstable and decompose at higher temperatures. However, widely\
+        \ used cooking methods such as baking, frying, boiling, and roasting use high\
+        \ thermal temperature that can chemically degrade herbs and spices and diminish\
+        \ their antioxidative capacity, but they have been little studied. In this\
+        \ context, this review deals with the need of natural antioxidants, spices\
+        \ and herbs as natural antioxidants, their origin, chemical composition, pharmacological,\
+        \ and antioxidant properties. Moreover, the impact of temperature on total\
+        \ antioxidant capacity (TAC) of various herbs and spices such as cinnamon,\
+        \ clove, nutmeg, mace, oregano, rosemary, sage, and turmeric is highlighted.\
+        \ Different antioxidant assays are also studied and this approach revealed\
+        \ that there is a clear correlation between total phenolic content (TPC) and\
+        \ TAC of herbs and spices and specific phenolic compounds are responsible\
+        \ for the antioxidative capacity of particular herb and spice. These findings\
+        \ identified the optimum cooking temperature-time combination which results\
+        \ in the highest retention of antioxidative capacity and assures higher quality\
+        \ of food for the maintenance of human health.</dc:description>\n<dc:date>2015-12-16T20:38:03Z</dc:date>\n\
+        <dc:date>2015-12-16T20:38:03Z</dc:date>\n<dc:date>2016</dc:date>\n<dc:date>May</dc:date>\n\
+        <dc:type>Report</dc:type>\n<dc:identifier>http://hdl.handle.net/2097/20596</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Kansas State University</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:krex.k-state.edu:2097/20599</identifier>\n\
+        \                <datestamp>2016-01-19T16:04:09Z</datestamp>\n           \
+        \     <setSpec>com_2097_1</setSpec>\n                <setSpec>col_2097_4</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Comparison\
+        \ of thermal maturation indicators within hydrocarbon bearing sedimentary\
+        \ rock</dc:title>\n<dc:creator>Kowal, David Anazario</dc:creator>\n<dc:subject>Geology</dc:subject>\n\
+        <dc:subject>Thermal maturity</dc:subject>\n<dc:subject>Illitization</dc:subject>\n\
+        <dc:subject>Vitrinite reflectance</dc:subject>\n<dc:subject>Geology (0372)</dc:subject>\n\
+        <dc:description>Master of Science</dc:description>\n<dc:description>Geology</dc:description>\n\
+        <dc:description>Matthew W. Totten</dc:description>\n<dc:description>The thermal\
+        \ maturity of hydrocarbon-rich source rocks can be estimated by several different\
+        \ methods. These methods focus on a specific geochemical or mineralogical\
+        \ aspect contained within the rock. Because each method has limitations, it\
+        \ is advisable to use several methods to better determine thermal maturation.\
+        \ This report summarizes two common methods used to determine thermal maturity,\
+        \ vitrinite reflectance and illitization. Vitrinite reflectance and illitization\
+        \ have both been shown to be effected by similar temperatures that are within\
+        \ the hydrocarbon generation window. In some previous studies these two methods\
+        \ give different levels of maturation when looked at in tandem. Formations\
+        \ such as the Woodford Shale of Oklahoma are made up almost completely of\
+        \ illite in the clay fraction, even at low levels of vitrinite reflectance.\
+        \ These are also without a clear source of potassium, which is often the limiting\
+        \ factor in the process of illitization. Totten et al. (2013) suggest that\
+        \ in place of potassium feldspars, which are a common source of K\u207A for\
+        \ illite (but lacking in the Woodford) that the needed K\u207A was provided\
+        \ by the organic material that was being altered under the same temperatures\
+        \ of the clay minerals. The Woodford contains large amounts of organic matter,\
+        \ This would be consistent with promoting illitization at lower thermal maturities\
+        \ than organic-poor shales.</dc:description>\n<dc:date>2015-12-17T21:10:14Z</dc:date>\n\
+        <dc:date>2015-12-17T21:10:14Z</dc:date>\n<dc:date>2016</dc:date>\n<dc:date>May</dc:date>\n\
+        <dc:type>Report</dc:type>\n<dc:identifier>http://hdl.handle.net/2097/20599</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Kansas State University</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:krex.k-state.edu:2097/20597</identifier>\n\
+        \                <datestamp>2016-01-19T16:16:32Z</datestamp>\n           \
+        \     <setSpec>com_2097_1</setSpec>\n                <setSpec>col_2097_4</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Vision and\
+        \ the experience of built environments: two visual pathways of awareness,\
+        \ attention and embodiment in architecture</dc:title>\n<dc:creator>Rooney,\
+        \ Kevin Kelley</dc:creator>\n<dc:subject>Architecture</dc:subject>\n<dc:subject>Visual\
+        \ cognition</dc:subject>\n<dc:subject>Embodiment</dc:subject>\n<dc:subject>Awareness</dc:subject>\n\
+        <dc:subject>Attention</dc:subject>\n<dc:subject>Aesthetics</dc:subject>\n\
+        <dc:subject>Aesthetics (0650)</dc:subject>\n<dc:subject>Architecture (0729)</dc:subject>\n\
+        <dc:subject>Cognitive Psychology (0633)</dc:subject>\n<dc:description>Doctor\
+        \ of Philosophy</dc:description>\n<dc:description>Environmental Design and\
+        \ Planning Program</dc:description>\n<dc:description>Robert J. Condia</dc:description>\n\
+        <dc:description>The unique contribution of Vision and the Experience of Built\
+        \ Environments is its specific investigation into the visual processing system\
+        \ of the mind in relationship with the features of awareness and embodiment\
+        \ during the experience of architecture.  Each facet of this investigation\
+        \ reflects the essential ingredients of sensation (the visual system), perception\
+        \ (our awareness), and emotions (our embodiment) respectively as a process\
+        \ for aesthetically experiencing our built environments.  In regards to our\
+        \ visual system, it is well established in neuroscience that human vision\
+        \ divides into the central and peripheral fields of view.  Central vision\
+        \ extends from the point of gaze (where we are looking) out to about 5\xB0\
+        \ of visual angle (the width of one\u2019s fist at arm\u2019s length), while\
+        \ peripheral vision is the vast remainder of the visual field.  These visual\
+        \ fields project to the parvo and magno ganglion cells which process distinctly\
+        \ different types of information from the world around us and project that\
+        \ information to the ventral and dorsal visual streams respectively.  Building\
+        \ on the dorsal/ventral stream dichotomy, we can further distinguish between\
+        \ focal processing of central vision and ambient processing of peripheral\
+        \ vision.  Thus, our visual processing of, and attention to, objects and scenes\
+        \ depends on how and where these stimuli fall on the retina.  Built environments\
+        \ are no exception to these dependencies, specifically in terms of how focal\
+        \ object perception and ambient spatial perception create intellectual and\
+        \ phenomenal experiences respectively with architecture.  These two forms\
+        \ of visual processing limit and guide our perception of the built world around\
+        \ us and subsequently our projected and extended embodied interactions with\
+        \ it as manifested in the act of aesthetic experience.  By bringing peripheral\
+        \ vision and central vision together in a balanced perspective we will more\
+        \ fully understand that our aesthetic relationship with our built environment\
+        \ is greatly dependent on the dichotomous visual mechanisms of awareness and\
+        \ embodiment.</dc:description>\n<dc:date>2015-12-17T16:50:05Z</dc:date>\n\
+        <dc:date>2015-12-17T16:50:05Z</dc:date>\n<dc:date>2016</dc:date>\n<dc:date>May</dc:date>\n\
+        <dc:type>Dissertation</dc:type>\n<dc:identifier>http://hdl.handle.net/2097/20597</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Kansas State University</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:krex.k-state.edu:2097/20598</identifier>\n\
+        \                <datestamp>2016-01-19T16:07:30Z</datestamp>\n           \
+        \     <setSpec>com_2097_1</setSpec>\n                <setSpec>col_2097_4</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Hierarchical\
+        \ Bayesian topic modeling with sentiment and author extension</dc:title>\n\
+        <dc:creator>Yang, Ming</dc:creator>\n<dc:subject>Computer science</dc:subject>\n\
+        <dc:subject>Computer Science (0984)</dc:subject>\n<dc:description>Doctor of\
+        \ Philosophy</dc:description>\n<dc:description>Computing and Information Sciences</dc:description>\n\
+        <dc:description>William H. Hsu</dc:description>\n<dc:description>While the\
+        \ Hierarchical Dirichlet Process (HDP) has recently been widely applied to\
+        \ topic modeling tasks, most current hybrid models for concurrent inference\
+        \ of topics and other factors are not based on HDP. &#13;\n&#13;\nIn this\
+        \ dissertation, we present two new models that extend an HDP topic modeling\
+        \ framework to incorporate other learning factors. One model injects Latent\
+        \ Dirichlet Allocation (LDA) based sentiment learning into HDP. This model\
+        \ preserves the benefits of nonparametric Bayesian models for topic learning,\
+        \ while learning latent sentiment aspects simultaneously. It automatically\
+        \ learns different word distributions for each single sentiment polarity within\
+        \ each topic generated.  &#13;\n&#13;\nThe other model combines an existing\
+        \ HDP framework for learning topics from free text with latent authorship\
+        \ learning within a generative model using author list information. This model\
+        \ adds one more layer into the current hierarchy of HDPs to represent topic\
+        \ groups shared by authors, and the document topic distribution is represented\
+        \ as a mixture of topic distribution of its authors. This model automatically\
+        \ learns author contribution partitions for documents in addition to topics.</dc:description>\n\
+        <dc:date>2015-12-17T16:51:03Z</dc:date>\n<dc:date>2015-12-17T16:51:03Z</dc:date>\n\
+        <dc:date>2016</dc:date>\n<dc:date>May</dc:date>\n<dc:type>Dissertation</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/2097/20598</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:publisher>Kansas State University</dc:publisher>\n</oai_dc:dc>\n</metadata>\n\
+        \        </record>\n        <record>\n            <header>\n             \
+        \   <identifier>oai:krex.k-state.edu:2097/27634</identifier>\n           \
+        \     <datestamp>2016-01-19T20:33:45Z</datestamp>\n                <setSpec>com_2097_14691</setSpec>\n\
+        \                <setSpec>com_2097_1903</setSpec>\n                <setSpec>com_2097_14698</setSpec>\n\
+        \                <setSpec>col_2097_13329</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Effect of Sucralfate\
+        \ on the Relative Bioavailability of Enrofloxacin and Ciprofloxacin in Healthy\
+        \ Fed Dogs</dc:title>\n<dc:creator>KuKanich, Katherine</dc:creator>\n<dc:creator>KuKanich,\
+        \ Butch</dc:creator>\n<dc:creator>Guess, S.</dc:creator>\n<dc:creator>Heinrich,\
+        \ E.</dc:creator>\n<dc:contributor>kstenske</dc:contributor>\n<dc:contributor>kukanich</dc:contributor>\n\
+        <dc:subject>Canine</dc:subject>\n<dc:subject>Drug interaction;</dc:subject>\n\
+        <dc:subject>Fluoroquinolone</dc:subject>\n<dc:subject>Pharmacokinetics</dc:subject>\n\
+        <dc:description>Background: Sucralfate impairs absorption of ciprofloxacin\
+        \ and other fluoroquinolones in humans, but no sucralfate-fluoroquinolone\
+        \ interaction has been reported in dogs. Veterinary formularies recommend\
+        \ avoiding concurrent administration of these medications, which might impact\
+        \ compliance, therapeutic success, and resistance selection from fluoroquinolones.\
+        \ Objectives: To determine whether a drug interaction exists when sucralfate\
+        \ is administered to fed dogs concurrently with ciprofloxacin or enrofloxacin,\
+        \ and whether a 2 hour delay between fluoroquinolone and sucralfate affects\
+        \ fluoroquinolone absorption. Animals: Five healthy Greyhounds housed in a\
+        \ research colony. Methods: This was a randomized crossover study. Treatments\
+        \ included oral ciprofloxacin (C) or oral enrofloxacin (E) alone, each fluoroquinolone\
+        \ concurrently with an oral suspension of sucralfate (CS, ES), and sucralfate\
+        \ suspension 2 hours after each fluoroquinolone (C2S, E2S). Fluoroquinolone\
+        \ concentrations were evaluated using liquid chromatography with mass spectrometry.\
+        \ Results: Drug exposure of ciprofloxacin was highly variable (AUC 5.52-22.47\
+        \ h ?g/mL) compared to enrofloxacin (AUC 3.86-7.50 h ?g/mL). The mean relative\
+        \ bioavailability for ciprofloxacin and concurrent sucralfate was 48% (range\
+        \ 8-143%) compared to ciprofloxacin alone. Relative bioavailability of ciprofloxacin\
+        \ improved to 87% (range 37-333%) when sucralfate was delayed by 2 hours.\
+        \ By contrast, relative bioavailability for enrofloxacin and concurrent sucralfate\
+        \ was 104% (94-115%).</dc:description>\n<dc:description>Citation: KuKanich,\
+        \ K., KuKanich, B., Guess, S. and Heinrich, E. (2015), Effect of Sucralfate\
+        \ on the Relative Bioavailability of Enrofloxacin and Ciprofloxacin in Healthy\
+        \ Fed Dogs. Journal of Veterinary Internal Medicine. doi: 10.1111/jvim.13796</dc:description>\n\
+        <dc:date>2016-01-19T20:30:22Z</dc:date>\n<dc:date>2016-01-19T20:30:22Z</dc:date>\n\
+        <dc:date>2015</dc:date>\n<dc:type>Text</dc:type>\n<dc:identifier>http://hdl.handle.net/2097/27634</dc:identifier>\n\
+        <dc:relation>http://onlinelibrary.wiley.com/doi/10.1111/jvim.13796/abstract</dc:relation>\n\
+        <dc:rights>Attribution-NonCommercial 4.0 International\uFFFD(CC BY-NC 4.0)</dc:rights>\n\
+        <dc:rights>http://creativecommons.org/licenses/by-nc/4.0/</dc:rights>\n</oai_dc:dc>\n\
+        </metadata>\n        </record>\n        <record>\n            <header>\n \
+        \               <identifier>oai:krex.k-state.edu:2097/27635</identifier>\n\
+        \                <datestamp>2016-01-19T20:36:11Z</datestamp>\n           \
+        \     <setSpec>com_2097_1260</setSpec>\n                <setSpec>com_2097_14020</setSpec>\n\
+        \                <setSpec>com_2097_14698</setSpec>\n                <setSpec>col_2097_1261</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>What Would\
+        \ Jaws Do? The Tyranny of Film and the Relationship between Gaze and Higher-Level\
+        \ Narrative Film Comprehension</dc:title>\n<dc:creator>Loschky, Lester C.</dc:creator>\n\
+        <dc:creator>Larson, Adam M.</dc:creator>\n<dc:creator>Magliano, Joseph P.</dc:creator>\n\
+        <dc:creator>Smith, Tim J</dc:creator>\n<dc:contributor>http://creativecommons.org/licenses/by/4.0/</dc:contributor>\n\
+        <dc:description>What is the relationship between film viewers' eye movements\
+        \ and their film comprehension? Typical Hollywood movies induce strong attentional\
+        \ synchrony\u2014most viewers look at the same things at the same time. Thus,\
+        \ we asked whether film viewers' eye movements would differ based on their\
+        \ understanding\u2014the\_mental model\_hypothesis\u2014or whether any such\
+        \ differences would be overwhelmed by viewers' attentional synchrony\u2014\
+        the\_tyranny of filmhypothesis. To investigate this question, we manipulated\
+        \ the presence/absence of prior film context and measured resulting differences\
+        \ in film comprehension and eye movements. Viewers watched a 12-second James\
+        \ Bond movie clip, ending just as a critical predictive inference should be\
+        \ drawn that Bond's nemesis,</dc:description>\n<dc:description>would fall\
+        \ from the sky onto a circus tent. The No-context condition saw only the 12-second\
+        \ clip, but the Context condition also saw the preceding 2.5 minutes of the\
+        \ movie before seeing the critical 12-second portion. Importantly, the Context\
+        \ condition viewers were more likely to draw the critical inference and were\
+        \ more likely to perceive coherence across the entire 6 shot sequence (as\
+        \ shown by event segmentation), indicating greater comprehension. Viewers'\
+        \ eye movements showed strong attentional synchrony in both conditions as\
+        \ compared to a chance level baseline, but smaller differences between conditions.\
+        \ Specifically, the Context condition viewers showed slightly, but significantly,\
+        \ greater attentional synchrony and lower cognitive load (as shown by fixation\
+        \ probability) during the critical first circus tent shot. Thus, overall,\
+        \ the results were more consistent with the tyranny of film hypothesis than\
+        \ the mental model hypothesis. These results suggest the need for a theory\
+        \ that encompasses processes from the perception to the comprehension of film.</dc:description>\n\
+        <dc:date>2016-01-19T20:36:10Z</dc:date>\n<dc:date>2016-01-19T20:36:10Z</dc:date>\n\
+        <dc:date>2015</dc:date>\n<dc:type>10.1371/journal.pone.0142474</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/2097/27635</dc:identifier>\n<dc:relation>Citation:\
+        \ Loschky LC, Larson AM, Magliano JP, Smith TJ (2015) What Would Jaws Do?\
+        \ The Tyranny of Film and the Relationship between Gaze and Higher-Level Narrative\
+        \ Film Comprehension. PLoS ONE 10(11): e0142474. doi:10.1371/journal.pone.0142474</dc:relation>\n\
+        <dc:rights>Text</dc:rights>\n<dc:rights>Attribution 4.0 International (CC\
+        \ BY 4.0)</dc:rights>\n</oai_dc:dc>\n</metadata>\n        </record>\n    \
+        \    <record>\n            <header>\n                <identifier>oai:krex.k-state.edu:2097/27636</identifier>\n\
+        \                <datestamp>2016-01-19T20:39:02Z</datestamp>\n           \
+        \     <setSpec>com_2097_13872</setSpec>\n                <setSpec>com_2097_14020</setSpec>\n\
+        \                <setSpec>com_2097_14698</setSpec>\n                <setSpec>col_2097_13873</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Solute Concentrations\
+        \ Influence Microbial Methanogenesis in Coal-bearing Strata of the Cherokee\
+        \ Basin, USA</dc:title>\n<dc:creator>Kirk, Matthew F.</dc:creator>\n<dc:creator>Jin,\
+        \ Qusheng</dc:creator>\n<dc:creator>Haller, Ben R.</dc:creator>\n<dc:contributor>mfkirk</dc:contributor>\n\
+        <dc:contributor>lzeglin</dc:contributor>\n<dc:subject>natural gas</dc:subject>\n\
+        <dc:subject>unconventional reservoir</dc:subject>\n<dc:subject>Cherokee basin</dc:subject>\n\
+        <dc:subject>acetoclastic methanogenesis</dc:subject>\n<dc:subject>hydrogenotrophic\
+        \ methanogenesis</dc:subject>\n<dc:description>Microorganisms have contributed\
+        \ significantly to subsurface energy resources by converting organic matter\
+        \ in hydrocarbon reservoirs into methane, the main component of natural gas.\
+        \ In this study, we consider environmental controls on microbial populations\
+        \ in coal-bearing strata of the Cherokee basin, an unconventional natural\
+        \ gas resource in southeast Kansas, USA. Pennsylvanian-age strata in the basin\
+        \ contain numerous thin (0.4-1.1 m) coalbeds with marginal thermal maturities\
+        \ (0.5-0.7% Ro) that are interbedded with shale and sandstone. We collected\
+        \ gas, water, and microbe samples from 16 commercial coalbed methane wells\
+        \ for geochemical and microbiological analysis. The water samples were Na-Cl\
+        \ type with total dissolved solids (TDS) content ranging from 34.9 to 91.3\
+        \ g L?1. Gas dryness values [C1/(C2 + C3)] averaged 2640 and carbon and hydrogen\
+        \ isotope ratios of methane differed from those of carbon dioxide and water,\
+        \ respectively, by an average of 65 and 183%. These values are thought to\
+        \ be consistent with gas that formed primarily by hydrogenotrophic methanogenesis.\
+        \ Results from cultivation assays and taxonomic analysis of 16S rRNA genes\
+        \ agree with the geochemical results. Cultivable methanogens were present\
+        \ in every sample tested, methanogen sequences dominate the archaeal community\
+        \ in each sample (avg 91%), and few archaeal sequences (avg 4.2%) were classified\
+        \ within Methanosarcinales, an order of methanogens known to contain methylotrophic\
+        \ methanogens. Although hydrogenotrophs appear dominant, geochemical and microbial\
+        \ analyses both indicate that the proportion of methane generated by acetoclastic\
+        \ methanogens increases with the solute content of formation water, a trend\
+        \ that is contrary to existing conceptual models. Consistent with this trend,\
+        \ beta diversity analyses show that archaeal diversity significantly correlates\
+        \ with formation water solute content. In contrast, bacterial diversity more\
+        \ strongly correlates with location than solute content, possibly as a result\
+        \ of spatial variation in the thermal maturity of the coalbeds.</dc:description>\n\
+        <dc:description>Citation: Kirk MF, Wilson BH, Marquart KA, Zeglin LH, Vinson\
+        \ DS and Flynn TM (2015) Solute Concentrations Influence Microbial Methanogenesis\
+        \ in Coal-bearing Strata of the Cherokee Basin, USA. Front. Microbiol. 6:1287.\
+        \ doi: 10.3389/fmicb.2015.01287</dc:description>\n<dc:date>2016-01-19T20:39:02Z</dc:date>\n\
+        <dc:date>2016-01-19T20:39:02Z</dc:date>\n<dc:date>2015</dc:date>\n<dc:type>Text</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/2097/27636</dc:identifier>\n<dc:relation>http://journal.frontiersin.org/article/10.3389/fmicb.2015.01287/abstract</dc:relation>\n\
+        <dc:rights>Attribution 4.0 International\uFFFD(CC BY 4.0)</dc:rights>\n<dc:rights>http://creativecommons.org/licenses/by/4.0/</dc:rights>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n    </ListRecords>\n</OAI-PMH>\n"}
+    headers:
+      Connection: [Keep-Alive]
+      Content-Type: [application/xml]
+      Date: ['Wed, 20 Jan 2016 20:19:04 GMT']
+      Keep-Alive: ['timeout=5, max=100']
+      Server: [Apache-Coyote/1.1]
+    status: {code: 200, message: OK}
+version: 1
