@@ -9,7 +9,6 @@ import six
 import pytz
 import xmltodict
 from lxml import etree
-from StringIO import StringIO
 from dateutil import parser
 from pycountry import languages
 from nameparser import HumanName
