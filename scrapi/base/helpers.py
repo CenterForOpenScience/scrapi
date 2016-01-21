@@ -9,6 +9,7 @@ import six
 import pytz
 import xmltodict
 from lxml import etree
+from StringIO import StringIO
 from dateutil import parser
 from pycountry import languages
 from nameparser import HumanName
@@ -309,7 +310,8 @@ def oai_get_records_and_token(url, throttle, force, namespaces, verify):
     """
     data = requests.get(url, throttle=throttle, force=force, verify=verify)
 
-    doc = etree.XML(data.content)
+    parser = etree.XMLParser(recover=True, encoding=data.encoding)
+    doc = etree.XML(data.content, parser=parser)
 
     records = doc.xpath(
         '//ns0:record',
