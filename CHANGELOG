@@ -2,6 +2,13 @@
 ChangeLog
 *********
 
+0.12.0 (2016-01-26)
+====================
+- Adding push API harvester
+- Add institution support
+- VIVO settings in prep for VIVO harvester
+- Various updates and bugfixes @fabianvf :)
+
 0.11.16 (2016-01-26)
 ====================
 - Change default encoding recovery to look for None
@@ -21,7 +28,6 @@ ChangeLog
 - add error recovery to normalize XML parsing
 - add error recovery to helper function XML parsing
 
-
 0.11.13 (2016-01-26)
 ====================
 - fix favocon for trinity
@@ -33,7 +39,6 @@ ChangeLog
 0.11.11 (2016-01-26)
 ====================
 - fixing typos
-
 
 0.11.10 (2016-01-08)
 ====================
