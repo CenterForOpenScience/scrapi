@@ -2,6 +2,13 @@
 ChangeLog
 *********
 
+
+0.11.14 (2016-01-26)
+====================
+- add error recovery to normalize XML parsing
+- add error recovery to helper function XML parsing
+
+
 0.11.13 (2016-01-26)
 ====================
 - fix favocon for trinity
