@@ -12,7 +12,7 @@ scrapi
 
 ## Getting started
 
-- To run absolutely everyting, you will need to:
+- To run absolutely everything, you will need to:
     - Install requirements
     - Install Elasticsearch
     - Install Cassandra, or Postgres, or both (optional)
@@ -52,7 +52,7 @@ $ brew install homebrew/versions/elasticsearch17
    $ wget -qO - https://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
    ```
 
-2. Add the ElasticSearch repository to yout /etc/apt/sources.list.
+2. Add the ElasticSearch repository to your /etc/apt/sources.list.
    ```bash
    $ sudo add-apt-repository "deb http://packages.elasticsearch.org/elasticsearch/1.4/debian stable main"
    ```
@@ -218,7 +218,7 @@ Add your API keys to the following line to your local.py file:
 ```
 PLOS_API_KEY = 'your-api-key-here'
 HARVARD_DATAVERSE_API_KEY = 'your-api-key-here'
-SPRINGER_KEY = 'your-api-key-here'
+SPRINGER_API_KEY = 'your-api-key-here'
 ```
 
 ### Running the scheduler (optional)
