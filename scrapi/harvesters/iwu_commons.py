@@ -1,0 +1,123 @@
+'''
+Harvester for the Digital Commons @ IWU for the SHARE project
+
+Example API call: http://digitalcommons.iwu.edu/do/oai/?verb=ListRecords&metadataPrefix=oai_dc
+'''
+from __future__ import unicode_literals
+
+from scrapi.base import OAIHarvester
+
+
+class Iwu_commonsHarvester(OAIHarvester):
+    short_name = 'iwu_commons'
+    long_name = 'Digital Commons @ Illinois Wesleyan University'
+    url = 'http://digitalcommons.iwu.edu'
+
+    base_url = 'http://digitalcommons.iwu.edu/do/oai/'
+    property_list = ['date', 'type', 'source', 'format', 'identifier', 'setSpec']
+
+    approved_sets = [
+        u'oral_hist',
+        u'ames_award',
+        u'arthonors_book_gallery',
+        u'arthonors',
+        u'bio',
+        u'music_compositions',
+        u'cs',
+        u'constructing',
+        u'economics',
+        u'education',
+        u'ed_studies_posters',
+        u'eng',
+        u'envstu',
+        u'fac_biennial_exhibit_all',
+        u'fac_biennial_exhibit2011',
+        u'fac_biennial_exhibit2013',
+        u'fac_biennial_exhibit',
+        u'firstyear_summer',
+        u'founders_day_docs',
+        u'german',
+        u'theatre_hist',
+        u'history',
+        u'teaching_excellence',
+        u'honors_docs',
+        u'honors_programs_docs',
+        u'physics_honproj',
+        u'bio_honproj',
+        u'intstu_honproj',
+        u'envstu_honproj',
+        u'russian_honproj',
+        u'history_honproj',
+        u'theatre_honproj',
+        u'religion_honproj',
+        u'wostu_honproj',
+        u'nursing_honproj',
+        u'education_honproj',
+        u'eng_honproj',
+        u'french_honproj',
+        u'math_honproj',
+        u'socanth_honproj',
+        u'econ_honproj',
+        u'art_honproj',
+        u'cs_honproj',
+        u'amstudies_honproj',
+        u'grs_honproj',
+        u'hispstu_honproj',
+        u'polisci_honproj',
+        u'chem_honproj',
+        u'phil_honproj',
+        u'acct_fin_honproj',
+        u'busadmin_honproj',
+        u'german_honproj',
+        u'psych_honproj',
+        u'bookshelf',
+        u'wglt_interviews',
+        u'oralhist_2009',
+        u'oralhist_ucd',
+        u'oralhist_wesn',
+        u'italian',
+        u'japanese',
+        u'jwprc',
+        u'math',
+        u'music',
+        u'nursing',
+        u'oralhistory',
+        u'oralhistory_gallery',
+        u'anth_ethno',
+        u'gateway',
+        u'envstu_seminar',
+        u'music_outstanding_works',
+        u'writing_student',
+        u'polsci',
+        u'psych',
+        u'religion',
+        u'respublica',
+        u'russian',
+        u'grs_scholarship',
+        u'math_scholarship',
+        u'nursing_scholarship',
+        u'bio_scholarship',
+        u'religion_scholarship',
+        u'mcll_scholarship',
+        u'envstu_scholarship',
+        u'physics_scholarship',
+        u'socanth_scholarship',
+        u'history_scholarship',
+        u'intstu_scholarship',
+        u'cs_scholarship',
+        u'chem_scholarship',
+        u'eng_scholarship',
+        u'hispstu_scholarship',
+        u'psych_scholarship',
+        u'socanth',
+        u'student_prof',
+        u'sea',
+        u'parkplace',
+        u'uer',
+        u'germanresearch',
+        u'uauje',
+        u'univcom',
+        u'wglt'
+    ]
+
+    timezone_granularity = True
