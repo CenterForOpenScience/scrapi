@@ -1,13 +1,17 @@
+import time
+
 import mock
 import pytest
 
 from elasticsearch import Elasticsearch
 from elasticsearch.exceptions import ConnectionError, TransportError
 
-from scrapi.processing.cassandra import CassandraProcessor, DatabaseManager
+from cassandra.cluster import NoHostAvailable
+
 
 import scrapi
 from scrapi import settings
+from scrapi.processing.cassandra import CassandraProcessor, DatabaseManager
 
 
 settings.DEBUG = True
@@ -52,10 +56,27 @@ def pytest_configure(config):
 
 
 def pytest_runtest_setup(item):
+    TIMEOUT = 20
+
     marker = item.get_marker('cassandra')
     if marker is not None:
+        from scrapi.processing.cassandra import DocumentModel
         if not database.setup():
             pytest.skip('No connection to Cassandra')
+
+        start = time.time()
+        while True:
+            try:
+                DocumentModel.all().limit(1).get()
+                break
+            except NoHostAvailable as e:
+                now = time.time()
+                if (now - start) > TIMEOUT:
+                    raise e
+                continue
+            except Exception:
+                break
+
 
     marker = item.get_marker('elasticsearch')
     if marker is not None:
@@ -64,11 +85,15 @@ def pytest_runtest_setup(item):
         con.indices.create(index='test', body={}, ignore=400)
 
         # This is done to let the test index finish being created before connecting to search
+        start = time.time()
         while True:
             try:
                 scrapi.processing.elasticsearch.ElasticsearchProcessor.manager.es.search(index='test')
                 break
-            except TransportError:
+            except TransportError as e:
+                now = time.time()
+                if (now - start) > TIMEOUT:
+                    raise e
                 continue
 
 

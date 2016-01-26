@@ -148,6 +148,7 @@ class DataOneHarvester(XMLHarvester):
 
         xml_list = []
         for record in records:
+            # This ID is unique per data package, but won't unify multiple packages for the smae project
             doc_id = record.xpath("str[@name='id']")[0].text
             record = ElementTree.tostring(record, encoding=self.record_encoding)
             xml_list.append(RawDocument({
