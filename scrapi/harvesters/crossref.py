@@ -72,7 +72,8 @@ class CrossRefHarvester(JSONHarvester):
         return {
             'title': ('/title', lambda x: x[0] if x else ''),
             'description': ('/subtitle', lambda x: x[0] if (isinstance(x, list) and x) else x or ''),
-            'providerUpdatedDateTime': ('/issued/date-parts', compose(datetime_formatter, lambda x: ' '.join([str(part) for part in x[0]]))),
+            'providerUpdatedDateTime': ('/issued/date-parts',
+                                        compose(datetime_formatter, lambda x: ' '.join([str(part) for part in x[0]]))),
             'uris': {
                 'canonicalUri': '/URL'
             },
@@ -83,10 +84,10 @@ class CrossRefHarvester(JSONHarvester):
                 ]) for entry in x
             ], lambda x: x or [])),
             'sponsorships': ('/funder', lambda x: process_sponsorships(x) if x else []),
+            'tags': ('/subject', '/container-title', lambda x, y: [tag.lower() for tag in (x or []) + (y or [])]),
             'otherProperties': build_properties(
                 ('journalTitle', '/container-title'),
                 ('volume', '/volume'),
-                ('tags', ('/subject', '/container-title', lambda x, y: [tag.lower() for tag in (x or []) + (y or [])])),
                 ('issue', '/issue'),
                 ('publisher', '/publisher'),
                 ('type', '/type'),
