@@ -2,6 +2,10 @@
 ChangeLog
 *********
 
+0.12.2 (2016-02-04)
+====================
+- Push API harvester updates to work with unvalidated email addresses
+
 0.12.1 (2016-02-04)
 ====================
 - Push API updates to work with new format
