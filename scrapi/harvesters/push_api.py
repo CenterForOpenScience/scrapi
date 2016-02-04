@@ -100,7 +100,12 @@ class PushApiHarvester(BaseHarvester):
                 yield record
 
     def normalize(self, raw):
-        return NormalizedDocument(json.loads(raw['doc'])['jsonData'])
+        document = json.loads(raw['doc'])['jsonData']
+        # This is a workaround for the push API did not have proper email validation
+        for contributor in document['contributors']:
+            if contributor['email'] == '':
+                del contributor['email']
+        return NormalizedDocument(document)
 
     @property
     def run_at(self):
