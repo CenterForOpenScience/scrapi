@@ -84,8 +84,13 @@ class PushApiHarvester(BaseHarvester):
     def get_records(self, start_date, end_date):
         response = requests.get(
             '{}/established'.format(settings.SHARE_REG_URL),
-            params={'from': start_date.isoformat(), 'to': end_date.isoformat()}
-        ).json()
+            params={
+                'from': start_date.isoformat(),
+                'to': end_date.isoformat(),
+                'source': self.short_name
+            }
+        )
+        response = response.json()
         for record in response['results']:
             yield record
 
@@ -95,7 +100,7 @@ class PushApiHarvester(BaseHarvester):
                 yield record
 
     def normalize(self, raw):
-        return NormalizedDocument(json.loads(json.loads(raw['doc'])['jsonData']))
+        return NormalizedDocument(json.loads(raw['doc'])['jsonData'])
 
     @property
     def run_at(self):
