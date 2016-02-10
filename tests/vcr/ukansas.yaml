@@ -1,0 +1,1297 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.11 Darwin/14.5.0]
+    method: GET
+    uri: https://kuscholarworks.ku.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2016-02-08T00:00:00Z&until=2016-02-10T00:00:00Z
+  response:
+    body: {string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"\
+        text/xsl\" href=\"static/style.xsl\"?><OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"\
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
+        http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"\
+        ><responseDate>2016-02-10T19:55:02Z</responseDate><request verb=\"ListRecords\"\
+        \ metadataPrefix=\"oai_dc\" from=\"2016-02-08T00:00:00Z\" until=\"2016-02-10T00:00:00Z\"\
+        >https://kuscholarworks.ku.edu/oai/request</request><ListRecords><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19932</identifier><datestamp>2016-02-09T09:01:50Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Investigating\
+        \ a Multimodal Intervention for Children with Limited Expressive Vocabularies\
+        \ Associated with Autism</dc:title>\n<dc:creator>Brady, Nancy C.</dc:creator>\n\
+        <dc:creator>Storkel, Holly L.</dc:creator>\n<dc:creator>Bushnell, Paige</dc:creator>\n\
+        <dc:creator>Barker, R. Michael</dc:creator>\n<dc:creator>Saunders, Kate</dc:creator>\n\
+        <dc:creator>Daniels, Debby</dc:creator>\n<dc:creator>Fleming, Kandace</dc:creator>\n\
+        <dc:subject>Autism</dc:subject>\n<dc:subject>Intervention</dc:subject>\n<dc:subject>Augmentative\
+        \ and alternative communication</dc:subject>\n<dc:subject>Speech</dc:subject>\n\
+        <dc:description>This is the author's accepted manuscript. The original is\
+        \ available at http://www.asha.org/default.htm</dc:description>\n<dc:description>Purpose:\
+        \ To investigate a new intervention package aimed at increasing expressive\
+        \ word learning by&#xd;\nschool-age children with autism who have limited\
+        \ expressive vocabularies. This pilot investigation was&#xd;\nintended to\
+        \ show proof of concept.&#xd;\nMethod: Ten children between the ages of 6-10\
+        \ years with educational diagnoses of autism and limited&#xd;\nexpressive\
+        \ vocabularies at the outset of the study participated. A multimodal intervention\
+        \ composed of&#xd;\nspeech sound practice and AAC was used to teach individualized\
+        \ vocabulary words that were selected&#xd;\nbased on initial speech sound\
+        \ repertoires and principles of phonotactic probability and neighborhood&#xd;\n\
+        density. A multiple-probe design was used to evaluate learning outcomes.&#xd;\n\
+        Results: Five children showed gains in spoken- word learning across successive\
+        \ word sets (High&#xd;\nResponders). Five children did not meet learning criteria\
+        \ (Low Responders). Comparisons of behaviors&#xd;\nmeasured prior to intervention\
+        \ indicated that High Responders had relatively higher skills in receptive&#xd;\n\
+        language, prelinguistic communication, vocal/verbal imitation, adaptive behavior\
+        \ and consonant&#xd;\nproductions.&#xd;\nConclusions: The intervention package\
+        \ holds promise for improving spoken word productions for some&#xd;\nchildren\
+        \ with autism who have limited expressive vocabularies. Further research is\
+        \ needed to better&#xd;\ndescribe who may most benefit from this approach\
+        \ as well as investigate generalized benefits to untaught&#xd;\ncontexts and\
+        \ targets.</dc:description>\n<dc:date>2016-02-08T21:14:17Z</dc:date>\n<dc:date>2016-02-08T21:14:17Z</dc:date>\n\
+        <dc:date>2015</dc:date>\n<dc:type>Article, scholarly/refereed, author accepted\
+        \ manuscript</dc:type>\n<dc:identifier>Brady, Nancy C., Holly L. Storkel,\
+        \ Paige Bushnell, R. Michael Barker, Kate Saunders, Debby Daniels, and Kandace\
+        \ Fleming. \"Investigating a Multimodal Intervention for Children With Limited\
+        \ Expressive Vocabularies Associated With Autism.\" American Journal of Speech-Language\
+        \ Pathology Am J Speech Lang Pathol 24.3 (2015): 438. http://dx.doi.org/10.1044/2015_AJSLP-14-0093\
+        \ &lt;2.897> .</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1808/19932</dc:identifier>\n\
+        <dc:relation>doi:10.1044/2015_AJSLP-14-0093 &lt;2.897></dc:relation>\n<dc:publisher>American\
+        \ Speech-Language-Hearing Association</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19931</identifier><datestamp>2016-02-09T09:01:42Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Influence\
+        \ of Word Characteristics on the Vocabulary of Children with Cochlear Implants</dc:title>\n\
+        <dc:creator>Han, M. K.</dc:creator>\n<dc:creator>Storkel, Holly L.</dc:creator>\n\
+        <dc:creator>Lee, J.</dc:creator>\n<dc:creator>Yoshinaga-Itano, C.</dc:creator>\n\
+        <dc:description>This is the author's accepted manuscript. The original publication\
+        \ is available at http://jdsde.oxfordjournals.org/search?fulltext=The+Influence+of+Word+Characteristics+on+the+Vocabulary+or+Children+With+Cochlear+Implants&amp;submit=yes&amp;x=9&amp;y=4</dc:description>\n\
+        <dc:description>The goal of this study was to explore the effects of phonotactic\
+        \ probability, word length, word frequency, and neighborhood density on the\
+        \ words known by children with cochlear implants (CIs) varying in vocabulary\
+        \ outcomes in a retrospective analysis of a subset of data from a longitudinal\
+        \ study of hearing loss. Generalized linear mixed modeling was used to examine\
+        \ the effects of these word characteristics at three time points: pre-implant,\
+        \ post-implant, and longitudinal follow-up. Results showed a robust effect\
+        \ of neighborhood density across group and time, whereas the effect of frequency\
+        \ varied by time. Significant effects of phonotactic probability or word length\
+        \ were not detected. Taken together, these findings suggest that children\
+        \ with CIs may be able to use spoken language structure in a manner similar\
+        \ to their normal hearing counterparts, despite the differences in the quality\
+        \ of the input. The differences in the effects of phonotactic probability\
+        \ and word length imply a difficulty in initiating word learning and limited\
+        \ working memory ability in children with CIs.</dc:description>\n<dc:date>2016-02-08T21:14:04Z</dc:date>\n\
+        <dc:date>2016-02-08T21:14:04Z</dc:date>\n<dc:date>2015</dc:date>\n<dc:type>Article,\
+        \ scholarly/refereed, author accepted manuscript</dc:type>\n<dc:identifier>Han,\
+        \ M. K., H. L. Storkel, J. Lee, and C. Yoshinaga-Itano. \"The Influence of\
+        \ Word Characteristics on the Vocabulary of Children With Cochlear Implants.\"\
+        \ Journal of Deaf Studies and Deaf Education 20.3 (2015): 242-51. http://dx.doi.org/10.1093/deafed/env006.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1808/19931</dc:identifier>\n<dc:relation>doi:10.1093/deafed/env006</dc:relation>\n\
+        <dc:publisher>Oxford University Press</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19930</identifier><datestamp>2016-02-09T09:01:47Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Online Learning\
+        \ From Input Versus Offline Memory Evolution in Adult Word Learning: Effects\
+        \ of Neighborhood Density and Phonologically Related Practice</dc:title>\n\
+        <dc:creator>Storkel, Holly L.</dc:creator>\n<dc:creator>Bontempo, Daniel E.</dc:creator>\n\
+        <dc:creator>Pak, Natalie S.</dc:creator>\n<dc:subject>Vocabulary</dc:subject>\n\
+        <dc:subject>Word learning</dc:subject>\n<dc:subject>Input</dc:subject>\n<dc:subject>Memory\
+        \ evolution</dc:subject>\n<dc:subject>Clinical treatment</dc:subject>\n<dc:description>This\
+        \ is the author's accepted manuscript. The original publication is available\
+        \ at http://jslhr.pubs.asha.org/article.aspx?articleid=1851189</dc:description>\n\
+        <dc:description>Word learning consists of at least two neurocognitive processes:\
+        \ learning from input during training and memory evolution during gaps between\
+        \ training sessions. Fine-grained analysis of word learning by normal adults\
+        \ provides evidence that learning from input is swift and stable, whereas\
+        \ memory evolution is a point of potential vulnerability on the pathway to\
+        \ mastery. Moreover, success during learning from input is linked to positive\
+        \ outcomes from memory evolution. These two neurocognitive processes can be\
+        \ overlaid on to components of clinical treatment with within-session variables\
+        \ (i.e., dose form and dose) potentially linked to learning from input and\
+        \ between-session variables (i.e., dose frequency) linked to memory evolution.\
+        \ Collecting data at the beginning and end of a treatment session can be used\
+        \ to identify the point of vulnerability in word learning for a given client\
+        \ and the appropriate treatment component can then be adjusted to improve\
+        \ the client\u2019s word learning. Two clinical cases are provided to illustrate\
+        \ this approach.</dc:description>\n<dc:date>2016-02-08T21:13:53Z</dc:date>\n\
+        <dc:date>2016-02-08T21:13:53Z</dc:date>\n<dc:date>2014</dc:date>\n<dc:type>Article,\
+        \ scholarly/refereed, author accepted manuscript</dc:type>\n<dc:identifier>Storkel,\
+        \ Holly L., Daniel E. Bontempo, and Natalie S. Pak. \"Online Learning From\
+        \ Input Versus Offline Memory Evolution in Adult Word Learning: Effects of\
+        \ Neighborhood Density and Phonologically Related Practice.\" J Speech Lang\
+        \ Hear Res Journal of Speech Language and Hearing Research 57.5 (2014): 1708.\
+        \ http://dx.doi.org/10.1044/2014_JSLHR-L-13-0150.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1808/19930</dc:identifier>\n\
+        <dc:relation>doi:10.1044/2014_JSLHR-L-13-0150</dc:relation>\n<dc:publisher>American\
+        \ Speech-Language-Hearing Association</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19906</identifier><datestamp>2016-02-09T09:01:45Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The influence\
+        \ of known-word-frequency on the acquisition of new neighbors in adults: Evidence\
+        \ for exemplar representations in word-learning</dc:title>\n<dc:creator>Vitevitch,\
+        \ Michael</dc:creator>\n<dc:creator>Storkel, Holly L.</dc:creator>\n<dc:creator>Francisco,\
+        \ Ana</dc:creator>\n<dc:creator>Evans, Katy</dc:creator>\n<dc:creator>Goldstein,\
+        \ Rutherford</dc:creator>\n<dc:subject>Word learning</dc:subject>\n<dc:subject>Word\
+        \ frequency</dc:subject>\n<dc:subject>Neighbourhood density</dc:subject>\n\
+        <dc:subject>Hermits</dc:subject>\n<dc:description>This is the author's accepted\
+        \ manuscript. The original publication is available at http://www.tandfonline.com/doi/abs/10.1080/23273798.2014.912342</dc:description>\n\
+        <dc:description>Previous studies showed that a new word that is similar to\
+        \ many known words will be learned better than a new word that is similar\
+        \ to few known words (Storkel et al., 2006). In the present study we created\
+        \ novel words that were phonological neighbors to lexical hermits\u2014or\
+        \ known words that do not have any phonological neighbors\u2014that varied\
+        \ in frequency of occurrence. After several exposures, participants learned\
+        \ a higher proportion of novel words that were neighbors of high frequency\
+        \ known-words than nonwords that were neighbors of low frequency known-words.\
+        \ The present results have implications for abstractionist versus exemplar\
+        \ models of the mental lexicon and language processing, as well as for accounts\
+        \ of word frequency in models of language processing.</dc:description>\n<dc:date>2016-02-08T21:09:10Z</dc:date>\n\
+        <dc:date>2016-02-08T21:09:10Z</dc:date>\n<dc:date>2014</dc:date>\n<dc:type>Article,\
+        \ scholarly/refereed, author accepted manuscript</dc:type>\n<dc:identifier>Vitevitch,\
+        \ Michael S., Holly L. Storkel, Ana Clara Francisco, Katherine J. Evans, and\
+        \ Rutherford Goldstein. \"The Influence of Known-word Frequency on the Acquisition\
+        \ of New Neighbours in Adults: Evidence for Exemplar Representations in Word\
+        \ Learning.\" Language, Cognition and Neuroscience 29.10 (2014): 1311-316.\
+        \ http://dx.doi.org/10.1080/23273798.2014.912342</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1808/19906</dc:identifier>\n\
+        <dc:relation>doi:10.1080/23273798.2014.912342</dc:relation>\n<dc:publisher>Taylor\
+        \ &amp; Francis</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19928</identifier><datestamp>2016-02-09T09:01:48Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Grammatical\
+        \ treatment and specific language impairment: Neighbourhood density &amp;\
+        \ third person singular \u2013s</dc:title>\n<dc:creator>Hoover, Jill R.</dc:creator>\n\
+        <dc:creator>Storkel, Holly L.</dc:creator>\n<dc:subject>Specific language\
+        \ impairment</dc:subject>\n<dc:subject>Language disorders</dc:subject>\n<dc:subject>Language\
+        \ intervention</dc:subject>\n<dc:subject>Neighbourhood density</dc:subject>\n\
+        <dc:subject>Finiteness markers</dc:subject>\n<dc:description>This is the author's\
+        \ accepted manuscript. The original publication is available at http://www.tandfonline.com/doi/full/10.3109/02699206.2013.789928</dc:description>\n\
+        <dc:description>The purpose of this study was to test the effect of manipulating\
+        \ verb neighbourhood density in treatment targeting the third person singular\
+        \ lexical affix. Using a single-subject experimental design, 6 pre-schoolers\
+        \ with Specific Language Impairment (SLI) were randomly assigned to one of\
+        \ two conditions: 1) treatment with sparse verbs or 2) treatment with dense\
+        \ verbs in 12&#xd;\nsessions. The third person singular lexical affix was\
+        \ targeted for 12 sessions of treatment in both conditions. Treatment gain\
+        \ and generalization were measured as the dependent variables. Third person\
+        \ singular % correct change from pre-treatment to post-treatment was measured\
+        \ using sentence production tasks with comparisons across the two treatment\
+        \ conditions. Treatment gain and generalization were greater for children\
+        \ enrolled in the sparse condition. Preliminary clinical recommendations are\
+        \ made and theoretical implications are discussed relative to neighbourhood\
+        \ density effects on lexical activation and storage in children with SLI.</dc:description>\n\
+        <dc:date>2016-02-08T21:13:34Z</dc:date>\n<dc:date>2016-02-08T21:13:34Z</dc:date>\n\
+        <dc:date>2013</dc:date>\n<dc:type>Article, scholarly/refereed, author accepted\
+        \ manuscript</dc:type>\n<dc:identifier>Hoover, Jill R., and Holly L. Storkel.\
+        \ \"Grammatical Treatment and Specific Language Impairment: Neighbourhood\
+        \ Density &amp; Third Person Singular \u2013 S.\" Clinical Linguistics &amp;\
+        \ Phonetics 27.9 (2013): 661-80. http://dx.doi.org/10.3109/02699206.2013.789928.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1808/19928</dc:identifier>\n<dc:relation>doi:10.3109/02699206.2013.789928</dc:relation>\n\
+        <dc:publisher>Taylor &amp; Francis</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19929</identifier><datestamp>2016-02-09T09:01:51Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>A corpus of\
+        \ consonant-vowel-consonant real words and nonwords: Comparison of phonotactic\
+        \ probability, neighborhood density, and consonant age of acquisition</dc:title>\n\
+        <dc:creator>Storkel, Holly L.</dc:creator>\n<dc:subject>Neighbourhood density</dc:subject>\n\
+        <dc:subject>Phonotactic probability</dc:subject>\n<dc:description>This is\
+        \ the author's accepted manuscript. The original publication is available\
+        \ at http://link.springer.com/article/10.3758%2Fs13428-012-0309-7</dc:description>\n\
+        <dc:description>A corpus of 5,765 consonant-vowel-consonant (CVC) sequences\
+        \ was compiled, and phonotactic probability and neighborhood density based\
+        \ on both child and adult corpora were computed. This corpus of CVCs, provided\
+        \ as supplementary materials, was analyzed to address the following questions:\
+        \ (1) Do computations based on a child corpus differ from those based on an\
+        \ adult corpus? (2) Do phonotactic probability and/or neighborhood density\
+        \ of real words differ from that of nonwords? (3) Do phonotactic probability\
+        \ and/or neighborhood density differ across CVCs varying in consonant age-of-acquisition?\
+        \ Results showed significant differences in phonotactic probability and neighborhood\
+        \ density for child versus adult corpora, replicating prior findings. The\
+        \ impact of this difference on future studies will depend on the level of\
+        \ precision needed in specifying probability and density. In addition, significant\
+        \ and large differences in phonotactic probability and neighborhood density\
+        \ were detected between real words and nonwords, which may present methodological\
+        \ challenges for future research. Lastly, CVCs composed of earlier acquired\
+        \ sounds differed significantly in probability and density from CVCs composed\
+        \ of later acquired sounds, although this effect was relatively small and\
+        \ less likely to present significant methodological challenges to future studies.</dc:description>\n\
+        <dc:date>2016-02-08T21:13:44Z</dc:date>\n<dc:date>2016-02-08T21:13:44Z</dc:date>\n\
+        <dc:date>2013</dc:date>\n<dc:type>Article, scholarly/refereed, author accepted\
+        \ manuscript</dc:type>\n<dc:identifier>Storkel, Holly L. \"A Corpus of Consonant\u2013\
+        vowel\u2013consonant Real Words and Nonwords: Comparison of Phonotactic Probability,\
+        \ Neighborhood Density, and Consonant Age of Acquisition.\" Behav Res Behavior\
+        \ Research Methods 45.4 (2013): 1159-167. http://dx.doi.org/10.3758/s13428-012-0309-7.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1808/19929</dc:identifier>\n<dc:relation>doi:10.3758/s13428-012-0309-7</dc:relation>\n\
+        <dc:publisher>Springer Verlag</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19927</identifier><datestamp>2016-02-09T09:01:49Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The effect\
+        \ of incremental changes in phonotactic probability and neighborhood density\
+        \ on word learning by preschool children</dc:title>\n<dc:creator>Storkel,\
+        \ Holly L.</dc:creator>\n<dc:creator>Bontempo, Daniel E.</dc:creator>\n<dc:creator>Aschenbrenner,\
+        \ Andrew J.</dc:creator>\n<dc:creator>Maekawa, Junko</dc:creator>\n<dc:creator>Lee,\
+        \ Su-Yeon</dc:creator>\n<dc:subject>Vocabulary</dc:subject>\n<dc:subject>Word\
+        \ learning</dc:subject>\n<dc:subject>Phonotactic probability</dc:subject>\n\
+        <dc:subject>Neighbourhood density</dc:subject>\n<dc:subject>Spline regression</dc:subject>\n\
+        <dc:description>This is the author's accepted manuscript. The original publication\
+        \ is available at http://jslhr.pubs.asha.org/article.aspx?articleid=1797302</dc:description>\n\
+        <dc:description>Purpose. Phonotactic probability or neighborhood density have\
+        \ predominately been defined using gross distinctions (i.e., low vs. high).\
+        \ The current studies examined the influence of finer changes in probability\
+        \ (Experiment 1) and density (Experiment 2) on word learning.&#xd;\n&#xd;\n\
+        Method. The full range of probability or density was examined by sampling\
+        \ five nonwords from each of four quartiles. Three- and 5-year-old children\
+        \ received training on nonword-nonobject pairs. Learning was measured in a\
+        \ picture-naming task immediately following training and 1-week after training.\
+        \ Results were analyzed using multi-level modeling.&#xd;\n&#xd;\nResults.\
+        \ A linear spline model best captured nonlinearities in phonotactic probability.\
+        \ Specifically word learning improved as probability increased in the lowest\
+        \ quartile, worsened as probability increased in the midlow quartile, and\
+        \ then remained stable and poor in the two highest quartiles. An ordinary\
+        \ linear model sufficiently described neighborhood density. Here, word learning\
+        \ improved as density increased across all quartiles.&#xd;\n&#xd;\nConclusion.\
+        \ Given these different patterns, phonotactic probability and neighborhood\
+        \ density appear to influence different word learning processes. Specifically,\
+        \ phonotactic probability may affect recognition that a sound sequence is\
+        \ an acceptable word in the language and is a novel word for the child, whereas\
+        \ neighborhood density may influence creation of a new representation&#xd;\n\
+        in long-term memory.</dc:description>\n<dc:date>2016-02-08T21:13:25Z</dc:date>\n\
+        <dc:date>2016-02-08T21:13:25Z</dc:date>\n<dc:date>2013</dc:date>\n<dc:type>Article,\
+        \ scholarly/refereed, author accepted manuscript</dc:type>\n<dc:identifier>Storkel,\
+        \ H. L., D. E. Bontempo, A. J. Aschenbrenner, J. Maekawa, and S.-Y. Lee. \"\
+        The Effect of Incremental Changes in Phonotactic Probability and Neighborhood\
+        \ Density on Word Learning by Preschool Children.\" Journal of Speech, Language,\
+        \ and Hearing Research 56.5 (2013): 1689-700. http://dx.doi.org/10.1044/1092-4388(2013/12-0245).</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1808/19927</dc:identifier>\n<dc:relation>doi:10.1044/1092-4388(2013/12-0245)</dc:relation>\n\
+        <dc:publisher>American Speech-Language-Hearing Association</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19926</identifier><datestamp>2016-02-09T09:01:51Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Effect\
+        \ of Homonymy on Learning Correctly Articulated Versus Misarticulated Words</dc:title>\n\
+        <dc:creator>Storkel, Holly L.</dc:creator>\n<dc:creator>Maekawa, Junko</dc:creator>\n\
+        <dc:creator>Aschenbrenner, Andrew J.</dc:creator>\n<dc:description>This is\
+        \ the author's accepted manuscript. The original publication is available\
+        \ at http://jslhr.pubs.asha.org/article.aspx?articleid=1795801</dc:description>\n\
+        <dc:description>Purpose The goal of the current study was to examine the effect\
+        \ of homonymy (learning a second meaning for a known word form vs. learning\
+        \ a novel meaning and novel word form) and articulation accuracy (IN vs. OUT\
+        \ sounds) on word learning by preschool children. An added goal was to determine\
+        \ whether word frequency altered the effect of homonymy on word learning.&#xd;\n\
+        &#xd;\nMethod Twenty-nine 3- to 4-year-old children were taught homonyms and\
+        \ novel words. Stimuli further varied in whether homonymy was present in both\
+        \ the adult input and the child's output (as for IN sounds) versus present\
+        \ only in the child's output (as for OUT sounds).&#xd;\n&#xd;\nResults For\
+        \ IN sounds, children learned homonyms more rapidly than novel words. Moreover,\
+        \ the homonym advantage was modulated by word frequency, such that children\
+        \ learned a new meaning for a high-frequency word more accurately than they\
+        \ learned a new meaning for a low-frequency word. In contrast, for OUT sounds,\
+        \ there was no evidence that homonymy influenced learning.&#xd;\n&#xd;\nConclusions\
+        \ Homonymy in the adult input facilitates word learning by preschool children,\
+        \ whereas homonymy in the child's output alone does not. This effect is captured\
+        \ in a usage-based model of phonology and the lexicon.</dc:description>\n\
+        <dc:date>2016-02-08T21:13:14Z</dc:date>\n<dc:date>2016-02-08T21:13:14Z</dc:date>\n\
+        <dc:date>2013</dc:date>\n<dc:type>Article, scholarly/refereed, author accepted\
+        \ manuscript</dc:type>\n<dc:identifier>Storkel, Holly L., Junko Maekawa, and\
+        \ Andrew J. Aschenbrenner. \"The Effect of Homonymy on Learning Correctly\
+        \ Articulated Versus Misarticulated Words.\" J Speech Lang Hear Res Journal\
+        \ of Speech Language and Hearing Research 56.2 (2013): 694. http://dx.doi.org/10.1044/1092-4388(2012/12-0122).</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1808/19926</dc:identifier>\n<dc:relation>doi:10.1044/1092-4388(2012/12-0122)</dc:relation>\n\
+        <dc:publisher>American Speech-Language-Hearing Association</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19925</identifier><datestamp>2016-02-09T09:01:43Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Examining the\
+        \ acquisition of phonological word-forms with computational experiments</dc:title>\n\
+        <dc:creator>Vitevitch, Michael</dc:creator>\n<dc:creator>Storkel, Holly L.</dc:creator>\n\
+        <dc:subject>Neighbourhood density</dc:subject>\n<dc:subject>Word learning</dc:subject>\n\
+        <dc:subject>Connectionist model</dc:subject>\n<dc:subject>Neural network</dc:subject>\n\
+        <dc:description>This is the author's accepted manuscript. The original publication\
+        \ is available at http://las.sagepub.com/content/early/2012/10/21/0023830912460513.full.pdf</dc:description>\n\
+        <dc:description>It has been hypothesized that known words in the lexicon strengthen\
+        \ newly formed representations of novel words, resulting in words with dense\
+        \ neighborhoods being learned more quickly than words with sparse neighborhoods.\
+        \ Tests of this hypothesis in a connectionist network showed that words with\
+        \ dense neighborhoods were learned better than words with sparse neighborhoods\
+        \ when the network was exposed to the words all at once (Experiment 1), or\
+        \ gradually over time, like human word-learners (Experiment 2). This pattern\
+        \ was also observed despite variation in the availability of processing resources\
+        \ in the networks (Experiment 3). A learning advantage for words with sparse\
+        \ neighborhoods was observed only when the network was initially exposed to\
+        \ words with sparse neighborhoods and exposed to dense neighborhoods later\
+        \ in training (Experiment 4). The benefits of computational experiments for\
+        \ increasing our understanding of language processes and for the treatment\
+        \ of language processing disorders are discussed.</dc:description>\n<dc:date>2016-02-08T21:12:59Z</dc:date>\n\
+        <dc:date>2016-02-08T21:12:59Z</dc:date>\n<dc:date>2013</dc:date>\n<dc:type>Article,\
+        \ scholarly/refereed, author accepted manuscript</dc:type>\n<dc:identifier>Vitevitch,\
+        \ M. S., and H. L. Storkel. \"Examining the Acquisition of Phonological Word\
+        \ Forms with Computational Experiments.\" Language and Speech 56.4 (2012):\
+        \ 493-527. http://dx.doi.org/10.1177/0023830912460513</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1808/19925</dc:identifier>\n\
+        <dc:relation>doi:10.1177/0023830912460513</dc:relation>\n<dc:publisher>SAGE\
+        \ Publications</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19924</identifier><datestamp>2016-02-09T09:01:44Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The influence\
+        \ of part-word phonotactic probability/neighborhood density on word learning\
+        \ by preschool children varying in expressive vocabulary</dc:title>\n<dc:creator>Storkel,\
+        \ Holly L.</dc:creator>\n<dc:creator>Hoover, Jill R.</dc:creator>\n<dc:description>This\
+        \ is the author's accepted manuscript. The original publication is available\
+        \ at http://journals.cambridge.org/action/displayAbstract?fromPage=online&amp;aid=8259251&amp;fileId=S0305000910000176</dc:description>\n\
+        <dc:description>The goal of this study was to examine the influence of part-word\
+        \ phonotactic probability/neighborhood density on word learning by preschool\
+        \ children with normal vocabularies that varied in size. Ninety-eight children\
+        \ (age 2;11 \u2013 6;0) were taught consonant-vowel-consonant (CVC) nonwords\
+        \ orthogonally varying in the probability/density of the CV (i.e., body) and\
+        \ VC (i.e., rhyme). Learning was measured via picture naming. Children with\
+        \ the lowest expressive vocabulary scores showed no effect of either CV or\
+        \ VC probability/density, although floor effects could not be ruled out. In\
+        \ contrast, children with low or high expressive vocabulary scores demonstrated\
+        \ sensitivity to part-word probability/density with the nature of the effect\
+        \ varying by group. Children with the highest expressive vocabulary scores\
+        \ displayed yet a third pattern of part-word probability/density effects.\
+        \ Taken together, word learning by preschool children was influenced by part-word\
+        \ probability/density but the nature of this influence appeared to depend\
+        \ on the size of the lexicon.</dc:description>\n<dc:date>2016-02-08T21:12:48Z</dc:date>\n\
+        <dc:date>2016-02-08T21:12:48Z</dc:date>\n<dc:date>2010</dc:date>\n<dc:type>Article,\
+        \ scholarly/refereed, author accepted manuscript</dc:type>\n<dc:identifier>Storkel,\
+        \ Holly L., and Jill R. Hoover. \"The Influence of Part-word Phonotactic Probability/neighborhood\
+        \ Density on Word Learning by Preschool Children Varying in Expressive Vocabulary.\"\
+        \ Journal of Child Language J. Child Lang. 38.03 (2010): 628-43. http://dx.doi.org/10.1017/S0305000910000176.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1808/19924</dc:identifier>\n<dc:relation>doi:10.1017/S0305000910000176</dc:relation>\n\
+        <dc:publisher>Cambridge University Press</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19923</identifier><datestamp>2016-02-09T09:01:45Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The influence\
+        \ of neighborhood density and word frequency on phoneme awareness in 2nd and\
+        \ 4th grades</dc:title>\n<dc:creator>Hogan, Tiffany P.</dc:creator>\n<dc:creator>Bowles,\
+        \ Ryan P.</dc:creator>\n<dc:creator>Catts, Hugh W.</dc:creator>\n<dc:creator>Storkel,\
+        \ Holly L.</dc:creator>\n<dc:description>This is the author's accepted manuscript.\
+        \ The original publication is available at http://www.sciencedirect.com/science/article/pii/S0021992410000614</dc:description>\n\
+        <dc:description>Purpose&#xd;\n&#xd;\nThe purpose of this study was to test\
+        \ the hypothesis that two lexical characteristics \u2013 neighborhood density\
+        \ and word frequency \u2013 interact to influence performance on phoneme awareness\
+        \ tasks.&#xd;\n&#xd;\nMethods&#xd;\n&#xd;\nPhoneme awareness was examined\
+        \ in a large, longitudinal dataset of 2nd and 4th grade children. Using linear\
+        \ logistic test model, the relation between words\u2019 neighborhood density,\
+        \ word frequency, and phoneme awareness performance was examined across grades\
+        \ while co-varying type and place of deletion.&#xd;\n&#xd;\nResults&#xd;\n\
+        &#xd;\nA predicted interaction was revealed: words from dense neighborhoods\
+        \ or those with high frequency were more likely to yield correct phoneme awareness\
+        \ responses across grades.&#xd;\n&#xd;\nConclusions&#xd;\n&#xd;\nFindings\
+        \ support an expansion of the lexical restructuring model to include interactions\
+        \ between neighborhood density and word frequency to account for phoneme awareness.</dc:description>\n\
+        <dc:date>2016-02-08T21:12:36Z</dc:date>\n<dc:date>2016-02-08T21:12:36Z</dc:date>\n\
+        <dc:date>2011</dc:date>\n<dc:type>Article, scholarly/refereed, author accepted\
+        \ manuscript</dc:type>\n<dc:identifier>Hogan, Tiffany P., Ryan P. Bowles,\
+        \ Hugh W. Catts, and Holly L. Storkel. \"The Influence of Neighborhood Density\
+        \ and Word Frequency on Phoneme Awareness in 2nd and 4th Grades.\" Journal\
+        \ of Communication Disorders 44.1 (2011): 49-58. http://dx.doi.org/10.1016/j.jcomdis.2010.07.002.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1808/19923</dc:identifier>\n<dc:relation>doi:10.1016/j.jcomdis.2010.07.002</dc:relation>\n\
+        <dc:publisher>Elsevier</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19922</identifier><datestamp>2016-02-09T09:01:47Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Differentiating\
+        \ word learning processes may yield new insights \u2013 a commentary on Stoel-Gammon's\
+        \ \u2018Relationships between lexical and phonological development in young\
+        \ children\u2019*</dc:title>\n<dc:creator>Storkel, Holly L.</dc:creator>\n\
+        <dc:description>This is the author's accepted manuscript. The original publication\
+        \ is available at http://journals.cambridge.org/action/displayAbstract?fromPage=online&amp;aid=7930828&amp;fulltextType=AC&amp;fileId=S0305000910000486</dc:description>\n\
+        <dc:date>2016-02-08T21:12:22Z</dc:date>\n<dc:date>2016-02-08T21:12:22Z</dc:date>\n\
+        <dc:date>2011</dc:date>\n<dc:type>Article, scholarly/refereed, author accepted\
+        \ manuscript</dc:type>\n<dc:identifier>Storkel, Holly L. \"Differentiating\
+        \ Word Learning Processes May Yield New Insights \u2013 a Commentary on Stoel-Gammon's\
+        \ \u2018Relationships between Lexical and Phonological Development in Young\
+        \ Children\u2019.\" Journal of Child Language J. Child Lang. 38.01 (2010):\
+        \ 51-55. http://dx.doi.org/10.1017/S0305000910000486.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1808/19922</dc:identifier>\n\
+        <dc:relation>doi:10.1017/S0305000910000486</dc:relation>\n<dc:publisher>Cambridge\
+        \ University Press</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19921</identifier><datestamp>2016-02-09T09:01:48Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Independent\
+        \ Effects of Phonotactic Probability and Neighborhood Density on Lexical Acquisition\
+        \ by Preschool Children</dc:title>\n<dc:creator>Storkel, Holly L.</dc:creator>\n\
+        <dc:creator>Lee, Su-Yeon</dc:creator>\n<dc:subject>Phonotactic probability</dc:subject>\n\
+        <dc:subject>Neighbourhood density</dc:subject>\n<dc:subject>Lexical acquisition</dc:subject>\n\
+        <dc:subject>Vocabulary</dc:subject>\n<dc:description>This is the author's\
+        \ accepted manuscript. The original publication is available at http://www.tandfonline.com/doi/abs/10.1080/01690961003787609</dc:description>\n\
+        <dc:description>The goal of this research was to disentangle effects of phonotactic\
+        \ probability, the likelihood of occurrence of a sound sequence, and neighbourhood\
+        \ density, the number of phonologically similar words, in lexical acquisition.\
+        \ Two-word learning experiments were conducted with 4-year-old children. Experiment\
+        \ 1 manipulated phonotactic probability while holding neighbourhood density\
+        \ and referent characteristics constant. Experiment 2 manipulated neighbourhood\
+        \ density while holding phonotactic probability and referent characteristics\
+        \ constant. Learning was tested at two time points (immediate vs. retention)\
+        \ in both a naming and referent identification task, although only data from\
+        \ the referent identification task were analysed due to poor performance in\
+        \ the naming task. Results showed that children were more accurate in learning\
+        \ rare sound sequences than common sound sequences and this was consistent\
+        \ across time points. In contrast, the effect of neighbourhood density varied\
+        \ by time. Children were more accurate in learning sparse sound sequences\
+        \ than dense sound sequences at the immediate test point but accuracy for\
+        \ dense sound sequences significantly improved by the retention test without\
+        \ further training. It was hypothesised that phonotactic probability and neighbourhood\
+        \ density influenced different cognitive processes that underlie lexical acquisition.</dc:description>\n\
+        <dc:date>2016-02-08T21:12:10Z</dc:date>\n<dc:date>2016-02-08T21:12:10Z</dc:date>\n\
+        <dc:date>2010</dc:date>\n<dc:type>Article, scholarly/refereed, author accepted\
+        \ manuscript</dc:type>\n<dc:identifier>Storkel, Holly L., and Su-Yeon Lee.\
+        \ \"The Independent Effects of Phonotactic Probability and Neighbourhood Density\
+        \ on Lexical Acquisition by Preschool Children.\" Language and Cognitive Processes\
+        \ 26.2 (2011): 191-211. http://dx.doi.org/10.1080/01690961003787609.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1808/19921</dc:identifier>\n<dc:relation>doi:10.1080/01690961003787609</dc:relation>\n\
+        <dc:publisher>Taylor &amp; Francis</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19920</identifier><datestamp>2016-02-08T22:22:19Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>A Cross-Sectional\
+        \ Comparison of the Effects of Phonotactic Probability and Neighborhood Density\
+        \ on Word Learning by Preschool Children</dc:title>\n<dc:creator>Hoover, Jill\
+        \ R.</dc:creator>\n<dc:creator>Storkel, Holly L.</dc:creator>\n<dc:creator>Hogan,\
+        \ Tiffany P.</dc:creator>\n<dc:subject>Word learning</dc:subject>\n<dc:subject>Vocabulary</dc:subject>\n\
+        <dc:subject>Phonotactic probability</dc:subject>\n<dc:subject>Neighbourhood\
+        \ density</dc:subject>\n<dc:subject>Preschool children</dc:subject>\n<dc:description>This\
+        \ is the author's accepted manuscript. The original publication is available\
+        \ at http://www.sciencedirect.com/science/article/pii/S0749596X10000070</dc:description>\n\
+        <dc:description>Two experiments examined the effects of phonotactic probability\
+        \ and neighborhood density on word learning by 3-, 4-, and 5-year-old children.\
+        \ Nonwords orthogonally varying in probability and density were taught with\
+        \ learning and retention measured via picture naming. Experiment 1 used a\
+        \ within story probability/across story density exposure context. Experiment\
+        \ 2 used an across story probability/within story density exposure context.\
+        \ Results showed that probability and density interacted to create optimal\
+        \ learning conditions. Specifically, rare/sparse sound sequences appeared\
+        \ to facilitate triggering of word learning. In contrast, the optimal convergence\
+        \ for lexical configuration and engagement was dependent on exposure context.\
+        \ In particular, common sound sequences and dense neighborhoods were optimal\
+        \ when density was manipulated across stories, whereas rare sound sequences\
+        \ and sparse neighborhoods were optimal when density was manipulated within\
+        \ a story. Taken together, children\u2019s phonological and lexical representations\
+        \ were hypothesized to be interdependent on one another resulting in a convergence\
+        \ of form characteristics for optimal word learning.</dc:description>\n<dc:date>2016-02-08T21:11:58Z</dc:date>\n\
+        <dc:date>2016-02-08T21:11:58Z</dc:date>\n<dc:date>2010</dc:date>\n<dc:type>Article,\
+        \ scholarly/refereed, author accepted manuscript</dc:type>\n<dc:identifier>Hoover,\
+        \ Jill R., Holly L. Storkel, and Tiffany P. Hogan. \"A Cross-sectional Comparison\
+        \ of the Effects of Phonotactic Probability and Neighborhood Density on Word\
+        \ Learning by Preschool Children.\" Journal of Memory and Language 63.1 (2010):\
+        \ 100-16. http://dx.doi.org/10.1016/j.jml.2010.02.003.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1808/19920</dc:identifier>\n\
+        <dc:relation>doi:10.1016/j.jml.2010.02.003</dc:relation>\n<dc:publisher>Elsevier</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19919</identifier><datestamp>2016-02-09T09:01:50Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>An on-line\
+        \ calculator to compute phonotactic probability and neighborhood density based\
+        \ on child corpora of spoken American English</dc:title>\n<dc:creator>Storkel,\
+        \ Holly L.</dc:creator>\n<dc:creator>Hoover, Jill R.</dc:creator>\n<dc:subject>Vocabulary</dc:subject>\n\
+        <dc:subject>Neighbourhood density</dc:subject>\n<dc:subject>Phonotactic probability</dc:subject>\n\
+        <dc:subject>Developmental research</dc:subject>\n<dc:description>This is the\
+        \ author's accepted manuscript. The original publication is available at http://link.springer.com/article/10.3758%2FBRM.42.2.497</dc:description>\n\
+        <dc:description>An on-line calculator was developed (http://www.bncdnet.ku.edu/cml/info_ccc.vi)\
+        \ to compute phonotactic probability, the likelihood of occurrence of a sound\
+        \ sequence, and neighborhood density, the number of phonologically similar\
+        \ words, based on child corpora of American English (Kolson, 1960; Moe, Hopkins,\
+        \ &amp; Rush, 1982) and compared to an adult calculator. Phonotactic probability\
+        \ and neighborhood density were computed for a set of 380 nouns (Fenson et\
+        \ al., 1993) using both the child and adult corpora. Child and adult raw values\
+        \ were significantly correlated. However, significant differences were detected.\
+        \ Specifically, child phonotactic probability was higher than adult phonotactic\
+        \ probability, especially for high probability words; and child neighborhood\
+        \ density was lower than adult neighborhood density, especially for high density\
+        \ words. These differences were reduced or eliminated when relative measures\
+        \ (i.e., z scores) were used. Suggestions are offered regarding which values\
+        \ to use in future research.</dc:description>\n<dc:date>2016-02-08T21:11:48Z</dc:date>\n\
+        <dc:date>2016-02-08T21:11:48Z</dc:date>\n<dc:date>2010</dc:date>\n<dc:type>Article,\
+        \ scholarly/refereed, author accepted manuscript</dc:type>\n<dc:identifier>Storkel,\
+        \ Holly L., and Jill R. Hoover. \"An Online Calculator to Compute Phonotactic\
+        \ Probability and Neighborhood Density on the Basis of Child Corpora of Spoken\
+        \ American English.\" Behavior Research Methods 42.2 (2010): 497-506. http://dx.doi.org/10.3758/BRM.42.2.497.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1808/19919</dc:identifier>\n<dc:relation>doi:10.3758/BRM.42.2.497</dc:relation>\n\
+        <dc:publisher>Springer Verlag</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19918</identifier><datestamp>2016-02-09T09:01:44Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Word learning\
+        \ by children with phonological delays: Differentiating effects of phonotactic\
+        \ probability and neighborhood density</dc:title>\n<dc:creator>Storkel, Holly\
+        \ L.</dc:creator>\n<dc:creator>Hoover, Jill R.</dc:creator>\n<dc:description>This\
+        \ is the author's accepted manuscript. The original publication is available\
+        \ at http://www.sciencedirect.com/science/article/pii/S0021992409000847</dc:description>\n\
+        <dc:description>This study examined the ability of 20 preschool children with\
+        \ functional phonological delays and 34 age- and vocabulary-matched typical\
+        \ children to learn words differing in phonotactic probability (i.e., the\
+        \ likelihood of occurrence of a sound sequence) and neighborhood density (i.e.,\
+        \ the number of words that differ from a target by one phoneme). Children\
+        \ were exposed to nonwords paired with novel objects in a story and learning\
+        \ was measured by a picture naming task. Results showed that both groups created\
+        \ lexical representations for rare sound sequences from sparse neighborhoods.\
+        \ However, only children with typical development appeared to build on this\
+        \ initial lexical representation to create a full representation of the word\
+        \ (i.e., lexical-semantic connection and semantic representation). It was\
+        \ hypothesized that creating a lexical representation may be too resource\
+        \ demanding for children with phonological delays, leaving few resources available\
+        \ to create a lexical-semantic connection and/or a semantic representation.</dc:description>\n\
+        <dc:date>2016-02-08T21:11:37Z</dc:date>\n<dc:date>2016-02-08T21:11:37Z</dc:date>\n\
+        <dc:date>2010</dc:date>\n<dc:type>Article, scholarly/refereed, author accepted\
+        \ manuscript</dc:type>\n<dc:identifier>Storkel, Holly L., and Jill R. Hoover.\
+        \ \"Word Learning by Children with Phonological Delays: Differentiating Effects\
+        \ of Phonotactic Probability and Neighborhood Density.\" Journal of Communication\
+        \ Disorders 43.2 (2010): 105-19. http://dx.doi.org/10.1016/j.jcomdis.2009.11.001.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1808/19918</dc:identifier>\n<dc:relation>doi:10.1016/j.jcomdis.2009.11.001</dc:relation>\n\
+        <dc:publisher>Elsevier</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19917</identifier><datestamp>2016-02-09T09:01:43Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Differentiating\
+        \ the effects of phonotactic probability and neighborhood density on vocabulary\
+        \ comprehension and production: A comparison of preschool children with versus\
+        \ without phonological delays</dc:title>\n<dc:creator>Storkel, Holly L.</dc:creator>\n\
+        <dc:creator>Maekawa, Junko</dc:creator>\n<dc:creator>Hoover, Jill R.</dc:creator>\n\
+        <dc:subject>Word learning</dc:subject>\n<dc:subject>Vocabulary</dc:subject>\n\
+        <dc:subject>Neighbourhood density</dc:subject>\n<dc:subject>Phonotactic probability</dc:subject>\n\
+        <dc:subject>Phonological delay</dc:subject>\n<dc:description>This is the author's\
+        \ accepted manuscript. The original publication is available at http://jslhr.pubs.asha.org/article.aspx?articleid=1781591</dc:description>\n\
+        <dc:description>Purpose&#xd;\n&#xd;\nThe purpose of this study was to differentiate\
+        \ the effect of phonotactic probability from that of neighborhood density\
+        \ on a vocabulary probe administered to preschool children with or without\
+        \ a phonological delay.&#xd;\n&#xd;\nMethod&#xd;\n&#xd;\nTwenty preschool\
+        \ children with functional phonological delays and 34 preschool children with\
+        \ typical language development completed a 121 item vocabulary probe in both\
+        \ an expressive and receptive response format. Words on the vocabulary probe\
+        \ orthogonally varied on phonotactic probability and neighborhood density\
+        \ but were matched on age-of-acquisition, word frequency, word length, semantic\
+        \ set size, concreteness, familiarity, and imagability.&#xd;\n&#xd;\nResults&#xd;\n\
+        &#xd;\nResults showed an interaction between phonotactic probability and neighborhood\
+        \ density with variation across groups. Specifically, the optimal conditions\
+        \ for typically developing children were rare phonotactic probability with\
+        \ sparse neighborhoods and common phonotactic probability with dense neighborhoods.\
+        \ In contrast, only rare phonotactic probability with sparse neighborhoods\
+        \ was optimal for children with phonological delays.&#xd;\n&#xd;\nConclusions&#xd;\n\
+        &#xd;\nRare sound sequences and sparse neighborhoods may facilitate triggering\
+        \ of word learning for typically developing children and children with phonological\
+        \ delays. In contrast, common sound sequences and dense neighborhoods may\
+        \ facilitate configuration and engagement for typically developing children\
+        \ but not children with phonological delays due to their weaker phonological\
+        \ and/or lexical representations.</dc:description>\n<dc:date>2016-02-08T21:11:26Z</dc:date>\n\
+        <dc:date>2016-02-08T21:11:26Z</dc:date>\n<dc:date>2010</dc:date>\n<dc:type>Article,\
+        \ scholarly/refereed, author accepted manuscript</dc:type>\n<dc:identifier>Storkel,\
+        \ Holly L., Junko Maekawa, and Jill R. Hoover. \"Differentiating the Effects\
+        \ of Phonotactic Probability and Neighborhood Density on Vocabulary Comprehension\
+        \ and Production: A Comparison of Preschool Children With Versus Without Phonological\
+        \ Delays.\" J Speech Lang Hear Res Journal of Speech Language and Hearing\
+        \ Research 53.4 (2010): 933. http://dx.doi.org/10.1044/1092-4388(2009/09-0075).</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1808/19917</dc:identifier>\n<dc:relation>doi:10.1044/1092-4388(2009/09-0075)</dc:relation>\n\
+        <dc:publisher>American Speech-Language-Hearing Association</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19916</identifier><datestamp>2016-02-09T09:01:46Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Learning from\
+        \ Input and Memory Evolution: Points of Vulnerability on a Pathway to Mastery\
+        \ in Word Learning</dc:title>\n<dc:creator>Storkel, Holly L.</dc:creator>\n\
+        <dc:subject>Vocabulary</dc:subject>\n<dc:subject>Word learning</dc:subject>\n\
+        <dc:subject>Input</dc:subject>\n<dc:subject>Memory evolution</dc:subject>\n\
+        <dc:subject>Clinical treatment</dc:subject>\n<dc:description>This is the author's\
+        \ accepted manuscript. The original publication is available at http://www.tandfonline.com/toc/iasl20/current</dc:description>\n\
+        <dc:description>Word learning consists of at least two neurocognitive processes:\
+        \ learning from input during training and memory evolution during gaps between\
+        \ training sessions. Fine-grained analysis of word learning by normal adults\
+        \ provides evidence that learning from input is swift and stable, whereas\
+        \ memory evolution is a point of potential vulnerability on the pathway to\
+        \ mastery.&#xd;\nMoreover, success during learning from input is linked to\
+        \ positive outcomes from memory evolution. These two neurocognitive processes\
+        \ can be overlaid on to components of clinical treatment with within-session\
+        \ variables (i.e., dose form and dose) potentially linked to learning from\
+        \ input and between-session variables (i.e., dose frequency) linked to memory\
+        \ evolution. Collecting data at the beginning and end of a treatment session\
+        \ can be used to identify the point of vulnerability in word learning for\
+        \ a given client and the appropriate treatment component can then be adjusted\
+        \ to improve the client\u2019s word learning. Two clinical cases are provided\
+        \ to illustrate this approach.</dc:description>\n<dc:date>2016-02-08T21:11:14Z</dc:date>\n\
+        <dc:date>2016-02-08T21:11:14Z</dc:date>\n<dc:date>2014</dc:date>\n<dc:type>Article,\
+        \ scholarly/refereed, author accepted manuscript</dc:type>\n<dc:identifier>Storkel,\
+        \ Holly L. \"Learning from Input and Memory Evolution: Points of Vulnerability\
+        \ on a Pathway to Mastery in Word Learning.\" International Journal of Speech-Language\
+        \ Pathology 17.1 (2015): 1-12.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1808/19916</dc:identifier>\n\
+        <dc:relation>http://www.tandfonline.com/toc/iasl20/current</dc:relation>\n\
+        <dc:publisher>Informa Healthcare</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19915</identifier><datestamp>2016-02-09T09:00:44Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Adult and Child\
+        \ Semantic Neighbors of the Kroll and Potter (1984) Nonobjects</dc:title>\n\
+        <dc:creator>Storkel, Holly L.</dc:creator>\n<dc:creator>Adlof, Suzanne M.</dc:creator>\n\
+        <dc:subject>Semantic set size</dc:subject>\n<dc:subject>Adult</dc:subject>\n\
+        <dc:subject>Child</dc:subject>\n<dc:description>This is the author's accepted\
+        \ manuscript. The original is available at http://jslhr.pubs.asha.org/article.aspx?articleid=1781318</dc:description>\n\
+        <dc:description>Purpose&#xd;\n&#xd;\nThe purpose was to determine the number\
+        \ of semantic neighbors, namely semantic set size, for 88 nonobjects (Kroll\
+        \ &amp; Potter, 1984) and determine how semantic set size related to other\
+        \ measures and age.&#xd;\n&#xd;\nMethod&#xd;\n&#xd;\nData were collected from\
+        \ 82 adults and 92 preschool children in a discrete association task. The\
+        \ nonobjects were presented via computer, and participants reported the first\
+        \ word that came to mind that was meaningfully related to the nonobject. Words\
+        \ reported by two or more participants were considered semantic neighbors.\
+        \ The strength of each neighbor was computed as the proportion of participants\
+        \ who reported the neighbor.&#xd;\n&#xd;\nResults&#xd;\n&#xd;\nResults showed\
+        \ that semantic set size was not significantly correlated with objectlikeness\
+        \ ratings or object decision reaction times from Kroll and Potter (1984).\
+        \ However, semantic set size was significantly negatively correlated with\
+        \ the strength of the strongest neighbor(s). In terms of age effects, adult\
+        \ and child semantic set sizes were significantly positively correlated and\
+        \ the majority of numeric differences were on the order of 0\u20133 neighbors.\
+        \ Comparison of actual neighbors showed greater discrepancies; however, this\
+        \ varied by neighbor strength.&#xd;\n&#xd;\nConclusions&#xd;\n&#xd;\nSemantic\
+        \ set size can be determined for nonobjects. Specific guidelines are suggested\
+        \ for using these nonobjects in future research.</dc:description>\n<dc:date>2016-02-08T21:11:03Z</dc:date>\n\
+        <dc:date>2016-02-08T21:11:03Z</dc:date>\n<dc:date>2009</dc:date>\n<dc:type>Article,\
+        \ scholarly/refereed, publisher version</dc:type>\n<dc:identifier>Storkel,\
+        \ Holly L., and Suzanne M. Adlof. \"Adult and Child Semantic Neighbors of\
+        \ the Kroll and Potter (1984) Nonobjects.\" J Speech Lang Hear Res Journal\
+        \ of Speech Language and Hearing Research 52.2 (2009): 289. http://dx.doi.org./10.1044/1092-4388(2009/07-0174)</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1808/19915</dc:identifier>\n<dc:relation>doi:10.1044/1092-4388(2009/07-0174)</dc:relation>\n\
+        <dc:publisher>American Speech-Language-Hearing Association</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19914</identifier><datestamp>2016-02-09T09:00:51Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The effect\
+        \ of semantic set size on word learning by preschool children</dc:title>\n\
+        <dc:creator>Storkel, Holly L.</dc:creator>\n<dc:creator>Adlof, Suzanne M.</dc:creator>\n\
+        <dc:subject>Word learning</dc:subject>\n<dc:subject>Vocabulary</dc:subject>\n\
+        <dc:subject>Semantic set size</dc:subject>\n<dc:description>This is the author's\
+        \ accepted manuscript. The original is available at http://jslhr.pubs.asha.org/article.aspx?articleid=1781319</dc:description>\n\
+        <dc:description>Purpose&#xd;\n&#xd;\nThe purpose was to determine whether\
+        \ semantic set size, a measure of the number of semantic neighbors, influenced\
+        \ word learning, and whether the influence of semantic set size was broad,\
+        \ showing effects on multiple measures both during and after learning.&#xd;\n\
+        &#xd;\nMethod&#xd;\n&#xd;\nThirty-six preschool children were exposed to 10\
+        \ nonobjects, varying in semantic set size, paired with 10 nonwords, controlling\
+        \ phonotactic probability and neighborhood density. Nonobject \u2013 nonword\
+        \ pairs were presented in a game format. Learning was measured in naming and\
+        \ referent identification tasks administered before, during, and one-week\
+        \ after training.&#xd;\n&#xd;\nResults&#xd;\n&#xd;\nResults showed no differences\
+        \ in naming or identifying the referents of the nonobject \u2013 nonword pairs\
+        \ with small versus large semantic set sizes before and during training. However,\
+        \ one-week after training, children named and identified the referents of\
+        \ nonobject \u2013 nonword pairs with small set sizes more accurately than\
+        \ those with large set sizes.&#xd;\n&#xd;\nConclusions&#xd;\n&#xd;\nSimilarity\
+        \ to known representations appears to influence word learning, regardless\
+        \ of whether the similarity involves lexical or semantic representations.\
+        \ However, the direction of the effect of similarity to known representations\
+        \ on word learning varies depending on the specific type of representation\
+        \ involved. Specifically, lexical similarity speeds learning, whereas semantic\
+        \ similarity slows learning.</dc:description>\n<dc:date>2016-02-08T21:10:53Z</dc:date>\n\
+        <dc:date>2016-02-08T21:10:53Z</dc:date>\n<dc:date>2009</dc:date>\n<dc:type>Article,\
+        \ scholarly/refereed, author accepted manuscript</dc:type>\n<dc:identifier>Storkel,\
+        \ Holly L., and Suzanne M. Adlof. \"The Effect of Semantic Set Size on Word\
+        \ Learning by Preschool Children.\" J Speech Lang Hear Res Journal of Speech\
+        \ Language and Hearing Research 52.2 (2009): 306. http://dx.doi.org/10.1044/1092-4388(2009/07-0175)</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1808/19914</dc:identifier>\n<dc:relation>doi:10.1044/1092-4388(2009/07-0175)</dc:relation>\n\
+        <dc:publisher>American Speech-Language-Hearing Association</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19913</identifier><datestamp>2016-02-09T09:00:47Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Developmental\
+        \ differences in the effects of phonological, lexical and semantic variables\
+        \ on word learning by infants</dc:title>\n<dc:creator>Storkel, Holly L.</dc:creator>\n\
+        <dc:description>This is the author's accepted manuscript. The original is\
+        \ available at http://journals.cambridge.org/action/displayAbstract?fromPage=online&amp;aid=3530760&amp;fileId=S030500090800891X</dc:description>\n\
+        <dc:description>The influence of phonological (i.e. individual sounds), lexical\
+        \ (i.e. whole-word forms) and semantic (i.e. meaning) characteristics on the\
+        \ words known by infants age 1 ; 4 to 2 ; 6 was examined, using an existing\
+        \ database (Dale &amp; Fenson, 1996). For each noun, word frequency, two phonological\
+        \ (i.e. positional segment average, biphone average), two lexical (i.e. neighborhood\
+        \ density, word length) and four semantic variables (i.e. semantic set size,\
+        \ connectivity, probability resonance, resonance strength) were computed.\
+        \ Regression analyses showed that more infants knew (1) words composed of\
+        \ low-probability sounds and sound pairs, (2) shorter words with high neighborhood\
+        \ density, and (3) words that were semantically related to other words, both\
+        \ in terms of the number and strength of semantic connections. Moreover, the\
+        \ effect of phonological variables was constant across age, whereas the effect\
+        \ of lexical and semantic variables changed across age.</dc:description>\n\
+        <dc:date>2016-02-08T21:10:40Z</dc:date>\n<dc:date>2016-02-08T21:10:40Z</dc:date>\n\
+        <dc:date>2009</dc:date>\n<dc:type>Article, scholarly/refereed, author accepted\
+        \ manuscript</dc:type>\n<dc:identifier>Storkel, Holly L. \"Developmental Differences\
+        \ in the Effects of Phonological, Lexical and Semantic Variables on Word Learning\
+        \ by Infants.\" Journal of Child Language J. Child Lang. 36.02 (2008): 291.\
+        \ http://dx.doi.org/10.1017/S030500090800891X</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1808/19913</dc:identifier>\n\
+        <dc:relation>doi:10.1017/S030500090800891X</dc:relation>\n<dc:publisher>Cambridge\
+        \ University Press</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19912</identifier><datestamp>2016-02-09T09:00:46Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Differentiating\
+        \ Phonotactic Probability and Neighborhood Density in Adult Word Learning</dc:title>\n\
+        <dc:creator>Storkel, Holly L.</dc:creator>\n<dc:creator>Armbruster, Jonna</dc:creator>\n\
+        <dc:creator>Hogan, Tiffany P.</dc:creator>\n<dc:description>This is the author's\
+        \ accepted manuscript. The original is available at http://jslhr.pubs.asha.org/article.aspx?articleid=1762869&amp;resultClick=3</dc:description>\n\
+        <dc:description>Purpose&#xd;\n&#xd;\nThe purpose of this study was to differentiate\
+        \ effects of phonotactic probability, the likelihood of occurrence of a sound\
+        \ sequence, and neighborhood density, the number of words that sound similar\
+        \ to a given word, on adult word learning. A second purpose was to determine\
+        \ what aspect of word learning (viz., triggering learning, formation of an\
+        \ initial representation, or integration with existing representations) was\
+        \ influenced by each variable.&#xd;\n&#xd;\nMethod&#xd;\n&#xd;\nThirty-two\
+        \ adults were exposed to 16 nonwords paired with novel objects in a story\
+        \ context. The nonwords orthogonally varied in phonotactic probability and\
+        \ neighborhood density. Learning was measured following 1, 4, and 7 exposures\
+        \ in a picture-naming task. Partially correct (i.e., 2 of 3 phonemes correct)\
+        \ and completely correct responses (i.e., 3 of 3 phonemes correct) were analyzed\
+        \ together and independently to examine emerging and partial representations\
+        \ of new words versus complete and accurate representations of new words.&#xd;\n\
+        &#xd;\nResultsAnalysis of partially correct and completely correct responses\
+        \ combined showed that adults learned a lower proportion of high-probability\
+        \ nonwords than low-probability nonwords (i.e., high-probability disadvantage)\
+        \ and learned a higher proportion of high-density nonwords than low-density\
+        \ nonwords (i.e., high-density advantage). Separate analysis of partially\
+        \ correct responses yielded an effect of phonotactic probability only, whereas\
+        \ analysis of completely correct responses yielded an effect of neighborhood\
+        \ density only.&#xd;\n&#xd;\nConclusions&#xd;\n&#xd;\nThese findings suggest\
+        \ that phonological and lexical processing influence different aspects of\
+        \ word learning. In particular, phonotactic probability may aid in triggering\
+        \ new learning, whereas neighborhood density may influence the integration\
+        \ of new lexical representations with existing representations.</dc:description>\n\
+        <dc:date>2016-02-08T21:10:29Z</dc:date>\n<dc:date>2016-02-08T21:10:29Z</dc:date>\n\
+        <dc:date>2006</dc:date>\n<dc:type>Article, scholarly/refereed, author accepted\
+        \ manuscript</dc:type>\n<dc:identifier>Storkel, Holly L., Jonna Armbru\xA8\
+        ster, and Tiffany P. Hogan. \"Differentiating Phonotactic Probability and\
+        \ Neighborhood Density in Adult Word Learning.\" J Speech Lang Hear Res Journal\
+        \ of Speech Language and Hearing Research 49.6 (2006): 1175. http://dx.doi.org/10.1044/1092-4388(2006/085</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1808/19912</dc:identifier>\n<dc:relation>doi:10.1044/1092-4388(2006/085</dc:relation>\n\
+        <dc:publisher>American Speech-Language-Hearing Association</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19911</identifier><datestamp>2016-02-09T09:00:53Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Methods for\
+        \ Minimizing the Confounding Effects of Word Length in the Analysis of Phonotactic\
+        \ Probability and Neighborhood Density</dc:title>\n<dc:creator>Storkel, Holly\
+        \ L.</dc:creator>\n<dc:description>This is the author's accepted manuscript.\
+        \ The original is available at http://jslhr.pubs.asha.org/article.aspx?articleid=1781521&amp;resultClick=3</dc:description>\n\
+        <dc:description>Recent research suggests that phonotactic probability (the\
+        \ likelihood of occurrence of a sound sequence) and neighborhood density (the\
+        \ number of words phonologically similar to a given word) influence spoken\
+        \ language processing and acquisition across the lifespan in both normal and\
+        \ clinical populations. The majority of research in this area has tended to\
+        \ focus on controlled laboratory studies rather than naturalistic data such\
+        \ as spontaneous speech samples or elicited probes. One difficulty in applying\
+        \ current measures of phonotactic probability and neighborhood density to\
+        \ more naturalistic samples is the significant correlation between these variables\
+        \ and word length. This study examines several alternative transformations\
+        \ of phonotactic probability and neighborhood density as a means of reducing\
+        \ or eliminating this correlation with word length. Computational analyses\
+        \ of the words in a large database and reanalysis of archival data supported\
+        \ the use of z scores for the analysis of phonotactic probability as a continuous\
+        \ variable and the use of median transformation scores for the analysis of\
+        \ phonotactic probability as a dichotomous variable. Neighborhood density\
+        \ results were less clear with the conclusion that analysis of neighborhood\
+        \ density as a continuous variable warrants further investigation to differentiate\
+        \ the utility of z scores in comparison to median transformation scores. Furthermore,\
+        \ balanced dichotomous coding of neighborhood density was difficult to achieve,\
+        \ suggesting that analysis of neighborhood density as a dichotomous variable\
+        \ should be approached with caution. Recommendations for future application\
+        \ and analyses are discussed.</dc:description>\n<dc:date>2016-02-08T21:10:16Z</dc:date>\n\
+        <dc:date>2016-02-08T21:10:16Z</dc:date>\n<dc:date>2004</dc:date>\n<dc:type>Article,\
+        \ scholarly/refereed, author accepted manuscript</dc:type>\n<dc:identifier>Storkel,\
+        \ Holly L. \"Methods for Minimizing the Confounding Effects of Word Length\
+        \ in the Analysis of Phonotactic Probability and Neighborhood Density.\" J\
+        \ Speech Lang Hear Res Journal of Speech Language and Hearing Research 47.6\
+        \ (2004): 1454. http://dx.doi.org/10.1044/1092-4388(2004/108)</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1808/19911</dc:identifier>\n<dc:relation>doi:10.1044/1092-4388(2004/108)</dc:relation>\n\
+        <dc:publisher>American Speech-Language-Hearing Association</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19910</identifier><datestamp>2016-02-09T09:00:53Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Emerging\
+        \ Lexicon of Children With Phonological Delays</dc:title>\n<dc:creator>Storkel,\
+        \ Holly L.</dc:creator>\n<dc:description>This is the author's accepted manuscript.\
+        \ The original is available at http://jslhr.pubs.asha.org/article.aspx?articleid=1781499&amp;resultClick=3</dc:description>\n\
+        <dc:description>The effects of phonotactic constraints (i.e., the status of\
+        \ a sound as correctly or incorrectly articulated) and phonotactic probability\
+        \ (i.e., the likelihood of a sound sequence) on lexical acquisition have been\
+        \ investigated independently. This study investigated the interactive influence\
+        \ of phonotactic constraints and phonotactic probability on lexical acquisition\
+        \ in 3 groups of children: children with functional phonological delays (PD),\
+        \ phonology-matched, younger, typically developing children (PM), and age-/vocabulary-matched\
+        \ typically developing peers (AVM). Sixty-eight children participated in a\
+        \ multitrial word-learning task involving nonwords varying in phonotactic\
+        \ constraints (IN vs. OUT) and phonotactic probability (common vs. rare).\
+        \ Correct and error responses were analyzed. Results indicated that OUT sound\
+        \ sequences were learned more rapidly than IN sound sequences. This suggests\
+        \ that OUT sounds may be salient because they represent only a small subset\
+        \ of the child's sound system. The effect of phonotactic probability varied\
+        \ across groups: Children with PD showed a common sound sequence disadvantage,\
+        \ younger PM children showed a common sound sequence advantage, and AVM children\
+        \ showed no effect. Moreover, error analyses indicated that children with\
+        \ PD had particular difficulty creating lexical representations and associations\
+        \ between lexical and semantic representations when learning common sound\
+        \ sequences. Children with PD may rely more heavily on lexical representations\
+        \ to learn new words or may have difficulty learning common sound sequences\
+        \ because of the high degree of similarity between these sequences and other\
+        \ known words. Finally, the effect of phonotactic probability was consistent\
+        \ across IN and OUT sound sequences, suggesting that the lexical representation\
+        \ of both correctly articulated and misarticulated words is based on the adult-target\
+        \ pronunciation.</dc:description>\n<dc:date>2016-02-08T21:10:02Z</dc:date>\n\
+        <dc:date>2016-02-08T21:10:02Z</dc:date>\n<dc:date>2004</dc:date>\n<dc:type>Article,\
+        \ scholarly/refereed, author accepted manuscript</dc:type>\n<dc:identifier>Storkel,\
+        \ Holly L. \"The Emerging Lexicon of Children With Phonological Delays.\"\
+        \ J Speech Lang Hear Res Journal of Speech Language and Hearing Research 47.5\
+        \ (2004): 1194. http://dx.doi.org/10.1044/1092-4388(2004/088).</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1808/19910</dc:identifier>\n<dc:relation>doi:10.1044/1092-4388(2004/088)</dc:relation>\n\
+        <dc:publisher>American Speech-Language-Hearing Association</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19909</identifier><datestamp>2016-02-09T09:00:52Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Learning New\
+        \ Words Phonotactic Probability in Language Development</dc:title>\n<dc:creator>Storkel,\
+        \ Holly L.</dc:creator>\n<dc:description>This is the author's accepted manuscript.\
+        \ The original is available at http://jslhr.pubs.asha.org/article.aspx?articleid=1780808</dc:description>\n\
+        <dc:description>Though the influences of syntactic and semantic regularity\
+        \ on novel word learning are well documented, considerably less is known about\
+        \ the influence of phono-logical regularities on lexical acquisition. The\
+        \ influence of phonotactic probability, a measure of the likelihood of occurrence\
+        \ of a sound sequence, on novel word learning is investigated in this study.\
+        \ Thirty-four typically developing children (from ages 3 years 2 months to\
+        \ 6 years 3 months) participated in a multitrial word-learning task involving\
+        \ nonwords of varying phonotactic probability (common vs. rare) paired with\
+        \ unfamiliar object referents. Form and referent learning were tested following\
+        \ increasing numbers of exposures (1 vs. 4 vs. 7) and following a 1-week delay.\
+        \ Correct responses were analyzed to determine whether phonotactic probability\
+        \ affected rate of word learning, and incorrect responses were analyzed to\
+        \ examine whether phonotactic probability affected the formation of semantic\
+        \ representations, lexical representations, or the association between semantic\
+        \ and lexical representations. Results indicated that common sound sequences\
+        \ were learned more rapidly than rare sound sequences across form and referent\
+        \ learning. In addition, phonotactic probability appeared to nfluence the\
+        \ formation of semantic representations and the association between semantic\
+        \ and lexical representations. These results are integrated with previous\
+        \ findings and theoretical models of language acquisition.</dc:description>\n\
+        <dc:date>2016-02-08T21:09:51Z</dc:date>\n<dc:date>2016-02-08T21:09:51Z</dc:date>\n\
+        <dc:date>2001</dc:date>\n<dc:type>Article, scholarly/refereed, author accepted\
+        \ manuscript</dc:type>\n<dc:identifier>Storkel, Holly L. \"Learning New Words.\"\
+        \ J Speech Lang Hear Res Journal of Speech Language and Hearing Research 44.6\
+        \ (2001): 1321. http://dx.doi.org/10.1044/1092-4388(2001/103)</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1808/19909</dc:identifier>\n<dc:relation>doi:10.1044/1092-4388(2001/103)</dc:relation>\n\
+        <dc:publisher>American Speech-Language-Hearing Association</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19908</identifier><datestamp>2016-02-09T09:00:48Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Do children\
+        \ still pick and choose? The relationship between phonological knowledge and\
+        \ lexical acquisition beyond 50 words</dc:title>\n<dc:creator>Storkel, Holly\
+        \ L.</dc:creator>\n<dc:subject>Phonology</dc:subject>\n<dc:subject>Word learning</dc:subject>\n\
+        <dc:subject>Language development</dc:subject>\n<dc:description>This is the\
+        \ author's accepted manuscript. The original is available at http://www.tandfonline.com/doi/full/10.1080/02699200500266349</dc:description>\n\
+        <dc:description>Previous studies document an influence of phonological knowledge\
+        \ on word learning that differs across development. Specifically, children\
+        \ with expressive lexicons of fewer than 50 words learn words composed of\
+        \ IN sounds more rapidly than those composed of OUT sounds. In contrast, preschool\
+        \ children with larger expressive lexicons show the reverse effect. The goal\
+        \ of the current study was to provide a re\u2010analysis of existing data\
+        \ to determine if this discrepancy across studies may be related to how phonological\
+        \ knowledge has been defined. This study defines knowledge on a continuum\
+        \ from most to more to less. Results showed a continuous inverse relationship\
+        \ between phonological knowledge and word learning by preschool children.\
+        \ Specifically, most phonological knowledge was associated with poorest word\
+        \ learning, more knowledge with intermediate word learning, and less knowledge\
+        \ with best word learning. Theoretical implications are discussed.</dc:description>\n\
+        <dc:date>2016-02-08T21:09:40Z</dc:date>\n<dc:date>2016-02-08T21:09:40Z</dc:date>\n\
+        <dc:date>2004</dc:date>\n<dc:type>Article, scholarly/refereed, author accepted\
+        \ manuscript</dc:type>\n<dc:identifier>Storkel, Holly L. \"Do Children Still\
+        \ Pick and Choose? The Relationship between Phonological Knowledge and Lexical\
+        \ Acquisition beyond 50 Words.\" Clinical Linguistics &amp; Phonetics 20.7-8\
+        \ (2006): 523-29. http://dx.doi.org/10.1080/02699200500266349</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1808/19908</dc:identifier>\n<dc:relation>doi:10.1080/02699200500266349</dc:relation>\n\
+        <dc:publisher>Taylor &amp; Francis</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19907</identifier><datestamp>2016-02-09T09:00:51Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Individual\
+        \ differences in the influence of phonological characteristics on expressive\
+        \ vocabulary development by young children</dc:title>\n<dc:creator>Maekawa,\
+        \ Junko</dc:creator>\n<dc:creator>Storkel, Holly L.</dc:creator>\n<dc:description>This\
+        \ is the author's accepted manuscript. The original is available at http://journals.cambridge.org/action/displayAbstract?fromPage=online&amp;aid=465943&amp;fulltextType=RA&amp;fileId=S0305000906007458</dc:description>\n\
+        <dc:description>The current study attempts to differentiate effects of phonotactic\
+        \ probability (i.e. the likelihood of occurrence of a sound sequence), neighbourhood\
+        \ density (i.e. the number of phonologically similar words), word frequency,\
+        \ and word length on expressive vocabulary development by young children.\
+        \ Naturalistic conversational samples for three children (age 1;4\u20133;1)\
+        \ were obtained from CHILDES. In a backward regression analysis, phonotactic\
+        \ probability, neighbourhood density, word frequency, and word length were\
+        \ entered as possible predictors of ages of first production of words for\
+        \ each child. Results showed that the factors affecting first production of\
+        \ words varied across children and across word types. Specifically, word length\
+        \ affected ages of first production for all three children, whereas the other\
+        \ three variables affected only one child each. The implications of these\
+        \ findings for models of expressive vocabulary development are discussed.</dc:description>\n\
+        <dc:date>2016-02-08T21:09:29Z</dc:date>\n<dc:date>2016-02-08T21:09:29Z</dc:date>\n\
+        <dc:date>2006</dc:date>\n<dc:type>Article, scholarly/refereed, author accepted\
+        \ manuscript</dc:type>\n<dc:identifier>Maekawa, Junko, and Holly L. Storkel.\
+        \ \"Individual Differences in the Influence of Phonological Characteristics\
+        \ on Expressive Vocabulary Development by Young Children.\" Journal of Child\
+        \ Language J. Child Lang. 33.03 (2006): 439. http://dx.doi.org/10.1017/S0305000906007458</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1808/19907</dc:identifier>\n<dc:relation>doi:10.1017/S0305000906007458</dc:relation>\n\
+        <dc:publisher>Cambridge University Press</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19873</identifier><datestamp>2016-02-08T19:40:22Z</datestamp><setSpec>com_1808_7115</setSpec><setSpec>col_1808_7131</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Study Guide\
+        \ for the Film: Guerrilla Grannies (2012)</dc:title>\n<dc:creator>Kansas African\
+        \ Studies Center</dc:creator>\n<dc:description>This study guide was designed\
+        \ to accompany the Africa World Documentary Film Festival films shown at the\
+        \ University of Kansas in 2012 and 2013.  All of these films are available\
+        \ for checkout from the Ermal Garinger Academic Resource Center (EGARC). \
+        \  See http://egarc.ku.edu for more information.</dc:description>\n<dc:date>2016-02-05T15:36:23Z</dc:date>\n\
+        <dc:date>2016-02-05T15:36:23Z</dc:date>\n<dc:date>2013</dc:date>\n<dc:type>Learning\
+        \ Object</dc:type>\n<dc:identifier>http://hdl.handle.net/1808/19873</dc:identifier>\n\
+        <dc:rights>This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike\
+        \ 3.0 Unported License.</dc:rights>\n<dc:publisher>Kansas African Studies\
+        \ Center, University of Kansas</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19900</identifier><datestamp>2016-02-08T09:00:50Z</datestamp><setSpec>com_1808_11004</setSpec><setSpec>com_1808_54</setSpec><setSpec>col_1808_12487</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>DDI as a Common\
+        \ Format for Export and Import for Statistical Packages</dc:title>\n<dc:creator>Hoyle,\
+        \ Larry</dc:creator>\n<dc:creator>Wackerow, Joachim</dc:creator>\n<dc:subject>DDI,\
+        \ data formats, metadata, statistical packages, Stat/Transfer, JMP, R, SAS,\
+        \ SPSS, Stata</dc:subject>\n<dc:description>One of the roles the DDI standard\
+        \ can perform is to serve as a medium for the transfer of metadata and data\
+        \ across both space and time. A crucial component of this role is the ability\
+        \ to represent the data and metadata contained in common data analysis and\
+        \ management packages. This paper describes an experiment using the program\
+        \ Stat/Transfer to move datasets among five popular packages with DDI Lifecycle\
+        \ as an intermediary format.&#xd;\nWe created a dataset in each of the five\
+        \ packages and then exported it to DDI Lifecycle via Stat/Transfer. We also\
+        \ created a DDI Lifecycle instance and an associated delimited dataset, containing\
+        \ as many of the metadata elements found in any of the five packages possible\
+        \ and then exported it to each of the packages. Success or failure to transfer\
+        \ was recorded for a set of generic metadata elements identified in an earlier\
+        \ paper. Using a commercial file transfer program helped identify which metadata\
+        \ elements were transferrable through a generally available machine actionable\
+        \ process. The experiment revealed some areas for potential improvements to\
+        \ DDI as well as suggestions for data analysis packages and research practices.</dc:description>\n\
+        <dc:date>2016-02-07T17:34:19Z</dc:date>\n<dc:date>2016-02-07T17:34:19Z</dc:date>\n\
+        <dc:date>2016</dc:date>\n<dc:type>Article, scholarly/refereed, publisher version</dc:type>\n\
+        <dc:type>Other</dc:type>\n<dc:identifier>Hoyle, Larry and Joachim Wackerow\
+        \ DDI as a Common Format for Export and Import for Statistical Packages. IASSIST\
+        \ Quarterly, Volume 39 Number 3 - 2015</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1808/19900</dc:identifier>\n\
+        <dc:identifier>http://orcid.org/0000-0002-8262-2393</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:publisher>IASSIST Quarterly</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19901</identifier><datestamp>2016-02-09T09:00:59Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Learning and\
+        \ Remembering New Words: Clinical Illustrations From Children With Specific\
+        \ Language Impairment</dc:title>\n<dc:creator>Komesidou, Rouzana</dc:creator>\n\
+        <dc:creator>Storkel, Holly L.</dc:creator>\n<dc:description>This is that author's\
+        \ accepted manuscript. The original is available at http://sig1perspectives.pubs.asha.org/article.aspx?articleid=2469122&amp;resultClick=1</dc:description>\n\
+        <dc:date>2016-02-08T20:05:12Z</dc:date>\n<dc:date>2016-02-08T20:05:12Z</dc:date>\n\
+        <dc:date>2015</dc:date>\n<dc:type>Article, scholarly/refereed, author accepted\
+        \ manuscript</dc:type>\n<dc:identifier>Komesidou, R.&amp; Storkel, H. L. (2015).\
+        \ Learning and remembering new words: Clinical illustrations from children\
+        \ with Specific Language Impairment. ASHA Perspectives on Language Learning\
+        \ and Education, 22, 138-146. http://dx.doi.org/10.1044/lle22.4.138</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1808/19901</dc:identifier>\n<dc:relation>doi:10.1044/lle22.4.138</dc:relation>\n\
+        <dc:publisher>ASHA</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19902</identifier><datestamp>2016-02-09T09:00:57Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Teaching New\
+        \ Words to Children With Specific Language Impairment Using Interactive Book\
+        \ Reading</dc:title>\n<dc:creator>Voelmle, Krista</dc:creator>\n<dc:creator>Storkel,\
+        \ Holly L.</dc:creator>\n<dc:description>This is the author's accepted manuscript.\
+        \ The original is available at http://sig1perspectives.pubs.asha.org/article.aspx?articleid=2469121&amp;resultClick=1</dc:description>\n\
+        <dc:date>2016-02-08T20:10:13Z</dc:date>\n<dc:date>2016-02-08T20:10:13Z</dc:date>\n\
+        <dc:date>2015</dc:date>\n<dc:type>Article, scholarly/refereed, author accepted\
+        \ manuscript</dc:type>\n<dc:identifier>Voelmle, K.&amp; Storkel, H. L. (2015).\
+        \ Teaching new words to children with SLI using interactive book reading.\
+        \ ASHA Perspectives on Language Learning and Education, 22, 131-137. http://dx.doi.org/10.1044/lle22.4.131</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1808/19902</dc:identifier>\n<dc:relation>doi:10.1044/lle22.4.131</dc:relation>\n\
+        <dc:publisher>ASHA</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19903</identifier><datestamp>2016-02-09T09:00:59Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Dynamic assessment\
+        \ and word learning</dc:title>\n<dc:creator>Maekawa, Junko</dc:creator>\n\
+        <dc:creator>Storkel, Holly L.</dc:creator>\n<dc:subject>Dynamic assessment</dc:subject>\n\
+        <dc:subject>Word learning</dc:subject>\n<dc:subject>Specific language impairment</dc:subject>\n\
+        <dc:subject>Phonotactic probability</dc:subject>\n<dc:subject>Neighborhood\
+        \ density</dc:subject>\n<dc:description>This is the author's accepted manuscript.\
+        \ The original is available at http://www.speechpathologyaustralia.org.au/publications/jcpslp</dc:description>\n\
+        <dc:description>Past studies indicate that standardized vocabulary tests may\
+        \ be insensitive to language impairments and may be culturally biased. Dynamic\
+        \ assessment may be used as an alternative or supplementary approach to measure\
+        \ a child's ability to learn words. Factors that may need to be manipulated\
+        \ in dynamic assessment include phonotactic probability (i.e. frequency of\
+        \ sound sequences) and neighborhood density (phonological similarity) cause\
+        \ past research suggests that children with typical development learn common-dense\
+        \ sound sequences more readily than rare-sparse. Incorporating these factors\
+        \ into dynamic assessment is illustrated.</dc:description>\n<dc:date>2016-02-08T20:47:27Z</dc:date>\n\
+        <dc:date>2016-02-08T20:47:27Z</dc:date>\n<dc:date>2006</dc:date>\n<dc:type>Article,\
+        \ scholarly/refereed, author accepted manuscript</dc:type>\n<dc:identifier>Maekawa,\
+        \ J. &amp; Storkel, H.L. (2006). Dynamic assessment and word learning. ACQuiring\
+        \ Knowledge in Speech, Language, and Hearing, 8, 103-105. http://www.speechpathologyaustralia.org.au/publications/jcpslp</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1808/19903</dc:identifier>\n<dc:relation>http://www.speechpathologyaustralia.org.au/publications/jcpslp</dc:relation>\n\
+        <dc:publisher>ACQuiring Knowledge in Speech, Language, and Hearing</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19904</identifier><datestamp>2016-02-09T09:00:58Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Using Nonword\
+        \ Repetition in Vocabulary Assessment</dc:title>\n<dc:creator>Hoover, Jill\
+        \ R.</dc:creator>\n<dc:creator>Storkel, Holly L.</dc:creator>\n<dc:subject>Vocabulary</dc:subject>\n\
+        <dc:subject>Assessment</dc:subject>\n<dc:subject>Nonword repitition</dc:subject>\n\
+        <dc:subject>Test bias</dc:subject>\n<dc:subject>Word learning</dc:subject>\n\
+        <dc:description>This is the author's accepted manuscript. The original is\
+        \ available at http://www.speechpathologyaustralia.org.au/publications/jcpslp</dc:description>\n\
+        <dc:description>Standardized vocabulary tests have been criticized for their\
+        \ cultural/experiential biases and insensitivity to word learning differences.\
+        \ This review discusses the utility of supplementing the diagnostic process\
+        \ with a processing-based measure, such as a nonword repetition task. Nonword\
+        \ repetition tasks have been heralded as a more sensitive indicator of individual\
+        \ differences in vocabulary/word learning. Evidence on the relationship between\
+        \ vocabulary and nonword repetition is discussed along with a review of the\
+        \ currently available tests of nonword repetition. Suggestions for constructing\
+        \ a nonword repetition task specific to the needs of individual clinicians\
+        \ are offered.</dc:description>\n<dc:date>2016-02-08T20:51:41Z</dc:date>\n\
+        <dc:date>2016-02-08T20:51:41Z</dc:date>\n<dc:date>2006</dc:date>\n<dc:type>Article,\
+        \ scholarly/refereed, author accepted manuscript</dc:type>\n<dc:identifier>Hoover,\
+        \ J.R. &amp; Storkel, H.L. (2006). Using nonword repetition in vocabulary\
+        \ assessment. ACQuiring Knowledge in Speech, Language, and Hearing, 8, 106-109.\
+        \ http://www.speechpathologyaustralia.org.au/publications/jcpslp</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1808/19904</dc:identifier>\n<dc:relation>http://www.speechpathologyaustralia.org.au/publications/jcpslp</dc:relation>\n\
+        <dc:publisher>ACQuiring Knowledge in Speech, Language, and Hearing</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19905</identifier><datestamp>2016-02-09T09:00:58Z</datestamp><setSpec>com_1808_774</setSpec><setSpec>col_1808_19778</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Learning Vocabulary\
+        \ through Reading</dc:title>\n<dc:creator>Adlof, Suzanne</dc:creator>\n<dc:creator>Storkel,\
+        \ Holly L.</dc:creator>\n<dc:subject>Context clues</dc:subject>\n<dc:subject>Incidental\
+        \ word learning</dc:subject>\n<dc:subject>Reading</dc:subject>\n<dc:subject>Vocabulary</dc:subject>\n\
+        <dc:subject>Vocabulary instruction</dc:subject>\n<dc:description>This is the\
+        \ author's accepted manuscript. The original can be found at http://www.speechpathologyaustralia.org.au/publications/jcpslp</dc:description>\n\
+        <dc:description>Children with early reading and vocabulary deficits often\
+        \ struggle in these areas across development. Although direct instruction\
+        \ is effective for teaching individual vocabulary words, it is time consuming,\
+        \ and may not be sufficient to close the vocabulary gap between good and poor\
+        \ readers. Instruction on deriving the meanings of unknown words from context\
+        \ may help to increase vocabulary knowledge in children with reading and vocabulary\
+        \ deficits. Toward this end, we review the research concerning factors that\
+        \ influence word learning from context and instructional approaches that have\
+        \ been shown to be effective in teaching derivational skills.</dc:description>\n\
+        <dc:date>2016-02-08T20:55:22Z</dc:date>\n<dc:date>2016-02-08T20:55:22Z</dc:date>\n\
+        <dc:date>2006</dc:date>\n<dc:type>Article, scholarly/refereed, author accepted\
+        \ manuscript</dc:type>\n<dc:identifier>Adlof, S.M. &amp; Storkel, H.L. (2006).\
+        \ Learning vocabulary through reading. ACQuiring Knowledge in Speech, Language,\
+        \ and Hearing, 8, 110-112. http://www.speechpathologyaustralia.org.au/publications/jcpslp</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1808/19905</dc:identifier>\n<dc:relation>http://www.speechpathologyaustralia.org.au/publications/jcpslp</dc:relation>\n\
+        <dc:publisher>ACQuiring Knowledge in Speech, Language, and Hearing</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19933</identifier><datestamp>2016-02-10T09:02:59Z</datestamp><setSpec>com_1808_9240</setSpec><setSpec>com_1808_8675</setSpec><setSpec>col_1808_16574</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Charles Stansifer--Endacott\
+        \ Society Interview</dc:title>\n<dc:creator>Stansifer, Charles</dc:creator>\n\
+        <dc:subject>Stansifer, Charles, 1930-2016</dc:subject>\n<dc:subject>Central\
+        \ America</dc:subject>\n<dc:subject>Costa Rica</dc:subject>\n<dc:subject>Latin\
+        \ America</dc:subject>\n<dc:subject>Contra War</dc:subject>\n<dc:description>Charles\
+        \ Stansifer, professor of Republican Latin America, Mexico, Central America\
+        \ and Caribbean area at the University of Kansas from 1963-2004, discusses\
+        \ how a job working for the Santa Fe Railroad influenced him to take Spanish\
+        \ courses in college. He discusses conducting research for his Ph.D., getting\
+        \ the History Department to allow a focus on Central America, the Costa Rica\
+        \ exchange program, and his work as director of the Center of Latin American\
+        \ Studies. Dr. Stansifer also talks about student protests on campus during\
+        \ 1970 and the Contra War.</dc:description>\n<dc:date>2016-02-09T14:42:44Z</dc:date>\n\
+        <dc:date>2016-02-09T14:42:44Z</dc:date>\n<dc:date>2005-10-13</dc:date>\n<dc:type>Recording,\
+        \ oral</dc:type>\n<dc:identifier>http://hdl.handle.net/1808/19933</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>University of Kansas</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19934</identifier><datestamp>2016-02-10T09:03:16Z</datestamp><setSpec>com_1808_231</setSpec><setSpec>col_1808_19739</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Use of Shrinkage\
+        \ Reducing Admixtures and Lightweight Concrete in Virginia Bridge Decks -\
+        \ 2014</dc:title>\n<dc:creator>Polley, Grant</dc:creator>\n<dc:creator>Feng,\
+        \ Muzai</dc:creator>\n<dc:creator>Khajehdehi, Rouzbeh</dc:creator>\n<dc:creator>Alhmood,\
+        \ Abdallah</dc:creator>\n<dc:creator>Al-Qassag, Osama</dc:creator>\n<dc:creator>Darwin,\
+        \ David</dc:creator>\n<dc:subject>Bridge decks</dc:subject>\n<dc:subject>High-performance\
+        \ concrete</dc:subject>\n<dc:subject>Cracking</dc:subject>\n<dc:subject>Shrinkage\
+        \ reducing admixture</dc:subject>\n<dc:subject>Lightweight concrete</dc:subject>\n\
+        <dc:description>Crack surveys were performed on nine bridge decks in Virginia.\
+        \ Five decks were constructed with a shrinkage reducing admixture (SRA), three\
+        \ were constructed with lightweight concrete, and one is used as a control.\
+        \ Seven of the decks surveyed are supported by steel girders and two are supported\
+        \ by prestressed concrete. Of the seven decks supported by steel girders,\
+        \ four contain an SRA, two were constructed with lightweight concrete, and\
+        \ one was constructed with conventional concrete and serves as the control.\
+        \ One SRA and one lightweight deck were supported by prestressed concrete;\
+        \ the SRA deck is supported by a prestressed concrete box beam and the lightweight\
+        \ deck is supported by a prestressed concrete slab. The decks were 5 to 31\
+        \ months old when the crack surveys were performed. The Virginia bridge decks\
+        \ are compared against low-cracking high performance concrete (LC-HPC) and\
+        \ conventional Kansas Department of Transportation (KDOT) decks in Kansas.\
+        \ The surveys performed in this trip provide a good baseline for future surveys\
+        \ and allow for conclusions about the early performance of the bridge decks.\
+        \ The decks constructed with an SRA are performing better than the decks built\
+        \ with lightweight concrete. Initial surveys suggest that the SRA decks are\
+        \ not performing as well as the LC-HPC decks and that the lightweight decks\
+        \ are not performing as well as either the LC-HPC or control decks in Kansas.\
+        \ Decks with lower paste contents are performing better than decks with higher\
+        \ paste contents.</dc:description>\n<dc:date>2016-02-09T19:20:19Z</dc:date>\n\
+        <dc:date>2016-02-09T19:20:19Z</dc:date>\n<dc:date>2014-01</dc:date>\n<dc:type>Technical\
+        \ Report</dc:type>\n<dc:identifier>Polley, G., Feng, M., Khajehdehi, R., Alhmood,\
+        \ A., Al-Qassag, O., Darwin, D., \"Use of Shrinkage Reducing Admixtures and\
+        \ Lightweight Concrete in Virginia Bridge Decks - 2014,\" SL Report 15-1,\
+        \ The University of Kansas Center for Research, Inc., Lawrence, KS, January\
+        \ 2015 [Modified December 2015], 74 pp.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1808/19934</dc:identifier>\n\
+        <dc:relation>SL Report;15-1</dc:relation>\n<dc:relation>https://iri.ku.edu/reports</dc:relation>\n\
+        <dc:publisher>University of Kansas Center for Research, Inc.</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19935</identifier><datestamp>2016-02-10T09:03:30Z</datestamp><setSpec>com_1808_231</setSpec><setSpec>col_1808_19739</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Crack Surveys\
+        \ of Low-Cracking High-Performance Concrete Bridge Decks in Kansas 2009-2010</dc:title>\n\
+        <dc:creator>Pendergrass, Benjamin</dc:creator>\n<dc:creator>Darwin, David</dc:creator>\n\
+        <dc:creator>Browning, JoAnn P.</dc:creator>\n<dc:subject>Bridge decks</dc:subject>\n\
+        <dc:subject>Cracking</dc:subject>\n<dc:subject>High performance concrete</dc:subject>\n\
+        <dc:description>The specifications for the construction of Low-Cracking High-Performance\
+        \ Concrete (LC-HPC) bridge decks are summarized and the survey procedure used\
+        \ for analysis of cracking performance of bridge decks is described. Thirteen\
+        \ LC-HPC decks and thirteen control decks were evaluated using the survey\
+        \ procedure. Crack densities were calculated and crack locations marked. LC-HPC\
+        \ bridge decks have significantly lower crack densities than do the control\
+        \ bridge decks. The majority of cracks develop in the transverse direction,\
+        \ directly above and parallel to the reinforcing steel. Longitudinal cracks\
+        \ often propagate from the abutments. The results suggest that crack densities\
+        \ will increase on the upper portions of superelevated decks due to increased\
+        \ settlement cracking caused by the use of high slump concrete and less than\
+        \ optimum curing when water is not directly supplied to the superelevated\
+        \ side of the deck. Overfinishing of concrete by means of a double-drum roller\
+        \ screed may increase cracking by increasing the amount of cement paste at\
+        \ the deck surface.</dc:description>\n<dc:date>2016-02-09T19:24:48Z</dc:date>\n\
+        <dc:date>2016-02-09T19:24:48Z</dc:date>\n<dc:date>2011-10</dc:date>\n<dc:type>Technical\
+        \ Report</dc:type>\n<dc:identifier>Pendergrass, B., Darwin, D., and Browning,\
+        \ J., \"Crack Surveys of Low-Cracking High-Performance Concrete Bridge Decks\
+        \ in Kansas 2009-2010\", SL Report 11-3, University of Kansas Center for Research,\
+        \ Inc., Lawrence, Kansas, October 2011, 106 pp.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1808/19935</dc:identifier>\n\
+        <dc:relation>SL Report;11-3</dc:relation>\n<dc:relation>https://iri.ku.edu/reports</dc:relation>\n\
+        <dc:publisher>University of Kansas Center for Research, Inc.</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19936</identifier><datestamp>2016-02-10T09:03:32Z</datestamp><setSpec>com_1808_231</setSpec><setSpec>col_1808_19739</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Stainless Steel\
+        \ Reinforcement as a Replacement for Epoxy Coated Steel in Bridge Decks</dc:title>\n\
+        <dc:creator>Lafikes, James</dc:creator>\n<dc:creator>Storm, Scott</dc:creator>\n\
+        <dc:creator>Darwin, David</dc:creator>\n<dc:creator>Browning, JoAnn</dc:creator>\n\
+        <dc:creator>O\u2019Reilly, Matthew</dc:creator>\n<dc:date>2016-02-09T19:29:55Z</dc:date>\n\
+        <dc:date>2016-02-09T19:29:55Z</dc:date>\n<dc:date>2011-10-31</dc:date>\n<dc:type>Technical\
+        \ Report</dc:type>\n<dc:identifier>Lafikes, J., Storm, S., Darwin, D., Browning,\
+        \ J., and O'Reilly, M., \"Stainless Steel Reinforcement as a Replacement for\
+        \ Epoxy Coated Steel in Bridge Decks,\" Annual Report for FY 2011, ODOT SPR\
+        \ Item Number 2231, also University of Kansas Center for Research, Inc., Lawrence,\
+        \ KS, October 2011, 71 pp.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1808/19936</dc:identifier>\n\
+        <dc:relation>ODOT SPR ITEM NUMBER;2231</dc:relation>\n<dc:relation>https://iri.ku.edu/reports</dc:relation>\n\
+        <dc:publisher>University of Kansas Center for Research, Inc.</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19937</identifier><datestamp>2016-02-10T09:03:35Z</datestamp><setSpec>com_1808_231</setSpec><setSpec>col_1808_19739</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Mitigation\
+        \ of Collapse Risk in Vulnerable Concrete Buildings</dc:title>\n<dc:creator>Matchulat,\
+        \ Lisa</dc:creator>\n<dc:description>The goal of this study is to investigate\
+        \ the collapse risk of reinforced concrete building columns constructed prior\
+        \ to the mid-1970\u2019s, subjected to cyclic lateral loading. These columns\
+        \ have reinforcement details deemed inadequate by modern seismic design standards,\
+        \ and as such are vulnerable to collapse. Testing of two fullscale, shear-critical\
+        \ column specimens was carried out at the NEES-MAST facility at the University\
+        \ of Minnesota. The test specimens had nominally identical material and reinforcement\
+        \ properties. The primary test variable was the applied axial load, which\
+        \ was held constant at 500 kips and 340 kips for the first and second specimens,\
+        \ respectively. The specimens were subjected to increasing lateral displacement\
+        \ cycles until axial load carrying capacity was lost. The thesis discusses\
+        \ the observed lateral and axial load resisting behavior, and analyzes the\
+        \ measured responses of the columns up to and beyond the lateral drift at\
+        \ which they were able to sustain axial load. Test results indicate that column\
+        \ behavior was significantly influenced by the magnitude of the applied axial\
+        \ load, and that the ratio of axial load to gross axial capacity of the longitudinal\
+        \ reinforcement is a key parameter in identifying columns in which axial failure\
+        \ occurs simultaneously with shear failure.</dc:description>\n<dc:date>2016-02-09T20:02:24Z</dc:date>\n\
+        <dc:date>2016-02-09T20:02:24Z</dc:date>\n<dc:date>2009-02</dc:date>\n<dc:type>Technical\
+        \ Report</dc:type>\n<dc:identifier>Matchulat, L., \"Mitigation of Collapse\
+        \ Risk in Vulnerable Concrete Buildings,\" SM Report No. 93, National Science\
+        \ Foundation and the University of Kansas Center for Research, Inc., Lawrence,\
+        \ Kansas, January 2009, 123 pgs.</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1808/19937</dc:identifier>\n\
+        <dc:relation>SM Report No.;93</dc:relation>\n<dc:relation>https://iri.ku.edu/reports</dc:relation>\n\
+        <dc:publisher>University of Kansas Center for Research, Inc.</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:kuscholarworks.ku.edu:1808/19938</identifier><datestamp>2016-02-10T09:03:38Z</datestamp><setSpec>com_1808_231</setSpec><setSpec>col_1808_19739</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Improving Highway\
+        \ Work Zone Safety</dc:title>\n<dc:creator>Li, Yue</dc:creator>\n<dc:creator>Chan,\
+        \ Mark</dc:creator>\n<dc:creator>Firman, Umar</dc:creator>\n<dc:creator>Finger,\
+        \ Kris</dc:creator>\n<dc:creator>Mills, Megan M.</dc:creator>\n<dc:creator>Bai,\
+        \ Yong</dc:creator>\n<dc:creator>Schrock, Steven D.</dc:creator>\n<dc:creator>Chong,\
+        \ Oswald</dc:creator>\n<dc:creator>Atchley, Paul</dc:creator>\n<dc:creator>Perlmutter,\
+        \ David D.</dc:creator>\n<dc:description>Highway work zones disrupt normal\
+        \ traffic flow and can create severe safety problems. Due to the rising needs\
+        \ in highway maintenance and construction in the United States, the number\
+        \ of work zones is increasing nationwide. With a total of 1,010 fatalities\
+        \ and more than 40,000 injuries occurring in 2006, improvements in work zone\
+        \ safety are necessary. The three&#xd;\nprimary objectives of this research\
+        \ project included: 1) to determine the effectiveness of a Portable Changeable\
+        \ Message Sign (PCMS) in reducing vehicle speeds on two-lane, rural highway\
+        \ work zones; 2) to determine the effectiveness of a Temporary Traffic Sign\
+        \ (TTS), (W20-1, \u201CRoad Work Ahead\u201D); and 3) to determine motorists\u2019\
+        \ responses to the signage. To accomplish these objectives, field experiments\
+        \ were conducted at US-36 and US-73 in Seneca and Hiawatha, Kansas, respectively.\
+        \ During the field experiments, an evaluation of the effectiveness of the\
+        \ PCMS was conducted under three different conditions: 1) PCMS on; 2)&#xd;\n\
+        PCMS off, but still visible; and 3) PCMS removed from the road and out of\
+        \ sight. The researchers also divided the vehicles into three classes (passenger\
+        \ car, truck, and semitrailer) and compared the mean speed change of these\
+        \ classes based on three different sign setups: PCMS on, PCMS off, and the\
+        \ use of the TTS (W20-1, \u201CRoad Work Ahead\u201D). A survey was also conducted&#xd;\n\
+        at the experimental work zones to obtain a general understanding of the motorists\u2019\
+        \ attitudes as they traveled through the construction areas. Based on the\
+        \ data analysis results, researchers concluded that the presence of the PCMS\
+        \ effectively reduced vehicle speeds on two-lane highway work zones. A slow\
+        \ speed is more likely to reduce the probability of a crash or the&#xd;\n\
+        severity of a crash. In addition, researchers performed a univariate analysis\
+        \ of the variance test to determine if a significant interaction existed between\
+        \ motorists\u2019 responses and the sign conditions. The results showed a\
+        \ significant interaction between the signs and passenger car vehicles.</dc:description>\n\
+        <dc:date>2016-02-09T20:07:05Z</dc:date>\n<dc:date>2016-02-09T20:07:05Z</dc:date>\n\
+        <dc:date>2009-01</dc:date>\n<dc:type>Technical Report</dc:type>\n<dc:identifier>Li,\
+        \ Y., Chan, M., Firman, U., Finger, K., Mills, M., Bai, Y. Schrock, S., Chong,\
+        \ O., Atchley, P., and Perlmutter, D., \"Improving Highway Work Zone Safety,\"\
+        \ Final Report, KU Transportation Research Institute, Kansas Department of\
+        \ Transportation, Federal Highway Administration, January 2009, 196 pgs.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1808/19938</dc:identifier>\n<dc:relation>https://iri.ku.edu/reports</dc:relation>\n\
+        <dc:publisher>University of Kansas Center for Research, Inc.</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record></ListRecords></OAI-PMH>"}
+    headers:
+      connection: [close]
+      content-type: [application/xml;charset=UTF-8]
+      date: ['Wed, 10 Feb 2016 19:55:02 GMT']
+    status: {code: 200, message: OK}
+version: 1
