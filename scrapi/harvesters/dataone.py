@@ -148,17 +148,22 @@ class DataOneHarvester(XMLHarvester):
 
         xml_list = []
         for record in records:
-            # This ID is unique per data package, but won't unify multiple packages for the smae project
+            # This ID is unique per data package, but won't unify multiple packages for the same project
             doc_id = record.xpath("str[@name='id']")[0].text
+            format_type = record.xpath("str[@name='formatType']")[0].text
             record = ElementTree.tostring(record, encoding=self.record_encoding)
-            xml_list.append(RawDocument({
-                'doc': record,
-                'source': self.short_name,
-                'docID': copy_to_unicode(doc_id),
-                'filetype': 'xml'
-            }))
+            if format_type.lower() != 'metadata':
+                logger.info('Not normalizing record with ID {}, type {}'.format(doc_id, format_type))
+            else:
+                xml_list.append(RawDocument({
+                    'doc': record,
+                    'source': self.short_name,
+                    'docID': copy_to_unicode(doc_id),
+                    'filetype': 'xml'
+                }))
 
         return xml_list
+
 
     def get_records(self, start_date, end_date):
         ''' helper function to get a response from the DataONE
