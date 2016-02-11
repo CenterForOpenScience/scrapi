@@ -164,7 +164,6 @@ class DataOneHarvester(XMLHarvester):
 
         return xml_list
 
-
     def get_records(self, start_date, end_date):
         ''' helper function to get a response from the DataONE
         API, with the specified number of rows.
