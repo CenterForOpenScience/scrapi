@@ -138,6 +138,17 @@ def test(cov=True, doctests=True, verbose=False, debug=False, pdb=False):
     run(cmd, pty=True)
 
 
+
+@task
+def one_test(shortname):
+    """
+    Runs a test on a specific harvester
+    """
+    cmd = 'py.test tests/test_harvesters.py::test_harvester\[{}]'.format(shortname)
+
+    run(cmd, pty=True)
+
+
 @task
 def wheelhouse(develop=False):
     ''' Sets up the wheelhouse for requirements '''
