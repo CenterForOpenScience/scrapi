@@ -316,6 +316,11 @@ $ invoke test
 
 and all of the tests in the 'tests/' directory will be run.
 
+To run a test on a single harvester, just type
+```bash
+$ invoke one_test shortname
+```
+
 
 ### Pitfalls
 
