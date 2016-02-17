@@ -4,6 +4,8 @@ from api.webview.models import Document
 
 
 class DocumentSerializer(serializers.ModelSerializer):
+    raw = serializers.JSONField()
+    normalized = serializers.JSONField()
 
     class Meta:
         model = Document
