@@ -138,6 +138,14 @@ def test(cov=True, doctests=True, verbose=False, debug=False, pdb=False):
     run(cmd, pty=True)
 
 
+@task
+def clear():
+    """
+    Clears out all storage providers from elasticsearch
+    """
+    cmd = "curl -XDELETE 'localhost:9200/share_v2/*'"
+    run(cmd, pty=True)
+
 
 @task
 def one_test(shortname):
