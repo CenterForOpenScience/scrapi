@@ -1,0 +1,76 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.10 Darwin/15.0.0]
+    method: GET
+    uri: http://repository.lib.fit.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2015-11-04T00:00:00Z&until=2015-11-06T00:00:00Z
+  response:
+    body: {string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"\
+        text/xsl\" href=\"static/style.xsl\"?><OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"\
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
+        http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"\
+        ><responseDate>2016-02-09T18:28:31Z</responseDate><request verb=\"ListRecords\"\
+        \ metadataPrefix=\"oai_dc\" from=\"2015-11-04T00:00:00Z\" until=\"2015-11-06T00:00:00Z\"\
+        >http://repository.lib.fit.edu/oai/request</request><ListRecords><record><header><identifier>oai:repository.lib.fit.edu:11141/377</identifier><datestamp>2015-11-05T00:05:28Z</datestamp><setSpec>com_11141_41</setSpec><setSpec>com_11141_1</setSpec><setSpec>col_11141_47</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Upsilon production\
+        \ cross section in pp collisions at \u221As=7TeV</dc:title>\n<dc:creator>Khachatryan,\
+        \ Vardan</dc:creator>\n<dc:creator>Sirunyan, A. M.</dc:creator>\n<dc:creator>Baarmand,\
+        \ Marc M.</dc:creator>\n<dc:creator>Dorney, B.</dc:creator>\n<dc:creator>Guragain,\
+        \ Samir</dc:creator>\n<dc:creator>Hohlmann, Marcus</dc:creator>\n<dc:creator>Kalakhety,\
+        \ Himali</dc:creator>\n<dc:creator>Ralich, Robert M.</dc:creator>\n<dc:creator>Vodopiyanov,\
+        \ Igor</dc:creator>\n<dc:creator>Tumasyan, A. R.</dc:creator>\n<dc:description>The\
+        \ \u03A5(1S), \u03A5(2S), and \u03A5(3S) production cross sections in proton-proton\
+        \ collisions at \u221As=7TeV are measured using a data sample collected with\
+        \ the CMS detector at the LHC, corresponding to an integrated luminosity of\
+        \ 3.1\xB10.3pb -1. Integrated over the rapidity range |y|&lt;2, we find the\
+        \ product of the \u03A5(1S) production cross section and branching fraction\
+        \ to dimuons to be \u03C3(pp\u2192\u03A5(1S)X) \u2022B(\u03A5(1S)\u2192\u03BC\
+        \ +\u03BC -)=7.37\xB10.13-0. 42+0.61\xB10.81nb, where the first uncertainty\
+        \ is statistical, the second is systematic, and the third is associated with\
+        \ the estimation of the integrated luminosity of the data sample. This cross\
+        \ section is obtained assuming unpolarized \u03A5(1S) production. With the\
+        \ assumption of fully transverse or fully longitudinal production polarization,\
+        \ the measured cross section changes by about 20%. We also report the measurement\
+        \ of the \u03A5(1S), \u03A5(2S), and \u03A5(3S) differential cross sections\
+        \ as a function of transverse momentum and rapidity.</dc:description>\n<dc:date>2014-10-14T20:36:38Z</dc:date>\n\
+        <dc:date>2014-10-14T20:36:38Z</dc:date>\n<dc:date>2011-06-15</dc:date>\n<dc:type>Article</dc:type>\n\
+        <dc:identifier>Khachatryan, V., Sirunyan, A. M., Tumasyan, A., Adam, W., Bergauer,\
+        \ T., Dragicevic, M., . . . Weinberg, M. (2011). Upsilon production cross\
+        \ section in pp collisions at vs=7TeV. Physical Review D - Particles, Fields,\
+        \ Gravitation and Cosmology, 83(11)</dc:identifier>\n<dc:identifier>http://hdl.handle.net/11141/377</dc:identifier>\n\
+        <dc:identifier>10.1103/PhysRevD.83.112004</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:rights>This published article is available in accordance with the publisher's\
+        \ policy. It may be subject to U.S. Copyright Law.</dc:rights>\n<dc:rights>http://journals.aps.org/authors/transfer-of-copyright-agreement</dc:rights>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:repository.lib.fit.edu:11141/665</identifier><datestamp>2015-11-05T00:04:58Z</datestamp><setSpec>com_11141_22</setSpec><setSpec>com_11141_2</setSpec><setSpec>col_11141_580</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Formula SAE:\
+        \ Chassis</dc:title>\n<dc:creator>Diego, Ramirez</dc:creator>\n<dc:creator>Aljeemaz,\
+        \ Sager</dc:creator>\n<dc:creator>Kunicki, Kevin</dc:creator>\n<dc:description>The\
+        \ Chassis Sub-team designed a Chromoly 4130 Steel Space Frame around a Honda\
+        \ CBR 600RR, suspension points, and the Formula SAE 2015 rules, using Solid\
+        \ Works. The Chassis Sub-team had to find the optimum balance between the\
+        \ weight of the frame and its torsional rigidity to manufacture a reliable\
+        \ and ergonomic frame.</dc:description>\n<dc:date>2015-04</dc:date>\n<dc:date>2015-05-15T19:22:02Z</dc:date>\n\
+        <dc:date>2015-05-15T19:22:02Z</dc:date>\n<dc:type>poster</dc:type>\n<dc:identifier>Aljeemaz,\
+        \ S., Kunicki, K., &amp; Ramirez, D. (2015, April). Formula SAE: Chassis.\
+        \ Poster presented at the Northrop Grumman Engineering &amp; Science Student\
+        \ Design Showcase, Florida Institute of Technology, Melbourne, FL.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/11141/665</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        </oai_dc:dc>\n</metadata></record></ListRecords></OAI-PMH>"}
+    headers:
+      connection: [Keep-Alive]
+      content-type: [application/xml;charset=UTF-8]
+      date: ['Tue, 09 Feb 2016 18:28:31 GMT']
+      keep-alive: ['timeout=5, max=100']
+      server: [Apache/2.4.6 (CentOS) OpenSSL/1.0.1e-fips]
+    status: {code: 200, message: OK}
+version: 1
