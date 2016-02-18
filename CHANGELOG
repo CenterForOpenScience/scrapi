@@ -2,6 +2,16 @@
 ChangeLog
 *********
 
+0.13.0 (2016-02-18)
+====================
+- Add harvesters:
+	- cuny: City University of New York
+	- ukansas: KU ScholarWorks
+- Update harvesters:
+	- springer to not normalize records published by biomedcentral
+	- dataone to only normalize metadata records
+- Postgres web API serializer updates to json
+
 0.12.2 (2016-02-04)
 ====================
 - Push API harvester updates to work with unvalidated email addresses
