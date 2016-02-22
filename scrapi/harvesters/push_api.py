@@ -108,9 +108,9 @@ class PushApiHarvester(BaseHarvester):
             if contributor['email'] == '':
                 del contributor['email']
 
-        # If status is marked delted in push API, don't normalize
+        # If status is marked delted in push API, mark in shareProperties
         if raw_data['status'] == 'deleted':
-            return None
+            document['shareProperies']['status'] = 'deleted'
 
         return NormalizedDocument(document)
 
