@@ -80,13 +80,22 @@ class ElasticsearchProcessor(BaseProcessor):
         }
         data['providerUpdatedDateTime'] = self.version(raw_doc, normalized)
 
-        self.manager.es.index(
-            body=data,
-            refresh=True,
-            index=index,
-            doc_type=raw_doc['source'],
-            id=raw_doc['docID'],
-        )
+        # check shareProperties for status and delete if it is deleted
+        if data['shareProperties'].get('status', None) == 'deleted':
+            self.manager.es.delete(
+                refresh=True,
+                index=index,
+                doc_type=raw_doc['source'],
+                id=raw_doc['docID'],
+            )
+        else:
+            self.manager.es.index(
+                body=data,
+                refresh=True,
+                index=index,
+                doc_type=raw_doc['source'],
+                id=raw_doc['docID'],
+            )
         self.process_normalized_v1(raw_doc, normalized, data['providerUpdatedDateTime'])
 
     def version(self, raw, normalized):
@@ -111,13 +120,22 @@ class ElasticsearchProcessor(BaseProcessor):
         transformer = PreserveOldSchema()
         data = transformer.transform(normalized.attributes)
         data['providerUpdatedDateTime'] = date
-        self.manager.es.index(
-            body=data,
-            refresh=True,
-            index=index,
-            doc_type=raw_doc['source'],
-            id=raw_doc['docID']
-        )
+        # check shareProperties for status and delete if it is deleted
+        if data['shareProperties'].get('status', None) == 'deleted':
+            self.manager.es.delete(
+                refresh=True,
+                index=index,
+                doc_type=raw_doc['source'],
+                id=raw_doc['docID'],
+            )
+        else:
+            self.manager.es.index(
+                body=data,
+                refresh=True,
+                index=index,
+                doc_type=raw_doc['source'],
+                id=raw_doc['docID'],
+            )
 
     def get(self, docID, index, source):
         try:
