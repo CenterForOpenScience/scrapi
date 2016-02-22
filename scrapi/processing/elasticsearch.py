@@ -87,6 +87,7 @@ class ElasticsearchProcessor(BaseProcessor):
                 index=index,
                 doc_type=raw_doc['source'],
                 id=raw_doc['docID'],
+                ignore=[404]
             )
         else:
             self.manager.es.index(
@@ -127,6 +128,7 @@ class ElasticsearchProcessor(BaseProcessor):
                 index=index,
                 doc_type=raw_doc['source'],
                 id=raw_doc['docID'],
+                ignore=[404]
             )
         else:
             self.manager.es.index(
