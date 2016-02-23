@@ -122,7 +122,7 @@ class ElasticsearchProcessor(BaseProcessor):
         data = transformer.transform(normalized.attributes)
         data['providerUpdatedDateTime'] = date
         # check shareProperties for status and delete if it is deleted
-        if data['shareProperties'].get('status', None) == 'deleted':
+        if normalized.attributes['shareProperties'].get('status', None) == 'deleted':
             self.manager.es.delete(
                 refresh=True,
                 index=index,
