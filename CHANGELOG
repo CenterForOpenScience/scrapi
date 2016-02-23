@@ -2,6 +2,11 @@
 ChangeLog
 *********
 
+0.13.03 (2016-02-23)
+====================
+- Add harvesters:
+	- fit: Florida Institute of Technology
+
 0.13.02 (2016-02-23)
 ====================
 - Provide for deleting documents from es index from push API w/status deleted
