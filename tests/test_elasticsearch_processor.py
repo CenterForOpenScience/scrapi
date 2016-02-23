@@ -35,3 +35,14 @@ def test_versions():
     results = es.search(index='test', doc_type=RAW['source'])
     assert (len(results['hits']['hits']) == 1)
     assert (results['hits']['hits'][0]['_source']['title'] == 'a new title')
+
+
+@pytest.mark.elasticsearch
+def test_deleted_document():
+    NORMALIZED['source'] = RAW['source']
+    NORMALIZED['_id'] = RAW['docID']
+    NORMALIZED['shareProperties']['status'] = 'deleted'
+    test_db.process_normalized(RAW, NORMALIZED, index='test')
+
+    results = es.search(index='test', doc_type=RAW['source'])
+    assert (len(results['hits']['hits']) == 0)
