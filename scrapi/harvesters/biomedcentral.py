@@ -25,9 +25,12 @@ logger = logging.getLogger(__name__)
 
 def process_urls(urls):
     all_uris = [url['value'] for url in urls]
-
+    doi_index = 0
+    for i in range(0, len(all_uris)):
+        if 'dx.doi.org' in all_uris[i]:
+            doi_index = i
     processed_uris = {
-        'canonicalUri': all_uris[0],
+        'canonicalUri': all_uris[doi_index],
         'objectUris': [],
         'providerUris': all_uris
     }
