@@ -2,6 +2,12 @@
 ChangeLog
 *********
 
+0.13.04 (2016-02-24)
+====================
+- Update script to remove items from elasticsearch
+- Fix elasticsearch key typo
+
+
 0.13.03 (2016-02-23)
 ====================
 - Add harvesters:
