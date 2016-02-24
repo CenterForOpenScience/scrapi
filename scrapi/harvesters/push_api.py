@@ -105,12 +105,12 @@ class PushApiHarvester(BaseHarvester):
 
         # This is a workaround for the push API did not have proper email validation
         for contributor in document['contributors']:
-            if contributor['email'] == '':
+            if contributor.get('email', None) == '':
                 del contributor['email']
 
         # If status is marked delted in push API, mark in shareProperties
         if raw_data['status'] == 'deleted':
-            document['shareProperies']['status'] = 'deleted'
+            document['shareProperties']['status'] = 'deleted'
 
         return NormalizedDocument(document)
 
