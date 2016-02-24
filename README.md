@@ -76,6 +76,11 @@ Postgres is required only if "postgres" is specified in your settings, or if REC
 
 #### Mac OSX
 
+By far, the simplest option is to install the postgres Mac OSX app:
+- http://postgresapp.com/
+
+To instead install via command line, run:
+
 ```bash
 $ brew install postgresql
 $ ln -sfv /usr/local/homebrew/opt/postgresql/*.plist ~/Library/LaunchAgents
@@ -315,6 +320,11 @@ $ invoke test
 ```
 
 and all of the tests in the 'tests/' directory will be run.
+
+To run a test on a single harvester, just type
+```bash
+$ invoke one_test shortname
+```
 
 
 ### Pitfalls

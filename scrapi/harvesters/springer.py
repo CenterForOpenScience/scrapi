@@ -102,15 +102,19 @@ class SpringerlHarvester(JSONHarvester):
             search_urls.append(self.URL.url)
 
         records = self.get_records(search_urls)
-
-        return [
-            RawDocument({
-                'doc': json.dumps(record),
-                'source': self.short_name,
-                'docID': record['identifier'],
-                'filetype': 'json'
-            }) for record in records
-        ]
+        records_list = []
+        for record in records:
+            format_type = record['publisher']
+            if format_type.lower() != "biomed central":
+                if format_type.lower() != "springer":
+                    logger.info('Found non-springer source in springer api: {}'.format(format_type))
+                records_list.append(RawDocument({
+                    'doc': json.dumps(record),
+                    'source': self.short_name,
+                    'docID': record['identifier'],
+                    'filetype': 'json'
+                }))
+        return records_list
 
     def get_records(self, search_urls):
         all_records_from_all_days = []

@@ -100,11 +100,18 @@ class PushApiHarvester(BaseHarvester):
                 yield record
 
     def normalize(self, raw):
-        document = json.loads(raw['doc'])['jsonData']
+        raw_data = json.loads(raw['doc'])
+        document = raw_data['jsonData']
+
         # This is a workaround for the push API did not have proper email validation
         for contributor in document['contributors']:
             if contributor['email'] == '':
                 del contributor['email']
+
+        # If status is marked delted in push API, mark in shareProperties
+        if raw_data['status'] == 'deleted':
+            document['shareProperies']['status'] = 'deleted'
+
         return NormalizedDocument(document)
 
     @property
