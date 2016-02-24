@@ -67,13 +67,6 @@ LIST_OF_DOCIDS = [
 
 def main():
     for docID in LIST_OF_DOCIDS:
-        processor = get_processor(settings.CANONICAL_PROCESSOR)
-        try:
-            processor.delete(source='scholarsphere', docID=docID)
-        except Exception as e:
-            logger.info('Exception: {}'.format(e))
-            continue
-
         es_processor = get_processor('elasticsearch')
         es_processor.manager.es.delete(index=settings.ELASTIC_INDEX, doc_type='scholarsphere', id=docID, ignore=[404])
         es_processor.manager.es.delete(index='share_v1', doc_type='scholarsphere', id=docID, ignore=[404])
