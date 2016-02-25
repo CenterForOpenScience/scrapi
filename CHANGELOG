@@ -2,11 +2,16 @@
 ChangeLog
 *********
 
+0.13.05 (2016-02-25)
+====================
+- Add harvesters:
+	- usgs: United States Geological Survey
+- Fix harvester biomedcentral to pull from new API
+
 0.13.04 (2016-02-24)
 ====================
 - Update script to remove items from elasticsearch
 - Fix elasticsearch key typo
-
 
 0.13.03 (2016-02-23)
 ====================
@@ -17,7 +22,6 @@ ChangeLog
 ====================
 - Provide for deleting documents from es index from push API w/status deleted
 - Add script for deleting a few documents in production
-
 
 0.13.01 (2016-02-18)
 ====================
