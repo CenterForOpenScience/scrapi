@@ -34,13 +34,4 @@ VIVO_ACCESS = {
 
 disabled = ['stepic', 'nih']
 
-FRONTEND_KEYS = [
-    u'description',
-    u'contributors',
-    u'tags',
-    u'raw',
-    u'title',
-    u'id',
-    u'source',
-    u'dateUpdated'
-]
+SHARE_REG_URL = None

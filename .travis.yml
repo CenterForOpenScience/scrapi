@@ -20,7 +20,7 @@ env:
   - WHEELHOUSE=$HOME/wheelhouse
 
 install:
-  - travis_retry pip install -U invoke coveralls
+  - travis_retry pip install -U invoke==0.11.1 coveralls
   - travis_retry invoke wheelhouse --develop
   - travis_retry invoke requirements --develop
   - cp scrapi/settings/travis-dist.py scrapi/settings/local.py

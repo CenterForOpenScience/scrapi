@@ -12,13 +12,9 @@ from scrapi.base import helpers
 def oai_process_uris_addis_ababa(*args):
 
     identifiers = helpers.gather_identifiers(args)
-    provider_uris, object_uris = helpers.seperate_provider_object_uris(identifiers)
-
-    for i, uri in enumerate(provider_uris):
-        provider_uris[i].replace('http://handle.net/123456789/', 'http://etd.aa.edu.et/handle/123456789')
-
-    for i, uri in enumerate(object_uris):
-        object_uris[i].replace('http://handle.net/123456789/', 'http://etd.aa.edu.et/handle/123456789')
+    provider_uris, object_uris = helpers.seperate_provider_object_uris(
+        list(map(lambda x: x.replace('http://hdl.handle.net/123456789/', 'http://etd.aau.edu.et/handle/123456789/'), identifiers))
+    )
 
     potential_uris = (provider_uris + object_uris)
 

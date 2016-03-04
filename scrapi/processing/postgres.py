@@ -137,7 +137,7 @@ class PostgresProcessor(BaseProcessor):
                 version.save()
             return old_doc
         else:
-            return Document(source=raw['source'], docID=raw['docID'])
+            return Document.objects.create(source=raw['source'], docID=raw['docID'])
 
     def get_versions(self, source, docID):
         doc = self._get_by_source_id(source, docID)

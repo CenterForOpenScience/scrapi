@@ -210,7 +210,8 @@ class OAIHarvester(XMLHarvester):
 
     def normalize(self, raw_doc):
         str_result = raw_doc.get('doc')
-        result = etree.XML(str_result)
+        parser = etree.XMLParser(recover=True, encoding=self.DEFAULT_ENCODING)
+        result = etree.XML(str_result, parser=parser)
 
         if self.approved_sets:
             set_spec = result.xpath(

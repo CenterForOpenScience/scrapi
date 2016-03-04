@@ -12,7 +12,7 @@ scrapi
 
 ## Getting started
 
-- To run absolutely everyting, you will need to:
+- To run absolutely everything, you will need to:
     - Install requirements
     - Install Elasticsearch
     - Install Cassandra, or Postgres, or both (optional)
@@ -52,7 +52,7 @@ $ brew install homebrew/versions/elasticsearch17
    $ wget -qO - https://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
    ```
 
-2. Add the ElasticSearch repository to yout /etc/apt/sources.list.
+2. Add the ElasticSearch repository to your /etc/apt/sources.list.
    ```bash
    $ sudo add-apt-repository "deb http://packages.elasticsearch.org/elasticsearch/1.4/debian stable main"
    ```
@@ -75,6 +75,11 @@ $ elasticsearch
 Postgres is required only if "postgres" is specified in your settings, or if RECORD_HTTP_TRANSACTIONS is set to ```True```.
 
 #### Mac OSX
+
+By far, the simplest option is to install the postgres Mac OSX app:
+- http://postgresapp.com/
+
+To instead install via command line, run:
 
 ```bash
 $ brew install postgresql
@@ -218,7 +223,7 @@ Add your API keys to the following line to your local.py file:
 ```
 PLOS_API_KEY = 'your-api-key-here'
 HARVARD_DATAVERSE_API_KEY = 'your-api-key-here'
-SPRINGER_KEY = 'your-api-key-here'
+SPRINGER_API_KEY = 'your-api-key-here'
 ```
 
 ### Running the scheduler (optional)
@@ -316,6 +321,11 @@ $ invoke test
 
 and all of the tests in the 'tests/' directory will be run.
 
+To run a test on a single harvester, just type
+```bash
+$ invoke one_test shortname
+```
+
 
 ### Pitfalls
 
@@ -334,3 +344,16 @@ To fix:
 - reinstall requirements as usual
 
 Answer found in [this stack overflow question and answer](http://stackoverflow.com/questions/23172384/lxml-runtime-error-reason-incompatible-library-version-etree-so-requires-vers)
+
+### Institutions!
+Scrapi supports the addition of institutions in a separate index (` institutions `). Unlike data stored in the ` share ` indices, institution's metadata is updated
+much less frequently, meaning that simple parsers can be used to manually load data from providers instead of using scheduled harvesters.
+
+Currently, data from [GRID](https://grid.ac/) and [IPEDS](https://nces.ed.gov/ipeds/) is supported:
+- GRID: Provides data on international research facilities. The currently used dataset is ` grid_2015_11_05.json `, which can be found [here](https://grid.ac/downloads) or, for the full dataset, [here](http://files.figshare.com/2409936/grid_2015_11_05.json).  To use this dataset
+    move the file to '/institutions/', or override the file path and/or name on ` tasks.py `. This can be individually loaded using the function ` grid() ` in ` tasks.py `.
+- IPEDS: Provides data on secondary education institutions in the US. The currently used dataset is ` hd2014.csv `, which can be found [here](https://nces.ed.gov/ipeds/Home/UseTheData), by clicking on
+    Survey Data -> Complete data files -> 2014 -> Institutional Characteristics -> Directory information, or can be downloaded directly [here](https://nces.ed.gov/ipeds/datacenter/data/HD2014.zip). This will give you a file named `HD2014.zip`, which can be unzipped into `hd2014.csv` by running ` unzip HD2014.zip `. To use this dataset
+    move the file to '/institutions/', or override the file path and/or name on ` tasks.py `. This can be individually loaded using the function ` ipeds() ` in ` tasks.py `.
+
+Running ` invoke institutions ` will properly load up institution data into elastic search provided the datasets are provided.
