@@ -152,10 +152,7 @@ class DataOneHarvester(XMLHarvester):
             doc_id = record.xpath("str[@name='id']")[0].text
             format_type = record.xpath("str[@name='formatType']")[0].text
             record = ElementTree.tostring(record, encoding=self.record_encoding)
-            if format_type.lower() != 'metadata':
-                logger.info('Not normalizing record with ID {}, type {}'.format(doc_id, format_type))
-            else:
-                xml_list.append(RawDocument({
+            xml_list.append(RawDocument({
                     'doc': record,
                     'source': self.short_name,
                     'docID': copy_to_unicode(doc_id),
@@ -169,11 +166,11 @@ class DataOneHarvester(XMLHarvester):
         API, with the specified number of rows.
         Returns an etree element with results '''
 
-        query = 'dateModified:[{}T00:00:00Z TO {}T00:00:00Z]'.format(start_date.isoformat(), end_date.isoformat())
+        query = 'dateModified:[{}T00:00:00Z TO {}T00:00:00Z]+formatType:METADATA'.format(start_date.isoformat(), end_date.isoformat())
         doc = requests.get(DATAONE_SOLR_ENDPOINT, params={
             'q': query,
             'start': 0,
-            'rows': 1
+            'rows': 1,
         })
         doc = etree.XML(doc.content)
         rows = int(doc.xpath("//result/@numFound")[0])
