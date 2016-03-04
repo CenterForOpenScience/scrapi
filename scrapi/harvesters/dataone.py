@@ -100,39 +100,43 @@ class DataOneHarvester(XMLHarvester):
 
     schema = {
         'otherProperties': build_properties(
-            ('authorGivenName', ("str[@name='authorGivenName']/node()")),
-            ('authorSurName', ("str[@name='authorSurName']/node()")),
-            ('authoritativeMN', ("str[@name='authoritativeMN']/node()")),
-            ('checksum', ("str[@name='checksum']/node()")),
-            ('checksumAlgorithm', ("str[@name='checksumAlgorithm']/node()")),
-            ('datasource', ("str[@name='datasource']/node()")),
-            ('datePublished', ("date[@name='datePublished']/node()")),
-            ('dateUploaded', ("date[@name='dateUploaded']/node()")),
-            ('pubDate', ("date[@name='pubDate']/node()")),
-            ('updateDate', ("date[@name='updateDate']/node()")),
-            ('fileID', ("str[@name='fileID']/node()")),
-            ('formatId', ("str[@name='formatId']/node()")),
-            ('formatType', ("str[@name='formatType']/node()")),
-            ('identifier', ("str[@name='identifier']/node()")),
+            ('authorGivenName', "str[@name='authorGivenName']/node()"),
+            ('authorSurName', "str[@name='authorSurName']/node()"),
+            ('authoritativeMN', "str[@name='authoritativeMN']/node()"),
+            ('checksum', "str[@name='checksum']/node()"),
+            ('checksumAlgorithm', "str[@name='checksumAlgorithm']/node()"),
+            ('datasource', "str[@name='datasource']/node()"),
+            ('datePublished', "date[@name='datePublished']/node()"),
+            ('dateUploaded', "date[@name='dateUploaded']/node()"),
+            ('pubDate', "date[@name='pubDate']/node()"),
+            ('updateDate', "date[@name='updateDate']/node()"),
+            ('fileID', "str[@name='fileID']/node()"),
+            ('formatId', "str[@name='formatId']/node()"),
+            ('formatType', "str[@name='formatType']/node()"),
+            ('identifier', "str[@name='identifier']/node()"),
             ('readPermission', "arr[@name='readPermission']/str/node()"),
             ('replicaMN', "arr[@name='replicaMN']/str/node()"),
             ('replicaVerifiedDate', "arr[@name='replicaVerifiedDate']/date/node()"),
-            ('replicationAllowed', ("bool[@name='replicationAllowed']/node()")),
-            ('numberReplicas', ("int[@name='numberReplicas']/node()")),
+            ('replicationAllowed', "bool[@name='replicationAllowed']/node()"), ('numberReplicas',
+                                                                                "int[@name='numberReplicas']/node()"),
             ('preferredReplicationMN', "arr[@name='preferredReplicationMN']/str/node()"),
-            ('rightsHolder', ("str[@name='rightsHolder']/node()")),
+            ('rightsHolder', "str[@name='rightsHolder']/node()"),
             ('scientificName', "arr[@name='scientificName']/str/node()"),
             ('site', "arr[@name='site']/str/node()"),
-            ('size', ("long[@name='size']/node()")),
+            ('size', "long[@name='size']/node()"),
             ('isDocumentedBy', "arr[@name='isDocumentedBy']/str/node()"),
             ('serviceID', "str[@name='id']/node()"),
             ('sku', "str[@name='sku']/node()")
         ),
         'freeToRead': {
-            'startDate': ("bool[@name='isPublic']/node()", "date[@name='dateModified']/node()", lambda x, y: parse(y[0]).date().isoformat() if x else None)
+            'startDate': ("bool[@name='isPublic']/node()", "date[@name='dateModified']/node()",
+                          lambda x, y: parse(y[0]).date().isoformat() if x else None)
         },
-        'contributors': ("str[@name='author']/node()", "str[@name='submitter']/node()", "arr[@name='origin']/str/node()", "arr[@name='investigator']/str/node()", process_contributors),
-        'uris': ("str[@name='id']/node()", "//str[@name='dataUrl']/node()", "arr[@name='resourceMap']/str/node()", partial(helpers.oai_process_uris, use_doi=True)),
+        'contributors': ("str[@name='author']/node()", "str[@name='submitter']/node()",
+                         "arr[@name='origin']/str/node()", "arr[@name='investigator']/str/node()",
+                         process_contributors),
+        'uris': ("str[@name='id']/node()", "//str[@name='dataUrl']/node()", "arr[@name='resourceMap']/str/node()",
+                 partial(helpers.oai_process_uris, use_doi=True)),
         'tags': ("//arr[@name='keywords']/str/node()", lambda x: x if isinstance(x, list) else [x]),
         'providerUpdatedDateTime': ("str[@name='dateModified']/node()", compose(datetime_formatter, single_result)),
         'title': ("str[@name='title']/node()", single_result),
@@ -150,14 +154,13 @@ class DataOneHarvester(XMLHarvester):
         for record in records:
             # This ID is unique per data package, but won't unify multiple packages for the same project
             doc_id = record.xpath("str[@name='id']")[0].text
-            format_type = record.xpath("str[@name='formatType']")[0].text
             record = ElementTree.tostring(record, encoding=self.record_encoding)
-            xml_list.append(RawDocument({
-                    'doc': record,
-                    'source': self.short_name,
-                    'docID': copy_to_unicode(doc_id),
-                    'filetype': 'xml'
-                }))
+            xml_list.append(RawDocument({'doc': record,
+                                         'source': self.short_name,
+                                         'docID': copy_to_unicode(doc_id),
+                                         'filetype': 'xml'}
+                                        )
+                            )
 
         return xml_list
 
@@ -166,7 +169,7 @@ class DataOneHarvester(XMLHarvester):
         API, with the specified number of rows.
         Returns an etree element with results '''
 
-        query = 'dateModified:[{}T00:00:00Z TO {}T00:00:00Z]+formatType:METADATA'.format(start_date.isoformat(), end_date.isoformat())
+        query = 'dateModified:[{}T00:00:00Z TO {}T00:00:00Z]'.format(start_date.isoformat(), end_date.isoformat())
         doc = requests.get(DATAONE_SOLR_ENDPOINT, params={
             'q': query,
             'start': 0,
