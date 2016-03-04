@@ -139,25 +139,6 @@ def test(cov=True, doctests=True, verbose=False, debug=False, pdb=False):
 
 
 @task
-def clear():
-    """
-    Clears out all storage providers from elasticsearch
-    """
-    cmd = "curl -XDELETE 'localhost:9200/share_v2/*'"
-    run(cmd, pty=True)
-
-
-@task
-def one_test(shortname):
-    """
-    Runs a test on a specific harvester
-    """
-    cmd = 'py.test tests/test_harvesters.py::test_harvester\[{}]'.format(shortname)
-
-    run(cmd, pty=True)
-
-
-@task
 def wheelhouse(develop=False):
     ''' Sets up the wheelhouse for requirements '''
     req_file = 'dev-requirements.txt' if develop else 'requirements.txt'
