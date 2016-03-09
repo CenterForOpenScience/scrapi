@@ -98,7 +98,7 @@ $ sudo -u postgres createuser your-username
 $ sudo -u postgres createdb -O your-username scrapi
 ```
 
-#### Running on MAC OSX
+#### Running on Mac OSX
 
 Inside your scrapi checkout:
 ```bash
@@ -215,7 +215,7 @@ $ sudo service elasticsearch start
 
 ```
 
-#### Running on MAC OSX
+#### Running on Mac OSX
 
 ```bash
 $ elasticsearch
