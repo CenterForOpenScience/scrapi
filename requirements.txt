@@ -28,3 +28,4 @@ django-robots==1.1
 beautifulsoup4==4.4.1
 elasticsearch-dsl==0.0.9
 schema-transformer==0.0.2
+invoke==0.12.2

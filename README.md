@@ -13,62 +13,58 @@ scrapi
 ## Getting started
 
 - To run absolutely everything, you will need to:
-    - Install requirements
-    - Install Elasticsearch
+    - Install Python 
+      - To check what version you have: $python --version
+    - Install pip to download Python packages
     - Install Cassandra, or Postgres, or both (optional)
+    - Install requirements
+    - Install Elasticsearch  
     - Install RabbitMQ (optional)
 - You do not have to install RabbitMQ if you're only running the harvesters locally.
 - Both Cassandra and Postgres aren't really necessary, you can choose which one you'd like, or use both. If you install neither, you can use local storage instead. In your settings, you'll specify a CANONICAL_PROCESSOR, just make sure that one is installed.
 
-
-### Requirements
-
-- Create and enter virtual environment for scrapi, and go to the top level project directory. From there, run
-
-```bash
-$ pip install -r requirements.txt
-```
-Or, if you'd like some nicer testing and debugging utilities in addition to the core requirements, run
-```bash
-$ pip install -r dev-requirements.txt
-```
-
-This will also install the core requirements like normal.
-
-### Installing Elasticsearch
-
-_Note: Elasticsearch requires JDK 7._
-
-#### Mac OSX
-
-```bash
-$ brew install homebrew/versions/elasticsearch17
-```
+### Installing virtualenv and virtualenvwrapper
 
 #### Ubuntu
 
-1. Download and install the Public Signing Key.
-   ```bash
-   $ wget -qO - https://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
-   ```
-
-2. Add the ElasticSearch repository to your /etc/apt/sources.list.
-   ```bash
-   $ sudo add-apt-repository "deb http://packages.elasticsearch.org/elasticsearch/1.4/debian stable main"
-   ```
-
-3. Install the package
-   ```bash
-   $ sudo apt-get update
-   $ sudo apt-get install elasticsearch
-```
-
-#### Running
-
 ```bash
-$ elasticsearch
+$ sudo apt-get install python-pip python-dev build-essential
+$ pip install virtualenv
+$ sudo pip install virtualenv virtualenvwrapper
+$ sudo pip install --upgrade pip
+```
+Create a backup of your .bashrc file
+```bash
+$ cp ~/.bashrc ~/.bashrc-org Create a backup of 
+$ printf '\n%s\n%s\n%s' '# virtualenv' 'export WORKON_HOME=~/virtualenvs' 'source /usr/local/bin/virtualenvwrapper.sh' >> ~/.bashrc
+```
+Enable the virtual environment
+```bash
+$ source ~/.bashrc
+$ mkdir -p $WORKON_HOME
+$ mkvirtualenv scrapi
+```
+To exit the virtual environment
+```bash
+$ deactivate
+```
+To enter the virtual environment
+```bash
+$ workon scrapi
 ```
 
+### Forking and cloning scrapi materials from Github
+
+#### Ubuntu
+Create a Github account
+Fork the scrapi repository to your account
+
+Install Git
+```bash
+$ sudo apt-get update
+$ sudo apt-get install git
+$ git clone https://github.com/your-username/scrapi
+```
 
 ### Installing Postgres
 
@@ -88,17 +84,23 @@ $ launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
 ```
 
 #### Ubuntu
-
+Inside your scrapi checkout:
 ```bash
 $ sudo apt-get update
 $ sudo apt-get install postgresql
-$ service postgresql start
+$ sudo service postgresql start
 ```
 
-#### Running
+#### Running on Ubuntu
+Inside your scrapi checkout:
+```bash
+$ sudo -u postgres createuser your-username
+$ sudo -u postgres createdb -O your-username scrapi
+```
+
+#### Running on Mac OSX
 
 Inside your scrapi checkout:
-
 ```bash
 $ createdb scrapi
 $ invoke apidb
@@ -155,6 +157,69 @@ $ cassandra -f
 
 and you should be good to go.
 
+
+### Requirements
+
+- Create and enter virtual environment for scrapi, and go to the top level project directory. From there, run
+
+
+#### Ubuntu
+```bash
+$ sudo apt-get install libpq-dev python-dev
+$ pip install -r requirements.txt
+$ pip install -r dev-requirements.txt
+```
+
+#### Mac OSX
+```bash
+$ pip install -r requirements.txt
+```
+Or, if you'd like some nicer testing and debugging utilities in addition to the core requirements, run
+```bash
+$ pip install -r dev-requirements.txt
+```
+
+This will also install the core requirements like normal.
+
+### Installing Elasticsearch
+
+_Note: Elasticsearch requires JDK 7._
+
+#### Mac OSX
+
+```bash
+$ brew install homebrew/versions/elasticsearch17
+```
+
+#### Ubuntu
+
+1. Download and install the Public Signing Key.
+   ```bash
+   $ wget -qO - https://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
+   ```
+
+2. Add the ElasticSearch repository to your /etc/apt/sources.list.
+   ```bash
+   $ sudo add-apt-repository "deb http://packages.elasticsearch.org/elasticsearch/1.4/debian stable main"
+   ```
+
+3. Install the package
+   ```bash
+   $ sudo apt-get update
+   $ sudo apt-get install elasticsearch
+```
+
+#### Running on Ubuntu
+```bash
+$ sudo service elasticsearch start
+
+```
+
+#### Running on Mac OSX
+
+```bash
+$ elasticsearch
+```
 
 ### RabbitMQ (optional)
 
