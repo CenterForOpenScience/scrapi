@@ -31,7 +31,7 @@ class DocumentList(generics.ListAPIView):
         queryset = Document.objects.all().exclude(normalized=None)
         return queryset
 
-        
+
 class DocumentsFromSource(generics.ListAPIView):
     """
     List all documents from a particular source
