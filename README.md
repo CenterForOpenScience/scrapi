@@ -63,7 +63,7 @@ Install Git
 ```bash
 $ sudo apt-get update
 $ sudo apt-get install git
-git clone https://github.com/your-username/scrapi
+$ git clone https://github.com/your-username/scrapi
 ```
 
 ### Installing Postgres
@@ -98,7 +98,7 @@ $ sudo -u postgres createuser your-username
 $ sudo -u postgres createdb -O your-username scrapi
 ```
 
-#### Running
+#### Running on MAC OSX
 
 Inside your scrapi checkout:
 ```bash
@@ -168,6 +168,7 @@ and you should be good to go.
 $ sudo apt-get install libpq-dev python-dev
 $ pip install -r requirements.txt
 $ pip install -r dev-requirements.txt
+```
 
 #### Mac OSX
 ```bash
