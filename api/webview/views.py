@@ -28,7 +28,7 @@ class DocumentList(generics.ListAPIView):
     def get_queryset(self):
         """ Return all documents
         """
-        return Document.objects.all()
+        return Document.objects.all().order_by('providerUpdatedDateTime')
 
 
 class DocumentsFromSource(generics.ListAPIView):
