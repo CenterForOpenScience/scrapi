@@ -61,6 +61,7 @@ class APIViewTests(TestCase):
         )
         response = view(request)
         self.assertEqual(response.status_code, 200)
+
     def test_exclude_non_normalized_documents(self):
         view = DocumentList.as_view()
         create_document(source="bad",normalized=None)
