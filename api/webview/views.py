@@ -28,7 +28,8 @@ class DocumentList(generics.ListAPIView):
     def get_queryset(self):
         """ Return all documents
         """
-        return Document.objects.all()
+        queryset = Document.objects.all().exclude(normalized=None)
+        return queryset
 
 
 class DocumentsFromSource(generics.ListAPIView):
@@ -44,7 +45,7 @@ class DocumentsFromSource(generics.ListAPIView):
     def get_queryset(self):
         """ Return queryset based on source
         """
-        return Document.objects.filter(source=self.kwargs['source'])
+        return Document.objects.filter(source=self.kwargs['source']).exclude(normalized=None)
 
 
 @api_view(['GET'])
