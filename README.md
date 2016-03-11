@@ -13,7 +13,7 @@ scrapi
 ## Getting started
 
 - To run absolutely everything, you will need to:
-    - Install Python 
+    - Install Python
       - To check what version you have: $python --version
     - Install pip to download Python packages
     - Install Cassandra, or Postgres, or both (optional)
@@ -25,6 +25,17 @@ scrapi
 
 ### Installing virtualenv and virtualenvwrapper
 
+####  Mac OSX
+
+```bash
+$pip install virtualenv
+$pip install virtualenvwrapper
+```
+
+For further information on installing virtualenv and virtualenvwrapper:
+[http://docs.python-guide.org/en/latest/dev/virtualenvs/]
+
+
 #### Ubuntu
 
 ```bash
@@ -35,7 +46,7 @@ $ sudo pip install --upgrade pip
 ```
 Create a backup of your .bashrc file
 ```bash
-$ cp ~/.bashrc ~/.bashrc-org Create a backup of 
+$ cp ~/.bashrc ~/.bashrc-org Create a backup of
 $ printf '\n%s\n%s\n%s' '# virtualenv' 'export WORKON_HOME=~/virtualenvs' 'source /usr/local/bin/virtualenvwrapper.sh' >> ~/.bashrc
 ```
 Enable the virtual environment
@@ -55,7 +66,7 @@ $ workon scrapi
 
 ### Forking and cloning scrapi materials from Github
 
-#### Ubuntu
+
 Create a Github account
 Fork the scrapi repository to your account
 
@@ -365,7 +376,7 @@ Note that aliases must be activated before the provider map is generated.
 
 ```bash
 $ inv alias share share_v2
-$ inv provider_map 
+$ inv provider_map
 ```
 
 #### Delete the Elasticsearch index
