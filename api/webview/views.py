@@ -44,7 +44,7 @@ class DocumentsFromSource(generics.ListAPIView):
     def get_queryset(self):
         """ Return queryset based on source
         """
-        return Document.objects.filter(source=self.kwargs['source']).exclude(normalized=None)
+        return Document.objects.filter(source=self.kwargs['source']).order_by('providerUpdatedDateTime').exclude(normalized=None)
 
 
 @api_view(['GET'])
