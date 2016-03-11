@@ -76,9 +76,3 @@ class APIViewTests(TestCase):
 def create_document(source,normalized):
         return Document.objects.create(source= source,normalized= normalized)
 
-
-
-
-
-
-
