@@ -16,6 +16,6 @@ class NatureHarvester(OAIHarvester):
     url = 'http://www.nature.com/'
 
     base_url = 'http://www.nature.com/oai/request'
-    property_list = [ 'type', 'format', 'date', 'description', 'relation',
-        'setSpec', 'rights', 'identifier']
+    property_list = ['type', 'format', 'date', 'description', 'relation',
+                     'setSpec', 'rights', 'identifier']
     timezone_granularity = False
