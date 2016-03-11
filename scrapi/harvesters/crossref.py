@@ -85,6 +85,7 @@ class CrossRefHarvester(JSONHarvester):
             ], lambda x: x or [])),
             'sponsorships': ('/funder', lambda x: process_sponsorships(x) if x else []),
             'tags': ('/subject', '/container-title', lambda x, y: [tag.lower() for tag in (x or []) + (y or [])]),
+            'subjects': ('/subject', '/container-title', lambda x, y: [tag.lower() for tag in (x or []) + (y or [])]),
             'otherProperties': build_properties(
                 ('journalTitle', '/container-title'),
                 ('volume', '/volume'),

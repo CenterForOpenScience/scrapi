@@ -433,3 +433,7 @@ Currently, data from [GRID](https://grid.ac/) and [IPEDS](https://nces.ed.gov/ip
     move the file to '/institutions/', or override the file path and/or name on ` tasks.py `. This can be individually loaded using the function ` ipeds() ` in ` tasks.py `.
 
 Running ` invoke institutions ` will properly load up institution data into elastic search provided the datasets are provided.
+
+### COS is Hiring!
+
+Want to help save science? Want to get paid to develop free, open source software? [Check out our openings!](http://cos.io/jobs)
