@@ -6,6 +6,7 @@ from django.test import TestCase
 from rest_framework.test import APIRequestFactory
 
 from api.webview.views import DocumentList, status, institutions
+from api.webview.models import Document
 
 django.setup()
 
@@ -60,4 +61,19 @@ class APIViewTests(TestCase):
         )
         response = view(request)
         self.assertEqual(response.status_code, 200)
+
+    def test_exclude_non_normalized_documents(self):
+        view = DocumentList.as_view()
+        create_document(source="bad",normalized=None)
+        create_document(source="good",normalized="This is Normalized")
+        request = self.factory.get(
+            '/documents/'
+        )
+        response = view(request)        
+        self.assertNotContains(response, "bad",
+                            status_code=200)
+
+
+def create_document(source,normalized):
+        return Document.objects.create(source=source, normalized=normalized)
 
