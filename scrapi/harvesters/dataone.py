@@ -169,7 +169,7 @@ class DataOneHarvester(XMLHarvester):
         API, with the specified number of rows.
         Returns an etree element with results '''
 
-        query = 'dateModified:[{}T00:00:00Z TO {}T00:00:00Z]'.format(start_date.isoformat(), end_date.isoformat())
+        query = 'dateModified:[{}T00:00:00Z TO {}T00:00:00Z]formatType:METADATA'.format(start_date.isoformat(), end_date.isoformat())
         doc = requests.get(DATAONE_SOLR_ENDPOINT, params={
             'q': query,
             'start': 0,
@@ -183,7 +183,7 @@ class DataOneHarvester(XMLHarvester):
             data = requests.get(DATAONE_SOLR_ENDPOINT, params={
                 'q': query,
                 'start': n,
-                'rows': 1000
+                'rows': 1000,
             })
             docs = etree.XML(data.content).xpath('//doc')
             for doc in docs:
