@@ -2,6 +2,10 @@
 ChangeLog
 *********
 
+0.13.07 (2016-03-18)
+====================
+- Remove document ordering in postgres API
+
 0.13.06 (2016-03-17)
 ====================
 - Add harvesters:
