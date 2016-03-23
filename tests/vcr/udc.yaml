@@ -1,0 +1,596 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.10 Darwin/15.0.0]
+    method: GET
+    uri: http://conservancy.umn.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2016-03-07&until=2016-03-09
+  response:
+    body: {string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"\
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
+        http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"\
+        ><responseDate>2016-03-23T09:38:13Z</responseDate>\n    <request verb=\"ListRecords\"\
+        \ metadataPrefix=\"oai_dc\" from=\"2016-03-07\" until=\"2016-03-09\">http://conservancy.umn.edu/oai/request</request>\n\
+        \    <ListRecords>\n        <record>\n            <header>\n             \
+        \   <identifier>oai:conservancy.umn.edu:11299/172480</identifier>\n      \
+        \          <datestamp>2016-03-08T20:35:55Z</datestamp>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_166578</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>A Simple Photogrammetry\
+        \ Rig for the Reliable Creation of 3D Artifact Models in the Field: Lithic\
+        \ Examples from the Early Upper Paleolithic Sequence of Les Cott\xE9s (France)</dc:title>\n\
+        <dc:creator>Porter, Samantha T.</dc:creator>\n<dc:creator>Roussel, Morgan</dc:creator>\n\
+        <dc:creator>Soressi, Marie</dc:creator>\n<dc:contributor>Porter, Samantha\
+        \ T.</dc:contributor>\n<dc:contributor>port0228@umn.edu</dc:contributor>\n\
+        <dc:subject>archaeology</dc:subject>\n<dc:subject>Paleolithic</dc:subject>\n\
+        <dc:subject>photogrammetry</dc:subject>\n<dc:subject>3D scanning</dc:subject>\n\
+        <dc:subject>France</dc:subject>\n<dc:subject>lithic technology</dc:subject>\n\
+        <dc:description>There are three ways to view the 3D models in this data set.\
+        \ All models are freely available for download in the form of 3D PDFs. These\
+        \ can be opened in Adobe Reader or Adobe Acrobat. We are also making OBJ versions\
+        \ of these models available upon request the for educational and research\
+        \ purposes. Some models may also be viewed online within a web browser by\
+        \ visiting the first author's profile on the website Sketchfab. The URL for\
+        \ these models is https://sketchfab.com/port0228/folders. Because Sketchfab\
+        \ is a third-party site, the authors cannot ensure the longevity of these\
+        \ version of the models. &#13;\n &#13;\nTwo versions of a photogrammetric\
+        \ scale, which may be used during image capture to facilitate image alignment\
+        \ and model scaling, are also available here. If you encounter issues with\
+        \ photogrammetry software improperly aligning photos or not recognizing the\
+        \ coded targets included in version 1, we suggest trying our alternative scale,\
+        \ which uses non-coded markers and different reference patterns. &#13;\n &#13;\n\
+        Specific questions about the site of Les Cott\xE9s and about access to additional\
+        \ materials may be addressed to Marie Soressi (m.a.soressi@arch.leidenuniv.nl).</dc:description>\n\
+        <dc:description>3D scanning is becoming an increasingly utilized tool in archaeology.\
+        \ In comparison with other methods of 3D registration close-range photogrammetry\
+        \ has the benefits of being relatively inexpensive, mobile, and extremely\
+        \ adaptable for use in field conditions. Here, 3D models of lithic cores from\
+        \ the Ch\xE2telperronian, Protoaurignacian, and Early Aurignacian levels of\
+        \ the site of Les Cott\xE9s (France) are presented as examples of the quality\
+        \ of model that can be produced using photographs taken with a simple and\
+        \ inexpensive photogrammetry rig.</dc:description>\n<dc:date>2015-06-01T14:39:06Z</dc:date>\n\
+        <dc:date>2016-01-01T14:39:06Z</dc:date>\n<dc:date>2016</dc:date>\n<dc:date>2015</dc:date>\n\
+        <dc:type>Dataset</dc:type>\n<dc:type>3D Image</dc:type>\n<dc:identifier>http://hdl.handle.net/11299/172480</dc:identifier>\n\
+        <dc:identifier>http://dx.doi.org/10.13020/D6201D</dc:identifier>\n<dc:relation>Porter,\
+        \ S., M. Roussel, and M. Soressi. (2016). A Simple Photogrammetry Rig for\
+        \ the Reliable Creation of 3D Artifact Models in the Field: Lithic Examples\
+        \ from the Early Upper Paleolithic Sequence of Les Cott\xE9s (France). Advances\
+        \ in Archaeological Practice, 4(1): 77-86.</dc:relation>\n<dc:relation>http://dx.doi.org/10.7183/2326-3768.4.1.71</dc:relation>\n\
+        <dc:coverage>Ch\xE2telperronian</dc:coverage>\n<dc:coverage>Protoaurignacian</dc:coverage>\n\
+        <dc:coverage>Early Aurignacian</dc:coverage>\n<dc:publisher>Advances in Archaeological\
+        \ Practice, 4(1)</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n\
+        \        <record>\n            <header>\n                <identifier>oai:conservancy.umn.edu:11299/177065</identifier>\n\
+        \                <datestamp>2016-03-07T16:33:23Z</datestamp>\n           \
+        \     <setSpec>com_11299_45272</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_45273</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Seasonal patterns\
+        \ in growth, diet, and prey availability of Brown Trout Salmo Trutta in groundwater-dominated\
+        \ streams in the Driftless Ecoregion of southeastern Minnesota</dc:title>\n\
+        <dc:creator>Biederman, Jennifer</dc:creator>\n<dc:subject>Aquatic macroinvertebrate</dc:subject>\n\
+        <dc:subject>Brown Trout</dc:subject>\n<dc:subject>Diet</dc:subject>\n<dc:subject>Driftless\
+        \ Ecoregion</dc:subject>\n<dc:subject>Growth</dc:subject>\n<dc:description>University\
+        \ of Minnesota Ph.D. dissertation. November 2015. Major: Conservation Biology.\
+        \ Advisor: Bruce Vondracek. 1 computer file (PDF); xix, 248 pages.</dc:description>\n\
+        <dc:description>Groundwater-dominated streams of southeastern Minnesota support\
+        \ highly productive populations of Brown Trout and aquatic macroinvertebrate\
+        \ fauna, but past research has shown that fish growth varies on spatial and\
+        \ temporal scales.  As the diet of Brown Trout depends on the availability\
+        \ and abundance of aquatic macroinvertebrates, it is possible that spatial\
+        \ and temporal variations in macroinvertebrate assemblages (e.g. abundance,\
+        \ diversity, distribution) shape patterns in the growth, distribution, fitness,\
+        \ and abundance of Brown Trout populations.  In particular, there is evidence\
+        \ that suggests spatial and seasonal variation in winter conditions (including\
+        \ water temperature and prey assemblages) may influence broader patterns of\
+        \ Brown Trout growth in this region.  Although studies related to Brown Trout\
+        \ growth, diet, prey availability, and selectivity have been conducted in\
+        \ southeastern Minnesota, no research has addressed all of these factors simultaneously\
+        \ over multiple streams, seasons, and years.  The overall goal of this dissertation\
+        \ was to examine seasonal and spatial patterns in Brown Trout growth, diet,\
+        \ and prey selection, and in the availability of macroinvertebrate prey in\
+        \ six streams that demonstrate a gradient in fish growth.  Chapter 1 examines\
+        \ temporal and spatial differences in the growth and diet of Brown Trout,\
+        \ and identifies associations between diet and physical stream characteristics,\
+        \ including groundwater input, stream drainage area, and channel slope.  Although\
+        \ stomach contents were dominated by relatively few taxa, including Chironomidae\
+        \ and Brachycentrus, there were significant differences in diet composition\
+        \ among streams and seasons.  Overall, fish in most streams demonstrated positive\
+        \ growth during summer, winter, and spring; and winter growth was significantly\
+        \ associated with groundwater input. Chapter 2 addresses seasonal patterns\
+        \ in Brown Trout prey assemblages, including the abundance, diversity, and\
+        \ overlap of macroinvertebrate benthos and drift.  Benthic and drift assemblages\
+        \ differed among streams and seasons, with most pronounced differences among\
+        \ streams. Abundances of drift and benthos varied significantly, with highest\
+        \ availability in spring and summer, and lowest availability during winter\
+        \ in most streams.  Non-metric multidimensional scaling indicated associations\
+        \ between assemblage composition and groundwater input.  The goal of the third\
+        \ and final chapter was to identify seasonal and spatial patterns in the availability\
+        \ and selection of macroinvertebrate prey by Brown Trout.  Overall electivity\
+        \ of benthos and drift varied spatially and temporally with a negative relationship\
+        \ between the total proportion of prey available and prey electivity.  In\
+        \ general, Brown Trout consistently favored one or two taxa, including Physella\
+        \ and Gammarus while displaying negative selection for all other prey types.\
+        \  Foraging patterns suggested a preference of benthic feeding.  Ultimately,\
+        \ the results of this dissertation will help managers take effective actions\
+        \ in mitigating the effects of climate change on stream communities.  In addition\
+        \ to a better understanding of the influence of groundwater control on patterns\
+        \ in Brown Trout growth, foraging, and prey communities, this dissertation\
+        \ identifies key prey taxa associated with the growth of Brown Trout on seasonal\
+        \ and spatial scales.  With this knowledge, managers can more accurately predict\
+        \ how climate-induced changes to water temperature and prey communities will\
+        \ alter fish productivity on a stream-by-stream basis.  Considering the substantial\
+        \ economic and cultural importance of groundwater-dominated streams in southeastern\
+        \ Minnesota, conserving the integrity and health of stream communities through\
+        \ the development and implementation of science-based management plans should\
+        \ be a priority among natural resource managers, scientists, and policymakers.</dc:description>\n\
+        <dc:date>2016-02-12T16:32:33Z</dc:date>\n<dc:date>2016-02-12T16:32:33Z</dc:date>\n\
+        <dc:date>2015-11</dc:date>\n<dc:type>Thesis or Dissertation</dc:type>\n<dc:identifier>http://hdl.handle.net/11299/177065</dc:identifier>\n\
+        <dc:language>en</dc:language>\n</oai_dc:dc>\n</metadata>\n        </record>\n\
+        \        <record>\n            <header>\n                <identifier>oai:conservancy.umn.edu:11299/177760</identifier>\n\
+        \                <datestamp>2016-03-08T08:00:52Z</datestamp>\n           \
+        \     <setSpec>com_11299_5436</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_155151</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>From \u201C\
+        Apples to Apples\u201D to \u201CTopics to Keywords\u201D: An Information Literacy\
+        \ Party Game</dc:title>\n<dc:creator>Farrell, Shannon</dc:creator>\n<dc:creator>Neeser,\
+        \ Amy</dc:creator>\n<dc:creator>Peterson, Kate</dc:creator>\n<dc:creator>Veile,\
+        \ Jenny</dc:creator>\n<dc:subject>information literacy</dc:subject>\n<dc:subject>party\
+        \ game</dc:subject>\n<dc:subject>gaming</dc:subject>\n<dc:subject>game-based\
+        \ learning</dc:subject>\n<dc:description>Many universities support video game\
+        \ scholarship, and in turn, academic libraries have developed gaming services\
+        \ to support student interests, scholarship, and teaching. Research suggests\
+        \ that students struggle most with developing topics and that game-based learning\
+        \ is an opportunity to increase student engagement. The University of Minnesota\
+        \ Libraries Gaming Community of Practice is developing an information literacy\
+        \ party card game to align with information literacy competency standards.\
+        \ The game will be used in undergraduate-level courses with the goal of helping\
+        \ students develop paper topics and related search terms. We will play this\
+        \ game as a demonstration while explaining the rules.</dc:description>\n<dc:date>2016-03-07T14:38:36Z</dc:date>\n\
+        <dc:date>2016-03-07T14:38:36Z</dc:date>\n<dc:date>2014</dc:date>\n<dc:type>Presentation</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/11299/177760</dc:identifier>\n<dc:language>en</dc:language>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:conservancy.umn.edu:11299/177761</identifier>\n\
+        \                <datestamp>2016-03-07T15:16:36Z</datestamp>\n           \
+        \     <setSpec>com_11299_5436</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_155151</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Topics to Keywords\
+        \ Library Information Literacy Party Game: Card Templates, Example Cards,\
+        \ and Suggested Rules</dc:title>\n<dc:creator>Farrell, Shannon</dc:creator>\n\
+        <dc:creator>Neeser, Amy</dc:creator>\n<dc:creator>Peterson, Kate</dc:creator>\n\
+        <dc:creator>Veile, Jenny</dc:creator>\n<dc:subject>game-based learning</dc:subject>\n\
+        <dc:subject>information literacy</dc:subject>\n<dc:subject>card game</dc:subject>\n\
+        <dc:subject>party game</dc:subject>\n<dc:description>Card templates, example\
+        \ cards, and suggested rules for \"Topics to Keywords\" information literacy\
+        \ game. The cards are maroon and gold to match the University of Minnesota\
+        \ colors. All images used came from the Noun Project (https://thenounproject.com/).\
+        \ Associated with \"Apples to Apples\" to \"Topics to Keywords: An Information\
+        \ Literacy Party Game\" presentation (https://conservancy.umn.edu/handle/11299/177760)\
+        \ that was given at the Minnesota Library Association's ARLD Day 2014. This\
+        \ work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike\
+        \ 4.0 International License. https://creativecommons.org/licenses/by-nc-sa/4.0/</dc:description>\n\
+        <dc:date>2016-03-07T15:16:36Z</dc:date>\n<dc:date>2016-03-07T15:16:36Z</dc:date>\n\
+        <dc:date>2014</dc:date>\n<dc:type>Other</dc:type>\n<dc:identifier>http://hdl.handle.net/11299/177761</dc:identifier>\n\
+        <dc:language>en</dc:language>\n</oai_dc:dc>\n</metadata>\n        </record>\n\
+        \        <record>\n            <header>\n                <identifier>oai:conservancy.umn.edu:11299/177762</identifier>\n\
+        \                <datestamp>2016-03-08T08:00:54Z</datestamp>\n           \
+        \     <setSpec>com_11299_5436</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_155151</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Exploring Disciplinary\
+        \ Differences in Data Management Practices</dc:title>\n<dc:creator>Bakker,\
+        \ Caitlin</dc:creator>\n<dc:creator>Farrell, Shannon</dc:creator>\n<dc:creator>Neeser,\
+        \ Amy</dc:creator>\n<dc:description>Our poster will compare and contrast the\
+        \ differences in requirements and practice of data management plans in the\
+        \ broad disciplinary fields of life sciences and health sciences. We will\
+        \ discuss the similarities and differences in both the researchers\u2019 attitudes\
+        \ and approaches to data management plans, the potential barriers to adoption,\
+        \ and practical strategies for librarians to address these potential needs\
+        \ and obstacles. Further, we will consider differences in the National Institutes\
+        \ of Health (NIH) and the National Science Foundation (NSF) data management\
+        \ requirements and how they impact researchers, including faculty members,\
+        \ post-docs, students, and staff. &#13;\n&#13;\nThe libraries at our large,\
+        \ research university are in the process of collecting information about researchers\u2019\
+        \ data management needs in a variety of disciplines. Further, we are reviewing\
+        \ researchers\u2019 submitted data management plans in order to examine trends\
+        \ and potential opportunities for service development. We are examining the\
+        \ broad differences both between and within disciplines, in order to better\
+        \ equip both researchers and library staff to develop better data management\
+        \ practices. To that end, we are currently developing more robust training\
+        \ for both researchers and library staff in order to address identified areas\
+        \ of need and create a culture shift where data management becomes an integrated\
+        \ part of researchers\u2019 work flow.</dc:description>\n<dc:date>2016-03-07T15:44:04Z</dc:date>\n\
+        <dc:date>2016-03-07T15:44:04Z</dc:date>\n<dc:date>2015</dc:date>\n<dc:type>Presentation</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/11299/177762</dc:identifier>\n<dc:language>en</dc:language>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:conservancy.umn.edu:11299/177763</identifier>\n\
+        \                <datestamp>2016-03-08T08:00:57Z</datestamp>\n           \
+        \     <setSpec>com_11299_48246</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_176892</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Consumer radio\
+        \ briefs, January 7, 1972</dc:title>\n<dc:creator>University of Minnesota,\
+        \ Agricultural Extension Division.</dc:creator>\n<dc:subject>Consumer advice</dc:subject>\n\
+        <dc:date>2016-03-07T19:50:55Z</dc:date>\n<dc:date>2016-03-07T19:50:55Z</dc:date>\n\
+        <dc:date>1972-01</dc:date>\n<dc:type>Newsletter or Bulletin</dc:type>\n<dc:identifier>http://hdl.handle.net/11299/177763</dc:identifier>\n\
+        <dc:language>en</dc:language>\n<dc:publisher>University of Minnesota, Agricultural\
+        \ Extension Service</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n\
+        \        <record>\n            <header>\n                <identifier>oai:conservancy.umn.edu:11299/177764</identifier>\n\
+        \                <datestamp>2016-03-08T08:01:01Z</datestamp>\n           \
+        \     <setSpec>com_11299_48246</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_176892</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Consumer Radio\
+        \ Briefs, January 14, 1972</dc:title>\n<dc:creator>University of Minnesota,\
+        \ Agricultural Extension Service</dc:creator>\n<dc:subject>Consumer advice</dc:subject>\n\
+        <dc:date>2016-03-07T19:52:16Z</dc:date>\n<dc:date>2016-03-07T19:52:16Z</dc:date>\n\
+        <dc:date>1972-01-14</dc:date>\n<dc:type>Newsletter or Bulletin</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/11299/177764</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:publisher>University of Minnesota, Agricultural Extension Service</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:conservancy.umn.edu:11299/177765</identifier>\n\
+        \                <datestamp>2016-03-08T08:01:04Z</datestamp>\n           \
+        \     <setSpec>com_11299_48246</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_176892</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Consumer radio\
+        \ Briefs, January 21, 1972</dc:title>\n<dc:creator>University of Minnesota,\
+        \ Agricultural Extension Service</dc:creator>\n<dc:subject>Consumer advice</dc:subject>\n\
+        <dc:date>2016-03-07T19:59:18Z</dc:date>\n<dc:date>2016-03-07T19:59:18Z</dc:date>\n\
+        <dc:date>1972-01-21</dc:date>\n<dc:type>Newsletter or Bulletin</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/11299/177765</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:publisher>University of Minnesota, Agricultural Extension Service</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:conservancy.umn.edu:11299/177766</identifier>\n\
+        \                <datestamp>2016-03-08T08:01:09Z</datestamp>\n           \
+        \     <setSpec>com_11299_48246</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_176892</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Consumer Radio\
+        \ Briefs, 1972, July 14</dc:title>\n<dc:creator>University of Minnesota, Agricultural\
+        \ Extension Service</dc:creator>\n<dc:subject>Consumer advice</dc:subject>\n\
+        <dc:date>2016-03-07T20:00:53Z</dc:date>\n<dc:date>2016-03-07T20:00:53Z</dc:date>\n\
+        <dc:date>1972-07-14</dc:date>\n<dc:type>Newsletter or Bulletin</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/11299/177766</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:publisher>University of Minnesota, Agricultural Extension Service</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:conservancy.umn.edu:11299/177767</identifier>\n\
+        \                <datestamp>2016-03-08T08:00:59Z</datestamp>\n           \
+        \     <setSpec>com_11299_48246</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_176892</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Consumer Radio\
+        \ Briefs, July 21, 1972</dc:title>\n<dc:creator>Univ</dc:creator>\n<dc:subject>Consumer\
+        \ advice</dc:subject>\n<dc:date>2016-03-07T20:02:10Z</dc:date>\n<dc:date>2016-03-07T20:02:10Z</dc:date>\n\
+        <dc:date>1972-07-21</dc:date>\n<dc:type>Newsletter or Bulletin</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/11299/177767</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:publisher>University of Minnesota, Agricultural Extension Service</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:conservancy.umn.edu:11299/177768</identifier>\n\
+        \                <datestamp>2016-03-08T08:01:09Z</datestamp>\n           \
+        \     <setSpec>com_11299_48246</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_176892</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Consume Radio\
+        \ Briefs, August 18, 1972</dc:title>\n<dc:creator>University of Minnesota,\
+        \ Agricultural Extension Service</dc:creator>\n<dc:subject>Consumer advice</dc:subject>\n\
+        <dc:date>2016-03-07T20:03:45Z</dc:date>\n<dc:date>2016-03-07T20:03:45Z</dc:date>\n\
+        <dc:date>1972-08-18</dc:date>\n<dc:type>Newsletter or Bulletin</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/11299/177768</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:publisher>University of Minnesota, Agricultural Extension Service</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:conservancy.umn.edu:11299/177769</identifier>\n\
+        \                <datestamp>2016-03-08T08:01:02Z</datestamp>\n           \
+        \     <setSpec>com_11299_48246</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_176892</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Consumer Radio\
+        \ Briefs, January 19, 1973</dc:title>\n<dc:creator>University of Minnesota,\
+        \ Agricultural Extension Service</dc:creator>\n<dc:subject>Consumer advice</dc:subject>\n\
+        <dc:date>2016-03-07T20:05:19Z</dc:date>\n<dc:date>2016-03-07T20:05:19Z</dc:date>\n\
+        <dc:date>1973-01-19</dc:date>\n<dc:type>Newsletter or Bulletin</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/11299/177769</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:publisher>University of Minnesota, Agricultural Extension Service</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:conservancy.umn.edu:11299/177770</identifier>\n\
+        \                <datestamp>2016-03-08T08:01:00Z</datestamp>\n           \
+        \     <setSpec>com_11299_48246</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_176892</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Consumer Radio\
+        \ Briefs, January 26, 1973</dc:title>\n<dc:creator>University of Minnesota,\
+        \ Agricultural Extension Service</dc:creator>\n<dc:subject>Consumer advice</dc:subject>\n\
+        <dc:date>2016-03-07T20:06:39Z</dc:date>\n<dc:date>2016-03-07T20:06:39Z</dc:date>\n\
+        <dc:date>1973-01-26</dc:date>\n<dc:type>Newsletter or Bulletin</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/11299/177770</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:publisher>University of Minnesota, Agricultural Extension Service</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:conservancy.umn.edu:11299/177771</identifier>\n\
+        \                <datestamp>2016-03-08T08:01:12Z</datestamp>\n           \
+        \     <setSpec>com_11299_48246</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_176892</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Consumer Radio\
+        \ Briefs, February 2, 1973</dc:title>\n<dc:creator>University of Minnesota,\
+        \ Agricultural Extension Service</dc:creator>\n<dc:subject>Consumer advice</dc:subject>\n\
+        <dc:date>2016-03-07T20:07:52Z</dc:date>\n<dc:date>2016-03-07T20:07:52Z</dc:date>\n\
+        <dc:date>1973-02-02</dc:date>\n<dc:type>Newsletter or Bulletin</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/11299/177771</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:publisher>University of Minnesota, Agricultural Extension Service</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:conservancy.umn.edu:11299/177772</identifier>\n\
+        \                <datestamp>2016-03-08T08:01:00Z</datestamp>\n           \
+        \     <setSpec>com_11299_48246</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_176892</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Consumer radio\
+        \ briefs, February 9, 1973</dc:title>\n<dc:creator>University of Minnesota,\
+        \ Agricultural Extension Service</dc:creator>\n<dc:subject>Consumer advice</dc:subject>\n\
+        <dc:date>2016-03-07T20:09:35Z</dc:date>\n<dc:date>2016-03-07T20:09:35Z</dc:date>\n\
+        <dc:date>1973-02-09</dc:date>\n<dc:type>Newsletter or Bulletin</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/11299/177772</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:publisher>University of Minnesota, Agricultural Extension Service</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:conservancy.umn.edu:11299/177773</identifier>\n\
+        \                <datestamp>2016-03-08T08:01:05Z</datestamp>\n           \
+        \     <setSpec>com_11299_48246</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_176892</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Consumer Radio\
+        \ Briefs, February 16, 1973</dc:title>\n<dc:creator>University of Minnesota,\
+        \ Agricultural Extension Service</dc:creator>\n<dc:subject>Consumer advice</dc:subject>\n\
+        <dc:date>2016-03-07T20:11:03Z</dc:date>\n<dc:date>2016-03-07T20:11:03Z</dc:date>\n\
+        <dc:date>1973-02-16</dc:date>\n<dc:type>Newsletter or Bulletin</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/11299/177773</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:publisher>University of Minnesota, Agricultural Extension Service</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:conservancy.umn.edu:11299/177774</identifier>\n\
+        \                <datestamp>2016-03-08T08:00:56Z</datestamp>\n           \
+        \     <setSpec>com_11299_48246</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_176892</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Consumer radio\
+        \ briefs</dc:title>\n<dc:creator>University of Minnesota, Agricultural Extension\
+        \ Service</dc:creator>\n<dc:subject>Consumer advice</dc:subject>\n<dc:date>2016-03-07T20:12:38Z</dc:date>\n\
+        <dc:date>2016-03-07T20:12:38Z</dc:date>\n<dc:date>1973-02-23</dc:date>\n<dc:type>Newsletter\
+        \ or Bulletin</dc:type>\n<dc:identifier>http://hdl.handle.net/11299/177774</dc:identifier>\n\
+        <dc:language>en</dc:language>\n<dc:publisher>University of Minnesota, Agricultural\
+        \ Extension Service</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n\
+        \        <record>\n            <header>\n                <identifier>oai:conservancy.umn.edu:11299/177775</identifier>\n\
+        \                <datestamp>2016-03-08T08:01:13Z</datestamp>\n           \
+        \     <setSpec>com_11299_48246</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_176892</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Consumer Radio\
+        \ Briefs, March 2, 1973</dc:title>\n<dc:creator>Univ</dc:creator>\n<dc:subject>Consumer\
+        \ advice</dc:subject>\n<dc:date>2016-03-07T20:13:51Z</dc:date>\n<dc:date>2016-03-07T20:13:51Z</dc:date>\n\
+        <dc:date>1973-03-02</dc:date>\n<dc:type>Newsletter or Bulletin</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/11299/177775</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:publisher>University of Minnesota, Agricultural Extension Service</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:conservancy.umn.edu:11299/177776</identifier>\n\
+        \                <datestamp>2016-03-08T08:01:10Z</datestamp>\n           \
+        \     <setSpec>com_11299_48246</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_176892</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Consumer Radio\
+        \ Briefs, March 9, 1973</dc:title>\n<dc:creator>University of Minnesota, Agricultural\
+        \ Extension Service</dc:creator>\n<dc:subject>Consumer advice</dc:subject>\n\
+        <dc:date>2016-03-07T20:15:29Z</dc:date>\n<dc:date>2016-03-07T20:15:29Z</dc:date>\n\
+        <dc:date>1973-03-09</dc:date>\n<dc:type>Newsletter or Bulletin</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/11299/177776</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:publisher>University of Minnesota, Agricultural Extension Service</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:conservancy.umn.edu:11299/177777</identifier>\n\
+        \                <datestamp>2016-03-08T08:01:11Z</datestamp>\n           \
+        \     <setSpec>com_11299_48246</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_176892</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Consumer Radio\
+        \ Briefs, March 16, 1973</dc:title>\n<dc:creator>University of Minnesota,\
+        \ Agricultural Extension Service</dc:creator>\n<dc:subject>Consumer advice</dc:subject>\n\
+        <dc:date>2016-03-07T20:17:22Z</dc:date>\n<dc:date>2016-03-07T20:17:22Z</dc:date>\n\
+        <dc:date>1973-03-16</dc:date>\n<dc:type>Newsletter or Bulletin</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/11299/177777</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:publisher>University of Minnesota, Agricultural Extension Service</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:conservancy.umn.edu:11299/177778</identifier>\n\
+        \                <datestamp>2016-03-08T08:01:11Z</datestamp>\n           \
+        \     <setSpec>com_11299_48246</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_176892</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Consumer radio\
+        \ briefs, March 30, 1973</dc:title>\n<dc:creator>University of Minnesota,\
+        \ Agricultural Extension Service</dc:creator>\n<dc:subject>Consumer advice</dc:subject>\n\
+        <dc:date>2016-03-07T20:19:45Z</dc:date>\n<dc:date>2016-03-07T20:19:45Z</dc:date>\n\
+        <dc:date>1973-03-30</dc:date>\n<dc:type>Newsletter or Bulletin</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/11299/177778</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:publisher>University of Minnesota, Agricultural Extension Service</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:conservancy.umn.edu:11299/177779</identifier>\n\
+        \                <datestamp>2016-03-08T08:01:05Z</datestamp>\n           \
+        \     <setSpec>com_11299_48246</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_176892</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Consumer radio\
+        \ briefs, April 6, 1973</dc:title>\n<dc:creator>University of Minnesota, Agricultural\
+        \ Extension Service</dc:creator>\n<dc:subject>Consumer advice</dc:subject>\n\
+        <dc:date>2016-03-07T20:21:02Z</dc:date>\n<dc:date>2016-03-07T20:21:02Z</dc:date>\n\
+        <dc:date>1973-04-06</dc:date>\n<dc:type>Newsletter or Bulletin</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/11299/177779</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:publisher>University of Minnesota, Agricultural Extension Service</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:conservancy.umn.edu:11299/177780</identifier>\n\
+        \                <datestamp>2016-03-08T08:01:06Z</datestamp>\n           \
+        \     <setSpec>com_11299_48246</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_176892</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Consumer radio\
+        \ briefs, April 13, 1973</dc:title>\n<dc:creator>University of Minnesota,\
+        \ Agricultural Extension Service</dc:creator>\n<dc:subject>Consumer advice</dc:subject>\n\
+        <dc:date>2016-03-07T20:22:20Z</dc:date>\n<dc:date>2016-03-07T20:22:20Z</dc:date>\n\
+        <dc:date>1973-04-13</dc:date>\n<dc:type>Newsletter or Bulletin</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/11299/177780</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:publisher>University of Minnesota, Agricultural Extension Service</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:conservancy.umn.edu:11299/177781</identifier>\n\
+        \                <datestamp>2016-03-08T08:01:07Z</datestamp>\n           \
+        \     <setSpec>com_11299_48246</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_176892</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Consumer Radio\
+        \ Briefs, April 20, 1973</dc:title>\n<dc:creator>University of Minnesota,\
+        \ Agricultural Extension Service</dc:creator>\n<dc:subject>Consumer advice</dc:subject>\n\
+        <dc:date>2016-03-07T20:24:58Z</dc:date>\n<dc:date>2016-03-07T20:24:58Z</dc:date>\n\
+        <dc:date>1973-04-20</dc:date>\n<dc:type>Newsletter or Bulletin</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/11299/177781</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:publisher>University of Minnesota, Agricultural Extension Service</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:conservancy.umn.edu:11299/177782</identifier>\n\
+        \                <datestamp>2016-03-08T08:01:03Z</datestamp>\n           \
+        \     <setSpec>com_11299_48246</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_176892</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Consumer Radio\
+        \ Briefs, April 27, 1973</dc:title>\n<dc:creator>University of Minnesota,\
+        \ Agricultural Extension Service</dc:creator>\n<dc:subject>Consumer advice</dc:subject>\n\
+        <dc:date>2016-03-07T20:26:18Z</dc:date>\n<dc:date>2016-03-07T20:26:18Z</dc:date>\n\
+        <dc:date>1973-04-27</dc:date>\n<dc:type>Newsletter or Bulletin</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/11299/177782</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:publisher>University of Minnesota, Agricultural Extension Service</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:conservancy.umn.edu:11299/177783</identifier>\n\
+        \                <datestamp>2016-03-08T08:00:57Z</datestamp>\n           \
+        \     <setSpec>com_11299_48246</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_176892</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Consume Radio\
+        \ Briefs, May 4, 1973</dc:title>\n<dc:creator>University of Minnesota, Agricultural\
+        \ Extension Service</dc:creator>\n<dc:subject>Consumer advice</dc:subject>\n\
+        <dc:date>2016-03-07T20:31:17Z</dc:date>\n<dc:date>2016-03-07T20:31:17Z</dc:date>\n\
+        <dc:date>1973-05-04</dc:date>\n<dc:type>Newsletter or Bulletin</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/11299/177783</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:publisher>University of Minnesota, Agricultural Extension Service</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:conservancy.umn.edu:11299/177784</identifier>\n\
+        \                <datestamp>2016-03-08T08:00:58Z</datestamp>\n           \
+        \     <setSpec>com_11299_48246</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_176892</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Consumer Radio\
+        \ Briefs, May 11, 1973</dc:title>\n<dc:creator>University of Minnesota, Agricultural\
+        \ Extension Service</dc:creator>\n<dc:subject>Consumer advice</dc:subject>\n\
+        <dc:date>2016-03-07T20:32:29Z</dc:date>\n<dc:date>2016-03-07T20:32:29Z</dc:date>\n\
+        <dc:date>1973-05-11</dc:date>\n<dc:type>Newsletter or Bulletin</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/11299/177784</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:publisher>University of Minnesota, Agricultural Extension Service</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:conservancy.umn.edu:11299/177785</identifier>\n\
+        \                <datestamp>2016-03-08T08:00:55Z</datestamp>\n           \
+        \     <setSpec>com_11299_48246</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_176892</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Consumer radio\
+        \ briefs, May 18, 1973</dc:title>\n<dc:creator>University of Minnesota, Agricultural\
+        \ Extension Service</dc:creator>\n<dc:subject>Consumer advice</dc:subject>\n\
+        <dc:date>2016-03-07T20:37:03Z</dc:date>\n<dc:date>2016-03-07T20:37:03Z</dc:date>\n\
+        <dc:date>1973-05-18</dc:date>\n<dc:type>Newsletter or Bulletin</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/11299/177785</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:publisher>University of Minnesota, Agricultural Extension Service</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:conservancy.umn.edu:11299/177786</identifier>\n\
+        \                <datestamp>2016-03-08T08:01:08Z</datestamp>\n           \
+        \     <setSpec>com_11299_48246</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_176892</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Consumer Radio\
+        \ Briefs, May 25, 1973</dc:title>\n<dc:creator>Univ</dc:creator>\n<dc:subject>Consumer\
+        \ advice</dc:subject>\n<dc:date>2016-03-07T20:52:24Z</dc:date>\n<dc:date>2016-03-07T20:52:24Z</dc:date>\n\
+        <dc:date>1973-05-25</dc:date>\n<dc:type>Newsletter or Bulletin</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/11299/177786</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:publisher>University of Minnesota, Agricultural Extension Service</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:conservancy.umn.edu:11299/177787</identifier>\n\
+        \                <datestamp>2016-03-08T08:01:07Z</datestamp>\n           \
+        \     <setSpec>com_11299_48246</setSpec>\n                <setSpec>com_11299_1</setSpec>\n\
+        \                <setSpec>col_11299_176892</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Consumer Radio\
+        \ Briefs, June 1, 1973</dc:title>\n<dc:creator>University of Minnesota, Agricultural\
+        \ Extension Service</dc:creator>\n<dc:subject>Consumer advice</dc:subject>\n\
+        <dc:date>2016-03-07T20:53:58Z</dc:date>\n<dc:date>2016-03-07T20:53:58Z</dc:date>\n\
+        <dc:date>1973-06-01</dc:date>\n<dc:type>Newsletter or Bulletin</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/11299/177787</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:publisher>University of Minnesota, Agricultural Extension Service</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n    </ListRecords>\n</OAI-PMH>\n"}
+    headers:
+      connection: [close]
+      content-type: [application/xml]
+      date: ['Wed, 23 Mar 2016 14:38:13 GMT']
+      server: [Apache/2.2.15 (Red Hat)]
+    status: {code: 200, message: OK}
+version: 1
