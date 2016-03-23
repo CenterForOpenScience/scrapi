@@ -8,6 +8,7 @@ from __future__ import unicode_literals
 
 from scrapi.base import OAIHarvester
 
+
 class UDCHarvester(OAIHarvester):
     short_name = 'udc'
     long_name = "University of Minnesota, Digital Conservancy"
