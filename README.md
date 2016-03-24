@@ -204,17 +204,22 @@ $ brew install homebrew/versions/elasticsearch17
 
 #### Ubuntu
 
-1. Download and install the Public Signing Key.
+1. Install Java
+   ```bash
+   $ sudo apt-get install openjdk-7-jdk 
+   ```
+
+2. Download and install the Public Signing Key.
    ```bash
    $ wget -qO - https://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
    ```
 
-2. Add the ElasticSearch repository to your /etc/apt/sources.list.
+3. Add the ElasticSearch repository to your /etc/apt/sources.list.
    ```bash
    $ sudo add-apt-repository "deb http://packages.elasticsearch.org/elasticsearch/1.4/debian stable main"
    ```
 
-3. Install the package
+4. Install the package
    ```bash
    $ sudo apt-get update
    $ sudo apt-get install elasticsearch
