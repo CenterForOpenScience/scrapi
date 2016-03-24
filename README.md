@@ -39,7 +39,7 @@ For further information on installing virtualenv and virtualenvwrapper:
 #### Ubuntu
 
 ```bash
-$ sudo apt-get install python-pip python-dev build-essential
+$ sudo apt-get install python-pip python-dev build-essential libxml2-dev libxslt1-dev
 $ pip install virtualenv
 $ sudo pip install virtualenv virtualenvwrapper
 $ sudo pip install --upgrade pip
