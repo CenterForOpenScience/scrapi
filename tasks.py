@@ -94,7 +94,7 @@ def migrate(migration, sources=None, kwargs_string=None, dry=True, async=False, 
 
 
 @task
-def reset_search():
+def restart_search():
     ''' Restarts Elasticsearch '''
     run("curl -XPOST 'http://localhost:9200/_shutdown'")
     if platform.linux_distribution()[0] == 'Ubuntu':
