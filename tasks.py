@@ -287,8 +287,8 @@ def reset_all():
 
     if raw_input('Are you sure? y/N ') != 'y':
         return
-    os.system('psql -c "DROP DATABASE scrapi;"')
-    os.system('psql -c "CREATE DATABASE scrapi;"')
+    os.system('psql -c "DROP DATABASE scrapi;" template1')
+    os.system('psql -c "CREATE DATABASE scrapi;" template1')
     os.system('python manage.py migrate')
 
     os.system("curl -XDELETE '{}/share*'".format(settings.ELASTIC_URI))
