@@ -253,6 +253,13 @@ $ brew install rabbitmq
 $ sudo apt-get install rabbitmq-server
 ```
 
+### Create Databases
+Create databases for Postgres and Elasticsearch - only for local development!
+
+```bash
+$ invoke reset_all
+```
+
 
 ### Settings
 
