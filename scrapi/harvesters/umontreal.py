@@ -7,8 +7,9 @@ Example API call: http://papyrus.bib.umontreal.ca/oai/request?verb=ListRecords&m
 '''
 from __future__ import unicode_literals
 
-from scrapi.base.helpers import updated_schema, single_result
+from scrapi.base.helpers import updated_schema
 from scrapi.base import OAIHarvester
+
 
 def umontreal_language_processor(languages):
 
