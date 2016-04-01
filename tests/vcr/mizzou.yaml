@@ -1,0 +1,152 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.11 Darwin/14.5.0]
+    method: GET
+    uri: https://mospace.umsystem.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2016-02-28T00:00:00Z&until=2016-03-01T00:00:00Z
+  response:
+    body: {string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"\
+        text/xsl\" href=\"static/style.xsl\"?><OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"\
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
+        http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"\
+        ><responseDate>2016-03-10T16:18:42Z</responseDate><request verb=\"ListRecords\"\
+        \ metadataPrefix=\"oai_dc\" from=\"2016-02-28T00:00:00Z\" until=\"2016-03-01T00:00:00Z\"\
+        >https://mospace.umsystem.edu/oai/request</request><ListRecords><record><header><identifier>oai:mospace.umsystem.edu:10355/46837</identifier><datestamp>2016-02-29T22:56:03Z</datestamp><setSpec>com_10355_7570</setSpec><setSpec>com_10355_3513</setSpec><setSpec>col_10355_7571</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Best Laid Plans\
+        \ : Practical Strategies for Managing Grant-Funded Projects</dc:title>\n<dc:creator>Rodriguez,\
+        \ Sandy</dc:creator>\n<dc:contributor>Archive for Recorded Sound Collections.\
+        \ Conference (49th : 2015 : Pittsburgh, Penn.)</dc:contributor>\n<dc:contributor>0000-0003-4347-7047</dc:contributor>\n\
+        <dc:subject>Research grants</dc:subject>\n<dc:subject>Academic libraries --\
+        \ Research grants</dc:subject>\n<dc:description>Session given at the 49th\
+        \ Annual ARSC Conference pre-conference workshop \"From Idea to Deliverable:\
+        \ Planning and Executing Your Grant-Funded Project\" in Pittsburgh, Pennsylvania,\
+        \ May 27, 2015</dc:description>\n<dc:description>Grant project management\
+        \ is, at its core, simply project management with an additional key stakeholder\u2014\
+        the funder, whether public or private. Consequently, project managers must\
+        \ approach workflow challenges by making informed decisions that balance all\
+        \ key stakeholders, be they funders, donors, content producers, project team\
+        \ members, institutional staff, or ultimately, the consumers that the project\
+        \ aims to reach. This presentation will identify the challenges of managing\
+        \ workflows for grant-funded projects and provide practical strategies for\
+        \ facing these challenges by focusing on stakeholder relationships.</dc:description>\n\
+        <dc:description>Association for Recorded Sound Collections</dc:description>\n\
+        <dc:date>2015-10-19T21:27:51Z</dc:date>\n<dc:date>2015-10-19T21:27:51Z</dc:date>\n\
+        <dc:date>2015-05-27</dc:date>\n<dc:type>Presentation</dc:type>\n<dc:identifier>https://hdl.handle.net/10355/46837</dc:identifier>\n\
+        <dc:language>en</dc:language>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:mospace.umsystem.edu:10355/48074</identifier><datestamp>2016-02-29T22:52:16Z</datestamp><setSpec>com_10355_2</setSpec><setSpec>com_10355_1</setSpec><setSpec>com_10355_7570</setSpec><setSpec>com_10355_3513</setSpec><setSpec>col_10355_48073</setSpec><setSpec>col_10355_10368</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Are we good\
+        \ digital stewards? : a proposal to create and implement digital preservation\
+        \ policies, practices, metrics, and educational outreach for the University\
+        \ of Missouri system</dc:title>\n<dc:creator>University of Missouri Digital\
+        \ Library Working Group</dc:creator>\n<dc:creator>Rodriguez, Sandy</dc:creator>\n\
+        <dc:contributor>0000-0003-4347-7047</dc:contributor>\n<dc:subject>Digital\
+        \ preservation</dc:subject>\n<dc:subject>University of Missouri--Columbia.\
+        \ Libraries</dc:subject>\n<dc:subject>University of Missouri--Kansas City.\
+        \ Library</dc:subject>\n<dc:subject>University of Missouri--St. Louis. Library</dc:subject>\n\
+        <dc:subject>Missouri University of Science and Technology. Library</dc:subject>\n\
+        <dc:description>\"Initially prepared by Sandy Rodriguez (University of Missouri--Kansas\
+        \ City) and presented to the University of Missouri Digital Library (UMDL)\
+        \ Working Group, May 6, 2015. Final version prepared, with revisions by UMDL\
+        \ Working Group and Anselm Huelsbergen, June 6, 2015. Presented to MDPC, June\
+        \ 18, 2015.\"--Page 5.</dc:description>\n<dc:description>Providing long-term\
+        \ access to digital materials presents unique challenges requiring active\
+        \ stewardship. The librarians and archivists of the University of Missouri\
+        \ System (UM System) collect, curate, describe, and provide access to digital\
+        \ materials using specialized skills and tools, but in order to properly preserve\
+        \ and provide long-term access to digital content, we need to develop and\
+        \ implement unifying digital preservation policies and practices. Active engagement\
+        \ with digital preservation efforts places librarians and archivists in a\
+        \ leadership role within their scholarly communities, allowing for the creation\
+        \ of new initiatives, grant projects, and faculty research endeavors. To this\
+        \ end, we strongly recommend the creation of a digital preservation program&#xd;\n\
+        centered in the UM System\u2019s libraries and archives to guide digital preservation\
+        \ activities across all UM System campuses.</dc:description>\n<dc:description>By\
+        \ University of Missouri Digital Library Working Group.</dc:description>\n\
+        <dc:description>Includes bibliographical references (page 4-5).</dc:description>\n\
+        <dc:date>2016-02-03T15:47:15Z</dc:date>\n<dc:date>2016-02-03T15:47:15Z</dc:date>\n\
+        <dc:date>2015</dc:date>\n<dc:identifier>Rodriguez, Sandy. \u201CAre we good\
+        \ digital stewards?\u201D University of Missouri (System), University of Missouri\
+        \ Digital Library Working Group, June 16, 2015.</dc:identifier>\n<dc:identifier>https://hdl.handle.net/10355/48074</dc:identifier>\n\
+        <dc:language>eng</dc:language>\n<dc:format>5 pages</dc:format>\n</oai_dc:dc>\n\
+        </metadata></record><record><header><identifier>oai:mospace.umsystem.edu:10355/48294</identifier><datestamp>2016-02-29T16:09:46Z</datestamp><setSpec>com_10355_39018</setSpec><setSpec>com_10355_1</setSpec><setSpec>col_10355_48293</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>University\
+        \ of Missouri (MU) Cyberinfrastructure (CI) Plan update : bioinformatics and\
+        \ genomics</dc:title>\n<dc:subject>University of Missouri Columbia ; MU ;\
+        \ Mizzou ; computer technology ; cyberinfrastructure</dc:subject>\n<dc:description>This\
+        \ document was prepared as part of MU's CI Council process for updating the\
+        \ campus plan for research cyberinfrastructure by this group: Bob Schnabel,\
+        \ Scott Givan, Alan Marshall, Elizabeth (Libby) King, Tim Middelkoop and Diane\
+        \ Oerly. This brief document is intended to accompany the 32-page detailed\
+        \ analysis of the impact of high-throughput sequencing on MU research capacities.\
+        \ As that report documents, MU's 2005 investment ($231,100 cost share) in\
+        \ next-generation sequencing has been returned many-fold. Within ten years,\
+        \ MU researchers have been awarded a total of 66 grants involving sequencing,\
+        \ totaling $87.5 million ($7.6 million directly attributable to sequence data\
+        \ generation and analysis) plus, another $7.9 million in grant funding proposals\
+        \ are pending or submitted.</dc:description>\n<dc:date>2016-02-26T17:13:32Z</dc:date>\n\
+        <dc:date>2016-02-26T17:13:32Z</dc:date>\n<dc:date>2016</dc:date>\n<dc:identifier>https://hdl.handle.net/10355/48294</dc:identifier>\n\
+        <dc:language>en</dc:language>\n<dc:publisher>University of Missouri. Cyberinfrastructure\
+        \ Council</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:mospace.umsystem.edu:10355/48295</identifier><datestamp>2016-02-28T22:24:00Z</datestamp><setSpec>com_10355_39018</setSpec><setSpec>com_10355_1</setSpec><setSpec>col_10355_48293</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Digital Humanities\
+        \ Commons collaborators and projects : list of projects and scholars who have\
+        \ been Helped by MU's Digital Humanities Commons (DHC)</dc:title>\n<dc:title>List\
+        \ of projects and scholars who have been Helped by MU's Digital Humanities\
+        \ Commons (DHC)</dc:title>\n<dc:date>2016-02-26T17:15:53Z</dc:date>\n<dc:date>2016-02-26T17:15:53Z</dc:date>\n\
+        <dc:date>2015</dc:date>\n<dc:identifier>https://hdl.handle.net/10355/48295</dc:identifier>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:mospace.umsystem.edu:10355/48296</identifier><datestamp>2016-02-28T22:24:00Z</datestamp><setSpec>com_10355_39018</setSpec><setSpec>com_10355_1</setSpec><setSpec>col_10355_48293</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Essential Points\
+        \ re: MU's Digital Humanities</dc:title>\n<dc:title>Essential Points regarding\
+        \ MU's Digital Humanities</dc:title>\n<dc:title>Essential Points regarding\
+        \ the University of Missouri's MU's Digital Humanities</dc:title>\n<dc:creator>Gibson,\
+        \ Twyla</dc:creator>\n<dc:date>2016-02-26T17:18:01Z</dc:date>\n<dc:date>2016-02-26T17:18:01Z</dc:date>\n\
+        <dc:date>2015</dc:date>\n<dc:identifier>https://hdl.handle.net/10355/48296</dc:identifier>\n\
+        <dc:language>en</dc:language>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:mospace.umsystem.edu:10355/48297</identifier><datestamp>2016-02-28T22:24:00Z</datestamp><setSpec>com_10355_39018</setSpec><setSpec>com_10355_1</setSpec><setSpec>col_10355_48293</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Digital Humanities\
+        \ and MU's CI Plan : draft document</dc:title>\n<dc:description>Key Planning\
+        \ Assumption:\n This cyberinfrastructure plan recognizes the leadership role\
+        \ of MU's Digital Humanities Commons and assumes achieving the objectives\
+        \ described by the DHC will address the priority needs of MU's current and\
+        \ emerging digital humanists. Launched in February, 2014, the Digital Humanities\
+        \ Commons @ The Allen Institute (DHC) serves as MU's nexus of digital scholarship\
+        \ and innovation. DHC's mission is to promote faculty research projects and\
+        \ catalyze new scholarship in the emerging field of Digital Humanities. The\
+        \ facility offers a dedicated space, technical expertise, and networks for\
+        \ collaboration in a unique laboratory that aims to advance the work of arts\
+        \ and humanities faculty and their senior graduate students.</dc:description>\n\
+        <dc:date>2016-02-26T17:19:21Z</dc:date>\n<dc:date>2016-02-26T17:19:21Z</dc:date>\n\
+        <dc:date>2015</dc:date>\n<dc:identifier>https://hdl.handle.net/10355/48297</dc:identifier>\n\
+        <dc:language>en</dc:language>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:mospace.umsystem.edu:10355/48298</identifier><datestamp>2016-02-28T22:24:00Z</datestamp><setSpec>com_10355_39018</setSpec><setSpec>com_10355_1</setSpec><setSpec>col_10355_48293</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>MU CI Plan\
+        \ -- Geospatial Sciences (DRAFT)</dc:title>\n<dc:date>2016-02-26T17:20:16Z</dc:date>\n\
+        <dc:date>2016-02-26T17:20:16Z</dc:date>\n<dc:date>2015</dc:date>\n<dc:identifier>https://hdl.handle.net/10355/48298</dc:identifier>\n\
+        <dc:language>en</dc:language>\n</oai_dc:dc>\n</metadata></record></ListRecords></OAI-PMH>"}
+    headers:
+      connection: [close]
+      content-type: [application/xml;charset=UTF-8]
+      date: ['Thu, 10 Mar 2016 16:18:42 GMT']
+    status: {code: 200, message: OK}
+version: 1

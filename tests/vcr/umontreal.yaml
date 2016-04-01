@@ -1,0 +1,334 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/2.7.11 Darwin/14.5.0]
+    method: GET
+    uri: http://papyrus.bib.umontreal.ca/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2016-03-07T00:00:00Z&until=2016-03-09T00:00:00Z
+  response:
+    body: {string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"\
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
+        http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"\
+        ><responseDate>2016-03-09T21:44:11Z</responseDate><request verb=\"ListRecords\"\
+        \ metadataPrefix=\"oai_dc\" from=\"2016-03-07T00:00:00Z\" until=\"2016-03-09T00:00:00Z\"\
+        >http://papyrus.bib.umontreal.ca/oai/request</request><ListRecords><record><header><identifier>oai:papyrus.bib.umontreal.ca:1866/13217</identifier><datestamp>2016-03-08T11:30:44Z</datestamp><setSpec>com_1866_2954</setSpec><setSpec>col_1866_12963</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Citation rhetoric\
+        \ examined</dc:title>\n<dc:creator>Dobson, Teresa</dc:creator>\n<dc:creator>Lucky,\
+        \ Shannon</dc:creator>\n<dc:creator>Ruecker, Stan</dc:creator>\n<dc:creator>Sinatra,\
+        \ Michael E.</dc:creator>\n<dc:subject>Circulation des contenus</dc:subject>\n\
+        <dc:subject>Th\xE9orie de l'\xE9dition</dc:subject>\n<dc:subject>Bibliography</dc:subject>\n\
+        <dc:subject>Rhetoric</dc:subject>\n<dc:subject>MLA</dc:subject>\n<dc:subject>APA</dc:subject>\n\
+        <dc:subject>Bibliographie</dc:subject>\n<dc:subject>Rh\xE9torique</dc:subject>\n\
+        <dc:subject>Styles bibliographiques</dc:subject>\n<dc:subject>Bibliographic\
+        \ styles</dc:subject>\n<dc:description>In his influential monograph \xABThe\
+        \ Rhetoric of Citation Systems\xBB, Connors (1999) elaborates on the principle\
+        \ that scholars working with different forms of citation find themselves thinking\
+        \ differently, since the citation format has natural consequences in the way\
+        \ it interacts with the material in the practice of the writer. [...]</dc:description>\n\
+        <dc:date>2016-03-07T19:18:56Z</dc:date>\n<dc:date>2016-03-07T19:18:56Z</dc:date>\n\
+        <dc:date>2010</dc:date>\n<dc:type>Actes de conf\xE9rence / Conference Proceedings</dc:type>\n\
+        <dc:identifier>Dobson, Teresa et al., \xAB\_Citation rhetoric examined\_\xBB\
+        , Proceedings of the 2010 Digital Humanities Conference, London : King's College,\
+        \ 2010, p.\_7\u201110.</dc:identifier>\n<dc:identifier>978-0-9565793-0-0</dc:identifier>\n\
+        <dc:identifier>http://dh2010.cch.kcl.ac.uk/academic-programme/abstracts/papers/html/ab-829.html</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1866/13217</dc:identifier>\n<dc:language>en</dc:language>\n\
+        <dc:relation>Proceedings of the Digital Humanities Conference;</dc:relation>\n\
+        <dc:publisher>King\u2019s College. Office for Humanities Communication; Centre\
+        \ for Computing in the Humanities.</dc:publisher>\n</oai_dc:dc>\n</metadata></record><record><header><identifier>oai:papyrus.bib.umontreal.ca:1866/13222</identifier><datestamp>2016-03-08T11:30:48Z</datestamp><setSpec>com_1866_2954</setSpec><setSpec>col_1866_11371</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Dire, ou pas,\
+        \ l\u2019aust\xE9rit\xE9</dc:title>\n<dc:creator>Melan\xE7on, Beno\xEEt</dc:creator>\n\
+        <dc:subject>Qu\xE9bec</dc:subject>\n<dc:subject>Politique</dc:subject>\n<dc:subject>Aust\xE9\
+        rit\xE9</dc:subject>\n<dc:subject>\xC9conomie</dc:subject>\n<dc:subject>Langue</dc:subject>\n\
+        <dc:subject>Id\xE9ologie</dc:subject>\n<dc:date>2016-03-07T19:43:50Z</dc:date>\n\
+        <dc:date>2016-03-07T19:43:50Z</dc:date>\n<dc:date>2015</dc:date>\n<dc:type>Chapitre\
+        \ de livre / Book chapter</dc:type>\n<dc:identifier>Melan\xE7on, Beno\xEE\
+        t, \xAB Dire, ou pas, l\u2019aust\xE9rit\xE9 \xBB, dans Ianik Marcil (dir.),\
+        \ 11 brefs essais contre l\u2019aust\xE9rit\xE9 : pour stopper le saccage\
+        \ planifi\xE9 de l\u2019\xC9tat, Montr\xE9al, Somme toute, 2015, p. 23-30.</dc:identifier>\n\
+        <dc:identifier>9782924283868</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1866/13222</dc:identifier>\n\
+        <dc:language>fr</dc:language>\n<dc:publisher>Somme toute</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata></record><record><header><identifier>oai:papyrus.bib.umontreal.ca:1866/13223</identifier><datestamp>2016-03-08T11:30:41Z</datestamp><setSpec>com_1866_2954</setSpec><setSpec>col_1866_11371</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Compte rendu\
+        \ de \xAB Un moderne \xE0 rebours : biographie intellectuelle et artistique\
+        \ de Pierre Vadeboncoeur \xBB de Jonathan Livernois</dc:title>\n<dc:creator>Melan\xE7\
+        on, Beno\xEEt</dc:creator>\n<dc:subject>Qu\xE9bec</dc:subject>\n<dc:subject>Essai</dc:subject>\n\
+        <dc:subject>Vadeboncoeur, Pierre</dc:subject>\n<dc:subject>Livernois, Jonathan</dc:subject>\n\
+        <dc:subject>Essai qu\xE9b\xE9cois</dc:subject>\n<dc:subject>Pierre Vadeboncoeur</dc:subject>\n\
+        <dc:subject>Jonathan Livernois</dc:subject>\n<dc:subject>Compte rendu</dc:subject>\n\
+        <dc:description>Compte rendu critique du livre de Jonathan Livernois \xAB\
+        \ Un moderne \xE0 rebours : biographie intellectuelle et artistique de Pierre&#xd;\n\
+        Vadeboncoeur \xBB (Qu\xE9bec : Les Presses de l\u2019Universit\xE9 Laval,coll.\
+        \ \xAB Cultures qu\xE9b\xE9coises \xBB, 2012, 355 p.).</dc:description>\n\
+        <dc:date>2016-03-07T19:48:39Z</dc:date>\n<dc:date>2016-03-07T19:48:39Z</dc:date>\n\
+        <dc:date>2013</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Melan\xE7\
+        on, Beno\xEEt, \xAB Compte rendu de \"Un moderne \xE0 rebours : biographie\
+        \ intellectuelle et artistique de Pierre Vadeboncoeur\" de Jonathan Livernois\
+        \ \xBB, Recherches sociographiques, vol. 54, no 2, 2013, p. 353-354.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1866/13223</dc:identifier>\n<dc:language>fr</dc:language>\n\
+        <dc:relation>Recherches sociographiques;vol. 54, no 2</dc:relation>\n</oai_dc:dc>\n\
+        </metadata></record><record><header><identifier>oai:papyrus.bib.umontreal.ca:1866/13224</identifier><datestamp>2016-03-08T11:30:44Z</datestamp><setSpec>com_1866_2954</setSpec><setSpec>col_1866_11371</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Compte rendu\
+        \ de \xAB Duplessis, pi\xE8ce manquante d\u2019une l\xE9gende : l\u2019invention\
+        \ du marketing politique \xBB d\u2019Alain Lavigne</dc:title>\n<dc:creator>Melan\xE7\
+        on, Beno\xEEt</dc:creator>\n<dc:subject>Politique</dc:subject>\n<dc:subject>Marketing</dc:subject>\n\
+        <dc:subject>Duplessis, Maurice</dc:subject>\n<dc:subject>Lavigne, Alain</dc:subject>\n\
+        <dc:subject>Union nationale</dc:subject>\n<dc:subject>Maurice Duplessis</dc:subject>\n\
+        <dc:subject>Alain Lavigne</dc:subject>\n<dc:subject>Qu\xE9bec</dc:subject>\n\
+        <dc:subject>Compte rendu</dc:subject>\n<dc:description>Compte rendu critique\
+        \ du livre d'Alain Lavigne \xAB Duplessis, pi\xE8ce manquante d\u2019une l\xE9\
+        gende : l\u2019invention du marketing politique \xBB (Qu\xE9bec: Septentrion,\
+        \ 2012, 194 p. Illustr\xE9. Pr\xE9face de Denis Vaugeois).</dc:description>\n\
+        <dc:date>2016-03-07T19:51:58Z</dc:date>\n<dc:date>2016-03-07T19:51:58Z</dc:date>\n\
+        <dc:date>2012</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Melan\xE7\
+        on, Beno\xEEt, \xAB Compte rendu de \"Duplessis, pi\xE8ce manquante d\u2019\
+        une l\xE9gende : l\u2019invention du marketing politique\" d\u2019Alain Lavigne\
+        \ \xBB, Recherches sociographiques, vol. 53, no 3, 2012, p. 687-688.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1866/13224</dc:identifier>\n<dc:language>fr</dc:language>\n\
+        <dc:relation>Recherches sociographiques;vol. 53, no 3</dc:relation>\n</oai_dc:dc>\n\
+        </metadata></record><record><header><identifier>oai:papyrus.bib.umontreal.ca:1866/13225</identifier><datestamp>2016-03-08T11:30:45Z</datestamp><setSpec>com_1866_2954</setSpec><setSpec>col_1866_11371</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Les effets\
+        \ surprenants de l\u2019ennui</dc:title>\n<dc:creator>Melan\xE7on, Beno\xEE\
+        t</dc:creator>\n<dc:subject>Th\xE9\xE2tre</dc:subject>\n<dc:subject>Qu\xE9\
+        bec</dc:subject>\n<dc:subject>Ennui</dc:subject>\n<dc:subject>Litt\xE9rature</dc:subject>\n\
+        <dc:description>Se languir, s\u2019emb\xEAter, regarder sans cesse sa montre,\
+        \ se morfondre, s\u2019emmerder, trouver le temps long : s\u2019ennuyer, bref.\
+        \ Au Qu\xE9bec, dans un registre plus populaire : trouver \xE7a plate. Radicalement\
+        \ : se faire chier. Cela nous arrive sur les bancs d\u2019\xE9cole, dans une\
+        \ conversation, devant un livre, une \xE9mission de t\xE9l\xE9 ou de radio,\
+        \ face \xE0 notre ordinateur \u2013 et au th\xE9\xE2tre. Mais qu\u2019est-ce\
+        \ que l\u2019ennui? [...]</dc:description>\n<dc:date>2016-03-07T19:54:20Z</dc:date>\n\
+        <dc:date>2016-03-07T19:54:20Z</dc:date>\n<dc:date>2011</dc:date>\n<dc:type>Article</dc:type>\n\
+        <dc:identifier>Melan\xE7on, Beno\xEEt, \xAB Les effets surprenants de l\u2019\
+        ennui \xBB, Jeu : revue de th\xE9\xE2tre, no 141, 2011, p. 38-41.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1866/13225</dc:identifier>\n<dc:language>fr</dc:language>\n\
+        <dc:relation>Jeu. Revue de th\xE9\xE2tre;no 141</dc:relation>\n</oai_dc:dc>\n\
+        </metadata></record><record><header><identifier>oai:papyrus.bib.umontreal.ca:1866/13226</identifier><datestamp>2016-03-08T11:30:46Z</datestamp><setSpec>com_1866_2954</setSpec><setSpec>col_1866_11371</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>\xC9pistol@rit\xE9\
+        s, d\u2019aujourd\u2019hui \xE0 hier [\xC9pistolarit\xE9s, d'aujourd'hui \xE0\
+        \ hier]</dc:title>\n<dc:creator>Melan\xE7on, Beno\xEEt</dc:creator>\n<dc:subject>Lettre</dc:subject>\n\
+        <dc:subject>Correspondance</dc:subject>\n<dc:subject>XVIIIe si\xE8cle</dc:subject>\n\
+        <dc:subject>Litt\xE9rature \xE9pistolaire</dc:subject>\n<dc:subject>Num\xE9\
+        rique</dc:subject>\n<dc:subject>Informatique</dc:subject>\n<dc:subject>Internet</dc:subject>\n\
+        <dc:subject>Roman \xE9pistolaire</dc:subject>\n<dc:subject>Si\xE8cle des Lumi\xE8\
+        res</dc:subject>\n<dc:date>2016-03-07T19:57:45Z</dc:date>\n<dc:date>2016-03-07T19:57:45Z</dc:date>\n\
+        <dc:date>2010</dc:date>\n<dc:type>Article</dc:type>\n<dc:identifier>Melan\xE7\
+        on, Beno\xEEt, \xAB \xC9pistol@rit\xE9s, d\u2019aujourd\u2019hui \xE0 hier\
+        \ \xBB, Lumen. Travaux choisis de la Soci\xE9t\xE9 canadienne d\u2019\xE9\
+        tude du dix-huiti\xE8me si\xE8cle. Selected Proceedings from the Canadian\
+        \ Society for Eighteenth-Century Studies, vol. XXIX, 2010 [2011], p. 1-19.</dc:identifier>\n\
+        <dc:identifier>http://hdl.handle.net/1866/13226</dc:identifier>\n<dc:language>fr</dc:language>\n\
+        <dc:relation>Lumen. Travaux choisis de la Soci\xE9t\xE9 canadienne d\u2019\
+        \xE9tude du dix-huiti\xE8me si\xE8cle. Selected Proceedings from the Canadian\
+        \ Society for Eighteenth-Century Studies;vol. XXIX</dc:relation>\n</oai_dc:dc>\n\
+        </metadata></record><record><header><identifier>oai:papyrus.bib.umontreal.ca:1866/13227</identifier><datestamp>2016-03-08T11:30:47Z</datestamp><setSpec>com_1866_2954</setSpec><setSpec>col_1866_12963</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Du m\xE9dia\
+        \ \xE0 la m\xE9diation : les trente ans de la pens\xE9e interm\xE9diale et\
+        \ la r\xE9sistance th\xE9\xE2trale</dc:title>\n<dc:creator>Larrue, Jean-Marc</dc:creator>\n\
+        <dc:subject>Interm\xE9dialit\xE9</dc:subject>\n<dc:subject>M\xE9moire et archive</dc:subject>\n\
+        <dc:subject>Pratiques interm\xE9diales</dc:subject>\n<dc:subject>Production\
+        \ des contenus</dc:subject>\n<dc:subject>R\xE9volution num\xE9rique</dc:subject>\n\
+        <dc:subject>Th\xE9\xE2tre qu\xE9b\xE9cois</dc:subject>\n<dc:subject>Th\xE9\
+        orie de la litt\xE9rature</dc:subject>\n<dc:subject>Th\xE9orie des m\xE9dias</dc:subject>\n\
+        <dc:description>Si les \xE9tudes interm\xE9diales, qui sont n\xE9es dans le\
+        \ sillage de la \xAB r\xE9volution num\xE9rique \xBB, ont \xE0 peine trente\
+        \ ans, les processus qu'elles contribuent \xE0 mettre au jour remontent bien\
+        \ au-del\xE0 de cette derni\xE8re vague technologique majeure, comme l'a clairement\
+        \ illustr\xE9 \xAB Remediation. Understanding New Media \xBB, l'ouvrage cl\xE9\
+        \ que Jay David Bolter et Richard Grusin publiaient (en version imprim\xE9\
+        e) en 2000. [...]</dc:description>\n<dc:date>2016-03-07T19:59:09Z</dc:date>\n\
+        <dc:date>2016-03-07T19:59:09Z</dc:date>\n<dc:date>2014</dc:date>\n<dc:type>Chapitre\
+        \ de livre / Book chapter</dc:type>\n<dc:identifier>Larrue, Jean-Marc, \xAB\
+        \ Du m\xE9dia \xE0 la m\xE9diation : les trente ans de la pens\xE9e interm\xE9\
+        diale et la r\xE9sistance th\xE9\xE2trale \xBB, dans Jean-Marc Larrue et Giusy\
+        \ Pisano (dir.), Les archives de la mise en sc\xE8ne : hyperm\xE9dialit\xE9\
+        s du th\xE9\xE2tre, Villeneuve-d'Ascq, Presses universitaires du Septentrion,\
+        \ coll. \xAB Arts du spectacle. Images et sons \xBB, 2014, p. 29 56.</dc:identifier>\n\
+        <dc:identifier>978-2-7574-0853-7</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1866/13227</dc:identifier>\n\
+        <dc:language>fr</dc:language>\n<dc:relation>Arts du spectacle. Images et sons;</dc:relation>\n\
+        <dc:publisher>Presses universitaires du Septentrion</dc:publisher>\n</oai_dc:dc>\n\
+        </metadata></record><record><header><identifier>oai:papyrus.bib.umontreal.ca:1866/13221</identifier><datestamp>2016-03-08T11:30:47Z</datestamp><setSpec>com_1866_2954</setSpec><setSpec>col_1866_12963</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Introduction</dc:title>\n\
+        <dc:creator>Larrue, Jean-Marc</dc:creator>\n<dc:creator>Pisano, Giusy</dc:creator>\n\
+        <dc:subject>Circulation des contenus</dc:subject>\n<dc:subject>Interm\xE9\
+        dialit\xE9</dc:subject>\n<dc:subject>M\xE9moire et archive</dc:subject>\n\
+        <dc:subject>Pratiques interm\xE9diales</dc:subject>\n<dc:subject>Th\xE9\xE2\
+        tre qu\xE9b\xE9cois</dc:subject>\n<dc:subject>Th\xE9orie des m\xE9dias</dc:subject>\n\
+        <dc:description>Le concept de \xAB liveness \xBB - ce qui est \xAB live \xBB\
+        \ - recouvre traditionnellement les notions de direct, d'imm\xE9diatet\xE9\
+        , de pr\xE9sence et de copr\xE9sence physiques dans le m\xEAme espace (de\
+        \ l'\xE9metteur et du r\xE9cepteur), de vivant. Mais pour Auslander, le \xAB\
+        \ live \xBB peut aussi int\xE9grer le \xAB reproduit \xBB, le diff\xE9r\xE9\
+        , donc le m\xE9diatis\xE9, et il donne de cela l'exemple de la t\xE9l\xE9\
+        vision - on pourrait ajouter celui de la radio - qui mise, comme le th\xE9\
+        \xE2tre et contrairement au cin\xE9ma, sur son lien imm\xE9diat, en temps\
+        \ r\xE9el, avec ses auditeurs-spectateurs. [...]</dc:description>\n<dc:date>2016-03-07T19:27:29Z</dc:date>\n\
+        <dc:date>2016-03-07T19:27:29Z</dc:date>\n<dc:date>2014</dc:date>\n<dc:type>Chapitre\
+        \ de livre / Book chapter</dc:type>\n<dc:identifier>Larrue, Jean-Marc et Giusy\
+        \ Pisano, \xAB Introduction \xBB, dans Jean-Marc Larrue et Giusy Pisano (dir.),\
+        \ Les archives de la mise en sc\xE8ne : hyperm\xE9dialit\xE9s du th\xE9\xE2\
+        tre, Villeneuve-d'Ascq, Les Presses universitaires du Septentrion, coll. \xAB\
+        \ Arts du spectacle. Images et sons \xBB, 2014, p. 9-21.</dc:identifier>\n\
+        <dc:identifier>978-2-7574-0853-7</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1866/13221</dc:identifier>\n\
+        <dc:language>fr</dc:language>\n<dc:relation>Arts du spectacle. Images et sons;</dc:relation>\n\
+        <dc:publisher>Les Presses universitaires du Septentrion</dc:publisher>\n</oai_dc:dc>\n\
+        </metadata></record><record><header><identifier>oai:papyrus.bib.umontreal.ca:1866/13220</identifier><datestamp>2016-03-08T11:30:43Z</datestamp><setSpec>com_1866_2954</setSpec><setSpec>col_1866_12963</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Introduction</dc:title>\n\
+        <dc:creator>Larrue, Jean-Marc</dc:creator>\n<dc:subject>Interm\xE9dialit\xE9\
+        </dc:subject>\n<dc:subject>Pratiques interm\xE9diales</dc:subject>\n<dc:subject>Production\
+        \ des contenus</dc:subject>\n<dc:subject>Th\xE9\xE2tre qu\xE9b\xE9cois</dc:subject>\n\
+        <dc:subject>Th\xE9orie des m\xE9dias</dc:subject>\n<dc:subject>Th\xE9orie\
+        \ de la litt\xE9rature</dc:subject>\n<dc:description>On imagine mal aujourd'hui\
+        \ un \xAB spectacle \xBB th\xE9\xE2tral qui ne recourrait pas aux technologies\
+        \ de reproduction du son, c'est-\xE0-dire \xE0 des \xAB projections \xBB sonores.\
+        \ Ce qui est aujourd'hui la r\xE8gle \xE9tait pourtant l'exception il y a\
+        \ moins d'un demi-si\xE8cle. Cette anecdote soul\xE8ve des questions qui sont\
+        \ au coeur de la r\xE9flexion interm\xE9diale : la place de la technologie\
+        \ et sa \xAB naturalisation \xBB, le r\xF4le des dispositifs, l'agentivit\xE9\
+        \ des \xAB usagers \xBB, les rapports entre m\xE9dias et m\xE9diations, l'institutionnalisation\
+        \ des pratiques m\xE9diatiques, etc. [...]</dc:description>\n<dc:date>2016-03-07T19:25:39Z</dc:date>\n\
+        <dc:date>2016-03-07T19:25:39Z</dc:date>\n<dc:date>2015</dc:date>\n<dc:type>Chapitre\
+        \ de livre / Book chapter</dc:type>\n<dc:identifier>Larrue, Jean-Marc, \xAB\
+        \ Introduction \xBB, dans Jean-Marc Larrue (dir.), Th\xE9\xE2tre et interm\xE9\
+        dialit\xE9, Villeneuve-d'Ascq, Les Presses universitaires du Septentrion,\
+        \ coll. \xAB Arts du spectacle. Images et sons \xBB, 2015, p. 13-23.</dc:identifier>\n\
+        <dc:identifier>978-2-7574-0907-7</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1866/13220</dc:identifier>\n\
+        <dc:language>fr</dc:language>\n<dc:relation>Arts du spectacle. Images et sons;</dc:relation>\n\
+        <dc:publisher>Les Presses universitaires du Septentrion</dc:publisher>\n</oai_dc:dc>\n\
+        </metadata></record><record><header><identifier>oai:papyrus.bib.umontreal.ca:1866/13219</identifier><datestamp>2016-03-08T11:30:45Z</datestamp><setSpec>com_1866_2954</setSpec><setSpec>col_1866_12963</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Considerazioni\
+        \ generali sul concetto di \xAB corpo \xBB</dc:title>\n<dc:creator>Vitali-Rosati,\
+        \ Marcello</dc:creator>\n<dc:subject>Corps</dc:subject>\n<dc:subject>Philosophie</dc:subject>\n\
+        <dc:description>Il concetto di \u201Ccorpo\u201D \xE8 evidentemente alla base\
+        \ della pratica medica. Dalla definizione che si sceglie di dare a questo\
+        \ concetto dipende l\u2019idea stessa di medicina e di terapia. \xC8 per questo\
+        \ che una riflessione preliminare su che cosa sia il corpo \xE8 necessaria\
+        \ per guidare e impostare qualsiasi azione dell\u2019operatore sanitario.\
+        \ [...]</dc:description>\n<dc:date>2016-03-07T19:23:56Z</dc:date>\n<dc:date>2016-03-07T19:23:56Z</dc:date>\n\
+        <dc:date>2006</dc:date>\n<dc:type>Chapitre de livre / Book chapter</dc:type>\n\
+        <dc:identifier>Vitali-Rosati, Marcello, \xAB Considerazioni generali sul concetto\
+        \ di \"corpo\" \xBB, dans Susanna Maddali Bongi (dir.), Riabilitazione reumatologica.\
+        \ Approccio multidisciplinare, Milan, Edra, 2006, p. 323-325.</dc:identifier>\n\
+        <dc:identifier>978-88-86457-68-2</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1866/13219</dc:identifier>\n\
+        <dc:language>it</dc:language>\n<dc:publisher>Edra</dc:publisher>\n</oai_dc:dc>\n\
+        </metadata></record><record><header><identifier>oai:papyrus.bib.umontreal.ca:1866/13218</identifier><datestamp>2016-03-08T11:30:46Z</datestamp><setSpec>com_1866_2954</setSpec><setSpec>col_1866_12963</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Riflessioni\
+        \ filosofiche sul metodo Ress\xE9guier</dc:title>\n<dc:creator>Vitali-Rosati,\
+        \ Marcello</dc:creator>\n<dc:subject>Corps</dc:subject>\n<dc:subject>Philosophie</dc:subject>\n\
+        <dc:subject>M\xE9thode Ress\xE9guier</dc:subject>\n<dc:description>Il metodo\
+        \ Ress\xE9guier presenta degli aspetti di grande interesse teorico che implicano\
+        \ un ripensamento dei concetti cardine su cui si basa l\u2019idea di cura\
+        \ e di terapia. Con questo scritto intendo analizzarli per sommi capi in modo\
+        \ tale da approfondire le basi filosofiche su cui tale metodo sembra riposare.\
+        \ Questa analisi ha come obiettivo da una parte un approfondimento del metodo\
+        \ che porti ad una migliore comprensione della sua pratica, dall\u2019altra\
+        \ una riflessione che, partendo dal metodo stesso, vada a interrogarsi sulle\
+        \ idee filosofiche che sono da sempre state alla base della medicina. [...]</dc:description>\n\
+        <dc:date>2016-03-07T19:22:21Z</dc:date>\n<dc:date>2016-03-07T19:22:21Z</dc:date>\n\
+        <dc:date>2006</dc:date>\n<dc:type>Chapitre de livre / Book chapter</dc:type>\n\
+        <dc:identifier>Vitali Rosati, Marcello, \xAB Riflessioni filosofiche sul metodo\
+        \ Ress\xE9guier \xBB, dans Susanna Maddali Bongi (dir.), Riabilitazione reumatologica.\
+        \ Approccio multidisciplinare, Milan, Edra, 2006, p. 391-400.</dc:identifier>\n\
+        <dc:identifier>978-88-86457-68-2</dc:identifier>\n<dc:identifier>http://hdl.handle.net/1866/13218</dc:identifier>\n\
+        <dc:language>it</dc:language>\n<dc:publisher>Edra</dc:publisher>\n</oai_dc:dc>\n\
+        </metadata></record><record><header><identifier>oai:papyrus.bib.umontreal.ca:1866/13228</identifier><datestamp>2016-03-08T21:19:09Z</datestamp><setSpec>com_1866_2957</setSpec><setSpec>col_1866_13158</setSpec></header><metadata><oai_dc:dc\
+        \ xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\" xmlns:doc=\"\
+        http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>BROMANCE :\
+        \ Les paradoxes des strate\u0301gies homosociales.</dc:title>\n<dc:creator>Pellerin,\
+        \ Sarah</dc:creator>\n<dc:subject>Bromance, amitie\u0301, homosocial, masculinite\u0301\
+        , masculin, he\u0301te\u0301rosexualite\u0301, he\u0301te\u0301ronormativite\u0301\
+        , cine\u0301ma ame\u0301ricain, come\u0301dies, culture populaire</dc:subject>\n\
+        <dc:description>Depuis les anne\u0301es 2000, l\u2019apparition du terme Bromance\
+        \ marque la culture populaire ame\u0301ricaine. Cette notion est apparue pour\
+        \ de\u0301finir les amitie\u0301s entre hommes au cine\u0301ma, a\u0300 la\
+        \ te\u0301le\u0301vision et sur Internet. Les films de Bromance, caracte\u0301\
+        rise\u0301s par une multitude de sce\u0300nes de de\u0301claration d\u2019\
+        amour entre hommes, traduisent bien cette nouvelle fac\u0327on d\u2019aborder\
+        \ l\u2019amitie\u0301 au masculin. A\u0300 travers les de\u0301finitions de\
+        \ la masculinite\u0301 dans ces films, l\u2019enjeu de l\u2019he\u0301te\u0301\
+        rosexualite\u0301 demeure omnipre\u0301sent. Malgre\u0301 la fragilisation\
+        \ de certains ste\u0301re\u0301otypes traditionnels lie\u0301s au masculin,\
+        \ il n\u2019en demeure pas moins que la notion de \xABvraie\xBB masculinite\u0301\
+        \ persiste et demeure syste\u0301matiquement lie\u0301e a\u0300 l\u2019he\u0301\
+        te\u0301rosexualite\u0301 des hommes qui partagent cette amitie\u0301 particulie\u0300\
+        re qu\u2019on appelle Bromance. Dans cette optique, plusieurs strate\u0301\
+        gies se manifestent pour prouver la masculinite\u0301 et donc l\u2019he\u0301\
+        te\u0301rosexualite\u0301 des protagonistes, mais l\u2019une d\u2019entre\
+        \ elles semble e\u0302tre au c\u0153ur de ces films. Cette strate\u0301gie\
+        \ s\u2019incarne sous la forme d\u2019une compe\u0301tition entre hommes qui\
+        \ mise sur la capacite\u0301 a\u0300 performer un acte conventionnellement\
+        \ associe\u0301 a\u0300 l\u2019homosexualite\u0301. Sur Internet, des vide\u0301\
+        os qui prennent le nom \xAB Gay Chicken \xBB pre\u0301sentent des hommes qui\
+        \ s\u2019embrassent et qui se touchent sans e\u0302tre de\u0301range\u0301\
+        s ou e\u0301branle\u0301s. C\u2019est la capacite\u0301 a\u0300 e\u0302tre\
+        \ calme et en contro\u0302le en restant insensible au corps d\u2019un autre\
+        \ homme qui de\u0301montrerait le co\u0302te\u0301 ine\u0301branlable de son\
+        \ he\u0301te\u0301rosexualite\u0301 et donc de sa masculinite\u0301. C\u2019\
+        est cet esprit du \xAB Gay Chicken \xBB qui se retrouve un peu partout dans\
+        \ l\u2019univers des films de Bromance. Paradoxalement, ces nouveaux \xAB\
+        mode\u0300les\xBB d\u2019homme doivent pouvoir a\u0300 la fois incarner une\
+        \ masculinite\u0301 plus flexible, plus ouverte et sensible, mais doivent\
+        \ e\u0301galement prouver leur virilite\u0301. Cette \xAB masculinite\u0301\
+        \ contemporaine \xBB brouille les cartes entre ce qui est viril et ce qui\
+        \ ne l\u2019est pas, entre ce qui est fe\u0301minin et ce qui ne l\u2019est\
+        \ pas et entre ce qui est homosexuel et ce qui ne l\u2019est pas. Les relations\
+        \ homosociales dans le cadre de Bromances pre\u0301sentent alors des opportunite\u0301\
+        s indispensables pour prouver a\u0300 tous la force de son he\u0301te\u0301\
+        rosexualite\u0301. Ce travail de recherche se penchera donc plus pre\u0301\
+        cise\u0301ment sur les paradoxes d\u2019une \xAB masculinite\u0301 contemporaine\
+        \ \xBB intimement lie\u0301e a\u0300 l\u2019orientation he\u0301te\u0301rosexuelle,\
+        \ par l\u2019entremise de certains films issus de la culture populaire ame\u0301\
+        ricaine associe\u0301e a\u0300 la Bromance. L\u2019objectif est de montrer\
+        \ comment ces films sont des manifestations significatives d\u2019une nouvelle\
+        \ forme d\u2019affirmation identitaire masculine qui passe par des relations\
+        \ homosociales ou\u0300 les tensions et sous-textes homosexuels se multiplient\
+        \ et doivent e\u0302tre re\u0301prime\u0301s ou invalide\u0301s continuellement.</dc:description>\n\
+        <dc:date>2016-03-08T21:19:09Z</dc:date>\n<dc:date>2016-03-08T21:19:09Z</dc:date>\n\
+        <dc:date>2016</dc:date>\n<dc:type>Th\xE8se ou M\xE9moire num\xE9rique / Electronic\
+        \ Thesis or Dissertation</dc:type>\n<dc:identifier>http://hdl.handle.net/1866/13228</dc:identifier>\n\
+        <dc:language>fr</dc:language>\n</oai_dc:dc>\n</metadata></record></ListRecords></OAI-PMH>"}
+    headers:
+      connection: [Keep-Alive]
+      content-type: [application/xml;charset=UTF-8]
+      date: ['Wed, 09 Mar 2016 21:44:11 GMT']
+      keep-alive: ['timeout=5, max=100']
+      server: [Apache/2.2.29 (Unix) mod_ssl/2.2.29 OpenSSL/0.9.8e-fips-rhel5 mod_jk/1.2.40]
+    status: {code: 200, message: OK}
+version: 1

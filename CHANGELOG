@@ -2,6 +2,126 @@
 ChangeLog
 *********
 
+0.13.07 (2016-03-18)
+====================
+- Remove document ordering in postgres API
+
+0.13.06 (2016-03-17)
+====================
+- Add harvesters:
+	- mizzou: MOspace: University of Missouri
+	- nature: Nature
+	- umassmed: eScholarship@UMMS
+	- umontreal: PAPYRUS - Dépôt institutionnel de l'Université de Montréal
+	- uncg: UNC-Greensboro
+- README and installation updates
+- Postgres API updates:
+	- sort docs by providerUpdatedDateTime
+	- exclude non-normalized documents
+- Fix crossref, add subjects to harvested schema
+
+0.13.05 (2016-02-25)
+====================
+- Add harvesters:
+	- usgs: United States Geological Survey
+- Fix harvester biomedcentral to pull from new API
+
+0.13.04 (2016-02-24)
+====================
+- Update script to remove items from elasticsearch
+- Fix elasticsearch key typo
+
+0.13.03 (2016-02-23)
+====================
+- Add harvesters:
+	- fit: Florida Institute of Technology
+
+0.13.02 (2016-02-23)
+====================
+- Provide for deleting documents from es index from push API w/status deleted
+- Add script for deleting a few documents in production
+
+0.13.01 (2016-02-18)
+====================
+- Bump django and djangorestframework versions in requirements
+
+0.13.0 (2016-02-18)
+====================
+- Add harvesters:
+	- cuny: City University of New York
+	- ukansas: KU ScholarWorks
+- Update harvesters:
+	- springer to not normalize records published by biomedcentral
+	- dataone to only normalize metadata records
+- Postgres web API serializer updates to json
+
+0.12.2 (2016-02-04)
+====================
+- Push API harvester updates to work with unvalidated email addresses
+
+0.12.1 (2016-02-04)
+====================
+- Push API updates to work with new format
+- Pin version of invoke for travis
+- Change local dist to use postgres over cassandra
+
+0.12.0 (2016-01-26)
+====================
+- Adding push API harvester
+- Add institution support
+- VIVO settings in prep for VIVO harvester
+- Various updates and bugfixes @fabianvf :)
+
+0.11.16 (2016-01-26)
+====================
+- Change default encoding recovery to look for None
+
+0.11.15 (2016-01-26)
+====================
+- Add harvesters:
+	- eLife Sciences
+	- Digital Commons @ Illinois Wesleyan University
+	- K-State Research Exchange
+	- New Prairie Press at Kansas State University
+	- University of South Florida - Scholar Commons
+	- University of Tennessee at Chattanooga
+
+0.11.14 (2016-01-26)
+====================
+- add error recovery to normalize XML parsing
+- add error recovery to helper function XML parsing
+
+0.11.13 (2016-01-26)
+====================
+- fix favocon for trinity
+
+0.11.12 (2016-01-26)
+====================
+- moving tags into main schema for crossref
+
+0.11.11 (2016-01-26)
+====================
+- fixing typos
+
+0.11.10 (2016-01-08)
+====================
+- Fix favicons for 
+	- Addis Ababa
+	- Ghent
+	- NIST
+	- Texas State
+
+0.11.9 (2015-12-29)
+===================
+- Fix Addis Ababa URL gathering (strings were not being mutated)
+
+0.11.8 (2015-12-29)
+===================
+- Add harvesters:
+  - Pontifical Catholic University of Rio de Janeiro
+	- PURR - Purdue University Research Repository
+	- RCAAP - Repositório Científico de Acesso Aberto de Portugal
+
 0.11.7 (2015-12-18)
 ===================
 - Fix Addis Ababa URL gathering
