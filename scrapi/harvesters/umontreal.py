@@ -7,7 +7,15 @@ Example API call: http://papyrus.bib.umontreal.ca/oai/request?verb=ListRecords&m
 '''
 from __future__ import unicode_literals
 
+from scrapi.base.helpers import updated_schema, single_result
 from scrapi.base import OAIHarvester
+
+def umontreal_language_processor(languages):
+
+    if not languages:
+        languages = []
+
+    return languages
 
 
 class UmontrealHarvester(OAIHarvester):
@@ -16,5 +24,13 @@ class UmontrealHarvester(OAIHarvester):
     url = 'http://papyrus.bib.umontreal.ca'
 
     base_url = 'http://papyrus.bib.umontreal.ca/oai/request'
-    property_list = ['date', 'identifier', 'type', 'format', 'setSpec']
+
+    @property
+    def schema(self):
+        return updated_schema(self._schema, {
+            'languages': ('//dc:language/node()', umontreal_language_processor)
+        })
+
+    property_list = ['identifier', 'type', 'format', 'setSpec']
+
     timezone_granularity = True
