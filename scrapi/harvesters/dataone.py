@@ -173,7 +173,7 @@ class DataOneHarvester(XMLHarvester):
         doc = requests.get(DATAONE_SOLR_ENDPOINT, params={
             'q': query,
             'start': 0,
-            'rows': 1,
+            'rows': 1
         })
         doc = etree.XML(doc.content)
         rows = int(doc.xpath("//result/@numFound")[0])
@@ -183,7 +183,7 @@ class DataOneHarvester(XMLHarvester):
             data = requests.get(DATAONE_SOLR_ENDPOINT, params={
                 'q': query,
                 'start': n,
-                'rows': 1000,
+                'rows': 1000
             })
             docs = etree.XML(data.content).xpath('//doc')
             for doc in docs:
