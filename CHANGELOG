@@ -2,6 +2,24 @@
 ChangeLog
 *********
 
+0.13.07 (2016-03-18)
+====================
+- Remove document ordering in postgres API
+
+0.13.06 (2016-03-17)
+====================
+- Add harvesters:
+	- mizzou: MOspace: University of Missouri
+	- nature: Nature
+	- umassmed: eScholarship@UMMS
+	- umontreal: PAPYRUS - Dépôt institutionnel de l'Université de Montréal
+	- uncg: UNC-Greensboro
+- README and installation updates
+- Postgres API updates:
+	- sort docs by providerUpdatedDateTime
+	- exclude non-normalized documents
+- Fix crossref, add subjects to harvested schema
+
 0.13.05 (2016-02-25)
 ====================
 - Add harvesters:

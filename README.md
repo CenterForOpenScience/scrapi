@@ -13,62 +13,69 @@ scrapi
 ## Getting started
 
 - To run absolutely everything, you will need to:
-    - Install requirements
-    - Install Elasticsearch
+    - Install Python
+      - To check what version you have: $python --version
+    - Install pip to download Python packages
     - Install Cassandra, or Postgres, or both (optional)
+    - Install requirements
+    - Install Elasticsearch  
     - Install RabbitMQ (optional)
 - You do not have to install RabbitMQ if you're only running the harvesters locally.
 - Both Cassandra and Postgres aren't really necessary, you can choose which one you'd like, or use both. If you install neither, you can use local storage instead. In your settings, you'll specify a CANONICAL_PROCESSOR, just make sure that one is installed.
 
+### Installing virtualenv and virtualenvwrapper
 
-### Requirements
-
-- Create and enter virtual environment for scrapi, and go to the top level project directory. From there, run
-
-```bash
-$ pip install -r requirements.txt
-```
-Or, if you'd like some nicer testing and debugging utilities in addition to the core requirements, run
-```bash
-$ pip install -r dev-requirements.txt
-```
-
-This will also install the core requirements like normal.
-
-### Installing Elasticsearch
-
-_Note: Elasticsearch requires JDK 7._
-
-#### Mac OSX
+####  Mac OSX
 
 ```bash
-$ brew install homebrew/versions/elasticsearch17
+$pip install virtualenv
+$pip install virtualenvwrapper
 ```
+
+For further information on installing virtualenv and virtualenvwrapper:
+[http://docs.python-guide.org/en/latest/dev/virtualenvs/]
+
 
 #### Ubuntu
 
-1. Download and install the Public Signing Key.
-   ```bash
-   $ wget -qO - https://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
-   ```
-
-2. Add the ElasticSearch repository to your /etc/apt/sources.list.
-   ```bash
-   $ sudo add-apt-repository "deb http://packages.elasticsearch.org/elasticsearch/1.4/debian stable main"
-   ```
-
-3. Install the package
-   ```bash
-   $ sudo apt-get update
-   $ sudo apt-get install elasticsearch
-```
-
-#### Running
-
 ```bash
-$ elasticsearch
+$ sudo apt-get install python-pip python-dev build-essential libxml2-dev libxslt1-dev
+$ pip install virtualenv
+$ sudo pip install virtualenv virtualenvwrapper
+$ sudo pip install --upgrade pip
+```
+Create a backup of your .bashrc file
+```bash
+$ cp ~/.bashrc ~/.bashrc-org Create a backup of
+$ printf '\n%s\n%s\n%s' '# virtualenv' 'export WORKON_HOME=~/virtualenvs' 'source /usr/local/bin/virtualenvwrapper.sh' >> ~/.bashrc
+```
+Enable the virtual environment
+```bash
+$ source ~/.bashrc
+$ mkdir -p $WORKON_HOME
+$ mkvirtualenv scrapi
+```
+To exit the virtual environment
+```bash
+$ deactivate
+```
+To enter the virtual environment
+```bash
+$ workon scrapi
 ```
 
+### Forking and cloning scrapi materials from Github
+
+
+Create a Github account
+Fork the scrapi repository to your account
+
+Install Git
+```bash
+$ sudo apt-get update
+$ sudo apt-get install git
+$ git clone https://github.com/your-username/scrapi
+```
 
 ### Installing Postgres
 
@@ -88,17 +95,23 @@ $ launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
 ```
 
 #### Ubuntu
-
+Inside your scrapi checkout:
 ```bash
 $ sudo apt-get update
 $ sudo apt-get install postgresql
-$ service postgresql start
+$ sudo service postgresql start
 ```
 
-#### Running
+#### Running on Ubuntu
+Inside your scrapi checkout:
+```bash
+$ sudo -u postgres createuser your-username
+$ sudo -u postgres createdb -O your-username scrapi
+```
+
+#### Running on Mac OSX
 
 Inside your scrapi checkout:
-
 ```bash
 $ createdb scrapi
 $ invoke apidb
@@ -156,6 +169,74 @@ $ cassandra -f
 and you should be good to go.
 
 
+### Requirements
+
+- Create and enter virtual environment for scrapi, and go to the top level project directory. From there, run
+
+
+#### Ubuntu
+```bash
+$ sudo apt-get install libpq-dev python-dev
+$ pip install -r requirements.txt
+$ pip install -r dev-requirements.txt
+```
+
+#### Mac OSX
+```bash
+$ pip install -r requirements.txt
+```
+Or, if you'd like some nicer testing and debugging utilities in addition to the core requirements, run
+```bash
+$ pip install -r dev-requirements.txt
+```
+
+This will also install the core requirements like normal.
+
+### Installing Elasticsearch
+
+_Note: Elasticsearch requires JDK 7._
+
+#### Mac OSX
+
+```bash
+$ brew install homebrew/versions/elasticsearch17
+```
+
+#### Ubuntu
+
+1. Install Java
+   ```bash
+   $ sudo apt-get install openjdk-7-jdk 
+   ```
+
+2. Download and install the Public Signing Key.
+   ```bash
+   $ wget -qO - https://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
+   ```
+
+3. Add the ElasticSearch repository to your /etc/apt/sources.list.
+   ```bash
+   $ sudo add-apt-repository "deb http://packages.elasticsearch.org/elasticsearch/1.4/debian stable main"
+   ```
+
+4. Install the package
+   ```bash
+   $ sudo apt-get update
+   $ sudo apt-get install elasticsearch
+```
+
+#### Running on Ubuntu
+```bash
+$ sudo service elasticsearch start
+
+```
+
+#### Running on Mac OSX
+
+```bash
+$ elasticsearch
+```
+
 ### RabbitMQ (optional)
 
 _Note, if you're developing locally, you do not have to run RabbitMQ!_
@@ -170,6 +251,13 @@ $ brew install rabbitmq
 
 ```bash
 $ sudo apt-get install rabbitmq-server
+```
+
+### Create Databases
+Create databases for Postgres and Elasticsearch - only for local development!
+
+```bash
+$ invoke reset_all
 ```
 
 
@@ -300,7 +388,7 @@ Note that aliases must be activated before the provider map is generated.
 
 ```bash
 $ inv alias share share_v2
-$ inv provider_map 
+$ inv provider_map
 ```
 
 #### Delete the Elasticsearch index
@@ -357,3 +445,7 @@ Currently, data from [GRID](https://grid.ac/) and [IPEDS](https://nces.ed.gov/ip
     move the file to '/institutions/', or override the file path and/or name on ` tasks.py `. This can be individually loaded using the function ` ipeds() ` in ` tasks.py `.
 
 Running ` invoke institutions ` will properly load up institution data into elastic search provided the datasets are provided.
+
+### COS is Hiring!
+
+Want to help save science? Want to get paid to develop free, open source software? [Check out our openings!](http://cos.io/jobs)

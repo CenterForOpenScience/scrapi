@@ -94,7 +94,7 @@ def migrate(migration, sources=None, kwargs_string=None, dry=True, async=False, 
 
 
 @task
-def reset_search():
+def restart_search():
     ''' Restarts Elasticsearch '''
     run("curl -XPOST 'http://localhost:9200/_shutdown'")
     if platform.linux_distribution()[0] == 'Ubuntu':
@@ -287,8 +287,8 @@ def reset_all():
 
     if raw_input('Are you sure? y/N ') != 'y':
         return
-    os.system('psql -c "DROP DATABASE scrapi;"')
-    os.system('psql -c "CREATE DATABASE scrapi;"')
+    os.system('psql -c "DROP DATABASE scrapi;" template1')
+    os.system('psql -c "CREATE DATABASE scrapi;" template1')
     os.system('python manage.py migrate')
 
     os.system("curl -XDELETE '{}/share*'".format(settings.ELASTIC_URI))
