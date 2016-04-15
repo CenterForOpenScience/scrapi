@@ -1,0 +1,54 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/3.4.3 Linux/3.19.0-58-generic]
+    method: GET
+    uri: http://ir.lib.uwo.ca/do/oai/?verb=ListRecords&metadataPrefix=oai_dc&from=2016-04-13&until=2016-04-15
+  response:
+    body:
+      string: !!binary |
+        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
+    headers:
+      Cache-Control: [private]
+      Content-Encoding: [gzip]
+      Content-Type: [text/xml; charset=UTF-8]
+      Date: ['Fri, 15 Apr 2016 14:05:54 GMT']
+      Server: [nginx/1.2.1]
+      Set-Cookie: [bp_plack_session=799873440bd1cf59a553a0967f1a2122a75c390d; path=/;
+          HttpOnly, SERVERID=apollo_nginx; path=/]
+      X-Runtime: ['1.657970']
+    status: {code: 200, message: OK}
+version: 1
