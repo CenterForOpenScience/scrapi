@@ -18,19 +18,20 @@ from scrapi import requests
 from scrapi import settings
 from scrapi.base import JSONHarvester
 from scrapi.linter.document import RawDocument
-from scrapi.base.helpers import default_name_parser, build_properties, datetime_formatter
+from scrapi.base.helpers import build_properties, datetime_formatter
 
 logger = logging.getLogger(__name__)
 
-def process_NSF_contributors(firstname, lastname, awardeename): 
+
+def process_NSF_contributors(firstname, lastname, awardeename):
     # return something that's in the SHARE schema
-    return [ 
+    return [
         {
             'name': '{} {}'.format(firstname, lastname),
             'givenName': firstname,
             'familyName': lastname,
         },
-        {   
+        {
             'name': awardeename
         }
     ]
@@ -42,6 +43,7 @@ def process_nsf_uris(awd_id):
         'canonicalUri': nsf_url,
         'providerUri': [nsf_url]
     }
+
 
 def process_sponsorships(agency, awd_id, title):
     return [
@@ -56,6 +58,7 @@ def process_sponsorships(agency, awd_id, title):
         }
     ]
 
+
 class NSFAwards(JSONHarvester):
     short_name = 'nsfawards'
     long_name = 'NSF Awards'
@@ -68,7 +71,7 @@ class NSFAwards(JSONHarvester):
         'contributors': ('/piFirstName', '/piLastName', '/awardeeName', process_NSF_contributors),
         'providerUpdatedDateTime': ('/date', datetime_formatter),
         'uris': ('/id', process_nsf_uris),
-        'sponsorships': ('/agency', '/id', '/title',  process_sponsorships),
+        'sponsorships': ('/agency', '/id', '/title', process_sponsorships),
         'otherProperties': build_properties(
             ('awardeeCity', '/awardeeCity'),
             ('awardeeStateCode', '/awardeeStateCode'),
