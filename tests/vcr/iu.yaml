@@ -1,0 +1,100 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/3.4.3 Linux/3.19.0-58-generic]
+    method: GET
+    uri: https://scholarworks.iu.edu/dspace-oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2016-04-13T00:00:00Z&until=2016-04-15T00:00:00Z
+  response:
+    body: {string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"\
+        text/xsl\" href=\"static/style.xsl\"?><OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"\
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
+        http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"\
+        ><responseDate>2016-04-15T09:29:05Z</responseDate>\n    <request verb=\"ListRecords\"\
+        \ metadataPrefix=\"oai_dc\" from=\"2016-04-13T00:00:00Z\" until=\"2016-04-15T00:00:00Z\"\
+        >https://scholarworks.iu.edu/dspace-oai/request</request>\n    <ListRecords>\n\
+        \        <record>\n            <header>\n                <identifier>oai:scholarworks.iu.edu:2022/20801</identifier>\n\
+        \                <datestamp>2016-04-13T11:30:17Z</datestamp>\n           \
+        \     <setSpec>com_2022_20799</setSpec>\n                <setSpec>col_2022_20800</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>A TEST</dc:title>\n\
+        <dc:creator>Halliday, Jim</dc:creator>\n<dc:date>2016-04-12T19:00:06Z</dc:date>\n\
+        <dc:date>2016-04-12T19:00:06Z</dc:date>\n<dc:type>Book</dc:type>\n<dc:identifier>http://hdl.handle.net/2022/20801</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n</oai_dc:dc>\n</metadata>\n        </record>\n\
+        \        <record>\n            <header>\n                <identifier>oai:scholarworks.iu.edu:2022/20802</identifier>\n\
+        \                <datestamp>2016-04-14T13:04:11Z</datestamp>\n           \
+        \     <setSpec>com_2022_14076</setSpec>\n                <setSpec>com_2022_3160</setSpec>\n\
+        \                <setSpec>com_2022_19673</setSpec>\n                <setSpec>col_2022_14091</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The German\
+        \ School of Singing:  a Compendium of German Treatises 1848-1965</dc:title>\n\
+        <dc:creator>Whitener, Joshua</dc:creator>\n<dc:subject>German Vocal technique,\
+        \ Heinrich Ferdinand Mannstein, Friedrich Schmitt, Ferdinand Sieber, Julius\
+        \ Hey, Bruno M\xFCller-Brunow, George Armin, Paul Bruns, Franziska Martienssen-Lohmann,\
+        \ Frederick Husler</dc:subject>\n<dc:description>The German school of singing\
+        \ is often characterized by the principles of a muscular approach to respiration,\
+        \ an overexpansion of the chest, a darker tonal preference, fabricated laryngeal\
+        \ position, and an emphasis on text over vocalism. Singers, teachers of singing,\
+        \ musicologists, composers, and conductors rely on astute observations and\
+        \ intensive study of historical artifacts, including original writings, translated\
+        \ work, and secondary analyses to understand the German approach. English-speaking\
+        \ audiences typically \"know'\" German technique through English language\
+        \ writings or translated versions of scholars such as Richard Miller and German\
+        \ pedagogues such as Marchesi, Stockhausen, and Lehmann. However, omission\
+        \ of some seminal writings by German pedagogues not yet translated to English\
+        \ limit a full understanding of both the evolution of German technique and\
+        \ its applicability to teaching singing today.&#13;\n&#13;\n&#13;\n&#13;\n\
+        This analysis documents the approach to singing advocated by nine German pedagogues\
+        \ beginning in the mid-1800's through the middle of the twentieth century.\
+        \ Using original German writings from these authors as sources for this review,\
+        \ it becomes clear that as the German style developed, there was a desire\
+        \ to move away from other European techniques, particularly Italian principles,\
+        \ to create a unique German method. Yet ultimately, many Italian ideas remained\
+        \ in the German approach. By comparing the beliefs and singing techniques\
+        \ of important German authors, a chronological appraisal of German style identifies\
+        \ the essentials of a German school of singing. These include Italian fundamentals\
+        \ of diaphragmatic-costal breathing, elastic tension of the breath musculature,\
+        \ imposto (breath-resonance connection), chiaroscuro tonal quality, an importance\
+        \ of head voice in blending registers, use of consonants in balancing a tone,\
+        \ and a gestalt approach to singing. These principles were modified to fit\
+        \ German preferences and taste.</dc:description>\n<dc:date>2016-04-14T13:04:11Z</dc:date>\n\
+        <dc:date>2016-04-14T13:04:11Z</dc:date>\n<dc:date>2016-04-14</dc:date>\n<dc:type>Thesis</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/2022/20802</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:rights>No license.</dc:rights>\n</oai_dc:dc>\n</metadata>\n        </record>\n\
+        \        <record>\n            <header>\n                <identifier>oai:scholarworks.iu.edu:2022/20803</identifier>\n\
+        \                <datestamp>2016-04-14T14:57:12Z</datestamp>\n           \
+        \     <setSpec>com_2022_357</setSpec>\n                <setSpec>com_2022_356</setSpec>\n\
+        \                <setSpec>com_2022_19673</setSpec>\n                <setSpec>col_2022_12986</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Grand Challenge\
+        \ of Indiana Water:  Estimate of Compute and Data Storage Needs</dc:title>\n\
+        <dc:creator>Plale, Beth</dc:creator>\n<dc:subject>Cyberinfrastructure, HPC,\
+        \ data management, water resource models, hydroinformatics</dc:subject>\n\
+        <dc:description>This study is undertaken to assess the computational and storage\
+        \ needs for a large-scale research activity to study water in the State of\
+        \ Indiana. It draws its data and compute numbers from the Vortex II Forecast\
+        \ Data study of 2010 carried out by the Data To Insight Center at Indiana\
+        \ University.  Detail of the study can be found in each of the archived data\
+        \ products (which contains results of a single weather forecast plus 42 visualizations\
+        \ created for each forecast.)   See https://scholarworks.iu.edu/dspace/handle/2022/15153\
+        \ for example archived data product.</dc:description>\n<dc:date>2016-04-14T14:57:12Z</dc:date>\n\
+        <dc:date>2016-04-14T14:57:12Z</dc:date>\n<dc:type>Working Paper</dc:type>\n\
+        <dc:identifier>http://hdl.handle.net/2022/20803</dc:identifier>\n<dc:language>en_US</dc:language>\n\
+        <dc:coverage>Study undertaken April 2016</dc:coverage>\n<dc:publisher>none</dc:publisher>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n    </ListRecords>\n</OAI-PMH>\n"}
+    headers:
+      Connection: [close]
+      Content-Type: [application/xml]
+      Date: ['Fri, 15 Apr 2016 13:29:05 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+version: 1
