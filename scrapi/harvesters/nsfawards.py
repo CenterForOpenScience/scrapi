@@ -1,9 +1,7 @@
 """
-Figshare harvester of public projects for the SHARE Notification Service
-Note: At the moment, this harvester only harvests basic data on each article, and does
-not make a seperate request for additional metadata for each record.
+NSF Award harvester of public projects for the SHARE Notification Service
 
-Example API query: http://api.figshare.com/v1/articles/search?search_for=*&from_date=2015-2-1&to_date=2015-2-1
+Example API query: http://api.nsf.gov/services/v1/awards.json
 """
 
 from __future__ import unicode_literals
@@ -120,5 +118,6 @@ class NSFAwards(JSONHarvester):
 
             offset += 25
             records = requests.get(search_url + '&offset={}'.format(str(offset)), throttle=3).json()['response'].get('award')
+        all_records.extend(records)
 
         return all_records
