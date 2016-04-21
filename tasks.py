@@ -189,6 +189,7 @@ def worker(loglevel='INFO', hostname='%h', autoreload=False):
 @task
 def harvester(harvester_name, async=False, start=None, end=None):
     ''' Runs a specific harvester '''
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'api.api.settings'
     from scrapi import settings
     settings.CELERY_ALWAYS_EAGER = not async
     from scrapi import registry

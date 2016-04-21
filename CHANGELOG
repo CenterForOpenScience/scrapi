@@ -2,6 +2,17 @@
 ChangeLog
 *********
 
+0.13.08 (2016-04-21)
+====================
+- Add harvesters:
+	- udc: University of Minnesota, Digital Conservancy
+	- uhawaii:ScholarSpace at University of Hawaii at Manoa
+	- csir: CSIR Researchspace
+	- iu: Indiana University Libraries' IUScholarWorks
+	- uwo: Western University
+	- nsfawards: NSF Awards
+- Fix django settings module import
+
 0.13.07 (2016-03-18)
 ====================
 - Remove document ordering in postgres API
