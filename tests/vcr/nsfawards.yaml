@@ -1,0 +1,235 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.8.1]
+    method: GET
+    uri: http://api.nsf.gov/services/v1/awards.json?dateStart=04/17/2016&dateEnd=04/18/2016
+  response:
+    body: {string: !!python/unicode "{\n  \"response\" : {\n    \"award\" : [ {\n
+        \     \"agency\" : \"NSF\",\n      \"awardeeCity\" : \"Minneapolis\",\n      \"awardeeName\"
+        : \"University of Minnesota-Twin Cities\",\n      \"awardeeStateCode\" : \"MN\",\n
+        \     \"fundsObligatedAmt\" : \"2518120\",\n      \"id\" : \"1559691\",\n
+        \     \"piFirstName\" : \"Paul\",\n      \"piLastName\" : \"Morin\",\n      \"publicAccessMandate\"
+        : \"0\",\n      \"date\" : \"04/18/2016\",\n      \"title\" : \"The Polar
+        Geospatial Center: Community and Facility Support\"\n    }, {\n      \"agency\"
+        : \"NSF\",\n      \"awardeeCity\" : \"NEW YORK\",\n      \"awardeeName\" :
+        \"New York University\",\n      \"awardeeStateCode\" : \"NY\",\n      \"fundsObligatedAmt\"
+        : \"179628\",\n      \"id\" : \"1601680\",\n      \"piFirstName\" : \"Alena\",\n
+        \     \"piLastName\" : \"Pirutka\",\n      \"publicAccessMandate\" : \"0\",\n
+        \     \"date\" : \"04/18/2016\",\n      \"title\" : \"Cohomological and Birational
+        Invariants of Algebraic Varieties\"\n    }, {\n      \"agency\" : \"NSF\",\n
+        \     \"awardeeCity\" : \"Seattle\",\n      \"awardeeName\" : \"University
+        of Washington\",\n      \"awardeeStateCode\" : \"WA\",\n      \"fundsObligatedAmt\"
+        : \"672702\",\n      \"id\" : \"1557125\",\n      \"piFirstName\" : \"Sharlene\",\n
+        \     \"piLastName\" : \"Santana\",\n      \"publicAccessMandate\" : \"0\",\n
+        \     \"date\" : \"04/18/2016\",\n      \"title\" : \"Macroevolutionary Analyses
+        of Cranial Morphology and Function in Mammals\"\n    }, {\n      \"agency\"
+        : \"NSF\",\n      \"awardeeCity\" : \"College Station\",\n      \"awardeeName\"
+        : \"Texas A&M Engineering Experiment Station\",\n      \"awardeeStateCode\"
+        : \"TX\",\n      \"fundsObligatedAmt\" : \"50000\",\n      \"id\" : \"1634757\",\n
+        \     \"piFirstName\" : \"Debjyoti\",\n      \"piLastName\" : \"Banerjee\",\n
+        \     \"publicAccessMandate\" : \"1\",\n      \"date\" : \"04/18/2016\",\n
+        \     \"title\" : \"I-Corps: Nanofluids Technology\"\n    }, {\n      \"agency\"
+        : \"NSF\",\n      \"awardeeCity\" : \"Newark\",\n      \"awardeeName\" : \"New
+        Jersey Institute of Technology\",\n      \"awardeeStateCode\" : \"NJ\",\n
+        \     \"fundsObligatedAmt\" : \"132500\",\n      \"id\" : \"1557895\",\n      \"piFirstName\"
+        : \"Eric\",\n      \"piLastName\" : \"Fortune\",\n      \"publicAccessMandate\"
+        : \"0\",\n      \"date\" : \"04/18/2016\",\n      \"title\" : \"Collaborative
+        Research: Neural Mechanisms of Active Sensing\"\n    }, {\n      \"agency\"
+        : \"NSF\",\n      \"awardeeCity\" : \"Philadelphia\",\n      \"awardeeName\"
+        : \"Drexel University\",\n      \"awardeeStateCode\" : \"PA\",\n      \"fundsObligatedAmt\"
+        : \"360000\",\n      \"id\" : \"1609272\",\n      \"piFirstName\" : \"Ekaterina\",\n
+        \     \"piLastName\" : \"Pomerantseva\",\n      \"publicAccessMandate\" :
+        \"0\",\n      \"date\" : \"04/18/2016\",\n      \"title\" : \"Advanced Electrochemistry
+        of Na-ion Battery Cathodes Through Chemically Controlled Materials Synthesis\"\n
+        \   }, {\n      \"agency\" : \"NSF\",\n      \"awardeeCity\" : \"SAINT LOUIS\",\n
+        \     \"awardeeName\" : \"Washington University\",\n      \"awardeeStateCode\"
+        : \"MO\",\n      \"fundsObligatedAmt\" : \"247956\",\n      \"id\" : \"1565243\",\n
+        \     \"piFirstName\" : \"John\",\n      \"piLastName\" : \"McCarthy\",\n
+        \     \"publicAccessMandate\" : \"0\",\n      \"date\" : \"04/18/2016\",\n
+        \     \"title\" : \"Operator Theory and Applications\"\n    }, {\n      \"agency\"
+        : \"NSF\",\n      \"awardeeCity\" : \"TEMPE\",\n      \"awardeeName\" : \"Arizona
+        State University\",\n      \"awardeeStateCode\" : \"AZ\",\n      \"fundsObligatedAmt\"
+        : \"63464\",\n      \"id\" : \"1551810\",\n      \"piFirstName\" : \"Kaye\",\n
+        \     \"piLastName\" : \"Reed\",\n      \"publicAccessMandate\" : \"0\",\n
+        \     \"date\" : \"04/18/2016\",\n      \"title\" : \"Collaborative Research:
+        Understanding Temporal Variation in Primate Communities: Integrating Data
+        from Extant and Fossil Species\"\n    }, {\n      \"agency\" : \"NSF\",\n
+        \     \"awardeeCity\" : \"Socorro\",\n      \"awardeeName\" : \"New Mexico
+        Institute of Mining and Technology\",\n      \"awardeeStateCode\" : \"NM\",\n
+        \     \"fundsObligatedAmt\" : \"141429\",\n      \"id\" : \"1557232\",\n      \"piFirstName\"
+        : \"Glenn\",\n      \"piLastName\" : \"Spinelli\",\n      \"publicAccessMandate\"
+        : \"0\",\n      \"date\" : \"04/18/2016\",\n      \"title\" : \"Integrated
+        geological, geophysical, and hydrological study of field-scale fault-zone
+        cementation and permeability\"\n    }, {\n      \"agency\" : \"NSF\",\n      \"awardeeCity\"
+        : \"Easton\",\n      \"awardeeName\" : \"Lafayette College\",\n      \"awardeeStateCode\"
+        : \"PA\",\n      \"fundsObligatedAmt\" : \"91660\",\n      \"id\" : \"1560222\",\n
+        \     \"piFirstName\" : \"Elizabeth\",\n      \"piLastName\" : \"McMahon\",\n
+        \     \"publicAccessMandate\" : \"0\",\n      \"date\" : \"04/18/2016\",\n
+        \     \"title\" : \"REU Site: Undergraduate Research in Mathematics, Applied
+        Mathematics, and Statistics at Lafayette College\"\n    }, {\n      \"agency\"
+        : \"NSF\",\n      \"awardeeCity\" : \"Atlanta\",\n      \"awardeeName\" :
+        \"Georgia Tech Research Corporation\",\n      \"awardeeStateCode\" : \"GA\",\n
+        \     \"fundsObligatedAmt\" : \"150000\",\n      \"id\" : \"1601842\",\n      \"piFirstName\"
+        : \"Joseph\",\n      \"piLastName\" : \"Rabinoff\",\n      \"publicAccessMandate\"
+        : \"0\",\n      \"date\" : \"04/18/2016\",\n      \"title\" : \"Development
+        and Applications of Non-Archimedean Analytic Geometry and Tropical Geometry\"\n
+        \   }, {\n      \"agency\" : \"NSF\",\n      \"awardeeCity\" : \"NOTRE DAME\",\n
+        \     \"awardeeName\" : \"University of Notre Dame\",\n      \"awardeeStateCode\"
+        : \"IN\",\n      \"fundsObligatedAmt\" : \"100000\",\n      \"id\" : \"1600625\",\n
+        \     \"piFirstName\" : \"Julia\",\n      \"piLastName\" : \"Knight\",\n      \"publicAccessMandate\"
+        : \"0\",\n      \"date\" : \"04/18/2016\",\n      \"title\" : \"Collaboration
+        in Computability\"\n    }, {\n      \"agency\" : \"NSF\",\n      \"awardeeCity\"
+        : \"NEW YORK\",\n      \"awardeeName\" : \"Columbia University\",\n      \"awardeeStateCode\"
+        : \"NY\",\n      \"fundsObligatedAmt\" : \"109296\",\n      \"id\" : \"1601144\",\n
+        \     \"piFirstName\" : \"Wei\",\n      \"piLastName\" : \"Zhang\",\n      \"publicAccessMandate\"
+        : \"0\",\n      \"date\" : \"04/18/2016\",\n      \"title\" : \"Arithmetic
+        and Geometry Around Relative Trace Formulae\"\n    }, {\n      \"agency\"
+        : \"NSF\",\n      \"awardeeCity\" : \"Salt Lake City\",\n      \"awardeeName\"
+        : \"Law and Society Association\",\n      \"awardeeStateCode\" : \"UT\",\n
+        \     \"fundsObligatedAmt\" : \"293250\",\n      \"id\" : \"1556070\",\n      \"piFirstName\"
+        : \"Valerie\",\n      \"piLastName\" : \"Hans\",\n      \"publicAccessMandate\"
+        : \"0\",\n      \"date\" : \"04/18/2016\",\n      \"title\" : \"Expanding
+        Law and Social Science Research by International Research Collaboration\"\n
+        \   }, {\n      \"agency\" : \"NSF\",\n      \"awardeeCity\" : \"Lincoln\",\n
+        \     \"awardeeName\" : \"University of Nebraska-Lincoln\",\n      \"awardeeStateCode\"
+        : \"NE\",\n      \"fundsObligatedAmt\" : \"534194\",\n      \"id\" : \"1556186\",\n
+        \     \"piFirstName\" : \"Yufeng\",\n      \"piLastName\" : \"Ge\",\n      \"publicAccessMandate\"
+        : \"0\",\n      \"date\" : \"04/18/2016\",\n      \"title\" : \"IDBR: TYPE
+        A: Multispectral laser 3D ranging and imaging system for plant phenotyping\"\n
+        \   }, {\n      \"agency\" : \"NSF\",\n      \"awardeeCity\" : \"Minneapolis\",\n
+        \     \"awardeeName\" : \"University of Minnesota-Twin Cities\",\n      \"awardeeStateCode\"
+        : \"MN\",\n      \"fundsObligatedAmt\" : \"91331\",\n      \"id\" : \"1601961\",\n
+        \     \"piFirstName\" : \"Victor\",\n      \"piLastName\" : \"Reiner\",\n
+        \     \"publicAccessMandate\" : \"0\",\n      \"date\" : \"04/18/2016\",\n
+        \     \"title\" : \"Finite Reflection and General Linear Groups\"\n    },
+        {\n      \"agency\" : \"NSF\",\n      \"awardeeCity\" : \"New York\",\n      \"awardeeName\"
+        : \"CUNY Baruch College\",\n      \"awardeeStateCode\" : \"NY\",\n      \"fundsObligatedAmt\"
+        : \"63130\",\n      \"id\" : \"1556213\",\n      \"piFirstName\" : \"David\",\n
+        \     \"piLastName\" : \"Gruber\",\n      \"publicAccessMandate\" : \"0\",\n
+        \     \"date\" : \"04/18/2016\",\n      \"title\" : \"Collaborative Research:
+        IDBR: TYPE A: Development of Squishy Robot Hands for a Delicate, Effective
+        and Non-Intrusive Approach to Studying Deep Coral Reefs\"\n    }, {\n      \"agency\"
+        : \"NSF\",\n      \"awardeeCity\" : \"Evanston\",\n      \"awardeeName\" :
+        \"Northwestern University\",\n      \"awardeeStateCode\" : \"IL\",\n      \"fundsObligatedAmt\"
+        : \"246515\",\n      \"id\" : \"1600718\",\n      \"piFirstName\" : \"Laura\",\n
+        \     \"piLastName\" : \"DeMarco\",\n      \"publicAccessMandate\" : \"0\",\n
+        \     \"date\" : \"04/18/2016\",\n      \"title\" : \"Complex Algebraic Dynamics
+        and Geometry\"\n    }, {\n      \"agency\" : \"NSF\",\n      \"awardeeCity\"
+        : \"Newark\",\n      \"awardeeName\" : \"MSTM, LLC\",\n      \"awardeeStateCode\"
+        : \"DE\",\n      \"fundsObligatedAmt\" : \"736878\",\n      \"id\" : \"1556043\",\n
+        \     \"piFirstName\" : \"Charles\",\n      \"piLastName\" : \"McEwen\",\n
+        \     \"publicAccessMandate\" : \"0\",\n      \"date\" : \"04/18/2016\",\n
+        \     \"title\" : \"STTR Phase II: Novel Ionization Process for Materials
+        Characterization using Mass Spectrometry\"\n    }, {\n      \"agency\" : \"NSF\",\n
+        \     \"awardeeCity\" : \"College Station\",\n      \"awardeeName\" : \"Texas
+        A&M AgriLife Research\",\n      \"awardeeStateCode\" : \"TX\",\n      \"fundsObligatedAmt\"
+        : \"19305\",\n      \"id\" : \"1601675\",\n      \"piFirstName\" : \"Michel\",\n
+        \     \"piLastName\" : \"Slotman\",\n      \"publicAccessMandate\" : \"0\",\n
+        \     \"date\" : \"04/18/2016\",\n      \"title\" : \"DISSERTATION RESEARCH:
+        The Genomics of Hybrid Sterility & Speciation in the Anopheles gambiae Species
+        Complex\"\n    }, {\n      \"agency\" : \"NSF\",\n      \"awardeeCity\" :
+        \"Seattle\",\n      \"awardeeName\" : \"University of Washington\",\n      \"awardeeStateCode\"
+        : \"WA\",\n      \"fundsObligatedAmt\" : \"98000\",\n      \"id\" : \"1565352\",\n
+        \     \"piFirstName\" : \"Sandor\",\n      \"piLastName\" : \"Kovacs\",\n
+        \     \"publicAccessMandate\" : \"0\",\n      \"date\" : \"04/18/2016\",\n
+        \     \"title\" : \"Singularities and Moduli Theory\"\n    }, {\n      \"agency\"
+        : \"NSF\",\n      \"awardeeCity\" : \"Chicago\",\n      \"awardeeName\" :
+        \"University of Chicago\",\n      \"awardeeStateCode\" : \"IL\",\n      \"fundsObligatedAmt\"
+        : \"160000\",\n      \"id\" : \"1600129\",\n      \"piFirstName\" : \"Panagiotis\",\n
+        \     \"piLastName\" : \"Souganidis\",\n      \"publicAccessMandate\" : \"0\",\n
+        \     \"date\" : \"04/18/2016\",\n      \"title\" : \"Nonlinear Partial Differential
+        Equations and Applications\"\n    }, {\n      \"agency\" : \"NSF\",\n      \"awardeeCity\"
+        : \"Boulder\",\n      \"awardeeName\" : \"University of Colorado at Boulder\",\n
+        \     \"awardeeStateCode\" : \"CO\",\n      \"fundsObligatedAmt\" : \"370630\",\n
+        \     \"id\" : \"1561755\",\n      \"piFirstName\" : \"Detlev\",\n      \"piLastName\"
+        : \"Helmig\",\n      \"publicAccessMandate\" : \"0\",\n      \"date\" : \"04/18/2016\",\n
+        \     \"title\" : \"Leaf-level to Canopy NOx and Ozone Exchanges at University
+        of Michigan Biological Station (UMBS) during PHotochemistry, Emissions, and
+        Transport (PROPHET) 2016\"\n    }, {\n      \"agency\" : \"NSF\",\n      \"awardeeCity\"
+        : \"Baltimore\",\n      \"awardeeName\" : \"Johns Hopkins University\",\n
+        \     \"awardeeStateCode\" : \"MD\",\n      \"fundsObligatedAmt\" : \"93750\",\n
+        \     \"id\" : \"1557858\",\n      \"piFirstName\" : \"Noah\",\n      \"piLastName\"
+        : \"Cowan\",\n      \"publicAccessMandate\" : \"0\",\n      \"date\" : \"04/18/2016\",\n
+        \     \"title\" : \"Collaborative Research: Neural Mechanisms of Active Sensing\"\n
+        \   }, {\n      \"agency\" : \"NSF\",\n      \"awardeeCity\" : \"Philadelphia\",\n
+        \     \"awardeeName\" : \"Drexel University\",\n      \"awardeeStateCode\"
+        : \"PA\",\n      \"fundsObligatedAmt\" : \"97329\",\n      \"id\" : \"1600953\",\n
+        \     \"piFirstName\" : \"Jennifer\",\n      \"piLastName\" : \"Morse\",\n
+        \     \"publicAccessMandate\" : \"0\",\n      \"date\" : \"04/18/2016\",\n
+        \     \"title\" : \"Combinatorics of Macdonald Polynomials and Schubert Calculus\"\n
+        \   } ]\n  }\n}"}
+    headers:
+      connection: [Keep-Alive]
+      content-length: ['10964']
+      content-type: [application/json; charset=UTF-8]
+      date: ['Tue, 19 Apr 2016 19:45:07 GMT']
+      dynatrace: [PT=710826;PA=270011390;RS=ResearchGOV - PROD/20160416015531_0.session;SP=ResearchGOV
+          - PROD;PS=451467401]
+      keep-alive: ['timeout=15, max=100']
+      p3p: ['policyref="http://web.acpt.research.gov/w3c/p3p.xml"']
+      server: [Apache/2.2.15 (Red Hat) DAV/2]
+      set-cookie: [BIGipServer~R.Gov-Prod~wsm.research.gov_p=rd10o00000000000000000000ffffac10282ao8109;
+          path=/]
+      x-dynatrace: [PT=710826;PA=270011390;RS=ResearchGOV - PROD/20160416015531_0.session;SP=ResearchGOV
+          - PROD;PS=451467401]
+      x-powered-by: [Servlet/2.5 JSP/2.1]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.8.1]
+    method: GET
+    uri: http://api.nsf.gov/services/v1/awards.json?dateStart=04/17/2016&dateEnd=04/18/2016&offset=26
+  response:
+    body: {string: !!python/unicode "{\n  \"response\" : {\n    \"award\" : [ {\n
+        \     \"agency\" : \"NSF\",\n      \"awardeeCity\" : \"AMHERST\",\n      \"awardeeName\"
+        : \"University of Massachusetts Amherst\",\n      \"awardeeStateCode\" : \"MA\",\n
+        \     \"fundsObligatedAmt\" : \"211133\",\n      \"id\" : \"1551799\",\n      \"piFirstName\"
+        : \"Jason\",\n      \"piLastName\" : \"Kamilar\",\n      \"publicAccessMandate\"
+        : \"0\",\n      \"date\" : \"04/18/2016\",\n      \"title\" : \"Collaborative
+        Research: Understanding Temporal Variation in Primate Communities: Integrating
+        Data from Extant and Fossil Species\"\n    }, {\n      \"agency\" : \"NSF\",\n
+        \     \"awardeeCity\" : \"Cambridge\",\n      \"awardeeName\" : \"Harvard
+        University\",\n      \"awardeeStateCode\" : \"MA\",\n      \"fundsObligatedAmt\"
+        : \"397771\",\n      \"id\" : \"1556164\",\n      \"piFirstName\" : \"Robert\",\n
+        \     \"piLastName\" : \"Wood\",\n      \"publicAccessMandate\" : \"0\",\n
+        \     \"date\" : \"04/18/2016\",\n      \"title\" : \"Collaborative Research:
+        IDBR: TYPE A: Development of Squishy Robot Hands for a Delicate, Effective
+        and Non-Intrusive Approach to Studying Deep Coral Reefs\"\n    }, {\n      \"agency\"
+        : \"NSF\",\n      \"awardeeCity\" : \"Greensboro\",\n      \"awardeeName\"
+        : \"Bio-Adhesive Alliance Inc.\",\n      \"awardeeStateCode\" : \"NC\",\n
+        \     \"fundsObligatedAmt\" : \"750000\",\n      \"id\" : \"1556041\",\n      \"piFirstName\"
+        : \"Daniel\",\n      \"piLastName\" : \"Oldham\",\n      \"publicAccessMandate\"
+        : \"0\",\n      \"date\" : \"04/18/2016\",\n      \"title\" : \"SBIR Phase
+        II: Production of Bio-adhesive from Animal Waste\"\n    }, {\n      \"agency\"
+        : \"NSF\",\n      \"awardeeCity\" : \"Houston\",\n      \"awardeeName\" :
+        \"William Marsh Rice University\",\n      \"awardeeStateCode\" : \"TX\",\n
+        \     \"fundsObligatedAmt\" : \"5000\",\n      \"id\" : \"1619989\",\n      \"piFirstName\"
+        : \"Douglas\",\n      \"piLastName\" : \"Natelson\",\n      \"publicAccessMandate\"
+        : \"0\",\n      \"date\" : \"04/18/2016\",\n      \"title\" : \"Workshop Proposal:
+        Interacting Quantum Systems Out of Equilibrium\"\n    } ]\n  }\n}"}
+    headers:
+      connection: [Keep-Alive]
+      content-length: ['1891']
+      content-type: [application/json; charset=UTF-8]
+      date: ['Tue, 19 Apr 2016 19:45:07 GMT']
+      dynatrace: [PT=710592;PA=-517075170;RS=ResearchGOV - PROD/20160416015531_0.session;SP=ResearchGOV
+          - PROD;PS=451467401]
+      keep-alive: ['timeout=15, max=100']
+      p3p: ['policyref="http://web.acpt.research.gov/w3c/p3p.xml"']
+      server: [Apache/2.2.15 (Red Hat) DAV/2]
+      set-cookie: [BIGipServer~R.Gov-Prod~wsm.research.gov_p=rd10o00000000000000000000ffffac10282ao8109;
+          path=/]
+      x-dynatrace: [PT=710592;PA=-517075170;RS=ResearchGOV - PROD/20160416015531_0.session;SP=ResearchGOV
+          - PROD;PS=451467401]
+      x-powered-by: [Servlet/2.5 JSP/2.1]
+    status: {code: 200, message: OK}
+version: 1
