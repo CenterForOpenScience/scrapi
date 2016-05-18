@@ -12,9 +12,12 @@ import json
 from scrapi.util import json_without_bytes
 from scrapi.processing.base import BaseProcessor
 
+from .postgres import HarvesterResponseModel, DatabaseManager as StubManager
+
 
 class StorageProcessor(BaseProcessor):
     NAME = 'storage'
+    manager = StubManager()
 
     def process_raw(self, raw):
         self.write(raw['source'], raw['docID'], 'raw', raw.attributes)
@@ -36,3 +39,7 @@ class StorageProcessor(BaseProcessor):
 
     def get_versions(self, source, docID):
         raise NotImplementedError
+
+    @property
+    def HarvesterResponseModel(self):
+        return HarvesterResponseModel

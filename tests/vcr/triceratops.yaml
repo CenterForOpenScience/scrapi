@@ -1,0 +1,474 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/3.5.1 Linux/3.13.0-85-generic]
+    method: GET
+    uri: http://triceratops.brynmawr.edu/dspace-oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2016-04-26T00:00:00Z&until=2016-04-28T00:00:00Z
+  response:
+    body: {string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"\
+        text/xsl\" href=\"static/style.xsl\"?><OAI-PMH xmlns=\"http://www.openarchives.org/OAI/2.0/\"\
+        \ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"\
+        http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd\"\
+        ><responseDate>2016-04-28T15:20:39Z</responseDate>\n    <request verb=\"ListRecords\"\
+        \ metadataPrefix=\"oai_dc\" from=\"2016-04-26T00:00:00Z\" until=\"2016-04-28T00:00:00Z\"\
+        >http://triceratops.brynmawr.edu/dspace-oai/request</request>\n    <ListRecords>\n\
+        \        <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/1476</identifier>\n\
+        \                <datestamp>2016-04-27T14:44:09Z</datestamp>\n           \
+        \     <setSpec>com_10066_105</setSpec>\n                <setSpec>com_10066_97</setSpec>\n\
+        \                <setSpec>com_10066_96</setSpec>\n                <setSpec>col_10066_1467</setSpec>\n\
+        \            </header>\n            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>Narratological\
+        \ Metamorphoses: A Study of the Narrator Stance in Apuleius' Metamorphoses</dc:title>\n\
+        <dc:creator>Christy, Elizabeth</dc:creator>\n<dc:contributor>Roberts, Deborah\
+        \ H.</dc:contributor>\n<dc:date>2008-06-18T20:24:15Z</dc:date>\n<dc:date>2008-06-18T20:24:15Z</dc:date>\n\
+        <dc:date>1993</dc:date>\n<dc:type>Thesis (B.A.)</dc:type>\n<dc:identifier>http://hdl.handle.net/10066/1476</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:rights>http://creativecommons.org/licenses/by-nc/3.0/us/</dc:rights>\n\
+        </oai_dc:dc>\n</metadata>\n        </record>\n        <record>\n         \
+        \   <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17224</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:22Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 4, No. 1</dc:title>\n<dc:date>2015-11-10T20:27:54Z</dc:date>\n\
+        <dc:date>2015-11-10T20:27:54Z</dc:date>\n<dc:date>1971-09-10</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17224</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17225</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 4, No. 2</dc:title>\n<dc:date>2015-11-10T20:33:15Z</dc:date>\n\
+        <dc:date>2015-11-10T20:33:15Z</dc:date>\n<dc:date>1971-09-17</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17225</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17226</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 4, No. 3</dc:title>\n<dc:date>2015-11-10T20:39:25Z</dc:date>\n\
+        <dc:date>2015-11-10T20:39:25Z</dc:date>\n<dc:date>1971-09-24</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17226</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17230</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 4, No. 7</dc:title>\n<dc:date>2015-11-10T20:52:43Z</dc:date>\n\
+        <dc:date>2015-11-10T20:52:43Z</dc:date>\n<dc:date>1971-10-22</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17230</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17231</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 4, No. 8</dc:title>\n<dc:date>2015-11-10T20:54:14Z</dc:date>\n\
+        <dc:date>2015-11-10T20:54:14Z</dc:date>\n<dc:date>1971-10-29</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17231</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17232</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 4, No. 9</dc:title>\n<dc:date>2015-11-10T20:55:22Z</dc:date>\n\
+        <dc:date>2015-11-10T20:55:22Z</dc:date>\n<dc:date>1971-11-05</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17232</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17233</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 4, No. 10</dc:title>\n<dc:date>2015-11-10T20:56:29Z</dc:date>\n\
+        <dc:date>2015-11-10T20:56:29Z</dc:date>\n<dc:date>1971-11-12</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17233</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17239</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 4, No. 16</dc:title>\n<dc:date>2015-11-11T13:41:10Z</dc:date>\n\
+        <dc:date>2015-11-11T13:41:10Z</dc:date>\n<dc:date>1972-02-04</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17239</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17247</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 4, No. 23</dc:title>\n<dc:date>2015-11-11T14:00:08Z</dc:date>\n\
+        <dc:date>2015-11-11T14:00:08Z</dc:date>\n<dc:date>1972-03-31</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17247</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17259</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 3, No. 1</dc:title>\n<dc:date>2015-11-11T19:36:10Z</dc:date>\n\
+        <dc:date>2015-11-11T19:36:10Z</dc:date>\n<dc:date>1970-09-15</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17259</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17275</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 3, No. 19</dc:title>\n<dc:date>2015-11-11T20:00:17Z</dc:date>\n\
+        <dc:date>2015-11-11T20:00:17Z</dc:date>\n<dc:date>1971-03-05</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17275</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17281</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 3, No. 24</dc:title>\n<dc:date>2015-11-11T20:12:48Z</dc:date>\n\
+        <dc:date>2015-11-11T20:12:48Z</dc:date>\n<dc:date>1971-04-23</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17281</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17358</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 6, No. 12</dc:title>\n<dc:date>2015-11-23T22:46:02Z</dc:date>\n\
+        <dc:date>2015-11-23T22:46:02Z</dc:date>\n<dc:date>1973-12-07</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17358</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17359</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 6, No. 13</dc:title>\n<dc:date>2015-11-23T22:47:36Z</dc:date>\n\
+        <dc:date>2015-11-23T22:47:36Z</dc:date>\n<dc:date>1974-01-14</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17359</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17360</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 6, No. 14</dc:title>\n<dc:date>2015-11-23T22:48:14Z</dc:date>\n\
+        <dc:date>2015-11-23T22:48:14Z</dc:date>\n<dc:date>1974-01-18</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17360</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17361</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 6, No. 15</dc:title>\n<dc:date>2015-11-23T22:49:04Z</dc:date>\n\
+        <dc:date>2015-11-23T22:49:04Z</dc:date>\n<dc:date>1974-01-25</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17361</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17362</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 6, No. 16</dc:title>\n<dc:date>2015-11-23T22:49:53Z</dc:date>\n\
+        <dc:date>2015-11-23T22:49:53Z</dc:date>\n<dc:date>1974-02-01</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17362</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17363</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 6, No. 17</dc:title>\n<dc:date>2015-11-23T22:50:54Z</dc:date>\n\
+        <dc:date>2015-11-23T22:50:54Z</dc:date>\n<dc:date>1974-02-08</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17363</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17383</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 6, No. 19</dc:title>\n<dc:date>2015-11-30T21:42:49Z</dc:date>\n\
+        <dc:date>2015-11-30T21:42:49Z</dc:date>\n<dc:date>1974-02-22</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17383</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17384</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 6, No. 18</dc:title>\n<dc:date>2015-11-30T21:45:25Z</dc:date>\n\
+        <dc:date>2015-11-30T21:45:25Z</dc:date>\n<dc:date>1974-02-15</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17384</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17385</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 6, Mag. 1</dc:title>\n<dc:date>2015-11-30T21:46:07Z</dc:date>\n\
+        <dc:date>2015-11-30T21:46:07Z</dc:date>\n<dc:date>1974-02-08</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17385</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17409</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 2, No. 26</dc:title>\n<dc:date>2015-12-02T21:37:32Z</dc:date>\n\
+        <dc:date>2015-12-02T21:37:32Z</dc:date>\n<dc:date>1970-05-15</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17409</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17412</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 6, No. 20</dc:title>\n<dc:date>2015-12-02T22:15:58Z</dc:date>\n\
+        <dc:date>2015-12-02T22:15:58Z</dc:date>\n<dc:date>1974-03-01</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17412</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17437</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 1, No. 20 1/2</dc:title>\n<dc:date>2015-12-04T19:16:14Z</dc:date>\n\
+        <dc:date>2015-12-04T19:16:14Z</dc:date>\n<dc:date>1969-04-01</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17437</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17745</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:22Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 7, No. 18</dc:title>\n<dc:date>2016-02-11T15:13:24Z</dc:date>\n\
+        <dc:date>2016-02-11T15:13:24Z</dc:date>\n<dc:date>1975-02-21</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17745</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17779</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 5, No. 4</dc:title>\n<dc:date>2016-02-22T16:13:59Z</dc:date>\n\
+        <dc:date>2016-02-22T16:13:59Z</dc:date>\n<dc:date>1972-09-29</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17779</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17788</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 5, No. 13</dc:title>\n<dc:date>2016-02-22T16:59:43Z</dc:date>\n\
+        <dc:date>2016-02-22T16:59:43Z</dc:date>\n<dc:date>1973-01-19</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17788</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17789</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 5, No. 14</dc:title>\n<dc:date>2016-02-22T17:00:58Z</dc:date>\n\
+        <dc:date>2016-02-22T17:00:58Z</dc:date>\n<dc:date>1973-01-26</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17789</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17790</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 5, No. 15</dc:title>\n<dc:date>2016-02-22T17:02:10Z</dc:date>\n\
+        <dc:date>2016-02-22T17:02:10Z</dc:date>\n<dc:date>1973-02-02</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17790</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/17886</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 8, Special: April Fool's</dc:title>\n<dc:date>2016-03-29T14:13:06Z</dc:date>\n\
+        <dc:date>2016-03-29T14:13:06Z</dc:date>\n<dc:date>1976-04-01</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/17886</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \       <record>\n            <header>\n                <identifier>oai:triceratops.brynmawr.edu:10066/18044</identifier>\n\
+        \                <datestamp>2016-04-26T15:26:23Z</datestamp>\n           \
+        \     <setSpec>com_10066_16697</setSpec>\n                <setSpec>com_10066_7757</setSpec>\n\
+        \                <setSpec>com_10066_99</setSpec>\n                <setSpec>com_10066_96</setSpec>\n\
+        \                <setSpec>com_10066_97</setSpec>\n                <setSpec>col_10066_16699</setSpec>\n\
+        \                <setSpec>col_10066_15698</setSpec>\n            </header>\n\
+        \            <metadata><oai_dc:dc xmlns:oai_dc=\"http://www.openarchives.org/OAI/2.0/oai_dc/\"\
+        \ xmlns:doc=\"http://www.lyncode.com/xoai\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\
+        \ xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xsi:schemaLocation=\"http://www.openarchives.org/OAI/2.0/oai_dc/\
+        \ http://www.openarchives.org/OAI/2.0/oai_dc.xsd\">\n<dc:title>The Bryn Mawr-Haverford\
+        \ College News. Vol. 9, No. 8</dc:title>\n<dc:date>2016-04-19T14:50:04Z</dc:date>\n\
+        <dc:date>2016-04-19T14:50:04Z</dc:date>\n<dc:date>1976-11-12</dc:date>\n<dc:identifier>http://hdl.handle.net/10066/18044</dc:identifier>\n\
+        <dc:language>en_US</dc:language>\n<dc:publisher>Bryn Mawr College ; Haverford\
+        \ College</dc:publisher>\n</oai_dc:dc>\n</metadata>\n        </record>\n \
+        \   </ListRecords>\n</OAI-PMH>\n"}
+    headers:
+      Connection: [close]
+      Content-Type: [application/xml]
+      Date: ['Thu, 28 Apr 2016 19:20:38 GMT']
+      Server: [Apache/2.2.15 (CentOS)]
+    status: {code: 200, message: OK}
+version: 1
