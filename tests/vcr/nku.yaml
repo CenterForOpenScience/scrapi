@@ -1,0 +1,45 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.4.1 CPython/3.4.3 Linux/3.19.0-58-generic]
+    method: GET
+    uri: https://dspace.nku.edu/oai/request?verb=ListRecords&metadataPrefix=oai_dc&from=2016-03-30T00:00:00Z&until=2016-04-01T00:00:00Z
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA+yZ33PaOBDH3/tXaPzSF8A2v0J8xp20Oa5pkzYTyPQmLxnF3mBdZcmVZBL++1vL
+        GJweSbm8pJNhhgFb+9VqV1p9kCF8d59xsgClmRRjx+94DgERy4SJ+di5nE3aI+ddFJaqtjZLDjoF
+        MMQscxg7Bu6Ne6+5Q1IFt2NHG2pY7Fpdp2zHnl+PTtrnZx8JOhB67KTG5IHr3t3ddWQOgqo4ZQvQ
+        HanmLkrdbsdznUoc3Gv2oMNdz8q6nue7f5+dTuMUMtpmAocVMWAvzQJtG09ljJGUCe0yHtlFtMoD
+        00qcKFSgcyk0HFMDUdfzh21v0PaGM78X9AdBr38Vug8k2OFHAdqUM30zdk6ZNhcQS5Voh2RgaEIN
+        Pcc5ZPdjR1J2ncQOuVUyGzuV81675808L7CvK4cUwjBeG/ttz28YozIdjfkkOqcxdMT3ogNJ4aJf
+        dxVGWF9EYSOUMsryIgpToAmoKGQJ4EC3DK+xd/DQYeD7XX/o4ls3dBvKEJNB1zTLo2Z8dmb8Ac7M
+        xh5qMNMc4iiW2bV1dz0YhW7dusV8sNXKV9ah1zC7dRb1BEdhNbVBEq8qrLrfrUoq7bo4E/mwH1+W
+        uwY6GKp7j9pnF3HlfeM8LxS3XXBw4JDhPGvX7/ju8wt+lcpOdV9pq7J/E+LkGWY4RDOWAaEiIUdz
+        ygSuaW2wmlgBNVJFn8pg47RFvmByS/K5Y4W11Up1cfMPxCaaplIZorGdgW6RowwUi6kgn9FFEX9f
+        2p612PZMQMeK5WXajd6VsGmrxJuNinvJn/lYi6PAG11V8tL6HJ2HusOfTCUboyOFJORQTUzZYE2N
+        XTI6GAza/a43spKG4WfhapHShHdSnHAkqwDjNvfelv6cinlB5xCBuL6cWsm6yQoUcFsw0SdZKEE5
+        kbfrqSZTUyS4Cn8sJC9wmbs9MoXcQHYDipQ5W39rD9ZfXtxwht8NKvqCK4Gfm5Ujl4LZLxhTrc1G
+        +iZ01zuyvNlsVLcm0TOJ1NudSN09kV4FkS4ggczu+MdoNKNLLlWLXLA4pSr5nVjU9QOvvwOLntK9
+        PIt6exZtYVF/dxYN9yx6FSya0IzxsnYtQR7j0alcAOctcg45I+fUmBW6fhcm9YPuwS5MekL38kzq
+        75m0hUmD3Zl0sGfSq2DSLAXyl5K4kPjkT6gmE8iYwKd/cgELVv78U9Y4liZxprKoSvSUJkuHMEE+
+        UKVRcBZ/KDjHWn2r7cPfBDeNALUkX99+kEJIhe0TFj91CJtQzqVAgOWKcXL8OPDWY7VWo+OnYkgN
+        pjM7OBMGVK7A2Hns/BeA9U0dXGsd7/921eTlKUMxxaTj2seOSD0IfETlr495T+teHqmDPVK3IHW4
+        O1JHe6S+CqSeUTUv8BxmgBxTZKhlSUnQfk8l5GjBbDhk+qOgicILash7eZfhqW3CgCetdb0iDpnK
+        yyPacaGYmBPyTSqekG9UkZOTgPypNUXRSYmpBYO7lh3pPJVGzhXN00ePmLMlErRF3qsiBnL2xM9v
+        Nv4W2WTUGE0/jtZ1mC3iH/YO2/5hf4DJ3FZn0/qQusVBk5brgXbk6Ag3XTA4/CVHn9a9PEeHr5uj
+        7oO/Fuo/UKJ/AQAA//8DAJtZA8tyGgAA
+    headers:
+      Connection: [Keep-Alive]
+      Content-Encoding: [gzip]
+      Content-Type: [application/xml;charset=UTF-8]
+      Date: ['Fri, 06 May 2016 13:45:34 GMT']
+      Keep-Alive: ['timeout=5, max=100']
+      Server: [Apache]
+      Vary: [Accept-Encoding]
+    status: {code: 200, message: OK}
+version: 1
