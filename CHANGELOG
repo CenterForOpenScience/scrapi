@@ -2,6 +2,16 @@
 ChangeLog
 *********
 
+0.13.09 (2016-05-18)
+====================
+- Add harvesters:
+	- colostate
+	- boise_state
+	- nku
+	- triceratops
+- Update umontreal
+- Add favicon for neurovault
+
 0.13.08 (2016-04-21)
 ====================
 - Add harvesters:
