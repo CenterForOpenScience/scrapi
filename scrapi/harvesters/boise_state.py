@@ -10,7 +10,7 @@ from scrapi.base import OAIHarvester
 
 class Boise_stateHarvester(OAIHarvester):
     short_name = 'boise_state'
-    long_name = 'ScholarWorks'
+    long_name = 'Boise State University ScholarWorks'
     url = 'http://scholarworks.boisestate.edu'
 
     base_url = 'http://scholarworks.boisestate.edu/do/oai/'
