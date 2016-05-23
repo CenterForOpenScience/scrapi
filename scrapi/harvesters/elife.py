@@ -129,9 +129,9 @@ class ELifeHarvester(XMLHarvester):
     namespaces = {}
 
     MAX_ROWS_PER_REQUEST = 999
-    BASE_URL = 'https://api.github.com/repos/elifesciences/elife-articles/commits?'
-    BASE_COMMIT_URL = 'https://api.github.com/repos/elifesciences/elife-articles/commits/{}'
-    BASE_DATA_URL = 'https://raw.githubusercontent.com/elifesciences/elife-articles/master/{}'
+    BASE_URL = 'https://api.github.com/repos/elifesciences/elife-article-xml/commits?'
+    BASE_COMMIT_URL = 'https://api.github.com/repos/elifesciences/elife-article-xml/commits/{}'
+    BASE_DATA_URL = 'https://raw.githubusercontent.com/elifesciences/elife-article-xml/master/{}'
 
     def harvest(self, start_date=None, end_date=None):
         start_date = start_date or datetime.date.today() - datetime.timedelta(settings.DAYS_BACK)
