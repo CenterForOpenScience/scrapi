@@ -10,7 +10,7 @@ from scrapi.base import OAIHarvester
 
 class MlaHarvester(OAIHarvester):
     short_name = 'mla'
-    long_name = 'MLA commons'
+    long_name = 'MLA Commons'
     url = 'https://commons.mla.org'
 
     base_url = 'https://commons.mla.org/deposits/oai/'
