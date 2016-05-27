@@ -2,6 +2,13 @@
 ChangeLog
 *********
 
+0.13.11 (2016-05-27)
+====================
+- Add harvesters:
+	- mla: MLA Commons
+- Update eLife Harvester
+
+
 0.13.10 (2016-05-18)
 ====================
 - update longname for boise state
