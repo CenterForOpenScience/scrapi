@@ -40,7 +40,14 @@ class ShareOKHarvester(OAIHarvester):
         'col_11244_10466',
         'col_11244_10464',
         'col_11244_10462',
-        'com_11244_15231'
+        'com_11244_15231',
+        'col_11244_15285',
+        'col_11244_15479',
+        'col_11244_20910',
+        'col_11244_20927',
+        'col_11244_21724',
+        'col_11244_22702',
+        'col_11244_23528'
     ]
 
     def normalize(self, raw_doc):
